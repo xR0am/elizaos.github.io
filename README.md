@@ -26,3 +26,12 @@ Reward: $1000 USD in $ai16z + $1000 USD in $degenai
 ### Obsidian Integration
 - Integrate Obsidian and demonstrate deep traversal and search of an Obsidian memory store
 - Integrate [Naval database](https://www.reddit.com/r/NavalRavikant/comments/oza0bl/i_made_a_digital_version_of_navals_brain_free/?rdt=41536) as example
+
+Reward: $1000 USD in $ai16z + $1000 USD in $degenai
+
+### EVM Integration
+- Integrate Ethereum wallet and demonstrate Eth L1 and Base L2
+- Copy and paste solana plugin and recreate with EVM
+- Swapping action, wallet provider
+
+Reward: $1500 USD in $degenai
