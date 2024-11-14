@@ -1,37 +1,42 @@
 ![eliza_banner](https://github.com/user-attachments/assets/e8784793-c4d3-4d59-bba9-6d47885abe63)
 
-ai16z, creators of the [eliza](https://github.com/ai16z/eliza) framework
+# AI16Z Bounties Website
 
-Visit us on [daos.fun](https://www.daos.fun/HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC)
+This repository contains the source code for the AI16Z bounties website - a platform showcasing active bounties and initiatives from ai16z, creators of the [eliza](https://github.com/ai16z/eliza) framework.
 
-[Website](https://ai16z.ai): | [Discord](https://discord.gg/ai16z) | [Twitter/X](https://x.com/ai16zdao)
+## Features
 
-# OPEN BOUNTIES
+- **Live Bounty Board**: Automatically fetches and displays active bounties from the ai16z/eliza GitHub repository
+- **Responsive Design**: Mobile-friendly interface built with modern CSS
+- **Token Information**: Easy access to AI16Z token details and copying functionality
+- **Community Links**: Direct access to all AI16Z community platforms
 
-Technical requirements: Senior-level background in Node.js, Typescript, understanding of [Eliza](https://github.com/ai16z/eliza) framework
+## Tech Stack
 
-### Farcaster Client
-Parity with Twitter client, but on Farcaster
+- Express.js server
+- GitHub API integration
+- Vanilla JavaScript
+- CSS3 with modern features
+- HTML5
 
-Reward: $1000 USD in $ai16z + $1000 USD in $degenai
+## Development
 
-### Twitter Spaces Voice Client
-Parity with Discord Voice Client, but on Twitter Space
-- Must listen to and respond with voice
-- Must be able to join a twitter space from a linked tweet
-- Must be able to accept speaker role
+To run this project locally:
 
-Reward: $1000 USD in $ai16z + $1000 USD in $degenai
+```bash
+git clone https://github.com/ai16z/ai16z.github.io.git
+cd ai16z.github.io
+npm install
+npm run dev # or npm start
+```
 
-### Obsidian Integration
-- Integrate Obsidian and demonstrate deep traversal and search of an Obsidian memory store
-- Integrate [Naval database](https://www.reddit.com/r/NavalRavikant/comments/oza0bl/i_made_a_digital_version_of_navals_brain_free/?rdt=41536) as example
+## Links
 
-Reward: $1000 USD in $ai16z + $1000 USD in $degenai
+- [Website](https://ai16z.ai)
+- [Discord](https://discord.gg/ai16z)
+- [Twitter/X](https://x.com/ai16zdao)
+- [DAO Fund](https://www.daos.fun/HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC)
 
-### EVM Integration
-- Integrate Ethereum wallet and demonstrate Eth L1 and Base L2
-- Copy and paste solana plugin and recreate with EVM
-- Swapping action, wallet provider
+## License
 
-Reward: $1500 USD in $degenai
+MIT
