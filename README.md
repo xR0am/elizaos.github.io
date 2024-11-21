@@ -10,11 +10,6 @@ Visit us on [daos.fun](https://www.daos.fun/HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8
 
 Technical requirements: Senior-level background in Node.js, Typescript, understanding of [Eliza](https://github.com/ai16z/eliza) framework
 
-### Farcaster Client
-Parity with Twitter client, but on Farcaster
-
-Reward: $1000 USD in $ai16z + $1000 USD in $degenai
-
 ### Twitter Spaces Voice Client
 Parity with Discord Voice Client, but on Twitter Space
 - Must listen to and respond with voice
@@ -28,10 +23,3 @@ Reward: $1000 USD in $ai16z + $1000 USD in $degenai
 - Integrate [Naval database](https://www.reddit.com/r/NavalRavikant/comments/oza0bl/i_made_a_digital_version_of_navals_brain_free/?rdt=41536) as example
 
 Reward: $1000 USD in $ai16z + $1000 USD in $degenai
-
-### EVM Integration
-- Integrate Ethereum wallet and demonstrate Eth L1 and Base L2
-- Copy and paste solana plugin and recreate with EVM
-- Swapping action, wallet provider
-
-Reward: $1500 USD in $degenai
