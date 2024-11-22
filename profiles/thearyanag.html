@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>thearyanag - GitHub Contributions</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div id="root"><div class="max-w-7xl mx-auto p-4 space-y-6"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><div class="flex items-center gap-4"><img src="https://avatars.githubusercontent.com/u/48391385?v=4" alt="thearyanag&#x27;s avatar" class="w-16 h-16 rounded-full"/><div><h1 class="text-2xl font-bold">thearyanag</h1><p class="text-gray-600 dark:text-gray-400">3 total contributions</p></div></div></div><div class="grid grid-cols-1 md:grid-cols-4 gap-4"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Commits</h3><p class="text-2xl font-bold">3</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">PRs</h3><p class="text-2xl font-bold">2</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Issues</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Comments</h3><p class="text-2xl font-bold">0</p></div></div><div class="space-y-4"><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Commits</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Pull Requests</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Issues</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Comments</h3><span>▶</span></div></div></div></div></div>
+    <script>
+        window.__DATA__ = {"username":"thearyanag","avatar_url":"https://avatars.githubusercontent.com/u/48391385?v=4","total_contributions":3,"activity":{"code":{"commits":[{"sha":"4c28418da13e65a32fca21532515ec5dc84b46e5","date":"2024-11-17T08:39:22Z","message":"fix: ca for btc was fake","url":"https://github.com/ai16z/eliza/commit/4c28418da13e65a32fca21532515ec5dc84b46e5"},{"sha":"9a3f0b969fe446c0e62400a14fcfa85538aee1e6","date":"2024-11-13T23:21:57Z","message":"change node -v in readme","url":"https://github.com/ai16z/eliza/commit/9a3f0b969fe446c0e62400a14fcfa85538aee1e6"},{"sha":"a68729bf410ee9febdec0e5c47f428a7ad9b23d9","date":"2024-11-13T23:19:48Z","message":"add node version check","url":"https://github.com/ai16z/eliza/commit/a68729bf410ee9febdec0e5c47f428a7ad9b23d9"}],"pull_requests":[{"number":374,"title":"fix: ca for btc was spam/fake","state":"closed","created_at":"2024-11-17T08:42:32Z","url":"https://github.com/ai16z/eliza/pull/374","labels":[],"comments":0},{"number":299,"title":"add node version check","state":"closed","created_at":"2024-11-13T23:26:59Z","url":"https://github.com/ai16z/eliza/pull/299","labels":[],"comments":0}],"total_commits":3,"total_prs":2,"commit_activity":{"2024":{"11":3}},"pr_activity":{"2024":{"11":2}}},"issues":{"opened":[],"total_opened":0,"issue_activity":{}},"engagement":{"issue_comments":[],"pr_comments":[],"total_comments":0,"comment_activity":{}}}};
+    </script>
+    <script type="text/javascript">
+        const ActivitySection = ({ title, items = [], color = 'text-blue-500' }) => {
+            const [isExpanded, setIsExpanded] = React.useState(false);
+            
+            return React.createElement('div', { className: 'border rounded-lg p-4' },
+                React.createElement('div', {
+                    className: 'flex items-center justify-between cursor-pointer',
+                    onClick: () => setIsExpanded(!isExpanded)
+                },
+                    React.createElement('h3', { className: 'font-semibold' }, title),
+                    React.createElement('span', null, isExpanded ? '▼' : '▶')
+                ),
+                isExpanded && React.createElement('div', { className: 'mt-4 space-y-2' },
+                    items.map((item, index) => 
+                        React.createElement('div', { key: index, className: 'p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded' },
+                            React.createElement('a', {
+                                href: item.url,
+                                target: '_blank',
+                                rel: 'noopener noreferrer',
+                                className: 'text-sm hover:text-blue-500 flex flex-col gap-1'
+                            },
+                                React.createElement('span', { className: 'font-medium' }, 
+                                    item.message || item.title || item.body
+                                ),
+                                React.createElement('span', { className: 'text-gray-500 text-xs' },
+                                    new Date(item.date || item.created_at).toLocaleDateString()
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        };
+
+        const StatCard = ({ name, value }) => {
+            return React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+                React.createElement('h3', { className: 'font-semibold' }, name),
+                React.createElement('p', { className: 'text-2xl font-bold' }, value)
+            );
+        };
+
+        const ContributorProfile = ({ data }) => {
+            const stats = [
+                { name: 'Commits', value: data.activity.code.total_commits },
+                { name: 'PRs', value: data.activity.code.total_prs },
+                { name: 'Issues', value: data.activity.issues.total_opened },
+                { name: 'Comments', value: data.activity.engagement.total_comments }
+            ];
+
+            return React.createElement('div', { className: 'max-w-7xl mx-auto p-4 space-y-6' },
+                React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+                    React.createElement('div', { className: 'flex items-center gap-4' },
+                        React.createElement('img', {
+                            src: data.avatar_url,
+                            alt: `${data.username}'s avatar`,
+                            className: 'w-16 h-16 rounded-full'
+                        }),
+                        React.createElement('div', null,
+                            React.createElement('h1', { className: 'text-2xl font-bold' }, data.username),
+                            React.createElement('p', { className: 'text-gray-600 dark:text-gray-400' },
+                                `${data.total_contributions} total contributions`
+                            )
+                        )
+                    )
+                ),
+
+                React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
+                    stats.map(stat => React.createElement(StatCard, { key: stat.name, ...stat }))
+                ),
+
+                React.createElement('div', { className: 'space-y-4' },
+                    React.createElement(ActivitySection, {
+                        title: 'Commits',
+                        items: data.activity.code.commits
+                    }),
+                    React.createElement(ActivitySection, {
+                        title: 'Pull Requests',
+                        items: data.activity.code.pull_requests
+                    }),
+                    React.createElement(ActivitySection, {
+                        title: 'Issues',
+                        items: data.activity.issues.opened || []
+                    }),
+                    React.createElement(ActivitySection, {
+                        title: 'Comments',
+                        items: [
+                            ...(data.activity.engagement.issue_comments || []),
+                            ...(data.activity.engagement.pr_comments || [])
+                        ]
+                    })
+                )
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(React.createElement(ContributorProfile, { data: window.__DATA__ }));
+    </script>
+</body>
+</html>

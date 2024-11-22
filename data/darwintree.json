@@ -1,0 +1,138 @@
+{
+  "username": "darwintree",
+  "avatar_url": "https://avatars.githubusercontent.com/u/17946284?v=4",
+  "total_contributions": 2,
+  "activity": {
+    "code": {
+      "commits": [
+        {
+          "sha": "776de169d39a158b76aa6dc0a6246260ec438810",
+          "date": "2024-11-21T01:54:59Z",
+          "message": "fix: error if openai baseURL is not provided",
+          "url": "https://github.com/ai16z/eliza/commit/776de169d39a158b76aa6dc0a6246260ec438810"
+        },
+        {
+          "sha": "961816a2505fb667ee674426e44e4ea9d2fa818c",
+          "date": "2024-11-20T10:16:46Z",
+          "message": "fix: ignored modelEndpointOverride in generation",
+          "url": "https://github.com/ai16z/eliza/commit/961816a2505fb667ee674426e44e4ea9d2fa818c"
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 481,
+          "title": "feat: add Conflux plugin",
+          "state": "open",
+          "created_at": "2024-11-21T09:56:59Z",
+          "url": "https://github.com/ai16z/eliza/pull/481",
+          "labels": [],
+          "comments": 1
+        },
+        {
+          "number": 446,
+          "title": "fix: ignored modelEndpointOverride in generation",
+          "state": "closed",
+          "created_at": "2024-11-20T10:18:16Z",
+          "url": "https://github.com/ai16z/eliza/pull/446",
+          "labels": [],
+          "comments": 4
+        },
+        {
+          "number": 445,
+          "title": "fix: wrong parameter for trimTokens in generateObjectV2",
+          "state": "open",
+          "created_at": "2024-11-20T09:56:04Z",
+          "url": "https://github.com/ai16z/eliza/pull/445",
+          "labels": [],
+          "comments": 0
+        },
+        {
+          "number": 417,
+          "title": "feat: add Conflux plugin",
+          "state": "closed",
+          "created_at": "2024-11-19T09:56:35Z",
+          "url": "https://github.com/ai16z/eliza/pull/417",
+          "labels": [],
+          "comments": 0
+        }
+      ],
+      "total_commits": 2,
+      "total_prs": 4,
+      "commit_activity": {
+        "2024": {
+          "11": 2
+        }
+      },
+      "pr_activity": {
+        "2024": {
+          "11": 4
+        }
+      }
+    },
+    "issues": {
+      "opened": [
+        {
+          "number": 469,
+          "title": "Error when call `generateObjectV2`",
+          "state": "open",
+          "created_at": "2024-11-21T01:51:10Z",
+          "url": "https://github.com/ai16z/eliza/issues/469",
+          "labels": [
+            "bug"
+          ],
+          "comments": 1
+        }
+      ],
+      "total_opened": 1,
+      "issue_activity": {
+        "2024": {
+          "11": 1
+        }
+      }
+    },
+    "engagement": {
+      "issue_comments": [
+        {
+          "id": 2489900953,
+          "body": "A relating PR is created #445 ",
+          "created_at": "2024-11-21T01:51:40Z",
+          "url": "https://github.com/ai16z/eliza/issues/469#issuecomment-2489900953",
+          "type": "issue",
+          "issue_number": "469"
+        }
+      ],
+      "pr_comments": [
+        {
+          "id": 2489904959,
+          "body": "> will this break if it is nul?\r\n\r\nThanks, I ignored the situation that it could be null. A fix is commited to resolve the issue",
+          "created_at": "2024-11-21T01:56:09Z",
+          "url": "https://github.com/ai16z/eliza/pull/446#issuecomment-2489904959",
+          "type": "pr",
+          "issue_number": "446"
+        },
+        {
+          "id": 2489907720,
+          "body": "> Thanks @darwintree for addressing the issue with OpenAI object initialization and ensuring the `modelEndpointOverride` is respected. Could you please add a test to validate the changes made in this PR? Specifically:\r\n> \r\n> 1. A test to ensure that the `baseURL` is properly set when `modelEndpointOverride` is provided.\r\n> 2. A test to verify that the functionality does not break when `modelEndpointOverride` (or `baseURL`) is `null` or undefined.\r\n> \r\n> This will help confirm that the changes work as expected and ensure robustness. Let me know if you need further clarification or help setting up the test!\r\n\r\nHi, would know how to setup and run the test. Thanks",
+          "created_at": "2024-11-21T01:59:22Z",
+          "url": "https://github.com/ai16z/eliza/pull/446#issuecomment-2489907720",
+          "type": "pr",
+          "issue_number": "446"
+        },
+        {
+          "id": 2490629765,
+          "body": "This pull request relies on https://github.com/ai16z/eliza/pull/445 as `generateObjectV2` is used",
+          "created_at": "2024-11-21T10:00:27Z",
+          "url": "https://github.com/ai16z/eliza/pull/481#issuecomment-2490629765",
+          "type": "pr",
+          "issue_number": "481"
+        }
+      ],
+      "total_comments": 4,
+      "comment_activity": {
+        "2024": {
+          "11": 4
+        }
+      }
+    }
+  }
+}
