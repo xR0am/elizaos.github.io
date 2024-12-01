@@ -1,0 +1,112 @@
+{
+  "username": "YoungPhlo",
+  "avatar_url": "https://avatars.githubusercontent.com/u/90307961?v=4",
+  "total_contributions": 2,
+  "activity": {
+    "code": {
+      "commits": [
+        {
+          "sha": "6324d7af0d9a37bd8f22f39e6db85336a9a697f2",
+          "date": "2024-11-28T05:35:55Z",
+          "message": "docs: add notes from a16z AI Agent Dev School session #1",
+          "url": "https://github.com/ai16z/eliza/commit/6324d7af0d9a37bd8f22f39e6db85336a9a697f2"
+        },
+        {
+          "sha": "c760c3372232752b304aa399bd99fab615d820ee",
+          "date": "2024-11-25T04:28:37Z",
+          "message": "community stream wdygdtw 2",
+          "url": "https://github.com/ai16z/eliza/commit/c760c3372232752b304aa399bd99fab615d820ee"
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 638,
+          "title": "Notes for AI Agent Dev School #1",
+          "state": "closed",
+          "created_at": "2024-11-28T05:46:45Z",
+          "url": "https://github.com/ai16z/eliza/pull/638",
+          "labels": [],
+          "comments": 0
+        },
+        {
+          "number": 629,
+          "title": "feat: Add image generation support for tweets",
+          "state": "open",
+          "created_at": "2024-11-27T13:41:43Z",
+          "url": "https://github.com/ai16z/eliza/pull/629",
+          "labels": [],
+          "comments": 3
+        },
+        {
+          "number": 580,
+          "title": "Add community stream notes for WDYGDTW 2",
+          "state": "closed",
+          "created_at": "2024-11-25T04:54:11Z",
+          "url": "https://github.com/ai16z/eliza/pull/580",
+          "labels": [],
+          "comments": 0
+        }
+      ],
+      "total_commits": 2,
+      "total_prs": 3,
+      "commit_activity": {
+        "2024": {
+          "11": 2
+        }
+      },
+      "pr_activity": {
+        "2024": {
+          "11": 3
+        }
+      }
+    },
+    "issues": {
+      "opened": [
+        {
+          "number": 422,
+          "title": "using Groq API (or RedPill or Google Gen AI) as model provider",
+          "state": "open",
+          "created_at": "2024-11-19T17:21:15Z",
+          "url": "https://github.com/ai16z/eliza/issues/422",
+          "labels": [
+            "bug"
+          ],
+          "comments": 1
+        }
+      ],
+      "total_opened": 1,
+      "issue_activity": {
+        "2024": {
+          "11": 1
+        }
+      }
+    },
+    "engagement": {
+      "issue_comments": [],
+      "pr_comments": [
+        {
+          "id": 2504035321,
+          "body": "commit `a51c376710c90b6721a6ae6457fdc42c441a19ba` has a bad timing error stand by \ud83e\udd15",
+          "created_at": "2024-11-27T14:34:33Z",
+          "url": "https://github.com/ai16z/eliza/pull/629#issuecomment-2504035321",
+          "type": "pr",
+          "issue_number": "629"
+        },
+        {
+          "id": 2505359264,
+          "body": "Got a message about errors during image generation. Be sure to add the right `plugins` and `clients` in your character file.\r\n\r\n```diff\r\ndiff --git a/agent/src/character.ts b/agent/src/character.ts\r\nindex da7e718..53c6f12 100644\r\n--- a/agent/src/character.ts\r\n+++ b/agent/src/character.ts\r\n@@ -4,9 +4,9 @@ import { imageGenerationPlugin } from \"@ai16z/plugin-image-generation\";\r\n export const character: Character = {\r\n     ...defaultCharacter,\r\n     name: \"Eliza\",\r\n-    plugins: [],\r\n-    clients: [],\r\n-    modelProvider: ModelProviderName.OPENAI,\r\n+    plugins: [imageGenerationPlugin],\r\n+    clients: [Clients.TWITTER],\r\n+    modelProvider: ModelProviderName.HEURIST,\r\n     settings: {\r\n         secrets: {},\r\n         voice: {\r\n```",
+          "created_at": "2024-11-28T06:33:45Z",
+          "url": "https://github.com/ai16z/eliza/pull/629#issuecomment-2505359264",
+          "type": "pr",
+          "issue_number": "629"
+        }
+      ],
+      "total_comments": 2,
+      "comment_activity": {
+        "2024": {
+          "11": 2
+        }
+      }
+    }
+  }
+}

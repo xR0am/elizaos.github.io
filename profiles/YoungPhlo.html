@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YoungPhlo - GitHub Contributions</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div id="root"><div class="max-w-7xl mx-auto p-4 space-y-6"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><div class="flex items-center gap-4"><img src="https://avatars.githubusercontent.com/u/90307961?v=4" alt="YoungPhlo&#x27;s avatar" class="w-16 h-16 rounded-full"/><div><h1 class="text-2xl font-bold">YoungPhlo</h1><p class="text-gray-600 dark:text-gray-400">2 total contributions</p></div></div></div><div class="grid grid-cols-1 md:grid-cols-4 gap-4"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Commits</h3><p class="text-2xl font-bold">2</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">PRs</h3><p class="text-2xl font-bold">3</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Issues</h3><p class="text-2xl font-bold">1</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Comments</h3><p class="text-2xl font-bold">2</p></div></div><div class="space-y-4"><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Commits</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Pull Requests</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Issues</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Comments</h3><span>▶</span></div></div></div></div></div>
+    <script>
+        window.__DATA__ = {"username":"YoungPhlo","avatar_url":"https://avatars.githubusercontent.com/u/90307961?v=4","total_contributions":2,"activity":{"code":{"commits":[{"sha":"6324d7af0d9a37bd8f22f39e6db85336a9a697f2","date":"2024-11-28T05:35:55Z","message":"docs: add notes from a16z AI Agent Dev School session #1","url":"https://github.com/ai16z/eliza/commit/6324d7af0d9a37bd8f22f39e6db85336a9a697f2"},{"sha":"c760c3372232752b304aa399bd99fab615d820ee","date":"2024-11-25T04:28:37Z","message":"community stream wdygdtw 2","url":"https://github.com/ai16z/eliza/commit/c760c3372232752b304aa399bd99fab615d820ee"}],"pull_requests":[{"number":638,"title":"Notes for AI Agent Dev School #1","state":"closed","created_at":"2024-11-28T05:46:45Z","url":"https://github.com/ai16z/eliza/pull/638","labels":[],"comments":0},{"number":629,"title":"feat: Add image generation support for tweets","state":"open","created_at":"2024-11-27T13:41:43Z","url":"https://github.com/ai16z/eliza/pull/629","labels":[],"comments":3},{"number":580,"title":"Add community stream notes for WDYGDTW 2","state":"closed","created_at":"2024-11-25T04:54:11Z","url":"https://github.com/ai16z/eliza/pull/580","labels":[],"comments":0}],"total_commits":2,"total_prs":3,"commit_activity":{"2024":{"11":2}},"pr_activity":{"2024":{"11":3}}},"issues":{"opened":[{"number":422,"title":"using Groq API (or RedPill or Google Gen AI) as model provider","state":"open","created_at":"2024-11-19T17:21:15Z","url":"https://github.com/ai16z/eliza/issues/422","labels":["bug"],"comments":1}],"total_opened":1,"issue_activity":{"2024":{"11":1}}},"engagement":{"issue_comments":[],"pr_comments":[{"id":2504035321,"body":"commit `a51c376710c90b6721a6ae6457fdc42c441a19ba` has a bad timing error stand by 🤕","created_at":"2024-11-27T14:34:33Z","url":"https://github.com/ai16z/eliza/pull/629#issuecomment-2504035321","type":"pr","issue_number":"629"},{"id":2505359264,"body":"Got a message about errors during image generation. Be sure to add the right `plugins` and `clients` in your character file.\r\n\r\n```diff\r\ndiff --git a/agent/src/character.ts b/agent/src/character.ts\r\nindex da7e718..53c6f12 100644\r\n--- a/agent/src/character.ts\r\n+++ b/agent/src/character.ts\r\n@@ -4,9 +4,9 @@ import { imageGenerationPlugin } from \"@ai16z/plugin-image-generation\";\r\n export const character: Character = {\r\n     ...defaultCharacter,\r\n     name: \"Eliza\",\r\n-    plugins: [],\r\n-    clients: [],\r\n-    modelProvider: ModelProviderName.OPENAI,\r\n+    plugins: [imageGenerationPlugin],\r\n+    clients: [Clients.TWITTER],\r\n+    modelProvider: ModelProviderName.HEURIST,\r\n     settings: {\r\n         secrets: {},\r\n         voice: {\r\n```","created_at":"2024-11-28T06:33:45Z","url":"https://github.com/ai16z/eliza/pull/629#issuecomment-2505359264","type":"pr","issue_number":"629"}],"total_comments":2,"comment_activity":{"2024":{"11":2}}}}};
+    </script>
+    <script type="text/javascript">
+        const ActivitySection = ({ title, items = [], color = 'text-blue-500' }) => {
+            const [isExpanded, setIsExpanded] = React.useState(false);
+            
+            return React.createElement('div', { className: 'border rounded-lg p-4' },
+                React.createElement('div', {
+                    className: 'flex items-center justify-between cursor-pointer',
+                    onClick: () => setIsExpanded(!isExpanded)
+                },
+                    React.createElement('h3', { className: 'font-semibold' }, title),
+                    React.createElement('span', null, isExpanded ? '▼' : '▶')
+                ),
+                isExpanded && React.createElement('div', { className: 'mt-4 space-y-2' },
+                    items.map((item, index) => 
+                        React.createElement('div', { key: index, className: 'p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded' },
+                            React.createElement('a', {
+                                href: item.url,
+                                target: '_blank',
+                                rel: 'noopener noreferrer',
+                                className: 'text-sm hover:text-blue-500 flex flex-col gap-1'
+                            },
+                                React.createElement('span', { className: 'font-medium' }, 
+                                    item.message || item.title || item.body
+                                ),
+                                React.createElement('span', { className: 'text-gray-500 text-xs' },
+                                    new Date(item.date || item.created_at).toLocaleDateString()
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        };
+
+        const StatCard = ({ name, value }) => {
+            return React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+                React.createElement('h3', { className: 'font-semibold' }, name),
+                React.createElement('p', { className: 'text-2xl font-bold' }, value)
+            );
+        };
+
+        const ContributorProfile = ({ data }) => {
+            const stats = [
+                { name: 'Commits', value: data.activity.code.total_commits },
+                { name: 'PRs', value: data.activity.code.total_prs },
+                { name: 'Issues', value: data.activity.issues.total_opened },
+                { name: 'Comments', value: data.activity.engagement.total_comments }
+            ];
+
+            return React.createElement('div', { className: 'max-w-7xl mx-auto p-4 space-y-6' },
+                React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+                    React.createElement('div', { className: 'flex items-center gap-4' },
+                        React.createElement('img', {
+                            src: data.avatar_url,
+                            alt: `${data.username}'s avatar`,
+                            className: 'w-16 h-16 rounded-full'
+                        }),
+                        React.createElement('div', null,
+                            React.createElement('h1', { className: 'text-2xl font-bold' }, data.username),
+                            React.createElement('p', { className: 'text-gray-600 dark:text-gray-400' },
+                                `${data.total_contributions} total contributions`
+                            )
+                        )
+                    )
+                ),
+
+                React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
+                    stats.map(stat => React.createElement(StatCard, { key: stat.name, ...stat }))
+                ),
+
+                React.createElement('div', { className: 'space-y-4' },
+                    React.createElement(ActivitySection, {
+                        title: 'Commits',
+                        items: data.activity.code.commits
+                    }),
+                    React.createElement(ActivitySection, {
+                        title: 'Pull Requests',
+                        items: data.activity.code.pull_requests
+                    }),
+                    React.createElement(ActivitySection, {
+                        title: 'Issues',
+                        items: data.activity.issues.opened || []
+                    }),
+                    React.createElement(ActivitySection, {
+                        title: 'Comments',
+                        items: [
+                            ...(data.activity.engagement.issue_comments || []),
+                            ...(data.activity.engagement.pr_comments || [])
+                        ]
+                    })
+                )
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(React.createElement(ContributorProfile, { data: window.__DATA__ }));
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+{
+  "username": "dr-fusion",
+  "avatar_url": "https://avatars.githubusercontent.com/u/129591319?v=4",
+  "total_contributions": 1,
+  "activity": {
+    "code": {
+      "commits": [
+        {
+          "sha": "56e7930439e242c1876803af8ae0ed863269d366",
+          "date": "2024-11-28T14:58:04Z",
+          "message": "added support for LlamaLocal's path outside plugin-node/dist",
+          "url": "https://github.com/ai16z/eliza/commit/56e7930439e242c1876803af8ae0ed863269d366"
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 649,
+          "title": "added support for LlamaLocal's path outside plugin-node/dist",
+          "state": "closed",
+          "created_at": "2024-11-28T15:12:53Z",
+          "url": "https://github.com/ai16z/eliza/pull/649",
+          "labels": [],
+          "comments": 0
+        }
+      ],
+      "total_commits": 1,
+      "total_prs": 1,
+      "commit_activity": {
+        "2024": {
+          "11": 1
+        }
+      },
+      "pr_activity": {
+        "2024": {
+          "11": 1
+        }
+      }
+    },
+    "issues": {
+      "opened": [],
+      "total_opened": 0,
+      "issue_activity": {}
+    },
+    "engagement": {
+      "issue_comments": [
+        {
+          "id": 2506065871,
+          "body": "just tested with the latest code and used `ModelProviderName.LLAMALOCAL,`\r\n\r\nSeems like its still going in a loop.\r\n",
+          "created_at": "2024-11-28T12:57:47Z",
+          "url": "https://github.com/ai16z/eliza/issues/443#issuecomment-2506065871",
+          "type": "issue",
+          "issue_number": "443"
+        },
+        {
+          "id": 2506318872,
+          "body": "Shouldn't we just make it an environment variable so users might have their models stored at some different directory for any other purpose and they can easily point to that directory? and or Downloading model happens to that particular path?\r\n\r\nFor example like the follow one.\r\n\r\nin `.env`\r\n\r\n`#LlamaLocal Configuration\r\nLLAMALOCAL_PATH=                      # Default: \"\" which is the current directory in plugin-node/dist/ which gets destroyed and recreated on every build\r\n`\r\n\r\nthen in `llama.ts` line no 188,\r\n` this.modelPath = path.join(process.env.LLAMALOCAL_PATH, modelName);`",
+          "created_at": "2024-11-28T15:02:21Z",
+          "url": "https://github.com/ai16z/eliza/issues/242#issuecomment-2506318872",
+          "type": "issue",
+          "issue_number": "242"
+        }
+      ],
+      "pr_comments": [],
+      "total_comments": 2,
+      "comment_activity": {
+        "2024": {
+          "11": 2
+        }
+      }
+    }
+  }
+}

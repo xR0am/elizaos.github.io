@@ -1,0 +1,132 @@
+{
+  "username": "augchan42",
+  "avatar_url": "https://avatars.githubusercontent.com/u/20424105?v=4",
+  "total_contributions": 3,
+  "activity": {
+    "code": {
+      "commits": [
+        {
+          "sha": "2d7e1b0e100d5e2d0ff433a4c4a4e4bf28c2f7db",
+          "date": "2024-11-29T19:32:17Z",
+          "message": "fix linter errors",
+          "url": "https://github.com/ai16z/eliza/commit/2d7e1b0e100d5e2d0ff433a4c4a4e4bf28c2f7db"
+        },
+        {
+          "sha": "638eac67a83bd3346bb48ae5d5921857f44cf980",
+          "date": "2024-11-29T19:02:06Z",
+          "message": "feat: improve embeddings, models and connectivity\n\n- Add multiple embedding options:\n  - BGE-Small local embeddings (~70-80% of OpenAI quality)\n  - Ollama embeddings support\n  - Configure via env vars:\n    - USE_OPENAI_EMBEDDING=true\n    - USE_OLLAMA_EMBEDDING=true\n    - Both case-insensitive, default to false\n- Switch to Claude 3 Haiku from Claude 3.5 Haiku\n  - 4x cheaper\n  - Better instruction following\n  - Improved price/performance ratio\n- Enhance Postgres connectivity and reliability\n- Fix transcription error handling\n\nBreaking changes:\n- Claude 3.5 Haiku replaced with Claude 3 Haiku\n- Embedding system now configurable via string env vars (true)\n\nCloses #604",
+          "url": "https://github.com/ai16z/eliza/commit/638eac67a83bd3346bb48ae5d5921857f44cf980"
+        },
+        {
+          "sha": "c04310f07ff5d3f1c3c77744d238d3146b7aeb8e",
+          "date": "2024-11-29T01:27:58Z",
+          "message": "fix: discord permissions and duplicate reactions\n\n- Set correct bot invite permissions\n- Add duplicate reaction handling\n- Add /joinchannel command improvements\n\nfix #661",
+          "url": "https://github.com/ai16z/eliza/commit/c04310f07ff5d3f1c3c77744d238d3146b7aeb8e"
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 688,
+          "title": "Fix/logging issues",
+          "state": "open",
+          "created_at": "2024-11-30T00:25:51Z",
+          "url": "https://github.com/ai16z/eliza/pull/688",
+          "labels": [],
+          "comments": 1
+        },
+        {
+          "number": 677,
+          "title": "feat: improve embeddings, models and connectivity",
+          "state": "closed",
+          "created_at": "2024-11-29T19:21:47Z",
+          "url": "https://github.com/ai16z/eliza/pull/677",
+          "labels": [],
+          "comments": 0
+        },
+        {
+          "number": 662,
+          "title": "fix: discord permissions and duplicate reactions, new /joinchannel command",
+          "state": "closed",
+          "created_at": "2024-11-29T01:32:13Z",
+          "url": "https://github.com/ai16z/eliza/pull/662",
+          "labels": [],
+          "comments": 0
+        }
+      ],
+      "total_commits": 3,
+      "total_prs": 3,
+      "commit_activity": {
+        "2024": {
+          "11": 3
+        }
+      },
+      "pr_activity": {
+        "2024": {
+          "11": 3
+        }
+      }
+    },
+    "issues": {
+      "opened": [
+        {
+          "number": 687,
+          "title": "Debug/Verbose eliza logging is always shown",
+          "state": "open",
+          "created_at": "2024-11-30T00:25:22Z",
+          "url": "https://github.com/ai16z/eliza/issues/687",
+          "labels": [
+            "bug"
+          ],
+          "comments": 0
+        },
+        {
+          "number": 661,
+          "title": "Discord Client - gives 0 permissions for invite link on logger",
+          "state": "closed",
+          "created_at": "2024-11-29T01:21:21Z",
+          "url": "https://github.com/ai16z/eliza/issues/661",
+          "labels": [
+            "bug"
+          ],
+          "comments": 0
+        },
+        {
+          "number": 604,
+          "title": "Add support for local embeddings BGE/384",
+          "state": "closed",
+          "created_at": "2024-11-26T03:58:59Z",
+          "url": "https://github.com/ai16z/eliza/issues/604",
+          "labels": [
+            "enhancement"
+          ],
+          "comments": 1
+        }
+      ],
+      "total_opened": 3,
+      "issue_activity": {
+        "2024": {
+          "11": 3
+        }
+      }
+    },
+    "engagement": {
+      "issue_comments": [
+        {
+          "id": 2503389783,
+          "body": "ok i tried for 2 days to create a clean PR for you guys, but couldn't do it.  Too many changes.  Here's the commit with my changes that adds support for BGE/384 local embeddings\r\n\r\nhttps://github.com/ai16z/eliza/commit/59b82ba466ba6d38aa764becb68b68ab7b96e15a\r\n\r\n",
+          "created_at": "2024-11-27T09:39:25Z",
+          "url": "https://github.com/ai16z/eliza/issues/604#issuecomment-2503389783",
+          "type": "issue",
+          "issue_number": "604"
+        }
+      ],
+      "pr_comments": [],
+      "total_comments": 1,
+      "comment_activity": {
+        "2024": {
+          "11": 1
+        }
+      }
+    }
+  }
+}

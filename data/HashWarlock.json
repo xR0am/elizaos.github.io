@@ -1,10 +1,76 @@
 {
   "username": "HashWarlock",
   "avatar_url": "https://avatars.githubusercontent.com/u/64296537?v=4",
-  "total_contributions": 2,
+  "total_contributions": 13,
   "activity": {
     "code": {
       "commits": [
+        {
+          "sha": "4897043b5f13b04f7f51f5ff180f6873ebbe1758",
+          "date": "2024-11-29T19:38:01Z",
+          "message": "fix: add comment to make it clear what the variable is used for",
+          "url": "https://github.com/ai16z/eliza/commit/4897043b5f13b04f7f51f5ff180f6873ebbe1758"
+        },
+        {
+          "sha": "fa89b3b1ec9e80cdbd065c485d1589c7a3160a56",
+          "date": "2024-11-29T19:28:44Z",
+          "message": "fix: remove default salt to remove launch agent errors & add tee plugin back into agent startup file",
+          "url": "https://github.com/ai16z/eliza/commit/fa89b3b1ec9e80cdbd065c485d1589c7a3160a56"
+        },
+        {
+          "sha": "e8d829c4ca7d030f6cafc9d7f4f30763841b665c",
+          "date": "2024-11-29T18:09:04Z",
+          "message": "fix: add missing viem dependency",
+          "url": "https://github.com/ai16z/eliza/commit/e8d829c4ca7d030f6cafc9d7f4f30763841b665c"
+        },
+        {
+          "sha": "985e2766fa93affd85e79eb2d7b611b270b47451",
+          "date": "2024-11-28T06:21:22Z",
+          "message": "fix: Add docs, update provider and remove walletProvider from providers",
+          "url": "https://github.com/ai16z/eliza/commit/985e2766fa93affd85e79eb2d7b611b270b47451"
+        },
+        {
+          "sha": "d95b102cab6ecce420bb390a54febee2adb78ba3",
+          "date": "2024-11-27T18:09:59Z",
+          "message": "Merge branch 'main' into tee-plugin",
+          "url": "https://github.com/ai16z/eliza/commit/d95b102cab6ecce420bb390a54febee2adb78ba3"
+        },
+        {
+          "sha": "147adde8d6a7596d831064dc0be2ca0872c42a7c",
+          "date": "2024-11-27T17:32:53Z",
+          "message": "feat: add class to remote attestation and derive key to call provider functions",
+          "url": "https://github.com/ai16z/eliza/commit/147adde8d6a7596d831064dc0be2ca0872c42a7c"
+        },
+        {
+          "sha": "02647806546bd558ce9eabaa33f3a8c100a17fa4",
+          "date": "2024-11-26T05:04:48Z",
+          "message": "fix: reduce docker image size from 11.1GB to 5.79GB",
+          "url": "https://github.com/ai16z/eliza/commit/02647806546bd558ce9eabaa33f3a8c100a17fa4"
+        },
+        {
+          "sha": "13f921afcfdc49361149c409b8ab7b4de580c213",
+          "date": "2024-11-26T01:15:14Z",
+          "message": "feat: update dockerfile and add docker-compose yaml file to deploy in TEE",
+          "url": "https://github.com/ai16z/eliza/commit/13f921afcfdc49361149c409b8ab7b4de580c213"
+        },
+        {
+          "sha": "aa5d009df083840a36ef55ff70e3619cae789f9a",
+          "date": "2024-11-22T21:53:26Z",
+          "message": "chore: remove log print of api key",
+          "url": "https://github.com/ai16z/eliza/commit/aa5d009df083840a36ef55ff70e3619cae789f9a"
+        },
+        {
+          "sha": "66637cd244b7e820114783f9547227f00c019740",
+          "date": "2024-11-22T20:25:54Z",
+          "message": "feat: add wallet provider to use derived key to generate wallet",
+          "url": "https://github.com/ai16z/eliza/commit/66637cd244b7e820114783f9547227f00c019740"
+        },
+        {
+          "sha": "1995b56c2c519baab18520f03bd04c82be90b8e3",
+          "date": "2024-11-22T16:53:23Z",
+          "message": "create TEE plugin with derive key and remote attestation providers",
+          "url": "https://github.com/ai16z/eliza/commit/1995b56c2c519baab18520f03bd04c82be90b8e3"
+        },
         {
           "sha": "9e7a3da75d496b013e6c8efe0d25d03516c6d12f",
           "date": "2024-11-04T17:38:48Z",
@@ -19,6 +85,42 @@
         }
       ],
       "pull_requests": [
+        {
+          "number": 678,
+          "title": "fix: Make TEE Plugin available to launch agent & fix previous launch error",
+          "state": "closed",
+          "created_at": "2024-11-29T19:42:51Z",
+          "url": "https://github.com/ai16z/eliza/pull/678",
+          "labels": [],
+          "comments": 0
+        },
+        {
+          "number": 674,
+          "title": "fix: add missing viem dependency",
+          "state": "closed",
+          "created_at": "2024-11-29T18:10:39Z",
+          "url": "https://github.com/ai16z/eliza/pull/674",
+          "labels": [],
+          "comments": 0
+        },
+        {
+          "number": 640,
+          "title": "fix: Add docs, update providers for TEE Plugin",
+          "state": "closed",
+          "created_at": "2024-11-28T06:26:25Z",
+          "url": "https://github.com/ai16z/eliza/pull/640",
+          "labels": [],
+          "comments": 0
+        },
+        {
+          "number": 632,
+          "title": "feat: Initial TEE Plugin",
+          "state": "closed",
+          "created_at": "2024-11-27T18:02:38Z",
+          "url": "https://github.com/ai16z/eliza/pull/632",
+          "labels": [],
+          "comments": 1
+        },
         {
           "number": 327,
           "title": "Add Docker support",
@@ -38,16 +140,16 @@
           "comments": 3
         }
       ],
-      "total_commits": 2,
-      "total_prs": 2,
+      "total_commits": 13,
+      "total_prs": 6,
       "commit_activity": {
         "2024": {
-          "11": 2
+          "11": 13
         }
       },
       "pr_activity": {
         "2024": {
-          "11": 2
+          "11": 6
         }
       }
     },
@@ -66,12 +168,20 @@
           "url": "https://github.com/ai16z/eliza/pull/198#issuecomment-2455996702",
           "type": "pr",
           "issue_number": "198"
+        },
+        {
+          "id": 2505318111,
+          "body": "Adding documentation and updating the plugin.\r\n\r\n- [x] Documentation on TEE Plugin\r\n- [x] Add functions to derive raw key, derive ed25519 key for Solana, derive ecdsa key for evm chains",
+          "created_at": "2024-11-28T05:56:51Z",
+          "url": "https://github.com/ai16z/eliza/pull/632#issuecomment-2505318111",
+          "type": "pr",
+          "issue_number": "632"
         }
       ],
-      "total_comments": 1,
+      "total_comments": 2,
       "comment_activity": {
         "2024": {
-          "11": 1
+          "11": 2
         }
       }
     }

@@ -76,11 +76,20 @@
           "issue_number": "451"
         }
       ],
-      "pr_comments": [],
-      "total_comments": 2,
+      "pr_comments": [
+        {
+          "id": 2508726017,
+          "body": "> Got a message about errors during image generation. Be sure to add the right `plugins` and `clients` in your character file.\r\n> \r\n> ```diff\r\n> diff --git a/agent/src/character.ts b/agent/src/character.ts\r\n> index da7e718..53c6f12 100644\r\n> --- a/agent/src/character.ts\r\n> +++ b/agent/src/character.ts\r\n> @@ -4,9 +4,9 @@ import { imageGenerationPlugin } from \"@ai16z/plugin-image-generation\";\r\n>  export const character: Character = {\r\n>      ...defaultCharacter,\r\n>      name: \"Eliza\",\r\n> -    plugins: [],\r\n> -    clients: [],\r\n> -    modelProvider: ModelProviderName.OPENAI,\r\n> +    plugins: [imageGenerationPlugin],\r\n> +    clients: [Clients.TWITTER],\r\n> +    modelProvider: ModelProviderName.HEURIST,\r\n>      settings: {\r\n>          secrets: {},\r\n>          voice: {\r\n> ```\r\n\r\nHere it would also be best to follow fail-fast approach to check on start and fail/crash with a helpful message if a plugin/config is missing.",
+          "created_at": "2024-11-29T23:10:58Z",
+          "url": "https://github.com/ai16z/eliza/pull/629#issuecomment-2508726017",
+          "type": "pr",
+          "issue_number": "629"
+        }
+      ],
+      "total_comments": 3,
       "comment_activity": {
         "2024": {
-          "11": 2
+          "11": 3
         }
       }
     }

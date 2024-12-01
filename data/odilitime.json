@@ -1,10 +1,40 @@
 {
   "username": "odilitime",
   "avatar_url": "https://avatars.githubusercontent.com/u/16395496?v=4",
-  "total_contributions": 12,
+  "total_contributions": 17,
   "activity": {
     "code": {
       "commits": [
+        {
+          "sha": "254cce5258473bd311cf0bafabbbdf82b1ea73e6",
+          "date": "2024-11-27T01:02:31Z",
+          "message": "fix: add tweet_results guard",
+          "url": "https://github.com/ai16z/eliza/commit/254cce5258473bd311cf0bafabbbdf82b1ea73e6"
+        },
+        {
+          "sha": "e3f26c8af8dfa8a3ab90e8182993ecc71a4ff0dd",
+          "date": "2024-11-27T01:01:46Z",
+          "message": "fix: add tweet_results guard",
+          "url": "https://github.com/ai16z/eliza/commit/e3f26c8af8dfa8a3ab90e8182993ecc71a4ff0dd"
+        },
+        {
+          "sha": "274f82122f3d2140455c3ba9f13893ce02800e3d",
+          "date": "2024-11-26T04:02:48Z",
+          "message": "fix: directclient is not a type",
+          "url": "https://github.com/ai16z/eliza/commit/274f82122f3d2140455c3ba9f13893ce02800e3d"
+        },
+        {
+          "sha": "a7bb4b47358d88b2d86017bb2e5c2c553612296d",
+          "date": "2024-11-26T03:48:40Z",
+          "message": "fix: time prompt to include UTC, convert to verbose english to help prompting",
+          "url": "https://github.com/ai16z/eliza/commit/a7bb4b47358d88b2d86017bb2e5c2c553612296d"
+        },
+        {
+          "sha": "ebc5fdd2e91d94d047574c3d5bf8953726768269",
+          "date": "2024-11-25T22:11:22Z",
+          "message": "Fix discord crash\n\n- canSendMessage guard\r\n- don't call it twice in handleMessage",
+          "url": "https://github.com/ai16z/eliza/commit/ebc5fdd2e91d94d047574c3d5bf8953726768269"
+        },
         {
           "sha": "8a969360b6104dacdcbab708faedf9efbc122b88",
           "date": "2024-11-21T01:58:42Z",
@@ -79,6 +109,42 @@
         }
       ],
       "pull_requests": [
+        {
+          "number": 620,
+          "title": "fix: handle when tweet_results is empty better",
+          "state": "closed",
+          "created_at": "2024-11-27T01:04:52Z",
+          "url": "https://github.com/ai16z/eliza/pull/620",
+          "labels": [],
+          "comments": 0
+        },
+        {
+          "number": 605,
+          "title": "fix: agent DirectClient is not a type",
+          "state": "closed",
+          "created_at": "2024-11-26T04:07:22Z",
+          "url": "https://github.com/ai16z/eliza/pull/605",
+          "labels": [],
+          "comments": 1
+        },
+        {
+          "number": 603,
+          "title": "fix: time prompt to include UTC, convert to verbose english to help prompting",
+          "state": "closed",
+          "created_at": "2024-11-26T03:54:35Z",
+          "url": "https://github.com/ai16z/eliza/pull/603",
+          "labels": [],
+          "comments": 0
+        },
+        {
+          "number": 598,
+          "title": "fix: discord crash on sending message to null channel",
+          "state": "closed",
+          "created_at": "2024-11-25T22:15:37Z",
+          "url": "https://github.com/ai16z/eliza/pull/598",
+          "labels": [],
+          "comments": 0
+        },
         {
           "number": 470,
           "title": "docs: Update Contributors to bring inline with PR468",
@@ -170,21 +236,32 @@
           "comments": 1
         }
       ],
-      "total_commits": 12,
-      "total_prs": 10,
+      "total_commits": 17,
+      "total_prs": 14,
       "commit_activity": {
         "2024": {
-          "11": 12
+          "11": 17
         }
       },
       "pr_activity": {
         "2024": {
-          "11": 10
+          "11": 14
         }
       }
     },
     "issues": {
       "opened": [
+        {
+          "number": 617,
+          "title": "Persisent Storage for plugins",
+          "state": "open",
+          "created_at": "2024-11-26T20:29:35Z",
+          "url": "https://github.com/ai16z/eliza/issues/617",
+          "labels": [
+            "enhancement"
+          ],
+          "comments": 1
+        },
         {
           "number": 467,
           "title": "Bug: plugin-solana crash report",
@@ -208,10 +285,10 @@
           "comments": 0
         }
       ],
-      "total_opened": 2,
+      "total_opened": 3,
       "issue_activity": {
         "2024": {
-          "11": 2
+          "11": 3
         }
       }
     },
@@ -272,6 +349,22 @@
           "url": "https://github.com/ai16z/eliza/issues/438#issuecomment-2487714547",
           "type": "issue",
           "issue_number": "438"
+        },
+        {
+          "id": 2501814386,
+          "body": "I'm working with vivoidos (on discord) discussing ideas around this",
+          "created_at": "2024-11-26T20:02:48Z",
+          "url": "https://github.com/ai16z/eliza/issues/592#issuecomment-2501814386",
+          "type": "issue",
+          "issue_number": "592"
+        },
+        {
+          "id": 2505294756,
+          "body": "Main isn't stable, use a tag",
+          "created_at": "2024-11-28T05:32:50Z",
+          "url": "https://github.com/ai16z/eliza/issues/637#issuecomment-2505294756",
+          "type": "issue",
+          "issue_number": "637"
         }
       ],
       "pr_comments": [
@@ -324,10 +417,10 @@
           "issue_number": "448"
         }
       ],
-      "total_comments": 13,
+      "total_comments": 15,
       "comment_activity": {
         "2024": {
-          "11": 13
+          "11": 15
         }
       }
     }

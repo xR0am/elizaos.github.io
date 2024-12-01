@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>milancermak - GitHub Contributions</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div id="root"><div class="max-w-7xl mx-auto p-4 space-y-6"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><div class="flex items-center gap-4"><img src="https://avatars.githubusercontent.com/u/184055?v=4" alt="milancermak&#x27;s avatar" class="w-16 h-16 rounded-full"/><div><h1 class="text-2xl font-bold">milancermak</h1><p class="text-gray-600 dark:text-gray-400">6 total contributions</p></div></div></div><div class="grid grid-cols-1 md:grid-cols-4 gap-4"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Commits</h3><p class="text-2xl font-bold">6</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">PRs</h3><p class="text-2xl font-bold">1</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Issues</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Comments</h3><p class="text-2xl font-bold">0</p></div></div><div class="space-y-4"><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Commits</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Pull Requests</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Issues</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Comments</h3><span>▶</span></div></div></div></div></div>
+    <script>
+        window.__DATA__ = {"username":"milancermak","avatar_url":"https://avatars.githubusercontent.com/u/184055?v=4","total_contributions":6,"activity":{"code":{"commits":[{"sha":"44e839446d6001e8060e80c4d58e99ae3f2ca2a2","date":"2024-11-26T09:06:58Z","message":"chore: pretty","url":"https://github.com/ai16z/eliza/commit/44e839446d6001e8060e80c4d58e99ae3f2ca2a2"},{"sha":"b5878920d3025a1a691e0d30aa6423aacb928678","date":"2024-11-26T09:05:27Z","message":"refactor: tokens const in token.ts","url":"https://github.com/ai16z/eliza/commit/b5878920d3025a1a691e0d30aa6423aacb928678"},{"sha":"8b6cc8d597d866b5e4dcd99b67257eb9f8ea0ee0","date":"2024-11-25T21:24:00Z","message":"Merge branch 'main' into dev/starknet-cleanup","url":"https://github.com/ai16z/eliza/commit/8b6cc8d597d866b5e4dcd99b67257eb9f8ea0ee0"},{"sha":"3a30ce48279ba74c5f546d95a051ce736e7af969","date":"2024-11-25T21:09:35Z","message":"chore: prettify","url":"https://github.com/ai16z/eliza/commit/3a30ce48279ba74c5f546d95a051ce736e7af969"},{"sha":"7800dbc728400a3bd0b2ff34f7a373a80864bc3a","date":"2024-11-25T21:00:51Z","message":"feat(starknet): portfolio provider","url":"https://github.com/ai16z/eliza/commit/7800dbc728400a3bd0b2ff34f7a373a80864bc3a"},{"sha":"a8bafc7bd008a2f9147e90bea1bd1cb3b0cb7ef0","date":"2024-11-22T14:56:25Z","message":"dev(starknet): plugin cleanup","url":"https://github.com/ai16z/eliza/commit/a8bafc7bd008a2f9147e90bea1bd1cb3b0cb7ef0"}],"pull_requests":[{"number":595,"title":"feat: starknet portfolio provider","state":"closed","created_at":"2024-11-25T21:19:10Z","url":"https://github.com/ai16z/eliza/pull/595","labels":[],"comments":0}],"total_commits":6,"total_prs":1,"commit_activity":{"2024":{"11":6}},"pr_activity":{"2024":{"11":1}}},"issues":{"opened":[],"total_opened":0,"issue_activity":{}},"engagement":{"issue_comments":[],"pr_comments":[],"total_comments":0,"comment_activity":{}}}};
+    </script>
+    <script type="text/javascript">
+        const ActivitySection = ({ title, items = [], color = 'text-blue-500' }) => {
+            const [isExpanded, setIsExpanded] = React.useState(false);
+            
+            return React.createElement('div', { className: 'border rounded-lg p-4' },
+                React.createElement('div', {
+                    className: 'flex items-center justify-between cursor-pointer',
+                    onClick: () => setIsExpanded(!isExpanded)
+                },
+                    React.createElement('h3', { className: 'font-semibold' }, title),
+                    React.createElement('span', null, isExpanded ? '▼' : '▶')
+                ),
+                isExpanded && React.createElement('div', { className: 'mt-4 space-y-2' },
+                    items.map((item, index) => 
+                        React.createElement('div', { key: index, className: 'p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded' },
+                            React.createElement('a', {
+                                href: item.url,
+                                target: '_blank',
+                                rel: 'noopener noreferrer',
+                                className: 'text-sm hover:text-blue-500 flex flex-col gap-1'
+                            },
+                                React.createElement('span', { className: 'font-medium' }, 
+                                    item.message || item.title || item.body
+                                ),
+                                React.createElement('span', { className: 'text-gray-500 text-xs' },
+                                    new Date(item.date || item.created_at).toLocaleDateString()
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        };
+
+        const StatCard = ({ name, value }) => {
+            return React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+                React.createElement('h3', { className: 'font-semibold' }, name),
+                React.createElement('p', { className: 'text-2xl font-bold' }, value)
+            );
+        };
+
+        const ContributorProfile = ({ data }) => {
+            const stats = [
+                { name: 'Commits', value: data.activity.code.total_commits },
+                { name: 'PRs', value: data.activity.code.total_prs },
+                { name: 'Issues', value: data.activity.issues.total_opened },
+                { name: 'Comments', value: data.activity.engagement.total_comments }
+            ];
+
+            return React.createElement('div', { className: 'max-w-7xl mx-auto p-4 space-y-6' },
+                React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+                    React.createElement('div', { className: 'flex items-center gap-4' },
+                        React.createElement('img', {
+                            src: data.avatar_url,
+                            alt: `${data.username}'s avatar`,
+                            className: 'w-16 h-16 rounded-full'
+                        }),
+                        React.createElement('div', null,
+                            React.createElement('h1', { className: 'text-2xl font-bold' }, data.username),
+                            React.createElement('p', { className: 'text-gray-600 dark:text-gray-400' },
+                                `${data.total_contributions} total contributions`
+                            )
+                        )
+                    )
+                ),
+
+                React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
+                    stats.map(stat => React.createElement(StatCard, { key: stat.name, ...stat }))
+                ),
+
+                React.createElement('div', { className: 'space-y-4' },
+                    React.createElement(ActivitySection, {
+                        title: 'Commits',
+                        items: data.activity.code.commits
+                    }),
+                    React.createElement(ActivitySection, {
+                        title: 'Pull Requests',
+                        items: data.activity.code.pull_requests
+                    }),
+                    React.createElement(ActivitySection, {
+                        title: 'Issues',
+                        items: data.activity.issues.opened || []
+                    }),
+                    React.createElement(ActivitySection, {
+                        title: 'Comments',
+                        items: [
+                            ...(data.activity.engagement.issue_comments || []),
+                            ...(data.activity.engagement.pr_comments || [])
+                        ]
+                    })
+                )
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(React.createElement(ContributorProfile, { data: window.__DATA__ }));
+    </script>
+</body>
+</html>
