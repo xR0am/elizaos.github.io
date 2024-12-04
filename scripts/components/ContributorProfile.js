@@ -69,6 +69,15 @@ const ContributorProfile = ({ data }) => {
       )
     ),
 
+    // Add contribution summary section
+    data.contribution_summary && React.createElement('div', { 
+      className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow'
+    },
+      React.createElement('p', { 
+        className: 'text-gray-700 dark:text-gray-300 text-sm leading-relaxed'
+      }, data.contribution_summary)
+    ),
+
     React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
       stats.map(stat => React.createElement(StatCard, { key: stat.name, ...stat }))
     ),
@@ -97,4 +106,43 @@ const ContributorProfile = ({ data }) => {
   );
 };
 
+// Add ContributorCard component for index page
+const ContributorCard = ({ contributor }) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  return React.createElement('div', {
+    className: 'relative',
+    onMouseEnter: () => setShowTooltip(true),
+    onMouseLeave: () => setShowTooltip(false)
+  },
+    React.createElement('a', {
+      href: `/profiles/${contributor.username}.html`,
+      className: 'block p-4 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-md transition-shadow'
+    },
+      React.createElement('div', { className: 'flex items-center gap-3' },
+        React.createElement('img', {
+          src: contributor.avatar_url,
+          alt: `${contributor.username}'s avatar`,
+          className: 'w-10 h-10 rounded-full'
+        }),
+        React.createElement('div', null,
+          React.createElement('h3', { className: 'font-medium' }, contributor.username),
+          React.createElement('p', { className: 'text-sm text-gray-500' },
+            `${contributor.total_contributions} contributions`
+          )
+        )
+      )
+    ),
+    showTooltip && contributor.contribution_summary && React.createElement('div', {
+      className: 'absolute z-10 p-4 mt-2 bg-gray-900 text-white text-sm rounded-lg shadow-lg max-w-xs',
+      style: { 
+        top: '100%',
+        left: '50%',
+        transform: 'translateX(-50%)'
+      }
+    }, contributor.contribution_summary)
+  );
+};
+
 export default ContributorProfile;
+export { ContributorCard };

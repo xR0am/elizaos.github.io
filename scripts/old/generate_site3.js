@@ -1,21 +1,36 @@
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import fs from 'fs/promises';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import ContributorProfile from './components/ContributorProfile.js';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const template = (content, data) => `
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>laser-riot - GitHub Contributions</title>
+    <title>${data.username} - GitHub Contributions</title>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-50 dark:bg-gray-900">
-    <div id="root"><div class="max-w-7xl mx-auto p-4 space-y-6"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><div class="flex items-center gap-4"><img src="https://avatars.githubusercontent.com/u/123244198?v=4" alt="laser-riot&#x27;s avatar" class="w-16 h-16 rounded-full"/><div><h1 class="text-2xl font-bold">laser-riot</h1><p class="text-gray-600 dark:text-gray-400">1 total contributions</p></div></div></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">This user is currently working on fixing an issue related to the &#x27;X dry run&#x27; feature, as evidenced by their recent commit and pull request contributions.</p></div><div class="grid grid-cols-1 md:grid-cols-4 gap-4"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Commits</h3><p class="text-2xl font-bold">1</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">PRs</h3><p class="text-2xl font-bold">1</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Issues</h3><p class="text-2xl font-bold">1</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Comments</h3><p class="text-2xl font-bold">3</p></div></div><div class="space-y-4"><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Commits</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Pull Requests</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Issues</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Comments</h3><span>▶</span></div></div></div></div></div>
+    <div id="root">${content}</div>
     <script>
-        window.__DATA__ = {"username":"laser-riot","avatar_url":"https://avatars.githubusercontent.com/u/123244198?v=4","total_contributions":1,"activity":{"code":{"commits":[{"sha":"a744b9ad38f3e3c581fada33294f2da0684d9f68","date":"2024-11-20T14:56:24Z","message":"fix: X dry run","url":"https://github.com/ai16z/eliza/commit/a744b9ad38f3e3c581fada33294f2da0684d9f68"}],"pull_requests":[{"number":452,"title":"fix: X dry run","state":"closed","created_at":"2024-11-20T15:03:35Z","url":"https://github.com/ai16z/eliza/pull/452","labels":[],"comments":1}],"total_commits":1,"total_prs":1,"commit_activity":{"2024":{"11":1}},"pr_activity":{"2024":{"11":1}}},"issues":{"opened":[{"number":451,"title":"Twitter Dry Run not working","state":"closed","created_at":"2024-11-20T14:58:01Z","url":"https://github.com/ai16z/eliza/issues/451","labels":["bug"],"comments":2}],"total_opened":1,"issue_activity":{"2024":{"11":1}}},"engagement":{"issue_comments":[{"id":2488826105,"body":"PR submitted","created_at":"2024-11-20T15:05:13Z","url":"https://github.com/ai16z/eliza/issues/451#issuecomment-2488826105","type":"issue","issue_number":"451"},{"id":2489781168,"body":"Resolved in #452 ","created_at":"2024-11-20T23:57:03Z","url":"https://github.com/ai16z/eliza/issues/451#issuecomment-2489781168","type":"issue","issue_number":"451"}],"pr_comments":[{"id":2508726017,"body":"> Got a message about errors during image generation. Be sure to add the right `plugins` and `clients` in your character file.\r\n> \r\n> ```diff\r\n> diff --git a/agent/src/character.ts b/agent/src/character.ts\r\n> index da7e718..53c6f12 100644\r\n> --- a/agent/src/character.ts\r\n> +++ b/agent/src/character.ts\r\n> @@ -4,9 +4,9 @@ import { imageGenerationPlugin } from \"@ai16z/plugin-image-generation\";\r\n>  export const character: Character = {\r\n>      ...defaultCharacter,\r\n>      name: \"Eliza\",\r\n> -    plugins: [],\r\n> -    clients: [],\r\n> -    modelProvider: ModelProviderName.OPENAI,\r\n> +    plugins: [imageGenerationPlugin],\r\n> +    clients: [Clients.TWITTER],\r\n> +    modelProvider: ModelProviderName.HEURIST,\r\n>      settings: {\r\n>          secrets: {},\r\n>          voice: {\r\n> ```\r\n\r\nHere it would also be best to follow fail-fast approach to check on start and fail/crash with a helpful message if a plugin/config is missing.","created_at":"2024-11-29T23:10:58Z","url":"https://github.com/ai16z/eliza/pull/629#issuecomment-2508726017","type":"pr","issue_number":"629"}],"total_comments":3,"comment_activity":{"2024":{"11":3}}}},"contribution_summary":"This user is currently working on fixing an issue related to the 'X dry run' feature, as evidenced by their recent commit and pull request contributions."};
+        window.__DATA__ = ${JSON.stringify(data)};
     </script>
     <script type="text/javascript">
-        
+        ${ContributorComponentsScript}
+    </script>
+</body>
+</html>`;
+
+const ContributorComponentsScript = `
     const ActivitySection = ({ title, items = [], color = 'text-blue-500' }) => {
         const [isExpanded, setIsExpanded] = React.useState(false);
         
@@ -69,13 +84,13 @@
                 React.createElement('div', { className: 'flex items-center gap-4' },
                     React.createElement('img', {
                         src: data.avatar_url,
-                        alt: `${data.username}'s avatar`,
+                        alt: \`\${data.username}'s avatar\`,
                         className: 'w-16 h-16 rounded-full'
                     }),
                     React.createElement('div', null,
                         React.createElement('h1', { className: 'text-2xl font-bold' }, data.username),
                         React.createElement('p', { className: 'text-gray-600 dark:text-gray-400' },
-                            `${data.total_contributions} total contributions`
+                            \`\${data.total_contributions} total contributions\`
                         )
                     )
                 )
@@ -119,7 +134,95 @@
 
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(React.createElement(ContributorProfile, { data: window.__DATA__ }));
+`;
 
-    </script>
+const generateSite = async () => {
+    const inputDir = path.join(path.dirname(__dirname), 'data');
+    const outputDir = path.join(path.dirname(__dirname), 'profiles');
+
+    try {
+        await fs.mkdir(outputDir, { recursive: true });
+        const files = await fs.readdir(inputDir);
+        const jsonFiles = files.filter(file => file.endsWith('.json'));
+
+        // Load all contributor data and sort by total contributions
+        const contributorsData = await Promise.all(
+            jsonFiles.map(async (file) => {
+                const data = JSON.parse(
+                    await fs.readFile(path.join(inputDir, file), 'utf-8')
+                );
+                return data;
+            })
+        );
+
+        // Sort contributors by total contributions
+        contributorsData.sort((a, b) => b.total_contributions - a.total_contributions);
+
+        // Generate individual profile pages
+        for (const data of contributorsData) {
+            const content = renderToString(
+                React.createElement(ContributorProfile, { data })
+            );
+            
+            const html = template(content, data);
+            
+            await fs.writeFile(
+                path.join(outputDir, `${data.username}.html`),
+                html
+            );
+            
+            console.log(`Generated profile for ${data.username}`);
+        }
+
+        // Generate index.html with sorted contributors
+        const indexContent = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Contributors</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto p-8">
+        <h1 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white">GitHub Contributors</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            ${contributorsData.map(data => `
+                <div class="relative group">
+                    <a href="${data.username}.html" 
+                       class="block p-6 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition-shadow">
+                        <div class="flex items-center gap-4">
+                            <img src="${data.avatar_url}" 
+                                 alt="${data.username}" 
+                                 class="w-12 h-12 rounded-full">
+                            <div>
+                                <h2 class="text-xl font-semibold text-gray-900 dark:text-white">${data.username}</h2>
+                                <p class="text-gray-600 dark:text-gray-400">
+                                    ${data.total_contributions} contributions
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    ${data.contribution_summary ? `
+                        <div class="opacity-0 group-hover:opacity-100 transition-opacity absolute z-10 p-4 mt-2 bg-gray-900 text-white text-sm rounded-lg shadow-lg max-w-xs whitespace-normal left-1/2 transform -translate-x-1/2">
+                            ${data.contribution_summary}
+                        </div>
+                    ` : ''}
+                </div>
+            `).join('')}
+        </div>
+    </div>
 </body>
-</html>
+</html>`;
+
+        await fs.writeFile(path.join(outputDir, 'index.html'), indexContent);
+
+        console.log('Site generation complete! Open ./profiles/index.html to view the result.');
+    } catch (error) {
+        console.error('Error generating site:', error);
+        console.error(error.stack);
+    }
+};
+
+generateSite();
