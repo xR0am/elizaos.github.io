@@ -38,19 +38,29 @@ def generate_summary(data: Dict[str, Any], api_key: str) -> str:
     """Generate a summary using OpenAI API"""
     client = OpenAI(api_key=api_key)
     
-    # Get recent activity
+    # Get all activity for initial summary if no recent activity
     activity = get_recent_activity(data)
     if not activity:
-        return data.get('contribution_summary', '')  # Keep existing summary if no new activity
+        # If no recent activity, look at all activity
+        activity = []
+        if 'commits' in data['activity'].get('code', {}):
+            activity.extend(f"Commit: {commit['message']}" for commit in data['activity']['code']['commits'][:10])
+        if 'pull_requests' in data['activity'].get('code', {}):
+            activity.extend(f"PR: {pr['title']}" for pr in data['activity']['code']['pull_requests'][:5])
+        if 'opened' in data['activity'].get('issues', {}):
+            activity.extend(f"Issue: {issue['title']}" for issue in data['activity']['issues']['opened'][:5])
     
-    prompt = f"""Based on this GitHub activity from the past week, write a concise summary of what this user worked on:
+    if not activity:
+        return "No significant activity found in the repository."
+
+    prompt = f"""Based on this GitHub activity, write a concise summary of what this user worked on:
 {chr(10).join(activity)}
 
 Previous summary (if any):
 {data.get('contribution_summary', 'No previous summary')}
 
 Write a new 1-2 sentence summary that focuses on their main areas of work. Write in present tense.
-If there's no new activity, return the previous summary unchanged."""
+If there's no new activity but there are previous contributions, summarize their overall contributions."""
     
     try:
         response = client.chat.completions.create(
@@ -65,7 +75,7 @@ If there's no new activity, return the previous summary unchanged."""
         return response.choices[0].message.content.strip()
     except Exception as e:
         print(f"Error generating summary: {e}")
-        return data.get('contribution_summary', '')  # Keep existing summary on error
+        return data.get('contribution_summary', 'Unable to generate summary.')
 
 def process_files(input_dir: str, output_dir: str, api_key: str) -> None:
     """Process all JSON files in input directory"""
@@ -82,14 +92,19 @@ def process_files(input_dir: str, output_dir: str, api_key: str) -> None:
             with open(input_path, 'r') as f:
                 data = json.load(f)
             
+            print(f"\nProcessing {filename}...")
+            
+            # Always generate a new summary
             new_summary = generate_summary(data, api_key)
             if new_summary:
                 data['contribution_summary'] = new_summary
+                
+            print(f"Summary: {new_summary[:100]}...")
             
             with open(output_path, 'w') as f:
                 json.dump(data, f, indent=2)
             
-            print(f"Processed {filename}")
+            print(f"Saved updated data for {filename}")
             
         except Exception as e:
             print(f"Error processing {filename}: {e}")
