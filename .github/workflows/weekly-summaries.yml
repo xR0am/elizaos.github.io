@@ -1,8 +1,14 @@
 name: Weekly Contributor Update
+
 on:
   schedule:
     - cron: '0 19 * * 5'  # Run at 2:00 PM EST (19:00 UTC) every Friday
   workflow_dispatch:  # Allow manual triggers
+
+# Add permissions block at workflow level
+permissions:
+  contents: write
+
 jobs:
   update-contributors:
     runs-on: ubuntu-latest
@@ -49,8 +55,10 @@ jobs:
     
     - name: Commit and push if changed
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
         git add data/
         git add profiles/
         git diff --quiet && git diff --staged --quiet || (git commit -m "Update contributor data and summaries [skip ci]" && git push)
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
