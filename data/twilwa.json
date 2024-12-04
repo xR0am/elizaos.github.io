@@ -1,10 +1,16 @@
 {
   "username": "twilwa",
   "avatar_url": "https://avatars.githubusercontent.com/u/111034762?v=4",
-  "total_contributions": 13,
+  "total_contributions": 14,
   "activity": {
     "code": {
       "commits": [
+        {
+          "sha": "a66794a52b5bfe1d594cb63357e02d0bf4df1f02",
+          "date": "2024-11-30T01:19:21Z",
+          "message": "Merge pull request #683 from cygaar/make_tweet_interval_configurable\n\nfeat: make twitter client polling configurable",
+          "url": "https://github.com/ai16z/eliza/commit/a66794a52b5bfe1d594cb63357e02d0bf4df1f02"
+        },
         {
           "sha": "367f9b49876f80b19258432c903e4f4fb6285723",
           "date": "2024-11-28T03:53:45Z",
@@ -140,11 +146,11 @@
           "comments": 0
         }
       ],
-      "total_commits": 13,
+      "total_commits": 14,
       "total_prs": 6,
       "commit_activity": {
         "2024": {
-          "11": 11,
+          "11": 12,
           "10": 2
         }
       },
@@ -157,6 +163,17 @@
     },
     "issues": {
       "opened": [
+        {
+          "number": 783,
+          "title": "enhancement: Improve message threading and handling to reduce repetition",
+          "state": "open",
+          "created_at": "2024-12-02T06:13:51Z",
+          "url": "https://github.com/ai16z/eliza/issues/783",
+          "labels": [
+            "enhancement"
+          ],
+          "comments": 2
+        },
         {
           "number": 278,
           "title": "Linux dependency issues - discord voice client",
@@ -205,9 +222,10 @@
           "comments": 3
         }
       ],
-      "total_opened": 4,
+      "total_opened": 5,
       "issue_activity": {
         "2024": {
+          "12": 1,
           "11": 4
         }
       }
@@ -271,16 +289,65 @@
           "url": "https://github.com/ai16z/eliza/pull/193#issuecomment-2456025949",
           "type": "pr",
           "issue_number": "193"
+        },
+        {
+          "id": 2508767726,
+          "body": "I see some changes to pnpm-lock, are those intended to be included in the PR?",
+          "created_at": "2024-11-30T01:02:39Z",
+          "url": "https://github.com/ai16z/eliza/pull/688#issuecomment-2508767726",
+          "type": "pr",
+          "issue_number": "688"
+        },
+        {
+          "id": 2508768792,
+          "body": "someone should take as looka t this",
+          "created_at": "2024-11-30T01:06:29Z",
+          "url": "https://github.com/ai16z/eliza/pull/685#issuecomment-2508768792",
+          "type": "pr",
+          "issue_number": "685"
+        },
+        {
+          "id": 2508771898,
+          "body": "not familiar enough with this to wanna merge, @sirkitree or @shakkernerd maybe?",
+          "created_at": "2024-11-30T01:16:10Z",
+          "url": "https://github.com/ai16z/eliza/pull/685#issuecomment-2508771898",
+          "type": "pr",
+          "issue_number": "685"
+        },
+        {
+          "id": 2508773463,
+          "body": "someone should pull and verify it works locally before a merge, if we do want to merge without testing then it needs to PR to develop branch ",
+          "created_at": "2024-11-30T01:21:18Z",
+          "url": "https://github.com/ai16z/eliza/pull/680#issuecomment-2508773463",
+          "type": "pr",
+          "issue_number": "680"
+        },
+        {
+          "id": 2508774626,
+          "body": "significant refactor, pull main with this commit and verify it runs before merging please",
+          "created_at": "2024-11-30T01:25:33Z",
+          "url": "https://github.com/ai16z/eliza/pull/655#issuecomment-2508774626",
+          "type": "pr",
+          "issue_number": "655"
+        },
+        {
+          "id": 2510253729,
+          "body": "LGTM, as long as that discussion didn't change a variable name and break anything",
+          "created_at": "2024-12-01T21:13:06Z",
+          "url": "https://github.com/ai16z/eliza/pull/763#issuecomment-2510253729",
+          "type": "pr",
+          "issue_number": "763"
         }
       ],
-      "total_comments": 7,
+      "total_comments": 13,
       "comment_activity": {
         "2024": {
           "10": 2,
-          "11": 5
+          "11": 10,
+          "12": 1
         }
       }
     }
   },
-  "contribution_summary": "The user is actively working on improving a Discord bot's voice features, updating documentation for contributors, enhancing the client functionality, integrating OpenRouter as a model provider, fixing issues with package JSON files, and resolving errors related to embeddings by adding `modelProvider` in the JSON configuration."
+  "contribution_summary": "The user is currently working on making the Twitter client polling configurable and enhancing message threading and handling in order to reduce repetition."
 }

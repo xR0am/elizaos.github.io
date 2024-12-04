@@ -1,10 +1,22 @@
 {
   "username": "HashWarlock",
   "avatar_url": "https://avatars.githubusercontent.com/u/64296537?v=4",
-  "total_contributions": 13,
+  "total_contributions": 15,
   "activity": {
     "code": {
       "commits": [
+        {
+          "sha": "10215bb5916bf8be266bed96c0dd71fed373d6b9",
+          "date": "2024-12-02T01:22:24Z",
+          "message": "refactor: refactor dockerfile to reduce image from 6GB to 3GB and cut build time in half",
+          "url": "https://github.com/ai16z/eliza/commit/10215bb5916bf8be266bed96c0dd71fed373d6b9"
+        },
+        {
+          "sha": "2a4607a368d53dc778d4271f341b692cbb19e0f3",
+          "date": "2024-11-30T04:07:48Z",
+          "message": "fix docker image and reduce build time",
+          "url": "https://github.com/ai16z/eliza/commit/2a4607a368d53dc778d4271f341b692cbb19e0f3"
+        },
         {
           "sha": "4897043b5f13b04f7f51f5ff180f6873ebbe1758",
           "date": "2024-11-29T19:38:01Z",
@@ -86,6 +98,33 @@
       ],
       "pull_requests": [
         {
+          "number": 835,
+          "title": "feat: Add TEE Mode to Solana Plugin",
+          "state": "open",
+          "created_at": "2024-12-04T05:20:06Z",
+          "url": "https://github.com/ai16z/eliza/pull/835",
+          "labels": [],
+          "comments": 0
+        },
+        {
+          "number": 782,
+          "title": "refactor: refactor dockerfile to reduce image and build time",
+          "state": "closed",
+          "created_at": "2024-12-02T01:36:20Z",
+          "url": "https://github.com/ai16z/eliza/pull/782",
+          "labels": [],
+          "comments": 0
+        },
+        {
+          "number": 702,
+          "title": "fix: update docker image to support turbo and reduce build time",
+          "state": "closed",
+          "created_at": "2024-11-30T04:29:42Z",
+          "url": "https://github.com/ai16z/eliza/pull/702",
+          "labels": [],
+          "comments": 0
+        },
+        {
           "number": 678,
           "title": "fix: Make TEE Plugin available to launch agent & fix previous launch error",
           "state": "closed",
@@ -140,16 +179,18 @@
           "comments": 3
         }
       ],
-      "total_commits": 13,
-      "total_prs": 6,
+      "total_commits": 15,
+      "total_prs": 9,
       "commit_activity": {
         "2024": {
-          "11": 13
+          "12": 1,
+          "11": 14
         }
       },
       "pr_activity": {
         "2024": {
-          "11": 6
+          "12": 2,
+          "11": 7
         }
       }
     },
@@ -176,15 +217,24 @@
           "url": "https://github.com/ai16z/eliza/pull/632#issuecomment-2505318111",
           "type": "pr",
           "issue_number": "632"
+        },
+        {
+          "id": 2515828739,
+          "body": "> What actually starts it now though?\r\n\r\nRight now the code for `pnpm docker` is here https://github.com/ai16z/eliza/blob/main/scripts/docker.sh . This was implemented originally by @oberlinstands and probably had a different dev workflow bc the eliza was not built and only the packages were installed. This is why the `/dev/null` may have been required bc the dev needed to build eliza then `pnpm start` inside the container.\r\n\r\nIn the package.json file we can see `pnpm docker` will execute this script for all 3 docker commands `build`, `run` and `bash`.  \r\n```\r\n\"docker:build\": \"bash ./scripts/docker.sh build\",\r\n\"docker:run\": \"bash ./scripts/docker.sh run\",\r\n\"docker:bash\": \"bash ./scripts/docker.sh bash\",\r\n\"docker:start\": \"bash ./scripts/docker.sh start\",\r\n\"docker\": \"pnpm docker:build && pnpm docker:run && pnpm docker:bash\",\r\n```\r\nhttps://github.com/ai16z/eliza/blob/438c1f1400e365510cae9c19dfc35ca4f663512d/package.json#L20C10-L20C78\r\n\r\nIf checking the `docker run` script, we can see that the command is executed based on this logic\r\n```\r\n # Start building the docker run command\r\nCMD=\"docker run --platform linux/amd64 -p 3000:3000 -d\"\r\n\r\n# Add base mounts\r\nfor mount in \"${BASE_MOUNTS[@]}\"; do\r\n   CMD=\"$CMD -v \\\"$(pwd)/$mount\\\"\"\r\ndone\r\n\r\n# Add package mounts\r\nfor package in \"${PACKAGES[@]}\"; do\r\n   CMD=\"$CMD -v \\\"$(pwd)/packages/$package/src:/app/packages/$package/src\\\"\"\r\ndone\r\n\r\n# Add core types mount separately (special case)\r\nCMD=\"$CMD -v \\\"$(pwd)/packages/core/types:/app/packages/core/types\\\"\"\r\n\r\n# Add container name and image\r\nCMD=\"$CMD --name eliza eliza\"\r\n\r\n# Execute the command\r\neval $CMD\r\n;;\r\n ```\r\n \r\nFor the last command `docker bash`, then we see that this. may be the culprit since it will try run \r\n```\r\n# Check if the container is running before executing bash\r\nif [ \"$(docker ps -q -f name=eliza)\" ]; then\r\n   docker exec -it eliza bash\r\nelse\r\n   echo \"Container 'eliza' is not running. Please start it first.\"\r\n   exit 1\r\nfi\r\n;;\r\n```\r\n\r\nIf I run a test on `pnpm docker`, I will see this result:\r\n![image](https://github.com/user-attachments/assets/3596cc8b-12ae-452c-bb7c-1fdf648c8ccc)\r\n\r\nI think the change we are looking for is to remove bash command from the `pnpm docker` package script & let the docker image be built and run. If there are errors whenever this happens, then execute pnpm docker:bash to debug the docker image & find out what the problems are.",
+          "created_at": "2024-12-03T23:59:05Z",
+          "url": "https://github.com/ai16z/eliza/pull/815#issuecomment-2515828739",
+          "type": "pr",
+          "issue_number": "815"
         }
       ],
-      "total_comments": 2,
+      "total_comments": 3,
       "comment_activity": {
         "2024": {
-          "11": 2
+          "11": 2,
+          "12": 1
         }
       }
     }
   },
-  "contribution_summary": "The user is actively developing a TEE (Trusted Execution Environment) Plugin, focusing on enhancing security features such as remote attestation, wallet key generation using derived keys, and integrating RedPill API support. They have also worked on optimizing the Docker image size for deployment and improving documentation and provider updates within the project."
+  "contribution_summary": "The user has been actively working on optimizing Docker images and build times, fixing errors in launch agents, adding missing dependencies, and enhancing documentation for the TEE Plugin in Solana."
 }

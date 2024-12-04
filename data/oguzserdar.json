@@ -78,11 +78,23 @@
       "issue_activity": {}
     },
     "engagement": {
-      "issue_comments": [],
+      "issue_comments": [
+        {
+          "id": 2514131706,
+          "body": "you could solve this at a more fundamental level by splitting agents into worker vs character types \r\n\r\nworker agents would be all business - they'd just execute actions and return results directly, perfect for stuff like `LIST_GAME_ACTIONS`. no personality, no fluff, just data.\r\n\r\ncharacter agents would be the chatty ones that interpret results and add narrative flair.\r\n\r\nyou could even take a temperature-based approach to balance between these - low temps giving you more worker-like behavior with just the facts, while higher temps let the agent be more expressive and narrative in their responses.\r\n\r\nthis split would naturally handle both your scenarios:\r\n- simple case: worker agents automatically override their response with action results  \r\n- complex case: character agents process action results and craft narrative responses\r\n\r\nbut if you want to move forward with your override/interpretation types approach first, that's totally workable too. you could handle it at the runtime level to avoid client mods.\r\n\r\nthe worker/character abstraction is there when you're ready to tackle the bigger architectural picture - it would make all of this stuff cleaner and more consistent in the long run",
+          "created_at": "2024-12-03T10:21:03Z",
+          "url": "https://github.com/ai16z/eliza/issues/820#issuecomment-2514131706",
+          "type": "issue",
+          "issue_number": "820"
+        }
+      ],
       "pr_comments": [],
-      "total_comments": 0,
-      "comment_activity": {}
+      "total_comments": 1,
+      "comment_activity": {
+        "2024": {
+          "12": 1
+        }
+      }
     }
-  },
-  "contribution_summary": "The user is focused on enhancing the documentation for template and client configurations, including comprehensive guides with examples and best practices across various platforms like Discord, Telegram, and Twitter. Additionally, they are working on internationalizing the project by adding Turkish translations to the README and adjusting tweet intervals to control post frequency."
+  }
 }

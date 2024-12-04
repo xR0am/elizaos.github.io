@@ -1,10 +1,28 @@
 {
   "username": "antpb",
   "avatar_url": "https://avatars.githubusercontent.com/u/8985705?v=4",
-  "total_contributions": 3,
+  "total_contributions": 6,
   "activity": {
     "code": {
       "commits": [
+        {
+          "sha": "8a8586a1326b9cc86773c307c968cdd9dc02191f",
+          "date": "2024-11-30T09:23:47Z",
+          "message": "fix lint error",
+          "url": "https://github.com/ai16z/eliza/commit/8a8586a1326b9cc86773c307c968cdd9dc02191f"
+        },
+        {
+          "sha": "5b7407031381b57bd3259b9c55ca7e37d7160606",
+          "date": "2024-11-30T09:16:25Z",
+          "message": "move import to the nodejs condition check",
+          "url": "https://github.com/ai16z/eliza/commit/5b7407031381b57bd3259b9c55ca7e37d7160606"
+        },
+        {
+          "sha": "a952fa798ce7c656643cada6a85e7466e9dc7feb",
+          "date": "2024-11-30T05:34:39Z",
+          "message": "migrates tiktoken implementation to js-tiktoken",
+          "url": "https://github.com/ai16z/eliza/commit/a952fa798ce7c656643cada6a85e7466e9dc7feb"
+        },
         {
           "sha": "a0c2bb8fd06423cdc05a075bfa0d5f7223a62754",
           "date": "2024-11-22T04:14:43Z",
@@ -26,6 +44,24 @@
       ],
       "pull_requests": [
         {
+          "number": 709,
+          "title": "fix: move `fastembed` import to the isnode condition check",
+          "state": "closed",
+          "created_at": "2024-11-30T09:19:24Z",
+          "url": "https://github.com/ai16z/eliza/pull/709",
+          "labels": [],
+          "comments": 2
+        },
+        {
+          "number": 703,
+          "title": "fix: Switch from tiktoken to js-tiktoken for worker compatibility",
+          "state": "closed",
+          "created_at": "2024-11-30T05:42:38Z",
+          "url": "https://github.com/ai16z/eliza/pull/703",
+          "labels": [],
+          "comments": 0
+        },
+        {
           "number": 508,
           "title": "Wrap `fastembed` in try catch to allow non node environments to build",
           "state": "closed",
@@ -35,16 +71,16 @@
           "comments": 0
         }
       ],
-      "total_commits": 3,
-      "total_prs": 1,
+      "total_commits": 6,
+      "total_prs": 3,
       "commit_activity": {
         "2024": {
-          "11": 3
+          "11": 6
         }
       },
       "pr_activity": {
         "2024": {
-          "11": 1
+          "11": 3
         }
       }
     },
@@ -87,5 +123,5 @@
       "comment_activity": {}
     }
   },
-  "contribution_summary": "This user is actively working on improving error handling within the project by fixing issues related to Eliza, ensuring consistent error management, and enhancing compatibility with non-node environments through try-catch wrappers around `fastembed`."
+  "contribution_summary": "The user is currently working on fixing lint errors, moving imports to node.js condition checks, and migrating tiktoken implementation to js-tiktoken for worker compatibility."
 }

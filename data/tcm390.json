@@ -1,10 +1,40 @@
 {
   "username": "tcm390",
   "avatar_url": "https://avatars.githubusercontent.com/u/60634884?v=4",
-  "total_contributions": 13,
+  "total_contributions": 18,
   "activity": {
     "code": {
       "commits": [
+        {
+          "sha": "07aabf13b6efd008fb2f23b98b7cb1a561c922cf",
+          "date": "2024-12-01T15:54:01Z",
+          "message": "revert testing code",
+          "url": "https://github.com/ai16z/eliza/commit/07aabf13b6efd008fb2f23b98b7cb1a561c922cf"
+        },
+        {
+          "sha": "bcd58e1f96f2b1ae3ca139b16f3468678d7370b6",
+          "date": "2024-12-01T15:52:45Z",
+          "message": "correct roomID and add missing timestamp property for tweet",
+          "url": "https://github.com/ai16z/eliza/commit/bcd58e1f96f2b1ae3ca139b16f3468678d7370b6"
+        },
+        {
+          "sha": "a13509a6d08ab52e35d490e4bd8e0e63bb922fe8",
+          "date": "2024-11-30T18:06:51Z",
+          "message": "clean code",
+          "url": "https://github.com/ai16z/eliza/commit/a13509a6d08ab52e35d490e4bd8e0e63bb922fe8"
+        },
+        {
+          "sha": "fcfc24977aa1f049319b30c2b8872b05858e5d75",
+          "date": "2024-11-30T15:58:40Z",
+          "message": "clean code",
+          "url": "https://github.com/ai16z/eliza/commit/fcfc24977aa1f049319b30c2b8872b05858e5d75"
+        },
+        {
+          "sha": "7d2d73b930db1912ccbe5d2ef31b509e978569ce",
+          "date": "2024-11-30T15:56:31Z",
+          "message": "Refactor ClientBase to use a map for managing multiple Twitter clients by account identifier",
+          "url": "https://github.com/ai16z/eliza/commit/7d2d73b930db1912ccbe5d2ef31b509e978569ce"
+        },
         {
           "sha": "d44a39abf29c8f19e730771352b9344e7d0fcbe2",
           "date": "2024-11-27T21:57:41Z",
@@ -86,6 +116,51 @@
       ],
       "pull_requests": [
         {
+          "number": 827,
+          "title": "loading indicator",
+          "state": "closed",
+          "created_at": "2024-12-03T21:36:25Z",
+          "url": "https://github.com/ai16z/eliza/pull/827",
+          "labels": [],
+          "comments": 0
+        },
+        {
+          "number": 825,
+          "title": "use github access token",
+          "state": "closed",
+          "created_at": "2024-12-03T19:00:02Z",
+          "url": "https://github.com/ai16z/eliza/pull/825",
+          "labels": [],
+          "comments": 0
+        },
+        {
+          "number": 809,
+          "title": "fix: refactor contributor page",
+          "state": "open",
+          "created_at": "2024-12-03T03:48:00Z",
+          "url": "https://github.com/ai16z/eliza/pull/809",
+          "labels": [],
+          "comments": 2
+        },
+        {
+          "number": 756,
+          "title": "fix: recentPosts always empty",
+          "state": "closed",
+          "created_at": "2024-12-01T15:54:48Z",
+          "url": "https://github.com/ai16z/eliza/pull/756",
+          "labels": [],
+          "comments": 1
+        },
+        {
+          "number": 722,
+          "title": "refactor: ClientBase to use a map for managing multiple Twitter clients by account identifier",
+          "state": "closed",
+          "created_at": "2024-11-30T15:57:45Z",
+          "url": "https://github.com/ai16z/eliza/pull/722",
+          "labels": [],
+          "comments": 2
+        },
+        {
           "number": 633,
           "title": "dicord bot voice",
           "state": "closed",
@@ -131,16 +206,18 @@
           "comments": 6
         }
       ],
-      "total_commits": 13,
-      "total_prs": 5,
+      "total_commits": 18,
+      "total_prs": 10,
       "commit_activity": {
         "2024": {
-          "11": 13
+          "12": 2,
+          "11": 16
         }
       },
       "pr_activity": {
         "2024": {
-          "11": 5
+          "12": 4,
+          "11": 6
         }
       }
     },
@@ -150,7 +227,16 @@
       "issue_activity": {}
     },
     "engagement": {
-      "issue_comments": [],
+      "issue_comments": [
+        {
+          "id": 2512334102,
+          "body": "Thanks for reporting this! Could you provide more details about the issue? For example, a screenshot or steps to reproduce it would be really helpful. On my side, I can see the example messages in the prompt, so any additional context would be great for troubleshooting.",
+          "created_at": "2024-12-02T18:15:32Z",
+          "url": "https://github.com/ai16z/eliza/issues/791#issuecomment-2512334102",
+          "type": "issue",
+          "issue_number": "791"
+        }
+      ],
       "pr_comments": [
         {
           "id": 2479985835,
@@ -175,15 +261,40 @@
           "url": "https://github.com/ai16z/eliza/pull/338#issuecomment-2501382297",
           "type": "pr",
           "issue_number": "338"
+        },
+        {
+          "id": 2509395345,
+          "body": "> HUGE. This should fix multi agent client issues yeah?!!\r\n\r\nYes, I tested with the 2 agents I created",
+          "created_at": "2024-11-30T21:49:38Z",
+          "url": "https://github.com/ai16z/eliza/pull/722#issuecomment-2509395345",
+          "type": "pr",
+          "issue_number": "722"
+        },
+        {
+          "id": 2510326155,
+          "body": "> Great work can we add a screengrab confirming this fixes the issues? thanks so much!\r\n\r\n\r\nApologies for the delayed response, I missed your earlier message.\r\n\r\nI\u2019ve tested the fix using two agents running simultaneously:\r\n\r\nFirst Agent: https://x.com/IBGDRGNAI\r\nBelow is the screenshot confirming the issue is resolved. The recent posts are displayed correctly, and the date is accurate:\r\n\r\n<img width=\"963\" alt=\"Screenshot 2024-12-01 at 7 12 10\u202fPM\" src=\"https://github.com/user-attachments/assets/7e17dafd-4d42-447e-b2bd-6075dcd45066\">\r\n\r\n\r\nSecond Agent: https://x.com/JayChou11879\r\nSimilarly, here is the screenshot showing the correct results for this agent as well:\r\n\r\n<img width=\"1037\" alt=\"Screenshot 2024-12-01 at 7 12 32\u202fPM\" src=\"https://github.com/user-attachments/assets/38a52444-8d61-4c95-8782-3984e3284359\">\r\n\r\n",
+          "created_at": "2024-12-02T00:17:46Z",
+          "url": "https://github.com/ai16z/eliza/pull/756#issuecomment-2510326155",
+          "type": "pr",
+          "issue_number": "756"
+        },
+        {
+          "id": 2513134334,
+          "body": "Yes, it has improved :)\r\n\r\nBut relying on randomness doesn't seem ideal to me. If we integrate the actions, we should ensure they are reliably triggerable rather than dependent on randomness.",
+          "created_at": "2024-12-02T22:44:39Z",
+          "url": "https://github.com/ai16z/eliza/pull/799#issuecomment-2513134334",
+          "type": "pr",
+          "issue_number": "799"
         }
       ],
-      "total_comments": 3,
+      "total_comments": 7,
       "comment_activity": {
         "2024": {
-          "11": 3
+          "11": 4,
+          "12": 3
         }
       }
     }
   },
-  "contribution_summary": "The user is developing a Discord bot focused on enhancing audio interaction, including joining specific voice channels, integrating with Tally, improving code readability through prettier, implementing an Audio Playback Interrupt Mechanism for efficient message processing, and ensuring the bot responds to users in both text and voice modes. They also work on creating reusable utilities and templates, refining transcription processes, monitoring members based on detected microphone usage, and maintaining unique instances within Service subclasses using a Map structure."
+  "contribution_summary": "The user has been focusing on cleaning and refactoring code, fixing bugs related to tweet properties and page loading, and improving client management by using a map for multiple Twitter clients. They also added a loading indicator and implemented the use of GitHub access tokens."
 }
