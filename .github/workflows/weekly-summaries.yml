@@ -1,0 +1,44 @@
+name: Weekly Contribution Summaries
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Run at midnight every Sunday
+  workflow_dispatch:  # Allow manual triggers
+
+jobs:
+  update-summaries:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Get full history
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install openai
+    
+    - name: Run summary generator
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      run: |
+        python scripts/generate_summaries.py data data_out
+    
+    - name: Generate site
+      run: |
+        npm ci
+        npm run build
+    
+    - name: Commit and push if changed
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add data_out/
+        git add profiles/
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Update contributor summaries [skip ci]" && git push)
