@@ -183,7 +183,7 @@ def get_contributor_data(repo_owner, repo_name, output_dir, headers, force=False
         print(f"Saved data for {username}")
 
 if __name__ == "__main__":
-    GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+    GITHUB_TOKEN = os.getenv("GH_ACCESS_TOKEN")
     if not GITHUB_TOKEN:
         print("Error: Please set the GITHUB_TOKEN environment variable.")
         sys.exit(1)
@@ -201,6 +201,6 @@ if __name__ == "__main__":
         args.repo_owner,
         args.repo_name,
         args.output,
-        {"Authorization": f"Bearer {GITHUB_TOKEN}"},
+        {"Authorization": f"Bearer {GH_ACCESS_TOKEN}"},
         args.force
     )
