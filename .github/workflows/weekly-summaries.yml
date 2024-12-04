@@ -1,44 +1,58 @@
-name: Weekly Contribution Summaries
+name: Weekly Contributor Update
 
 on:
   schedule:
-    - cron: '0 0 * * 0'  # Run at midnight every Sunday
+    - cron: '0 19 * * 5'  # Run at 2:00 PM EST (19:00 UTC) every Friday
   workflow_dispatch:  # Allow manual triggers
 
 jobs:
-  update-summaries:
+  update-contributors:
     runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v3
       with:
-        fetch-depth: 0  # Get full history
+        fetch-depth: 0
     
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
     
-    - name: Install dependencies
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+    
+    - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install openai
+        pip install openai requests
     
-    - name: Run summary generator
+    - name: Install Node dependencies
+      run: npm ci
+    
+    - name: Fetch latest contributor data
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        python scripts/fetch_contributors.py ai16z eliza -o ./data -f
+    
+    - name: Generate summaries
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
-        python scripts/generate_summaries.py data data_out
+        python scripts/generate_summaries.py ./data ./data
     
-    - name: Generate site
+    - name: Build and generate site
       run: |
-        npm ci
         npm run build
+        npm run generate
     
     - name: Commit and push if changed
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add data_out/
+        git add data/
         git add profiles/
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Update contributor summaries [skip ci]" && git push)
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Update contributor data and summaries [skip ci]" && git push)

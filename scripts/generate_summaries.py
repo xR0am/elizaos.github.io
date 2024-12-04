@@ -7,27 +7,28 @@ from typing import List, Dict, Any
 
 def get_recent_activity(data: Dict[str, Any], days: int = 7) -> List[str]:
     """Get activity from the last N days"""
-    cutoff_date = datetime.now() - timedelta(days=days)
+    # Use UTC for consistency
+    cutoff_date = datetime.utcnow() - timedelta(days=days)
     activity = []
     
     # Process commits
     if 'commits' in data['activity'].get('code', {}):
         for commit in data['activity']['code']['commits']:
-            commit_date = datetime.fromisoformat(commit['date'].replace('Z', '+00:00'))
+            commit_date = datetime.strptime(commit['date'], "%Y-%m-%dT%H:%M:%SZ")
             if commit_date > cutoff_date:
                 activity.append(f"Commit: {commit['message']}")
     
     # Process PRs
     if 'pull_requests' in data['activity'].get('code', {}):
         for pr in data['activity']['code']['pull_requests']:
-            pr_date = datetime.fromisoformat(pr['created_at'].replace('Z', '+00:00'))
+            pr_date = datetime.strptime(pr['created_at'], "%Y-%m-%dT%H:%M:%SZ")
             if pr_date > cutoff_date:
                 activity.append(f"PR: {pr['title']}")
     
     # Process issues
     if 'opened' in data['activity'].get('issues', {}):
         for issue in data['activity']['issues']['opened']:
-            issue_date = datetime.fromisoformat(issue['created_at'].replace('Z', '+00:00'))
+            issue_date = datetime.strptime(issue['created_at'], "%Y-%m-%dT%H:%M:%SZ")
             if issue_date > cutoff_date:
                 activity.append(f"Issue: {issue['title']}")
     
