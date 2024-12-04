@@ -185,7 +185,7 @@ def get_contributor_data(repo_owner, repo_name, output_dir, headers, force=False
 if __name__ == "__main__":
     GITHUB_TOKEN = os.getenv("GH_ACCESS_TOKEN")
     if not GITHUB_TOKEN:
-        print("Error: Please set the GITHUB_TOKEN environment variable.")
+        print("Error: Please set the GH_ACCESS_TOKEN environment variable.")
         sys.exit(1)
     
     parser = argparse.ArgumentParser(description="Fetch GitHub contributor activity data.")
@@ -201,6 +201,6 @@ if __name__ == "__main__":
         args.repo_owner,
         args.repo_name,
         args.output,
-        {"Authorization": f"Bearer {GH_ACCESS_TOKEN}"},
+        {"Authorization": f"Bearer {GITHUB_TOKEN}"},
         args.force
     )
