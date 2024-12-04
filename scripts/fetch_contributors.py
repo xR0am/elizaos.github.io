@@ -25,6 +25,15 @@ def print_rate_limit_status(headers, label=""):
     print(f"Reset time: {status['reset_time'].strftime('%Y-%m-%d %H:%M:%S')}")
     return status['remaining']
 
+def get_activity_summary(items, date_key="created_at"):
+    """Summarize activity by year and month."""
+    activity = defaultdict(lambda: defaultdict(int))
+    for item in items:
+        if date_key in item:
+            date = datetime.strptime(item[date_key], "%Y-%m-%dT%H:%M:%SZ")
+            activity[date.year][date.month] += 1
+    return dict(activity)
+
 def fetch_paginated(url, headers, is_search=False, max_pages=10):
     """Fetch paginated results from GitHub API."""
     print(f"\nFetching: {url}")
