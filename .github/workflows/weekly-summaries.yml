@@ -34,7 +34,7 @@ jobs:
     
     - name: Fetch latest contributor data
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
       run: |
         python scripts/fetch_contributors.py ai16z eliza -o ./data -f
     
