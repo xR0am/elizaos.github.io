@@ -24,6 +24,9 @@ await esbuild.build({
   format: 'esm',
   outfile: 'dist/generate_site.js',
   external: externals,
+  loader: { '.js': 'jsx' }, // Add this line to handle JSX in .js files
+  jsxFactory: 'React.createElement', // Add this for React.createElement
+  jsxFragment: 'React.Fragment', // Add this for React fragments
   define: {
     'process.env.NODE_ENV': '"production"'
   }

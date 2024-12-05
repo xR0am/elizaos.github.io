@@ -203,6 +203,8 @@ def get_contributor_data(repo_owner, repo_name, output_dir, headers, force=False
             "total_comments": len(comment_data),
             "comment_activity": get_activity_summary(comment_data)
         }
+        
+        user_data = add_contribution_scores(user_data)
 
         with open(output_file, "w") as f:
             json.dump(user_data, f, indent=2)
@@ -212,6 +214,94 @@ def get_contributor_data(repo_owner, repo_name, output_dir, headers, force=False
 
     total_elapsed = time.time() - start_time
     print(f"\nCompleted all processing in {total_elapsed:.2f} seconds")
+
+def calculate_contribution_score(data):
+    """
+    Calculate a weighted contribution score based on different types of GitHub activity.
+    
+    Weights:
+    - Merged PRs: 7 points
+    - Issues created/discussed: 1 point
+    - Comments: 0 points
+    - Commits in merged PRs: 1 point each
+    - PR reviews: 5 points
+    
+    Args:
+        data (dict): Contributor data dictionary containing activity information
+    
+    Returns:
+        dict: Score breakdown and total score
+    """
+    score = 0
+    breakdown = {
+        'merged_prs': 0,
+        'issues': 0,
+        'pr_commits': 0,
+        'pr_reviews': 0,
+        'total': 0
+    }
+
+    # Score merged PRs (7 points each)
+    merged_prs = [pr for pr in data['activity']['code'].get('pull_requests', []) 
+                  if pr.get('state') == 'closed']
+    breakdown['merged_prs'] = len(merged_prs) * 7
+    
+    # Score issues created/discussed (1 point each)
+    # Only count issues that either have comments or are closed (indicating engagement)
+    active_issues = [issue for issue in data['activity']['issues'].get('opened', [])
+                    if issue.get('comments', 0) > 0 or issue.get('state') == 'closed']
+    breakdown['issues'] = len(active_issues)
+    
+    # Score commits in merged PRs (1 point each)
+    # We'll need to correlate commits with merged PRs
+    pr_related_commits = []
+    for pr in merged_prs:
+        # Look for commits that mention the PR number in their message
+        pr_commits = [commit for commit in data['activity']['code'].get('commits', [])
+                     if f"#{pr['number']}" in commit.get('message', '')]
+        pr_related_commits.extend(pr_commits)
+    
+    breakdown['pr_commits'] = len(pr_related_commits)
+    
+    # Score PR reviews (5 points each)
+    # Since review data isn't in the current schema, we'll estimate from PR comments
+    pr_review_comments = [comment for comment in data['activity']['engagement'].get('pr_comments', [])
+                         if 'review' in comment.get('body', '').lower()]
+    breakdown['pr_reviews'] = len(pr_review_comments) * 5
+    
+    # Calculate total score
+    breakdown['total'] = sum(breakdown.values())
+    
+    return breakdown
+
+def add_contribution_scores(data):
+    """
+    Add contribution scores to the contributor data.
+    
+    Args:
+        data (dict): Contributor data dictionary
+    
+    Returns:
+        dict: Updated contributor data with scores
+    """
+    scores = calculate_contribution_score(data)
+    data['contribution_scores'] = scores
+    
+    # Add a summary of the scoring to the contribution summary
+    score_summary = (
+        f"Contribution Score: {scores['total']} points "
+        f"({scores['merged_prs']} from PRs, "
+        f"{scores['issues']} from issues, "
+        f"{scores['pr_commits']} from PR commits, "
+        f"{scores['pr_reviews']} from reviews)"
+    )
+    
+    if 'contribution_summary' in data:
+        data['contribution_summary'] = f"{data['contribution_summary']}\n\n{score_summary}"
+    else:
+        data['contribution_summary'] = score_summary
+    
+    return data
 
 if __name__ == "__main__":
     print("\nGitHub Contributor Data Fetch Script")

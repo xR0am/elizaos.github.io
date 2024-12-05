@@ -1,16 +1,31 @@
 import React, { useState } from 'react';
 
-const ActivitySection = ({ title, items = [], color = 'text-blue-500' }) => {
+const StatusDot = ({ status }) => {
+  const colors = {
+    open: 'bg-green-500',
+    closed: 'bg-red-500',
+    merged: 'bg-purple-500'
+  };
+
+  return React.createElement('span', {
+    className: `inline-block w-2 h-2 rounded-full ${colors[status]} mr-2`
+  });
+};
+
+const ActivitySection = ({ title, items = [], showStatus = false }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   
-  const toggleExpand = () => {
-    setIsExpanded(!isExpanded);
+  const getStatus = (item) => {
+    if (item.state === 'merged' || (item.state === 'closed' && title === 'Pull Requests')) {
+      return 'merged';
+    }
+    return item.state || 'open';
   };
 
   return React.createElement('div', { className: 'border rounded-lg p-4' },
     React.createElement('div', {
       className: 'flex items-center justify-between cursor-pointer',
-      onClick: toggleExpand
+      onClick: () => setIsExpanded(!isExpanded)
     },
       React.createElement('h3', { className: 'font-semibold' }, title),
       React.createElement('span', null, isExpanded ? '▼' : '▶')
@@ -24,7 +39,8 @@ const ActivitySection = ({ title, items = [], color = 'text-blue-500' }) => {
             rel: 'noopener noreferrer',
             className: 'text-sm hover:text-blue-500 flex flex-col gap-1'
           },
-            React.createElement('span', { className: 'font-medium' }, 
+            React.createElement('span', { className: 'font-medium flex items-center' },
+              showStatus && React.createElement(StatusDot, { status: getStatus(item) }),
               item.message || item.title || item.body
             ),
             React.createElement('span', { className: 'text-gray-500 text-xs' },
@@ -37,8 +53,11 @@ const ActivitySection = ({ title, items = [], color = 'text-blue-500' }) => {
   );
 };
 
-const StatCard = ({ name, value }) => {
-  return React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+const StatCard = ({ name, value, score = null }) => {
+  return React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow relative' },
+    score !== null && React.createElement('div', { 
+      className: 'absolute top-2 right-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-semibold px-2 py-1 rounded'
+    }, `Score: ${score}`),
     React.createElement('h3', { className: 'font-semibold' }, name),
     React.createElement('p', { className: 'text-2xl font-bold' }, value)
   );
@@ -47,29 +66,33 @@ const StatCard = ({ name, value }) => {
 const ContributorProfile = ({ data }) => {
   const stats = [
     { name: 'Commits', value: data.activity.code.total_commits },
-    { name: 'PRs', value: data.activity.code.total_prs },
+    { name: 'Pull Requests', value: data.activity.code.total_prs },
     { name: 'Issues', value: data.activity.issues.total_opened },
     { name: 'Comments', value: data.activity.engagement.total_comments }
   ];
 
   return React.createElement('div', { className: 'max-w-7xl mx-auto p-4 space-y-6' },
     React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
-      React.createElement('div', { className: 'flex items-center gap-4' },
-        React.createElement('img', {
-          src: data.avatar_url,
-          alt: `${data.username}'s avatar`,
-          className: 'w-16 h-16 rounded-full'
-        }),
-        React.createElement('div', null,
-          React.createElement('h1', { className: 'text-2xl font-bold' }, data.username),
-          React.createElement('p', { className: 'text-gray-600 dark:text-gray-400' },
-            `${data.total_contributions} total contributions`
+      React.createElement('div', { className: 'flex items-center justify-between' },
+        React.createElement('div', { className: 'flex items-center gap-4' },
+          React.createElement('img', {
+            src: data.avatar_url,
+            alt: `${data.username}'s avatar`,
+            className: 'w-16 h-16 rounded-full'
+          }),
+          React.createElement('div', null,
+            React.createElement('h1', { className: 'text-2xl font-bold' }, data.username),
+            React.createElement('p', { className: 'text-gray-600 dark:text-gray-400' },
+              `${data.total_contributions} total contributions`
+            )
           )
-        )
+        ),
+        data.contribution_scores?.total && React.createElement('div', {
+          className: 'text-3xl font-bold text-blue-600 dark:text-blue-400'
+        }, data.contribution_scores.total)
       )
     ),
 
-    // Add contribution summary section
     data.contribution_summary && React.createElement('div', { 
       className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow'
     },
@@ -79,7 +102,10 @@ const ContributorProfile = ({ data }) => {
     ),
 
     React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
-      stats.map(stat => React.createElement(StatCard, { key: stat.name, ...stat }))
+      stats.map(stat => React.createElement(StatCard, { 
+        key: stat.name,
+        ...stat
+      }))
     ),
 
     React.createElement('div', { className: 'space-y-4' },
@@ -89,11 +115,13 @@ const ContributorProfile = ({ data }) => {
       }),
       React.createElement(ActivitySection, {
         title: 'Pull Requests',
-        items: data.activity.code.pull_requests
+        items: data.activity.code.pull_requests,
+        showStatus: true
       }),
       React.createElement(ActivitySection, {
         title: 'Issues',
-        items: data.activity.issues.opened || []
+        items: data.activity.issues.opened || [],
+        showStatus: true
       }),
       React.createElement(ActivitySection, {
         title: 'Comments',
@@ -106,43 +134,4 @@ const ContributorProfile = ({ data }) => {
   );
 };
 
-// Add ContributorCard component for index page
-const ContributorCard = ({ contributor }) => {
-  const [showTooltip, setShowTooltip] = useState(false);
-
-  return React.createElement('div', {
-    className: 'relative',
-    onMouseEnter: () => setShowTooltip(true),
-    onMouseLeave: () => setShowTooltip(false)
-  },
-    React.createElement('a', {
-      href: `/profiles/${contributor.username}.html`,
-      className: 'block p-4 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-md transition-shadow'
-    },
-      React.createElement('div', { className: 'flex items-center gap-3' },
-        React.createElement('img', {
-          src: contributor.avatar_url,
-          alt: `${contributor.username}'s avatar`,
-          className: 'w-10 h-10 rounded-full'
-        }),
-        React.createElement('div', null,
-          React.createElement('h3', { className: 'font-medium' }, contributor.username),
-          React.createElement('p', { className: 'text-sm text-gray-500' },
-            `${contributor.total_contributions} contributions`
-          )
-        )
-      )
-    ),
-    showTooltip && contributor.contribution_summary && React.createElement('div', {
-      className: 'absolute z-10 p-4 mt-2 bg-gray-900 text-white text-sm rounded-lg shadow-lg max-w-xs',
-      style: { 
-        top: '100%',
-        left: '50%',
-        transform: 'translateX(-50%)'
-      }
-    }, contributor.contribution_summary)
-  );
-};
-
 export default ContributorProfile;
-export { ContributorCard };
