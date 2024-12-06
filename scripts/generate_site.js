@@ -89,28 +89,26 @@ const ContributorProfile = ({ data }) => {
         React.createElement('div', { className: 'flex items-center gap-4' },
           React.createElement('img', {
             src: data.avatar_url,
-            alt: \`\${data.username}'s avatar\`,
+            alt: \`\${data.contributor}'s avatar\`,
             className: 'w-16 h-16 rounded-full'
           }),
           React.createElement('div', null,
-            React.createElement('h1', { className: 'text-2xl font-bold' }, data.username),
-            React.createElement('p', { className: 'text-gray-600 dark:text-gray-400' },
-              \`\${data.total_contributions} total contributions\`
+            React.createElement('h1', { className: 'text-2xl font-bold' }, data.contributor),
+            React.createElement('div', { className: 'text-gray-600 dark:text-gray-400' },
+              React.createElement('span', { className: 'font-semibold' }, 'Score: '),
+              data.score
             )
           )
-        ),
-        data.contribution_scores?.total && React.createElement('div', {
-          className: 'text-3xl font-bold text-blue-600 dark:text-blue-400'
-        }, data.contribution_scores.total)
+        )
       )
     ),
 
-    data.contribution_summary && React.createElement('div', { 
+    data.summary && React.createElement('div', { 
       className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow'
     },
       React.createElement('p', { 
         className: 'text-gray-700 dark:text-gray-300 text-sm leading-relaxed'
-      }, data.contribution_summary)
+      }, data.summary)
     ),
 
     React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
@@ -137,10 +135,7 @@ const ContributorProfile = ({ data }) => {
       }),
       React.createElement(ActivitySection, {
         title: 'Comments',
-        items: [
-          ...(data.activity.engagement.issue_comments || []),
-          ...(data.activity.engagement.pr_comments || [])
-        ]
+        items: data.activity.engagement.comments
       })
     )
   );
@@ -156,7 +151,7 @@ const template = (content, data) => `
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${data.username} - GitHub Contributions</title>
+    <title>${data.contributor} - GitHub Contributions</title>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -178,22 +173,10 @@ const generateSite = async () => {
 
     try {
         await fs.mkdir(outputDir, { recursive: true });
-        const files = await fs.readdir(inputDir);
-        const jsonFiles = files.filter(file => file.endsWith('.json'));
-
-        // Load all contributor data and sort by contribution score
-        const contributorsData = await Promise.all(
-            jsonFiles.map(async (file) => {
-                const data = JSON.parse(
-                    await fs.readFile(path.join(inputDir, file), 'utf-8')
-                );
-                return data;
-            })
-        );
-
-        // Sort contributors by total contribution score
-        contributorsData.sort((a, b) => 
-            (b.contribution_scores?.total || 0) - (a.contribution_scores?.total || 0)
+        
+        // Read contributors.json
+        const contributorsData = JSON.parse(
+            await fs.readFile(path.join(inputDir, 'contributors.json'), 'utf-8')
         );
 
         // Generate individual profile pages
@@ -205,11 +188,11 @@ const generateSite = async () => {
             const html = template(content, data);
             
             await fs.writeFile(
-                path.join(outputDir, `${data.username}.html`),
+                path.join(outputDir, `${data.contributor}.html`),
                 html
             );
             
-            console.log(`Generated profile for ${data.username}`);
+            console.log(`Generated profile for ${data.contributor}`);
         }
 
         // Generate index.html
@@ -227,27 +210,25 @@ const generateSite = async () => {
         <h1 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white">GitHub Contributors</h1>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             ${contributorsData.map(data => `
-                <a href="${data.username}.html" 
+                <a href="${data.contributor}.html" 
                    class="block p-6 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition-shadow relative">
-                    ${data.contribution_scores?.total ? `
-                        <div class="absolute top-4 right-4 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-semibold">
-                            Score: ${data.contribution_scores.total}
-                        </div>
-                    ` : ''}
+                    <div class="absolute top-4 right-4 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-semibold">
+                        Score: ${data.score}
+                    </div>
                     <div class="flex items-center gap-4 mb-4">
                         <img src="${data.avatar_url}" 
-                             alt="${data.username}" 
+                             alt="${data.contributor}" 
                              class="w-12 h-12 rounded-full">
                         <div>
-                            <h2 class="text-xl font-semibold text-gray-900 dark:text-white">${data.username}</h2>
+                            <h2 class="text-xl font-semibold text-gray-900 dark:text-white">${data.contributor}</h2>
                             <p class="text-gray-600 dark:text-gray-400">
-                                ${data.total_contributions} contributions
+                                ${data.activity.code.total_commits} commits
                             </p>
                         </div>
                     </div>
-                    ${data.contribution_summary ? `
+                    ${data.summary ? `
                         <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
-                            ${truncateText(data.contribution_summary, 140)}
+                            ${truncateText(data.summary, 140)}
                         </p>
                     ` : ''}
                     <div class="mt-4 flex justify-between text-sm text-gray-500 dark:text-gray-400">

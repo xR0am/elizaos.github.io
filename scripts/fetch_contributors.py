@@ -88,220 +88,69 @@ def fetch_paginated(url, headers, is_search=False, max_pages=10):
     return results
 
 def get_contributor_data(repo_owner, repo_name, output_dir, headers, force=False):
-    """Fetch detailed contributor activity data."""
+    """Fetch and organize contributor data into a simplified array structure."""
     start_time = time.time()
-    print(f"\nStarting data collection for {repo_owner}/{repo_name}")
     os.makedirs(output_dir, exist_ok=True)
+    all_contributors = []
     
-    print("\nFetching list of contributors...")
     contributors = fetch_paginated(
         f"https://api.github.com/repos/{repo_owner}/{repo_name}/contributors",
         headers
     )
     
-    print(f"\nProcessing {len(contributors)} contributors...")
-    
     for index, contributor in enumerate(contributors, 1):
         username = contributor["login"]
-        output_file = os.path.join(output_dir, f"{username}.json")
-        
         print(f"\nProcessing {username} ({index}/{len(contributors)})")
         
+        # Skip if data exists and force is False
+        output_file = os.path.join(output_dir, "contributors.json")
         if os.path.exists(output_file) and not force:
-            print(f"Skipping {username} - existing data found")
-            continue
-            
+            with open(output_file, 'r') as f:
+                existing_data = json.load(f)
+                if any(c["contributor"] == username for c in existing_data):
+                    print(f"Skipping {username} - existing data found")
+                    continue
+        
         user_start_time = time.time()
-        user_data = {
-            "username": username,
-            "avatar_url": contributor["avatar_url"],
-            "total_contributions": contributor["contributions"],
-            "activity": {
-                "code": {},
-                "issues": {},
-                "engagement": {}
+        
+        # Fetch all contributor data
+        activity = {
+            "code": {
+                "commits": fetch_commit_data(repo_owner, repo_name, username, headers),
+                "pull_requests": fetch_pr_data(repo_owner, repo_name, username, headers),
+            },
+            "issues": {
+                "opened": fetch_issue_data(repo_owner, repo_name, username, headers),
+            },
+            "engagement": {
+                "comments": fetch_comment_data(repo_owner, repo_name, username, headers),
             }
         }
-
-        # Fetch all data types
-        commit_data = [{
-            "sha": commit["sha"],
-            "date": commit["commit"]["author"]["date"],
-            "message": commit["commit"]["message"],
-            "url": commit.get("html_url", ""),
-        } for commit in fetch_paginated(
-            f"https://api.github.com/repos/{repo_owner}/{repo_name}/commits?author={username}",
-            headers
-        )]
-        print(f"Found {len(commit_data)} commits")
-
-        prs = fetch_paginated(
-            f"https://api.github.com/search/issues?q=repo:{repo_owner}/{repo_name}+author:{username}+type:pr",
-            headers,
-            is_search=True
-        )
-        pr_data = [{
-            "number": pr["number"],
-            "title": pr["title"],
-            "state": pr["state"],
-            "created_at": pr["created_at"],
-            "url": pr.get("html_url", ""),
-            "labels": [label["name"] for label in pr.get("labels", [])],
-            "comments": pr.get("comments", 0)
-        } for pr in prs]
-        print(f"Found {len(pr_data)} pull requests")
-
-        issues = fetch_paginated(
-            f"https://api.github.com/search/issues?q=repo:{repo_owner}/{repo_name}+author:{username}+type:issue",
-            headers,
-            is_search=True
-        )
-        issue_data = [{
-            "number": issue["number"],
-            "title": issue["title"],
-            "state": issue["state"],
-            "created_at": issue["created_at"],
-            "url": issue.get("html_url", ""),
-            "labels": [label["name"] for label in issue.get("labels", [])],
-            "comments": issue.get("comments", 0)
-        } for issue in issues if "pull_request" not in issue]
-        print(f"Found {len(issue_data)} issues")
-
-        comments = fetch_paginated(
-            f"https://api.github.com/repos/{repo_owner}/{repo_name}/issues/comments",
-            headers
-        )
-        comment_data = [{
-            "id": comment["id"],
-            "body": comment["body"],
-            "created_at": comment["created_at"],
-            "url": comment.get("html_url", ""),
-            "type": "issue" if "/issues/" in comment.get("html_url", "") else "pr",
-            "issue_number": comment["issue_url"].split("/")[-1] if comment.get("issue_url") else None
-        } for comment in comments if comment["user"]["login"] == username]
-        print(f"Found {len(comment_data)} comments")
-
-        # Organize activity data
-        user_data["activity"]["code"] = {
-            "commits": commit_data,
-            "pull_requests": pr_data,
-            "total_commits": len(commit_data),
-            "total_prs": len(pr_data),
-            "commit_activity": get_activity_summary(commit_data, "date"),
-            "pr_activity": get_activity_summary(pr_data)
+        
+        # Add counts
+        activity["code"]["total_commits"] = len(activity["code"]["commits"])
+        activity["code"]["total_prs"] = len(activity["code"]["pull_requests"])
+        activity["issues"]["total_opened"] = len(activity["issues"]["opened"])
+        activity["engagement"]["total_comments"] = len(activity["engagement"]["comments"])
+        
+        contributor_data = {
+            "contributor": username,
+            "avatar_url": contributor["avatar_url"],
+            "activity": activity
         }
         
-        user_data["activity"]["issues"] = {
-            "opened": issue_data,
-            "total_opened": len(issue_data),
-            "issue_activity": get_activity_summary(issue_data)
-        }
+        all_contributors.append(contributor_data)
         
-        user_data["activity"]["engagement"] = {
-            "issue_comments": [c for c in comment_data if c["type"] == "issue"],
-            "pr_comments": [c for c in comment_data if c["type"] == "pr"],
-            "total_comments": len(comment_data),
-            "comment_activity": get_activity_summary(comment_data)
-        }
-        
-        user_data = add_contribution_scores(user_data)
-
-        with open(output_file, "w") as f:
-            json.dump(user_data, f, indent=2)
-            
         elapsed = time.time() - user_start_time
         print(f"Completed {username} in {elapsed:.2f} seconds")
 
+    # Write to file without scoring
+    with open(output_file, "w") as f:
+        json.dump(all_contributors, f, indent=2)
+
     total_elapsed = time.time() - start_time
     print(f"\nCompleted all processing in {total_elapsed:.2f} seconds")
-
-def calculate_contribution_score(data):
-    """
-    Calculate a weighted contribution score based on different types of GitHub activity.
-    
-    Weights:
-    - Merged PRs: 7 points
-    - Issues created/discussed: 1 point
-    - Comments: 0 points
-    - Commits in merged PRs: 1 point each
-    - PR reviews: 5 points
-    
-    Args:
-        data (dict): Contributor data dictionary containing activity information
-    
-    Returns:
-        dict: Score breakdown and total score
-    """
-    score = 0
-    breakdown = {
-        'merged_prs': 0,
-        'issues': 0,
-        'pr_commits': 0,
-        'pr_reviews': 0,
-        'total': 0
-    }
-
-    # Score merged PRs (7 points each)
-    merged_prs = [pr for pr in data['activity']['code'].get('pull_requests', []) 
-                  if pr.get('state') == 'closed']
-    breakdown['merged_prs'] = len(merged_prs) * 7
-    
-    # Score issues created/discussed (1 point each)
-    # Only count issues that either have comments or are closed (indicating engagement)
-    active_issues = [issue for issue in data['activity']['issues'].get('opened', [])
-                    if issue.get('comments', 0) > 0 or issue.get('state') == 'closed']
-    breakdown['issues'] = len(active_issues)
-    
-    # Score commits in merged PRs (1 point each)
-    # We'll need to correlate commits with merged PRs
-    pr_related_commits = []
-    for pr in merged_prs:
-        # Look for commits that mention the PR number in their message
-        pr_commits = [commit for commit in data['activity']['code'].get('commits', [])
-                     if f"#{pr['number']}" in commit.get('message', '')]
-        pr_related_commits.extend(pr_commits)
-    
-    breakdown['pr_commits'] = len(pr_related_commits)
-    
-    # Score PR reviews (5 points each)
-    # Since review data isn't in the current schema, we'll estimate from PR comments
-    pr_review_comments = [comment for comment in data['activity']['engagement'].get('pr_comments', [])
-                         if 'review' in comment.get('body', '').lower()]
-    breakdown['pr_reviews'] = len(pr_review_comments) * 5
-    
-    # Calculate total score
-    breakdown['total'] = sum(breakdown.values())
-    
-    return breakdown
-
-def add_contribution_scores(data):
-    """
-    Add contribution scores to the contributor data.
-    
-    Args:
-        data (dict): Contributor data dictionary
-    
-    Returns:
-        dict: Updated contributor data with scores
-    """
-    scores = calculate_contribution_score(data)
-    data['contribution_scores'] = scores
-    
-    # Add a summary of the scoring to the contribution summary
-    score_summary = (
-        f"Contribution Score: {scores['total']} points "
-        f"({scores['merged_prs']} from PRs, "
-        f"{scores['issues']} from issues, "
-        f"{scores['pr_commits']} from PR commits, "
-        f"{scores['pr_reviews']} from reviews)"
-    )
-    
-    if 'contribution_summary' in data:
-        data['contribution_summary'] = f"{data['contribution_summary']}\n\n{score_summary}"
-    else:
-        data['contribution_summary'] = score_summary
-    
-    return data
+    return all_contributors
 
 if __name__ == "__main__":
     print("\nGitHub Contributor Data Fetch Script")

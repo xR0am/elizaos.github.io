@@ -7,7 +7,6 @@ from typing import List, Dict, Any
 
 def get_recent_activity(data: Dict[str, Any], days: int = 7) -> List[str]:
     """Get activity from the last N days"""
-    # Use UTC for consistency
     cutoff_date = datetime.utcnow() - timedelta(days=days)
     activity = []
     
@@ -57,9 +56,9 @@ def generate_summary(data: Dict[str, Any], api_key: str) -> str:
 {chr(10).join(activity)}
 
 Previous summary (if any):
-{data.get('contribution_summary', 'No previous summary')}
+{data.get('summary', 'No previous summary')}
 
-Write a new 1-2 sentence summary that focuses on their main areas of work. Write in present tense.
+Write a couple sentence summary that focuses on their main areas of work. Write in present tense.
 If there's no new activity but there are previous contributions, summarize their overall contributions."""
     
     try:
@@ -75,51 +74,56 @@ If there's no new activity but there are previous contributions, summarize their
         return response.choices[0].message.content.strip()
     except Exception as e:
         print(f"Error generating summary: {e}")
-        return data.get('contribution_summary', 'Unable to generate summary.')
+        return data.get('summary', 'Unable to generate summary.')
 
-def process_files(input_dir: str, output_dir: str, api_key: str) -> None:
-    """Process all JSON files in input directory"""
-    os.makedirs(output_dir, exist_ok=True)
-    
-    for filename in os.listdir(input_dir):
-        if not filename.endswith('.json'):
-            continue
-            
-        input_path = os.path.join(input_dir, filename)
-        output_path = os.path.join(output_dir, filename)
+def process_contributors(input_file: str, output_file: str, api_key: str, force: bool = False) -> None:
+    """Process contributors.json file"""
+    # Check if output file exists and force flag is not set
+    if os.path.exists(output_file) and not force:
+        raise FileExistsError(f"Output file {output_file} already exists. Use -f to overwrite.")
         
-        try:
-            with open(input_path, 'r') as f:
-                data = json.load(f)
+    try:
+        with open(input_file, 'r') as f:
+            contributors = json.load(f)
+        
+        updated_contributors = []
+        
+        for contributor in contributors:
+            print(f"\nProcessing {contributor['contributor']}...")
             
-            print(f"\nProcessing {filename}...")
-            
-            # Always generate a new summary
-            new_summary = generate_summary(data, api_key)
+            # Generate new summary
+            new_summary = generate_summary(contributor, api_key)
             if new_summary:
-                data['contribution_summary'] = new_summary
+                contributor['summary'] = new_summary
                 
             print(f"Summary: {new_summary[:100]}...")
+            updated_contributors.append(contributor)
+        
+        # Sort by score before saving
+        updated_contributors.sort(key=lambda x: x.get('score', 0), reverse=True)
+        
+        with open(output_file, 'w') as f:
+            json.dump(updated_contributors, f, indent=2)
+        
+        print(f"\nSaved updated data to {output_file}")
             
-            with open(output_path, 'w') as f:
-                json.dump(data, f, indent=2)
-            
-            print(f"Saved updated data for {filename}")
-            
-        except Exception as e:
-            print(f"Error processing {filename}: {e}")
+    except Exception as e:
+        print(f"Error processing contributors: {e}")
+        raise
 
 def main():
     parser = argparse.ArgumentParser(description="Generate GitHub contribution summaries")
-    parser.add_argument("input_dir", help="Directory containing JSON files")
-    parser.add_argument("output_dir", help="Directory to save processed files")
+    parser.add_argument("input_file", help="Input contributors.json file")
+    parser.add_argument("output_file", help="Output contributors.json file")
+    parser.add_argument("-f", "--force", action="store_true", 
+                       help="Force overwrite of output file if it exists")
     args = parser.parse_args()
     
     api_key = os.getenv('OPENAI_API_KEY')
     if not api_key:
         raise ValueError("OPENAI_API_KEY environment variable is required")
     
-    process_files(args.input_dir, args.output_dir, api_key)
+    process_contributors(args.input_file, args.output_file, api_key, args.force)
     print("Done!")
 
 if __name__ == "__main__":

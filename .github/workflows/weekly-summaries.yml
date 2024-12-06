@@ -46,7 +46,8 @@ jobs:
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
-        python scripts/generate_summaries.py ./data ./data
+        python scripts/generate_summaries.py ./data/contributors.json ./data/contributors.json -f
+        python scripts/compute_scores.py ./data/contributors.json ./data/contributors.json -f
     
     - name: Build and generate site
       run: |
