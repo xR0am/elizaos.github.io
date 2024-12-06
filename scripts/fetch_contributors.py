@@ -34,6 +34,68 @@ def get_activity_summary(items, date_key="created_at"):
             activity[date.year][date.month] += 1
     return dict(activity)
 
+def fetch_commit_data(repo_owner, repo_name, username, headers):
+    """Fetch commit data for a specific user"""
+    commits = fetch_paginated(
+        f"https://api.github.com/repos/{repo_owner}/{repo_name}/commits?author={username}",
+        headers
+    )
+    return [{
+        "sha": commit["sha"],
+        "date": commit["commit"]["author"]["date"],
+        "message": commit["commit"]["message"],
+        "url": commit.get("html_url", "")
+    } for commit in commits]
+
+def fetch_pr_data(repo_owner, repo_name, username, headers):
+    """Fetch pull request data for a specific user"""
+    prs = fetch_paginated(
+        f"https://api.github.com/search/issues?q=repo:{repo_owner}/{repo_name}+author:{username}+type:pr",
+        headers,
+        is_search=True
+    )
+    return [{
+        "number": pr["number"],
+        "title": pr["title"],
+        "state": pr["state"],
+        "created_at": pr["created_at"],
+        "url": pr.get("html_url", ""),
+        "labels": [label["name"] for label in pr.get("labels", [])],
+        "comments": pr.get("comments", 0)
+    } for pr in prs]
+
+def fetch_issue_data(repo_owner, repo_name, username, headers):
+    """Fetch issue data for a specific user"""
+    issues = fetch_paginated(
+        f"https://api.github.com/search/issues?q=repo:{repo_owner}/{repo_name}+author:{username}+type:issue",
+        headers,
+        is_search=True
+    )
+    return [{
+        "number": issue["number"],
+        "title": issue["title"],
+        "state": issue["state"],
+        "created_at": issue["created_at"],
+        "url": issue.get("html_url", ""),
+        "labels": [label["name"] for label in issue.get("labels", [])],
+        "comments": issue.get("comments", 0)
+    } for issue in issues if "pull_request" not in issue]
+
+def fetch_comment_data(repo_owner, repo_name, username, headers):
+    """Fetch comment data for a specific user"""
+    comments = fetch_paginated(
+        f"https://api.github.com/repos/{repo_owner}/{repo_name}/issues/comments",
+        headers
+    )
+    return [{
+        "id": comment["id"],
+        "body": comment["body"],
+        "created_at": comment["created_at"],
+        "url": comment.get("html_url", ""),
+        "type": "issue" if "/issues/" in comment.get("html_url", "") else "pr",
+        "issue_number": comment["issue_url"].split("/")[-1] if comment.get("issue_url") else None
+    } for comment in comments if comment["user"]["login"] == username]
+
 def fetch_paginated(url, headers, is_search=False, max_pages=10):
     """Fetch paginated results from GitHub API."""
     print(f"\nFetching: {url}")
