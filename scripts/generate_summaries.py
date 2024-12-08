@@ -52,20 +52,34 @@ def generate_summary(data: Dict[str, Any], api_key: str) -> str:
     if not activity:
         return "No significant activity found in the repository."
 
-    prompt = f"""Based on this GitHub activity, write a concise summary of what this user worked on:
+    username = data['contributor']
+    prompt = f"""Analyze the following GitHub activity for {username} and create a technical summary of their contributions:
+
+Recent Activity:
 {chr(10).join(activity)}
 
-Previous summary (if any):
+Repository Context:
+- Total Commits: {len(data['activity'].get('code', {}).get('commits', []))}
+- Total PRs: {len(data['activity'].get('code', {}).get('pull_requests', []))}
+- Total Issues: {len(data['activity'].get('issues', {}).get('opened', []))}
+
+Previous summary (if available):
 {data.get('summary', 'No previous summary')}
 
-Write a couple sentence summary that focuses on their main areas of work. Write in present tense.
-If there's no new activity but there are previous contributions, summarize their overall contributions."""
+Write a 2-3 sentence summary that:
+1. Starts with "{username} is"
+2. Highlights their primary areas of technical focus
+3. Mentions specific projects or features they're working on
+4. Notes any patterns in their contributions (e.g., focus on documentation, backend work, bug fixes)
+5. Uses present tense
+
+Keep the tone professional and focus on technical contributions."""
     
     try:
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "You are a technical writer creating concise GitHub contribution summaries."},
+                {"role": "system", "content": "You are a technical writer specializing in developer portfolio analysis. Your goal is to create clear, specific summaries that highlight a developer's technical contributions and areas of focus."},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.3,
