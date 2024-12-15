@@ -36,7 +36,8 @@ jobs:
     
     - name: Fetch latest contributor data
       env:
-        GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+        GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}  # For your Python script
+        GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}         # For gh cli commands
       run: |
         python scripts/fetch_contributors.py ai16z eliza -o ./data -f
     
@@ -49,9 +50,11 @@ jobs:
 
     - name: Fetch PR data with files
       env:
-        GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+        GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}  # For your Python script
+        GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}         # For gh cli commands
       run: |
         # Create directories if they don't exist
+        mkdir -p issues_prs
         mkdir -p data/reports
         
         # Get date for filename and analysis
