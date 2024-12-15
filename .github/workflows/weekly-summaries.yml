@@ -16,78 +16,71 @@ jobs:
       with:
         fetch-depth: 0
     
-    - name: Set up Python & Node.js
+    - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
         cache: 'pip'  # Enable pip caching
-    - uses: actions/setup-node@v3
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
       with:
         node-version: '18'
         cache: 'npm'  # Enable npm caching
     
-    - name: Cache API responses
-      uses: actions/cache@v3
-      with:
-        path: |
-          .cache/github_api
-          .cache/openai_api
-        key: ${{ runner.os }}-api-cache-${{ github.sha }}
-        restore-keys: |
-          ${{ runner.os }}-api-cache-
-    
-    - name: Install dependencies
+    - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        npm ci
+        pip install openai requests
     
-    # Combined PR and contributor data fetch
-    - name: Fetch GitHub data
+    - name: Install Node dependencies
+      run: npm ci
+    
+    # First fetch PR data since it's used by both analyses
+    - name: Fetch PR data
       env:
         GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
       run: |
+        mkdir -p issues_prs
+        python issues_prs/gh_issues_pr3.py ai16z/eliza -t pr -s all -f json --files > issues_prs/prs_with_files.json
+    
+    # Then use the PR data for both contributor fetch and analysis
+    - name: Fetch and analyze contributors
+      env:
+        GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      run: |
         # Create directories
-        mkdir -p data/reports issues_prs
+        mkdir -p data/reports
         
         # Get date range
         WEEK_END=$(date +%Y-%m-%d)
         WEEK_START=$(date -d "7 days ago" +%Y-%m-%d)
         
-        # Single API call to fetch both PRs and contributor data
-        python scripts/fetch_combined_data.py \
-          --repo ai16z/eliza \
-          --start-date "$WEEK_START" \
-          --end-date "$WEEK_END" \
-          --output-dir ./data
-    
-    - name: Generate analysis
-      env:
-        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      run: |
-        WEEK_END=$(date +%Y-%m-%d)
+        # Fetch contributors using PR data
+        python scripts/fetch_contributors.py ai16z eliza -o ./data -f
         
-        # Generate summaries and analysis in parallel
-        python scripts/parallel_analysis.py \
-          --input-dir ./data \
-          --output-dir ./data/reports \
-          --date "$WEEK_END"
+        # Generate summaries
+        python scripts/generate_summaries.py ./data/contributors.json ./data/contributors.json -f
+        
+        # Run weekly analysis using existing PR data
+        python scripts/analyze_contributors3.py \
+          issues_prs/prs_with_files.json \
+          "data/reports/weekly-${WEEK_END}.json" \
+          --after "$WEEK_START" \
+          --before "$WEEK_END" \
+          -f
     
-    - name: Build and deploy
+    - name: Build and generate site
       run: |
         npm run build
         npm run generate
     
-    - name: Commit changes
+    - name: Commit and push if changed
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        
-        # Stage all changes at once
-        git add data/ profiles/ data/reports/ issues_prs/
-        
-        # Single commit
-        git diff --staged --quiet || git commit -m "Update contributor data and reports [skip ci]"
-        git push
+        git add data/ profiles/ data/reports/ issues_prs/prs_with_files.json
+        git diff --staged --quiet || (git commit -m "Update contributor data and reports [skip ci]" && git push)
       env:
         GITHUB_TOKEN: ${{ github.token }}
