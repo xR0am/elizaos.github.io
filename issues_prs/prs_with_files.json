@@ -1,28 +1,3768 @@
 [
   {
+    "number": 1113,
+    "title": "feat: New docs in community section",
+    "state": "closed",
+    "created_at": "2024-12-15 04:59:02",
+    "updated_at": "2024-12-15 05:02:25",
+    "author": "madjin",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1113",
+    "comments": 0,
+    "closed_at": "2024-12-15 05:02:25",
+    "branch": "new_docs",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": false,
+    "mergeable_state": "dirty",
+    "commits": 2,
+    "changed_files": 249,
+    "additions": 869,
+    "deletions": 27993,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": false,
+    "files": [
+      {
+        "filename": "docs/README.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 0,
+        "changes": 4
+      },
+      {
+        "filename": "docs/README_TH.md",
+        "status": "added",
+        "additions": 178,
+        "deletions": 0,
+        "changes": 178
+      },
+      {
+        "filename": "docs/api/classes/AgentRuntime.md",
+        "status": "modified",
+        "additions": 55,
+        "deletions": 20,
+        "changes": 75
+      },
+      {
+        "filename": "docs/api/classes/Service.md",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 4,
+        "changes": 9
+      },
+      {
+        "filename": "docs/api/enumerations/Clients.md",
+        "status": "modified",
+        "additions": 35,
+        "deletions": 5,
+        "changes": 40
+      },
+      {
+        "filename": "docs/api/enumerations/LoggingLevel.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/enumerations/ModelProviderName.md",
+        "status": "modified",
+        "additions": 31,
+        "deletions": 21,
+        "changes": 52
+      },
+      {
+        "filename": "docs/api/enumerations/ServiceType.md",
+        "status": "modified",
+        "additions": 29,
+        "deletions": 9,
+        "changes": 38
+      },
+      {
+        "filename": "docs/api/functions/generateCaption.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/functions/generateImage.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/functions/generateMessageResponse.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/functions/generateObject.md",
+        "status": "renamed",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      },
+      {
+        "filename": "docs/api/functions/generateObjectArray.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/functions/generateObjectDEPRECATED.md",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 23,
+        "changes": 23
+      },
+      {
+        "filename": "docs/api/functions/generateObjectDeprecated.md",
+        "status": "added",
+        "additions": 23,
+        "deletions": 0,
+        "changes": 23
+      },
+      {
+        "filename": "docs/api/functions/generateShouldRespond.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/functions/generateTextArray.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/functions/generateTrueOrFalse.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/functions/generateTweetActions.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/functions/generateWebSearch.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/functions/getEndpoint.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/functions/getModel.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/functions/handleProvider.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/functions/splitChunks.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/functions/trimTokens.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/functions/validateCharacterConfig.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/index.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 2,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/interfaces/Account.md",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 6,
+        "changes": 12
+      },
+      {
+        "filename": "docs/api/interfaces/Action.md",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 6,
+        "changes": 12
+      },
+      {
+        "filename": "docs/api/interfaces/ActionResponse.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      }
+    ]
+  },
+  {
+    "number": 1112,
+    "title": "fix: Revert \"Feat: Update community section of docs\"",
+    "state": "closed",
+    "created_at": "2024-12-15 04:42:59",
+    "updated_at": "2024-12-15 04:49:31",
+    "author": "monilpat",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1112",
+    "comments": 0,
+    "closed_at": "2024-12-15 04:49:30",
+    "branch": "revert-1111-new_docs",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 210,
+    "additions": 374,
+    "deletions": 27863,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "docs/api/classes/AgentRuntime.md",
+        "status": "modified",
+        "additions": 11,
+        "deletions": 1,
+        "changes": 12
+      },
+      {
+        "filename": "docs/api/classes/Service.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      },
+      {
+        "filename": "docs/api/enumerations/Clients.md",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 25,
+        "changes": 34
+      },
+      {
+        "filename": "docs/api/enumerations/LoggingLevel.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/enumerations/ServiceType.md",
+        "status": "modified",
+        "additions": 11,
+        "deletions": 11,
+        "changes": 22
+      },
+      {
+        "filename": "docs/api/functions/findNearestEnvFile.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/functions/validateCharacterConfig.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/index.md",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 1,
+        "changes": 1
+      },
+      {
+        "filename": "docs/api/interfaces/ActionResponse.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      },
+      {
+        "filename": "docs/api/interfaces/GenerationOptions.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/interfaces/IAgentConfig.md",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 7,
+        "changes": 7
+      },
+      {
+        "filename": "docs/api/interfaces/IAgentRuntime.md",
+        "status": "modified",
+        "additions": 48,
+        "deletions": 38,
+        "changes": 86
+      },
+      {
+        "filename": "docs/api/interfaces/IAwsS3Service.md",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 7,
+        "changes": 12
+      },
+      {
+        "filename": "docs/api/interfaces/IBrowserService.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      },
+      {
+        "filename": "docs/api/interfaces/ICacheManager.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/interfaces/IDatabaseAdapter.md",
+        "status": "modified",
+        "additions": 37,
+        "deletions": 37,
+        "changes": 74
+      },
+      {
+        "filename": "docs/api/interfaces/IDatabaseCacheAdapter.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/interfaces/IImageDescriptionService.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/interfaces/IMemoryManager.md",
+        "status": "modified",
+        "additions": 13,
+        "deletions": 13,
+        "changes": 26
+      },
+      {
+        "filename": "docs/api/interfaces/IPdfService.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      },
+      {
+        "filename": "docs/api/interfaces/ISlackService.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/interfaces/ISpeechService.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      },
+      {
+        "filename": "docs/api/interfaces/ITextGenerationService.md",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 6,
+        "changes": 12
+      },
+      {
+        "filename": "docs/api/interfaces/ITranscriptionService.md",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 6,
+        "changes": 12
+      },
+      {
+        "filename": "docs/api/interfaces/IVideoService.md",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 6,
+        "changes": 12
+      },
+      {
+        "filename": "docs/api/type-aliases/CacheOptions.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/type-aliases/Character.md",
+        "status": "modified",
+        "additions": 11,
+        "deletions": 21,
+        "changes": 32
+      },
+      {
+        "filename": "docs/api/type-aliases/CharacterConfig.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/type-aliases/KnowledgeItem.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/type-aliases/SearchResponse.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      }
+    ],
+    "merged_at": "2024-12-15 04:49:30"
+  },
+  {
+    "number": 1111,
+    "title": "Feat: Update community section of docs",
+    "state": "closed",
+    "created_at": "2024-12-15 01:57:13",
+    "updated_at": "2024-12-15 03:59:10",
+    "author": "madjin",
+    "labels": "documentation",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1111",
+    "comments": 0,
+    "closed_at": "2024-12-15 03:59:08",
+    "branch": "new_docs",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 4,
+    "changed_files": 210,
+    "additions": 27863,
+    "deletions": 374,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "docs/api/classes/AgentRuntime.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 11,
+        "changes": 12
+      },
+      {
+        "filename": "docs/api/classes/Service.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      },
+      {
+        "filename": "docs/api/enumerations/Clients.md",
+        "status": "modified",
+        "additions": 25,
+        "deletions": 9,
+        "changes": 34
+      },
+      {
+        "filename": "docs/api/enumerations/LoggingLevel.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/enumerations/ServiceType.md",
+        "status": "modified",
+        "additions": 11,
+        "deletions": 11,
+        "changes": 22
+      },
+      {
+        "filename": "docs/api/functions/findNearestEnvFile.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/functions/validateCharacterConfig.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/index.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0,
+        "changes": 1
+      },
+      {
+        "filename": "docs/api/interfaces/ActionResponse.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      },
+      {
+        "filename": "docs/api/interfaces/GenerationOptions.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/interfaces/IAgentConfig.md",
+        "status": "added",
+        "additions": 7,
+        "deletions": 0,
+        "changes": 7
+      },
+      {
+        "filename": "docs/api/interfaces/IAgentRuntime.md",
+        "status": "modified",
+        "additions": 38,
+        "deletions": 48,
+        "changes": 86
+      },
+      {
+        "filename": "docs/api/interfaces/IAwsS3Service.md",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 5,
+        "changes": 12
+      },
+      {
+        "filename": "docs/api/interfaces/IBrowserService.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      },
+      {
+        "filename": "docs/api/interfaces/ICacheManager.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/interfaces/IDatabaseAdapter.md",
+        "status": "modified",
+        "additions": 37,
+        "deletions": 37,
+        "changes": 74
+      },
+      {
+        "filename": "docs/api/interfaces/IDatabaseCacheAdapter.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/interfaces/IImageDescriptionService.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/interfaces/IMemoryManager.md",
+        "status": "modified",
+        "additions": 13,
+        "deletions": 13,
+        "changes": 26
+      },
+      {
+        "filename": "docs/api/interfaces/IPdfService.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      },
+      {
+        "filename": "docs/api/interfaces/ISlackService.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/interfaces/ISpeechService.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      },
+      {
+        "filename": "docs/api/interfaces/ITextGenerationService.md",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 6,
+        "changes": 12
+      },
+      {
+        "filename": "docs/api/interfaces/ITranscriptionService.md",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 6,
+        "changes": 12
+      },
+      {
+        "filename": "docs/api/interfaces/IVideoService.md",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 6,
+        "changes": 12
+      },
+      {
+        "filename": "docs/api/type-aliases/CacheOptions.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/type-aliases/Character.md",
+        "status": "modified",
+        "additions": 21,
+        "deletions": 11,
+        "changes": 32
+      },
+      {
+        "filename": "docs/api/type-aliases/CharacterConfig.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/type-aliases/KnowledgeItem.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/type-aliases/SearchResponse.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      }
+    ],
+    "merged_at": "2024-12-15 03:59:08"
+  },
+  {
+    "number": 1107,
+    "title": "Documentation: Plugin list numbering and titles",
+    "state": "closed",
+    "created_at": "2024-12-14 23:19:29",
+    "updated_at": "2024-12-14 23:21:47",
+    "author": "brunocalmels",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1107",
+    "comments": 0,
+    "closed_at": "2024-12-14 23:21:47",
+    "branch": "patch-1",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 2,
+    "changed_files": 1,
+    "additions": 4,
+    "deletions": 4,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "docs/docs/packages/plugins.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      }
+    ],
+    "merged_at": "2024-12-14 23:21:47"
+  },
+  {
+    "number": 1106,
+    "title": "sync",
+    "state": "closed",
+    "created_at": "2024-12-14 20:35:17",
+    "updated_at": "2024-12-14 20:36:29",
+    "author": "rarepepi",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1106",
+    "comments": 0,
+    "closed_at": "2024-12-14 20:36:29",
+    "branch": "main",
+    "base_branch": "main",
+    "draft": false,
+    "merged": false,
+    "mergeable_state": "blocked",
+    "commits": 9,
+    "changed_files": 6,
+    "additions": 502,
+    "deletions": 2,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": false,
+    "files": [
+      {
+        "filename": ".dockerignore",
+        "status": "added",
+        "additions": 237,
+        "deletions": 0,
+        "changes": 237
+      },
+      {
+        "filename": ".github/workflows/fly-deploy.yml",
+        "status": "added",
+        "additions": 18,
+        "deletions": 0,
+        "changes": 18
+      },
+      {
+        "filename": ".gitignore",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 1,
+        "changes": 1
+      },
+      {
+        "filename": "Dockerfile",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "characters/yaposhi.character.json",
+        "status": "added",
+        "additions": 219,
+        "deletions": 0,
+        "changes": 219
+      },
+      {
+        "filename": "fly.toml",
+        "status": "added",
+        "additions": 27,
+        "deletions": 0,
+        "changes": 27
+      }
+    ]
+  },
+  {
+    "number": 1104,
+    "title": "fix: add missing imports",
+    "state": "closed",
+    "created_at": "2024-12-14 19:29:32",
+    "updated_at": "2024-12-14 19:55:35",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1104",
+    "comments": 1,
+    "closed_at": "2024-12-14 19:55:33",
+    "branch": "fix/starting_agent",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 4,
+    "deletions": 1,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "agent/src/index.ts",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 1,
+        "changes": 5
+      }
+    ],
+    "merged_at": "2024-12-14 19:55:33"
+  },
+  {
+    "number": 1103,
+    "title": "chore: fix broken pnpm lockfile",
+    "state": "closed",
+    "created_at": "2024-12-14 18:50:28",
+    "updated_at": "2024-12-14 18:50:51",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1103",
+    "comments": 0,
+    "closed_at": "2024-12-14 18:50:49",
+    "branch": "fix/pnpm-lockfile",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 18788,
+    "deletions": 20394,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "pnpm-lock.yaml",
+        "status": "modified",
+        "additions": 18788,
+        "deletions": 20394,
+        "changes": 39182
+      }
+    ],
+    "merged_at": "2024-12-14 18:50:49"
+  },
+  {
+    "number": 1102,
+    "title": "fix: handle no termination message",
+    "state": "closed",
+    "created_at": "2024-12-14 18:44:52",
+    "updated_at": "2024-12-14 18:45:00",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1102",
+    "comments": 0,
+    "closed_at": "2024-12-14 18:44:59",
+    "branch": "fix/smokeTests",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 3,
+    "deletions": 2,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "scripts/smokeTests.sh",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 2,
+        "changes": 5
+      }
+    ],
+    "merged_at": "2024-12-14 18:44:59"
+  },
+  {
+    "number": 1101,
+    "title": "feat: Smoke Test script",
+    "state": "closed",
+    "created_at": "2024-12-14 18:08:35",
+    "updated_at": "2024-12-14 18:15:33",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1101",
+    "comments": 1,
+    "closed_at": "2024-12-14 18:08:44",
+    "branch": "fix/smokeTests",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 23,
+    "deletions": 17,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "scripts/smokeTests.sh",
+        "status": "modified",
+        "additions": 23,
+        "deletions": 17,
+        "changes": 40
+      }
+    ],
+    "merged_at": "2024-12-14 18:08:44"
+  },
+  {
+    "number": 1100,
+    "title": "wip: Auto Trader - Super Goat",
+    "state": "open",
+    "created_at": "2024-12-14 16:59:22",
+    "updated_at": "2024-12-15 02:33:38",
+    "author": "Freytes",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1100",
+    "comments": 0,
+    "branch": "main",
+    "base_branch": "develop",
+    "draft": true,
+    "merged": false,
+    "mergeable_state": "unknown",
+    "commits": 11,
+    "changed_files": 4,
+    "additions": 904,
+    "deletions": 245,
+    "review_comments": 0,
+    "maintainer_can_modify": true,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/plugin-goat/README.md",
+        "status": "modified",
+        "additions": 177,
+        "deletions": 29,
+        "changes": 206
+      },
+      {
+        "filename": "packages/plugin-goat/package.json",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 1,
+        "changes": 4
+      },
+      {
+        "filename": "packages/plugin-goat/src/actions.ts",
+        "status": "modified",
+        "additions": 373,
+        "deletions": 184,
+        "changes": 557
+      },
+      {
+        "filename": "packages/plugin-goat/src/index.ts",
+        "status": "modified",
+        "additions": 351,
+        "deletions": 31,
+        "changes": 382
+      }
+    ]
+  },
+  {
+    "number": 1098,
+    "title": "feat: Lens client",
+    "state": "closed",
+    "created_at": "2024-12-14 15:57:27",
+    "updated_at": "2024-12-14 22:55:36",
+    "author": "imthatcarlos",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1098",
+    "comments": 0,
+    "closed_at": "2024-12-14 22:55:36",
+    "branch": "feat/client-lens",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 4,
+    "changed_files": 18,
+    "additions": 3329,
+    "deletions": 174,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "agent/package.json",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 1,
+        "changes": 3
+      },
+      {
+        "filename": "agent/src/index.ts",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 0,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/type-aliases/Character.md",
+        "status": "modified",
+        "additions": 14,
+        "deletions": 2,
+        "changes": 16
+      },
+      {
+        "filename": "packages/client-lens/package.json",
+        "status": "added",
+        "additions": 24,
+        "deletions": 0,
+        "changes": 24
+      },
+      {
+        "filename": "packages/client-lens/src/actions.ts",
+        "status": "added",
+        "additions": 51,
+        "deletions": 0,
+        "changes": 51
+      },
+      {
+        "filename": "packages/client-lens/src/client.ts",
+        "status": "added",
+        "additions": 412,
+        "deletions": 0,
+        "changes": 412
+      },
+      {
+        "filename": "packages/client-lens/src/index.ts",
+        "status": "added",
+        "additions": 66,
+        "deletions": 0,
+        "changes": 66
+      },
+      {
+        "filename": "packages/client-lens/src/interactions.ts",
+        "status": "added",
+        "additions": 280,
+        "deletions": 0,
+        "changes": 280
+      },
+      {
+        "filename": "packages/client-lens/src/memory.ts",
+        "status": "added",
+        "additions": 112,
+        "deletions": 0,
+        "changes": 112
+      },
+      {
+        "filename": "packages/client-lens/src/post.ts",
+        "status": "added",
+        "additions": 141,
+        "deletions": 0,
+        "changes": 141
+      },
+      {
+        "filename": "packages/client-lens/src/prompts.ts",
+        "status": "added",
+        "additions": 88,
+        "deletions": 0,
+        "changes": 88
+      },
+      {
+        "filename": "packages/client-lens/src/providers/StorjProvider.ts",
+        "status": "added",
+        "additions": 84,
+        "deletions": 0,
+        "changes": 84
+      },
+      {
+        "filename": "packages/client-lens/src/types.ts",
+        "status": "added",
+        "additions": 14,
+        "deletions": 0,
+        "changes": 14
+      },
+      {
+        "filename": "packages/client-lens/src/utils.ts",
+        "status": "added",
+        "additions": 84,
+        "deletions": 0,
+        "changes": 84
+      },
+      {
+        "filename": "packages/client-lens/tsconfig.json",
+        "status": "added",
+        "additions": 12,
+        "deletions": 0,
+        "changes": 12
+      },
+      {
+        "filename": "packages/client-lens/tsup.config.ts",
+        "status": "added",
+        "additions": 23,
+        "deletions": 0,
+        "changes": 23
+      },
+      {
+        "filename": "packages/core/src/types.ts",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 0,
+        "changes": 4
+      },
+      {
+        "filename": "pnpm-lock.yaml",
+        "status": "modified",
+        "additions": 1912,
+        "deletions": 171,
+        "changes": 2083
+      }
+    ],
+    "merged_at": "2024-12-14 22:55:36"
+  },
+  {
+    "number": 1097,
+    "title": "fix: return types of createAgent & startAgent",
+    "state": "closed",
+    "created_at": "2024-12-14 15:29:21",
+    "updated_at": "2024-12-14 16:06:35",
+    "author": "BlockJuic3",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1097",
+    "comments": 0,
+    "closed_at": "2024-12-14 16:06:35",
+    "branch": "fix/agent-functions-return-typ",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 2,
+    "changed_files": 0,
+    "additions": 0,
+    "deletions": 0,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [],
+    "merged_at": "2024-12-14 16:06:35"
+  },
+  {
+    "number": 1095,
+    "title": "docs: add README.md to plugin-evm",
+    "state": "closed",
+    "created_at": "2024-12-14 13:56:37",
+    "updated_at": "2024-12-14 15:25:25",
+    "author": "nicky-ru",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1095",
+    "comments": 0,
+    "closed_at": "2024-12-14 15:25:25",
+    "branch": "docs-plugin-evm-readme",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 93,
+    "deletions": 0,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/plugin-evm/README.md",
+        "status": "added",
+        "additions": 93,
+        "deletions": 0,
+        "changes": 93
+      }
+    ],
+    "merged_at": "2024-12-14 15:25:25"
+  },
+  {
+    "number": 1094,
+    "title": "chore: debugging start behaviour",
+    "state": "closed",
+    "created_at": "2024-12-14 13:49:18",
+    "updated_at": "2024-12-14 13:49:29",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1094",
+    "comments": 0,
+    "closed_at": "2024-12-14 13:49:27",
+    "branch": "fix/smokeTests",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 2,
+    "deletions": 0,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "scripts/smokeTests.sh",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 0,
+        "changes": 2
+      }
+    ],
+    "merged_at": "2024-12-14 13:49:27"
+  },
+  {
+    "number": 1093,
+    "title": "chore: kill pnpm start",
+    "state": "closed",
+    "created_at": "2024-12-14 13:39:10",
+    "updated_at": "2024-12-14 13:39:18",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1093",
+    "comments": 0,
+    "closed_at": "2024-12-14 13:39:16",
+    "branch": "fix/smokeTests",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 1,
+    "deletions": 1,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "scripts/smokeTests.sh",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      }
+    ],
+    "merged_at": "2024-12-14 13:39:16"
+  },
+  {
+    "number": 1092,
+    "title": "chore: increase timeout to 3mins",
+    "state": "closed",
+    "created_at": "2024-12-14 13:30:29",
+    "updated_at": "2024-12-14 13:30:37",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1092",
+    "comments": 0,
+    "closed_at": "2024-12-14 13:30:36",
+    "branch": "fix/smokeTests",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 1,
+    "deletions": 1,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "scripts/smokeTests.sh",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      }
+    ],
+    "merged_at": "2024-12-14 13:30:36"
+  },
+  {
+    "number": 1091,
+    "title": "feat: allow users to configure models for grok",
+    "state": "closed",
+    "created_at": "2024-12-14 12:47:51",
+    "updated_at": "2024-12-14 21:19:35",
+    "author": "oxSaturn",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1091",
+    "comments": 1,
+    "closed_at": "2024-12-14 18:08:57",
+    "branch": "feat/configure-models-grok-2",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 2,
+    "additions": 10,
+    "deletions": 4,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": ".env.example",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 0,
+        "changes": 6
+      },
+      {
+        "filename": "packages/core/src/models.ts",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      }
+    ],
+    "merged_at": "2024-12-14 18:08:57"
+  },
+  {
+    "number": 1090,
+    "title": "feat: allow users to configure models for grok",
+    "state": "closed",
+    "created_at": "2024-12-14 12:40:56",
+    "updated_at": "2024-12-14 12:46:23",
+    "author": "oxSaturn",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1090",
+    "comments": 0,
+    "closed_at": "2024-12-14 12:46:23",
+    "branch": "feat/configure-models-grok",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": false,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 2,
+    "additions": 10,
+    "deletions": 4,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": ".env.example",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 0,
+        "changes": 6
+      },
+      {
+        "filename": "packages/core/src/models.ts",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      }
+    ]
+  },
+  {
+    "number": 1089,
+    "title": "feat: allow users to configure models for grok",
+    "state": "closed",
+    "created_at": "2024-12-14 12:38:53",
+    "updated_at": "2024-12-14 12:39:33",
+    "author": "oxSaturn",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1089",
+    "comments": 0,
+    "closed_at": "2024-12-14 12:39:20",
+    "branch": "feat/configure-models-grok",
+    "base_branch": "main",
+    "draft": false,
+    "merged": false,
+    "mergeable_state": "blocked",
+    "commits": 1,
+    "changed_files": 2,
+    "additions": 10,
+    "deletions": 4,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": false,
+    "files": [
+      {
+        "filename": ".env.example",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 0,
+        "changes": 6
+      },
+      {
+        "filename": "packages/core/src/models.ts",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      }
+    ]
+  },
+  {
+    "number": 1088,
+    "title": "fix: syntax error: invalid arithmetic operator",
+    "state": "closed",
+    "created_at": "2024-12-14 12:28:09",
+    "updated_at": "2024-12-14 13:15:16",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1088",
+    "comments": 0,
+    "closed_at": "2024-12-14 13:15:15",
+    "branch": "fix/smokeTests",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 2,
+    "changed_files": 1,
+    "additions": 7,
+    "deletions": 7,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "scripts/smokeTests.sh",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 7,
+        "changes": 14
+      }
+    ],
+    "merged_at": "2024-12-14 13:15:15"
+  },
+  {
+    "number": 1086,
+    "title": "fix: client slack linting errors",
+    "state": "closed",
+    "created_at": "2024-12-14 12:01:06",
+    "updated_at": "2024-12-14 12:01:15",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1086",
+    "comments": 0,
+    "closed_at": "2024-12-14 12:01:13",
+    "branch": "fix/client-slack",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 4,
+    "changed_files": 4,
+    "additions": 310,
+    "deletions": 466,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/client-slack/src/providers/channelState.d.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 3,
+        "changes": 3
+      },
+      {
+        "filename": "packages/client-slack/src/tests/setup.ts",
+        "status": "modified",
+        "additions": 161,
+        "deletions": 145,
+        "changes": 306
+      },
+      {
+        "filename": "packages/client-slack/src/utils/slack-utils.ts",
+        "status": "modified",
+        "additions": 121,
+        "deletions": 105,
+        "changes": 226
+      },
+      {
+        "filename": "pnpm-lock.yaml",
+        "status": "modified",
+        "additions": 28,
+        "deletions": 213,
+        "changes": 241
+      }
+    ],
+    "merged_at": "2024-12-14 12:01:13"
+  },
+  {
+    "number": 1085,
+    "title": "chore: remove unused imports and rename runtime variable",
+    "state": "closed",
+    "created_at": "2024-12-14 11:45:38",
+    "updated_at": "2024-12-14 11:45:47",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1085",
+    "comments": 0,
+    "closed_at": "2024-12-14 11:45:46",
+    "branch": "fix/client-slack",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 153,
+    "deletions": 95,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/client-slack/src/index.ts",
+        "status": "modified",
+        "additions": 153,
+        "deletions": 95,
+        "changes": 248
+      }
+    ],
+    "merged_at": "2024-12-14 11:45:45"
+  },
+  {
+    "number": 1084,
+    "title": "fix: dynamic import of fs module",
+    "state": "closed",
+    "created_at": "2024-12-14 11:40:52",
+    "updated_at": "2024-12-14 11:41:20",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1084",
+    "comments": 0,
+    "closed_at": "2024-12-14 11:41:19",
+    "branch": "fix/client-slack",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 6,
+    "changed_files": 4,
+    "additions": 186,
+    "deletions": 129,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/client-slack/src/actions/chat_with_attachments.ts",
+        "status": "modified",
+        "additions": 28,
+        "deletions": 16,
+        "changes": 44
+      },
+      {
+        "filename": "packages/client-slack/src/actions/summarize_conversation.ts",
+        "status": "modified",
+        "additions": 92,
+        "deletions": 56,
+        "changes": 148
+      },
+      {
+        "filename": "packages/client-slack/src/actions/transcribe_media.ts",
+        "status": "modified",
+        "additions": 15,
+        "deletions": 11,
+        "changes": 26
+      },
+      {
+        "filename": "packages/client-slack/src/examples/standalone-attachment.ts",
+        "status": "modified",
+        "additions": 51,
+        "deletions": 46,
+        "changes": 97
+      }
+    ],
+    "merged_at": "2024-12-14 11:41:19"
+  },
+  {
+    "number": 1083,
+    "title": "chore: remove unnecessary packages",
+    "state": "closed",
+    "created_at": "2024-12-14 11:29:03",
+    "updated_at": "2024-12-14 11:29:13",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1083",
+    "comments": 0,
+    "closed_at": "2024-12-14 11:29:11",
+    "branch": "fix/client-slack",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 0,
+    "deletions": 3,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/client-slack/package.json",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 3,
+        "changes": 3
+      }
+    ],
+    "merged_at": "2024-12-14 11:29:11"
+  },
+  {
+    "number": 1082,
+    "title": "fix: eslint command",
+    "state": "closed",
+    "created_at": "2024-12-14 11:20:51",
+    "updated_at": "2024-12-14 11:21:03",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1082",
+    "comments": 0,
+    "closed_at": "2024-12-14 11:21:02",
+    "branch": "fix/client-slack",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 47,
+    "deletions": 47,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/client-slack/package.json",
+        "status": "modified",
+        "additions": 47,
+        "deletions": 47,
+        "changes": 94
+      }
+    ],
+    "merged_at": "2024-12-14 11:21:02"
+  },
+  {
+    "number": 1081,
+    "title": "chore: fix broken pnpm lockfile",
+    "state": "closed",
+    "created_at": "2024-12-14 11:11:47",
+    "updated_at": "2024-12-14 11:12:02",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1081",
+    "comments": 0,
+    "closed_at": "2024-12-14 11:12:00",
+    "branch": "fix/pnpm-lockfile",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 17079,
+    "deletions": 21793,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "pnpm-lock.yaml",
+        "status": "modified",
+        "additions": 17079,
+        "deletions": 21793,
+        "changes": 38872
+      }
+    ],
+    "merged_at": "2024-12-14 11:12:00"
+  },
+  {
+    "number": 1080,
+    "title": "chore: add npmignore file",
+    "state": "closed",
+    "created_at": "2024-12-14 11:08:13",
+    "updated_at": "2024-12-14 11:08:23",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1080",
+    "comments": 0,
+    "closed_at": "2024-12-14 11:08:21",
+    "branch": "fix/plugin-near",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 6,
+    "deletions": 0,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/plugin-near/.npmignore",
+        "status": "added",
+        "additions": 6,
+        "deletions": 0,
+        "changes": 6
+      }
+    ],
+    "merged_at": "2024-12-14 11:08:21"
+  },
+  {
+    "number": 1079,
+    "title": "fix: transfer action linting errors",
+    "state": "closed",
+    "created_at": "2024-12-14 11:04:27",
+    "updated_at": "2024-12-14 11:05:20",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1079",
+    "comments": 0,
+    "closed_at": "2024-12-14 11:05:19",
+    "branch": "fix/plugin-near",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 3,
+    "changed_files": 1,
+    "additions": 3,
+    "deletions": 5,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/plugin-near/src/actions/transfer.ts",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 5,
+        "changes": 8
+      }
+    ],
+    "merged_at": "2024-12-14 11:05:19"
+  },
+  {
+    "number": 1078,
+    "title": "fix: errors in swap action in plugin-near",
+    "state": "closed",
+    "created_at": "2024-12-14 10:54:34",
+    "updated_at": "2024-12-14 10:54:54",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1078",
+    "comments": 0,
+    "closed_at": "2024-12-14 10:54:52",
+    "branch": "fix/plugin-near",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 2,
+    "changed_files": 1,
+    "additions": 3,
+    "deletions": 2,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/plugin-near/src/actions/swap.ts",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 2,
+        "changes": 5
+      }
+    ],
+    "merged_at": "2024-12-14 10:54:52"
+  },
+  {
+    "number": 1077,
+    "title": "fix: remove unnecessary devDependencies",
+    "state": "closed",
+    "created_at": "2024-12-14 10:49:14",
+    "updated_at": "2024-12-14 10:49:35",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1077",
+    "comments": 0,
+    "closed_at": "2024-12-14 10:49:33",
+    "branch": "fix/plugin-near",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 0,
+    "deletions": 6,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/plugin-near/package.json",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 6,
+        "changes": 6
+      }
+    ],
+    "merged_at": "2024-12-14 10:49:33"
+  },
+  {
+    "number": 1076,
+    "title": "fix: missing eslint config file",
+    "state": "closed",
+    "created_at": "2024-12-14 10:47:27",
+    "updated_at": "2024-12-14 10:47:45",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1076",
+    "comments": 0,
+    "closed_at": "2024-12-14 10:47:44",
+    "branch": "fix/plugin-near",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 3,
+    "deletions": 0,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/plugin-near/eslint.config.mjs",
+        "status": "added",
+        "additions": 3,
+        "deletions": 0,
+        "changes": 3
+      }
+    ],
+    "merged_at": "2024-12-14 10:47:44"
+  },
+  {
+    "number": 1075,
+    "title": "fix: remove unnecessary devDependencies",
+    "state": "closed",
+    "created_at": "2024-12-14 10:34:36",
+    "updated_at": "2024-12-14 10:34:58",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1075",
+    "comments": 0,
+    "closed_at": "2024-12-14 10:34:56",
+    "branch": "fix/plugin-multiversx",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 0,
+    "deletions": 6,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/plugin-multiversx/package.json",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 6,
+        "changes": 6
+      }
+    ],
+    "merged_at": "2024-12-14 10:34:56"
+  },
+  {
+    "number": 1074,
+    "title": "fix: incorrect eslint config file path",
+    "state": "closed",
+    "created_at": "2024-12-14 10:19:05",
+    "updated_at": "2024-12-14 10:19:33",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1074",
+    "comments": 0,
+    "closed_at": "2024-12-14 10:19:31",
+    "branch": "fix/plugin-multiversx",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 1,
+    "deletions": 1,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/plugin-multiversx/eslint.config.mjs",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      }
+    ],
+    "merged_at": "2024-12-14 10:19:31"
+  },
+  {
+    "number": 1073,
+    "title": "chore: commented out unused variables in solana swap action's plugin",
+    "state": "closed",
+    "created_at": "2024-12-14 10:13:38",
+    "updated_at": "2024-12-14 10:14:09",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1073",
+    "comments": 0,
+    "closed_at": "2024-12-14 10:14:08",
+    "branch": "fix/swap_solana",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 2,
+    "deletions": 3,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/plugin-solana/src/actions/swap.ts",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 3,
+        "changes": 5
+      }
+    ],
+    "merged_at": "2024-12-14 10:14:08"
+  },
+  {
+    "number": 1070,
+    "title": "fix: Fixed twitter posts include from including `/n` in the text",
+    "state": "closed",
+    "created_at": "2024-12-14 07:38:24",
+    "updated_at": "2024-12-14 19:03:29",
+    "author": "Titan-Node",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1070",
+    "comments": 0,
+    "closed_at": "2024-12-14 19:03:29",
+    "branch": "main",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 2,
+    "changed_files": 1,
+    "additions": 1,
+    "deletions": 0,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/client-twitter/src/post.ts",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0,
+        "changes": 1
+      }
+    ],
+    "merged_at": "2024-12-14 19:03:29"
+  },
+  {
+    "number": 1061,
+    "title": "V2",
+    "state": "open",
+    "created_at": "2024-12-14 07:12:09",
+    "updated_at": "2024-12-14 09:35:39",
+    "author": "lalalune",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1061",
+    "comments": 1,
+    "branch": "v2",
+    "base_branch": "main",
+    "draft": true,
+    "merged": false,
+    "mergeable_state": "blocked",
+    "commits": 104,
+    "changed_files": 382,
+    "additions": 4957,
+    "deletions": 61802,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": false,
+    "files": [
+      {
+        "filename": ".env.example",
+        "status": "modified",
+        "additions": 13,
+        "deletions": 0,
+        "changes": 13
+      },
+      {
+        "filename": ".github/workflows/ci.yaml",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": ".github/workflows/integrationTests.yaml",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "CONTRIBUTING.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "README_HE.md",
+        "status": "added",
+        "additions": 189,
+        "deletions": 0,
+        "changes": 189
+      },
+      {
+        "filename": "README_VI.md",
+        "status": "added",
+        "additions": 129,
+        "deletions": 0,
+        "changes": 129
+      },
+      {
+        "filename": "agent/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 14,
+        "changes": 15
+      },
+      {
+        "filename": "agent/src/index.ts",
+        "status": "modified",
+        "additions": 47,
+        "deletions": 116,
+        "changes": 163
+      },
+      {
+        "filename": "characters/eternalai.character.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 394,
+        "changes": 394
+      },
+      {
+        "filename": "characters/tate.character.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 63,
+        "changes": 63
+      },
+      {
+        "filename": "docs/README.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 0,
+        "changes": 4
+      },
+      {
+        "filename": "docs/README_TH.md",
+        "status": "added",
+        "additions": 178,
+        "deletions": 0,
+        "changes": 178
+      },
+      {
+        "filename": "docs/package-lock.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 21360,
+        "changes": 21360
+      },
+      {
+        "filename": "packages/_examples/plugin/README.md",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 32,
+        "changes": 32
+      },
+      {
+        "filename": "packages/_examples/plugin/eslint.config.mjs",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 3,
+        "changes": 3
+      },
+      {
+        "filename": "packages/_examples/plugin/package.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 19,
+        "changes": 19
+      },
+      {
+        "filename": "packages/_examples/plugin/src/actions/sampleAction.ts",
+        "status": "modified",
+        "additions": 64,
+        "deletions": 70,
+        "changes": 134
+      },
+      {
+        "filename": "packages/_examples/plugin/src/evaluators/sampleEvalutor.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 47,
+        "changes": 47
+      },
+      {
+        "filename": "packages/_examples/plugin/src/index.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 8,
+        "changes": 8
+      },
+      {
+        "filename": "packages/_examples/plugin/src/plugins/samplePlugin.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 17,
+        "changes": 17
+      },
+      {
+        "filename": "packages/_examples/plugin/src/providers/sampleProvider.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 14,
+        "changes": 14
+      },
+      {
+        "filename": "packages/_examples/plugin/src/templates.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 60,
+        "changes": 60
+      },
+      {
+        "filename": "packages/_examples/plugin/src/types.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 51,
+        "changes": 51
+      },
+      {
+        "filename": "packages/_examples/plugin/tsconfig.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 13,
+        "changes": 13
+      },
+      {
+        "filename": "packages/_examples/plugin/tsup.config.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 21,
+        "changes": 21
+      },
+      {
+        "filename": "packages/adapter-sqljs/.npmignore",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 6,
+        "changes": 6
+      },
+      {
+        "filename": "packages/adapter-sqljs/eslint.config.mjs",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 3,
+        "changes": 3
+      },
+      {
+        "filename": "packages/adapter-sqljs/package.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 24,
+        "changes": 24
+      },
+      {
+        "filename": "packages/adapter-sqljs/src/index.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 799,
+        "changes": 799
+      }
+    ]
+  },
+  {
+    "number": 1058,
+    "title": "feat: create README_VI.md",
+    "state": "closed",
+    "created_at": "2024-12-14 03:32:27",
+    "updated_at": "2024-12-14 08:26:34",
+    "author": "tqdpham96",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1058",
+    "comments": 0,
+    "closed_at": "2024-12-14 08:26:34",
+    "branch": "main",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 3,
+    "changed_files": 2,
+    "additions": 130,
+    "deletions": 1,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "README_VI.md",
+        "status": "added",
+        "additions": 129,
+        "deletions": 0,
+        "changes": 129
+      }
+    ],
+    "merged_at": "2024-12-14 08:26:34"
+  },
+  {
+    "number": 1057,
+    "title": "feat: add venice.ai image generation",
+    "state": "closed",
+    "created_at": "2024-12-14 02:16:40",
+    "updated_at": "2024-12-14 03:20:12",
+    "author": "proteanx",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1057",
+    "comments": 1,
+    "closed_at": "2024-12-14 03:08:13",
+    "branch": "veniceimage",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 4,
+    "changed_files": 6,
+    "additions": 49,
+    "deletions": 4,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": ".env.example",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0,
+        "changes": 1
+      },
+      {
+        "filename": "agent/src/index.ts",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0,
+        "changes": 1
+      },
+      {
+        "filename": "packages/core/src/generation.ts",
+        "status": "modified",
+        "additions": 36,
+        "deletions": 1,
+        "changes": 37
+      },
+      {
+        "filename": "packages/core/src/models.ts",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0,
+        "changes": 1
+      },
+      {
+        "filename": "packages/plugin-image-generation/src/environment.ts",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 2,
+        "changes": 9
+      },
+      {
+        "filename": "packages/plugin-image-generation/src/index.ts",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 1,
+        "changes": 4
+      }
+    ],
+    "merged_at": "2024-12-14 03:08:13"
+  },
+  {
+    "number": 1056,
+    "title": "chore: improve eslint by --cache",
+    "state": "closed",
+    "created_at": "2024-12-14 00:14:33",
+    "updated_at": "2024-12-14 10:46:03",
+    "author": "shengxj1",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1056",
+    "comments": 0,
+    "closed_at": "2024-12-14 10:46:03",
+    "branch": "chore/eslint-cache",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 27,
+    "additions": 29,
+    "deletions": 28,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": ".gitignore",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 1,
+        "changes": 3
+      },
+      {
+        "filename": "package.json",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2,
+        "changes": 4
+      },
+      {
+        "filename": "packages/_examples/plugin/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/adapter-postgres/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/adapter-sqlite/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/adapter-sqljs/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/adapter-supabase/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/client-auto/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/client-direct/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/client-discord/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/client-github/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/client-telegram/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/client-twitter/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/core/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/create-eliza-app/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/plugin-aptos/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/plugin-bootstrap/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/plugin-coinbase/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/plugin-flow/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/plugin-image-generation/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/plugin-node/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/plugin-solana/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/plugin-starknet/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/plugin-tee/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/plugin-trustdb/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/plugin-video-generation/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/plugin-whatsapp/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      }
+    ],
+    "merged_at": "2024-12-14 10:46:03"
+  },
+  {
+    "number": 1055,
+    "title": "fix: Fix pnpm lockfiles",
+    "state": "closed",
+    "created_at": "2024-12-13 23:13:02",
+    "updated_at": "2024-12-13 23:24:21",
+    "author": "jzvikart",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1055",
+    "comments": 1,
+    "closed_at": "2024-12-13 23:24:20",
+    "branch": "fix/fix-pnpm-lock-issues",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 2,
+    "changed_files": 7,
+    "additions": 127,
+    "deletions": 23993,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": ".github/workflows/ci.yaml",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": ".github/workflows/integrationTests.yaml",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/package-lock.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 21360,
+        "changes": 21360
+      },
+      {
+        "filename": "packages/plugin-coinbase/package-lock.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 2534,
+        "changes": 2534
+      },
+      {
+        "filename": "pnpm-lock.yaml",
+        "status": "modified",
+        "additions": 122,
+        "deletions": 93,
+        "changes": 215
+      },
+      {
+        "filename": "scripts/clean.sh",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 3,
+        "changes": 5
+      },
+      {
+        "filename": "scripts/smokeTests.sh",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      }
+    ],
+    "merged_at": "2024-12-13 23:24:20"
+  },
+  {
+    "number": 1054,
+    "title": "fix: discord client ci issues",
+    "state": "closed",
+    "created_at": "2024-12-13 23:04:55",
+    "updated_at": "2024-12-13 23:45:13",
+    "author": "cygaar",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1054",
+    "comments": 0,
+    "closed_at": "2024-12-13 23:10:24",
+    "branch": "fix_discord_ci",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 2,
+    "changed_files": 2,
+    "additions": 302,
+    "deletions": 129,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/client-discord/src/messages.ts",
+        "status": "modified",
+        "additions": 301,
+        "deletions": 128,
+        "changes": 429
+      },
+      {
+        "filename": "packages/client-discord/src/voice.ts",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      }
+    ],
+    "merged_at": "2024-12-13 23:10:24"
+  },
+  {
+    "number": 1053,
+    "title": "Update docs (CONTRIBUTING.md)",
+    "state": "closed",
+    "created_at": "2024-12-13 22:31:07",
+    "updated_at": "2024-12-14 08:30:28",
+    "author": "lessuselesss",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1053",
+    "comments": 0,
+    "closed_at": "2024-12-14 08:30:28",
+    "branch": "update_docs",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 21,
+    "changed_files": 3,
+    "additions": 191,
+    "deletions": 2,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "CONTRIBUTING.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "README_HE.md",
+        "status": "added",
+        "additions": 189,
+        "deletions": 0,
+        "changes": 189
+      }
+    ],
+    "merged_at": "2024-12-14 08:30:28"
+  },
+  {
+    "number": 1052,
+    "title": "feat: add/change change through REST api (client-direct)",
+    "state": "closed",
+    "created_at": "2024-12-13 21:59:40",
+    "updated_at": "2024-12-13 23:06:27",
+    "author": "odilitime",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1052",
+    "comments": 0,
+    "closed_at": "2024-12-13 23:06:27",
+    "branch": "rest-upgrade",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 3,
+    "changed_files": 3,
+    "additions": 60,
+    "deletions": 14,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "agent/src/index.ts",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 0,
+        "changes": 5
+      },
+      {
+        "filename": "packages/client-direct/src/api.ts",
+        "status": "modified",
+        "additions": 48,
+        "deletions": 2,
+        "changes": 50
+      },
+      {
+        "filename": "packages/client-direct/src/index.ts",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 12,
+        "changes": 19
+      }
+    ],
+    "merged_at": "2024-12-13 23:06:27"
+  },
+  {
+    "number": 1051,
+    "title": "Revert \"chore: improve smokeTests environment validation and logging\"",
+    "state": "closed",
+    "created_at": "2024-12-13 21:47:11",
+    "updated_at": "2024-12-13 22:09:14",
+    "author": "jkbrooks",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1051",
+    "comments": 2,
+    "closed_at": "2024-12-13 22:09:06",
+    "branch": "revert-1046-add-improved-logging-to-smokeTests",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": false,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 2,
+    "additions": 24,
+    "deletions": 59,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "pnpm-lock.yaml",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 30,
+        "changes": 31
+      },
+      {
+        "filename": "scripts/smokeTests.sh",
+        "status": "modified",
+        "additions": 23,
+        "deletions": 29,
+        "changes": 52
+      }
+    ]
+  },
+  {
+    "number": 1050,
+    "title": "fix: add auto to clients in types to use client-auto",
+    "state": "closed",
+    "created_at": "2024-12-13 21:23:21",
+    "updated_at": "2024-12-13 21:28:58",
+    "author": "HashWarlock",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1050",
+    "comments": 0,
+    "closed_at": "2024-12-13 21:28:56",
+    "branch": "hash/fix-load-auto-client",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 2,
+    "additions": 3,
+    "deletions": 2,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/client-auto/src/index.ts",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2,
+        "changes": 4
+      },
+      {
+        "filename": "packages/core/src/types.ts",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0,
+        "changes": 1
+      }
+    ],
+    "merged_at": "2024-12-13 21:28:56"
+  },
+  {
+    "number": 1047,
+    "title": "fix: add API keys to solana plugin config",
+    "state": "closed",
+    "created_at": "2024-12-13 19:11:55",
+    "updated_at": "2024-12-13 19:12:58",
+    "author": "IkigaiLabsETH",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1047",
+    "comments": 0,
+    "closed_at": "2024-12-13 19:12:52",
+    "branch": "fix/solana-config",
+    "base_branch": "main",
+    "draft": false,
+    "merged": false,
+    "mergeable_state": "unknown",
+    "commits": 2,
+    "changed_files": 0,
+    "additions": 0,
+    "deletions": 0,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": []
+  },
+  {
+    "number": 1046,
+    "title": "chore: improve smokeTests environment validation and logging",
+    "state": "closed",
+    "created_at": "2024-12-13 19:08:47",
+    "updated_at": "2024-12-13 22:09:40",
+    "author": "aramxc",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1046",
+    "comments": 3,
+    "closed_at": "2024-12-13 20:40:08",
+    "branch": "add-improved-logging-to-smokeTests",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 5,
+    "changed_files": 2,
+    "additions": 59,
+    "deletions": 24,
+    "review_comments": 3,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "pnpm-lock.yaml",
+        "status": "modified",
+        "additions": 30,
+        "deletions": 1,
+        "changes": 31
+      },
+      {
+        "filename": "scripts/smokeTests.sh",
+        "status": "modified",
+        "additions": 29,
+        "deletions": 23,
+        "changes": 52
+      }
+    ],
+    "merged_at": "2024-12-13 20:40:08"
+  },
+  {
+    "number": 1045,
+    "title": "chore: release develop into main",
+    "state": "closed",
+    "created_at": "2024-12-13 19:04:23",
+    "updated_at": "2024-12-13 19:08:17",
+    "author": "odilitime",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1045",
+    "comments": 1,
+    "closed_at": "2024-12-13 19:07:39",
+    "branch": "develop",
+    "base_branch": "main",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 37,
+    "changed_files": 31,
+    "additions": 1622,
+    "deletions": 354,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": ".env.example",
+        "status": "modified",
+        "additions": 10,
+        "deletions": 0,
+        "changes": 10
+      },
+      {
+        "filename": ".github/workflows/integrationTests.yaml",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "agent/src/index.ts",
+        "status": "modified",
+        "additions": 40,
+        "deletions": 17,
+        "changes": 57
+      },
+      {
+        "filename": "docs/docs/core/characterfile.md",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 5,
+        "changes": 10
+      },
+      {
+        "filename": "lerna.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "package.json",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 1,
+        "changes": 3
+      },
+      {
+        "filename": "packages/_examples/plugin/.npmignore",
+        "status": "added",
+        "additions": 6,
+        "deletions": 0,
+        "changes": 6
+      },
+      {
+        "filename": "packages/_examples/plugin/README.md",
+        "status": "added",
+        "additions": 32,
+        "deletions": 0,
+        "changes": 32
+      },
+      {
+        "filename": "packages/_examples/plugin/eslint.config.mjs",
+        "status": "added",
+        "additions": 3,
+        "deletions": 0,
+        "changes": 3
+      },
+      {
+        "filename": "packages/_examples/plugin/package.json",
+        "status": "added",
+        "additions": 19,
+        "deletions": 0,
+        "changes": 19
+      },
+      {
+        "filename": "packages/_examples/plugin/src/actions/sampleAction.ts",
+        "status": "added",
+        "additions": 117,
+        "deletions": 0,
+        "changes": 117
+      },
+      {
+        "filename": "packages/_examples/plugin/src/evaluators/sampleEvalutor.ts",
+        "status": "added",
+        "additions": 47,
+        "deletions": 0,
+        "changes": 47
+      },
+      {
+        "filename": "packages/_examples/plugin/src/index.ts",
+        "status": "added",
+        "additions": 8,
+        "deletions": 0,
+        "changes": 8
+      },
+      {
+        "filename": "packages/_examples/plugin/src/plugins/samplePlugin.ts",
+        "status": "added",
+        "additions": 17,
+        "deletions": 0,
+        "changes": 17
+      },
+      {
+        "filename": "packages/_examples/plugin/src/providers/sampleProvider.ts",
+        "status": "added",
+        "additions": 14,
+        "deletions": 0,
+        "changes": 14
+      },
+      {
+        "filename": "packages/_examples/plugin/src/templates.ts",
+        "status": "added",
+        "additions": 60,
+        "deletions": 0,
+        "changes": 60
+      },
+      {
+        "filename": "packages/_examples/plugin/src/types.ts",
+        "status": "added",
+        "additions": 51,
+        "deletions": 0,
+        "changes": 51
+      },
+      {
+        "filename": "packages/_examples/plugin/tsconfig.json",
+        "status": "added",
+        "additions": 13,
+        "deletions": 0,
+        "changes": 13
+      },
+      {
+        "filename": "packages/_examples/plugin/tsup.config.ts",
+        "status": "added",
+        "additions": 21,
+        "deletions": 0,
+        "changes": 21
+      },
+      {
+        "filename": "packages/client-discord/src/constants.ts",
+        "status": "added",
+        "additions": 85,
+        "deletions": 0,
+        "changes": 85
+      },
+      {
+        "filename": "packages/client-discord/src/index.ts",
+        "status": "modified",
+        "additions": 26,
+        "deletions": 6,
+        "changes": 32
+      },
+      {
+        "filename": "packages/client-discord/src/messages.ts",
+        "status": "modified",
+        "additions": 533,
+        "deletions": 48,
+        "changes": 581
+      },
+      {
+        "filename": "packages/client-discord/src/utils.ts",
+        "status": "modified",
+        "additions": 79,
+        "deletions": 2,
+        "changes": 81
+      },
+      {
+        "filename": "packages/client-discord/src/voice.ts",
+        "status": "modified",
+        "additions": 73,
+        "deletions": 25,
+        "changes": 98
+      },
+      {
+        "filename": "packages/client-twitter/src/post.ts",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 2,
+        "changes": 7
+      },
+      {
+        "filename": "packages/core/src/generation.ts",
+        "status": "modified",
+        "additions": 23,
+        "deletions": 0,
+        "changes": 23
+      },
+      {
+        "filename": "packages/core/src/models.ts",
+        "status": "modified",
+        "additions": 14,
+        "deletions": 0,
+        "changes": 14
+      },
+      {
+        "filename": "packages/core/src/runtime.ts",
+        "status": "modified",
+        "additions": 20,
+        "deletions": 0,
+        "changes": 20
+      },
+      {
+        "filename": "packages/core/src/types.ts",
+        "status": "modified",
+        "additions": 13,
+        "deletions": 1,
+        "changes": 14
+      },
+      {
+        "filename": "packages/plugin-node/src/services/transcription.ts",
+        "status": "modified",
+        "additions": 28,
+        "deletions": 3,
+        "changes": 31
+      }
+    ],
+    "merged_at": "2024-12-13 19:07:39"
+  },
+  {
+    "number": 1043,
+    "title": "fix: re-enable generateNewTweetLoop / lint fixes",
+    "state": "closed",
+    "created_at": "2024-12-13 18:33:40",
+    "updated_at": "2024-12-13 18:45:51",
+    "author": "odilitime",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1043",
+    "comments": 1,
+    "closed_at": "2024-12-13 18:45:51",
+    "branch": "rest-upgrade",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 5,
+    "deletions": 2,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/client-twitter/src/post.ts",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 2,
+        "changes": 7
+      }
+    ],
+    "merged_at": "2024-12-13 18:45:51"
+  },
+  {
+    "number": 1042,
+    "title": "docs: characterfile.md docs outdated with latest eliza version",
+    "state": "closed",
+    "created_at": "2024-12-13 16:48:05",
+    "updated_at": "2024-12-13 17:00:33",
+    "author": "tqdpham96",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1042",
+    "comments": 0,
+    "closed_at": "2024-12-13 17:00:33",
+    "branch": "main",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 3,
+    "changed_files": 2,
+    "additions": 8,
+    "deletions": 5,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 0,
+        "changes": 3
+      },
+      {
+        "filename": "docs/docs/core/characterfile.md",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 5,
+        "changes": 10
+      }
+    ],
+    "merged_at": "2024-12-13 17:00:33"
+  },
+  {
+    "number": 1040,
+    "title": "fix: Allow bot to post tweets with images generated by the imageGenerationPlugin",
+    "state": "closed",
+    "created_at": "2024-12-13 15:30:19",
+    "updated_at": "2024-12-14 01:52:10",
+    "author": "tcm390",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1040",
+    "comments": 0,
+    "closed_at": "2024-12-14 01:52:08",
+    "branch": "tcm-twitter-image",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 3,
+    "changed_files": 4,
+    "additions": 60,
+    "deletions": 4,
+    "review_comments": 2,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "packages/client-twitter/src/interactions.ts",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 1,
+        "changes": 3
+      },
+      {
+        "filename": "packages/client-twitter/src/utils.ts",
+        "status": "modified",
+        "additions": 48,
+        "deletions": 1,
+        "changes": 49
+      },
+      {
+        "filename": "packages/core/src/types.ts",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 2,
+        "changes": 11
+      },
+      {
+        "filename": "packages/plugin-image-generation/src/index.ts",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0,
+        "changes": 1
+      }
+    ],
+    "merged_at": "2024-12-14 01:52:08"
+  },
+  {
+    "number": 1039,
+    "title": "feat: add plugin-ton",
+    "state": "closed",
+    "created_at": "2024-12-13 11:19:27",
+    "updated_at": "2024-12-14 10:33:17",
+    "author": "jinbangyi",
+    "labels": "Plugin_new",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1039",
+    "comments": 0,
+    "closed_at": "2024-12-14 10:33:16",
+    "branch": "develop",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 2,
+    "changed_files": 12,
+    "additions": 1040,
+    "deletions": 278,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": ".env.example",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 0,
+        "changes": 4
+      },
+      {
+        "filename": "agent/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0,
+        "changes": 1
+      },
+      {
+        "filename": "agent/src/index.ts",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 0,
+        "changes": 2
+      },
+      {
+        "filename": "packages/plugin-ton/package.json",
+        "status": "added",
+        "additions": 25,
+        "deletions": 0,
+        "changes": 25
+      },
+      {
+        "filename": "packages/plugin-ton/src/actions/transfer.ts",
+        "status": "added",
+        "additions": 220,
+        "deletions": 0,
+        "changes": 220
+      },
+      {
+        "filename": "packages/plugin-ton/src/enviroment.ts",
+        "status": "added",
+        "additions": 36,
+        "deletions": 0,
+        "changes": 36
+      },
+      {
+        "filename": "packages/plugin-ton/src/index.ts",
+        "status": "added",
+        "additions": 15,
+        "deletions": 0,
+        "changes": 15
+      },
+      {
+        "filename": "packages/plugin-ton/src/providers/wallet.ts",
+        "status": "added",
+        "additions": 278,
+        "deletions": 0,
+        "changes": 278
+      },
+      {
+        "filename": "packages/plugin-ton/src/tests/wallet.test.ts",
+        "status": "added",
+        "additions": 85,
+        "deletions": 0,
+        "changes": 85
+      },
+      {
+        "filename": "packages/plugin-ton/tsconfig.json",
+        "status": "added",
+        "additions": 15,
+        "deletions": 0,
+        "changes": 15
+      },
+      {
+        "filename": "packages/plugin-ton/tsup.config.ts",
+        "status": "added",
+        "additions": 19,
+        "deletions": 0,
+        "changes": 19
+      },
+      {
+        "filename": "pnpm-lock.yaml",
+        "status": "modified",
+        "additions": 340,
+        "deletions": 278,
+        "changes": 618
+      }
+    ],
+    "merged_at": "2024-12-14 10:33:16"
+  },
+  {
+    "number": 1038,
+    "title": "feat: Add AI Agent Dev School Tutorial Link",
+    "state": "closed",
+    "created_at": "2024-12-13 09:19:05",
+    "updated_at": "2024-12-13 15:51:45",
+    "author": "lalalune",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1038",
+    "comments": 0,
+    "closed_at": "2024-12-13 15:51:43",
+    "branch": "lalalune-patch-1",
+    "base_branch": "main",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 3,
+    "deletions": 0,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 0,
+        "changes": 3
+      }
+    ],
+    "merged_at": "2024-12-13 15:51:43"
+  },
+  {
+    "number": 1037,
+    "title": "upstream",
+    "state": "closed",
+    "created_at": "2024-12-13 08:52:16",
+    "updated_at": "2024-12-13 08:52:35",
+    "author": "aleks1k",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1037",
+    "comments": 0,
+    "closed_at": "2024-12-13 08:52:35",
+    "branch": "main",
+    "base_branch": "main",
+    "draft": true,
+    "merged": false,
+    "mergeable_state": "dirty",
+    "commits": 5,
+    "changed_files": 8,
+    "additions": 61,
+    "deletions": 41,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": false,
+    "files": [
+      {
+        "filename": "agent/src/index.ts",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 0,
+        "changes": 2
+      },
+      {
+        "filename": "characters/eternalai.character.json",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "client/package.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "packages/client-twitter/src/index.ts",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 9,
+        "changes": 18
+      },
+      {
+        "filename": "packages/client-twitter/src/post.ts",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 1,
+        "changes": 6
+      },
+      {
+        "filename": "packages/client-twitter/src/search.ts",
+        "status": "modified",
+        "additions": 33,
+        "deletions": 19,
+        "changes": 52
+      },
+      {
+        "filename": "packages/plugin-node/src/services/image.ts",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      },
+      {
+        "filename": "pnpm-lock.yaml",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      }
+    ]
+  },
+  {
+    "number": 1036,
+    "title": "chore: improving client typing",
+    "state": "closed",
+    "created_at": "2024-12-13 06:53:36",
+    "updated_at": "2024-12-14 18:40:55",
+    "author": "BalanaguYashwanth",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1036",
+    "comments": 15,
+    "closed_at": "2024-12-14 18:40:37",
+    "branch": "656--fix-twitter-multi-agent-support",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 17,
+    "changed_files": 11,
+    "additions": 20595,
+    "deletions": 18945,
+    "review_comments": 3,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "agent/src/index.ts",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 5,
+        "changes": 11
+      },
+      {
+        "filename": "docs/docs/packages/agent.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      },
+      {
+        "filename": "docs/docs/packages/agents.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 8,
+        "changes": 12
+      },
+      {
+        "filename": "docs/docs/packages/clients.md",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 1,
+        "changes": 1
+      },
+      {
+        "filename": "packages/client-twitter/src/base.ts",
+        "status": "modified",
+        "additions": 12,
+        "deletions": 8,
+        "changes": 20
+      },
+      {
+        "filename": "packages/client-twitter/src/environment.ts",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2,
+        "changes": 4
+      },
+      {
+        "filename": "packages/client-twitter/src/interactions.ts",
+        "status": "modified",
+        "additions": 15,
+        "deletions": 17,
+        "changes": 32
+      },
+      {
+        "filename": "packages/client-twitter/src/post.ts",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 7,
+        "changes": 16
+      },
+      {
+        "filename": "packages/client-twitter/src/search.ts",
+        "status": "modified",
+        "additions": 10,
+        "deletions": 13,
+        "changes": 23
+      },
+      {
+        "filename": "packages/core/src/types.ts",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 3,
+        "changes": 9
+      },
+      {
+        "filename": "pnpm-lock.yaml",
+        "status": "modified",
+        "additions": 20527,
+        "deletions": 18877,
+        "changes": 39404
+      }
+    ],
+    "merged_at": "2024-12-14 18:40:37"
+  },
+  {
+    "number": 1035,
+    "title": "fix: use pull_request_target for integration tests",
+    "state": "closed",
+    "created_at": "2024-12-13 06:25:05",
+    "updated_at": "2024-12-13 17:47:36",
+    "author": "jnaulty",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1035",
+    "comments": 0,
+    "closed_at": "2024-12-13 17:47:36",
+    "branch": "allow-secrets-for-forked-prs",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 1,
+    "deletions": 1,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": ".github/workflows/integrationTests.yaml",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      }
+    ],
+    "merged_at": "2024-12-13 17:47:36"
+  },
+  {
     "number": 1034,
     "title": "feat: add README_TH.md in docs directory",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-12-13 05:01:03",
-    "updated_at": "2024-12-13 05:01:03",
+    "updated_at": "2024-12-14 08:31:45",
     "author": "derRizzMeister",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/1034",
-    "comments": 0,
+    "comments": 1,
+    "closed_at": "2024-12-14 08:31:45",
     "branch": "main",
     "base_branch": "develop",
     "draft": false,
-    "merged": false,
-    "mergeable_state": "unstable",
-    "commits": 1,
-    "changed_files": 1,
-    "additions": 178,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 2,
+    "changed_files": 2,
+    "additions": 182,
     "deletions": 0,
     "review_comments": 0,
-    "maintainer_can_modify": true,
-    "rebaseable": true,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
     "files": [
+      {
+        "filename": "docs/README.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 0,
+        "changes": 4
+      },
       {
         "filename": "docs/README_TH.md",
         "status": "added",
@@ -30,31 +3770,33 @@
         "deletions": 0,
         "changes": 178
       }
-    ]
+    ],
+    "merged_at": "2024-12-14 08:31:45"
   },
   {
     "number": 1033,
     "title": "feat: Add Telegram Team features ",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-12-13 04:49:55",
-    "updated_at": "2024-12-13 04:49:55",
+    "updated_at": "2024-12-14 01:54:09",
     "author": "azep-ninja",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/1033",
-    "comments": 0,
+    "comments": 2,
+    "closed_at": "2024-12-14 01:54:09",
     "branch": "telegram-team-feature",
-    "base_branch": "main",
+    "base_branch": "develop",
     "draft": false,
-    "merged": false,
-    "mergeable_state": "blocked",
-    "commits": 1,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 2,
     "changed_files": 4,
     "additions": 602,
     "deletions": 1,
     "review_comments": 0,
-    "maintainer_can_modify": true,
-    "rebaseable": true,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": "packages/client-telegram/src/constants.ts",
@@ -84,31 +3826,33 @@
         "deletions": 0,
         "changes": 5
       }
-    ]
+    ],
+    "merged_at": "2024-12-14 01:54:09"
   },
   {
     "number": 1032,
     "title": "feat: Add Discord Team features",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-12-13 04:48:03",
-    "updated_at": "2024-12-13 04:48:03",
+    "updated_at": "2024-12-13 16:43:38",
     "author": "azep-ninja",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/1032",
     "comments": 0,
+    "closed_at": "2024-12-13 16:43:38",
     "branch": "discord-team-feature",
     "base_branch": "develop",
     "draft": false,
-    "merged": false,
-    "mergeable_state": "unstable",
+    "merged": true,
+    "mergeable_state": "unknown",
     "commits": 1,
     "changed_files": 4,
     "additions": 702,
     "deletions": 50,
     "review_comments": 0,
-    "maintainer_can_modify": true,
-    "rebaseable": true,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": "packages/client-discord/src/constants.ts",
@@ -138,31 +3882,33 @@
         "deletions": 0,
         "changes": 5
       }
-    ]
+    ],
+    "merged_at": "2024-12-13 16:43:38"
   },
   {
     "number": 1031,
     "title": "chore: Update package.json",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-12-13 04:31:33",
-    "updated_at": "2024-12-13 05:10:34",
+    "updated_at": "2024-12-14 10:45:30",
     "author": "Freytes",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/1031",
     "comments": 1,
+    "closed_at": "2024-12-14 10:45:30",
     "branch": "patch-3",
     "base_branch": "develop",
     "draft": false,
-    "merged": false,
-    "mergeable_state": "unstable",
+    "merged": true,
+    "mergeable_state": "unknown",
     "commits": 1,
     "changed_files": 1,
     "additions": 1,
     "deletions": 0,
     "review_comments": 0,
-    "maintainer_can_modify": true,
-    "rebaseable": true,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": "packages/plugin-goat/package.json",
@@ -171,31 +3917,33 @@
         "deletions": 0,
         "changes": 1
       }
-    ]
+    ],
+    "merged_at": "2024-12-14 10:45:30"
   },
   {
     "number": 1030,
-    "title": "FEAT: `plugin-story`",
-    "state": "open",
+    "title": "feat: plugin-story",
+    "state": "closed",
     "created_at": "2024-12-13 03:18:33",
-    "updated_at": "2024-12-13 03:22:56",
+    "updated_at": "2024-12-14 23:39:33",
     "author": "jacob-tucker",
-    "labels": "",
+    "labels": "Plugin_new",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/1030",
     "comments": 0,
+    "closed_at": "2024-12-14 23:39:33",
     "branch": "plugin-story",
-    "base_branch": "main",
+    "base_branch": "develop",
     "draft": false,
-    "merged": false,
-    "mergeable_state": "dirty",
+    "merged": true,
+    "mergeable_state": "unknown",
     "commits": 22,
     "changed_files": 24,
     "additions": 4395,
     "deletions": 2520,
-    "review_comments": 0,
+    "review_comments": 1,
     "maintainer_can_modify": false,
-    "rebaseable": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": ".env.example",
@@ -365,31 +4113,33 @@
         "deletions": 1039,
         "changes": 2491
       }
-    ]
+    ],
+    "merged_at": "2024-12-14 23:39:33"
   },
   {
     "number": 1029,
     "title": "feat: client-discord stop implementation / agent improvements",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-12-13 03:06:04",
-    "updated_at": "2024-12-13 04:54:42",
+    "updated_at": "2024-12-13 18:16:14",
     "author": "odilitime",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/1029",
     "comments": 1,
+    "closed_at": "2024-12-13 18:16:14",
     "branch": "rest-upgrade",
     "base_branch": "develop",
     "draft": false,
-    "merged": false,
-    "mergeable_state": "unstable",
-    "commits": 3,
-    "changed_files": 4,
-    "additions": 87,
-    "deletions": 24,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 6,
+    "changed_files": 5,
+    "additions": 342,
+    "deletions": 265,
     "review_comments": 4,
-    "maintainer_can_modify": true,
-    "rebaseable": true,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": "agent/src/index.ts",
@@ -418,8 +4168,16 @@
         "additions": 6,
         "deletions": 1,
         "changes": 7
+      },
+      {
+        "filename": "pnpm-lock.yaml",
+        "status": "modified",
+        "additions": 255,
+        "deletions": 241,
+        "changes": 496
       }
-    ]
+    ],
+    "merged_at": "2024-12-13 18:16:14"
   },
   {
     "number": 1028,
@@ -661,28 +4419,43 @@
   },
   {
     "number": 1026,
-    "title": "improve voice processing and add deepgram transcription option",
-    "state": "open",
+    "title": "feat: improve voice processing and add deepgram transcription option",
+    "state": "closed",
     "created_at": "2024-12-13 01:59:57",
-    "updated_at": "2024-12-13 03:37:14",
+    "updated_at": "2024-12-13 17:35:53",
     "author": "tcm390",
-    "labels": "",
+    "labels": "ModelProvider_new",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/1026",
     "comments": 0,
+    "closed_at": "2024-12-13 17:35:51",
     "branch": "tcm-improve-discord-voice",
-    "base_branch": "main",
-    "draft": true,
-    "merged": false,
-    "mergeable_state": "blocked",
-    "commits": 4,
-    "changed_files": 2,
-    "additions": 101,
-    "deletions": 28,
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 11,
+    "changed_files": 5,
+    "additions": 108,
+    "deletions": 30,
     "review_comments": 0,
     "maintainer_can_modify": false,
-    "rebaseable": true,
+    "rebaseable": null,
     "files": [
+      {
+        "filename": ".env.example",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 0,
+        "changes": 4
+      },
+      {
+        "filename": "package.json",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 1,
+        "changes": 3
+      },
       {
         "filename": "packages/client-discord/src/voice.ts",
         "status": "modified",
@@ -696,8 +4469,16 @@
         "additions": 28,
         "deletions": 3,
         "changes": 31
+      },
+      {
+        "filename": "pnpm-lock.yaml",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
       }
-    ]
+    ],
+    "merged_at": "2024-12-13 17:35:51"
   },
   {
     "number": 1025,
@@ -851,7 +4632,7 @@
     "title": "feat: add plugin social wallets",
     "state": "open",
     "created_at": "2024-12-12 21:35:25",
-    "updated_at": "2024-12-13 02:52:00",
+    "updated_at": "2024-12-13 19:23:31",
     "author": "djdabs",
     "labels": "Plugin_new",
     "assignees": "",
@@ -861,14 +4642,14 @@
     "base_branch": "develop",
     "draft": false,
     "merged": false,
-    "mergeable_state": "unstable",
+    "mergeable_state": "unknown",
     "commits": 5,
     "changed_files": 16,
     "additions": 972,
     "deletions": 284,
     "review_comments": 0,
     "maintainer_can_modify": true,
-    "rebaseable": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": ".env.example",
@@ -1223,26 +5004,27 @@
   {
     "number": 1011,
     "title": "feat: Add plugin-nft-generation: create Solana NFT collections.",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-12-12 10:48:10",
-    "updated_at": "2024-12-13 03:16:02",
+    "updated_at": "2024-12-14 22:57:40",
     "author": "xwxtwd",
     "labels": "Plugin_new",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/1011",
     "comments": 4,
+    "closed_at": "2024-12-14 22:57:40",
     "branch": "feat/add_plugin-nft-generator",
     "base_branch": "develop",
     "draft": false,
-    "merged": false,
-    "mergeable_state": "unstable",
-    "commits": 5,
-    "changed_files": 19,
-    "additions": 1308,
-    "deletions": 4,
-    "review_comments": 9,
-    "maintainer_can_modify": true,
-    "rebaseable": true,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 6,
+    "changed_files": 18,
+    "additions": 1047,
+    "deletions": 1,
+    "review_comments": 10,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": ".env.example",
@@ -1261,9 +5043,9 @@
       {
         "filename": "agent/src/index.ts",
         "status": "modified",
-        "additions": 15,
+        "additions": 9,
         "deletions": 0,
-        "changes": 15
+        "changes": 9
       },
       {
         "filename": "packages/core/src/environment.ts",
@@ -1276,8 +5058,8 @@
         "filename": "packages/core/src/types.ts",
         "status": "modified",
         "additions": 5,
-        "deletions": 1,
-        "changes": 6
+        "deletions": 0,
+        "changes": 5
       },
       {
         "filename": "packages/plugin-nft-generation/.npmignore",
@@ -1364,20 +5146,14 @@
         "changes": 3
       },
       {
-        "filename": "pnpm-lock.yaml",
-        "status": "modified",
-        "additions": 255,
-        "deletions": 2,
-        "changes": 257
-      },
-      {
         "filename": "turbo.json",
         "status": "modified",
         "additions": 3,
         "deletions": 0,
         "changes": 3
       }
-    ]
+    ],
+    "merged_at": "2024-12-14 22:57:40"
   },
   {
     "number": 1010,
@@ -1536,26 +5312,27 @@
   {
     "number": 1008,
     "title": "feat: add venice.ai api model provider",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-12-12 09:31:49",
-    "updated_at": "2024-12-13 03:50:15",
+    "updated_at": "2024-12-13 07:41:07",
     "author": "proteanx",
     "labels": "ModelProvider_new",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/1008",
-    "comments": 2,
+    "comments": 3,
+    "closed_at": "2024-12-13 07:41:07",
     "branch": "venice",
     "base_branch": "develop",
     "draft": false,
-    "merged": false,
-    "mergeable_state": "unstable",
+    "merged": true,
+    "mergeable_state": "unknown",
     "commits": 5,
     "changed_files": 6,
     "additions": 200,
     "deletions": 55,
     "review_comments": 6,
-    "maintainer_can_modify": true,
-    "rebaseable": false,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": ".env.example",
@@ -1599,7 +5376,8 @@
         "deletions": 55,
         "changes": 205
       }
-    ]
+    ],
+    "merged_at": "2024-12-13 07:41:07"
   },
   {
     "number": 1007,
@@ -1914,14 +5692,14 @@
     "title": "FEAT: Proof of Pizza - Agentic Dominos Ordering",
     "state": "open",
     "created_at": "2024-12-12 06:34:52",
-    "updated_at": "2024-12-13 05:05:30",
+    "updated_at": "2024-12-13 19:07:41",
     "author": "ropresearch",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/1005",
     "comments": 5,
     "branch": "ropirito/pizzabot",
-    "base_branch": "develop",
+    "base_branch": "main",
     "draft": false,
     "merged": false,
     "mergeable_state": "dirty",
@@ -2630,26 +6408,27 @@
   {
     "number": 998,
     "title": "test: adding tests. changed files actions.test.ts, messages.test.ts, models.test.ts",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-12-12 00:10:52",
-    "updated_at": "2024-12-13 02:56:13",
+    "updated_at": "2024-12-14 18:13:17",
     "author": "ai16z-demirix",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/998",
     "comments": 2,
+    "closed_at": "2024-12-14 18:13:17",
     "branch": "main",
     "base_branch": "develop",
     "draft": false,
-    "merged": false,
-    "mergeable_state": "unstable",
+    "merged": true,
+    "mergeable_state": "unknown",
     "commits": 4,
     "changed_files": 3,
     "additions": 435,
     "deletions": 98,
     "review_comments": 4,
-    "maintainer_can_modify": true,
-    "rebaseable": true,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": "packages/core/src/tests/actions.test.ts",
@@ -2672,7 +6451,8 @@
         "deletions": 24,
         "changes": 167
       }
-    ]
+    ],
+    "merged_at": "2024-12-14 18:13:17"
   },
   {
     "number": 997,
@@ -2945,7 +6725,7 @@
     "title": "test: Initial release of smoke/integration tests + testing framework",
     "state": "closed",
     "created_at": "2024-12-11 15:57:11",
-    "updated_at": "2024-12-12 17:39:14",
+    "updated_at": "2024-12-13 16:48:50",
     "author": "jzvikart",
     "labels": "",
     "assignees": "",
@@ -2961,7 +6741,7 @@
     "changed_files": 8,
     "additions": 454,
     "deletions": 57,
-    "review_comments": 0,
+    "review_comments": 3,
     "maintainer_can_modify": false,
     "rebaseable": null,
     "files": [
@@ -3254,10 +7034,10 @@
   },
   {
     "number": 984,
-    "title": "Add plugin-dominos",
+    "title": "feat: Add plugin-dominos",
     "state": "closed",
     "created_at": "2024-12-11 06:38:05",
-    "updated_at": "2024-12-13 01:54:33",
+    "updated_at": "2024-12-13 22:12:38",
     "author": "lalalune",
     "labels": "Plugin_new",
     "assignees": "",
@@ -3744,24 +7524,24 @@
     "title": "Feat/genlayer plugin",
     "state": "open",
     "created_at": "2024-12-10 18:43:12",
-    "updated_at": "2024-12-13 02:57:30",
+    "updated_at": "2024-12-14 23:40:58",
     "author": "AgustinRamiroDiaz",
     "labels": "Plugin_new",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/975",
-    "comments": 2,
+    "comments": 3,
     "branch": "feat/genlayer-plugin",
     "base_branch": "develop",
     "draft": false,
     "merged": false,
-    "mergeable_state": "dirty",
+    "mergeable_state": "unknown",
     "commits": 18,
     "changed_files": 18,
     "additions": 2454,
     "deletions": 218,
     "review_comments": 0,
     "maintainer_can_modify": false,
-    "rebaseable": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": ".env.example",
@@ -3938,12 +7718,12 @@
     "title": "LinkedIn Client",
     "state": "closed",
     "created_at": "2024-12-10 16:47:43",
-    "updated_at": "2024-12-12 18:26:03",
+    "updated_at": "2024-12-13 11:53:53",
     "author": "bkellgren",
     "labels": "Plugin_new",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/973",
-    "comments": 4,
+    "comments": 5,
     "closed_at": "2024-12-11 01:35:39",
     "branch": "main",
     "base_branch": "main",
@@ -4020,14 +7800,15 @@
   {
     "number": 971,
     "title": "feat: add plugin to retrieve Twitter/X sporting trends",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-12-10 12:59:41",
-    "updated_at": "2024-12-11 15:58:42",
+    "updated_at": "2024-12-14 11:06:26",
     "author": "salmanpot",
     "labels": "Client: Twitter,Plugin_new",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/971",
-    "comments": 2,
+    "comments": 3,
+    "closed_at": "2024-12-14 11:06:25",
     "branch": "feat/KM-Eliza-BOT",
     "base_branch": "main",
     "draft": false,
@@ -4094,10 +7875,10 @@
   },
   {
     "number": 968,
-    "title": "Feat: KM Eliza tweet automation.",
+    "title": "feat: KM Eliza tweet automation.",
     "state": "closed",
     "created_at": "2024-12-10 11:52:48",
-    "updated_at": "2024-12-11 22:47:23",
+    "updated_at": "2024-12-13 22:04:08",
     "author": "salmanpot",
     "labels": "Client: Twitter",
     "assignees": "",
@@ -4525,45 +8306,45 @@
     "title": "feat: Updated characters types, Discord & Telegram enhancements",
     "state": "open",
     "created_at": "2024-12-10 04:41:58",
-    "updated_at": "2024-12-13 04:52:43",
+    "updated_at": "2024-12-14 18:13:42",
     "author": "azep-ninja",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/957",
-    "comments": 3,
+    "comments": 4,
     "branch": "discord-telegram-team-agents-and-optimizations",
     "base_branch": "develop",
     "draft": false,
     "merged": false,
-    "mergeable_state": "unstable",
-    "commits": 9,
-    "changed_files": 6,
-    "additions": 117,
-    "deletions": 9,
+    "mergeable_state": "unknown",
+    "commits": 12,
+    "changed_files": 5,
+    "additions": 101,
+    "deletions": 7,
     "review_comments": 3,
     "maintainer_can_modify": true,
-    "rebaseable": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": "packages/client-discord/src/messages.ts",
         "status": "modified",
-        "additions": 35,
-        "deletions": 1,
-        "changes": 36
+        "additions": 23,
+        "deletions": 2,
+        "changes": 25
       },
       {
         "filename": "packages/client-discord/src/utils.ts",
         "status": "modified",
-        "additions": 3,
-        "deletions": 3,
-        "changes": 6
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
       },
       {
         "filename": "packages/client-telegram/src/messageManager.ts",
         "status": "modified",
-        "additions": 19,
+        "additions": 17,
         "deletions": 1,
-        "changes": 20
+        "changes": 18
       },
       {
         "filename": "packages/client-telegram/src/telegramClient.ts",
@@ -4575,16 +8356,9 @@
       {
         "filename": "packages/core/src/types.ts",
         "status": "modified",
-        "additions": 4,
+        "additions": 5,
         "deletions": 0,
-        "changes": 4
-      },
-      {
-        "filename": "pnpm-lock.yaml",
-        "status": "modified",
-        "additions": 1,
-        "deletions": 1,
-        "changes": 2
+        "changes": 5
       }
     ]
   },
@@ -5539,24 +9313,24 @@
     "title": "feat: Implement a plugin that can retrieve Marlin TEE remote attestations",
     "state": "open",
     "created_at": "2024-12-09 10:47:11",
-    "updated_at": "2024-12-11 06:05:38",
+    "updated_at": "2024-12-14 22:56:16",
     "author": "roshanrags",
     "labels": "Plugin_new",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/935",
     "comments": 2,
     "branch": "roshan/plugin-tee-marlin",
-    "base_branch": "main",
+    "base_branch": "develop",
     "draft": false,
     "merged": false,
-    "mergeable_state": "dirty",
+    "mergeable_state": "unknown",
     "commits": 3,
     "changed_files": 13,
     "additions": 339,
     "deletions": 1,
     "review_comments": 0,
     "maintainer_can_modify": false,
-    "rebaseable": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": ".env.example",
@@ -5654,26 +9428,27 @@
   {
     "number": 934,
     "title": "feat: add plugin-sui",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-12-09 08:44:06",
-    "updated_at": "2024-12-13 02:57:34",
+    "updated_at": "2024-12-14 23:26:27",
     "author": "jnaulty",
     "labels": "Plugin_new",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/934",
     "comments": 2,
+    "closed_at": "2024-12-14 23:26:27",
     "branch": "jnaulty/add-sui-plugin",
     "base_branch": "develop",
     "draft": false,
-    "merged": false,
-    "mergeable_state": "unstable",
+    "merged": true,
+    "mergeable_state": "unknown",
     "commits": 1,
     "changed_files": 14,
-    "additions": 957,
-    "deletions": 39,
+    "additions": 862,
+    "deletions": 0,
     "review_comments": 0,
-    "maintainer_can_modify": true,
-    "rebaseable": true,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": ".env.example",
@@ -5769,11 +9544,12 @@
       {
         "filename": "pnpm-lock.yaml",
         "status": "modified",
-        "additions": 273,
-        "deletions": 39,
-        "changes": 312
+        "additions": 178,
+        "deletions": 0,
+        "changes": 178
       }
-    ]
+    ],
+    "merged_at": "2024-12-14 23:26:27"
   },
   {
     "number": 932,
@@ -6413,10 +10189,10 @@
   },
   {
     "number": 913,
-    "title": "Twitter client enhancements",
+    "title": "feat: twitter client enhancements",
     "state": "closed",
     "created_at": "2024-12-08 06:42:15",
-    "updated_at": "2024-12-12 08:38:38",
+    "updated_at": "2024-12-13 22:18:26",
     "author": "tharak123455",
     "labels": "Client: Twitter",
     "assignees": "",
@@ -6761,26 +10537,27 @@
   {
     "number": 906,
     "title": "Adding plugin for ZKsync Era",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-12-07 20:22:06",
-    "updated_at": "2024-12-10 18:47:48",
+    "updated_at": "2024-12-14 10:56:39",
     "author": "arose00",
     "labels": "Plugin_new",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/906",
     "comments": 2,
+    "closed_at": "2024-12-14 10:56:39",
     "branch": "add_zksync_era_support",
-    "base_branch": "main",
+    "base_branch": "main-3",
     "draft": false,
-    "merged": false,
-    "mergeable_state": "dirty",
+    "merged": true,
+    "mergeable_state": "unknown",
     "commits": 1,
     "changed_files": 9,
     "additions": 336,
     "deletions": 0,
     "review_comments": 0,
-    "maintainer_can_modify": true,
-    "rebaseable": false,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": ".env.example",
@@ -6845,7 +10622,8 @@
         "deletions": 0,
         "changes": 20
       }
-    ]
+    ],
+    "merged_at": "2024-12-14 10:56:39"
   },
   {
     "number": 903,
@@ -6997,35 +10775,37 @@
   {
     "number": 897,
     "title": "chore: improve formatting of .env.example for better readability",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-12-07 14:05:16",
-    "updated_at": "2024-12-11 16:01:19",
+    "updated_at": "2024-12-14 22:39:12",
     "author": "guzus",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/897",
     "comments": 4,
+    "closed_at": "2024-12-14 22:39:12",
     "branch": "patch-1",
-    "base_branch": "main",
+    "base_branch": "develop",
     "draft": false,
-    "merged": false,
-    "mergeable_state": "dirty",
-    "commits": 7,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 9,
     "changed_files": 1,
-    "additions": 81,
-    "deletions": 85,
+    "additions": 106,
+    "deletions": 109,
     "review_comments": 6,
-    "maintainer_can_modify": true,
-    "rebaseable": false,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": ".env.example",
         "status": "modified",
-        "additions": 81,
-        "deletions": 85,
-        "changes": 166
+        "additions": 106,
+        "deletions": 109,
+        "changes": 215
       }
-    ]
+    ],
+    "merged_at": "2024-12-14 22:39:12"
   },
   {
     "number": 896,
@@ -7264,10 +11044,10 @@
   },
   {
     "number": 889,
-    "title": "Feat : github image cicd",
+    "title": "feat : github image cicd",
     "state": "closed",
     "created_at": "2024-12-07 05:00:07",
-    "updated_at": "2024-12-11 16:51:07",
+    "updated_at": "2024-12-13 22:18:12",
     "author": "v1xingyue",
     "labels": "",
     "assignees": "",
@@ -8044,7 +11824,7 @@
     "title": "plugin-feel   # in progress",
     "state": "open",
     "created_at": "2024-12-06 05:07:06",
-    "updated_at": "2024-12-11 02:06:03",
+    "updated_at": "2024-12-14 23:59:07",
     "author": "boyaloxer",
     "labels": "Plugin_new",
     "assignees": "",
@@ -8055,9 +11835,9 @@
     "draft": true,
     "merged": false,
     "mergeable_state": "blocked",
-    "commits": 1,
-    "changed_files": 6,
-    "additions": 5058,
+    "commits": 2,
+    "changed_files": 14,
+    "additions": 5399,
     "deletions": 0,
     "review_comments": 0,
     "maintainer_can_modify": true,
@@ -8104,6 +11884,62 @@
         "additions": 175,
         "deletions": 0,
         "changes": 175
+      },
+      {
+        "filename": "plugin-feel/package.json",
+        "status": "added",
+        "additions": 18,
+        "deletions": 0,
+        "changes": 18
+      },
+      {
+        "filename": "plugin-feel/src/evaluators/index.ts",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0,
+        "changes": 1
+      },
+      {
+        "filename": "plugin-feel/src/evaluators/sentiment.ts",
+        "status": "added",
+        "additions": 159,
+        "deletions": 0,
+        "changes": 159
+      },
+      {
+        "filename": "plugin-feel/src/index.ts",
+        "status": "added",
+        "additions": 11,
+        "deletions": 0,
+        "changes": 11
+      },
+      {
+        "filename": "plugin-feel/src/providers/index.ts",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0,
+        "changes": 1
+      },
+      {
+        "filename": "plugin-feel/src/providers/sentiment.ts",
+        "status": "added",
+        "additions": 122,
+        "deletions": 0,
+        "changes": 122
+      },
+      {
+        "filename": "plugin-feel/tsconfig.json",
+        "status": "added",
+        "additions": 9,
+        "deletions": 0,
+        "changes": 9
+      },
+      {
+        "filename": "plugin-feel/tsup.config.ts",
+        "status": "added",
+        "additions": 20,
+        "deletions": 0,
+        "changes": 20
       }
     ]
   },
@@ -8349,12 +12185,12 @@
     "title": "Plugin-evm tests and multichain support",
     "state": "closed",
     "created_at": "2024-12-05 18:59:20",
-    "updated_at": "2024-12-12 19:09:27",
+    "updated_at": "2024-12-13 15:11:03",
     "author": "nicky-ru",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/864",
-    "comments": 15,
+    "comments": 17,
     "closed_at": "2024-12-12 17:15:14",
     "branch": "plugin-evm-multichain",
     "base_branch": "main",
@@ -8563,26 +12399,27 @@
   {
     "number": 860,
     "title": "feat: multiversx plugin",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-12-05 15:01:26",
-    "updated_at": "2024-12-13 02:57:43",
+    "updated_at": "2024-12-14 09:20:11",
     "author": "mgavrila",
     "labels": "Plugin_new",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/860",
     "comments": 0,
+    "closed_at": "2024-12-14 09:20:10",
     "branch": "feature/multivesrx-plugin",
     "base_branch": "develop",
     "draft": false,
-    "merged": false,
-    "mergeable_state": "unstable",
-    "commits": 11,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 15,
     "changed_files": 17,
-    "additions": 2134,
-    "deletions": 6,
+    "additions": 2159,
+    "deletions": 2,
     "review_comments": 2,
-    "maintainer_can_modify": true,
-    "rebaseable": true,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": ".env.example",
@@ -8699,35 +12536,37 @@
       {
         "filename": "pnpm-lock.yaml",
         "status": "modified",
-        "additions": 1323,
-        "deletions": 6,
-        "changes": 1329
+        "additions": 1348,
+        "deletions": 2,
+        "changes": 1350
       }
-    ]
+    ],
+    "merged_at": "2024-12-14 09:20:10"
   },
   {
     "number": 859,
     "title": "Add slack plugin",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-12-05 14:10:46",
-    "updated_at": "2024-12-10 19:09:20",
+    "updated_at": "2024-12-14 10:54:38",
     "author": "AIFlowML",
     "labels": "Plugin_new",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/859",
-    "comments": 1,
+    "comments": 2,
+    "closed_at": "2024-12-14 10:54:38",
     "branch": "add-slack-plugin",
-    "base_branch": "main",
+    "base_branch": "main-2",
     "draft": false,
-    "merged": false,
-    "mergeable_state": "dirty",
+    "merged": true,
+    "mergeable_state": "unknown",
     "commits": 5,
     "changed_files": 165,
     "additions": 8264,
     "deletions": 688,
     "review_comments": 3,
-    "maintainer_can_modify": true,
-    "rebaseable": false,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": ".gitignore",
@@ -8939,7 +12778,8 @@
         "deletions": 1,
         "changes": 2
       }
-    ]
+    ],
+    "merged_at": "2024-12-14 10:54:38"
   },
   {
     "number": 858,
@@ -8978,26 +12818,27 @@
   {
     "number": 856,
     "title": "feat: improve X/Twitter login with cookie validation and retry mechanism",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-12-05 12:28:30",
-    "updated_at": "2024-12-12 20:04:39",
+    "updated_at": "2024-12-14 07:41:31",
     "author": "arslanaybars",
     "labels": "Client: Twitter",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/856",
     "comments": 1,
+    "closed_at": "2024-12-14 07:41:31",
     "branch": "fix/twitter-login-cookie-check-#855",
-    "base_branch": "main",
+    "base_branch": "develop",
     "draft": false,
-    "merged": false,
-    "mergeable_state": "blocked",
+    "merged": true,
+    "mergeable_state": "unknown",
     "commits": 1,
     "changed_files": 1,
     "additions": 23,
     "deletions": 12,
     "review_comments": 3,
-    "maintainer_can_modify": true,
-    "rebaseable": true,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": "packages/client-twitter/src/base.ts",
@@ -9006,19 +12847,21 @@
         "deletions": 12,
         "changes": 35
       }
-    ]
+    ],
+    "merged_at": "2024-12-14 07:41:31"
   },
   {
     "number": 854,
     "title": "Agentf branch",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-12-05 11:51:20",
-    "updated_at": "2024-12-10 08:27:52",
+    "updated_at": "2024-12-14 10:51:01",
     "author": "f58637547",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/854",
     "comments": 1,
+    "closed_at": "2024-12-14 10:51:01",
     "branch": "agentf-branch",
     "base_branch": "main",
     "draft": false,
@@ -9029,7 +12872,7 @@
     "additions": 2298,
     "deletions": 814,
     "review_comments": 0,
-    "maintainer_can_modify": true,
+    "maintainer_can_modify": false,
     "rebaseable": false,
     "files": [
       {
@@ -9422,26 +13265,27 @@
   {
     "number": 852,
     "title": "Fix/charity",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-12-05 06:10:24",
-    "updated_at": "2024-12-05 19:59:58",
+    "updated_at": "2024-12-14 23:53:07",
     "author": "awidearray",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/852",
     "comments": 1,
+    "closed_at": "2024-12-14 23:53:06",
     "branch": "fix/charity",
-    "base_branch": "main",
+    "base_branch": "develop",
     "draft": false,
-    "merged": false,
-    "mergeable_state": "dirty",
+    "merged": true,
+    "mergeable_state": "unknown",
     "commits": 3,
     "changed_files": 7,
     "additions": 162,
     "deletions": 57,
     "review_comments": 10,
     "maintainer_can_modify": false,
-    "rebaseable": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": ".env.example",
@@ -9492,7 +13336,8 @@
         "deletions": 43,
         "changes": 109
       }
-    ]
+    ],
+    "merged_at": "2024-12-14 23:53:06"
   },
   {
     "number": 850,
@@ -9567,26 +13412,27 @@
   {
     "number": 847,
     "title": "feat: Add NEAR Protocol plugin",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-12-04 23:47:29",
-    "updated_at": "2024-12-10 18:50:46",
+    "updated_at": "2024-12-14 09:32:35",
     "author": "serrrfirat",
     "labels": "Plugin_new",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/847",
     "comments": 0,
+    "closed_at": "2024-12-14 09:32:34",
     "branch": "main",
-    "base_branch": "main",
+    "base_branch": "develop",
     "draft": false,
-    "merged": false,
-    "mergeable_state": "dirty",
+    "merged": true,
+    "mergeable_state": "unknown",
     "commits": 14,
     "changed_files": 11,
     "additions": 923,
     "deletions": 2,
     "review_comments": 0,
-    "maintainer_can_modify": true,
-    "rebaseable": false,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": ".env.example",
@@ -9665,7 +13511,8 @@
         "deletions": 0,
         "changes": 12
       }
-    ]
+    ],
+    "merged_at": "2024-12-14 09:32:34"
   },
   {
     "number": 846,
@@ -9978,24 +13825,24 @@
     "title": "feat: add avalanche plugin",
     "state": "open",
     "created_at": "2024-12-04 15:50:41",
-    "updated_at": "2024-12-10 19:25:54",
+    "updated_at": "2024-12-14 23:02:04",
     "author": "snow-farmer",
     "labels": "Plugin_new",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/842",
     "comments": 0,
     "branch": "avalanche-plugin",
-    "base_branch": "main",
+    "base_branch": "develop",
     "draft": false,
     "merged": false,
-    "mergeable_state": "dirty",
+    "mergeable_state": "unknown",
     "commits": 19,
     "changed_files": 19,
     "additions": 1463,
     "deletions": 0,
     "review_comments": 0,
     "maintainer_can_modify": true,
-    "rebaseable": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": ".env.example",
@@ -10199,24 +14046,24 @@
     "title": "feat: Add Custom System Prompt Support for plugin-image-generation ",
     "state": "open",
     "created_at": "2024-12-04 09:39:15",
-    "updated_at": "2024-12-04 09:39:15",
+    "updated_at": "2024-12-14 17:36:01",
     "author": "tsubasakong",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/839",
-    "comments": 0,
+    "comments": 1,
     "branch": "main",
-    "base_branch": "main",
+    "base_branch": "develop",
     "draft": false,
     "merged": false,
-    "mergeable_state": "dirty",
+    "mergeable_state": "unknown",
     "commits": 1,
     "changed_files": 3,
     "additions": 89,
     "deletions": 25,
     "review_comments": 0,
     "maintainer_can_modify": true,
-    "rebaseable": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": "packages/core/src/generation.ts",
@@ -11579,24 +15426,24 @@
     "title": "feat: Add Cloudflare AI Gateway support",
     "state": "open",
     "created_at": "2024-12-03 12:16:09",
-    "updated_at": "2024-12-10 19:30:16",
+    "updated_at": "2024-12-14 09:36:00",
     "author": "w3-bounty",
     "labels": "Discussion",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/821",
     "comments": 0,
     "branch": "feature/cloudflare-ai-gateway-clean",
-    "base_branch": "main",
+    "base_branch": "develop",
     "draft": false,
     "merged": false,
-    "mergeable_state": "dirty",
+    "mergeable_state": "unknown",
     "commits": 1,
     "changed_files": 3,
     "additions": 144,
     "deletions": 22,
     "review_comments": 0,
     "maintainer_can_modify": true,
-    "rebaseable": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": ".env.example",
@@ -13174,12 +17021,12 @@
     "title": "feat: add obsidian traversal",
     "state": "open",
     "created_at": "2024-12-02 18:10:51",
-    "updated_at": "2024-12-02 20:15:07",
+    "updated_at": "2024-12-14 19:52:30",
     "author": "8times4",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/792",
-    "comments": 1,
+    "comments": 2,
     "branch": "update",
     "base_branch": "main",
     "draft": true,
@@ -18572,12 +22419,12 @@
     "title": "feat(plugin): add bob launchpad to icp package.",
     "state": "open",
     "created_at": "2024-11-30 10:27:25",
-    "updated_at": "2024-12-10 07:59:03",
+    "updated_at": "2024-12-14 11:08:50",
     "author": "bob-robert-ai",
     "labels": "Discussion",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/714",
-    "comments": 0,
+    "comments": 1,
     "branch": "icp-add-launch-bob-fun",
     "base_branch": "main",
     "draft": false,
@@ -18795,26 +22642,27 @@
   {
     "number": 708,
     "title": "polymarket wip",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-11-30 07:16:30",
-    "updated_at": "2024-11-30 20:14:22",
+    "updated_at": "2024-12-14 11:07:42",
     "author": "amit0365",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/708",
     "comments": 0,
+    "closed_at": "2024-12-14 11:07:42",
     "branch": "feature/polymarket",
     "base_branch": "main",
     "draft": true,
     "merged": false,
-    "mergeable_state": "dirty",
+    "mergeable_state": "unknown",
     "commits": 2,
     "changed_files": 142,
     "additions": 1176,
     "deletions": 465,
     "review_comments": 0,
-    "maintainer_can_modify": true,
-    "rebaseable": false,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": "docs/api/classes/AgentRuntime.md",
@@ -21272,24 +25120,24 @@
     "title": "Add getAccountsByIds postgres example",
     "state": "open",
     "created_at": "2024-11-29 19:59:29",
-    "updated_at": "2024-12-11 00:24:05",
+    "updated_at": "2024-12-14 18:14:46",
     "author": "CalvinLeGassick",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/680",
     "comments": 3,
     "branch": "getAccountsByIds",
-    "base_branch": "main",
+    "base_branch": "develop",
     "draft": false,
     "merged": false,
-    "mergeable_state": "blocked",
+    "mergeable_state": "unknown",
     "commits": 2,
     "changed_files": 3,
     "additions": 35,
     "deletions": 19,
     "review_comments": 2,
     "maintainer_can_modify": true,
-    "rebaseable": true,
+    "rebaseable": null,
     "files": [
       {
         "filename": "packages/adapter-postgres/src/index.ts",
@@ -22660,24 +26508,24 @@
     "title": "feat: No implicit response message",
     "state": "open",
     "created_at": "2024-11-28 19:35:19",
-    "updated_at": "2024-12-12 23:26:05",
+    "updated_at": "2024-12-15 00:34:54",
     "author": "lalalune",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/655",
     "comments": 1,
     "branch": "shaw/no-implicit-response-handler",
-    "base_branch": "main",
+    "base_branch": "develop",
     "draft": true,
     "merged": false,
-    "mergeable_state": "dirty",
+    "mergeable_state": "unknown",
     "commits": 2,
     "changed_files": 13,
     "additions": 77,
     "deletions": 54,
-    "review_comments": 3,
+    "review_comments": 6,
     "maintainer_can_modify": false,
-    "rebaseable": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": "packages/client-discord/src/actions/chat_with_attachments.ts",
@@ -24585,13 +28433,13 @@
     "title": "fix: Split off direct-client and terminal chat from agent",
     "state": "closed",
     "created_at": "2024-11-27 01:18:46",
-    "updated_at": "2024-12-12 23:38:16",
+    "updated_at": "2024-12-14 11:07:42",
     "author": "lalalune",
     "labels": "",
-    "assignees": "",
+    "assignees": "odilitime",
     "url": "https://github.com/ai16z/eliza/pull/621",
-    "comments": 1,
-    "closed_at": "2024-12-11 22:24:25",
+    "comments": 2,
+    "closed_at": "2024-12-14 11:07:42",
     "branch": "shaw/split-client-terminal",
     "base_branch": "main",
     "draft": false,
@@ -28912,24 +32760,24 @@
     "title": "feat: loading characters from db at load and runtime",
     "state": "open",
     "created_at": "2024-11-23 12:32:51",
-    "updated_at": "2024-11-25 21:49:12",
+    "updated_at": "2024-12-14 18:16:47",
     "author": "VarKrishin",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/551",
     "comments": 1,
     "branch": "ungate/dev",
-    "base_branch": "main",
+    "base_branch": "develop",
     "draft": false,
     "merged": false,
-    "mergeable_state": "dirty",
+    "mergeable_state": "unknown",
     "commits": 4,
     "changed_files": 16,
     "additions": 1255,
     "deletions": 1,
     "review_comments": 0,
     "maintainer_can_modify": false,
-    "rebaseable": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": ".env.example",
@@ -33603,26 +37451,27 @@
   {
     "number": 477,
     "title": "feat: Split off direct-client and terminal chat from agent",
-    "state": "open",
+    "state": "closed",
     "created_at": "2024-11-21 05:46:30",
-    "updated_at": "2024-11-25 21:49:12",
+    "updated_at": "2024-12-14 11:07:41",
     "author": "reffan",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/477",
     "comments": 2,
+    "closed_at": "2024-12-14 11:07:41",
     "branch": "feature/agent-split",
     "base_branch": "main",
     "draft": false,
     "merged": false,
-    "mergeable_state": "dirty",
+    "mergeable_state": "unknown",
     "commits": 10,
     "changed_files": 16,
     "additions": 279,
     "deletions": 182,
     "review_comments": 0,
-    "maintainer_can_modify": true,
-    "rebaseable": false,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": "agent/.gitignore",
@@ -34965,24 +38814,24 @@
     "title": "feat: replace `unruggable-core` with `unruggable-sdk`",
     "state": "open",
     "created_at": "2024-11-20 11:21:07",
-    "updated_at": "2024-11-26 10:22:03",
+    "updated_at": "2024-12-13 19:23:53",
     "author": "remiroyc",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/450",
     "comments": 1,
     "branch": "unruggable",
-    "base_branch": "main",
+    "base_branch": "develop",
     "draft": false,
     "merged": false,
-    "mergeable_state": "dirty",
+    "mergeable_state": "unknown",
     "commits": 1,
     "changed_files": 3,
     "additions": 87,
     "deletions": 84,
     "review_comments": 6,
     "maintainer_can_modify": true,
-    "rebaseable": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": "packages/plugin-starknet/package.json",
@@ -37155,24 +41004,24 @@
     "title": "fix: .env Namespaced Character Secrets",
     "state": "open",
     "created_at": "2024-11-19 02:13:48",
-    "updated_at": "2024-11-25 21:49:12",
+    "updated_at": "2024-12-14 11:07:03",
     "author": "genecyber",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/410",
     "comments": 2,
     "branch": "character-secrets",
-    "base_branch": "main",
+    "base_branch": "develop",
     "draft": false,
     "merged": false,
-    "mergeable_state": "dirty",
+    "mergeable_state": "unknown",
     "commits": 5,
     "changed_files": 6,
     "additions": 74,
     "deletions": 10,
     "review_comments": 1,
     "maintainer_can_modify": false,
-    "rebaseable": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": ".gitignore",
@@ -38751,24 +42600,24 @@
     "title": "feat: TwitterInteractionClient response handling and boredom provider",
     "state": "open",
     "created_at": "2024-11-18 00:02:11",
-    "updated_at": "2024-12-11 00:02:46",
+    "updated_at": "2024-12-14 17:36:45",
     "author": "DanielHighETH",
     "labels": "Client: Twitter",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/384",
     "comments": 10,
     "branch": "main",
-    "base_branch": "main",
+    "base_branch": "develop",
     "draft": false,
     "merged": false,
-    "mergeable_state": "dirty",
+    "mergeable_state": "unknown",
     "commits": 8,
     "changed_files": 2,
     "additions": 125,
     "deletions": 46,
     "review_comments": 6,
     "maintainer_can_modify": true,
-    "rebaseable": false,
+    "rebaseable": null,
     "files": [
       {
         "filename": "packages/client-twitter/src/interactions.ts",
