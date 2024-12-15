@@ -2,7 +2,7 @@ name: Weekly Contributor Update
 on:
   schedule:
     - cron: '0 19 * * 5'  # Run at 2:00 PM EST (19:00 UTC) every Friday
-  workflow_dispatch:  # Allow manual triggers
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -16,82 +16,78 @@ jobs:
       with:
         fetch-depth: 0
     
-    - name: Set up Python
+    - name: Set up Python & Node.js
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
-    
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
+        cache: 'pip'  # Enable pip caching
+    - uses: actions/setup-node@v3
       with:
         node-version: '18'
+        cache: 'npm'  # Enable npm caching
     
-    - name: Install Python dependencies
+    - name: Cache API responses
+      uses: actions/cache@v3
+      with:
+        path: |
+          .cache/github_api
+          .cache/openai_api
+        key: ${{ runner.os }}-api-cache-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-api-cache-
+    
+    - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install openai requests
+        pip install -r requirements.txt
+        npm ci
     
-    - name: Install Node dependencies
-      run: npm ci
-    
-    - name: Fetch latest contributor data
+    # Combined PR and contributor data fetch
+    - name: Fetch GitHub data
       env:
-        GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}  # For your Python script
-        GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}         # For gh cli commands
+        GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
       run: |
-        python scripts/fetch_contributors.py ai16z eliza -o ./data -f
-    
-    - name: Generate summaries
-      env:
-        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      run: |
-        python scripts/generate_summaries.py ./data/contributors.json ./data/contributors.json -f
-        python scripts/compute_scores.py ./data/contributors.json ./data/contributors.json -f
-
-    - name: Fetch PR data with files
-      env:
-        GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}  # For your Python script
-        GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}         # For gh cli commands
-      run: |
-        # Create directories if they don't exist
-        mkdir -p issues_prs
-        mkdir -p data/reports
+        # Create directories
+        mkdir -p data/reports issues_prs
         
-        # Get date for filename and analysis
+        # Get date range
         WEEK_END=$(date +%Y-%m-%d)
         WEEK_START=$(date -d "7 days ago" +%Y-%m-%d)
         
-        # Fetch PR data with files
-        python issues_prs/gh_issues_pr3.py ai16z/eliza -t pr -s all -f json --files > issues_prs/prs_with_files.json
-
-    - name: Run weekly PR analysis
+        # Single API call to fetch both PRs and contributor data
+        python scripts/fetch_combined_data.py \
+          --repo ai16z/eliza \
+          --start-date "$WEEK_START" \
+          --end-date "$WEEK_END" \
+          --output-dir ./data
+    
+    - name: Generate analysis
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
         WEEK_END=$(date +%Y-%m-%d)
-        WEEK_START=$(date -d "7 days ago" +%Y-%m-%d)
         
-        # Run analysis using the fetched PR data
-        python scripts/analyze_contributors3.py \
-          issues_prs/prs_with_files.json \
-          "data/reports/weekly-${WEEK_END}.json" \
-          --after "$WEEK_START" \
-          --before "$WEEK_END" \
-          -f
+        # Generate summaries and analysis in parallel
+        python scripts/parallel_analysis.py \
+          --input-dir ./data \
+          --output-dir ./data/reports \
+          --date "$WEEK_END"
     
-    - name: Build and generate site
+    - name: Build and deploy
       run: |
         npm run build
         npm run generate
     
-    - name: Commit and push if changed
+    - name: Commit changes
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git add data/
-        git add profiles/
-        git add data/reports/
-        git add issues_prs/prs_with_files.json
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Update contributor data, summaries, and weekly report [skip ci]" && git push)
+        
+        # Stage all changes at once
+        git add data/ profiles/ data/reports/ issues_prs/
+        
+        # Single commit
+        git diff --staged --quiet || git commit -m "Update contributor data and reports [skip ci]"
+        git push
       env:
         GITHUB_TOKEN: ${{ github.token }}
