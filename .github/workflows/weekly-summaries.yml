@@ -1,11 +1,9 @@
 name: Weekly Contributor Update
-
 on:
   schedule:
     - cron: '0 19 * * 5'  # Run at 2:00 PM EST (19:00 UTC) every Friday
   workflow_dispatch:  # Allow manual triggers
 
-# Add permissions block at workflow level
 permissions:
   contents: write
 
@@ -38,7 +36,7 @@ jobs:
     
     - name: Fetch latest contributor data
       env:
-        GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+        GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
       run: |
         python scripts/fetch_contributors.py ai16z eliza -o ./data -f
     
@@ -48,6 +46,35 @@ jobs:
       run: |
         python scripts/generate_summaries.py ./data/contributors.json ./data/contributors.json -f
         python scripts/compute_scores.py ./data/contributors.json ./data/contributors.json -f
+
+    - name: Fetch PR data with files
+      env:
+        GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+      run: |
+        # Create directories if they don't exist
+        mkdir -p data/reports
+        
+        # Get date for filename and analysis
+        WEEK_END=$(date +%Y-%m-%d)
+        WEEK_START=$(date -d "7 days ago" +%Y-%m-%d)
+        
+        # Fetch PR data with files
+        python issues_prs/gh_issues_pr3.py ai16z/eliza -t pr -s all -f json --files > issues_prs/prs_with_files.json
+
+    - name: Run weekly PR analysis
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      run: |
+        WEEK_END=$(date +%Y-%m-%d)
+        WEEK_START=$(date -d "7 days ago" +%Y-%m-%d)
+        
+        # Run analysis using the fetched PR data
+        python scripts/analyze_contributors2.py \
+          issues_prs/prs_with_files.json \
+          "data/reports/weekly-${WEEK_END}.json" \
+          --after "$WEEK_START" \
+          --before "$WEEK_END" \
+          -f
     
     - name: Build and generate site
       run: |
@@ -60,6 +87,8 @@ jobs:
         git config --local user.name "github-actions[bot]"
         git add data/
         git add profiles/
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Update contributor data and summaries [skip ci]" && git push)
+        git add data/reports/
+        git add issues_prs/prs_with_files.json
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Update contributor data, summaries, and weekly report [skip ci]" && git push)
       env:
         GITHUB_TOKEN: ${{ github.token }}
