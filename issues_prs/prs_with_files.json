@@ -1,16 +1,289 @@
 [
   {
+    "number": 1115,
+    "title": "chore: fix broken pnpm lockfile",
+    "state": "closed",
+    "created_at": "2024-12-15 05:40:02",
+    "updated_at": "2024-12-15 05:41:41",
+    "author": "shakkernerd",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1115",
+    "comments": 0,
+    "closed_at": "2024-12-15 05:41:40",
+    "branch": "fix/pnpm-lockfile",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 1,
+    "changed_files": 1,
+    "additions": 17740,
+    "deletions": 22707,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "pnpm-lock.yaml",
+        "status": "modified",
+        "additions": 17740,
+        "deletions": 22707,
+        "changes": 40447
+      }
+    ],
+    "merged_at": "2024-12-15 05:41:40"
+  },
+  {
+    "number": 1114,
+    "title": "feat: New docs for community section",
+    "state": "closed",
+    "created_at": "2024-12-15 05:18:17",
+    "updated_at": "2024-12-15 05:19:10",
+    "author": "madjin",
+    "labels": "",
+    "assignees": "",
+    "url": "https://github.com/ai16z/eliza/pull/1114",
+    "comments": 0,
+    "closed_at": "2024-12-15 05:19:08",
+    "branch": "new_docs",
+    "base_branch": "develop",
+    "draft": false,
+    "merged": true,
+    "mergeable_state": "unknown",
+    "commits": 5,
+    "changed_files": 209,
+    "additions": 27863,
+    "deletions": 364,
+    "review_comments": 0,
+    "maintainer_can_modify": false,
+    "rebaseable": null,
+    "files": [
+      {
+        "filename": "docs/api/classes/AgentRuntime.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 11,
+        "changes": 12
+      },
+      {
+        "filename": "docs/api/classes/Service.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      },
+      {
+        "filename": "docs/api/enumerations/Clients.md",
+        "status": "modified",
+        "additions": 25,
+        "deletions": 9,
+        "changes": 34
+      },
+      {
+        "filename": "docs/api/enumerations/LoggingLevel.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/enumerations/ServiceType.md",
+        "status": "modified",
+        "additions": 11,
+        "deletions": 11,
+        "changes": 22
+      },
+      {
+        "filename": "docs/api/functions/findNearestEnvFile.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/functions/validateCharacterConfig.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/index.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0,
+        "changes": 1
+      },
+      {
+        "filename": "docs/api/interfaces/ActionResponse.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      },
+      {
+        "filename": "docs/api/interfaces/GenerationOptions.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/interfaces/IAgentConfig.md",
+        "status": "added",
+        "additions": 7,
+        "deletions": 0,
+        "changes": 7
+      },
+      {
+        "filename": "docs/api/interfaces/IAgentRuntime.md",
+        "status": "modified",
+        "additions": 38,
+        "deletions": 48,
+        "changes": 86
+      },
+      {
+        "filename": "docs/api/interfaces/IAwsS3Service.md",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 5,
+        "changes": 12
+      },
+      {
+        "filename": "docs/api/interfaces/IBrowserService.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      },
+      {
+        "filename": "docs/api/interfaces/ICacheManager.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/interfaces/IDatabaseAdapter.md",
+        "status": "modified",
+        "additions": 37,
+        "deletions": 37,
+        "changes": 74
+      },
+      {
+        "filename": "docs/api/interfaces/IDatabaseCacheAdapter.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/interfaces/IImageDescriptionService.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/interfaces/IMemoryManager.md",
+        "status": "modified",
+        "additions": 13,
+        "deletions": 13,
+        "changes": 26
+      },
+      {
+        "filename": "docs/api/interfaces/IPdfService.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      },
+      {
+        "filename": "docs/api/interfaces/ISlackService.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6
+      },
+      {
+        "filename": "docs/api/interfaces/ISpeechService.md",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4,
+        "changes": 8
+      },
+      {
+        "filename": "docs/api/interfaces/ITextGenerationService.md",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 6,
+        "changes": 12
+      },
+      {
+        "filename": "docs/api/interfaces/ITranscriptionService.md",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 6,
+        "changes": 12
+      },
+      {
+        "filename": "docs/api/interfaces/IVideoService.md",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 6,
+        "changes": 12
+      },
+      {
+        "filename": "docs/api/type-aliases/CacheOptions.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/type-aliases/Character.md",
+        "status": "modified",
+        "additions": 21,
+        "deletions": 11,
+        "changes": 32
+      },
+      {
+        "filename": "docs/api/type-aliases/CharacterConfig.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/type-aliases/KnowledgeItem.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      },
+      {
+        "filename": "docs/api/type-aliases/SearchResponse.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2
+      }
+    ],
+    "merged_at": "2024-12-15 05:19:08"
+  },
+  {
     "number": 1113,
     "title": "feat: New docs in community section",
     "state": "closed",
     "created_at": "2024-12-15 04:59:02",
-    "updated_at": "2024-12-15 05:02:25",
+    "updated_at": "2024-12-15 05:13:17",
     "author": "madjin",
     "labels": "",
     "assignees": "",
     "url": "https://github.com/ai16z/eliza/pull/1113",
     "comments": 0,
-    "closed_at": "2024-12-15 05:02:25",
+    "closed_at": "2024-12-15 05:13:17",
     "branch": "new_docs",
     "base_branch": "develop",
     "draft": false,
@@ -26518,14 +26791,14 @@
     "base_branch": "develop",
     "draft": true,
     "merged": false,
-    "mergeable_state": "unknown",
+    "mergeable_state": "dirty",
     "commits": 2,
     "changed_files": 13,
     "additions": 77,
     "deletions": 54,
     "review_comments": 6,
     "maintainer_can_modify": false,
-    "rebaseable": null,
+    "rebaseable": false,
     "files": [
       {
         "filename": "packages/client-discord/src/actions/chat_with_attachments.ts",
