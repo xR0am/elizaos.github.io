@@ -72,7 +72,7 @@ jobs:
         WEEK_START=$(date -d "7 days ago" +%Y-%m-%d)
         
         # Run analysis using the fetched PR data
-        python scripts/analyze_contributors2.py \
+        python scripts/analyze_contributors3.py \
           issues_prs/prs_with_files.json \
           "data/reports/weekly-${WEEK_END}.json" \
           --after "$WEEK_START" \
