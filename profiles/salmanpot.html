@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>salmanpot - GitHub Contributions</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div id="root"><div class="max-w-7xl mx-auto p-4 space-y-6"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><div class="flex items-center justify-between"><div class="flex items-center gap-4"><img src="https://avatars.githubusercontent.com/u/112885964?u=6dcca073ed5cbc8301794a79e2011472335f45a9&amp;v=4" alt="salmanpot&#x27;s avatar" class="w-16 h-16 rounded-full"/><div><h1 class="text-2xl font-bold">salmanpot</h1><div class="text-gray-600 dark:text-gray-400"><span class="font-semibold">Score: </span>6</div></div></div><div class="text-3xl font-bold text-blue-600 dark:text-blue-400">6</div></div></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Salmanpot is actively contributing to Twitter automation features, recently working on a pull request for Eliza tweet automation and adding a plugin to retrieve trends from Twitter/X sports. Despite having no merged PRs or issues opened in the last 45 days, their focus remains on enhancing characters handling and KM-tweet-code within the agent code area.</p></div><div class="grid grid-cols-1 md:grid-cols-4 gap-4"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Commits</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Pull Requests</h3><p class="text-2xl font-bold">2</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Issues</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Comments</h3><p class="text-2xl font-bold">0</p></div></div><div class="space-y-4"><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Commits</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Pull Requests</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Issues</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Comments</h3><span>▶</span></div></div></div></div></div>
+    <script>
+        window.__DATA__ = {"contributor":"salmanpot","score":6,"summary":"Salmanpot is actively contributing to Twitter automation features, recently working on a pull request for Eliza tweet automation and adding a plugin to retrieve trends from Twitter/X sports. Despite having no merged PRs or issues opened in the last 45 days, their focus remains on enhancing characters handling and KM-tweet-code within the agent code area.","avatar_url":"https://avatars.githubusercontent.com/u/112885964?u=6dcca073ed5cbc8301794a79e2011472335f45a9&v=4","activity":{"code":{"total_commits":0,"total_prs":2,"commits":[],"pull_requests":[{"number":971,"title":"feat: add plugin to retrieve Twitter/X sporting trends","state":"CLOSED","merged":false,"created_at":"2024-12-10T12:59:41Z","updated_at":"2024-12-14T11:06:26Z","body":"i have created the feature in which we extract the tweets from the twitter globally from the twitter Api and by using these trends and the dumy data that we have created to test both concat and give to our LLM model in which LLM model give the response according to the character file that we made.","files":[{"path":"agent/.gitignore","additions":0,"deletions":8},{"path":"agent/src/index.ts","additions":11,"deletions":34},{"path":"agent/src/providers/twitter.ts","additions":18,"deletions":0},{"path":"agent/src/services/twitter/game.pdf","additions":0,"deletions":0},{"path":"agent/src/services/twitter/services.ts","additions":62,"deletions":0},{"path":"agent/src/test.ts","additions":1,"deletions":0},{"path":"characters/trump.character.json","additions":0,"deletions":350}],"reviews":[{"author":"odilitime","state":"CHANGES_REQUESTED","body":""},{"author":"odilitime","state":"CHANGES_REQUESTED","body":""}],"comments":[{"author":"salmanpot","body":"1- The decision to empty agent/.gitignore was made because when attempting\r\nto push the code to GitHub, .ts files were being included, which caused\r\nconflicts and prevented the latest code from being pushed successfully. A\r\nmain .gitignore file has already been created at the root level, which\r\ncontains all the necessary exclusions, including those for .ts files. This\r\neliminates the need for a separate .gitignore file in the agent/ folder.\r\n\r\n2- I have corrected the hardcoded path issue by replacing it with a\r\nrelative path using __dirname for better portability and maintainability.\r\n\r\n3-I understand the concern about deleting sample characters. To test our\r\nsports analysis functionality, I temporarily replaced the sample character\r\nfile but have since reverted it back. Rest assured, I have all the original\r\nsample files, including the personality you provided and the ones we tested.\r\n\r\nOn Tue, 10 Dec 2024 at 12:00, Odilitime ***@***.***> wrote:\r\n\r\n> ***@***.**** requested changes on this pull request.\r\n> ------------------------------\r\n>\r\n> On agent/.gitignore\r\n> <https://github.com/ai16z/eliza/pull/971#discussion_r1878363005>:\r\n>\r\n> Revert or explain why this is necessary\r\n> ------------------------------\r\n>\r\n> In agent/src/services/twitter/services.ts\r\n> <https://github.com/ai16z/eliza/pull/971#discussion_r1878369796>:\r\n>\r\n> > +// Load environment variables from .env file\r\n> +dotenv.config();\r\n> +\r\n> +// Define constants\r\n> +const BEARER_TOKEN = process.env.BEARER_TOKEN;\r\n> +const BASE_URL = \"https://api.twitter.com/2/tweets/search/recent\";\r\n> +\r\n> +/**\r\n> + * Fetch recent tweets related to sports.\r\n> + * @param maxResults Number of tweets to fetch (default: 10)\r\n> + */\r\n> +\r\n> +// this function will get data from documnets for buliding custom knowledge base\r\n> +export const fetchDocuments = async (): Promise<string[]> => {\r\n> +    const pdfService = new PdfService();\r\n> +    const pdfFilePath = \"C:/Users/Dell/eliza-1/agent/src/services/twitter/game.pdf\";  //a dummy pdf\r\n>\r\n> no hard coded paths, node has __dirname if you want to give a relative\r\n> path to this file\r\n> https://nodejs.org/docs/latest/api/globals.html#__dirname\r\n> ------------------------------\r\n>\r\n> On characters/trump.character.json\r\n> <https://github.com/ai16z/eliza/pull/971#discussion_r1878371462>:\r\n>\r\n> I'm not sure we should be deleting our sample characters without replacing\r\n> them\r\n>\r\n> —\r\n> Reply to this email directly, view it on GitHub\r\n> <https://github.com/ai16z/eliza/pull/971#pullrequestreview-2492783366>,\r\n> or unsubscribe\r\n> <https://github.com/notifications/unsubscribe-auth/A25IBTDKIAJAXDO3DUXL2E32E4FYHAVCNFSM6AAAAABTLDQIYOVHI2DSMVQWIX3LMV43YUDVNRWFEZLROVSXG5CSMV3GSZLXHMZDIOJSG44DGMZWGY>\r\n> .\r\n> You are receiving this because you authored the thread.Message ID:\r\n> ***@***.***>\r\n>\r\n"},{"author":"odilitime","body":"1. That makes sense for the .ts changes what about the data/ and generatedImages/\r\n\r\n2. Will check it out when you push the code for that\r\n\r\n3. Will check it out when you push the code for that"},{"author":"lalalune","body":"As we are refactoring, I'm gonna close this since it is a lot of unintended consequences and changes"}]},{"number":968,"title":"feat: KM Eliza tweet automation.","state":"CLOSED","merged":false,"created_at":"2024-12-10T11:52:48Z","updated_at":"2024-12-13T22:04:08Z","body":"We have created the feature in which we extract the tweets from the twitter globally from the twitter Api and by using these trends and the dumy data that we have created to test both concat and give to our LLM model in which LLM model give the response according to the character file that we made.","files":[{"path":"KM-tweet-code/agent/.gitignore","additions":8,"deletions":0},{"path":"KM-tweet-code/agent/package.json","additions":49,"deletions":0},{"path":"KM-tweet-code/agent/src/index.ts","additions":540,"deletions":0},{"path":"KM-tweet-code/agent/src/services/twitter/game.pdf","additions":0,"deletions":0},{"path":"KM-tweet-code/agent/tsconfig.json","additions":15,"deletions":0}],"reviews":[],"comments":[]}]},"issues":{"total_opened":0,"opened":[]},"engagement":{"total_comments":0,"total_reviews":2,"comments":[],"reviews":[]}}};
+    </script>
+    <script type="text/javascript">
+        
+const StatusDot = ({ status }) => {
+  const colors = {
+    open: 'bg-green-500',
+    closed: 'bg-red-500',
+    merged: 'bg-purple-500'
+  };
+
+  return React.createElement('span', {
+    className: `inline-block w-2 h-2 rounded-full ${colors[status]} mr-2`
+  });
+};
+
+const ActivitySection = ({ title, items = [], showStatus = false }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  
+  const getStatus = (item) => {
+    if (item.state === 'merged' || (item.state === 'closed' && title === 'Pull Requests')) {
+      return 'merged';
+    }
+    return item.state || 'open';
+  };
+
+  return React.createElement('div', { className: 'border rounded-lg p-4' },
+    React.createElement('div', {
+      className: 'flex items-center justify-between cursor-pointer',
+      onClick: () => setIsExpanded(!isExpanded)
+    },
+      React.createElement('h3', { className: 'font-semibold' }, title),
+      React.createElement('span', null, isExpanded ? '▼' : '▶')
+    ),
+    isExpanded && React.createElement('div', { className: 'mt-4 space-y-2' },
+      items.map((item, index) => 
+        React.createElement('div', { key: index, className: 'p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded' },
+          React.createElement('a', {
+            href: item.url,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            className: 'text-sm hover:text-blue-500 flex flex-col gap-1'
+          },
+            React.createElement('span', { className: 'font-medium flex items-center' },
+              showStatus && React.createElement(StatusDot, { status: getStatus(item) }),
+              item.message || item.title || item.body
+            ),
+            React.createElement('span', { className: 'text-gray-500 text-xs' },
+              new Date(item.date || item.created_at).toLocaleDateString()
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+const StatCard = ({ name, value }) => {
+  return React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+    React.createElement('h3', { className: 'font-semibold' }, name),
+    React.createElement('p', { className: 'text-2xl font-bold' }, value)
+  );
+};
+
+const ContributorProfile = ({ data }) => {
+  const stats = [
+    { name: 'Commits', value: data.activity.code.total_commits },
+    { name: 'Pull Requests', value: data.activity.code.total_prs },
+    { name: 'Issues', value: data.activity.issues.total_opened },
+    { name: 'Comments', value: data.activity.engagement.total_comments }
+  ];
+
+  return React.createElement('div', { className: 'max-w-7xl mx-auto p-4 space-y-6' },
+    React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+      React.createElement('div', { className: 'flex items-center justify-between' },
+        React.createElement('div', { className: 'flex items-center gap-4' },
+          React.createElement('img', {
+            src: data.avatar_url,
+            alt: `${data.contributor}'s avatar`,
+            className: 'w-16 h-16 rounded-full'
+          }),
+          React.createElement('div', null,
+            React.createElement('h1', { className: 'text-2xl font-bold' }, data.contributor),
+            React.createElement('div', { className: 'text-gray-600 dark:text-gray-400' },
+              React.createElement('span', { className: 'font-semibold' }, 'Score: '),
+              data.score
+            )
+          )
+        )
+      )
+    ),
+
+    data.summary && React.createElement('div', { 
+      className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow'
+    },
+      React.createElement('p', { 
+        className: 'text-gray-700 dark:text-gray-300 text-sm leading-relaxed'
+      }, data.summary)
+    ),
+
+    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
+      stats.map(stat => React.createElement(StatCard, { 
+        key: stat.name,
+        ...stat
+      }))
+    ),
+
+    React.createElement('div', { className: 'space-y-4' },
+      React.createElement(ActivitySection, {
+        title: 'Commits',
+        items: data.activity.code.commits
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Pull Requests',
+        items: data.activity.code.pull_requests,
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Issues',
+        items: data.activity.issues.opened || [],
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Comments',
+        items: data.activity.engagement.comments
+      })
+    )
+  );
+};
+
+// Initialize React root and render
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(ContributorProfile, { data: window.__DATA__ }));
+    </script>
+</body>
+</html>

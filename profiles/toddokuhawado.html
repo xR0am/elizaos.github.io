@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toddokuhawado - GitHub Contributions</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div id="root"><div class="max-w-7xl mx-auto p-4 space-y-6"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><div class="flex items-center justify-between"><div class="flex items-center gap-4"><img src="https://avatars.githubusercontent.com/u/189565300?v=4" alt="toddokuhawado&#x27;s avatar" class="w-16 h-16 rounded-full"/><div><h1 class="text-2xl font-bold">toddokuhawado</h1><div class="text-gray-600 dark:text-gray-400"><span class="font-semibold">Score: </span>16</div></div></div><div class="text-3xl font-bold text-blue-600 dark:text-blue-400">16</div></div></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Toddokuhawado is currently addressing issues related to agent response behavior, improving the Twitter client&#x27;s out-of-the-box experience, and refining character interactions within ExamplePost or ExampleMessage features. Their recent activity has been focused on bug fixes without any new pull requests or code changes in the past 45 days.</p></div><div class="grid grid-cols-1 md:grid-cols-4 gap-4"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Commits</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Pull Requests</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Issues</h3><p class="text-2xl font-bold">3</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Comments</h3><p class="text-2xl font-bold">3</p></div></div><div class="space-y-4"><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Commits</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Pull Requests</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Issues</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Comments</h3><span>▶</span></div></div></div></div></div>
+    <script>
+        window.__DATA__ = {"contributor":"toddokuhawado","score":16,"summary":"Toddokuhawado is currently addressing issues related to agent response behavior, improving the Twitter client's out-of-the-box experience, and refining character interactions within ExamplePost or ExampleMessage features. Their recent activity has been focused on bug fixes without any new pull requests or code changes in the past 45 days.","avatar_url":"https://avatars.githubusercontent.com/u/189565300?v=4","activity":{"code":{"total_commits":0,"total_prs":0,"commits":[],"pull_requests":[]},"issues":{"total_opened":3,"opened":[{"number":791,"title":"Characters Do Not Actually Use ExamplePost or ExampleMessage","state":"CLOSED","created_at":"2024-12-02T18:02:12Z","updated_at":"2024-12-14T07:36:39Z","body":"You are able to define example posts and messages in the character files, but the characters do not actually receive these in their prompt. I checked this by logging context in the generate text script, and saw that none of these examples are even included in the info sent to the agent, so it is very hard to get unique behaviors that aren't highly generic. Has anyone found a fix for this? It seems like an issue that should be fixed before more features get added.","labels":[{"name":"bug","color":"d73a4a","description":"Something isn't working"}],"comments":[{"author":"tcm390","body":"Thanks for reporting this! Could you provide more details about the issue? For example, a screenshot or steps to reproduce it would be really helpful. On my side, I can see the example messages in the prompt, so any additional context would be great for troubleshooting."},{"author":"augchan42","body":"there's two tiers of response handling - first is gating (whether to respond at all) and then if the agent chooses to respond, the full context is loaded.  So watch where you are checking for the context."}]},{"number":726,"title":"Agent Responds Twice to prompts","state":"CLOSED","created_at":"2024-11-30T19:10:15Z","updated_at":"2024-12-14T07:36:19Z","body":"Hi, I am running Eliza in the CLI and in telegram. Currently, the bot agent appears to reply twice to user queries. Any clue why this is happening ?","labels":[{"name":"bug","color":"d73a4a","description":"Something isn't working"}],"comments":[]},{"number":673,"title":"Twitter Client Breaks out of the box","state":"CLOSED","created_at":"2024-11-29T16:48:01Z","updated_at":"2024-12-14T07:36:18Z","body":"Hello, \r\n\r\nI'm working on a fresh install on a Mac. I cannot get the twitter client to work no matter what I try. I've added 'twitter' to the client list, loaded my credentials in environment variables, but I still receive the following error every time I run it with the twitter credential added: \r\n\r\n```\r\n ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @ai16z/agent@0.0.1 start: `tsc && node --loader ts-node/esm src/index.ts \"--isRoot\" \"--character=characters/tate.character.json\"`\r\nExit status 1\r\n ELIFECYCLE  Command failed with exit code 1.\r\n```\r\n\r\n","labels":[{"name":"bug","color":"d73a4a","description":"Something isn't working"}],"comments":[{"author":"leonzijun","body":"i think the localport3000 have been used it. need kill the pid and restart \r\n"}]}]},"engagement":{"total_comments":3,"total_reviews":0,"comments":[],"reviews":[]}}};
+    </script>
+    <script type="text/javascript">
+        
+const StatusDot = ({ status }) => {
+  const colors = {
+    open: 'bg-green-500',
+    closed: 'bg-red-500',
+    merged: 'bg-purple-500'
+  };
+
+  return React.createElement('span', {
+    className: `inline-block w-2 h-2 rounded-full ${colors[status]} mr-2`
+  });
+};
+
+const ActivitySection = ({ title, items = [], showStatus = false }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  
+  const getStatus = (item) => {
+    if (item.state === 'merged' || (item.state === 'closed' && title === 'Pull Requests')) {
+      return 'merged';
+    }
+    return item.state || 'open';
+  };
+
+  return React.createElement('div', { className: 'border rounded-lg p-4' },
+    React.createElement('div', {
+      className: 'flex items-center justify-between cursor-pointer',
+      onClick: () => setIsExpanded(!isExpanded)
+    },
+      React.createElement('h3', { className: 'font-semibold' }, title),
+      React.createElement('span', null, isExpanded ? '▼' : '▶')
+    ),
+    isExpanded && React.createElement('div', { className: 'mt-4 space-y-2' },
+      items.map((item, index) => 
+        React.createElement('div', { key: index, className: 'p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded' },
+          React.createElement('a', {
+            href: item.url,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            className: 'text-sm hover:text-blue-500 flex flex-col gap-1'
+          },
+            React.createElement('span', { className: 'font-medium flex items-center' },
+              showStatus && React.createElement(StatusDot, { status: getStatus(item) }),
+              item.message || item.title || item.body
+            ),
+            React.createElement('span', { className: 'text-gray-500 text-xs' },
+              new Date(item.date || item.created_at).toLocaleDateString()
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+const StatCard = ({ name, value }) => {
+  return React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+    React.createElement('h3', { className: 'font-semibold' }, name),
+    React.createElement('p', { className: 'text-2xl font-bold' }, value)
+  );
+};
+
+const ContributorProfile = ({ data }) => {
+  const stats = [
+    { name: 'Commits', value: data.activity.code.total_commits },
+    { name: 'Pull Requests', value: data.activity.code.total_prs },
+    { name: 'Issues', value: data.activity.issues.total_opened },
+    { name: 'Comments', value: data.activity.engagement.total_comments }
+  ];
+
+  return React.createElement('div', { className: 'max-w-7xl mx-auto p-4 space-y-6' },
+    React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+      React.createElement('div', { className: 'flex items-center justify-between' },
+        React.createElement('div', { className: 'flex items-center gap-4' },
+          React.createElement('img', {
+            src: data.avatar_url,
+            alt: `${data.contributor}'s avatar`,
+            className: 'w-16 h-16 rounded-full'
+          }),
+          React.createElement('div', null,
+            React.createElement('h1', { className: 'text-2xl font-bold' }, data.contributor),
+            React.createElement('div', { className: 'text-gray-600 dark:text-gray-400' },
+              React.createElement('span', { className: 'font-semibold' }, 'Score: '),
+              data.score
+            )
+          )
+        )
+      )
+    ),
+
+    data.summary && React.createElement('div', { 
+      className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow'
+    },
+      React.createElement('p', { 
+        className: 'text-gray-700 dark:text-gray-300 text-sm leading-relaxed'
+      }, data.summary)
+    ),
+
+    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
+      stats.map(stat => React.createElement(StatCard, { 
+        key: stat.name,
+        ...stat
+      }))
+    ),
+
+    React.createElement('div', { className: 'space-y-4' },
+      React.createElement(ActivitySection, {
+        title: 'Commits',
+        items: data.activity.code.commits
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Pull Requests',
+        items: data.activity.code.pull_requests,
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Issues',
+        items: data.activity.issues.opened || [],
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Comments',
+        items: data.activity.engagement.comments
+      })
+    )
+  );
+};
+
+// Initialize React root and render
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(ContributorProfile, { data: window.__DATA__ }));
+    </script>
+</body>
+</html>

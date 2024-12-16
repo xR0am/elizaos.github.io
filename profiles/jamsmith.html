@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jamsmith - GitHub Contributions</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div id="root"><div class="max-w-7xl mx-auto p-4 space-y-6"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><div class="flex items-center justify-between"><div class="flex items-center gap-4"><img src="https://avatars.githubusercontent.com/u/7048256?u=35e1c19dc179417caa7674f406458dea6ef0e650&amp;v=4" alt="jamsmith&#x27;s avatar" class="w-16 h-16 rounded-full"/><div><h1 class="text-2xl font-bold">jamsmith</h1><div class="text-gray-600 dark:text-gray-400"><span class="font-semibold">Score: </span>8</div></div></div><div class="text-3xl font-bold text-blue-600 dark:text-blue-400">8</div></div></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Jamsmith is currently addressing a significant issue related to the Eliza agent, specifically dealing with errors involving deprecated fs.Stats constructor and triggerUncaughtException. This bug fix has been their primary focus over the past 45 days on GitHub, as evidenced by one reported issue without any pull requests or code changes made during this period.</p></div><div class="grid grid-cols-1 md:grid-cols-4 gap-4"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Commits</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Pull Requests</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Issues</h3><p class="text-2xl font-bold">1</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Comments</h3><p class="text-2xl font-bold">2</p></div></div><div class="space-y-4"><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Commits</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Pull Requests</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Issues</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Comments</h3><span>▶</span></div></div></div></div></div>
+    <script>
+        window.__DATA__ = {"contributor":"jamsmith","score":8,"summary":"Jamsmith is currently addressing a significant issue related to the Eliza agent, specifically dealing with errors involving deprecated fs.Stats constructor and triggerUncaughtException. This bug fix has been their primary focus over the past 45 days on GitHub, as evidenced by one reported issue without any pull requests or code changes made during this period.","avatar_url":"https://avatars.githubusercontent.com/u/7048256?u=35e1c19dc179417caa7674f406458dea6ef0e650&v=4","activity":{"code":{"total_commits":0,"total_prs":0,"commits":[],"pull_requests":[]},"issues":{"total_opened":1,"opened":[{"number":387,"title":" Error when starting Eliza agent: \"fs.Stats constructor is deprecated\" and \"triggerUncaughtException\"","state":"CLOSED","created_at":"2024-11-18T03:53:14Z","updated_at":"2024-12-14T07:31:27Z","body":"**Description:**\r\n\r\nI am encountering an error when trying to start the Eliza agent using the provided instructions. The error appears to be related to deprecated features and experimental warnings in Node.js.\r\n\r\n**Steps to Reproduce:**\r\n\r\n**Clone the repository and checkout the latest tagged release:**\r\n\r\nbash\r\ngit clone https://github.com/ai16z/eliza.git\r\ncd eliza\r\ngit checkout v0.0.10\r\n\r\n\r\n**Install dependencies:**\r\n\r\nbash\r\npnpm install -r\r\nConfigure environment variables in .env (using placeholder values where appropriate).\r\n\r\n**Start the agent:**\r\n\r\nbash\r\npnpm start --character=\"characters/trump.character.json\"\r\nObserve the error messages.\r\n\r\n**Expected Behavior:**\r\n\r\nThe agent should start without errors, allowing me to interact with it as per the quickstart guide.\r\n\r\n**Actual Behavior:**\r\n\r\nI receive the following error messages:\r\n\r\n(node:25002) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\r\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));'\r\n    at createModuleLoader (node:internal/modules/esm/loader:814:17)\r\n    at Object.getOrInitializeCascadedLoader (node:internal/modules/esm/loader:858:22)\r\n    at asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:65)\r\n    at runEntryPointWithESMLoader (node:internal/modules/run_main:138:19)\r\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:175:5)\r\n    at node:internal/main/run_main_module:36:49\r\n(node:25002) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\r\n    at Object.createResolve (/Users/bensmith/Desktop/Personal/Projects/agents/eliza/node_modules/ts-node/dist-raw/node-internal-modules-esm-resolve.js:146:25)\r\n    at /Users/bensmith/Desktop/Personal/Projects/agents/eliza/node_modules/ts-node/src/index.ts:1494:7\r\n    at Object.onceFn [as getNodeEsmResolver] (/Users/bensmith/Desktop/Personal/Projects/agents/eliza/node_modules/ts-node/src/util.ts:166:13)\r\n    at createEsmHooks (/Users/bensmith/Desktop/Personal/Projects/agents/eliza/node_modules/ts-node/src/esm.ts:125:51)\r\n    at Object.registerAndCreateEsmHooks (/Users/bensmith/Desktop/Personal/Projects/agents/eliza/node_modules/ts-node/src/esm.ts:118:10)\r\n    at file:///Users/bensmith/Desktop/Personal/Projects/agents/eliza/node_modules/ts-node/esm.mjs:8:7\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:268:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:543:26)\r\n    at async Hooks.register (node:internal/modules/esm/hooks:152:7)\r\n    at async initializeHooks (node:internal/modules/esm/utils:318:5)\r\n\r\nnode:internal/modules/run_main:122\r\n    triggerUncaughtException(\r\n    ^\r\n[Object: null prototype] {\r\n  [Symbol(nodejs.util.inspect.custom)]: [Function: [nodejs.util.inspect.custom]]\r\n}\r\nThrown at:\r\n    at asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:122:5)\r\n\r\nNode.js v23.1.0\r\n ELIFECYCLE  Command failed with exit code 1.\r\n ELIFECYCLE  Command failed with exit code 1.\r\n\r\n\r\n**Environment:**\r\nOS: macOS Sonoma 14.6.1\r\nNode.js version: v23.1.0\r\n\r\n\r\n**I have tried the following steps to resolve the issue:**\r\nCleaned node_modules and reinstalled dependencies with pnpm install -r.\r\nUpdated ts-node, typescript, and @types/node to the latest versions.\r\nAdjusted tsconfig.json settings, including changing moduleResolution to \"node\" and \"nodenext\".\r\nModified the start script in core/package.json to use ts-node directly.\r\nAttempted to rebuild packages with pnpm rebuild.\r\nDespite these efforts, the error persists.\r\nThe error messages suggest deprecation warnings and issues with experimental features, possibly related to the Node.js version.\r\nThe quickstart guide specifies Node.js v23.1.0, but this version may not be stable or widely supported.\r\n\r\n\r\n\r\n**Request:**\r\n\r\nCould you please help me identify the cause of this issue and provide guidance on how to resolve it? Is there a recommended Node.js version or additional configuration that I should use?","labels":[{"name":"bug","color":"d73a4a","description":"Something isn't working"}],"comments":[{"author":"bukit-kronik","body":"same error on Windows 11 WSL"},{"author":"sirkitree","body":"please try the following:\r\nmain branch, node v23.1.0, \r\n`pnpm clean`\r\n`pnpm install`\r\n`pnpm build`\r\n`pnpm start --character=(file)`"}]}]},"engagement":{"total_comments":2,"total_reviews":0,"comments":[],"reviews":[]}}};
+    </script>
+    <script type="text/javascript">
+        
+const StatusDot = ({ status }) => {
+  const colors = {
+    open: 'bg-green-500',
+    closed: 'bg-red-500',
+    merged: 'bg-purple-500'
+  };
+
+  return React.createElement('span', {
+    className: `inline-block w-2 h-2 rounded-full ${colors[status]} mr-2`
+  });
+};
+
+const ActivitySection = ({ title, items = [], showStatus = false }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  
+  const getStatus = (item) => {
+    if (item.state === 'merged' || (item.state === 'closed' && title === 'Pull Requests')) {
+      return 'merged';
+    }
+    return item.state || 'open';
+  };
+
+  return React.createElement('div', { className: 'border rounded-lg p-4' },
+    React.createElement('div', {
+      className: 'flex items-center justify-between cursor-pointer',
+      onClick: () => setIsExpanded(!isExpanded)
+    },
+      React.createElement('h3', { className: 'font-semibold' }, title),
+      React.createElement('span', null, isExpanded ? '▼' : '▶')
+    ),
+    isExpanded && React.createElement('div', { className: 'mt-4 space-y-2' },
+      items.map((item, index) => 
+        React.createElement('div', { key: index, className: 'p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded' },
+          React.createElement('a', {
+            href: item.url,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            className: 'text-sm hover:text-blue-500 flex flex-col gap-1'
+          },
+            React.createElement('span', { className: 'font-medium flex items-center' },
+              showStatus && React.createElement(StatusDot, { status: getStatus(item) }),
+              item.message || item.title || item.body
+            ),
+            React.createElement('span', { className: 'text-gray-500 text-xs' },
+              new Date(item.date || item.created_at).toLocaleDateString()
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+const StatCard = ({ name, value }) => {
+  return React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+    React.createElement('h3', { className: 'font-semibold' }, name),
+    React.createElement('p', { className: 'text-2xl font-bold' }, value)
+  );
+};
+
+const ContributorProfile = ({ data }) => {
+  const stats = [
+    { name: 'Commits', value: data.activity.code.total_commits },
+    { name: 'Pull Requests', value: data.activity.code.total_prs },
+    { name: 'Issues', value: data.activity.issues.total_opened },
+    { name: 'Comments', value: data.activity.engagement.total_comments }
+  ];
+
+  return React.createElement('div', { className: 'max-w-7xl mx-auto p-4 space-y-6' },
+    React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+      React.createElement('div', { className: 'flex items-center justify-between' },
+        React.createElement('div', { className: 'flex items-center gap-4' },
+          React.createElement('img', {
+            src: data.avatar_url,
+            alt: `${data.contributor}'s avatar`,
+            className: 'w-16 h-16 rounded-full'
+          }),
+          React.createElement('div', null,
+            React.createElement('h1', { className: 'text-2xl font-bold' }, data.contributor),
+            React.createElement('div', { className: 'text-gray-600 dark:text-gray-400' },
+              React.createElement('span', { className: 'font-semibold' }, 'Score: '),
+              data.score
+            )
+          )
+        )
+      )
+    ),
+
+    data.summary && React.createElement('div', { 
+      className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow'
+    },
+      React.createElement('p', { 
+        className: 'text-gray-700 dark:text-gray-300 text-sm leading-relaxed'
+      }, data.summary)
+    ),
+
+    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
+      stats.map(stat => React.createElement(StatCard, { 
+        key: stat.name,
+        ...stat
+      }))
+    ),
+
+    React.createElement('div', { className: 'space-y-4' },
+      React.createElement(ActivitySection, {
+        title: 'Commits',
+        items: data.activity.code.commits
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Pull Requests',
+        items: data.activity.code.pull_requests,
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Issues',
+        items: data.activity.issues.opened || [],
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Comments',
+        items: data.activity.engagement.comments
+      })
+    )
+  );
+};
+
+// Initialize React root and render
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(ContributorProfile, { data: window.__DATA__ }));
+    </script>
+</body>
+</html>

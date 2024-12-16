@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>w3-bounty - GitHub Contributions</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div id="root"><div class="max-w-7xl mx-auto p-4 space-y-6"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><div class="flex items-center justify-between"><div class="flex items-center gap-4"><img src="https://avatars.githubusercontent.com/u/190359294?u=6375f6ddba16961b9b5d47b4e324f2331da42bed&amp;v=4" alt="w3-bounty&#x27;s avatar" class="w-16 h-16 rounded-full"/><div><h1 class="text-2xl font-bold">w3-bounty</h1><div class="text-gray-600 dark:text-gray-400"><span class="font-semibold">Score: </span>5</div></div></div><div class="text-3xl font-bold text-blue-600 dark:text-blue-400">5</div></div></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">w3-bounty is currently enhancing its platform by adding support for Cloudflare AI Gateway to improve security measures. This initiative involves updating documentation and potentially adjusting packages, although there have been no commits or code changes in this area yet.</p></div><div class="grid grid-cols-1 md:grid-cols-4 gap-4"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Commits</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Pull Requests</h3><p class="text-2xl font-bold">1</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Issues</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Comments</h3><p class="text-2xl font-bold">0</p></div></div><div class="space-y-4"><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Commits</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Pull Requests</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Issues</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Comments</h3><span>▶</span></div></div></div></div></div>
+    <script>
+        window.__DATA__ = {"contributor":"w3-bounty","score":5,"summary":"w3-bounty is currently enhancing its platform by adding support for Cloudflare AI Gateway to improve security measures. This initiative involves updating documentation and potentially adjusting packages, although there have been no commits or code changes in this area yet.","avatar_url":"https://avatars.githubusercontent.com/u/190359294?u=6375f6ddba16961b9b5d47b4e324f2331da42bed&v=4","activity":{"code":{"total_commits":0,"total_prs":1,"commits":[],"pull_requests":[{"number":821,"title":"feat: Add Cloudflare AI Gateway support","state":"OPEN","merged":false,"created_at":"2024-12-03T12:16:09Z","updated_at":"2024-12-14T09:36:00Z","body":"# Cloudflare AI Gateway Integration\r\n\r\n## Relates to\r\nEnhances model provider integration by adding support for Cloudflare AI Gateway\r\n\r\n![image](https://github.com/user-attachments/assets/838a899b-a252-496e-8f29-c2fc70900665)\r\n\r\n\r\n## Risks\r\nLow - Changes are isolated to model provider routing and include fallback mechanisms:\r\n- If gateway configuration is incomplete/invalid, falls back to direct API calls\r\n- Comprehensive logging added for debugging\r\n- No changes to core model interaction logic\r\n\r\n## Background\r\n\r\n### What does this PR do?\r\nAdds support for routing API calls through Cloudflare AI Gateway, providing:\r\n- Improved latency through Cloudflare's global network\r\n- Detailed analytics and monitoring\r\n- Cost optimization through request caching\r\n- Enhanced security and access control\r\n\r\n### Changes Made\r\n\r\n1. `packages/core/src/generation.ts`:\r\n   - Added `getCloudflareGatewayBaseURL` utility function for consistent gateway URL construction\r\n   - Implemented gateway support for OpenAI, Anthropic, and Groq providers\r\n   - Added comprehensive logging for debugging\r\n   - Implemented fallback logic when gateway is disabled/misconfigured\r\n\r\n2. `docs/docs/guides/configuration.md`:\r\n   - Added new section documenting Cloudflare AI Gateway integration\r\n   - Included configuration instructions and environment variables\r\n   - Listed supported providers and benefits\r\n   - Explained URL format and fallback behavior\r\n\r\n3. `.env.example`:\r\n   - Added Cloudflare Gateway configuration variables:\r\n     ```bash\r\n     CLOUDFLARE_GW_ENABLED=true\r\n     CLOUDFLARE_AI_ACCOUNT_ID=your-account-id\r\n     CLOUDFLARE_AI_GATEWAY_ID=your-gateway-id\r\n     ```\r\n\r\n### What kind of change is this?\r\nFeature (non-breaking change which adds functionality)\r\n\r\n## Documentation changes\r\nDocumentation has been updated in `configuration.md` with:\r\n- Gateway setup instructions\r\n- Configuration options\r\n- Benefits and supported providers\r\n\r\n## Testing\r\n\r\n### Where should a reviewer start?\r\n1. Review the `getCloudflareGatewayBaseURL` function in `generation.ts`\r\n2. Check gateway integration in provider handlers\r\n3. Verify documentation clarity in `configuration.md`\r\n\r\n### Detailed testing steps\r\n1. Configure Cloudflare AI Gateway:\r\n   ```bash\r\n   CLOUDFLARE_GW_ENABLED=true\r\n   CLOUDFLARE_AI_ACCOUNT_ID=your-account-id\r\n   CLOUDFLARE_AI_GATEWAY_ID=your-gateway-id\r\n   ```\r\n\r\n2. Test with different providers:\r\n   - Verify OpenAI requests route through gateway\r\n   - Verify Anthropic requests route through gateway\r\n   - Verify Groq requests route through gateway\r\n\r\n3. Test fallback behavior:\r\n   - Disable gateway and verify direct API calls\r\n   - Use invalid configuration and verify fallback\r\n   - Check logging messages for debugging info\r\n\r\n### Expected Results\r\n- When gateway is properly configured:\r\n  - Requests route through Cloudflare\r\n  - Logs show gateway URL being used\r\n  - Response handling remains unchanged\r\n\r\n- When gateway is disabled/misconfigured:\r\n  - Fallback to direct API calls\r\n  - Warning logs indicate configuration issues\r\n  - Service continues to function normally\r\n\r\n## Discord username\r\nw3_bounty","files":[{"path":".env.example","additions":5,"deletions":0},{"path":"docs/docs/guides/configuration.md","additions":52,"deletions":0},{"path":"packages/core/src/generation.ts","additions":87,"deletions":22}],"reviews":[{"author":"odilitime","state":"CHANGES_REQUESTED","body":"seems to force all openai like apis to use CF, I think it needs to be more optional. I love the utility, desperately needed but we need fallback to the old URLs before we can merge thie"}],"comments":[]}]},"issues":{"total_opened":0,"opened":[]},"engagement":{"total_comments":0,"total_reviews":1,"comments":[],"reviews":[]}}};
+    </script>
+    <script type="text/javascript">
+        
+const StatusDot = ({ status }) => {
+  const colors = {
+    open: 'bg-green-500',
+    closed: 'bg-red-500',
+    merged: 'bg-purple-500'
+  };
+
+  return React.createElement('span', {
+    className: `inline-block w-2 h-2 rounded-full ${colors[status]} mr-2`
+  });
+};
+
+const ActivitySection = ({ title, items = [], showStatus = false }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  
+  const getStatus = (item) => {
+    if (item.state === 'merged' || (item.state === 'closed' && title === 'Pull Requests')) {
+      return 'merged';
+    }
+    return item.state || 'open';
+  };
+
+  return React.createElement('div', { className: 'border rounded-lg p-4' },
+    React.createElement('div', {
+      className: 'flex items-center justify-between cursor-pointer',
+      onClick: () => setIsExpanded(!isExpanded)
+    },
+      React.createElement('h3', { className: 'font-semibold' }, title),
+      React.createElement('span', null, isExpanded ? '▼' : '▶')
+    ),
+    isExpanded && React.createElement('div', { className: 'mt-4 space-y-2' },
+      items.map((item, index) => 
+        React.createElement('div', { key: index, className: 'p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded' },
+          React.createElement('a', {
+            href: item.url,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            className: 'text-sm hover:text-blue-500 flex flex-col gap-1'
+          },
+            React.createElement('span', { className: 'font-medium flex items-center' },
+              showStatus && React.createElement(StatusDot, { status: getStatus(item) }),
+              item.message || item.title || item.body
+            ),
+            React.createElement('span', { className: 'text-gray-500 text-xs' },
+              new Date(item.date || item.created_at).toLocaleDateString()
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+const StatCard = ({ name, value }) => {
+  return React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+    React.createElement('h3', { className: 'font-semibold' }, name),
+    React.createElement('p', { className: 'text-2xl font-bold' }, value)
+  );
+};
+
+const ContributorProfile = ({ data }) => {
+  const stats = [
+    { name: 'Commits', value: data.activity.code.total_commits },
+    { name: 'Pull Requests', value: data.activity.code.total_prs },
+    { name: 'Issues', value: data.activity.issues.total_opened },
+    { name: 'Comments', value: data.activity.engagement.total_comments }
+  ];
+
+  return React.createElement('div', { className: 'max-w-7xl mx-auto p-4 space-y-6' },
+    React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+      React.createElement('div', { className: 'flex items-center justify-between' },
+        React.createElement('div', { className: 'flex items-center gap-4' },
+          React.createElement('img', {
+            src: data.avatar_url,
+            alt: `${data.contributor}'s avatar`,
+            className: 'w-16 h-16 rounded-full'
+          }),
+          React.createElement('div', null,
+            React.createElement('h1', { className: 'text-2xl font-bold' }, data.contributor),
+            React.createElement('div', { className: 'text-gray-600 dark:text-gray-400' },
+              React.createElement('span', { className: 'font-semibold' }, 'Score: '),
+              data.score
+            )
+          )
+        )
+      )
+    ),
+
+    data.summary && React.createElement('div', { 
+      className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow'
+    },
+      React.createElement('p', { 
+        className: 'text-gray-700 dark:text-gray-300 text-sm leading-relaxed'
+      }, data.summary)
+    ),
+
+    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
+      stats.map(stat => React.createElement(StatCard, { 
+        key: stat.name,
+        ...stat
+      }))
+    ),
+
+    React.createElement('div', { className: 'space-y-4' },
+      React.createElement(ActivitySection, {
+        title: 'Commits',
+        items: data.activity.code.commits
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Pull Requests',
+        items: data.activity.code.pull_requests,
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Issues',
+        items: data.activity.issues.opened || [],
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Comments',
+        items: data.activity.engagement.comments
+      })
+    )
+  );
+};
+
+// Initialize React root and render
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(ContributorProfile, { data: window.__DATA__ }));
+    </script>
+</body>
+</html>

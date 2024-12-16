@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jacob-tucker - GitHub Contributions</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div id="root"><div class="max-w-7xl mx-auto p-4 space-y-6"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><div class="flex items-center justify-between"><div class="flex items-center gap-4"><img src="https://avatars.githubusercontent.com/u/15198786?u=1de3a711f3a62edcb8120274ce59122f8f724df5&amp;v=4" alt="jacob-tucker&#x27;s avatar" class="w-16 h-16 rounded-full"/><div><h1 class="text-2xl font-bold">jacob-tucker</h1><div class="text-gray-600 dark:text-gray-400"><span class="font-semibold">Score: </span>15</div></div></div><div class="text-3xl font-bold text-blue-600 dark:text-blue-400">15</div></div></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Jacob-tucker is actively contributing to the development of a plugin called &#x27;story&#x27; within the packages and agent code areas. In the past 45 days, he has successfully merged one feature pull request (PR) into the project without engaging in any issues or additional commits.</p></div><div class="grid grid-cols-1 md:grid-cols-4 gap-4"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Commits</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Pull Requests</h3><p class="text-2xl font-bold">1</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Issues</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Comments</h3><p class="text-2xl font-bold">0</p></div></div><div class="space-y-4"><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Commits</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Pull Requests</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Issues</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Comments</h3><span>▶</span></div></div></div></div></div>
+    <script>
+        window.__DATA__ = {"contributor":"jacob-tucker","score":15,"summary":"Jacob-tucker is actively contributing to the development of a plugin called 'story' within the packages and agent code areas. In the past 45 days, he has successfully merged one feature pull request (PR) into the project without engaging in any issues or additional commits.","avatar_url":"https://avatars.githubusercontent.com/u/15198786?u=1de3a711f3a62edcb8120274ce59122f8f724df5&v=4","activity":{"code":{"total_commits":0,"total_prs":1,"commits":[],"pull_requests":[{"number":1030,"title":"feat: plugin-story","state":"MERGED","merged":true,"created_at":"2024-12-13T03:18:33Z","updated_at":"2024-12-14T23:39:33Z","body":"# Relates to:\r\n\r\nN/A\r\n\r\n# Risks\r\n\r\nLow\r\n\r\n# Background\r\n\r\nThis is the first PR that introduces a Story plugin to Eliza.\r\n\r\n## What does this PR do?\r\n\r\nIntroduces:\r\n\r\n- Wallet provider that returns the current Story wallet status\r\n- Registering IP on Story\r\n- Licensing an IP on Story\r\n- Attaching License Terms to an IP on Story\r\n- Getting details associated with a registered IP\r\n- Getting all available licenses from an IP\r\n- new env variables for Story:\r\n```\r\nSTORY_PRIVATE_KEY= # Story private key\r\nSTORY_API_BASE_URL= # Story API base URL\r\nSTORY_API_KEY= # Story API key\r\nPINATA_JWT= # Pinata JWT for uploading files to IPFS\r\n```\r\n\r\n## What kind of change is this?\r\n\r\nFeatures (non-breaking change which adds functionality)\r\n\r\n## Why are we doing this? Any context or related work?\r\n\r\nTo introduce basic Story functionality to Eliza, which could be further extended.\r\n\r\nStory allows users to grow & monetize their IP. We want to bring that functionality to agents.\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\nYou can test by setting `STORY_PRIVATE_KEY` in your .env, and asking Eliza to register IP. Eliza will ask you for a title and description of your IP. You should see Eliza register your IP.\r\n\r\nYou can create and fund a Story wallet on the faucet: https://faucet.story.foundation\r\n\r\n## Discord username\r\n\r\ntsnakejake (named Jacob Tucker) in the ai16z Discord.\r\n","files":[{"path":".env.example","additions":6,"deletions":0},{"path":"agent/package.json","additions":1,"deletions":0},{"path":"agent/src/index.ts","additions":12,"deletions":3},{"path":"packages/client-farcaster/pnpm-lock.yaml","additions":0,"deletions":1478},{"path":"packages/plugin-evm/src/actions/transfer.ts","additions":1,"deletions":0},{"path":"packages/plugin-story/package.json","additions":26,"deletions":0},{"path":"packages/plugin-story/src/actions/attachTerms.ts","additions":159,"deletions":0},{"path":"packages/plugin-story/src/actions/getAvailableLicenses.ts","additions":166,"deletions":0},{"path":"packages/plugin-story/src/actions/getIPDetails.ts","additions":125,"deletions":0},{"path":"packages/plugin-story/src/actions/licenseIP.ts","additions":121,"deletions":0},{"path":"packages/plugin-story/src/actions/registerIP.ts","additions":148,"deletions":0},{"path":"packages/plugin-story/src/functions/uploadJSONToIPFS.ts","additions":9,"deletions":0},{"path":"packages/plugin-story/src/index.ts","additions":32,"deletions":0},{"path":"packages/plugin-story/src/lib/api.ts","additions":124,"deletions":0},{"path":"packages/plugin-story/src/lib/utils.ts","additions":6,"deletions":0},{"path":"packages/plugin-story/src/providers/wallet.ts","additions":132,"deletions":0},{"path":"packages/plugin-story/src/queries.ts","additions":982,"deletions":0},{"path":"packages/plugin-story/src/templates/index.ts","additions":101,"deletions":0},{"path":"packages/plugin-story/src/tests/wallet.test.ts","additions":63,"deletions":0},{"path":"packages/plugin-story/src/types/api.ts","additions":575,"deletions":0},{"path":"packages/plugin-story/src/types/index.ts","additions":118,"deletions":0},{"path":"packages/plugin-story/tsconfig.json","additions":15,"deletions":0},{"path":"packages/plugin-story/tsup.config.ts","additions":21,"deletions":0},{"path":"pnpm-lock.yaml","additions":1452,"deletions":1039}],"reviews":[{"author":"odilitime","state":"COMMENTED","body":""}],"comments":[]}]},"issues":{"total_opened":0,"opened":[]},"engagement":{"total_comments":0,"total_reviews":1,"comments":[],"reviews":[]}}};
+    </script>
+    <script type="text/javascript">
+        
+const StatusDot = ({ status }) => {
+  const colors = {
+    open: 'bg-green-500',
+    closed: 'bg-red-500',
+    merged: 'bg-purple-500'
+  };
+
+  return React.createElement('span', {
+    className: `inline-block w-2 h-2 rounded-full ${colors[status]} mr-2`
+  });
+};
+
+const ActivitySection = ({ title, items = [], showStatus = false }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  
+  const getStatus = (item) => {
+    if (item.state === 'merged' || (item.state === 'closed' && title === 'Pull Requests')) {
+      return 'merged';
+    }
+    return item.state || 'open';
+  };
+
+  return React.createElement('div', { className: 'border rounded-lg p-4' },
+    React.createElement('div', {
+      className: 'flex items-center justify-between cursor-pointer',
+      onClick: () => setIsExpanded(!isExpanded)
+    },
+      React.createElement('h3', { className: 'font-semibold' }, title),
+      React.createElement('span', null, isExpanded ? '▼' : '▶')
+    ),
+    isExpanded && React.createElement('div', { className: 'mt-4 space-y-2' },
+      items.map((item, index) => 
+        React.createElement('div', { key: index, className: 'p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded' },
+          React.createElement('a', {
+            href: item.url,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            className: 'text-sm hover:text-blue-500 flex flex-col gap-1'
+          },
+            React.createElement('span', { className: 'font-medium flex items-center' },
+              showStatus && React.createElement(StatusDot, { status: getStatus(item) }),
+              item.message || item.title || item.body
+            ),
+            React.createElement('span', { className: 'text-gray-500 text-xs' },
+              new Date(item.date || item.created_at).toLocaleDateString()
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+const StatCard = ({ name, value }) => {
+  return React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+    React.createElement('h3', { className: 'font-semibold' }, name),
+    React.createElement('p', { className: 'text-2xl font-bold' }, value)
+  );
+};
+
+const ContributorProfile = ({ data }) => {
+  const stats = [
+    { name: 'Commits', value: data.activity.code.total_commits },
+    { name: 'Pull Requests', value: data.activity.code.total_prs },
+    { name: 'Issues', value: data.activity.issues.total_opened },
+    { name: 'Comments', value: data.activity.engagement.total_comments }
+  ];
+
+  return React.createElement('div', { className: 'max-w-7xl mx-auto p-4 space-y-6' },
+    React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+      React.createElement('div', { className: 'flex items-center justify-between' },
+        React.createElement('div', { className: 'flex items-center gap-4' },
+          React.createElement('img', {
+            src: data.avatar_url,
+            alt: `${data.contributor}'s avatar`,
+            className: 'w-16 h-16 rounded-full'
+          }),
+          React.createElement('div', null,
+            React.createElement('h1', { className: 'text-2xl font-bold' }, data.contributor),
+            React.createElement('div', { className: 'text-gray-600 dark:text-gray-400' },
+              React.createElement('span', { className: 'font-semibold' }, 'Score: '),
+              data.score
+            )
+          )
+        )
+      )
+    ),
+
+    data.summary && React.createElement('div', { 
+      className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow'
+    },
+      React.createElement('p', { 
+        className: 'text-gray-700 dark:text-gray-300 text-sm leading-relaxed'
+      }, data.summary)
+    ),
+
+    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
+      stats.map(stat => React.createElement(StatCard, { 
+        key: stat.name,
+        ...stat
+      }))
+    ),
+
+    React.createElement('div', { className: 'space-y-4' },
+      React.createElement(ActivitySection, {
+        title: 'Commits',
+        items: data.activity.code.commits
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Pull Requests',
+        items: data.activity.code.pull_requests,
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Issues',
+        items: data.activity.issues.opened || [],
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Comments',
+        items: data.activity.engagement.comments
+      })
+    )
+  );
+};
+
+// Initialize React root and render
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(ContributorProfile, { data: window.__DATA__ }));
+    </script>
+</body>
+</html>

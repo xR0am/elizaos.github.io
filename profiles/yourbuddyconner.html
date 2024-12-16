@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yourbuddyconner - GitHub Contributions</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div id="root"><div class="max-w-7xl mx-auto p-4 space-y-6"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><div class="flex items-center justify-between"><div class="flex items-center gap-4"><img src="https://avatars.githubusercontent.com/u/2635475?v=4" alt="yourbuddyconner&#x27;s avatar" class="w-16 h-16 rounded-full"/><div><h1 class="text-2xl font-bold">yourbuddyconner</h1><div class="text-gray-600 dark:text-gray-400"><span class="font-semibold">Score: </span>5</div></div></div><div class="text-3xl font-bold text-blue-600 dark:text-blue-400">5</div></div></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Yourbuddyconner is currently working on developing a basic plugin for Ethereum Virtual Machine (EVM) functionality, as evidenced by the single Work In Progress pull request that has not yet been merged into the main codebase. There have been no issues opened or commits made in this time frame, indicating focused efforts on this particular feature within the packages code area.</p></div><div class="grid grid-cols-1 md:grid-cols-4 gap-4"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Commits</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Pull Requests</h3><p class="text-2xl font-bold">1</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Issues</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Comments</h3><p class="text-2xl font-bold">0</p></div></div><div class="space-y-4"><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Commits</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Pull Requests</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Issues</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Comments</h3><span>▶</span></div></div></div></div></div>
+    <script>
+        window.__DATA__ = {"contributor":"yourbuddyconner","score":5,"summary":"Yourbuddyconner is currently working on developing a basic plugin for Ethereum Virtual Machine (EVM) functionality, as evidenced by the single Work In Progress pull request that has not yet been merged into the main codebase. There have been no issues opened or commits made in this time frame, indicating focused efforts on this particular feature within the packages code area.","avatar_url":"https://avatars.githubusercontent.com/u/2635475?v=4","activity":{"code":{"total_commits":0,"total_prs":1,"commits":[],"pull_requests":[{"number":952,"title":"WIP: basic working plugin-evm functionality","state":"OPEN","merged":false,"created_at":"2024-12-10T02:57:16Z","updated_at":"2024-12-11T14:51:46Z","body":"Here's a PR description for the EVM plugin changes:\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nThis PR significantly enhances the EVM plugin functionality with several key improvements:\r\n\r\n1. Added core ERC-20 functionality:\r\n   - Added ERC-20 ABI and contract interactions\r\n   - Implemented token balance checking\r\n   - Added support for token transfers\r\n\r\n2. Implemented new actions:\r\n   - `getBalance`: Check ETH/token balances across chains\r\n   - `transfer`: Native token and ERC-20 transfers\r\n   - Enhanced `bridge`: Cross-chain token bridging via LiFi\r\n   - Enhanced `swap`: DEX token swaps \r\n   - via LiFi aggregation\r\n\r\n<img width=\"745\" alt=\"Screenshot 2024-12-09 at 7 10 14 PM\" src=\"https://github.com/user-attachments/assets/ed6ad6ba-6338-43d9-a234-5059f3fa144c\">\r\n\r\n3. Fixed type safety issues and improved error handling\r\n\r\n## What kind of change is this?\r\n\r\n- Features (non-breaking change which adds functionality)\r\n- Bug fixes (non-breaking change which fixes an issue)\r\n- Improvements (misc. changes to existing features)\r\n\r\n# Risks\r\n\r\nMedium:\r\n- Changes to core wallet functionality could impact transaction signing\r\n- Updates to bridge/swap logic could affect cross-chain operations\r\n- ERC-20 integration adds complexity to token handling\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n1. Review the core changes in:\r\n   - `src/actions/bridge.ts`\r\n   - `src/actions/swap.ts`\r\n   - `src/actions/transfer.ts`\r\n   - `src/actions/getbalance.ts`\r\n\r\n2. Check test implementation:\r\n   - `test/setup.ts` - Test infrastructure\r\n   - `test/actions/bridge.test.ts` - Bridge action tests\r\n   - `test/providers/wallet.test.ts` - Wallet provider tests\r\n\r\n## Detailed testing steps\r\n\r\n1. Test basic ETH operations:\r\n```typescript\r\n// Check balance\r\nawait getbalanceAction.handler(runtime, message, state);\r\n\r\n// Transfer ETH\r\nawait transferAction.handler(runtime, message, state);\r\n```\r\n\r\n2. Test ERC-20 operations:\r\n```typescript\r\n// Check USDC balance\r\nawait getbalanceAction.handler(runtime, {\r\n  chain: \"ethereum\",\r\n  tokenAddress: \"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48\"\r\n});\r\n\r\n// Bridge tokens\r\nawait bridgeAction.handler(runtime, {\r\n  fromChain: \"ethereum\",\r\n  toChain: \"base\",\r\n  amount: \"100\",\r\n  tokenAddress: \"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48\"\r\n});\r\n```\r\n\r\n# Documentation changes needed?\r\n\r\nYes, documentation updates needed for:\r\n- New ERC-20 functionality\r\n- Updated action parameters\r\n- Testing setup and mocking\r\n\r\n# Deploy Notes\r\n\r\n- Requires environment variables:\r\n  - `EVM_PRIVATE_KEY`\r\n  - `ETHERSCAN_API_KEY` (optional, for token verification)\r\n- Dependencies on LiFi SDK and viem need to be properly versioned\r\n\r\n\r\nRelated to: #735","files":[{"path":"packages/plugin-evm/src/abis/erc20.ts","additions":23,"deletions":0},{"path":"packages/plugin-evm/src/actions/bridge.ts","additions":232,"deletions":63},{"path":"packages/plugin-evm/src/actions/getTokenInfo.ts","additions":230,"deletions":0},{"path":"packages/plugin-evm/src/actions/getTokenMarketData.ts","additions":211,"deletions":0},{"path":"packages/plugin-evm/src/actions/getbalance.ts","additions":166,"deletions":0},{"path":"packages/plugin-evm/src/actions/index.ts","additions":6,"deletions":0},{"path":"packages/plugin-evm/src/actions/swap.ts","additions":202,"deletions":43},{"path":"packages/plugin-evm/src/actions/transfer.ts","additions":218,"deletions":27},{"path":"packages/plugin-evm/src/index.ts","additions":7,"deletions":2},{"path":"packages/plugin-evm/src/providers/wallet.ts","additions":22,"deletions":40},{"path":"packages/plugin-evm/src/templates/getTokenMarketData.ts","additions":21,"deletions":0},{"path":"packages/plugin-evm/src/templates/getbalance.ts","additions":42,"deletions":0},{"path":"packages/plugin-evm/src/templates/index.ts","additions":16,"deletions":33},{"path":"packages/plugin-evm/src/templates/swap.ts","additions":63,"deletions":0},{"path":"packages/plugin-evm/src/types/index.ts","additions":2,"deletions":2}],"reviews":[],"comments":[{"author":"n00b21337","body":"Connecting this one, seems here is done most progress > https://github.com/ai16z/eliza/pull/864"}]}]},"issues":{"total_opened":0,"opened":[]},"engagement":{"total_comments":0,"total_reviews":0,"comments":[],"reviews":[]}}};
+    </script>
+    <script type="text/javascript">
+        
+const StatusDot = ({ status }) => {
+  const colors = {
+    open: 'bg-green-500',
+    closed: 'bg-red-500',
+    merged: 'bg-purple-500'
+  };
+
+  return React.createElement('span', {
+    className: `inline-block w-2 h-2 rounded-full ${colors[status]} mr-2`
+  });
+};
+
+const ActivitySection = ({ title, items = [], showStatus = false }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  
+  const getStatus = (item) => {
+    if (item.state === 'merged' || (item.state === 'closed' && title === 'Pull Requests')) {
+      return 'merged';
+    }
+    return item.state || 'open';
+  };
+
+  return React.createElement('div', { className: 'border rounded-lg p-4' },
+    React.createElement('div', {
+      className: 'flex items-center justify-between cursor-pointer',
+      onClick: () => setIsExpanded(!isExpanded)
+    },
+      React.createElement('h3', { className: 'font-semibold' }, title),
+      React.createElement('span', null, isExpanded ? '▼' : '▶')
+    ),
+    isExpanded && React.createElement('div', { className: 'mt-4 space-y-2' },
+      items.map((item, index) => 
+        React.createElement('div', { key: index, className: 'p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded' },
+          React.createElement('a', {
+            href: item.url,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            className: 'text-sm hover:text-blue-500 flex flex-col gap-1'
+          },
+            React.createElement('span', { className: 'font-medium flex items-center' },
+              showStatus && React.createElement(StatusDot, { status: getStatus(item) }),
+              item.message || item.title || item.body
+            ),
+            React.createElement('span', { className: 'text-gray-500 text-xs' },
+              new Date(item.date || item.created_at).toLocaleDateString()
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+const StatCard = ({ name, value }) => {
+  return React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+    React.createElement('h3', { className: 'font-semibold' }, name),
+    React.createElement('p', { className: 'text-2xl font-bold' }, value)
+  );
+};
+
+const ContributorProfile = ({ data }) => {
+  const stats = [
+    { name: 'Commits', value: data.activity.code.total_commits },
+    { name: 'Pull Requests', value: data.activity.code.total_prs },
+    { name: 'Issues', value: data.activity.issues.total_opened },
+    { name: 'Comments', value: data.activity.engagement.total_comments }
+  ];
+
+  return React.createElement('div', { className: 'max-w-7xl mx-auto p-4 space-y-6' },
+    React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+      React.createElement('div', { className: 'flex items-center justify-between' },
+        React.createElement('div', { className: 'flex items-center gap-4' },
+          React.createElement('img', {
+            src: data.avatar_url,
+            alt: `${data.contributor}'s avatar`,
+            className: 'w-16 h-16 rounded-full'
+          }),
+          React.createElement('div', null,
+            React.createElement('h1', { className: 'text-2xl font-bold' }, data.contributor),
+            React.createElement('div', { className: 'text-gray-600 dark:text-gray-400' },
+              React.createElement('span', { className: 'font-semibold' }, 'Score: '),
+              data.score
+            )
+          )
+        )
+      )
+    ),
+
+    data.summary && React.createElement('div', { 
+      className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow'
+    },
+      React.createElement('p', { 
+        className: 'text-gray-700 dark:text-gray-300 text-sm leading-relaxed'
+      }, data.summary)
+    ),
+
+    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
+      stats.map(stat => React.createElement(StatCard, { 
+        key: stat.name,
+        ...stat
+      }))
+    ),
+
+    React.createElement('div', { className: 'space-y-4' },
+      React.createElement(ActivitySection, {
+        title: 'Commits',
+        items: data.activity.code.commits
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Pull Requests',
+        items: data.activity.code.pull_requests,
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Issues',
+        items: data.activity.issues.opened || [],
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Comments',
+        items: data.activity.engagement.comments
+      })
+    )
+  );
+};
+
+// Initialize React root and render
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(ContributorProfile, { data: window.__DATA__ }));
+    </script>
+</body>
+</html>

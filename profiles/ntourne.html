@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ntourne - GitHub Contributions</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div id="root"><div class="max-w-7xl mx-auto p-4 space-y-6"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><div class="flex items-center justify-between"><div class="flex items-center gap-4"><img src="https://avatars.githubusercontent.com/u/3385523?u=921611b6c1a3e97932a4323736aaa78acf2fb7d5&amp;v=4" alt="ntourne&#x27;s avatar" class="w-16 h-16 rounded-full"/><div><h1 class="text-2xl font-bold">ntourne</h1><div class="text-gray-600 dark:text-gray-400"><span class="font-semibold">Score: </span>11</div></div></div><div class="text-3xl font-bold text-blue-600 dark:text-blue-400">11</div></div></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">ntourne is currently addressing a bug related to the `ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL` error that prevents them from starting their project. They have opened one issue regarding this problem but haven&#x27;t made any commits, pull requests, or code changes in the last 45 days as they work towards a solution.</p></div><div class="grid grid-cols-1 md:grid-cols-4 gap-4"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Commits</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Pull Requests</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Issues</h3><p class="text-2xl font-bold">1</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Comments</h3><p class="text-2xl font-bold">5</p></div></div><div class="space-y-4"><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Commits</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Pull Requests</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Issues</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Comments</h3><span>▶</span></div></div></div></div></div>
+    <script>
+        window.__DATA__ = {"contributor":"ntourne","score":11,"summary":"ntourne is currently addressing a bug related to the `ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL` error that prevents them from starting their project. They have opened one issue regarding this problem but haven't made any commits, pull requests, or code changes in the last 45 days as they work towards a solution.","avatar_url":"https://avatars.githubusercontent.com/u/3385523?u=921611b6c1a3e97932a4323736aaa78acf2fb7d5&v=4","activity":{"code":{"total_commits":0,"total_prs":0,"commits":[],"pull_requests":[]},"issues":{"total_opened":1,"opened":[{"number":925,"title":"Can't start project. Got `ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL` error","state":"CLOSED","created_at":"2024-12-08T23:02:56Z","updated_at":"2024-12-14T15:00:39Z","body":"**Describe the bug**\r\n\r\nI can't run the agent following the [Getting Started](https://ai16z.github.io/eliza/docs/quickstart/) docs.\r\nI got this error:\r\n```\r\n ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @ai16z/agent@0.1.5-alpha.5 start: `node --loader ts-node/esm src/index.ts \"--isRoot\" \"--character=characters/trump.character.json\"`\r\nExit status 1\r\n ELIFECYCLE  Command failed with exit code 1.\r\n```\r\n\r\n**To Reproduce**\r\n\r\n```\r\ngit clone https://github.com/ai16z/eliza.git\r\n\r\ncd eliza\r\n\r\ngit checkout $(git describe --tags --abbrev=0)\r\n# v0.1.5-alpha.5\r\n\r\npnpm install\r\n\r\npnpm build\r\n\r\ncp .env.example .env\r\n# Didn't make any change\r\n\r\n```\r\n\r\nFinally, tried to start the agent:\r\n\r\n```\r\npnpm start --character=\"characters/trump.character.json\"\r\n```\r\n\r\n**Expected behavior**\r\n\r\nI would spect the agent to start without issues.\r\n\r\n**Additional context**\r\n\r\nMy local env:\r\n```\r\nNode: v23.3.0\r\npnpm: v9.15.0\r\nPython: v3.11.6\r\n```\r\n","labels":[{"name":"bug","color":"d73a4a","description":"Something isn't working"}],"comments":[{"author":"kennytan41","body":"same error"},{"author":"shakkernerd","body":"Hi @ntourne What is your OS ?"},{"author":"CodingTux","body":"I am not able to reproduce this issue. \r\n\r\nTested in these environments\r\nos: macOS 15.1.1\r\nnode: v22.11.0\r\npnpm: 9.14.3\r\n\r\nit would be great if you can share more info :)"},{"author":"ileana-pr","body":"Looks like missing dependency... try to clean and rebuild: \r\n\r\npnpm clean \r\npnpm install \r\npnpm build \r\n\r\npnpm add -w -D ts-node typescript @types/node\r\n"},{"author":"ntourne","body":"@shakkernerd: Fixed, thanks!\r\nI executed what @ileana-pr shared:\r\n\r\n```\r\npnpm clean\r\npnpm install\r\npnpm build\r\n\r\npnpm add -w -D ts-node typescript @types/node\r\n```"}]}]},"engagement":{"total_comments":5,"total_reviews":0,"comments":[],"reviews":[]}}};
+    </script>
+    <script type="text/javascript">
+        
+const StatusDot = ({ status }) => {
+  const colors = {
+    open: 'bg-green-500',
+    closed: 'bg-red-500',
+    merged: 'bg-purple-500'
+  };
+
+  return React.createElement('span', {
+    className: `inline-block w-2 h-2 rounded-full ${colors[status]} mr-2`
+  });
+};
+
+const ActivitySection = ({ title, items = [], showStatus = false }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  
+  const getStatus = (item) => {
+    if (item.state === 'merged' || (item.state === 'closed' && title === 'Pull Requests')) {
+      return 'merged';
+    }
+    return item.state || 'open';
+  };
+
+  return React.createElement('div', { className: 'border rounded-lg p-4' },
+    React.createElement('div', {
+      className: 'flex items-center justify-between cursor-pointer',
+      onClick: () => setIsExpanded(!isExpanded)
+    },
+      React.createElement('h3', { className: 'font-semibold' }, title),
+      React.createElement('span', null, isExpanded ? '▼' : '▶')
+    ),
+    isExpanded && React.createElement('div', { className: 'mt-4 space-y-2' },
+      items.map((item, index) => 
+        React.createElement('div', { key: index, className: 'p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded' },
+          React.createElement('a', {
+            href: item.url,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            className: 'text-sm hover:text-blue-500 flex flex-col gap-1'
+          },
+            React.createElement('span', { className: 'font-medium flex items-center' },
+              showStatus && React.createElement(StatusDot, { status: getStatus(item) }),
+              item.message || item.title || item.body
+            ),
+            React.createElement('span', { className: 'text-gray-500 text-xs' },
+              new Date(item.date || item.created_at).toLocaleDateString()
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+const StatCard = ({ name, value }) => {
+  return React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+    React.createElement('h3', { className: 'font-semibold' }, name),
+    React.createElement('p', { className: 'text-2xl font-bold' }, value)
+  );
+};
+
+const ContributorProfile = ({ data }) => {
+  const stats = [
+    { name: 'Commits', value: data.activity.code.total_commits },
+    { name: 'Pull Requests', value: data.activity.code.total_prs },
+    { name: 'Issues', value: data.activity.issues.total_opened },
+    { name: 'Comments', value: data.activity.engagement.total_comments }
+  ];
+
+  return React.createElement('div', { className: 'max-w-7xl mx-auto p-4 space-y-6' },
+    React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+      React.createElement('div', { className: 'flex items-center justify-between' },
+        React.createElement('div', { className: 'flex items-center gap-4' },
+          React.createElement('img', {
+            src: data.avatar_url,
+            alt: `${data.contributor}'s avatar`,
+            className: 'w-16 h-16 rounded-full'
+          }),
+          React.createElement('div', null,
+            React.createElement('h1', { className: 'text-2xl font-bold' }, data.contributor),
+            React.createElement('div', { className: 'text-gray-600 dark:text-gray-400' },
+              React.createElement('span', { className: 'font-semibold' }, 'Score: '),
+              data.score
+            )
+          )
+        )
+      )
+    ),
+
+    data.summary && React.createElement('div', { 
+      className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow'
+    },
+      React.createElement('p', { 
+        className: 'text-gray-700 dark:text-gray-300 text-sm leading-relaxed'
+      }, data.summary)
+    ),
+
+    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
+      stats.map(stat => React.createElement(StatCard, { 
+        key: stat.name,
+        ...stat
+      }))
+    ),
+
+    React.createElement('div', { className: 'space-y-4' },
+      React.createElement(ActivitySection, {
+        title: 'Commits',
+        items: data.activity.code.commits
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Pull Requests',
+        items: data.activity.code.pull_requests,
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Issues',
+        items: data.activity.issues.opened || [],
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Comments',
+        items: data.activity.engagement.comments
+      })
+    )
+  );
+};
+
+// Initialize React root and render
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(ContributorProfile, { data: window.__DATA__ }));
+    </script>
+</body>
+</html>

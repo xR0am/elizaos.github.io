@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aramxc - GitHub Contributions</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div id="root"><div class="max-w-7xl mx-auto p-4 space-y-6"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><div class="flex items-center justify-between"><div class="flex items-center gap-4"><img src="https://avatars.githubusercontent.com/u/30804770?u=a570e3c28076348a1659c2b8ebbc5fda67ad27c1&amp;v=4" alt="aramxc&#x27;s avatar" class="w-16 h-16 rounded-full"/><div><h1 class="text-2xl font-bold">aramxc</h1><div class="text-gray-600 dark:text-gray-400"><span class="font-semibold">Score: </span>35</div></div></div><div class="text-3xl font-bold text-blue-600 dark:text-blue-400">35</div></div></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Aramxc is actively improving the smokeTests environment by enhancing validation processes and logging mechanisms, as evidenced by a recent merged pull request focused on these improvements. Despite this single contribution, there have been no issues opened or additional commits made in the last 45 days within the scripts code area.</p></div><div class="grid grid-cols-1 md:grid-cols-4 gap-4"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Commits</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Pull Requests</h3><p class="text-2xl font-bold">1</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Issues</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Comments</h3><p class="text-2xl font-bold">0</p></div></div><div class="space-y-4"><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Commits</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Pull Requests</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Issues</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Comments</h3><span>▶</span></div></div></div></div></div>
+    <script>
+        window.__DATA__ = {"contributor":"aramxc","score":35,"summary":"Aramxc is actively improving the smokeTests environment by enhancing validation processes and logging mechanisms, as evidenced by a recent merged pull request focused on these improvements. Despite this single contribution, there have been no issues opened or additional commits made in the last 45 days within the scripts code area.","avatar_url":"https://avatars.githubusercontent.com/u/30804770?u=a570e3c28076348a1659c2b8ebbc5fda67ad27c1&v=4","activity":{"code":{"total_commits":0,"total_prs":1,"commits":[],"pull_requests":[{"number":1046,"title":"chore: improve smokeTests environment validation and logging","state":"MERGED","merged":true,"created_at":"2024-12-13T19:08:47Z","updated_at":"2024-12-13T22:09:40Z","body":"# Relates to:\r\nN/A\r\n\r\n# Risks\r\nLow - Changes are isolated to the smoke test script and don't affect production code.\r\n- Script improvements are defensive in nature (error handling, timeouts)\r\n- Changes are easily reversible if issues arise\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nEnhances the smoke test script with improved logging, error handling, and process management:\r\n- Adds strict mode with error handling (set -euo pipefail)\r\n- Implements process cleanup with trap command (simplifies as well)\r\n- Adds timeout configuration for application startup\r\n- Enhances logging of test output and termination status\r\n\r\n## What kind of change is this?\r\nImprovements (misc. changes to existing features)\r\n\r\n# Documentation changes needed?\r\nMy changes do not require a change to the project documentation.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n1. Review the changes in `scripts/smokeTests.sh`\r\n2. Pay particular attention to the error handling and timeout configurations\r\n\r\n## Detailed testing steps\r\n1. Run the smoke tests: `pnpm run smokeTests`\r\n2. Verify that version information is displayed at start\r\n3. Verify that the script properly handles timeouts\r\n4. Verify that process cleanup occurs on both success and failure\r\n5. Check that error messages are clear and informative\r\n\r\n## Screenshots\r\nN/A - Command line tool changes only\r\n\r\n# Deploy Notes\r\nNo special deployment steps required - changes only affect development/testing workflow.\r\n\r\n<!-- Add your Discord username if you're on the server -->\r\n@sol.kinetics","files":[{"path":"pnpm-lock.yaml","additions":30,"deletions":1},{"path":"scripts/smokeTests.sh","additions":29,"deletions":23}],"reviews":[{"author":"jzvikart","state":"COMMENTED","body":""},{"author":"jzvikart","state":"COMMENTED","body":""},{"author":"jzvikart","state":"APPROVED","body":"All good."},{"author":"aramxc","state":"COMMENTED","body":""},{"author":"monilpat","state":"CHANGES_REQUESTED","body":"Thanks so much for doing this - Looks like the integration and smoke test need to be fixed! As well as ci check "}],"comments":[{"author":"jkbrooks","body":"@monilpat @odilitime @aramxc \r\n\r\nGonna revert until we get a better understanding of test fixes.  We have two test failures so far\r\n\r\n```\r\nRun pnpm run smokeTests\r\n WARN  Unsupported engine: wanted: {\"node\":\"23.3.0\"} (current: {\"node\":\"v23.4.0\",\"pnpm\":\"9.4.0\"})\r\n> eliza@ smokeTests /home/runner/work/eliza/eliza\r\n> bash ./scripts/smokeTests.sh\r\nnode version:\r\nv23.4.0\r\npython version:\r\nPython 3.10.12\r\nmake version:\r\nGNU Make 4.3\r\nBuilt for x8[6](https://github.com/ai16z/eliza/actions/runs/12322632866/job/34396607559#step:5:7)_64-pc-linux-gnu\r\nCopyright (C) 1988-2020 Free Software Foundation, Inc.\r\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\r\nThis is free software: you are free to change and redistribute it.\r\nThere is NO WARRANTY, to the extent permitted by law.\r\ngcc version:\r\ngcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0\r\nCopyright (C) 2021 Free Software Foundation, Inc.\r\nThis is free software; see the source for copying conditions.  There is NO\r\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\r\ng++ version:\r\ng++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0\r\nCopyright (C) 2021 Free Software Foundation, Inc.\r\nThis is free software; see the source for copying conditions.  There is NO\r\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\r\n.                                        |  WARN  Unsupported engine: wanted: {\"node\":\"23.3.0\"} (current: {\"node\":\"v23.4.0\",\"pnpm\":\"9.4.0\"})\r\ndocs                                     |  WARN  Unsupported engine: wanted: {\"node\":\"23.3.0\"} (current: {\"node\":\"v23.4.0\",\"pnpm\":\"9.4.0\"})\r\nScope: all 38 workspace projects\r\n ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with \"frozen-lockfile\" because pnpm-lock.yaml is not up to date with package.json\r\nNote that in CI environments this setting is true by default. If you still need to run install in such cases, use \"pnpm install --no-frozen-lockfile\"\r\n    Failure reason:\r\n    specifiers in the lockfile ({\"@0glabs/0g-ts-sdk\":\"0.2.1\",\"@coinbase/coinbase-sdk\":\"0.10.0\",\"@vitest/eslint-plugin\":\"1.0.1\",\"amqplib\":\"0.10.5\",\"csv-parse\":\"5.6.0\",\"ollama-ai-provider\":\"0.16.1\",\"optional\":\"0.1.4\",\"pnpm\":\"9.14.4\",\"sharp\":\"0.33.5\",\"tslog\":\"4.9.3\",\"@commitlint/cli\":\"18.6.1\",\"@commitlint/config-conventional\":\"18.6.3\",\"@typescript-eslint/eslint-plugin\":\"8.16.0\",\"@typescript-eslint/parser\":\"8.16.0\",\"concurrently\":\"9.1.0\",\"cross-env\":\"[7](https://github.com/ai16z/eliza/actions/runs/12322632866/job/34396607559#step:5:8).0.3\",\"eslint\":\"9.16.0\",\"eslint-config-prettier\":\"9.1.0\",\"husky\":\"9.1.7\",\"lerna\":\"[8](https://github.com/ai16z/eliza/actions/runs/12322632866/job/34396607559#step:5:9).1.5\",\"only-allow\":\"1.2.1\",\"prettier\":\"3.4.1\",\"turbo\":\"2.3.3\",\"typedoc\":\"0.26.11\",\"typescript\":\"5.6.3\",\"vite\":\"5.4.11\",\"vitest\":\"2.1.5\",\"zx\":\"^8.2.4\"}) don't match specs in package.json ({\"@commitlint/cli\":\"18.6.1\",\"@commitlint/config-conventional\":\"18.6.3\",\"@typescript-eslint/eslint-plugin\":\"8.16.0\",\"@typescript-eslint/parser\":\"8.16.0\",\"@vitest/eslint-plugin\":\"1.0.1\",\"concurrently\":\"[9](https://github.com/ai16z/eliza/actions/runs/12322632866/job/34396607559#step:5:10).1.0\",\"cross-env\":\"7.0.3\",\"eslint\":\"9.16.0\",\"eslint-config-prettier\":\"9.1.0\",\"husky\":\"9.1.7\",\"lerna\":\r\n WARN  Unsupported engine: wanted: {\"node\":\"23.3.0\"} (current: {\"node\":\"v23.4.0\",\"pnpm\":\"9.4.0\"})\r\n> eliza@ build /home/runner/work/eliza/eliza\r\n> turbo run build --filter=!eliza-docs\r\nsh: 1: turbo: not found\r\n ELIFECYCLE  Command failed.\r\n WARN   Local package.json exists, but node_modules missing, did you mean to install?\r\n/tmp/tmp.bKYIj6ruZs\r\nnode:internal/modules/run_main:[10](https://github.com/ai16z/eliza/actions/runs/12322632866/job/34396607559#step:5:11)4\r\n    triggerUncaughtException(\r\n    ^\r\nError [ERR_MODULE_NOT_FOUND]: Cannot find package 'ts-node' imported from /home/runner/work/eliza/eliza/agent/\r\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:267:9)\r\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\r\n    at moduleResolve (node:internal/modules/esm/resolve:854:18)\r\n    at defaultResolve (node:internal/modules/esm/resolve:984:[11](https://github.com/ai16z/eliza/actions/runs/12322632866/job/34396607559#step:5:12))\r\n    at nextResolve (node:internal/modules/esm/hooks:748:28)\r\n    at Hooks.resolve (node:internal/modules/esm/hooks:240:30)\r\n    at ModuleLoader.resolve (node:internal/modules/esm/loader:584:35)\r\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:242:38)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:546:36)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:344:[14](https://github.com/ai16z/eliza/actions/runs/12322632866/job/34396607559#step:5:15)) {\r\n  code: 'ERR_MODULE_NOT_FOUND'\r\n}\r\nNode.js v23.4.0\r\n``` \r\nand\r\n```\r\nRun pnpm install -r\r\n.                                        |  WARN  Unsupported engine: wanted: {\"node\":\"23.3.0\"} (current: {\"node\":\"v23.4.0\",\"pnpm\":\"9.4.0\"})\r\ndocs                                     |  WARN  Unsupported engine: wanted: {\"node\":\"23.3.0\"} (current: {\"node\":\"v23.4.0\",\"pnpm\":\"9.4.0\"})\r\nScope: all 38 workspace projects\r\n ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with \"frozen-lockfile\" because pnpm-lock.yaml is not up to date with package.json\r\n\r\nNote that in CI environments this setting is true by default. If you still need to run install in such cases, use \"pnpm install --no-frozen-lockfile\"\r\n\r\n    Failure reason:\r\n    specifiers in the lockfile ({\"@0glabs/0g-ts-sdk\":\"0.2.1\",\"@coinbase/coinbase-sdk\":\"0.10.0\",\"@vitest/eslint-plugin\":\"1.0.1\",\"amqplib\":\"0.10.5\",\"csv-parse\":\"5.[6](https://github.com/ai16z/eliza/actions/runs/12322632866/job/34396607559#step:5:7).0\",\"ollama-ai-provider\":\"0.16.1\",\"optional\":\"0.1.4\",\"pnpm\":\"9.14.4\",\"sharp\":\"0.33.5\",\"tslog\":\"4.9.3\",\"@commitlint/cli\":\"18.6.1\",\"@commitlint/config-conventional\":\"18.6.3\",\"@typescript-eslint/eslint-plugin\":\"8.16.0\",\"@typescript-eslint/parser\":\"8.16.0\",\"concurrently\":\"9.1.0\",\"cross-env\":\"[7](https://github.com/ai16z/eliza/actions/runs/12322632866/job/34396607559#step:5:8).0.3\",\"eslint\":\"9.16.0\",\"eslint-config-prettier\":\"9.1.0\",\"husky\":\"9.1.7\",\"lerna\":\"8.1.5\",\"only-allow\":\"1.2.1\",\"prettier\":\"3.4.1\",\"turbo\":\"2.3.3\",\"typedoc\":\"0.26.11\",\"typescript\":\"5.6.3\",\"vite\":\"5.4.11\",\"vitest\":\"2.1.5\",\"zx\":\"^[8](https://github.com/ai16z/eliza/actions/runs/12322632866/job/34396607559#step:5:9).2.4\"}) don't match specs in package.json ({\"@commitlint/cli\":\"18.6.1\",\"@commitlint/config-conventional\":\"18.6.3\",\"@typescript-eslint/eslint-plugin\":\"8.16.0\",\"@typescript-eslint/parser\":\"8.16.0\",\"@vitest/eslint-plugin\":\"1.0.1\",\"concurrently\":\"[9](https://github.com/ai16z/eliza/actions/runs/12322632866/job/34396607559#step:5:10).1.0\",\"cross-env\":\"7.0.3\",\"eslint\":\"9.16.0\",\"eslint-config-prettier\":\"9.1.0\",\"husky\":\"9.1.7\",\"lerna\":\"8.1.5\",\"only-allow\":\"1.2.1\",\"prettier\":\"3.4.1\",\"turbo\":\"2.3.3\",\"typedoc\":\"0.26.11\",\"typescript\":\"5.6.3\",\"vite\":\"5.4.11\",\"vitest\":\"2.1.5\",\"zx\":\"^8.2.4\",\"@0glabs/0g-ts-sdk\":\"0.2.1\",\"@coinbase/coinbase-sdk\":\"0.[10](https://github.com/ai16z/eliza/actions/runs/12322632866/job/34396607559#step:5:11).0\",\"@deepgram/sdk\":\"^3.9.0\",\"amqplib\":\"0.10.5\",\"csv-parse\":\"5.6.0\",\"ollama-ai-provider\":\"0.16.1\",\"optional\":\"0.1.4\",\"pnpm\":\"9.14.4\",\"sharp\":\"0.33.5\",\"tslog\":\"4.9.3\"})\r\nError: Process completed with exit code 1.\r\n```\r\n\r\n@odilitime mentioned he may have submitted a PR that instituted a failing test and is talking a look.  We don't currently have a rule that all tests must pass in the CI pipeline to be merged in yet although that will come soon"},{"author":"odilitime","body":"to be clear, I'm not looking into it, I already tried to fix it. I'm just not trusting some of the CI tests until someone fixes them. This PR is fine."},{"author":"jkbrooks","body":"gotcha, my b, cancelling my reversion @odilitime https://github.com/ai16z/eliza/pull/1051#issuecomment-2542452874 apologies @monilpat @aramxc "}]}]},"issues":{"total_opened":0,"opened":[]},"engagement":{"total_comments":0,"total_reviews":5,"comments":[],"reviews":[]}}};
+    </script>
+    <script type="text/javascript">
+        
+const StatusDot = ({ status }) => {
+  const colors = {
+    open: 'bg-green-500',
+    closed: 'bg-red-500',
+    merged: 'bg-purple-500'
+  };
+
+  return React.createElement('span', {
+    className: `inline-block w-2 h-2 rounded-full ${colors[status]} mr-2`
+  });
+};
+
+const ActivitySection = ({ title, items = [], showStatus = false }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  
+  const getStatus = (item) => {
+    if (item.state === 'merged' || (item.state === 'closed' && title === 'Pull Requests')) {
+      return 'merged';
+    }
+    return item.state || 'open';
+  };
+
+  return React.createElement('div', { className: 'border rounded-lg p-4' },
+    React.createElement('div', {
+      className: 'flex items-center justify-between cursor-pointer',
+      onClick: () => setIsExpanded(!isExpanded)
+    },
+      React.createElement('h3', { className: 'font-semibold' }, title),
+      React.createElement('span', null, isExpanded ? '▼' : '▶')
+    ),
+    isExpanded && React.createElement('div', { className: 'mt-4 space-y-2' },
+      items.map((item, index) => 
+        React.createElement('div', { key: index, className: 'p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded' },
+          React.createElement('a', {
+            href: item.url,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            className: 'text-sm hover:text-blue-500 flex flex-col gap-1'
+          },
+            React.createElement('span', { className: 'font-medium flex items-center' },
+              showStatus && React.createElement(StatusDot, { status: getStatus(item) }),
+              item.message || item.title || item.body
+            ),
+            React.createElement('span', { className: 'text-gray-500 text-xs' },
+              new Date(item.date || item.created_at).toLocaleDateString()
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+const StatCard = ({ name, value }) => {
+  return React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+    React.createElement('h3', { className: 'font-semibold' }, name),
+    React.createElement('p', { className: 'text-2xl font-bold' }, value)
+  );
+};
+
+const ContributorProfile = ({ data }) => {
+  const stats = [
+    { name: 'Commits', value: data.activity.code.total_commits },
+    { name: 'Pull Requests', value: data.activity.code.total_prs },
+    { name: 'Issues', value: data.activity.issues.total_opened },
+    { name: 'Comments', value: data.activity.engagement.total_comments }
+  ];
+
+  return React.createElement('div', { className: 'max-w-7xl mx-auto p-4 space-y-6' },
+    React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+      React.createElement('div', { className: 'flex items-center justify-between' },
+        React.createElement('div', { className: 'flex items-center gap-4' },
+          React.createElement('img', {
+            src: data.avatar_url,
+            alt: `${data.contributor}'s avatar`,
+            className: 'w-16 h-16 rounded-full'
+          }),
+          React.createElement('div', null,
+            React.createElement('h1', { className: 'text-2xl font-bold' }, data.contributor),
+            React.createElement('div', { className: 'text-gray-600 dark:text-gray-400' },
+              React.createElement('span', { className: 'font-semibold' }, 'Score: '),
+              data.score
+            )
+          )
+        )
+      )
+    ),
+
+    data.summary && React.createElement('div', { 
+      className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow'
+    },
+      React.createElement('p', { 
+        className: 'text-gray-700 dark:text-gray-300 text-sm leading-relaxed'
+      }, data.summary)
+    ),
+
+    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
+      stats.map(stat => React.createElement(StatCard, { 
+        key: stat.name,
+        ...stat
+      }))
+    ),
+
+    React.createElement('div', { className: 'space-y-4' },
+      React.createElement(ActivitySection, {
+        title: 'Commits',
+        items: data.activity.code.commits
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Pull Requests',
+        items: data.activity.code.pull_requests,
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Issues',
+        items: data.activity.issues.opened || [],
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Comments',
+        items: data.activity.engagement.comments
+      })
+    )
+  );
+};
+
+// Initialize React root and render
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(ContributorProfile, { data: window.__DATA__ }));
+    </script>
+</body>
+</html>

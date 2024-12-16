@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zongyanbin - GitHub Contributions</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div id="root"><div class="max-w-7xl mx-auto p-4 space-y-6"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><div class="flex items-center justify-between"><div class="flex items-center gap-4"><img src="https://avatars.githubusercontent.com/u/11399544?v=4" alt="zongyanbin&#x27;s avatar" class="w-16 h-16 rounded-full"/><div><h1 class="text-2xl font-bold">zongyanbin</h1><div class="text-gray-600 dark:text-gray-400"><span class="font-semibold">Score: </span>21</div></div></div><div class="text-3xl font-bold text-blue-600 dark:text-blue-400">21</div></div></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Zongyanbin is addressing critical issues related to the program&#x27;s startup process using &#x27;pnpm start&#x27;, as users encounter severe bugs that prevent successful launches. They are actively investigating and resolving these problems, focusing on bug fixes in documentation and code areas without contributing new features or merged pull requests at this time.</p></div><div class="grid grid-cols-1 md:grid-cols-4 gap-4"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Commits</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Pull Requests</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Issues</h3><p class="text-2xl font-bold">2</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Comments</h3><p class="text-2xl font-bold">9</p></div></div><div class="space-y-4"><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Commits</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Pull Requests</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Issues</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Comments</h3><span>▶</span></div></div></div></div></div>
+    <script>
+        window.__DATA__ = {"contributor":"zongyanbin","score":21,"summary":"Zongyanbin is addressing critical issues related to the program's startup process using 'pnpm start', as users encounter severe bugs that prevent successful launches. They are actively investigating and resolving these problems, focusing on bug fixes in documentation and code areas without contributing new features or merged pull requests at this time.","avatar_url":"https://avatars.githubusercontent.com/u/11399544?v=4","activity":{"code":{"total_commits":0,"total_prs":0,"commits":[],"pull_requests":[]},"issues":{"total_opened":2,"opened":[{"number":326,"title":"Severe Bug - The program fails to start with the command 'pnpm start', urgent fix required","state":"CLOSED","created_at":"2024-11-15T03:44:35Z","updated_at":"2024-11-15T14:08:12Z","body":"**Describe the bug**\r\nThe program fails to run at all when following the steps to set it up and execute the commands. After cloning the repository git clone git@github.com:ai16z/eliza.git, and going through the setup process including installing prerequisites like Python 2.7+, Node.js 23.1+, and pnpm, editing the .env file and character file as instructed, and then running the commands pnpm i and pnpm start, the program doesn't start. Tried again with the latest code today but still faced the same issue. It's quite surprising that such a serious problem exists and it seems no one has addressed it yet.\r\n<!-- A clear and concise description of what the bug is. -->\r\n\r\n**To Reproduce**\r\nClone the repository: git clone git@github.com:ai16z/eliza.git\r\nEnsure the following prerequisites are installed:\r\nPython 2.7+\r\nNode.js 23.1+\r\npnpm\r\nEdit the .env file:\r\nCopy .env.example to .env and fill in the appropriate values.\r\nEdit the TWITTER environment variables to add your bot's username and password.\r\nAfter setting up the .env file and character file, run the following commands:\r\npnpm i\r\npnpm start\r\n\r\n\r\n**Expected behavior**\r\nError message\r\nzyb@zybdeMacBook-Pro eliza % pnpm start\r\n\r\n> eliza@ start /Users/zyb/project/ai/eliza\r\n> pnpm --filter \"@ai16z/agent\" start --isRoot\r\n\r\n\r\n> @ai16z/agent@0.0.1 start /Users/zyb/project/ai/eliza/packages/agent\r\n> node --loader ts-node/esm src/index.ts \"--isRoot\"\r\n\r\n(node:59060) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\r\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));'\r\n(Use `node --trace-warnings ...` to show where the warning was created)\r\n(node:59060) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\r\n(Use `node --trace-deprecation ...` to show where the warning was created)\r\n\r\nnode:internal/modules/run_main:122\r\n    triggerUncaughtException(\r\n    ^\r\n[Object: null prototype] {\r\n  [Symbol(nodejs.util.inspect.custom)]: [Function: [nodejs.util.inspect.custom]]\r\n}\r\n\r\nNode.js v23.1.0\r\n/Users/zyb/project/ai/eliza/packages/agent:\r\n ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @ai16z/agent@0.0.1 start: `node --loader ts-node/esm src/index.ts \"--isRoot\"`\r\nExit status 1\r\n ELIFECYCLE  Command failed with exit code 1.\r\nzyb@zybdeMacBook-Pro eliza % \r\n\r\n<!-- Steps to reproduce the behavior. -->\r\n\r\n\r\n**Screenshots**\r\n\r\n\r\n\r\n![aaaa](https://github.com/user-attachments/assets/7db9ced8-b255-4182-bbbb-d5ceb1283300)\r\n","labels":[{"name":"bug","color":"d73a4a","description":"Something isn't working"}],"comments":[{"author":"odilitime","body":"Try checking out v0.0.10 and running that"},{"author":"yodamaster726","body":"Also curious if ‘pnpm run dev’ works.  I just pulled the code 2 hrs ago and it started for me. I was just iuaing the basic agent though.  Didn’t config twitter.  But good idea to try the tagged version mentioned previously "},{"author":"lalalune","body":"Try pnpm run dev. The problem is start doesn't run tsc. I pushed a fix for this to main.\r\n\r\nThere is an error in your code, tsc will show what it is"},{"author":"lalalune","body":"I'm closing this because I think it's a bug related to JSON formatting or something, not broken main"}]},{"number":288,"title":"pnpm start reports an error and cannot be started. Why is this? I installed it according to the documentation steps.","state":"CLOSED","created_at":"2024-11-13T11:30:21Z","updated_at":"2024-11-15T14:13:05Z","body":"**Describe the bug**\r\n\r\n\r\npnpm start reports an error and cannot be started. Why is this? I installed it according to the documentation steps.\r\n\r\n\r\n<!-- A clear and concise description of what the bug is. -->\r\n![image](https://github.com/user-attachments/assets/5bc3c344-b921-4931-8d14-f9ca046eaac1)\r\n\r\n**To Reproduce**\r\n\r\npnpm i         \r\npnpm start reports an error and cannot be started. Why is this? I installed it according to the documentation steps.\r\n           \r\n\r\n<!-- Steps to reproduce the behavior. -->\r\n\r\n**Expected behavior**\r\n\r\n<!-- A clear and concise description of what you expected to happen. -->\r\n\r\n**Screenshots**\r\n\r\n<!-- If applicable, add screenshots to help explain your problem. -->\r\n\r\n**Additional context**\r\n\r\n<!-- Add any other context about the problem here. -->\r\n![image](https://github.com/user-attachments/assets/d3aa93b3-e965-4c04-812e-073686775368)\r\n\r\n","labels":[{"name":"bug","color":"d73a4a","description":"Something isn't working"},{"name":"documentation","color":"0075ca","description":"Improvements or additions to documentation"}],"comments":[{"author":"leomercier","body":"<img width=\"1144\" alt=\"Screenshot 2024-11-13 at 17 19 31\" src=\"https://github.com/user-attachments/assets/d83a24a0-65e5-433f-a7e2-bea6633e8f64\">\r\n\r\nSame error on updating too. "},{"author":"Joshalphonse","body":"You may need to manage the node versions on your machine. just remove them from whatever package manager you're using either if its nvm or brew and then just install 22.11.0. See if that works"},{"author":"metadiver","body":"This issue was introduced in this commit: [link](https://github.com/ai16z/eliza/commit/d49f4c9af03ef9c6a95ba15db48ada674453bbb7#diff-0b810c38f3c138a3d5e44854edefd5eb966617ca84e62f06511f60acc40546c7).\r\n\r\nThe 'pnpm start' command was removed from @ai16z/eliza, which causes @ai16z/agent to fail when running 'pnpm start' unless the core is already built. I pushed a fix for it below\r\n\r\nhttps://github.com/ai16z/eliza/pull/292"},{"author":"leomercier","body":"Will look again"},{"author":"lalalune","body":"i think this is fixed"}]}]},"engagement":{"total_comments":9,"total_reviews":0,"comments":[],"reviews":[]}}};
+    </script>
+    <script type="text/javascript">
+        
+const StatusDot = ({ status }) => {
+  const colors = {
+    open: 'bg-green-500',
+    closed: 'bg-red-500',
+    merged: 'bg-purple-500'
+  };
+
+  return React.createElement('span', {
+    className: `inline-block w-2 h-2 rounded-full ${colors[status]} mr-2`
+  });
+};
+
+const ActivitySection = ({ title, items = [], showStatus = false }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  
+  const getStatus = (item) => {
+    if (item.state === 'merged' || (item.state === 'closed' && title === 'Pull Requests')) {
+      return 'merged';
+    }
+    return item.state || 'open';
+  };
+
+  return React.createElement('div', { className: 'border rounded-lg p-4' },
+    React.createElement('div', {
+      className: 'flex items-center justify-between cursor-pointer',
+      onClick: () => setIsExpanded(!isExpanded)
+    },
+      React.createElement('h3', { className: 'font-semibold' }, title),
+      React.createElement('span', null, isExpanded ? '▼' : '▶')
+    ),
+    isExpanded && React.createElement('div', { className: 'mt-4 space-y-2' },
+      items.map((item, index) => 
+        React.createElement('div', { key: index, className: 'p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded' },
+          React.createElement('a', {
+            href: item.url,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            className: 'text-sm hover:text-blue-500 flex flex-col gap-1'
+          },
+            React.createElement('span', { className: 'font-medium flex items-center' },
+              showStatus && React.createElement(StatusDot, { status: getStatus(item) }),
+              item.message || item.title || item.body
+            ),
+            React.createElement('span', { className: 'text-gray-500 text-xs' },
+              new Date(item.date || item.created_at).toLocaleDateString()
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+const StatCard = ({ name, value }) => {
+  return React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+    React.createElement('h3', { className: 'font-semibold' }, name),
+    React.createElement('p', { className: 'text-2xl font-bold' }, value)
+  );
+};
+
+const ContributorProfile = ({ data }) => {
+  const stats = [
+    { name: 'Commits', value: data.activity.code.total_commits },
+    { name: 'Pull Requests', value: data.activity.code.total_prs },
+    { name: 'Issues', value: data.activity.issues.total_opened },
+    { name: 'Comments', value: data.activity.engagement.total_comments }
+  ];
+
+  return React.createElement('div', { className: 'max-w-7xl mx-auto p-4 space-y-6' },
+    React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+      React.createElement('div', { className: 'flex items-center justify-between' },
+        React.createElement('div', { className: 'flex items-center gap-4' },
+          React.createElement('img', {
+            src: data.avatar_url,
+            alt: `${data.contributor}'s avatar`,
+            className: 'w-16 h-16 rounded-full'
+          }),
+          React.createElement('div', null,
+            React.createElement('h1', { className: 'text-2xl font-bold' }, data.contributor),
+            React.createElement('div', { className: 'text-gray-600 dark:text-gray-400' },
+              React.createElement('span', { className: 'font-semibold' }, 'Score: '),
+              data.score
+            )
+          )
+        )
+      )
+    ),
+
+    data.summary && React.createElement('div', { 
+      className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow'
+    },
+      React.createElement('p', { 
+        className: 'text-gray-700 dark:text-gray-300 text-sm leading-relaxed'
+      }, data.summary)
+    ),
+
+    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
+      stats.map(stat => React.createElement(StatCard, { 
+        key: stat.name,
+        ...stat
+      }))
+    ),
+
+    React.createElement('div', { className: 'space-y-4' },
+      React.createElement(ActivitySection, {
+        title: 'Commits',
+        items: data.activity.code.commits
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Pull Requests',
+        items: data.activity.code.pull_requests,
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Issues',
+        items: data.activity.issues.opened || [],
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Comments',
+        items: data.activity.engagement.comments
+      })
+    )
+  );
+};
+
+// Initialize React root and render
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(ContributorProfile, { data: window.__DATA__ }));
+    </script>
+</body>
+</html>

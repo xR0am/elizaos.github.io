@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prem95 - GitHub Contributions</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div id="root"><div class="max-w-7xl mx-auto p-4 space-y-6"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><div class="flex items-center justify-between"><div class="flex items-center gap-4"><img src="https://avatars.githubusercontent.com/u/13019570?u=77071c01f4aa151b254672bbdfc5c65b9d13ca46&amp;v=4" alt="Prem95&#x27;s avatar" class="w-16 h-16 rounded-full"/><div><h1 class="text-2xl font-bold">Prem95</h1><div class="text-gray-600 dark:text-gray-400"><span class="font-semibold">Score: </span>14</div></div></div><div class="text-3xl font-bold text-blue-600 dark:text-blue-400">14</div></div></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Prem95 is actively working on integrating Elfa.ai and Chromia APIs into a new feature (PR) and has also implemented pm2-based deployment for character data management (PR). Additionally, they are addressing an issue related to a TypeError in the LinkedIn constructor within their bug tracking efforts.</p></div><div class="grid grid-cols-1 md:grid-cols-4 gap-4"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Commits</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Pull Requests</h3><p class="text-2xl font-bold">2</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Issues</h3><p class="text-2xl font-bold">1</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Comments</h3><p class="text-2xl font-bold">1</p></div></div><div class="space-y-4"><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Commits</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Pull Requests</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Issues</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Comments</h3><span>▶</span></div></div></div></div></div>
+    <script>
+        window.__DATA__ = {"contributor":"Prem95","score":14,"summary":"Prem95 is actively working on integrating Elfa.ai and Chromia APIs into a new feature (PR) and has also implemented pm2-based deployment for character data management (PR). Additionally, they are addressing an issue related to a TypeError in the LinkedIn constructor within their bug tracking efforts.","avatar_url":"https://avatars.githubusercontent.com/u/13019570?u=77071c01f4aa151b254672bbdfc5c65b9d13ca46&v=4","activity":{"code":{"total_commits":0,"total_prs":2,"commits":[],"pull_requests":[{"number":980,"title":"feat: Elfa.ai and Chromia integration API","state":"CLOSED","merged":false,"created_at":"2024-12-11T01:53:39Z","updated_at":"2024-12-11T02:03:11Z","body":"# Risks\r\n- [ ] Low: API integration might temporarily fail\r\n- [ ] Medium: None identified\r\n- [ ] High: None identified\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n1. Integrates Elfa API for smart replies and follower analytics:\r\n   - Adds environment variables for Elfa API configuration\r\n   - Implements smart reply system in character settings\r\n   - Adds follower threshold checking\r\n   - Enhances logging for debugging\r\n\r\n2. Adds ChromindScan API integration:\r\n   - Implements transparent database storage on Chromia\r\n   - Adds data persistence layer\r\n   - Enables blockchain-based data verification\r\n\r\n## What kind of change is this?\r\n- [x] Features (Elfa API integration & ChromindScan implementation)\r\n- [x] Improvements (Enhanced logging and analytics)\r\n- [ ] Bug fixes\r\n- [x] Updates\r\n\r\n# Documentation changes needed?\r\n- [x] My changes require updates to the project documentation\r\n- [x] Documentation has been updated accordingly\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n1. Review `.env.example` for new environment variables\r\n2. Check `eternalai.character.json` for Elfa API settings\r\n3. Verify ChromindScan API integration in adapter code\r\n\r\n# Deploy Notes\r\n- Requires Elfa API key configuration\r\n- Needs ChromindScan API credentials\r\n- Update environment variables before deployment","files":[{"path":".env.example","additions":5,"deletions":0},{"path":"agent/src/index.ts","additions":5,"deletions":0},{"path":"characters/eternalai.character.json","additions":4,"deletions":1},{"path":"ecosystem.config.js","additions":10,"deletions":0},{"path":"packages/adapter-chromia/src/index.ts","additions":87,"deletions":0},{"path":"packages/adapter-chromia/tsconfig.json","additions":11,"deletions":0},{"path":"packages/adapter-chromia/tsup.config.ts","additions":13,"deletions":0},{"path":"packages/client-twitter/src/base.ts","additions":43,"deletions":0},{"path":"packages/client-twitter/src/interactions.ts","additions":181,"deletions":32},{"path":"packages/core/src/generation.ts","additions":5,"deletions":1},{"path":"packages/core/src/models.ts","additions":22,"deletions":0},{"path":"packages/core/src/types.ts","additions":2,"deletions":0}],"reviews":[],"comments":[]},{"number":840,"title":"feat: Add pm2 based deployment for character.json","state":"CLOSED","merged":false,"created_at":"2024-12-04T11:17:38Z","updated_at":"2024-12-04T13:19:10Z","body":"<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n## Overview\r\nAdded PM2 ecosystem configuration for easier deployment and process management of Eliza.\r\n\r\n## Changes\r\n- Added `ecosystem.config.js` for PM2 deployment\r\n- Updated documentation for PM2 deployment\r\n\r\n## Usage\r\n1. Install PM2 globally: `npm install -g pm2`\r\n2. Start Eliza: `pm2 start ecosystem.config.js`\r\n3. Monitor: `pm2 list` or `pm2 logs eliza`\r\n\r\n## Notes\r\nRemember to update the character path in `ecosystem.config.js` before deployment.","files":[{"path":"ecosystem.config.js","additions":10,"deletions":0},{"path":"packages/adapter-chromia/src/index.ts","additions":87,"deletions":0},{"path":"packages/adapter-chromia/tsconfig.json","additions":11,"deletions":0},{"path":"packages/adapter-chromia/tsup.config.ts","additions":13,"deletions":0},{"path":"packages/client-twitter/src/interactions.ts","additions":34,"deletions":22}],"reviews":[],"comments":[]}]},"issues":{"total_opened":1,"opened":[{"number":990,"title":"TypeError - LinkedIn constructor error","state":"CLOSED","created_at":"2024-12-11T13:12:09Z","updated_at":"2024-12-14T08:23:05Z","body":"**Describe the bug**\r\n\r\nWhen integrating `client-linkedin`, an error occurs: \"TypeError: linkedin_api_1.Client is not a constructor\". This error prevents the LinkedIn client from starting properly.\r\n\r\n**To Reproduce**\r\n\r\n1. Attempt to start the LinkedIn client.\r\n2. Observe the error message in the console.\r\n\r\n**Expected behavior**\r\n\r\nThe LinkedIn client should start without any errors, and it should initialize the agent for the character NEEToshi successfully.\r\n\r\n**Errors Log**\r\n\r\n```\r\n[\"◎ LinkedIn client started\"]\r\n\r\n⛔ ERRORS\r\nError starting agent for character NEEToshi:\r\n{}\r\n\r\nTypeError: linkedin_api_1.Client is not a constructor\r\nat new ClientBase (/Users/prem/Documents/PERSONAL/eliza/packages/client-linkedin/dist/base.js:67:35)\r\nat new LinkedInManager (/Users/prem/Documents/PERSONAL/eliza/packages/client-linkedin/dist/index.js:11:23)\r\nat Object.start (/Users/prem/Documents/PERSONAL/eliza/packages/client-linkedin/dist/index.js:20:25)\r\nat async initializeClients (file:///Users/prem/Documents/PERSONAL/eliza/agent/src/index.ts:232:33)\r\nat async startAgent (file:///Users/prem/Documents/PERSONAL/eliza/agent/src/index.ts:349:25)\r\nat async startAgents (file:///Users/prem/Documents/PERSONAL/eliza/agent/src/index.ts:372:13)\r\n\r\n⛔ ERRORS\r\nError starting agents:\r\n{}\r\n```\r\n\r\n*Additional context**\r\n\r\nThis issue may be related to the incorrect instantiation of the LinkedIn client due to `linkedin_api_1.Client` not being a constructor. Further investigation into the client library is needed.","labels":[{"name":"bug","color":"d73a4a","description":"Something isn't working"}],"comments":[{"author":"Prem95","body":"@bkellgren Are you sure ```linkedin-api: ^1.0.0``` is the correct package?\r\n\r\nReference - https://www.npmjs.com/package/linkedin-api?activeTab=readme"}]}]},"engagement":{"total_comments":1,"total_reviews":0,"comments":[],"reviews":[]}}};
+    </script>
+    <script type="text/javascript">
+        
+const StatusDot = ({ status }) => {
+  const colors = {
+    open: 'bg-green-500',
+    closed: 'bg-red-500',
+    merged: 'bg-purple-500'
+  };
+
+  return React.createElement('span', {
+    className: `inline-block w-2 h-2 rounded-full ${colors[status]} mr-2`
+  });
+};
+
+const ActivitySection = ({ title, items = [], showStatus = false }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  
+  const getStatus = (item) => {
+    if (item.state === 'merged' || (item.state === 'closed' && title === 'Pull Requests')) {
+      return 'merged';
+    }
+    return item.state || 'open';
+  };
+
+  return React.createElement('div', { className: 'border rounded-lg p-4' },
+    React.createElement('div', {
+      className: 'flex items-center justify-between cursor-pointer',
+      onClick: () => setIsExpanded(!isExpanded)
+    },
+      React.createElement('h3', { className: 'font-semibold' }, title),
+      React.createElement('span', null, isExpanded ? '▼' : '▶')
+    ),
+    isExpanded && React.createElement('div', { className: 'mt-4 space-y-2' },
+      items.map((item, index) => 
+        React.createElement('div', { key: index, className: 'p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded' },
+          React.createElement('a', {
+            href: item.url,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            className: 'text-sm hover:text-blue-500 flex flex-col gap-1'
+          },
+            React.createElement('span', { className: 'font-medium flex items-center' },
+              showStatus && React.createElement(StatusDot, { status: getStatus(item) }),
+              item.message || item.title || item.body
+            ),
+            React.createElement('span', { className: 'text-gray-500 text-xs' },
+              new Date(item.date || item.created_at).toLocaleDateString()
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+const StatCard = ({ name, value }) => {
+  return React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+    React.createElement('h3', { className: 'font-semibold' }, name),
+    React.createElement('p', { className: 'text-2xl font-bold' }, value)
+  );
+};
+
+const ContributorProfile = ({ data }) => {
+  const stats = [
+    { name: 'Commits', value: data.activity.code.total_commits },
+    { name: 'Pull Requests', value: data.activity.code.total_prs },
+    { name: 'Issues', value: data.activity.issues.total_opened },
+    { name: 'Comments', value: data.activity.engagement.total_comments }
+  ];
+
+  return React.createElement('div', { className: 'max-w-7xl mx-auto p-4 space-y-6' },
+    React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+      React.createElement('div', { className: 'flex items-center justify-between' },
+        React.createElement('div', { className: 'flex items-center gap-4' },
+          React.createElement('img', {
+            src: data.avatar_url,
+            alt: `${data.contributor}'s avatar`,
+            className: 'w-16 h-16 rounded-full'
+          }),
+          React.createElement('div', null,
+            React.createElement('h1', { className: 'text-2xl font-bold' }, data.contributor),
+            React.createElement('div', { className: 'text-gray-600 dark:text-gray-400' },
+              React.createElement('span', { className: 'font-semibold' }, 'Score: '),
+              data.score
+            )
+          )
+        )
+      )
+    ),
+
+    data.summary && React.createElement('div', { 
+      className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow'
+    },
+      React.createElement('p', { 
+        className: 'text-gray-700 dark:text-gray-300 text-sm leading-relaxed'
+      }, data.summary)
+    ),
+
+    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
+      stats.map(stat => React.createElement(StatCard, { 
+        key: stat.name,
+        ...stat
+      }))
+    ),
+
+    React.createElement('div', { className: 'space-y-4' },
+      React.createElement(ActivitySection, {
+        title: 'Commits',
+        items: data.activity.code.commits
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Pull Requests',
+        items: data.activity.code.pull_requests,
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Issues',
+        items: data.activity.issues.opened || [],
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Comments',
+        items: data.activity.engagement.comments
+      })
+    )
+  );
+};
+
+// Initialize React root and render
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(ContributorProfile, { data: window.__DATA__ }));
+    </script>
+</body>
+</html>
