@@ -36,3 +36,32 @@ npm run generate
 
 - `npm run build` - Bundle the site generator
 - `npm run generate` - Generate the static site
+
+
+## Data Structure
+
+
+```json
+{
+  contributor: string,
+  score: number,
+  avatar_url: string,
+  summary: string,
+  activity: {
+    code: {
+      total_commits: number,
+      total_prs: number,
+      commits: array,
+      pull_requests: array
+    },
+    issues: {
+      total_opened: number,
+      opened: array
+    },
+    engagement: {
+      total_comments: number,
+      comments: array
+    }
+  }
+}
+```
