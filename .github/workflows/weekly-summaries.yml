@@ -1,7 +1,8 @@
-name: Weekly Contributor Update
+name: Contributor Updates
 on:
   schedule:
-    - cron: '0 19 * * 5'  # Run at 2:00 PM EST (19:00 UTC) every Friday
+    - cron: '0 19 * * 5'  # Weekly on Friday at 2:00 PM EST
+    - cron: '0 19 1 * *'  # Monthly on 1st at 2:00 PM EST
   workflow_dispatch:
 
 permissions:
@@ -10,7 +11,6 @@ permissions:
 jobs:
   update-contributors:
     runs-on: ubuntu-latest
-    
     steps:
     - uses: actions/checkout@v3
       with:
@@ -25,53 +25,66 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '18'
-        cache: 'npm'  # Enable npm caching
+        cache: 'npm'
     
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install openai requests
+        pip install openai
     
     - name: Install Node dependencies
       run: npm ci
     
-    # First fetch PR data since it's used by both analyses
-    - name: Fetch PR data
+    - name: Set date variables
+      run: |
+        echo "TIMESTAMP=$(date +'%Y_%m_%d')" >> $GITHUB_ENV
+        echo "IS_MONTH_START=$(date +'%d')" >> $GITHUB_ENV
+    
+    - name: Fetch weekly data
+      if: github.event.schedule != '0 19 1 * *'
       env:
         GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
       run: |
-        mkdir -p issues_prs
-        python issues_prs/gh_issues_pr3.py ai16z/eliza -t pr -s all -f json --files > issues_prs/prs_with_files.json
+        # Create directories
+        mkdir -p data/weekly data/weekly/history
+        
+        # Fetch current data with timestamp
+        bash scripts/fetch_github.sh ai16z eliza --type prs --days 7 | tee data/weekly/prs.json data/weekly/history/prs_${TIMESTAMP}.json
+        bash scripts/fetch_github.sh ai16z eliza --type issues --days 7 | tee data/weekly/issues.json data/weekly/history/issues_${TIMESTAMP}.json
+        bash scripts/fetch_github.sh ai16z eliza --type commits --days 7 | tee data/weekly/commits.json data/weekly/history/commits_${TIMESTAMP}.json
     
-    # Then use the PR data for both contributor fetch and analysis
-    - name: Fetch and analyze contributors
+    - name: Fetch monthly data
+      if: github.event.schedule == '0 19 1 * *'
+      env:
+        GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+      run: |
+        # Create directories
+        mkdir -p data/monthly data/monthly/history
+        
+        # Fetch current data with timestamp
+        bash scripts/fetch_github.sh ai16z eliza --type prs --days 30 | tee data/monthly/prs.json data/monthly/history/prs_${TIMESTAMP}.json
+        bash scripts/fetch_github.sh ai16z eliza --type issues --days 30 | tee data/monthly/issues.json data/monthly/history/issues_${TIMESTAMP}.json
+        bash scripts/fetch_github.sh ai16z eliza --type commits --days 30 | tee data/monthly/commits.json data/monthly/history/commits_${TIMESTAMP}.json
+    
+    - name: Process weekly data
+      if: github.event.schedule != '0 19 1 * *'
       env:
         GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
-        # Create directories
-        mkdir -p data/reports
-        
-        # Get date range
-        WEEK_END=$(date +%Y-%m-%d)
-        WEEK_START=$(date -d "7 days ago" +%Y-%m-%d)
-        
-        # Fetch contributors using PR data
-        python scripts/fetch_contributors.py ai16z eliza -o ./data -f
-        
-        # Generate summaries
-        python scripts/generate_summaries.py ./data/contributors.json ./data/contributors.json -f
-
-        # Add points
-        python3 scripts/compute_scores.py ./data/contributors.json ./data/contributors.json -f
-        
-        # Run weekly analysis using existing PR data
-        python scripts/analyze_contributors3.py \
-          issues_prs/prs_with_files.json \
-          "data/reports/weekly-${WEEK_END}.json" \
-          --after "$WEEK_START" \
-          --before "$WEEK_END" \
-          -f
+        python scripts/combine.py -p data/weekly/prs.json -i data/weekly/issues.json -c data/weekly/commits.json -o data/weekly/combined.json
+        python scripts/calculate_scores.py data/weekly/combined.json data/weekly/scored.json
+        python scripts/summarize.py data/weekly/scored.json data/weekly/contributors.json --model openai
+    
+    - name: Process monthly data
+      if: github.event.schedule == '0 19 1 * *'
+      env:
+        GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      run: |
+        python scripts/combine.py -p data/monthly/prs.json -i data/monthly/issues.json -c data/monthly/commits.json -o data/monthly/combined.json
+        python scripts/calculate_scores.py data/monthly/combined.json data/monthly/scored.json
+        python scripts/summarize.py data/monthly/scored.json data/monthly/contributors.json --model openai
     
     - name: Build and generate site
       run: |
