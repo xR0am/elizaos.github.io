@@ -1,67 +1,150 @@
-# ai16z Eliza Contributors Site Generator
+# GitHub Contributor Analytics Generator
 
-ai16z, creators of the [eliza](https://github.com/ai16z/eliza) framework. This repo generates static sites showing GitHub contributor activity.
+A comprehensive analytics and reporting system for tracking GitHub repository contributions, generating insights, and creating static contributor profile pages.
 
+## Features
 
-![eliza_banner](https://github.com/user-attachments/assets/e8784793-c4d3-4d59-bba9-6d47885abe63)
+- **Daily, Weekly, and Monthly Reports**
+  - Automated data collection via GitHub Actions
+  - Detailed activity summaries with metrics and trends
+  - Smart contributor scoring system
+  - AI-powered activity summaries
 
-[Website](https://elizaos.ai/) | [Discord](https://discord.gg/ai16z) | [Twitter/X](https://x.com/ai16zdao) | [DAO](https://www.daos.fun/HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC)
+- **Contributor Profiles**
+  - Interactive profile pages for each contributor
+  - Activity visualization with charts and metrics
+  - Contribution history and engagement tracking
+  - Responsive design with dark mode support
 
+- **Activity Tracking**
+  - Pull request analysis with file-level changes
+  - Issue tracking with label analytics
+  - Commit history and impact measurement
+  - Engagement metrics (comments, reviews, etc.)
 
 ## Setup
 
-1. Install dependencies:
+1. Configure GitHub Authentication:
 ```bash
+# Set your GitHub access token
+export GH_ACCESS_TOKEN="your_token"
+
+# For AI-powered summaries (optional)
+export OPENAI_API_KEY="your_key"
+```
+
+2. Install Dependencies:
+```bash
+# Install Python dependencies
+pip install openai langchain-core langchain-ollama
+
+# Install Node.js dependencies
 npm install
 ```
 
-2. Put your contributor data JSON files in the `data` directory
-
-3. Build and generate the site:
+3. Configure Repository Settings:
 ```bash
-npm run build
-npm run generate
+# Update repository details in fetch_github.sh
+owner="your_org"
+repo="your_repo"
 ```
 
-4. Open `profiles/index.html` to view the result
+## Usage
 
-## Directory Structure
+### Manual Data Collection
 
-- `data/` - Place contributor JSON files here
-- `scripts/` - Source code
-- `dist/` - Built files
-- `profiles/` - Generated static site
+```bash
+# Fetch recent activity
+./scripts/fetch_github.sh owner repo --type prs --days 7
+./scripts/fetch_github.sh owner repo --type issues --days 7
+./scripts/fetch_github.sh owner repo --type commits --days 7
 
-## Scripts
+# Process and combine data
+python scripts/combine.py -p data/prs.json -i data/issues.json -c data/commits.json -o data/combined.json
 
-- `npm run build` - Bundle the site generator
-- `npm run generate` - Generate the static site
+# Calculate contributor scores
+python scripts/calculate_scores.py data/combined.json data/scored.json
 
+# Generate summaries
+python scripts/summarize.py data/scored.json data/contributors.json --model openai
+```
+
+### Automated Reports
+
+The included GitHub Actions workflow (`weekly-summaries.yml`) automatically:
+- Runs daily at 5:00 PM EST
+- Generates weekly reports on Fridays
+- Creates monthly summaries on the 4th of each month
+
+### Generate Static Site
+
+```bash
+# Build and generate contributor profile pages
+npm run build
+npm run generate
+
+# View the site
+open profiles/index.html
+```
 
 ## Data Structure
 
+The system generates structured JSON data for contributors:
 
 ```json
 {
-  contributor: string,
-  score: number,
-  avatar_url: string,
-  summary: string,
-  activity: {
-    code: {
-      total_commits: number,
-      total_prs: number,
-      commits: array,
-      pull_requests: array
+  "contributor": "username",
+  "score": number,
+  "avatar_url": "string",
+  "summary": "string",
+  "activity": {
+    "code": {
+      "total_commits": number,
+      "total_prs": number,
+      "commits": array,
+      "pull_requests": array
     },
-    issues: {
-      total_opened: number,
-      opened: array
+    "issues": {
+      "total_opened": number,
+      "opened": array
     },
-    engagement: {
-      total_comments: number,
-      comments: array
+    "engagement": {
+      "total_comments": number,
+      "comments": array
     }
   }
 }
 ```
+
+## Customization
+
+- Modify scoring algorithms in `calculate_scores.py`
+- Adjust summary generation in `summarize.py`
+- Customize profile pages in `ContributorProfile.js`
+- Configure report schedules in `weekly-summaries.yml`
+
+## Directory Structure
+
+```
+.
+├── data/               # Generated data and reports
+├── scripts/           # Core processing scripts
+│   ├── combine.py     # Data aggregation
+│   ├── calculate_scores.py    # Scoring system
+│   └── summarize.py   # Summary generation
+├── profiles/          # Generated static site
+└── .github/workflows  # Automation workflows
+```
+
+## Requirements
+
+- Python 3.11+
+- Node.js 18+
+- GitHub Personal Access Token
+- OpenAI API Key (optional, for AI summaries)
+
+## Contributors
+
+![eliza_banner](https://github.com/user-attachments/assets/e8784793-c4d3-4d59-bba9-6d47885abe63)
+
+[Website](https://elizaos.ai/) | [Discord](https://discord.gg/ai16z) | [Twitter/X](https://x.com/ai16zdao) | [DAO](https://www.daos.fun/HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC)
