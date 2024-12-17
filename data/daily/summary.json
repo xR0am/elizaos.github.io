@@ -1,0 +1,79 @@
+{
+  "title": "ai16z Eliza (2024-12-17)",
+  "version": "bump version to 0.1.6-alpha.3",
+  "overview": "Development focused on package improvements (fix direct-client ability to start agents), new features (update packages version script), 6 bug fixes, with 20 contributors merging 16 PRs. Major work included shakkernerd is actively improving the project by merging pull requests that include version updates, debug log fetching enhancements, lint fixes, and import management.",
+  "metrics": {
+    "contributors": 20,
+    "merged_prs": 16,
+    "new_issues": 5,
+    "lines_changed": 5791
+  },
+  "changes": {
+    "features": [
+      "update packages version script",
+      "add support for handlebars templating engine as an option",
+      "allow agents to create/buy/sell tokens on FOMO.fund's bonding curve in plugin-solana"
+    ],
+    "fixes": [
+      "fetch log level to debug",
+      "fix direct-client ability to start agents",
+      "improve fomo integration"
+    ],
+    "chores": [
+      "develop into main",
+      "bump version to 0.1.6-alpha.3",
+      "remove comment"
+    ]
+  },
+  "areas": [
+    {
+      "name": "docs",
+      "files": 86,
+      "additions": 913,
+      "deletions": 475
+    },
+    {
+      "name": "packages",
+      "files": 58,
+      "additions": 1957,
+      "deletions": 1105
+    },
+    {
+      "name": "root",
+      "files": 14,
+      "additions": 505,
+      "deletions": 120
+    }
+  ],
+  "issues_summary": "working on 3 bugs including 'pnpm install fails on m1 mac ', 'REQUIRED_NODE_VERSION: No such file' and implementing 2 feature requests including 'Feat: add github client to core agent', 'Support for building monorepo with git dependencies using pnpm and nix'",
+  "questions": [],
+  "top_contributors": [
+    {
+      "name": "shakkernerd",
+      "summary": "Shakkernerd is actively improving the project by merging pull requests that include version updates, debug log fetching enhancements, lint fixes, and import management",
+      "areas": [
+        "docs",
+        "client",
+        "packages"
+      ]
+    },
+    {
+      "name": "odilitime",
+      "summary": "Odilitime is actively improving the fomo integration within a project by enhancing its plugin functionality and distinguishing it from similar plugins",
+      "areas": [
+        "docs",
+        "docker-compose.yaml",
+        "CHANGELOG.md"
+      ]
+    },
+    {
+      "name": "erise133",
+      "summary": "erise133 is currently focused on enhancing the project's capabilities by adding support for the Handlebars templating engine as an option, demonstrating a commitment to expanding functionality and versatility within the codebase",
+      "areas": [
+        "packages",
+        "docs",
+        "pnpm-lock.yaml"
+      ]
+    }
+  ]
+}
