@@ -1,9 +1,9 @@
 name: Contributor Updates
 on:
   schedule:
-    - cron: '0 19 * * *'   # Daily at 5:00 PM EST
-    - cron: '0 19 * * 5'   # Weekly on Friday at 5:00 PM EST
-    - cron: '0 19 4 * *'   # Monthly on 4th at 5:00 PM EST
+    - cron: '30 22 * * *'   # Daily at 5:30 PM EST
+    - cron: '0 22 * * 5'    # Weekly on Friday at 5:00 PM EST
+    - cron: '0 22 4 * *'    # Monthly on 4th at 5:00 PM EST
   workflow_dispatch:
 
 permissions:
