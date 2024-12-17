@@ -1,78 +1,75 @@
 {
   "title": "ai16z Eliza (2024-12-17)",
-  "version": "bump version to 0.1.6-alpha.3",
-  "overview": "Development focused on package improvements (fix direct-client ability to start agents), new features (update packages version script), 6 bug fixes, with 20 contributors merging 16 PRs. Major work included shakkernerd is actively improving the project by merging pull requests that include version updates, debug log fetching enhancements, lint fixes, and import management.",
+  "version": "bump version to 0.1.6-alpha.4",
+  "overview": "Development focused on package improvements (client twitter login and auth handler), new features (make script dash compatible), 6 bug fixes, with 28 contributors merging 16 PRs. Major work included shakkernerd is currently working on merging pull requests related to fixing issues with the start script, client twitter, and fetching logs debug.",
   "metrics": {
-    "contributors": 20,
+    "contributors": 28,
     "merged_prs": 16,
-    "new_issues": 5,
-    "lines_changed": 5791
+    "new_issues": 18,
+    "lines_changed": 5402
   },
   "changes": {
     "features": [
-      "update packages version script",
-      "add support for handlebars templating engine as an option",
-      "allow agents to create/buy/sell tokens on FOMO.fund's bonding curve in plugin-solana"
+      "make script dash compatible",
+      "update packages version script"
     ],
     "fixes": [
+      "client twitter login and auth handler",
       "fetch log level to debug",
-      "fix direct-client ability to start agents",
-      "improve fomo integration"
+      "fix direct-client ability to start agents"
     ],
     "chores": [
+      "bump version to 0.1.6-alpha.4",
       "develop into main",
-      "bump version to 0.1.6-alpha.3",
-      "remove comment"
+      "bump version to 0.1.6-alpha.3"
     ]
   },
   "areas": [
     {
-      "name": "docs",
-      "files": 86,
-      "additions": 913,
-      "deletions": 475
+      "name": "packages",
+      "files": 93,
+      "additions": 1220,
+      "deletions": 1185
     },
     {
-      "name": "packages",
-      "files": 58,
-      "additions": 1957,
-      "deletions": 1105
+      "name": "docs",
+      "files": 87,
+      "additions": 980,
+      "deletions": 614
     },
     {
       "name": "root",
-      "files": 14,
-      "additions": 505,
-      "deletions": 120
+      "files": 13,
+      "additions": 498,
+      "deletions": 121
     }
   ],
-  "issues_summary": "working on 3 bugs including 'pnpm install fails on m1 mac ', 'REQUIRED_NODE_VERSION: No such file' and implementing 2 feature requests including 'Feat: add github client to core agent', 'Support for building monorepo with git dependencies using pnpm and nix'",
+  "issues_summary": "working on 9 bugs including 'media parameter is missing Error on Main Branch', 'Long tweets fail with error Tweet needs to be a bit shorter (Code 186)' and implementing 7 feature requests including 'request: databaseAdapter.getMemoryByIds', 'Plugin Create Command'",
   "questions": [],
   "top_contributors": [
     {
       "name": "shakkernerd",
-      "summary": "Shakkernerd is actively improving the project by merging pull requests that include version updates, debug log fetching enhancements, lint fixes, and import management",
+      "summary": "shakkernerd is currently working on merging pull requests related to fixing issues with the start script, client Twitter, and fetching logs debug",
       "areas": [
-        "docs",
+        "agent",
         "client",
-        "packages"
+        "lerna.json"
       ]
     },
     {
       "name": "odilitime",
-      "summary": "Odilitime is actively improving the fomo integration within a project by enhancing its plugin functionality and distinguishing it from similar plugins",
+      "summary": "odilitime is currently working on enhancing the fomo integration and fixing issues related to the direct-client ability to start agents",
       "areas": [
-        "docs",
-        "docker-compose.yaml",
-        "CHANGELOG.md"
+        ".npmrc",
+        "agent",
+        "characters"
       ]
     },
     {
-      "name": "erise133",
-      "summary": "erise133 is currently focused on enhancing the project's capabilities by adding support for the Handlebars templating engine as an option, demonstrating a commitment to expanding functionality and versatility within the codebase",
+      "name": "YoungPhlo",
+      "summary": "YoungPhlo is currently updating the spaces notes in the \"What Did You Get Done This Week? 5\" documentation",
       "areas": [
-        "packages",
-        "docs",
-        "pnpm-lock.yaml"
+        "docs"
       ]
     }
   ]
