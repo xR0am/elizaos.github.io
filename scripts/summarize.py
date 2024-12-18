@@ -6,7 +6,7 @@ from typing import List, Dict
 from langchain_core.prompts import PromptTemplate
 from collections import defaultdict
 
-def get_contribution_stats(data: Dict, days: int = 45) -> Dict:
+def get_contribution_stats(data: Dict, days: int = 90) -> Dict:
     """Get high-level contribution statistics for time period"""
     cutoff_date = datetime.utcnow() - timedelta(days=days)
     stats = defaultdict(int)
@@ -71,7 +71,7 @@ def get_contribution_stats(data: Dict, days: int = 45) -> Dict:
         'areas': {k: list(v) for k, v in work_areas.items()}
     }
 
-def get_recent_activity(data: Dict, days: int = 45) -> List[str]:
+def get_recent_activity(data: Dict, days: int = 90) -> List[str]:
     """Get most relevant recent activity"""
     cutoff_date = datetime.utcnow() - timedelta(days=days)
     activity = []
@@ -159,7 +159,7 @@ def get_summary_prompt(data: Dict, activity: List[str], stats: Dict) -> str:
     if stats['areas'].get('issue_areas'):
         areas_str += f"\nIssue areas: {', '.join(stats['areas']['issue_areas'])}"
         
-    return f"""Based on this GitHub activity from the last 45 days, write a 2-3 sentence summary of what {data['contributor']} worked on:
+    return f"""Based on this GitHub activity from the last 90 days, write a 2-3 sentence summary of what {data['contributor']} worked on:
 
 Recent Activity (most significant first):
 {chr(10).join(activity)}
@@ -176,12 +176,12 @@ Keep it brief and focus on main areas of work. Write in present tense. Start wit
 def generate_summary(data: Dict, model: str, api_key: str = None) -> str:
     """Generate summary using specified model"""
     try:
-        activity = get_recent_activity(data, days=45)
-        stats = get_contribution_stats(data, days=45)
+        activity = get_recent_activity(data, days=90)
+        stats = get_contribution_stats(data, days=90)
         
         # If no activity was found, return early
         if not activity:
-            return f"{data['contributor']} has no significant activity in the last 45 days."
+            return f"{data['contributor']} has no significant activity in the last 90 days."
         
         if model == "openai":
             from openai import OpenAI

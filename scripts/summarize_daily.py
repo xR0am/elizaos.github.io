@@ -91,16 +91,28 @@ def generate_overview(metrics: Dict, changes: List[Dict]) -> str:
 
 def generate_overview(metrics: Dict, changes: List[Dict], data: List[Dict]) -> str:
     """Generate a detailed overview of daily activities and key developments"""
-    # Get key features and changes
-    features = [c['title'].split(': ')[1] for c in changes 
-               if c.get('merged') and c['title'].lower().startswith('feat:')]
+    # Get key features and changes safely
+    features = []
+    for c in changes:
+        if c.get('merged') and c['title'].lower().startswith('feat:'):
+            parts = c['title'].split(':', 1)  # Split on first colon only
+            if len(parts) > 1:
+                features.append(parts[1].strip())
     
     # Get key areas and what's being built
     key_developments = []
     if 'packages' in metrics['file_changes']:
-        pkg_changes = next((c['title'].split(': ')[1] for c in changes 
-                          if 'plugin' in c['title'].lower() or 
-                          'client' in c['title'].lower()), None)
+        pkg_changes = None
+        for c in changes:
+            if not c.get('merged'):
+                continue
+            title_lower = c['title'].lower()
+            if 'plugin' in title_lower or 'client' in title_lower:
+                parts = c['title'].split(':', 1)
+                if len(parts) > 1:
+                    pkg_changes = parts[1].strip()
+                    break
+        
         if pkg_changes:
             key_developments.append(f"package improvements ({pkg_changes})")
     
@@ -111,20 +123,27 @@ def generate_overview(metrics: Dict, changes: List[Dict], data: List[Dict]) -> s
         key_developments.append(f"{metrics['pr_types']['fixes']} bug fixes")
     
     # Find major work summary
-    major_work = next(
-        (c['summary'].split('.')[0].lower() 
-         for c in data if c['score'] > 50),
-        'various improvements'
-    )
+    major_work = 'various improvements'
+    for c in data:
+        if c.get('score', 0) > 50 and c.get('summary'):
+            summary_parts = c['summary'].split('.')
+            if summary_parts:
+                major_work = summary_parts[0].lower()
+                break
     
-    overview = (
-        f"Development focused on {', '.join(key_developments)}, "
-        f"with {metrics['basic_metrics']['contributors']} contributors "
-        f"merging {metrics['basic_metrics']['merged_prs']} PRs. "
-        f"Major work included {major_work}."
-    )
+    # Build overview text with error handling
+    overview_parts = []
     
-    return overview
+    if key_developments:
+        overview_parts.append(f"Development focused on {', '.join(key_developments)}")
+    
+    contributor_info = f"with {metrics['basic_metrics']['contributors']} contributors merging {metrics['basic_metrics']['merged_prs']} PRs"
+    overview_parts.append(contributor_info)
+    
+    if major_work:
+        overview_parts.append(f"Major work included {major_work}")
+    
+    return ". ".join(overview_parts) + "."
 
 def get_contributor_details(data: List[Dict]) -> List[Dict]:
     """Get detailed contributor information including summaries"""
@@ -154,10 +173,17 @@ def get_contributor_details(data: List[Dict]) -> List[Dict]:
 
 def generate_json_summary(metrics: Dict, data: List[Dict]) -> Dict:
     """Generate structured JSON summary of activity"""
+    # Get merged PRs
     changes = [pr for c in data for pr in c['activity']['code']['pull_requests'] if pr.get('merged')]
-    version = next((c['title'].split(':')[1].strip() for c in changes 
-                   if 'version' in c['title'].lower() or 
-                   'bump' in c['title'].lower()), "")
+    
+    # Safely extract version info
+    version = ""
+    for c in changes:
+        if 'version' in c['title'].lower() or 'bump' in c['title'].lower():
+            parts = c['title'].split(':', 1)  # Split on first colon only
+            if len(parts) > 1:  # Only proceed if there's a part after the colon
+                version = parts[1].strip()
+                break
     
     # Collect all issues
     all_issues = []
@@ -166,9 +192,9 @@ def generate_json_summary(metrics: Dict, data: List[Dict]) -> Dict:
     
     # Get issues by type
     bugs = [issue for issue in all_issues 
-            if any(label['name'] == 'bug' for label in issue.get('labels', []))]
+            if any(label.get('name') == 'bug' for label in issue.get('labels', []))]
     enhancements = [issue for issue in all_issues 
-                   if any(label['name'] == 'enhancement' for label in issue.get('labels', []))]
+                   if any(label.get('name') == 'enhancement' for label in issue.get('labels', []))]
     
     # Generate issue summary
     issue_summary = ""
@@ -182,6 +208,23 @@ def generate_json_summary(metrics: Dict, data: List[Dict]) -> Dict:
             summaries.append(f"implementing {len(enhancements)} feature requests including {', '.join(enhancement_titles)}")
         issue_summary = " and ".join(summaries)
     
+    # Safely process PR titles for changes
+    features = []
+    fixes = []
+    chores = []
+    for c in changes:
+        if ':' in c['title']:  # Only process titles with colons
+            parts = c['title'].split(':', 1)
+            if len(parts) > 1:
+                title_type = parts[0].lower()
+                title_content = parts[1].strip()
+                if title_type.startswith('feat'):
+                    features.append(title_content)
+                elif title_type.startswith('fix'):
+                    fixes.append(title_content)
+                elif title_type.startswith('chore'):
+                    chores.append(title_content)
+    
     return {
         "title": f"ai16z Eliza ({datetime.utcnow().strftime('%Y-%m-%d')})",
         "version": version,
@@ -194,12 +237,9 @@ def generate_json_summary(metrics: Dict, data: List[Dict]) -> Dict:
                                for area in metrics['file_changes'].values())
         },
         "changes": {
-            "features": [c['title'].split(': ')[1] for c in changes 
-                        if c.get('merged') and c['title'].lower().startswith('feat:')][:3],
-            "fixes": [c['title'].split(': ')[1] for c in changes 
-                     if c.get('merged') and c['title'].lower().startswith('fix:')][:3],
-            "chores": [c['title'].split(': ')[1] for c in changes
-                      if c.get('merged') and c['title'].lower().startswith('chore:')][:3]
+            "features": features[:3],
+            "fixes": fixes[:3],
+            "chores": chores[:3]
         },
         "areas": [
             {
@@ -219,7 +259,7 @@ def generate_json_summary(metrics: Dict, data: List[Dict]) -> Dict:
         "top_contributors": [
             {
                 "name": c['contributor'],
-                "summary": c['summary'].split('.')[0],
+                "summary": c['summary'].split('.')[0] if c.get('summary') else "",
                 "areas": list(set(
                     f['path'].split('/')[0]
                     for pr in c['activity']['code']['pull_requests']
@@ -262,26 +302,44 @@ def generate_summary(data: List[Dict], model: str = "ollama", api_key: str = Non
 def generate_user_summary(metrics: Dict, data: List[Dict]) -> str:
     """Generate thorough but concise user-facing summary with bullet points"""
     changes = [pr for c in data for pr in c['activity']['code']['pull_requests'] if pr.get('merged')]
-    version = next((c['title'].split(':')[1].strip() for c in changes 
-                   if 'version' in c['title'].lower() or 
-                   'bump' in c['title'].lower()), "")
+    
+    # Safely extract version info
+    version = ""
+    for c in changes:
+        if 'version' in c['title'].lower() or 'bump' in c['title'].lower():
+            parts = c['title'].split(':', 1)
+            if len(parts) > 1:
+                version = parts[1].strip()
+                break
     
     date = datetime.utcnow().strftime("%Y-%m-%d")
     overview = generate_overview(metrics, changes, data)
     
-    features = [c['title'].split(': ')[1] for c in changes 
-               if c.get('merged') and c['title'].lower().startswith('feat:')]
-    fixes = [c['title'].split(': ')[1] for c in changes 
-            if c.get('merged') and c['title'].lower().startswith('fix:')]
-    chores = [c['title'].split(': ')[1] for c in changes
-             if c.get('merged') and c['title'].lower().startswith('chore:')]
+    # Safely parse PR titles
+    features = []
+    fixes = []
+    chores = []
     
-    # Count PR types
-    pr_types = Counter(
-        pr['title'].split(':')[0].lower()
-        for pr in changes
-        if ':' in pr['title']
-    )
+    for c in changes:
+        if not c.get('merged'):
+            continue
+        parts = c['title'].split(':', 1)
+        if len(parts) > 1:
+            title_type = parts[0].lower()
+            title_content = parts[1].strip()
+            if title_type.startswith('feat'):
+                features.append(title_content)
+            elif title_type.startswith('fix'):
+                fixes.append(title_content)
+            elif title_type.startswith('chore'):
+                chores.append(title_content)
+    
+    # Count PR types safely
+    pr_types = Counter()
+    for pr in changes:
+        if ':' in pr['title']:
+            pr_type = pr['title'].split(':', 1)[0].lower()
+            pr_types[pr_type] += 1
     
     # Get total commits
     total_commits = sum(len(c['activity']['code']['commits']) for c in data)
@@ -410,4 +468,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
