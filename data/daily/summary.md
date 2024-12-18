@@ -1,44 +1,42 @@
-# ai16z Eliza (2024-12-17)
+# ai16z Eliza (2024-12-18)
     
 ## 📊 Overview
-Development focused on package improvements (client twitter login and auth handler), new features (make script dash compatible), 6 bug fixes, with 28 contributors merging 16 PRs. Major work included shakkernerd is currently working on merging pull requests related to fixing issues with the start script, client twitter, and fetching logs debug.
+Development focused on 1 bug fixes. with 21 contributors merging 7 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 28 |
-| 📝 Commits | 43 |
-| 🔄 Merged PRs | 16 |
-| ⚠️ New Issues | 18 |
+| 👥 Contributors | 21 |
+| 📝 Commits | 0 |
+| 🔄 Merged PRs | 7 |
+| ⚠️ New Issues | 7 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 7
-- 🐛 **Fixes**: 6
-- ✨ **Features**: 2
+- 🧹 **Chores**: 1
+- 🐛 **Fixes**: 1
+- ✨ **Features**: 0
 
 ## 📁 File Changes
-- **packages**: 93 files (+1220/-1185 lines)
-- **docs**: 87 files (+980/-614 lines)
-- **root**: 13 files (+498/-121 lines)
-- **agent**: 8 files (+193/-159 lines)
-- **characters**: 2 files (+196/-0 lines)
+- **docs**: 101 files (+359/-343 lines)
+- **packages**: 2 files (+140/-1 lines)
+- **root**: 4 files (+62/-11 lines)
 
 ## 🔥 Notable Changes
-- feat: make script dash compatible
-- chore: bump version to 0.1.6-alpha.4
-- fix: client twitter login and auth handler
+- chore: New docs
+- docs: Update "CN README" with more details
+- docs: fixed CONTRIBUTING.md file Issue: 1048
 
 ## 👥 Top Contributors
-- **shakkernerd**: shakkernerd is currently working on merging pull requests related to fixing issues with the start script, client Twitter, and fetching logs debug
-- **odilitime**: odilitime is currently working on enhancing the fomo integration and fixing issues related to the direct-client ability to start agents
-- **YoungPhlo**: YoungPhlo is currently updating the spaces notes in the "What Did You Get Done This Week? 5" documentation
+- **madjin**: madjin is currently working on documenting missing plugin documentation and examples, as well as enhancing existing documentation with new content
+- **tomguluson92**: tomguluson92 is primarily focused on updating the "CN README" documentation with more details, as indicated by the recent merged pull request
+- **ileana-pr**: ileana-pr is currently working on documentation by fixing the CONTRIBUTING
 
 ## ⚠️ Issues
-- **New Issues**: 18
-- **Labels**: `bug` (9), `enhancement` (7), `good first issue` (1)
-- **Summary**: 9 bugs reported (including 'media parameter is missing Error on Main Branch', 'Long tweets fail with error Tweet needs to be a bit shorter (Code 186)') 7 feature requests (including 'request: databaseAdapter.getMemoryByIds', 'Plugin Create Command').
+- **New Issues**: 7
+- **Labels**: `bug` (4), `enhancement` (3), `documentation` (1)
+- **Summary**: 4 bugs reported (including 'unable to chat in terminal', 'double backslash when posting to X') 3 feature requests (including 'chore: Document Missing Plugin Documentation and Examples', 'Improve Logging in /packages/plugin-coinbase/src/plugins').
 
 ## Top Contributors
-- **shakkernerd**: feat: make script dash compatible
-- **odilitime**: fix: fix direct-client ability to start agents
-- **YoungPhlo**: docs: Update "What Did You Get Done This Week? 5" spaces notes
+- **madjin**: chore: New docs
+- **tomguluson92**: docs: Update "CN README" with more details
+- **ileana-pr**: docs: fixed CONTRIBUTING.md file Issue: 1048
