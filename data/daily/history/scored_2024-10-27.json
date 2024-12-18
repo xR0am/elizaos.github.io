@@ -1,0 +1,827 @@
+[
+  {
+    "contributor": "lalalune",
+    "score": 0,
+    "summary": "",
+    "avatar_url": "https://avatars.githubusercontent.com/u/18633264?u=8f2bca0a3cef958bd405ea89680a9b9a0ff38f06&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 6,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "c417b86a9db36524eb66dabce5297edc614e5699",
+            "message": "Merge pull request #46 from sirkitree/45--CONTRIB\n\nAdding a CONTRIBUTING.md",
+            "created_at": "2024-10-27T16:00:15Z",
+            "additions": 75,
+            "deletions": 0,
+            "changed_files": 1
+          },
+          {
+            "sha": "64a6f2dc6a3498e67f2cb5096fa7f57efb8377f6",
+            "message": "Merge branch 'main' of https://github.com/ai16z/eliza into HEAD",
+            "created_at": "2024-10-27T15:59:26Z",
+            "additions": 692,
+            "deletions": 12,
+            "changed_files": 5
+          },
+          {
+            "sha": "6dce27fa553c9a0e1e57ceed921481743fd53397",
+            "message": "fix many issues, last hard push before pr flow",
+            "created_at": "2024-10-27T15:57:47Z",
+            "additions": 41,
+            "deletions": 48,
+            "changed_files": 6
+          },
+          {
+            "sha": "901b0920892677fa63fad3243ff350a417480e66",
+            "message": "Merge pull request #42 from sirkitree/main\n\nprovide a way to chat directly with the agent via the command line",
+            "created_at": "2024-10-27T09:31:19Z",
+            "additions": 33,
+            "deletions": 5,
+            "changed_files": 1
+          },
+          {
+            "sha": "0ecc1b72aa70b7b13c96e88e4de073e90a1175b1",
+            "message": "Merge pull request #41 from sirkitree/patch-1\n\nUpdate README.md",
+            "created_at": "2024-10-27T09:30:56Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "72a88ea250a19906bd2c634dedbc5f73cd42a441",
+            "message": "Merge pull request #43 from MarcoMandar/main\n\npumpfun",
+            "created_at": "2024-10-27T09:30:43Z",
+            "additions": 657,
+            "deletions": 5,
+            "changed_files": 3
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 55,
+            "title": "Voice is not working, \"null\" from incoming messages",
+            "state": "CLOSED",
+            "created_at": "2024-10-27T18:56:18Z",
+            "updated_at": "2024-11-08T10:57:44Z",
+            "body": "Review and figure out why the voice chat is not working",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              },
+              {
+                "name": "voice",
+                "color": "ACBB76",
+                "description": ""
+              }
+            ],
+            "comments": [
+              {
+                "author": "alextitonis",
+                "body": "Some debugging results:\r\n* Bot was not getting the stream of the user\r\n* Was due to connection staying in `connecting` state (trying to resolve this)"
+              },
+              {
+                "author": "lalalune",
+                "body": "Is this resolved?"
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "sirkitree",
+    "score": 0,
+    "summary": "",
+    "avatar_url": "https://avatars.githubusercontent.com/u/28543?u=620169c8c9ebe441dee7b49d849eea383eccd93f&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "852f81ef4d5eabd4be46b39d81d7028ac8a35e29",
+            "message": "Adding a CONTRIBUTING.md\n\nResolves #45",
+            "created_at": "2024-10-27T14:17:32Z",
+            "additions": 75,
+            "deletions": 0,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 46,
+            "title": "Adding a CONTRIBUTING.md",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-10-27T14:18:42Z",
+            "updated_at": "2024-10-27T16:00:15Z",
+            "body": "Resolves #45\r\n\r\nHere is a basic CONTRIBUTING guideline. Please review to make sure you agree and suggest any changes.",
+            "files": [
+              {
+                "path": "CONTRIBUTING.md",
+                "additions": 75,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 9,
+        "opened": [
+          {
+            "number": 56,
+            "title": "\ud83d\udca1 Have silly tavern compatibility",
+            "state": "CLOSED",
+            "created_at": "2024-10-27T20:50:48Z",
+            "updated_at": "2024-12-14T07:27:58Z",
+            "body": "Was suggested on voice chat that we make character files compatible with silly tavern character files.",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "characters",
+                "color": "13160E",
+                "description": ""
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 54,
+            "title": "User Interface Enhancement",
+            "state": "CLOSED",
+            "created_at": "2024-10-27T18:11:59Z",
+            "updated_at": "2024-12-14T07:27:58Z",
+            "body": "Create an intuitive and user-friendly interface for the trust marketplace.\r\n\r\n#### Requirements\r\n- Design order submission forms\r\n- Create trade history views\r\n- Implement trust score displays\r\n- Add confidence level indicators\r\n\r\n#### Acceptance Criteria\r\n- [ ] UI is responsive and intuitive\r\n- [ ] All core features are accessible\r\n- [ ] Trade history is easily viewable\r\n- [ ] Trust scores and confidence levels are clearly displayed",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "ui",
+                "color": "5DB825",
+                "description": ""
+              },
+              {
+                "name": "ux",
+                "color": "91619A",
+                "description": ""
+              },
+              {
+                "name": "Design",
+                "color": "aaaaaa",
+                "description": null
+              }
+            ],
+            "comments": [
+              {
+                "author": "sirkitree",
+                "body": "We might want this on the [@ai16z/website](https://github.com/ai16z/website)"
+              }
+            ]
+          },
+          {
+            "number": 53,
+            "title": "\u2699\ufe0fTake Order Action Integration",
+            "state": "CLOSED",
+            "created_at": "2024-10-27T18:11:05Z",
+            "updated_at": "2024-11-20T09:58:28Z",
+            "body": "\u2699\ufe0f Action Integration: The integration of the \"take order\" action into the agent represents a foundational step in enhancing the system's capabilities, similar to adding new features to a smart assistant.\r\n\r\nIntegrate the \"take order\" action into the system as a foundational feature.\r\n\r\n#### Requirements\r\n- Design take order workflow\r\n- Implement action handlers\r\n- Add validation and verification steps\r\n- Create response handling system\r\n\r\n#### Acceptance Criteria\r\n- [ ] Users can successfully take orders\r\n- [ ] Action is properly integrated with order book\r\n- [ ] Validation checks are in place\r\n- [ ] Response handling works correctly",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "core-system",
+                "color": "8A7A41",
+                "description": ""
+              }
+            ],
+            "comments": [
+              {
+                "author": "lalalune",
+                "body": "@MarcoMandar has been working on this. The order book and trust system are unified, so I am assigning tickets which we can deem duplicate and close as necessary."
+              }
+            ]
+          },
+          {
+            "number": 52,
+            "title": "\ud83d\udd0d Trust Score Calculator",
+            "state": "CLOSED",
+            "created_at": "2024-10-27T18:10:23Z",
+            "updated_at": "2024-11-20T09:58:28Z",
+            "body": "\ud83d\udd04 Trust Score Development: Creating a trust score based on trade outcomes will be essential for building credibility within the marketplace. It will allow users to make informed decisions based on past performance.\r\n\r\nDevelop a trust score calculation system based on trade outcomes and user recommendations.\r\n\r\n#### Requirements\r\n- Define trust score metrics\r\n- Implement calculation algorithm\r\n- Create history tracking for score changes\r\n- Add user recommendation integration\r\n\r\n#### Acceptance Criteria\r\n- [ ] Trust scores are calculated accurately\r\n- [ ] Historical data is tracked and accessible\r\n- [ ] User recommendations affect trust scores\r\n- [ ] Score changes are properly logged",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "trust-system",
+                "color": "21879A",
+                "description": ""
+              },
+              {
+                "name": "algorithm",
+                "color": "F84616",
+                "description": ""
+              }
+            ],
+            "comments": [
+              {
+                "author": "TresFlames",
+                "body": "@sirkitree Do we have an algo or calculation methodology to base this deeper on to reference?\r\n\r\nOr would we just create to our own ideology then review if done appropriately?"
+              },
+              {
+                "author": "sirkitree",
+                "body": "Adapting trust scoring mechanisms for a cryptocurrency recommendation bot:\r\n\r\n## Trust Score Components\r\n\r\nThe system should evaluate trust across three key dimensions[2]:\r\n- **Familiarity** - Historical presence and recognition in the crypto market\r\n- **Personal Interactions** - Direct trading history and performance\r\n- **Public Perception** - Community feedback and market reputation\r\n\r\n## Implementation Architecture\r\n\r\nHere's how the trust scoring system could be structured:\r\n\r\n```python\r\nclass CryptoRecommendationSystem:\r\n    def __init__(self):\r\n        self.data_sources = []\r\n        self.trust_scores = {}\r\n        self.recommendations = []\r\n\r\n    def calculate_trust_scores(self):\r\n        for source in self.data_sources:\r\n            familiarity_score = self.evaluate_familiarity(source)\r\n            interaction_score = self.evaluate_interactions(source) \r\n            public_score = self.evaluate_public_perception(source)\r\n            \r\n            # Weighted combination of scores\r\n            final_score = (0.3 * familiarity_score + \r\n                         0.4 * interaction_score +\r\n                         0.3 * public_score)\r\n            \r\n            self.trust_scores[source] = final_score\r\n```\r\n\r\n## Key Scoring Metrics\r\n\r\n**Transaction Analysis**[1]:\r\n- Volume and frequency of trades\r\n- Average transaction size \r\n- Historical volatility\r\n- Compliance with regulations\r\n- Association with known malicious actors\r\n\r\n**Risk Assessment**[3]:\r\n- SIM swap detection\r\n- Account takeover patterns\r\n- Behavioral anomalies\r\n- Device reputation\r\n- Phone number verification\r\n\r\n## Security Measures\r\n\r\nThe system should incorporate several security features[1][3]:\r\n- Blacklist maintenance of known malicious actors\r\n- Real-time behavioral monitoring\r\n- Multi-factor authentication integration\r\n- Blockchain-based verification of transactions\r\n- Regular model retraining based on new data\r\n\r\n## Performance Metrics\r\n\r\nThe system's effectiveness should be measured by[2]:\r\n- Accuracy of trust predictions\r\n- Speed of score calculation (<1 second latency)\r\n- False positive/negative rates\r\n- User satisfaction metrics\r\n- Return on investment from recommendations\r\n\r\nThis architecture provides a robust foundation for evaluating cryptocurrency recommendations while maintaining security and trust in the ecosystem. The system can continuously learn and adapt based on new market data and user feedback.\r\n\r\nCitations:\r\n[1] https://scholar.smu.edu/cgi/viewcontent.cgi?article=1031&context=datasciencereview\r\n[2] https://www.nature.com/articles/s41598-023-38078-w\r\n[3] https://www.prove.com/blog/securing-crypto-business-using-trust-score\r\n[4] https://pmc.ncbi.nlm.nih.gov/articles/PMC6072048/\r\n\r\n---\r\nThe above is an excerpt from https://www.perplexity.ai/search/research-trust-scoring-algorit-8orA5auKT.2POOJ_jbvwFg meant to give us some ideas."
+              },
+              {
+                "author": "lalalune",
+                "body": "So we are focusing on the trust marketplace. This is basically putting orders into an orderbook, and then seeing how those orders would have done in an ideal sell or hold scenario. You can't blame someone for the bot making a stupidly timed sell if they gave you excellent alpha.\r\n\r\nThe first part is just to collect trades in the orderbook. Then we can analyze the data and come up with a weighting strategy.\r\n\r\nThe second part is calculating trust. I think that we care about a weighting of two things -- 30% how much skin they have in the game and 70% how much they've made in the virtual orderbook.\r\n\r\nThese memecoins are such that you'll pick 10 losers and still 10x your money on the 1 winner, finding the winners and maximizing likelihood of win is critical. One parabolic recommendation can give a user a lot of trust.\r\n\r\nUsers will copytrust each other, so there needs to be value in being the first to shill a ticker. We want to weight this against users just shilling every ticker first to try to game the system with a few 100xes.\r\n\r\nFor the actual execution of trade, we can run this on a loop with a randomized tick. 90% of the time, Marc should not execute a trade, but should wake up and analyze the market. When to trade, what and why are the most complicated parts, but this is more of a quality issue than a possibility issue-- quite easy to make the trade happen at all, but hard to get the right details.\r\n\r\nThe plan is just to get it there, to where its making decent consensus trades, and then we can let the quant guys go nuts on our codebase.\r\n"
+              },
+              {
+                "author": "glucrypto",
+                "body": "To build on the CryptoRecommendationSystem, you could add a network/graph aspect where trust flows between users and affects each other's scores.\r\n\r\nEigentrust algo does this, [OpenRank](https://docs.openrank.com/reputation-algorithms/eigentrust) has done some work w.r.t Farcaster on this. Basically, If A trusts B and B trusts C, A gains some trust in C. \r\n\r\nBasically, algo does a random walk and tries to \r\n- Finds the most trustworthy users\r\n- Weigh direct and indirect trust\r\n- Resist manipulation\r\n- Provide globally meaningful scores \r\n\r\n[https://nlp.stanford.edu/pubs/eigentrust.pdf](https://nlp.stanford.edu/pubs/eigentrust.pdf)"
+              },
+              {
+                "author": "docherty",
+                "body": "Some thoughts;\r\n- can there be some kind of \"% of the time the trade could make money\" component? So if the token spikes and then goes below the acquisition price for eternity it's not as valuable as one that constantly lives in the green.\r\n- a massive multiplier for someone that suggests both an entry and exit recommendation. e.g. day0 \"buy X\" -> price goes up, day3 \"sell X\" -> price goes down. This suggests some level of intimate knowledge of the token in question.\r\n- a weighting for recommendations that go against common consensus. So if everyone is saying buy zig, there's an incentive to find and suggest zag.\r\n- the simulated trades should happen in a \"gym\" or (Simulated Order Book...SOB) and the person graduates to the actual order book where the trades happen. Having 2 things called order books is confusing.\r\n"
+              },
+              {
+                "author": "0xBiggy",
+                "body": "Not sure if this comment is more appropriate for orderbook issue but leaving here for now...\n\n\nDuring the paper trading phase could it make sense to do something like betting with a virtual balance of ai16z?\n\nSo the user makes a recommendation (a trade)  and confidence score which is a percent of their total $ai16z holdings. \n\nThis would solve for spam as every user would only be able to bet up to their balance of $ai16z\n\n\nSo as @lalalune said\n\n\"The first part is just to collect trades in the orderbook. Then we can analyze the data and come up with a weighting strategy.\n\nThe second part is calculating trust. I think that we care about a weighting of two things -- 30% how much skin they have in the game and 70% how much they've made in the virtual orderbook.\"\n\n\nWhat we could do is get the users $ai16z balance (from collabland linked wallet). \n\nThen let them place their trade (entry price) their balance of $ai16z determines becomes a multiplier for the standard trade size (lets say 10 sol - only problem with this is you lose the data about the proposed dao position sizing sentiment - you only capture the users position sizing sentiment (but maybe those are the same thing?)).\n\nSidenote: Ive got a pretty awesome backend / api for backtesting trading strategies that we could use if needed?\n\n "
+              },
+              {
+                "author": "lalalune",
+                "body": "@MarcoMandar has been working on this. The order book and trust system are unified, so I am assigning tickets which we can deem duplicate and close as necessary."
+              }
+            ]
+          },
+          {
+            "number": 50,
+            "title": "\ud83e\udd16 Confidence Level Implementation",
+            "state": "CLOSED",
+            "created_at": "2024-10-27T18:08:11Z",
+            "updated_at": "2024-11-08T10:55:40Z",
+            "body": "\ud83c\udfaf Confidence Metrics: Establishing clear confidence levels for trades helps in assessing the reliability of recommendations, making it easier to identify which trades are worth pursuing based on user input.\r\n\r\nImplement a confidence level system for order evaluation with low, medium, and high confidence categories.\r\n\r\n#### Requirements\r\n- Define criteria for each confidence level\r\n- Create UI elements for confidence selection\r\n- Implement confidence scoring algorithm\r\n- Add confidence level filters to order book\r\n\r\n#### Acceptance Criteria\r\n- [ ] Users can assign confidence levels to orders\r\n- [ ] Confidence levels are clearly displayed in the UI\r\n- [ ] Filtering system works based on confidence levels\r\n- [ ] Confidence scoring affects trust calculations\r\n",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "trust-system",
+                "color": "21879A",
+                "description": ""
+              }
+            ],
+            "comments": [
+              {
+                "author": "lalalune",
+                "body": "@MarcoMandar has been working on this. The order book and trust system are unified, so I am assigning tickets which we can deem duplicate and close as necessary."
+              }
+            ]
+          },
+          {
+            "number": 49,
+            "title": "\ud83d\udcca Order Book System",
+            "state": "CLOSED",
+            "created_at": "2024-10-27T18:07:18Z",
+            "updated_at": "2024-11-20T09:58:27Z",
+            "body": "\ud83d\udcc8 Importance of the Order Book: The order book is critical for establishing a framework of trust within the marketplace. By documenting trades and their success rates, it lays the groundwork for a reliable trading environment.\r\n\r\nDevelop a central order book system for managing trades and trust assessments.\r\n\r\n#### Requirements\r\n- Design database schema for order storage\r\n- Implement order matching logic\r\n- Create APIs for order submission and retrieval\r\n- Add trust assessment calculations\r\n\r\n#### Acceptance Criteria\r\n- [ ] Orders can be created and stored in the system\r\n- [ ] Order matching algorithm is functioning\r\n- [ ] APIs are documented and tested\r\n- [ ] Trust assessments are calculated correctly",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "Priority: High",
+                "color": "C97674",
+                "description": ""
+              },
+              {
+                "name": "core-system",
+                "color": "8A7A41",
+                "description": ""
+              }
+            ],
+            "comments": [
+              {
+                "author": "lalalune",
+                "body": "@MarcoMandar has been working on this. The order book and trust system are unified, so I am assigning tickets which we can deem duplicate and close as necessary."
+              }
+            ]
+          },
+          {
+            "number": 48,
+            "title": "\ud83d\udcc8 Trading Assistant Implementation",
+            "state": "CLOSED",
+            "created_at": "2024-10-27T18:06:10Z",
+            "updated_at": "2024-11-08T10:55:29Z",
+            "body": "\ud83d\udcbc Role of the Trading Assistant: The assistant's function ensures that trades can be executed without full automation, allowing human oversight while still proving the system's viability. This balance between assistance and automation enhances user trust and engagement.\r\n\r\nImplement a trading assistant (Marc) that can execute trades based on user requests.\r\n\r\n#### Requirements\r\n- Create an interface for users to submit trade requests\r\n- Implement trade execution logic with human oversight capabilities\r\n- Add validation checks for trade parameters\r\n- Include error handling and confirmation messages\r\n\r\n#### Acceptance Criteria\r\n- [ ] Trading assistant can receive and process trade requests\r\n- [ ] Human oversight mechanism is in place\r\n- [ ] Trade execution confirmation is provided to users\r\n- [ ] Error handling for invalid trade requests",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "Priority: High",
+                "color": "C97674",
+                "description": ""
+              },
+              {
+                "name": "Trading",
+                "color": "6A6843",
+                "description": ""
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 47,
+            "title": "Commands for starting agents without character profiles",
+            "state": "CLOSED",
+            "created_at": "2024-10-27T16:27:34Z",
+            "updated_at": "2024-11-09T01:51:42Z",
+            "body": "In the package.json there are scripted commands for agents like ruby and spartan, but we do not have their character profiles in `/characters`\r\n\r\nI propose we either:\r\n1. remove the commands from package.json, or\r\n2. (preferred) add the character profiles for them\r\n\r\n```\r\n    \"start:service:ruby\": \"pm2 start npm --name=\\\"ruby\\\" --restart-delay=3000 --max-restarts=10 -- run start:ruby\",\r\n    \"stop:service:ruby\": \"pm2 stop ruby\",\r\n    \"start:ruby\": \"node --loader ts-node/esm src/index.ts --characters=\\\"characters/ruby.character.json\\\"\",\r\n    ...\r\n    \"start:service:degen\": \"pm2 start npm --name=\\\"degen\\\" --restart-delay=3000 --max-restarts=10 -- run start:degen\",\r\n    \"stop:service:degen\": \"pm2 stop degen\",\r\n    \"start:degen\": \"node --loader ts-node/esm src/index.ts --characters=\\\"characters/degenspartan.json\\\"\",\r\n```    \r\n\r\nThoughts?",
+            "labels": [
+              {
+                "name": "characters",
+                "color": "13160E",
+                "description": ""
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 45,
+            "title": "Contributing",
+            "state": "CLOSED",
+            "created_at": "2024-10-27T13:25:52Z",
+            "updated_at": "2024-10-27T16:00:16Z",
+            "body": "As more folks get into contributing, we should have a guideline in place. \r\n\r\nHere's a comprehensive guide on creating contribution guidelines for a GitHub repository:\r\n\r\n## Essential Components\r\n\r\n**Welcome Message**\r\nCreate a welcoming introduction that encourages contributions and expresses gratitude to potential contributors[1].\r\n\r\n**Basic Structure**\r\nPlace the CONTRIBUTING.md file in your repository's root directory or .github folder to ensure visibility[2].\r\n\r\n## Key Sections to Include\r\n\r\n**Code of Conduct**\r\nInclude guidelines for community behavior and interaction standards[1][6].\r\n\r\n**Contribution Process**\r\n- Explain how to submit pull requests and bug reports[1]\r\n- Describe the preferred branching strategy\r\n- Outline the review process[1]\r\n\r\n**Technical Requirements**\r\n- Coding style and conventions\r\n- Testing requirements\r\n- Documentation standards[1]\r\n\r\n## Best Practices\r\n\r\n**Clear Communication**\r\n- Use straightforward language\r\n- Provide step-by-step instructions\r\n- Include examples where necessary[5]\r\n\r\n**Issue Management**\r\n- Explain how to report bugs\r\n- Describe the process for suggesting enhancements\r\n- Detail how to use issue labels[1]\r\n\r\n## Supporting Elements\r\n\r\n**Additional Documentation**\r\n- Link to relevant documentation\r\n- Include setup instructions\r\n- Provide contact information for maintainers[2]\r\n\r\n**Recognition**\r\nCreate a system for acknowledging contributors' efforts and explaining how contributions will be credited[2].\r\n\r\n## Maintenance\r\n\r\n**Regular Updates**\r\nKeep the guidelines current and aligned with project needs[4].\r\n\r\n**Template Usage**\r\nConsider using GitHub's built-in templates for common contribution scenarios[6].\r\n\r\nCitations:\r\n[1] https://github.com/jessesquires/.github/blob/main/CONTRIBUTING.md\r\n[2] http://mozillascience.github.io/working-open-workshop/contributing/\r\n[3] https://github.blog/news-insights/contributing-guidelines/\r\n[4] https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions\r\n[5] https://gist.github.com/MarcDiethelm/7303312\r\n[6] https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-code-of-conduct-to-your-project\r\n[7] https://opensource.creativecommons.org/contributing-code/github-repo-guidelines/\r\n[8] https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project",
+            "labels": [
+              {
+                "name": "documentation",
+                "color": "0075ca",
+                "description": "Improvements or additions to documentation"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "MarcoMandar",
+    "score": 0,
+    "summary": "",
+    "avatar_url": "https://avatars.githubusercontent.com/u/70625671?u=88aeaa8b5ed43a818bdac96843f2fd40c0abf8ff&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "347555020cde754131bc86a5cb015425b7071cb7",
+            "message": "Merge pull request #4 from ai16z/main\n\nmerge from main",
+            "created_at": "2024-10-27T15:43:41Z",
+            "additions": 34,
+            "deletions": 6,
+            "changed_files": 2
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "alextitonis",
+    "score": 0,
+    "summary": "",
+    "avatar_url": "https://avatars.githubusercontent.com/u/45359358?u=c595ccf9f1221326b37aa1ad77a49703c88d23f4&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "3f2837cc34b88080b4f46084360bcb7ab0df8a0f",
+            "message": "fixes & types",
+            "created_at": "2024-10-27T13:01:57Z",
+            "additions": 59,
+            "deletions": 26,
+            "changed_files": 3
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 44,
+            "title": "Image gen",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-10-27T13:04:40Z",
+            "updated_at": "2024-11-01T01:21:27Z",
+            "body": "",
+            "files": [
+              {
+                "path": ".env.example",
+                "additions": 2,
+                "deletions": 0
+              },
+              {
+                "path": "characters/tate.character.json",
+                "additions": 1,
+                "deletions": 3
+              },
+              {
+                "path": "characters/trump.character.json",
+                "additions": 1,
+                "deletions": 3
+              },
+              {
+                "path": "docs/eliza_icon.png",
+                "additions": 0,
+                "deletions": 0
+              },
+              {
+                "path": "package-lock.json",
+                "additions": 35,
+                "deletions": 0
+              },
+              {
+                "path": "package.json",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "src/actions/ImageGeneration.ts",
+                "additions": 69,
+                "deletions": 0
+              },
+              {
+                "path": "src/actions/continue.ts",
+                "additions": 9,
+                "deletions": 6
+              },
+              {
+                "path": "src/actions/follow_room.ts",
+                "additions": 5,
+                "deletions": 3
+              },
+              {
+                "path": "src/actions/ignore.test.ts",
+                "additions": 5,
+                "deletions": 2
+              },
+              {
+                "path": "src/actions/imageGenerationUtils.ts",
+                "additions": 86,
+                "deletions": 0
+              },
+              {
+                "path": "src/actions/mute_room.ts",
+                "additions": 5,
+                "deletions": 3
+              },
+              {
+                "path": "src/actions/pumpfun.ts",
+                "additions": 40,
+                "deletions": 21
+              },
+              {
+                "path": "src/actions/take_order.ts",
+                "additions": 128,
+                "deletions": 127
+              },
+              {
+                "path": "src/actions/unfollow_room.ts",
+                "additions": 5,
+                "deletions": 3
+              },
+              {
+                "path": "src/actions/unmute_room.ts",
+                "additions": 5,
+                "deletions": 3
+              },
+              {
+                "path": "src/clients/direct/index.ts",
+                "additions": 54,
+                "deletions": 32
+              },
+              {
+                "path": "src/clients/discord/actions/chat_with_attachments.ts",
+                "additions": 14,
+                "deletions": 5
+              },
+              {
+                "path": "src/clients/discord/actions/download_media.ts",
+                "additions": 5,
+                "deletions": 1
+              },
+              {
+                "path": "src/clients/discord/actions/joinvoice.ts",
+                "additions": 3,
+                "deletions": 1
+              },
+              {
+                "path": "src/clients/discord/actions/summarize_conversation.ts",
+                "additions": 15,
+                "deletions": 5
+              },
+              {
+                "path": "src/clients/discord/actions/transcribe_media.ts",
+                "additions": 5,
+                "deletions": 1
+              },
+              {
+                "path": "src/clients/discord/messages.ts",
+                "additions": 11,
+                "deletions": 14
+              },
+              {
+                "path": "src/clients/discord/voice.ts",
+                "additions": 6,
+                "deletions": 9
+              },
+              {
+                "path": "src/clients/telegram/src/messageManager.ts",
+                "additions": 15,
+                "deletions": 13
+              },
+              {
+                "path": "src/clients/twitter/generate.ts",
+                "additions": 7,
+                "deletions": 17
+              },
+              {
+                "path": "src/clients/twitter/interactions.ts",
+                "additions": 10,
+                "deletions": 12
+              },
+              {
+                "path": "src/clients/twitter/search.ts",
+                "additions": 49,
+                "deletions": 61
+              },
+              {
+                "path": "src/clients/twitter/utils.test.ts",
+                "additions": 2,
+                "deletions": 1
+              },
+              {
+                "path": "src/core/actions.test.ts",
+                "additions": 5,
+                "deletions": 2
+              },
+              {
+                "path": "src/core/defaultCharacter.ts",
+                "additions": 5,
+                "deletions": 4
+              },
+              {
+                "path": "src/core/embedding.ts",
+                "additions": 70,
+                "deletions": 0
+              },
+              {
+                "path": "src/core/evaluators.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "src/core/generation.ts",
+                "additions": 435,
+                "deletions": 0
+              },
+              {
+                "path": "src/core/imageGenModels.ts",
+                "additions": 19,
+                "deletions": 0
+              },
+              {
+                "path": "src/core/memory.test.ts",
+                "additions": 5,
+                "deletions": 4
+              },
+              {
+                "path": "src/core/memory.ts",
+                "additions": 2,
+                "deletions": 1
+              },
+              {
+                "path": "src/core/models.ts",
+                "additions": 138,
+                "deletions": 0
+              },
+              {
+                "path": "src/core/runtime.ts",
+                "additions": 21,
+                "deletions": 516
+              },
+              {
+                "path": "src/core/types.ts",
+                "additions": 44,
+                "deletions": 82
+              },
+              {
+                "path": "src/core/uuid.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "src/evaluators/fact.ts",
+                "additions": 5,
+                "deletions": 2
+              },
+              {
+                "path": "src/evaluators/goal.test.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "src/evaluators/goal.ts",
+                "additions": 6,
+                "deletions": 3
+              },
+              {
+                "path": "src/index.ts",
+                "additions": 22,
+                "deletions": 22
+              },
+              {
+                "path": "src/providers/token.test.ts",
+                "additions": 7,
+                "deletions": 1
+              },
+              {
+                "path": "src/providers/token.ts",
+                "additions": 16,
+                "deletions": 20
+              },
+              {
+                "path": "src/providers/wallet.ts",
+                "additions": 4,
+                "deletions": 8
+              },
+              {
+                "path": "src/services/image.ts",
+                "additions": 10,
+                "deletions": 5
+              },
+              {
+                "path": "src/services/llama.ts",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "src/services/speech.ts",
+                "additions": 2,
+                "deletions": 4
+              },
+              {
+                "path": "src/services/summary.ts",
+                "additions": 6,
+                "deletions": 3
+              },
+              {
+                "path": "src/services/transcription.ts",
+                "additions": 7,
+                "deletions": 8
+              },
+              {
+                "path": "src/test_resources/createRuntime.ts",
+                "additions": 3,
+                "deletions": 4
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "sirkitree",
+                "body": "Hi there, and thank you for your contribution!\r\n\r\nWould you mind outlining some steps for testing in your PR? This looks interesting but I'm not sure how to test it.\r\n\r\nThanks again!"
+              },
+              {
+                "author": "alextitonis",
+                "body": "> Hi there, and thank you for your contribution!\r\n> \r\n> Would you mind outlining some steps for testing in your PR? This looks interesting but I'm not sure how to test it.\r\n> \r\n> Thanks again!\r\n\r\nWasn't able to test through discord (the main code was giving me error 400 for a reason)\r\nBut there is a route also to test the workflow:\r\nPOST: /agentId/image\r\nBody: {\r\nprompt: string;\r\nwidth: number;\r\nheight: number;\r\nsteps?: number (default is 4)\r\ncount?: number (default is 1)\r\n}\r\n\r\nOutput is an array: { image: string (b64), caption: string }[]"
+              },
+              {
+                "author": "lalalune",
+                "body": "Let's make sure this is working through Discord and Twitter :)"
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "Honkware",
+    "score": 0,
+    "summary": "",
+    "avatar_url": "https://avatars.githubusercontent.com/u/119620994?u=ac3dfad90764c69144f593023fce93080586702e&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "55170d93b783e80b9b6d5ac111408606d5327d3a",
+            "message": "corrected node-llama-cpp command",
+            "created_at": "2024-10-27T23:12:50Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 57,
+            "title": "corrected node-llama-cpp command",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-10-27T23:15:11Z",
+            "updated_at": "2024-10-28T02:16:49Z",
+            "body": "The original command produces this: \r\n![image](https://github.com/user-attachments/assets/652495c4-50da-45bd-b4d2-d8f5e34e7516)\r\n\r\nThe documentation shows the correct command is `npx --no node-llama-cpp source download --gpu cuda`\r\n![image](https://github.com/user-attachments/assets/79b126e5-5635-4457-98e4-dae250a37a0a)\r\n",
+            "files": [
+              {
+                "path": "README.md",
+                "additions": 1,
+                "deletions": 1
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  }
+]

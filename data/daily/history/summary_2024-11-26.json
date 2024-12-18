@@ -1,0 +1,69 @@
+{
+  "title": "ai16z Eliza (2024-12-18)",
+  "version": "update Node.js version from v23.1.0 to v23.3.0",
+  "overview": "Development focused on package improvements (agent DirectClient is not a type), new features (implement coinbase trading), 10 bug fixes. with 13 contributors merging 14 PRs. Major work included various improvements.",
+  "metrics": {
+    "contributors": 13,
+    "merged_prs": 14,
+    "new_issues": 5,
+    "lines_changed": 16575
+  },
+  "changes": {
+    "features": [
+      "implement coinbase trading",
+      "add knowledge to state",
+      "make node-plugin lazy-loaded for faster boot times"
+    ],
+    "fixes": [
+      "Update and add Conflux",
+      "Fix buttplug.io integration and merge",
+      "agent DirectClient is not a type"
+    ],
+    "chores": [
+      "update Node.js version from v23.1.0 to v23.3.0"
+    ]
+  },
+  "areas": [
+    {
+      "name": "packages",
+      "files": 47,
+      "additions": 5230,
+      "deletions": 208
+    },
+    {
+      "name": "root",
+      "files": 18,
+      "additions": 890,
+      "deletions": 9407
+    },
+    {
+      "name": "agent",
+      "files": 7,
+      "additions": 64,
+      "deletions": 442
+    }
+  ],
+  "issues_summary": "working on 3 bugs including 'Smol one; Matched fragment log not showing similarity score', 'New knowledge not being ingested into agent memory after first run' and implementing 1 feature requests including 'Add support for local embeddings BGE/384'",
+  "questions": [],
+  "top_contributors": [
+    {
+      "name": "lalalune",
+      "summary": "Lalalune is actively merging pull requests to enhance the project's functionality, focusing on fixing issues related to Docker runs, memory similarity logs, Conflux updates, buttplug",
+      "areas": [
+        "scripts",
+        "pnpm-lock.yaml",
+        ".env.example"
+      ]
+    },
+    {
+      "name": "ponderingdemocritus",
+      "summary": "Ponderingdemocritus is actively working on enhancing their web agent, as evidenced by a recent merge pull request from bmgalego/web-agent",
+      "areas": []
+    },
+    {
+      "name": "shakkernerd",
+      "summary": "Shakkernerd is actively improving the project's functionality by merging pull requests that address various aspects such as fixing knowledge export, enhancing database interactions for embeddings retrieval, and refining memory management within rooms",
+      "areas": []
+    }
+  ]
+}

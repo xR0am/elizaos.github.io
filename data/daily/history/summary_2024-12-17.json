@@ -1,0 +1,74 @@
+{
+  "title": "ai16z Eliza (2024-12-18)",
+  "version": "bump version to 0.1.6-alpha.4",
+  "overview": "Development focused on package improvements (client twitter login and auth handler), new features (make script dash compatible), 6 bug fixes. with 28 contributors merging 16 PRs. Major work included various improvements.",
+  "metrics": {
+    "contributors": 28,
+    "merged_prs": 16,
+    "new_issues": 17,
+    "lines_changed": 5402
+  },
+  "changes": {
+    "features": [
+      "make script dash compatible",
+      "update packages version script"
+    ],
+    "fixes": [
+      "client twitter login and auth handler",
+      "fetch log level to debug",
+      "fix direct-client ability to start agents"
+    ],
+    "chores": [
+      "bump version to 0.1.6-alpha.4",
+      "develop into main",
+      "bump version to 0.1.6-alpha.3"
+    ]
+  },
+  "areas": [
+    {
+      "name": "packages",
+      "files": 93,
+      "additions": 1220,
+      "deletions": 1185
+    },
+    {
+      "name": "docs",
+      "files": 87,
+      "additions": 980,
+      "deletions": 614
+    },
+    {
+      "name": "root",
+      "files": 13,
+      "additions": 498,
+      "deletions": 121
+    }
+  ],
+  "issues_summary": "working on 9 bugs including 'media parameter is missing Error on Main Branch', 'Long tweets fail with error Tweet needs to be a bit shorter (Code 186)' and implementing 6 feature requests including 'Improve Logging in /packages/plugin-coinbase/src/plugins', 'integrate o1'",
+  "questions": [],
+  "top_contributors": [
+    {
+      "name": "shakkernerd",
+      "summary": "Shakkernerd is actively developing the project by merging multiple pull requests that include version updates, script fixes, and linting improvements",
+      "areas": [
+        "packages",
+        "scripts",
+        "agent"
+      ]
+    },
+    {
+      "name": "monilpat",
+      "summary": "Monilpat is actively improving the logging functionality within the plugin-coinbase package, as well as integrating a new feature called 'o1'",
+      "areas": []
+    },
+    {
+      "name": "odilitime",
+      "summary": "Odilitime is actively enhancing the REST API functionality by adding a feature to post memory data for agents, improving integration with fomo plugins, and fixing direct client abilities to start agents",
+      "areas": [
+        ".env.example",
+        "packages",
+        ".npmrc"
+      ]
+    }
+  ]
+}

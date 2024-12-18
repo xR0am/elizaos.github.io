@@ -1,0 +1,2754 @@
+[
+  {
+    "contributor": "lalalune",
+    "score": 0,
+    "summary": "Lalalune is actively merging pull requests into the eliza project's main branch, focusing on improvements such as better database handling, simulation sell types, and support for starkname features. They are also streamlining code by removing unnecessary dependencies like node plugin imports and axios in favor of fetch, while making lint fixes to maintain code quality.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/18633264?u=8f2bca0a3cef958bd405ea89680a9b9a0ff38f06&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 19,
+        "total_prs": 3,
+        "commits": [
+          {
+            "sha": "d0093cc282207ff8ffc160dacca1540abda5c0d5",
+            "message": "Merge pull request #654 from justabot/download_updates\n\nCS - adding better errors and readme.",
+            "created_at": "2024-11-28T19:36:49Z",
+            "additions": 45,
+            "deletions": 1,
+            "changed_files": 2
+          },
+          {
+            "sha": "6407efd0eb15f756da145dd201181ab706ff1886",
+            "message": "Merge pull request #649 from dr-fusion/main\n\nadded support for LlamaLocal's path outside plugin-node/dist",
+            "created_at": "2024-11-28T19:30:38Z",
+            "additions": 4,
+            "deletions": 1,
+            "changed_files": 2
+          },
+          {
+            "sha": "dbec9fd737b2cd8dd991f1f0f639fa4fd5a7bb56",
+            "message": "Merge pull request #653 from cygaar/playwright_improvements\n\nfeat: improve browser service",
+            "created_at": "2024-11-28T18:13:53Z",
+            "additions": 63,
+            "deletions": 82,
+            "changed_files": 5
+          },
+          {
+            "sha": "95547a32d71f846d6d7a849b2f102a62a78ce9ea",
+            "message": "Merge branch 'main' of http://github.com/ai16z/eliza into HEAD",
+            "created_at": "2024-11-28T09:59:42Z",
+            "additions": 20,
+            "deletions": 9,
+            "changed_files": 1
+          },
+          {
+            "sha": "65e214aec6dea29a7379af3ff9a53c75e1e6c6ad",
+            "message": "fix build issue",
+            "created_at": "2024-11-28T09:59:35Z",
+            "additions": 7,
+            "deletions": 12,
+            "changed_files": 1
+          },
+          {
+            "sha": "25d4ddf27da7c374f85d887a31e948493152facf",
+            "message": "Merge pull request #645 from DataRelic/main\n\nupdates postgres setup instructions in docs",
+            "created_at": "2024-11-28T09:41:53Z",
+            "additions": 20,
+            "deletions": 9,
+            "changed_files": 1
+          },
+          {
+            "sha": "c9468d329dedd5b881883a39a03783e6dd8b1f70",
+            "message": "Merge branch 'feat/simulation-sell-types' of http://github.com/ai16z/eliza into HEAD",
+            "created_at": "2024-11-28T09:41:11Z",
+            "additions": 39,
+            "deletions": 17,
+            "changed_files": 6
+          },
+          {
+            "sha": "49be4eae946db9dddfc05be64e783ae97e5b1d76",
+            "message": "Merge pull request #641 from zjasper666/patch-1\n\nadd connection instruction for connecting with X",
+            "created_at": "2024-11-28T09:29:18Z",
+            "additions": 2,
+            "deletions": 0,
+            "changed_files": 1
+          },
+          {
+            "sha": "d06dda9af4613801ac657c79692971c2512f73ec",
+            "message": "Merge pull request #635 from cygaar/better_db_handling\n\nrefactor: better db connection handling",
+            "created_at": "2024-11-28T09:29:00Z",
+            "additions": 53,
+            "deletions": 8,
+            "changed_files": 7
+          },
+          {
+            "sha": "e5128f6372c69196893615eb7a439abe7b2cf99e",
+            "message": "Merge pull request #628 from irisdv/feat/support_starkname\n\nfeat: support starkname",
+            "created_at": "2024-11-28T09:27:30Z",
+            "additions": 321,
+            "deletions": 12,
+            "changed_files": 4
+          },
+          {
+            "sha": "e1fdeba209f7113c1d275306124735f448617c00",
+            "message": "Merge branch 'main' of http://github.com/ai16z/eliza into HEAD",
+            "created_at": "2024-11-28T09:04:44Z",
+            "additions": 2383,
+            "deletions": 737,
+            "changed_files": 116
+          },
+          {
+            "sha": "94e1332510aca8030cded4a275c4abf96935a8df",
+            "message": "remove node plugin import",
+            "created_at": "2024-11-28T09:04:33Z",
+            "additions": 0,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "ddf0de03eb222b81a8194c7a835e8eb888ad34f9",
+            "message": "Merge branch 'character-run-fix' of https://github.com/yodamaster726/eliza into HEAD",
+            "created_at": "2024-11-28T08:58:10Z",
+            "additions": 44,
+            "deletions": 20,
+            "changed_files": 1
+          },
+          {
+            "sha": "881240bda66286650a054be5de1a8f2158cdd410",
+            "message": "Merge pull request #640 from Phala-Network/tee-plugin\n\nfix: Add docs, update providers for TEE Plugin",
+            "created_at": "2024-11-28T08:56:32Z",
+            "additions": 177,
+            "deletions": 32,
+            "changed_files": 6
+          },
+          {
+            "sha": "c2c7b056e9687d4c611514bcfc6104bdfc91c8ed",
+            "message": "Merge pull request #643 from ai16z/shaw/merge-evm\n\nfeat: Merge EVM and add character override",
+            "created_at": "2024-11-28T08:55:57Z",
+            "additions": 2206,
+            "deletions": 706,
+            "changed_files": 110
+          },
+          {
+            "sha": "efd1190f1e94cd9f04b54427e2f653b4345664f2",
+            "message": "lint fixes",
+            "created_at": "2024-11-28T08:53:49Z",
+            "additions": 7,
+            "deletions": 5,
+            "changed_files": 2
+          },
+          {
+            "sha": "3890ae824a9a4229defd2e64e8c82aac77528298",
+            "message": "Merge branch 'main' of http://github.com/ai16z/eliza into shaw/merge-evm",
+            "created_at": "2024-11-28T08:41:34Z",
+            "additions": 925,
+            "deletions": 47,
+            "changed_files": 19
+          },
+          {
+            "sha": "3e821e398669cecca044554a693b3c2445552082",
+            "message": "remove axios and use fetch",
+            "created_at": "2024-11-28T08:28:19Z",
+            "additions": 34,
+            "deletions": 52,
+            "changed_files": 8
+          },
+          {
+            "sha": "95e8575616b203d25c19ab35239d669fbbe64a46",
+            "message": "Merge pull request #632 from Phala-Network/tee-plugin\n\nfeat: Initial TEE Plugin",
+            "created_at": "2024-11-28T06:21:23Z",
+            "additions": 697,
+            "deletions": 15,
+            "changed_files": 17
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 655,
+            "title": "feat: No implicit response message",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2024-11-28T19:35:19Z",
+            "updated_at": "2024-12-17T02:33:24Z",
+            "body": "Currently, when an agent receives a message, it responds automatically. However, for some handling, we may want to defer response and handle inside our action. The \"none\" action will now call the response callback handler.\r\n\r\nWIP -- need to test",
+            "files": [
+              {
+                "path": "packages/_examples/plugin/src/actions/sampleAction.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-discord/src/actions/chat_with_attachments.ts",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "packages/client-discord/src/actions/download_media.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-discord/src/actions/summarize_conversation.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-discord/src/actions/transcribe_media.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-slack/src/actions/summarize_conversation.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-slack/src/actions/transcribe_media.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/runtime.ts",
+                "additions": 17,
+                "deletions": 12
+              },
+              {
+                "path": "packages/core/src/types.ts",
+                "additions": 11,
+                "deletions": 3
+              },
+              {
+                "path": "packages/plugin-0g/src/actions/upload.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-aptos/src/actions/transfer.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-bootstrap/src/actions/continue.ts",
+                "additions": 5,
+                "deletions": 2
+              },
+              {
+                "path": "packages/plugin-bootstrap/src/actions/index.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-bootstrap/src/actions/respond.ts",
+                "additions": 30,
+                "deletions": 20
+              },
+              {
+                "path": "packages/plugin-bootstrap/src/index.ts",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "packages/plugin-coinbase/src/plugins/advancedTrade.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-coinbase/src/plugins/commerce.ts",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "packages/plugin-coinbase/src/plugins/massPayments.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-coinbase/src/plugins/tokenContract.ts",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "packages/plugin-coinbase/src/plugins/trade.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-coinbase/src/plugins/webhooks.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-evm/src/actions/bridge.ts",
+                "additions": 11,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-evm/src/actions/swap.ts",
+                "additions": 10,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-evm/src/actions/transfer.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-flow/src/actions/transfer.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-icp/src/actions/createToken.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-multiversx/src/actions/createToken.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-multiversx/src/actions/transfer.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-near/src/actions/swap.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-near/src/actions/transfer.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-nft-generation/src/index.ts",
+                "additions": 1,
+                "deletions": 3
+              },
+              {
+                "path": "packages/plugin-solana/src/actions/pumpfun.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-solana/src/actions/swap.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-solana/src/actions/transfer.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-starknet/src/actions/subdomain.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-starknet/src/actions/swap.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-starknet/src/actions/transfer.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-starknet/src/actions/unruggable.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-sui/src/actions/transfer.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-video-generation/src/index.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-zksync-era/src/actions/transfer.ts",
+                "additions": 19,
+                "deletions": 18
+              }
+            ],
+            "reviews": [
+              {
+                "author": "samuveth",
+                "state": "COMMENTED",
+                "body": ""
+              },
+              {
+                "author": "lalalune",
+                "state": "COMMENTED",
+                "body": ""
+              },
+              {
+                "author": "shakkernerd",
+                "state": "DISMISSED",
+                "body": "Alright, changes made and conflicts fixed!"
+              }
+            ],
+            "comments": [
+              {
+                "author": "twilwa",
+                "body": "significant refactor, pull main with this commit and verify it runs before merging please"
+              },
+              {
+                "author": "lalalune",
+                "body": "This is architecturally flawed, but with a little refactor is right, saving for v2"
+              }
+            ]
+          },
+          {
+            "number": 646,
+            "title": "fix: Shaw/twitter updates to youngphlo pr",
+            "state": "CLOSED",
+            "merged": false,
+            "created_at": "2024-11-28T10:15:19Z",
+            "updated_at": "2024-12-11T22:24:25Z",
+            "body": "This PR adds some merge updates to YoungPhlo's PR",
+            "files": [
+              {
+                "path": ".env.example",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": ".gitignore",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "agent/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "agent/src/character.ts",
+                "additions": 403,
+                "deletions": 0
+              },
+              {
+                "path": "agent/src/index.ts",
+                "additions": 2,
+                "deletions": 0
+              },
+              {
+                "path": "package.json",
+                "additions": 0,
+                "deletions": 2
+              },
+              {
+                "path": "packages/client-auto/package.json",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-direct/package.json",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-twitter/package.json",
+                "additions": 6,
+                "deletions": 2
+              },
+              {
+                "path": "packages/client-twitter/src/index.ts",
+                "additions": 17,
+                "deletions": 3
+              },
+              {
+                "path": "packages/client-twitter/src/interactions.ts",
+                "additions": 21,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-twitter/src/post.ts",
+                "additions": 225,
+                "deletions": 93
+              },
+              {
+                "path": "packages/plugin-image-generation/src/enviroment.ts",
+                "additions": 2,
+                "deletions": 3
+              },
+              {
+                "path": "packages/plugin-image-generation/src/index.ts",
+                "additions": 89,
+                "deletions": 86
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 516,
+                "deletions": 159
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          },
+          {
+            "number": 643,
+            "title": "feat: Merge EVM and add character override",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-28T08:32:23Z",
+            "updated_at": "2024-11-28T08:55:59Z",
+            "body": "This PR merges the EVM configuration and enables overriding the default chain configs in a character. The current defaults are base and main net.",
+            "files": [
+              {
+                "path": ".env.example",
+                "additions": 10,
+                "deletions": 1
+              },
+              {
+                "path": "README_CN.md",
+                "additions": 9,
+                "deletions": 0
+              },
+              {
+                "path": "README_ES.md",
+                "additions": 9,
+                "deletions": 0
+              },
+              {
+                "path": "README_JA.md",
+                "additions": 9,
+                "deletions": 0
+              },
+              {
+                "path": "README_KOR.md",
+                "additions": 9,
+                "deletions": 0
+              },
+              {
+                "path": "README_PTBR.md",
+                "additions": 9,
+                "deletions": 0
+              },
+              {
+                "path": "README_RU.md",
+                "additions": 9,
+                "deletions": 0
+              },
+              {
+                "path": "agent/package.json",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "agent/src/index.ts",
+                "additions": 14,
+                "deletions": 4
+              },
+              {
+                "path": "docs/README_CN.md",
+                "additions": 9,
+                "deletions": 0
+              },
+              {
+                "path": "docs/api/classes/AgentRuntime.md",
+                "additions": 39,
+                "deletions": 39
+              },
+              {
+                "path": "docs/api/classes/MemoryManager.md",
+                "additions": 4,
+                "deletions": 4
+              },
+              {
+                "path": "docs/api/classes/Service.md",
+                "additions": 4,
+                "deletions": 4
+              },
+              {
+                "path": "docs/api/enumerations/Clients.md",
+                "additions": 4,
+                "deletions": 4
+              },
+              {
+                "path": "docs/api/enumerations/LoggingLevel.md",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "docs/api/enumerations/ModelProviderName.md",
+                "additions": 22,
+                "deletions": 12
+              },
+              {
+                "path": "docs/api/enumerations/ServiceType.md",
+                "additions": 17,
+                "deletions": 7
+              },
+              {
+                "path": "docs/api/functions/generateCaption.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/generateImage.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/generateMessageResponse.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/generateObject.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/generateObjectArray.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/generateObjectV2.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/generateShouldRespond.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/generateTextArray.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/generateTrueOrFalse.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/getEndpoint.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/getModel.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/handleProvider.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/splitChunks.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/trimTokens.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/interfaces/Account.md",
+                "additions": 6,
+                "deletions": 6
+              },
+              {
+                "path": "docs/api/interfaces/Action.md",
+                "additions": 6,
+                "deletions": 6
+              },
+              {
+                "path": "docs/api/interfaces/EvaluationExample.md",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "docs/api/interfaces/Evaluator.md",
+                "additions": 7,
+                "deletions": 7
+              },
+              {
+                "path": "docs/api/interfaces/GenerationOptions.md",
+                "additions": 9,
+                "deletions": 9
+              },
+              {
+                "path": "docs/api/interfaces/IAgentRuntime.md",
+                "additions": 34,
+                "deletions": 34
+              },
+              {
+                "path": "docs/api/interfaces/IBrowserService.md",
+                "additions": 4,
+                "deletions": 4
+              },
+              {
+                "path": "docs/api/interfaces/IButtplugService.md",
+                "additions": 0,
+                "deletions": 91
+              },
+              {
+                "path": "docs/api/interfaces/ICacheManager.md",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "docs/api/interfaces/IDatabaseAdapter.md",
+                "additions": 38,
+                "deletions": 36
+              },
+              {
+                "path": "docs/api/interfaces/IDatabaseCacheAdapter.md",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "docs/api/interfaces/IImageDescriptionService.md",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "docs/api/interfaces/IMemoryManager.md",
+                "additions": 13,
+                "deletions": 13
+              },
+              {
+                "path": "docs/api/interfaces/IPdfService.md",
+                "additions": 4,
+                "deletions": 4
+              },
+              {
+                "path": "docs/api/interfaces/ISpeechService.md",
+                "additions": 4,
+                "deletions": 4
+              },
+              {
+                "path": "docs/api/interfaces/ITextGenerationService.md",
+                "additions": 6,
+                "deletions": 6
+              },
+              {
+                "path": "docs/api/interfaces/ITranscriptionService.md",
+                "additions": 6,
+                "deletions": 6
+              },
+              {
+                "path": "docs/api/interfaces/IVideoService.md",
+                "additions": 6,
+                "deletions": 6
+              },
+              {
+                "path": "docs/api/interfaces/Memory.md",
+                "additions": 9,
+                "deletions": 9
+              },
+              {
+                "path": "docs/api/interfaces/MessageExample.md",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "docs/api/interfaces/Participant.md",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "docs/api/interfaces/Provider.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/interfaces/Relationship.md",
+                "additions": 7,
+                "deletions": 7
+              },
+              {
+                "path": "docs/api/interfaces/Room.md",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "docs/api/interfaces/State.md",
+                "additions": 48,
+                "deletions": 24
+              },
+              {
+                "path": "docs/api/type-aliases/CacheOptions.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/type-aliases/Character.md",
+                "additions": 33,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/type-aliases/Client.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/type-aliases/Handler.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/type-aliases/HandlerCallback.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/type-aliases/KnowledgeItem.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/type-aliases/Media.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/type-aliases/Models.md",
+                "additions": 4,
+                "deletions": 0
+              },
+              {
+                "path": "docs/api/type-aliases/Plugin.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/type-aliases/Validator.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/variables/elizaLogger.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/variables/knowledge.md",
+                "additions": 13,
+                "deletions": 5
+              },
+              {
+                "path": "docs/docs/advanced/autonomous-trading.md",
+                "additions": 2,
+                "deletions": 1
+              },
+              {
+                "path": "docs/docs/api/_media/README_CN.md",
+                "additions": 9,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/_media/README_FR.md",
+                "additions": 9,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/_media/README_JA.md",
+                "additions": 9,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/_media/README_KOR.md",
+                "additions": 9,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/index.md",
+                "additions": 9,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/guides/secrets-management.md",
+                "additions": 14,
+                "deletions": 4
+              },
+              {
+                "path": "package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/agent/src/character.ts",
+                "additions": 404,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-auto/src/index.ts",
+                "additions": 1,
+                "deletions": 66
+              },
+              {
+                "path": "packages/client-discord/src/voice.ts",
+                "additions": 6,
+                "deletions": 4
+              },
+              {
+                "path": "packages/core/src/index.ts",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/runtime.ts",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "packages/core/src/types.ts",
+                "additions": 5,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/utils.ts",
+                "additions": 3,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-buttplug/src/utils.ts",
+                "additions": 1,
+                "deletions": 16
+              },
+              {
+                "path": "packages/plugin-evm/package.json",
+                "additions": 22,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-evm/src/actions/bridge.ts",
+                "additions": 98,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-evm/src/actions/swap.ts",
+                "additions": 119,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-evm/src/actions/transfer.ts",
+                "additions": 79,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-evm/src/index.ts",
+                "additions": 22,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-evm/src/providers/wallet.ts",
+                "additions": 153,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-evm/src/templates/index.ts",
+                "additions": 74,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-evm/src/types/index.ts",
+                "additions": 129,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-evm/tsconfig.json",
+                "additions": 10,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-evm/tsup.config.ts",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-solana/package.json",
+                "additions": 2,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-solana/src/actions/pumpfun.ts",
+                "additions": 3,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-solana/src/actions/swap.ts",
+                "additions": 11,
+                "deletions": 3
+              },
+              {
+                "path": "packages/plugin-solana/src/actions/swapDao.ts",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-solana/src/actions/transfer.ts",
+                "additions": 3,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-solana/src/enviroment.ts",
+                "additions": 1,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 2,
+        "opened": [
+          {
+            "number": 644,
+            "title": "Better EVM multi-chain handling",
+            "state": "OPEN",
+            "created_at": "2024-11-28T08:33:58Z",
+            "updated_at": "2024-12-14T07:35:24Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\r\n\r\nRight now, we have to switch chains. This is a terrible UX, and instead we'd like to get data from multiple chains and coalesce it.\r\n\r\n**Describe the solution you'd like**\r\n\r\nEnable multi-chain wallet abstraction which pulls in and caches data from multiple chains\r\n\r\n- Add chains like arbitrum and polygon\r\n- Remove actions like \"switch chain\"\r\n- Make sure tokens are tagged correctly on different chains",
+            "labels": [
+              {
+                "name": "V2",
+                "color": "1670F6",
+                "description": "Eliza 0.2.0"
+              }
+            ],
+            "comments": [
+              {
+                "author": "n00b21337",
+                "body": "Think the problem is you are using SDK of LIFI which is more aligned with building UX for end users. For an agent, it would be better to use API directly and just respond to statuses, wait for bridge etc\r\nhttps://docs.li.fi/li.fi-api/li.fi-api/transferring-tokens-example"
+              }
+            ]
+          },
+          {
+            "number": 639,
+            "title": "Upgrade to turborepo for monorepo management",
+            "state": "CLOSED",
+            "created_at": "2024-11-28T06:20:09Z",
+            "updated_at": "2024-12-14T07:36:17Z",
+            "body": "Our monorepo config is causing lots of confusion and bugs. This should fix that.",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "monilpat",
+    "score": 0,
+    "summary": "Monilpat is actively improving the code quality by addressing linter issues, adding missing eslint fixes, and updating documentation such as READMEs and .env files. They have also merged a branch related to Coinbase trading into their project and made enhancements for gasless mass payments using USDC.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/15067321?u=1271e57605b48029307547127c90e1bd5e4f3f39&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 26,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "1b40ad1d44b67a67722b9ac5af70f2a9db23d7ca",
+            "message": "Fix linter",
+            "created_at": "2024-11-28T22:24:42Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "39d5f44f2b7bf1812a22231043815df1b0085585",
+            "message": "test and get working",
+            "created_at": "2024-11-28T22:21:49Z",
+            "additions": 40,
+            "deletions": 6,
+            "changed_files": 4
+          },
+          {
+            "sha": "1763478d2c1ff088e094e934069d1b88807ac84b",
+            "message": "feat: Add wallet history (transactions, balances) to provider",
+            "created_at": "2024-11-28T21:59:25Z",
+            "additions": 122,
+            "deletions": 25,
+            "changed_files": 4
+          },
+          {
+            "sha": "cd98ff99a6281352ecf5246cb059b71c69e8b8c3",
+            "message": "Merge branch 'realitySpiral/coinbaseTrading' of https://github.com/monilpat/eliza into realitySpiral/coinbaseTrading",
+            "created_at": "2024-11-28T17:27:26Z",
+            "additions": 71456,
+            "deletions": 38903,
+            "changed_files": 850
+          },
+          {
+            "sha": "90bf7585136247781179a965000653eb1a8f78f2",
+            "message": "Reset commit history",
+            "created_at": "2024-11-28T17:27:21Z",
+            "additions": 3256,
+            "deletions": 0,
+            "changed_files": 5
+          },
+          {
+            "sha": "1f864a1e9471ebfcb4f47efce1efecee3e35e461",
+            "message": "Merge branch 'realitySpiral/coinbaseTrading' of https://github.com/monilpat/eliza into realitySpiral/coinbaseTrading",
+            "created_at": "2024-11-28T17:24:00Z",
+            "additions": 3,
+            "deletions": 1,
+            "changed_files": 2
+          },
+          {
+            "sha": "fe58d491a0a45f6e586b2a4e9eb7534fbed7d15d",
+            "message": "Update .env.example",
+            "created_at": "2024-11-28T17:21:41Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "4104d0be5d7770a055dd623714302cfd3d05e530",
+            "message": "Address linter",
+            "created_at": "2024-11-28T17:21:04Z",
+            "additions": 11,
+            "deletions": 16,
+            "changed_files": 3
+          },
+          {
+            "sha": "a2aad01d8169dbe9b64a1a48fd88091a47d15526",
+            "message": "add missing eslint fix",
+            "created_at": "2024-11-28T17:21:03Z",
+            "additions": 3,
+            "deletions": 0,
+            "changed_files": 1
+          },
+          {
+            "sha": "f94c2d5aa2d79fb5038ed15f349e0c3d1b4ebe76",
+            "message": "merge conflicts",
+            "created_at": "2024-11-28T17:21:03Z",
+            "additions": 122,
+            "deletions": 112,
+            "changed_files": 2
+          },
+          {
+            "sha": "0b66cfaf2213f7c007d1278df618bab2cd74b28d",
+            "message": "Add disclaimer",
+            "created_at": "2024-11-28T17:20:31Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "133614e819ccb73f794be0bab8324e74b3182d92",
+            "message": "Update readme",
+            "created_at": "2024-11-28T17:20:31Z",
+            "additions": 145,
+            "deletions": 38,
+            "changed_files": 1
+          },
+          {
+            "sha": "d9df31ea7f04faa65468a10ed56f4bf8cf1c7909",
+            "message": "Tested and working ETH <-> USDC",
+            "created_at": "2024-11-28T17:20:11Z",
+            "additions": 440,
+            "deletions": 179,
+            "changed_files": 7
+          },
+          {
+            "sha": "069344ded3e5b43c2262b62b2ff6a28664a76157",
+            "message": "clean up 2",
+            "created_at": "2024-11-28T17:19:38Z",
+            "additions": 347,
+            "deletions": 39,
+            "changed_files": 8
+          },
+          {
+            "sha": "1c4b13b312f62f550387397168adac48371ef5c1",
+            "message": "write to csv + clean up",
+            "created_at": "2024-11-28T17:16:35Z",
+            "additions": 104,
+            "deletions": 4,
+            "changed_files": 2
+          },
+          {
+            "sha": "d657e8531807711a72a1c43877280aff1f3f4a6d",
+            "message": "Make massPayments gasless if usdc",
+            "created_at": "2024-11-28T17:16:35Z",
+            "additions": 5,
+            "deletions": 5,
+            "changed_files": 1
+          },
+          {
+            "sha": "0b2332ed7fca58003eba81fb73f37df3740f6d9d",
+            "message": "feat: implement coinbase trading",
+            "created_at": "2024-11-28T17:16:35Z",
+            "additions": 373,
+            "deletions": 118,
+            "changed_files": 5
+          },
+          {
+            "sha": "11f0b9faa7aa3dc6d2424da2276f419e6c57afd3",
+            "message": "Update .env.example",
+            "created_at": "2024-11-28T17:12:49Z",
+            "additions": 2,
+            "deletions": 0,
+            "changed_files": 1
+          },
+          {
+            "sha": "ee64a1d587ff2c11b9dea70295160840efebecb8",
+            "message": "Address linter",
+            "created_at": "2024-11-28T16:16:27Z",
+            "additions": 11,
+            "deletions": 16,
+            "changed_files": 3
+          },
+          {
+            "sha": "389ea251d386401d3b521a4f0deebc0d77af3154",
+            "message": "add missing eslint fix",
+            "created_at": "2024-11-28T16:11:11Z",
+            "additions": 3,
+            "deletions": 0,
+            "changed_files": 1
+          },
+          {
+            "sha": "18d10139cff45ea966a0910292dc282cf71d4109",
+            "message": "merge conflicts",
+            "created_at": "2024-11-28T16:05:08Z",
+            "additions": 233,
+            "deletions": 37,
+            "changed_files": 2
+          },
+          {
+            "sha": "a6fee500dddeccebc840ee28085b254c13b3cae1",
+            "message": "Merge branch 'realitySpiral/coinbaseTrading' of https://github.com/monilpat/eliza into realitySpiral/coinbaseTrading",
+            "created_at": "2024-11-28T16:04:39Z",
+            "additions": 685,
+            "deletions": 185,
+            "changed_files": 12
+          },
+          {
+            "sha": "3feda9ca150142ef348af075d23cd53a98bd3deb",
+            "message": "Add disclaimer",
+            "created_at": "2024-11-28T15:29:21Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "d91094f90f8c14349bd6057be3f99ffaa82540ec",
+            "message": "Update readme",
+            "created_at": "2024-11-28T15:27:00Z",
+            "additions": 115,
+            "deletions": 12,
+            "changed_files": 1
+          },
+          {
+            "sha": "4c991d3f7aff11b61a34df5663efc2e844fda657",
+            "message": "Tested and working ETH <-> USDC",
+            "created_at": "2024-11-28T15:22:27Z",
+            "additions": 441,
+            "deletions": 496,
+            "changed_files": 7
+          },
+          {
+            "sha": "27cf67a3ba40e2b627dfe9c02bdcdd8e2b706750",
+            "message": "clean up 2",
+            "created_at": "2024-11-28T13:17:07Z",
+            "additions": 302,
+            "deletions": 18,
+            "changed_files": 8
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 658,
+            "title": "feat: Add wallet history (transactions, balances) to coinbase providers",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-28T22:22:06Z",
+            "updated_at": "2024-11-29T11:00:20Z",
+            "body": "---\r\n\r\n# Relates to:\r\n\r\nEnhance Providers with Wallet History (Transactions and Balances)\r\n\r\n\r\n\r\n# Risks\r\nLow.\r\n- The new functionality fetches and formats wallet balances and transactions. \r\n- Possible risks include:\r\n  - Increased response time for providers due to the added API calls.\r\n  - Dependency on the Coinbase SDK for accurate data retrieval.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nThis PR enhances the `massPayoutProvider`, `tradeProvider`, and `chargeProvider` to include wallet balances and recent transactions in their responses. Additionally:\r\n1. A reusable utility function `getWalletDetails` is introduced to:\r\n   - Fetch wallet balances.\r\n   - Retrieve recent wallet transactions.\r\n   - Format and return this data.\r\n2. The `getAssetType` helper function is added to determine the asset type (e.g., ETH, USDC) for transactions.\r\n\r\n## What kind of change is this?\r\n**Feature (non-breaking change which adds functionality)**  \r\nThis PR extends existing providers to include wallet details, making them more informative and versatile.\r\n\r\n## Why are we doing this? Any context or related work?\r\nThis enhancement allows users to:\r\n- View current wallet balances alongside provider data (e.g., payouts, trades, or charges).\r\n- Understand recent wallet activity, including transaction timestamps, asset types, and statuses.\r\nThe goal is to provide a unified source of wallet-related insights within each provider.\r\n\r\n# Documentation changes needed?\r\nYes.  \r\nThe functionality of the affected providers now includes wallet details. The documentation should reflect:\r\n1. Input parameters: No changes required.\r\n2. Output: Providers now return wallet balances and recent transactions in addition to their existing data.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n1. Review the `getWalletDetails` function in `utils.ts` for implementation details.\r\n2. Check the updated `massPayoutProvider`, `tradeProvider`, and `chargeProvider` for integration of wallet details.\r\n\r\n## Detailed testing steps\r\n1. Configure the Coinbase SDK with a valid wallet and network (e.g., Ethereum mainnet).\r\n2. Call the following providers:\r\n   - `massPayoutProvider.get()`\r\n   - `tradeProvider.get()`\r\n   - `chargeProvider.get()`\r\n3. Verify:\r\n   - Balances include correct asset types and amounts.\r\n   - Transactions include valid timestamps, asset types, statuses, and URLs.\r\n   - Original provider data (e.g., CSV records, charges, or trades) remains unaffected.\r\n4. Test scenarios with:\r\n   - Wallets containing no balances or transactions.\r\n   - Wallets with multiple assets.\r\n5. Edge cases:\r\n   - Unsupported networks or invalid wallet configurations.\r\n   - Handling of unknown token types in `getAssetType`.\r\n\r\n# Screenshots\r\n### Before\r\n**`massPayoutProvider` Output:**\r\n```json\r\n{\r\n  \"csvRecords\": [\r\n    {\r\n      \"address\": \"0x123...\",\r\n      \"amount\": 0.01,\r\n      \"status\": \"Success\",\r\n      \"errorCode\": \"\",\r\n      \"transactionUrl\": \"https://etherscan.io/tx/0x...\"\r\n    }\r\n  ]\r\n}\r\n```\r\n\r\n### After\r\n**`massPayoutProvider` Output:**\r\n```json\r\n{\r\n  \"csvRecords\": [\r\n    {\r\n      \"address\": \"0x123...\",\r\n      \"amount\": 0.01,\r\n      \"status\": \"Success\",\r\n      \"errorCode\": \"\",\r\n      \"transactionUrl\": \"https://etherscan.io/tx/0x...\"\r\n    }\r\n  ],\r\n  \"balances\": [\r\n    { \"asset\": \"ETH\", \"amount\": \"1.23\" },\r\n    { \"asset\": \"USDC\", \"amount\": \"500.45\" }\r\n  ],\r\n  \"transactionHistory\": [\r\n    {\r\n      \"timestamp\": \"2024-11-26T14:15:22Z\",\r\n      \"amount\": \"100\",\r\n      \"asset\": \"USDC\",\r\n      \"status\": \"Completed\",\r\n      \"transactionUrl\": \"https://etherscan.io/tx/0x...\"\r\n    }\r\n  ]\r\n}\r\n\r\n```\r\n\r\n<img width=\"1546\" alt=\"Screenshot 2024-11-28 at 2 13 08\u202fPM\" src=\"https://github.com/user-attachments/assets/6a57ce6c-a08c-4a44-8aae-51e93b1c516d\">\r\n\r\n# Deploy Notes\r\nNo special deployment steps are required. Ensure:\r\n- The Coinbase SDK is configured correctly with API keys and secrets.\r\n- The environment supports the required network IDs.\r\n\r\n# Database changes\r\nNone.\r\n\r\n# Deployment instructions\r\nStandard deployment.\r\n",
+            "files": [
+              {
+                "path": "packages/plugin-coinbase/src/plugins/commerce.ts",
+                "additions": 22,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-coinbase/src/plugins/massPayments.ts",
+                "additions": 29,
+                "deletions": 12
+              },
+              {
+                "path": "packages/plugin-coinbase/src/plugins/trade.ts",
+                "additions": 27,
+                "deletions": 12
+              },
+              {
+                "path": "packages/plugin-coinbase/src/utils.ts",
+                "additions": 80,
+                "deletions": 2
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "cygaar",
+    "score": 0,
+    "summary": "Cygaar is actively improving the browser service, focusing on user agent updates based on platform, better browser settings, and enhanced db connection handling. Additionally, they have made significant commitments to formatting, removing unused variables, and fixing embedding length mismatches in their codebase.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/97691933?u=45e66309f3fd41536b48a58f3c949b9e4e90789a&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 9,
+        "total_prs": 2,
+        "commits": [
+          {
+            "sha": "0e8cb04574321dc3b1413a5459a9e4ddd82448e8",
+            "message": "Remove unused variable",
+            "created_at": "2024-11-28T23:34:08Z",
+            "additions": 0,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "7eda427fd7cd0ef9a1e6af7c9cadb2dc23fd50b0",
+            "message": "fix embedding length mismatches",
+            "created_at": "2024-11-28T23:27:42Z",
+            "additions": 120,
+            "deletions": 113,
+            "changed_files": 16
+          },
+          {
+            "sha": "d274ef7b988bb2ae4db604c94cb410f5505b4f8a",
+            "message": "More improvements",
+            "created_at": "2024-11-28T17:29:20Z",
+            "additions": 6,
+            "deletions": 2,
+            "changed_files": 1
+          },
+          {
+            "sha": "f5292d54588537e0260f81f344cf63f0bf474408",
+            "message": "format",
+            "created_at": "2024-11-28T17:04:44Z",
+            "additions": 4,
+            "deletions": 6,
+            "changed_files": 1
+          },
+          {
+            "sha": "2bf9819e17d2457fc9ef471545bc3d273b93acf3",
+            "message": "Browser improvements",
+            "created_at": "2024-11-28T16:39:52Z",
+            "additions": 18,
+            "deletions": 65,
+            "changed_files": 3
+          },
+          {
+            "sha": "474500dfb72e8d66419aff186aeb9fda69330ae1",
+            "message": "Change user agent based on platform",
+            "created_at": "2024-11-28T15:19:28Z",
+            "additions": 34,
+            "deletions": 9,
+            "changed_files": 3
+          },
+          {
+            "sha": "7f941495f324d4bdce9f6f65a68f6296810001d2",
+            "message": "Update useragent",
+            "created_at": "2024-11-28T15:19:28Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "fb0f01f752154d69fe724c7bafdac886f52cddd0",
+            "message": "Better browser settings",
+            "created_at": "2024-11-28T15:19:28Z",
+            "additions": 3,
+            "deletions": 2,
+            "changed_files": 1
+          },
+          {
+            "sha": "91c6ae30d37c4a3fbe6313c6d893608d5ff0e6f6",
+            "message": "better db connection handling",
+            "created_at": "2024-11-28T03:34:43Z",
+            "additions": 53,
+            "deletions": 8,
+            "changed_files": 7
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 660,
+            "title": "fix: embedding search for non-openai models",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-28T23:31:20Z",
+            "updated_at": "2024-11-29T13:45:44Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\nEmbedding search was broken when not using OpenAI models because our default zero embeddings are length 1536 (which is the length generated from remote embedding processing), but our locally generated embeddings are of length 384.\r\n\r\n# Risks\r\n\r\nLow\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nFixes the embedding mismatch issue by generating a zero embedding vector based on the given model being used.\r\n\r\n## What kind of change is this?\r\n\r\nBug fix\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes require a change to the project documentation.\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nRun locally against OpenAI model and non-openai models\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "packages/adapter-sqlite/src/index.ts",
+                "additions": 1,
+                "deletions": 2
+              },
+              {
+                "path": "packages/client-discord/src/index.ts",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "packages/client-discord/src/messages.ts",
+                "additions": 2,
+                "deletions": 3
+              },
+              {
+                "path": "packages/client-discord/src/voice.ts",
+                "additions": 13,
+                "deletions": 15
+              },
+              {
+                "path": "packages/client-farcaster/src/actions.ts",
+                "additions": 1,
+                "deletions": 2
+              },
+              {
+                "path": "packages/client-farcaster/src/interactions.ts",
+                "additions": 1,
+                "deletions": 2
+              },
+              {
+                "path": "packages/client-farcaster/src/memory.ts",
+                "additions": 9,
+                "deletions": 12
+              },
+              {
+                "path": "packages/client-farcaster/src/post.ts",
+                "additions": 1,
+                "deletions": 2
+              },
+              {
+                "path": "packages/client-telegram/src/messageManager.ts",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "packages/client-twitter/src/base.ts",
+                "additions": 4,
+                "deletions": 4
+              },
+              {
+                "path": "packages/client-twitter/src/interactions.ts",
+                "additions": 20,
+                "deletions": 13
+              },
+              {
+                "path": "packages/client-twitter/src/post.ts",
+                "additions": 4,
+                "deletions": 4
+              },
+              {
+                "path": "packages/client-twitter/src/utils.ts",
+                "additions": 24,
+                "deletions": 24
+              },
+              {
+                "path": "packages/core/src/embedding.ts",
+                "additions": 25,
+                "deletions": 15
+              },
+              {
+                "path": "packages/core/src/knowledge.ts",
+                "additions": 6,
+                "deletions": 4
+              },
+              {
+                "path": "packages/core/src/memory.ts",
+                "additions": 2,
+                "deletions": 5
+              }
+            ],
+            "reviews": [
+              {
+                "author": "lalalune",
+                "state": "APPROVED",
+                "body": "This is great"
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 653,
+            "title": "feat: improve browser service",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-28T17:08:10Z",
+            "updated_at": "2024-11-28T18:13:54Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\nPerformance and security improvements with the browser service.\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\nLow since the browser performance was already inconsistent\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nThere are several changes I made to the browser service to make it better:\r\n- More accurate and up to date user agent to reduce bot detection\r\n- Remove redundant content summarization\r\n- Remove queuing system since all fetches are blocking and it was leading to duplicate pages being loaded\r\n- Run in headless mode to reduce cpu usage and latency\r\n- Re-enable sandbox mode to isolate malicious browser behavior\r\n- Prevent unwanted downloads of files\r\n\r\n## What kind of change is this?\r\n\r\nImprovements\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\nNone\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nTest by sending urls on discord\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "packages/client-discord/src/messages.ts",
+                "additions": 5,
+                "deletions": 13
+              },
+              {
+                "path": "packages/core/src/runtime.ts",
+                "additions": 4,
+                "deletions": 6
+              },
+              {
+                "path": "packages/plugin-node/package.json",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-node/src/services/browser.ts",
+                "additions": 35,
+                "deletions": 48
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 18,
+                "deletions": 15
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "lalalune",
+                "body": "v smort"
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "madjin",
+    "score": 0,
+    "summary": "Madjin is actively contributing to the documentation section, specifically merging a pull request related to community streams into the project's docs repository. Over the past 90 days, madjin has focused primarily on enhancing and updating documentation without engaging in issue resolution or creating new features through additional commits.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/32600939?u=cdcf89f44c7a50906c7a80d889efa85023af2049&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "1471a163f2f497931326876dd2bf23dd0845bf1d",
+            "message": "Merge pull request #638 from YoungPhlo/docs/community-streams\n\nNotes for AI Agent Dev School #1",
+            "created_at": "2024-11-28T07:39:05Z",
+            "additions": 85,
+            "deletions": 0,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "MarcoMandar",
+    "score": 0,
+    "summary": "MarcoMandar is actively developing a simulation feature that involves types, connections, and fixes within the project's packages. He has made two significant commits to initialize these features and successfully merged one pull request related to this enhancement. His work over the last 90 days shows an emphasis on expanding functionality through code changes totaling +137/-115 lines of code.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/70625671?u=88aeaa8b5ed43a818bdac96843f2fd40c0abf8ff&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 2,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "2d7290132c658aef771fbacd44c96e6fb4f70bae",
+            "message": "types, connection, fixes\n\nSigned-off-by: MarcoMandar <malicemandar@gmail.com>",
+            "created_at": "2024-11-28T07:44:47Z",
+            "additions": 33,
+            "deletions": 14,
+            "changed_files": 5
+          },
+          {
+            "sha": "6a3518583532cd0ed8e3904b65d6ab8377c3923d",
+            "message": "initital\n\nSigned-off-by: MarcoMandar <malicemandar@gmail.com>",
+            "created_at": "2024-11-28T07:44:27Z",
+            "additions": 104,
+            "deletions": 101,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 642,
+            "title": "Feat/simulation sell types",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-28T07:45:14Z",
+            "updated_at": "2024-11-28T09:41:22Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\n## What kind of change is this?\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "packages/plugin-solana/src/actions/swapDao.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-solana/src/evaluators/trust.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-solana/src/providers/simulationSellingService.ts",
+                "additions": 19,
+                "deletions": 9
+              },
+              {
+                "path": "packages/plugin-solana/src/providers/trustScoreProvider.ts",
+                "additions": 7,
+                "deletions": 3
+              },
+              {
+                "path": "packages/plugin-trustdb/src/adapters/trustScoreDatabase.ts",
+                "additions": 5,
+                "deletions": 0
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 104,
+                "deletions": 101
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "HashWarlock",
+    "score": 0,
+    "summary": "HashWarlock is actively enhancing documentation and updating provider configurations for the TEE Plugin within their projects. They have made a single commit that improved code quality by adding 174 lines while removing 33, focusing on packages and agent areas of development.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/64296537?u=3aba9462fb28d3b01bdc8ac888817386b6bf3266&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "985e2766fa93affd85e79eb2d7b611b270b47451",
+            "message": "fix: Add docs, update provider and remove walletProvider from providers",
+            "created_at": "2024-11-28T06:21:22Z",
+            "additions": 177,
+            "deletions": 33,
+            "changed_files": 7
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 640,
+            "title": "fix: Add docs, update providers for TEE Plugin",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-28T06:26:25Z",
+            "updated_at": "2024-11-28T08:56:32Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\nLow, Adding docs and updating TEE Plugin to derive both solana ed25519 and evm ecdsa keypairs.\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\n## What kind of change is this?\r\nImprovements\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\nI have updated the documentation accordingly.\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "agent/src/index.ts",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "docs/docs/packages/plugins.md",
+                "additions": 84,
+                "deletions": 12
+              },
+              {
+                "path": "packages/plugin-tee/README.md",
+                "additions": 34,
+                "deletions": 5
+              },
+              {
+                "path": "packages/plugin-tee/src/index.ts",
+                "additions": 0,
+                "deletions": 2
+              },
+              {
+                "path": "packages/plugin-tee/src/providers/deriveKeyProvider.ts",
+                "additions": 54,
+                "deletions": 6
+              },
+              {
+                "path": "packages/plugin-tee/src/providers/remoteAttestationProvider.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-tee/src/providers/walletProvider.ts",
+                "additions": 4,
+                "deletions": 6
+              }
+            ],
+            "reviews": [
+              {
+                "author": "lalalune",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "snobbee",
+    "score": 0,
+    "summary": "snobbee is actively updating the CI configuration by modifying the `ci.yaml` file, as evidenced by a recent commit and pull request to streamline continuous integration processes within their project. This focused effort has resulted in one merged PR and an overall positive code change impact of +5/-0 in the `.github` area over the past 90 days.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/125891987?u=ba9ca14b922f8fb73f38ba0981d157247af3dd03&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "df331e6f62a9853971c6826ae506d73690ee69dc",
+            "message": "Update ci.yaml\n\nadd codecov integration to CI\u202fworkflow",
+            "created_at": "2024-11-28T16:49:53Z",
+            "additions": 5,
+            "deletions": 0,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 652,
+            "title": "Update ci.yaml",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-28T16:50:27Z",
+            "updated_at": "2024-11-28T16:50:54Z",
+            "body": "add codecov integration to CI\u202fworkflow\r\n\r\n<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\nlow\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\n## What kind of change is this?\r\n\r\nAdd codecov integration to CI\u202fworkflow to generate test coverage reports\r\n\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": ".github/workflows/ci.yaml",
+                "additions": 5,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "YoungPhlo",
+    "score": 0,
+    "summary": "YoungPhlo is actively contributing to the documentation by adding notes from a session at AI Agent Dev School, showcasing an engagement in educational resources for artificial intelligence development. With one merged pull request and eighty-five lines of added code changes, their focus remains on enhancing project documentation within the last 90 days.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/90307961?u=2e7b36c41a4576a4720529da97a57280df102b28&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "6324d7af0d9a37bd8f22f39e6db85336a9a697f2",
+            "message": "docs: add notes from a16z AI Agent Dev School session #1",
+            "created_at": "2024-11-28T05:35:55Z",
+            "additions": 85,
+            "deletions": 0,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 638,
+            "title": "Notes for AI Agent Dev School #1",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-28T05:46:45Z",
+            "updated_at": "2024-11-28T07:39:07Z",
+            "body": "# Relates to:\r\nDocumentation of a16z AI Agent Dev School Session 1\r\n\r\n# Risks\r\nLow - This is a documentation-only change adding new stream notes.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nAdds detailed documentation for the first a16z AI Agent Dev School session, covering Shaw's deep dive into the Eliza framework, including implementation details, architecture decisions, and future development plans.\r\n\r\n## What kind of change is this?\r\nDocumentation\r\n\r\n# Testing\r\n\r\n## Detailed testing steps\r\nNone, documentation review is sufficient. Verify that:\r\n- All links to YouTube videos are working\r\n- Content is properly formatted\r\n- Information is accurate to the session content\r\n- Sidebar position is correct (6)\r\n",
+            "files": [
+              {
+                "path": "docs/docs/community/streams/2024-11-26.md",
+                "additions": 85,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "jkbrooks",
+    "score": 0,
+    "summary": "jkbrooks is actively contributing to the project by merging pull requests, specifically focusing on enhancing features related to patch-1 and coinbaseTrading. In the last 90 days, they have made a total of two commits resulting in significant code changes with an overall increase of +4520 lines added and -218 lines removed.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/129074?u=4cd0bf499a885dd922e04d57e805c88f7c6dd4f9&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 2,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "13b212ddede7e1326b1d8813330e4619112eddc5",
+            "message": "Merge pull request #608 from monilpat/realitySpiral/coinbaseTrading\n\nfeat: implement coinbase trading",
+            "created_at": "2024-11-28T20:23:02Z",
+            "additions": 4515,
+            "deletions": 218,
+            "changed_files": 20
+          },
+          {
+            "sha": "bc8065411c4a73d3a0bbb44ee0b6031b7fcefae1",
+            "message": "Merge pull request #652 from snobbee/patch-1\n\nUpdate ci.yaml",
+            "created_at": "2024-11-28T16:50:53Z",
+            "additions": 5,
+            "deletions": 0,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "pgoos",
+    "score": 0,
+    "summary": "pgoos is actively contributing to the project by enhancing its code coverage configuration, as evidenced by a new feature pull request for adding a minimal config file. Additionally, they have streamlined the repository structure through a commit that relocates files to the root level. With two commits and one merged PR in the last 90 days, pgoos demonstrates focused efforts on improving code maintainability and coverage analysis tools.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/4013866?u=54b369479a24f434f266478f54822fef84532e31&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 2,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "a6ef7e54abd47c8cf1787e391aaaba905246a223",
+            "message": "fix: move file to the root level",
+            "created_at": "2024-11-28T23:26:23Z",
+            "additions": 0,
+            "deletions": 0,
+            "changed_files": 1
+          },
+          {
+            "sha": "8950737329edcb3d0dace7cb0c94f1a22df83fa6",
+            "message": "feat: add minimal config file for code cov",
+            "created_at": "2024-11-28T22:33:14Z",
+            "additions": 5,
+            "deletions": 0,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 659,
+            "title": "feat: add minimal config file for code cov",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-28T22:45:05Z",
+            "updated_at": "2024-11-29T09:00:34Z",
+            "body": "# Relates to:\r\n# Risks\r\nLow\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nIt introduces CodeCov config file that is used to gather code coverage statistics\r\n## What kind of change is this?\r\nImprovement\r\n\r\n## Why are we doing this? Any context or related work?\r\nTo improve quality by measuring code coverage.\r\n\r\n# Documentation changes needed?\r\nNo.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\nNone, automated tests are fine.\r\n\r\n## Discord username\r\npiotrg5517\r\n",
+            "files": [
+              {
+                "path": "codecov.yml",
+                "additions": 5,
+                "deletions": 0
+              }
+            ],
+            "reviews": [
+              {
+                "author": "monilpat",
+                "state": "APPROVED",
+                "body": "LGTM! "
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "twilwa",
+    "score": 0,
+    "summary": "Twilwa is actively contributing to the development of a Discord bot, as evidenced by their recent merge of pull request #633 from ai16z/tcm-dicord-bot-voice on GitHub. Over the past 90 days, they have made one commit with significant code changes totaling +799 lines added and -655 lines removed.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/111034762?u=0d3eed7c5f6e6fd4ddee24801aae9f88b0330380&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "367f9b49876f80b19258432c903e4f4fb6285723",
+            "message": "Merge pull request #633 from ai16z/tcm-dicord-bot-voice\n\ndicord bot voice",
+            "created_at": "2024-11-28T03:53:45Z",
+            "additions": 799,
+            "deletions": 655,
+            "changed_files": 5
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "yoniebans",
+    "score": 0,
+    "summary": "Yoniebans is actively enhancing the image generation capabilities within a project by integrating HEURIST and OPENAI, as well as adding support for fal.ai. This includes updating environment files, runtime interfaces, core models, and types to accommodate new features like optional API keys and model provider separation. The focus has been on improving automation and expanding the range of image generation options available in the system.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/5584832?u=28c7da0c5adfbd5abbc2b6e1e25e30e70cec7fbe&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 12,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "27542e73e9dc286229e219468385bf270c911fac",
+            "message": "added HEURIST and OPENAI as valid options for automatically enabling image generation",
+            "created_at": "2024-11-28T15:35:51Z",
+            "additions": 14,
+            "deletions": 9,
+            "changed_files": 3
+          },
+          {
+            "sha": "ab922fcf2b7b127cf78e000fe251bffb292c0366",
+            "message": "updated example env file for optional fal.ai vars",
+            "created_at": "2024-11-28T14:05:21Z",
+            "additions": 2,
+            "deletions": 0,
+            "changed_files": 1
+          },
+          {
+            "sha": "a8af53d3fc27702976c0aa84fa14a091b672aab5",
+            "message": "Merge branch 'main' into feat/add_image_text_model_provider_seperation_and_falai",
+            "created_at": "2024-11-28T12:56:47Z",
+            "additions": 4855,
+            "deletions": 1658,
+            "changed_files": 155
+          },
+          {
+            "sha": "01e8bb2a52d5185175b046ca1692a282cecba5a5",
+            "message": "updated plugin-image-generation environment variable checks to include fal.ai",
+            "created_at": "2024-11-28T12:01:10Z",
+            "additions": 7,
+            "deletions": 2,
+            "changed_files": 1
+          },
+          {
+            "sha": "99ffdfd4cbee7f9ea37383e679fad1c23c37fe51",
+            "message": "updated generation to include implementation for fal.ai image generation and leverage the new distinction between imageModelProvider and modelProvider. Have changed the checks from runtime.character.modelProvider to runtime.modelProvider as it should be set upon runtime intialisation for character",
+            "created_at": "2024-11-28T10:33:56Z",
+            "additions": 6,
+            "deletions": 6,
+            "changed_files": 1
+          },
+          {
+            "sha": "1f76c9b1901456a780c8171efa0826036541977b",
+            "message": "updated runtime interfact to include property for imageModelProvider",
+            "created_at": "2024-11-28T10:32:00Z",
+            "additions": 63,
+            "deletions": 7,
+            "changed_files": 2
+          },
+          {
+            "sha": "e1a98c582b94aea2b9ac8933dbf785ec448136e8",
+            "message": "include image generation plugin if FAL_API_KEY is present by default",
+            "created_at": "2024-11-28T10:17:45Z",
+            "additions": 10,
+            "deletions": 0,
+            "changed_files": 1
+          },
+          {
+            "sha": "f9d2c44c4d5c3186b90dbba0c7599d84552e2a32",
+            "message": "update core packages to include fal.ai client",
+            "created_at": "2024-11-28T10:15:23Z",
+            "additions": 1,
+            "deletions": 0,
+            "changed_files": 1
+          },
+          {
+            "sha": "4fc3c699bbf8175a997e8760ebd5ae7b5571af81",
+            "message": "updated imageGeneration action validate function to include check for FAL_API_KEY not that it can be used for generateImage",
+            "created_at": "2024-11-28T10:12:59Z",
+            "additions": 2,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "b09a795aa65c16a14acb041d38ff56776bdbb28c",
+            "message": "updateds core models to include a new entry for fal.ai",
+            "created_at": "2024-11-28T10:11:36Z",
+            "additions": 20,
+            "deletions": 0,
+            "changed_files": 1
+          },
+          {
+            "sha": "7d746e6cafe27526edf29985aa802e5dd11a5cdc",
+            "message": "given the option for distinction between the model being used for generateText and generateImage, added a new property for the imageModelProvider on the runtime class. This property is set to the imageModelProvider on character if present, otherwise it defaults to the model provider hence, the same model will be used for bother generateText and generateImage",
+            "created_at": "2024-11-28T10:10:22Z",
+            "additions": 10,
+            "deletions": 0,
+            "changed_files": 1
+          },
+          {
+            "sha": "a1f3323dd4436b8d58a9968b6bbfbc5cc0f53426",
+            "message": "updated Characters.ts in core/types to include an optional imageModelProvider allowing for use of different models between textGeneration and imageGeneration. If imageModelProvider is not set, it defaults to modelProvider and as such, functionality should remain the same. Also added another Model and ModelProviderName for fal.ai",
+            "created_at": "2024-11-28T10:06:44Z",
+            "additions": 5,
+            "deletions": 0,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 650,
+            "title": "feat: add image text model provider separation and fal.ai integration",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-28T16:00:14Z",
+            "updated_at": "2024-11-29T11:48:49Z",
+            "body": "# Relates to:\r\n\r\n- https://github.com/ai16z/eliza/issues/647\r\n- https://github.com/ai16z/eliza/issues/648\r\n\r\n# Risks\r\n\r\nLow - Adds optional fal.ai integration for image generation. Existing functionality remains unchanged when new optional imageModelProvider is not set.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\n- Adds fal.ai integration for image generation\r\n- Introduces separate optional image model provider configuration\r\n- Adds `FAL_API_KEY` and `FAL_AI_LORA_PATH` environment variables\r\n- Implements fal.ai client setup and image generation logic\r\n\r\n## What kind of change is this?\r\n\r\nFeatures (non-breaking change which adds functionality)\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes require a change to the project documentation to document:\r\n\r\n- New environment variables\r\n- How to configure fal.ai image generation\r\n- Using separate model providers for text and image generation\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n1. `agent/src/index.ts` - Updated to include image generation plugin should one of the valid image generation model api keys be included.\r\n2. `packages/core/src/generation.ts` - Review fal.ai integration. Changed to look at model provider on runtime instance. `if modelProvider = imageModelProvider`, use token otherwise use one of the image env vars set.\r\n4. `packages/core/src/models.ts` - Added new entry for FAL model\r\n5. `packages/core/src/types.ts` - Check new `imageModelProvider` type additions\r\n6. `packages/core/src/runtime.ts` - Review `imageModelProvider` implementation. Updated to set `imageModelProvider` if one is provided in character config otherwise default to `modelProvider`.\r\n\r\n## Detailed testing steps\r\n\r\n### fal ai api testing:\r\n\r\n1. Add `FAL_API_KEY` to .env\r\n2. Configure character with `imageModelProvider`: \"falai\"\r\n3. Test image generation with default settings\r\n7. Test with custom `FAL_AI_LORA_PATH`\r\n8. Verify existing providers still work when \"falai\" is not used\r\n9. Test switching between different image providers\r\n\r\n### same `modelProvider` to `imageModelProvider` tests:\r\n1. Set `OPENAI_API_KEY`\r\n2. Set `modelProvider` to \"openai\" in character config\r\n3. Both text generation and image generation goes through openai\r\n\r\n### different `modelProvider` to `imageModelProvider` tests:\r\n1. Set `OPENAI_API_KEY` & `FAL_API_KEY`\r\n2. Set `modelProvider` to \"openai\" and `imageModelProvider` to \"falai\" in character config \r\n3. text generation goes through openai and image generation goes through falai\r\n\r\n### different `modelProvider` to `imageModelProvider` tests:\r\n1. Set `OPENAI_API_KEY` & `HEURIST_API_KEY`\r\n2. Set `modelProvider` to \"openai\" and `imageModelProvider` to \"heurist\" in character config \r\n3. text generation goes through openai and image generation goes through heurist\r\n\r\n## Discord username\r\n\r\nyoniebans\r\n",
+            "files": [
+              {
+                "path": ".env.example",
+                "additions": 4,
+                "deletions": 0
+              },
+              {
+                "path": "agent/src/index.ts",
+                "additions": 11,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/package.json",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/generation.ts",
+                "additions": 62,
+                "deletions": 7
+              },
+              {
+                "path": "packages/core/src/models.ts",
+                "additions": 20,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/runtime.ts",
+                "additions": 10,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/types.ts",
+                "additions": 6,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-image-generation/src/enviroment.ts",
+                "additions": 12,
+                "deletions": 2
+              },
+              {
+                "path": "packages/plugin-image-generation/src/index.ts",
+                "additions": 3,
+                "deletions": 3
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 2,
+        "opened": [
+          {
+            "number": 648,
+            "title": "fal.ai image generation",
+            "state": "CLOSED",
+            "created_at": "2024-11-28T13:52:33Z",
+            "updated_at": "2024-12-14T07:36:18Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\r\n\r\nCurrently there is no native integration for fal.ai image generation models. Users wanting to leverage fal.ai's specialized image models need to implement custom solutions.\r\n\r\n**Describe the solution you'd like**\r\n\r\nAdd built-in support for fal.ai image generation models, allowing users to specify their fal.ai API key and lora path (if they have one). This would enable direct access to fal.ai's models through the existing image generation interface.\r\n\r\n**Describe alternatives you've considered**\r\n\r\nUsing other supported providers already in codebase\r\n\r\n**Additional context**\r\n\r\nNative integration would benefit users wanting more control over the image generation capabilities.",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": [
+              {
+                "author": "tsubasakong",
+                "body": "Heurist has the powerful image generation models (FLUX, Stable Diffusion, and loras) too, and already exist inside the eliza. Apply the API key [here](https://dev-api-form.heurist.ai/) with referral code `ai16z` to get the key immediately.   \r\n\r\nYou can try the image generation web (https://imagine.heurist.ai/). The images are amazing! "
+              }
+            ]
+          },
+          {
+            "number": 647,
+            "title": "Optional image model provider to character and runtime",
+            "state": "CLOSED",
+            "created_at": "2024-11-28T13:47:36Z",
+            "updated_at": "2024-11-29T17:02:42Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\r\n\r\nCurrently, users can only select a single model provider for both text and image generation. This becomes limiting when a provider excels at text generation but offers subpar image generation capabilities, or vice versa.\r\n\r\n**Describe the solution you'd like**\r\n\r\nWe propose adding an optional image model provider setting that would take precedence over the default model provider when configured. If no image provider is specified, the system would continue using the default model provider, maintaining backward compatibility.\r\n\r\n**Describe alternatives you've considered**\r\n\r\nWe've explored using a single provider (such as Heurist or OpenAI) for both text and image generation. While this works adequately, it limits flexibility. For instance, if you want to use a fine-tuned model from a specialized image generation service, this isn't currently possible.\r\n\r\n**Additional context**\r\n\r\nI've implemented a similar solution that allows me to use OpenAI for text generation while leveraging a custom fine-tuned model on fal.ai for image generation.\r\n",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": [
+              {
+                "author": "0xTomDaniel",
+                "body": "Added in #491 "
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "justabot",
+    "score": 0,
+    "summary": "Justabot is actively enhancing its codebase by focusing on improving error handling and documentation, as evidenced by a recent commit to add better errors and update the README file. This effort has resulted in one merged pull request and an overall positive net change of 45 lines added and only one line removed within their packages code area over the past 90 days.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/20650283?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "bbcf3b6e80935857ab863ab8553c58c0419a14ef",
+            "message": "CS - adding better errors and readme.",
+            "created_at": "2024-11-28T17:59:03Z",
+            "additions": 45,
+            "deletions": 1,
+            "changed_files": 2
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 654,
+            "title": "CS - adding better errors and readme.",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-28T18:00:08Z",
+            "updated_at": "2024-11-28T19:36:50Z",
+            "body": "",
+            "files": [
+              {
+                "path": "packages/client-direct/src/README.md",
+                "additions": 44,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-direct/src/index.ts",
+                "additions": 1,
+                "deletions": 1
+              }
+            ],
+            "reviews": [
+              {
+                "author": "lalalune",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "dontAskVI",
+    "score": 0,
+    "summary": "DontAskVI is actively enhancing the project by integrating a new Galadriel LLM Inference Provider through a merge into the 'main' branch, resulting in significant code changes within packages and agent areas. This single merged pull request demonstrates focused development efforts over the past 90 days without engagement with issues.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/23223100?u=4642bc7a77e709821e5c270c7a01ab9d1a22f046&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "6216b636e73f35e8a5cddcf5fd17c5e48d40d349",
+            "message": "Merge branch 'main' into add-galadriel-provider",
+            "created_at": "2024-11-28T20:54:20Z",
+            "additions": 4632,
+            "deletions": 301,
+            "changed_files": 28
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 651,
+            "title": "Add Galadriel LLM Inference Provider",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-28T16:31:43Z",
+            "updated_at": "2024-11-29T10:16:59Z",
+            "body": "**Overview:**\r\nThis PR introduces the **Galadriel** LLM Inference as a new mode provider to the Eliza project, enhancing its capabilities for autonomous AI agents. The addition includes configuration setup, integration into the existing provider framework, and necessary type definitions.\r\n\r\n**Changes:**\r\n\r\n1. **Configuration:**\r\n   - **\\`.env.example\\`:**\r\n     - Added \\`GALADRIEL_API_KEY\\` variable to facilitate configuration of the Galadriel provider.\r\n\r\n2. **Provider Integration:**\r\n   - **\\`index.ts\\`:**\r\n     - Registered Galadriel as a new model provider option, enabling its selection and usage within the application.\r\n   - **\\`models.ts\\`:**\r\n     - Defined Galadriel-specific settings and model mappings, ensuring seamless integration with existing models.\r\n   - **\\`types.ts\\`:**\r\n     - Added Galadriel to the \\`ModelProviderName\\` enum and updated the \\`Models\\` type to include Galadriel configurations.\r\n\r\n3. **Implementation:**\r\n   - **\\`generation.ts\\`:**\r\n     - Implemented the case for Galadriel in the \\`generateText\\` function, handling API interactions and response processing.\r\n\r\n**Testing:**\r\n- Verified that the Galadriel provider integrates correctly by running manual local tests.\r\n\r\n**Documentation:**\r\n- No updates\r\n\r\n**Notes:**\r\n- Ensure that the \\`GALADRIEL_API_KEY\\` is securely managed and not exposed in public repositories.\r\n\r\n**Links:**\r\n- Get free API key: https://dashboard.galadriel.com/\r\n- Galadriel homepage: https://galadriel.com/",
+            "files": [
+              {
+                "path": ".env.example",
+                "additions": 3,
+                "deletions": 0
+              },
+              {
+                "path": "agent/src/index.ts",
+                "additions": 5,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/generation.ts",
+                "additions": 25,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/models.ts",
+                "additions": 17,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/types.ts",
+                "additions": 2,
+                "deletions": 0
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 1,
+                "deletions": 1
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "fabianhug",
+    "score": 0,
+    "summary": "Fabianhug is actively engaged in code maintenance, as evidenced by a recent merge pull request (#636) from cygaar/fix_build into the project's repository. This commit reflects an effort to address build-related issues and improve overall software stability. Despite this activity, there have been no new PRs or issues opened in the last 90 days, indicating a focus on refining existing code rather than introducing new features or functionalities.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1196732?u=72d96269cbe1014a413d6094907878074d7890ee&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "de4c1ec659adb0524b44efa31d56df8dcd187c85",
+            "message": "Merge pull request #636 from cygaar/fix_build\n\nfix: node package builds",
+            "created_at": "2024-11-28T00:50:13Z",
+            "additions": 2,
+            "deletions": 2,
+            "changed_files": 2
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "DataRelic",
+    "score": 0,
+    "summary": "DataRelic is actively enhancing their documentation, as evidenced by a recent merge into the 'main' branch that updates PostgreSQL setup instructions. Over the past 90 days, they have made two commits and successfully merged one pull request focused on improving code areas related to documentation.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/187217577?u=b61b62d50c906d2d2e7f71a84d46e42e67c19dd0&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 2,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "a6c60c8552ddf09a42997dde0f8cd097bdb042bd",
+            "message": "Merge branch 'ai16z:main' into main",
+            "created_at": "2024-11-28T08:59:14Z",
+            "additions": 2383,
+            "deletions": 738,
+            "changed_files": 116
+          },
+          {
+            "sha": "e3c740687de1ec055f98004bcd7f32944e8db68f",
+            "message": "Merge branch 'ai16z:main' into main",
+            "created_at": "2024-11-28T08:40:57Z",
+            "additions": 1583,
+            "deletions": 672,
+            "changed_files": 24
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 645,
+            "title": "updates postgres setup instructions in docs",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-28T09:10:29Z",
+            "updated_at": "2024-11-28T09:41:53Z",
+            "body": " \r\n## What does this PR do?\r\nupdate to documentation - postgres setup\r\n \r\n# Documentation changes needed?\r\n\r\n<!--\r\nthis change updates the docs\r\n-->\r\n\r\n<!--\r\n## Discord username\r\nDataRelic\r\n-->\r\n",
+            "files": [
+              {
+                "path": "docs/docs/advanced/infrastructure.md",
+                "additions": 20,
+                "deletions": 9
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "ccerrato147",
+    "score": 0,
+    "summary": "Ccerrato147 is currently addressing a bug related to their Twitter client, which only functions properly when running multiple agents simultaneously. They have focused solely on this issue within the past 90 days, as evidenced by one reported problem and no pull requests or commits made during that time frame.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/7777980?u=a413be93c586aa5dc2835043835173b69addfb2c&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 656,
+            "title": "Twitter client only works for one agent when running multiple agents simultaneously",
+            "state": "CLOSED",
+            "created_at": "2024-11-28T21:26:15Z",
+            "updated_at": "2024-12-14T07:36:18Z",
+            "body": "**Describe the bug**\r\n\r\nEliza has the capability to run multiple agents at once. They each should be able to use the twitter credentials that they're given. Right now the system only runs the twitter client for one of the agents.\r\n\r\n**To Reproduce**\r\n\r\n1. Provide multiple characters to the Eliza framework to run in parallel.\r\n2. Monitor the two twitter accounts that you assigned to them for new posts\r\n3. Only one of the accounts will show new posts.\r\n\r\n**Expected behavior**\r\n\r\nAll the twitter accounts given the multiple agents should have new posts from said agents not just one.",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": [
+              {
+                "author": "lalalune",
+                "body": "Yeah. We need to solve this."
+              },
+              {
+                "author": "BalanaguYashwanth",
+                "body": "Is this issue resolved ?"
+              },
+              {
+                "author": "BalanaguYashwanth",
+                "body": "@lalalune review and let me know,"
+              },
+              {
+                "author": "tcm390",
+                "body": "> Is this issue resolved ?\r\n\r\nYes, the issue has been resolved.\r\n\r\nI just checked out the latest develop branch and tested running two accounts in parallel. Both responded to me as expected. Could you please confirm? (I'm currently on the `tcm-twitter-image` branch, which is based on the latest develop branch.)\r\n\r\n<img width=\"607\" alt=\"Screenshot 2024-12-13 at 11 42 37\u202fAM\" src=\"https://github.com/user-attachments/assets/0f803786-4acf-4d92-a3eb-ef35252d5428\" />\r\n\r\n<img width=\"587\" alt=\"Screenshot 2024-12-13 at 11 43 16\u202fAM\" src=\"https://github.com/user-attachments/assets/b5e6b930-474a-45c0-81c5-c23e1906e0c9\" />\r\n\r\n<img width=\"613\" alt=\"Screenshot 2024-12-13 at 11 43 00\u202fAM\" src=\"https://github.com/user-attachments/assets/871ee56b-5056-4471-8250-348f05a0a6cc\" />\r\n"
+              },
+              {
+                "author": "tcm390",
+                "body": "> Is this issue resolved ?\r\n\r\nFew days ago, I also tested the post feature by running two agents in parallel in this PR: https://github.com/ai16z/eliza/pull/722, and both successfully posted tweets, could you confirm it on your side?\r\n"
+              },
+              {
+                "author": "BalanaguYashwanth",
+                "body": "@tcm390 \r\nHave a doubt, how you are loading two different twitter account credential's ?\r\n\r\nIf you hard code -\r\n```\r\nconst username = this.runtime.getSetting(\"TWITTER_USERNAME\");\r\n```\r\nReference -\r\n\r\n<img width=\"655\" alt=\"image\" src=\"https://github.com/user-attachments/assets/81fd64a0-516b-4e1f-a32b-6241e87ef787\" />"
+              },
+              {
+                "author": "tcm390",
+                "body": "> @tcm390 Have a doubt, how you are loading two different twitter account credential's ?\r\n> \r\n\r\n\r\noh you need to set secret/settings in character file like this :)\r\n(getSetting would check the character secret first: https://ai16z.github.io/eliza/docs/guides/secrets-management/)\r\n\r\n```\r\n\"name\": \"Eliza\",\r\n    \"clients\": [\"twitter\"],\r\n    \"plugins\": [],\r\n    \"modelProvider\": \"openai\",\r\n    \"settings\": {\r\n        \"secrets\": {\r\n            \"TWITTER_USERNAME\": \"XXXX\",\r\n            \"TWITTER_PASSWORD\": \"XXXXX\",\r\n            \"TWITTER_EMAIL\": \"XXXXXXX\"\r\n        },\r\n        \"voice\": {\r\n            \"model\": \"en_US-hfc_female-medium\"\r\n        }\r\n    },\r\n```"
+              },
+              {
+                "author": "BalanaguYashwanth",
+                "body": "@tcm390 I didn't know it can be possible in this way, then can you please close this PR,\r\n\r\n so that dev's can focus on other open PR's"
+              },
+              {
+                "author": "tcm390",
+                "body": "sure :)"
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "dr-fusion",
+    "score": 0,
+    "summary": "Dr-fusion is currently enhancing the LlamaLocal project by adding support for its path outside the plugin-node/dist directory, as evidenced by a recent commit and pull request that have been merged into the codebase. This work involves modifying packages within the project to accommodate new file paths.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/129591319?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "56e7930439e242c1876803af8ae0ed863269d366",
+            "message": "added support for LlamaLocal's path outside plugin-node/dist",
+            "created_at": "2024-11-28T14:58:04Z",
+            "additions": 4,
+            "deletions": 1,
+            "changed_files": 2
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 649,
+            "title": "added support for LlamaLocal's path outside plugin-node/dist",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-28T15:12:53Z",
+            "updated_at": "2024-11-28T19:30:39Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\nhttps://github.com/ai16z/eliza/issues/242\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\nLow,\r\nUser can provide any path for llamalocal and the plugin will direct/load from that directory.\r\n\r\n# Background\r\n\r\nCurrently if user tries `pnpm build`, the `node-plugin/dist` gets deleted where the downloaded models are stored.\r\nand hence it tries download everytime the build command is executed.\r\n\r\n## What does this PR do?\r\n\r\nThis PR will introduce a `LLAMALOCAL_PATH ` environment variable, which can be used to point/download llama models\r\n\r\n## What kind of change is this?\r\n\r\nImprovements (misc. changes to existing features)\r\n\r\n\r\n# Documentation changes needed?\r\n\r\n\r\nMy changes require a change to the project documentation.\r\nIt will require to add a new environment variable and it's detail.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n1. in the `defaultCharacter.ts` make sure it has `modelProvider: ModelProviderName.LLAMALOCAL`\r\n2. now execute `pnpm build` it will download the `NousResearch/Hermes-3-Llama-3.1-8B-GGUF/resolve/main/Hermes-3-Llama-3.1-8B.Q8_0.gguf?download=true` models into directory specified in `LLAMALOCAL_PATH`\r\n3. first time it should display the progress of downloading model.\r\n4. Once the model is downloaded, execute `pnpm build` again,\r\n5. This time expected behavior and the message should be `Model already exists`\r\n\r\n\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n\r\n## Discord username\r\ndexbruce\r\n\r\n",
+            "files": [
+              {
+                "path": ".env.example",
+                "additions": 3,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-node/src/services/llama.ts",
+                "additions": 1,
+                "deletions": 1
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "zjasper666",
+    "score": 0,
+    "summary": "zjasper666 is actively contributing to the project by focusing on enhancing connectivity features, as evidenced by a recent commit and pull request aimed at adding connection instructions for integrating with X platform. With one merged pull request and two code changes added in the last 90 days, zjasper666 demonstrates a clear dedication to improving project interoperability without engaging in issue resolution or additional commits during this period.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/43301592?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "c035e9098d7155f78fa51188dd3cda85ef1adcb5",
+            "message": "add connection instruction for connecting with X",
+            "created_at": "2024-11-28T07:16:40Z",
+            "additions": 2,
+            "deletions": 0,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 641,
+            "title": "add connection instruction for connecting with X",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-28T07:16:51Z",
+            "updated_at": "2024-11-28T09:29:19Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\n## What kind of change is this?\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "README.md",
+                "additions": 2,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "vvisigoth",
+    "score": 0,
+    "summary": "vViSigoth is currently addressing a TypeError encountered while generating message responses, as evidenced by their recent activity on GitHub. With one issue reported within the last 90 days and no pull requests or commits made during this period, it appears that bug fixing in communication functionality is their primary focus at the moment.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1609955?u=e060fb744282ddc30df79d06e51b4c520e4cd7de&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 657,
+            "title": "TypeError while generating a message response",
+            "state": "CLOSED",
+            "created_at": "2024-11-28T22:02:26Z",
+            "updated_at": "2024-12-01T13:29:58Z",
+            "body": "**Describe the bug**\n\nReceive the following error when trying to chat after first boot:\n\n(I put a printf before the error to try to see why it's throwing the error)\n\n```\n\nYou: Hello\nResponse {\n  status: 405,\n  statusText: 'Method Not Allowed',\n  headers: Headers {\n    date: 'Thu, 28 Nov 2024 21:56:32 GMT',\n    server: 'uvicorn',\n    'content-length': '31',\n    'content-type': 'application/json',\n    'x-process-time': '0'\n  },\n  body: ReadableStream { locked: false, state: 'readable', supportsBYOB: true },\n  bodyUsed: false,\n  ok: false,\n  redirected: false,\n  type: 'basic',\n  url: 'http://localhost:3000/trump/message'\n}\nError fetching response: TypeError: data.forEach is not a function\n    at handleUserInput (file:///Users/redacted/se01/eliza/agent/src/index.ts:274:14)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async file:///Users/redacted/se01/eliza/agent/src/index.ts:234:13\n```\n\n**To Reproduce**\n\nHappens after first chat message after first boot.\n\n**Expected behavior**\n\nEliza produces a coherent response to the prompt.\n\n**Additional context**\n\nThis is on `v0.1.4-alpha3`, macOS, node v23.3\n\nI've tried this with an openai key and a xai key (trying to figure out if it was an API issue on that side) and the same error happens with both.",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": [
+              {
+                "author": "vvisigoth",
+                "body": "This was a problem on my box. Can someone close/delete? "
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "0x1337z",
+    "score": 0,
+    "summary": "Over the past 90 days, 0x1337z has been actively addressing a single issue related to installation problems on Windows systems. Despite this focused effort, there have been no pull requests or code changes made during this period. The primary area of work remains in resolving bugs within their project.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/87555412?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 637,
+            "title": "Will not install on windows",
+            "state": "OPEN",
+            "created_at": "2024-11-28T04:54:03Z",
+            "updated_at": "2024-11-28T05:32:51Z",
+            "body": "**Describe the bug**\r\n\r\nwont install on WSL\r\n\r\n**To Reproduce**\r\n\r\n- fresh git clone\r\n- nvm use 23.3.0\r\n- pnpm i \r\n- pnpm build\r\n- env is copied\r\n- pnpm start\r\n\r\n\"/eliza/packages/plugin-solana/dist/index.js:12\r\n    throw Error('Dynamic require of \"' + x + '\" is not supported');\r\n          ^\r\n\r\nError: Dynamic require of \"util\" is not supported\"\r\n\r\n**Expected behavior**\r\n\r\nshould run\r\n",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": [
+              {
+                "author": "odilitime",
+                "body": "Main isn't stable, use a tag"
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  }
+]

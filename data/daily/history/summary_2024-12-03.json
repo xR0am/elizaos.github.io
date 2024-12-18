@@ -1,0 +1,67 @@
+{
+  "title": "ai16z Eliza (2024-12-18)",
+  "version": "pin all node dependencies + update @solana/web3.js to safe version",
+  "overview": "Development focused on package improvements (add coinbase  ERC20, ERC721, and ERC1155 tokenContract deployment / invokement plugin), new features (add coinbase  ERC20, ERC721, and ERC1155 tokenContract deployment / invokement plugin), 9 bug fixes. with 20 contributors merging 17 PRs. Major work included various improvements.",
+  "metrics": {
+    "contributors": 20,
+    "merged_prs": 17,
+    "new_issues": 5,
+    "lines_changed": 5153
+  },
+  "changes": {
+    "features": [
+      "add coinbase  ERC20, ERC721, and ERC1155 tokenContract deployment / invokement plugin",
+      "coinbase webhook + add more examples + testing",
+      "(core) Add circuit breaker pattern for database operations -\u2026"
+    ],
+    "fixes": [
+      "pin all node dependencies + update @solana/web3.js to safe version",
+      "lerna publish command",
+      "update package version to v0.1.5-alpha.0"
+    ],
+    "chores": []
+  },
+  "areas": [
+    {
+      "name": "docs",
+      "files": 120,
+      "additions": 1880,
+      "deletions": 613
+    },
+    {
+      "name": "packages",
+      "files": 57,
+      "additions": 1767,
+      "deletions": 137
+    },
+    {
+      "name": "agent",
+      "files": 6,
+      "additions": 18,
+      "deletions": 2
+    }
+  ],
+  "issues_summary": "working on 3 bugs including 'This command: pnpm start --characters=\"characters/tate.character.json\" results in an error', 'the agent/src/character.ts mentioned in the README doesn't exist' and implementing 2 feature requests including 'Feature request: Allow actions to override the agent answer', 'Disable Safety Checker for FAL Image Generation'",
+  "questions": [],
+  "top_contributors": [
+    {
+      "name": "ponderingdemocritus",
+      "summary": "Ponderingdemocritus is currently focused on updating release triggers, as evidenced by a recent merge commit from the cygaar/update_release_trigger pull request",
+      "areas": []
+    },
+    {
+      "name": "shakkernerd",
+      "summary": "Shakkernerd is actively merging pull requests, focusing primarily on release updates, feature enhancements, and bug fixes within the project",
+      "areas": []
+    },
+    {
+      "name": "monilpat",
+      "summary": "Monilpat is actively developing features for coinbase ERC20, ERC721, and ERC1155 token contract deployment and invocation plugins, as well as testing nft/erc20 token creation",
+      "areas": [
+        ".env.example",
+        "packages",
+        "docs"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "title": "ai16z Eliza (2024-12-18)",
+  "version": "",
+  "overview": "Development focused on package improvements (Add 0G plugin for file storage), new features (services), 3 bug fixes. with 22 contributors merging 9 PRs. Major work included various improvements.",
+  "metrics": {
+    "contributors": 22,
+    "merged_prs": 9,
+    "new_issues": 4,
+    "lines_changed": 10554
+  },
+  "changes": {
+    "features": [
+      "services",
+      "Add 0G plugin for file storage",
+      "unruggable on starknet"
+    ],
+    "fixes": [
+      "removed ollama embeddings. fastembeddings or openai only",
+      "postgres embedding issues",
+      "Update adapters.md psql schema"
+    ],
+    "chores": []
+  },
+  "areas": [
+    {
+      "name": "packages",
+      "files": 41,
+      "additions": 747,
+      "deletions": 423
+    },
+    {
+      "name": "root",
+      "files": 11,
+      "additions": 9304,
+      "deletions": 33
+    },
+    {
+      "name": "docs",
+      "files": 2,
+      "additions": 43,
+      "deletions": 1
+    }
+  ],
+  "issues_summary": "working on 2 bugs including 'Error: Property 'clients' does not exist on type 'Plugin' in src/index.ts during pnpm start', 'using Groq API (or RedPill or Google Gen AI) as model provider' and implementing 2 feature requests including 'Add a plugin for storing data using the 0G protocol.', '\u062a\u0648\u06a9\u0646 \u0647\u0627\u06cc \u062f\u0627\u06af\u0632 \u0646\u0627\u062a\u06a9\u0648\u06cc\u06cc\u0646 \u062a\u062a\u0631 \u06a9\u062a\u0648\u0632 \u06a9\u0648\u06cc\u06cc\u0646 \u0628\u0647 \u062d\u0633\u0627\u0645 \u0648\u0627\u0631\u06cc\u0632 \u0634\u0648\u062f'",
+  "questions": [],
+  "top_contributors": [
+    {
+      "name": "lalalune",
+      "summary": "Lalalune is actively contributing to the project by merging pull requests, as evidenced by a recent merge from whalelephant/main",
+      "areas": []
+    },
+    {
+      "name": "ponderingdemocritus",
+      "summary": "Ponderingdemocritus is actively developing services, systems work, and character-related features within their projects",
+      "areas": [
+        "pnpm-lock.yaml",
+        "packages",
+        "README.md"
+      ]
+    },
+    {
+      "name": "monilpat",
+      "summary": "Monilpat is currently addressing a bug related to an error where the 'clients' property does not exist on the 'Plugin' type within their project's index file",
+      "areas": []
+    }
+  ]
+}

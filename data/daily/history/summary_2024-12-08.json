@@ -1,0 +1,60 @@
+{
+  "title": "ai16z Eliza (2024-12-18)",
+  "version": "",
+  "overview": "Development focused on package improvements (add readContract / invokeContract functionality to Coinbase plugin), new features (add readContract / invokeContract functionality to Coinbase plugin), 2 bug fixes. with 24 contributors merging 9 PRs. Major work included various improvements.",
+  "metrics": {
+    "contributors": 24,
+    "merged_prs": 9,
+    "new_issues": 4,
+    "lines_changed": 1254
+  },
+  "changes": {
+    "features": [
+      "add readContract / invokeContract functionality to Coinbase plugin",
+      "allow users to configure models for groq",
+      "update gaianet config"
+    ],
+    "fixes": [
+      "Farcater client cleanup and fixed response logic",
+      "use of Heurist model env vars"
+    ],
+    "chores": [
+      "deprecate text based way of generating JSON"
+    ]
+  },
+  "areas": [
+    {
+      "name": "packages",
+      "files": 27,
+      "additions": 729,
+      "deletions": 369
+    },
+    {
+      "name": "root",
+      "files": 6,
+      "additions": 152,
+      "deletions": 4
+    }
+  ],
+  "issues_summary": "working on 3 bugs including 'Cannot run `pnpm build` after importing `imageGenerationPlugin` to use in a character ', 'Stuck querying when @'ing it in Discord' and implementing 1 feature requests including 'Coinbase AgentKit'",
+  "questions": [],
+  "top_contributors": [
+    {
+      "name": "lalalune",
+      "summary": "Lalalune is actively contributing to the project by merging pull requests, focusing primarily on performance improvements and configuration updates for the Gaianet feature",
+      "areas": []
+    },
+    {
+      "name": "monilpat",
+      "summary": "Monilpat is actively developing the Coinbase plugin, focusing on enhancing smart contract interactions by adding readContract and invokeContract functionalities",
+      "areas": [
+        "packages"
+      ]
+    },
+    {
+      "name": "cygaar",
+      "summary": "Cygaar is actively contributing to the Sifchain project, focusing on deprecating certain functionalities within the realitySpiral component",
+      "areas": []
+    }
+  ]
+}

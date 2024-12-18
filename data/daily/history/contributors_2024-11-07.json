@@ -1,0 +1,1443 @@
+[
+  {
+    "contributor": "lalalune",
+    "score": 0,
+    "summary": "Lalalune is actively developing the llama cpp service, focusing on merging pull requests to improve client handling and lazy loading features. They are also working on enhancing core functionality by overriding model endpoints, removing unnecessary logs and clients from default tate, and refining documentation in their codebase.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/18633264?u=8f2bca0a3cef958bd405ea89680a9b9a0ff38f06&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 27,
+        "total_prs": 2,
+        "commits": [
+          {
+            "sha": "40546f2bc92d6322d3690eaeb50549b3da02d11a",
+            "message": "this is broken but structurally where we are going",
+            "created_at": "2024-11-07T23:32:12Z",
+            "additions": 539,
+            "deletions": 582,
+            "changed_files": 128
+          },
+          {
+            "sha": "aed6ef15d3511dcd2b8f85871e79421b06d8080b",
+            "message": "remove garbage",
+            "created_at": "2024-11-07T21:39:12Z",
+            "additions": 0,
+            "deletions": 331,
+            "changed_files": 1
+          },
+          {
+            "sha": "d59135793e53af203debee4438159dde36591bb2",
+            "message": "replace process.env with settings, fix .env path",
+            "created_at": "2024-11-07T21:39:07Z",
+            "additions": 841,
+            "deletions": 789,
+            "changed_files": 13
+          },
+          {
+            "sha": "6ef7e56bc0d97fa8233255be807dee5d0111ff2e",
+            "message": "fix llama cpp service",
+            "created_at": "2024-11-07T20:31:01Z",
+            "additions": 1,
+            "deletions": 4,
+            "changed_files": 1
+          },
+          {
+            "sha": "504890b08f1a6d798124ca24bd6d5336915ffd65",
+            "message": "move code out to plugins, adapters and clients",
+            "created_at": "2024-11-07T08:47:29Z",
+            "additions": 977,
+            "deletions": 573,
+            "changed_files": 88
+          },
+          {
+            "sha": "d1683bdedc0880f635b2aaffe9a2108b4aa6321f",
+            "message": "Merge pull request #224 from o-on-x/main\n\nmodels.gguf stored in models file, & tsconfig changes for ref @eliza/core & other things",
+            "created_at": "2024-11-07T08:46:34Z",
+            "additions": 39,
+            "deletions": 10,
+            "changed_files": 6
+          },
+          {
+            "sha": "576457258b5e762a2874f130ea31f56d29470816",
+            "message": "ollama merged, handling direct client in new setup",
+            "created_at": "2024-11-07T07:14:31Z",
+            "additions": 17,
+            "deletions": 10,
+            "changed_files": 8
+          },
+          {
+            "sha": "c1a1c1f017abe38aec77474c13c6d23d18f7296f",
+            "message": "merged ollama but llama cpp seems to be weird?",
+            "created_at": "2024-11-07T06:39:47Z",
+            "additions": 51,
+            "deletions": 26,
+            "changed_files": 6
+          },
+          {
+            "sha": "2a56cf0abb96cce53df4cedc9b57a70c19ee310e",
+            "message": "Merge remote-tracking branch 'o-on-x/main'",
+            "created_at": "2024-11-07T06:29:44Z",
+            "additions": 754,
+            "deletions": 380,
+            "changed_files": 9
+          },
+          {
+            "sha": "2bf5bd90003f7d78c9121494e76135521ac398cf",
+            "message": "ignore cache dir",
+            "created_at": "2024-11-07T06:15:04Z",
+            "additions": 2,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "60d89a51f2b9f0ffbe362b08076b274639051789",
+            "message": "Merge pull request #214 from ponderingdemocritus/main\n\nAbstracts Eliza into a Package to enble publishing onto NPM along with plugin system",
+            "created_at": "2024-11-07T06:13:32Z",
+            "additions": 0,
+            "deletions": 0,
+            "changed_files": 0
+          },
+          {
+            "sha": "7a187369ece423f9b490ffb1d1db18cb83a51bf4",
+            "message": "Consolidate packages and make nodemon work nice",
+            "created_at": "2024-11-07T06:07:37Z",
+            "additions": 234,
+            "deletions": 410,
+            "changed_files": 177
+          },
+          {
+            "sha": "84f2da09806300ede035fec16bbb0bf149938e6c",
+            "message": "prettier",
+            "created_at": "2024-11-07T05:03:48Z",
+            "additions": 1776,
+            "deletions": 1238,
+            "changed_files": 59
+          },
+          {
+            "sha": "ad34b7862cbdb5e23161ee0e16ec223548b83e23",
+            "message": "Load characters from arg in the new setup and rebuild docs",
+            "created_at": "2024-11-07T05:03:07Z",
+            "additions": 1078,
+            "deletions": 1347,
+            "changed_files": 170
+          },
+          {
+            "sha": "c96957e5a5d17e343b499dd4d46ce403856ac5bc",
+            "message": "Merge branch 'main' of https://github.com/ai16z/eliza",
+            "created_at": "2024-11-07T04:39:37Z",
+            "additions": 19,
+            "deletions": 36,
+            "changed_files": 1
+          },
+          {
+            "sha": "371f7e846caf49490d06fd003bbb025cb6b1a977",
+            "message": "smol fixes to enable plugins",
+            "created_at": "2024-11-07T04:39:35Z",
+            "additions": 25683,
+            "deletions": 2,
+            "changed_files": 3
+          },
+          {
+            "sha": "bcb2179adac6d8685681fc40f0676dab2bbc6e66",
+            "message": "starts now",
+            "created_at": "2024-11-07T04:14:16Z",
+            "additions": 38,
+            "deletions": 449,
+            "changed_files": 12
+          },
+          {
+            "sha": "c06e5984e0685673118908a5b1fcab36e5e07d81",
+            "message": "Merge pull request #220 from ai16z/feat/lazy-load-llama\n\nlazy load llama",
+            "created_at": "2024-11-07T03:57:22Z",
+            "additions": 19,
+            "deletions": 36,
+            "changed_files": 1
+          },
+          {
+            "sha": "0578cf8f5e79b798d302ac15f9873c24269e8d12",
+            "message": "lazy load llama",
+            "created_at": "2024-11-07T03:54:04Z",
+            "additions": 19,
+            "deletions": 36,
+            "changed_files": 1
+          },
+          {
+            "sha": "9e30f89bd7a99bc8d243da96d2e6139bd14f234d",
+            "message": "model endpoint override",
+            "created_at": "2024-11-07T03:44:51Z",
+            "additions": 5,
+            "deletions": 6,
+            "changed_files": 2
+          },
+          {
+            "sha": "eefa2f78dd681ff5a997ae2df8b3cbecc4d182b8",
+            "message": "prettier",
+            "created_at": "2024-11-07T03:44:41Z",
+            "additions": 9563,
+            "deletions": 26811,
+            "changed_files": 184
+          },
+          {
+            "sha": "c537cb3e848b54fcb914d8ef84924fa5fdeaec66",
+            "message": "remove logs",
+            "created_at": "2024-11-07T03:17:32Z",
+            "additions": 1,
+            "deletions": 8,
+            "changed_files": 2
+          },
+          {
+            "sha": "5d653b500becb5a622a1dc73da57ab70cbe89c5e",
+            "message": "remove clients from default tate",
+            "created_at": "2024-11-07T03:15:49Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "f5f79b262e18b7d1d4018339b6b5a037776a5375",
+            "message": "prettier and fix char files",
+            "created_at": "2024-11-07T03:15:11Z",
+            "additions": 2026,
+            "deletions": 1583,
+            "changed_files": 62
+          },
+          {
+            "sha": "6a0cb8633667ef3aebb5bbf4bcbd7f3bbde95785",
+            "message": "add system prompt to vercel completions",
+            "created_at": "2024-11-07T03:07:27Z",
+            "additions": 6,
+            "deletions": 0,
+            "changed_files": 1
+          },
+          {
+            "sha": "d6e84eb1ecc70743596d11b68709219410116ecb",
+            "message": "Merge branch 'main' of https://github.com/ai16z/eliza",
+            "created_at": "2024-11-07T02:48:50Z",
+            "additions": 194,
+            "deletions": 17,
+            "changed_files": 5
+          },
+          {
+            "sha": "4eba093ebfaac2fe1ac1386ae9eb3a4582677094",
+            "message": "rebuild docs",
+            "created_at": "2024-11-07T02:48:38Z",
+            "additions": 204,
+            "deletions": 204,
+            "changed_files": 37
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 225,
+            "title": "move code out to plugins, adapters and clients",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-07T08:48:52Z",
+            "updated_at": "2024-11-18T03:00:09Z",
+            "body": "Major breaking code change. Please thoroughly review.\r\n\r\nThis PR moves everything into packages. Plugins, adapters, clients. Adds some complexity to seeing all the code but dramatically reduces complexity of contributing code. Also enables browser-based eliza.",
+            "files": [
+              {
+                "path": ".env.example",
+                "additions": 0,
+                "deletions": 4
+              },
+              {
+                "path": "docs/README_CN.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/classes/AgentRuntime.md",
+                "additions": 168,
+                "deletions": 170
+              },
+              {
+                "path": "docs/api/classes/DatabaseAdapter.md",
+                "additions": 78,
+                "deletions": 83
+              },
+              {
+                "path": "docs/api/classes/DirectClient.md",
+                "additions": 0,
+                "deletions": 69
+              },
+              {
+                "path": "docs/api/classes/DiscordClient.md",
+                "additions": 0,
+                "deletions": 87
+              },
+              {
+                "path": "docs/api/classes/MemoryManager.md",
+                "additions": 24,
+                "deletions": 24
+              },
+              {
+                "path": "docs/api/classes/PostgresDatabaseAdapter.md",
+                "additions": 0,
+                "deletions": 1132
+              },
+              {
+                "path": "docs/api/classes/Service.md",
+                "additions": 49,
+                "deletions": 0
+              },
+              {
+                "path": "docs/api/classes/SqliteDatabaseAdapter.md",
+                "additions": 0,
+                "deletions": 1100
+              },
+              {
+                "path": "docs/api/classes/TelegramClient.md",
+                "additions": 0,
+                "deletions": 49
+              },
+              {
+                "path": "docs/api/classes/TokenProvider.md",
+                "additions": 0,
+                "deletions": 193
+              },
+              {
+                "path": "docs/api/classes/TwitterInteractionClient.md",
+                "additions": 0,
+                "deletions": 383
+              },
+              {
+                "path": "docs/api/classes/TwitterPostClient.md",
+                "additions": 0,
+                "deletions": 369
+              },
+              {
+                "path": "docs/api/classes/TwitterSearchClient.md",
+                "additions": 0,
+                "deletions": 369
+              },
+              {
+                "path": "docs/api/classes/WalletProvider.md",
+                "additions": 0,
+                "deletions": 97
+              },
+              {
+                "path": "docs/api/enumerations/Clients.md",
+                "additions": 7,
+                "deletions": 7
+              },
+              {
+                "path": "docs/api/enumerations/GoalStatus.md",
+                "additions": 7,
+                "deletions": 7
+              },
+              {
+                "path": "docs/api/enumerations/ImageGenModel.md",
+                "additions": 0,
+                "deletions": 21
+              },
+              {
+                "path": "docs/api/enumerations/ModelClass.md",
+                "additions": 17,
+                "deletions": 7
+              },
+              {
+                "path": "docs/api/enumerations/ModelProvider.md",
+                "additions": 0,
+                "deletions": 101
+              },
+              {
+                "path": "docs/api/enumerations/ModelProviderName.md",
+                "additions": 101,
+                "deletions": 0
+              },
+              {
+                "path": "docs/api/enumerations/ServiceType.md",
+                "additions": 71,
+                "deletions": 0
+              },
+              {
+                "path": "docs/api/functions/addHeader.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/buyToken.md",
+                "additions": 0,
+                "deletions": 31
+              },
+              {
+                "path": "docs/api/functions/composeActionExamples.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/composeContext.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/createAgentRuntime.md",
+                "additions": 0,
+                "deletions": 21
+              },
+              {
+                "path": "docs/api/functions/createAndBuyToken.md",
+                "additions": 0,
+                "deletions": 35
+              },
+              {
+                "path": "docs/api/functions/createDirectRuntime.md",
+                "additions": 0,
+                "deletions": 21
+              },
+              {
+                "path": "docs/api/functions/createGoal.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/createRelationship.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/embed.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/formatActionNames.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/formatActions.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/formatActors.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/formatEvaluatorExampleDescriptions.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/formatEvaluatorExamples.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/formatEvaluatorNames.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/formatEvaluators.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/formatGoalsAsString.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/formatMessages.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/formatPosts.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/formatRelationships.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/formatTimestamp.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/generateCaption.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/generateImage.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/generateMessageResponse.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/generateObject.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/generateObjectArray.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/generateShouldRespond.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/generateText.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/generateTextArray.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/generateTrueOrFalse.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/getActorDetails.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/getEndpoint.md",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "docs/api/functions/getGoals.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/getImageGenModel.md",
+                "additions": 0,
+                "deletions": 15
+              },
+              {
+                "path": "docs/api/functions/getModel.md",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "docs/api/functions/getProviders.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/getRelationship.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/getRelationships.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/getTokenForProvider.md",
+                "additions": 0,
+                "deletions": 17
+              },
+              {
+                "path": "docs/api/functions/initializeClients.md",
+                "additions": 0,
+                "deletions": 17
+              },
+              {
+                "path": "docs/api/functions/initializeDatabase.md",
+                "additions": 0,
+                "deletions": 11
+              },
+              {
+                "path": "docs/api/functions/isCreateAndBuyContent.md",
+                "additions": 0,
+                "deletions": 17
+              },
+              {
+                "path": "docs/api/functions/loadActionConfigs.md",
+                "additions": 0,
+                "deletions": 15
+              },
+              {
+                "path": "docs/api/functions/loadCharacters.md",
+                "additions": 0,
+                "deletions": 15
+              },
+              {
+                "path": "docs/api/functions/loadCustomActions.md",
+                "additions": 0,
+                "deletions": 15
+              },
+              {
+                "path": "docs/api/functions/parseArguments.md",
+                "additions": 0,
+                "deletions": 11
+              },
+              {
+                "path": "docs/api/functions/retrieveCachedEmbedding.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/sellToken.md",
+                "additions": 0,
+                "deletions": 31
+              },
+              {
+                "path": "docs/api/functions/splitChunks.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/startDiscord.md",
+                "additions": 0,
+                "deletions": 15
+              },
+              {
+                "path": "docs/api/functions/startTelegram.md",
+                "additions": 0,
+                "deletions": 17
+              },
+              {
+                "path": "docs/api/functions/startTwitter.md",
+                "additions": 0,
+                "deletions": 15
+              },
+              {
+                "path": "docs/api/functions/trimTokens.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/updateGoal.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/index.md",
+                "additions": 10,
+                "deletions": 59
+              },
+              {
+                "path": "docs/api/interfaces/Account.md",
+                "additions": 12,
+                "deletions": 12
+              },
+              {
+                "path": "docs/api/interfaces/Action.md",
+                "additions": 11,
+                "deletions": 11
+              },
+              {
+                "path": "docs/api/interfaces/ActionExample.md",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "docs/api/interfaces/Actor.md",
+                "additions": 7,
+                "deletions": 7
+              },
+              {
+                "path": "docs/api/interfaces/Content.md",
+                "additions": 12,
+                "deletions": 16
+              },
+              {
+                "path": "docs/api/interfaces/ConversationExample.md",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "docs/api/interfaces/CreateAndBuyContent.md",
+                "additions": 0,
+                "deletions": 149
+              },
+              {
+                "path": "docs/api/interfaces/EvaluationExample.md",
+                "additions": 5,
+                "deletions": 5
+              },
+              {
+                "path": "docs/api/interfaces/Evaluator.md",
+                "additions": 11,
+                "deletions": 11
+              },
+              {
+                "path": "docs/api/interfaces/Goal.md",
+                "additions": 11,
+                "deletions": 11
+              },
+              {
+                "path": "docs/api/interfaces/IAgentRuntime.md",
+                "additions": 101,
+                "deletions": 95
+              },
+              {
+                "path": "docs/api/interfaces/IBrowserService.md",
+                "additions": 12,
+                "deletions": 6
+              },
+              {
+                "path": "docs/api/interfaces/IDatabaseAdapter.md",
+                "additions": 77,
+                "deletions": 77
+              },
+              {
+                "path": "docs/api/interfaces/IImageDescriptionService.md",
+                "additions": 8,
+                "deletions": 4
+              },
+              {
+                "path": "docs/api/interfaces/ILlamaService.md",
+                "additions": 0,
+                "deletions": 89
+              },
+              {
+                "path": "docs/api/interfaces/IMemoryManager.md",
+                "additions": 25,
+                "deletions": 25
+              },
+              {
+                "path": "docs/api/interfaces/IPdfService.md",
+                "additions": 5,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/interfaces/ISpeechService.md",
+                "additions": 5,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/interfaces/ITextGenerationService.md",
+                "additions": 107,
+                "deletions": 0
+              },
+              {
+                "path": "docs/api/interfaces/ITranscriptionService.md",
+                "additions": 11,
+                "deletions": 7
+              },
+              {
+                "path": "docs/api/interfaces/IVideoService.md",
+                "additions": 43,
+                "deletions": 3
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          },
+          {
+            "number": 220,
+            "title": "lazy load llama",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-07T03:54:45Z",
+            "updated_at": "2024-11-07T03:57:24Z",
+            "body": "Lazy loads llama from llama.ts so we don't try to install it immediately.",
+            "files": [
+              {
+                "path": "core/src/services/llama.ts",
+                "additions": 19,
+                "deletions": 36
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 3,
+        "opened": [
+          {
+            "number": 226,
+            "title": "Squash postgres migrations",
+            "state": "OPEN",
+            "created_at": "2024-11-07T08:49:45Z",
+            "updated_at": "2024-11-07T08:49:46Z",
+            "body": "We have some postgres migrations-- I can't remember it we need these, but since we're greenfield it will reduce complexity greatly for setting up postgres for the first time if it just works and there is no need to setup or migrate.",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 223,
+            "title": "Unify ImageGen into ModelClass.IMAGE",
+            "state": "CLOSED",
+            "created_at": "2024-11-07T08:14:31Z",
+            "updated_at": "2024-11-08T10:03:13Z",
+            "body": "We have an ImageGen type but this should really be extended to a ModelClass type, since it is available for almost every major provider.",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 222,
+            "title": "Move services to plugins",
+            "state": "CLOSED",
+            "created_at": "2024-11-07T07:58:37Z",
+            "updated_at": "2024-11-08T10:03:18Z",
+            "body": "After moving everything into plugins that is obvious, the only thing left really that is keeping core from being lightweight and running entirely in the browser or other environments like cloudflare are the native dependency on services.\r\n\r\nWe should probably move the node-only services into a plugin-node which can then be depended upon by other services, for example discord.\r\n\r\nWe should have a service registration and locator system, similar to the other plugin registrations.",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "ponderingdemocritus",
+    "score": 0,
+    "summary": "Ponderingdemocritus is actively developing a project, focusing primarily on plugin enhancements and merging branches from external sources like ai16z/eliza and ai16z/shaw/plugins into the main branch. The recent activity shows significant code changes with more lines of code being removed than added over the last 90 days.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/90423308?u=fa7a84e8e946db253241c7aaabbb57e7c6495f0b&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 7,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "6c59fc10d5ffec9ac5d9646617b28d4e2b97170f",
+            "message": "Merge branch 'main' of https://github.com/ai16z/eliza",
+            "created_at": "2024-11-07T21:17:58Z",
+            "additions": 844,
+            "deletions": 409,
+            "changed_files": 19
+          },
+          {
+            "sha": "811df46ef3b76af858f6a878d572bdb767daca60",
+            "message": "yaml",
+            "created_at": "2024-11-07T21:17:46Z",
+            "additions": 3,
+            "deletions": 3,
+            "changed_files": 1
+          },
+          {
+            "sha": "b06b302dec8dfc48041430efe193cabd7286daa5",
+            "message": "Merge pull request #1 from ai16z/shaw/plugins\n\nShaw/plugins",
+            "created_at": "2024-11-07T05:59:24Z",
+            "additions": 11008,
+            "deletions": 5092,
+            "changed_files": 233
+          },
+          {
+            "sha": "f330fc1ffd9bcfbe641d6aa7a0a1f48a4fbf0613",
+            "message": "Default character",
+            "created_at": "2024-11-07T03:18:17Z",
+            "additions": 3,
+            "deletions": 5,
+            "changed_files": 2
+          },
+          {
+            "sha": "b93024d2ff91b2d3c525c0287f7990847955a076",
+            "message": "fix",
+            "created_at": "2024-11-07T03:14:57Z",
+            "additions": 6,
+            "deletions": 0,
+            "changed_files": 1
+          },
+          {
+            "sha": "754941ca0d1ce1a059ab36add0a813896a256039",
+            "message": "fix",
+            "created_at": "2024-11-07T03:07:19Z",
+            "additions": 13,
+            "deletions": 2,
+            "changed_files": 4
+          },
+          {
+            "sha": "041dc3ae45637dfea0f837f507af6384cae58fde",
+            "message": "plugin",
+            "created_at": "2024-11-07T02:37:27Z",
+            "additions": 87,
+            "deletions": 19640,
+            "changed_files": 10
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "madjin",
+    "score": 0,
+    "summary": "Madjin is actively updating documentation for a project, focusing primarily on Docusaurus configurations. Over the past 90 days, madjin has made six commits to resolve merge conflicts, update documents, and fix issues related to docusaurus configs. This work resulted in one merged pull request and significant code changes within the docs area of the project.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/32600939?u=cdcf89f44c7a50906c7a80d889efa85023af2049&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 6,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "bd79a11cf57d44bd604e4a71ea33b6638f6d2862",
+            "message": "fix docusaurus config",
+            "created_at": "2024-11-07T23:34:38Z",
+            "additions": 29,
+            "deletions": 29,
+            "changed_files": 1
+          },
+          {
+            "sha": "8ed826165ee7aee1239a20d853d97fc99d11574f",
+            "message": "fx docusaurus config",
+            "created_at": "2024-11-07T23:28:02Z",
+            "additions": 25029,
+            "deletions": 5189,
+            "changed_files": 223
+          },
+          {
+            "sha": "24d54b3ac3e0b6d0277846c6784ab7e2ab459133",
+            "message": "Merge branch 'madjin-docs'",
+            "created_at": "2024-11-07T23:13:44Z",
+            "additions": 776,
+            "deletions": 160,
+            "changed_files": 10
+          },
+          {
+            "sha": "22194c81ea84b640cfc83fdfc6a21a0796ef05e7",
+            "message": "fix merge conflicts",
+            "created_at": "2024-11-07T23:13:22Z",
+            "additions": 776,
+            "deletions": 160,
+            "changed_files": 10
+          },
+          {
+            "sha": "05d3ba4eb746187935cd9331951b520e34553ede",
+            "message": "update docs",
+            "created_at": "2024-11-07T23:07:00Z",
+            "additions": 354,
+            "deletions": 6,
+            "changed_files": 6
+          },
+          {
+            "sha": "41caccbbceef9012d77a0d54baf9bfe948325fd9",
+            "message": "update docs",
+            "created_at": "2024-11-07T05:17:28Z",
+            "additions": 280,
+            "deletions": 2,
+            "changed_files": 6
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 231,
+            "title": "Update Docs",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-07T23:09:33Z",
+            "updated_at": "2024-11-07T23:14:40Z",
+            "body": "Add new pages, remove some old ones",
+            "files": [
+              {
+                "path": "CHANGELOG.md",
+                "additions": 158,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/community/changelog.md",
+                "additions": 158,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/community/contributing.md",
+                "additions": 93,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/community/creator-fund.md",
+                "additions": 45,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/community/development-notes.md",
+                "additions": 0,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/community/faq.md",
+                "additions": 119,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/community/notes.md",
+                "additions": 355,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/community/project-overview.md",
+                "additions": 0,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/community/spaces-notes.md",
+                "additions": 0,
+                "deletions": 145
+              },
+              {
+                "path": "docs/docusaurus.config.js",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "docs/sidebars.js",
+                "additions": 4,
+                "deletions": 3
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "o-on-x",
+    "score": 0,
+    "summary": "o-on-x is actively developing the OLLAMA model provider integration within their projects, focusing on enhancing plugin image generation and improving error handling for better stability. They have also been addressing issues related to environment configuration and build failures while making significant updates to TypeScript configurations across various code areas in packages and core modules.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/186759703?u=4e674b1542bbb9fe7d7ea0e034c8c525689cb191&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 6,
+        "total_prs": 3,
+        "commits": [
+          {
+            "sha": "d4268b389cb31a990048cdc8966e7bbe00b68d03",
+            "message": "changed plugin-image-gen tsconfig.json & added error handling ollama initialization",
+            "created_at": "2024-11-07T12:56:29Z",
+            "additions": 53,
+            "deletions": 41,
+            "changed_files": 5
+          },
+          {
+            "sha": "5b79da685d8b6f32788a5b00475ce6e7ce62b6a9",
+            "message": "Merge branch 'ai16z:main' into main",
+            "created_at": "2024-11-07T10:41:38Z",
+            "additions": 0,
+            "deletions": 0,
+            "changed_files": 0
+          },
+          {
+            "sha": "04fabb0cf5ac8a020394bd0a3d7d20d031ddce5a",
+            "message": "just fetching upstream & merge",
+            "created_at": "2024-11-07T10:17:55Z",
+            "additions": 8,
+            "deletions": 5,
+            "changed_files": 3
+          },
+          {
+            "sha": "1d551e211cf47de4e75fd018d860969bc607f571",
+            "message": "tsconfig ref @eliza/core, target src, include types, & esm module resolution. & models.gguf stored in models folder",
+            "created_at": "2024-11-07T08:40:53Z",
+            "additions": 39,
+            "deletions": 10,
+            "changed_files": 6
+          },
+          {
+            "sha": "939f73936e4fcf0d11a37d2a9fe7da0970761f1c",
+            "message": "Model Provider for OLLAMA",
+            "created_at": "2024-11-07T03:46:09Z",
+            "additions": 67,
+            "deletions": 4,
+            "changed_files": 6
+          },
+          {
+            "sha": "90e29e3d73521d607511c9c1664d5e835d14aba3",
+            "message": "Added Switch for llama-cpp & ollama with LOCALLLAMA Provider",
+            "created_at": "2024-11-07T01:01:42Z",
+            "additions": 676,
+            "deletions": 395,
+            "changed_files": 3
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 228,
+            "title": "plugin-image-generation tsconfig.json fix & ollama error handling",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-07T13:01:14Z",
+            "updated_at": "2024-11-07T21:39:23Z",
+            "body": "https://github.com/ai16z/eliza/issues/227",
+            "files": [
+              {
+                "path": "packages/core/elizaConfig.example.yaml",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/core/defaultCharacter.ts",
+                "additions": 3,
+                "deletions": 2
+              },
+              {
+                "path": "packages/core/src/services/OllamaService.ts",
+                "additions": 15,
+                "deletions": 10
+              },
+              {
+                "path": "packages/core/src/services/llama.ts",
+                "additions": 3,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/tsconfig.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-image-generation/tsconfig.json",
+                "additions": 11,
+                "deletions": 4
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 25,
+                "deletions": 25
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          },
+          {
+            "number": 224,
+            "title": "models.gguf stored in models file, & tsconfig changes for ref @eliza/core & other things",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-07T08:44:09Z",
+            "updated_at": "2024-11-07T08:46:35Z",
+            "body": "",
+            "files": [
+              {
+                "path": ".gitignore",
+                "additions": 2,
+                "deletions": 0
+              },
+              {
+                "path": "package.json",
+                "additions": 5,
+                "deletions": 0
+              },
+              {
+                "path": "packages/agent/src/index.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/agent/tsconfig.json",
+                "additions": 10,
+                "deletions": 3
+              },
+              {
+                "path": "packages/core/src/services/LlamaCppService.ts",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 18,
+                "deletions": 3
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          },
+          {
+            "number": 221,
+            "title": "Add OLLAMA as Model Provider ",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-07T05:52:51Z",
+            "updated_at": "2024-11-07T07:14:42Z",
+            "body": "# Relates to:\r\n\r\n(https://github.com/ai16z/eliza/issues/69)\r\n\r\n\r\n# Risks\r\n\r\nOLLAMA Provider parts low risk\r\nmedium risk how the dependency ollama-ai-provider was added\r\nllama.ts delegating to LlamaCppService or OllamaService high risk (because it was was crashing nodemon so wip but still a change that might be good to look at) \r\n\r\n# Background\r\n\r\n## adds Ollama Model Provider\r\n\r\n## also code for switching LOCALLLAMA providers (might be good to have for local embeddings use cases & when using local for other tasks but still using other model providers)\r\n\r\n# Documentation changes needed?\r\n\r\nAll documentation needed is in the .env file. Did not update the readme. but i can if needed\r\n\r\n# Testing\r\n\r\nrun with a OLLAMA_MODEL defined to something & the OLLAMA_EMBEDDING_MODEL set to something\r\n",
+            "files": [
+              {
+                "path": "core/.env.example",
+                "additions": 14,
+                "deletions": 0
+              },
+              {
+                "path": "core/package.json",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "core/src/core/embedding.ts",
+                "additions": 6,
+                "deletions": 3
+              },
+              {
+                "path": "core/src/core/generation.ts",
+                "additions": 26,
+                "deletions": 0
+              },
+              {
+                "path": "core/src/core/models.ts",
+                "additions": 18,
+                "deletions": 0
+              },
+              {
+                "path": "core/src/core/types.ts",
+                "additions": 2,
+                "deletions": 1
+              },
+              {
+                "path": "core/src/services/LlamaCppService.ts",
+                "additions": 411,
+                "deletions": 0
+              },
+              {
+                "path": "core/src/services/OllamaService.ts",
+                "additions": 217,
+                "deletions": 0
+              },
+              {
+                "path": "core/src/services/llama.ts",
+                "additions": 48,
+                "deletions": 395
+              }
+            ],
+            "reviews": [
+              {
+                "author": "lalalune",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 3,
+        "opened": [
+          {
+            "number": 230,
+            "title": "twitter folder paths for twitter cookies & cache/last tweet point to different places",
+            "state": "CLOSED",
+            "created_at": "2024-11-07T21:42:56Z",
+            "updated_at": "2024-12-14T07:29:13Z",
+            "body": "the cache is not being picked up. the twitter cookies is.\r\ntwo solutions:\r\nset cache to same folder path as cookies. \r\nor use recursive find the lowest twittercache folder found",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": [
+              {
+                "author": "o-on-x",
+                "body": "twitter cache pointing to current directory only rather than searching up till find"
+              }
+            ]
+          },
+          {
+            "number": 229,
+            "title": ".env is not being loaded or picked up in settings",
+            "state": "CLOSED",
+            "created_at": "2024-11-07T14:31:33Z",
+            "updated_at": "2024-11-08T03:37:59Z",
+            "body": "process.env is just system settings. the .env wasnt getting added\r\n\r\nquick work around solution \r\n```\r\nimport fs from 'fs';\r\nimport path from 'path';\r\nimport { fileURLToPath } from 'url';\r\n\r\n// Convert import.meta.url to a file path\r\nconst __filename = fileURLToPath(import.meta.url);\r\nconst __dirname = path.dirname(__filename);\r\nconsole.log(__dirname, \" \", __filename)\r\n// Correctly resolve the path to the .env file in the core package\r\nconst envFilePath = path.resolve(__dirname, '../.env'); // Adjusted path to go one level up to the core directory\r\nconst envFileContent = fs.readFileSync(envFilePath, 'utf8');\r\n\r\n// Function to parse the .env file content into process.env\r\nfunction parseEnvFileContent(content: string) {\r\n    const lines = content.split('\\n').filter(line => {\r\n        const trimmedLine = line.trim();\r\n        // Ignore empty lines and lines starting with #\r\n        return trimmedLine && !trimmedLine.startsWith('#');\r\n    });\r\n\r\n    lines.forEach(line => {\r\n        // Remove inline comments\r\n        const cleanLine = line.split('#')[0].trim();\r\n        const [key, value] = cleanLine.split('=');\r\n        if (key && value) {\r\n            process.env[key.trim()] = value.trim();\r\n        }\r\n    });\r\n}\r\n\r\n// Parse the .env file content\r\nparseEnvFileContent(envFileContent);\r\n\r\nconst settings = process.env;\r\nconsole.log(\"settings: \", settings);\r\n\r\nexport default settings;\r\n\r\n```",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": [
+              {
+                "author": "o-on-x",
+                "body": "latest push fixed this"
+              },
+              {
+                "author": "o-on-x",
+                "body": "closed"
+              }
+            ]
+          },
+          {
+            "number": 227,
+            "title": "agent & plugin-image-generation failed to build",
+            "state": "CLOSED",
+            "created_at": "2024-11-07T11:58:54Z",
+            "updated_at": "2024-11-08T10:03:43Z",
+            "body": "```\r\n> eliza@ build /home/ooo/apps/ai16z_eliza/work/latest_clone/eliza\r\n> bash ./scripts/build.sh\r\n\r\nBuilding package: agent\r\n\r\n> @eliza/agent@0.0.1 build\r\n> tsup --format esm --dts\r\n\r\nNo input files, try \"tsup <your-file>\" instead\r\nFailed to build agent\r\n\r\n...\r\n\r\nBuilding package: plugin-image-generation\r\n> @eliza/plugin-image-generation@0.0.1 build\r\n> tsup --format esm --dts\r\n\r\nDTS Build start\r\nsrc/index.ts(8,8): error TS2307: Cannot find module '@eliza/core' or its corresponding type declarations.\r\nsrc/index.ts(9,29): error TS2307: Cannot find module '@eliza/core' or its corresponding type declarations.\r\n\r\nError: error occurred in dts build\r\n    at Worker.<anonymous> (/home/ooo/apps/ai16z_eliza/work/latest_clone/eliza/node_modules/tsup/dist/index.js:1541:26)\r\n    at Worker.emit (node:events:507:28)\r\n    at MessagePort.<anonymous> (node:internal/worker:267:53)\r\n    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:827:20)\r\n    at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28)\r\nDTS Build error\r\nFailed to build plugin-image-generation\r\n```",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": [
+              {
+                "author": "o-on-x",
+                "body": "setting this in packages/plugin-image-generation/tsconfig.json\r\n``` {\r\n    \"extends\": \"../../tsconfig.json\",\r\n    \"compilerOptions\": {\r\n      \"outDir\": \"dist\",\r\n      \"rootDir\": \".\",\r\n      \"module\": \"ESNext\",\r\n      \"moduleResolution\": \"Bundler\",\r\n      \"types\": [\"node\"]\r\n    },\r\n    \"include\": [\"src\"],\r\n    \"references\": [\r\n      { \"path\": \"../core\" }\r\n    ]\r\n  }\r\n```"
+              },
+              {
+                "author": "o-on-x",
+                "body": "still issues with finding @eliza/core"
+              },
+              {
+                "author": "lalalune",
+                "body": "should be fixed on my branch now"
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "twilwa",
+    "score": 0,
+    "summary": "Twilwa is actively contributing to the project by working on features such as implementing a lazy load mechanism for llama objects, enhancing package handling through JSON fixes, and focusing efforts within the core code area. Despite having two pull requests in the last 90 days, none have been merged yet, indicating an ongoing development process without immediate integration into the main branch.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/111034762?u=0d3eed7c5f6e6fd4ddee24801aae9f88b0330380&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 2,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 219,
+            "title": "Feat/lazy load llama",
+            "state": "CLOSED",
+            "merged": false,
+            "created_at": "2024-11-07T03:30:01Z",
+            "updated_at": "2024-11-07T03:57:07Z",
+            "body": "LAZY LOADING THE LLAMAS\r\n\r\n<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\n## What kind of change is this?\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automtated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n",
+            "files": [
+              {
+                "path": ".gitignore",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "core/src/services/llama.ts",
+                "additions": 19,
+                "deletions": 36
+              },
+              {
+                "path": "package.json",
+                "additions": 37,
+                "deletions": 28
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 338,
+                "deletions": 340
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          },
+          {
+            "number": 218,
+            "title": "Feat/fix pkg json",
+            "state": "CLOSED",
+            "merged": false,
+            "created_at": "2024-11-07T03:10:36Z",
+            "updated_at": "2024-11-07T03:59:16Z",
+            "body": "i fixed pkg.json lol\r\n\r\n<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\n## What kind of change is this?\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automtated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n",
+            "files": [
+              {
+                "path": ".bashrc",
+                "additions": 0,
+                "deletions": 0
+              },
+              {
+                "path": ".gitignore",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "package.json",
+                "additions": 38,
+                "deletions": 29
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 337,
+                "deletions": 339
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  }
+]

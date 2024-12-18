@@ -1,0 +1,2416 @@
+[
+  {
+    "contributor": "lalalune",
+    "score": 0,
+    "summary": "Lalalune is actively merging various branches from different repositories into their project, focusing on improving the Grok Model Provider, fixing embedding checks, addressing split chunks errors, and enhancing knowledge working. They have also been involved in resolving issues related to SQLite embeddings and wallet fixes within their codebase.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/18633264?u=8f2bca0a3cef958bd405ea89680a9b9a0ff38f06&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 11,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "8af71708f048de8514e822bc956e93c5ec663d63",
+            "message": "Merge pull request #296 from ai16z/Ft-Grok-Model-Provider\n\nAdded missing GROK model provider key initialization",
+            "created_at": "2024-11-13T21:36:01Z",
+            "additions": 8,
+            "deletions": 4,
+            "changed_files": 2
+          },
+          {
+            "sha": "3a3d9e76b343a42c7479c77e3264665954404a24",
+            "message": "fix bad embedding check",
+            "created_at": "2024-11-13T08:46:31Z",
+            "additions": 7,
+            "deletions": 0,
+            "changed_files": 2
+          },
+          {
+            "sha": "1260b33d4db17f182ca9c3ba6852675f206b279e",
+            "message": "fix split chunks error on anthropic",
+            "created_at": "2024-11-13T08:32:39Z",
+            "additions": 9,
+            "deletions": 30,
+            "changed_files": 5
+          },
+          {
+            "sha": "a4b22e297be58a65c022aa5ce9b8e99500065041",
+            "message": "Merge branch 'main' of https://github.com/ai16z/eliza into HEAD",
+            "created_at": "2024-11-13T07:08:59Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "14413b182309f4a91c9d7513f63d7671c112708f",
+            "message": "knowledge working",
+            "created_at": "2024-11-13T07:08:51Z",
+            "additions": 12,
+            "deletions": 7,
+            "changed_files": 2
+          },
+          {
+            "sha": "3b5f276473c67a8e6fdb3cb8b50b30c6cef03977",
+            "message": "Merge branch 'main' of https://github.com/twilwa/Eliza into HEAD",
+            "created_at": "2024-11-13T07:04:52Z",
+            "additions": 22000,
+            "deletions": 4675,
+            "changed_files": 227
+          },
+          {
+            "sha": "4924843ff73d31d8e52d4a6a42cbff77bee181bf",
+            "message": "Merge pull request #276 from denizekiz/bugfix/toolowcomputeunit\n\nFix: compute unit increasein swapts, default is too low to make trans\u2026",
+            "created_at": "2024-11-13T07:01:02Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "9f74e70285fa5113aa63fcaac349a1daa4ddf33d",
+            "message": "Merge branch 'main' of https://github.com/metadiver/gmeow into HEAD",
+            "created_at": "2024-11-13T06:48:30Z",
+            "additions": 187,
+            "deletions": 7,
+            "changed_files": 6
+          },
+          {
+            "sha": "f84ee91decc65cacdf8a64aba012ecb656004dc8",
+            "message": "Merge branch 'main' of https://github.com/ai16z/eliza into HEAD",
+            "created_at": "2024-11-13T06:42:31Z",
+            "additions": 27814,
+            "deletions": 5134,
+            "changed_files": 162
+          },
+          {
+            "sha": "193e5e7ba8fc87d3da2fd796a49a32420e1595cf",
+            "message": "Merge pull request #261 from ferric-sol/sqlite-embeddings\n\nFix embedding calculation for sqlite",
+            "created_at": "2024-11-13T05:56:27Z",
+            "additions": 34,
+            "deletions": 11,
+            "changed_files": 1
+          },
+          {
+            "sha": "8980551b07c784c74ca62d64c3f3aa2467479340",
+            "message": "Merge pull request #281 from ferric-sol/wallet-fix\n\nDon't blow up if the wallet is missing",
+            "created_at": "2024-11-13T05:55:49Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 286,
+            "title": "Loaf stuff",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-13T10:28:20Z",
+            "updated_at": "2024-11-13T10:30:08Z",
+            "body": "",
+            "files": [
+              {
+                "path": ".github/workflows/ci.yaml",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "packages/adapter-postgres/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/adapter-postgres/tsconfig.json",
+                "additions": 8,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-postgres/tsup.config.ts",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-sqlite/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/adapter-sqlite/src/index.ts",
+                "additions": 23,
+                "deletions": 19
+              },
+              {
+                "path": "packages/adapter-sqlite/src/sqlite_vec.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/adapter-sqlite/tsconfig.json",
+                "additions": 8,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-sqlite/tsup.config.ts",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-sqljs/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/adapter-sqljs/src/index.ts",
+                "additions": 3,
+                "deletions": 1
+              },
+              {
+                "path": "packages/adapter-sqljs/tsconfig.json",
+                "additions": 8,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-sqljs/tsup.config.ts",
+                "additions": 20,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-supabase/tsconfig.json",
+                "additions": 8,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-supabase/tsup.config.ts",
+                "additions": 20,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-bootstrap/tsconfig.json",
+                "additions": 0,
+                "deletions": 2
+              },
+              {
+                "path": "packages/plugin-image-generation/tsconfig.json",
+                "additions": 0,
+                "deletions": 2
+              },
+              {
+                "path": "packages/plugin-node/tsconfig.json",
+                "additions": 0,
+                "deletions": 2
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 931,
+                "deletions": 1147
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "ponderingdemocritus",
+    "score": 0,
+    "summary": "Ponderingdemocritus is actively developing bundles for the Starknet plugin as part of their recent GitHub activity over the past 90 days, which includes merging pull requests and initializing new work branches. They have made significant code changes with a net increase in lines of code across packages and .github areas, demonstrating focused progress on this project.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/90423308?u=fa7a84e8e946db253241c7aaabbb57e7c6495f0b&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 6,
+        "total_prs": 2,
+        "commits": [
+          {
+            "sha": "38716b84bbcbf659b02c4bddf89dd5cc7b348c95",
+            "message": "init",
+            "created_at": "2024-11-13T11:07:30Z",
+            "additions": 1198,
+            "deletions": 2,
+            "changed_files": 11
+          },
+          {
+            "sha": "7fcf54e7fb2ba027d110afcc319c0b01b3f181dc",
+            "message": "Merge pull request #285 from ai16z/bundles\n\nBundles",
+            "created_at": "2024-11-13T09:39:11Z",
+            "additions": 1077,
+            "deletions": 1179,
+            "changed_files": 19
+          },
+          {
+            "sha": "ae648b15c8c79048febea1d944950ce4ab37b2cd",
+            "message": "pnpm lock",
+            "created_at": "2024-11-13T09:30:18Z",
+            "additions": 931,
+            "deletions": 1147,
+            "changed_files": 1
+          },
+          {
+            "sha": "11e7fe071cd29f3f19425d70b8aff0beccaf132b",
+            "message": "clean ups",
+            "created_at": "2024-11-13T09:19:07Z",
+            "additions": 4,
+            "deletions": 10,
+            "changed_files": 6
+          },
+          {
+            "sha": "57ba39230d5aa850dc9ff090a471ff8d42009155",
+            "message": "bundle work",
+            "created_at": "2024-11-13T09:12:46Z",
+            "additions": 143,
+            "deletions": 23,
+            "changed_files": 13
+          },
+          {
+            "sha": "1ad5e28cdf97d87c96e5f650c411f29fb2ffb564",
+            "message": "Merge branch 'main' of https://github.com/ai16z/eliza",
+            "created_at": "2024-11-13T09:05:14Z",
+            "additions": 41803,
+            "deletions": 1590,
+            "changed_files": 290
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 287,
+            "title": "feat: Starknet plugin",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-13T11:07:57Z",
+            "updated_at": "2024-11-16T14:26:38Z",
+            "body": "- PR turned into type and import cleanup. Conflicts were happening between bundled and non-bundled types. This is now resolved\r\n- Implements scaffold for Starknet plugin that allows swapping.\r\n- adds pr title workflow - for sanity and cleanliness \r\n\r\nAfter building and tests, lets merge to keep head clean, then will keep iterating on SN plugin",
+            "files": [
+              {
+                "path": ".env.example",
+                "additions": 4,
+                "deletions": 0
+              },
+              {
+                "path": ".github/workflows/pr.yaml",
+                "additions": 28,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-postgres/src/index.ts",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "packages/adapter-sqljs/src/index.ts",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "packages/adapter-supabase/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/adapter-supabase/src/index.ts",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "packages/agent/src/index.ts",
+                "additions": 14,
+                "deletions": 14
+              },
+              {
+                "path": "packages/client-auto/src/index.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-auto/tsup.config.ts",
+                "additions": 6,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-direct/src/index.ts",
+                "additions": 10,
+                "deletions": 10
+              },
+              {
+                "path": "packages/client-direct/tsup.config.ts",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-discord/src/actions/chat_with_attachments.ts",
+                "additions": 5,
+                "deletions": 5
+              },
+              {
+                "path": "packages/client-discord/src/actions/download_media.ts",
+                "additions": 4,
+                "deletions": 5
+              },
+              {
+                "path": "packages/client-discord/src/actions/joinvoice.ts",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "packages/client-discord/src/actions/leavevoice.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-discord/src/actions/summarize_conversation.ts",
+                "additions": 7,
+                "deletions": 15
+              },
+              {
+                "path": "packages/client-discord/src/actions/transcribe_media.ts",
+                "additions": 4,
+                "deletions": 4
+              },
+              {
+                "path": "packages/client-discord/src/attachments.ts",
+                "additions": 5,
+                "deletions": 4
+              },
+              {
+                "path": "packages/client-discord/src/index.ts",
+                "additions": 4,
+                "deletions": 9
+              },
+              {
+                "path": "packages/client-discord/src/messages.ts",
+                "additions": 8,
+                "deletions": 15
+              },
+              {
+                "path": "packages/client-discord/src/providers/channelState.ts",
+                "additions": 1,
+                "deletions": 6
+              },
+              {
+                "path": "packages/client-discord/src/providers/voiceState.ts",
+                "additions": 1,
+                "deletions": 6
+              },
+              {
+                "path": "packages/client-discord/src/voice.ts",
+                "additions": 4,
+                "deletions": 4
+              },
+              {
+                "path": "packages/client-discord/tsup.config.ts",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-telegram/src/index.ts",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "packages/client-telegram/src/messageManager.ts",
+                "additions": 7,
+                "deletions": 13
+              },
+              {
+                "path": "packages/client-telegram/src/telegramClient.ts",
+                "additions": 11,
+                "deletions": 6
+              },
+              {
+                "path": "packages/client-twitter/src/base.ts",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "packages/client-twitter/src/index.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-twitter/src/interactions.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-twitter/src/post.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-twitter/src/search.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-twitter/src/utils.ts",
+                "additions": 8,
+                "deletions": 4
+              },
+              {
+                "path": "packages/core/src/embedding.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/generation.ts",
+                "additions": 50,
+                "deletions": 34
+              },
+              {
+                "path": "packages/core/src/index.ts",
+                "additions": 2,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/models.ts",
+                "additions": 3,
+                "deletions": 7
+              },
+              {
+                "path": "packages/core/src/test_resources/basic.test.ts",
+                "additions": 0,
+                "deletions": 12
+              },
+              {
+                "path": "packages/core/src/test_resources/cache.ts",
+                "additions": 0,
+                "deletions": 36
+              },
+              {
+                "path": "packages/core/src/test_resources/constants.ts",
+                "additions": 0,
+                "deletions": 12
+              },
+              {
+                "path": "packages/core/src/test_resources/createRuntime.ts",
+                "additions": 0,
+                "deletions": 147
+              },
+              {
+                "path": "packages/core/src/test_resources/data.ts",
+                "additions": 0,
+                "deletions": 1087
+              },
+              {
+                "path": "packages/core/src/test_resources/getOrCreateRelationship.ts",
+                "additions": 0,
+                "deletions": 66
+              },
+              {
+                "path": "packages/core/src/test_resources/populateMemories.ts",
+                "additions": 0,
+                "deletions": 34
+              },
+              {
+                "path": "packages/core/src/test_resources/report.ts",
+                "additions": 0,
+                "deletions": 97
+              },
+              {
+                "path": "packages/core/src/test_resources/runAiTest.ts",
+                "additions": 0,
+                "deletions": 17
+              },
+              {
+                "path": "packages/core/src/test_resources/templates.ts",
+                "additions": 0,
+                "deletions": 27
+              },
+              {
+                "path": "packages/core/src/test_resources/testAction.ts",
+                "additions": 0,
+                "deletions": 59
+              },
+              {
+                "path": "packages/core/src/test_resources/testEvaluator.ts",
+                "additions": 0,
+                "deletions": 67
+              },
+              {
+                "path": "packages/core/src/test_resources/testSetup.ts",
+                "additions": 0,
+                "deletions": 10
+              },
+              {
+                "path": "packages/core/src/test_resources/types.ts",
+                "additions": 0,
+                "deletions": 6
+              },
+              {
+                "path": "packages/core/src/tests/actions.test.d.ts",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/tests/actions.test.ts",
+                "additions": 0,
+                "deletions": 268
+              },
+              {
+                "path": "packages/core/src/tests/browser.test.ts",
+                "additions": 0,
+                "deletions": 98
+              },
+              {
+                "path": "packages/core/src/tests/continue.test.d.ts",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/tests/continue.test.ts",
+                "additions": 0,
+                "deletions": 233
+              },
+              {
+                "path": "packages/core/src/tests/evaluation.test.d.ts",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/tests/evaluation.test.ts",
+                "additions": 0,
+                "deletions": 128
+              },
+              {
+                "path": "packages/core/src/tests/fact.test.d.ts",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/tests/fact.test.ts",
+                "additions": 0,
+                "deletions": 150
+              },
+              {
+                "path": "packages/core/src/tests/generation.test.ts",
+                "additions": 0,
+                "deletions": 166
+              },
+              {
+                "path": "packages/core/src/tests/goal.test.d.ts",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/tests/goal.test.ts",
+                "additions": 0,
+                "deletions": 202
+              },
+              {
+                "path": "packages/core/src/tests/goals.test.d.ts",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/tests/goals.test.ts",
+                "additions": 0,
+                "deletions": 123
+              },
+              {
+                "path": "packages/core/src/tests/ignore.test.d.ts",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/tests/ignore.test.ts",
+                "additions": 0,
+                "deletions": 228
+              },
+              {
+                "path": "packages/core/src/tests/memory.test.d.ts",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/tests/memory.test.ts",
+                "additions": 0,
+                "deletions": 617
+              },
+              {
+                "path": "packages/core/src/tests/messages.test.d.ts",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/tests/messages.test.ts",
+                "additions": 0,
+                "deletions": 114
+              },
+              {
+                "path": "packages/core/src/tests/providers.test.d.ts",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/tests/providers.test.ts",
+                "additions": 0,
+                "deletions": 51
+              },
+              {
+                "path": "packages/core/src/tests/relationships.test.d.ts",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/tests/relationships.test.ts",
+                "additions": 0,
+                "deletions": 70
+              },
+              {
+                "path": "packages/core/src/tests/runtime.test.d.ts",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/tests/runtime.test.ts",
+                "additions": 0,
+                "deletions": 113
+              },
+              {
+                "path": "packages/core/src/tests/time.test.d.ts",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/tests/time.test.ts",
+                "additions": 0,
+                "deletions": 84
+              },
+              {
+                "path": "packages/core/src/tests/token.test.d.ts",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/tests/token.test.ts",
+                "additions": 0,
+                "deletions": 77
+              },
+              {
+                "path": "packages/core/src/tests/utils.test.ts",
+                "additions": 0,
+                "deletions": 76
+              },
+              {
+                "path": "packages/plugin-bootstrap/src/actions/continue.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-bootstrap/src/actions/followRoom.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-bootstrap/src/actions/ignore.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-bootstrap/src/actions/muteRoom.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-bootstrap/src/actions/none.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-bootstrap/src/actions/unfollowRoom.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-bootstrap/src/actions/unmuteRoom.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-bootstrap/src/evaluators/fact.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-bootstrap/src/evaluators/goal.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-bootstrap/src/index.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-bootstrap/src/providers/boredom.ts",
+                "additions": 1,
+                "deletions": 6
+              },
+              {
+                "path": "packages/plugin-bootstrap/src/providers/facts.ts",
+                "additions": 1,
+                "deletions": 6
+              },
+              {
+                "path": "packages/plugin-bootstrap/src/providers/time.ts",
+                "additions": 1,
+                "deletions": 6
+              },
+              {
+                "path": "packages/plugin-image-generation/src/index.ts",
+                "additions": 23,
+                "deletions": 23
+              },
+              {
+                "path": "packages/plugin-node/src/index.ts",
+                "additions": 9,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-node/src/services/browser.ts",
+                "additions": 6,
+                "deletions": 10
+              },
+              {
+                "path": "packages/plugin-node/src/services/image.ts",
+                "additions": 3,
+                "deletions": 7
+              },
+              {
+                "path": "packages/plugin-node/src/services/llama.ts",
+                "additions": 2,
+                "deletions": 6
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "sirkitree",
+                "body": "This seems to have removed all tests. Is there a plan for adding them back? If we want to get into a reliable release path we should have proper test coverage."
+              }
+            ]
+          },
+          {
+            "number": 285,
+            "title": "Bundles",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-13T09:19:22Z",
+            "updated_at": "2024-11-13T09:39:14Z",
+            "body": "- cleans ups",
+            "files": [
+              {
+                "path": ".github/workflows/ci.yaml",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "packages/adapter-postgres/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/adapter-postgres/tsconfig.json",
+                "additions": 8,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-postgres/tsup.config.ts",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-sqlite/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/adapter-sqlite/src/index.ts",
+                "additions": 23,
+                "deletions": 19
+              },
+              {
+                "path": "packages/adapter-sqlite/src/sqlite_vec.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/adapter-sqlite/tsconfig.json",
+                "additions": 8,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-sqlite/tsup.config.ts",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-sqljs/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/adapter-sqljs/src/index.ts",
+                "additions": 3,
+                "deletions": 1
+              },
+              {
+                "path": "packages/adapter-sqljs/tsconfig.json",
+                "additions": 8,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-sqljs/tsup.config.ts",
+                "additions": 20,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-supabase/tsconfig.json",
+                "additions": 8,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-supabase/tsup.config.ts",
+                "additions": 20,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-bootstrap/tsconfig.json",
+                "additions": 0,
+                "deletions": 2
+              },
+              {
+                "path": "packages/plugin-image-generation/tsconfig.json",
+                "additions": 0,
+                "deletions": 2
+              },
+              {
+                "path": "packages/plugin-node/tsconfig.json",
+                "additions": 0,
+                "deletions": 2
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 931,
+                "deletions": 1147
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "monilpat",
+    "score": 0,
+    "summary": "Monilpat is currently focused on enhancing the interaction between code generation tools and large language models (LLMs). They have recently committed to creating a script that consolidates all file contents into one single file, simplifying the process of working with LLMs for generating code. This effort reflects an initiative to streamline workflows involving machine learning-based coding assistance.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/15067321?u=1271e57605b48029307547127c90e1bd5e4f3f39&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "689245f3f18090f6dbb957e57be58804dc933bb2",
+            "message": "[BE] Add script to dump all file contents into one file so it is ease to work with LLMs for code gen / debugging",
+            "created_at": "2024-11-13T02:33:20Z",
+            "additions": 38,
+            "deletions": 1,
+            "changed_files": 2
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 282,
+            "title": "[BE] Add script to dump all file contents into one file to interact with LLMs easier ",
+            "state": "CLOSED",
+            "merged": false,
+            "created_at": "2024-11-13T02:39:48Z",
+            "updated_at": "2024-11-13T05:35:55Z",
+            "body": "# Relates to:\r\n\r\nBetter Engineering work as trying to contribute most effectively to the codebase using LLMs to consult and debug. \r\n\r\n# Risks\r\n\r\nLow \r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nThis makes it trivial to work with LLMs for code gen / debugging by copy and pasting the contents of all_files_contents.txt\r\n\r\n\r\n## What kind of change is this?\r\n\r\nImprovements (misc. changes to existing features)\r\n\r\nIn order to make dev efficiency higher.\r\n\r\n\r\n# Documentation changes needed?\r\n\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n\r\n\r\n# Testing\r\n\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\nRun script \r\n\r\n./dump_file_contents.sh folder_to_exclude folder_exclude \r\n\r\nExample\r\n./dump_file_contents.sh packages .github .gitignore\r\n\r\n\r\nhttps://github.com/user-attachments/assets/fb622c73-5250-4e6c-be85-df00bc7dc890\r\n\r\n\r\n\r\n<img width=\"1056\" alt=\"Screenshot 2024-11-12 at 6 37 16\u202fPM\" src=\"https://github.com/user-attachments/assets/9d07169e-7d9f-46ba-adbb-b8de8e19cec5\">\r\n\r\n\r\n",
+            "files": [
+              {
+                "path": ".gitignore",
+                "additions": 3,
+                "deletions": 1
+              },
+              {
+                "path": "dump_file_contents.sh",
+                "additions": 35,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "madjin",
+                "body": "thoughtful but there's already some great existing tools for this too:\r\n- https://github.com/raphaelmansuy/code2prompt\r\n- https://github.com/yamadashy/repomix"
+              },
+              {
+                "author": "monilpat",
+                "body": "Thanks for the pointer! @madjin appreciate it! I will start using these :) "
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "sirkitree",
+    "score": 0,
+    "summary": "Sirkitree is currently focusing on enhancing the platform by working on a feature request for an automated bot registry and private communication protocol. This initiative aims to streamline interactions within the community, although there have been no pull requests or code changes made in this area yet.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/28543?u=620169c8c9ebe441dee7b49d849eea383eccd93f&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 291,
+            "title": "Feature Request: Automated Bot Registry and Private Communication Protocol",
+            "state": "CLOSED",
+            "created_at": "2024-11-13T15:14:08Z",
+            "updated_at": "2024-11-15T14:12:13Z",
+            "body": "**Summary**: Implement an automated registry and communication system that enables trading bots to discover each other, communicate efficiently, and trade in a secure and private back channel. \r\n\r\n**Description**:\r\nAs the project expands and more instances of the trading bot are forked and installed, there's an opportunity for these bots to be aware of each other's existence and to communicate directly. The goal is to establish a decentralized, automated registry system that allows bots to discover and authenticate each other. Once connected, the bots will communicate through a private back channel to exchange data and execute trades efficiently.\r\n\r\n**Proposed Features**:\r\n\r\n1. **Automated Registry System**: \r\n   - Each bot will register itself in a decentralized registry (e.g., using a lightweight P2P network or distributed ledger technology).\r\n   - Bots will periodically update the registry, checking for new bots or changes in status.\r\n   - The registry will include basic metadata to facilitate discovery, like cryptographic keys for authentication.\r\n   - Possibly services a particular bot provides to other bots that they could pay for in the future. (more on this later)\r\n\r\n2. **Private Back Channel Communication**:\r\n   - Implement a secure, real-time communication protocol, potentially leveraging WebRTC or a similar P2P technology.\r\n   - The protocol should ensure encrypted communication between bots, minimizing the risk of interception.\r\n   - Messages will be designed for minimal latency, suitable for rapid data exchange and trading negotiations.\r\n\r\n3. **Authentication and Security**:\r\n   - Use public-private key cryptography for bot authentication, ensuring only legitimate bots can participate in the network.\r\n   - Establish rules for trust and security, with mechanisms to handle untrusted or malicious bots.\r\n\r\n4. **Efficient Trading Protocol**:\r\n   - Design a protocol that allows bots to share and match order books in a streamlined manner.\r\n   - Ensure trades are executed quickly, with minimal delay, using predefined negotiation rules.\r\n   - Incorporate a fallback mechanism if communication or negotiation fails.\r\n\r\n**Benefits**:\r\n- **Speed**: A dedicated, private communication channel will facilitate faster data exchange compared to public platforms.\r\n- **Security**: Encrypted communication ensures that sensitive trading data remains confidential.\r\n- **Scalability**: The decentralized nature of the registry will support the growth of the network without becoming a bottleneck.\r\n\r\n**Considerations**:\r\n- The system should be resilient to potential attacks, like Sybil attacks, by incorporating strong authentication and trust mechanisms.\r\n- Developing a lightweight and efficient protocol is critical to minimize resource usage and latency.\r\n",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": [
+              {
+                "author": "lalalune",
+                "body": "Vehemently against private communication protocols between agents of any sort. Critical to agent-human alignment that they use social media as the basis for communication and memory. Bot registry is I think not a telemetry we want.\r\n\r\nHave a solution for this that is more in line with our moral values-- I know this seems small, but it is extremely, extremely important that we make the bots use human communication and human tools at all times."
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "madjin",
+    "score": 0,
+    "summary": "Madjin is actively enhancing the project's user experience by implementing a dark mode fix, updating icons, and improving documentation through various merges and commits to the 'docs-rework' branch. Additionally, madjin addresses functionality issues such as fixing broken anchors and resolving merge conflicts with tsconfig files while also engaging in discussions about EVM Integration, Obsidian Integration, and Twitter Spaces Voice Client improvements.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/32600939?u=cdcf89f44c7a50906c7a80d889efa85023af2049&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 10,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "3c77f966cc2d72cc56384e300d17bd064cb8becf",
+            "message": "update favicon and text",
+            "created_at": "2024-11-13T03:01:50Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 2
+          },
+          {
+            "sha": "4f71161acee228db9503edae33dba1fad49c955b",
+            "message": "fix get started button",
+            "created_at": "2024-11-13T02:52:33Z",
+            "additions": 2,
+            "deletions": 2,
+            "changed_files": 1
+          },
+          {
+            "sha": "e5aff16dc7f61abcb04293c7ed7e211c98277efa",
+            "message": "Merge pull request #280 from mrpspring/docs-rework\n\ndocs homepage rework",
+            "created_at": "2024-11-13T02:39:41Z",
+            "additions": 299,
+            "deletions": 52,
+            "changed_files": 7
+          },
+          {
+            "sha": "1b469b785cd564c22bb495642c83a30cc09cf03d",
+            "message": "Merge branch 'docs' into docs-rework",
+            "created_at": "2024-11-13T02:39:27Z",
+            "additions": 793,
+            "deletions": 475,
+            "changed_files": 111
+          },
+          {
+            "sha": "29c64cc4eeeac10755fc1ef7869f8980e4998788",
+            "message": "simplify docusaurus config, revert tsconfig to main, update api docs",
+            "created_at": "2024-11-13T01:28:25Z",
+            "additions": 380,
+            "deletions": 273,
+            "changed_files": 95
+          },
+          {
+            "sha": "75bdd44f27ca0dc82f51140eb33924dc4bed87e9",
+            "message": "fix merge conflict with tsconfig",
+            "created_at": "2024-11-13T00:23:08Z",
+            "additions": 413,
+            "deletions": 201,
+            "changed_files": 16
+          },
+          {
+            "sha": "e4eb7f178375f05ebbe8541de50da33108cceb6a",
+            "message": "add dark mode fix",
+            "created_at": "2024-11-13T00:21:04Z",
+            "additions": 5,
+            "deletions": 2,
+            "changed_files": 1
+          },
+          {
+            "sha": "cf06be2948d74a1b90333548726158b540d99e0b",
+            "message": "fix broken anchor",
+            "created_at": "2024-11-13T00:16:51Z",
+            "additions": 0,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "997d8043e10dff8a55a5ba004fb7f598cb028b9e",
+            "message": "add missing api doc",
+            "created_at": "2024-11-13T00:13:20Z",
+            "additions": 2,
+            "deletions": 2,
+            "changed_files": 1
+          },
+          {
+            "sha": "3786b505e99e0334cfecff3375e929f1e3226023",
+            "message": "update tsconfig",
+            "created_at": "2024-11-13T00:12:41Z",
+            "additions": 66,
+            "deletions": 46,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 5,
+        "opened": [
+          {
+            "number": 303,
+            "title": "EVM Integration",
+            "state": "CLOSED",
+            "created_at": "2024-11-13T23:44:41Z",
+            "updated_at": "2024-12-14T07:31:26Z",
+            "body": "EVM Integration\r\n\r\n- Integrate Ethereum wallet and demonstrate Eth L1 and Base L2\r\n- Copy and paste solana plugin and recreate with EVM\r\n- Swapping action, wallet provider\r\n\r\nReward: $1500 USD in $degenai as seen on https://ai16z.github.io/",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "Bounty",
+                "color": "d93f0b",
+                "description": "Use this to assign a bounty to an issue"
+              }
+            ],
+            "comments": [
+              {
+                "author": "leonprou",
+                "body": "Gm @madjin \r\nwould love to work on this one.\r\n\r\nCouple of questions and remarks:\r\n- Just need to figure our which services we want to use in Base/ETH. I suggest Aerodrome/Uniswap, but maybe using li.fi/enso/0x scales better.\r\n- What's good alternative for pump.fun on Base/Ethereum?\r\n"
+              }
+            ]
+          },
+          {
+            "number": 302,
+            "title": "Obsidian Integration",
+            "state": "OPEN",
+            "created_at": "2024-11-13T23:43:52Z",
+            "updated_at": "2024-12-14T21:02:11Z",
+            "body": "## Obsidian Integration\r\n\r\n- Integrate Obsidian and demonstrate deep traversal and search of an Obsidian memory store\r\n- Integrate [Naval database](https://www.reddit.com/r/NavalRavikant/comments/oza0bl/i_made_a_digital_version_of_navals_brain_free/?rdt=41536) as example\r\n\r\nReward: $1000 USD in $ai16z + $1000 USD in $degenai as seen on https://ai16z.github.io/\r\n\r\n",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "Bounty",
+                "color": "d93f0b",
+                "description": "Use this to assign a bounty to an issue"
+              }
+            ],
+            "comments": [
+              {
+                "author": "dvdt3ddy",
+                "body": "Heyy I'd like to work on this task and claim the bounty!"
+              }
+            ]
+          },
+          {
+            "number": 301,
+            "title": "Twitter Spaces Voice Client",
+            "state": "OPEN",
+            "created_at": "2024-11-13T23:41:03Z",
+            "updated_at": "2024-11-18T13:56:19Z",
+            "body": "## Twitter Spaces Voice Client\r\n\r\nParity with Discord Voice Client, but on Twitter Space\r\n\r\n- Must listen to and respond with voice\r\n- Must be able to join a twitter space from a linked tweet\r\n- Must be able to accept speaker role\r\n\r\nReward: $1000 USD in $ai16z + $1000 USD in $degenai as seen on https://ai16z.github.io/\r\n\r\n",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "Bounty",
+                "color": "d93f0b",
+                "description": "Use this to assign a bounty to an issue"
+              }
+            ],
+            "comments": [
+              {
+                "author": "pukadev",
+                "body": "def use the openai real time api for a quick prototype to see if it catches on as a useful feature before spinning up your own multimodal TTS:  we have worked with this openai recently.\r\n\r\n\r\n\r\nhttps://github.com/openai/openai-realtime-api-beta\r\n\r\nthe key these though is making sure u control interruptions well at your llm responses and audio stream processing layer \r\n(separate clean vocal segments, etc) ...  there is a pace in real time voice that works best for the above api.. talking past each other., etc. and other background noise is a harder problem...   it doesnt handle that very well unless u take over and dont turn on VAD for their api to do it for you.\r\n"
+              },
+              {
+                "author": "kukiui",
+                "body": "https://github.com/kyutai-labs/moshi\r\nsimilar to advanced voice mode MIT License\r\nI can try to add the required functionality  of joining spaces if its something you need"
+              }
+            ]
+          },
+          {
+            "number": 300,
+            "title": "Farcaster Client / Plugin",
+            "state": "CLOSED",
+            "created_at": "2024-11-13T23:39:35Z",
+            "updated_at": "2024-12-14T07:31:25Z",
+            "body": "Parity with Twitter client, but on Farcaster\r\n\r\nReward: $1000 USD in $ai16z + $1000 USD in $degenai\r\n\r\nAs seen on https://ai16z.github.io/",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "Bounty",
+                "color": "d93f0b",
+                "description": "Use this to assign a bounty to an issue"
+              }
+            ],
+            "comments": [
+              {
+                "author": "rubinovitz",
+                "body": "Do you mean you want a Twitter clone or that you want Eliza to be able to have its existing Twitter bot functionality on Farcaster?"
+              },
+              {
+                "author": "lalalune",
+                "body": "I mean that we want the same functionality in Farcaster"
+              },
+              {
+                "author": "nutbox-io",
+                "body": "We have created a 'social oracle' between Twitter and Steem/Farcaster, which already supports the Steem Blockchain, and we are planning to support Farcaster Hubs. Our idea is that Twitter serves as the operations dashboard for on-chain activities, while Steem/Farcaster acts as the Social DA. I wonder if you might be interested in this.\r\n\r\nYou can try it out here: tiptag.social. Tweet and add #TipTag #Slime, and the content will be sync to Slime Community\uff08on-chain community\uff09."
+              }
+            ]
+          },
+          {
+            "number": 298,
+            "title": "Docs improvements bounty ideas",
+            "state": "CLOSED",
+            "created_at": "2024-11-13T22:52:59Z",
+            "updated_at": "2024-12-14T07:31:25Z",
+            "body": "- read more = broken link: https://ai16z.github.io/eliza/docs/community/stream-notes/\r\n- readme is outdated\r\n- pnpm run shell not valid\r\n- go through and test the docs to be valid\r\n- add jsdocs comments to all the code\r\n- add links to the code in code snippet examples\r\n- check and fix all the issues in github\r\n\r\nwill add more things to fix for a bounty on https://ai16z.github.io/",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              },
+              {
+                "name": "documentation",
+                "color": "0075ca",
+                "description": "Improvements or additions to documentation"
+              },
+              {
+                "name": "Bounty",
+                "color": "d93f0b",
+                "description": "Use this to assign a bounty to an issue"
+              }
+            ],
+            "comments": [
+              {
+                "author": "CHASERS12",
+                "body": "When trying to run your custom character in dev mode - pnpm run dev - you need to *pin character to dev shell script\r\n"
+              },
+              {
+                "author": "odilitime",
+                "body": "First bullet point is now addressed at https://github.com/ai16z/eliza/commit/951aa3eb8b262b54419b4b3b8ccfd1358ef3ec25 #321 just noting it so others don't attempt it"
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "o-on-x",
+    "score": 0,
+    "summary": "o-on-x is actively developing the project, focusing primarily on enhancing functionality related to token transfers. Recently, they have successfully merged a pull request that introduces a new 'Transfer Token / Send Token Action' feature and updated index.ts with the transferToken action. This work has resulted in an overall positive code change of +500 lines over the last 90 days.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/186759703?u=4e674b1542bbb9fe7d7ea0e034c8c525689cb191&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 3,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "b84caacaf00ad5a9ec08b44d1c9b39e0c655617a",
+            "message": "Merge pull request #297 from o-on-x/main\n\nAdded Transfer / Send Token Action",
+            "created_at": "2024-11-13T22:42:53Z",
+            "additions": 259,
+            "deletions": 9,
+            "changed_files": 2
+          },
+          {
+            "sha": "d5d6798a5f0f386dfb24c45f0b4b6ddad93a6630",
+            "message": "Transfer Token / Send Token Action Added",
+            "created_at": "2024-11-13T22:40:35Z",
+            "additions": 246,
+            "deletions": 0,
+            "changed_files": 1
+          },
+          {
+            "sha": "9caf91f03a0a2e1ce388d4bd84504b66192aefbb",
+            "message": "Update index.ts with transferToken action to use",
+            "created_at": "2024-11-13T22:39:19Z",
+            "additions": 13,
+            "deletions": 9,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 297,
+            "title": "Added Transfer / Send Token Action",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-13T22:42:39Z",
+            "updated_at": "2024-11-13T22:42:53Z",
+            "body": "This allows the agent to send tokens if action is enable on the solana plugin\r\n\r\nThere is no verification logic set but examples is commented out that would required Admin User Ids\r\n\r\nWhatever is good logic for trust & approval will need to be thought out\r\n\r\nAction is not enabled by default",
+            "files": [
+              {
+                "path": "packages/plugin-solana/src/actions/transfer.ts",
+                "additions": 246,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-solana/src/index.ts",
+                "additions": 13,
+                "deletions": 9
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "twilwa",
+    "score": 0,
+    "summary": "Twilwa is actively contributing to the project by merging pull requests, specifically focusing on documentation improvements as seen from their recent merge of PR #273 from ai16z/docs. Over the past 90 days, they have made a single commit with significant code changes totaling +27,779 lines added and -5,125 lines removed, indicating substantial development or refactoring work within this timeframe.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/111034762?u=0d3eed7c5f6e6fd4ddee24801aae9f88b0330380&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "1422736a4c0f238c09c9c769dfa1926fa1a23039",
+            "message": "Merge pull request #273 from ai16z/docs\n\nImprove Docs",
+            "created_at": "2024-11-13T05:19:00Z",
+            "additions": 27779,
+            "deletions": 5125,
+            "changed_files": 160
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "alextitonis",
+    "score": 0,
+    "summary": "AlexTitonis is currently focusing on enhancing the keyvaluestore feature, as evidenced by their recent pull request activity. Although there have been no merged PRs or issues addressed within this period, they are actively contributing to code changes in packages without any commits yet.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/45359358?u=c595ccf9f1221326b37aa1ad77a49703c88d23f4&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 290,
+            "title": "keyvaluestore",
+            "state": "CLOSED",
+            "merged": false,
+            "created_at": "2024-11-13T14:01:14Z",
+            "updated_at": "2024-12-02T00:43:01Z",
+            "body": "Key value store in the databases.\r\nNew Functions: \r\n* setValue\r\n* getValue\r\n* hasKey\r\n* deleteValue\r\n\r\nUsed for twitter creds",
+            "files": [
+              {
+                "path": "packages/core/src/adapters/postgres.ts",
+                "additions": 26,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/adapters/sqlite.ts",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/adapters/sqlite/sqliteTables.ts",
+                "additions": 6,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/adapters/sqljs.ts",
+                "additions": 28,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/adapters/supabase.ts",
+                "additions": 33,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/clients/twitter/base.ts",
+                "additions": 114,
+                "deletions": 90
+              },
+              {
+                "path": "packages/core/src/core/database.ts",
+                "additions": 27,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/core/types.ts",
+                "additions": 4,
+                "deletions": 0
+              },
+              {
+                "path": "packages/supabase/migrations/20240318103238_remote_schema.sql",
+                "additions": 7,
+                "deletions": 0
+              },
+              {
+                "path": "packages/supabase/postgres-schema.sql",
+                "additions": 5,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "metadiver",
+    "score": 0,
+    "summary": "Metadiver is actively contributing to the @ai16z/agent project by replacing ts-node with tsx through a pull request that has been merged, addressing issue #288. Their focus remains on improving documentation and package development within this GitHub repository over the past 90 days.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/75746881?u=9cbc69308cdc7f4e4e6726a41ad0e30354fea448&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 292,
+            "title": "replace ts-node with tsx on @ai16z/agent - fix #288",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-13T15:14:42Z",
+            "updated_at": "2024-11-14T08:24:42Z",
+            "body": "replace ts-node with tsx on @ai16z/agent\r\n\r\n<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\n[Issue #288](https://github.com/ai16z/eliza/issues/288)\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\nLow \u2013 This change impacts only the TypeScript execution environment by replacing `ts-node` with `tsx`, improving compatibility without affecting core functionality.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\n- Replaces `ts-node` with `tsx` to provide better support for handling `.ts` files within the Node.js environment.\r\n\r\n## What kind of change is this?\r\n\r\n- Bug fixes (non-breaking change that fixes an issue).\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n\r\n## Why are we doing this? Any context or related work?\r\n\r\nReplacing `ts-node` with `tsx` resolves an issue with `pnpm start` failing due to `.ts` file handling issues in this environment setup.\r\n\r\n# Documentation changes needed?\r\n\r\n- My changes require a change to the project documentation.\r\n- I have updated the documentation accordingly.\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nStart by verifying the setup instructions and running `pnpm start` to confirm the fix.\r\n\r\n## Detailed testing steps\r\n\r\n1. Install dependencies with `pnpm i`.\r\n2. Run `pnpm start`.\r\n3. Confirm that the application starts without errors.\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n",
+            "files": [
+              {
+                "path": ".gitignore",
+                "additions": 2,
+                "deletions": 1
+              },
+              {
+                "path": "README_CN.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/README_CN.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/docs/api/_media/README_CN.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/docs/guides/local-development.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/docs/quickstart.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/agent/package.json",
+                "additions": 7,
+                "deletions": 7
+              },
+              {
+                "path": "packages/agent/src/index.ts",
+                "additions": 6,
+                "deletions": 3
+              },
+              {
+                "path": "packages/core/package.json",
+                "additions": 2,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-solana/src/actions/transfer.ts",
+                "additions": 246,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-solana/src/index.ts",
+                "additions": 13,
+                "deletions": 9
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 319,
+                "deletions": 34
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "leomercier",
+                "body": "<img width=\"708\" alt=\"Screenshot 2024-11-13 at 17 27 12\" src=\"https://github.com/user-attachments/assets/0430af1a-e559-4b3a-a365-b4befd624650\">\r\n\r\nCould not pull down to test so created new branch"
+              },
+              {
+                "author": "metadiver",
+                "body": "this is the right path https://github.com/metadiver/eliza.git"
+              },
+              {
+                "author": "leomercier",
+                "body": "<img width=\"977\" alt=\"Screenshot 2024-11-13 at 17 32 05\" src=\"https://github.com/user-attachments/assets/cc82e54b-4ad9-4bdd-97d4-1621f8533473\">\r\n\r\nStill no working"
+              },
+              {
+                "author": "metadiver",
+                "body": "it worked for me previously because i run 'pnpm build' before 'pnpm start'.\r\n\r\n some code was removed from core causing this issue with; 'pnpm start' \r\n https://github.com/ai16z/eliza/commit/d49f4c9af03ef9c6a95ba15db48ada674453bbb7#diff-f0f4adde46deb8e106c88cfb5dbf48155b8261ff0d73ada3429381a40e9bb3baR12 \r\n \r\nI have added the code back here and works fine without 'pnpm build'\r\n https://github.com/ai16z/eliza/pull/292/commits/e2d483e3f27f0f4759679985aefbc021caebe1a6\r\n\r\n\r\n\r\n "
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "ferric-sol",
+    "score": 0,
+    "summary": "Ferric-sol is actively improving the stability of their software by addressing potential crashes when a wallet is missing, as evidenced by one merged pull request and commit within the last 90 days. Their focus has been on enhancing packages to ensure smoother operation without any issues related to absent wallets.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/95399413?u=13d6d90da87bab24bd7f5e53266b93e9011a5c41&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "67d847461b8a5348a92ff838c1938b816e9ed42f",
+            "message": "Don't blow up if the wallet is missing",
+            "created_at": "2024-11-13T02:16:54Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 281,
+            "title": "Don't blow up if the wallet is missing",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-13T02:17:48Z",
+            "updated_at": "2024-11-13T05:55:49Z",
+            "body": "If settings is empty this blows up looking for the WALLET_PUBLIC_KEY, let's not do that\r\n\r\n  \"settings\": {\r\n    \"secrets\": {\r\n      \"WALLET_PUBLIC_KEY\": \"DM1fSD9KfdJ2jaSmR9NGpPPVcDzBwsYg1STttYc5Bvay\"\r\n    }\r\n  },",
+            "files": [
+              {
+                "path": "packages/agent/src/index.ts",
+                "additions": 1,
+                "deletions": 1
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "thearyanag",
+    "score": 0,
+    "summary": "Thearyanag is currently focusing on improving documentation and scripting within their project by adding a node version check to the README file. They have made two commits, resulting in a net increase of 9 lines of code, and successfully merged one pull request related to this enhancement.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/48391385?u=69b973169b5cf83dc86bc72d44c548ecb544628c&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 2,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "9a3f0b969fe446c0e62400a14fcfa85538aee1e6",
+            "message": "change node -v in readme",
+            "created_at": "2024-11-13T23:21:57Z",
+            "additions": 5,
+            "deletions": 5,
+            "changed_files": 5
+          },
+          {
+            "sha": "a68729bf410ee9febdec0e5c47f428a7ad9b23d9",
+            "message": "add node version check",
+            "created_at": "2024-11-13T23:19:48Z",
+            "additions": 14,
+            "deletions": 5,
+            "changed_files": 2
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 299,
+            "title": "add node version check",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-13T23:26:59Z",
+            "updated_at": "2024-11-14T09:22:53Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\nhttps://github.com/ai16z/eliza/issues/269 \r\n\r\n\r\n# Risks\r\n\r\nLow\r\n\r\n# Background\r\n\r\nCurrently the build processes continues even if the node version is less than 23 or not, which can confuse some developers trying to build, keeping in mind the warning thrown by the default node env is very minimal.\r\n\r\n## What does this PR do?\r\n\r\nThis PR aims to explicitly checks for node version and throws error during the build pro\r\n\r\n## What kind of change is this?\r\n\r\nImprovement to exisitng build flow\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\nI have updated the documentation accordingly to match the required node version. \r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nJust run the `pnpm build` cmd with node version less than `23` and greater than `23` \r\n",
+            "files": [
+              {
+                "path": "README.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "README_CN.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/README.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/README_CN.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 5,
+                "deletions": 5
+              },
+              {
+                "path": "scripts/build.sh",
+                "additions": 9,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "zongyanbin",
+    "score": 0,
+    "summary": "Zongyanbin is currently addressing an issue where the pnpm start command reports an error and cannot be started despite following installation steps outlined in the documentation. This activity falls within bug fixing, as there have been no pull requests or code changes made during this period.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/11399544?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 288,
+            "title": "pnpm start reports an error and cannot be started. Why is this? I installed it according to the documentation steps.",
+            "state": "CLOSED",
+            "created_at": "2024-11-13T11:30:21Z",
+            "updated_at": "2024-11-15T14:13:05Z",
+            "body": "**Describe the bug**\r\n\r\n\r\npnpm start reports an error and cannot be started. Why is this? I installed it according to the documentation steps.\r\n\r\n\r\n<!-- A clear and concise description of what the bug is. -->\r\n![image](https://github.com/user-attachments/assets/5bc3c344-b921-4931-8d14-f9ca046eaac1)\r\n\r\n**To Reproduce**\r\n\r\npnpm i         \r\npnpm start reports an error and cannot be started. Why is this? I installed it according to the documentation steps.\r\n           \r\n\r\n<!-- Steps to reproduce the behavior. -->\r\n\r\n**Expected behavior**\r\n\r\n<!-- A clear and concise description of what you expected to happen. -->\r\n\r\n**Screenshots**\r\n\r\n<!-- If applicable, add screenshots to help explain your problem. -->\r\n\r\n**Additional context**\r\n\r\n<!-- Add any other context about the problem here. -->\r\n![image](https://github.com/user-attachments/assets/d3aa93b3-e965-4c04-812e-073686775368)\r\n\r\n",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              },
+              {
+                "name": "documentation",
+                "color": "0075ca",
+                "description": "Improvements or additions to documentation"
+              }
+            ],
+            "comments": [
+              {
+                "author": "leomercier",
+                "body": "<img width=\"1144\" alt=\"Screenshot 2024-11-13 at 17 19 31\" src=\"https://github.com/user-attachments/assets/d83a24a0-65e5-433f-a7e2-bea6633e8f64\">\r\n\r\nSame error on updating too. "
+              },
+              {
+                "author": "Joshalphonse",
+                "body": "You may need to manage the node versions on your machine. just remove them from whatever package manager you're using either if its nvm or brew and then just install 22.11.0. See if that works"
+              },
+              {
+                "author": "metadiver",
+                "body": "This issue was introduced in this commit: [link](https://github.com/ai16z/eliza/commit/d49f4c9af03ef9c6a95ba15db48ada674453bbb7#diff-0b810c38f3c138a3d5e44854edefd5eb966617ca84e62f06511f60acc40546c7).\r\n\r\nThe 'pnpm start' command was removed from @ai16z/eliza, which causes @ai16z/agent to fail when running 'pnpm start' unless the core is already built. I pushed a fix for it below\r\n\r\nhttps://github.com/ai16z/eliza/pull/292"
+              },
+              {
+                "author": "leomercier",
+                "body": "Will look again"
+              },
+              {
+                "author": "lalalune",
+                "body": "i think this is fixed"
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "pindaroso",
+    "score": 0,
+    "summary": "Pindaroso is currently focusing on the development of a Dockerized application aimed at streamlining local development, testing, and deployment processes. With one merged pull request to date, their efforts are concentrated on enhancing packages and scripts within this project framework.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1249896?u=55560a3f8cf84e312d74bf6537d2f51273e3aac5&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 293,
+            "title": "Dockerized application for local development, testing and deployment",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-13T15:19:44Z",
+            "updated_at": "2024-11-15T11:37:30Z",
+            "body": "# Relates to:\r\n\r\nDistribution.\r\n\r\n# Risks\r\n\r\nLow. Could potentially cause confusion to those unfamiliar with Docker.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nThis PR aims to improve Eliza ergonomics by providing a one liner for getting up and running via Docker.\r\n\r\n## What kind of change is this?\r\n\r\nDevelopment or infrastructure support.\r\n\r\n## Why are we doing this? Any context or related work?\r\n\r\nImprove Eliza accessibility.\r\n\r\n# Documentation changes needed?\r\n\r\nUpdated README.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n```\r\ndocker:build\r\ndocker:run\r\ndocker:bash\r\n```\r\n\r\n# Deploy Notes\r\n\r\nWe could potentially add CI/CD. Or an official Docker image. Thoughts?\r\n\r\n## Database changes\r\n\r\nN/A",
+            "files": [
+              {
+                "path": ".gitignore",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "Dockerfile",
+                "additions": 30,
+                "deletions": 0
+              },
+              {
+                "path": "README.md",
+                "additions": 8,
+                "deletions": 0
+              },
+              {
+                "path": "package.json",
+                "additions": 6,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-direct/package.json",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "scripts/docker.sh",
+                "additions": 66,
+                "deletions": 0
+              }
+            ],
+            "reviews": [
+              {
+                "author": "ponderingdemocritus",
+                "state": "COMMENTED",
+                "body": ""
+              },
+              {
+                "author": "w1kke",
+                "state": "COMMENTED",
+                "body": ""
+              }
+            ],
+            "comments": [
+              {
+                "author": "tebayoso",
+                "body": "### Dockerfile Audit and Suggested Improvements\r\n\r\nThe current Dockerfile implementation has several areas that could be improved to enhance performance, security, and maintainability. Here\u2019s a detailed list of suggested changes:\r\n\r\n1. **No `.dockerignore` File**\r\n   - Without a `.dockerignore`, unnecessary files and folders (e.g., `.git`, `node_modules`, logs) are included in the Docker build context. This increases image size and build time.\r\n   - **Suggested Fix**: Add a `.dockerignore` file to exclude files not needed in the container.\r\n\r\n2. **Inefficient Layer Caching**\r\n   - Dependencies are installed multiple times, which prevents effective caching. Additionally, using separate `ADD` commands for configuration files results in multiple layers.\r\n   - **Suggested Fix**: Consolidate the `ADD` commands for configuration files and install dependencies in a single step. Run `pnpm i` only once after adding all configuration files.\r\n\r\n3. **Redundant `RUN pnpm i` Commands**\r\n   - Dependencies are installed three times throughout the Dockerfile, increasing build time.\r\n   - **Suggested Fix**: Install dependencies once, after copying all necessary configuration files, to streamline the build process.\r\n\r\n4. **Lack of Multi-Stage Build for Production**\r\n   - A single-stage build may result in unnecessary development dependencies being included in the final image, which increases image size and introduces security risks.\r\n   - **Suggested Fix**: Use a multi-stage build to separate build dependencies from the final production image, ensuring only essential files are included.\r\n\r\n5. **Unoptimized `CMD` Command**\r\n   - The `CMD [\"tail\", \"-f\", \"/dev/null\"]` keeps the container idle and suggests the container isn\u2019t configured to run the application.\r\n   - **Suggested Fix**: Replace `CMD` with the actual command to start the application, such as `CMD [\"pnpm\", \"start\"]`.\r\n\r\n6. **Direct Inclusion of Environment Variables (`.env` File)**\r\n   - Adding the `.env` file with `ADD` exposes sensitive information in the Docker image. This can pose security risks if the image is pushed to a registry.\r\n   - **Suggested Fix**: Use Docker secrets or pass environment variables at runtime to secure sensitive data.\r\n\r\n7. **Lack of Non-Root User**\r\n   - The container runs as the root user by default, which can lead to security vulnerabilities if exploited.\r\n   - **Suggested Fix**: Create a non-root user and run the application under this user. Example:\r\n     ```Dockerfile\r\n     RUN adduser -D appuser\r\n     USER appuser\r\n     ```\r\n\r\n8. **Missing Port Exposure**\r\n   - If the application is meant to run a service (e.g., a web server), the container should expose the relevant port.\r\n   - **Suggested Fix**: Add an `EXPOSE <port>` statement for documentation and networking purposes.\r\n\r\n9. **Lack of `.npmrc` Caching**\r\n   - If `.npmrc` contains specific registry or authentication settings, it should be added before dependency installation for caching purposes and authentication consistency.\r\n   - **Suggested Fix**: Add `.npmrc` before running `pnpm i` to leverage caching and reduce unnecessary network requests.\r\n\r\n10. **Unused `docs` Directory**\r\n    - Adding `docs` to the image increases its size without being used by the application.\r\n    - **Suggested Fix**: Remove the `docs` directory from the Dockerfile unless it\u2019s necessary for runtime.\r\n\r\n11. **Inconsistent Dependency Installation**\r\n    - Multiple installations of dependencies without clearing caches or pinning versions may lead to conflicts or unexpected updates.\r\n    - **Suggested Fix**: Ensure dependencies are installed consistently in one step, and pin specific versions where possible.\r\n\r\n12. **Missing Health Checks**\r\n    - Without a health check, monitoring systems like Kubernetes cannot accurately assess the container\u2019s health.\r\n    - **Suggested Fix**: Add a health check for better monitoring, e.g.:\r\n      ```Dockerfile\r\n      HEALTHCHECK CMD curl -f http://localhost:<port> || exit 1\r\n      ```\r\n\r\n---\r\n\r\n### Suggested Refactored Dockerfile\r\n\r\nHere\u2019s a refactored Dockerfile with the suggested improvements:\r\n\r\n```Dockerfile\r\n# Stage 1: Build dependencies in a temporary stage\r\nFROM node:22-alpine AS builder\r\n\r\n# Install required global dependencies\r\nRUN apk add --no-cache python3 make g++ \\\r\n    && npm install -g pnpm@9.4.0\r\n\r\n# Set working directory\r\nWORKDIR /app\r\n\r\n# Copy essential config files\r\nCOPY pnpm-workspace.yaml package.json .npmrc pnpm-lock.yaml ./\r\n\r\n# Install dependencies\r\nRUN pnpm install --frozen-lockfile\r\n\r\n# Copy source code\r\nCOPY tsconfig.json ./\r\nCOPY docs ./docs\r\nCOPY packages ./packages\r\nCOPY scripts ./scripts\r\nCOPY characters ./characters\r\nCOPY src ./src\r\n\r\n# Optional: build step if using TypeScript or other build process\r\n# RUN pnpm build\r\n\r\n# Stage 2: Production image\r\nFROM node:22-alpine\r\n\r\n# Install dependencies required for the final runtime\r\nRUN apk add --no-cache python3 make g++ \\\r\n    && npm install -g pnpm@9.4.0\r\n\r\n# Create a non-root user and switch to it\r\nRUN adduser -D appuser\r\nUSER appuser\r\n\r\n# Set working directory\r\nWORKDIR /app\r\n\r\n# Copy built files from the builder stage\r\nCOPY --from=builder /app /app\r\n\r\n# Expose application port if running a web server\r\nEXPOSE 3000  # Adjust port as needed\r\n\r\n# Add health check to ensure the app is running\r\nHEALTHCHECK --interval=30s --timeout=10s --start-period=5s CMD curl -f http://localhost:3000 || exit 1\r\n\r\n# Set environment variables to configure runtime model settings\r\nENV NODE_ENV=production\r\n# Add more default environment variables if needed, e.g., DISCORD_APPLICATION_ID, etc.\r\n\r\n# Default command to run the application\r\nCMD [\"pnpm\", \"start\"]"
+              },
+              {
+                "author": "w1kke",
+                "body": "Merging this in would help to reduce exposure of the developers machine to the community developed code. A huge plus for me as a developer."
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "FabriceIRANKUNDA",
+    "score": 0,
+    "summary": "FabriceIRANKUNDA is enhancing the system by adding GROK model provider key support to the `getTokenForProvider` function, as evidenced by a recent commit and merged pull request that focus on initializing missing keys. This work reflects an active engagement in improving code functionality within packages, with a single issue opened for this enhancement.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/58092199?u=d874992f941e46dd2bac784c7186f545ca4487e6&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "ae9f80e3d0044a94b45edd048c9fb9d1578535d1",
+            "message": "Added missing GROK model provider key initialization",
+            "created_at": "2024-11-13T19:30:34Z",
+            "additions": 8,
+            "deletions": 4,
+            "changed_files": 2
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 296,
+            "title": "Added missing GROK model provider key initialization",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-13T19:43:33Z",
+            "updated_at": "2024-11-13T21:36:03Z",
+            "body": "# Relates to:\r\n\r\n#295\r\n\r\n# Risks\r\n\r\n**Low:** This change is low risk, as it only introduces a new case for an additional model provider in an existing switch statement. \r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nThis PR adds initialization for the `GROK` model provider key in the `getTokenForProvider` function. Previously, the function did not handle the `GROK` model provider, potentially leading to issues if the provider was selected without a corresponding key.\r\n\r\n## What kind of change is this?\r\n\r\n- **Feature:** This is a non-breaking change that adds functionality by supporting a new model provider (`GROK`).\r\n\r\n# Documentation changes needed?\r\n\r\nYes\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nThe review should focus on the `getTokenForProvider` function in the relevant file, ensuring that the added `GROK` case aligns with the structure of other model provider cases.\r\n\r\n## Detailed testing steps\r\n\r\n- Confirm that selecting `ModelProviderName.GROK` successfully returns the appropriate API key from `character.settings?.secrets?.GROK_API_KEY` or `settings.GROK_API_KEY`.\r\n\r\n\r\n# Deploy Notes\r\n\r\nNo special deployment instructions.\r\n\r\n## Database changes\r\n\r\nNone.\r\n\r\n## Deployment instructions\r\n\r\nStandard deployment steps apply.",
+            "files": [
+              {
+                "path": ".gitignore",
+                "additions": 2,
+                "deletions": 1
+              },
+              {
+                "path": "packages/agent/src/index.ts",
+                "additions": 6,
+                "deletions": 3
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 295,
+            "title": "Add GROK Model Provider Key Support in `getTokenForProvider` Function",
+            "state": "CLOSED",
+            "created_at": "2024-11-13T19:39:55Z",
+            "updated_at": "2024-11-15T14:10:55Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\r\n\r\nCurrently, the `getTokenForProvider` function does not handle the `GROK` model provider, which leads to issues when attempting to use this provider without an initialized key.\r\n\r\n**Describe the solution you'd like**\r\n\r\nAdd support for the `GROK` model provider in the `getTokenForProvider` function by including a case in the switch statement that checks for a `GROK_API_KEY`.\r\n\r\n",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "mrpspring",
+    "score": 0,
+    "summary": "MrSpring is actively engaged in enhancing the documentation for a project, as evidenced by their recent rework of the project's homepage. This effort has resulted in one merged pull request focused on improving user guidance and information accessibility within the documentation area over the past 90 days.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/4329986?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 280,
+            "title": "docs homepage rework",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-13T00:52:53Z",
+            "updated_at": "2024-11-13T02:39:42Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\nImproved aesthetics on docs home page\r\n\r\n# Risks\r\n\r\nLow: Any css mistakes on other pages/etc\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nChanges home page of docs\r\n\r\n## What kind of change is this?\r\n\r\nPurely aesthetic\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nCheck out home page\r\n\r\nBefore:\r\n<img width=\"1484\" alt=\"Screenshot 2024-11-12 at 4 51 39\u202fPM\" src=\"https://github.com/user-attachments/assets/0fc3fd7b-89c5-4e94-81e0-558a53a8137a\">\r\n\r\n\r\nAfter:\r\n<img width=\"1496\" alt=\"Screenshot 2024-11-12 at 4 50 53\u202fPM\" src=\"https://github.com/user-attachments/assets/7de479d1-7d2c-4b8e-a75f-50d589d02059\">\r\n\r\n",
+            "files": [
+              {
+                "path": "docs/src/components/HomepageFeatures/index.js",
+                "additions": 38,
+                "deletions": 25
+              },
+              {
+                "path": "docs/src/components/HomepageFeatures/styles.module.css",
+                "additions": 48,
+                "deletions": 0
+              },
+              {
+                "path": "docs/src/components/HomepageHeader/index.js",
+                "additions": 56,
+                "deletions": 0
+              },
+              {
+                "path": "docs/src/components/HomepageHeader/styles.module.css",
+                "additions": 132,
+                "deletions": 0
+              },
+              {
+                "path": "docs/src/css/custom.css",
+                "additions": 24,
+                "deletions": 1
+              },
+              {
+                "path": "docs/src/pages/index.js",
+                "additions": 1,
+                "deletions": 26
+              },
+              {
+                "path": "docs/static/img/blurback.png",
+                "additions": 0,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "TonySimonovsky",
+    "score": 0,
+    "summary": "TonySimonovsky is currently focusing on improving the project's documentation by addressing issues related to the Quickstart guide. He has identified that important information is missing from the guide and aims to enhance its content for better user understanding. No pull requests or code changes have been made during this period, with all efforts concentrated on resolving these documentation concerns.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/11939816?u=8dadd1d4ef864c5a53610ec69dd1330a59a52b4b&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 2,
+        "opened": [
+          {
+            "number": 284,
+            "title": "Quickstart guide is missing important info",
+            "state": "CLOSED",
+            "created_at": "2024-11-13T08:33:57Z",
+            "updated_at": "2024-12-14T07:31:25Z",
+            "body": "**Describe the bug**\r\n\r\nDoc pages:\r\n* https://github.com/ai16z/eliza/blob/main/docs/docs/guides/configuration.md\r\n* https://github.com/ai16z/eliza/blob/main/docs/docs/guides/basic-usage.md\r\n\r\nThis page a basic setup code but doesn't mention where to put it (folder/filename)\r\n",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              },
+              {
+                "name": "documentation",
+                "color": "0075ca",
+                "description": "Improvements or additions to documentation"
+              }
+            ],
+            "comments": [
+              {
+                "author": "odilitime",
+                "body": "Do you mean for like custom actions, db backends, and advanced config? Because the rest of the config has paths now.\r\n\r\nAlso basic-usage is gone"
+              }
+            ]
+          },
+          {
+            "number": 283,
+            "title": "Qucikstart guide doesn",
+            "state": "CLOSED",
+            "created_at": "2024-11-13T08:31:57Z",
+            "updated_at": "2024-11-13T08:32:22Z",
+            "body": "**Describe the bug**\r\n\r\n<!-- A clear and concise description of what the bug is. -->\r\n\r\n**To Reproduce**\r\n\r\n<!-- Steps to reproduce the behavior. -->\r\n\r\n**Expected behavior**\r\n\r\n<!-- A clear and concise description of what you expected to happen. -->\r\n\r\n**Screenshots**\r\n\r\n<!-- If applicable, add screenshots to help explain your problem. -->\r\n\r\n**Additional context**\r\n\r\n<!-- Add any other context about the problem here. -->\r\n",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "tebayoso",
+    "score": 0,
+    "summary": "TeBayoso is currently working on a pull request to make Zod a devdependency for the anthropic and openai packages, aiming to enhance their functionality. Despite this being their only contribution in the past 90 days, they are actively engaged in improving these projects' development processes.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/881714?u=914c2c25a5c334ce9856231f39b388d8ea990906&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 294,
+            "title": "Zod should be a devdependency of the anthropic and openai packages",
+            "state": "CLOSED",
+            "merged": false,
+            "created_at": "2024-11-13T18:33:29Z",
+            "updated_at": "2024-11-14T10:11:08Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\nNo specific issue linked, but this change relates to package dependency updates.\r\n\r\n# Risks\r\n\r\n<!--\r\nLow. This change only updates the dependencies and should not affect any functionality in the application.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nThis PR adds Zod as a dev dependency for the openAI and Anthropic packages. Zod is a TypeScript-first schema validation library used to ensure data integrity and correctness in various API requests.\r\n\r\n## What kind of change is this?\r\n\r\n<!--\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\n-->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\nThe reviewer should start by verifying that the `devDependencies` section in `package.json` includes Zod. Additionally, they should check if the existing functionality is unaffected by the change.\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n- Run `npm install` or `yarn install` to ensure Zod is correctly installed as a dev dependency.\r\n- Check if the package version of Zod is correctly listed and the project builds without issues.\r\n\r\n<!--\r\n- As [developer], run the application and check that everything compiles and works correctly.\r\n  - verify that no errors related to the new dependency are thrown.\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!--  Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!--  If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n",
+            "files": [
+              {
+                "path": "package.json",
+                "additions": 5,
+                "deletions": 3
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 11791,
+                "deletions": 15346
+              }
+            ],
+            "reviews": [
+              {
+                "author": "ponderingdemocritus",
+                "state": "COMMENTED",
+                "body": ""
+              }
+            ],
+            "comments": [
+              {
+                "author": "tebayoso",
+                "body": "Sorry this PR was intented to my fork as it is still a wip."
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "mshuffett",
+    "score": 0,
+    "summary": "mshuffett is currently focusing on enhancing the project's documentation by working on a feature related to Twitter approval integration. Although there have been no issues opened, commits made, or code changes recorded in this period, their efforts are concentrated within the 'docs' and 'packages' areas of the codebase.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1070545?u=e1b7fc4e637fae0159c232afc677054365e53ddd&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 279,
+            "title": "Feature/twitter approval",
+            "state": "CLOSED",
+            "merged": false,
+            "created_at": "2024-11-13T00:40:57Z",
+            "updated_at": "2024-11-13T23:11:39Z",
+            "body": "# Twitter Interaction Approval System\r\n\r\nThis PR adds an optional approval system for Twitter interactions, allowing manual review and approval of tweets before they are posted.\r\n\r\n## Features\r\n- SQLite-based approval queue for managing tweet approvals\r\n- Configurable timeout for pending tweets\r\n- Webhook notifications for approved/rejected tweets\r\n- Batch approval support\r\n- Type-safe API with comprehensive test coverage\r\n\r\n## Configuration Examples\r\n```typescript\r\n// Initialize with default 24-hour timeout\r\nconst queue = new ApprovalQueue();\r\n\r\n// Custom timeout and webhook notifications\r\nconst queue = new ApprovalQueue({\r\n  dbPath: './tweets.db',\r\n  defaultTimeout: 30 * 60 * 1000, // 30 minutes\r\n  webhookUrl: 'https://your-webhook.com/tweets'\r\n});\r\n\r\n// Add tweet to approval queue\r\nconst tweetId = await queue.add('Hello, Twitter!', { priority: 'high' });\r\n\r\n// Approve or reject tweets\r\nawait queue.approve(tweetId);\r\nawait queue.reject(tweetId);\r\n\r\n// List pending tweets\r\nconst pendingTweets = await queue.list('pending');\r\n```\r\n\r\n## Test Results\r\nAll tests are passing, including:\r\n- Queue management (add, list)\r\n- Approval flow (approve, reject, batch approvals)\r\n- Timeout handling\r\n- Webhook notifications\r\n- Configuration validation\r\n\r\n## Migration Guide\r\n1. Update your Twitter client initialization:\r\n```typescript\r\nimport { ApprovalQueue } from '@ai16z/client-twitter';\r\n\r\nconst approvalQueue = new ApprovalQueue();\r\nconst twitterClient = new TwitterClient({\r\n  approvalQueue,\r\n  // ... other options\r\n});\r\n```\r\n\r\n2. Handle tweet approvals:\r\n```typescript\r\n// Add tweet to queue\r\nconst tweetId = await twitterClient.queueTweet('Hello, Twitter!');\r\n\r\n// Later, approve or reject\r\nawait twitterClient.approvalQueue.approve(tweetId);\r\n```\r\n\r\n## Link to Devin run\r\nhttps://preview.devin.ai/devin/317312e92741467eaca121ebb82f0508\r\n\r\n## Testing\r\n- [x] Added comprehensive test suite\r\n- [x] All tests passing\r\n- [x] Type-safe implementation\r\n- [x] Error handling verified\r\n- [x] Webhook integration tested\r\n\r\nYou can create the PR by visiting: https://github.com/compose-ai/eliza/pull/new/feature/twitter-approval\r\n",
+            "files": [
+              {
+                "path": ".dockerignore",
+                "additions": 3,
+                "deletions": 0
+              },
+              {
+                "path": "Dockerfile",
+                "additions": 117,
+                "deletions": 0
+              },
+              {
+                "path": "docker-compose.yml",
+                "additions": 50,
+                "deletions": 0
+              },
+              {
+                "path": "docs/twitter.md",
+                "additions": 271,
+                "deletions": 0
+              },
+              {
+                "path": "package.json",
+                "additions": 2,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-discord/src/actions/joinvoice.ts",
+                "additions": 2,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-discord/src/messages.ts",
+                "additions": 5,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-discord/src/voice.ts",
+                "additions": 10,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-twitter/.mocharc.json",
+                "additions": 10,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-twitter/README.md",
+                "additions": 155,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-twitter/package.json",
+                "additions": 16,
+                "deletions": 3
+              },
+              {
+                "path": "packages/client-twitter/src/approval-queue.ts",
+                "additions": 200,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-twitter/src/base.ts",
+                "additions": 103,
+                "deletions": 2
+              },
+              {
+                "path": "packages/client-twitter/src/cli-approval.ts",
+                "additions": 83,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-twitter/src/post.ts",
+                "additions": 71,
+                "deletions": 14
+              },
+              {
+                "path": "packages/client-twitter/src/test-approval-system.ts",
+                "additions": 47,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-twitter/src/tests/approval.test.ts",
+                "additions": 244,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-twitter/src/web/approval-interface.ts",
+                "additions": 107,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-twitter/src/web/approval.html",
+                "additions": 161,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-twitter/tsconfig.json",
+                "additions": 10,
+                "deletions": 2
+              },
+              {
+                "path": "packages/client-twitter/tsconfig.test.json",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/defaultCharacter.ts",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "packages/core/src/runtime.ts",
+                "additions": 4,
+                "deletions": 4
+              },
+              {
+                "path": "packages/core/src/types.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-node/src/services/transcription.ts",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 374,
+                "deletions": 0
+              },
+              {
+                "path": "start.sh",
+                "additions": 6,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "lalalune",
+                "body": "Amazing, will review shortly. This is great."
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "oberlinstands",
+    "score": 0,
+    "summary": "Oberlinstands is currently focusing on developing a Dockerized application designed for local development, testing, and deployment processes. This initiative has resulted in one commit that improved the codebase by 112 lines while removing just one line of code to enhance functionality and maintainability. No pull requests or issues have been addressed during this period.",
+    "avatar_url": null,
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "ad6f439ff2a08c58a83b0cf3fd6d4a30829ad0b6",
+            "message": "Dockerized application for local development, testing and deployment",
+            "created_at": "2024-11-13T15:37:11Z",
+            "additions": 112,
+            "deletions": 1,
+            "changed_files": 6
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "theapesociety",
+    "score": 0,
+    "summary": "Theapesociety is currently focusing on enhancing their documentation by reworking the homepage, as evidenced by a recent commit to this task. Despite no pull requests or issues being addressed within the last 90 days, they have made significant code changes with an overall increase of +250 lines in their repository.",
+    "avatar_url": null,
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "2cd9674936fba5bc794725c01b897f3abafb196b",
+            "message": "docs homepage rework",
+            "created_at": "2024-11-13T00:46:46Z",
+            "additions": 299,
+            "deletions": 49,
+            "changed_files": 7
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  }
+]

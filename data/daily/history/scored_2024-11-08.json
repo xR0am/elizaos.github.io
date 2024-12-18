@@ -1,0 +1,805 @@
+[
+  {
+    "contributor": "lalalune",
+    "score": 0,
+    "summary": "",
+    "avatar_url": "https://avatars.githubusercontent.com/u/18633264?u=8f2bca0a3cef958bd405ea89680a9b9a0ff38f06&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 16,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "8ae01367e19c9c1369a3fcfd9ec3c4894bff4626",
+            "message": "fix a few things, comment out facts",
+            "created_at": "2024-11-08T23:35:49Z",
+            "additions": 34,
+            "deletions": 25,
+            "changed_files": 5
+          },
+          {
+            "sha": "6218818776a20addb44a9a754a1a19a53c138276",
+            "message": "dumb fix",
+            "created_at": "2024-11-08T10:44:43Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "f155c23b81c7fa8f9198f1e293add7772fa03f05",
+            "message": "rebuild lock",
+            "created_at": "2024-11-08T10:38:19Z",
+            "additions": 0,
+            "deletions": 12,
+            "changed_files": 1
+          },
+          {
+            "sha": "aaed9a1e41a6bb6cea882b6cebb5e626b1973912",
+            "message": "move dependencies to correct packages",
+            "created_at": "2024-11-08T10:37:42Z",
+            "additions": 445,
+            "deletions": 20312,
+            "changed_files": 23
+          },
+          {
+            "sha": "4693363f2f83031918e7f5eb2b8ba465562fd8a0",
+            "message": "prettier",
+            "created_at": "2024-11-08T10:09:13Z",
+            "additions": 2075,
+            "deletions": 1217,
+            "changed_files": 143
+          },
+          {
+            "sha": "8c908037fb8a8eb26604e88f1f1e27fc6738f6e0",
+            "message": "agent is responding, hurray",
+            "created_at": "2024-11-08T10:01:28Z",
+            "additions": 36,
+            "deletions": 34,
+            "changed_files": 10
+          },
+          {
+            "sha": "051e88358f622cf856eecb77561ba5eb48c009ac",
+            "message": "Many fixes",
+            "created_at": "2024-11-08T09:31:01Z",
+            "additions": 110,
+            "deletions": 100,
+            "changed_files": 22
+          },
+          {
+            "sha": "4d872c9164ff4c4ea8a69ff3fe7f030a5f9079db",
+            "message": "services registering correctly",
+            "created_at": "2024-11-08T09:05:33Z",
+            "additions": 1,
+            "deletions": 2,
+            "changed_files": 1
+          },
+          {
+            "sha": "c4669a8fdd852e6a55a879e068fe734a1ae820b6",
+            "message": "fix dev script",
+            "created_at": "2024-11-08T06:42:58Z",
+            "additions": 0,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "81e111a7ca7663a864eab87eaae54fea3e7277fc",
+            "message": "fix build crashy things",
+            "created_at": "2024-11-08T06:36:14Z",
+            "additions": 41,
+            "deletions": 42,
+            "changed_files": 5
+          },
+          {
+            "sha": "dc6fd51dac3bc4b01a2de361883cc17d6e613e79",
+            "message": "fix service issues",
+            "created_at": "2024-11-08T06:32:12Z",
+            "additions": 76,
+            "deletions": 71,
+            "changed_files": 9
+          },
+          {
+            "sha": "34ec47ef05ba0dc7158bcb269511429ff8c255b8",
+            "message": "change doc paths and rebuild docs",
+            "created_at": "2024-11-08T06:13:56Z",
+            "additions": 23088,
+            "deletions": 1825,
+            "changed_files": 106
+          },
+          {
+            "sha": "16dd73d4220c0028bcc40c06c7f10db38365d5a6",
+            "message": "update docs",
+            "created_at": "2024-11-08T06:12:21Z",
+            "additions": 1295,
+            "deletions": 11810,
+            "changed_files": 167
+          },
+          {
+            "sha": "8b230e97279ce98a641d3338cbfa78f13130c60e",
+            "message": "build is building",
+            "created_at": "2024-11-08T05:42:02Z",
+            "additions": 181,
+            "deletions": 188,
+            "changed_files": 45
+          },
+          {
+            "sha": "86c4ab279603ab388b9d7a0437b98b5591c91061",
+            "message": "Merge pull request #233 from ai16z/docs\n\nupdate docs",
+            "created_at": "2024-11-08T05:30:42Z",
+            "additions": 5487,
+            "deletions": 12179,
+            "changed_files": 176
+          },
+          {
+            "sha": "c38e021e2d3f5b4a70ab78d52b66a567450e0c6e",
+            "message": "everything is moved mostly, but still some build package issues",
+            "created_at": "2024-11-08T04:56:13Z",
+            "additions": 1354,
+            "deletions": 1193,
+            "changed_files": 103
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 235,
+            "title": "Move all models to model providers in a plugin",
+            "state": "OPEN",
+            "created_at": "2024-11-08T04:22:09Z",
+            "updated_at": "2024-11-09T01:55:46Z",
+            "body": "Right now we are stacking all of our model data into the ModelProvider abstraction we have, which selects by name and has some defaults.\r\n\r\nWe probably want to make an abstraction that can be selected/registered by the user and automatically handled for json and ts by the agent package.\r\n\r\nSomething like this, for each model, then we can register the model provider with the agent.\r\n\r\n```\r\ntype ModelProvider = {\r\n    endpoint: string;\r\n    settings: {\r\n        [key: string]: any;\r\n    };\r\n    model: {\r\n        [key in ModelClass]: string;\r\n    };\r\n    generateText(runtime: IAgentRuntime, context: string, modelClass: ModelClass, stop?: string[] ): Promise<string>;\r\n    generateImage(runtime: IAgentRuntime, prompt: string, width: number, height: number, count?: number): Promise<string[]>;\r\n    embed(runtime: IAgentRuntime, input: string): Promise<number[]>;\r\n}\r\n\r\nexport const OpenAIModelProvider: ModelProvider = {\r\n    endpoint: \"https://api.openai.com/v1\",\r\n    settings: {\r\n        stop: [],\r\n        maxInputTokens: 128000,\r\n        maxOutputTokens: 8192,\r\n        frequency_penalty: 0.0,\r\n        presence_penalty: 0.0,\r\n        temperature: 0.6,\r\n    },\r\n    model: {\r\n        [ModelClass.SMALL]: \"gpt-4o-mini\",\r\n        [ModelClass.MEDIUM]: \"gpt-4o\",\r\n        [ModelClass.LARGE]: \"gpt-4o\",\r\n        [ModelClass.EMBEDDING]: \"text-embedding-3-small\",\r\n        [ModelClass.IMAGE]: \"dall-e-3\",\r\n    },\r\n    generateText: async (runtime, context, modelClass, stop) => {\r\n        if (!context) {\r\n            console.error(\"generateText context is empty\");\r\n            return \"\";\r\n        }\r\n    \r\n        const provider = runtime.modelProvider;\r\n        const endpoint =\r\n            runtime.character.modelEndpointOverride || models[provider].endpoint;\r\n        const model = models[provider].model[modelClass];\r\n        const temperature = models[provider].settings.temperature;\r\n        const frequency_penalty = models[provider].settings.frequency_penalty;\r\n        const presence_penalty = models[provider].settings.presence_penalty;\r\n        const max_context_length = models[provider].settings.maxInputTokens;\r\n        const max_response_length = models[provider].settings.maxOutputTokens;\r\n    \r\n        const apiKey = runtime.token;\r\n    \r\n        try {\r\n            elizaLogger.log(\r\n                `Trimming context to max length of ${max_context_length} tokens.`\r\n            );\r\n            context = await trimTokens(context, max_context_length, \"gpt-4o\");\r\n        \r\n            const _stop = stop || models[provider].settings.stop;\r\n            elizaLogger.log(\r\n                `Using provider: ${provider}, model: ${model}, temperature: ${temperature}, max response length: ${max_response_length}`\r\n            );\r\n            elizaLogger.log(\"Initializing OpenAI model.\");\r\n            const openai = createOpenAI({ apiKey, baseURL: endpoint });\r\n\r\n            const { text: openaiResponse } = await aiGenerateText({\r\n                model: openai.languageModel(model),\r\n                prompt: context,\r\n                system:\r\n                    runtime.character.system ??\r\n                    settings.SYSTEM_PROMPT ??\r\n                    undefined,\r\n                temperature: temperature,\r\n                maxTokens: max_response_length,\r\n                frequencyPenalty: frequency_penalty,\r\n                presencePenalty: presence_penalty,\r\n            });\r\n\r\n            const response = openaiResponse;\r\n            elizaLogger.log(\"Received response from OpenAI model.\");\r\n    \r\n            return response;\r\n        } catch (error) {\r\n            elizaLogger.error(\"Error in generateText:\", error);\r\n            throw error;\r\n        }\r\n    },\r\n    generateImage: (runtime, prompt, width, height, count) => generateImage({ runtime, prompt, width, height, count }),\r\n    embed: (runtime, input) => embed(runtime, input),\r\n}\r\n```",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "madjin",
+    "score": 0,
+    "summary": "",
+    "avatar_url": "https://avatars.githubusercontent.com/u/32600939?u=cdcf89f44c7a50906c7a80d889efa85023af2049&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 4,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "770da8da46c4d378b2cbbd0da9c8533175a9b8ab",
+            "message": "update api docs",
+            "created_at": "2024-11-08T04:31:48Z",
+            "additions": 3058,
+            "deletions": 3032,
+            "changed_files": 64
+          },
+          {
+            "sha": "ad42d93a1de55ceb45e4e4ad6501bc79198572ff",
+            "message": "update api docs",
+            "created_at": "2024-11-08T03:57:30Z",
+            "additions": 762,
+            "deletions": 1099,
+            "changed_files": 144
+          },
+          {
+            "sha": "2861dbbf75a8588f6b1e84efca4287727fb26ba5",
+            "message": "update api docs",
+            "created_at": "2024-11-08T03:51:12Z",
+            "additions": 9121,
+            "deletions": 95,
+            "changed_files": 141
+          },
+          {
+            "sha": "d30d0a6e4929f1f9ad2fee78a425cc005922c069",
+            "message": "update docs",
+            "created_at": "2024-11-08T03:45:35Z",
+            "additions": 1521,
+            "deletions": 16928,
+            "changed_files": 174
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 233,
+            "title": "update docs",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-08T03:46:42Z",
+            "updated_at": "2024-11-08T05:30:44Z",
+            "body": "Fixed issues with API typedoc generation, cleaned up working dir",
+            "files": [
+              {
+                "path": "docs/README_CN.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/_category_.yml",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/_media/eliza_banner.jpg",
+                "additions": 0,
+                "deletions": 0
+              },
+              {
+                "path": "docs/api/classes/AgentRuntime.md",
+                "additions": 602,
+                "deletions": 218
+              },
+              {
+                "path": "docs/api/classes/DatabaseAdapter.md",
+                "additions": 755,
+                "deletions": 328
+              },
+              {
+                "path": "docs/api/classes/DirectClient.md",
+                "additions": 12,
+                "deletions": 12
+              },
+              {
+                "path": "docs/api/classes/DiscordClient.md",
+                "additions": 7,
+                "deletions": 1422
+              },
+              {
+                "path": "docs/api/classes/MemoryManager.md",
+                "additions": 258,
+                "deletions": 86
+              },
+              {
+                "path": "docs/api/classes/PostgresDatabaseAdapter.md",
+                "additions": 413,
+                "deletions": 413
+              },
+              {
+                "path": "docs/api/classes/SqlJsDatabaseAdapter.md",
+                "additions": 0,
+                "deletions": 807
+              },
+              {
+                "path": "docs/api/classes/SqliteDatabaseAdapter.md",
+                "additions": 644,
+                "deletions": 351
+              },
+              {
+                "path": "docs/api/classes/SupabaseDatabaseAdapter.md",
+                "additions": 0,
+                "deletions": 808
+              },
+              {
+                "path": "docs/api/classes/TelegramClient.md",
+                "additions": 4,
+                "deletions": 4
+              },
+              {
+                "path": "docs/api/classes/TokenProvider.md",
+                "additions": 68,
+                "deletions": 68
+              },
+              {
+                "path": "docs/api/classes/TwitterInteractionClient.md",
+                "additions": 100,
+                "deletions": 1515
+              },
+              {
+                "path": "docs/api/classes/TwitterPostClient.md",
+                "additions": 96,
+                "deletions": 1511
+              },
+              {
+                "path": "docs/api/classes/TwitterSearchClient.md",
+                "additions": 94,
+                "deletions": 1509
+              },
+              {
+                "path": "docs/api/classes/WalletProvider.md",
+                "additions": 8,
+                "deletions": 8
+              },
+              {
+                "path": "docs/api/classes/_category_.yml",
+                "additions": 0,
+                "deletions": 2
+              },
+              {
+                "path": "docs/api/concepts.md",
+                "additions": 0,
+                "deletions": 75
+              },
+              {
+                "path": "docs/api/docs/_category_.yml",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/docs/index.md",
+                "additions": 0,
+                "deletions": 137
+              },
+              {
+                "path": "docs/api/docs/modules.md",
+                "additions": 0,
+                "deletions": 7
+              },
+              {
+                "path": "docs/api/enumerations/Clients.md",
+                "additions": 15,
+                "deletions": 15
+              },
+              {
+                "path": "docs/api/enumerations/GoalStatus.md",
+                "additions": 7,
+                "deletions": 7
+              },
+              {
+                "path": "docs/api/enumerations/ImageGenModel.md",
+                "additions": 7,
+                "deletions": 7
+              },
+              {
+                "path": "docs/api/enumerations/ModelClass.md",
+                "additions": 15,
+                "deletions": 15
+              },
+              {
+                "path": "docs/api/enumerations/ModelProvider.md",
+                "additions": 39,
+                "deletions": 39
+              },
+              {
+                "path": "docs/api/enums/GoalStatus.md",
+                "additions": 0,
+                "deletions": 25
+              },
+              {
+                "path": "docs/api/enums/_category_.yml",
+                "additions": 0,
+                "deletions": 2
+              },
+              {
+                "path": "docs/api/functions/_category_.yml",
+                "additions": 0,
+                "deletions": 2
+              },
+              {
+                "path": "docs/api/functions/addHeader.md",
+                "additions": 16,
+                "deletions": 15
+              },
+              {
+                "path": "docs/api/functions/addLore.md",
+                "additions": 0,
+                "deletions": 29
+              },
+              {
+                "path": "docs/api/functions/buyToken.md",
+                "additions": 7,
+                "deletions": 7
+              },
+              {
+                "path": "docs/api/functions/composeActionExamples.md",
+                "additions": 15,
+                "deletions": 14
+              },
+              {
+                "path": "docs/api/functions/composeContext.md",
+                "additions": 21,
+                "deletions": 17
+              },
+              {
+                "path": "docs/api/functions/createAgentRuntime.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/createAndBuyToken.md",
+                "additions": 10,
+                "deletions": 10
+              },
+              {
+                "path": "docs/api/functions/createDirectRuntime.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/createGoal.md",
+                "additions": 13,
+                "deletions": 15
+              },
+              {
+                "path": "docs/api/functions/createRelationship.md",
+                "additions": 15,
+                "deletions": 16
+              },
+              {
+                "path": "docs/api/functions/embed.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/formatActionConditions.md",
+                "additions": 0,
+                "deletions": 23
+              },
+              {
+                "path": "docs/api/functions/formatActionNames.md",
+                "additions": 11,
+                "deletions": 13
+              },
+              {
+                "path": "docs/api/functions/formatActions.md",
+                "additions": 11,
+                "deletions": 13
+              },
+              {
+                "path": "docs/api/functions/formatActors.md",
+                "additions": 13,
+                "deletions": 14
+              },
+              {
+                "path": "docs/api/functions/formatEvaluatorConditions.md",
+                "additions": 0,
+                "deletions": 23
+              },
+              {
+                "path": "docs/api/functions/formatEvaluatorExampleConditions.md",
+                "additions": 0,
+                "deletions": 23
+              },
+              {
+                "path": "docs/api/functions/formatEvaluatorExampleDescriptions.md",
+                "additions": 11,
+                "deletions": 13
+              },
+              {
+                "path": "docs/api/functions/formatEvaluatorExamples.md",
+                "additions": 11,
+                "deletions": 13
+              },
+              {
+                "path": "docs/api/functions/formatEvaluatorNames.md",
+                "additions": 11,
+                "deletions": 13
+              },
+              {
+                "path": "docs/api/functions/formatEvaluators.md",
+                "additions": 11,
+                "deletions": 13
+              },
+              {
+                "path": "docs/api/functions/formatGoalsAsString.md",
+                "additions": 11,
+                "deletions": 14
+              },
+              {
+                "path": "docs/api/functions/formatLore.md",
+                "additions": 0,
+                "deletions": 23
+              },
+              {
+                "path": "docs/api/functions/formatMessages.md",
+                "additions": 13,
+                "deletions": 15
+              },
+              {
+                "path": "docs/api/functions/formatPosts.md",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "docs/api/functions/formatRelationships.md",
+                "additions": 14,
+                "deletions": 16
+              },
+              {
+                "path": "docs/api/functions/formatTimestamp.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/generateCaption.md",
+                "additions": 5,
+                "deletions": 5
+              },
+              {
+                "path": "docs/api/functions/generateImage.md",
+                "additions": 9,
+                "deletions": 9
+              },
+              {
+                "path": "docs/api/functions/generateMessageResponse.md",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "docs/api/functions/generateObject.md",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "docs/api/functions/generateObjectArray.md",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "docs/api/functions/generateShouldRespond.md",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "docs/api/functions/generateText.md",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "docs/api/functions/generateTextArray.md",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "docs/api/functions/generateTrueOrFalse.md",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "docs/api/functions/getActorDetails.md",
+                "additions": 13,
+                "deletions": 15
+              },
+              {
+                "path": "docs/api/functions/getEndpoint.md",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "docs/api/functions/getFormattedActions.md",
+                "additions": 0,
+                "deletions": 23
+              },
+              {
+                "path": "docs/api/functions/getGoals.md",
+                "additions": 19,
+                "deletions": 18
+              },
+              {
+                "path": "docs/api/functions/getImageGenModel.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/getLore.md",
+                "additions": 0,
+                "deletions": 28
+              },
+              {
+                "path": "docs/api/functions/getModel.md",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "docs/api/functions/getProviders.md",
+                "additions": 19,
+                "deletions": 15
+              },
+              {
+                "path": "docs/api/functions/getRelationship.md",
+                "additions": 16,
+                "deletions": 17
+              },
+              {
+                "path": "docs/api/functions/getRelationships.md",
+                "additions": 13,
+                "deletions": 15
+              },
+              {
+                "path": "docs/api/functions/getTokenForProvider.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/initializeClients.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/initializeDatabase.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/isCreateAndBuyContent.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/loadActionConfigs.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/loadCharacters.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/loadCustomActions.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/parseArguments.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/parseJSONObjectFromText.md",
+                "additions": 0,
+                "deletions": 27
+              },
+              {
+                "path": "docs/api/functions/parseJsonArrayFromText.md",
+                "additions": 0,
+                "deletions": 26
+              },
+              {
+                "path": "docs/api/functions/retrieveCachedEmbedding.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/sellToken.md",
+                "additions": 8,
+                "deletions": 8
+              },
+              {
+                "path": "docs/api/functions/splitChunks.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/startDiscord.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/startTelegram.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/startTwitter.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/trimTokens.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/updateGoal.md",
+                "additions": 13,
+                "deletions": 15
+              },
+              {
+                "path": "docs/api/globals.md",
+                "additions": 0,
+                "deletions": 156
+              },
+              {
+                "path": "docs/api/index.md",
+                "additions": 158,
+                "deletions": 137
+              },
+              {
+                "path": "docs/api/interfaces/Account.md",
+                "additions": 47,
+                "deletions": 23
+              },
+              {
+                "path": "docs/api/interfaces/Action.md",
+                "additions": 37,
+                "deletions": 19
+              },
+              {
+                "path": "docs/api/interfaces/ActionExample.md",
+                "additions": 14,
+                "deletions": 12
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "cgallic",
+    "score": 0,
+    "summary": "",
+    "avatar_url": "https://avatars.githubusercontent.com/u/4923619?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 237,
+            "title": "On PNPM Install this happens",
+            "state": "CLOSED",
+            "created_at": "2024-11-08T17:31:11Z",
+            "updated_at": "2024-12-14T07:29:14Z",
+            "body": "packages/core postinstall$ npx playwright install-deps && npx playwright install\r\n\u2502 Installing dependencies...\r\n\u2502 Switching to root user to install dependencies...\r\n\u2502 Get:1 http://nova.clouds.archive.ubuntu.com/ubuntu lunar InRelease [267 kB]\r\n\u2502 Get:2 http://nova.clouds.archive.ubuntu.com/ubuntu lunar-updates InRelease [109 kB]\r\n\u2502 Get:3 http://nova.clouds.archive.ubuntu.com/ubuntu lunar-backports InRelease [99.9 kB]\r\n\u2502 Hit:4 http://security.ubuntu.com/ubuntu lunar-security InRelease\r\n\u2502 Fetched 475 kB in 1s (421 kB/s)\r\n\u2502 Reading package lists...\r\n\u2502 Reading package lists...\r\n\u2502 Building dependency tree...\r\n\u2502 Reading state information...\r\n\u2502 E: Unable to locate package libasound2t64\r\n\u2502 E: Unable to locate package libatk-bridge2.0-0t64\r\n\u2502 E: Couldn't find any package by glob 'libatk-bridge2.0-0t64'\r\n\u2502 E: Couldn't find any package by regex 'libatk-bridge2.0-0t64'\r\n\u2502 E: Unable to locate package libatk1.0-0t64\r\n\u2502 E: Couldn't find any package by glob 'libatk1.0-0t64'\r\n\u2502 E: Couldn't find any package by regex 'libatk1.0-0t64'\r\n\u2502 E: Unable to locate package libatspi2.0-0t64\r\n\u2502 E: Couldn't find any package by glob 'libatspi2.0-0t64'\r\n\u2502 E: Couldn't find any package by regex 'libatspi2.0-0t64'\r\n\u2502 E: Unable to locate package libcups2t64\r\n\u2502 E: Unable to locate package libglib2.0-0t64\r\n\u2502 E: Couldn't find any package by glob 'libglib2.0-0t64'\r\n\u2502 E: Couldn't find any package by regex 'libglib2.0-0t64'\r\n\u2502 E: Unable to locate package libgtk-3-0t64\r\n\u2502 E: Unable to locate package libicu74\r\n\u2502 E: Unable to locate package libevent-2.1-7t64\r\n\u2502 E: Couldn't find any package by glob 'libevent-2.1-7t64'\r\n\u2502 E: Couldn't find any package by regex 'libevent-2.1-7t64'\r\n\u2502 E: Unable to locate package libpng16-16t64\r\n\u2502 E: Unable to locate package libvpx9\r\n\u2502 Failed to install browser dependencies\r\n\u2502 Error: Installation process exited with code: 100\r\n\u2514\u2500 Failed in 7s at /home/ubuntu/dev/eliza/packages/core\r\n\u2009ELIFECYCLE\u2009 Command failed with exit code 1.\r\n\u2009\r\n\u2009\r\n\u2009Getting this error",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": [
+              {
+                "author": "cgallic",
+                "body": "Using Ubuntu \r\nDistributor ID: Ubuntu\r\nDescription:    Ubuntu 23.04\r\nRelease:        23.04\r\nCodename:       lunar"
+              },
+              {
+                "author": "lalalune",
+                "body": "Try this:\r\n```\r\nsudo apt-get update\r\nsudo apt-get install build-essential\r\n```\r\n\r\nMight be some underlying system dependencies You might also need to install `ffmpeg`"
+              },
+              {
+                "author": "bathrobe",
+                "body": "same, the add'l installs don't help. i'm on pop!_os"
+              },
+              {
+                "author": "lalalune",
+                "body": "Error is `npx playwright install-deps && npx playwright install`, I can think of a fix"
+              },
+              {
+                "author": "cgallic",
+                "body": "https://github.com/microsoft/playwright/issues/23296 Think this is it since I was on Ubuntu 23"
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  }
+]

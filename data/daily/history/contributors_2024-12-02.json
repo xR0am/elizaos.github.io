@@ -1,0 +1,1999 @@
+[
+  {
+    "contributor": "lalalune",
+    "score": 0,
+    "summary": "Lalalune is actively merging pull requests to enhance the project's functionality, focusing on integrating new language models (LLM) providers, optimizing Docker usage, and fixing issues related to character JSON files and system tests. The developer has made significant code changes in the agent packages area while addressing V2-related bugs through issue resolution.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/18633264?u=8f2bca0a3cef958bd405ea89680a9b9a0ff38f06&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 21,
+        "total_prs": 4,
+        "commits": [
+          {
+            "sha": "5d763e09968bc5cc99fe15ac57ca47d9aa71644a",
+            "message": "Merge pull request #786 from ProphetX10/main\n\nUpdate generation.ts to fix TOGETHER/LLAMACLOUD image generation",
+            "created_at": "2024-12-02T09:42:25Z",
+            "additions": 43,
+            "deletions": 17,
+            "changed_files": 1
+          },
+          {
+            "sha": "539d2b2a9a765c1e440ca76601ae2374999b411d",
+            "message": "Merge pull request #785 from tomguluson92/main\n\nfixs: uuid compatible for number",
+            "created_at": "2024-12-02T09:28:24Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "5bc62141cfb6e33c5b1d444b3541617647eb60b0",
+            "message": "Merge pull request #784 from xwxtwd/fix/character_json_file_plugins_field\n\nfix: When the plugins field in the .character.json file is configured with plugin name.",
+            "created_at": "2024-12-02T07:47:49Z",
+            "additions": 10,
+            "deletions": 3,
+            "changed_files": 2
+          },
+          {
+            "sha": "8f4e2643dcb1a5aafb25267e80d22e7e12fd044a",
+            "message": "Merge pull request #781 from ai16z/shaw/update-default-character\n\nfeat: Update default character",
+            "created_at": "2024-12-02T02:00:14Z",
+            "additions": 292,
+            "deletions": 251,
+            "changed_files": 2
+          },
+          {
+            "sha": "3803f0de11605c77a78bf6c883fa7c61550093f9",
+            "message": "Merge pull request #782 from Phala-Network/optimize-docker\n\nrefactor: refactor dockerfile to reduce image and build time",
+            "created_at": "2024-12-02T01:52:56Z",
+            "additions": 46,
+            "deletions": 21,
+            "changed_files": 1
+          },
+          {
+            "sha": "c039664f2ad924da19cc38940c970098c9ff23a8",
+            "message": "fix system and fix test",
+            "created_at": "2024-12-02T01:51:46Z",
+            "additions": 3,
+            "deletions": 3,
+            "changed_files": 2
+          },
+          {
+            "sha": "e5a083f9420a86204c5c9ac21414479e2902097e",
+            "message": "update default character and test",
+            "created_at": "2024-12-02T01:39:18Z",
+            "additions": 4,
+            "deletions": 5,
+            "changed_files": 2
+          },
+          {
+            "sha": "07aa51c2c6dea000166c689869b60e2997931fed",
+            "message": "update default character",
+            "created_at": "2024-12-02T01:26:49Z",
+            "additions": 289,
+            "deletions": 247,
+            "changed_files": 1
+          },
+          {
+            "sha": "1ae26c3b667f1b54211085d796d2a41c780ede55",
+            "message": "Merge pull request #777 from ai16z/shaw/refactor-image-interface\n\nFix: Refactor image interface and update to move llama cloud -> together provider",
+            "created_at": "2024-12-02T01:11:36Z",
+            "additions": 139,
+            "deletions": 74,
+            "changed_files": 7
+          },
+          {
+            "sha": "45d3c8fa871686bb83e7e6f76de7ce59631432e7",
+            "message": "smol fixes",
+            "created_at": "2024-12-02T01:11:13Z",
+            "additions": 7,
+            "deletions": 12,
+            "changed_files": 2
+          },
+          {
+            "sha": "dadef5babd0204d559103338c7e8dd943fa60402",
+            "message": "Merge pull request #776 from Freytes/main\n\nCreate docker-setup.md",
+            "created_at": "2024-12-02T00:37:09Z",
+            "additions": 107,
+            "deletions": 0,
+            "changed_files": 1
+          },
+          {
+            "sha": "97a25369077054e63995b4823ec0c93860d5492c",
+            "message": "fix some refactor on image interface and add together provider",
+            "created_at": "2024-12-02T00:36:26Z",
+            "additions": 135,
+            "deletions": 78,
+            "changed_files": 6
+          },
+          {
+            "sha": "2a9010ee8d97f3d60cb84a7b3ed9bd54a5b8a0c7",
+            "message": "Merge branch 'main' of https://github.com/tomguluson92/eliza into HEAD",
+            "created_at": "2024-12-02T00:28:48Z",
+            "additions": 32,
+            "deletions": 19,
+            "changed_files": 3
+          },
+          {
+            "sha": "ba21ec834ff2a21d669893442683ba0fd5d50772",
+            "message": "Merge branch 'realitySpiral/coinbaseCharity' of https://github.com/Sifchain/sa-eliza into HEAD",
+            "created_at": "2024-12-02T00:25:23Z",
+            "additions": 585,
+            "deletions": 382,
+            "changed_files": 63
+          },
+          {
+            "sha": "84466c483e95e96883ccedf5885106daab47afa8",
+            "message": "Merge branch 'fix/character-voice-settings' of https://github.com/augchan42/eliza into HEAD",
+            "created_at": "2024-12-02T00:18:21Z",
+            "additions": 201,
+            "deletions": 155,
+            "changed_files": 6
+          },
+          {
+            "sha": "9acc0fbe4a7f43ccbd14eebf10b4c4cbed9ebe0b",
+            "message": "Merge pull request #746 from shelvenzhou/tee-doc\n\nadd simulator tutor for plugin-tee docs",
+            "created_at": "2024-12-02T00:08:46Z",
+            "additions": 13,
+            "deletions": 77,
+            "changed_files": 2
+          },
+          {
+            "sha": "b4c395add467508427bb7ee8372f35fe2d932082",
+            "message": "Merge pull request #775 from ai16z/shaw-add-llms\n\nMerge more model providers and fix issues",
+            "created_at": "2024-12-02T00:08:27Z",
+            "additions": 0,
+            "deletions": 0,
+            "changed_files": 0
+          },
+          {
+            "sha": "cbd77e515f7c66118d9b0db3fc1c077700ad8a70",
+            "message": "Merge branch 'tbh/more-providers' of https://github.com/btspoony/eliza into shaw-add-llms",
+            "created_at": "2024-12-02T00:06:42Z",
+            "additions": 0,
+            "deletions": 0,
+            "changed_files": 0
+          },
+          {
+            "sha": "a62c8f4d81fd94e065e81f35f4cc19642e397ded",
+            "message": "Merge pull request #774 from ai16z/shaw-add-llms\n\nIntegrate more LLMs, fix case issue in switch",
+            "created_at": "2024-12-02T00:05:55Z",
+            "additions": 61,
+            "deletions": 8,
+            "changed_files": 5
+          },
+          {
+            "sha": "eb1203874aeb12e28ede9348a0b9c3fd273a3323",
+            "message": "fix case block issue",
+            "created_at": "2024-12-02T00:04:57Z",
+            "additions": 2,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "0ccf382a861d85dff1c75080940873c52a357170",
+            "message": "Fix merge conflicts with new llm providers",
+            "created_at": "2024-12-02T00:01:23Z",
+            "additions": 59,
+            "deletions": 7,
+            "changed_files": 5
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 781,
+            "title": "feat: Update default character",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-02T01:27:27Z",
+            "updated_at": "2024-12-02T02:00:16Z",
+            "body": "This PR updates the default character to be a more interesting and detailed example",
+            "files": [
+              {
+                "path": "packages/core/src/defaultCharacter.ts",
+                "additions": 289,
+                "deletions": 248
+              },
+              {
+                "path": "packages/core/src/tests/defaultCharacters.test.ts",
+                "additions": 3,
+                "deletions": 3
+              }
+            ],
+            "reviews": [
+              {
+                "author": "monilpat",
+                "state": "APPROVED",
+                "body": "LGTM! Thanks @lalalune :) "
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 777,
+            "title": "fix: Refactor image interface and update to move llama cloud -> together provider",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-02T00:39:13Z",
+            "updated_at": "2024-12-02T01:11:38Z",
+            "body": "This PR integrates https://github.com/ai16z/eliza/pull/752 and also updates to move TOGETHER to not be LLAMA_CLOUD since we have lots of llama clouds now :)",
+            "files": [
+              {
+                "path": "agent/src/index.ts",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/generation.ts",
+                "additions": 30,
+                "deletions": 23
+              },
+              {
+                "path": "packages/core/src/models.ts",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/tests/generation.test.ts",
+                "additions": 56,
+                "deletions": 46
+              },
+              {
+                "path": "packages/core/src/types.ts",
+                "additions": 2,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-image-generation/src/environment.ts",
+                "additions": 0,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-image-generation/src/index.ts",
+                "additions": 29,
+                "deletions": 5
+              }
+            ],
+            "reviews": [
+              {
+                "author": "monilpat",
+                "state": "COMMENTED",
+                "body": ""
+              },
+              {
+                "author": "monilpat",
+                "state": "COMMENTED",
+                "body": "Thanks so much for getting this out! Great work! :) "
+              },
+              {
+                "author": "monilpat",
+                "state": "APPROVED",
+                "body": "LGTM! If there is a way to update the test plan with a quick test run or screen grab would be amazing otherwise good to go :) "
+              },
+              {
+                "author": "lalalune",
+                "state": "COMMENTED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 775,
+            "title": "Merge more model providers and fix issues",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-02T00:08:20Z",
+            "updated_at": "2024-12-02T00:08:28Z",
+            "body": "Merges https://github.com/ai16z/eliza/pull/747 and fixes some issues",
+            "files": [],
+            "reviews": [],
+            "comments": []
+          },
+          {
+            "number": 774,
+            "title": "Integrate more LLMs, fix case issue in switch",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-02T00:05:46Z",
+            "updated_at": "2024-12-02T00:05:57Z",
+            "body": "This PR merges https://github.com/ai16z/eliza/pull/747 and fixes a case issue on generation for switching",
+            "files": [
+              {
+                "path": ".env.example",
+                "additions": 3,
+                "deletions": 0
+              },
+              {
+                "path": "agent/src/index.ts",
+                "additions": 10,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/generation.ts",
+                "additions": 6,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/models.ts",
+                "additions": 38,
+                "deletions": 7
+              },
+              {
+                "path": "packages/core/src/types.ts",
+                "additions": 4,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 2,
+        "opened": [
+          {
+            "number": 780,
+            "title": "`pnpm run dev` does not work out of the box",
+            "state": "CLOSED",
+            "created_at": "2024-12-02T01:14:38Z",
+            "updated_at": "2024-12-14T07:36:19Z",
+            "body": "Right now, `pnpm run dev` is not working properly with turbo.\r\n\r\nWhat we want is for dev to start all packages in watch mode with turbo so that the monorepo can automatically update dependencies downstream while developing, i.e. a watch mode that doesn't require a rebuild.",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": [
+              {
+                "author": "fabianhug",
+                "body": "check this, I've found some type error in the postgres adapter, but am not sure if I mixed up something on my end:\r\n\r\nhttps://github.com/ai16z/eliza/pull/788 \r\n\r\n@lalalune "
+              },
+              {
+                "author": "Hdpbilly",
+                "body": "> check this, I've found some type error in the postgres adapter, but am not sure if I mixed up something on my end:\r\n> \r\n> #788\r\n> \r\n> @lalalune\r\n\r\nI believe it is due to improper usage of the plpgsql function get_embedding_dimension() which is attempting to use dynamic type modifier. \r\n\r\nParticularly in the postgres schemaL\r\n```\r\nCREATE OR REPLACE FUNCTION get_embedding_dimension()\r\nRETURNS INTEGER AS $$\r\nBEGIN\r\n    -- Check for OpenAI first\r\n    IF current_setting('app.use_openai_embedding', TRUE) = 'true' THEN\r\n        RETURN 1536;  -- OpenAI dimension\r\n    -- Then check for Ollama\r\n    ELSIF current_setting('app.use_ollama_embedding', TRUE) = 'true' THEN\r\n        RETURN 1024;  -- Ollama mxbai-embed-large dimension\r\n    ELSE\r\n        RETURN 384;   -- BGE/Other embedding dimension\r\n    END IF;\r\nEND;\r\n$$ LANGUAGE plpgsql;\r\n```"
+              },
+              {
+                "author": "hamedf62",
+                "body": "> > check this, I've found some type error in the postgres adapter, but am not sure if I mixed up something on my end:\r\n> > #788\r\n> > @lalalune\r\n> \r\n> I believe it is due to improper usage of the plpgsql function get_embedding_dimension() which is attempting to use dynamic type modifier.\r\n> \r\n> Particularly in the postgres schemaL\r\n> \r\n> ```\r\n> CREATE OR REPLACE FUNCTION get_embedding_dimension()\r\n> RETURNS INTEGER AS $$\r\n> BEGIN\r\n>     -- Check for OpenAI first\r\n>     IF current_setting('app.use_openai_embedding', TRUE) = 'true' THEN\r\n>         RETURN 1536;  -- OpenAI dimension\r\n>     -- Then check for Ollama\r\n>     ELSIF current_setting('app.use_ollama_embedding', TRUE) = 'true' THEN\r\n>         RETURN 1024;  -- Ollama mxbai-embed-large dimension\r\n>     ELSE\r\n>         RETURN 384;   -- BGE/Other embedding dimension\r\n>     END IF;\r\n> END;\r\n> $$ LANGUAGE plpgsql;\r\n> ```\r\n\r\nthis is the critical issue would be solve as pgsql doesn't accept dynamic modifiers.\r\n\r\nas i checked in supabase you have define 3 different memories table for different embedding dimensions, and same required in PostgreSQL."
+              }
+            ]
+          },
+          {
+            "number": 778,
+            "title": "Remove LLAMA_CLOUD and warn users to switch to TOGETHER or another provider",
+            "state": "OPEN",
+            "created_at": "2024-12-02T01:12:12Z",
+            "updated_at": "2024-12-14T07:38:00Z",
+            "body": "We have deprecated LLAMA_CLOUD since we have a lot of llama cloud options now-- it's called TOGETHER instead\r\n\r\nAdd a character file validation check to warn the user that \"llama_cloud\" is no longer an option and they should switch to together -- let's warn but do the change so it doesn't error, like a deprecation warning.",
+            "labels": [
+              {
+                "name": "V2",
+                "color": "1670F6",
+                "description": "Eliza 0.2.0"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "shakkernerd",
+    "score": 0,
+    "summary": "Shakkernerd is actively enhancing the development workflow by improving build processes and error detection within scripts. Recent efforts include merging pull requests for Docker fixes, updating TypeScript configurations, and introducing new commands to streamline package building and dev operations. The focus has been on refining code quality with a net increase of 138 lines in the repository's script, agent, and packages areas over the past 90 days.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/165377636?u=5560dd9f2d310e1ba61dbba864006a951391a582&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 10,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "d3ee3a133e1cce7b8925334711cd1e4347f42167",
+            "message": "Merge pull request #796 from rarepepi/docker-fix\n\nfix: Docker default non-interactive mode for Cloud instances",
+            "created_at": "2024-12-02T22:00:03Z",
+            "additions": 4,
+            "deletions": 2,
+            "changed_files": 2
+          },
+          {
+            "sha": "ecb4f8f972d426389ee2d717a7af3d48c7cfc0de",
+            "message": "Merge pull request #793 from ai16z/fix/dev_command\n\nfix: dev command",
+            "created_at": "2024-12-02T19:32:25Z",
+            "additions": 113,
+            "deletions": 45,
+            "changed_files": 30
+          },
+          {
+            "sha": "23796683994b2f9e352c0d4449b4d5ac28e929b4",
+            "message": "feat: enhanced the dev script",
+            "created_at": "2024-12-02T19:23:52Z",
+            "additions": 34,
+            "deletions": 6,
+            "changed_files": 1
+          },
+          {
+            "sha": "069c40e5f7fa44419196f57acca12db414768d2e",
+            "message": "chore: tsconfig to extend from parent",
+            "created_at": "2024-12-02T19:06:04Z",
+            "additions": 3,
+            "deletions": 10,
+            "changed_files": 1
+          },
+          {
+            "sha": "e6d0283fd52ab8370d4812944e28ecc85960f4ef",
+            "message": "fix: build command",
+            "created_at": "2024-12-02T19:05:46Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "c89563bc020f0b21a69599b706534f2edfbdf1cd",
+            "message": "fix: added missing dev commands",
+            "created_at": "2024-12-02T18:57:56Z",
+            "additions": 15,
+            "deletions": 5,
+            "changed_files": 10
+          },
+          {
+            "sha": "74ed2c11fed3fe0d7ecc4182d0c89dd917a175a9",
+            "message": "feat: dev script to build packages first and run dev command",
+            "created_at": "2024-12-02T18:55:07Z",
+            "additions": 44,
+            "deletions": 13,
+            "changed_files": 1
+          },
+          {
+            "sha": "75859b0939ab1c5cd2a755aea878e950aabe9713",
+            "message": "feat: added dev:build command and changed dev command",
+            "created_at": "2024-12-02T18:54:18Z",
+            "additions": 2,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "ed7f90119a20d97efd22bf5f3ea878e95e5ef988",
+            "message": "fix: dev command with esm build and dts",
+            "created_at": "2024-12-02T18:50:57Z",
+            "additions": 16,
+            "deletions": 16,
+            "changed_files": 16
+          },
+          {
+            "sha": "751329c9225f692379284caad24b0bac7f1a85e1",
+            "message": "chore: ts-node config for error detection",
+            "created_at": "2024-12-02T18:39:55Z",
+            "additions": 5,
+            "deletions": 0,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 793,
+            "title": "fix: dev command",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-02T19:11:36Z",
+            "updated_at": "2024-12-02T19:32:27Z",
+            "body": "",
+            "files": [
+              {
+                "path": "agent/tsconfig.json",
+                "additions": 5,
+                "deletions": 0
+              },
+              {
+                "path": "package.json",
+                "additions": 2,
+                "deletions": 1
+              },
+              {
+                "path": "packages/adapter-sqljs/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/adapter-supabase/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-auto/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-direct/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-discord/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-farcaster/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-github/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-telegram/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-twitter/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-0g/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-bootstrap/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-buttplug/package.json",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-coinbase/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-conflux/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-evm/package.json",
+                "additions": 2,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-goat/package.json",
+                "additions": 2,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-icp/package.json",
+                "additions": 2,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-image-generation/package.json",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-node/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-solana/package.json",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-starknet/package.json",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-tee/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-trustdb/package.json",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-video-generation/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-web-search/package.json",
+                "additions": 2,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-whatsapp/package.json",
+                "additions": 2,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-whatsapp/tsconfig.json",
+                "additions": 3,
+                "deletions": 10
+              },
+              {
+                "path": "scripts/dev.sh",
+                "additions": 72,
+                "deletions": 13
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "MarcoMandar",
+    "score": 0,
+    "summary": "MarcoMandar is actively developing a Telegram trading bot, as evidenced by his recent commits to add TG_TRADER functionality and fix swap type errors while establishing user trust on the first message interaction. His work primarily focuses on enhancing packages within the project's codebase.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/70625671?u=88aeaa8b5ed43a818bdac96843f2fd40c0abf8ff&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 2,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "6b8a9c430d3c7de8322ca835f844bafc84a23655",
+            "message": "add TG_TRADER\n\nSigned-off-by: MarcoMandar <malicemandar@gmail.com>",
+            "created_at": "2024-12-02T23:26:04Z",
+            "additions": 66,
+            "deletions": 57,
+            "changed_files": 2
+          },
+          {
+            "sha": "4dfcf8cd26c70a1fbf00c039bb794a48f752b4b0",
+            "message": "fix swap type error, create user trust on first message in telegram\n\nSigned-off-by: MarcoMandar <malicemandar@gmail.com>",
+            "created_at": "2024-12-02T23:12:33Z",
+            "additions": 92,
+            "deletions": 34,
+            "changed_files": 4
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 800,
+            "title": "fix: swap type error, create user trust on first message in telegram",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-02T23:13:22Z",
+            "updated_at": "2024-12-03T00:08:01Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\n## What kind of change is this?\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "packages/client-telegram/src/getOrCreateRecommenderInBe.ts",
+                "additions": 40,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-telegram/src/telegramClient.ts",
+                "additions": 31,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-solana/src/evaluators/trust.ts",
+                "additions": 28,
+                "deletions": 29
+              },
+              {
+                "path": "packages/plugin-solana/src/providers/simulationSellingService.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-solana/src/providers/trustScoreProvider.ts",
+                "additions": 1,
+                "deletions": 4
+              }
+            ],
+            "reviews": [
+              {
+                "author": "shakkernerd",
+                "state": "APPROVED",
+                "body": "Looks good!"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "HashWarlock",
+    "score": 0,
+    "summary": "HashWarlock is currently focused on optimizing Dockerfile configurations, successfully reducing image size from 6GB to 3GB while also cutting build time by half. This effort has resulted in a single merged pull request and one commit that collectively improved the codebase efficiency with a net gain of +46 lines of code changes.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/64296537?u=3aba9462fb28d3b01bdc8ac888817386b6bf3266&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "10215bb5916bf8be266bed96c0dd71fed373d6b9",
+            "message": "refactor: refactor dockerfile to reduce image from 6GB to 3GB and cut build time in half",
+            "created_at": "2024-12-02T01:22:24Z",
+            "additions": 46,
+            "deletions": 21,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 782,
+            "title": "refactor: refactor dockerfile to reduce image and build time",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-02T01:36:20Z",
+            "updated_at": "2024-12-02T01:52:56Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\nLow, only pertains to docker users\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\nCurrently, the developer experience for using docker is bad. Build times can take up to 30 minutes and image size is at 6GB. Reducing this pain point is key for more developer adoption.\r\n## What does this PR do?\r\nThis PR accomplishes the following:\r\n- Reduces the Docker image size from 6GB to 3.49GB\r\n- Cuts the Docker build time in half\r\n   - Tested on a Intel TDX Server (188s to 70s)\r\n   - Mac M1 Max (688.9s to 327.4s) \r\n## What kind of change is this?\r\nImprovements (refactor Dockerfile)\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\nMy changes do not require a change to the project documentation.\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n- (Build) On mac m series `docker buildx build --platform linux/amd64 -t eliza .`\r\n- (Build) On linux/amd64 `docker build -t eliza .`\r\n- (Build & Start) `pnpm docker`\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "Dockerfile",
+                "additions": 46,
+                "deletions": 21
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "xwxtwd",
+    "score": 0,
+    "summary": "xwxtwd is actively working on improving the stability and functionality of their software by addressing issues related to character JSON file plugins. They have successfully merged a fix for an error that occurs when running the program, specifically focusing on the 'plugins' field in the .character.json configuration files. Their efforts are concentrated within the agent and packages code areas.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/3345621?u=b4ca21dd3ff0961c42a12fb15574e3bdfb779bea&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 2,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "59c8c306c63470efb19d080e3fe6ed146b148f5f",
+            "message": "Merge branch 'Main' into fix/character_json_file_plugins_field\n\n# Conflicts:\n#\tagent/src/index.ts",
+            "created_at": "2024-12-02T07:00:51Z",
+            "additions": 66740,
+            "deletions": 7694,
+            "changed_files": 864
+          },
+          {
+            "sha": "ee4f4c8a685a24ab821217c5600351d5ca0d590e",
+            "message": "fix: Fix the issue where running the program throws an error when the plugins field in the .character.json file is configured with plugin names.",
+            "created_at": "2024-12-02T06:33:30Z",
+            "additions": 10,
+            "deletions": 3,
+            "changed_files": 2
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 784,
+            "title": "fix: When the plugins field in the .character.json file is configured with plugin name.",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-02T06:53:30Z",
+            "updated_at": "2024-12-02T07:47:49Z",
+            "body": "Fix the issue where running the program throws an error when the plugins field in the .character.json file is configured with plugin names.\r\n\r\n<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\nN/A \r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\nLow.\r\n\r\n1. May impact existing character configurations relying on specific plugin behaviors.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nThis PR fixes an issue where the application would throw an error when the plugins field in the .character.json file was configured with plugin names (strings). The change ensures that plugin names are properly handled during runtime without requiring additional manual configuration.\r\n\r\n## What kind of change is this?\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\nBug fixes (non-breaking change which fixes an issue)\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\nNo.\r\nThe change aligns the behavior with the expected functionality, so no additional documentation updates are required.\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nStart by reviewing the changes to the code responsible for loading and processing the plugins field in .character.json.\r\n\r\n## Detailed testing steps\r\n\r\n\t1.\tCreate a .character.json file with the plugins field configured as an array of plugin names (e.g., [\"pluginA\", \"pluginB\"]).\r\n\t2.\tStart the application and ensure no errors occur during runtime.\r\n\t3.\tVerify that the listed plugins are loaded and functional.\r\n\t4.\tTest with an empty plugins array and verify proper behavior.\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "agent/src/index.ts",
+                "additions": 6,
+                "deletions": 2
+              },
+              {
+                "path": "packages/core/src/enviroment.ts",
+                "additions": 4,
+                "deletions": 1
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "jkbrooks",
+    "score": 0,
+    "summary": "jkbrooks is actively merging pull requests into the project, as evidenced by two recent commits from contributors tomguluson92 and mike0295. Despite no open or merged PRs and issues during this period, there has been a net decrease in code changes with an addition of 84 lines and removal of 144 lines.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/129074?u=4cd0bf499a885dd922e04d57e805c88f7c6dd4f9&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 2,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "3ac811606533d749dfd908280f9a2d0d14151e28",
+            "message": "Merge pull request #787 from tomguluson92/main\n\nfix: enviroment -> environment",
+            "created_at": "2024-12-02T20:08:51Z",
+            "additions": 17,
+            "deletions": 17,
+            "changed_files": 26
+          },
+          {
+            "sha": "e8067c12207cf326fe76c5850bac16792bd9ec60",
+            "message": "Merge pull request #789 from mike0295/main\n\nchore: update README_KOR.md to match latest README.md",
+            "created_at": "2024-12-02T20:08:02Z",
+            "additions": 67,
+            "deletions": 127,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "twilwa",
+    "score": 0,
+    "summary": "Twilwa is currently focused on enhancing message threading and handling to reduce repetition, as evidenced by their recent activity on GitHub. They have proposed one issue related to this enhancement but have not yet completed any pull requests or commits in the last 90 days. Their efforts are concentrated on improving user experience through more efficient communication features within the project they're contributing to.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/111034762?u=0d3eed7c5f6e6fd4ddee24801aae9f88b0330380&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 783,
+            "title": "enhancement: Improve message threading and handling to reduce repetition",
+            "state": "CLOSED",
+            "created_at": "2024-12-02T06:13:51Z",
+            "updated_at": "2024-12-14T07:37:14Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\r\n\r\nCurrently when agents use the CONTINUE action, they can generate multiple separate messages with identical context instead of properly continuing the conversation thread. This leads to \"spammy\" behavior and redundant responses.\r\n\r\nCurrent Behavior:\r\n\r\nAgent generates new separate messages for continuations\r\nContext gets repeated across continuation messages\r\nNo proper message threading/revision system\r\nBasic inReplyTo linking that doesn't prevent duplicates\r\n\r\nProposed Solution:\r\n\r\nEnhance Content type to support threading:\r\n```\r\ninterface Content {\r\n  text: string;\r\n  action?: string;\r\n  isContinuation?: boolean; \r\n  parentMessageId?: UUID;\r\n  revision?: number;\r\n}\r\n```\r\nUpdate MemoryManager to handle message revisions/updates\r\nModify CONTINUE action to update existing messages rather than create new ones\r\nAdd thread management while preserving room-based organization\r\nImplementation Steps:\r\n\r\nAdd message threading support to AgentRuntime\r\nEnhance MemoryManager with revision tracking\r\nUpdate CONTINUE action handler to use thread metadata\r\nAdd validation to prevent duplicate continuations\r\nImplement message update logic instead of creating new messages\r\n\r\nFiles to Modify:\r\n\r\n/packages/core/src/runtime.ts\r\n/packages/plugin-bootstrap/src/actions/continue.ts\r\n/packages/core/src/types.ts\r\n\r\nRelated Components:\r\n\r\nMessageManager\r\nMemoryManager\r\nAgentRuntime\r\nContinueAction\r\n\r\nI'll grab this tomorrow if i get a chance",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": [
+              {
+                "author": "augchan42",
+                "body": "was also tracking this issue (discord code, but happens in tg too), here's analysis from Sonnet:\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nYes, looking at the flow, the double replies could be happening because of how the callback is handled. Here's the sequence:\r\n\r\n1. First call:\r\n```typescript\r\nconst responseMessages = await callback(responseContent);\r\n```\r\n\r\n2. Then the callback is passed to `processActions`:\r\n```typescript\r\nawait this.runtime.processActions(\r\n    memory,\r\n    responseMessages,\r\n    state,\r\n    callback  // <-- Same callback passed here\r\n);\r\n```\r\n\r\n3. Inside `processActions`, the action handler might call the callback again:\r\n```typescript\r\nawait action.handler(this, message, state, {}, callback);\r\n```\r\n\r\nTo fix this, you could:\r\n\r\n1. Either modify the callback to be single-use:\r\n```typescript:packages/client-discord/src/messages.ts\r\nconst createCallback = () => {\r\n    let used = false;\r\n    return async (content: Content, files: any[]) => {\r\n        if (used) {\r\n            elizaLogger.warn(\"Callback already used, skipping\");\r\n            return [];\r\n        }\r\n        used = true;\r\n        // ... rest of callback logic ...\r\n    };\r\n};\r\n\r\nconst callback = createCallback();\r\n```\r\n\r\n2. Or create separate callbacks for the initial response and actions:\r\n```typescript:packages/client-discord/src/messages.ts\r\nconst responseMessages = await callback(responseContent);\r\n\r\n// Create a new callback for actions that doesn't create memories\r\nconst actionCallback: HandlerCallback = async (content: Content, files: any[]) => {\r\n    try {\r\n        if (!content?.text.trim()) {\r\n            elizaLogger.warn(\"Skipping empty content\");\r\n            return [];\r\n        }\r\n        return await sendMessageInChunks(\r\n            message.channel as TextChannel,\r\n            content.text,\r\n            message.id,\r\n            files\r\n        );\r\n    } catch (error) {\r\n        console.error(\"Error in action callback:\", error);\r\n        return [];\r\n    }\r\n};\r\n\r\nawait this.runtime.processActions(\r\n    memory,\r\n    responseMessages,\r\n    state,\r\n    actionCallback\r\n);\r\n```\r\n\r\nThe second approach might be better as it makes the distinction between response handling and action handling clearer.\r\n"
+              },
+              {
+                "author": "odilitime",
+                "body": "isContinuation seems redundant, can\u2019t the parentMessageId be enough?"
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "denizekiz",
+    "score": 0,
+    "summary": "Denizekiz is currently addressing a bug related to the search.ts file, as evidenced by their recent activity on GitHub over the past 90 days. Despite no pull requests or code changes being made during this period, they have engaged in issue resolution efforts within the project.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/11015340?u=2dc9559a163771af8405dbfdb6be22ca5c27c25a&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 794,
+            "title": "search.ts not working",
+            "state": "OPEN",
+            "created_at": "2024-12-02T19:27:32Z",
+            "updated_at": "2024-12-02T19:27:32Z",
+            "body": "**Describe the bug**\r\nSearch function in twitter-client throws error, reading runtime variables in base.ts\r\n \r\n \r\n**To Reproduce**\r\nComment out\r\n\r\n this.search = new TwitterSearchClient(runtime);\r\n\r\n**Expected behavior**\r\n\r\n**Screenshot\r\n![bugreport](https://github.com/user-attachments/assets/30fedcec-dd1e-4075-aa63-443b75c39a1a)\r\nots**\r\n",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "tomguluson92",
+    "score": 0,
+    "summary": "Tomguluson92 is actively working on improving code compatibility by making UUIDs number-compatible and updating environment references from 'enviroment' to 'environment'. With a focus on documentation and packages, they have contributed two merged pull requests and made equal additions and deletions in their recent commits.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/19585240?u=4a4465656050747dee79f5f97a8b61cf2fbc97e1&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 2,
+        "total_prs": 2,
+        "commits": [
+          {
+            "sha": "d413c49df4319588a7e5e24e655703c7580168f1",
+            "message": "fixs: enviroment -> environment",
+            "created_at": "2024-12-02T09:48:05Z",
+            "additions": 17,
+            "deletions": 17,
+            "changed_files": 26
+          },
+          {
+            "sha": "942271ae39e96892c9a6ca2ca2ba71e5feda49fb",
+            "message": "uuid compatible for number",
+            "created_at": "2024-12-02T09:22:49Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 787,
+            "title": "fix: enviroment -> environment",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-02T09:51:03Z",
+            "updated_at": "2024-12-02T20:08:51Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to: plugins/docs/core\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\nmedium\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\n\r\nfix enviroment -> environment\r\n\r\n## What does this PR do?\r\n\r\nTidy all enviroment problems\r\n\r\n## What kind of change is this?\r\n\r\nTypo fix\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "docs/api/functions/validateCharacterConfig.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/functions/validateEnv.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/type-aliases/CharacterConfig.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/type-aliases/EnvConfig.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/variables/CharacterSchema.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/api/variables/envSchema.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-discord/src/environment.ts",
+                "additions": 0,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-github/src/environment.ts",
+                "additions": 0,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-github/src/index.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-telegram/src/environment.ts",
+                "additions": 0,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-telegram/src/index.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-twitter/src/environment.ts",
+                "additions": 0,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-twitter/src/index.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/src/environment.ts",
+                "additions": 0,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/index.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-buttplug/src/environment.ts",
+                "additions": 0,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-buttplug/src/index.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-node/src/environment.ts",
+                "additions": 0,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-node/src/services/speech.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-solana/src/environment.ts",
+                "additions": 0,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-starknet/src/actions/subdomain.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-starknet/src/actions/swap.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-starknet/src/actions/takeOrder.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-starknet/src/actions/transfer.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-starknet/src/actions/unruggable.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-starknet/src/environment.ts",
+                "additions": 0,
+                "deletions": 0
+              }
+            ],
+            "reviews": [
+              {
+                "author": "monilpat",
+                "state": "APPROVED",
+                "body": "LGTM "
+              },
+              {
+                "author": "jkbrooks",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 785,
+            "title": "fixs: uuid compatible for number",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-02T09:26:33Z",
+            "updated_at": "2024-12-02T09:28:24Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to: Core/uuid\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n\r\n# Risks\r\nLow\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\n\r\nFor compatible about uuid input: string and number.\r\n\r\nThere are two options:\r\n\r\none is to delete `number` compatible and remove the number2string code snippet.\r\nThe other is my way, only to input a handler at input parameter to make number is also a feasible input.\r\n\r\n## What does this PR do?\r\n\r\nstring and number both ok for UUID.\r\n\r\n## What kind of change is this?\r\n\r\nBug fixes\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "packages/core/src/uuid.ts",
+                "additions": 1,
+                "deletions": 1
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "meppsilon",
+    "score": 0,
+    "summary": "Meppsilon is currently enhancing the Eliza project by adding a hyperbolic API to its functionality. This recent commit has resulted in an overall positive code change, improving the agent and packages components within the software. Despite only one pull request being opened in the last 90 days, meppsilon's contribution is significant with a net increase of 23 lines of code.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/7850658?u=ec765fe24a201ff7f55bc0e92a2297002e2c98b0&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "16b9a05de46d418e0a6fcbaae2c9de8683ec4516",
+            "message": "Add hyperbolic api to eliza",
+            "created_at": "2024-12-02T21:53:58Z",
+            "additions": 42,
+            "deletions": 19,
+            "changed_files": 5
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 797,
+            "title": "feat: add hyperbolic api to eliza",
+            "state": "CLOSED",
+            "merged": false,
+            "created_at": "2024-12-02T22:01:06Z",
+            "updated_at": "2024-12-03T19:15:15Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\nLow\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nAdds Hyperbolic API support in Eliza\r\n\r\n## What kind of change is this?\r\n\r\nFeatures (non-breaking change which adds functionality)\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\nThese changes will require documentation change to include Hyperbolic as a model provider.\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": ".env.example",
+                "additions": 2,
+                "deletions": 0
+              },
+              {
+                "path": "agent/src/index.ts",
+                "additions": 5,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/generation.ts",
+                "additions": 18,
+                "deletions": 19
+              },
+              {
+                "path": "packages/core/src/models.ts",
+                "additions": 15,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/types.ts",
+                "additions": 2,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "Freytes",
+    "score": 0,
+    "summary": "Freytes is actively contributing to the project by creating documentation, as evidenced by a recent pull request for 'docker-setup.md'. Additionally, they have made one commit that resulted in 107 lines of added code within the documentation area. Their work on enhancing Twitter Plus functionality through this PR has been merged into the main branch.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/4147278?u=89aa9570e6f8b4a8e9e41e8f908c16fb69c5a43f&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 2,
+        "commits": [
+          {
+            "sha": "b9bc90ca2eb6fc7fb90e0ef73a8942214da07255",
+            "message": "Create docker-setup.md",
+            "created_at": "2024-12-02T00:28:37Z",
+            "additions": 107,
+            "deletions": 0,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 779,
+            "title": "wip: Twitter Plus",
+            "state": "CLOSED",
+            "merged": false,
+            "created_at": "2024-12-02T01:13:59Z",
+            "updated_at": "2024-12-10T18:17:07Z",
+            "body": "# Twitter Plus\r\n\r\n## Background\r\nTwitter plus framework built with TypeScript that enables AI-driven social media interactions. The system handles automated posting, interactions, and specialized content generation while maintaining rate limits and natural behavior patterns.\r\n\r\n## Core Components\r\n\r\n### 1. base.ts\r\n- Core client functionality for Twitter interactions\r\n- Handles authentication and session management\r\n- Manages tweet caching and retrieval\r\n- Implements rate limiting and request queuing\r\n- Maintains user profile information\r\n\r\n### 2. environment.ts\r\n- Configuration schema definitions using Zod\r\n- Handles environment variable validation\r\n- Defines posting behavior configurations\r\n- Sets up interaction limits\r\n- Manages special interaction rules\r\n- Template customization settings\r\n\r\n### 3. index.ts\r\n- Main entry point for the Twitter bot\r\n- Initializes and manages different client components\r\n- Handles configuration loading\r\n- Coordinates between posting, searching, and interaction components\r\n- Error handling and cleanup procedures\r\n\r\n### 4. interactions.ts\r\n- Manages bot interactions with other users\r\n- Implements reply logic and conversation threading\r\n- Handles rate limiting for interactions\r\n- Processes special interaction cases\r\n- Tracks interaction history\r\n\r\n### 5. post.ts\r\n- Handles automated tweet creation and posting\r\n- Manages posting schedule\r\n- Implements content generation rules\r\n- Handles special post types\r\n- Maintains posting history\r\n\r\n### 6. search.ts\r\n- Implements Twitter search functionality\r\n- Processes search results\r\n- Manages engagement with search results\r\n- Handles conversation threading from search\r\n\r\n### 7. template-enhanced-client.ts\r\n- Enhanced Twitter client with template support\r\n- Manages content generation using templates\r\n- Handles different types of responses\r\n- Implements content deduplication\r\n- Manages context-aware responses\r\n\r\n### 8. template-manager.ts\r\n- Manages tweet templates and variations\r\n- Handles hashtag and emoji insertion\r\n- Implements style configurations\r\n- Manages engagement rules\r\n- Handles template selection based on context\r\n\r\n### 9. templates.ts\r\n- Defines base templates for different tweet types\r\n- Provides specialized templates for various scenarios\r\n- Implements template combination utilities\r\n- Defines response templates\r\n- Manages template selection logic\r\n\r\n## Key Features\r\n- Rate limiting and request queuing\r\n- Templated content generation\r\n- Context-aware responses\r\n- Special interaction handling\r\n- Comprehensive configuration system\r\n- Caching and optimization\r\n- Error handling and recovery\r\n- Natural behavior patterns\r\n\r\n## Testing Steps\r\n1. Configure environment variables\r\n2. Initialize the Twitter client\r\n3. Test authentication\r\n4. Verify rate limiting\r\n5. Test content generation\r\n6. Verify interaction handling\r\n7. Check template processing\r\n8. Test search functionality\r\n9. Verify posting schedule\r\n10. Check error handling\r\n\r\n## Documentation Changes Needed\r\n- Update configuration documentation\r\n- Add template creation guide\r\n- Document new interaction patterns\r\n- Update deployment instructions\r\n- Add troubleshooting guide\r\n\r\n## Risks\r\n- Rate limiting from Twitter API\r\n- Content generation quality\r\n- Authentication token management\r\n- Database load from caching\r\n- Memory usage from queue management\r\n\r\n## Socials\r\n\r\n- Discord: @neodotneo\r\n- Twitter: @filteredthought\r\n- Github: @Freytes ",
+            "files": [],
+            "reviews": [],
+            "comments": []
+          },
+          {
+            "number": 776,
+            "title": "Create docker-setup.md",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-02T00:29:28Z",
+            "updated_at": "2024-12-02T00:37:10Z",
+            "body": "Added Docker Setup Guide, based on @HowieDuhzit guide ",
+            "files": [
+              {
+                "path": "docs/docs/guides/docker-setup.md",
+                "additions": 107,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "rarepepi",
+    "score": 0,
+    "summary": "rarepepi is currently focusing on enhancing the functionality related to non-interactive mode, as evidenced by their recent commits that introduce a flag delimiter and implement a default non-interactive Docker setting for Cloud instances. Their work primarily revolves around improving agent code areas with an overall positive net change in code contributions over the past 90 days.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/16723442?u=55c3e40834d629fd28536b90572b78618cc86eec&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 2,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "e30a73401af1998056b10ec3fa8e70adefbca596",
+            "message": "add flag delimter",
+            "created_at": "2024-12-02T21:23:19Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "6735003d4119d7e57f1355600a95cf432f53e42c",
+            "message": "non-interactive mode",
+            "created_at": "2024-12-02T20:27:53Z",
+            "additions": 4,
+            "deletions": 2,
+            "changed_files": 2
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 796,
+            "title": "fix: Docker default non-interactive mode for Cloud instances",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-02T20:34:14Z",
+            "updated_at": "2024-12-16T19:57:25Z",
+            "body": "# Relates to:\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\nNo linked issue.\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n**Risk Level**: Low  \r\nAdding a new flag `non-interactive` that defaults to skipping `chat()` should not affect existing functionality unless explicitly enabled. The main risk is around unintended bypass of user input under edge cases.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nThis PR adds a `non-interactive` flag to prevent running the `chat()` function and avoid waiting for user input. This is particularly useful for environments such as Cloud platforms where interactive sessions are not feasible and can cause the application to hang.\r\n\r\nAdditionally, the `non-interactive` flag is added to the `CMD` in the Dockerfile as the default.\r\n\r\n## What kind of change is this?\r\nFeatures (non-breaking change which adds functionality)\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n## Why are we doing this? Any context or related work?\r\nRunning the application in a non-interactive environment such as Cloud platforms caused the process to hang due to waiting for terminal input. Adding this flag makes the application more robust for deployment in such scenarios.\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\nMy changes **do not** require a change to the project documentation.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n- Review the changes in the `Dockerfile` for the updated `CMD` with the `non-interactive` flag.\r\n- Review the changes in `/agent/src/index.ts` where the `non-interactive` flag is implemented and its logic for skipping `chat()`.\r\n\r\n## Detailed testing steps\r\n1. Run the application locally without the `non-interactive` flag and verify that `chat()` runs as expected.\r\n2. Run the application locally with the `non-interactive` flag and confirm it bypasses `chat()` and does not wait for user input.\r\n3. Build and run the updated Docker image to ensure the `non-interactive` flag is applied by default and prevents hanging in Cloud environments.\r\n\r\n# Deploy Notes\r\n\r\nNo special deployment steps are required. Ensure the updated Docker image is pushed to the appropriate registry.\r\n\r\n## Database changes\r\n\r\nNone.\r\n\r\n## Deployment instructions\r\n\r\nBuild and deploy the updated Docker image as usual.\r\n\r\n---\r\n\r\nLet me know if anything else needs tweaking! \ud83d\ude0a\r\n<!--\r\n## Discord username\r\n@rarepepi\r\n-->\r\n",
+            "files": [
+              {
+                "path": "Dockerfile",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "agent/src/index.ts",
+                "additions": 3,
+                "deletions": 1
+              }
+            ],
+            "reviews": [
+              {
+                "author": "odilitime",
+                "state": "APPROVED",
+                "body": ""
+              },
+              {
+                "author": "shakkernerd",
+                "state": "APPROVED",
+                "body": "A very good feature to have."
+              }
+            ],
+            "comments": [
+              {
+                "author": "odilitime",
+                "body": "One additional note from chat, this helps with AWS ECS deployments"
+              },
+              {
+                "author": "rarepepi",
+                "body": "> One additional note from chat, this helps with AWS ECS deployments\r\n\r\nFly.io deployments as well"
+              },
+              {
+                "author": "shakkernerd",
+                "body": "I really like this.\r\nThanks for adding it in!"
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "actions-user",
+    "score": 0,
+    "summary": "Actions-User is actively maintaining project documentation, as evidenced by a recent commit to update the changelog. With no pull requests or issues opened during this period, their contribution has been focused on code management and enhancement, resulting in an overall net increase of 201 lines of code over the last 90 days.",
+    "avatar_url": null,
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "f509a6f08839aaebb9879e8bdf6ffa7a6feb2ea2",
+            "message": "chore: update changelog",
+            "created_at": "2024-12-02T06:44:40Z",
+            "additions": 205,
+            "deletions": 4,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "dievardump",
+    "score": 0,
+    "summary": "Dievardump is actively improving the random selection process for actions samples, addressing issues related to proper item selection within character plugins' plugin systems. This effort includes a recent mergeable pull request and two resolved bug-related issues, resulting in a net increase of 14 lines of code changes across packages.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1753113?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "155972d15bf86f7e780a843784148326dd4a5f3a",
+            "message": "Improve actions samples random selection\n\n    Improve the action samples random selection by ensuring a bigger variety of actions are represented in the selection (as long as there is enough place, at least one example per action should be added)",
+            "created_at": "2024-12-02T22:17:58Z",
+            "additions": 21,
+            "deletions": 7,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 799,
+            "title": "refactor: Improve actions samples random selection",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-02T22:34:51Z",
+            "updated_at": "2024-12-03T02:11:40Z",
+            "body": "    Improve the action samples random selection by ensuring a bigger variety of actions are represented in the selection (as long as there is enough place, at least one example per action should be added)\r\n\r\n<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\nhttps://github.com/ai16z/eliza/issues/798\r\n\r\n# Risks\r\n\r\nlow, but it makes LLM sometimes not understand that they can trigger an action because they don't have any example corresponding\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nThis PR changes the algorithm that selects the actions examples that are sent to the model\r\n\r\n## What kind of change is this?\r\n\r\nImprovements\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n# Testing\r\n\r\nnot really testable except if you do console logs but the difference is there.",
+            "files": [
+              {
+                "path": "packages/core/src/actions.ts",
+                "additions": 21,
+                "deletions": 7
+              }
+            ],
+            "reviews": [
+              {
+                "author": "odilitime",
+                "state": "APPROVED",
+                "body": "Very smart, like the thinking "
+              },
+              {
+                "author": "shakkernerd",
+                "state": "DISMISSED",
+                "body": "Totally agree!\r\nLooks good to me."
+              },
+              {
+                "author": "shakkernerd",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": [
+              {
+                "author": "tcm390",
+                "body": "Yes, it has improved :)\r\n\r\nBut relying on randomness doesn't seem ideal to me. If we integrate the actions, we should ensure they are reliably triggerable rather than dependent on randomness."
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 2,
+        "opened": [
+          {
+            "number": 798,
+            "title": "actions examples selection does not select things properly",
+            "state": "CLOSED",
+            "created_at": "2024-12-02T22:31:56Z",
+            "updated_at": "2024-12-03T11:23:49Z",
+            "body": "**Describe the bug**\r\n\r\nthe function that selects examples of messages for actions, `composeActionExamples`, does a very poor job at selecting examples of actions for a maximum of actions available. usually very few actions really represented\r\n\r\n**To Reproduce**\r\n\r\nAdd a few actions, console log the context sent to the llm model and see there aren't many actions represented in the examples\r\n\r\n**Expected behavior**\r\n\r\nThe code should try to take \"at least one example per action\" or to have a bigger variety of action represented",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 795,
+            "title": "Plugin system in character.plugins is not working",
+            "state": "CLOSED",
+            "created_at": "2024-12-02T19:33:49Z",
+            "updated_at": "2024-12-02T19:38:46Z",
+            "body": "**Describe the bug**\r\n\r\nPlugin system in characters.plugins is not working.\r\n\r\n1) Loading the plugin\r\n\r\nWhen a character is loaded from a JSON, the code expects to find a list of path to plugins it can import.\r\n\r\n![Capture d\u2019\u00e9cran du 2024-12-02 18-57-33](https://github.com/user-attachments/assets/1a44cbb9-f175-4b62-b08a-0b6df787061a)\r\n\r\nHowever, the `validateCharacterConfig` expects the content of plugin to be an object. This can not work.\r\n\r\n**To Reproduce**\r\n\r\nAdd the path to a plugin in the `character.plugins` array\r\n\r\n**Expected behavior**\r\n\r\nPlugin is loaded rightly, actions are added to runtime, services are launched etc...",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": [
+              {
+                "author": "dievardump",
+                "body": "Has been fixed in latest code commited"
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "8times4",
+    "score": 0,
+    "summary": "Over the past 90 days, 8times4 has focused on enhancing gameplay by introducing a new feature that allows obsidian traversal within their project. This effort was encapsulated in a single pull request aimed at expanding agent capabilities and modifying packages to support this functionality. Despite these developments, there have been no merged pull requests or issues opened during this period.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/46720448?u=5ba2afd33ff4b2550dec3cf1d5031f9704cf3d63&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 792,
+            "title": "feat: add obsidian traversal",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2024-12-02T18:10:51Z",
+            "updated_at": "2024-12-14T19:52:30Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\nObsidian Traversal:\r\nhttps://github.com/ai16z/eliza/issues/302\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\nlow\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nAdds an Obsidian plugin that allows the following actions: \r\n- Search for any query and retrieve relevant context\r\n- Grab active note\r\n- Summarize active note\r\n- Grab exact file\r\n- Summarize exact file\r\n\r\n\r\n## What kind of change is this?\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nUpdates (new versions of included code)\r\n-->\r\nFeatures (non-breaking change which adds functionality)\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\nhttps://github.com/ai16z/eliza/issues/302\r\n\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\n-->\r\n\r\nTBA but will document.\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\nTBA\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "agent/package.json",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "agent/src/index.ts",
+                "additions": 2,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-obsidian/.npmignore",
+                "additions": 6,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-obsidian/eslint.config.mjs",
+                "additions": 3,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-obsidian/package.json",
+                "additions": 26,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-obsidian/src/enviroment.ts",
+                "additions": 41,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-obsidian/src/index.ts",
+                "additions": 17,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-obsidian/src/plugins/activeNote.ts",
+                "additions": 250,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-obsidian/src/plugins/file.ts",
+                "additions": 147,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-obsidian/src/providers/obsidianClient.ts",
+                "additions": 182,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-obsidian/src/templates/search.ts",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-obsidian/src/templates/summary.ts",
+                "additions": 47,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-obsidian/src/types/index.ts",
+                "additions": 61,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-obsidian/tsconfig.json",
+                "additions": 15,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-obsidian/tsup.config.ts",
+                "additions": 21,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "lalalune",
+                "body": "wowwwww this is so exciting! I assume you know, but we have an open bounty for this, DM me when its ready"
+              },
+              {
+                "author": "8times4",
+                "body": "Sorry for the delay here, I\u2019ll wrap this up soon to avoid blocking v2, - just lacked irl time"
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "fabianhug",
+    "score": 0,
+    "summary": "Fabianhug is currently focused on refactoring efforts within the project, specifically updating `package.json` and `turbo.json` to enhance build and development scripts. This activity indicates a dedication to improving the configuration for more efficient workflows in agent and packages code areas.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1196732?u=72d96269cbe1014a413d6094907878074d7890ee&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 788,
+            "title": "refactor: update `package.json` and `turbo.json` for improved build and development scripts",
+            "state": "CLOSED",
+            "merged": false,
+            "created_at": "2024-12-02T12:27:41Z",
+            "updated_at": "2024-12-02T21:48:48Z",
+            "body": "\r\n# Relates to:\r\n\r\n[pnpm run dev does not work out of the box #780](https://github.com/ai16z/eliza/issues/780)\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\nMedium. While the build system improvements work as expected, the type error in the postgres adapter could affect database operations that rely on embedding configurations. (see next)\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\n- Changed the 'dev' script in package.json to use 'turbo run dev --parallel --no-cache' for better performance\r\n- Updated turbo.json to streamline task dependencies and outputs for the 'dev' and 'build' tasks\r\n- Modified agent/package.json to point the main entry to 'dist/index.js' and adjusted scripts for building and starting the application\r\n- Enhanced core/package.json 'dev' script to specify the source file for watching during development\r\n\r\nHowever, during testing I discovered a type error that needs to be addressed in some future PR:\r\n\r\n```Module '\"@ai16z/eliza\"' has no exported member 'getEmbeddingConfig'.```\r\n\r\nThis error appears in `packages/adapter-postgres/src/index.ts` when trying to import `getEmbeddingConfig` from the core package.\r\n\r\n\r\n## What kind of change is this?\r\n\r\nImprovements (misc. changes to existing features)\r\n\r\n## Why are we doing this? Any context or related work?\r\n\r\nSee [pnpm run dev does not work out of the box #780](https://github.com/ai16z/eliza/issues/780)\r\n\r\n# Documentation changes needed?\r\n\r\nNo\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n1. Run `pnpm i`\r\n2. Run `pnpm run dev`\r\n3. Verify that all packages start building in watch mode\r\n4. Note the type error in the postgres adapter that needs to be fixed in a follow-up PR\r\n\r\n\r\n## Detailed testing steps\r\n\r\n1. Check that turbo correctly runs builds in parallel\r\n2. Verify that file changes trigger rebuilds appropriately\r\n3. Confirm that the build dependencies are working (core package builds before dependent packages)\r\n4. Note the type error in postgres adapter needs fixing:\r\n   - File: `packages/adapter-postgres/src/index.ts`\r\n   - Error: `Module '\"@ai16z/eliza\"' has no exported member 'getEmbeddingConfig'`\r\n\r\n\r\n# Deploy Notes\r\n\r\nThe type error in the postgres adapter should be fixed before deploying to prod/new release. The build system changes themselves are ready for deployment.",
+            "files": [
+              {
+                "path": "agent/package.json",
+                "additions": 7,
+                "deletions": 6
+              },
+              {
+                "path": "package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/core/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "turbo.json",
+                "additions": 6,
+                "deletions": 17
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "fabianhug",
+                "body": "found smth that needs another fix, mb "
+              },
+              {
+                "author": "fabianhug",
+                "body": "weird, it works when running multiple time but breaks at the first time.\r\nmaybe @lalalune or @cygaar can take over, as I cant finish this today"
+              },
+              {
+                "author": "shakkernerd",
+                "body": "Hi @fabianhug, the behaviour of turborepo has been really weird just as you've observed and stated above. The build config and script works as I have previously done. \r\nI also have a workaround for the dev script in #793 \r\n"
+              },
+              {
+                "author": "fabianhug",
+                "body": "> Hi @fabianhug, the behaviour of turborepo has been really weird just as you've observed and stated above. The build config and script works as I have previously done. I also have a workaround for the dev script in #793\r\n\r\nperfect - but thanks for frontrunning my contribution, haha! great it works now, nw"
+              },
+              {
+                "author": "shakkernerd",
+                "body": "> > Hi @fabianhug, the behaviour of turborepo has been really weird just as you've observed and stated above. The build config and script works as I have previously done. I also have a workaround for the dev script in #793\r\n> \r\n> perfect - but thanks for frontrunning my contribution, haha! great it works now, nw\r\n\r\nhahahahahahahahahahahahahahahahahahahahahaha\r\n\r\nI have been on this since Saturday. It was a real pain because I tried getting turborepo to work but it didn't.\r\nThanks for testing."
+              },
+              {
+                "author": "fabianhug",
+                "body": "> > > Hi @fabianhug, the behaviour of turborepo has been really weird just as you've observed and stated above. The build config and script works as I have previously done. I also have a workaround for the dev script in #793\r\n> > \r\n> > \r\n> > perfect - but thanks for frontrunning my contribution, haha! great it works now, nw\r\n> \r\n> hahahahahahahahahahahahahahahahahahahahahaha\r\n> \r\n> I have been on this since Saturday. It was a real pain because I tried getting turborepo to work but it didn't. Thanks for testing.\r\n\r\nlove u bae, closing now "
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "mike0295",
+    "score": 0,
+    "summary": "Mike0295 is currently focused on updating documentation, as evidenced by a recent commit to the README_KOR.md file. This activity involved merging one pull request that aimed to align the Korean version of the project's readme with its latest English counterpart. Despite this effort in documentation, there has been a net loss in code changes over the past 90 days.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/48646713?u=5b5e94cd8e47b1078b67d7bf6f3f3cdcd66d8e8d&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "6825e85f6f6f11d7c6e64182abae47edb3adeafe",
+            "message": "Update README_KOR.md\n\nupdate README_KOR.md to match latest README.md",
+            "created_at": "2024-12-02T15:53:37Z",
+            "additions": 67,
+            "deletions": 127,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 789,
+            "title": "chore: update README_KOR.md to match latest README.md",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-02T16:07:52Z",
+            "updated_at": "2024-12-02T20:08:02Z",
+            "body": "# Risks\r\nLow, because no code and/or instructions have changed\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nUpdates README_KOR.md to match the latest version of README.md, done by a Korean.  \r\n\r\n## What kind of change is this?\r\nImprovement\r\n\r\n## Why are we doing this? Any context or related work?\r\nLanguage Quality Assurance\r\n\r\n# Documentation changes needed?\r\nMy changes do not require a change to the project documentation.\r\n\r\n## Discord username\r\nrokseo\r\n\r\n",
+            "files": [
+              {
+                "path": "README_KOR.md",
+                "additions": 67,
+                "deletions": 127
+              }
+            ],
+            "reviews": [
+              {
+                "author": "monilpat",
+                "state": "APPROVED",
+                "body": "LGTM!"
+              },
+              {
+                "author": "jkbrooks",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "ProphetX10",
+    "score": 0,
+    "summary": "ProphetX10 is actively engaged in updating the `generation.ts` file to resolve issues related to image generation using the TOGETHER/LLAMACLOUD platform. This effort has resulted in one merged pull request and a net increase of 26 lines of code within packages, demonstrating focused work on improving this specific functionality over the past 90 days.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/3674034?u=f4dfb9585bca7236c83cd89f0be0741ed1e46976&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "195b12273919336043a16b2b620bdad3d90764d6",
+            "message": "Update generation.ts to fix TOGETHER/LLAMACLOUD image generation",
+            "created_at": "2024-12-02T09:03:11Z",
+            "additions": 43,
+            "deletions": 17,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 786,
+            "title": "Update generation.ts to fix TOGETHER/LLAMACLOUD image generation",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-02T09:35:17Z",
+            "updated_at": "2024-12-02T09:42:26Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\n\r\nFor use of LLAMACLOUD/TOGETHER via imageModelProvider: ModelProviderName.TOGETHER the API didn't appear to be correctly implemented.\r\n\r\n## What does this PR do?\r\n\r\nFixes the implementation of the together api in packages/core/src/generation.ts\r\n\r\n## What kind of change is this?\r\n\r\nBug fixes (non-breaking change which fixes an issue)\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\ntogether API call was not fetching the generated image and storing it correctly\r\n\r\n# Documentation changes needed?\r\n\r\nnone\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\ni added \" imageModelProvider: ModelProviderName.TOGETHER,\" to defaultcharacter.ts\r\nadded a together API key to the .env file along with openai key\r\n\r\nset the following\r\nDISCORD_APPLICATION_ID=\r\nDISCORD_API_TOKEN=\r\nIMAGE_GEN=TRUE            \r\nUSE_OPENAI_EMBEDDING=TRUE\r\nUSE_OLLAMA_EMBEDDING=TRUE\r\n\r\n\r\n\r\n## Where should a reviewer start?\r\n1)  .env file keys \r\n2) add \" imageModelProvider: ModelProviderName.TOGETHER,\" to defaultcharacter.ts \r\n3) set up discord bot stuff (see online instructions for this) and add to chat room\r\n3)  build & start \r\n4) test discord agent to gen an image\r\n\r\n## Detailed testing steps\r\n\r\n1)  .env file keys \r\n2) add \" imageModelProvider: ModelProviderName.TOGETHER,\" to defaultcharacter.ts \r\n3) set up discord bot stuff (see online instructions for this) and add to chat room\r\n3)  build & start \r\n4) test discord agent to gen an image\r\n\r\nthen proceeded to go to discord and asked the agent to generate an image of a cat girl\r\n\r\nwhich resulted in the following in the console log\r\n\r\n\u25ce LOGS\r\n   Generating image with prompt: \r\n   <@&1303451439787544669> draw me some anime cat girls with black hair and sparkly digital eyes \r\n\r\n \u2139 INFORMATIONS\r\n   Generating image with options: \r\n   {\"imageModelProvider\":\"black-forest-labs/FLUX.1-schnell\"} \r\n\r\n \u25ce LOGS\r\n   Image generation successful, number of images: \r\n   1 \r\n\r\n \u25ce LOGS\r\n   Processing image 1: \r\n   generated_1733131072769_0 \r\n\r\n \u25ce LOGS\r\n   Generated caption for image 1: \r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "packages/core/src/generation.ts",
+                "additions": 43,
+                "deletions": 17
+              }
+            ],
+            "reviews": [
+              {
+                "author": "lalalune",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "toddokuhawado",
+    "score": 0,
+    "summary": "Toddokuhawado is currently addressing a bug related to characters not using example posts or messages properly within the project. Despite this focused effort, there have been no pull requests, commits, or code changes made during the last 90 days in relation to this issue.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/189565300?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 791,
+            "title": "Characters Do Not Actually Use ExamplePost or ExampleMessage",
+            "state": "CLOSED",
+            "created_at": "2024-12-02T18:02:12Z",
+            "updated_at": "2024-12-14T07:36:39Z",
+            "body": "You are able to define example posts and messages in the character files, but the characters do not actually receive these in their prompt. I checked this by logging context in the generate text script, and saw that none of these examples are even included in the info sent to the agent, so it is very hard to get unique behaviors that aren't highly generic. Has anyone found a fix for this? It seems like an issue that should be fixed before more features get added.",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": [
+              {
+                "author": "tcm390",
+                "body": "Thanks for reporting this! Could you provide more details about the issue? For example, a screenshot or steps to reproduce it would be really helpful. On my side, I can see the example messages in the prompt, so any additional context would be great for troubleshooting."
+              },
+              {
+                "author": "augchan42",
+                "body": "there's two tiers of response handling - first is gating (whether to respond at all) and then if the agent chooses to respond, the full context is loaded.  So watch where you are checking for the context."
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "obsrvgmi",
+    "score": 0,
+    "summary": "obsrvgmi is currently focusing on enhancing the Eliza Framework for Autonomous Agents by working on a feature request to add support for Aptos and Move protocols, as evidenced by their recent activity of drafting an issue in this area. However, there have been no pull requests, commits, or code changes made towards implementing this enhancement within the last 90 days.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/178497648?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 790,
+            "title": "Feature Request: Add Aptos and Move Support to the Eliza Framework for Autonomous Agents",
+            "state": "CLOSED",
+            "created_at": "2024-12-02T17:52:32Z",
+            "updated_at": "2024-12-14T07:36:19Z",
+            "body": "We're building an **Autonomous Agent** using the Eliza Framework on Aptos.\r\nRight now, Eliza doesn\u2019t offer features specific to Aptos, like **wallet creation, trading,** or other opportunities available on Aptos.\r\nWe\u2019d love to help by adding support for Aptos or Move to Eliza.\r\nDescribe the solution you'd like\r\nWe\u2019d love to add an Aptos plugin to Eliza for wallet creation without human involvement, trading, and other features.\r\nWe\u2019re big believers in open source and are excited to contribute by adding Aptos Move support to Eliza!\"",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": [
+              {
+                "author": "asianviking",
+                "body": "#818"
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  }
+]

@@ -1,0 +1,70 @@
+{
+  "title": "ai16z Eliza (2024-12-18)",
+  "version": "",
+  "overview": "Development focused on package improvements (add plugin-sui), new features (process all responses actions), 3 bug fixes. with 23 contributors merging 13 PRs. Major work included various improvements.",
+  "metrics": {
+    "contributors": 23,
+    "merged_prs": 13,
+    "new_issues": 8,
+    "lines_changed": 4296
+  },
+  "changes": {
+    "features": [
+      "process all responses actions",
+      "add callback handler to runtime evaluate method",
+      "Supports upload files to AWS S3."
+    ],
+    "fixes": [
+      "telegram response memory userId to agentId",
+      "update package name in faq",
+      "update quickstart and .env.example"
+    ],
+    "chores": [
+      "947 add other evm chains to wallet"
+    ]
+  },
+  "areas": [
+    {
+      "name": "packages",
+      "files": 35,
+      "additions": 1569,
+      "deletions": 206
+    },
+    {
+      "name": "root",
+      "files": 7,
+      "additions": 1449,
+      "deletions": 974
+    },
+    {
+      "name": "docs",
+      "files": 3,
+      "additions": 80,
+      "deletions": 2
+    }
+  ],
+  "issues_summary": "working on 3 bugs including 'Don't use Privatekey secrets for automatic plugins loading.', 'Twitter Search Client Broken' and implementing 5 feature requests including 'feat: Support Fetching Character Files From Storage Service', 'Be able to use tool calling when calling generateObjectV2'",
+  "questions": [],
+  "top_contributors": [
+    {
+      "name": "shakkernerd",
+      "summary": "Shakkernerd is actively improving the project by merging pull requests related to documentation updates, heuristic model selection fixes, and development environment adjustments",
+      "areas": []
+    },
+    {
+      "name": "bmgalego",
+      "summary": "Bmgalego is actively enhancing a project by addressing memory handling issues, processing actions within responses more effectively, and improving the runtime evaluation method through callback handlers",
+      "areas": [
+        "packages"
+      ]
+    },
+    {
+      "name": "oxSaturn",
+      "summary": "oxSaturn is actively updating documentation, specifically the FAQ section and quickstart guides, to reflect changes in package naming conventions",
+      "areas": [
+        ".env.example",
+        "docs"
+      ]
+    }
+  ]
+}

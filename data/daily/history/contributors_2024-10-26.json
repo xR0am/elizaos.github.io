@@ -1,0 +1,794 @@
+[
+  {
+    "contributor": "lalalune",
+    "score": 0,
+    "summary": "Lalalune is actively improving the application's functionality by addressing issues related to character loading, environment variables, and integration with various platforms such as Twitter and Telegram. They have made significant code changes, particularly within the 'src' and 'characters' areas, while also focusing on high-priority bug fixes and enhancements in client documentation.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/18633264?u=8f2bca0a3cef958bd405ea89680a9b9a0ff38f06&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 7,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "1a5b4d90fc81e4af4abfa9ac7398d4a3a2be62fa",
+            "message": "Merge pull request #36 from wahndo/patch-1\n\nUpdate README.md",
+            "created_at": "2024-10-26T17:22:02Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "c34022e8eb9e02ed7ef083e6dec8756d713aa5f0",
+            "message": "fix swap error",
+            "created_at": "2024-10-26T17:04:06Z",
+            "additions": 5,
+            "deletions": 3,
+            "changed_files": 1
+          },
+          {
+            "sha": "0e320dbb16fb766725c6d722764a3f75774a7f85",
+            "message": "all",
+            "created_at": "2024-10-26T16:56:20Z",
+            "additions": 46,
+            "deletions": 22,
+            "changed_files": 8
+          },
+          {
+            "sha": "5dc4d1a1510ae154ff226618fd9ba171e95f9c33",
+            "message": "package fixes",
+            "created_at": "2024-10-26T07:40:54Z",
+            "additions": 6485,
+            "deletions": 80,
+            "changed_files": 17
+          },
+          {
+            "sha": "59996f7694546f4149cb2204155df35787de4e5d",
+            "message": "remove logspam and fix handling of bad stranscription",
+            "created_at": "2024-10-26T01:46:09Z",
+            "additions": 14,
+            "deletions": 23,
+            "changed_files": 5
+          },
+          {
+            "sha": "1acadae646d95d535e3c4d0be814be37ccf34780",
+            "message": "fix characer loading",
+            "created_at": "2024-10-26T00:24:32Z",
+            "additions": 2,
+            "deletions": 0,
+            "changed_files": 1
+          },
+          {
+            "sha": "81295c7852647dbec2f9464cfeef2698f67b1843",
+            "message": "character",
+            "created_at": "2024-10-26T00:20:40Z",
+            "additions": 4,
+            "deletions": 1,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 31,
+            "title": "Telegram",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-10-26T05:34:17Z",
+            "updated_at": "2024-10-26T07:41:06Z",
+            "body": "",
+            "files": [
+              {
+                "path": ".env.example",
+                "additions": 5,
+                "deletions": 1
+              },
+              {
+                "path": ".gitignore",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "README.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "characters/tate.character.json",
+                "additions": 71,
+                "deletions": 0
+              },
+              {
+                "path": "characters/trump.character.json",
+                "additions": 395,
+                "deletions": 0
+              },
+              {
+                "path": "package-lock.json",
+                "additions": 3562,
+                "deletions": 1111
+              },
+              {
+                "path": "package.json",
+                "additions": 10,
+                "deletions": 5
+              },
+              {
+                "path": "src/adapters/sqlite.ts",
+                "additions": 6,
+                "deletions": 3
+              },
+              {
+                "path": "src/clients/telegram/.gitignore",
+                "additions": 29,
+                "deletions": 0
+              },
+              {
+                "path": "src/clients/telegram/config/default.json5",
+                "additions": 18,
+                "deletions": 0
+              },
+              {
+                "path": "src/clients/telegram/package-lock.json",
+                "additions": 5213,
+                "deletions": 0
+              },
+              {
+                "path": "src/clients/telegram/package.json",
+                "additions": 47,
+                "deletions": 0
+              },
+              {
+                "path": "src/clients/telegram/src/index.ts",
+                "additions": 79,
+                "deletions": 0
+              },
+              {
+                "path": "src/clients/telegram/src/messageManager.ts",
+                "additions": 222,
+                "deletions": 0
+              },
+              {
+                "path": "src/index.ts",
+                "additions": 90,
+                "deletions": 39
+              },
+              {
+                "path": "tsconfig.json",
+                "additions": 24,
+                "deletions": 20
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 8,
+        "opened": [
+          {
+            "number": 35,
+            "title": "Telegram Improvements",
+            "state": "CLOSED",
+            "created_at": "2024-10-26T10:40:33Z",
+            "updated_at": "2024-11-01T01:57:08Z",
+            "body": "- shouldRespond handler is implemented well\r\n- Summarize etc all work\r\n- Hook in the image recognition and other attachment recognition, like Discord\r\n- Generates images -- character should have some default image prompt ot prompts",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "Client: Telegram",
+                "color": "239BD5",
+                "description": ""
+              }
+            ],
+            "comments": [
+              {
+                "author": "dreaminglucid",
+                "body": "I've made a pr for adding shouldRespond handler + image recognition"
+              },
+              {
+                "author": "sirkitree",
+                "body": "Where?"
+              }
+            ]
+          },
+          {
+            "number": 34,
+            "title": "docs",
+            "state": "CLOSED",
+            "created_at": "2024-10-26T10:02:45Z",
+            "updated_at": "2024-10-31T02:55:55Z",
+            "body": "well, we had docs before:\r\nhttps://github.com/JoinTheAlliance/bgent/tree/main/docs\r\n\r\nWe if add claude comments to all of our files with tsdoc, we can export everything into an api documentation nicely.\r\n\r\nSo let's migrate everything and set that back up.",
+            "labels": [
+              {
+                "name": "documentation",
+                "color": "0075ca",
+                "description": "Improvements or additions to documentation"
+              }
+            ],
+            "comments": [
+              {
+                "author": "sirkitree",
+                "body": "Looking for some history on this... Is bgent eliza's predecessor? is all of that documentation relevant here?"
+              },
+              {
+                "author": "sirkitree",
+                "body": "added in https://github.com/ai16z/eliza/commit/ab84bf09791c9a793c5ccb648ecd82918d838af6"
+              }
+            ]
+          },
+          {
+            "number": 33,
+            "title": "daos.fun integration",
+            "state": "CLOSED",
+            "created_at": "2024-10-26T08:09:49Z",
+            "updated_at": "2024-11-20T09:58:27Z",
+            "body": "We want daos.fun integration\r\n\r\nThis includes a basic service to interact with daos.fun and have a wallet and all that, as well as actions that mirror the swap actions but with the DAO wallet.",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": [
+              {
+                "author": "lalalune",
+                "body": "We have a daos.fun wallet for the ai16z DAO, we need to control it. Can we do this with a delegate? Or do we need the actual wallet private key? Let's figure it out. Can connect with @baoskee"
+              }
+            ]
+          },
+          {
+            "number": 32,
+            "title": "Fix name confusion",
+            "state": "CLOSED",
+            "created_at": "2024-10-26T07:44:54Z",
+            "updated_at": "2024-11-09T01:51:31Z",
+            "body": "<img width=\"397\" alt=\"Screenshot 2024-10-26 at 12 44 32\u202fAM\" src=\"https://github.com/user-attachments/assets/53869be3-7930-4291-948f-4a887d429511\">\r\n",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              },
+              {
+                "name": "Priority: High",
+                "color": "C97674",
+                "description": ""
+              }
+            ],
+            "comments": [
+              {
+                "author": "sirkitree",
+                "body": "i think that the bot takes in every single message in a channel, and so multiple bots taking in all are the culprit here. \r\n\r\nWhat I think we need is to be able to have the bot only process messages that are directed @ it."
+              },
+              {
+                "author": "lalalune",
+                "body": "> i think that the bot takes in every single message in a channel, and so multiple bots taking in all are the culprit here.\r\n> \r\n> What I think we need is to be able to have the bot only process messages that are directed @ it.\r\n\r\nThe magic comes from that not being the case. We are trying to build a multi-agent simulation, so this is the problem we are trying to solve. Right now we have a shouldRespond handler that determines if the bot should respond, using a cheap model. If so, we respond. It's working pretty well, and it follows our ethos that Elizas are \"real agents\" that strive to mimic human behavior.\r\n\r\nI think it's something more simple and technical, but according to the agents, every other agent should just be a user."
+              }
+            ]
+          },
+          {
+            "number": 30,
+            "title": "Make sure app runs purely on char files, no process.env, and vice versa",
+            "state": "CLOSED",
+            "created_at": "2024-10-26T05:16:33Z",
+            "updated_at": "2024-11-01T01:51:48Z",
+            "body": "We need to make sure that app fully runs either way to keep it simple. There are a few ??s that are probably incorrect.",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 29,
+            "title": "\"Private\" Actions",
+            "state": "CLOSED",
+            "created_at": "2024-10-26T04:58:58Z",
+            "updated_at": "2024-12-14T07:26:50Z",
+            "body": "Actions should have a \"private\" mode, where they can only be run by the agent in it's own loop, as opposed to in response to a user's request. So it can decide to make a coin, for example.",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 28,
+            "title": "Pump Fun Token Creation",
+            "state": "CLOSED",
+            "created_at": "2024-10-26T04:34:43Z",
+            "updated_at": "2024-12-14T07:27:58Z",
+            "body": "We should add this action\r\n\r\nhttps://github.com/cicere/pumpfun-bundler",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": [
+              {
+                "author": "sirkitree",
+                "body": "related: https://github.com/ai16z/eliza/commit/72a88ea250a19906bd2c634dedbc5f73cd42a441"
+              }
+            ]
+          },
+          {
+            "number": 27,
+            "title": "Awareness of Twitter bio and username",
+            "state": "CLOSED",
+            "created_at": "2024-10-26T01:12:13Z",
+            "updated_at": "2024-12-14T07:27:10Z",
+            "body": "Right now the agent is not aware of his twitter bio and only vaguely of username. We want him to know username, screen name, bio, and nay nicknames too.",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "Client: Twitter",
+                "color": "1D9BF0",
+                "description": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "sirkitree",
+    "score": 0,
+    "summary": "Sirkitree is actively enhancing the chat functionality by providing a way to interact directly with agents via the command line. Additionally, they are updating documentation through changes made to README.md and addressing issues related to character files and sqlite_vss unsupported on win32-x64 platforms.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/28543?u=620169c8c9ebe441dee7b49d849eea383eccd93f&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 2,
+        "total_prs": 2,
+        "commits": [
+          {
+            "sha": "eeeed7d804f7818411aefa20088379c7da3e4596",
+            "message": "provide a way to chat directly with the agent via the command line from where you start them. doesn't support multiple agents or switching.",
+            "created_at": "2024-10-26T21:25:18Z",
+            "additions": 33,
+            "deletions": 5,
+            "changed_files": 1
+          },
+          {
+            "sha": "24af1c5dcea72cad241f650b74b80bb36bcb3200",
+            "message": "Update README.md\n\nResolves #39\r\n\r\nImprove the command for running your own character which had a typo and only talked about the argument and not the entire command.",
+            "created_at": "2024-10-26T20:28:27Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 42,
+            "title": "provide a way to chat directly with the agent via the command line ",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-10-26T21:35:13Z",
+            "updated_at": "2024-10-27T09:31:20Z",
+            "body": "doesn't support multiple agents or switching.\r\n\r\nRelated to #40 \r\n\r\nThis provides a way to test your characters on the command line before integrating with discord or twitter.",
+            "files": [
+              {
+                "path": "src/index.ts",
+                "additions": 33,
+                "deletions": 5
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          },
+          {
+            "number": 41,
+            "title": "Update README.md",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-10-26T20:28:43Z",
+            "updated_at": "2024-10-27T09:31:04Z",
+            "body": "Resolves #39\r\n\r\nImprove the command for running your own character which had a typo and only talked about the argument and not the entire command.",
+            "files": [
+              {
+                "path": "README.md",
+                "additions": 1,
+                "deletions": 1
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "lalalune",
+                "body": "you are the goat"
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 3,
+        "opened": [
+          {
+            "number": 40,
+            "title": "How to chat directly with agent",
+            "state": "CLOSED",
+            "created_at": "2024-10-26T20:07:02Z",
+            "updated_at": "2024-11-01T01:53:20Z",
+            "body": "I can start eliza and while it tells me `Server running at http://localhost:3000/` there is nothing there (Cannot GET /) and I don't see a way to chat directly with the agent. I've changed the default profile to \r\n```\r\n...\r\nclients: [\r\n  \"direct\",\r\n],\r\n...\r\n```\r\n\r\nMy expectation was that I'd have a prompt on the command line to chat with her. What am I missing?",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "Client: Direct",
+                "color": "1D76DB",
+                "description": ""
+              }
+            ],
+            "comments": [
+              {
+                "author": "sirkitree",
+                "body": "The above merge helps with this, but should probably only do so when the 'direct' client is specified."
+              }
+            ]
+          },
+          {
+            "number": 39,
+            "title": "How to specify a character file",
+            "state": "CLOSED",
+            "created_at": "2024-10-26T20:04:19Z",
+            "updated_at": "2024-10-27T09:30:57Z",
+            "body": "I noted in the README that you can pass the `--characters=<path>` but this doesn't eem to work for me:\r\n\r\n```\r\nsirkitree@lullaM2 eliza % npm start --characters=characters/vic_fontain.json\r\n\r\n> eliza@1.0.0 start\r\n> node --loader ts-node/esm src/index.ts\r\n\r\ncharacterPath undefined\r\ncharacterPaths undefined\r\nNo characters found, using default character\r\nStarting agent for character Eliza\r\n```",
+            "labels": [],
+            "comments": [
+              {
+                "author": "sirkitree",
+                "body": "ok looks like I can run `node --loader ts-node/esm src/index.ts --characters=\"path/to/your/character.json\"`\r\n\r\nI think it would benefit the readme to specify this command or talk about how you can add your own command in the `script` section of `package.json`"
+              }
+            ]
+          },
+          {
+            "number": 37,
+            "title": "sqlite_vss unsupported on win32-x64",
+            "state": "CLOSED",
+            "created_at": "2024-10-26T19:31:52Z",
+            "updated_at": "2024-10-29T07:50:19Z",
+            "body": "recieving error:\r\n\r\n```\r\nServer running at http://localhost:3000/\r\nfile:///C:/Users/sirki/repos/eliza/src/adapters/sqlite/sqlite_vss.ts:31\r\n        throw new Error(`Unsupported platform for sqlite-vss, on a ${platform}-${arch} machine, but not in supported platforms (${supportedPlatforms\r\n              ^\r\n\r\nError: Unsupported platform for sqlite-vss, on a win32-x64 machine, but not in supported platforms (darwin-x64,darwin-arm64,linux-x64). Consult the sqlite-vss NPM package README for details.\r\n    at loadablePathResolver (file:///C:/Users/sirki/repos/eliza/src/adapters/sqlite/sqlite_vss.ts:31:15)\r\n    at getVectorLoadablePath (file:///C:/Users/sirki/repos/eliza/src/adapters/sqlite/sqlite_vss.ts:43:12)\r\n    at loadVector (file:///C:/Users/sirki/repos/eliza/src/adapters/sqlite/sqlite_vss.ts:50:22)\r\n    at load (file:///C:/Users/sirki/repos/eliza/src/adapters/sqlite/sqlite_vss.ts:56:5)\r\n    at new SqliteDatabaseAdapter (file:///C:/Users/sirki/repos/eliza/src/adapters/sqlite.ts:38:9)\r\n    at startAgent (file:///C:/Users/sirki/repos/eliza/src/index.ts:68:16)\r\n    at startAgents (file:///C:/Users/sirki/repos/eliza/src/index.ts:181:15)\r\n    at file:///C:/Users/sirki/repos/eliza/src/index.ts:184:1\r\n\r\nNode.js v20.18.0\r\n```\r\n\r\nI gather that sqlite_vss isn't' compatible with win32 and i'd like to run this on my windoze machine. I think I saw mention of using postgres in chat, perhaps that'd fix this.",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": [
+              {
+                "author": "wanderin",
+                "body": "getting the same issue. Should we explore alternatives, or should we just use linux"
+              },
+              {
+                "author": "wanderin",
+                "body": "@sirkitree did you ever figure this out?"
+              },
+              {
+                "author": "sirkitree",
+                "body": "No i just started developing on osx for now. I think the solution is swapping out sqlite_vss for something else entirely. Postgres was metnioned in a chat somewhere"
+              },
+              {
+                "author": "sirkitree",
+                "body": "from dev chat:\r\n\r\n> we have a postgres adapter with pgvector\r\n> we just need to switch to that\r\n> if you see, we are using SqliteDatabaseDadapter\r\n> But we have a PostgresDatabaseAdapter\r\n> works gud\r\n\r\nhttps://github.com/asg017/sqlite-vss/issues/98#issuecomment-2002641515"
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "MarcoMandar",
+    "score": 0,
+    "summary": "MarcoMandar is actively updating the 'isCreateAndBuyContent' feature, working on a new action called 'pumpfun', and merging pull requests from collaborators like ai16z/main. With three commits in the last 90 days, he focuses primarily on improving code within the src area of the project.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/70625671?u=88aeaa8b5ed43a818bdac96843f2fd40c0abf8ff&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 3,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "bda7386589572a342e55070633f31e2e57f01158",
+            "message": "update isCreateAndBuyContent\n\nSigned-off-by: MarcoMandar <malicemandar@gmail.com>",
+            "created_at": "2024-10-26T23:49:54Z",
+            "additions": 10,
+            "deletions": 6,
+            "changed_files": 1
+          },
+          {
+            "sha": "a236d54afb94b41b232eb3f42c71dd1abec762d4",
+            "message": "pumpfun action\n\nSigned-off-by: MarcoMandar <malicemandar@gmail.com>",
+            "created_at": "2024-10-26T23:47:12Z",
+            "additions": 653,
+            "deletions": 5,
+            "changed_files": 3
+          },
+          {
+            "sha": "17943308ed22b929c33cbd473142d7c207616ca0",
+            "message": "Merge pull request #3 from ai16z/main\n\nmerge from main",
+            "created_at": "2024-10-26T23:02:05Z",
+            "additions": 6622,
+            "deletions": 12559,
+            "changed_files": 27
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 43,
+            "title": "pumpfun",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-10-26T23:49:51Z",
+            "updated_at": "2024-10-27T09:30:43Z",
+            "body": "",
+            "files": [
+              {
+                "path": "package-lock.json",
+                "additions": 357,
+                "deletions": 5
+              },
+              {
+                "path": "package.json",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "src/actions/pumpfun.ts",
+                "additions": 299,
+                "deletions": 0
+              }
+            ],
+            "reviews": [
+              {
+                "author": "lalalune",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "alextitonis",
+    "score": 0,
+    "summary": "AlexTitonis is actively working on image generation, as evidenced by a recent commit to the project. Over the past 90 days, there has been no progress on pull requests or issues, but they have made one significant contribution that resulted in an increase of +538 lines and a decrease of -1 line in code changes.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/45359358?u=c595ccf9f1221326b37aa1ad77a49703c88d23f4&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "be122295c4cb64a5d10579c7978f6862b3dc304a",
+            "message": "image-gen",
+            "created_at": "2024-10-26T11:39:00Z",
+            "additions": 538,
+            "deletions": 1,
+            "changed_files": 7
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "wahndo",
+    "score": 0,
+    "summary": "Wahndo is actively contributing to the project by updating documentation, as evidenced by a recent commit and pull request focused on improving README.md. With one merged PR and no open issues, wahndo's efforts have resulted in a net zero change in code lines but enhanced clarity for users of the repository.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/101988612?u=08f8fd11af2fe4d9007b9ffd2e394436a1d9f87a&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "a47a5360c717c798f66b6f4a13541f6b032d056c",
+            "message": "Update README.md\n\nRevise Discord Bot link",
+            "created_at": "2024-10-26T17:14:15Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 36,
+            "title": "Update README.md",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-10-26T17:14:39Z",
+            "updated_at": "2024-10-26T17:22:03Z",
+            "body": "Revise Discord Bot link",
+            "files": [
+              {
+                "path": "README.md",
+                "additions": 1,
+                "deletions": 1
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "exhuman777",
+                "body": "> Revise Discord Bot link\r\n\r\ngood!"
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "dreaminglucid",
+    "score": 0,
+    "summary": "Dreaminglucid is currently focusing on code optimization, as evidenced by the removal of unused files from their repository over the past 90 days. Despite no pull requests or issues being opened during this period, they have made two commits resulting in a net decrease of 142 lines of code.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/76927280?u=178ba947afe0abd9931d0d17e38a038a39e1ec97&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 2,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "17a884c00adff9dcb24bdbacce0ccb92ffbb139d",
+            "message": "remove unused files",
+            "created_at": "2024-10-26T06:34:40Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "fd92f5a52613e1731c2a036c0387c70425e7afff",
+            "message": "remove unused files",
+            "created_at": "2024-10-26T05:41:37Z",
+            "additions": 68,
+            "deletions": 210,
+            "changed_files": 9
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "FabriceIRANKUNDA",
+    "score": 0,
+    "summary": "FabriceIRANKUNDA is currently focusing on enhancing the application's configuration management by implementing a feature that allows the app to run using settings from a .env file. This effort, encapsulated in a single pull request (PR), demonstrates an initiative towards improving environmental variable handling within the project.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/58092199?u=d874992f941e46dd2bac784c7186f545ca4487e6&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 38,
+            "title": "App running on configurations from .env",
+            "state": "CLOSED",
+            "merged": false,
+            "created_at": "2024-10-26T19:39:54Z",
+            "updated_at": "2024-10-28T18:32:46Z",
+            "body": "",
+            "files": [
+              {
+                "path": ".env.example",
+                "additions": 7,
+                "deletions": 0
+              },
+              {
+                "path": "src/core/defaultCharacter.ts",
+                "additions": 65,
+                "deletions": 80
+              },
+              {
+                "path": "src/core/runtime.ts",
+                "additions": 472,
+                "deletions": 476
+              },
+              {
+                "path": "src/index.ts",
+                "additions": 100,
+                "deletions": 102
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "sirkitree",
+                "body": "Thanks for your contribution :)\r\n\r\nI am looking through this and while the formatting changes look reasonable, I'm not sure that it actually solves anything.\r\n\r\nWould you mind helping me understand\r\n1. What your change aims to accomplish\r\n1. How it helps solve the linked issue\r\n2. Describe some testing steps I could take to verify on my end\r\n\r\nNoting there is also a conflict to resolve."
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  }
+]

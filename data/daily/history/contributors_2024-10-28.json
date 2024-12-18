@@ -1,0 +1,683 @@
+[
+  {
+    "contributor": "lalalune",
+    "score": 0,
+    "summary": "Lalalune is actively merging pull requests, focusing on adding a renovate package updater and improving issue templates. They are also addressing Twitter interactions by fixing commented-out code and ensuring compatibility with local models through commits that result in significant net positive code changes.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/18633264?u=8f2bca0a3cef958bd405ea89680a9b9a0ff38f06&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 5,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "7ee1a80ab5c25db3d75e7a08ce039fdf2a8e8aa9",
+            "message": "Merge pull request #62 from ai16z/61--issue-templates\n\nadding github issue templates",
+            "created_at": "2024-10-28T23:23:53Z",
+            "additions": 50,
+            "deletions": 0,
+            "changed_files": 2
+          },
+          {
+            "sha": "12debee5149002b5f0c2b4899113c83abeab1014",
+            "message": "Merge pull request #63 from mrdavidburns/add-renovate-package-updater\n\nInitial commit for adding Renovate autoupdater.",
+            "created_at": "2024-10-28T23:18:48Z",
+            "additions": 85,
+            "deletions": 0,
+            "changed_files": 1
+          },
+          {
+            "sha": "f5552743f6895c4892923bc0b0499dbbe769bb90",
+            "message": "fix twitter commented out",
+            "created_at": "2024-10-28T22:20:53Z",
+            "additions": 29,
+            "deletions": 42,
+            "changed_files": 2
+          },
+          {
+            "sha": "b9fb7ff81920ca5471c59fece640798d9fee9607",
+            "message": "Merge pull request #65 from dreaminglucid/main\n\nTelegram Integration with shouldRespond handler + image recognition",
+            "created_at": "2024-10-28T22:05:13Z",
+            "additions": 301,
+            "deletions": 175,
+            "changed_files": 3
+          },
+          {
+            "sha": "bb3f397ef6ca5ee5c8e928e640925584a7d37550",
+            "message": "Merge pull request #57 from Honkware/patch-1\n\ncorrected node-llama-cpp command",
+            "created_at": "2024-10-28T02:16:48Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 2,
+        "opened": [
+          {
+            "number": 69,
+            "title": "Make sure 100% works with local models",
+            "state": "CLOSED",
+            "created_at": "2024-10-28T23:17:41Z",
+            "updated_at": "2024-11-06T22:26:40Z",
+            "body": "We have a local llama setup but we haven't used it since all this hype started, so we need to go through and make sure that all local models are working correctly.",
+            "labels": [],
+            "comments": [
+              {
+                "author": "o-on-x",
+                "body": "Created fork that uses ollama for llama.ts instead of node-llama-cpp. lowers technical debt of having to build llama-cpp & download model. PR might not want to if instead an olllama.ts should be added & not remove the llama-cpp local options.  \r\nhttps://github.com/o-on-x/eliza"
+              },
+              {
+                "author": "lalalune",
+                "body": "> Created fork that uses ollama for llama.ts instead of node-llama-cpp. lowers technical debt of having to build llama-cpp & download model. PR might not want to if instead an olllama.ts should be added & not remove the llama-cpp local options. https://github.com/o-on-x/eliza\r\n\r\ncan you please review the latest and add this as an additional provider option? If you search the code for 'ollama' you will see that there is already a comment."
+              },
+              {
+                "author": "yodamaster726",
+                "body": "I'm trying the latest code and trying to configure it to use my local ollama setup, but eliza keeps wanting to download it's own model.   I don't want llama models getting downloaded into my src tree - bad practice - if it's going to do that it should put it in off the root under some /models directory or something like that.  At the moment I'm trying to get this to work and I'm willing to update the docs for others to benefit from this.\r\n\r\nHere is what I've configured on my .env\r\nX_SERVER_URL=http://localhost:11434/\r\nXAI_API_KEY=\r\nXAI_MODEL=llama2\r\n\r\nOLLAMA_HOST=http://localhost:11434/\r\nOLLAMA_MODEL=llama2\r\n\r\nHere is the output when I do the pnpm run dev\r\n\r\neliza>$ pnpm run dev\r\n\r\n> eliza@ dev /Users/davidjaramillo/Documents/Projects/eliza\r\n> pnpm --dir core dev\r\n\r\n\r\n> eliza@1.0.0 dev /Users/davidjaramillo/Documents/Projects/eliza/core\r\n> tsc && nodemon\r\n\r\n[nodemon] 3.1.7\r\n[nodemon] to restart at any time, enter `rs`\r\n[nodemon] watching path(s): src/**/*\r\n[nodemon] watching extensions: ts\r\n[nodemon] starting `node --loader ts-node/esm src/index.ts`\r\n(node:93769) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\r\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));'\r\n(Use `node --trace-warnings ...` to show where the warning was created)\r\n(node:93769) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\r\n(Use `node --trace-deprecation ...` to show where the warning was created)\r\n(node:93769) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\r\nNo characters found, using default character\r\nStarting agent for character Eliza\r\nsqlite-vec extensions loaded successfully.\r\nImporting action from: /Users/davidjaramillo/Documents/Projects/eliza/core/src/actions/askClaude.ts\r\nChat started. Type 'exit' to quit.\r\nYou: Importing action from: /Users/davidjaramillo/Documents/Projects/eliza/core/src/custom_actions/epicAction.ts\r\nServer running at http://localhost:3000/\r\nFailed to import action from /Users/davidjaramillo/Documents/Projects/eliza/core/src/custom_actions/epicAction.ts: Error: Cannot find module '/Users/davidjaramillo/Documents/Projects/eliza/core/src/custom_actions/epicAction.ts' imported from /Users/davidjaramillo/Documents/Projects/eliza/core/src/cli/config.ts\r\n    at finalizeResolution (/Users/davidjaramillo/Documents/Projects/eliza/node_modules/.pnpm/ts-node@10.9.2_@types+node@22.8.4_typescript@5.6.3/node_modules/ts-node/dist-raw/node-internal-modules-esm-resolve.js:366:11)\r\n    at moduleResolve (/Users/davidjaramillo/Documents/Projects/eliza/node_modules/.pnpm/ts-node@10.9.2_@types+node@22.8.4_typescript@5.6.3/node_modules/ts-node/dist-raw/node-internal-modules-esm-resolve.js:801:10)\r\n    at Object.defaultResolve (/Users/davidjaramillo/Documents/Projects/eliza/node_modules/.pnpm/ts-node@10.9.2_@types+node@22.8.4_typescript@5.6.3/node_modules/ts-node/dist-raw/node-internal-modules-esm-resolve.js:912:11)\r\n    at /Users/davidjaramillo/Documents/Projects/eliza/node_modules/.pnpm/ts-node@10.9.2_@types+node@22.8.4_typescript@5.6.3/node_modules/ts-node/src/esm.ts:218:35\r\n    at entrypointFallback (/Users/davidjaramillo/Documents/Projects/eliza/node_modules/.pnpm/ts-node@10.9.2_@types+node@22.8.4_typescript@5.6.3/node_modules/ts-node/src/esm.ts:168:34)\r\n    at /Users/davidjaramillo/Documents/Projects/eliza/node_modules/.pnpm/ts-node@10.9.2_@types+node@22.8.4_typescript@5.6.3/node_modules/ts-node/src/esm.ts:217:14\r\n    at addShortCircuitFlag (/Users/davidjaramillo/Documents/Projects/eliza/node_modules/.pnpm/ts-node@10.9.2_@types+node@22.8.4_typescript@5.6.3/node_modules/ts-node/src/esm.ts:409:21)\r\n    at resolve (/Users/davidjaramillo/Documents/Projects/eliza/node_modules/.pnpm/ts-node@10.9.2_@types+node@22.8.4_typescript@5.6.3/node_modules/ts-node/src/esm.ts:197:12)\r\n    at nextResolve (node:internal/modules/esm/hooks:748:28)\r\n    at Hooks.resolve (node:internal/modules/esm/hooks:240:30)\r\nCreating runtime for character Eliza\r\nAgent ID b850bc30-45f8-0041-a00a-83df46d8555d\r\nInitializing LlamaLocal service for agent b850bc30-45f8-0041-a00a-83df46d8555d Eliza\r\nConstructing\r\nmodelName model.gguf\r\nChecking model\r\nModel already exists.\r\nAgent ID b850bc30-45f8-0041-a00a-83df46d8555d\r\nInitializing LlamaLocal service for agent b850bc30-45f8-0041-a00a-83df46d8555d Eliza\r\n**** No CUDA detected - local response will be slow\r\nCreating grammar\r\nLoading model\r\nthis.modelPath /Users/davidjaramillo/Documents/Projects/eliza/core/src/services/model.gguf\r\ngguf_init_from_file: failed to read key-value pairs\r\n[node-llama-cpp] llama_model_load: error loading model: llama_model_loader: failed to load model from /Users/davidjaramillo/Documents/Projects/eliza/core/src/services/model.gguf\r\n[node-llama-cpp] \r\n[node-llama-cpp] llama_load_model_from_file: failed to load model\r\nModel initialization failed. Deleting model and retrying... Error: Failed to load model\r\n    at LlamaModel._create (file:///Users/davidjaramillo/Documents/Projects/eliza/node_modules/.pnpm/node-llama-cpp@3.1.1_typescript@5.6.3/node_modules/node-llama-cpp/dist/evaluator/LlamaModel/LlamaModel.js:479:23)\r\n    at async Object.<anonymous> (file:///Users/davidjaramillo/Documents/Projects/eliza/node_modules/.pnpm/node-llama-cpp@3.1.1_typescript@5.6.3/node_modules/node-llama-cpp/dist/bindings/Llama.js:194:24)\r\n    at async withLock (file:///Users/davidjaramillo/Documents/Projects/eliza/node_modules/.pnpm/lifecycle-utils@1.7.0/node_modules/lifecycle-utils/dist/withLock.js:36:16)\r\n    at async Llama.loadModel (file:///Users/davidjaramillo/Documents/Projects/eliza/node_modules/.pnpm/node-llama-cpp@3.1.1_typescript@5.6.3/node_modules/node-llama-cpp/dist/bindings/Llama.js:190:16)\r\n    at async LlamaService.initializeModel (file:///Users/davidjaramillo/Documents/Projects/eliza/core/src/services/llama.ts:73:26)\r\nModel deleted.\r\nChecking model\r\nthis.modelPath /Users/davidjaramillo/Documents/Projects/eliza/core/src/services/model.gguf\r\nModel not found. Downloading...\r\nFollowing redirect to: https://cdn-lfs-us-1.hf.co/repos/97/cc/97ccd42703c9e659e537d359fa1863623f9371054d9ea5e4dd163214b7803ad1/c77c263f78b2f56fbaddd3ef2af750fda6ebb4344a546aaa0bfdd546b1ca8d84?response-content-disposition=attachment%3B+filename*%3DUTF-8%27%27Hermes-3-Llama-3.1-8B.Q8_0.gguf%3B+filename%3D%22Hermes-3-Llama-3.1-8B.Q8_0.gguf%22%3B&Expires=1730863045&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTczMDg2MzA0NX19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmhmLmNvL3JlcG9zLzk3L2NjLzk3Y2NkNDI3MDNjOWU2NTllNTM3ZDM1OWZhMTg2MzYyM2Y5MzcxMDU0ZDllYTVlNGRkMTYzMjE0Yjc4MDNhZDEvYzc3YzI2M2Y3OGIyZjU2ZmJhZGRkM2VmMmFmNzUwZmRhNmViYjQzNDRhNTQ2YWFhMGJmZGQ1NDZiMWNhOGQ4ND9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSoifV19&Signature=ggX7ncHRkcidhIoJlVT2nDNU8pwhhrXGxg%7E0yEJbd65gVd2OGlJwlB7FZZOKwEWhATCrHSucHjuBFAor1bvwPH2X9IauYZugc-ZRXpuW8eFKAATOeuP2VqogGBAvz61WjExPzCy7yrHGi9ZeCGfq1WQ4zh2ST%7Ef9offz7s%7E9ZtYcoNB2HlwzgaxEHXXgssesQOuRbzTWyN41lYQafKpSpNlSvyfs7VIGFCfLaOanAuWxxXsjE2geHJIQUGwbCtJTYfjYemkSL77WkCu5vFZlHpk7CHtqlGMFvChV1myQj4ilwyh0urCkII3QNXj-rXT7-eQXO3mHt4xUVAyfOateiw__&Key-Pair-Id=K24J24Z295AEI9\r\n^CELIFECYCLE Command failed.\r\nELIFECYCLE Command failed.\r\nTerminated: 15\r\n\r\n"
+              },
+              {
+                "author": "o-on-x",
+                "body": "previous version i had changed the llama.ts to use ollama instead. updated for the latest version\r\ni will look into other ways to do this. but for now this sidesteps using node-llama-cpp & gguf model downloads\r\njust set XAI_MODEL=\"name-of-model\"\r\n\r\n`\r\nimport { OpenAI } from 'openai';\r\nimport * as dotenv from 'dotenv';\r\nimport { debuglog } from 'util';\r\n\r\n// Create debug logger\r\nconst debug = debuglog('LLAMA');\r\n\r\nprocess.on('uncaughtException', (err) => {\r\n  debug('Uncaught Exception:', err);\r\n  process.exit(1);\r\n});\r\n\r\nprocess.on('unhandledRejection', (reason, promise) => {\r\n  debug('Unhandled Rejection at:', promise, 'reason:', reason);\r\n});\r\n\r\ninterface QueuedMessage {\r\n  context: string;\r\n  temperature: number;\r\n  stop: string[];\r\n  max_tokens: number;\r\n  frequency_penalty: number;\r\n  presence_penalty: number;\r\n  useGrammar: boolean;\r\n  resolve: (value: any | string | PromiseLike<any | string>) => void;\r\n  reject: (reason?: any) => void;\r\n}\r\n\r\nclass LlamaService {\r\n  private static instance: LlamaService | null = null;\r\n  private openai: OpenAI;\r\n  private modelName: string;\r\n  private embeddingModelName: string = 'nomic-embed-text';\r\n  private messageQueue: QueuedMessage[] = [];\r\n  private isProcessing: boolean = false;\r\n\r\n  private constructor() {\r\n    debug('Constructing LlamaService');\r\n    dotenv.config();\r\n    this.modelName = process.env.XAI_MODEL || 'llama3.2';\r\n    this.openai = new OpenAI({\r\n      baseURL: 'http://localhost:11434/v1',\r\n      apiKey: 'ollama',\r\n      dangerouslyAllowBrowser: true\r\n    });\r\n    debug(`Using model: ${this.modelName}`);\r\n    debug('OpenAI client initialized');\r\n  }\r\n\r\n  public static getInstance(): LlamaService {\r\n    debug('Getting LlamaService instance');\r\n    if (!LlamaService.instance) {\r\n      debug('Creating new instance');\r\n      LlamaService.instance = new LlamaService();\r\n    }\r\n    return LlamaService.instance;\r\n  }\r\n\r\n  // Adding initializeModel method to satisfy ILlamaService interface\r\n  public async initializeModel(): Promise<void> {\r\n    debug('Initializing model...');\r\n    try {\r\n      // Placeholder for model setup if needed\r\n      debug(`Model ${this.modelName} initialized successfully.`);\r\n    } catch (error) {\r\n      debug('Error during model initialization:', error);\r\n      throw error;\r\n    }\r\n  }\r\n\r\n  async queueMessageCompletion(\r\n    context: string,\r\n    temperature: number,\r\n    stop: string[],\r\n    frequency_penalty: number,\r\n    presence_penalty: number,\r\n    max_tokens: number\r\n  ): Promise<any> {\r\n    debug('Queueing message completion');\r\n    return new Promise((resolve, reject) => {\r\n      this.messageQueue.push({\r\n        context,\r\n        temperature,\r\n        stop,\r\n        frequency_penalty,\r\n        presence_penalty,\r\n        max_tokens,\r\n        useGrammar: true,\r\n        resolve,\r\n        reject,\r\n      });\r\n      this.processQueue();\r\n    });\r\n  }\r\n\r\n  async queueTextCompletion(\r\n    context: string,\r\n    temperature: number,\r\n    stop: string[],\r\n    frequency_penalty: number,\r\n    presence_penalty: number,\r\n    max_tokens: number\r\n  ): Promise<string> {\r\n    debug('Queueing text completion');\r\n    return new Promise((resolve, reject) => {\r\n      this.messageQueue.push({\r\n        context,\r\n        temperature,\r\n        stop,\r\n        frequency_penalty,\r\n        presence_penalty,\r\n        max_tokens,\r\n        useGrammar: false,\r\n        resolve,\r\n        reject,\r\n      });\r\n      this.processQueue();\r\n    });\r\n  }\r\n\r\n  private async processQueue() {\r\n    debug(`Processing queue: ${this.messageQueue.length} items`);\r\n    if (this.isProcessing || this.messageQueue.length === 0) {\r\n      return;\r\n    }\r\n\r\n    this.isProcessing = true;\r\n\r\n    while (this.messageQueue.length > 0) {\r\n      const message = this.messageQueue.shift();\r\n      if (message) {\r\n        try {\r\n          const response = await this.getCompletionResponse(\r\n            message.context,\r\n            message.temperature,\r\n            message.stop,\r\n            message.frequency_penalty,\r\n            message.presence_penalty,\r\n            message.max_tokens,\r\n            message.useGrammar\r\n          );\r\n          message.resolve(response);\r\n        } catch (error) {\r\n          debug('Queue processing error:', error);\r\n          message.reject(error);\r\n        }\r\n      }\r\n    }\r\n\r\n    this.isProcessing = false;\r\n  }\r\n\r\n  private async getCompletionResponse(\r\n    context: string,\r\n    temperature: number,\r\n    stop: string[],\r\n    frequency_penalty: number,\r\n    presence_penalty: number,\r\n    max_tokens: number,\r\n    useGrammar: boolean\r\n  ): Promise<any | string> {\r\n    debug('Getting completion response');\r\n    try {\r\n      const completion = await this.openai.chat.completions.create({\r\n        model: this.modelName,\r\n        messages: [{ role: 'user', content: context }],\r\n        temperature,\r\n        max_tokens,\r\n        stop,\r\n        frequency_penalty,\r\n        presence_penalty,\r\n      });\r\n\r\n      const response = completion.choices[0].message.content;\r\n\r\n      if (useGrammar && response) {\r\n        try {\r\n          let jsonResponse = JSON.parse(response);\r\n          return jsonResponse;\r\n        } catch {\r\n          const jsonMatch = response.match(/```json\\s*([\\s\\S]*?)\\s*```/);\r\n          if (jsonMatch) {\r\n            try {\r\n              return JSON.parse(jsonMatch[1]);\r\n            } catch {\r\n              throw new Error(\"Failed to parse JSON from response\");\r\n            }\r\n          }\r\n          throw new Error(\"No valid JSON found in response\");\r\n        }\r\n      }\r\n\r\n      return response || '';\r\n    } catch (error) {\r\n      debug('Completion error:', error);\r\n      throw error;\r\n    }\r\n  }\r\n\r\n  async getEmbeddingResponse(input: string): Promise<number[] | undefined> {\r\n    debug('Getting embedding response');\r\n    try {\r\n      const embeddingResponse = await this.openai.embeddings.create({\r\n        model: this.embeddingModelName,\r\n        input,\r\n      });\r\n\r\n      return embeddingResponse.data[0].embedding;\r\n    } catch (error) {\r\n      debug('Embedding error:', error);\r\n      return undefined;\r\n    }\r\n  }\r\n}\r\n\r\ndebug('LlamaService module loaded');\r\nexport default LlamaService;\r\n`"
+              },
+              {
+                "author": "o-on-x",
+                "body": "need to add support through the new updated model providers rather than just replace llama-cpp"
+              },
+              {
+                "author": "yodamaster726",
+                "body": "@o-on-x I believe it was you that shared that code with me and I got it running locally. \n\nBut I need the .env settings that will connect to it.  I've included what I used in the issue. \n\nThere must be more than just setting the XAI_MODEL. \n\nI agree with @lalalune, are you looking to include this as an additional provider. "
+              },
+              {
+                "author": "o-on-x",
+                "body": "I added a new OLLAMA model provider. Also there is a switch now for llama.ts if you are using local provider ollama or defaults to llama-cpp. u can set the Ollama mode provider to use a remote url if hosting remotely. Select the models and embedding models. Env variables to set are included in the .env.example  (also the image posting handling is in this code just dont merge that part in discord messages.ts)   https://github.com/o-on-x/eliza_ollama\r\n"
+              }
+            ]
+          },
+          {
+            "number": 68,
+            "title": "shouldRespond handler for twitter interactions",
+            "state": "CLOSED",
+            "created_at": "2024-10-28T22:57:37Z",
+            "updated_at": "2024-11-01T01:57:22Z",
+            "body": "Right now twitter responds to every message in every thread, which is annoying some people and unnecessary. We should have the shouldRespond handler so Spartan and others check if they should respond before forcing a response. We do this in the other clients, so it should be easy.",
+            "labels": [],
+            "comments": [
+              {
+                "author": "lalalune",
+                "body": "@dreaminglucid @alextitonis the code is right but it just kind of sucks in implementation a bit... always responds. I'd like to have it like posts instead, maybe? Or have the option of replying OR liking, and indicate in the prompt that it should reply, like or like and reply."
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "sirkitree",
+    "score": 0,
+    "summary": "Sirkitree is actively improving GitHub workflow by adding issue templates to streamline user interactions and cleaning up remnants from previous projects for better code organization. Additionally, sirkitree addresses testing failures and automates dependency updates through a renovated bot.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/28543?u=620169c8c9ebe441dee7b49d849eea383eccd93f&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 5,
+        "total_prs": 2,
+        "commits": [
+          {
+            "sha": "b5caa0be1dd0e05a9dcfe52250a0ac391cfc362f",
+            "message": "Merge pull request #67 from ai16z/66--vss-cleanup\n\ncleanup from #60, resolves #66",
+            "created_at": "2024-10-28T20:42:00Z",
+            "additions": 0,
+            "deletions": 89,
+            "changed_files": 4
+          },
+          {
+            "sha": "e637995fcceb84cb7ad0a310b90501980460dfc3",
+            "message": "cleanup from #60, resolves #66",
+            "created_at": "2024-10-28T20:40:31Z",
+            "additions": 0,
+            "deletions": 89,
+            "changed_files": 4
+          },
+          {
+            "sha": "9a456bbebeb229868dbf67068a5d8ca07a40a379",
+            "message": "Merge pull request #60 from MarcoMandar/main\n\nsqlite_vss issue",
+            "created_at": "2024-10-28T20:26:36Z",
+            "additions": 592,
+            "deletions": 166,
+            "changed_files": 8
+          },
+          {
+            "sha": "c6bcd66c81c54528c9160a01f18c1fc36d053d54",
+            "message": "adding github issue templates. resolves #61",
+            "created_at": "2024-10-28T11:03:36Z",
+            "additions": 50,
+            "deletions": 0,
+            "changed_files": 2
+          },
+          {
+            "sha": "28716e7dc7ebf5bae6ffa49af9e81510e728f7a9",
+            "message": "Merge pull request #59 from ferric-sol/main\n\nClarifying instructions to run locally",
+            "created_at": "2024-10-28T10:37:09Z",
+            "additions": 5,
+            "deletions": 0,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 67,
+            "title": "cleanup from #60, resolves #66",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-10-28T20:41:45Z",
+            "updated_at": "2024-10-30T12:42:12Z",
+            "body": "This cleans up some commented out code when making the change in #60 ",
+            "files": [
+              {
+                "path": "package.json",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "src/adapters/sqlite.ts",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "src/adapters/sqlite/sqlite_vss.ts",
+                "additions": 0,
+                "deletions": 86
+              },
+              {
+                "path": "src/test_resources/createRuntime.ts",
+                "additions": 0,
+                "deletions": 1
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          },
+          {
+            "number": 62,
+            "title": "adding github issue templates",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-10-28T11:04:46Z",
+            "updated_at": "2024-10-30T12:42:08Z",
+            "body": "resolves #61\r\n\r\nThis add 2 ew issue templates so that when users create a new issue for us, they have some guidance.",
+            "files": [
+              {
+                "path": ".github/ISSUE_TEMPLATE/bug_report.md",
+                "additions": 27,
+                "deletions": 0
+              },
+              {
+                "path": ".github/ISSUE_TEMPLATE/feature_request.md",
+                "additions": 23,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 4,
+        "opened": [
+          {
+            "number": 66,
+            "title": "cleanup remnants of sqlite_vss",
+            "state": "CLOSED",
+            "created_at": "2024-10-28T20:34:13Z",
+            "updated_at": "2024-10-28T20:42:01Z",
+            "body": "In #60 support for windows was accomplished, but there was a lot of code commented out.\r\n\r\nTask is to remove that code and clean it up.",
+            "labels": [],
+            "comments": []
+          },
+          {
+            "number": 64,
+            "title": "Tests are failing",
+            "state": "CLOSED",
+            "created_at": "2024-10-28T14:27:41Z",
+            "updated_at": "2024-12-14T07:27:59Z",
+            "body": "Tried out running the tests today (`npm run test`) and there are a lot of failures currently.\r\n\r\nWe should\r\n1. evaluate which tests are still necessary\r\n2. get them working\r\n3. setup automated github action to run test for every pull request\r\n\r\n```\r\nNode.js v22.8.0\r\nTest Suites: 16 failed, 16 total\r\nTests:       58 failed, 58 total\r\nSnapshots:   0 total\r\nTime:        14.737 s\r\nRan all test suites.\r\n```\r\n\r\n@lalalune could you advise here? \r\nI think we can work on the tests but the first task of identifying which ones are necessary would be great if you could help with that more quickly than others.",
+            "labels": [
+              {
+                "name": "automation",
+                "color": "FC49CF",
+                "description": ""
+              },
+              {
+                "name": "testing",
+                "color": "2D3957",
+                "description": ""
+              }
+            ],
+            "comments": [
+              {
+                "author": "sirkitree",
+                "body": "from @lalalune \n> there are some, but they need a little love\ni had tests in the old version: https://github.com/jointhealliance/bgent\nhttps://github.com/JoinTheAlliance/bgent/tree/main/src/lib/__tests__\nhttps://github.com/JoinTheAlliance/bgent/tree/main/src/lib/actions/__tests__\nhttps://github.com/JoinTheAlliance/bgent/tree/main/src/lib/evaluators/__tests__\nhttps://github.com/JoinTheAlliance/bgent/tree/main/src/lib/providers/__tests__\nthese are the old ones\ni moved most of these into tests\nif you wanna get the test automation working with a hello world test, i can assign this"
+              },
+              {
+                "author": "sirkitree",
+                "body": "After the above is merged, we need to quantify existing tests and decide which are still relevant.\n\nI'll analyze the test files and describe their purposes. \nHere are the test suites found in the codebase:\n\n### Basic Tests\n- Located in `core/src/test_resources/basic.test.ts`\n- Simple test suite that verifies:\n  - Basic test functionality works\n  - Environment variables are accessible\n  - Confirms NODE_ENV is 'test' and TEST_DATABASE_CLIENT is 'sqlite'\n\n### Memory Tests\n- Located in `core/tests/memory.test.ts`\n- Tests memory-related functionality:\n  - Search memories by embedding similarity\n  - Validates memory ranking based on similarity scores\n  - Tests memory lifecycle (creation, search, and removal)\n  - Verifies embedding caching functionality\n\n### Browser Service Tests\n- Located in `core/tests/browser.test.ts`\n- Tests browser automation functionality:\n  - Browser initialization and cleanup\n  - Content fetching from various websites\n  - CAPTCHA handling\n  - Error handling for 404s and network issues\n  - Ad blocking functionality\n  - Handling of reCAPTCHA and hCAPTCHA\n\n### Token Provider Tests\n- Located in `core/tests/token.test.ts`\n- Tests token-related functionality:\n  - Fetching token security data\n  - Token holder information\n  - Trade data retrieval\n  - Formatted token reports\n\n### Goals Tests\n- Located in `core/tests/goals.test.ts` and `core/tests/goal.test.ts`\n- Tests goal management functionality:\n  - Goal creation\n  - Goal updates\n  - Status management\n  - Objective tracking\n\n### Runtime Tests\n- Located in `core/tests/runtime.test.ts`\n- Tests core runtime functionality:\n  - Runtime instance creation\n  - Memory lifecycle within runtime\n  - State management\n  - Basic runtime operations\n\n### Actions Tests\n- Located in `core/tests/actions.test.ts`\n- Tests action system:\n  - Action loading\n  - Action validation\n  - Action handler execution\n  - Test actions (TEST_ACTION and TEST_ACTION_FAIL)\n\n### Continue Action Tests\n- Located in `core/tests/continue.test.ts`\n- Tests the continue action:\n  - Validation function responses\n  - Message handling\n  - Database interactions\n  - Action state management\n\n### Messages Tests\n- Located in `core/tests/messages.test.ts`\n- Tests message formatting and handling:\n  - Actor formatting\n  - Message formatting\n  - Facts formatting\n  - Message content validation\n\n### Evaluation Tests\n- Located in `core/tests/evaluation.test.ts`\n- Tests evaluation system:\n  - Evaluator format validation\n  - Context loading\n  - Example validation\n  - Evaluation process execution\n\nThe test suite uses Jest as the testing framework and includes features like:\n- Before/After hooks for setup and cleanup\n- Environment variable loading from .dev.vars\n- Timeout configurations for long-running tests\n- Database-specific test configurations\n- Test reporting functionality\n\nMost tests include proper setup and teardown procedures to ensure a clean testing environment for each test case."
+              },
+              {
+                "author": "sirkitree",
+                "body": "Now that we have a basic hello world type of test in place and running on ci, we can start lookin at these other ones. I'm going to split each one of these into their own task so they can be handled piece by piece and possibly spread out amongst the collective.\r\n\r\n- [ ] #183 \r\n- [ ] #184\r\n- [ ] #185\r\n- [ ] #186\r\n- [ ] #187\r\n- [ ] #188\r\n- [ ] #189\r\n- [ ] #190\r\n- [ ] #191"
+              }
+            ]
+          },
+          {
+            "number": 61,
+            "title": "Create issue templates",
+            "state": "CLOSED",
+            "created_at": "2024-10-28T11:02:19Z",
+            "updated_at": "2024-10-28T23:23:54Z",
+            "body": "Task is to create 2 main issue templates, one for reporting bugs, another for feature requests.",
+            "labels": [
+              {
+                "name": "automation",
+                "color": "FC49CF",
+                "description": ""
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 58,
+            "title": "Renovate bot for automated updates on dependencies",
+            "state": "CLOSED",
+            "created_at": "2024-10-28T01:00:01Z",
+            "updated_at": "2024-10-31T01:31:59Z",
+            "body": "I think it would be beneficial to add Renovate Bot to automate dependency updates. \r\n\r\nRenovate Bot automatically manages your Node.js dependencies by scanning your repository and creating pull requests for available [updates](https://www.augmentedmind.de/2023/07/30/renovate-bot-introduction/). This automation provides several crucial advantages:\r\n\r\n**Risk Reduction**\r\n- Updates are delivered in small, manageable increments rather than large, risky batch updates\r\n- Each update comes with its own [pull request](https://senacor.blog/how-to-renovate-why-and-how-you-should-use-automated-dependency-updates-in-your-software-projects/), making it easier to identify breaking changes\r\n- Security vulnerabilities are addressed more quickly through timely updates\r\n\r\n**Time Savings**\r\n- Eliminates manual dependency checking and updating\r\n- Provides transparency into outdated dependencies without manual tracking\r\n- Automatically creates pull requests with changelog information included\r\n\r\n\r\n**Flexible Configuration**\r\n- Supports automatic merging of updates that pass tests\r\n- Allows grouping of updates to r[educe PR noise](https://docs.renovatebot.com/getting-started/use-cases/)\r\n- Can schedule updates during off-hours to avoid CI resource contention",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "automation",
+                "color": "FC49CF",
+                "description": ""
+              }
+            ],
+            "comments": [
+              {
+                "author": "mrdavidburns",
+                "body": "I see the branch was merged. To make it work a repo admin will need to add it from the Marketplace.\r\nhttps://github.com/apps/renovate"
+              },
+              {
+                "author": "sirkitree",
+                "body": "![image](https://github.com/user-attachments/assets/4b83aab3-28f1-422f-9eb6-161d2248b5f9)\r\n\r\nAnything else to do here?"
+              },
+              {
+                "author": "mrdavidburns",
+                "body": "Go here https://developer.mend.io/github/ai16z/eliza\r\nClick `Settings`\r\nThat should get you to this page -> https://developer.mend.io/github/ai16z/eliza/-/settings\r\nThen click `Dependencies`.\r\n\r\nSet the options to be like this and then click `Save`:\r\n![image](https://github.com/user-attachments/assets/b4f90e72-327a-4071-9ed5-209ccdf7aa4d)\r\n"
+              },
+              {
+                "author": "mrdavidburns",
+                "body": "Don't close this issue. This is where you can track updates, manually trigger a PR to build or rebase.\r\n- https://github.com/ai16z/eliza/issues/79"
+              },
+              {
+                "author": "sirkitree",
+                "body": "This worked well. I was able to get all dependencies updates and will keep that issue open."
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "MarcoMandar",
+    "score": 0,
+    "summary": "MarcoMandar is actively working on enhancing the project's database functionality, specifically by updating SQLite usage to incorporate VEC technology for improved performance. Recently, they have merged several pull requests and commits that focus on transitioning from traditional SQLite to sqlite-vec within their codebase. This shift indicates a significant effort towards optimizing data handling in their application.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/70625671?u=88aeaa8b5ed43a818bdac96843f2fd40c0abf8ff&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 5,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "90f8574fcfa0a87e4335e9ece7124bfcbdf772c7",
+            "message": "Merge pull request #6 from ai16z/main\n\nmerge from main",
+            "created_at": "2024-10-28T20:30:04Z",
+            "additions": 5,
+            "deletions": 0,
+            "changed_files": 1
+          },
+          {
+            "sha": "e96764a53c1d15b6f53cff6ec842f63f70d13842",
+            "message": "update sqlite.ts to use VEC\n\nSigned-off-by: MarcoMandar <malicemandar@gmail.com>",
+            "created_at": "2024-10-28T14:18:23Z",
+            "additions": 45,
+            "deletions": 48,
+            "changed_files": 1
+          },
+          {
+            "sha": "714bf6fa98cfeaa973348bab618f12f5fbebdd26",
+            "message": "Merge pull request #5 from ai16z/main\n\nmerge from main",
+            "created_at": "2024-10-28T09:05:25Z",
+            "additions": 117,
+            "deletions": 49,
+            "changed_files": 8
+          },
+          {
+            "sha": "174d5299892dbf4b27f989dff8dd39ea31eebdbc",
+            "message": "Merge branch 'main' of https://github.com/MarcoMandar/Eliza",
+            "created_at": "2024-10-28T09:04:39Z",
+            "additions": 34,
+            "deletions": 6,
+            "changed_files": 2
+          },
+          {
+            "sha": "fec610986d828935a0b17e5648b3e899b90fa432",
+            "message": "move to sqlite-vec\n\nSigned-off-by: MarcoMandar <malicemandar@gmail.com>",
+            "created_at": "2024-10-28T09:04:36Z",
+            "additions": 549,
+            "deletions": 120,
+            "changed_files": 8
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 60,
+            "title": "sqlite_vss issue",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-10-28T09:06:04Z",
+            "updated_at": "2024-10-28T20:43:41Z",
+            "body": "",
+            "files": [
+              {
+                "path": "package-lock.json",
+                "additions": 399,
+                "deletions": 0
+              },
+              {
+                "path": "package.json",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "src/adapters/sqlite.ts",
+                "additions": 60,
+                "deletions": 62
+              },
+              {
+                "path": "src/adapters/sqlite/sqlite_vec.ts",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "src/adapters/sqlite/sqlite_vss.ts",
+                "additions": 86,
+                "deletions": 86
+              },
+              {
+                "path": "src/clients/twitter/utils.test.ts",
+                "additions": 7,
+                "deletions": 4
+              },
+              {
+                "path": "src/services/transcription.ts",
+                "additions": 14,
+                "deletions": 11
+              },
+              {
+                "path": "src/test_resources/createRuntime.ts",
+                "additions": 4,
+                "deletions": 3
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "sirkitree",
+                "body": "This would resolve #37 \r\n\r\nReview Q: should we just remove all of the *_vcc rather than commenting it out?"
+              },
+              {
+                "author": "sirkitree",
+                "body": "Thank you for this, I'll try to test on win32-x64\r\n\r\nAlso for future PR's, please consider reading https://github.com/ai16z/eliza/blob/main/CONTRIBUTING.md#pull-requests"
+              },
+              {
+                "author": "sirkitree",
+                "body": "Testing instructions:\r\n1. pull this branch locally\r\n2. run npm install to grab the new package\r\n3. run a character, ex: `node --loader ts-node/esm src/index.ts --characters=\"characters/moriarty.character.json\"`\r\n\r\nNote that the bot should start normally and give a new message: `sqlite-vec extensions loaded successfully.`\r\n\r\n1. test the memory by talking to your bot and telling it your name (Hi my name is sirkitree.)\r\n2. then ask it in the next message what your name is (what is my name?)\r\n\r\nIf this what's expected, then I think this is good to merge. I have it running on my window machine without WSL.\r\n\r\nAs stated before though, I think we should probably remove the _vcc stuff that's commented out to keep the code cleaner before merging."
+              },
+              {
+                "author": "sirkitree",
+                "body": "testing this further through discord I recieved the followign error:\r\n\r\n```\r\nError handling message: SqliteError: no such function: vss_distance_l2\r\n    at Database.prepare (C:\\Users\\sirki\\repos\\eliza\\node_modules\\better-sqlite3\\lib\\methods\\wrappers.js:5:21)\r\n    at SqliteDatabaseAdapter.searchMemoriesByEmbedding (file:///C:/Users/sirki/repos/eliza/src/adapters/sqlite.ts:200:34)\r\n    at SqliteDatabaseAdapter.createMemory (file:///C:/Users/sirki/repos/eliza/src/adapters/sqlite.ts:135:48)\r\n    at MemoryManager.createMemory (file:///C:/Users/sirki/repos/eliza/src/core/memory.ts:110:44)\r\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\r\n    at async MessageManager.handleMessage (file:///C:/Users/sirki/repos/eliza/src/clients/discord/messages.ts:143:17) {\r\n  code: 'SQLITE_ERROR'\r\n}\r\n```"
+              },
+              {
+                "author": "MarcoMandar",
+                "body": "> testing this further through discord I recieved the followign error:\r\n> \r\n> ```\r\n> Error handling message: SqliteError: no such function: vss_distance_l2\r\n>     at Database.prepare (C:\\Users\\sirki\\repos\\eliza\\node_modules\\better-sqlite3\\lib\\methods\\wrappers.js:5:21)\r\n>     at SqliteDatabaseAdapter.searchMemoriesByEmbedding (file:///C:/Users/sirki/repos/eliza/src/adapters/sqlite.ts:200:34)\r\n>     at SqliteDatabaseAdapter.createMemory (file:///C:/Users/sirki/repos/eliza/src/adapters/sqlite.ts:135:48)\r\n>     at MemoryManager.createMemory (file:///C:/Users/sirki/repos/eliza/src/core/memory.ts:110:44)\r\n>     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\r\n>     at async MessageManager.handleMessage (file:///C:/Users/sirki/repos/eliza/src/clients/discord/messages.ts:143:17) {\r\n>   code: 'SQLITE_ERROR'\r\n> }\r\n> ```\r\n\r\ncan you check if it is working now?"
+              },
+              {
+                "author": "sirkitree",
+                "body": "yes that seems to have fixed the issue for me :)"
+              },
+              {
+                "author": "lalalune",
+                "body": "I can't test this because I don't have a windows machine, @sirkitree if it works, please merge it"
+              },
+              {
+                "author": "sirkitree",
+                "body": "Thanks for this @MarcoMandar ! Now we have windows compatibility :)\r\n\r\nI did a quick follow-up commit to remove some of the code you commented out."
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "ferric-sol",
+    "score": 0,
+    "summary": "Ferric-sol is actively developing their project, focusing on local setup improvements and integrating updates from the 'ai16z:main' branch into their main codebase. They have also worked on clarifying instructions to run the software locally, as evidenced by a single merged pull request in the past 90 days.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/95399413?u=13d6d90da87bab24bd7f5e53266b93e9011a5c41&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 2,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "8f45ec7abc64ade37fe639f10585e8d919a8214a",
+            "message": "Merge branch 'ai16z:main' into main",
+            "created_at": "2024-10-28T08:16:45Z",
+            "additions": 808,
+            "deletions": 60,
+            "changed_files": 10
+          },
+          {
+            "sha": "7a61eb5d593a07831b7a103dc3cae79551b0a261",
+            "message": "Local setup",
+            "created_at": "2024-10-28T08:16:03Z",
+            "additions": 5,
+            "deletions": 0,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 59,
+            "title": "Clarifying instructions to run locally",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-10-28T08:17:21Z",
+            "updated_at": "2024-10-28T10:37:18Z",
+            "body": "Added a new section to clarify how to run locally",
+            "files": [
+              {
+                "path": "README.md",
+                "additions": 5,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "sirkitree",
+                "body": "Thanks!"
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "dreaminglucid",
+    "score": 0,
+    "summary": "Dreaminglucid is actively integrating Telegram functionality into their project, focusing on a shouldRespond handler for message handling and image recognition capabilities. They have successfully merged one pull request that includes these features and made significant code changes to the source files over the past 90 days.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/76927280?u=178ba947afe0abd9931d0d17e38a038a39e1ec97&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "4f600839c3be852a1522e5cc8a2b0a9dc8dda3fb",
+            "message": "merged with all recent updates",
+            "created_at": "2024-10-28T19:28:27Z",
+            "additions": 301,
+            "deletions": 175,
+            "changed_files": 3
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 65,
+            "title": "Telegram Integration with shouldRespond handler + image recognition",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-10-28T19:29:22Z",
+            "updated_at": "2024-10-28T22:05:14Z",
+            "body": "",
+            "files": [
+              {
+                "path": "src/clients/telegram/src/index.ts",
+                "additions": 12,
+                "deletions": 14
+              },
+              {
+                "path": "src/clients/telegram/src/messageManager.ts",
+                "additions": 259,
+                "deletions": 131
+              },
+              {
+                "path": "src/index.ts",
+                "additions": 30,
+                "deletions": 30
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "lalalune",
+                "body": "Good to test and merge?"
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "mrdavidburns",
+    "score": 0,
+    "summary": "mrdavidburns is currently focused on enhancing project maintenance by implementing a Renovate autoupdater, as evidenced by their recent commit to the repository. This addition has resulted in 85 lines of new code without any deletions, streamlining dependency updates and ensuring that the project remains up-to-date with minimal manual intervention.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/287035?u=c2437dc73a80a4d5f3335e8cc94f21e99882f7fc&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "99f2d8f75128c8c19b28919ce8d6d7df384b86fd",
+            "message": "Initial commit for adding Renovate autoupdater.",
+            "created_at": "2024-10-28T13:28:27Z",
+            "additions": 85,
+            "deletions": 0,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 63,
+            "title": "Initial commit for adding Renovate autoupdater.",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-10-28T13:32:59Z",
+            "updated_at": "2024-10-30T01:33:31Z",
+            "body": "Fixes: #58\r\n\r\nAdding Renovate and grouping packages together.\r\n\r\nIt will require adding a free GitHub marketplace plugin\r\n* https://github.com/marketplace/renovate\r\n\r\n",
+            "files": [
+              {
+                "path": "renovate.json",
+                "additions": 85,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  }
+]

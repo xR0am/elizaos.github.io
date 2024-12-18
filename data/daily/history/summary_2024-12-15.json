@@ -1,0 +1,70 @@
+{
+  "title": "ai16z Eliza (2024-12-18)",
+  "version": "",
+  "overview": "Development focused on new features (New docs for community section), 2 bug fixes. with 10 contributors merging 6 PRs. Major work included various improvements.",
+  "metrics": {
+    "contributors": 10,
+    "merged_prs": 6,
+    "new_issues": 8,
+    "lines_changed": 49848
+  },
+  "changes": {
+    "features": [
+      "New docs for community section",
+      "Update community section of docs"
+    ],
+    "fixes": [
+      "Refactor to prevent unnecessary lockfile changes",
+      "Revert \"Feat: Update community section of docs\"",
+      "add more heplful default agents (Dobby and C3PO)"
+    ],
+    "chores": [
+      "fix broken pnpm lockfile"
+    ]
+  },
+  "areas": [
+    {
+      "name": "docs",
+      "files": 301,
+      "additions": 5797,
+      "deletions": 3396
+    },
+    {
+      "name": "root",
+      "files": 3,
+      "additions": 17742,
+      "deletions": 22709
+    },
+    {
+      "name": ".github",
+      "files": 2,
+      "additions": 2,
+      "deletions": 2
+    }
+  ],
+  "issues_summary": "working on 5 bugs including 'pnpm install updates pnpm lockfile when it should not', 'Failed:    @ai16z/plugin-aptos#build' and implementing 3 feature requests including 'Create Example Files Under `packages/_examples/*` with Corresponding Tests Under `/*/_tests` Within Each Type: Adapter, Client, Plugin, etc.', 'Refactor: Enable Provider Mapping to Accept an Array of Strings for Flexibility with JSON Input'",
+  "questions": [],
+  "top_contributors": [
+    {
+      "name": "lalalune",
+      "summary": "Lalalune is actively merging pull requests, focusing on integrating features such as disabling the FAL safety checker, optimizing Discord-Telegram team agents, and using large models into their projects",
+      "areas": []
+    },
+    {
+      "name": "shakkernerd",
+      "summary": "Shakkernerd is actively improving the project's package management by addressing issues related to pnpm lockfiles, as evidenced by a recent merge pull request aimed at fixing broken lockfiles",
+      "areas": [
+        "pnpm-lock.yaml"
+      ]
+    },
+    {
+      "name": "monilpat",
+      "summary": "Monilpat is actively improving documentation by merging pull requests to update community sections and create example files for various package types",
+      "areas": [
+        ".npmrc",
+        ".gitpod.yml",
+        "docs"
+      ]
+    }
+  ]
+}

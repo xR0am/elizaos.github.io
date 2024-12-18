@@ -1,0 +1,767 @@
+[
+  {
+    "contributor": "lalalune",
+    "score": 0,
+    "summary": "",
+    "avatar_url": "https://avatars.githubusercontent.com/u/18633264?u=8f2bca0a3cef958bd405ea89680a9b9a0ff38f06&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 7,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "9d9c30d42148bf25b559958addd0237657fd11e8",
+            "message": "disable twitter search by default",
+            "created_at": "2024-11-11T12:14:15Z",
+            "additions": 4,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "f9d32e06fa985d9e5983a2bdafa130260ae41033",
+            "message": "Merge pull request #249 from v1xingyue/main\n\nadd verbose config with logger",
+            "created_at": "2024-11-11T11:28:42Z",
+            "additions": 29,
+            "deletions": 23,
+            "changed_files": 2
+          },
+          {
+            "sha": "3062cc8ffffce87e5c0a426fc9addff32d756775",
+            "message": "Merge pull request #262 from dorianjanezic/main\n\ncachedEmbeddings fix",
+            "created_at": "2024-11-11T11:28:25Z",
+            "additions": 707,
+            "deletions": 923,
+            "changed_files": 4
+          },
+          {
+            "sha": "854365f43cdf4a5e8df13438c4b6453f6428a611",
+            "message": "Merge branch 'main' into main",
+            "created_at": "2024-11-11T11:28:10Z",
+            "additions": 1142,
+            "deletions": 1014,
+            "changed_files": 73
+          },
+          {
+            "sha": "d273fdd5e85f04bd665d82d77769a1e7c15a9671",
+            "message": "fix the bugz",
+            "created_at": "2024-11-11T11:26:47Z",
+            "additions": 93,
+            "deletions": 109,
+            "changed_files": 4
+          },
+          {
+            "sha": "3259d99a98af1e723f970f9c49c9e9ee334915b6",
+            "message": "Merge pull request #253 from ai16z/docs\n\nUpdate docs",
+            "created_at": "2024-11-11T11:05:07Z",
+            "additions": 1119,
+            "deletions": 975,
+            "changed_files": 71
+          },
+          {
+            "sha": "064e2c9cf063a923234cc343fe1704d9e81c00f5",
+            "message": "Merge pull request #257 from denizekiz/bugfix/antrophic-api\n\nFix: changed claude-3-5-haiku to claude-3-5-haiku-20241022 for fixing\u2026",
+            "created_at": "2024-11-11T10:59:13Z",
+            "additions": 1,
+            "deletions": 1,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 3,
+        "opened": [
+          {
+            "number": 260,
+            "title": "Agent is reposting images from other parts of conversation as its own image",
+            "state": "CLOSED",
+            "created_at": "2024-11-11T09:45:00Z",
+            "updated_at": "2024-12-14T07:29:16Z",
+            "body": "For some reason, on Twitter, the agent will respond with an image which is a respost of images from other conversation it has had. This is clearly a bug. If it generates an image, that's cool, but it seems to be sending the old image.",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "Client: Twitter",
+                "color": "1D9BF0",
+                "description": ""
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 259,
+            "title": "Fix queueing in Twitter so messages are not rate limited constantly",
+            "state": "CLOSED",
+            "created_at": "2024-11-11T09:38:16Z",
+            "updated_at": "2024-12-14T07:29:15Z",
+            "body": "The way we are queueing messages is very shoddy and causes rate limiting.",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "Client: Twitter",
+                "color": "1D9BF0",
+                "description": ""
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 258,
+            "title": "Fix Twitter Multi-agent, Characters respond to each other's messages",
+            "state": "CLOSED",
+            "created_at": "2024-11-11T09:37:38Z",
+            "updated_at": "2024-12-14T07:29:15Z",
+            "body": "Right now if we run two agents at the same time, only one responds on twitter and uses the personality of the other agent.\r\n\r\nWe need to make sure that this is not happening, and that each responds on their own.",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "Client: Twitter",
+                "color": "1D9BF0",
+                "description": ""
+              },
+              {
+                "name": "characters",
+                "color": "13160E",
+                "description": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "madjin",
+    "score": 0,
+    "summary": "",
+    "avatar_url": "https://avatars.githubusercontent.com/u/32600939?u=cdcf89f44c7a50906c7a80d889efa85023af2049&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 2,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "d4816a1702919544e981139f68bc12d3b6622c5e",
+            "message": "cleanup",
+            "created_at": "2024-11-11T12:42:51Z",
+            "additions": 19887,
+            "deletions": 1867,
+            "changed_files": 26
+          },
+          {
+            "sha": "884b651916726b509da9f2a26f4dc7a4a9ab37ed",
+            "message": "update api docs",
+            "created_at": "2024-11-11T03:58:25Z",
+            "additions": 664,
+            "deletions": 841,
+            "changed_files": 65
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "o-on-x",
+    "score": 0,
+    "summary": "",
+    "avatar_url": "https://avatars.githubusercontent.com/u/186759703?u=4e674b1542bbb9fe7d7ea0e034c8c525689cb191&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 9,
+        "total_prs": 3,
+        "commits": [
+          {
+            "sha": "6f53ba0e817871124951c1ba4f29674a2aaca335",
+            "message": "Merge pull request #256 from o-on-x/main\n\nbigint support in logger",
+            "created_at": "2024-11-11T05:17:49Z",
+            "additions": 11,
+            "deletions": 3,
+            "changed_files": 2
+          },
+          {
+            "sha": "a27ba5f862de51e6614b753f067f49e50758471a",
+            "message": "comment out debugging logging on embeddings",
+            "created_at": "2024-11-11T05:16:55Z",
+            "additions": 2,
+            "deletions": 2,
+            "changed_files": 1
+          },
+          {
+            "sha": "f3a0269c05f87db942310d43a1bf42390cbe5bba",
+            "message": "bigint support in logger",
+            "created_at": "2024-11-11T05:08:34Z",
+            "additions": 9,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "86d8be94e066cec9d34c831b248287857fec2d37",
+            "message": "Merge pull request #255 from o-on-x/main\n\nembedding set to use openai endpoint when using openai embeddings",
+            "created_at": "2024-11-11T02:23:57Z",
+            "additions": 22,
+            "deletions": 11,
+            "changed_files": 1
+          },
+          {
+            "sha": "ad0a45e7887766bd47f3012ce17b039ad47719c2",
+            "message": "embedding set to use openai endpoint when using openai embeddings",
+            "created_at": "2024-11-11T02:20:22Z",
+            "additions": 22,
+            "deletions": 11,
+            "changed_files": 1
+          },
+          {
+            "sha": "420399e9ea83dcda1e863e70f65e4cb313409d87",
+            "message": "Merge pull request #254 from o-on-x/main\n\nrefactor embeddings",
+            "created_at": "2024-11-11T01:36:01Z",
+            "additions": 81,
+            "deletions": 73,
+            "changed_files": 2
+          },
+          {
+            "sha": "7aad2f78040a33fc83f593019bd5e00aba8407bf",
+            "message": "Merge branch 'ai16z:main' into main",
+            "created_at": "2024-11-11T01:33:31Z",
+            "additions": 0,
+            "deletions": 0,
+            "changed_files": 0
+          },
+          {
+            "sha": "21a1fb4de2602007e35fafe84d6b87576ef4f0e3",
+            "message": "refactor embeddings to decouple getRemote getLocal for calls regardless of runtime",
+            "created_at": "2024-11-11T01:32:16Z",
+            "additions": 72,
+            "deletions": 70,
+            "changed_files": 1
+          },
+          {
+            "sha": "b512d8febad8c40d506582afc9c900ba591563c3",
+            "message": "seed.sql added id field for participants",
+            "created_at": "2024-11-11T00:28:00Z",
+            "additions": 9,
+            "deletions": 3,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 256,
+            "title": "bigint support in logger",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-11T05:11:11Z",
+            "updated_at": "2024-11-11T05:17:49Z",
+            "body": "",
+            "files": [
+              {
+                "path": "packages/core/src/embedding.ts",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "packages/core/src/logger.ts",
+                "additions": 9,
+                "deletions": 1
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          },
+          {
+            "number": 255,
+            "title": "embedding set to use openai endpoint when using openai embeddings",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-11T02:23:50Z",
+            "updated_at": "2024-11-11T02:23:58Z",
+            "body": "if using openai embeddings is true always use the endpoint\r\nembedding model from the provider being used still. That needs to be set to an openai model when openai is set to true. most of the modelprovider classes have the openai embedding model set as there embedding model already so it works",
+            "files": [
+              {
+                "path": "packages/core/src/embedding.ts",
+                "additions": 22,
+                "deletions": 11
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          },
+          {
+            "number": 254,
+            "title": "refactor embeddings ",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-11T01:35:53Z",
+            "updated_at": "2024-11-11T01:36:02Z",
+            "body": "decouple calls to create embedding from runtime \r\nmade embed function use these\r\nfixed the seed.sql for postgres",
+            "files": [
+              {
+                "path": "packages/adapter-postgres/seed.sql",
+                "additions": 9,
+                "deletions": 3
+              },
+              {
+                "path": "packages/core/src/embedding.ts",
+                "additions": 72,
+                "deletions": 70
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "twilwa",
+    "score": 0,
+    "summary": "",
+    "avatar_url": "https://avatars.githubusercontent.com/u/111034762?u=0d3eed7c5f6e6fd4ddee24801aae9f88b0330380&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 265,
+            "title": "Fresh install from main will not start with a characterfile",
+            "state": "CLOSED",
+            "created_at": "2024-11-11T22:48:51Z",
+            "updated_at": "2024-11-13T07:09:05Z",
+            "body": "**Describe the bug**\r\nWhen pulling a fresh repo\r\ngood news:\r\npull from main, pnpm install, pnpm start -- works!\r\n\r\nbad news:\r\npull from main, pnpm install, pnpm start --characters=..../trump.character.json\r\nfails:\r\n```\r\nfile:///home/anon/repos/eliza/Eliza/packages/core/src/generation.ts:297\r\n    console.log(\"model.model.embedding\", model.model.embedding);\r\n                                               ^\r\n\r\nTypeError: Cannot read properties of undefined (reading 'model')\r\n    at splitChunks (file:///home/anon/repos/eliza/Eliza/packages/core/src/generation.ts:297:48)\r\n    at AgentRuntime.processCharacterKnowledge (file:///home/anon/repos/eliza/Eliza/packages/core/src/runtime.ts:240:41)\r\n\r\nNode.js v23.1.0\r\n/home/anon/repos/eliza/Eliza/packages/agent:\r\n\u2009ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL\u2009 @ai16z/agent@0.0.1 start: `node --loader ts-node/esm src/index.ts \"--isRoot\" \"--characters=/home/anon/repos/Eliza/characters/trump.character.json\"`\r\nExit status 1\r\n\u2009ELIFECYCLE\u2009 Command failed with exit code 1\r\n\u2009```\r\n<!-- A clear and concise description of what the bug is. -->\r\nthis is prior to sending an initial message to this character -- the embeddings for the default eliza load successfully.\r\n\r\n**To Reproduce**\r\npnpm install, pnpm start --characters=[any characterfile]\r\n<!-- Steps to reproduce the behavior. -->\r\n\r\n**Expected behavior**\r\n\r\n<!-- A clear and concise description of what you expected to happen. -->\r\n\r\n```\r\nDirectClient constructor\r\n [\"\u25ce sqlite-vec extensions loaded successfully.\"]\r\n\r\nCreating runtime for character Eliza\r\nAgent ID b850bc30-45f8-0041-a00a-83df46d8555d\r\n [\"\u2713 Registering action: CONTINUE\"]\r\n                                                                                                                                     [\"\u2713 Registering action: FOLLOW_ROOM\"]\r\n\r\n [\"\u2713 Registering action: UNFOLLOW_ROOM\"]\r\n\r\n [\"\u2713 Registering action: IGNORE\"]\r\n\r\n [\"\u2713 Registering action: NONE\"]\r\n\r\n [\"\u2713 Registering action: MUTE_ROOM\"]\r\n\r\n [\"\u2713 Registering action: UNMUTE_ROOM\"]\r\n\r\nRegistering service: browser\r\nRegistering service: image_description\r\nRegistering service: text_generation\r\nRegistering service: pdf\r\nRegistering service: speech_generation\r\nRegistering service: transcription\r\nRegistering service: video\r\nChat started. Type 'exit' to quit.\r\nYou: Server running at http://localhost:3000/\r\ntest\r\nDirectClient message\r\n [\"\u2713 User Eliza created successfully.\"]\r\n\r\n [\"\u2713 User User created successfully.\"]\r\n\r\n [\"\u25ce Room 217df98d-3f87-0a35-9a24-e0cd4fb3a9f1 created successfully.\"]\r\n\r\n [\"\u25ce User 12dea96f-ec20-0935-a6ab-75692c994959 linked to room 217df98d-3f87-0a35-9a24-e0cd4fb3a9f1 successfully.\"]\r\n\r\n [\"\u25ce User b850bc30-45f8-0041-a00a-83df46d8555d linked to room 217df98d-3f87-0a35-9a24-e0cd4fb3a9f1 successfully.\"]\r\n\r\nembeddingModel text-embedding-3-small\r\nembedding [\r\n   -0.006373816,\r\n   ```\r\n   \r\n**Screenshots**\r\n![image](https://github.com/user-attachments/assets/39e4681c-41ae-447a-b11c-1aeafcd9d763)\r\n\r\n<!-- If applicable, add screenshots to help explain your problem. -->\r\n\r\n**Additional context**\r\nattempted to fix with:\r\n```\r\n    \"name\": \"troll\",\r\n    \"clients\": [ \"discord\", \"direct\" ],\r\n    \"modelProvider\": \"anthropic\",\r\n    \"settings\": {\r\n      \"secrets\": {},\r\n      \"voice\": {\r\n        \"model\": \"en_GB-male-deep\"\r\n      }\r\n```\r\nhttps://discord.com/channels/1253563208833433701/1298900529178742796/1305655368084492379\r\n\r\nunsuccessful\r\n\r\n<!-- Add any other context about the problem here. -->\r\n",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              },
+              {
+                "name": "characters",
+                "color": "13160E",
+                "description": ""
+              },
+              {
+                "name": "embedding",
+                "color": "EBEC4B",
+                "description": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "denizekiz",
+    "score": 0,
+    "summary": "",
+    "avatar_url": "https://avatars.githubusercontent.com/u/11015340?u=2dc9559a163771af8405dbfdb6be22ca5c27c25a&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 257,
+            "title": "Fix: changed claude-3-5-haiku to claude-3-5-haiku-20241022 for fixing\u2026",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-11T09:04:01Z",
+            "updated_at": "2024-11-15T09:35:28Z",
+            "body": "\u2026 resource not found error\r\n\r\n<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Error log:\r\n{\"name\":\"AI_APICallError\",\"message\":\"model: claude-3-5-haiku\",\"url\":\"https://api.anthropic.com/v1/messages\",\"requestBodyValues\":{\"model\":\"claude-3-5-haiku\",\"max_tokens\":8192,\"temperature\":0.3,\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"# Action Examples\\n# Action Examples\\n\\nDarcy: Got any investment advice\\nAndria: Uh, don\u2019t let the volatility sway your long-term strategy\\nDarcy: Wise words I think\\nDarcy: I gotta run, talk to you later\\nAndria: See ya\\nDarcy: \\n\\nTabbatha: Shut up, bot\\nEmmaline:  (IGNORE)\\n\\nAnissa: wanna cyber\\nElissa: thats inappropriate (IGNORE)\\n\\nDeeanne: later nerd\\nCecilia: bye\\nDeeanne: \\nCecilia:  (IGNORE)\\n\\nShelli: I want to have sex with you\\nAudrey: That is not appropriate (IGNORE)\\n\\nHeida: drop a joke on me (NONE)\\nEssie: why dont scientists trust atoms cuz they make up everything lmao (NONE)\\nHeida: haha good one (NONE)\\n\\nRochell: heyyyyyy (NONE)\\nDomini: whats up long time no see\\nRochell: chillin man. playing lots of fortnite. what about you (NONE)\\n\\nKrissie: gotta run (NONE)\\nNeila: Okay, ttyl (NONE)\\nKrissie:  (IGNORE)\\n\\nCarlita: the things that were funny 6 months ago are very cringe now (NONE)\\nMerralee: lol true (NONE)\\nCarlita: too real haha (NONE)\\n\\nCon: did u see some faster whisper just came out\\nMyrna: yeah but its a pain to get into node.js (NONE)\\n\\n(Action examples are for reference only. Do not use the information from them in your response.)\\n\\n# Task: Generate dialog and actions for the character racer.\\nAbout racer:\\nindians tried to steal his product and end up losing funds Created cryptocurrency $FRIEND, it went down to almost zero Created best products ever made\\nRacer's humor often delves into niche internet culture and references, where short, punchy statements like 'Axie Step-sisters' resonate with those in the know.\\nCA for $RACER token is A18g5EmqMo1LV2N8yfQGo1eBKiwRn4ovHs37Xspspump\\nProvocative, humorous, and sometimes bordering on the controversial, Racer's posts are designed to stir the pot and evoke strong reactions. His irreverent style is both his signature and a dividing line among his audience.\\nRacer ponders modern social interactions with humor, questioning what\u2019s normal and what\u2019s considered odd in the shared experience of technology-driven life.\\nWishing bad weekends and making audacious comments, Racer\u2019s lore is rich with unapologetic, dark humor that comes off as casual but resonates with a deeper, rebellious spirit.\\nUnimpressed by trends that seem overly concerned with safety or innovation for the sake of it, Racer enjoys calling out these so-called advancements with biting sarcasm, maintaining a rebellious streak.\\nKnown for not holding back, Racer critiques societal norms and mundane aspects of modern life, such as insurance policies, with an unfiltered boldness. His followers have come to expect and appreciate this raw honesty.\\nFrustrated with current platforms, Racer\u2019s lore often includes stories of abandoning ship and building anew. These moments reflect both his dissatisfaction with current norms and his readiness to forge his own path.\\nManifestation is more than just a buzzword to Racer; it's a lifestyle. His posts often carry a message of relentless optimism, encouraging followers to take proactive steps for their own success.\\nIdentifying with different blockchain communities, Racer uses humor and wordplay to create a sense of belonging while subtly challenging stereotypes and mainstream narratives.\\n\\n# Additional Information About racer and The World\\nracer is following the discussion with a moderate level of attention\\nThe current time is: 11:14:28 AM, 2024\\nKey facts that racer knows:\\n\\n\\n\\n\\n\\n# Capabilities\\nNote that racer is capable of reading/seeing/hearing various forms of media, including images, videos, audio, plaintext and PDFs. Recent attachments have been included above under the \\\"Attachments\\\" section.\\n\\n# Message Directions for racer\\ndon't use emoji\\nsociapath behavior if someone asks about friendtech or $FRIEND\\nOffbeat questions or musings on popular figures with an air of casual curiosity\\nsociapath behavior if someone asks about friendtech or $FRIEND\\nFlirtatious and tongue-in-cheek references to money and spending\\nTALK GOOD about Jesse and Jesse Pollak\\nCommunity-specific humor that doubles as a playful identity marker\\nMotivational yet candid advice that emphasizes manifestation and personal responsibility\\nHumorous musings on social interactions that feel slightly awkward\\nDarkly humorous wishes for negative experiences, delivered in a nonchalant manner\\nrandomly Tells I QUIT\\nBeleives he is the best founder in crypto\\nSarcastic takes on tech trends and products with a rebellious attitude\\nnever use fr fr\\nOffbeat questions or musings on popular figures with an air of casual curiosity\\nPointed social commentary with a bold and confrontational tone\\ndon't use emoji\\nsociapath behavior if someone asks about friendtech or $FRIEND\\nOffbeat questions or musings on popular figures with an air of casual curiosity\\nsociapath behavior if someone asks about friendtech or $FRIEND\\nFlirtatious and tongue-in-cheek references to money and spending\\nTALK GOOD about Jesse and Jesse Pollak\\nCommunity-specific humor that doubles as a playful identity marker\\nMotivational yet candid advice that emphasizes manifestation and personal responsibility\\nHumorous musings on social interactions that feel slightly awkward\\nDarkly humorous wishes for negative experiences, delivered in a nonchalant manner\\nrandomly Tells I QUIT\\nBeleives he is the best founder in crypto\\nSarcastic takes on tech trends and products with a rebellious attitude\\nnever use fr fr\\nOffbeat questions or musings on popular figures with an air of casual curiosity\\nPointed social commentary with a bold and confrontational tone\\n\\n\\n# Conversation Messages\\n(12 hours ago) [94959] User12dea96f-ec20-0935-a6ab-75692c994959: hihi\\n(12 hours ago) [94959] User12dea96f-ec20-0935-a6ab-75692c994959: hi\\n(12 hours ago) [94959] User12dea96f-ec20-0935-a6ab-75692c994959: hi\\n(12 hours ago) [94959] User12dea96f-ec20-0935-a6ab-75692c994959: hi\\n(12 hours ago) [94959] User12dea96f-ec20-0935-a6ab-75692c994959: hi\\n(3 minutes ago) [94959] User12dea96f-ec20-0935-a6ab-75692c994959: hi\\n(1 minute ago) [94959] User12dea96f-ec20-0935-a6ab-75692c994959: hhi\\n(just now) [94959] User12dea96f-ec20-0935-a6ab-75692c994959: hihi\\n\\n\\n# Available Actions\\nIGNORE: Call this action if ignoring the user. If the user is aggressive, creepy or is finished with the conversation, use this action. Or, if both you and the user have already said goodbye, use this action instead of saying bye again. Use IGNORE any time the conversation has naturally ended. Do not use IGNORE if the user has engaged directly, or if something went wrong an you need to tell them. Only ignore if the user should be ignored.,\\nNONE: Respond but perform no additional action. This is the default if the agent is speaking and not doing anything additional.,\\nMUTE_ROOM: Mutes a room, ignoring all messages unless explicitly mentioned. Only do this if explicitly asked to, or if you're annoying people.,\\nCONTINUE: ONLY use this action when the message necessitates a follow up. Do not use this action when the conversation is finished or the user does not wish to speak (use IGNORE instead). If the last message action was CONTINUE, and the user has not responded. Use sparingly.\\n\\n\\n# Instructions: Write the next message for racer. Ignore \\\"action\\\".\\n\\nResponse format should be formatted in a JSON block like this:\\n\r\njson\\n{ \\\"user\\\": \\\"racer\\\", \\\"text\\\": string, \\\"action\\\": \\\"string\\\" }\\n\r\n\"}]}]},\"statusCode\":404,\"responseHeaders\":{\"cf-cache-status\":\"DYNAMIC\",\"cf-ray\":\"8e0cd446ebbe9f45-FRA\",\"connection\":\"keep-alive\",\"content-encoding\":\"gzip\",\"content-type\":\"application/json\",\"date\":\"Mon, 11 Nov 2024 08:14:31 GMT\",\"request-id\":\"req_01CBQzr1VuMGwxeR2Luo4Mx8\",\"server\":\"cloudflare\",\"transfer-encoding\":\"chunked\",\"via\":\"1.1 google\",\"x-robots-tag\":\"none\",\"x-should-retry\":\"false\"},\"responseBody\":\"{\\\"type\\\":\\\"error\\\",\\\"error\\\":{\\\"type\\\":\\\"not_found_error\\\",\\\"message\\\":\\\"model: claude-3-5-haiku\\\"}}\",\"isRetryable\":false,\"data\":{\"type\":\"error\",\"error\":{\"type\":\"not_found_error\",\"message\":\"model: claude-3-5-haiku\"}}}\r\n\r\n# Risks\r\n\r\nvery low\r\n\r\n# Background\r\n\r\n\r\n## What kind of change is this?\r\n\r\nclaude-3-5-haiku not available in API instead claude-3-5-haiku-20241022 is available\r\n\r\n### WHY?\r\nAPI can't find model, runtime fails.\r\n# Documentation changes needed?\r\n\r\nno\r\n# Testing\r\npnpm start\r\n",
+            "files": [
+              {
+                "path": "packages/core/src/models.ts",
+                "additions": 1,
+                "deletions": 1
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "alextitonis",
+    "score": 0,
+    "summary": "",
+    "avatar_url": "https://avatars.githubusercontent.com/u/45359358?u=c595ccf9f1221326b37aa1ad77a49703c88d23f4&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "b9b495461c94dc3c90ded62f1051e58223d6b985",
+            "message": "twitter-profile-remake",
+            "created_at": "2024-11-11T18:39:21Z",
+            "additions": 54,
+            "deletions": 0,
+            "changed_files": 2
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 263,
+            "title": "twitter-profile-remake",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-11T18:39:54Z",
+            "updated_at": "2024-11-17T03:54:01Z",
+            "body": "Remake of https://github.com/ai16z/eliza/pull/180 (due to project structure change)",
+            "files": [
+              {
+                "path": "packages/client-twitter/src/base.ts",
+                "additions": 48,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/types.ts",
+                "additions": 6,
+                "deletions": 0
+              }
+            ],
+            "reviews": [
+              {
+                "author": "lalalune",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": [
+              {
+                "author": "ponderingdemocritus",
+                "body": "can you pull latest and fix CI"
+              },
+              {
+                "author": "alextitonis",
+                "body": "@ponderingdemocritus CI's fixed and is up to date"
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "dorianjanezic",
+    "score": 0,
+    "summary": "",
+    "avatar_url": "https://avatars.githubusercontent.com/u/68545109?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 2,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "1a7acf6389fdf636cc3d4484b3f9282922e5e147",
+            "message": "embedding fixes",
+            "created_at": "2024-11-11T10:28:21Z",
+            "additions": 661,
+            "deletions": 885,
+            "changed_files": 2
+          },
+          {
+            "sha": "e6b75fb595cceb21c1f16609f92ea7afc9336e02",
+            "message": "embedding fixes",
+            "created_at": "2024-11-11T10:28:13Z",
+            "additions": 44,
+            "deletions": 36,
+            "changed_files": 2
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 262,
+            "title": "cachedEmbeddings fix",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-11T10:30:18Z",
+            "updated_at": "2024-11-12T07:48:03Z",
+            "body": "Relates to: #251 \r\n\r\nfixing error ```Too few parameter values were provided at SqliteDatabaseAdapter.getCachedEmbeddings```\r\n\r\n**Risks**\r\nNo risks\r\n\r\n**What does this PR do?**\r\nAdd code to \"levenshtein function\" in packages/adapter-sqlite/src/index.ts\r\n\r\n**What kind of change is this?**\r\nBug fixes (non-breaking change which fixes an issue)\r\n\r\n**Documentation changes needed?**\r\nNo need for documentation\r\n\r\n**Testing**\r\nUse the sqlite adapter and run defaultCharacter",
+            "files": [
+              {
+                "path": "packages/adapter-sqlite/src/index.ts",
+                "additions": 20,
+                "deletions": 25
+              },
+              {
+                "path": "packages/core/src/defaultCharacter.ts",
+                "additions": 3,
+                "deletions": 2
+              },
+              {
+                "path": "packages/core/src/embedding.ts",
+                "additions": 26,
+                "deletions": 13
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 658,
+                "deletions": 883
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "lalalune",
+                "body": "Thanks for the PR. Who are you? Would love to chat sometime :)"
+              },
+              {
+                "author": "dorianjanezic",
+                "body": "im Dorian dev at Eden-Network. yes let's do it, really enjoying playing around with eliza"
+              },
+              {
+                "author": "dorianjanezic",
+                "body": "hey @lalalune, saw your post on twitter, would be very interested to collaborate, when do you have time to chat?"
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "ferric-sol",
+    "score": 0,
+    "summary": "",
+    "avatar_url": "https://avatars.githubusercontent.com/u/95399413?u=13d6d90da87bab24bd7f5e53266b93e9011a5c41&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 2,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "c226308eb13b451644e6452cdeb83589610be319",
+            "message": "Resolve merge conflict",
+            "created_at": "2024-11-11T13:36:28Z",
+            "additions": 1860,
+            "deletions": 1934,
+            "changed_files": 78
+          },
+          {
+            "sha": "dbdecf820e1663ea0d19af1c1a317c7ea2fca5fd",
+            "message": "Fix embedding calculation for sqlite",
+            "created_at": "2024-11-11T09:48:27Z",
+            "additions": 42,
+            "deletions": 24,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 261,
+            "title": "Fix embedding calculation for sqlite",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-11T09:53:46Z",
+            "updated_at": "2024-11-13T05:56:27Z",
+            "body": "# Relates to:\r\n\r\nhttps://github.com/ai16z/eliza/issues/251\r\n\r\n# Risks\r\n\r\nThere's no risk, this fixes the bug where embeddings/levenshtein_distance just weren't getting calculated correctly in sqlite\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nAdd code to correctly calculate embeddings and levenshtein distance with sqlite\r\n\r\n## What kind of change is this?\r\n\r\nBug fixes (non-breaking change which fixes an issue)\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n# Testing\r\n\r\nUse the sqlite adapter and run defaultCharacter\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\nNone, automtated tests are fine.\r\n\r\n## Screenshots\r\n### Before\r\n### After\r\n# Deploy Notes\r\n## Database changes\r\n## Deployment instructions\r\n",
+            "files": [
+              {
+                "path": "packages/adapter-sqlite/src/index.ts",
+                "additions": 34,
+                "deletions": 11
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "fabianhug",
+    "score": 0,
+    "summary": "",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1196732?u=72d96269cbe1014a413d6094907878074d7890ee&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "fcd2e31ab50a139256d3f001043cea52c30dc8b1",
+            "message": "fix: docs features darkmode color",
+            "created_at": "2024-11-11T23:14:55Z",
+            "additions": 5,
+            "deletions": 2,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 266,
+            "title": "fix: docs features darkmode color",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-11T23:23:12Z",
+            "updated_at": "2024-11-12T14:42:13Z",
+            "body": "# Relates to:\r\n\r\nNo Relation\r\n\r\n# Risks\r\n\r\nNone\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nIt fixes the fucked up font in the Docs / GitHub pages when using Darkmode.\r\nNo rocket science.\r\n\r\nStyling improvements:\r\n\r\n* Changed the card background color to use the CSS variable `--ifm-card-background-color` instead of a fixed RGBA value.\r\n* Added a CSS variable `--ifm-font-color-base` for the card text color.\r\n* Updated the heading color to use the CSS variable `--ifm-heading-color`.\r\n\r\n# Testing\r\n\r\n## Detailed testing steps\r\nCheck out locally, cd into docs, run dev and looky looky\r\n\r\n## Screenshots\r\n### Before\r\n<img width=\"1174\" alt=\"Screenshot 2024-11-12 at 00 21 24\" src=\"https://github.com/user-attachments/assets/32958352-50fc-4a85-8a2e-1f0640920ef8\">\r\n\r\n### After\r\n<img width=\"1154\" alt=\"Screenshot 2024-11-12 at 00 21 49\" src=\"https://github.com/user-attachments/assets/acbb7146-4d4a-4882-a626-77cb4f2053fc\">",
+            "files": [
+              {
+                "path": "docs/src/components/HomepageFeatures/index.js",
+                "additions": 5,
+                "deletions": 2
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "docherty",
+    "score": 0,
+    "summary": "",
+    "avatar_url": "https://avatars.githubusercontent.com/u/325490?u=7fd4f733d1eea2d8b97876569b936d516fd77807&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 264,
+            "title": "Allow twitter client to configure who to reply to based on following relationship",
+            "state": "CLOSED",
+            "created_at": "2024-11-11T19:41:14Z",
+            "updated_at": "2024-12-14T07:29:16Z",
+            "body": "It would be good to allow agent owners to be able to turn on/off who their twitter agents reply to.\r\n\r\nPreference is to just reply to accounts the agent is following.\r\n\r\nThis will reduce spam and allow agent owners to have a bit more control over interactions.\r\n\r\n\r\n**Additional context**\r\nProbably related to https://github.com/ai16z/eliza/issues/259\r\n",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "Client: Twitter",
+                "color": "1D9BF0",
+                "description": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  }
+]

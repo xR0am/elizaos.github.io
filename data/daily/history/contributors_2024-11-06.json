@@ -1,0 +1,889 @@
+[
+  {
+    "contributor": "lalalune",
+    "score": 0,
+    "summary": "Lalalune is actively working on improving the integration and functionality of Anthropic API keys within their project, ensuring that system directives are correctly passed to Vercel SDK. They have also been addressing issues related to model provider loading from character files and fixing template errors in recent commits.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/18633264?u=8f2bca0a3cef958bd405ea89680a9b9a0ff38f06&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 2,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "39ce28ec165616f806c0492066250292e227d850",
+            "message": "Merge pull request #216 from MeDott29/implement-grok-beta\n\nImplement grok beta",
+            "created_at": "2024-11-06T20:33:53Z",
+            "additions": 6,
+            "deletions": 5,
+            "changed_files": 2
+          },
+          {
+            "sha": "84d5b10e9e9611997110c143dc964a2e27fbc209",
+            "message": "fix so loads anthropic api key",
+            "created_at": "2024-11-06T05:32:52Z",
+            "additions": 2,
+            "deletions": 0,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 6,
+        "opened": [
+          {
+            "number": 217,
+            "title": "Make sure system directive passed to vercel sdk",
+            "state": "CLOSED",
+            "created_at": "2024-11-06T22:13:41Z",
+            "updated_at": "2024-11-07T03:07:32Z",
+            "body": "<img width=\"475\" alt=\"Screenshot 2024-11-06 at 2 13 30\u202fPM\" src=\"https://github.com/user-attachments/assets/e460ae70-e7c0-42f3-9020-21f02964303f\">\r\n",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 213,
+            "title": ".env not loading?",
+            "state": "CLOSED",
+            "created_at": "2024-11-06T04:39:23Z",
+            "updated_at": "2024-11-07T14:25:27Z",
+            "body": "Tried to load the anthropic api key from .env, no luck... needs testing",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": [
+              {
+                "author": "ceeriil",
+                "body": "@lalalune how did you fix this"
+              }
+            ]
+          },
+          {
+            "number": 212,
+            "title": "Anthropic API key not loading correctly",
+            "state": "CLOSED",
+            "created_at": "2024-11-06T04:30:58Z",
+            "updated_at": "2024-11-07T06:15:17Z",
+            "body": "Currently anthropic API doesnt load correctly, although if setting the OPENAI_API_KEY to an anthropic key will work... not great",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 211,
+            "title": "Model provider loaded from char file should force lowercase, claude or anthropic should both work",
+            "state": "CLOSED",
+            "created_at": "2024-11-06T04:21:51Z",
+            "updated_at": "2024-11-07T06:15:24Z",
+            "body": "Model provider loaded from char file should force lowercase, claude or anthropic should both work",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 210,
+            "title": "AI provider API keys should work from character files",
+            "state": "CLOSED",
+            "created_at": "2024-11-06T04:20:17Z",
+            "updated_at": "2024-11-07T06:15:31Z",
+            "body": "Currently the AI providers only work with the .env, not the character file env vars. We can pass the apiKey value through to solve this",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 209,
+            "title": "Templates are wrong",
+            "state": "CLOSED",
+            "created_at": "2024-11-06T04:09:14Z",
+            "updated_at": "2024-11-07T06:15:37Z",
+            "body": "The templates are wrong and don't have the right fields, i.e. trump and tate",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "ponderingdemocritus",
+    "score": 0,
+    "summary": "Ponderingdemocritus is currently focusing on enhancing their project by exporting its core functionalities and introducing a plugin system, which allows for greater extensibility and customization. They have successfully abstracted Eliza into a package that can be published onto NPM, demonstrating significant code growth with an addition of 2450 lines and removal of 697 lines across the agent, core, and docs areas.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/90423308?u=fa7a84e8e946db253241c7aaabbb57e7c6495f0b&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 3,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "c4d87d99f80393f0e561274664c95c4b8fbc81bd",
+            "message": "plugin",
+            "created_at": "2024-11-06T23:21:48Z",
+            "additions": 863,
+            "deletions": 376,
+            "changed_files": 12
+          },
+          {
+            "sha": "fd2ad8c8f0a84e90a79656bf1ff623e05e60ec29",
+            "message": "exports",
+            "created_at": "2024-11-06T08:42:59Z",
+            "additions": 25,
+            "deletions": 7,
+            "changed_files": 5
+          },
+          {
+            "sha": "04c9bacef95e832a8f30345f089804be71910119",
+            "message": "package up core and introduce plugins",
+            "created_at": "2024-11-06T07:58:12Z",
+            "additions": 1562,
+            "deletions": 314,
+            "changed_files": 36
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 214,
+            "title": "Abstracts Eliza into a Package to enble publishing onto NPM along with plugin system",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-06T08:00:23Z",
+            "updated_at": "2024-11-07T06:13:32Z",
+            "body": "Needs discussion\r\n\r\n- Bundles Eliza into packages\r\n-- This allows importing Eliza outside of the repo. To use within the repo it introduces the `agent` directory which can mimic what people would do, but allows for fast development.\r\n",
+            "files": [
+              {
+                "path": "agent/.gitignore",
+                "additions": 6,
+                "deletions": 0
+              },
+              {
+                "path": "agent/package.json",
+                "additions": 20,
+                "deletions": 0
+              },
+              {
+                "path": "agent/src/index.ts",
+                "additions": 158,
+                "deletions": 0
+              },
+              {
+                "path": "agent/tsconfig.json",
+                "additions": 7,
+                "deletions": 0
+              },
+              {
+                "path": "agent/tsup.config.ts",
+                "additions": 8,
+                "deletions": 0
+              },
+              {
+                "path": "core/package.json",
+                "additions": 8,
+                "deletions": 12
+              },
+              {
+                "path": "core/src/actions/continue.ts",
+                "additions": 0,
+                "deletions": 12
+              },
+              {
+                "path": "core/src/actions/imageGeneration.ts",
+                "additions": 11,
+                "deletions": 9
+              },
+              {
+                "path": "core/src/actions/imageGenerationUtils.ts",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "core/src/adapters/sqlite.ts",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "core/src/adapters/sqlite/sqlite_vec.ts",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "core/src/cli/colors.ts",
+                "additions": 0,
+                "deletions": 268
+              },
+              {
+                "path": "core/src/cli/config.ts",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "core/src/cli/index.ts",
+                "additions": 13,
+                "deletions": 8
+              },
+              {
+                "path": "core/src/clients/discord/actions/chat_with_attachments.ts",
+                "additions": 1,
+                "deletions": 18
+              },
+              {
+                "path": "core/src/clients/discord/actions/joinvoice.ts",
+                "additions": 0,
+                "deletions": 13
+              },
+              {
+                "path": "core/src/clients/discord/actions/summarize_conversation.ts",
+                "additions": 1,
+                "deletions": 20
+              },
+              {
+                "path": "core/src/clients/discord/actions/transcribe_media.ts",
+                "additions": 1,
+                "deletions": 2
+              },
+              {
+                "path": "core/src/clients/discord/index.ts",
+                "additions": 5,
+                "deletions": 5
+              },
+              {
+                "path": "core/src/clients/discord/messages.ts",
+                "additions": 5,
+                "deletions": 17
+              },
+              {
+                "path": "core/src/clients/discord/voice.ts",
+                "additions": 0,
+                "deletions": 14
+              },
+              {
+                "path": "core/src/clients/telegram/src/index.ts",
+                "additions": 18,
+                "deletions": 21
+              },
+              {
+                "path": "core/src/clients/telegram/src/messageManager.ts",
+                "additions": 4,
+                "deletions": 18
+              },
+              {
+                "path": "core/src/clients/twitter/base.ts",
+                "additions": 5,
+                "deletions": 8
+              },
+              {
+                "path": "core/src/clients/twitter/interactions.ts",
+                "additions": 29,
+                "deletions": 57
+              },
+              {
+                "path": "core/src/clients/twitter/post.ts",
+                "additions": 71,
+                "deletions": 86
+              },
+              {
+                "path": "core/src/clients/twitter/search.ts",
+                "additions": 0,
+                "deletions": 19
+              },
+              {
+                "path": "core/src/clients/twitter/utils.ts",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "core/src/core/defaultCharacter.ts",
+                "additions": 3,
+                "deletions": 8
+              },
+              {
+                "path": "core/src/core/generation.ts",
+                "additions": 43,
+                "deletions": 49
+              },
+              {
+                "path": "core/src/core/imageGenModels.ts",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "core/src/core/index.ts",
+                "additions": 19,
+                "deletions": 0
+              },
+              {
+                "path": "core/src/core/logger.ts",
+                "additions": 260,
+                "deletions": 66
+              },
+              {
+                "path": "core/src/core/runtime.ts",
+                "additions": 33,
+                "deletions": 14
+              },
+              {
+                "path": "core/src/core/settings.ts",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "core/src/core/types.ts",
+                "additions": 19,
+                "deletions": 2
+              },
+              {
+                "path": "core/src/index.ts",
+                "additions": 8,
+                "deletions": 102
+              },
+              {
+                "path": "core/src/services/llama.ts",
+                "additions": 3,
+                "deletions": 5
+              },
+              {
+                "path": "core/src/test_resources/cache.ts",
+                "additions": 1,
+                "deletions": 4
+              },
+              {
+                "path": "core/src/test_resources/report.ts",
+                "additions": 5,
+                "deletions": 3
+              },
+              {
+                "path": "core/src/vendor/vits.ts",
+                "additions": 0,
+                "deletions": 3
+              },
+              {
+                "path": "core/tests/utils.test.ts",
+                "additions": 7,
+                "deletions": 7
+              },
+              {
+                "path": "core/tsconfig.json",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "core/tsup.config.ts",
+                "additions": 17,
+                "deletions": 0
+              },
+              {
+                "path": "core/types/index.ts",
+                "additions": 0,
+                "deletions": 5
+              },
+              {
+                "path": "docs/backup_docusaurus.config.js",
+                "additions": 0,
+                "deletions": 141
+              },
+              {
+                "path": "docs/docs/api/_media/README_CN.md",
+                "additions": 171,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/classes/AgentRuntime.md",
+                "additions": 836,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/classes/DatabaseAdapter.md",
+                "additions": 1119,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/classes/DirectClient.md",
+                "additions": 6,
+                "deletions": 6
+              },
+              {
+                "path": "docs/docs/api/classes/DiscordClient.md",
+                "additions": 7,
+                "deletions": 7
+              },
+              {
+                "path": "docs/docs/api/classes/MemoryManager.md",
+                "additions": 383,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/classes/PostgresDatabaseAdapter.md",
+                "additions": 107,
+                "deletions": 104
+              },
+              {
+                "path": "docs/docs/api/classes/SqliteDatabaseAdapter.md",
+                "additions": 103,
+                "deletions": 100
+              },
+              {
+                "path": "docs/docs/api/classes/TelegramClient.md",
+                "additions": 4,
+                "deletions": 4
+              },
+              {
+                "path": "docs/docs/api/classes/TokenProvider.md",
+                "additions": 12,
+                "deletions": 12
+              },
+              {
+                "path": "docs/docs/api/classes/TwitterInteractionClient.md",
+                "additions": 25,
+                "deletions": 39
+              },
+              {
+                "path": "docs/docs/api/classes/TwitterPostClient.md",
+                "additions": 24,
+                "deletions": 38
+              },
+              {
+                "path": "docs/docs/api/classes/TwitterSearchClient.md",
+                "additions": 24,
+                "deletions": 38
+              },
+              {
+                "path": "docs/docs/api/classes/WalletProvider.md",
+                "additions": 5,
+                "deletions": 5
+              },
+              {
+                "path": "docs/docs/api/enumerations/Clients.md",
+                "additions": 41,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/enumerations/GoalStatus.md",
+                "additions": 31,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/enumerations/ImageGenModel.md",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/enumerations/ModelClass.md",
+                "additions": 41,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/enumerations/ModelProvider.md",
+                "additions": 101,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/addHeader.md",
+                "additions": 40,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/buyToken.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/docs/api/functions/composeActionExamples.md",
+                "additions": 26,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/composeContext.md",
+                "additions": 45,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/createAgentRuntime.md",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/createAndBuyToken.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/docs/api/functions/createDirectRuntime.md",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/createGoal.md",
+                "additions": 19,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/createRelationship.md",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/embed.md",
+                "additions": 23,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/formatActionNames.md",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/formatActions.md",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/formatActors.md",
+                "additions": 23,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/formatEvaluatorExampleDescriptions.md",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/formatEvaluatorExamples.md",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/formatEvaluatorNames.md",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/formatEvaluators.md",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/formatGoalsAsString.md",
+                "additions": 17,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/formatMessages.md",
+                "additions": 23,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/formatPosts.md",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/formatRelationships.md",
+                "additions": 19,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/formatTimestamp.md",
+                "additions": 15,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/generateCaption.md",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "docs/docs/api/functions/generateImage.md",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "docs/docs/api/functions/generateMessageResponse.md",
+                "additions": 29,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/generateObject.md",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/generateObjectArray.md",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/generateShouldRespond.md",
+                "additions": 29,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/generateText.md",
+                "additions": 33,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/generateTextArray.md",
+                "additions": 29,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/generateTrueOrFalse.md",
+                "additions": 29,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/getActorDetails.md",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/getEndpoint.md",
+                "additions": 15,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/getGoals.md",
+                "additions": 25,
+                "deletions": 0
+              },
+              {
+                "path": "docs/docs/api/functions/getImageGenModel.md",
+                "additions": 15,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "MarcoMandar",
+    "score": 0,
+    "summary": "MarcoMandar is actively engaged in software development, as evidenced by a recent merge pull request from ai16z/main to his repository. Over the past 90 days, he has made one commit contributing to code changes that increased lines of code by 175 overall. Despite these contributions, there have been no open or merged pull requests and issues during this period.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/70625671?u=88aeaa8b5ed43a818bdac96843f2fd40c0abf8ff&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 0,
+        "commits": [
+          {
+            "sha": "bcc17c6bc980f5049f8385c59f4cf096a4d9d9ae",
+            "message": "Merge pull request #19 from ai16z/main\n\nmerge from main",
+            "created_at": "2024-11-06T23:49:29Z",
+            "additions": 194,
+            "deletions": 17,
+            "changed_files": 5
+          }
+        ],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "MeDott29",
+    "score": 0,
+    "summary": "MeDott29 is actively working on the grok-beta feature, as evidenced by a recent merge from the 'ai16z:main' branch into implement-grok-beta and multiple commits updating this component. With one merged pull request in the core code area, they have contributed to an overall positive net change of +8 lines of code over the past 90 days.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/13264408?u=774956fff4bc2992f33fe6535afa5f6500cc3fba&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 3,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "6853b43f5f7c3ebd43ec5d63ea78e196b87479bf",
+            "message": "Merge branch 'ai16z:main' into implement-grok-beta",
+            "created_at": "2024-11-06T18:48:30Z",
+            "additions": 2,
+            "deletions": 0,
+            "changed_files": 1
+          },
+          {
+            "sha": "a233529c61e6a838d5e4143c0308630fe2315e6e",
+            "message": "update to grok-beta",
+            "created_at": "2024-11-06T08:17:08Z",
+            "additions": 2,
+            "deletions": 1,
+            "changed_files": 1
+          },
+          {
+            "sha": "e4d081e2d8eba1e33369391dfb92025a460eeaec",
+            "message": "update to grok-beta",
+            "created_at": "2024-11-06T08:14:17Z",
+            "additions": 4,
+            "deletions": 4,
+            "changed_files": 1
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 216,
+            "title": "Implement grok beta",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-11-06T08:19:33Z",
+            "updated_at": "2024-11-06T20:34:01Z",
+            "body": "![2d-kinda-looks-like-lets-fucking-go-ball-in-this-art-v0-e9fpp4b3s8rb1.png](https://github.com/user-attachments/assets/d1db9caf-df4e-48d4-b911-b215dc9086ec)\r\n\r\ngrok-beta integrated.\r\neveryone gets a free Eliza until end of year.\r\naccelerate.\r\nhttps://docs.x.ai/api/integrations#openai-sdk",
+            "files": [
+              {
+                "path": "core/src/core/generation.ts",
+                "additions": 2,
+                "deletions": 1
+              },
+              {
+                "path": "core/src/core/models.ts",
+                "additions": 4,
+                "deletions": 4
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "lalalune",
+                "body": "LFG!!!!!!!!!!!!"
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "lo-zed",
+    "score": 0,
+    "summary": "lo-zed is currently addressing a critical issue where pnpm install fails on Ubuntu systems, indicating a potential bug that affects package management. With no pull requests or code changes made during this period, the focus remains solely on resolving this specific problem to improve user experience and system compatibility.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/6696194?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 215,
+            "title": "pnpm install fails on Ubuntu",
+            "state": "CLOSED",
+            "created_at": "2024-11-06T08:11:15Z",
+            "updated_at": "2024-12-14T07:29:13Z",
+            "body": "**Describe the bug**\r\n\r\nInstallation fails\r\n\r\n**To Reproduce**\r\n\r\n`pnpm i`\r\n\r\n**Expected behavior**\r\n\r\nInstalls without error.\r\n\r\n**Additional context**\r\n\r\nOS: Ubuntu 24.04 LTS\r\nnode: v22.10.1\r\npnpm: 9.12.3\r\n\r\nAn example of error I get:\r\n```\r\nnode_modules/sharp install$ (node install/libvips && node install/dll-copy && prebuild-install) || (node install/can-compile && node-gyp rebuild && node install/dll-copy)\r\n\u2514\u2500 Failed in 283ms at /home/ubuntu/eliza/node_modules/sharp\r\n```\r\nHappens with `@discordjs/opus` & `onnxruntime-node` too, maybe others.\r\n\r\nBut if I go into the directory and install from there it works:\r\n```\r\ncd node_modules/sharp\r\nnpm install\r\n```\r\nThis doesn't throw any error and installs the package correctly.\r\n\r\nIs this a bug on `pnpm` side?",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": [
+              {
+                "author": "Sid31",
+                "body": "Did you try pnpm install --include=optional sharp ? \r\n"
+              },
+              {
+                "author": "lo-zed",
+                "body": "yes, same error unfortunately"
+              },
+              {
+                "author": "lo-zed",
+                "body": "issue created at pnpm repo too: https://github.com/pnpm/pnpm/issues/8737"
+              },
+              {
+                "author": "metadiver",
+                "body": "related https://github.com/ai16z/eliza/issues/237"
+              },
+              {
+                "author": "lo-zed",
+                "body": "Hi, thanks for your help. I tried but with no success. How do you add python to the path? I tried:\r\n- a bash alias\r\n- a link python -> python3\r\n- adding the python path to `.env` in the project base dir\r\n\r\nAlso would you know how to get useful debug info? I tried `--reporter ndjson` but couldn't find the reason why the install fails"
+              },
+              {
+                "author": "sirkitree",
+                "body": "Try the following:\r\n1. downgrade to node v20 `nvm install 20 && nvm use 20`\r\n1. remove node modules and lock file `rm -rf node_modules && rm pnpm-lock.yaml`\r\n1. rerun install `pnpm i`"
+              },
+              {
+                "author": "sais-github",
+                "body": "I was running into the same issue, \r\n`apt update`\r\n`apt install -y build-essential` \r\nResolved the error \r\n\r\nIt seems the error was caused by make not being installed? \r\n\r\n```\r\nnode_modules/@discordjs/opus install$ node-pre-gyp install --fallback-to-build\r\n\u00e2\u201d\u201a node-pre-gyp info it worked if it ends with ok\r\n\u00e2\u201d\u201a node-pre-gyp info using node-pre-gyp@0.4.5\r\n\u00e2\u201d\u201a node-pre-gyp info using node@23.1.0 | linux | x64\r\n\u00e2\u201d\u201a (node:2738) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userl\u00e2\u20ac\u00a6\r\n\u00e2\u201d\u201a (Use `node --trace-deprecation ...` to show where the warning was created)\r\n\u00e2\u201d\u201a node-pre-gyp info check checked for \"/home/box/eliza/node_modules/@discordjs/opus/prebuild/node-v\u00e2\u20ac\u00a6\r\n\u00e2\u201d\u201a node-pre-gyp http GET https://github.com/discordjs/opus/releases/download/v0.9.0/opus-v0.9.0-node\u00e2\u20ac\u00a6\r\n\u00e2\u201d\u201a node-pre-gyp ERR! install response status 404 Not Found on https://github.com/discordjs/opus/rele\u00e2\u20ac\u00a6\r\n\u00e2\u201d\u201a node-pre-gyp WARN Pre-built binaries not installable for @discordjs/opus@0.9.0 and node@23.1.0 (n\u00e2\u20ac\u00a6\r\n\u00e2\u201d\u201a node-pre-gyp WARN Hit error response status 404 Not Found on https://github.com/discordjs/opus/re\u00e2\u20ac\u00a6\r\n\u00e2\u201d\u201a gyp info it worked if it ends with ok\r\n\u00e2\u201d\u201a gyp info using node-gyp@10.2.0\r\n\u00e2\u201d\u201a gyp info using node@23.1.0 | linux | x64\r\n\u00e2\u201d\u201a gyp info ok\r\n\u00e2\u201d\u201a gyp info it worked if it ends with ok\r\n\u00e2\u201d\u201a gyp info using node-gyp@10.2.0\r\n\u00e2\u201d\u201a gyp info using node@23.1.0 | linux | x64\r\n\u00e2\u201d\u201a gyp info find Python using Python version 3.10.12 found at \"/usr/bin/python3\"\r\n\u00e2\u201d\u201a gyp http GET https://nodejs.org/download/release/v23.1.0/node-v23.1.0-headers.tar.gz\r\n\u00e2\u201d\u201a gyp http 200 https://nodejs.org/download/release/v23.1.0/node-v23.1.0-headers.tar.gz\r\n\u00e2\u201d\u201a gyp http GET https://nodejs.org/download/release/v23.1.0/SHASUMS256.txt\r\n\u00e2\u201d\u201a gyp http 200 https://nodejs.org/download/release/v23.1.0/SHASUMS256.txt\r\n\u00e2\u201d\u201a gyp info spawn /usr/bin/python3\r\n\u00e2\u201d\u201a gyp info spawn args [\r\n\u00e2\u201d\u201a gyp info spawn args '/home/box/eliza/node_modules/node-gyp/gyp/gyp_main.py',\r\n\u00e2\u201d\u201a gyp info spawn args 'binding.gyp',\r\n\u00e2\u201d\u201a gyp info spawn args '-f',\r\n\u00e2\u201d\u201a gyp info spawn args 'make',\r\n\u00e2\u201d\u201a gyp info spawn args '-I',\r\n\u00e2\u201d\u201a gyp info spawn args '/home/box/eliza/node_modules/@discordjs/opus/build/config.gypi',\r\n\u00e2\u201d\u201a gyp info spawn args '-I',\r\n\u00e2\u201d\u201a gyp info spawn args '/home/box/eliza/node_modules/node-gyp/addon.gypi',\r\n\u00e2\u201d\u201a gyp info spawn args '-I',\r\n\u00e2\u201d\u201a gyp info spawn args '/home/box/.cache/node-gyp/23.1.0/include/node/common.gypi',\r\n\u00e2\u201d\u201a gyp info spawn args '-Dlibrary=shared_library',\r\n\u00e2\u201d\u201a gyp info spawn args '-Dvisibility=default',\r\n\u00e2\u201d\u201a gyp info spawn args '-Dnode_root_dir=/home/box/.cache/node-gyp/23.1.0',\r\n\u00e2\u201d\u201a gyp info spawn args '-Dnode_gyp_dir=/home/box/eliza/node_modules/node-gyp',\r\n\u00e2\u201d\u201a gyp info spawn args '-Dnode_lib_file=/home/box/.cache/node-gyp/23.1.0/<(target_arch)/node.lib',\r\n\u00e2\u201d\u201a gyp info spawn args '-Dmodule_root_dir=/home/box/eliza/node_modules/@discordjs/opus',\r\n\u00e2\u201d\u201a gyp info spawn args '-Dnode_engine=v8',\r\n\u00e2\u201d\u201a gyp info spawn args '--depth=.',\r\n\u00e2\u201d\u201a gyp info spawn args '--no-parallel',\r\n\u00e2\u201d\u201a gyp info spawn args '--generator-output',\r\n\u00e2\u201d\u201a gyp info spawn args 'build',\r\n\u00e2\u201d\u201a gyp info spawn args '-Goutput_dir=.'\r\n\u00e2\u201d\u201a gyp info spawn args ]\r\n\u00e2\u201d\u201a gyp info ok\r\n\u00e2\u201d\u201a gyp info it worked if it ends with ok\r\n\u00e2\u201d\u201a gyp info using node-gyp@10.2.0\r\n\u00e2\u201d\u201a gyp info using node@23.1.0 | linux | x64\r\n\u00e2\u201d\u201a gyp ERR! build error\r\n\u00e2\u201d\u201a gyp ERR! stack Error: not found: make\r\n\u00e2\u201d\u201a gyp ERR! stack at getNotFoundError (/home/box/eliza/node_modules/which/lib/index.js:16:17)\r\n\u00e2\u201d\u201a gyp ERR! stack at which (/home/box/eliza/node_modules/which/lib/index.js:77:9)\r\n\u00e2\u201d\u201a gyp ERR! stack at async doWhich (/home/box/eliza/node_modules/node-gyp/lib/build.js:119:22)\r\n\u00e2\u201d\u201a gyp ERR! stack at async loadConfigGypi (/home/box/eliza/node_modules/node-gyp/lib/build.js:78:7)\r\n\u00e2\u201d\u201a gyp ERR! stack at async build (/home/box/eliza/node_modules/node-gyp/lib/build.js:36:3)\r\n\u00e2\u201d\u201a gyp ERR! stack at async run (/home/box/eliza/node_modules/node-gyp/bin/node-gyp.js:81:18)\r\n\u00e2\u201d\u201a gyp ERR! System Linux 5.15.153.1-microsoft-standard-WSL2\r\n\u00e2\u201d\u201a gyp ERR! command \"/home/box/.nvm/versions/node/v23.1.0/bin/node\" \"/home/box/eliza/node_modules/no\u00e2\u20ac\u00a6\r\n\u00e2\u201d\u201a gyp ERR! cwd /home/box/eliza/node_modules/@discordjs/opus\r\n\u00e2\u201d\u201a gyp ERR! node -v v23.1.0\r\n\u00e2\u201d\u201a gyp ERR! node-gyp -v v10.2.0\r\n\u00e2\u201d\u201a gyp ERR! not ok\r\n\u00e2\u201d\u201a node-pre-gyp ERR! build error\r\n\u00e2\u201d\u201a node-pre-gyp ERR! stack Error: Failed to execute '/home/box/.nvm/versions/node/v23.1.0/bin/node /\u00e2\u20ac\u00a6\r\n\u00e2\u201d\u201a node-pre-gyp ERR! stack     at ChildProcess.<anonymous> (/home/box/eliza/node_modules/@discordjs/\u00e2\u20ac\u00a6\r\n\u00e2\u201d\u201a node-pre-gyp ERR! stack     at ChildProcess.emit (node:events:507:28)\r\n\u00e2\u201d\u201a node-pre-gyp ERR! stack     at maybeClose (node:internal/child_process:1101:16)\r\n\u00e2\u201d\u201a node-pre-gyp ERR! stack     at ChildProcess._handle.onexit (node:internal/child_process:305:5)\r\n\u00e2\u201d\u201a node-pre-gyp ERR! System Linux 5.15.153.1-microsoft-standard-WSL2\r\n\u00e2\u201d\u201a node-pre-gyp ERR! command \"/home/box/.nvm/versions/node/v23.1.0/bin/node\" \"/home/box/eliza/node_m\u00e2\u20ac\u00a6\r\n\u00e2\u201d\u201a node-pre-gyp ERR! cwd /home/box/eliza/node_modules/@discordjs/opus\r\n\u00e2\u201d\u201a node-pre-gyp ERR! node -v v23.1.0\r\n\u00e2\u201d\u201a node-pre-gyp ERR! node-pre-gyp -v v0.4.5\r\n\u00e2\u201d\u201a node-pre-gyp ERR! not ok\r\n\u00e2\u201d\u201a Failed to execute '/home/box/.nvm/versions/node/v23.1.0/bin/node /home/box/eliza/node_modules/nod\u00e2\u20ac\u00a6\r\n\u00e2\u201d\u201d\u00e2\u201d\u20ac Failed in 4s at /home/box/eliza/node_modules/@discordjs/opus\r\nnode_modules/puppeteer: Running postinstall script...\r\nnode_modules/canvas: Running install script...\r\n\u00e2\u20ac\u2030ELIFECYCLE\u00e2\u20ac\u2030 Command failed with exit code 1.\r\n```"
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  }
+]

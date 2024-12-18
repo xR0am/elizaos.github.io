@@ -1,0 +1,74 @@
+{
+  "title": "ai16z Eliza (2024-12-18)",
+  "version": "",
+  "overview": "Development focused on package improvements (create example folder with example plugin), new features (create example folder with example plugin), 2 bug fixes. with 31 contributors merging 19 PRs. Major work included various improvements.",
+  "metrics": {
+    "contributors": 31,
+    "merged_prs": 19,
+    "new_issues": 4,
+    "lines_changed": 17086
+  },
+  "changes": {
+    "features": [
+      "create example folder with example plugin",
+      "allow users to configure models for openai and anthropic",
+      "Add plugin-nft-generation: create Solana NFT collections."
+    ],
+    "fixes": [
+      "add callback to action in farcaster client",
+      "typo initialize"
+    ],
+    "chores": [
+      "Twitter fetchHomeTimeline rework",
+      "Bring Develop up to date with HEAD",
+      "Twitter search switch"
+    ]
+  },
+  "areas": [
+    {
+      "name": "packages",
+      "files": 55,
+      "additions": 3332,
+      "deletions": 825
+    },
+    {
+      "name": "root",
+      "files": 39,
+      "additions": 3574,
+      "deletions": 299
+    },
+    {
+      "name": "client",
+      "files": 35,
+      "additions": 1945,
+      "deletions": 0
+    }
+  ],
+  "issues_summary": "working on 1 bugs including 'Get rid of the postinstall script for node-plugin' and implementing 3 feature requests including 'Add a Hebrew Translation for the readme.', 'Setup of API keys for CI/CD tests'",
+  "questions": [],
+  "top_contributors": [
+    {
+      "name": "shakkernerd",
+      "summary": "Shakkernerd is actively developing the farcaster client, as evidenced by a recent merge pull request (#1002) from sin-bufan/feat-farcaster-client-action-callback",
+      "areas": []
+    },
+    {
+      "name": "monilpat",
+      "summary": "Monilpat is actively contributing to the project by merging pull requests that enhance functionality, such as improving coverage file generation for codecov, adding Twitter search switch capabilities, and configuring models with OpenAI Anthropic",
+      "areas": [
+        "packages",
+        "lerna.json",
+        "pnpm-lock.yaml"
+      ]
+    },
+    {
+      "name": "odilitime",
+      "summary": "odilitime is actively enhancing the Twitter search functionality within their project by introducing new features such as an enableSearch flag/property and expanding TWITTER_SEARCH_ENABLE to accept more values",
+      "areas": [
+        "README_KOR.md",
+        "Dockerfile",
+        "README_JA.md"
+      ]
+    }
+  ]
+}
