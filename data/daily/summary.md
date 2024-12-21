@@ -1,42 +1,44 @@
-# ai16z Eliza (2024-12-20)
+# ai16z Eliza (2024-12-21)
     
 ## 📊 Overview
-Development focused on new features (add README_DE.md in docs directory), 3 bug fixes. with 23 contributors merging 5 PRs. Major work included various improvements.
+Development focused on package improvements (bump agent-twitter-client version to v0.0.17), new features (release version 0.1.6), 10 bug fixes. with 26 contributors merging 19 PRs. Major work included shakkernerd is primarily working on updating dependencies, adding new features like agent_redis_support, and fixing integration tests and default character issues in the project.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 23 |
-| 📝 Commits | 0 |
-| 🔄 Merged PRs | 5 |
-| ⚠️ New Issues | 13 |
+| 👥 Contributors | 26 |
+| 📝 Commits | 44 |
+| 🔄 Merged PRs | 19 |
+| ⚠️ New Issues | 19 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 1
-- 🐛 **Fixes**: 2
-- ✨ **Features**: 1
+- 🧹 **Chores**: 5
+- 🐛 **Fixes**: 10
+- ✨ **Features**: 3
 
 ## 📁 File Changes
-- **root**: 2 files (+41268/-41268 lines)
-- **docs**: 3 files (+177/-1 lines)
-- **agent**: 1 files (+1/-0 lines)
+- **root**: 25 files (+1125/-2814 lines)
+- **docs**: 99 files (+372/-204 lines)
+- **packages**: 139 files (+212/-212 lines)
+- **agent**: 10 files (+255/-143 lines)
+- **.github**: 5 files (+95/-66 lines)
 
 ## 🔥 Notable Changes
-- chore: Revert "fix: pnpm lockfile"
-- fix: pnpm lockfile
-- doc: add Twitter automation label notice (#1253)
+- chore: bump agent-twitter-client version to v0.0.17
+- chore: rebase develop branch
+- feat: release version 0.1.6
 
 ## 👥 Top Contributors
-- **shakkernerd**: shakkernerd is currently working on implementing Redis caching for performance improvement in the "packages" code area
-- **julienbrs**: julienbrs is currently working on enhancing the documentation by adding a requirement for the Twitter automation label in the quickstart guide
-- **tcm390**: tcm390 is currently working on fixing an issue related to an unsupported model provider named claude_vertex in the agent code area
+- **shakkernerd**: shakkernerd is primarily working on updating dependencies, adding new features like agent_redis_support, and fixing integration tests and default character issues in the project
+- **oxSaturn**: oxSaturn is currently working on adding support for long tweets, fixing issues related to tweet length settings and cache storage, and updating dependencies to resolve package errors in the agent and packages code areas
+- **odilitime**: odilitime is primarily focused on code maintenance and cleanup, as seen in the recent commits to remove unnecessary packages and Slack messages added by PR1182
 
 ## ⚠️ Issues
-- **New Issues**: 13
-- **Labels**: `enhancement` (6), `bug` (6), `documentation` (1)
-- **Summary**: 6 bugs reported (including 'Fix Incorrect Fallback Logic for Image Model Provider API Keys', 'SCAM project') 6 feature requests (including 'Implement Redis Caching for Performance', 'doc: Add Twitter automation label requirement to quickstart guide').
+- **New Issues**: 19
+- **Labels**: `bug` (11), `enhancement` (7), `Needs Testing` (1)
+- **Summary**: 11 bugs reported (including 'connect ETIMEDOUT 104.244.46.63:443', 'Why do I have a running Agent on WSL2, but the browser shows don't work?') 7 feature requests (including 'Auto-label PRs based off of paths touched', 'Reduce load on maintainers').
 
 ## Top Contributors
-- **shakkernerd**: chore: Revert "fix: pnpm lockfile"
-- **julienbrs**: doc: add Twitter automation label notice (#1253)
-- **tcm390**: fix: unsupported model provider: claude_vertex
+- **shakkernerd**: chore: bump agent-twitter-client version to v0.0.17
+- **oxSaturn**: fix: use MAX_TWEET_LENGTH from setting
+- **odilitime**: feat: Update main for v0.1.6-alpha.5
