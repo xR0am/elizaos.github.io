@@ -1,4 +1,4 @@
-# ai16z Eliza (2024-12-21)
+# elizaos Eliza (2024-12-21)
     
 ## 📊 Overview
 Development focused on package improvements (bump agent-twitter-client version to v0.0.17), new features (release version 0.1.6), 10 bug fixes. with 26 contributors merging 19 PRs. Major work included shakkernerd is primarily working on updating dependencies, adding new features like agent_redis_support, and fixing integration tests and default character issues in the project.

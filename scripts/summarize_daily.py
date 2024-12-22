@@ -226,7 +226,7 @@ def generate_json_summary(metrics: Dict, data: List[Dict]) -> Dict:
                     chores.append(title_content)
     
     return {
-        "title": f"ai16z Eliza ({datetime.utcnow().strftime('%Y-%m-%d')})",
+        "title": f"elizaos Eliza ({datetime.utcnow().strftime('%Y-%m-%d')})",
         "version": version,
         "overview": generate_overview(metrics, changes, data),
         "metrics": {
@@ -291,7 +291,7 @@ def generate_summary(data: List[Dict], model: str = "ollama", api_key: str = Non
     user_summary_lines = user_summary.split('\n')[1:]  # Skip the first line that had the old title
     user_summary = '\n'.join(user_summary_lines)
 
-    summary = f"""# ai16z Eliza ({datetime.utcnow().strftime("%Y-%m-%d")})
+    summary = f"""# elizaos Eliza ({datetime.utcnow().strftime("%Y-%m-%d")})
 {user_summary}
 
 ## Top Contributors
@@ -398,7 +398,7 @@ def generate_user_summary(metrics: Dict, data: List[Dict]) -> str:
         
         issue_summary = " ".join(summaries) + "."
     
-    summary = f"""# ai16z/eliza Daily {date}
+    summary = f"""# elizaos/eliza Daily {date}
     
 ## 📊 Overview
 {overview}

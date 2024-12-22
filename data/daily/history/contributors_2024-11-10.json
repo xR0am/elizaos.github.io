@@ -27,7 +27,7 @@
           },
           {
             "sha": "2b12018a4e3bc001a391e499989ed20d789237df",
-            "message": "Merge branch 'main' of https://github.com/ai16z/eliza into shaw/trust",
+            "message": "Merge branch 'main' of https://github.com/elizaos/eliza into shaw/trust",
             "created_at": "2024-11-10T01:16:45Z",
             "additions": 617,
             "deletions": 196,
@@ -43,7 +43,7 @@
           },
           {
             "sha": "76d33f715629c98eb1845c0964f93ab8209ac3b2",
-            "message": "Merge pull request #247 from ai16z/fix-pg-adapter\n\nWorking PostGres Adapter",
+            "message": "Merge pull request #247 from elizaos/fix-pg-adapter\n\nWorking PostGres Adapter",
             "created_at": "2024-11-10T01:12:35Z",
             "additions": 108,
             "deletions": 107,
@@ -83,7 +83,7 @@
   {
     "contributor": "ponderingdemocritus",
     "score": 0,
-    "summary": "Ponderingdemocritus is currently focused on integrating the Eliza chatbot project from ai16z into their repository, as evidenced by a recent merge commit to their 'main' branch. This activity indicates an emphasis on expanding or enhancing conversational AI capabilities within their work.",
+    "summary": "Ponderingdemocritus is currently focused on integrating the Eliza chatbot project from elizaos into their repository, as evidenced by a recent merge commit to their 'main' branch. This activity indicates an emphasis on expanding or enhancing conversational AI capabilities within their work.",
     "avatar_url": "https://avatars.githubusercontent.com/u/90423308?u=fa7a84e8e946db253241c7aaabbb57e7c6495f0b&v=4",
     "activity": {
       "code": {
@@ -92,7 +92,7 @@
         "commits": [
           {
             "sha": "3237a4a8cacc616decb193f76ab6741851fdb5e4",
-            "message": "Merge branch 'main' of https://github.com/ai16z/eliza",
+            "message": "Merge branch 'main' of https://github.com/elizaos/eliza",
             "created_at": "2024-11-10T00:04:33Z",
             "additions": 585,
             "deletions": 47,
@@ -535,7 +535,7 @@
         "commits": [
           {
             "sha": "77dab6ec568be554660226b24b10959bcb8c6be0",
-            "message": "Merge pull request #22 from ai16z/main\n\nmerge from main",
+            "message": "Merge pull request #22 from elizaos/main\n\nmerge from main",
             "created_at": "2024-11-10T15:02:17Z",
             "additions": 13,
             "deletions": 2,
@@ -559,7 +559,7 @@
           },
           {
             "sha": "c695a8947344b0361bbbd8a6a89b7c9f483c4c48",
-            "message": "Merge pull request #21 from ai16z/main\n\nmerge from main",
+            "message": "Merge pull request #21 from elizaos/main\n\nmerge from main",
             "created_at": "2024-11-10T01:19:16Z",
             "additions": 304,
             "deletions": 151,
@@ -918,7 +918,7 @@
             "state": "CLOSED",
             "created_at": "2024-11-10T15:05:15Z",
             "updated_at": "2024-11-20T10:30:34Z",
-            "body": "**Describe the bug**\r\n\r\nThe `getCachedEmbeddings` for the sqlite adapter is flawed with the recent [introduction of vec_distance_L2](https://github.com/ai16z/eliza/commit/e96764a53c1d15b6f53cff6ec842f63f70d13842). \r\n\r\n```\r\npackages/adapter-sqlite/src/index.ts:226\r\nconst memories = this.db.prepare(sql).all(opts.query_table_name, new Float32Array(opts.query_input.split(\",\").map(Number)), // Convert string to Float32Array\r\n                                              ^\r\nRangeError: Too few parameter values were provided\r\n```\r\n\r\n\r\n1. The sql query expects 5 values, but only 4 are passed. `query_match_count` should be used for `LIMIT`\r\n2. The creation of the float array seems off. The `query_input` does not include any comma separated values. The resulting array is `[NaN]`\r\n3. Distance comparison is between a float array and a string. It should probably be compared to `query_threshold`, not `query_input`\r\n\r\nRelated function is here:\r\nhttps://github.com/ai16z/eliza/blob/15f7ba88d04d9d7d1cf0f608762fa84da06cb313/packages/adapter-sqlite/src/index.ts#L332C11-L360\r\n\r\nI'm happy to contribute if someone can guide me. I have little clue about `vec_distance` and didn't manage to infer what the intention of the change was exactly.\r\n\r\n**To Reproduce**\r\n\r\n`pnpm start --characters=\"characters/custom.character.json\"` and type something\r\n\r\n**Expected behavior**\r\n\r\nNo sqlite errors\r\n",
+            "body": "**Describe the bug**\r\n\r\nThe `getCachedEmbeddings` for the sqlite adapter is flawed with the recent [introduction of vec_distance_L2](https://github.com/elizaos/eliza/commit/e96764a53c1d15b6f53cff6ec842f63f70d13842). \r\n\r\n```\r\npackages/adapter-sqlite/src/index.ts:226\r\nconst memories = this.db.prepare(sql).all(opts.query_table_name, new Float32Array(opts.query_input.split(\",\").map(Number)), // Convert string to Float32Array\r\n                                              ^\r\nRangeError: Too few parameter values were provided\r\n```\r\n\r\n\r\n1. The sql query expects 5 values, but only 4 are passed. `query_match_count` should be used for `LIMIT`\r\n2. The creation of the float array seems off. The `query_input` does not include any comma separated values. The resulting array is `[NaN]`\r\n3. Distance comparison is between a float array and a string. It should probably be compared to `query_threshold`, not `query_input`\r\n\r\nRelated function is here:\r\nhttps://github.com/elizaos/eliza/blob/15f7ba88d04d9d7d1cf0f608762fa84da06cb313/packages/adapter-sqlite/src/index.ts#L332C11-L360\r\n\r\nI'm happy to contribute if someone can guide me. I have little clue about `vec_distance` and didn't manage to infer what the intention of the change was exactly.\r\n\r\n**To Reproduce**\r\n\r\n`pnpm start --characters=\"characters/custom.character.json\"` and type something\r\n\r\n**Expected behavior**\r\n\r\nNo sqlite errors\r\n",
             "labels": [
               {
                 "name": "bug",

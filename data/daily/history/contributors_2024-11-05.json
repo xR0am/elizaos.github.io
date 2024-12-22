@@ -66,7 +66,7 @@
             "merged": true,
             "created_at": "2024-11-05T07:05:55Z",
             "updated_at": "2024-11-07T02:49:47Z",
-            "body": "This PR adds template overrides. This relates to this issue: https://github.com/ai16z/eliza/issues/206\r\n\r\nIf you add overrides to your character file, it will use these templates in place of the templates that are in the code. Obviously how the templates work and what they are is opaque, and will require looking into the code for them. Fortunately, the template variable names are the same as the overrides.\r\n\r\nWe should add documentation and some kind of tutorial / explanation of templates and how to modify them, but for now lets get this in so our partners can use it.",
+            "body": "This PR adds template overrides. This relates to this issue: https://github.com/elizaos/eliza/issues/206\r\n\r\nIf you add overrides to your character file, it will use these templates in place of the templates that are in the code. Obviously how the templates work and what they are is opaque, and will require looking into the code for them. Fortunately, the template variable names are the same as the overrides.\r\n\r\nWe should add documentation and some kind of tutorial / explanation of templates and how to modify them, but for now lets get this in so our partners can use it.",
             "files": [
               {
                 "path": "core/elizaConfig.example.yaml",
@@ -557,7 +557,7 @@
   {
     "contributor": "ponderingdemocritus",
     "score": 0,
-    "summary": "Ponderingdemocritus is currently focused on integrating the Eliza chatbot into their projects, as evidenced by a recent merge from the ai16z/eliza repository. This activity has resulted in a net increase of 25,518 lines of code over the past 90 days, with no pull requests or issues opened during this period.",
+    "summary": "Ponderingdemocritus is currently focused on integrating the Eliza chatbot into their projects, as evidenced by a recent merge from the elizaos/eliza repository. This activity has resulted in a net increase of 25,518 lines of code over the past 90 days, with no pull requests or issues opened during this period.",
     "avatar_url": "https://avatars.githubusercontent.com/u/90423308?u=fa7a84e8e946db253241c7aaabbb57e7c6495f0b&v=4",
     "activity": {
       "code": {
@@ -566,7 +566,7 @@
         "commits": [
           {
             "sha": "52467d6a78585d1b5c50b07f8f8b252665eff375",
-            "message": "Merge branch 'main' of https://github.com/ai16z/eliza",
+            "message": "Merge branch 'main' of https://github.com/elizaos/eliza",
             "created_at": "2024-11-05T06:39:13Z",
             "additions": 26399,
             "deletions": 781,
@@ -608,7 +608,7 @@
             "state": "CLOSED",
             "created_at": "2024-11-05T03:34:49Z",
             "updated_at": "2024-11-13T14:55:15Z",
-            "body": "## Homepage\n![Image](https://github.com/user-attachments/assets/39c26715-9400-4b90-8816-d5e363dcb023)\n* ... designed to be ~~and~~ easy to use (strike the 'and')\n\n![Image](https://github.com/user-attachments/assets/135f0e0a-d760-46d1-b7c4-31c60d915727)\n* This discord invite is invalid.\n\n![Image](https://github.com/user-attachments/assets/b3dd900f-3252-40ae-a575-a81afadf845c)\n* Just curious, but what is the \"b\" icon? Should we make like an AI one? or is this something to do with the docs framework?\n\n## API\n* In general, API docs typically have a standard format that provides the interface, parameters, endpoints, etc. for something like a REST API. So when clicking this, I was not expecting to see setup instructions. It seems like this is mostly duplicate info from the \"[Getting Started](https://ai16z.github.io/eliza/docs/quickstart/)\" section. There isn't really an API, so I'd suggest we just remove this section for now.\n* Possibly replace with with some documentation about how the core information flows from the Agent Runtime, to the Memory System, the Room-based Organization, Information Processing Pipeline, Provider Integration, and State Management - though these could all be valid sections under the Advanced Concepts section as well on the Documentation page.\n\n![Image](https://github.com/user-attachments/assets/55c6d401-9b6b-4f49-90f7-528ffb4acefb)\n*  banner image is broken\n",
+            "body": "## Homepage\n![Image](https://github.com/user-attachments/assets/39c26715-9400-4b90-8816-d5e363dcb023)\n* ... designed to be ~~and~~ easy to use (strike the 'and')\n\n![Image](https://github.com/user-attachments/assets/135f0e0a-d760-46d1-b7c4-31c60d915727)\n* This discord invite is invalid.\n\n![Image](https://github.com/user-attachments/assets/b3dd900f-3252-40ae-a575-a81afadf845c)\n* Just curious, but what is the \"b\" icon? Should we make like an AI one? or is this something to do with the docs framework?\n\n## API\n* In general, API docs typically have a standard format that provides the interface, parameters, endpoints, etc. for something like a REST API. So when clicking this, I was not expecting to see setup instructions. It seems like this is mostly duplicate info from the \"[Getting Started](https://elizaos.github.io/eliza/docs/quickstart/)\" section. There isn't really an API, so I'd suggest we just remove this section for now.\n* Possibly replace with with some documentation about how the core information flows from the Agent Runtime, to the Memory System, the Room-based Organization, Information Processing Pipeline, Provider Integration, and State Management - though these could all be valid sections under the Advanced Concepts section as well on the Documentation page.\n\n![Image](https://github.com/user-attachments/assets/55c6d401-9b6b-4f49-90f7-528ffb4acefb)\n*  banner image is broken\n",
             "labels": [
               {
                 "name": "documentation",
@@ -619,7 +619,7 @@
             "comments": [
               {
                 "author": "madjin",
-                "body": "I did a huge overhaul of docs, still much more to do (looking around for a new icon/logo to replace that b)\r\n\r\nhttps://ai16z.github.io/eliza/docs/intro/\r\n\r\nSome to-do plans:\r\n- prettify overall (icons to table of contents)\r\n- add some architecture diagrams (LLM -> mermaid diagram)\r\n- improve api docs (make code more readable / add comments for better autodocs)\r\n  - generate code2prompt templates: https://github.com/raphaelmansuy/code2prompt\r\n- test and ensure documentation is up to date (go through everything after refactor code merges)\r\n- add more visuals"
+                "body": "I did a huge overhaul of docs, still much more to do (looking around for a new icon/logo to replace that b)\r\n\r\nhttps://elizaos.github.io/eliza/docs/intro/\r\n\r\nSome to-do plans:\r\n- prettify overall (icons to table of contents)\r\n- add some architecture diagrams (LLM -> mermaid diagram)\r\n- improve api docs (make code more readable / add comments for better autodocs)\r\n  - generate code2prompt templates: https://github.com/raphaelmansuy/code2prompt\r\n- test and ensure documentation is up to date (go through everything after refactor code merges)\r\n- add more visuals"
               }
             ]
           }
@@ -685,7 +685,7 @@
   {
     "contributor": "MarcoMandar",
     "score": 0,
-    "summary": "MarcoMandar is actively working on enhancing the recommender system, integrating token performance into swapping mechanisms, and collaborating with contributors from ai16z/main branch to merge pull requests. His recent efforts have resulted in a net increase of 25795 lines of code within core areas of the project over the past 90 days.",
+    "summary": "MarcoMandar is actively working on enhancing the recommender system, integrating token performance into swapping mechanisms, and collaborating with contributors from elizaos/main branch to merge pull requests. His recent efforts have resulted in a net increase of 25795 lines of code within core areas of the project over the past 90 days.",
     "avatar_url": "https://avatars.githubusercontent.com/u/70625671?u=88aeaa8b5ed43a818bdac96843f2fd40c0abf8ff&v=4",
     "activity": {
       "code": {
@@ -694,7 +694,7 @@
         "commits": [
           {
             "sha": "c56950f760d1a6b48e1a069f44dbbb75d02b0506",
-            "message": "Merge pull request #18 from ai16z/main\n\nmerge from main",
+            "message": "Merge pull request #18 from elizaos/main\n\nmerge from main",
             "created_at": "2024-11-05T10:06:36Z",
             "additions": 1858,
             "deletions": 66,
@@ -702,7 +702,7 @@
           },
           {
             "sha": "f7c5c4ffc422dda4571f24b8340a52bcc35071ac",
-            "message": "Merge pull request #17 from ai16z/main\n\nmerge from main",
+            "message": "Merge pull request #17 from elizaos/main\n\nmerge from main",
             "created_at": "2024-11-05T03:26:39Z",
             "additions": 23753,
             "deletions": 663,
