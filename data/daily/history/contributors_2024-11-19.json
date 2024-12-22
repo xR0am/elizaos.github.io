@@ -391,7 +391,7 @@
   {
     "contributor": "sirkitree",
     "score": 0,
-    "summary": "Sirkitree is actively merging pull requests into the project, focusing primarily on code integration from contributors such as o-on-x, ai16z, and dorianjanezic. The recent activity shows a commit to enhancing services with fixes and updates, resulting in a net increase of 485 lines of code over the last 90 days.",
+    "summary": "Sirkitree is actively merging pull requests into the project, focusing primarily on code integration from contributors such as o-on-x, elizaos, and dorianjanezic. The recent activity shows a commit to enhancing services with fixes and updates, resulting in a net increase of 485 lines of code over the last 90 days.",
     "avatar_url": "https://avatars.githubusercontent.com/u/28543?u=620169c8c9ebe441dee7b49d849eea383eccd93f&v=4",
     "activity": {
       "code": {
@@ -408,7 +408,7 @@
           },
           {
             "sha": "3a033b46055da983e87360cf4b5c138552fab550",
-            "message": "Merge pull request #412 from ai16z/fix-services\n\nfeat: services",
+            "message": "Merge pull request #412 from elizaos/fix-services\n\nfeat: services",
             "created_at": "2024-11-19T19:31:41Z",
             "additions": 402,
             "deletions": 318,
@@ -440,7 +440,7 @@
   {
     "contributor": "MarcoMandar",
     "score": 0,
-    "summary": "MarcoMandar is actively updating the token balance, transactions, and data simulation for buys and sells within a project. Recently, they have merged pull request #30 from ai16z/main into their repository. Over the past 90 days, MarcoMandar has made two commits with an overall net increase of +228 lines in code changes.",
+    "summary": "MarcoMandar is actively updating the token balance, transactions, and data simulation for buys and sells within a project. Recently, they have merged pull request #30 from elizaos/main into their repository. Over the past 90 days, MarcoMandar has made two commits with an overall net increase of +228 lines in code changes.",
     "avatar_url": "https://avatars.githubusercontent.com/u/70625671?u=88aeaa8b5ed43a818bdac96843f2fd40c0abf8ff&v=4",
     "activity": {
       "code": {
@@ -457,7 +457,7 @@
           },
           {
             "sha": "ee9929cb513beef666559c389ee8f2edd18e99d6",
-            "message": "Merge pull request #30 from ai16z/main\n\nmerge from main",
+            "message": "Merge pull request #30 from elizaos/main\n\nmerge from main",
             "created_at": "2024-11-19T04:42:48Z",
             "additions": 68,
             "deletions": 22,
@@ -525,7 +525,7 @@
               },
               {
                 "author": "o-on-x",
-                "body": "@sirkitree @monilpat i had added this as way to use ollama's embedding endpoints. issue is this switches the model loaded in ollama each time an embedding is needed. at the time of, there was no good local embedding solution. now there is fastembedding. so it makes sense to just have either fastembedding or openai. also this resolves a breaking issue with anyone using ollama on newest codebase. i had added this code, i was removing it now that a better solution exists  https://github.com/ai16z/eliza/pull/221/files "
+                "body": "@sirkitree @monilpat i had added this as way to use ollama's embedding endpoints. issue is this switches the model loaded in ollama each time an embedding is needed. at the time of, there was no good local embedding solution. now there is fastembedding. so it makes sense to just have either fastembedding or openai. also this resolves a breaking issue with anyone using ollama on newest codebase. i had added this code, i was removing it now that a better solution exists  https://github.com/elizaos/eliza/pull/221/files "
               }
             ]
           }
@@ -564,7 +564,7 @@
             "state": "CLOSED",
             "created_at": "2024-11-19T17:21:15Z",
             "updated_at": "2024-12-14T07:31:29Z",
-            "body": "**Describe the bug**\r\n\r\ntrying to use the **Groq API** but its not clear how to define the model in the .env file. \r\nother providers have `SMALL_HEURIST_LANGUAGE_MODEL`, `SMALL_HEURIST_LANGUAGE_MODEL`, etc\r\n\r\nI'm not sure how to define the model in the .env file\r\n\r\n**To Reproduce**\r\n\r\nhttps://github.com/ai16z/eliza/blob/main/.env.example\r\n\r\n**Expected behavior**\r\n\r\nSomething similar to Heurist\r\n`SMALL_GROQ_LANGUAGE_MODEL=`\r\n`MEDIUM_GROQ_LANGUAGE_MODEL=`\r\n`LARGE_GROQ_LANGUAGE_MODEL=`\r\n\r\n**Additional context**\r\nIf not custom `.env` variables at least a nod in the right direction\r\nmy IDE pointed me to `packages/core/src/models.ts`\r\n",
+            "body": "**Describe the bug**\r\n\r\ntrying to use the **Groq API** but its not clear how to define the model in the .env file. \r\nother providers have `SMALL_HEURIST_LANGUAGE_MODEL`, `SMALL_HEURIST_LANGUAGE_MODEL`, etc\r\n\r\nI'm not sure how to define the model in the .env file\r\n\r\n**To Reproduce**\r\n\r\nhttps://github.com/elizaos/eliza/blob/main/.env.example\r\n\r\n**Expected behavior**\r\n\r\nSomething similar to Heurist\r\n`SMALL_GROQ_LANGUAGE_MODEL=`\r\n`MEDIUM_GROQ_LANGUAGE_MODEL=`\r\n`LARGE_GROQ_LANGUAGE_MODEL=`\r\n\r\n**Additional context**\r\nIf not custom `.env` variables at least a nod in the right direction\r\nmy IDE pointed me to `packages/core/src/models.ts`\r\n",
             "labels": [
               {
                 "name": "bug",
@@ -575,11 +575,11 @@
             "comments": [
               {
                 "author": "manishbyatroy",
-                "body": "They're fixing this\nIn the meantime\nWhy not use Heurist? \nhttps://heurist.ai/dev-access\n use access code 'ai16z' to get instant api approval! Use a proper email as it emails you the api key."
+                "body": "They're fixing this\nIn the meantime\nWhy not use Heurist? \nhttps://heurist.ai/dev-access\n use access code 'elizaos' to get instant api approval! Use a proper email as it emails you the api key."
               },
               {
                 "author": "YoungPhlo",
-                "body": "> They're fixing this In the meantime Why not use Heurist? https://heurist.ai/dev-access use access code 'ai16z' to get instant api approval! Use a proper email as it emails you the api key.\r\n\r\nPersonally love using Heurist but I think it's a good idea to have back up providers. Heurist might not be able to provide free inference forever. Nice while it lasts though :)"
+                "body": "> They're fixing this In the meantime Why not use Heurist? https://heurist.ai/dev-access use access code 'elizaos' to get instant api approval! Use a proper email as it emails you the api key.\r\n\r\nPersonally love using Heurist but I think it's a good idea to have back up providers. Heurist might not be able to provide free inference forever. Nice while it lasts though :)"
               }
             ]
           }
@@ -1033,7 +1033,7 @@
             "merged": true,
             "created_at": "2024-11-19T09:15:42Z",
             "updated_at": "2024-11-25T08:25:56Z",
-            "body": "This PR adds a new plugin for [0G](https://0g.ai/).\r\n\r\n# Risks\r\n\r\nLow. This change involves adding a new plugin, which is isolated and should not affect existing functionality.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nThis PR adds a new plugin for 0G, which includes an action that allows users to upload local files to [0G Storage](https://docs.0g.ai/og-storage).\r\nFuture work will include extending 0G support for model serving, state persistence via KV store, and enhanced file management capabilities.\r\n\r\n## What kind of change is this?\r\n\r\nFeatures (non-breaking change which adds functionality).\r\n\r\n## Why are we doing this? Any context or related work?\r\n\r\nTo extend the functionality of Eliza.\r\n\r\n# Documentation changes needed?\r\n\r\nRequire a change to the project documentation.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nThe review can start with the new 0G plugin code, focusing on the action that uploads files to ensure it handles files correctly and integrates well with 0G Storage.\r\n\r\n## Detailed testing steps\r\n\r\n1. **Set Environment Variables**  \r\n<img width=\"828\" alt=\"Screenshot 2024-11-20 at 09 34 49\" src=\"https://github.com/user-attachments/assets/dfa6ef6e-ff76-4391-b510-000dea0ff90a\">\r\n   Configure the following variables:  \r\n   - `ZEROG_INDEXER_RPC`  \r\n   - `ZEROG_EVM_RPC`  \r\n   - `ZEROG_PRIVATE_KEY`  \r\n   - `ZEROG_FLOW_ADDRESS`\r\n   [More details](https://github.com/0glabs/0g-ts-sdk)\r\n\r\n2. **Add 0g-plugin into character file** \r\n    Ensure the `@ai16z/plugin-0g` is properly added and configured in the character file.\r\n\r\n<img width=\"634\" alt=\"Screenshot 2024-11-20 at 09 34 10\" src=\"https://github.com/user-attachments/assets/03bd0030-d328-493c-8446-08e7c5f4fd02\">\r\n\r\n3. **Interact with the Agent**\r\n   Send a message to the agent: Upload the file at /path/to/your/file.txt to zg storage.\r\n<img width=\"1167\" alt=\"Screenshot 2024-11-20 at 08 47 05\" src=\"https://github.com/user-attachments/assets/3b3dfe36-f68d-4ca0-b0c8-511ab513cb70\">\r\n<img width=\"1181\" alt=\"Screenshot 2024-11-20 at 08 47 58\" src=\"https://github.com/user-attachments/assets/fc492667-0a3f-4f9e-9276-d013db5f2738\">\r\n\r\n## Screenshots\r\n### Before\r\n### After\r\n\r\n## Database changes\r\n\r\n## Deployment instructions",
+            "body": "This PR adds a new plugin for [0G](https://0g.ai/).\r\n\r\n# Risks\r\n\r\nLow. This change involves adding a new plugin, which is isolated and should not affect existing functionality.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nThis PR adds a new plugin for 0G, which includes an action that allows users to upload local files to [0G Storage](https://docs.0g.ai/og-storage).\r\nFuture work will include extending 0G support for model serving, state persistence via KV store, and enhanced file management capabilities.\r\n\r\n## What kind of change is this?\r\n\r\nFeatures (non-breaking change which adds functionality).\r\n\r\n## Why are we doing this? Any context or related work?\r\n\r\nTo extend the functionality of Eliza.\r\n\r\n# Documentation changes needed?\r\n\r\nRequire a change to the project documentation.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nThe review can start with the new 0G plugin code, focusing on the action that uploads files to ensure it handles files correctly and integrates well with 0G Storage.\r\n\r\n## Detailed testing steps\r\n\r\n1. **Set Environment Variables**  \r\n<img width=\"828\" alt=\"Screenshot 2024-11-20 at 09 34 49\" src=\"https://github.com/user-attachments/assets/dfa6ef6e-ff76-4391-b510-000dea0ff90a\">\r\n   Configure the following variables:  \r\n   - `ZEROG_INDEXER_RPC`  \r\n   - `ZEROG_EVM_RPC`  \r\n   - `ZEROG_PRIVATE_KEY`  \r\n   - `ZEROG_FLOW_ADDRESS`\r\n   [More details](https://github.com/0glabs/0g-ts-sdk)\r\n\r\n2. **Add 0g-plugin into character file** \r\n    Ensure the `@elizaos/plugin-0g` is properly added and configured in the character file.\r\n\r\n<img width=\"634\" alt=\"Screenshot 2024-11-20 at 09 34 10\" src=\"https://github.com/user-attachments/assets/03bd0030-d328-493c-8446-08e7c5f4fd02\">\r\n\r\n3. **Interact with the Agent**\r\n   Send a message to the agent: Upload the file at /path/to/your/file.txt to zg storage.\r\n<img width=\"1167\" alt=\"Screenshot 2024-11-20 at 08 47 05\" src=\"https://github.com/user-attachments/assets/3b3dfe36-f68d-4ca0-b0c8-511ab513cb70\">\r\n<img width=\"1181\" alt=\"Screenshot 2024-11-20 at 08 47 58\" src=\"https://github.com/user-attachments/assets/fc492667-0a3f-4f9e-9276-d013db5f2738\">\r\n\r\n## Screenshots\r\n### Before\r\n### After\r\n\r\n## Database changes\r\n\r\n## Deployment instructions",
             "files": [
               {
                 "path": ".env.example",
@@ -1160,7 +1160,7 @@
               },
               {
                 "author": "Wilbert957",
-                "body": "Thanks for your notification. Sure, I'll fix it ASAP.\r\n\r\nShakker Nerd ***@***.***> \u4e8e2024\u5e7411\u670819\u65e5\u5468\u4e8c 23:09\u5199\u9053\uff1a\r\n\r\n> Hey @Wilbert957 <https://github.com/Wilbert957> Great work!\r\n>\r\n> There are conflicts that needs fixing, could you fix that?\r\n>\r\n> In the package.json for 0g-plugin, kind add dev command (\"dev\": \"tsup\r\n> --watch\").\r\n>\r\n> \u2014\r\n> Reply to this email directly, view it on GitHub\r\n> <https://github.com/ai16z/eliza/pull/416#issuecomment-2485981520>, or\r\n> unsubscribe\r\n> <https://github.com/notifications/unsubscribe-auth/BGT4B6HYQLKT3KSBOW3CFJT2BNICXAVCNFSM6AAAAABSBTEVX6VHI2DSMVQWIX3LMV43OSLTON2WKQ3PNVWWK3TUHMZDIOBVHE4DCNJSGA>\r\n> .\r\n> You are receiving this because you were mentioned.Message ID:\r\n> ***@***.***>\r\n>\r\n"
+                "body": "Thanks for your notification. Sure, I'll fix it ASAP.\r\n\r\nShakker Nerd ***@***.***> \u4e8e2024\u5e7411\u670819\u65e5\u5468\u4e8c 23:09\u5199\u9053\uff1a\r\n\r\n> Hey @Wilbert957 <https://github.com/Wilbert957> Great work!\r\n>\r\n> There are conflicts that needs fixing, could you fix that?\r\n>\r\n> In the package.json for 0g-plugin, kind add dev command (\"dev\": \"tsup\r\n> --watch\").\r\n>\r\n> \u2014\r\n> Reply to this email directly, view it on GitHub\r\n> <https://github.com/elizaos/eliza/pull/416#issuecomment-2485981520>, or\r\n> unsubscribe\r\n> <https://github.com/notifications/unsubscribe-auth/BGT4B6HYQLKT3KSBOW3CFJT2BNICXAVCNFSM6AAAAABSBTEVX6VHI2DSMVQWIX3LMV43OSLTON2WKQ3PNVWWK3TUHMZDIOBVHE4DCNJSGA>\r\n> .\r\n> You are receiving this because you were mentioned.Message ID:\r\n> ***@***.***>\r\n>\r\n"
               },
               {
                 "author": "Wilbert957",
@@ -1359,7 +1359,7 @@
             "merged": true,
             "created_at": "2024-11-19T00:46:40Z",
             "updated_at": "2024-11-24T18:17:37Z",
-            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\nai16z docs - update since GROK support was added in #296.\r\n\r\n# Risks\r\n\r\nLow\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nSimply adding `GROK_API_KEY` to doc\r\n\r\n\r\n## What kind of change is this?\r\n\r\ndocs\r\n\r\n## Why are we doing this? Any context or related work?\r\n\r\nFor users to use GROK\r\n\r\n# Documentation changes needed?\r\n\r\nno\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nN/A\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automtated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\nelizaos docs - update since GROK support was added in #296.\r\n\r\n# Risks\r\n\r\nLow\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nSimply adding `GROK_API_KEY` to doc\r\n\r\n\r\n## What kind of change is this?\r\n\r\ndocs\r\n\r\n## Why are we doing this? Any context or related work?\r\n\r\nFor users to use GROK\r\n\r\n# Documentation changes needed?\r\n\r\nno\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nN/A\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automtated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n",
             "files": [
               {
                 "path": ".env.example",

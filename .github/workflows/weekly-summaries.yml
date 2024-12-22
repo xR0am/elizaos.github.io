@@ -51,9 +51,9 @@ jobs:
         mkdir -p data/daily data/daily/history
         
         # Fetch current data with timestamp
-        bash scripts/fetch_github.sh ai16z eliza --type prs --days 1 | tee data/daily/prs.json data/daily/history/prs_${TIMESTAMP}.json
-        bash scripts/fetch_github.sh ai16z eliza --type issues --days 1 | tee data/daily/issues.json data/daily/history/issues_${TIMESTAMP}.json
-        bash scripts/fetch_github.sh ai16z eliza --type commits --days 1 | tee data/daily/commits.json data/daily/history/commits_${TIMESTAMP}.json
+        bash scripts/fetch_github.sh elizaos eliza --type prs --days 1 | tee data/daily/prs.json data/daily/history/prs_${TIMESTAMP}.json
+        bash scripts/fetch_github.sh elizaos eliza --type issues --days 1 | tee data/daily/issues.json data/daily/history/issues_${TIMESTAMP}.json
+        bash scripts/fetch_github.sh elizaos eliza --type commits --days 1 | tee data/daily/commits.json data/daily/history/commits_${TIMESTAMP}.json
     
     - name: Fetch weekly data
       if: github.event.schedule == '0 19 * * 5'
@@ -64,9 +64,9 @@ jobs:
         mkdir -p data/weekly data/weekly/history
         
         # Fetch current data with timestamp
-        bash scripts/fetch_github.sh ai16z eliza --type prs --days 7 | tee data/weekly/prs.json data/weekly/history/prs_${TIMESTAMP}.json
-        bash scripts/fetch_github.sh ai16z eliza --type issues --days 7 | tee data/weekly/issues.json data/weekly/history/issues_${TIMESTAMP}.json
-        bash scripts/fetch_github.sh ai16z eliza --type commits --days 7 | tee data/weekly/commits.json data/weekly/history/commits_${TIMESTAMP}.json
+        bash scripts/fetch_github.sh elizaos eliza --type prs --days 7 | tee data/weekly/prs.json data/weekly/history/prs_${TIMESTAMP}.json
+        bash scripts/fetch_github.sh elizaos eliza --type issues --days 7 | tee data/weekly/issues.json data/weekly/history/issues_${TIMESTAMP}.json
+        bash scripts/fetch_github.sh elizaos eliza --type commits --days 7 | tee data/weekly/commits.json data/weekly/history/commits_${TIMESTAMP}.json
     
     - name: Fetch monthly data
       if: github.event.schedule == '0 19 4 * *'
@@ -77,9 +77,9 @@ jobs:
         mkdir -p data/monthly data/monthly/history
         
         # Fetch current data with timestamp
-        bash scripts/fetch_github.sh ai16z eliza --type prs --days 30 | tee data/monthly/prs.json data/monthly/history/prs_${TIMESTAMP}.json
-        bash scripts/fetch_github.sh ai16z eliza --type issues --days 30 | tee data/monthly/issues.json data/monthly/history/issues_${TIMESTAMP}.json
-        bash scripts/fetch_github.sh ai16z eliza --type commits --days 30 | tee data/monthly/commits.json data/monthly/history/commits_${TIMESTAMP}.json
+        bash scripts/fetch_github.sh elizaos eliza --type prs --days 30 | tee data/monthly/prs.json data/monthly/history/prs_${TIMESTAMP}.json
+        bash scripts/fetch_github.sh elizaos eliza --type issues --days 30 | tee data/monthly/issues.json data/monthly/history/issues_${TIMESTAMP}.json
+        bash scripts/fetch_github.sh elizaos eliza --type commits --days 30 | tee data/monthly/commits.json data/monthly/history/commits_${TIMESTAMP}.json
 
     - name: Process daily data
       if: github.event.schedule != '0 19 * * 5' && github.event.schedule != '0 19 4 * *'
