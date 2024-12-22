@@ -2,16 +2,14 @@
 
 A comprehensive analytics and reporting system for tracking GitHub repository contributions, generating insights, and creating static contributor profile pages.
 
-![eliza_banner](https://github.com/user-attachments/assets/e8784793-c4d3-4d59-bba9-6d47885abe63)
+[Website](https://elizaos.ai/) | [Discord](https://discord.gg/elizaOS) | [DAO](https://www.daos.fun/HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC)
 
-[Website](https://elizaos.ai/) | [Discord](https://discord.gg/ai16z) | [Twitter/X](https://x.com/ai16zdao) | [DAO](https://www.daos.fun/HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC)
-
-ai16z/eliza permalinks:
-- https://ai16z.github.io/data/daily/contributors.json
-  - https://ai16z.github.io/data/daily/summary.json
-  - https://ai16z.github.io/data/daily/summary.md
-- https://ai16z.github.io/data/weekly/contributors.json
-- https://ai16z.github.io/data/monthly/contributors.json
+elizaos/eliza permalinks:
+- https://elizaos.github.io/data/daily/contributors.json
+  - https://elizaos.github.io/data/daily/summary.json
+  - https://elizaos.github.io/data/daily/summary.md
+- https://elizaos.github.io/data/weekly/contributors.json
+- https://elizaos.github.io/data/monthly/contributors.json
 
 older versions are backed up in `data/*/history` folders with timestamps
 
