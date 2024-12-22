@@ -1,44 +1,44 @@
-# elizaos Eliza (2024-12-21)
+# elizaos Eliza (2024-12-22)
     
 ## 📊 Overview
-Development focused on package improvements (bump agent-twitter-client version to v0.0.17), new features (release version 0.1.6), 10 bug fixes. with 26 contributors merging 19 PRs. Major work included shakkernerd is primarily working on updating dependencies, adding new features like agent_redis_support, and fixing integration tests and default character issues in the project.
+Development focused on new features (change @elizaos/eliza to @elizaos/core), 1 bug fixes. with 24 contributors merging 12 PRs. Major work included lalalune is primarily working on merging branches and pull requests related to the development of elizaos core.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 26 |
-| 📝 Commits | 44 |
-| 🔄 Merged PRs | 19 |
-| ⚠️ New Issues | 19 |
+| 👥 Contributors | 24 |
+| 📝 Commits | 25 |
+| 🔄 Merged PRs | 12 |
+| ⚠️ New Issues | 8 |
 
 ## 🔄 Pull Request Summary
 - 🧹 **Chores**: 5
-- 🐛 **Fixes**: 10
-- ✨ **Features**: 3
+- 🐛 **Fixes**: 1
+- ✨ **Features**: 2
 
 ## 📁 File Changes
-- **root**: 25 files (+1125/-2814 lines)
-- **docs**: 99 files (+372/-204 lines)
-- **packages**: 139 files (+212/-212 lines)
-- **agent**: 10 files (+255/-143 lines)
-- **.github**: 5 files (+95/-66 lines)
+- **root**: 50 files (+3702/-3657 lines)
+- **packages**: 88 files (+2133/-2135 lines)
+- **docs**: 361 files (+1265/-1261 lines)
+- **agent**: 10 files (+319/-310 lines)
+- **client**: 6 files (+182/-182 lines)
 
 ## 🔥 Notable Changes
-- chore: bump agent-twitter-client version to v0.0.17
-- chore: rebase develop branch
-- feat: release version 0.1.6
+- chore: develop -> main, change elizaos/eliza to elizaos/core
+- feat: change @elizaos/eliza to @elizaos/core
+- chore: Merge Develop into Main
 
 ## 👥 Top Contributors
-- **shakkernerd**: shakkernerd is primarily working on updating dependencies, adding new features like agent_redis_support, and fixing integration tests and default character issues in the project
-- **oxSaturn**: oxSaturn is currently working on adding support for long tweets, fixing issues related to tweet length settings and cache storage, and updating dependencies to resolve package errors in the agent and packages code areas
-- **odilitime**: odilitime is primarily focused on code maintenance and cleanup, as seen in the recent commits to remove unnecessary packages and Slack messages added by PR1182
+- **lalalune**: lalalune is primarily working on merging branches and pull requests related to the development of elizaOS core
+- **shakkernerd**: shakkernerd is primarily focused on merging pull requests related to version updates and environment settings in the elizaOS project
+- **0x330a**: 0x330a is currently working on refactoring the content trimming process to reference the max cast length and exporting it as a constant
 
 ## ⚠️ Issues
-- **New Issues**: 19
-- **Labels**: `bug` (11), `enhancement` (7), `Needs Testing` (1)
-- **Summary**: 11 bugs reported (including 'connect ETIMEDOUT 104.244.46.63:443', 'Why do I have a running Agent on WSL2, but the browser shows don't work?') 7 feature requests (including 'Auto-label PRs based off of paths touched', 'Reduce load on maintainers').
+- **New Issues**: 8
+- **Labels**: `bug` (7), `enhancement` (1)
+- **Summary**: 7 bugs reported (including 'Postgres adapter doesnt apply settings', 'Postgres Adapter schema check is nonsensical') 1 feature requests (including 'Support better in-monorepo navigation with custom conditions').
 
 ## Top Contributors
-- **shakkernerd**: chore: bump agent-twitter-client version to v0.0.17
-- **oxSaturn**: fix: use MAX_TWEET_LENGTH from setting
-- **odilitime**: feat: Update main for v0.1.6-alpha.5
+- **lalalune**: chore: develop -> main, change elizaos/eliza to elizaos/core
+- **shakkernerd**: fix: explicitly set env in each step
+- **0x330a**: Update farcaster client max cast length

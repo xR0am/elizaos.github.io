@@ -1,0 +1,79 @@
+{
+  "title": "elizaos Eliza (2024-12-21)",
+  "version": "bump agent-twitter-client version to v0.0.17",
+  "overview": "Development focused on package improvements (bump agent-twitter-client version to v0.0.17), new features (release version 0.1.6), 10 bug fixes. with 26 contributors merging 19 PRs. Major work included shakkernerd is primarily working on updating dependencies, adding new features like agent_redis_support, and fixing integration tests and default character issues in the project.",
+  "metrics": {
+    "contributors": 26,
+    "merged_prs": 19,
+    "new_issues": 19,
+    "lines_changed": 5514
+  },
+  "changes": {
+    "features": [
+      "release version 0.1.6",
+      "Add caching support for Redis",
+      "Update main for v0.1.6-alpha.5"
+    ],
+    "fixes": [
+      "default character model to LLAMALOCAL",
+      "remove clients from default character",
+      "add missing claude vertex case to handleProvider"
+    ],
+    "chores": [
+      "bump agent-twitter-client version to v0.0.17",
+      "rebase develop branch",
+      "bump version to 0.1.6-alpha.5"
+    ]
+  },
+  "areas": [
+    {
+      "name": "packages",
+      "files": 139,
+      "additions": 212,
+      "deletions": 212
+    },
+    {
+      "name": "docs",
+      "files": 99,
+      "additions": 372,
+      "deletions": 204
+    },
+    {
+      "name": "root",
+      "files": 25,
+      "additions": 1125,
+      "deletions": 2814
+    }
+  ],
+  "issues_summary": "working on 11 bugs including 'connect ETIMEDOUT 104.244.46.63:443', 'Why do I have a running Agent on WSL2, but the browser shows don't work?' and implementing 7 feature requests including 'Auto-label PRs based off of paths touched', 'Reduce load on maintainers'",
+  "questions": [],
+  "top_contributors": [
+    {
+      "name": "shakkernerd",
+      "summary": "shakkernerd is primarily working on updating dependencies, adding new features like agent_redis_support, and fixing integration tests and default character issues in the project",
+      "areas": [
+        ".github",
+        "client",
+        ".env.example"
+      ]
+    },
+    {
+      "name": "oxSaturn",
+      "summary": "oxSaturn is currently working on adding support for long tweets, fixing issues related to tweet length settings and cache storage, and updating dependencies to resolve package errors in the agent and packages code areas",
+      "areas": [
+        "turbo.json",
+        "agent",
+        "packages"
+      ]
+    },
+    {
+      "name": "odilitime",
+      "summary": "odilitime is primarily focused on code maintenance and cleanup, as seen in the recent commits to remove unnecessary packages and Slack messages added by PR1182",
+      "areas": [
+        ".gitpod.yml",
+        "characters",
+        "README_CN.md"
+      ]
+    }
+  ]
+}
