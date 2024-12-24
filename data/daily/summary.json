@@ -1,70 +1,69 @@
 {
-  "title": "elizaos Eliza (2024-12-23)",
+  "title": "elizaos Eliza (2024-12-24)",
   "version": "",
-  "overview": "Development focused on package improvements (sample plugin documentation), new features (add venice style presets & option to remove watermark (image generation)), 1 bug fixes. with 21 contributors merging 10 PRs. Major work included various improvements.",
+  "overview": "Development focused on package improvements ((plugin-evm) add alienx chain), new features ((plugin-evm) add alienx chain), 1 bug fixes. with 21 contributors merging 9 PRs. Major work included various improvements.",
   "metrics": {
     "contributors": 21,
-    "merged_prs": 10,
-    "new_issues": 10,
-    "lines_changed": 3300
+    "merged_prs": 9,
+    "new_issues": 5,
+    "lines_changed": 388
   },
   "changes": {
     "features": [
-      "add venice style presets & option to remove watermark (image generation)"
+      "(plugin-evm) add alienx chain",
+      "add `only` to booleanFooter",
+      "client-github retry"
     ],
     "fixes": [
-      "duplicate tweet log"
+      "typos"
     ],
     "chores": [
-      "allow scoped pr titles",
-      "format package.json files with prettier",
-      "split tests"
+      "Keeps README translations synchronized"
     ]
   },
   "areas": [
     {
       "name": "packages",
-      "files": 50,
-      "additions": 1261,
-      "deletions": 1138
+      "files": 11,
+      "additions": 99,
+      "deletions": 64
     },
     {
       "name": "docs",
-      "files": 7,
-      "additions": 326,
-      "deletions": 283
+      "files": 3,
+      "additions": 3,
+      "deletions": 3
     },
     {
-      "name": ".github",
-      "files": 5,
-      "additions": 45,
-      "deletions": 37
+      "name": "root",
+      "files": 2,
+      "additions": 130,
+      "deletions": 1
     }
   ],
-  "issues_summary": "working on 6 bugs including 'Multiple generateNewTweetLoop method invocations caused multiple tweets to be posted.', 'Standardize boolean values and fix pattern for .env file' and implementing 1 feature requests including 'FerePro Plugin for Eliza'",
+  "issues_summary": "working on 2 bugs including 'Bug: generateText is ignoring dynamic parameters due to a hard-coded model class', 'DenyLoginSubtask - TWITTER' and implementing 3 feature requests including 'Add Tagalog Translation on README', 'Add Liquid Staking Action to the Solana Plugin'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "ryanleecode",
-      "summary": "ryanleecode is currently working on improving the structure of pull request titles and enforcing stricter TypeScript configuration settings",
+      "name": "0xJord4n",
+      "summary": "0xJord4n is currently focusing on keeping README translations synchronized in the ",
       "areas": [
-        "client",
-        ".github",
-        "agent"
+        ".github"
       ]
     },
     {
-      "name": "jasonqindev",
-      "summary": "jasonqindev is currently working on fixing issues related to duplicate tweet scheduling loops and logs in the packages code area",
+      "name": "yerinle",
+      "summary": "yerinle is currently working on updating documentation by fixing a typo in the eliza-in-tee",
       "areas": [
-        "packages"
+        "docs"
       ]
     },
     {
-      "name": "hcaumo",
-      "summary": "hcaumo is currently focusing on standardizing boolean values and updating the pattern for the ",
+      "name": "harveyjavier",
+      "summary": "harveyjavier is currently working on adding a Tagalog translation to the README file",
       "areas": [
-        "packages"
+        "README_TG.md",
+        "README.md"
       ]
     }
   ]

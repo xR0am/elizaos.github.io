@@ -1,44 +1,43 @@
-# elizaos Eliza (2024-12-23)
+# elizaos Eliza (2024-12-24)
     
 ## 📊 Overview
-Development focused on package improvements (sample plugin documentation), new features (add venice style presets & option to remove watermark (image generation)), 1 bug fixes. with 21 contributors merging 10 PRs. Major work included various improvements.
+Development focused on package improvements ((plugin-evm) add alienx chain), new features ((plugin-evm) add alienx chain), 1 bug fixes. with 21 contributors merging 9 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
 | 👥 Contributors | 21 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 10 |
-| ⚠️ New Issues | 10 |
+| 🔄 Merged PRs | 9 |
+| ⚠️ New Issues | 5 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 5
+- 🧹 **Chores**: 1
 - 🐛 **Fixes**: 1
-- ✨ **Features**: 1
+- ✨ **Features**: 3
 
 ## 📁 File Changes
-- **packages**: 50 files (+1261/-1138 lines)
-- **docs**: 7 files (+326/-283 lines)
-- **agent**: 1 files (+60/-60 lines)
-- **client**: 1 files (+45/-45 lines)
-- **.github**: 5 files (+45/-37 lines)
+- **packages**: 11 files (+99/-64 lines)
+- **root**: 2 files (+130/-1 lines)
+- **.github**: 1 files (+88/-0 lines)
+- **docs**: 3 files (+3/-3 lines)
 
 ## 🔥 Notable Changes
-- chore: allow scoped pr titles
-- chore: format package.json files with prettier
-- fix: duplicate tweet log
+- chore: Keeps README translations synchronized
+- Update eliza-in-tee.md (fixing typo)
+- docs: Add Tagalog README Translation
 
 ## 👥 Top Contributors
-- **ryanleecode**: ryanleecode is currently working on improving the structure of pull request titles and enforcing stricter TypeScript configuration settings
-- **jasonqindev**: jasonqindev is currently working on fixing issues related to duplicate tweet scheduling loops and logs in the packages code area
-- **hcaumo**: hcaumo is currently focusing on standardizing boolean values and updating the pattern for the 
+- **0xJord4n**: 0xJord4n is currently focusing on keeping README translations synchronized in the 
+- **yerinle**: yerinle is currently working on updating documentation by fixing a typo in the eliza-in-tee
+- **harveyjavier**: harveyjavier is currently working on adding a Tagalog translation to the README file
 
 ## ⚠️ Issues
-- **New Issues**: 10
-- **Labels**: `bug` (6), `enhancement` (1)
-- **Summary**: 6 bugs reported (including 'Multiple generateNewTweetLoop method invocations caused multiple tweets to be posted.', 'Standardize boolean values and fix pattern for .env file') 1 feature requests (including 'FerePro Plugin for Eliza').
+- **New Issues**: 5
+- **Labels**: `enhancement` (3), `bug` (2)
+- **Summary**: 2 bugs reported (including 'Bug: generateText is ignoring dynamic parameters due to a hard-coded model class', 'DenyLoginSubtask - TWITTER') 3 feature requests (including 'Add Tagalog Translation on README', 'Add Liquid Staking Action to the Solana Plugin').
 
 ## Top Contributors
-- **ryanleecode**: chore: allow scoped pr titles
-- **jasonqindev**: fix: duplicate tweet log
-- **hcaumo**: Standardize boolean values and update .env file pattern
+- **0xJord4n**: chore: Keeps README translations synchronized
+- **yerinle**: Update eliza-in-tee.md (fixing typo)
+- **harveyjavier**: docs: Add Tagalog README Translation
