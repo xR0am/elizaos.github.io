@@ -1,43 +1,36 @@
-# elizaos Eliza (2024-12-24)
+# elizaos Eliza (2024-12-25)
     
 ## 📊 Overview
-Development focused on package improvements ((plugin-evm) add alienx chain), new features ((plugin-evm) add alienx chain), 1 bug fixes. with 21 contributors merging 9 PRs. Major work included various improvements.
+Development focused on 1 bug fixes. with 10 contributors merging 1 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 21 |
+| 👥 Contributors | 10 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 9 |
-| ⚠️ New Issues | 5 |
+| 🔄 Merged PRs | 1 |
+| ⚠️ New Issues | 2 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 1
+- 🧹 **Chores**: 0
 - 🐛 **Fixes**: 1
-- ✨ **Features**: 3
+- ✨ **Features**: 0
 
 ## 📁 File Changes
-- **packages**: 11 files (+99/-64 lines)
-- **root**: 2 files (+130/-1 lines)
-- **.github**: 1 files (+88/-0 lines)
-- **docs**: 3 files (+3/-3 lines)
+- **docs**: 1 files (+2/-2 lines)
 
 ## 🔥 Notable Changes
-- chore: Keeps README translations synchronized
-- Update eliza-in-tee.md (fixing typo)
-- docs: Add Tagalog README Translation
+- fix: fix incorrect link redirection issue
 
 ## 👥 Top Contributors
-- **0xJord4n**: 0xJord4n is currently focusing on keeping README translations synchronized in the 
-- **yerinle**: yerinle is currently working on updating documentation by fixing a typo in the eliza-in-tee
-- **harveyjavier**: harveyjavier is currently working on adding a Tagalog translation to the README file
+- **mhxw**: mhxw is currently working on fixing an incorrect link redirection issue in the documentation
+- **0xPBIT**: 0xPBIT is currently working on a pull request to suppress the initial message from an action in the packages and documentation areas of the project
+- **tomguluson92**: tomguluson92 is currently working on a pull request to add text to a 3D function in the packages and agent code areas
 
 ## ⚠️ Issues
-- **New Issues**: 5
-- **Labels**: `enhancement` (3), `bug` (2)
-- **Summary**: 2 bugs reported (including 'Bug: generateText is ignoring dynamic parameters due to a hard-coded model class', 'DenyLoginSubtask - TWITTER') 3 feature requests (including 'Add Tagalog Translation on README', 'Add Liquid Staking Action to the Solana Plugin').
+- **New Issues**: 2
+- **Labels**: `enhancement` (1), `bug` (1)
+- **Summary**: 1 bugs reported (including 'connect ETIMEDOUT 142.250.217.106:443') 1 feature requests (including 'I don't want to use birdeye-api in plugin-solana!').
 
 ## Top Contributors
-- **0xJord4n**: chore: Keeps README translations synchronized
-- **yerinle**: Update eliza-in-tee.md (fixing typo)
-- **harveyjavier**: docs: Add Tagalog README Translation
+- **mhxw**: fix: fix incorrect link redirection issue
