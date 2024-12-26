@@ -1,36 +1,43 @@
-# elizaos Eliza (2024-12-25)
+# elizaos Eliza (2024-12-26)
     
 ## 📊 Overview
-Development focused on 1 bug fixes. with 10 contributors merging 1 PRs. Major work included various improvements.
+Development focused on package improvements (Enhance client direct), new features (allow passing secrets through environment), 5 bug fixes. with 24 contributors merging 16 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 10 |
-| 📝 Commits | 0 |
-| 🔄 Merged PRs | 1 |
-| ⚠️ New Issues | 2 |
+| 👥 Contributors | 24 |
+| 📝 Commits | 1 |
+| 🔄 Merged PRs | 16 |
+| ⚠️ New Issues | 6 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 0
-- 🐛 **Fixes**: 1
-- ✨ **Features**: 0
+- 🧹 **Chores**: 3
+- 🐛 **Fixes**: 5
+- ✨ **Features**: 4
 
 ## 📁 File Changes
-- **docs**: 1 files (+2/-2 lines)
+- **docs**: 103 files (+962/-875 lines)
+- **packages**: 18 files (+782/-296 lines)
+- **root**: 4 files (+43/-1 lines)
+- **agent**: 4 files (+28/-6 lines)
 
 ## 🔥 Notable Changes
-- fix: fix incorrect link redirection issue
+- chore: Do not consider self tweets when evaluating actions
+- Fetch timeline for followed accounts via Twitter client methods
+- fix: update pnpm lock
 
 ## 👥 Top Contributors
-- **mhxw**: mhxw is currently working on fixing an incorrect link redirection issue in the documentation
-- **0xPBIT**: 0xPBIT is currently working on a pull request to suppress the initial message from an action in the packages and documentation areas of the project
-- **tomguluson92**: tomguluson92 is currently working on a pull request to add text to a 3D function in the packages and agent code areas
+- **ag-wnl**: ag-wnl is currently working on improving the evaluation of actions by excluding self tweets and fetching timelines for followed accounts using Twitter client methods
+- **odilitime**: odilitime is currently working on updating the pnpm lock and allowing passing secrets through the environment in the docs, packages, and agent code areas
+- **shakkernerd**: shakkernerd is currently working on enhancing the client direct feature, fixing a typo in the cronoszkevm module, and updating test cases for the default character topic in the packages and agent code areas
 
 ## ⚠️ Issues
-- **New Issues**: 2
-- **Labels**: `enhancement` (1), `bug` (1)
-- **Summary**: 1 bugs reported (including 'connect ETIMEDOUT 142.250.217.106:443') 1 feature requests (including 'I don't want to use birdeye-api in plugin-solana!').
+- **New Issues**: 6
+- **Labels**: `bug` (6)
+- **Summary**: 6 bugs reported (including '[PROPOSAL] Setup lint/prettier and husky', 'Install fails').
 
 ## Top Contributors
-- **mhxw**: fix: fix incorrect link redirection issue
+- **ag-wnl**: chore: Do not consider self tweets when evaluating actions
+- **odilitime**: fix: update pnpm lock
+- **shakkernerd**: feat: Enhance client direct

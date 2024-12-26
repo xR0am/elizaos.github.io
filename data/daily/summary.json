@@ -1,47 +1,76 @@
 {
-  "title": "elizaos Eliza (2024-12-25)",
+  "title": "elizaos Eliza (2024-12-26)",
   "version": "",
-  "overview": "Development focused on 1 bug fixes. with 10 contributors merging 1 PRs. Major work included various improvements.",
+  "overview": "Development focused on package improvements (Enhance client direct), new features (allow passing secrets through environment), 5 bug fixes. with 24 contributors merging 16 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 10,
-    "merged_prs": 1,
-    "new_issues": 2,
-    "lines_changed": 4
+    "contributors": 24,
+    "merged_prs": 16,
+    "new_issues": 6,
+    "lines_changed": 2993
   },
   "changes": {
-    "features": [],
-    "fixes": [
-      "fix incorrect link redirection issue"
+    "features": [
+      "allow passing secrets through environment",
+      "Enhance client direct",
+      "Adding plugin for Cronos ZKEVM"
     ],
-    "chores": []
+    "fixes": [
+      "update pnpm lock",
+      "cronoszkEVM -> cronoszkevm",
+      "cleaner interaction prompts in the Twitter plugin"
+    ],
+    "chores": [
+      "Do not consider self tweets when evaluating actions",
+      "update defailt character topic test case",
+      "Docs update"
+    ]
   },
   "areas": [
     {
       "name": "docs",
-      "files": 1,
-      "additions": 2,
-      "deletions": 2
+      "files": 103,
+      "additions": 962,
+      "deletions": 875
+    },
+    {
+      "name": "packages",
+      "files": 18,
+      "additions": 782,
+      "deletions": 296
+    },
+    {
+      "name": "root",
+      "files": 4,
+      "additions": 43,
+      "deletions": 1
     }
   ],
-  "issues_summary": "working on 1 bugs including 'connect ETIMEDOUT 142.250.217.106:443' and implementing 1 feature requests including 'I don't want to use birdeye-api in plugin-solana!'",
+  "issues_summary": "working on 6 bugs including '[PROPOSAL] Setup lint/prettier and husky', 'Install fails'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "mhxw",
-      "summary": "mhxw is currently working on fixing an incorrect link redirection issue in the documentation",
+      "name": "ag-wnl",
+      "summary": "ag-wnl is currently working on improving the evaluation of actions by excluding self tweets and fetching timelines for followed accounts using Twitter client methods",
       "areas": [
-        "docs"
+        "packages"
       ]
     },
     {
-      "name": "0xPBIT",
-      "summary": "0xPBIT is currently working on a pull request to suppress the initial message from an action in the packages and documentation areas of the project",
-      "areas": []
+      "name": "odilitime",
+      "summary": "odilitime is currently working on updating the pnpm lock and allowing passing secrets through the environment in the docs, packages, and agent code areas",
+      "areas": [
+        "agent",
+        "packages",
+        "pnpm-lock.yaml"
+      ]
     },
     {
-      "name": "tomguluson92",
-      "summary": "tomguluson92 is currently working on a pull request to add text to a 3D function in the packages and agent code areas",
-      "areas": []
+      "name": "shakkernerd",
+      "summary": "shakkernerd is currently working on enhancing the client direct feature, fixing a typo in the cronoszkevm module, and updating test cases for the default character topic in the packages and agent code areas",
+      "areas": [
+        "agent",
+        "packages"
+      ]
     }
   ]
 }
