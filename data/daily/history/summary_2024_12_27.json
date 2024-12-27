@@ -1,0 +1,76 @@
+{
+  "title": "elizaos Eliza (2024-12-26)",
+  "version": "",
+  "overview": "Development focused on package improvements (Enhance client direct), new features (allow passing secrets through environment), 5 bug fixes. with 24 contributors merging 16 PRs. Major work included various improvements.",
+  "metrics": {
+    "contributors": 24,
+    "merged_prs": 16,
+    "new_issues": 6,
+    "lines_changed": 2993
+  },
+  "changes": {
+    "features": [
+      "allow passing secrets through environment",
+      "Enhance client direct",
+      "Adding plugin for Cronos ZKEVM"
+    ],
+    "fixes": [
+      "update pnpm lock",
+      "cronoszkEVM -> cronoszkevm",
+      "cleaner interaction prompts in the Twitter plugin"
+    ],
+    "chores": [
+      "Do not consider self tweets when evaluating actions",
+      "update defailt character topic test case",
+      "Docs update"
+    ]
+  },
+  "areas": [
+    {
+      "name": "docs",
+      "files": 103,
+      "additions": 962,
+      "deletions": 875
+    },
+    {
+      "name": "packages",
+      "files": 18,
+      "additions": 782,
+      "deletions": 296
+    },
+    {
+      "name": "root",
+      "files": 4,
+      "additions": 43,
+      "deletions": 1
+    }
+  ],
+  "issues_summary": "working on 6 bugs including '[PROPOSAL] Setup lint/prettier and husky', 'Install fails'",
+  "questions": [],
+  "top_contributors": [
+    {
+      "name": "ag-wnl",
+      "summary": "ag-wnl is currently working on improving the evaluation of actions by excluding self tweets and fetching timelines for followed accounts using Twitter client methods",
+      "areas": [
+        "packages"
+      ]
+    },
+    {
+      "name": "odilitime",
+      "summary": "odilitime is currently working on updating the pnpm lock and allowing passing secrets through the environment in the docs, packages, and agent code areas",
+      "areas": [
+        "agent",
+        "packages",
+        "pnpm-lock.yaml"
+      ]
+    },
+    {
+      "name": "shakkernerd",
+      "summary": "shakkernerd is currently working on enhancing the client direct feature, fixing a typo in the cronoszkevm module, and updating test cases for the default character topic in the packages and agent code areas",
+      "areas": [
+        "agent",
+        "packages"
+      ]
+    }
+  ]
+}
