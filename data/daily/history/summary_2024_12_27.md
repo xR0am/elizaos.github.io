@@ -1,43 +1,44 @@
-# elizaos Eliza (2024-12-26)
+# elizaos Eliza (2024-12-27)
     
 ## 📊 Overview
-Development focused on package improvements (Enhance client direct), new features (allow passing secrets through environment), 5 bug fixes. with 24 contributors merging 16 PRs. Major work included various improvements.
+Development focused on package improvements (add readme for ton plugin), new features (add readme for ton plugin), 3 bug fixes. with 19 contributors merging 11 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 24 |
-| 📝 Commits | 1 |
-| 🔄 Merged PRs | 16 |
-| ⚠️ New Issues | 6 |
+| 👥 Contributors | 19 |
+| 📝 Commits | 2 |
+| 🔄 Merged PRs | 11 |
+| ⚠️ New Issues | 5 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 3
-- 🐛 **Fixes**: 5
+- 🧹 **Chores**: 1
+- 🐛 **Fixes**: 3
 - ✨ **Features**: 4
 
 ## 📁 File Changes
-- **docs**: 103 files (+962/-875 lines)
-- **packages**: 18 files (+782/-296 lines)
-- **root**: 4 files (+43/-1 lines)
-- **agent**: 4 files (+28/-6 lines)
+- **packages**: 13 files (+450/-50 lines)
+- **root**: 1 files (+128/-0 lines)
+- **agent**: 5 files (+104/-10 lines)
+- **docs**: 2 files (+10/-10 lines)
+- **client**: 1 files (+5/-3 lines)
 
 ## 🔥 Notable Changes
-- chore: Do not consider self tweets when evaluating actions
-- Fetch timeline for followed accounts via Twitter client methods
-- fix: update pnpm lock
+- add CODE_OF_CONDUCT.md
+- feat: add readme for ton plugin
+- feat: add readme for websearch plugin
 
 ## 👥 Top Contributors
-- **ag-wnl**: ag-wnl is currently working on improving the evaluation of actions by excluding self tweets and fetching timelines for followed accounts using Twitter client methods
-- **odilitime**: odilitime is currently working on updating the pnpm lock and allowing passing secrets through the environment in the docs, packages, and agent code areas
-- **shakkernerd**: shakkernerd is currently working on enhancing the client direct feature, fixing a typo in the cronoszkevm module, and updating test cases for the default character topic in the packages and agent code areas
+- **nulLeeKH**: nulLeeKH is currently working on setting up lint/prettier and husky by proposing a new setup
+- **chandiniv1**: chandiniv1 is currently working on adding readme files for the ton and websearch plugins in the packages area of the project
+- **ShaneOxM**: ShaneOxM is currently working on fixing issues related to client and agent code, including adding required incremental options and improving client type identification
 
 ## ⚠️ Issues
-- **New Issues**: 6
-- **Labels**: `bug` (6)
-- **Summary**: 6 bugs reported (including '[PROPOSAL] Setup lint/prettier and husky', 'Install fails').
+- **New Issues**: 5
+- **Labels**: `bug` (3), `enhancement` (2)
+- **Summary**: 3 bugs reported (including 'Installation failed on node-llama-cpp postscript', 'Using plugin-tee causes better-sqlite3 to report an error.') 2 feature requests (including '[PROPOSAL] Setup lint/prettier and husky', 'hi i finished the vertex ai integration do you guys need this? ').
 
 ## Top Contributors
-- **ag-wnl**: chore: Do not consider self tweets when evaluating actions
-- **odilitime**: fix: update pnpm lock
-- **shakkernerd**: feat: Enhance client direct
+- **nulLeeKH**: add CODE_OF_CONDUCT.md
+- **chandiniv1**: feat: add readme for ton plugin
+- **ShaneOxM**: fix: improve client type identification with test coverage

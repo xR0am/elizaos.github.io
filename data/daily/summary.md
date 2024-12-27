@@ -1,12 +1,12 @@
 # elizaos Eliza (2024-12-27)
     
 ## 📊 Overview
-Development focused on package improvements (add readme for ton plugin), new features (add readme for ton plugin), 3 bug fixes. with 19 contributors merging 11 PRs. Major work included various improvements.
+Development focused on package improvements (add readme for ton plugin), new features (add readme for ton plugin), 3 bug fixes. with 18 contributors merging 11 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 19 |
+| 👥 Contributors | 18 |
 | 📝 Commits | 2 |
 | 🔄 Merged PRs | 11 |
 | ⚠️ New Issues | 5 |
@@ -29,9 +29,9 @@ Development focused on package improvements (add readme for ton plugin), new fea
 - feat: add readme for websearch plugin
 
 ## 👥 Top Contributors
-- **nulLeeKH**: nulLeeKH is currently working on setting up lint/prettier and husky by proposing a new setup
-- **chandiniv1**: chandiniv1 is currently working on adding readme files for the ton and websearch plugins in the packages area of the project
-- **ShaneOxM**: ShaneOxM is currently working on fixing issues related to client and agent code, including adding required incremental options and improving client type identification
+- **nulLeeKH**: nulLeeKH is currently working on setting up lint/prettier and husky through a proposed issue
+- **chandiniv1**: chandiniv1 is currently working on adding readme files for the ton and websearch plugins in the packages section
+- **ShaneOxM**: ShaneOxM is currently working on fixing issues related to client and agent code areas, including adding required incremental options and improving client type identification
 
 ## ⚠️ Issues
 - **New Issues**: 5
