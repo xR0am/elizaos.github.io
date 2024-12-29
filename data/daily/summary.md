@@ -1,44 +1,42 @@
-# elizaos Eliza (2024-12-28)
+# elizaos Eliza (2024-12-29)
     
 ## 📊 Overview
-Development focused on package improvements (client-twitter lowerCase bug and environment clean up (+lint fixes, and TWITTER_SEARCH_ENABLE double start fix)), new features (Add Livepeer Image Provider), 5 bug fixes. with 30 contributors merging 21 PRs. Major work included odilitime is currently working on merging pull requests related to fixing issues in the codebase, such as removing unused variables and making adjustments to tweet length and twitter configuration settings.
+Development focused on new features (add theme toggle functionality with dark and light mode support). with 15 contributors merging 4 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 30 |
-| 📝 Commits | 134 |
-| 🔄 Merged PRs | 21 |
-| ⚠️ New Issues | 5 |
+| 👥 Contributors | 15 |
+| 📝 Commits | 0 |
+| 🔄 Merged PRs | 4 |
+| ⚠️ New Issues | 7 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 6
-- 🐛 **Fixes**: 5
-- ✨ **Features**: 5
+- 🧹 **Chores**: 0
+- 🐛 **Fixes**: 0
+- ✨ **Features**: 1
 
 ## 📁 File Changes
-- **packages**: 84 files (+2016/-1402 lines)
-- **docs**: 86 files (+719/-575 lines)
-- **root**: 15 files (+933/-64 lines)
-- **agent**: 9 files (+259/-115 lines)
-- **.github**: 9 files (+315/-36 lines)
+- **docs**: 1 files (+113/-0 lines)
+- **client**: 4 files (+62/-1 lines)
+- **packages**: 4 files (+33/-14 lines)
 
 ## 🔥 Notable Changes
-- fix: twitter usernames can start with numbers
-- chore: remove unused vars
-- chore: 1.7.0 prep, develop => main
+- docs: Add JSDoc documentation
+- docs: Add JSDoc documentation
+- feat: add theme toggle functionality with dark and light mode support
 
 ## 👥 Top Contributors
-- **odilitime**: odilitime is currently working on merging pull requests related to fixing issues in the codebase, such as removing unused variables and making adjustments to tweet length and Twitter configuration settings
-- **shakkernerd**: shakkernerd is primarily working on maintaining code quality by updating dependencies, implementing eslint support, and making minor code adjustments such as changing variables from let to const
-- **Dhaiwat10**: Dhaiwat10 is currently working on adding a fuel plugin, with 2 pull requests and 1 issue related to this enhancement
+- **madjin**: madjin is currently focusing on adding JSDoc documentation to the repository, with a total of 3 pull requests made in the last 90 days
+- **zkfriendly**: zkfriendly is currently working on adding theme toggle functionality to the client with support for dark and light modes
+- **YoungPhlo**: YoungPhlo is primarily focusing on contributing to documentation by adding notes for "What Did You Get Done This Week? #7" in the last 90 days
 
 ## ⚠️ Issues
-- **New Issues**: 5
-- **Labels**: `bug` (4), `enhancement` (1)
-- **Summary**: 4 bugs reported (including 'Corrupt model `cache`', 'Swap & Bridge action issue ') 1 feature requests (including 'add fuel plugin').
+- **New Issues**: 7
+- **Labels**: `bug` (5), `enhancement` (2)
+- **Summary**: 5 bugs reported (including 'Eliza X Posting GENERATE_IMAGE in her tweets, should attach image to tweet post instead', 'TWITTER_TARGET_USERS cant use names starting with digits') 2 feature requests (including 'spades', 'Feature: Add Swarm Agent Capabilities to Eliza').
 
 ## Top Contributors
-- **odilitime**: fix: twitter usernames can start with numbers
-- **shakkernerd**: chore: bump version to v.0.1.7-alpha.2
-- **Dhaiwat10**: add fuel plugin
+- **madjin**: docs: Add JSDoc documentation
+- **zkfriendly**: feat: add theme toggle functionality with dark and light mode support
+- **YoungPhlo**: docs: Add "What Did You Get Done This Week? #7" notes
