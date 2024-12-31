@@ -1,42 +1,43 @@
-# elizaos Eliza (2024-12-30)
+# elizaos Eliza (2024-12-31)
     
 ## 📊 Overview
-Development focused on package improvements (add TEE support for plugin-env), new features (add TEE support for plugin-env), 1 bug fixes. with 14 contributors merging 4 PRs. Major work included various improvements.
+Development focused on package improvements (tweak transfer template of plugin-evm), new features (add experimental telemetry model option), 4 bug fixes. with 20 contributors merging 13 PRs. Major work included zhourunlai is currently working on adding experimental telemetry model options, integrating the tavily sdk, and updating the volcengine model in the packages code areas.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 14 |
+| 👥 Contributors | 20 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 4 |
+| 🔄 Merged PRs | 13 |
 | ⚠️ New Issues | 4 |
 
 ## 🔄 Pull Request Summary
 - 🧹 **Chores**: 0
-- 🐛 **Fixes**: 1
-- ✨ **Features**: 2
+- 🐛 **Fixes**: 4
+- ✨ **Features**: 4
 
 ## 📁 File Changes
-- **packages**: 9 files (+98/-36 lines)
-- **root**: 2 files (+78/-4 lines)
-- **scripts**: 1 files (+43/-8 lines)
-- **docs**: 1 files (+0/-0 lines)
+- **packages**: 55 files (+7561/-989 lines)
+- **docs**: 4 files (+184/-4 lines)
+- **root**: 4 files (+29/-70 lines)
+- **scripts**: 1 files (+2/-1 lines)
 
 ## 🔥 Notable Changes
-- docs: overview and preview of technical report
-- feat: add TEE support for plugin-env
-- fix: init 768 dimension in database for gaianet
+- feat: add experimental telemetry model option
+- feat: use tavily sdk
+- feat: update volcengine model
 
 ## 👥 Top Contributors
-- **sekmet**: sekmet is currently working on integrating FereAI and updating the FerePro plugin in the packages and agent code areas
-- **tomguluson92**: tomguluson92 is primarily working on updating the documentation by creating a pull request that provides an overview and preview of a technical report
-- **samuveth**: samuveth is currently working on adding Trusted Execution Environment (TEE) support for the plugin-env feature in the "packages" code area
+- **zhourunlai**: zhourunlai is currently working on adding experimental telemetry model options, integrating the tavily SDK, and updating the volcengine model in the packages code areas
+- **azep-ninja**: azep-ninja is currently working on separating the Knowledge system and optimizing Multi-Agent RAG in a new feature
+- **salazarsebas**: salazarsebas is currently working on adding a Spanish version of the README documentation in the 'docs' section
 
 ## ⚠️ Issues
 - **New Issues**: 4
-- **Labels**: `bug` (2), `enhancement` (2), `compatibility` (1)
-- **Summary**: 2 bugs reported (including 'Running Eliza with LLAMALOCAL fails after first query', 'Eliza can't execute multiple actions in one conversation') 2 feature requests (including 'Quotes on Twitter', 'Expand Support for Non-OpenAI Models in Token Trimming').
+- **Labels**: `enhancement` (4)
+- **Summary**: 4 feature requests (including 'Add Spanish Translation for Documentation README (docs/README_es.md)', 'Azure Support').
 
 ## Top Contributors
-- **tomguluson92**: docs: overview and preview of technical report
-- **samuveth**: feat: add TEE support for plugin-env
+- **zhourunlai**: feat: add experimental telemetry model option
+- **azep-ninja**: fix: Google API Key not passing from character file
+- **salazarsebas**: docs: add readme spanish version in docs

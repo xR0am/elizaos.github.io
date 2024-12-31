@@ -1,65 +1,70 @@
 {
-  "title": "elizaos Eliza (2024-12-30)",
-  "version": "",
-  "overview": "Development focused on package improvements (add TEE support for plugin-env), new features (add TEE support for plugin-env), 1 bug fixes. with 14 contributors merging 4 PRs. Major work included various improvements.",
+  "title": "elizaos Eliza (2024-12-31)",
+  "version": "add readme spanish version in docs",
+  "overview": "Development focused on package improvements (tweak transfer template of plugin-evm), new features (add experimental telemetry model option), 4 bug fixes. with 20 contributors merging 13 PRs. Major work included zhourunlai is currently working on adding experimental telemetry model options, integrating the tavily sdk, and updating the volcengine model in the packages code areas.",
   "metrics": {
-    "contributors": 14,
-    "merged_prs": 4,
+    "contributors": 20,
+    "merged_prs": 13,
     "new_issues": 4,
-    "lines_changed": 267
+    "lines_changed": 8840
   },
   "changes": {
     "features": [
-      "add TEE support for plugin-env",
-      "parse files through prettier"
+      "add experimental telemetry model option",
+      "use tavily sdk",
+      "update volcengine model"
     ],
     "fixes": [
-      "init 768 dimension in database for gaianet"
+      "Google API Key not passing from character file",
+      "Double Responses from Continue Action",
+      "tweak transfer template of plugin-evm"
     ],
     "chores": []
   },
   "areas": [
     {
       "name": "packages",
-      "files": 9,
-      "additions": 98,
-      "deletions": 36
+      "files": 55,
+      "additions": 7561,
+      "deletions": 989
     },
     {
       "name": "root",
-      "files": 2,
-      "additions": 78,
-      "deletions": 4
+      "files": 4,
+      "additions": 29,
+      "deletions": 70
     },
     {
       "name": "docs",
-      "files": 1,
-      "additions": 0,
-      "deletions": 0
+      "files": 4,
+      "additions": 184,
+      "deletions": 4
     }
   ],
-  "issues_summary": "working on 2 bugs including 'Running Eliza with LLAMALOCAL fails after first query', 'Eliza can't execute multiple actions in one conversation' and implementing 2 feature requests including 'Quotes on Twitter', 'Expand Support for Non-OpenAI Models in Token Trimming'",
+  "issues_summary": "implementing 4 feature requests including 'Add Spanish Translation for Documentation README (docs/README_es.md)', 'Azure Support'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "sekmet",
-      "summary": "sekmet is currently working on integrating FereAI and updating the FerePro plugin in the packages and agent code areas",
-      "areas": []
-    },
-    {
-      "name": "tomguluson92",
-      "summary": "tomguluson92 is primarily working on updating the documentation by creating a pull request that provides an overview and preview of a technical report",
+      "name": "zhourunlai",
+      "summary": "zhourunlai is currently working on adding experimental telemetry model options, integrating the tavily SDK, and updating the volcengine model in the packages code areas",
       "areas": [
-        "docs",
-        "README.md"
+        "packages",
+        "pnpm-lock.yaml",
+        ".env.example"
       ]
     },
     {
-      "name": "samuveth",
-      "summary": "samuveth is currently working on adding Trusted Execution Environment (TEE) support for the plugin-env feature in the \"packages\" code area",
+      "name": "azep-ninja",
+      "summary": "azep-ninja is currently working on separating the Knowledge system and optimizing Multi-Agent RAG in a new feature",
       "areas": [
-        "packages",
-        "pnpm-lock.yaml"
+        "packages"
+      ]
+    },
+    {
+      "name": "salazarsebas",
+      "summary": "salazarsebas is currently working on adding a Spanish version of the README documentation in the 'docs' section",
+      "areas": [
+        "docs"
       ]
     }
   ]
