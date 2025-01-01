@@ -1,43 +1,43 @@
-# elizaos Eliza (2024-12-31)
+# elizaos Eliza (2025-01-01)
     
 ## 📊 Overview
-Development focused on package improvements (tweak transfer template of plugin-evm), new features (add experimental telemetry model option), 4 bug fixes. with 20 contributors merging 13 PRs. Major work included zhourunlai is currently working on adding experimental telemetry model options, integrating the tavily sdk, and updating the volcengine model in the packages code areas.
+Development focused on package improvements (update viem dependency version in plugin-evm and plugin-goat), new features (Select a transcription provider based on the character settings.), 4 bug fixes. with 26 contributors merging 8 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 20 |
+| 👥 Contributors | 26 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 13 |
-| ⚠️ New Issues | 4 |
+| 🔄 Merged PRs | 8 |
+| ⚠️ New Issues | 21 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 0
+- 🧹 **Chores**: 1
 - 🐛 **Fixes**: 4
-- ✨ **Features**: 4
+- ✨ **Features**: 1
 
 ## 📁 File Changes
-- **packages**: 55 files (+7561/-989 lines)
-- **docs**: 4 files (+184/-4 lines)
-- **root**: 4 files (+29/-70 lines)
-- **scripts**: 1 files (+2/-1 lines)
+- **root**: 5 files (+1357/-1552 lines)
+- **packages**: 14 files (+57/-29 lines)
+- **.github**: 1 files (+4/-1 lines)
+- **scripts**: 1 files (+3/-0 lines)
 
 ## 🔥 Notable Changes
-- feat: add experimental telemetry model option
-- feat: use tavily sdk
-- feat: update volcengine model
+- fix: lockfile wasn't updated after dependency + bring viem to root level package.json
+- chore: update viem dependency version in plugin-evm and plugin-goat
+- fix: Fix bug in plugin-bootstrap/src/evaluators/facts.ts
 
 ## 👥 Top Contributors
-- **zhourunlai**: zhourunlai is currently working on adding experimental telemetry model options, integrating the tavily SDK, and updating the volcengine model in the packages code areas
-- **azep-ninja**: azep-ninja is currently working on separating the Knowledge system and optimizing Multi-Agent RAG in a new feature
-- **salazarsebas**: salazarsebas is currently working on adding a Spanish version of the README documentation in the 'docs' section
+- **monilpat**: monilpat is primarily focused on deduplicating dependencies across plugins and moving shared dependencies to the root package
+- **bertux**: bertux is currently working on updating the Viem dependency version in the plugin-evm and plugin-goat repositories to include the Arthera EVM chain
+- **metakai1**: metakai1 is currently working on fixing a bug in the plugin-bootstrap/src/evaluators/facts
 
 ## ⚠️ Issues
-- **New Issues**: 4
-- **Labels**: `enhancement` (4)
-- **Summary**: 4 feature requests (including 'Add Spanish Translation for Documentation README (docs/README_es.md)', 'Azure Support').
+- **New Issues**: 21
+- **Labels**: `enhancement` (15), `agent-generated` (14), `bug` (5)
+- **Summary**: 5 bugs reported (including 'Ensure uniform application of trimTokens in underlying LLM calls', 'Dockerfile errors when building image') 15 feature requests (including 'Create GitHub Badges for Community Contributions', 'Use Caret (^) for Dependency Versions in package.json').
 
 ## Top Contributors
-- **zhourunlai**: feat: add experimental telemetry model option
-- **azep-ninja**: fix: Google API Key not passing from character file
-- **salazarsebas**: docs: add readme spanish version in docs
+- **monilpat**: fix: lockfile wasn't updated after dependency + bring viem to root level package.json
+- **bertux**: chore: update viem dependency version in plugin-evm and plugin-goat
+- **metakai1**: fix: Fix bug in plugin-bootstrap/src/evaluators/facts.ts
