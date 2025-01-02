@@ -39,13 +39,14 @@ jobs:
     - name: Set date variables
       run: |
         echo "TIMESTAMP=$(date +'%Y_%m_%d')" >> $GITHUB_ENV
-        echo "IS_MONTH_START=$(date +'%d')" >> $GITHUB_ENV
         echo "IS_FRIDAY=$(date +'%u')" >> $GITHUB_ENV
+        echo "IS_MONTH_START=$(date +'%d')" >> $GITHUB_ENV
 
-    - name: Fetch daily data
-      if: github.event.schedule != '0 19 * * 5' && github.event.schedule != '0 19 4 * *'
+    - name: Process daily data
+      if: env.IS_FRIDAY != '5' && env.IS_MONTH_START != '4'
       env:
         GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
         # Create directories
         mkdir -p data/daily data/daily/history
@@ -54,39 +55,8 @@ jobs:
         bash scripts/fetch_github.sh elizaos eliza --type prs --days 1 | tee data/daily/prs.json data/daily/history/prs_${TIMESTAMP}.json
         bash scripts/fetch_github.sh elizaos eliza --type issues --days 1 | tee data/daily/issues.json data/daily/history/issues_${TIMESTAMP}.json
         bash scripts/fetch_github.sh elizaos eliza --type commits --days 1 | tee data/daily/commits.json data/daily/history/commits_${TIMESTAMP}.json
-    
-    - name: Fetch weekly data
-      if: github.event.schedule == '0 19 * * 5'
-      env:
-        GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
-      run: |
-        # Create directories
-        mkdir -p data/weekly data/weekly/history
         
-        # Fetch current data with timestamp
-        bash scripts/fetch_github.sh elizaos eliza --type prs --days 7 | tee data/weekly/prs.json data/weekly/history/prs_${TIMESTAMP}.json
-        bash scripts/fetch_github.sh elizaos eliza --type issues --days 7 | tee data/weekly/issues.json data/weekly/history/issues_${TIMESTAMP}.json
-        bash scripts/fetch_github.sh elizaos eliza --type commits --days 7 | tee data/weekly/commits.json data/weekly/history/commits_${TIMESTAMP}.json
-    
-    - name: Fetch monthly data
-      if: github.event.schedule == '0 19 4 * *'
-      env:
-        GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
-      run: |
-        # Create directories
-        mkdir -p data/monthly data/monthly/history
-        
-        # Fetch current data with timestamp
-        bash scripts/fetch_github.sh elizaos eliza --type prs --days 30 | tee data/monthly/prs.json data/monthly/history/prs_${TIMESTAMP}.json
-        bash scripts/fetch_github.sh elizaos eliza --type issues --days 30 | tee data/monthly/issues.json data/monthly/history/issues_${TIMESTAMP}.json
-        bash scripts/fetch_github.sh elizaos eliza --type commits --days 30 | tee data/monthly/commits.json data/monthly/history/commits_${TIMESTAMP}.json
-
-    - name: Process daily data
-      if: github.event.schedule != '0 19 * * 5' && github.event.schedule != '0 19 4 * *'
-      env:
-        GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
-        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      run: |
+        # Process data
         [ -f data/daily/contributors.json ] && mv data/daily/contributors.json data/daily/history/contributors_${TIMESTAMP}.json || true
         [ -f data/daily/summary.json ] && mv data/daily/summary.json data/daily/history/summary_${TIMESTAMP}.json || true
         [ -f data/daily/summary.md ] && mv data/daily/summary.md data/daily/history/summary_${TIMESTAMP}.md || true
@@ -97,22 +67,40 @@ jobs:
         python scripts/summarize_daily.py data/daily/contributors.json -t md data/daily/summary.md --model openai
     
     - name: Process weekly data
-      if: github.event.schedule == '0 19 * * 5'
+      if: env.IS_FRIDAY == '5'
       env:
-        GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+        GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
+        # Create directories
+        mkdir -p data/weekly data/weekly/history
+        
+        # Fetch current data with timestamp
+        bash scripts/fetch_github.sh elizaos eliza --type prs --days 7 | tee data/weekly/prs.json data/weekly/history/prs_${TIMESTAMP}.json
+        bash scripts/fetch_github.sh elizaos eliza --type issues --days 7 | tee data/weekly/issues.json data/weekly/history/issues_${TIMESTAMP}.json
+        bash scripts/fetch_github.sh elizaos eliza --type commits --days 7 | tee data/weekly/commits.json data/weekly/history/commits_${TIMESTAMP}.json
+        
+        # Process data
         [ -f data/weekly/contributors.json ] && mv data/weekly/contributors.json data/weekly/history/contributors_${TIMESTAMP}.json || true
         python scripts/combine.py -p data/weekly/prs.json -i data/weekly/issues.json -c data/weekly/commits.json -o data/weekly/combined.json
         python scripts/calculate_scores.py data/weekly/combined.json data/weekly/scored.json
         python scripts/summarize.py data/weekly/scored.json data/weekly/contributors.json --model openai
     
     - name: Process monthly data
-      if: github.event.schedule == '0 19 4 * *'
+      if: env.IS_MONTH_START == '4'
       env:
-        GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+        GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
+        # Create directories
+        mkdir -p data/monthly data/monthly/history
+        
+        # Fetch current data with timestamp
+        bash scripts/fetch_github.sh elizaos eliza --type prs --days 30 | tee data/monthly/prs.json data/monthly/history/prs_${TIMESTAMP}.json
+        bash scripts/fetch_github.sh elizaos eliza --type issues --days 30 | tee data/monthly/issues.json data/monthly/history/issues_${TIMESTAMP}.json
+        bash scripts/fetch_github.sh elizaos eliza --type commits --days 30 | tee data/monthly/commits.json data/monthly/history/commits_${TIMESTAMP}.json
+        
+        # Process data
         [ -f data/monthly/contributors.json ] && mv data/monthly/contributors.json data/monthly/history/contributors_${TIMESTAMP}.json || true
         python scripts/combine.py -p data/monthly/prs.json -i data/monthly/issues.json -c data/monthly/commits.json -o data/monthly/combined.json
         python scripts/calculate_scores.py data/monthly/combined.json data/monthly/scored.json
