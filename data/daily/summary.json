@@ -1,69 +1,72 @@
 {
-  "title": "elizaos Eliza (2025-01-01)",
-  "version": "update viem dependency version in plugin-evm and plugin-goat",
-  "overview": "Development focused on package improvements (update viem dependency version in plugin-evm and plugin-goat), new features (Select a transcription provider based on the character settings.), 4 bug fixes. with 26 contributors merging 8 PRs. Major work included various improvements.",
+  "title": "elizaos Eliza (2025-01-02)",
+  "version": "",
+  "overview": "Development focused on package improvements (update web search plugin export), new features (Plugin sui support for suiprivatekey0x account), 5 bug fixes. with 33 contributors merging 14 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 26,
-    "merged_prs": 8,
-    "new_issues": 21,
-    "lines_changed": 3003
+    "contributors": 33,
+    "merged_prs": 14,
+    "new_issues": 11,
+    "lines_changed": 3643
   },
   "changes": {
     "features": [
-      "Select a transcription provider based on the character settings."
+      "Plugin sui support for suiprivatekey0x account",
+      "add docs for story plugin"
     ],
     "fixes": [
-      "lockfile wasn't updated after dependency + bring viem to root level package.json",
-      "Fix bug in plugin-bootstrap/src/evaluators/facts.ts",
-      "corrected path for image upload"
+      "1668  fix twitter image link",
+      "1634  fix image description service",
+      "trimTokens no need to await"
     ],
     "chores": [
-      "update viem dependency version in plugin-evm and plugin-goat"
+      "rename ai16z/eliza to elizaOS/eliza",
+      "update web search plugin export",
+      "twitter username validation message"
     ]
   },
   "areas": [
     {
       "name": "packages",
-      "files": 14,
-      "additions": 57,
-      "deletions": 29
+      "files": 17,
+      "additions": 459,
+      "deletions": 107
     },
     {
       "name": "root",
       "files": 5,
-      "additions": 1357,
-      "deletions": 1552
+      "additions": 1666,
+      "deletions": 1385
     },
     {
-      "name": ".github",
-      "files": 1,
-      "additions": 4,
-      "deletions": 1
+      "name": "docs",
+      "files": 5,
+      "additions": 8,
+      "deletions": 8
     }
   ],
-  "issues_summary": "working on 5 bugs including 'Ensure uniform application of trimTokens in underlying LLM calls', 'Dockerfile errors when building image' and implementing 15 feature requests including 'Create GitHub Badges for Community Contributions', 'Use Caret (^) for Dependency Versions in package.json'",
+  "issues_summary": "working on 8 bugs including 'ImageDescriptionService can't get image description from twitter post with images', 'Elizalogger.error don't show some error descriptions.' and implementing 2 feature requests including 'Fixed the Trump character example', 'Add http proxy support for ai agent'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "monilpat",
-      "summary": "monilpat is primarily focused on deduplicating dependencies across plugins and moving shared dependencies to the root package",
+      "name": "nusk0",
+      "summary": "nusk0 is currently working on fixing issues related to image description services, specifically addressing problems with retrieving image descriptions from Twitter posts with images",
       "areas": [
-        ".github",
-        "packages",
-        "package.json"
+        "CHANGELOG.md",
+        "packages"
       ]
     },
     {
-      "name": "bertux",
-      "summary": "bertux is currently working on updating the Viem dependency version in the plugin-evm and plugin-goat repositories to include the Arthera EVM chain",
+      "name": "9547",
+      "summary": "9547 is currently working on migrating the `generateObjectDeprecated` function to `generateObject`, merging documentation files for a plugin, and renaming a repository related to `eliza`",
       "areas": [
         "packages",
-        "pnpm-lock.yaml"
+        "docs",
+        "scripts"
       ]
     },
     {
-      "name": "metakai1",
-      "summary": "metakai1 is currently working on fixing a bug in the plugin-bootstrap/src/evaluators/facts",
+      "name": "denizekiz",
+      "summary": "denizekiz is currently working on resolving issues related to error descriptions not displaying correctly in Elizalogger, fixing URLs in imagedescriptionservice, and addressing unsupported images in the Image Description Service",
       "areas": [
         "packages"
       ]

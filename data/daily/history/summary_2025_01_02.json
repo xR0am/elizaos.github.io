@@ -1,0 +1,72 @@
+{
+  "title": "elizaos Eliza (2025-01-01)",
+  "version": "update viem dependency version in plugin-evm and plugin-goat",
+  "overview": "Development focused on package improvements (update viem dependency version in plugin-evm and plugin-goat), new features (Select a transcription provider based on the character settings.), 4 bug fixes. with 26 contributors merging 8 PRs. Major work included various improvements.",
+  "metrics": {
+    "contributors": 26,
+    "merged_prs": 8,
+    "new_issues": 21,
+    "lines_changed": 3003
+  },
+  "changes": {
+    "features": [
+      "Select a transcription provider based on the character settings."
+    ],
+    "fixes": [
+      "lockfile wasn't updated after dependency + bring viem to root level package.json",
+      "Fix bug in plugin-bootstrap/src/evaluators/facts.ts",
+      "corrected path for image upload"
+    ],
+    "chores": [
+      "update viem dependency version in plugin-evm and plugin-goat"
+    ]
+  },
+  "areas": [
+    {
+      "name": "packages",
+      "files": 14,
+      "additions": 57,
+      "deletions": 29
+    },
+    {
+      "name": "root",
+      "files": 5,
+      "additions": 1357,
+      "deletions": 1552
+    },
+    {
+      "name": ".github",
+      "files": 1,
+      "additions": 4,
+      "deletions": 1
+    }
+  ],
+  "issues_summary": "working on 5 bugs including 'Ensure uniform application of trimTokens in underlying LLM calls', 'Dockerfile errors when building image' and implementing 15 feature requests including 'Create GitHub Badges for Community Contributions', 'Use Caret (^) for Dependency Versions in package.json'",
+  "questions": [],
+  "top_contributors": [
+    {
+      "name": "monilpat",
+      "summary": "monilpat is primarily focused on deduplicating dependencies across plugins and moving shared dependencies to the root package",
+      "areas": [
+        ".github",
+        "packages",
+        "package.json"
+      ]
+    },
+    {
+      "name": "bertux",
+      "summary": "bertux is currently working on updating the Viem dependency version in the plugin-evm and plugin-goat repositories to include the Arthera EVM chain",
+      "areas": [
+        "packages",
+        "pnpm-lock.yaml"
+      ]
+    },
+    {
+      "name": "metakai1",
+      "summary": "metakai1 is currently working on fixing a bug in the plugin-bootstrap/src/evaluators/facts",
+      "areas": [
+        "packages"
+      ]
+    }
+  ]
+}
