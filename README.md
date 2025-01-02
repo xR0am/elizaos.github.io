@@ -156,3 +156,6 @@ The system generates structured JSON data for contributors:
 
 ## Contributors
 
+## Notes
+
+`code2prompt -p README.md -p scripts/build.js -p scripts/components/ContributorProfile.js -p package.json -p profiles/madjin.html`
