@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tiero - GitHub Contributions</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div id="root"><div class="max-w-7xl mx-auto p-4 space-y-6"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><div class="flex items-center justify-between"><div class="flex items-center gap-4"><img src="https://avatars.githubusercontent.com/u/3596602?u=d324fbc803a70f4c2d504e9cffe90d33601f3f41&amp;v=4" alt="tiero&#x27;s avatar" class="w-16 h-16 rounded-full"/><div><h1 class="text-2xl font-bold">tiero</h1><div class="text-gray-600 dark:text-gray-400"><span class="font-semibold">Score: </span>5</div></div></div><div class="text-3xl font-bold text-blue-600 dark:text-blue-400">5</div></div></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">tiero is currently working on adding a Bitcoin plugin with Taproot and Ark in the packages and agent code areas. This includes a single pull request for this new feature, with no merged changes or other recent activity in the last 90 days.</p></div><div class="grid grid-cols-1 md:grid-cols-4 gap-4"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Commits</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Pull Requests</h3><p class="text-2xl font-bold">1</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Issues</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Comments</h3><p class="text-2xl font-bold">0</p></div></div><div class="space-y-4"><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Commits</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Pull Requests</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Issues</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Comments</h3><span>▶</span></div></div></div></div></div>
+    <script>
+        window.__DATA__ = {"contributor":"tiero","score":5,"summary":"tiero is currently working on adding a Bitcoin plugin with Taproot and Ark in the packages and agent code areas. This includes a single pull request for this new feature, with no merged changes or other recent activity in the last 90 days.","avatar_url":"https://avatars.githubusercontent.com/u/3596602?u=d324fbc803a70f4c2d504e9cffe90d33601f3f41&v=4","activity":{"code":{"total_commits":0,"total_prs":1,"commits":[],"pull_requests":[{"number":1553,"title":"feat: add Bitcoin plugin with Taproot and Ark ","state":"OPEN","merged":false,"created_at":"2024-12-29T04:29:07Z","updated_at":"2024-12-29T22:28:08Z","body":"# 🔗 Bitcoin Plugin: Advanced Taproot & Layer 2 Integration\r\n\r\n## 🎯 Overview\r\n\r\nThis PR introduces comprehensive Bitcoin support to Eliza through [@arklabs/wallet-sdk](https://www.npmjs.com/package/@arklabs/wallet-sdk) integration, delivering Taproot capabilities and Layer 2 scaling via Ark protocol. It uses the single private key where you can generate a Taproot address and Ark addresses, if `ARK_SERVER_URL` and `ARK_SERVER_PUBLIC_KEY` are given.  It's planned to add Silent Payments support.\r\n\r\n## 🚀 Key Features\r\n\r\n- ⚡️ **Bitcoin Taproot Implementation**: Native Segwit v1 (P2TR) address generation for `onchain`.\r\n- 🌉 **Ark L2 integration**: Supports connecting to an Ark server for virtual transaction batching for `offchain`\r\n- 💸 **USD-denominated transaction support**\r\n    - Real-time fiat conversion\r\n    - Price-aware fee estimation\r\n- `onchain` UTXOs and `offchain` Virtual UTXOs coin selection\r\n\r\n- Automatic path selection (on-chain vs off-chain based on address)\r\n- Balance tracking across Bitcoin layers\r\n\r\n\r\n- 🔗 **Advanced URI Support**\r\n  - BIP21 URI generation and parsing\r\n    - Ark protocol endpoints\r\n    - Silent Payment addresses (coming soon)\r\n    - Amount specifications\r\n    - Network identification\r\n\r\n\r\n\r\n## 🔍 Risks & Mitigations\r\n\r\n**Risk Level**: Low\r\n\r\n## 🚦 Install\r\n\r\n1. Run the complete test suite:\r\n   ```bash\r\n   cd packages/plugin-bitcoin\r\n   pnpm test\r\n   ```\r\n\r\n## 📋 Checklist\r\n\r\n- [x] Bitcoin functionality tested\r\n- [x] Ark protocol integration verified\r\n- [ ] Documentation updated with examples\r\n- [ ] Security review completed\r\n- [ ] Performance benchmarks passed\r\n- [x] BIP21 URI support validated\r\n- [x] USD denomination support tested","files":[{"path":".env.example","additions":6,"deletions":0},{"path":"agent/package.json","additions":1,"deletions":0},{"path":"agent/src/index.ts","additions":2,"deletions":0},{"path":"packages/plugin-bitcoin/package.json","additions":29,"deletions":0},{"path":"packages/plugin-bitcoin/src/actions/addresses.ts","additions":63,"deletions":0},{"path":"packages/plugin-bitcoin/src/actions/balance.ts","additions":67,"deletions":0},{"path":"packages/plugin-bitcoin/src/actions/coins.ts","additions":71,"deletions":0},{"path":"packages/plugin-bitcoin/src/actions/index.ts","additions":6,"deletions":0},{"path":"packages/plugin-bitcoin/src/actions/send.ts","additions":252,"deletions":0},{"path":"packages/plugin-bitcoin/src/index.ts","additions":18,"deletions":0},{"path":"packages/plugin-bitcoin/src/providers/bitcoin.ts","additions":131,"deletions":0},{"path":"packages/plugin-bitcoin/src/sdk.ts","additions":14,"deletions":0},{"path":"packages/plugin-bitcoin/src/test-setup.ts","additions":58,"deletions":0},{"path":"packages/plugin-bitcoin/src/tests/balance.test.ts","additions":92,"deletions":0},{"path":"packages/plugin-bitcoin/src/tests/bitcoin.test.ts","additions":130,"deletions":0},{"path":"packages/plugin-bitcoin/src/tests/coins.test.ts","additions":106,"deletions":0},{"path":"packages/plugin-bitcoin/src/types.ts","additions":31,"deletions":0},{"path":"packages/plugin-bitcoin/src/types/index.ts","additions":26,"deletions":0},{"path":"packages/plugin-bitcoin/tsconfig.json","additions":15,"deletions":0},{"path":"packages/plugin-bitcoin/tsup.config.ts","additions":11,"deletions":0},{"path":"packages/plugin-bitcoin/vitest.config.ts","additions":10,"deletions":0},{"path":"pnpm-lock.yaml","additions":413,"deletions":1}],"reviews":[{"author":"github-actions","state":"COMMENTED","body":"Hi @tiero! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!"}],"comments":[]}]},"issues":{"total_opened":0,"opened":[]},"engagement":{"total_comments":0,"total_reviews":1,"comments":[],"reviews":[]}}};
+    </script>
+    <script type="text/javascript">
+        
+const StatusDot = ({ status }) => {
+  const colors = {
+    open: 'bg-green-500',
+    closed: 'bg-red-500',
+    merged: 'bg-purple-500'
+  };
+
+  return React.createElement('span', {
+    className: `inline-block w-2 h-2 rounded-full ${colors[status]} mr-2`
+  });
+};
+
+const ActivitySection = ({ title, items = [], showStatus = false }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  
+  const getStatus = (item) => {
+    if (item.state === 'merged' || (item.state === 'closed' && title === 'Pull Requests')) {
+      return 'merged';
+    }
+    return item.state || 'open';
+  };
+
+  return React.createElement('div', { className: 'border rounded-lg p-4' },
+    React.createElement('div', {
+      className: 'flex items-center justify-between cursor-pointer',
+      onClick: () => setIsExpanded(!isExpanded)
+    },
+      React.createElement('h3', { className: 'font-semibold' }, title),
+      React.createElement('span', null, isExpanded ? '▼' : '▶')
+    ),
+    isExpanded && React.createElement('div', { className: 'mt-4 space-y-2' },
+      items.map((item, index) => 
+        React.createElement('div', { key: index, className: 'p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded' },
+          React.createElement('a', {
+            href: item.url,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            className: 'text-sm hover:text-blue-500 flex flex-col gap-1'
+          },
+            React.createElement('span', { className: 'font-medium flex items-center' },
+              showStatus && React.createElement(StatusDot, { status: getStatus(item) }),
+              item.message || item.title || item.body
+            ),
+            React.createElement('span', { className: 'text-gray-500 text-xs' },
+              new Date(item.date || item.created_at).toLocaleDateString()
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+const StatCard = ({ name, value }) => {
+  return React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+    React.createElement('h3', { className: 'font-semibold' }, name),
+    React.createElement('p', { className: 'text-2xl font-bold' }, value)
+  );
+};
+
+const ContributorProfile = ({ data }) => {
+  const stats = [
+    { name: 'Commits', value: data.activity.code.total_commits },
+    { name: 'Pull Requests', value: data.activity.code.total_prs },
+    { name: 'Issues', value: data.activity.issues.total_opened },
+    { name: 'Comments', value: data.activity.engagement.total_comments }
+  ];
+
+  return React.createElement('div', { className: 'max-w-7xl mx-auto p-4 space-y-6' },
+    React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+      React.createElement('div', { className: 'flex items-center justify-between' },
+        React.createElement('div', { className: 'flex items-center gap-4' },
+          React.createElement('img', {
+            src: data.avatar_url,
+            alt: `${data.contributor}'s avatar`,
+            className: 'w-16 h-16 rounded-full'
+          }),
+          React.createElement('div', null,
+            React.createElement('h1', { className: 'text-2xl font-bold' }, data.contributor),
+            React.createElement('div', { className: 'text-gray-600 dark:text-gray-400' },
+              React.createElement('span', { className: 'font-semibold' }, 'Score: '),
+              data.score
+            )
+          )
+        )
+      )
+    ),
+
+    data.summary && React.createElement('div', { 
+      className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow'
+    },
+      React.createElement('p', { 
+        className: 'text-gray-700 dark:text-gray-300 text-sm leading-relaxed'
+      }, data.summary)
+    ),
+
+    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
+      stats.map(stat => React.createElement(StatCard, { 
+        key: stat.name,
+        ...stat
+      }))
+    ),
+
+    React.createElement('div', { className: 'space-y-4' },
+      React.createElement(ActivitySection, {
+        title: 'Commits',
+        items: data.activity.code.commits
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Pull Requests',
+        items: data.activity.code.pull_requests,
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Issues',
+        items: data.activity.issues.opened || [],
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Comments',
+        items: data.activity.engagement.comments
+      })
+    )
+  );
+};
+
+// Initialize React root and render
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(ContributorProfile, { data: window.__DATA__ }));
+    </script>
+</body>
+</html>

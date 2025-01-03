@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nusk0 - GitHub Contributions</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div id="root"><div class="max-w-7xl mx-auto p-4 space-y-6"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><div class="flex items-center justify-between"><div class="flex items-center gap-4"><img src="https://avatars.githubusercontent.com/u/36314459?u=aed9d177141f344a27f7bf9570b09024ecf6a6bb&amp;v=4" alt="nusk0&#x27;s avatar" class="w-16 h-16 rounded-full"/><div><h1 class="text-2xl font-bold">nusk0</h1><div class="text-gray-600 dark:text-gray-400"><span class="font-semibold">Score: </span>7</div></div></div><div class="text-3xl font-bold text-blue-600 dark:text-blue-400">7</div></div></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">nusk0 is currently working on addressing a bug related to the ImageDescriptionService. There have been no pull requests or commits made in the last 90 days, with the focus primarily on resolving the reported issue.</p></div><div class="grid grid-cols-1 md:grid-cols-4 gap-4"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Commits</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Pull Requests</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Issues</h3><p class="text-2xl font-bold">1</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Comments</h3><p class="text-2xl font-bold">1</p></div></div><div class="space-y-4"><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Commits</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Pull Requests</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Issues</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Comments</h3><span>▶</span></div></div></div></div></div>
+    <script>
+        window.__DATA__ = {"contributor":"nusk0","score":7,"summary":"nusk0 is currently working on addressing a bug related to the ImageDescriptionService. There have been no pull requests or commits made in the last 90 days, with the focus primarily on resolving the reported issue.","avatar_url":"https://avatars.githubusercontent.com/u/36314459?u=aed9d177141f344a27f7bf9570b09024ecf6a6bb&v=4","activity":{"code":{"total_commits":0,"total_prs":0,"commits":[],"pull_requests":[]},"issues":{"total_opened":1,"opened":[{"number":1643,"title":"ImageDescriptionService ","state":"OPEN","created_at":"2025-01-01T19:04:15Z","updated_at":"2025-01-01T19:04:39Z","body":"**Description**\r\nThe ImageDescriptionService, used to get description of pictures on twitter uses \"gpt-4o-mini\" by default. When using another model than OPENAI for the character,  the feature will not work and it will give you an authentification error when trying to get an image description.\r\n<!-- A clear and concise description of what the bug is. -->\r\n\r\n**To Reproduce**\r\n\r\n1. Download the latest repo and use any character with a twitter client and usea different provider than openAI, make sure that you have an openAI API key in your .env file.\r\n2. set ENABLE_ACTION_PROCESSING=true in your .env file to enable your agent to interact with pictures and wait for it.\r\n3. Once your agent tries to get an image description from a tweet, you get this error : \r\n\r\n ```\r\n [\"◎Processing images in tweet for context\"]\r\n\r\n ⛔ ERRORS\r\n   OpenAI API error: \r\n   401\r\n   -\r\n   {\"error\":\"Authentication failed\"}\r\n\r\n ⛔ ERRORS\r\n   OpenAI request failed (attempt\r\n   1\r\n   ):\r\n   {}\r\n\r\n ⛔ ERRORS\r\n   OpenAI API error: \r\n   401\r\n   -\r\n   {\"error\":\"Authentication failed\"}\r\n\r\n ⛔ ERRORS\r\n   OpenAI request failed (attempt\r\n   2\r\n   ):\r\n   {}\r\n\r\n ⛔ ERRORS\r\n   OpenAI API error: \r\n   401\r\n   -\r\n   {\"error\":\"Authentication failed\"}\r\n\r\n ⛔ ERRORS\r\n   OpenAI request failed (attempt\r\n   3\r\n   ):\r\n   {}\r\n\r\n ⛔ ERRORS\r\n   Error in recognizeWithOpenAI:\r\n   {}\r\n\r\n ⛔ ERRORS\r\n   Error in handleTextOnlyReply:\r\n   {} -->\r\n\r\n```\r\n**Expected behavior**\r\n\r\nThe agent should be able to use the ImageDescriptionService and get a description of the image in the tweet to get more context.\r\n\r\n**Fix**\r\n\r\n<!-- If applicable, add screenshots to help explain your problem. -->\r\n\r\nI already implemented the fix and I will do a PR shortly.\r\n\r\n\r\n","labels":[{"name":"bug","color":"d73a4a","description":"Something isn't working"}],"comments":[{"author":"github-actions","body":"Hello @nusk0! Welcome to the ai16z community. Thank you for opening your first issue; we appreciate your contribution. You are now a ai16z contributor!"}]}]},"engagement":{"total_comments":1,"total_reviews":0,"comments":[],"reviews":[]}}};
+    </script>
+    <script type="text/javascript">
+        
+const StatusDot = ({ status }) => {
+  const colors = {
+    open: 'bg-green-500',
+    closed: 'bg-red-500',
+    merged: 'bg-purple-500'
+  };
+
+  return React.createElement('span', {
+    className: `inline-block w-2 h-2 rounded-full ${colors[status]} mr-2`
+  });
+};
+
+const ActivitySection = ({ title, items = [], showStatus = false }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  
+  const getStatus = (item) => {
+    if (item.state === 'merged' || (item.state === 'closed' && title === 'Pull Requests')) {
+      return 'merged';
+    }
+    return item.state || 'open';
+  };
+
+  return React.createElement('div', { className: 'border rounded-lg p-4' },
+    React.createElement('div', {
+      className: 'flex items-center justify-between cursor-pointer',
+      onClick: () => setIsExpanded(!isExpanded)
+    },
+      React.createElement('h3', { className: 'font-semibold' }, title),
+      React.createElement('span', null, isExpanded ? '▼' : '▶')
+    ),
+    isExpanded && React.createElement('div', { className: 'mt-4 space-y-2' },
+      items.map((item, index) => 
+        React.createElement('div', { key: index, className: 'p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded' },
+          React.createElement('a', {
+            href: item.url,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            className: 'text-sm hover:text-blue-500 flex flex-col gap-1'
+          },
+            React.createElement('span', { className: 'font-medium flex items-center' },
+              showStatus && React.createElement(StatusDot, { status: getStatus(item) }),
+              item.message || item.title || item.body
+            ),
+            React.createElement('span', { className: 'text-gray-500 text-xs' },
+              new Date(item.date || item.created_at).toLocaleDateString()
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+const StatCard = ({ name, value }) => {
+  return React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+    React.createElement('h3', { className: 'font-semibold' }, name),
+    React.createElement('p', { className: 'text-2xl font-bold' }, value)
+  );
+};
+
+const ContributorProfile = ({ data }) => {
+  const stats = [
+    { name: 'Commits', value: data.activity.code.total_commits },
+    { name: 'Pull Requests', value: data.activity.code.total_prs },
+    { name: 'Issues', value: data.activity.issues.total_opened },
+    { name: 'Comments', value: data.activity.engagement.total_comments }
+  ];
+
+  return React.createElement('div', { className: 'max-w-7xl mx-auto p-4 space-y-6' },
+    React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+      React.createElement('div', { className: 'flex items-center justify-between' },
+        React.createElement('div', { className: 'flex items-center gap-4' },
+          React.createElement('img', {
+            src: data.avatar_url,
+            alt: `${data.contributor}'s avatar`,
+            className: 'w-16 h-16 rounded-full'
+          }),
+          React.createElement('div', null,
+            React.createElement('h1', { className: 'text-2xl font-bold' }, data.contributor),
+            React.createElement('div', { className: 'text-gray-600 dark:text-gray-400' },
+              React.createElement('span', { className: 'font-semibold' }, 'Score: '),
+              data.score
+            )
+          )
+        )
+      )
+    ),
+
+    data.summary && React.createElement('div', { 
+      className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow'
+    },
+      React.createElement('p', { 
+        className: 'text-gray-700 dark:text-gray-300 text-sm leading-relaxed'
+      }, data.summary)
+    ),
+
+    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
+      stats.map(stat => React.createElement(StatCard, { 
+        key: stat.name,
+        ...stat
+      }))
+    ),
+
+    React.createElement('div', { className: 'space-y-4' },
+      React.createElement(ActivitySection, {
+        title: 'Commits',
+        items: data.activity.code.commits
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Pull Requests',
+        items: data.activity.code.pull_requests,
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Issues',
+        items: data.activity.issues.opened || [],
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Comments',
+        items: data.activity.engagement.comments
+      })
+    )
+  );
+};
+
+// Initialize React root and render
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(ContributorProfile, { data: window.__DATA__ }));
+    </script>
+</body>
+</html>

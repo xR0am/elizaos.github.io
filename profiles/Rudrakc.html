@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rudrakc - GitHub Contributions</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div id="root"><div class="max-w-7xl mx-auto p-4 space-y-6"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><div class="flex items-center justify-between"><div class="flex items-center gap-4"><img src="https://avatars.githubusercontent.com/u/140807567?u=7a65dfb11ad15c60f719664473435fab6805d7d9&amp;v=4" alt="Rudrakc&#x27;s avatar" class="w-16 h-16 rounded-full"/><div><h1 class="text-2xl font-bold">Rudrakc</h1><div class="text-gray-600 dark:text-gray-400"><span class="font-semibold">Score: </span>5</div></div></div><div class="text-3xl font-bold text-blue-600 dark:text-blue-400">5</div></div></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Rudrakc is currently working on a new feature, the addition of the FerePro Plugin, with one pull request submitted but not yet merged. The code changes are focused on the &quot;packages&quot; code area.</p></div><div class="grid grid-cols-1 md:grid-cols-4 gap-4"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Commits</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Pull Requests</h3><p class="text-2xl font-bold">2</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Issues</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Comments</h3><p class="text-2xl font-bold">0</p></div></div><div class="space-y-4"><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Commits</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Pull Requests</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Issues</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Comments</h3><span>▶</span></div></div></div></div></div>
+    <script>
+        window.__DATA__ = {"contributor":"Rudrakc","score":5,"summary":"Rudrakc is currently working on a new feature, the addition of the FerePro Plugin, with one pull request submitted but not yet merged. The code changes are focused on the \"packages\" code area.","avatar_url":"https://avatars.githubusercontent.com/u/140807567?u=7a65dfb11ad15c60f719664473435fab6805d7d9&v=4","activity":{"code":{"total_commits":0,"total_prs":2,"commits":[],"pull_requests":[{"number":1502,"title":"Adding the FerePro plugin","state":"OPEN","merged":false,"created_at":"2024-12-27T18:18:21Z","updated_at":"2024-12-27T18:19:14Z","body":" # Relates to:  \r\nAdding FerePro integration – Adding structured ChatResponse handling.  Fixes #1405\r\n\r\n---\r\n\r\n# Risks  \r\n**Low** –  \r\n- Minor risk of WebSocket disconnection if API credentials are missing or invalid.  \r\n- Potential parsing errors if unexpected data formats are returned from the WebSocket API.  \r\n\r\n**Mitigation:**  \r\n- Graceful error handling and logging added.  \r\n- Fallback responses provided for invalid data formats.  \r\n\r\n---\r\n\r\n# Background  \r\n\r\n## What does this PR do?  \r\n- Introduces structured handling of WebSocket responses using a new `ChatResponse` interface.  \r\n- Updates the `FereProService` to parse WebSocket responses directly into `ChatResponse`.  \r\n- Adds error handling for malformed data and WebSocket connection issues.  \r\n\r\n## What kind of change is this?  \r\n**Feature** – Adds new functionality for structured WebSocket responses.  \r\n**Improvement** – Enhances existing WebSocket communication with additional validation and logging.  \r\n\r\n---\r\n\r\n# Documentation changes needed?  \r\nMy changes **do not** require a change to the project documentation.  \r\n\r\n---\r\n\r\n# Testing  \r\n\r\n## Where should a reviewer start?  \r\n- Review the `services/FereProService.ts` file for WebSocket response handling logic.  \r\n- Inspect the new `ChatResponse` interface and mapping in `sendMessage()`.  \r\n\r\n## Detailed testing steps  \r\n1. Initialize the plugin by setting `FERE_USER_ID` in runtime settings.  \r\n2. Send a WebSocket message through `sendFereProMessage` action.  \r\n3. Verify structured response by logging `ChatResponse` details (answer, chat_id, credits used).  \r\n4. Trigger error cases by using invalid WebSocket URLs and observe error handling behavior.  \r\n\r\n---\r\n\r\n# Deploy Notes  \r\n- No database changes.  \r\n- Ensure the WebSocket URL and user ID are correctly set in the environment configuration before deployment.  \r\n","files":[{"path":"packages/plugin-ferePro/README.md","additions":0,"deletions":0},{"path":"packages/plugin-ferePro/package-lock.json","additions":4123,"deletions":0},{"path":"packages/plugin-ferePro/package.json","additions":21,"deletions":0},{"path":"packages/plugin-ferePro/src/actions/FereProAction.ts","additions":150,"deletions":0},{"path":"packages/plugin-ferePro/src/index.ts","additions":15,"deletions":0},{"path":"packages/plugin-ferePro/src/services/FereProService.ts","additions":107,"deletions":0},{"path":"packages/plugin-ferePro/tsconfig.json","additions":12,"deletions":0},{"path":"packages/plugin-ferePro/tsup.config.ts","additions":10,"deletions":0}],"reviews":[],"comments":[]},{"number":1542,"title":"feat: Addition of FerePro Plugin","state":"OPEN","merged":false,"created_at":"2024-12-28T19:18:14Z","updated_at":"2024-12-28T20:27:40Z","body":"# Relates to:  \r\nFerePro Plugin for Eliza #1405 \r\n\r\n---\r\n\r\n# Background  \r\n\r\n## What does this PR do?  \r\n- Introduces FerePro plugin to eliza\r\n- Follows the structured way to implement a plugin as stated in the doc\r\n\r\n## What kind of change is this?  \r\n**Feature** – Adds new plugin for FerePro to eliza  \r\n\r\n---\r\n\r\n","files":[{"path":"packages/plugin-ferePro/README.md","additions":0,"deletions":0},{"path":"packages/plugin-ferePro/package.json","additions":21,"deletions":0},{"path":"packages/plugin-ferePro/src/actions/FereProAction.ts","additions":148,"deletions":0},{"path":"packages/plugin-ferePro/src/enviroment.ts","additions":36,"deletions":0},{"path":"packages/plugin-ferePro/src/index.ts","additions":14,"deletions":0},{"path":"packages/plugin-ferePro/src/services/FereProService.ts","additions":141,"deletions":0},{"path":"packages/plugin-ferePro/tsconfig.json","additions":12,"deletions":0},{"path":"packages/plugin-ferePro/tsup.config.ts","additions":10,"deletions":0},{"path":"pnpm-lock.yaml","additions":836,"deletions":397}],"reviews":[{"author":"odilitime","state":"CHANGES_REQUESTED","body":"Please include the agent/ folder work too (per `pnpm dev`)"}],"comments":[{"author":"Rudrakc","body":"> Please include the agent/ folder work too (per `pnpm dev`)\r\n\r\nI didn't get it! did you mean I should try running pnpm dev plugin_ferePro in my local?\r\nAlso, how do I run the plugin to test if it's working as expected?"}]}]},"issues":{"total_opened":0,"opened":[]},"engagement":{"total_comments":0,"total_reviews":1,"comments":[],"reviews":[]}}};
+    </script>
+    <script type="text/javascript">
+        
+const StatusDot = ({ status }) => {
+  const colors = {
+    open: 'bg-green-500',
+    closed: 'bg-red-500',
+    merged: 'bg-purple-500'
+  };
+
+  return React.createElement('span', {
+    className: `inline-block w-2 h-2 rounded-full ${colors[status]} mr-2`
+  });
+};
+
+const ActivitySection = ({ title, items = [], showStatus = false }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  
+  const getStatus = (item) => {
+    if (item.state === 'merged' || (item.state === 'closed' && title === 'Pull Requests')) {
+      return 'merged';
+    }
+    return item.state || 'open';
+  };
+
+  return React.createElement('div', { className: 'border rounded-lg p-4' },
+    React.createElement('div', {
+      className: 'flex items-center justify-between cursor-pointer',
+      onClick: () => setIsExpanded(!isExpanded)
+    },
+      React.createElement('h3', { className: 'font-semibold' }, title),
+      React.createElement('span', null, isExpanded ? '▼' : '▶')
+    ),
+    isExpanded && React.createElement('div', { className: 'mt-4 space-y-2' },
+      items.map((item, index) => 
+        React.createElement('div', { key: index, className: 'p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded' },
+          React.createElement('a', {
+            href: item.url,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            className: 'text-sm hover:text-blue-500 flex flex-col gap-1'
+          },
+            React.createElement('span', { className: 'font-medium flex items-center' },
+              showStatus && React.createElement(StatusDot, { status: getStatus(item) }),
+              item.message || item.title || item.body
+            ),
+            React.createElement('span', { className: 'text-gray-500 text-xs' },
+              new Date(item.date || item.created_at).toLocaleDateString()
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+const StatCard = ({ name, value }) => {
+  return React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+    React.createElement('h3', { className: 'font-semibold' }, name),
+    React.createElement('p', { className: 'text-2xl font-bold' }, value)
+  );
+};
+
+const ContributorProfile = ({ data }) => {
+  const stats = [
+    { name: 'Commits', value: data.activity.code.total_commits },
+    { name: 'Pull Requests', value: data.activity.code.total_prs },
+    { name: 'Issues', value: data.activity.issues.total_opened },
+    { name: 'Comments', value: data.activity.engagement.total_comments }
+  ];
+
+  return React.createElement('div', { className: 'max-w-7xl mx-auto p-4 space-y-6' },
+    React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+      React.createElement('div', { className: 'flex items-center justify-between' },
+        React.createElement('div', { className: 'flex items-center gap-4' },
+          React.createElement('img', {
+            src: data.avatar_url,
+            alt: `${data.contributor}'s avatar`,
+            className: 'w-16 h-16 rounded-full'
+          }),
+          React.createElement('div', null,
+            React.createElement('h1', { className: 'text-2xl font-bold' }, data.contributor),
+            React.createElement('div', { className: 'text-gray-600 dark:text-gray-400' },
+              React.createElement('span', { className: 'font-semibold' }, 'Score: '),
+              data.score
+            )
+          )
+        )
+      )
+    ),
+
+    data.summary && React.createElement('div', { 
+      className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow'
+    },
+      React.createElement('p', { 
+        className: 'text-gray-700 dark:text-gray-300 text-sm leading-relaxed'
+      }, data.summary)
+    ),
+
+    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
+      stats.map(stat => React.createElement(StatCard, { 
+        key: stat.name,
+        ...stat
+      }))
+    ),
+
+    React.createElement('div', { className: 'space-y-4' },
+      React.createElement(ActivitySection, {
+        title: 'Commits',
+        items: data.activity.code.commits
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Pull Requests',
+        items: data.activity.code.pull_requests,
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Issues',
+        items: data.activity.issues.opened || [],
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Comments',
+        items: data.activity.engagement.comments
+      })
+    )
+  );
+};
+
+// Initialize React root and render
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(ContributorProfile, { data: window.__DATA__ }));
+    </script>
+</body>
+</html>

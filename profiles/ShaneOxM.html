@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShaneOxM - GitHub Contributions</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <div id="root"><div class="max-w-7xl mx-auto p-4 space-y-6"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><div class="flex items-center justify-between"><div class="flex items-center gap-4"><img src="https://avatars.githubusercontent.com/u/169729951?u=b423d57c13e2e6a1dcd767827057d7e5f5e7249c&amp;v=4" alt="ShaneOxM&#x27;s avatar" class="w-16 h-16 rounded-full"/><div><h1 class="text-2xl font-bold">ShaneOxM</h1><div class="text-gray-600 dark:text-gray-400"><span class="font-semibold">Score: </span>17</div></div></div><div class="text-3xl font-bold text-blue-600 dark:text-blue-400">17</div></div></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">ShaneOxM is currently working on fixing issues related to client and agent code areas, including adding required incremental options and improving client type identification. They have submitted 2 pull requests, with 1 already merged, showcasing their focus on code quality and test coverage.</p></div><div class="grid grid-cols-1 md:grid-cols-4 gap-4"><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Commits</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Pull Requests</h3><p class="text-2xl font-bold">2</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Issues</h3><p class="text-2xl font-bold">0</p></div><div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow"><h3 class="font-semibold">Comments</h3><p class="text-2xl font-bold">0</p></div></div><div class="space-y-4"><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Commits</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Pull Requests</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Issues</h3><span>▶</span></div></div><div class="border rounded-lg p-4"><div class="flex items-center justify-between cursor-pointer"><h3 class="font-semibold">Comments</h3><span>▶</span></div></div></div></div></div>
+    <script>
+        window.__DATA__ = {"contributor":"ShaneOxM","score":17,"summary":"ShaneOxM is currently working on fixing issues related to client and agent code areas, including adding required incremental options and improving client type identification. They have submitted 2 pull requests, with 1 already merged, showcasing their focus on code quality and test coverage.","avatar_url":"https://avatars.githubusercontent.com/u/169729951?u=b423d57c13e2e6a1dcd767827057d7e5f5e7249c&v=4","activity":{"code":{"total_commits":0,"total_prs":2,"commits":[],"pull_requests":[{"number":1490,"title":"fix: improve client type identification with test coverage","state":"MERGED","merged":true,"created_at":"2024-12-27T03:05:27Z","updated_at":"2024-12-27T19:42:50Z","body":"# Fix TypeScript Client Type Identification\r\n\r\n# Relates to:\r\nFixes TypeScript error in client initialization where `name` property is incorrectly assumed to exist on `Client` type.\r\n\r\n# Risks\r\nLow - This is a type-safety improvement with comprehensive test coverage. Changes are isolated to client type identification logic.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n- Adds a robust `determineClientType` helper function for reliable client identification\r\n- Fixes TypeScript errors in client initialization\r\n- Adds comprehensive test suite for client type identification\r\n- Improves debugging with additional logging\r\n\r\n## What kind of change is this?\r\nBug fixes (non-breaking change which fixes an issue)\r\n- Resolves TypeScript type error\r\n- Maintains backward compatibility\r\n- Improves type safety\r\n\r\n# Documentation changes needed?\r\nMy changes do not require a change to the project documentation.\r\nThe changes are internal implementation details that don't affect the public API.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n1. Review the `determineClientType` function in `agent/src/index.ts`\r\n2. Check the test cases in `agent/src/__tests__/client-type-identification.test.ts`\r\n3. Verify the TypeScript error is resolved\r\n\r\n## Detailed testing steps\r\n1. Run `pnpm test` in the agent directory to verify all tests pass\r\n2. Tests cover three scenarios:\r\n   - Clients with explicit type property\r\n   - Clients with constructor name identification\r\n   - Plain object clients with fallback identifiers\r\n\r\n\r\n","files":[{"path":"agent/jest.config.js","additions":17,"deletions":0},{"path":"agent/package.json","additions":11,"deletions":7},{"path":"agent/src/__tests__/client-type-identification.test.ts","additions":53,"deletions":0},{"path":"agent/src/index.ts","additions":21,"deletions":2},{"path":"agent/tsconfig.json","additions":2,"deletions":1}],"reviews":[],"comments":[]},{"number":1485,"title":"fix: add required incremental option and remove invalid typescript configuration","state":"OPEN","merged":false,"created_at":"2024-12-27T01:43:04Z","updated_at":"2024-12-27T02:09:13Z","body":"# Relates to:\r\nNo specific issue ticket - fixing TypeScript configuration errors encountered during build\r\n\r\n# Risks\r\nLow - Configuration changes only, no functional code changes\r\n- Affects TypeScript compilation settings\r\n- No runtime behavior changes\r\n- Only impacts development/build time performance\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nFixes two TypeScript configuration issues:\r\n1. Adds required `incremental` option for `tsBuildInfoFile` usage\r\n- 'tsBuildInfoFile' is used for incremental compilation but requires 'incremental: true'\r\n- This change will improve build performance by enabling proper incremental builds\r\n\r\n2. Removes invalid compiler option `noUncheckedSideEffectImports`\r\n- This option is not a valid TypeScript compiler option\r\n- Removing it resolves the TypeScript configuration error\r\n\r\nThese changes resolve the following errors:\r\n\r\nOption 'tsBuildInfoFile' cannot be specified without specifying option 'incremental'\r\nUnknown compiler option 'noUncheckedSideEffectImports'\r\n\r\n## What kind of change is this?\r\nBug fixes (non-breaking change which fixes an issue)\r\n- Improves TypeScript configuration\r\n- Enables proper incremental builds\r\n- Removes invalid configuration option\r\n\r\n# Documentation changes needed?\r\nMy changes do not require a change to the project documentation as they only affect internal TypeScript configuration.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\nReview the changes in:\r\n1. `client/tsconfig.app.json`\r\n2. `client/tsconfig.node.json`\r\n\r\n## Detailed testing steps\r\n1. Clone the repository and checkout this branch\r\n2. Install dependencies:\r\n\r\n```bash\r\ncd client\r\npnpm install\r\n```\r\n\r\n4. Run TypeScript compilation to verify errors are resolved:\r\n```bash\r\npnpm check-types\r\n```\r\n\r\n5. Verify no TypeScript configuration errors are reported\r\n6. Run the development server to ensure everything works:\r\n```bash\r\npnpm dev\r\n```\r\n\r\n# Deploy Notes\r\nNo special deploy steps required - changes only affect development/build configuration\r\n\r\n- Build performance may improve due to proper incremental compilation\r\n- No runtime changes or dependencies affected","files":[{"path":"client/tsconfig.app.json","additions":13,"deletions":7},{"path":"client/tsconfig.node.json","additions":9,"deletions":7}],"reviews":[{"author":"monilpat","state":"APPROVED","body":"LGTM thanks"}],"comments":[]}]},"issues":{"total_opened":0,"opened":[]},"engagement":{"total_comments":0,"total_reviews":1,"comments":[],"reviews":[]}}};
+    </script>
+    <script type="text/javascript">
+        
+const StatusDot = ({ status }) => {
+  const colors = {
+    open: 'bg-green-500',
+    closed: 'bg-red-500',
+    merged: 'bg-purple-500'
+  };
+
+  return React.createElement('span', {
+    className: `inline-block w-2 h-2 rounded-full ${colors[status]} mr-2`
+  });
+};
+
+const ActivitySection = ({ title, items = [], showStatus = false }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  
+  const getStatus = (item) => {
+    if (item.state === 'merged' || (item.state === 'closed' && title === 'Pull Requests')) {
+      return 'merged';
+    }
+    return item.state || 'open';
+  };
+
+  return React.createElement('div', { className: 'border rounded-lg p-4' },
+    React.createElement('div', {
+      className: 'flex items-center justify-between cursor-pointer',
+      onClick: () => setIsExpanded(!isExpanded)
+    },
+      React.createElement('h3', { className: 'font-semibold' }, title),
+      React.createElement('span', null, isExpanded ? '▼' : '▶')
+    ),
+    isExpanded && React.createElement('div', { className: 'mt-4 space-y-2' },
+      items.map((item, index) => 
+        React.createElement('div', { key: index, className: 'p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded' },
+          React.createElement('a', {
+            href: item.url,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            className: 'text-sm hover:text-blue-500 flex flex-col gap-1'
+          },
+            React.createElement('span', { className: 'font-medium flex items-center' },
+              showStatus && React.createElement(StatusDot, { status: getStatus(item) }),
+              item.message || item.title || item.body
+            ),
+            React.createElement('span', { className: 'text-gray-500 text-xs' },
+              new Date(item.date || item.created_at).toLocaleDateString()
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+const StatCard = ({ name, value }) => {
+  return React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+    React.createElement('h3', { className: 'font-semibold' }, name),
+    React.createElement('p', { className: 'text-2xl font-bold' }, value)
+  );
+};
+
+const ContributorProfile = ({ data }) => {
+  const stats = [
+    { name: 'Commits', value: data.activity.code.total_commits },
+    { name: 'Pull Requests', value: data.activity.code.total_prs },
+    { name: 'Issues', value: data.activity.issues.total_opened },
+    { name: 'Comments', value: data.activity.engagement.total_comments }
+  ];
+
+  return React.createElement('div', { className: 'max-w-7xl mx-auto p-4 space-y-6' },
+    React.createElement('div', { className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow' },
+      React.createElement('div', { className: 'flex items-center justify-between' },
+        React.createElement('div', { className: 'flex items-center gap-4' },
+          React.createElement('img', {
+            src: data.avatar_url,
+            alt: `${data.contributor}'s avatar`,
+            className: 'w-16 h-16 rounded-full'
+          }),
+          React.createElement('div', null,
+            React.createElement('h1', { className: 'text-2xl font-bold' }, data.contributor),
+            React.createElement('div', { className: 'text-gray-600 dark:text-gray-400' },
+              React.createElement('span', { className: 'font-semibold' }, 'Score: '),
+              data.score
+            )
+          )
+        )
+      )
+    ),
+
+    data.summary && React.createElement('div', { 
+      className: 'bg-white dark:bg-gray-800 rounded-lg p-6 shadow'
+    },
+      React.createElement('p', { 
+        className: 'text-gray-700 dark:text-gray-300 text-sm leading-relaxed'
+      }, data.summary)
+    ),
+
+    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-4' },
+      stats.map(stat => React.createElement(StatCard, { 
+        key: stat.name,
+        ...stat
+      }))
+    ),
+
+    React.createElement('div', { className: 'space-y-4' },
+      React.createElement(ActivitySection, {
+        title: 'Commits',
+        items: data.activity.code.commits
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Pull Requests',
+        items: data.activity.code.pull_requests,
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Issues',
+        items: data.activity.issues.opened || [],
+        showStatus: true
+      }),
+      React.createElement(ActivitySection, {
+        title: 'Comments',
+        items: data.activity.engagement.comments
+      })
+    )
+  );
+};
+
+// Initialize React root and render
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(ContributorProfile, { data: window.__DATA__ }));
+    </script>
+</body>
+</html>
