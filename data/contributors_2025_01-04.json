@@ -2842,7 +2842,7 @@
             "state": "OPEN",
             "merged": false,
             "created_at": "2025-01-04T22:57:53Z",
-            "updated_at": "2025-01-04T23:08:22Z",
+            "updated_at": "2025-01-04T23:11:22Z",
             "body": "This pull request includes a small change to the `CONTRIBUTING.md` and `docs/docs/contributing.md` files. The change corrects the link to the FAQ page to point to the correct location.\r\n\r\n* [`CONTRIBUTING.md`](diffhunk://#diff-eca12c0a30e25b4b46522ebf89465a03ba72a03f540796c979137931d8f92055L82-R82): Updated the FAQ link from `docs/community/faq.md` to `docs/docs/faq.md`.\r\n* [`docs/docs/contributing.md`](diffhunk://#diff-eca12c0a30e25b4b46522ebf89465a03ba72a03f540796c979137931d8f92055L82-R82): Updated the FAQ link from `docs/community/faq.md` to `docs/docs/faq.md`.\r\n\r\n<!-- Use this template by filling in information and copying and pasting relevant items out of the HTML comments. -->\r\n\r\n# Relates to 1838\r\n\r\nhttps://github.com/elizaOS/eliza/issues/1838\r\n\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\n\r\nLow - docs change\r\n\r\n# Background\r\n\r\nRead the contributing docs, they were broken, submitting a PR\r\n\r\n## What does this PR do?\r\n\r\nfixes the docs\r\n\r\n## What kind of change is this?\r\n\r\nBug fixes (non-breaking change which fixes an issue)\r\n\r\n<!-- This \"Why\" section is most relevant if there are no linked issues explaining why. If there is a related issue, it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\nIncludes documentation change\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nCheck that you do want this FAQ link to go to [docs/docs/faq.md](https://github.com/elizaOS/eliza/blob/main/docs/docs/faq.md) and not [docs/community/faq-and-support.md](https://github.com/elizaOS/eliza/blob/main/docs/community/faq-and-support.md)\r\n\r\n## Detailed testing steps\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for the contributor role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\nmacs\r\n-->\r\n",
             "files": [
               {
@@ -3673,7 +3673,7 @@
             "state": "OPEN",
             "merged": false,
             "created_at": "2025-01-04T15:56:40Z",
-            "updated_at": "2025-01-04T22:41:16Z",
+            "updated_at": "2025-01-04T23:23:48Z",
             "body": "# Relates to\r\nn/a\r\n\r\n# Risks\r\nLow\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nThis PR integrates a plugin intended for the Arthera Chain which includes an onchain action:\r\n- Transfer native token (AA)\r\n- More actions coming (next release)\r\n\r\n## What kind of change is this?\r\n\r\nFeatures (non-breaking change which adds functionality)\r\n\r\n## Why are we doing this? Any context or related work?\r\nEnable onchain actions for Arthera Chain with a dedicated plugin.\r\n\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\nGo to plugin-arthera\r\n\r\n## Detailed testing steps\r\n\r\n1. add PRIVATE_KEY_ARTHERA to .env\r\n2. Claim a free Gas pass to cover the transaction gas fees\r\nhttps://gaspass.arthera.net/\r\n3. Bridge some fund to Arthera\r\nhttps://app.routernitro.com/swap?fromChain=1&fromToken=0xdAC17F958D2ee523a2206206994597C13D831ec7&toToken=0x6C45E28A76977a96e263f84F95912B47F927B687\r\n4. Fund account with AA to get tokens for testing\r\nhttps://third.trade/swap/Arthera?buy=0x69d349e2009af35206efc3937bad6817424729f7&sell=0x6C45E28A76977a96e263f84F95912B47F927B687\r\n5. Ask to the Agent to transfer tokens to another wallet\r\n",
             "files": [
               {
@@ -3703,7 +3703,7 @@
               },
               {
                 "path": "packages/plugin-arthera/package.json",
-                "additions": 24,
+                "additions": 23,
                 "deletions": 0
               },
               {
@@ -3750,6 +3750,11 @@
                 "path": "packages/plugin-arthera/tsup.config.ts",
                 "additions": 20,
                 "deletions": 0
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 16,
+                "deletions": 0
               }
             ],
             "reviews": [
@@ -3757,6 +3762,11 @@
                 "author": "github-actions",
                 "state": "COMMENTED",
                 "body": "Hi @elpiarthera! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!"
+              },
+              {
+                "author": "bertux",
+                "state": "COMMENTED",
+                "body": "ready for review, tests of new plugin worked when I've tried them, and it worked also from a test agent."
               }
             ],
             "comments": []
@@ -3769,7 +3779,7 @@
       },
       "engagement": {
         "total_comments": 0,
-        "total_reviews": 1,
+        "total_reviews": 2,
         "comments": [],
         "reviews": []
       }
@@ -4262,8 +4272,25 @@
         ]
       },
       "issues": {
-        "total_opened": 0,
-        "opened": []
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 1841,
+            "title": "elizaos/plugin-ferepro missing source and failing build",
+            "state": "OPEN",
+            "created_at": "2025-01-04T23:32:19Z",
+            "updated_at": "2025-01-04T23:32:19Z",
+            "body": "```\r\n@elizaos/plugin-ferepro:build:\r\n@elizaos/plugin-ferepro:build: > @elizaos/plugin-ferepro@0.1.7-alpha.2 build /mnt/data1/nix/time/2024/12/31/cloud-depl\\\r\noyment-eliza/packages/plugin-ferePro\r\n@elizaos/plugin-ferepro:build: > tsup --format esm --dts\r\n@elizaos/plugin-ferepro:build:\r\n@elizaos/core:build:\r\n@elizaos/core:build: > @elizaos/core@0.1.7 build /mnt/data1/nix/time/2024/12/31/cloud-deployment-eliza/packages/core\r\n@elizaos/core:build: > tsup --format esm --dts\r\n@elizaos/core:build:\r\ncreate-eliza-app:build:\r\ncreate-eliza-app:build: > create-eliza-app@0.1.7-alpha.2 build /mnt/data1/nix/time/2024/12/31/cloud-deployment-eliza/p\\\r\nackages/create-eliza-app\r\ncreate-eliza-app:build: > unbuild\r\ncreate-eliza-app:build:\r\n@elizaos/plugin-ferepro:build: No input files, try \"tsup <your-file>\" instead\r\n@elizaos/plugin-ferepro:build: \u2009ELIFECYCLE\u2009 Command failed with exit code 1.```",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": []
+          }
+        ]
       },
       "engagement": {
         "total_comments": 0,
@@ -4964,7 +4991,7 @@
             "state": "OPEN",
             "merged": false,
             "created_at": "2025-01-04T03:48:58Z",
-            "updated_at": "2025-01-04T22:36:37Z",
+            "updated_at": "2025-01-04T23:20:37Z",
             "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# \u25c0\ufe0f Relates to:\r\n\r\nFixes the build related to the pnpm-lock not being in sync from the `docs/` dir\r\n\r\n# \u26a0\ufe0f Risks\r\n\r\n* low: the build locally in an isolated docker image seems to be working\r\n\r\n# \ud83d\uddbc\ufe0f Background\r\n\r\n## What does this PR do?\r\n\r\n* Fixes the current build that's broken\r\n\r\n## What kind of change is this?\r\n\r\n* Bug fixes (non-breaking change which fixes an issue)\r\n\r\n## Why are we doing this? Any context or related work?\r\n\r\nBecause I broke the build :)\r\n\r\n# \ud83d\udcda Documentation changes needed?\r\n\r\n* We should be adding docs about requiring users to update the lock files before pushing the changes.\r\n\r\n> **NOTE**: @madjin should we add a check for those in CI?\r\n\r\n# \u2705 Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n* Start with running `pnpm install --frozen-lockfile` from the root dir\r\n\r\n```console\r\nroot@21bdd5ef97fb:/Users/marcellodesales/dev/github.com/elizaOS/eliza# pnpm install --frozen-lockfile\r\n! Corepack is about to download https://registry.npmjs.org/pnpm/-/pnpm-9.12.3.tgz\r\n? Do you want to continue? [Y/n] y\r\n\r\nScope: all 55 workspace projects\r\nLockfile is up to date, resolution step is skipped\r\nPackages: +4765\r\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\r\n\r\n   \u256d\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e\r\n   \u2502                                                                  \u2502\r\n   \u2502                Update available! 9.12.3 \u2192 9.15.2.                \u2502\r\n   \u2502   Changelog: https://github.com/pnpm/pnpm/releases/tag/v9.15.2   \u2502\r\n   \u2502         Run \"corepack install -g pnpm@9.15.2\" to update.         \u2502\r\n   \u2502                                                                  \u2502\r\n   \u2502         Follow @pnpmjs for updates: https://x.com/pnpmjs         \u2502\r\n   \u2502                                                                  \u2502\r\n   \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\r\n\r\nProgress: resolved 0, reused 2402, downloaded 0, added 0\r\n```\r\n\r\n## Detailed testing steps\r\n\r\n## Screenshots\r\n### Before\r\n\r\n```console\r\nroot@ddda7177349e:/Users/marcellodesales/dev/github.com/elizaOS/eliza# pnpm install\r\n! Corepack is about to download https://registry.npmjs.org/pnpm/-/pnpm-9.12.3.tgz\r\n? Do you want to continue? [Y/n] y\r\n\r\nScope: all 55 workspace projects\r\n\u2009ERR_PNPM_OUTDATED_LOCKFILE\u2009 Cannot install with \"frozen-lockfile\" because pnpm-lock.yaml is not up to date with <ROOT>/docs/package.json\r\n\r\nNote that in CI environments this setting is true by default. If you still need to run install in such cases, use \"pnpm install --no-frozen-lockfile\"\r\n\r\n    Failure reason:\r\n    specifiers in the lockfile ({\"@docusaurus/core\":\"3.6.3\",\"@docusaurus/plugin-content-blog\":\"3.6.3\",\"@docusaurus/plugin-content-docs\":\"3.6.3\",\"@docusaurus/plugin-ideal-image\":\"3.6.3\",\"@docusaurus/preset-classic\":\"3.6.3\",\"@docusaurus/theme-mermaid\":\"3.6.3\",\"@mdx-js/react\":\"3.0.1\",\"clsx\":\"2.1.1\",\"docusaurus-lunr-search\":\"3.5.0\",\"dotenv\":\"^16.4.7\",\"prism-react-renderer\":\"2.3.1\",\"react\":\"18.3.1\",\"react-dom\":\"18.3.1\",\"react-router-dom\":\"6.22.1\",\"@docusaurus/module-type-aliases\":\"3.6.3\",\"@docusaurus/types\":\"3.6.3\",\"docusaurus-plugin-typedoc\":\"1.0.5\",\"typedoc\":\"0.26.11\",\"typedoc-plugin-markdown\":\"4.2.10\"}) don't match specs in package.json ({\"@docusaurus/module-type-aliases\":\"3.6.3\",\"@docusaurus/types\":\"3.6.3\",\"docusaurus-plugin-typedoc\":\"1.0.5\",\"typedoc\":\"0.26.11\",\"typedoc-plugin-markdown\":\"4.2.10\",\"@docusaurus/core\":\"3.6.3\",\"@docusaurus/plugin-content-blog\":\"3.6.3\",\"@docusaurus/plugin-content-docs\":\"3.6.3\",\"@docusaurus/plugin-ideal-image\":\"3.6.3\",\"@docusaurus/preset-classic\":\"3.6.3\",\"@docusaurus/theme-mermaid\":\"3.6.3\",\"@docusaurus/theme-common\":\"3.6.3\",\"@mdx-js/react\":\"3.0.1\",\"clsx\":\"2.1.1\",\"docusaurus-lunr-search\":\"3.5.0\",\"lunr\":\"2.3.9\",\"dotenv\":\"^16.4.7\",\"prism-react-renderer\":\"2.3.1\",\"react\":\"18.3.1\",\"react-dom\":\"18.3.1\",\"react-router-dom\":\"6.22.1\"})\r\n```\r\n\r\n### After\r\n\r\n```console\r\nroot@21bdd5ef97fb:/Users/marcellodesales/dev/github.com/elizaOS/eliza# pnpm install --frozen-lockfile\r\n! Corepack is about to download https://registry.npmjs.org/pnpm/-/pnpm-9.12.3.tgz\r\n? Do you want to continue? [Y/n] y\r\n\r\nScope: all 55 workspace projects\r\nLockfile is up to date, resolution step is skipped\r\nPackages: +4765\r\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\r\n\r\n   \u256d\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e\r\n   \u2502                                                                  \u2502\r\n   \u2502                Update available! 9.12.3 \u2192 9.15.2.                \u2502\r\n   \u2502   Changelog: https://github.com/pnpm/pnpm/releases/tag/v9.15.2   \u2502\r\n   \u2502         Run \"corepack install -g pnpm@9.15.2\" to update.         \u2502\r\n   \u2502                                                                  \u2502\r\n   \u2502         Follow @pnpmjs for updates: https://x.com/pnpmjs         \u2502\r\n   \u2502                                                                  \u2502\r\n   \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\r\n\r\nProgress: resolved 0, reused 3982, downloaded 0, added 4765, done\r\nnode_modules/ffmpeg-static: Running install script, done in 19.9s\r\nnode_modules/canvas: Running install script, failed in 5.9s (skipped as optional)\r\nnode_modules/bufferutil: Running install script, done in 5.1s\r\nnode_modules/utf-8-validate: Running install script, done in 5.1s\r\nnode_modules/@discordjs/opus: Running install script, done in 24s\r\nnode_modules/@ffmpeg-installer/linux-arm64: Running postinstall script, done in 4ms\r\nnode_modules/@nestjs/core: Running postinstall script, done in 1.2s\r\nnode_modules/onnxruntime-node: Running postinstall script, done in 73ms\r\nnode_modules/keccak: Running install script, done in 2.9s\r\nnode_modules/@nomicfoundation/ethereumjs-tx/node_modules/secp256k1: Running install script, done in 3.8s\r\nnode_modules/bigint-buffer: Running install script, done in 814ms\r\nnode_modules/babel-runtime/node_modules/core-js: Running postinstall script, done in 18ms\r\nnode_modules/@near-js/crypto/node_modules/secp256k1: Running install script, done in 3.6s\r\nnode_modules/protobufjs: Running postinstall script, done in 17ms\r\nnode_modules/puppeteer: Running postinstall script, done in 29s\r\nnode_modules/es5-ext: Running postinstall script, done in 22ms\r\nnode_modules/tsx/node_modules/esbuild: Running postinstall script, done in 39ms\r\nnode_modules/wtf_wikipedia: Running postinstall script, done in 119ms\r\nnode_modules/@docusaurus/plugin-ideal-image/node_modules/sharp: Running install script, done in 10.7s\r\nnode_modules/@parcel/watcher: Running install script, done in 17ms\r\nnode_modules/unbuild/node_modules/esbuild: Running postinstall script, done in 38ms\r\nnode_modules/@multiversx/sdk-core/node_modules/keccak: Running install script, done in 2.5s\r\nnode_modules/node-llama-cpp: Running postinstall script, done in 638ms\r\nnode_modules/@openapitools/openapi-generator-cli: Running postinstall script, done in 1.5s\r\nnode_modules/nx: Running postinstall script, done in 253ms\r\nnode_modules/youtube-dl-exec: Running preinstall script, done in 95ms\r\nnode_modules/youtube-dl-exec: Running postinstall script, done in 5.8s\r\npackages/plugin-node postinstall$ node scripts/postinstall.js\r\n\u2502 Skipping playwright installation on unsupported platform: linux\r\n\u2514\u2500 Done in 19ms\r\nDone in 3m 55.5s\r\n```\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# \ud83c\udfd7\ufe0f Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n\r\nNone\r\n\r\n## Deployment instructions\r\n\r\nNone\r\n\r\n## Discord username\r\n\r\n@x.crypt0.surf3r",
             "files": [
               {
@@ -4990,7 +5017,12 @@
                 "body": "LGTM"
               }
             ],
-            "comments": []
+            "comments": [
+              {
+                "author": "marcellodesales",
+                "body": "@monilpat I see the develop branch was merged into the branch and the integration tests broke... I rebased it again and pushed a new one. "
+              }
+            ]
           }
         ]
       },
