@@ -1,5 +1,156 @@
 [
   {
+    "id": "PR_kwDOMT5cIs6GvUBl",
+    "number": 1840,
+    "title": "test: adding more tests for goals,memory and provider. Fixing generation.test.ts",
+    "body": "<!-- Use this template by filling in information and copying and pasting relevant items out of the HTML comments. -->\r\n\r\n# Relates to\r\nhttps://github.com/elizaOS/eliza/issues/186\r\nhttps://github.com/elizaOS/eliza/issues/183\r\nhttps://github.com/elizaOS/eliza/issues/185\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\nLow: Adding more tests so we can close issues, fixing generation.test.\r\n<!--\r\nLow, medium, large. List what kind of risks and what could be affected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nThis PR adds more tests for goals, memory and providers. \r\nFixes generation.test.ts\r\n## What kind of change is this?\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\nAdding tests\r\n<!-- This \"Why\" section is most relevant if there are no linked issues explaining why. If there is a related issue, it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\nFixing generation.test.ts\r\nAdding more tests, so we can close old issues.\r\n# Documentation changes needed?\r\nNone\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf documentation change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\npackages/core/\r\n## Detailed testing steps\r\nNavigate to desired directory and run pnpm test\r\n<!--\r\nNone: Automated tests are acceptable.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n  - [do action]\r\n  - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deployment, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!--  Copy and paste command line output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!--  Please specify deploy instructions if there is something more than the automated steps. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for the contributor role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+    "state": "OPEN",
+    "merged": false,
+    "createdAt": "2025-01-04T23:04:42Z",
+    "updatedAt": "2025-01-04T23:08:18Z",
+    "author": {
+      "login": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
+    },
+    "labels": [],
+    "files": [
+      {
+        "path": "packages/core/src/tests/generation.test.ts",
+        "additions": 21,
+        "deletions": 4
+      },
+      {
+        "path": "packages/core/src/tests/goals.test.ts",
+        "additions": 260,
+        "deletions": 1
+      },
+      {
+        "path": "packages/core/src/tests/memory.test.ts",
+        "additions": 132,
+        "deletions": 0
+      },
+      {
+        "path": "packages/core/src/tests/providers.test.ts",
+        "additions": 64,
+        "deletions": 0
+      }
+    ],
+    "reviews": [],
+    "comments": []
+  },
+  {
+    "id": "PR_kwDOMT5cIs6GvTsz",
+    "number": 1839,
+    "title": "correct faq docs link in both contribution md files",
+    "body": "This pull request includes a small change to the `CONTRIBUTING.md` and `docs/docs/contributing.md` files. The change corrects the link to the FAQ page to point to the correct location.\r\n\r\n* [`CONTRIBUTING.md`](diffhunk://#diff-eca12c0a30e25b4b46522ebf89465a03ba72a03f540796c979137931d8f92055L82-R82): Updated the FAQ link from `docs/community/faq.md` to `docs/docs/faq.md`.\r\n* [`docs/docs/contributing.md`](diffhunk://#diff-eca12c0a30e25b4b46522ebf89465a03ba72a03f540796c979137931d8f92055L82-R82): Updated the FAQ link from `docs/community/faq.md` to `docs/docs/faq.md`.\r\n\r\n<!-- Use this template by filling in information and copying and pasting relevant items out of the HTML comments. -->\r\n\r\n# Relates to 1838\r\n\r\nhttps://github.com/elizaOS/eliza/issues/1838\r\n\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\n\r\nLow - docs change\r\n\r\n# Background\r\n\r\nRead the contributing docs, they were broken, submitting a PR\r\n\r\n## What does this PR do?\r\n\r\nfixes the docs\r\n\r\n## What kind of change is this?\r\n\r\nBug fixes (non-breaking change which fixes an issue)\r\n\r\n<!-- This \"Why\" section is most relevant if there are no linked issues explaining why. If there is a related issue, it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\nIncludes documentation change\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nCheck that you do want this FAQ link to go to [docs/docs/faq.md](https://github.com/elizaOS/eliza/blob/main/docs/docs/faq.md) and not [docs/community/faq-and-support.md](https://github.com/elizaOS/eliza/blob/main/docs/community/faq-and-support.md)\r\n\r\n## Detailed testing steps\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for the contributor role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\nmacs\r\n-->\r\n",
+    "state": "OPEN",
+    "merged": false,
+    "createdAt": "2025-01-04T22:57:53Z",
+    "updatedAt": "2025-01-04T23:08:22Z",
+    "author": {
+      "login": "MacsDickinson",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/1135182?u=008184fd676416abe45a7f0eaa52a88e17da1a7e&v=4"
+    },
+    "labels": [],
+    "files": [
+      {
+        "path": "CONTRIBUTING.md",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "path": "docs/docs/contributing.md",
+        "additions": 1,
+        "deletions": 1
+      }
+    ],
+    "reviews": [
+      {
+        "id": "PRR_kwDOMT5cIs6W2PUY",
+        "author": "github-actions",
+        "body": "Hi @MacsDickinson! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!",
+        "state": "COMMENTED"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "PR_kwDOMT5cIs6GvTBs",
+    "number": 1837,
+    "title": "Add Extra Multimedia Support for Telegram Client",
+    "body": "<!-- Use this template by filling in information and copying and pasting relevant items out of the HTML comments. -->\r\n\r\n# Relates to\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks and what could be affected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nAdds more multimedia support to tg client. video, audio, and documents\r\n\r\n## What kind of change is this?\r\nFeatures (non-breaking change which adds functionality)\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there are no linked issues explaining why. If there is a related issue, it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf documentation change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n1. Create an Agent with a TG Client\r\n2. Process a response with the attached media type\r\n\r\n\r\n## Detailed testing steps\r\n\r\n```typescript\r\nawait callback({\r\n                text: YOUR RESPONSE,\r\n                attachments: [{\r\n                    id: \"123456\",\r\n                    url: \"https://github.com/MystenLabs/sui/raw/main/doc/paper/sui.pdf\",\r\n                    title: \"Demo PDF Document\",\r\n                    source: \"sui.io\",\r\n                    description: \"A sample PDF document for demonstration purposes.\",\r\n                    text: \"This is a demo PDF document used to showcase content extraction and processing. It contains sample text for testing purposes.\",\r\n                    contentType: \"doc\"\r\n                }],\r\n            });\r\n```\r\n\r\n<!--\r\nNone: Automated tests are acceptable.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n  - [do action]\r\n  - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deployment, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!--  Copy and paste command line output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!--  Please specify deploy instructions if there is something more than the automated steps. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for the contributor role and join us in #development-feed -->\r\n\r\n## Discord username\r\n@em.eieiron\r\n",
+    "state": "OPEN",
+    "merged": false,
+    "createdAt": "2025-01-04T22:43:26Z",
+    "updatedAt": "2025-01-04T22:43:26Z",
+    "author": {
+      "login": "astinz",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/28899947?v=4"
+    },
+    "labels": [],
+    "files": [
+      {
+        "path": "packages/client-telegram/src/messageManager.ts",
+        "additions": 102,
+        "deletions": 49
+      },
+      {
+        "path": "packages/plugin-image-generation/src/index.ts",
+        "additions": 2,
+        "deletions": 0
+      },
+      {
+        "path": "packages/plugin-sui/src/actions/ptb.ts",
+        "additions": 354,
+        "deletions": 0
+      },
+      {
+        "path": "packages/plugin-sui/src/index.ts",
+        "additions": 2,
+        "deletions": 1
+      }
+    ],
+    "reviews": [],
+    "comments": []
+  },
+  {
+    "id": "PR_kwDOMT5cIs6GvS9n",
+    "number": 1836,
+    "title": "chore: update bootstrap plugin export",
+    "body": "Relates to:\r\nPlugin export collisions in character files\r\n\r\nRisks\r\nLow - This is a minor bug fix that ensures proper module exports\r\n\r\nBackground\r\nWhat does this PR do?\r\nEnsures the bootstrap plugin has a proper default export at the bottom to avoid collisions when used in the actions module in character files. This maintains consistency with other plugins in the codebase that follow the same pattern (like the EVM plugin).\r\n\r\nWhat kind of change is this?\r\nBug fixes (non-breaking change which fixes an issue)\r\n\r\nDocumentation changes needed?\r\nMy changes do not require a change to the project documentation.\r\n\r\nTesting\r\nWhere should a reviewer start?\r\nCheck packages/plugin-bootstrap/src/index.ts to verify the proper export structure Verify that the plugin can be properly imported in character files without collisions Detailed testing steps\r\nLoad a character file that uses the bootstrap plugin Verify that no export collisions occur when the plugin is loaded Verify that all plugin actions are properly accessible Deploy Notes\r\nNo special deploy steps required. This is a straightforward bug fix that maintains backward compatibility.\r\n\r\nDiscord:\r\naffaanmustafa\r\n\r\n<!-- Use this template by filling in information and copying and pasting relevant items out of the HTML comments. -->\r\n\r\n# Relates to\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks and what could be affected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\n## What kind of change is this?\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there are no linked issues explaining why. If there is a related issue, it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf documentation change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone: Automated tests are acceptable.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n  - [do action]\r\n  - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deployment, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!--  Copy and paste command line output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!--  Please specify deploy instructions if there is something more than the automated steps. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for the contributor role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+    "state": "OPEN",
+    "merged": false,
+    "createdAt": "2025-01-04T22:42:02Z",
+    "updatedAt": "2025-01-04T22:54:13Z",
+    "author": {
+      "login": "affaan-m",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/124439313?u=31c86e9af353c4b2b21b3d8229a383a5080d3182&v=4"
+    },
+    "labels": [],
+    "files": [
+      {
+        "path": "packages/plugin-bootstrap/src/index.ts",
+        "additions": 1,
+        "deletions": 0
+      }
+    ],
+    "reviews": [
+      {
+        "id": "PRR_kwDOMT5cIs6W2PNO",
+        "author": "mgunnin",
+        "body": "LGTM\r\n\r\nI had to make the same change locally as well.",
+        "state": "APPROVED"
+      },
+      {
+        "id": "PRR_kwDOMT5cIs6W2PPL",
+        "author": "monilpat",
+        "body": "",
+        "state": "APPROVED"
+      }
+    ],
+    "comments": []
+  },
+  {
     "id": "PR_kwDOMT5cIs6GvSR9",
     "number": 1835,
     "title": "Update README_KOR.md",
@@ -157,7 +308,7 @@
     "state": "OPEN",
     "merged": false,
     "createdAt": "2025-01-04T21:44:02Z",
-    "updatedAt": "2025-01-04T22:16:56Z",
+    "updatedAt": "2025-01-04T22:42:31Z",
     "author": {
       "login": "Valetek",
       "avatarUrl": "https://avatars.githubusercontent.com/u/34715110?u=073ab3a4f9553f8b378e10577d3a5abf17a388bb&v=4"
@@ -176,6 +327,12 @@
         "author": "github-actions",
         "body": "Hi @Valetek! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!",
         "state": "COMMENTED"
+      },
+      {
+        "id": "PRR_kwDOMT5cIs6W2PCl",
+        "author": "monilpat",
+        "body": "",
+        "state": "APPROVED"
       }
     ],
     "comments": []
@@ -350,7 +507,7 @@
     "state": "OPEN",
     "merged": false,
     "createdAt": "2025-01-04T20:36:44Z",
-    "updatedAt": "2025-01-04T22:28:22Z",
+    "updatedAt": "2025-01-04T22:37:28Z",
     "author": {
       "login": "macfly-base",
       "avatarUrl": "https://avatars.githubusercontent.com/u/134238657?u=7f697badad7bda694bea372aabbf5d91a59e638f&v=4"
@@ -387,6 +544,12 @@
         "author": "monilpat",
         "body": "",
         "state": "DISMISSED"
+      },
+      {
+        "id": "PRR_kwDOMT5cIs6W2O77",
+        "author": "monilpat",
+        "body": "",
+        "state": "APPROVED"
       }
     ],
     "comments": []
@@ -956,7 +1119,7 @@
     "state": "OPEN",
     "merged": false,
     "createdAt": "2025-01-04T15:56:40Z",
-    "updatedAt": "2025-01-04T22:26:03Z",
+    "updatedAt": "2025-01-04T22:41:16Z",
     "author": {
       "login": "elpiarthera",
       "avatarUrl": "https://avatars.githubusercontent.com/u/176604871?v=4"
@@ -1037,11 +1200,6 @@
         "path": "packages/plugin-arthera/tsup.config.ts",
         "additions": 20,
         "deletions": 0
-      },
-      {
-        "path": "pnpm-lock.yaml",
-        "additions": 1671,
-        "deletions": 1697
       }
     ],
     "reviews": [
@@ -2683,7 +2841,7 @@
     "state": "OPEN",
     "merged": false,
     "createdAt": "2025-01-04T03:48:58Z",
-    "updatedAt": "2025-01-04T22:19:54Z",
+    "updatedAt": "2025-01-04T22:36:37Z",
     "author": {
       "login": "marcellodesales",
       "avatarUrl": "https://avatars.githubusercontent.com/u/131457?v=4"
