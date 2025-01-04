@@ -159,7 +159,7 @@ def get_summary_prompt(data: Dict, activity: List[str], stats: Dict) -> str:
     if stats['areas'].get('issue_areas'):
         areas_str += f"\nIssue areas: {', '.join(stats['areas']['issue_areas'])}"
         
-    return f"""Based on this GitHub activity from the last 90 days, write a 2-3 sentence summary of what {data['contributor']} worked on:
+    return f"""Based on this GitHub activity, write a 2-3 sentence summary of what {data['contributor']} worked on:
 
 Recent Activity (most significant first):
 {chr(10).join(activity)}
@@ -181,7 +181,7 @@ def generate_summary(data: Dict, model: str, api_key: str = None) -> str:
         
         # If no activity was found, return early
         if not activity:
-            return f"{data['contributor']} has no significant activity in the last 90 days."
+            return f"{data['contributor']} had no significant activity."
         
         if model == "openai":
             from openai import OpenAI

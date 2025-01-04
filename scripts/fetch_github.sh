@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+# Functions for GraphQL queries
 function get_pr_query() {
     # If cursor is provided, include the after argument
     if [ "$3" != "" ]; then
@@ -39,7 +39,6 @@ function get_pr_query() {
             }
         }'
     else
-        # Initial query without cursor
         echo '
         query {
             repository(owner: "'$1'", name: "'$2'") {
@@ -215,8 +214,6 @@ function get_commit_query() {
         }'
     fi
 }
-
-
 
 function fetch_prs() {
     local owner=$1
@@ -443,15 +440,29 @@ function fetch_commits() {
 }
 
 # Parse command line arguments
+print_usage() {
+    echo "Usage: $0 owner repo --type <prs|issues|commits> [--days N] [--since YYYY-MM-DD] [--until YYYY-MM-DD]"
+    echo
+    echo "Arguments:"
+    echo "  owner               Repository owner/organization"
+    echo "  repo                Repository name"
+    echo "  --type              Type of data to fetch (prs, issues, or commits)"
+    echo "  --days              Number of days to look back (default: 7)"
+    echo "  --since             Start date in YYYY-MM-DD format"
+    echo "  --until             End date in YYYY-MM-DD format (default: today)"
+    exit 1
+}
+
 if [ $# -lt 4 ]; then
     print_usage
 fi
 
-# Main script logic remains the same...
 owner="$1"
 repo="$2"
 type=""
 days=7
+since=""
+until=""
 
 shift 2
 while [[ $# -gt 0 ]]; do
@@ -464,9 +475,17 @@ while [[ $# -gt 0 ]]; do
             days="$2"
             shift 2
             ;;
+        --since)
+            since="$2"
+            shift 2
+            ;;
+        --until)
+            until="$2"
+            shift 2
+            ;;
         *)
             echo "Unknown parameter: $1" >&2
-            exit 1
+            print_usage
             ;;
     esac
 done
@@ -476,9 +495,18 @@ if [[ ! "$type" =~ ^(prs|issues|discussions|commits)$ ]]; then
     exit 1
 fi
 
-# Calculate date range
-end_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-start_date=$(date -u -d "$days days ago" +"%Y-%m-%dT%H:%M:%SZ")
+# Calculate date range based on input
+if [ -n "$since" ]; then
+    start_date=$(date -u -d "$since" +"%Y-%m-%dT%H:%M:%SZ")
+    if [ -n "$until" ]; then
+        end_date=$(date -u -d "$until" +"%Y-%m-%dT%H:%M:%SZ")
+    else
+        end_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+    fi
+else
+    end_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+    start_date=$(date -u -d "$days days ago" +"%Y-%m-%dT%H:%M:%SZ")
+fi
 
 echo "Fetching $type from $start_date to $end_date" >&2
 
@@ -496,5 +524,3 @@ case "$type" in
         fetch_commits "$owner" "$repo" "$start_date"
         ;;
 esac
-
-
