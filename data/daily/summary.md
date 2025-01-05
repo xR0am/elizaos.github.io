@@ -1,42 +1,42 @@
-# elizaos Eliza (2025-01-04)
+# elizaos Eliza (2025-01-05)
     
 ## 📊 Overview
-Development focused on package improvements (add default export to plugin-image-generation), 3 bug fixes. with 39 contributors merging 12 PRs. Major work included shakkernerd is actively contributing to the project by merging pull requests related to fixing tests, refactoring client react queries, and resolving issues with twitter action intervals.
+Development focused on package improvements (update bootstrap plugin export), new features (Add Stargaze plugin), 1 bug fixes. with 25 contributors merging 9 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 39 |
-| 📝 Commits | 37 |
-| 🔄 Merged PRs | 12 |
-| ⚠️ New Issues | 15 |
+| 👥 Contributors | 25 |
+| 📝 Commits | 3 |
+| 🔄 Merged PRs | 9 |
+| ⚠️ New Issues | 17 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 4
-- 🐛 **Fixes**: 3
-- ✨ **Features**: 0
+- 🧹 **Chores**: 2
+- 🐛 **Fixes**: 1
+- ✨ **Features**: 2
 
 ## 📁 File Changes
-- **packages**: 85 files (+1992/-2318 lines)
-- **root**: 4 files (+322/-12 lines)
-- **agent**: 1 files (+73/-73 lines)
-- **docs**: 1 files (+56/-56 lines)
-- **client**: 2 files (+48/-48 lines)
+- **packages**: 22 files (+5428/-16 lines)
+- **root**: 6 files (+146/-117 lines)
+- **docs**: 2 files (+5/-5 lines)
+- **agent**: 3 files (+9/-0 lines)
 
 ## 🔥 Notable Changes
-- chore: update develop from main
-- chore: bump version to v.0.1.7
-- fix: generation tests for trimTokens
+- chore: support more debians distros
+- fix: Fix postinstall script
+- docs: Add DAO donation ask & dev discord
 
 ## 👥 Top Contributors
-- **shakkernerd**: shakkernerd is actively contributing to the project by merging pull requests related to fixing tests, refactoring client React queries, and resolving issues with Twitter action intervals
-- **jaycoolslm**: jaycoolslm is currently working on enhancing the X Agent configuration by implementing features such as disabling retweets and likes
-- **monilpat**: monilpat is currently working on implementing caching for API responses, standardizing the ACTION_INTERVAL unit to minutes in the Twitter client, and fixing issues related to a public Solana wallet not being found
+- **odilitime**: odilitime is currently working on adding a DAO donation ask and developer discord feature, as well as making fixes and improvements to postinstall scripts and Debian distro support within the packages code areas on GitHub
+- **monilpat**: monilpat is currently focused on implementing more granular try-catch blocks in the /plugin-coinbase repository to enhance error handling
+- **ai16z-demirix**: ai16z-demirix is currently working on adding test setups for the Telegram client, implementing a workflow to maintain folder structure in the packages directory, and adding more tests for goals, memory, and provider while fixing issues in generation
 
 ## ⚠️ Issues
-- **New Issues**: 15
-- **Labels**: `enhancement` (7), `bug` (6), `agent-generated` (5)
-- **Summary**: 6 bugs reported (including 'Fix: Standardize ACTION_INTERVAL unit to minutes in Twitter client', 'Broken FAQ link in Contributing.MD') 7 feature requests (including 'Better X Agent configuration e.g. no retweets, likes etc', 'Implement Caching for API Responses').
+- **New Issues**: 17
+- **Labels**: `enhancement` (8), `agent-generated` (8), `error handling` (8)
+- **Summary**: 8 bugs reported (including 'Broken FAQ link in Contributing.MD', 'Code Analysis Report: Security Issues and Vulnerabilities of Eliza') 8 feature requests (including 'Implement more granular try-catch blocks in /plugin-coinbase', 'Implement more granular try-catch blocks in /plugin-coinbase').
 
 ## Top Contributors
-- **shakkernerd**: chore: update develop from main
+- **odilitime**: chore: support more debians distros
+- **ai16z-demirix**: test: adding more tests for goals,memory and provider. Fixing generation.test.ts
