@@ -1,7 +1,7 @@
 # elizaos Eliza (2025-01-04)
     
 ## 📊 Overview
-Development focused on package improvements (add default export to plugin-image-generation), 3 bug fixes. with 39 contributors merging 12 PRs. Major work included shakkernerd is actively contributing to code changes across various areas such as client, packages, and documentation.
+Development focused on package improvements (add default export to plugin-image-generation), 3 bug fixes. with 39 contributors merging 12 PRs. Major work included shakkernerd is actively contributing to the project by merging pull requests related to fixing tests, refactoring client react queries, and resolving issues with twitter action intervals.
 
 ## 📈 Key Metrics
 | Metric | Count |
@@ -9,7 +9,7 @@ Development focused on package improvements (add default export to plugin-image-
 | 👥 Contributors | 39 |
 | 📝 Commits | 37 |
 | 🔄 Merged PRs | 12 |
-| ⚠️ New Issues | 14 |
+| ⚠️ New Issues | 15 |
 
 ## 🔄 Pull Request Summary
 - 🧹 **Chores**: 4
@@ -29,14 +29,14 @@ Development focused on package improvements (add default export to plugin-image-
 - fix: generation tests for trimTokens
 
 ## 👥 Top Contributors
-- **shakkernerd**: shakkernerd is actively contributing to code changes across various areas such as client, packages, and documentation
-- **jaycoolslm**: jaycoolslm is currently working on improving the X Agent configuration by addressing specific issues such as disabling retweets and likes
-- **monilpat**: monilpat is currently working on implementing caching for API responses, standardizing the ACTION_INTERVAL unit in the Twitter client, and creating features related to issues #1725 and Public Solana Wallet
+- **shakkernerd**: shakkernerd is actively contributing to the project by merging pull requests related to fixing tests, refactoring client React queries, and resolving issues with Twitter action intervals
+- **jaycoolslm**: jaycoolslm is currently working on enhancing the X Agent configuration by implementing features such as disabling retweets and likes
+- **monilpat**: monilpat is currently working on implementing caching for API responses, standardizing the ACTION_INTERVAL unit to minutes in the Twitter client, and fixing issues related to a public Solana wallet not being found
 
 ## ⚠️ Issues
-- **New Issues**: 14
-- **Labels**: `enhancement` (7), `agent-generated` (5), `bug` (5)
-- **Summary**: 5 bugs reported (including 'Fix: Standardize ACTION_INTERVAL unit to minutes in Twitter client', 'Broken FAQ link in Contributing.MD') 7 feature requests (including 'Better X Agent configuration e.g. no retweets, likes etc', 'Implement Caching for API Responses').
+- **New Issues**: 15
+- **Labels**: `enhancement` (7), `bug` (6), `agent-generated` (5)
+- **Summary**: 6 bugs reported (including 'Fix: Standardize ACTION_INTERVAL unit to minutes in Twitter client', 'Broken FAQ link in Contributing.MD') 7 feature requests (including 'Better X Agent configuration e.g. no retweets, likes etc', 'Implement Caching for API Responses').
 
 ## Top Contributors
 - **shakkernerd**: chore: update develop from main
