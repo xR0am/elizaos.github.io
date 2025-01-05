@@ -1,0 +1,2288 @@
+[
+  {
+    "contributor": "monilpat",
+    "score": 31,
+    "summary": "Monilpat is actively working to improve the project's structure by deduplicating dependencies across plugins and consolidating shared ones into the root package.json, enhancing code maintainability. Additionally, they are addressing issues related to dependency version management in package.json files and refactoring for type safety and streamlined generation processes.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/15067321?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1642,
+            "title": "fix: lockfile wasn't updated after dependency + bring viem to root level package.json",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2025-01-01T18:58:46Z",
+            "updated_at": "2025-01-01T22:04:30Z",
+            "body": "# Relates to:\r\n\r\nTrunk being broken\r\n\r\n# Risks\r\n\r\nLow. This change updates the `pnpm-lock.yaml` file, which could affect dependency resolutions. Potential risks include:\r\n\r\n- **Dependency Resolution Changes:** Updates might lead to different versions of dependencies being installed, which could introduce unforeseen issues.\r\n\r\n- **Build or Runtime Errors:** If updated dependencies have breaking changes, they might cause build failures or runtime errors.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nThis pull request updates the `pnpm-lock.yaml` file by running `pnpm install -r --no-frozen-lockfile`. This command installs dependencies recursively across all workspaces and refreshes the lockfile to reflect any changes in dependencies.\r\n\r\n## What kind of change is this?\r\n\r\n\r\n- **Updates:** This is a non-breaking change that updates the lockfile to ensure it accurately represents the current state of dependencies.\r\n\r\n## Why are we doing this? Any context or related work?\r\n\r\nUpdating the lockfile ensures that all dependencies are correctly resolved and that the project can be built and run consistently across different environments. This is particularly important when dependencies have been added, removed, or updated in the `package.json` files.\r\n\r\n# Documentation changes needed?\r\n\r\n- My changes do not require a change to the project documentation.\r\n\r\n# Testing\r\n\r\n<img width=\"285\" alt=\"Screenshot 2025-01-01 at 12 18 56\u202fPM\" src=\"https://github.com/user-attachments/assets/5421a78e-b3ec-4234-b494-c431e576087a\" />\r\n\r\n## Where should a reviewer start?\r\n\r\nBegin by reviewing the changes in the `pnpm-lock.yaml` file to understand the updates to dependency resolutions.\r\n\r\n## Detailed testing steps\r\n\r\n1. **Clean Install:** Run `pnpm install` to ensure all dependencies are installed correctly with the updated lockfile.\r\n\r\n2. **Run Tests:** Execute the test suite using `pnpm test` to verify that all tests pass with the updated dependencies.\r\n\r\n3. **Build Project:** Attempt to build the project using `pnpm build` to confirm that the build process completes successfully.\r\n\r\n4. **Manual Verification:** Run the application locally to ensure it behaves as expected with the updated dependencies.\r\n\r\n# Deploy Notes\r\n\r\nNo special deployment steps are required. Ensure that the updated `pnpm-lock.yaml` file is included in the deployment to maintain consistency across environments.\r\n\r\n## Database changes\r\n\r\nNone.\r\n\r\n## Deployment instructions\r\n\r\n1. Merge the PR into the main branch.\r\n\r\n2. Pull the latest changes on the deployment environment.\r\n\r\n3. Run `pnpm install` to install dependencies as per the updated lockfile.\r\n\r\n4. Proceed with the standard deployment process.\r\n\r\n## Discord username\r\n\r\nN/A ",
+            "files": [
+              {
+                "path": ".github/workflows/integrationTests.yaml",
+                "additions": 4,
+                "deletions": 1
+              },
+              {
+                "path": "package.json",
+                "additions": 2,
+                "deletions": 1
+              },
+              {
+                "path": "packages/client-lens/package.json",
+                "additions": 1,
+                "deletions": 2
+              },
+              {
+                "path": "packages/plugin-abstract/package.json",
+                "additions": 1,
+                "deletions": 2
+              },
+              {
+                "path": "packages/plugin-avalanche/package.json",
+                "additions": 1,
+                "deletions": 2
+              },
+              {
+                "path": "packages/plugin-evm/package.json",
+                "additions": 1,
+                "deletions": 2
+              },
+              {
+                "path": "packages/plugin-goat/package.json",
+                "additions": 1,
+                "deletions": 2
+              },
+              {
+                "path": "packages/plugin-story/package.json",
+                "additions": 0,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-tee/package.json",
+                "additions": 1,
+                "deletions": 2
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 1244,
+                "deletions": 1506
+              },
+              {
+                "path": "scripts/clean.sh",
+                "additions": 3,
+                "deletions": 0
+              }
+            ],
+            "reviews": [
+              {
+                "author": "odilitime",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 14,
+        "opened": [
+          {
+            "number": 1663,
+            "title": "Create GitHub Badges for Community Contributions",
+            "state": "OPEN",
+            "created_at": "2025-01-01T22:14:20Z",
+            "updated_at": "2025-01-01T22:14:20Z",
+            "body": "## Feature Request\n\n**Is your feature request related to a problem? Please describe.**\n\nCurrently, there is no recognition system for community contributions, which can demotivate contributors and hinder engagement.\n\n**Describe the solution you'd like**\n\nCreate a set of GitHub badges to recognize various contributions from the community. Some badge ideas include:\n- First PR\n- First Review\n- First Issue\n- 10+ PRs/Issues/Reviews\n- Bug Fixes\n- Enhancements\n- Adding Plugins, Adapters, Clients\n\nThese badges can be displayed on user profiles and project pages to encourage participation and celebrate achievements.\n\n**Describe alternatives you've considered**\n\nRelying on informal recognition methods, but these may not be as effective in motivating contributors.\n\n**Additional context**\n\nImplementing these badges will foster a sense of community and encourage more users to contribute to the project, enhancing collaboration and innovation.\n\n**Related Issues/PRs**\n\nNone at this time.",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "agent-generated",
+                "color": "FBCA04",
+                "description": "For agent creation actions on pull requests, issues, and eventually milestones, releases etc."
+              },
+              {
+                "name": "community",
+                "color": "ededed",
+                "description": null
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 1662,
+            "title": "Use Caret (^) for Dependency Versions in package.json",
+            "state": "OPEN",
+            "created_at": "2025-01-01T22:09:00Z",
+            "updated_at": "2025-01-01T22:09:01Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\n\nCurrently, the project uses static dependency versions in package.json, which prevents automatic updates and may lead to outdated packages over time.\n\n**Describe the solution you'd like**\n\nChange all dependency versions in the package.json files across the repository to use the caret (^) notation. This will allow for minor version updates automatically, keeping dependencies up to date without manual intervention.\n\n**Code Example**\n\n```json\n{\n  \"dependencies\": {\n    \"example-package\": \"^1.2.3\"\n  }\n}\n```\n\n**Describe alternatives you've considered**\n\nLeaving the static versions as they are, but this approach does not utilize the benefits of automatic updates and may lead to compatibility issues in the future.\n\n**Additional context**\n\nUsing caret (^) for dependency versions can significantly enhance the maintenance of the project, ensuring that it remains current with the latest features and fixes from its dependencies.\n\n**Related Issues/PRs**\n\nNone identified at this time.",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "agent-generated",
+                "color": "FBCA04",
+                "description": "For agent creation actions on pull requests, issues, and eventually milestones, releases etc."
+              },
+              {
+                "name": "dependency management",
+                "color": "ededed",
+                "description": null
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 1661,
+            "title": "Migrate from generateObjectDeprecated to type-safe generateObject",
+            "state": "OPEN",
+            "created_at": "2025-01-01T22:07:07Z",
+            "updated_at": "2025-01-01T22:07:08Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\n\nCurrently, the codebase contains references to `generateObjectDeprecated`, which leads to inconsistencies and potential type safety issues.\n\n**Describe the solution you'd like**\n\nRemove all references to `generateObjectDeprecated` and migrate all functionality to the type-safe `generateObject`. This will enhance type safety and ensure consistency across the codebase.\n\n**Describe alternatives you've considered**\n\nContinuing to maintain both functions, but this would complicate the code and increase the risk of errors.\n\n**Additional context**\n\nMigrating to `generateObject` will streamline our code and improve maintainability, making it easier for future development and reducing potential bugs.\n\n**Related Issues/PRs**\n\nNone at this time.",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "agent-generated",
+                "color": "FBCA04",
+                "description": "For agent creation actions on pull requests, issues, and eventually milestones, releases etc."
+              },
+              {
+                "name": "refactor",
+                "color": "ededed",
+                "description": null
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 1659,
+            "title": "Refactor: Remove Parsing Logic from generation.ts",
+            "state": "OPEN",
+            "created_at": "2025-01-01T22:01:42Z",
+            "updated_at": "2025-01-01T22:02:24Z",
+            "body": "## Refactor\r\n\r\n**Is your refactor related to a problem? Please describe.**\r\n\r\nThe current implementation contains parsing logic in generation.ts which complicates the code and introduces potential bugs.\r\n\r\n**Describe the solution you'd like**\r\n\r\nRemove all parsing logic from generation.ts and utilize generateObject for obtaining type-safe values. This refactor includes deprecating functions such as parseShouldRespondText and others that are no longer necessary.\r\n\r\n**Code Example**\r\n\r\n```typescript\r\n// Before\r\nfunction parseShouldRespondText(text) {\r\n  // parsing logic here\r\n}\r\n\r\n// After\r\nfunction generateResponse(input) {\r\n  return generateObject(input);\r\n}\r\n```\r\n\r\n**Describe alternatives you've considered**\r\n\r\nKeeping the parsing logic as is, but this increases complexity and reduces type safety.\r\n\r\n**Additional context**\r\n\r\nThis change will streamline the codebase, improve maintainability, and enhance type safety across the application.\r\n\r\n**Related Issues**\r\n",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "agent-generated",
+                "color": "FBCA04",
+                "description": "For agent creation actions on pull requests, issues, and eventually milestones, releases etc."
+              },
+              {
+                "name": "refactor",
+                "color": "ededed",
+                "description": null
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 1658,
+            "title": "Deduplicate dependencies across plugins and move shared dependencies to the root package.json",
+            "state": "CLOSED",
+            "created_at": "2025-01-01T21:59:06Z",
+            "updated_at": "2025-01-01T21:59:22Z",
+            "body": "**Describe the problem**\n\nThere are multiple instances of the same dependencies being included across different plugins, leading to potential version mismatches and bloated node_modules. This has caused issues in the past, such as the recent problem with 'viem' in PR 1642.\n\n**To Reproduce**\n\n1. Check the package.json files in various plugins.\n2. Identify duplicate dependencies listed in multiple places.\n3. Observe version inconsistencies that arise from this duplication.\n\n**Expected behavior**\n\nAll shared dependencies should be consolidated into the root package.json file to ensure consistency and avoid version conflicts.\n\n**Additional context**\n\nThis change will help streamline the dependency management process and minimize issues arising from version mismatches. It aligns with best practices for maintaining a clean and efficient project structure.\n\n**Related Issues**\n\n- [Issue #1642](https://github.com/elizaOS/eliza/pull/1642) - Issue caused by dependency version mismatch.",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "agent-generated",
+                "color": "FBCA04",
+                "description": "For agent creation actions on pull requests, issues, and eventually milestones, releases etc."
+              },
+              {
+                "name": "dependencies",
+                "color": "ededed",
+                "description": null
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 1657,
+            "title": "Ensure uniform application of trimTokens in underlying LLM calls",
+            "state": "OPEN",
+            "created_at": "2025-01-01T21:56:56Z",
+            "updated_at": "2025-01-01T22:03:06Z",
+            "body": "**Describe the bug**\r\n\r\nThe trimTokens function is inconsistently applied across different underlying LLM calls, leading to errors when the context window is exceeded.\r\n\r\n**To Reproduce**\r\n\r\n1. Call the LLM function in various parts of the codebase.\r\n2. Observe that in some instances, trimTokens is applied, while in others, it is not.\r\n3. Execute a call that exceeds the context window limit to trigger an error.\r\n\r\n**Expected behavior**\r\n\r\nThe trimTokens function should be uniformly applied across all LLM calls to prevent exceeding the context window and causing errors.\r\n\r\n**Additional context**\r\n\r\nUniform application of trimTokens will help maintain consistency and avoid errors related to context window limits.\r\n\r\n**Related Issues**\r\n",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              },
+              {
+                "name": "agent-generated",
+                "color": "FBCA04",
+                "description": "For agent creation actions on pull requests, issues, and eventually milestones, releases etc."
+              },
+              {
+                "name": "llm",
+                "color": "ededed",
+                "description": null
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 1656,
+            "title": "Deduplicate Dependencies Across Plugins",
+            "state": "CLOSED",
+            "created_at": "2025-01-01T21:49:56Z",
+            "updated_at": "2025-01-01T21:50:13Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\n\nWe have encountered version mismatches due to duplicated dependencies across various plugins, which has caused issues similar to those experienced with the `viem` library in PR #1642.\n\n**Describe the solution you'd like**\n\nImplement a strategy to deduplicate dependencies across plugins and move shared dependencies to the root `package.json` folder. This will help maintain consistency and prevent version conflicts.\n\n**Describe alternatives you've considered**\n\nCurrently, we have been manually managing dependencies, but this approach is error-prone and unsustainable as the project scales.\n\n**Additional context**\n\nBy centralizing shared dependencies, we can ensure that all plugins are using the same version, which will improve stability and reduce the likelihood of issues arising from version mismatches.\n\n**Related Issues**\n- [Issue #1642](https://github.com/elizaOS/eliza/pull/1642)",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "agent-generated",
+                "color": "FBCA04",
+                "description": "For agent creation actions on pull requests, issues, and eventually milestones, releases etc."
+              },
+              {
+                "name": "dependencies",
+                "color": "ededed",
+                "description": null
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 1655,
+            "title": "Separate Model Configuration for Context Window Limitations",
+            "state": "OPEN",
+            "created_at": "2025-01-01T21:45:32Z",
+            "updated_at": "2025-01-01T22:03:37Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\r\n\r\nCurrently, model configurations are set based on the model provider, which does not account for individual model limitations, particularly context windows. This discrepancy is preventing the merging of PR #1617, which has a context window of 8192, while the model provider's configuration is set to 128000, leading to potential issues.\r\n\r\n**Describe the solution you'd like**\r\n\r\nImplement a separation of model configurations to allow settings that are specific to each model rather than being generalized across model providers. This would involve creating a structure where each model can have its own context window and other relevant settings.\r\n\r\n**Describe alternatives you've considered**\r\n\r\nLeaving the current configuration as is, but this would lead to inconsistencies and issues with model performance and compatibility.\r\n\r\n**Additional context**\r\n\r\nThis change is necessary to ensure that models can be utilized effectively without running into configuration conflicts, thereby enhancing the overall functionality and reliability of the system.\r\n\r\n**Related Issues / PRs**\r\n\r\n- [PR #1617](https://github.com/elizaOS/eliza/pull/1617)",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "agent-generated",
+                "color": "FBCA04",
+                "description": "For agent creation actions on pull requests, issues, and eventually milestones, releases etc."
+              },
+              {
+                "name": "configuration",
+                "color": "ededed",
+                "description": null
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 1654,
+            "title": "Investigate Need for Multiple pnpm Builds",
+            "state": "OPEN",
+            "created_at": "2025-01-01T21:42:50Z",
+            "updated_at": "2025-01-01T21:42:50Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\n\nCurrently, it seems that running `pnpm build` multiple times is necessary for it to execute successfully. This might be related to a Turbo issue or something else that needs investigation.\n\n**Describe the solution you'd like**\n\nInvestigate the underlying reasons why `pnpm build` requires multiple executions for successful completion. Identify if this is a Turbo issue or if there are other factors contributing to this behavior.\n\n**Describe alternatives you've considered**\n\nAttempting to run the build process in different environments or configurations, but this has not resolved the issue.\n\n**Additional context**\n\nUnderstanding this behavior is crucial for improving the build process and ensuring a smoother development workflow.\n\n**Related Issues**\n\n- [Issue #1642](https://github.com/elizaOS/eliza/issues/1642)",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "agent-generated",
+                "color": "FBCA04",
+                "description": "For agent creation actions on pull requests, issues, and eventually milestones, releases etc."
+              },
+              {
+                "name": "build",
+                "color": "ededed",
+                "description": null
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 1653,
+            "title": "Find workaround for running integrationTests.yaml against pull_request",
+            "state": "OPEN",
+            "created_at": "2025-01-01T21:40:37Z",
+            "updated_at": "2025-01-01T21:40:37Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\n\nCurrently, running integrationTests.yaml against pull_request_target makes OPENAI_KEY inaccessible, which is problematic for our testing workflows.\n\n**Describe the solution you'd like**\n\nWe need to find a workaround to run integrationTests.yaml against pull_request instead of pull_request_target. This will allow us to access necessary environment variables like OPENAI_KEY during testing.\n\n**Describe alternatives you've considered**\n\nLeaving the tests as they are, but this would limit our ability to run tests effectively.\n\n**Additional context**\n\nAddressing this issue is crucial for ensuring that our integration tests can run successfully without encountering environment variable access issues.\n\n**Related Issues**\n\n- [Issue #1035](https://github.com/elizaOS/eliza/pull/1035)",
+            "labels": [
+              {
+                "name": "agent-generated",
+                "color": "FBCA04",
+                "description": "For agent creation actions on pull requests, issues, and eventually milestones, releases etc."
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 1652,
+            "title": "Deduplicate Dependencies Across Plugins",
+            "state": "CLOSED",
+            "created_at": "2025-01-01T21:37:01Z",
+            "updated_at": "2025-01-01T21:37:16Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\n\nInconsistent dependency versions across plugins lead to version mismatches and bugs, as experienced recently with the viem package in PR 1642.\n\n**Describe the solution you'd like**\n\nDeduplicate dependencies across all plugins and move shared dependencies to the root package.json folder. This will ensure that all plugins use the same version of shared dependencies, reducing the likelihood of version conflicts.\n\n**Describe alternatives you've considered**\n\nLeaving the dependencies as is, but this would likely lead to further issues and inconsistencies in the future.\n\n**Additional context**\n\nThis change will enhance the stability of the project and prevent similar issues from occurring in the future.\n\n**Related Issues**\n\n- [Issue #1642](https://github.com/elizaOS/eliza/issues/1642)",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "agent-generated",
+                "color": "FBCA04",
+                "description": "For agent creation actions on pull requests, issues, and eventually milestones, releases etc."
+              },
+              {
+                "name": "dependencies",
+                "color": "ededed",
+                "description": null
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 1651,
+            "title": "Deduplicate Dependencies and Move Shared Dependencies to Root Package.json",
+            "state": "OPEN",
+            "created_at": "2025-01-01T21:34:19Z",
+            "updated_at": "2025-01-01T21:34:20Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\n\nWe are facing version mismatches across plugins due to duplicate dependencies. This has caused issues like the one encountered with 'viem' in PR 1642.\n\n**Describe the solution you'd like**\n\nImplement a process to deduplicate dependencies across plugins and move shared dependencies to the root package.json. This will help streamline dependency management and prevent future version conflicts.\n\n**Describe alternatives you've considered**\n\nContinuing with the current setup, but this increases the risk of version mismatches and complicates dependency management.\n\n**Additional context**\n\nBy consolidating dependencies, we can ensure consistency across plugins and simplify updates in the future.\n\n**Related Issues**\n\n- [Issue #1642](https://github.com/elizaOS/eliza/issues/1642)",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "agent-generated",
+                "color": "FBCA04",
+                "description": "For agent creation actions on pull requests, issues, and eventually milestones, releases etc."
+              },
+              {
+                "name": "dependency management",
+                "color": "ededed",
+                "description": null
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 1650,
+            "title": "Deduplicate Dependencies Across Plugins",
+            "state": "CLOSED",
+            "created_at": "2025-01-01T21:28:29Z",
+            "updated_at": "2025-01-01T21:35:00Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\n\nWe need to deduplicate dependencies across plugins to prevent version mismatches that can cause issues, as seen with the viem library in PR 1642.\n\n**Describe the solution you'd like**\n\nI propose moving shared dependencies to the root package.json folder. This will ensure that all plugins use the same version of dependencies, reducing the risk of conflicts and inconsistencies.\n\n**Describe alternatives you've considered**\n\nKeeping dependencies within each plugin, but this leads to potential version mismatches and increased bundle sizes.\n\n**Additional context**\n\nBy centralizing shared dependencies, we will improve the reliability of our plugins and simplify dependency management.\n\n**Related Issues**\n\n- [Issue #1642](https://github.com/elizaOS/eliza/issues/1642)",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "agent-generated",
+                "color": "FBCA04",
+                "description": "For agent creation actions on pull requests, issues, and eventually milestones, releases etc."
+              },
+              {
+                "name": "auto-generated",
+                "color": "ededed",
+                "description": null
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 1649,
+            "title": "Add workflow to require __tests__ folder and README.md in each package",
+            "state": "OPEN",
+            "created_at": "2025-01-01T21:26:37Z",
+            "updated_at": "2025-01-01T21:26:38Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\n\nWe currently lack a standardized structure in our packages, which can lead to confusion and inconsistent usage of testing and documentation practices.\n\n**Describe the solution you'd like**\n\nImplement a workflow that ensures each folder in `packages/` contains a `__tests__` folder for unit tests and a `README.md` file for documentation. This would help maintain consistency across packages and improve onboarding for new developers.\n\n**Describe alternatives you've considered**\n\nImplementing manual checks, but this is prone to human error and may not be sustainable as the project scales.\n\n**Additional context**\n\nHaving a `__tests__` folder would encourage developers to write tests, and a `README.md` would provide essential information about the package's usage and functionality.\n\n**Related Issues**\n\nNone at the moment.",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              },
+              {
+                "name": "agent-generated",
+                "color": "FBCA04",
+                "description": "For agent creation actions on pull requests, issues, and eventually milestones, releases etc."
+              },
+              {
+                "name": "auto-generated",
+                "color": "ededed",
+                "description": null
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 1,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "bertux",
+    "score": 26,
+    "summary": "Bertux is currently working on updating the viem dependency version in both plugin-evm and plugin-goat to include support for the Arthera EVM chain. This effort involves addressing an issue related to outdated versions of Viem, resulting in one merged pull request and one enhancement issue being tackled so far.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/5703?u=d610e95806f6c2c59e9f6e8b14350fabb0d86e39&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1637,
+            "title": "chore: update viem dependency version in plugin-evm and plugin-goat",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2025-01-01T15:31:57Z",
+            "updated_at": "2025-01-01T18:54:31Z",
+            "body": "# Relates to:\r\n\r\nhttps://github.com/elizaOS/eliza/issues/1635\r\n\r\n# Risks\r\n\r\nLow\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nupdate the version of viem to 2.21.58 in plugin-evm and plugin-goat.\r\n\r\n## What kind of change is this?\r\n\r\nUpdates\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\njust installing to confirm it starts with the new version.\r\n\r\n## Detailed testing steps\r\n\r\nNone, automated tests are fine.\r\n\r\n## Discord username\r\n\r\nbertux.celo",
+            "files": [
+              {
+                "path": "packages/plugin-evm/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-goat/package.json",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 104,
+                "deletions": 42
+              }
+            ],
+            "reviews": [
+              {
+                "author": "monilpat",
+                "state": "CHANGES_REQUESTED",
+                "body": "As per comment - thanks for doing this "
+              },
+              {
+                "author": "monilpat",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 1635,
+            "title": "Viem version too old to include Arthera EVM chain",
+            "state": "CLOSED",
+            "created_at": "2025-01-01T15:19:04Z",
+            "updated_at": "2025-01-01T18:55:55Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\r\n\r\nVersion of viem used in plugin-evm and plugin-goat are too old to include the support of Arthera EVM chain I want to try in Eliza.\r\n\r\n**Describe the solution you'd like**\r\n\r\nI will submit a Pull Request to update the version of viem in plugin-evm and plugin-goat.\r\n\r\n**Describe alternatives you've considered**\r\n\r\nAs Avalanche has done, I could create a plugin specific to Arthera.\r\n\r\n**Additional context**\r\n\r\nNone.\r\n",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": [
+              {
+                "author": "github-actions",
+                "body": "Hello @bertux! Welcome to the ai16z community. Thank you for opening your first issue; we appreciate your contribution. You are now a ai16z contributor!"
+              },
+              {
+                "author": "bertux",
+                "body": "Implemented in https://github.com/elizaOS/eliza/pull/1637"
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 2,
+        "total_reviews": 2,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "metakai1",
+    "score": 20,
+    "summary": "Metakai1 is actively engaged in improving the functionality of software plugins, as evidenced by their recent contribution to fixing a bug within the plugin-bootstrap package's facts evaluator module. Their focus on code quality and maintenance is demonstrated through this single merged pull request, with no open issues or additional commits recorded at present.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/174664733?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1648,
+            "title": "fix: Fix bug in plugin-bootstrap/src/evaluators/facts.ts",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2025-01-01T20:23:33Z",
+            "updated_at": "2025-01-01T22:15:55Z",
+            "body": "{{user1}} should be {{user2}} :\r\n\r\n-------\r\nin factEvaluator, in the examples template,\r\n\r\n{{user1}} should be {{user2}} instead\r\n\r\n                {\r\n                    user: \"{{user1}}\",\r\n                    content: { text: \"Which city?\" },\r\n                },\r\n                {\r\n                    user: \"{{user2}}\",\r\n                    content: { text: \"Oakland\" },\r\n                },\r\n                {\r\n                    user: \"{{user1}}\",\r\n                    content: {\r\n                        text: \"Oh, I've never been there, but I know it's in California\",\r\n                    },\r\n                }\r\n\r\n<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\n## What kind of change is this?\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "packages/plugin-bootstrap/src/evaluators/fact.ts",
+                "additions": 1,
+                "deletions": 1
+              }
+            ],
+            "reviews": [
+              {
+                "author": "github-actions",
+                "state": "COMMENTED",
+                "body": "Hi @metakai1! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!"
+              },
+              {
+                "author": "monilpat",
+                "state": "APPROVED",
+                "body": "LGTM"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 2,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "ShreyGanatra",
+    "score": 20,
+    "summary": "ShreyGanatra is currently focused on improving the functionality related to image uploads within a project, as evidenced by their recent pull request that corrected the path for image uploads. Their contributions are limited to this single mergeable PR in the packages code area, with no open issues or additional commits made so far.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/77409139?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1632,
+            "title": "fix: corrected path for image upload",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2025-01-01T13:45:28Z",
+            "updated_at": "2025-01-01T16:50:40Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\nLow\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\nFixes the image path used in DESCRIBE_IMAGE action while uploading from client\r\n## What does this PR do?\r\nFixes the path for image upload in client\r\n## What kind of change is this?\r\nBug fixes\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\nMy changes do not require a change to the project documentation.\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "packages/client-direct/src/index.ts",
+                "additions": 0,
+                "deletions": 1
+              }
+            ],
+            "reviews": [
+              {
+                "author": "github-actions",
+                "state": "COMMENTED",
+                "body": "Hi @ShreyGanatra! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!"
+              },
+              {
+                "author": "monilpat",
+                "state": "APPROVED",
+                "body": "LGTM thanks for doing this!"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 2,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "odilitime",
+    "score": 17,
+    "summary": "odilitime is actively engaged in improving the performance of plugin-evm by implementing turbo dependencies, as evidenced by a recently merged pull request. This enhancement demonstrates their commitment to optimizing and streamlining project functionalities.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/16395496?u=45c152d8433e37c62520e66c0dd6d754ccf3eaf4&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1627,
+            "title": "fix: turbo deps for plugin-evm",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2025-01-01T08:30:01Z",
+            "updated_at": "2025-01-01T09:04:17Z",
+            "body": "# Risks\r\n\r\nLow\r\n\r\n# Background\r\n\r\nTested develop, found issue\r\n\r\n## What does this PR do?\r\n\r\nFix deps so plugin-evm can build\r\n\r\n## What kind of change is this?\r\n\r\nBug fixes (non-breaking change which fixes an issue)\r\n\r\n## Why are we doing this? Any context or related work?\r\n\r\nto fix develop\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n",
+            "files": [
+              {
+                "path": "turbo.json",
+                "additions": 4,
+                "deletions": 0
+              }
+            ],
+            "reviews": [
+              {
+                "author": "monilpat",
+                "state": "COMMENTED",
+                "body": "This pull request addresses important dependency updates for the plugin-evm, ensuring that it can build successfully. Overall, the changes look good, but I have a couple of suggestions for improvement."
+              },
+              {
+                "author": "monilpat",
+                "state": "APPROVED",
+                "body": "The changes in this pull request effectively address the dependencies for the plugin-evm, ensuring it can build successfully. I appreciate the thorough testing conducted to identify these issues. Great work!"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 2,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "suicidalgoofy",
+    "score": 17,
+    "summary": "Suicidalgoofy is actively contributing to the project by fixing double spaced tweets in Post.ts, as evidenced by their recent merged pull request. Although they have not engaged in other areas such as issues or commits, this work demonstrates a focus on improving code quality within packages.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/190566650?u=26861eb3504336f12747565d110128284d1c97be&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1626,
+            "title": "Fix double spaced tweets in Post.ts",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2025-01-01T05:37:03Z",
+            "updated_at": "2025-01-01T06:10:04Z",
+            "body": "# Relates to:\r\n\r\nN/A\r\n\r\n# Risks\r\n\r\nLow risk, simply ensures tweets generated follow the prompt guidelines of double spaces (\\n\\n) for new statements instead of a single space to improve tweet readability. \r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nUpdates the line break handling in the tweet formatting logic to follow the prompt stating to use double spaces between statements. Currently statements only use a single line break (\\n). This enforces the double line breaks for better readability in tweets. \r\n\r\n## What kind of change is this?\r\n\r\nImprovements (misc. changes to existing features)\r\n\r\n## Why are we doing this? Any context or related work?\r\n\r\nThis allows agents to tweet better-structured posts that are optimally formatted for readability. Also ensures posting follows the double space guideliens written out into the prompt. \r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nThe changes are in the generateNewTweet() function and the fixNewLines() helper within post.ts. \r\n\r\n## Detailed testing steps\r\n\r\nGenerate a sample tweet using the updated code. \r\n\r\nVerify all escaped newlines (\\n) in the model's output are replaced with double linebreaks (\\n\\n).\r\n\r\n## Screenshots\r\n### Before\r\n![Screenshot 2024-12-31 233257](https://github.com/user-attachments/assets/2148e11b-6993-4090-93de-4cbbd340cb54)\r\n![Screenshot 2024-12-31 233303](https://github.com/user-attachments/assets/6a0c7c1e-ed21-4c4d-bbec-9878cb88ac3d)\r\n\r\n### After\r\n![Screenshot 2024-12-31 233502](https://github.com/user-attachments/assets/7b0bd331-5084-4037-827d-22a15c0d70ef)\r\n![Screenshot 2024-12-31 233521](https://github.com/user-attachments/assets/c34ba669-d22a-4e5b-bd5b-e935158c4585)\r\n\r\n## Discord username\r\n\r\nsuicidal_goofy\r\n",
+            "files": [
+              {
+                "path": "packages/client-twitter/src/post.ts",
+                "additions": 2,
+                "deletions": 2
+              }
+            ],
+            "reviews": [
+              {
+                "author": "monilpat",
+                "state": "APPROVED",
+                "body": "This pull request effectively enhances the readability of tweets by ensuring that double line breaks are used as specified. This is a thoughtful improvement that aligns with best practices for formatting text for social media. Great work on implementing this change!"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 1,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "Mr-Don-Leo",
+    "score": 15,
+    "summary": "Mr-Don-Leo is actively contributing to the project by making minor spelling corrections, as evidenced by his recent pull request for README_RU.md. With one merged PR and no open issues or additional commits, he demonstrates a focused approach on improving documentation accuracy.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/149568403?u=bbd0aa3c4f2367266ad9595dd682e322b51e1cf9&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1629,
+            "title": "Fixed minor spelling in README_RU.md",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2025-01-01T10:44:30Z",
+            "updated_at": "2025-01-01T12:10:43Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\nNone\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nFixes spelling and phrasing in README_RU.md\r\n\r\n## What kind of change is this?\r\n\r\nImprovements - Spelling and phrasing in README_RU.md\r\n\r\nThis PR fixes the following: \r\n- \"\u043c\u0430\u0448\u0442\u0430\u0431\u0438\u0440\u0443\u0435\u043c\u043e\u0441\u0442\u044c\" \u2192 Corrected to \"\u043c\u0430\u0441\u0448\u0442\u0430\u0431\u0438\u0440\u0443\u0435\u043c\u043e\u0441\u0442\u044c\". (Line 19)\r\n- \"\u043a\u043e\u043d\u0442\u0435\u043a\u0442\u0430\" \u2192 Corrected to \"\u043a\u043e\u043d\u0442\u0435\u043a\u0441\u0442\u0430\". (Line 18)\r\n- \"\u041f\u0440\u043e\u0435\u043a\u0442 \u0431\u044b\u0441\u0442\u0440\u043e \u0440\u0430\u0437\u0432\u0438\u0432\u0430\u0435\u0442\u0441\u044f, \u0438\u043d\u043e\u0433\u0434\u0430 \u043d\u0443\u0436\u043d\u043e \u043e\u0447\u0438\u0449\u0430\u0442\u044c \u043f\u0440\u043e\u0435\u043a\u0442, \u0435\u0441\u043b\u0438 \u0432\u044b \u0432\u043e\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u0442\u0435\u0441\u044c \u043a \u043d\u0435\u043c\u0443 \u0441\u043f\u0443\u0441\u0442\u044f \u0432\u0440\u0435\u043c\u044f\" \u2192 Polished for clarity: \"\u041f\u0440\u043e\u0435\u043a\u0442 \u0431\u044b\u0441\u0442\u0440\u043e \u0440\u0430\u0437\u0432\u0438\u0432\u0430\u0435\u0442\u0441\u044f. \u041f\u0440\u0438 \u0434\u043e\u043b\u0433\u043e\u043c \u043f\u0435\u0440\u0435\u0440\u044b\u0432\u0435 \u043c\u043e\u0436\u0435\u0442 \u043f\u043e\u043d\u0430\u0434\u043e\u0431\u0438\u0442\u044c\u0441\u044f \u043e\u0447\u0438\u0441\u0442\u043a\u0430 \u043f\u0440\u043e\u0435\u043a\u0442\u0430.\" (Line 79)\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n\r\n## Discord username\r\n\r\nfbi.watchlist (Aka Mr-Don-Leo)\r\n\r\n",
+            "files": [
+              {
+                "path": "README_RU.md",
+                "additions": 3,
+                "deletions": 3
+              }
+            ],
+            "reviews": [
+              {
+                "author": "github-actions",
+                "state": "COMMENTED",
+                "body": "Hi @Mr-Don-Leo! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 1,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "tcm390",
+    "score": 14,
+    "summary": "TCM390 is currently working on enhancing the transcription service by introducing a feature that allows users to select a provider based on specific character settings. This effort involves creating new pull requests and focusing on code within packages, aiming to improve user experience with tailored transcription options.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1625,
+            "title": "feat: Select a transcription provider based on the character settings.",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2025-01-01T03:52:36Z",
+            "updated_at": "2025-01-01T07:08:46Z",
+            "body": "related: https://discord.com/channels/1322160818908954684/1322795334715310230/1323347747759460383",
+            "files": [
+              {
+                "path": "packages/core/src/types.ts",
+                "additions": 7,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-node/src/services/transcription.ts",
+                "additions": 38,
+                "deletions": 9
+              }
+            ],
+            "reviews": [
+              {
+                "author": "odilitime",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": [
+              {
+                "author": "monilpat",
+                "body": "LGTM!"
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 1,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "SYMBaiEX",
+    "score": 11,
+    "summary": "SYMBaiEX is actively enhancing their modelProviders by integrating the DeepSeek API to improve functionality within their packages and agents. This recent pull request signifies a commitment to expanding capabilities, although it has yet to be merged into the main codebase.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/192078165?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1636,
+            "title": "feat: Add DeepSeek API to modelProviders",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2025-01-01T15:26:09Z",
+            "updated_at": "2025-01-01T18:33:22Z",
+            "body": "# Relates to:\r\n\r\nNo Tickets.\r\nAdding DeepSeek as a new ModelProvider for ElizaOS.\r\n\r\n# Risks\r\n\r\nnew model added\r\n\r\n# Background\r\n\r\nWhat\u2019s new in DeepSeek V3?\r\n\r\n671B MoE parameters\r\n37B activated parameters\r\nTrained on 14.8T high-quality tokens\r\n\r\n## What does this PR do?\r\n\r\nAdds support for DeepSeek API so ElizaOS can use the DeepSeek V3 model directly.\r\n\r\n## What kind of change is this?\r\n\r\n<!--\r\nFeatures\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\nI personally wanted to try out the DeepSeek V3 model using the DeepSeek API.  I see DeepSeek_AI doing a lot of updates and I believe having accessibility long term to their API could be useful.\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation. \r\n\r\nThe env variables are added in the .env.example.\r\n-->\r\n\r\n\r\n# Testing\r\n![image](https://github.com/user-attachments/assets/4228c33e-5c54-45e3-8027-24aaefb62437)\r\n\r\n\r\n## Where should a reviewer start?\r\n\r\nFollow the test steps below (should be really easy!)\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nclone repo\r\nGo to https://platform.deepseek.com/ and request a new api key\r\nrun cp .env.example .env in the root and set the api key here\r\ndefault model is `deepseek-chat` which is DeepSeekV3\r\nrun pnpm build & pnpm start\r\nsend a msg and verify if the model responds\r\n-->\r\n\r\n\r\n<!--\r\n## Discord username\r\n@CidSociety\r\n-->\r\n",
+            "files": [
+              {
+                "path": ".env.example",
+                "additions": 7,
+                "deletions": 0
+              },
+              {
+                "path": "agent/src/index.ts",
+                "additions": 5,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/generation.ts",
+                "additions": 26,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/models.ts",
+                "additions": 18,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/types.ts",
+                "additions": 2,
+                "deletions": 0
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 98,
+                "deletions": 48
+              }
+            ],
+            "reviews": [
+              {
+                "author": "github-actions",
+                "state": "COMMENTED",
+                "body": "Hi @SYMBaiEX! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!"
+              },
+              {
+                "author": "monilpat",
+                "state": "CHANGES_REQUESTED",
+                "body": "Thanks for doing this - great work! Just one question should the models all be the same and shouldn't there be an embedding / image model default as well"
+              },
+              {
+                "author": "SYMBaiEX",
+                "state": "COMMENTED",
+                "body": ""
+              },
+              {
+                "author": "monilpat",
+                "state": "COMMENTED",
+                "body": ""
+              },
+              {
+                "author": "monilpat",
+                "state": "DISMISSED",
+                "body": "LGTM"
+              },
+              {
+                "author": "monilpat",
+                "state": "DISMISSED",
+                "body": ""
+              },
+              {
+                "author": "monilpat",
+                "state": "DISMISSED",
+                "body": ""
+              },
+              {
+                "author": "odilitime",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": [
+              {
+                "author": "monilpat",
+                "body": "Please run pnpm i -r -no-frozen-lockfile and resubmit please thank you (unrelated change to fix)"
+              },
+              {
+                "author": "SYMBaiEX",
+                "body": "> Please run pnpm i -r -no-frozen-lockfile and resubmit please thank you (unrelated change to fix)\r\n\r\nDone"
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 8,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "kylebuildsstuff",
+    "score": 11,
+    "summary": "KyleBuildsStuff is currently addressing a Dockerfile error encountered during image building, as evidenced by their recent activity on GitHub. With one issue reported under the bug category and no pull requests or commits made yet, they are actively working to resolve this specific problem in their project's development process.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/17548405?u=96b5a9f9b00b6d728fbc11420050905f00d53fe2&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 1623,
+            "title": "Dockerfile errors when building image",
+            "state": "CLOSED",
+            "created_at": "2024-12-31T23:10:54Z",
+            "updated_at": "2025-01-01T13:15:12Z",
+            "body": "**Describe the bug**\r\n\r\nRunning `pnpm run docker:build` or `docker build` fails and results in this error:\r\n\r\n```\r\n645.4 \u2022 Running build in 52 packages\r\n645.4 \u2022 Remote caching disabled\r\n649.5 /app/node_modules/turbo/bin/turbo:273\r\n649.5   throw e;\r\n649.5   ^\r\n649.5\r\n649.5 Error: Command failed: /app/node_modules/turbo-linux-64/bin/turbo run build\r\n649.5     at genericNodeError (node:internal/errors:983:15)\r\n649.5     at wrappedFn (node:internal/errors:537:14)\r\n649.5     at checkExecSyncError (node:child_process:882:11)\r\n649.5     at Object.execFileSync (node:child_process:918:15)\r\n649.5     at Object.<anonymous> (/app/node_modules/turbo/bin/turbo:266:17)\r\n649.5     at Module._compile (node:internal/modules/cjs/loader:1546:14)\r\n649.5     at Object..js (node:internal/modules/cjs/loader:1698:10)\r\n649.5     at Module.load (node:internal/modules/cjs/loader:1303:32)\r\n649.5     at Function._load (node:internal/modules/cjs/loader:1117:12)\r\n649.5     at TracingChannel.traceSync (node:diagnostics_channel:322:14) {\r\n649.5   status: null,\r\n649.5   signal: 'SIGKILL',\r\n649.5   output: [ null, null, null ],\r\n649.5   pid: 13087,\r\n649.5   stdout: null,\r\n649.5   stderr: null\r\n649.5 }\r\n649.5\r\n649.5 Node.js v23.3.0\r\n649.7 \u2009ELIFECYCLE\u2009 Command failed with exit code 1.\r\n------\r\nDockerfile:27\r\n--------------------\r\n  26 |     # Install dependencies and build the project\r\n  27 | >>> RUN pnpm install \\\r\n  28 | >>>     && pnpm build-docker \\\r\n  29 | >>>     && pnpm prune --prod\r\n  30 |\r\n--------------------\r\nERROR: failed to solve: process \"/bin/sh -c pnpm install     && pnpm build-docker     && pnpm prune --prod\" did not complete successfully: exit code: 1\r\n\u2009ELIFECYCLE\u2009 Command failed with exit code 1.\r\n```\r\n\r\n**To Reproduce**\r\n\r\n1. Checkout on latest main branch\r\n2. Run `pnpm run docker:build` or `docker build --platform linux/amd64 -t example/name:1.0.0 .`\r\n\r\n**Expected behavior**\r\n\r\nDocker build should run successfully, creating a docker image\r\n\r\n**Additional context**\r\n\r\n1. Using v0.1.7-alpha.2\r\n2. Running Macbook Pro M3 on Sonoma 14.1.1\r\n3. Running `docker-compose up` results in similar error related to the docker image\r\n",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": [
+              {
+                "author": "github-actions",
+                "body": "Hello @kylebuildsstuff! Welcome to the ai16z community. Thank you for opening your first issue; we appreciate your contribution. You are now a ai16z contributor!"
+              },
+              {
+                "author": "rishavmehra",
+                "body": "works fine on ubuntu24.04\r\n```\r\neliza git:(main) pnpm run docker:build\r\n\u2009WARN\u2009 Unsupported engine: wanted: {\"node\":\"23.3.0\"} (current: {\"node\":\"v18.20.5\",\"pnpm\":\"9.15.0\"})\r\n\r\n> eliza@ docker:build /home/rm/Desktop/play/eliza\r\n> bash ./scripts/docker.sh build\r\n\r\n[+] Building 1292.2s (15/25)                                                                                docker:default\r\n => [builder  3/10] RUN ln -s /usr/bin/python3 /usr/bin/python                                                        0.2s\r\n => [builder  4/10] WORKDIR /app                                                                                      0.0s\r\n => [builder  5/10] COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc turbo.json ./                         0.1s\r\n => [builder  6/10] COPY agent ./agent                                                                                0.0[+] Building 1292.3s (15/25)                                                                                docker:default=> [builder  7/10] COPY packages ./packages                                                                          0.1\r\n => [builder  3/10] RUN ln -s /usr/bin/python3 /usr/bin/python                                                        0.2s=> [builder  8/10] COPY scripts ./scripts                                                                            0.0\r\n[+] Building 1292.5s (15/25)                                                                                docker:default=\r\n => [builder  3/10] RUN ln -s /usr/bin/python3 /usr/bin/python                                                        0.2s\r\n => [builder  4/10] WORKDIR /app                                                                                      0.0s=\r\n => [builder  5/10] COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc turbo.json ./                         0.1s\r\n => [builder  6/10] COPY agent ./agent                                                                             [+] Building 1292.6s (15/25)                                                                                docker:defaultilder  7/10] COPY packages ./packages                                                                       \r\n => [builder  3/10] RUN ln -s /usr/bin/python3 /usr/bin/python                                                        0.2silder  8/10] COPY scripts ./scripts                                                                         \r\n => [builder  4/10] WORKDIR /app                                                                                      0.0silder  9/10] COPY characters ./characters                                                                   \r\n => [builder  5/10] COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc turbo.json ./                         0.1silder 10/10] RUN pnpm install     && pnpm build-docker     && pnpm prune --prod                             \r\n => [builder  6/10] COPY agent ./agent                                                                          [+] Building 1292.8s (15/25)                                                                                docker:defaulter  7/10] COPY packages ./packages                                                                    \r\n => [builder  3/10] RUN ln -s /usr/bin/python3 /usr/bin/python                                                        0.2ser  8/10] COPY scripts ./scripts                                                                      \r\n => [builder  4/10] WORKDIR /app                                                                                      0.0ser  9/10] COPY characters ./characters                                                                \r\n => [builder  5/10] COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc turbo.json ./                         0.1ser 10/10] RUN pnpm install     && pnpm build-docker     && pnpm prune --prod                          \r\n => [builder  6/10] COPY agent ./agent                                                                          [+] Building 1292.9s (15/25)                                                                                docker:defaulter  7/10] COPY packages ./packages                                                                    \r\n => [builder  3/10] RUN ln -s /usr/bin/python3 /usr/bin/python                                                        0.2ser  8/10] COPY scripts ./scripts                                                                      \r\n => [builder  4/10] WORKDIR /app                                                                                      0.0ser  9/10] COPY characters ./characters                                                                \r\n => [builder  5/10] COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc turbo.json ./                         0.1ser 10/10] RUN pnpm install     && pnpm build-docker     && pnpm prune --prod                          \r\n => [builder  6/10] COPY agent ./agent                                                                          [+] Building 1293.1s (15/25)                                                                                docker:defaulter  7/10] COPY packages ./packages                                                                    \r\n => [builder  3/10] RUN ln -s /usr/bin/python3 /usr/bin/python                                                        0.2ser  8/10] COPY scripts ./scripts                                                                      \r\n => [builder  4/10] WORKDIR /app                                                                                      0.0ser  9/10] COPY characters ./characters                                                                \r\n => [builder  5/10] COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc turbo.json ./                         0.1ser 10/10] RUN pnpm install     && pnpm build-docker     && pnpm prune --prod                          \r\n => [builder  6/10] COPY agent ./agent                                                                          [+] Building 1293.2s (15/25)                                                                                docker:defaulter  7/10] COPY packages ./packages                                                                    \r\n => [builder  3/10] RUN ln -s /usr/bin/python3 /usr/bin/python                                                        0.2ser  8/10] COPY scripts ./scripts                                                                      \r\n => [builder  4/10] WORKDIR /app                                                                                      0.0ser  9/10] COPY characters ./characters                                                                \r\n => [builder  5/10] COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc turbo.json ./                         0.1ser 10/10] RUN pnpm install     && pnpm build-docker     && pnpm prune --prod                          \r\n => [builder  6/10] COPY agent ./agent                                                                                [+] Building 1293.4s (15/25)                                                                                docker:default[builder  7/10] COPY packages ./packages                                                                          \r\n => [builder  3/10] RUN ln -s /usr/bin/python3 /usr/bin/python                                                        0.2s[builder  8/10] COPY scripts ./scripts                                                                            \r\n[+] Building 1724.3s (26/26) FINISHED                                                                             docker:default\r\n => [internal] load build definition from Dockerfile                                                                        0.0s\r\n => => transferring dockerfile: 1.66kB                                                                                      0.0s\r\n => [internal] load metadata for docker.io/library/node:23.3.0-slim                                                         5.1s\r\n => [internal] load .dockerignore                                                                                           0.0s\r\n => => transferring context: 2B                                                                                             0.0s\r\n => [builder  1/10] FROM docker.io/library/node:23.3.0-slim@sha256:8b30809f66a6ea8896b9a5d004b4fe2cc0e8061d981d3784fb0e80  70.5s\r\n => => resolve docker.io/library/node:23.3.0-slim@sha256:8b30809f66a6ea8896b9a5d004b4fe2cc0e8061d981d3784fb0e80a19b86ab9d   0.0s\r\n => => sha256:8663e79f65016221dc2c9981c65291318e087053b0bbfdfd122d00ba573db12e 3.31kB / 3.31kB                              1.9s\r\n => => sha256:35a89838774a5d20bde7b044149eaf3820e081656110dec3261a8504cbf61aa0 49.36MB / 49.36MB                           69.3s\r\n => => sha256:8b30809f66a6ea8896b9a5d004b4fe2cc0e8061d981d3784fb0e80a19b86ab9d 6.49kB / 6.49kB                              0.0s\r\n => => sha256:950fe7c1dddbf6386d6a7aa2848589aaf1c65c24bdd9a9420a25921e0d801c5b 1.93kB / 1.93kB                              0.0s\r\n => => sha256:8337586680c266bceef9b0ea17b4e8df1eaf471c3a9460994de16ba3ebc085a2 6.54kB / 6.54kB                              0.0s\r\n => => sha256:bc0965b23a04fe7f2d9fb20f597008fcf89891de1c705ffc1c80483a1f098e4f 28.23MB / 28.23MB                           19.9s\r\n => => sha256:8030ee9caa1cdc982f1a2d504c88cc8f2d6b510f5b6b911e80ecc31b80eafa55 1.71MB / 1.71MB                              5.6s\r\n => => sha256:e486c8868d474e29e178b268b95b679ba2abb88eab17f1e04b0912e48e3a3103 448B / 448B                                  7.9s\r\n => => extracting sha256:bc0965b23a04fe7f2d9fb20f597008fcf89891de1c705ffc1c80483a1f098e4f                                   0.8s\r\n => => extracting sha256:8663e79f65016221dc2c9981c65291318e087053b0bbfdfd122d00ba573db12e                                   0.0s\r\n => => extracting sha256:35a89838774a5d20bde7b044149eaf3820e081656110dec3261a8504cbf61aa0                                   1.1s\r\n => => extracting sha256:8030ee9caa1cdc982f1a2d504c88cc8f2d6b510f5b6b911e80ecc31b80eafa55                                   0.0s\r\n => => extracting sha256:e486c8868d474e29e178b268b95b679ba2abb88eab17f1e04b0912e48e3a3103                                   0.0s\r\n => [internal] load build context                                                                                           0.3s\r\n => => transferring context: 21.81MB                                                                                        0.3s\r\n => [builder  2/10] RUN npm install -g pnpm@9.4.0 &&     apt-get update &&     apt-get install -y git python3 make g++ &  487.0s\r\n => [stage-1  2/12] RUN npm install -g pnpm@9.4.0 &&     apt-get update &&     apt-get install -y git python3 &&     apt  259.2s\r\n => [stage-1  3/12] WORKDIR /app                                                                                            0.0s\r\n => [builder  3/10] RUN ln -s /usr/bin/python3 /usr/bin/python                                                              0.2s\r\n => [builder  4/10] WORKDIR /app                                                                                            0.0s\r\n => [builder  5/10] COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc turbo.json ./                               0.1s\r\n => [builder  6/10] COPY agent ./agent                                                                                      0.0s\r\n => [builder  7/10] COPY packages ./packages                                                                                0.1s\r\n => [builder  8/10] COPY scripts ./scripts                                                                                  0.0s\r\n => [builder  9/10] COPY characters ./characters                                                                            0.0s\r\n => [builder 10/10] RUN pnpm install     && pnpm build-docker     && pnpm prune --prod                                    907.4s\r\n => [stage-1  4/12] COPY --from=builder /app/package.json ./                                                                0.1s\r\n => [stage-1  5/12] COPY --from=builder /app/pnpm-workspace.yaml ./                                                         0.0s\r\n => [stage-1  6/12] COPY --from=builder /app/.npmrc ./                                                                      0.0s\r\n => [stage-1  7/12] COPY --from=builder /app/turbo.json ./                                                                  0.0s\r\n => [stage-1  8/12] COPY --from=builder /app/node_modules ./node_modules                                                   89.4s\r\n => [stage-1  9/12] COPY --from=builder /app/agent ./agent                                                                  0.1s\r\n => [stage-1 10/12] COPY --from=builder /app/packages ./packages                                                            6.6s\r\n => [stage-1 11/12] COPY --from=builder /app/scripts ./scripts                                                              0.0s\r\n => [stage-1 12/12] COPY --from=builder /app/characters ./characters                                                        0.0s\r\n => exporting to image                                                                                                     84.6s\r\n => => exporting layers                                                                                                    84.6s\r\n => => writing image sha256:686b96a6a9d385592124f790adaf7c0bcde59a42b4efd16d13c7d8bc47fcbf66                                0.0s\r\n => => naming to docker.io/library/eliza                          \r\n```"
+              },
+              {
+                "author": "lachiejames",
+                "body": "I tried to reproduce this issue but was unable to do so. Here's my environment and steps:\r\n\r\n1. Using latest main branch of Eliza repo\r\n2. Running on macOS Sequoia 15.2\r\n3. Running on Docker Desktop 4.36.0 (175267) with:\r\n   - Engine: 27.3.1\r\n   - Compose: v2.30.3-desktop.1\r\n   - Kubernetes: v1.30.5\r\n\r\nBefore testing each command, I ran `docker system prune -a` to ensure a clean environment.\r\n\r\n\r\nThe build completed successfully using: \r\n\r\n\r\n\r\n<details>\r\n<summary>:white_check_mark: pnpm run docker:build</summary>\r\n\r\n```\r\n> bash ./scripts/docker.sh build\r\n\r\n[+] Building 559.9s (26/26) FINISHED                                                                                                docker:desktop-linux\r\n => [internal] load build definition from Dockerfile                                                                                                0.0s\r\n => => transferring dockerfile: 1.66kB                                                                                                              0.0s\r\n => [internal] load metadata for docker.io/library/node:23.3.0-slim                                                                                 2.0s\r\n => [internal] load .dockerignore                                                                                                                   0.0s\r\n => => transferring context: 2B                                                                                                                     0.0s\r\n => [builder  1/10] FROM docker.io/library/node:23.3.0-slim@sha256:8b30809f66a6ea8896b9a5d004b4fe2cc0e8061d981d3784fb0e80a19b86ab9d                 4.6s\r\n => => resolve docker.io/library/node:23.3.0-slim@sha256:8b30809f66a6ea8896b9a5d004b4fe2cc0e8061d981d3784fb0e80a19b86ab9d                           0.0s\r\n => => sha256:bc0965b23a04fe7f2d9fb20f597008fcf89891de1c705ffc1c80483a1f098e4f 28.23MB / 28.23MB                                                    1.3s\r\n => => sha256:8663e79f65016221dc2c9981c65291318e087053b0bbfdfd122d00ba573db12e 3.31kB / 3.31kB                                                      0.8s\r\n => => sha256:35a89838774a5d20bde7b044149eaf3820e081656110dec3261a8504cbf61aa0 49.36MB / 49.36MB                                                    2.1s\r\n => => sha256:8b30809f66a6ea8896b9a5d004b4fe2cc0e8061d981d3784fb0e80a19b86ab9d 6.49kB / 6.49kB                                                      0.0s\r\n => => sha256:950fe7c1dddbf6386d6a7aa2848589aaf1c65c24bdd9a9420a25921e0d801c5b 1.93kB / 1.93kB                                                      0.0s\r\n => => sha256:8337586680c266bceef9b0ea17b4e8df1eaf471c3a9460994de16ba3ebc085a2 6.54kB / 6.54kB                                                      0.0s\r\n => => sha256:8030ee9caa1cdc982f1a2d504c88cc8f2d6b510f5b6b911e80ecc31b80eafa55 1.71MB / 1.71MB                                                      2.7s\r\n => => sha256:e486c8868d474e29e178b268b95b679ba2abb88eab17f1e04b0912e48e3a3103 448B / 448B                                                          1.6s\r\n => => extracting sha256:bc0965b23a04fe7f2d9fb20f597008fcf89891de1c705ffc1c80483a1f098e4f                                                           1.7s\r\n => => extracting sha256:8663e79f65016221dc2c9981c65291318e087053b0bbfdfd122d00ba573db12e                                                           0.0s\r\n => => extracting sha256:35a89838774a5d20bde7b044149eaf3820e081656110dec3261a8504cbf61aa0                                                           1.4s\r\n => => extracting sha256:8030ee9caa1cdc982f1a2d504c88cc8f2d6b510f5b6b911e80ecc31b80eafa55                                                           0.0s\r\n => => extracting sha256:e486c8868d474e29e178b268b95b679ba2abb88eab17f1e04b0912e48e3a3103                                                           0.0s\r\n => [internal] load build context                                                                                                                   3.9s\r\n => => transferring context: 194.55MB                                                                                                               3.8s\r\n => [builder  2/10] RUN npm install -g pnpm@9.4.0 &&     apt-get update &&     apt-get install -y git python3 make g++ &&     apt-get clean &&     60.5s\r\n => [stage-1  2/12] RUN npm install -g pnpm@9.4.0 &&     apt-get update &&     apt-get install -y git python3 &&     apt-get clean &&     rm -rf   43.0s\r\n => [stage-1  3/12] WORKDIR /app                                                                                                                    0.0s\r\n => [builder  3/10] RUN ln -s /usr/bin/python3 /usr/bin/python                                                                                      0.1s \r\n => [builder  4/10] WORKDIR /app                                                                                                                    0.0s \r\n => [builder  5/10] COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc turbo.json ./                                                       0.0s \r\n => [builder  6/10] COPY agent ./agent                                                                                                              0.0s\r\n => [builder  7/10] COPY packages ./packages                                                                                                        1.7s\r\n => [builder  8/10] COPY scripts ./scripts                                                                                                          0.0s\r\n => [builder  9/10] COPY characters ./characters                                                                                                    0.0s\r\n => [builder 10/10] RUN pnpm install     && pnpm build-docker     && pnpm prune --prod                                                            375.0s\r\n => [stage-1  4/12] COPY --from=builder /app/package.json ./                                                                                        0.0s\r\n => [stage-1  5/12] COPY --from=builder /app/pnpm-workspace.yaml ./                                                                                 0.0s\r\n => [stage-1  6/12] COPY --from=builder /app/.npmrc ./                                                                                              0.0s\r\n => [stage-1  7/12] COPY --from=builder /app/turbo.json ./                                                                                          0.0s\r\n => [stage-1  8/12] COPY --from=builder /app/node_modules ./node_modules                                                                           34.0s\r\n => [stage-1  9/12] COPY --from=builder /app/agent ./agent                                                                                          0.0s\r\n => [stage-1 10/12] COPY --from=builder /app/packages ./packages                                                                                    4.8s\r\n => [stage-1 11/12] COPY --from=builder /app/scripts ./scripts                                                                                      0.0s\r\n => [stage-1 12/12] COPY --from=builder /app/characters ./characters                                                                                0.0s\r\n => exporting to image                                                                                                                             32.8s\r\n => => exporting layers                                                                                                                            32.8s\r\n => => writing image sha256:739bca34c132258fe3d5df45ea2968f6f9f65f9e225dcfa7f30147d86cbfdf59                                                        0.0s\r\n => => naming to docker.io/library/eliza                                                                                                            0.0s\r\n\r\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/kus05b9hz6hdgtspm39b7pqw5\r\n\r\nWhat's next:\r\n    View a summary of image vulnerabilities and recommendations \u2192 docker scout quickview \r\n```\r\n\r\n</details>\r\n\r\n\r\n\r\n<details>\r\n<summary>:white_check_mark: docker build --platform linux/amd64 -t example/name:1.0.0 .</summary>\r\n\r\n```\r\n[+] Building 529.4s (26/26) FINISHED                                    docker:desktop-linux\r\n => [internal] load build definition from Dockerfile                                    0.0s\r\n => => transferring dockerfile: 1.66kB                                                  0.0s\r\n => [internal] load metadata for docker.io/library/node:23.3.0-slim                     3.9s\r\n => [internal] load .dockerignore                                                       0.0s\r\n => => transferring context: 2B                                                         0.0s\r\n => [builder  1/10] FROM docker.io/library/node:23.3.0-slim@sha256:8b30809f66a6ea8896b  5.2s\r\n => => resolve docker.io/library/node:23.3.0-slim@sha256:8b30809f66a6ea8896b9a5d004b4f  0.0s\r\n => => sha256:950fe7c1dddbf6386d6a7aa2848589aaf1c65c24bdd9a9420a25921e 1.93kB / 1.93kB  0.0s\r\n => => sha256:8337586680c266bceef9b0ea17b4e8df1eaf471c3a9460994de16ba3 6.54kB / 6.54kB  0.0s\r\n => => sha256:bc0965b23a04fe7f2d9fb20f597008fcf89891de1c705ffc1c8048 28.23MB / 28.23MB  1.7s\r\n => => sha256:8663e79f65016221dc2c9981c65291318e087053b0bbfdfd122d00ba 3.31kB / 3.31kB  0.6s\r\n => => sha256:35a89838774a5d20bde7b044149eaf3820e081656110dec3261a85 49.36MB / 49.36MB  2.7s\r\n => => sha256:8b30809f66a6ea8896b9a5d004b4fe2cc0e8061d981d3784fb0e80a1 6.49kB / 6.49kB  0.0s\r\n => => sha256:8030ee9caa1cdc982f1a2d504c88cc8f2d6b510f5b6b911e80ecc31b 1.71MB / 1.71MB  3.2s\r\n => => sha256:e486c8868d474e29e178b268b95b679ba2abb88eab17f1e04b0912e48e3a 448B / 448B  2.3s\r\n => => extracting sha256:bc0965b23a04fe7f2d9fb20f597008fcf89891de1c705ffc1c80483a1f098  1.8s\r\n => => extracting sha256:8663e79f65016221dc2c9981c65291318e087053b0bbfdfd122d00ba573db  0.0s\r\n => => extracting sha256:35a89838774a5d20bde7b044149eaf3820e081656110dec3261a8504cbf61  1.5s\r\n => => extracting sha256:8030ee9caa1cdc982f1a2d504c88cc8f2d6b510f5b6b911e80ecc31b80eaf  0.0s\r\n => => extracting sha256:e486c8868d474e29e178b268b95b679ba2abb88eab17f1e04b0912e48e3a3  0.0s\r\n => [internal] load build context                                                       4.3s\r\n => => transferring context: 194.55MB                                                   4.3s\r\n => [builder  2/10] RUN npm install -g pnpm@9.4.0 &&     apt-get update &&     apt-ge  61.5s\r\n => [stage-1  2/12] RUN npm install -g pnpm@9.4.0 &&     apt-get update &&     apt-ge  45.3s\r\n => [stage-1  3/12] WORKDIR /app                                                        0.0s\r\n => [builder  3/10] RUN ln -s /usr/bin/python3 /usr/bin/python                          0.2s\r\n => [builder  4/10] WORKDIR /app                                                        0.0s\r\n => [builder  5/10] COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc turbo.  0.0s\r\n => [builder  6/10] COPY agent ./agent                                                  0.0s\r\n => [builder  7/10] COPY packages ./packages                                            1.9s\r\n => [builder  8/10] COPY scripts ./scripts                                              0.0s\r\n => [builder  9/10] COPY characters ./characters                                        0.0s\r\n => [builder 10/10] RUN pnpm install     && pnpm build-docker     && pnpm prune --pr  348.8s\r\n => [stage-1  4/12] COPY --from=builder /app/package.json ./                            0.0s\r\n => [stage-1  5/12] COPY --from=builder /app/pnpm-workspace.yaml ./                     0.0s\r\n => [stage-1  6/12] COPY --from=builder /app/.npmrc ./                                  0.0s\r\n => [stage-1  7/12] COPY --from=builder /app/turbo.json ./                              0.0s\r\n => [stage-1  8/12] COPY --from=builder /app/node_modules ./node_modules               38.2s\r\n => [stage-1  9/12] COPY --from=builder /app/agent ./agent                              0.0s\r\n => [stage-1 10/12] COPY --from=builder /app/packages ./packages                        4.2s\r\n => [stage-1 11/12] COPY --from=builder /app/scripts ./scripts                          0.0s\r\n => [stage-1 12/12] COPY --from=builder /app/characters ./characters                    0.0s\r\n => exporting to image                                                                 30.6s\r\n => => exporting layers                                                                30.6s\r\n => => writing image sha256:8212005be51b68f213a8c8d1d9956f46f4a2e29819d3943a1a1e44a309  0.0s\r\n => => naming to docker.io/example/name:1.0.0                                           0.0s\r\n\r\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/bbcwtnouz0rkjucdyno3jh8xp\r\n\r\nWhat's next:\r\n    View a summary of image vulnerabilities and recommendations \u2192 docker scout quickview \r\n```\r\n\r\n</details>\r\n\r\n\r\n\r\n<details>\r\n<summary>:white_check_mark: docker compose up</summary>\r\n\r\n```\r\n[+] Building 243.0s (27/27) FINISHED                                                                                                docker:desktop-linux\r\n => [tee internal] load build definition from Dockerfile                                                                                            0.0s\r\n => => transferring dockerfile: 1.66kB                                                                                                              0.0s\r\n => [tee internal] load metadata for docker.io/library/node:23.3.0-slim                                                                             1.9s\r\n => [tee internal] load .dockerignore                                                                                                               0.0s\r\n => => transferring context: 2B                                                                                                                     0.0s\r\n => [tee builder  1/10] FROM docker.io/library/node:23.3.0-slim@sha256:8b30809f66a6ea8896b9a5d004b4fe2cc0e8061d981d3784fb0e80a19b86ab9d             5.9s\r\n => => resolve docker.io/library/node:23.3.0-slim@sha256:8b30809f66a6ea8896b9a5d004b4fe2cc0e8061d981d3784fb0e80a19b86ab9d                           0.0s\r\n => => sha256:8b30809f66a6ea8896b9a5d004b4fe2cc0e8061d981d3784fb0e80a19b86ab9d 6.49kB / 6.49kB                                                      0.0s\r\n => => sha256:92727078ef529dac683e9c65d002e03afe22f518fa7b1ea61243fb9afd60d099 1.93kB / 1.93kB                                                      0.0s\r\n => => sha256:4500572b6c61ddc7f7650c6b16598e89ae174d6c09957d013bb6cd1ca5b02e22 6.56kB / 6.56kB                                                      0.0s\r\n => => sha256:bb3f2b52e6af242cee1bc6c19ce79e05544f8a1d13f5a6c1e828d98d2dbdc94e 28.06MB / 28.06MB                                                    2.5s\r\n => => sha256:815883e27b16789a3274549f7a04eee803f56188b22ba66a7370f35491d794e7 3.31kB / 3.31kB                                                      1.1s\r\n => => sha256:084492e6ef7a132590a5cb9369d0c4acf4dcc70cdc6253a44d53ce7d3c87e00a 49.09MB / 49.09MB                                                    2.1s\r\n => => sha256:7f63be1592d12361a382be8847f6720b66072fde640da7311141fa78c0b43948 1.71MB / 1.71MB                                                      3.0s\r\n => => sha256:1779a478c4db18d1c0eb19d5f7bde3b8270b8fcc849072950c7fabbc8c791f68 446B / 446B                                                          2.5s\r\n => => extracting sha256:bb3f2b52e6af242cee1bc6c19ce79e05544f8a1d13f5a6c1e828d98d2dbdc94e                                                           1.8s\r\n => => extracting sha256:815883e27b16789a3274549f7a04eee803f56188b22ba66a7370f35491d794e7                                                           0.0s\r\n => => extracting sha256:084492e6ef7a132590a5cb9369d0c4acf4dcc70cdc6253a44d53ce7d3c87e00a                                                           1.3s\r\n => => extracting sha256:7f63be1592d12361a382be8847f6720b66072fde640da7311141fa78c0b43948                                                           0.0s\r\n => => extracting sha256:1779a478c4db18d1c0eb19d5f7bde3b8270b8fcc849072950c7fabbc8c791f68                                                           0.0s\r\n => [tee internal] load build context                                                                                                               4.2s\r\n => => transferring context: 194.55MB                                                                                                               4.2s\r\n => [tee builder  2/10] RUN npm install -g pnpm@9.4.0 &&     apt-get update &&     apt-get install -y git python3 make g++ &&     apt-get clean &  17.3s\r\n => [tee stage-1  2/12] RUN npm install -g pnpm@9.4.0 &&     apt-get update &&     apt-get install -y git python3 &&     apt-get clean &&     rm   10.9s\r\n => [tee stage-1  3/12] WORKDIR /app                                                                                                                0.0s\r\n => [tee builder  3/10] RUN ln -s /usr/bin/python3 /usr/bin/python                                                                                  0.1s \r\n => [tee builder  4/10] WORKDIR /app                                                                                                                0.0s \r\n => [tee builder  5/10] COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc turbo.json ./                                                   0.0s \r\n => [tee builder  6/10] COPY agent ./agent                                                                                                          0.0s\r\n => [tee builder  7/10] COPY packages ./packages                                                                                                    1.4s\r\n => [tee builder  8/10] COPY scripts ./scripts                                                                                                      0.0s\r\n => [tee builder  9/10] COPY characters ./characters                                                                                                0.0s\r\n => [tee builder 10/10] RUN pnpm install     && pnpm build-docker     && pnpm prune --prod                                                        137.4s\r\n => [tee stage-1  4/12] COPY --from=builder /app/package.json ./                                                                                    0.0s\r\n => [tee stage-1  5/12] COPY --from=builder /app/pnpm-workspace.yaml ./                                                                             0.0s\r\n => [tee stage-1  6/12] COPY --from=builder /app/.npmrc ./                                                                                          0.0s\r\n => [tee stage-1  7/12] COPY --from=builder /app/turbo.json ./                                                                                      0.0s\r\n => [tee stage-1  8/12] COPY --from=builder /app/node_modules ./node_modules                                                                       26.0s\r\n => [tee stage-1  9/12] COPY --from=builder /app/agent ./agent                                                                                      0.0s\r\n => [tee stage-1 10/12] COPY --from=builder /app/packages ./packages                                                                                5.0s\r\n => [tee stage-1 11/12] COPY --from=builder /app/scripts ./scripts                                                                                  0.0s\r\n => [tee stage-1 12/12] COPY --from=builder /app/characters ./characters                                                                            0.0s\r\n => [tee] exporting to image                                                                                                                       14.5s\r\n => => exporting layers                                                                                                                            14.5s\r\n => => writing image sha256:56632955b5c7e62bdd2a19d9434e2fa88c20496e36e7dc506b521d4270fe2401                                                        0.0s\r\n => => naming to docker.io/library/eliza-tee                                                                                                        0.0s\r\n => [tee] resolving provenance for metadata file                                                                                                    0.0s\r\n[+] Running 3/3\r\n \u2714 Network eliza_default  Created                                                                                                                   0.1s \r\n \u2714 Volume \"eliza_tee\"     Created                                                                                                                   0.0s \r\n \u2714 Container eliza-tee-1  Created                                                                                                                   0.3s \r\nAttaching to tee-1\r\ntee-1  | \r\ntee-1  | > eliza@ start /app\r\ntee-1  | > pnpm --filter \"@elizaos/agent\" start --isRoot\r\ntee-1  | \r\ntee-1  | \r\ntee-1  | > @elizaos/agent@0.1.7-alpha.2 start /app/agent\r\ntee-1  | > node --loader ts-node/esm src/index.ts \"--isRoot\"\r\ntee-1  | \r\ntee-1  | (node:31) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\r\ntee-1  | --import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));'\r\ntee-1  | (Use `node --trace-warnings ...` to show where the warning was created)\r\ntee-1  | (node:31) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\r\ntee-1  | (Use `node --trace-deprecation ...` to show where the warning was created)\r\ntee-1  | [ElizaLogger] Initializing with:\r\ntee-1  |             isNode: true\r\ntee-1  |             verbose: false\r\ntee-1  |             VERBOSE env: undefined\r\ntee-1  |             NODE_ENV: undefined\r\ntee-1  |         \r\ntee-1  |  \u2139 INFORMATIONS\r\ntee-1  |    Loading embedding settings: \r\ntee-1  |    {\"OLLAMA_EMBEDDING_MODEL\":\"mxbai-embed-large\"} \r\ntee-1  | \r\ntee-1  |  \u2139 INFORMATIONS\r\ntee-1  |    Loading character settings: \r\ntee-1  |    {\"ARGV\":[\"/usr/local/bin/node\",\"/app/agent/src/index.ts\",\"--isRoot\"],\"CWD\":\"/app/agent\"} \r\ntee-1  | \r\ntee-1  |  \u2139 INFORMATIONS\r\ntee-1  |    Parsed settings: \r\ntee-1  |    {\"USE_OPENAI_EMBEDDING_TYPE\":\"undefined\",\"USE_OLLAMA_EMBEDDING_TYPE\":\"undefined\",\"OLLAMA_EMBEDDING_MODEL\":\"mxbai-embed-large\"} \r\ntee-1  | \r\ntee-1  | using deprecated parameters for the initialization function; pass a single object instead\r\ntee-1  | (node:31) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\r\ntee-1  |  [\"\u25ce DirectClient constructor\"] \r\ntee-1  | \r\ntee-1  |  \u26d4 ERRORS\r\ntee-1  |    Failed to load sqlite-vec extensions: \r\ntee-1  |    {} \r\ntee-1  | \r\ntee-1  |  \u26d4 ERRORS\r\ntee-1  |    Error starting agent for character Eliza: \r\ntee-1  |    {} \r\ntee-1  | \r\ntee-1  |  [\"\u26d4 Error: Loadble extension for sqlite-vec not found. Was the sqlite-vec-linux-arm64 package installed?\"] \r\ntee-1  | \r\ntee-1  |  \u26d4 ERRORS\r\ntee-1  |    Error starting agents: \r\ntee-1  |    {} \r\ntee-1  | \r\ntee-1  |  [\"\u25ce Run `pnpm start:client` to start the client and visit the outputted URL (http://localhost:5173) to chat with your agents. When running multiple agents, use client with different port `SERVER_PORT=3001 pnpm start:client`\"] \r\ntee-1  | \r\ntee-1  |  [\"\u2713 REST API bound to 0.0.0.0:3000. If running locally, access it at http://localhost:3000.\"] \r\ntee-1  | \r\n```\r\n\r\n</details>"
+              },
+              {
+                "author": "Sergey1997",
+                "body": "This related to the lack of memory on the server.\r\n\r\nFor some reason, building the image requires a lot of memory. In my case, in order to build the image successfully, a minimum of 2 GB of RAM and 6 GB of swap space(so that no need to pay for the server with 4 GB RAM) is needed. "
+              },
+              {
+                "author": "kylebuildsstuff",
+                "body": "Thanks for the tips.\r\n\r\nThought I had plenty of RAM but Docker Desktop didn't so it worked only after upping RAM and swap."
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 5,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "lalalune",
+    "score": 10,
+    "summary": "Lalalune is currently working on enhancing Twilio voice/text integration, as evidenced by their recent activity on GitHub. They have proposed an issue for this project, aiming to improve the functionality and user experience of integrating these services. However, they haven't made any commits or pull requests related to this work yet.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/18633264?u=8f2bca0a3cef958bd405ea89680a9b9a0ff38f06&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 1631,
+            "title": "Twilio voice / text integration [BOUNTY - $5k ai16z]",
+            "state": "OPEN",
+            "created_at": "2025-01-01T12:23:49Z",
+            "updated_at": "2025-01-01T14:16:45Z",
+            "body": "We want to add text and voice support\r\n\r\nVoice:\r\n- Deepgram or Whisper integration to STT (check Transcription service and implementations for Discord and Twitter Spaces)\r\n- Elevenlabs integration for TTS (check Voice generation service for implementation in Discord and Twitter spaces)\r\n\r\nText\r\n- Can text user and be texted by user\r\n\r\nAcceptance criteria:\r\n- Pull request demonstrating both text and voice functionality\r\n- Video recording demonstrating that it works",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": [
+              {
+                "author": "Utkarshbhimte",
+                "body": "can take it up, have done something similar with [clankeroncall](https://warpcast.com/clankeroncall)"
+              },
+              {
+                "author": "AIFlowML",
+                "body": "If nobody do it I can jump in too. "
+              },
+              {
+                "author": "boolkeys",
+                "body": "would love to work on this!"
+              },
+              {
+                "author": "xR0am",
+                "body": "Will give it a shot as well !"
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 4,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "denizekiz",
+    "score": 9,
+    "summary": "Denizekiz is currently focusing on improving the architecture of ImageDescriptioServices by separating imageModelProvider from imageVisionModelProvider. This effort involves creating pull requests to refactor and enhance code organization within the project's documentation and package areas, although no issues have been addressed or commits made yet.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/11015340?u=2dc9559a163771af8405dbfdb6be22ca5c27c25a&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 2,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1664,
+            "title": "fix: Seperated imageModelProvider and imageVisionModelProvider for ImageDescriptioServices",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2025-01-01T22:27:19Z",
+            "updated_at": "2025-01-01T22:27:19Z",
+            "body": "Seperated imageModelProvider and imageVisionModelProvider for ImageDescriptioServices\r\n\r\n<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\nGenerating images, and describing images are two different task, therefore, two different types of model providers can be used. \r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\nlow\r\n\r\n# Background\r\n\r\n\r\n## What does this PR do?\r\n\r\nCreated a seperate ImageVisionModelProvider for image description related services. Before this PR, same vision service should  have be used.\r\n\r\n## What kind of change is this?\r\n\r\nBug fixes (non-breaking change which fixes an issue)\r\n\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\ncharacter.md, agentruntime.md changed.\r\n\r\n\r\n\r\n# Testing\r\npnpm build\r\npnpm start\r\n## Where should a reviewer start?\r\n",
+            "files": [
+              {
+                "path": "docs/api/classes/AgentRuntime.md",
+                "additions": 7,
+                "deletions": 0
+              },
+              {
+                "path": "docs/api/type-aliases/Character.md",
+                "additions": 11,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/runtime.ts",
+                "additions": 16,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/types.ts",
+                "additions": 5,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-node/src/services/image.ts",
+                "additions": 1,
+                "deletions": 1
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          },
+          {
+            "number": 1639,
+            "title": "fix: Seperated imageModelProvider and imageVisionModelProvider for ImageDescriptioServices",
+            "state": "CLOSED",
+            "merged": false,
+            "created_at": "2025-01-01T17:44:53Z",
+            "updated_at": "2025-01-01T22:02:31Z",
+            "body": "Seperated imageModelProvider and imageVisionModelProvider for ImageDescriptioServices\r\n\r\n<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\nGenerating images, and describing images are two different task, therefore, two different types of model providers can be used. \r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\nlow\r\n\r\n# Background\r\n\r\n\r\n## What does this PR do?\r\n\r\nCreated a seperate ImageVisionModelProvider for image description related services. Before this PR, same vision service should  have be used.\r\n\r\n## What kind of change is this?\r\n\r\nBug fixes (non-breaking change which fixes an issue)\r\n\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\ncharacter.md, agentruntime.md changed.\r\n\r\n\r\n\r\n# Testing\r\npnpm build\r\npnpm start\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\nNo change.\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\ndeniz989898\r\n\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "docs/api/classes/AgentRuntime.md",
+                "additions": 7,
+                "deletions": 0
+              },
+              {
+                "path": "docs/api/type-aliases/Character.md",
+                "additions": 11,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/runtime.ts",
+                "additions": 16,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/types.ts",
+                "additions": 5,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-node/src/services/image.ts",
+                "additions": 1,
+                "deletions": 1
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "denizekiz",
+                "body": "Will open again, for develop branch."
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "uleeeeee",
+    "score": 9,
+    "summary": "uleeeeee is currently addressing a bug related to the initial setup process, as outlined by the documentation. They have opened one issue regarding this problem but have not yet made any commits or pull requests towards resolving it. Their focus remains on troubleshooting and finding a solution for the setup issues they've encountered.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/59621642?u=072d8c67b22afa79faf31ff10fdcbd7588ee0f1c&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 1622,
+            "title": "Initial setup based on docs not working",
+            "state": "CLOSED",
+            "created_at": "2024-12-31T22:35:20Z",
+            "updated_at": "2025-01-01T10:41:54Z",
+            "body": "**Describe the bug**\r\nCant get minimal setup running with OpenAI API as model\r\nError on agent terminal after message being sent via client\r\n\r\n**To Reproduce**\r\n1. clone repo, install deps, build\r\n2. choose openai as model on default tate character file:\r\n`    \"modelProvider\": \"openai\",\r\n    \"settings\": {\r\n        \"voice\": {\r\n            \"model\": \"en_US-male-medium\"\r\n        }\r\n    },\r\n    `\r\n3. Add openai API key to .env `OPENAI_API_KEY=sk-proj-xxx`\r\n4.  `pnpm run start --characters=\"../characters/tate.character.json\"`\r\n5. `pnpm start:client`\r\n6. send message via client\r\n7. receive error on agent terminal:\r\n``\": \\\"The model gpt-4o does not exist or you do not have access to it.\\\",\\n        \\\"type\\\": \\\"invalid_request_error\\\",\\n        \\\"param\\\": null,\\n        \\\"code\\\": \\\"model_not_found\\\"\\n    }\\n}\\n\",\"isRetryable\":false,\"data\":{\"error\":{\"message\":\"The model `gpt-4o` does not exist or you do not have access to it.\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"model_not_found\"}}}`\r\n`\r\n\r\n**Expected behavior**\r\n\r\nNo error, use openai API and receive response on client\r\n\r\n\r\n",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": [
+              {
+                "author": "github-actions",
+                "body": "Hello @uleeeeee! Welcome to the ai16z community. Thank you for opening your first issue; we appreciate your contribution. You are now a ai16z contributor!"
+              },
+              {
+                "author": "freddymercury",
+                "body": "@uleeeeee does your openAI account have credit? I get similar error responses when I have no credit in my openAI account."
+              },
+              {
+                "author": "uleeeeee",
+                "body": "> @uleeeeee does your openAI account have credit? I get similar error responses when I have no credit in my openAI account.\r\n\r\nProblem was probably related to that. I added another 10$ credits, created new API key and now it works. Thanks!"
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 3,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "thearyanag",
+    "score": 7,
+    "summary": "Thearyanag is currently working on enhancing their project by replacing the existing plugin with Solana Agent Kit, as evidenced by a single pull request that remains unmerged. Their recent activity has not involved any issues or commits, and there have been no code changes in this period.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/48391385?u=69b973169b5cf83dc86bc72d44c548ecb544628c&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1628,
+            "title": "Replaces the current plugin with Solana Agent Kit",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2025-01-01T09:21:51Z",
+            "updated_at": "2025-01-01T15:46:58Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\nhttps://github.com/elizaOS/eliza/issues/1619\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\nLow\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nReplace the solana plugin with solana agent kit\r\n- wrapper around the runtime for the kit\r\n- replace the trade function with trade action from the kit\r\n- replace the transfer function with transfer action from the kit\r\n- replace the swap dao function with trade action from the kit \r\n\r\n## What kind of change is this?\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\nThis PR improves the existing plugin by replacing with the Solana Agent Kit\r\nIn following days, will add more actions from the agent kit.\r\n\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n`packages/plugin-solana` \r\n\r\nReference docs https://sendaifun.github.io/solana-agent-kit/\r\n\r\n## Detailed testing steps\r\n\r\nNone, automated tests are fine.\r\n\r\n## Discord username\r\n0xaryan\r\n\r\n",
+            "files": [
+              {
+                "path": "packages/plugin-solana/package.json",
+                "additions": 3,
+                "deletions": 2
+              },
+              {
+                "path": "packages/plugin-solana/src/actions/pumpfun.ts",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-solana/src/actions/swap.ts",
+                "additions": 13,
+                "deletions": 128
+              },
+              {
+                "path": "packages/plugin-solana/src/actions/swapDao.ts",
+                "additions": 6,
+                "deletions": 6
+              },
+              {
+                "path": "packages/plugin-solana/src/actions/transfer.ts",
+                "additions": 15,
+                "deletions": 88
+              },
+              {
+                "path": "packages/plugin-solana/src/utils.ts",
+                "additions": 23,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "odilitime",
+                "body": "Why is using the agent kit better than what we had?"
+              },
+              {
+                "author": "thearyanag",
+                "body": "@odilitime , this PR just sets the base for adding further actions from the agent kit.\r\n\r\n\r\nThe kit can perform the following actions, we'll then integrate every action present in the kit.\r\n\r\n### Token Operations\r\n\r\nDeploy SPL tokens by Metaplex\r\nTransfer assets\r\nBalance checks\r\nStake SOL\r\nZk compressed Airdrop by Light Protocol and Helius\r\n\r\n### NFT Management via Metaplex\r\n\r\nCollection deployment\r\nNFT minting\r\nMetadata management\r\nRoyalty configuration\r\n\r\n### DeFi Integration\r\n\r\nJupiter Exchange swaps\r\nLaunch on Pump via PumpPortal\r\nRaydium pool creation (CPMM, CLMM, AMMv4)\r\nOrca Whirlpool integration\r\nManifest market creation, and limit orders\r\nMeteora Dynamic AMM, DLMM Pool, and Alpha Vault\r\nOpenbook market creation\r\nRegister and Resolve SNS\r\nJito Bundles\r\nPyth Price feeds for fetching Asset Prices\r\nRegister/resolve Alldomains\r\n\r\n### Solana Blinks\r\n\r\nLending by Lulo (Best APR for USDC)\r\nSend Arcade Games\r\nJupSOL staking\r\n\r\n### Non-Financial Actions\r\n\r\nGib Work for registering bounties"
+              },
+              {
+                "author": "cipher-rc5",
+                "body": "it would be better to make a new plugin, allow users choice regarding which instances they wish to implement"
+              },
+              {
+                "author": "thearyanag",
+                "body": "@cipher-rc5 currently, it's just drop in replacement for the existing plugin so there wont' be any issues for backward compatibility, it's a w-w given we'll be adding all the supported action from the agent kit "
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "nusk0",
+    "score": 7,
+    "summary": "nusk0 is currently focusing on addressing a bug related to the ImageDescriptionService issue within their project. They have not yet made any commits, pull requests, or code changes towards resolving this specific problem. Their recent activity indicates an emphasis on identifying and fixing issues in this area of their work.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/36314459?u=aed9d177141f344a27f7bf9570b09024ecf6a6bb&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 1643,
+            "title": "ImageDescriptionService ",
+            "state": "OPEN",
+            "created_at": "2025-01-01T19:04:15Z",
+            "updated_at": "2025-01-01T19:04:39Z",
+            "body": "**Description**\r\nThe ImageDescriptionService, used to get description of pictures on twitter uses \"gpt-4o-mini\" by default. When using another model than OPENAI for the character,  the feature will not work and it will give you an authentification error when trying to get an image description.\r\n<!-- A clear and concise description of what the bug is. -->\r\n\r\n**To Reproduce**\r\n\r\n1. Download the latest repo and use any character with a twitter client and usea different provider than openAI, make sure that you have an openAI API key in your .env file.\r\n2. set ENABLE_ACTION_PROCESSING=true in your .env file to enable your agent to interact with pictures and wait for it.\r\n3. Once your agent tries to get an image description from a tweet, you get this error : \r\n\r\n ```\r\n [\"\u25ceProcessing images in tweet for context\"]\r\n\r\n \u26d4 ERRORS\r\n   OpenAI API error: \r\n   401\r\n   -\r\n   {\"error\":\"Authentication failed\"}\r\n\r\n \u26d4 ERRORS\r\n   OpenAI request failed (attempt\r\n   1\r\n   ):\r\n   {}\r\n\r\n \u26d4 ERRORS\r\n   OpenAI API error: \r\n   401\r\n   -\r\n   {\"error\":\"Authentication failed\"}\r\n\r\n \u26d4 ERRORS\r\n   OpenAI request failed (attempt\r\n   2\r\n   ):\r\n   {}\r\n\r\n \u26d4 ERRORS\r\n   OpenAI API error: \r\n   401\r\n   -\r\n   {\"error\":\"Authentication failed\"}\r\n\r\n \u26d4 ERRORS\r\n   OpenAI request failed (attempt\r\n   3\r\n   ):\r\n   {}\r\n\r\n \u26d4 ERRORS\r\n   Error in recognizeWithOpenAI:\r\n   {}\r\n\r\n \u26d4 ERRORS\r\n   Error in handleTextOnlyReply:\r\n   {} -->\r\n\r\n```\r\n**Expected behavior**\r\n\r\nThe agent should be able to use the ImageDescriptionService and get a description of the image in the tweet to get more context.\r\n\r\n**Fix**\r\n\r\n<!-- If applicable, add screenshots to help explain your problem. -->\r\n\r\nI already implemented the fix and I will do a PR shortly.\r\n\r\n\r\n",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": [
+              {
+                "author": "github-actions",
+                "body": "Hello @nusk0! Welcome to the ai16z community. Thank you for opening your first issue; we appreciate your contribution. You are now a ai16z contributor!"
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 1,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "LRGG520",
+    "score": 7,
+    "summary": "LRGG520 is currently working on enhancing liquidity management by proposing a system similar to Limited Partners (LPs) that utilizes Total Asset Pooling (TAP). This initiative focuses on improving the efficiency and effectiveness of managing assets within their project.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/95099318?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 1633,
+            "title": "Can it propose liquidity management based on TAP, similar to LP?",
+            "state": "OPEN",
+            "created_at": "2025-01-01T13:53:49Z",
+            "updated_at": "2025-01-01T13:54:12Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\r\n\r\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\r\n\r\n**Describe the solution you'd like**\r\n\r\n<!-- A clear and concise description of what you want to happen. -->\r\n\r\n**Describe alternatives you've considered**\r\n\r\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\r\n\r\n**Additional context**\r\n\r\n<!-- Add any other context or screenshots about the feature request here. -->\r\n",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": [
+              {
+                "author": "github-actions",
+                "body": "Hello @LRGG520! Welcome to the ai16z community. Thank you for opening your first issue; we appreciate your contribution. You are now a ai16z contributor!"
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 1,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "Utkarshbhimte",
+    "score": 6,
+    "summary": "Utkarshbhimte is currently working on integrating ElevenLabs for Twilio call handling, as evidenced by a single progress update (WIP) pull request that has not yet been merged into the main codebase. This work focuses primarily on packages within the project's structure.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/13379773?u=372bd79e2ec0b4256f689f05055a929cd095edd1&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1640,
+            "title": "WIP: feat: integrate ElevenLabs for Twilio call handling",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2025-01-01T18:22:15Z",
+            "updated_at": "2025-01-01T19:12:50Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\nLow\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nAdds integration with twillio for an agent to receive calls via twillio\r\n\r\n## What kind of change is this?\r\nFeatures: adding routes to `client-direct` package\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\nMy changes require a change to the project documentation. I will do that shortly\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n`packages/client-direct/src/index.ts`\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "packages/client-direct/package.json",
+                "additions": 6,
+                "deletions": 3
+              },
+              {
+                "path": "packages/client-direct/src/index.ts",
+                "additions": 83,
+                "deletions": 31
+              },
+              {
+                "path": "packages/client-direct/src/twillio-handler.ts",
+                "additions": 126,
+                "deletions": 0
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 129,
+                "deletions": 21
+              }
+            ],
+            "reviews": [
+              {
+                "author": "github-actions",
+                "state": "COMMENTED",
+                "body": "Hi @Utkarshbhimte! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!"
+              }
+            ],
+            "comments": [
+              {
+                "author": "Utkarshbhimte",
+                "body": "fixes #1631 "
+              },
+              {
+                "author": "lalalune",
+                "body": "This should be a separate package, plugin-twilio"
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 1,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "xMariem",
+    "score": 6,
+    "summary": "xMariem is currently contributing to a project by adding a README file specifically tailored for the Arabic audience, as indicated by the filename 'README_AR.md'. This effort demonstrates an initiative to make documentation more accessible and inclusive of non-English speakers within the community.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/63235508?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1634,
+            "title": "Add README_AR.md",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2025-01-01T14:54:52Z",
+            "updated_at": "2025-01-01T22:16:34Z",
+            "body": "Add Arabic language for readme.\r\n\r\n<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\nno risks\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nadd Arabic language to readme.\r\n\r\n## What kind of change is this?\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "README.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "README_AR.md",
+                "additions": 133,
+                "deletions": 0
+              }
+            ],
+            "reviews": [
+              {
+                "author": "github-actions",
+                "state": "COMMENTED",
+                "body": "Hi @xMariem! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!"
+              },
+              {
+                "author": "monilpat",
+                "state": "CHANGES_REQUESTED",
+                "body": "Thanks for doing this! Please update the main README to reference this newly created one thanks!"
+              },
+              {
+                "author": "monilpat",
+                "state": "APPROVED",
+                "body": "LGTM resolved conflicts"
+              }
+            ],
+            "comments": [
+              {
+                "author": "monilpat",
+                "body": "Thanks for doing this! Please update the main README to reference this newly created one thanks!"
+              },
+              {
+                "author": "lalalune",
+                "body": "changed target to develop, has some conflicts now but should be an easy fix"
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 3,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "lachiejames",
+    "score": 6,
+    "summary": "Lachiejames is currently working on a pull request to downgrade NodeJS from version 23.3.0 to 22.12.0, as part of their contributions to the project's codebase. Their recent activity has been focused primarily in areas such as documentation, GitHub workflow scripts, and repository settings.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/47808687?u=6a1be247dd97fcb89cc0560a42e27e9cd566eb2b&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1630,
+            "title": "fix(#1411): downgrade NodeJS from 23.3.0 to 22.12.0",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2025-01-01T10:55:34Z",
+            "updated_at": "2025-01-01T12:27:22Z",
+            "body": "# Relates to:\r\n\r\nIssue #1411 - Minimum Node LTS\r\n\r\n# Risks\r\n\r\nLow - This change aligns the project with the current LTS version of Node.js, reducing potential compatibility issues and improving stability.\r\n\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nDowngrades the project's Node.js version requirement from v23 to v22 (current LTS version) to ensure better stability and wider compatibility. This includes updating relevant documentation and configuration files.\r\n\r\nSee https://github.com/nodejs/release?tab=readme-ov-file#release-schedule\r\n\r\n<img width=\"815\" alt=\"image\" src=\"https://github.com/user-attachments/assets/03bb5fdf-1c5f-4805-bc8e-0c841d327c72\" />\r\n\r\n\r\n\r\n\r\n\r\n\r\n## What kind of change is this?\r\n\r\nNodeJS version requirement\r\n\r\n## Why are we doing this? Any context or related work?\r\n\r\nI tried deploying the [eliza-client](https://github.com/ai16z/eliza/blob/f5cc5bcb2d0e7ecee9ec5b734c97ef76c67d8c9a/client/package.json) on Vercel, but they only support up to Node v22.  So deployments will immediately fail with this error.\r\n\r\n<img width=\"1496\" alt=\"image\" src=\"https://github.com/user-attachments/assets/0f127798-466b-416c-8f18-c4e7a81c9c97\" />\r\n\r\nThe deployment succeeds on this branch with the following configuration:\r\n\r\n<img width=\"1496\" alt=\"image\" src=\"https://github.com/user-attachments/assets/495c4b7a-0c8b-44d3-b71b-c481cbe5d6c8\" />\r\n\r\n# Documentation changes needed?\r\n\r\nYes, added.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n1. Validate that all references to NodeJS v23 have been updated across the codebase\r\n2. Validate that all CI checks pass\r\n\r\n## Detailed testing steps\r\n\r\n1. Install Node.js v22 using nvm:\r\n    ```bash\r\n    nvm install\r\n    nvm use\r\n    ```\r\n2. Install pnpm:\r\n    ```bash\r\n    npm install -g pnpm@9.4.0\r\n    ```\r\n4. Install dependencies:\r\n    ```bash\r\n    pnpm install\r\n    ```\r\n5. Run the test suite to ensure compatibility\r\n6. Verify the development server starts correctly\r\n\r\n## Discord username\r\n\r\nlachiejames3677\r\n",
+            "files": [
+              {
+                "path": ".github/workflows/ci.yaml",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": ".github/workflows/integrationTests.yaml",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": ".github/workflows/jsdoc-automation.yml",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": ".github/workflows/release.yaml",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": ".github/workflows/smoke-tests.yml",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": ".gitpod.yml",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": ".nvmrc",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "CHANGELOG.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "Dockerfile",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "README.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "README_CN.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "README_DE.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "README_ES.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "README_FR.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "README_HE.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "README_IT.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "README_JA.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "README_KOR.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "README_PTBR.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "README_RU.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "README_TG.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "README_TH.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "README_TR.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "README_VI.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/README.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/README_CN.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/README_DE.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/README_TH.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/community/Discord/development/coders/chat_2024-12-07.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/docs/api/index.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/docs/faq.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/docs/guides/docker-setup.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/docs/guides/local-development.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/docs/guides/wsl.md",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "docs/docs/quickstart.md",
+                "additions": 3,
+                "deletions": 3
+              },
+              {
+                "path": "docs/package-lock.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "docs/package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "package.json",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "scripts/integrationTests.sh",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "scripts/smokeTests.sh",
+                "additions": 1,
+                "deletions": 1
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "lalalune",
+                "body": "@lachiejames have you had any compatibility issues? I think that we did this because of runtime onnx issues, also Node.js latest now supports type stripping to we can run native typescript without bundler"
+              },
+              {
+                "author": "lachiejames",
+                "body": "> @lachiejames have you had any compatibility issues? I think that we did this because of runtime onnx issues, also Node.js latest now supports type stripping to we can run native typescript without bundler\r\n\r\n@lalalune I hit deployment issues with Vercel since they only support up to Node v22.  \r\n\r\nHappy to close it if Node v23 is required for specific features.  "
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "jmikedupont2",
+    "score": 5,
+    "summary": "jmikedupont2 is currently focused on enhancing project documentation by creating a diagram using Mermaid syntax, as evidenced by their recent pull request submission for this task. Their activity primarily revolves around improving visual representations within the repository without any issues or additional commits made so far.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/16427113?u=2bdad12714de646188f98a07736a54f765ad5e3b&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1647,
+            "title": "Create diagram.mermaid",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2025-01-01T20:16:45Z",
+            "updated_at": "2025-01-01T20:28:54Z",
+            "body": "# Risks\r\n\r\nLow  \r\n- No functional risks, as this is a static addition of a pre-generated diagram.  \r\n\r\n# Background\r\n\r\n## What does this PR do?  \r\nThis PR adds a one-time generated Mermaid diagram created using [[GitDiagram](https://gitdiagram.com/elizaOS/eliza)](https://gitdiagram.com/elizaOS/eliza) to visually represent a Git workflow.\r\n\r\n## What kind of change is this?  \r\nDocumentation/visual enhancement (non-breaking change).  \r\n\r\n# Documentation changes needed?  \r\nMy changes do not require a change to the project documentation.  \r\n\r\n# Testing  \r\n\r\n## Where should a reviewer start?  \r\n1. Review the added Mermaid diagram for accuracy and relevance.  \r\n\r\n## Detailed testing steps  \r\n- Verify that the diagram displays correctly in the relevant section of the project.  \r\n\r\n## Screenshots  \r\n\r\n### Added Mermaid Diagram  \r\n```mermaid\r\nflowchart TB\r\n    subgraph Integration\r\n        direction TB\r\n        Clients[Client Connectors]:::clients\r\n        Models[Model Providers]:::models\r\n    end\r\n\r\n    subgraph Core\r\n        direction TB\r\n        Runtime[Agent Runtime]:::core\r\n        Memory[Memory Manager]:::core\r\n        Cache[Cache Manager]:::core\r\n        Services[Service Layer]:::core\r\n    end\r\n\r\n    subgraph Plugins\r\n        direction TB\r\n        CorePlugins[Core Plugins]:::plugin\r\n        BlockchainPlugins[Blockchain Plugins]:::plugin\r\n        IntegrationPlugins[Integration Plugins]:::plugin\r\n    end\r\n\r\n    subgraph Infrastructure\r\n        direction TB\r\n        DB[(Database Adapters)]:::infra\r\n        CacheSys[(Cache Systems)]:::infra\r\n        Storage[(File Storage)]:::infra\r\n    end\r\n\r\n    Clients --> Runtime\r\n    Models --> Runtime\r\n    Runtime --> Memory\r\n    Runtime --> Cache\r\n    Runtime --> Services\r\n    Memory --> DB\r\n    Cache --> CacheSys\r\n    Services --> Storage\r\n    Runtime --> Plugins\r\n    \r\n    %% Component Mappings\r\n    click Runtime \"https://github.com/elizaOS/eliza/blob/main/packages/core/src/runtime.ts\"\r\n    click Memory \"https://github.com/elizaOS/eliza/blob/main/packages/core/src/memory.ts\"\r\n    click Cache \"https://github.com/elizaOS/eliza/blob/main/packages/core/src/cache.ts\"\r\n    click DB \"https://github.com/elizaOS/eliza/tree/main/packages/adapter-postgres/\"\r\n    click Services \"https://github.com/elizaOS/eliza/tree/main/packages/core/src/services/\"\r\n    click Clients \"https://github.com/elizaOS/eliza/tree/main/packages/client-discord/\"\r\n    click Models \"https://github.com/elizaOS/eliza/blob/main/packages/core/src/providers.ts\"\r\n    click CorePlugins \"https://github.com/elizaOS/eliza/tree/main/packages/plugin-bootstrap/\"\r\n    click BlockchainPlugins \"https://github.com/elizaOS/eliza/tree/main/packages/plugin-solana/\"\r\n    click IntegrationPlugins \"https://github.com/elizaOS/eliza/tree/main/packages/plugin-story/\"\r\n\r\n    %% Styling\r\n    classDef core fill:#2374ab,stroke:#000,stroke-width:2px,color:#fff\r\n    classDef clients fill:#57a773,stroke:#000,stroke-width:2px,color:#fff\r\n    classDef models fill:#ff8c42,stroke:#000,stroke-width:2px,color:#fff\r\n    classDef plugin fill:#845ec2,stroke:#000,stroke-width:2px,color:#fff\r\n    classDef infra fill:#4a4e69,stroke:#000,stroke-width:2px,color:#fff\r\n\r\n    %% Legend\r\n    subgraph Legend\r\n        direction TB\r\n        L1[Core Components]:::core\r\n        L2[Client Connectors]:::clients\r\n        L3[Model Providers]:::models\r\n        L4[Plugins]:::plugin\r\n        L5[Infrastructure]:::infra\r\n    end\r\n```\r\n\r\n# Deploy Notes  \r\nNo deployment changes required.  \r\n\r\n## Database changes  \r\nNone  \r\n\r\n## Deployment instructions  \r\nNo additional deployment steps required.  \r\n\r\nDiscord username m1337d",
+            "files": [
+              {
+                "path": "diagram.mermaid",
+                "additions": 67,
+                "deletions": 0
+              }
+            ],
+            "reviews": [
+              {
+                "author": "monilpat",
+                "state": "APPROVED",
+                "body": "LGTM"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 1,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "RonTuretzky",
+    "score": 5,
+    "summary": "RonTuretzky is currently working on enhancing the GitHub project by adding a new adapter called Opacity to zktls. This feature, showcased through their single pull request (PR), focuses on expanding functionality within packages and agent code areas without any issues or additional commits yet merged into the main branch.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/74178515?u=b2247e0570f3e61334dd36efe3d20aac4a588c83&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1646,
+            "title": "feat: added new adapter - Opacity - zktls ",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2025-01-01T19:58:33Z",
+            "updated_at": "2025-01-01T20:48:59Z",
+            "body": "Co-authored @Hmac512  @RonTuretzky @Gajesh2007 \r\n## Background\r\nA few weeks ago, issues with aixbt were observed, where users mistakenly believed the moderation was performed by humans. This misconception caused a public relations disaster and raised concerns about the AI's autonomy. As a result, the team had to make logs public to maintain transparency and trust.\r\n\r\nThis problem can be mitigated using zkTLS. zkTLS enables the generation of zero-knowledge proofs and MPC for TLS sessions, also known as \"web proofs.\" With zkTLS, any off-chain data can be proven either on-chain or off-chain, ensuring authenticity without compromising privacy.\r\n\r\n\r\nHere is a high-level diagram of the process. \r\n\r\n```mermaid \r\nsequenceDiagram\r\n    autonumber\r\n    participant Eliza\r\n    participant Cloudflare\r\n    participant OpenAI\r\n    Eliza ->> Cloudflare : Prompt Req\r\n    Cloudflare ->> OpenAI : Prompt Req\r\n    OpenAI ->> Cloudflare : Prompt Response\r\n    Cloudflare ->> Cloudflare : Log Prompt Response\r\n    Cloudflare ->> Eliza : Prompt Response\r\n    create participant Opacity\r\n    Eliza ->> Opacity : Generate Proof for Prompt Response\r\n    Opacity ->> Cloudflare : Fetch Prompt Response Log in MPC-TLS\r\n    Cloudflare ->> Opacity : Respond with Prompt Response Log\r\n    Opacity ->> Eliza : Return Proof of Prompt Response Log\r\n```\r\n## What does this PR do?\r\nThis PR integrates Opacity as an adapter into the framework without introducing breaking changes. Opacity is a zkTLS platform built on EigenLayer as an Actively Validated Service (AVS).\r\n\r\n## What kind of change is this?\r\nIntroducing a new adaptor to produce verifiable inference. \r\n\r\n## Why are we doing this? Any context or related work?\r\nThis update addresses the critical need for transparency and trust in AI interactions, as highlighted by the PR disaster involving aixbt. By integrating Opacity as a zkTLS adapter, we ensure that all inferences and interactions are verifiable without compromising privacy. This addition strengthens the framework's credibility by enabling zk/MPC proof generation and verification for TLS sessions.\r\n\r\nThe integration aligns with EigenLayer's/Opacity's mission to build secure and verifiable systems, leveraging Actively Validated Services (AVS) to enhance both functionality and trustworthiness. This is especially relevant as more AI systems require robust mechanisms to prove autonomy and authenticity in a seamless and privacy-preserving manner.\r\n\r\n## Documentation changes needed?\r\nDocumentation has been updated in the adapter-opacity `README.md` and `.example.env`\r\nNo further changes to the project documentation are required.\r\n\r\n## Proof Verification Example\r\n\r\n[Here](https://opacity-ai-zktls-demo.vercel.app/api/logs/01JGD81FDMV4ZHB625BGGKVDSC) is proof of a prompt request. This can be verified using the adapter or otherwise through `https://opacity-ai-zktls-demo.vercel.app/api/verify`\r\n\r\nTesting\r\nAutomated tests are sufficient; no manual testing is required for deployment.\r\n\r\n## Where should a reviewer start?\r\n`packages/adapter-opacity/README.md` and then `packages/adapter-opacity/src/index.ts`\r\n\r\n## Detailed testing steps\r\nFollow steps in `packages/adapter-opacity/README.md` \r\nStart the client: pnpm start:client\r\nInteract with the agent via chat and check the logs for proof generation and verification.\r\n\r\n## Additional Notes\r\nNo database changes or additional deployment instructions are necessary.\r\n\r\nDiscord username\r\nturetzkyron#0000",
+            "files": [
+              {
+                "path": ".env.example",
+                "additions": 9,
+                "deletions": 0
+              },
+              {
+                "path": "agent/package.json",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-opacity/README.md",
+                "additions": 124,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-opacity/package.json",
+                "additions": 22,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-opacity/src/api.ts",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-opacity/src/index.ts",
+                "additions": 148,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-opacity/tsconfig.json",
+                "additions": 10,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/generation.ts",
+                "additions": 72,
+                "deletions": 18
+              },
+              {
+                "path": "packages/core/src/runtime.ts",
+                "additions": 33,
+                "deletions": 11
+              },
+              {
+                "path": "packages/core/src/types.ts",
+                "additions": 59,
+                "deletions": 0
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 41,
+                "deletions": 39
+              }
+            ],
+            "reviews": [
+              {
+                "author": "github-actions",
+                "state": "COMMENTED",
+                "body": "Hi @RonTuretzky! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 1,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "kaitoInfra",
+    "score": 5,
+    "summary": "KaitoInfra is currently working on enhancing the functionality of their project by adding a new feature, specifically a Twitter API search plugin. This addition is showcased through a pull request that has been submitted but not yet merged into the main codebase. Their focus remains within the packages area of development with no other issues or commits reported recently.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/193301952?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1641,
+            "title": "feat: Add twitterapi.io search plugin",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2025-01-01T18:22:43Z",
+            "updated_at": "2025-01-01T19:09:29Z",
+            "body": "This commit adds a new plugin for searching Twitter content without login. The plugin supports complex queries and integrates with the existing API.\r\n\r\n<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\nRelates to:\r\n<!-- LINK TO ISSUE OR TICKET -->\r\nCloses #1431\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\nRisks\r\n<!-- Low, medium, large. List what kind of risks, and what could be effected. -->\r\nLow: 1.The plugin has been extensively tested on Apify with millions of executions, ensuring stability and reliability.\r\n2.After adding the current plugin, there is no place to call it yet. The parts involving other modules will be submitted later. For now, please review this plugin first.\r\n\r\n\r\nBackground\r\nWhat does this PR do?\r\nThis PR introduces a new plugin for fetching Twitter data reliably and efficiently. It addresses the limitations of using personal Twitter accounts for scraping, such as rate limits and account bans, by leveraging a proven solution that has already processed millions of requests on Apify.\r\n\r\nWhat kind of change is this?\r\n<!-- Bug fixes (non-breaking change which fixes an issue) Improvements (misc. changes to existing features) Features (non-breaking change which adds functionality) Updates (new versions of included code) -->\r\nFeatures: Adds a new plugin for Twitter data fetching.\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. --><!-- ## Why are we doing this? Any context or related work? -->\r\nAI agents require large amounts of high-quality, timely data to function effectively. The intelligence of an AI agent depends on two key factors:\r\n\r\nThe capabilities of the underlying AI model.\r\n\r\nThe quality, quantity, and timeliness of the data it processes.\r\n\r\nUsing personal Twitter accounts for scraping data poses significant risks, including account bans and rate limits. This plugin provides a reliable, scalable, and high-performance solution for fetching Twitter data, which has already been validated through millions of executions on Apify.\r\n\r\nAdditionally, I am offering free usage credits to help developers get started quickly and contribute to the project.\r\n\r\nDocumentation changes needed?\r\nI added a new environment variable and have updated the documentation in all relevant languages. I also explained the purpose of this variable.\r\nTWITTER_API_IO_KEY=\r\n#A third-party Twitter API key for data retrieval. This shared key is for testing only - get your personal key at https://twitterapi.io to avoid QPS limitations\r\n\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\nIn the `src/tests` directory under my newly added component folder, you can find all the unit tests for the APIs. I ran the command `pnpm --filter @elizaos/plugin-twitter-search test` and confirmed that all unit tests passed successfully.\r\n\r\nDetailed testing steps\r\n`pnpm --filter @elizaos/plugin-twitter-search test`\r\n\r\nVerify that the plugin can fetch Twitter data without login.\r\n\r\nTest the plugin's performance under high concurrency.\r\n\r\nEnsure the plugin handles rate limits and errors gracefully.\r\n\r\n\r\nDiscord username: [kaitoeasyapi]\r\nTwitter: [kaitoEasyApi](https://x.com/kaitoEasyApi)\r\nApify Twitter Actor: https://apify.com/kaitoeasyapi/twitter-x-data-tweet-scraper-pay-per-result-cheapest\r\n\r\n",
+            "files": [
+              {
+                "path": "packages/plugin-twitter-search/jest.config.mjs",
+                "additions": 22,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-twitter-search/package.json",
+                "additions": 26,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-twitter-search/src/client.ts",
+                "additions": 329,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-twitter-search/src/environment.ts",
+                "additions": 48,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-twitter-search/src/index.ts",
+                "additions": 34,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-twitter-search/src/service.ts",
+                "additions": 92,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-twitter-search/src/tests/__mocks__/core.ts",
+                "additions": 8,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-twitter-search/src/tests/client.test.ts",
+                "additions": 80,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-twitter-search/src/tests/setup.ts",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-twitter-search/src/types.ts",
+                "additions": 196,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-twitter-search/tsconfig.json",
+                "additions": 36,
+                "deletions": 0
+              }
+            ],
+            "reviews": [
+              {
+                "author": "github-actions",
+                "state": "COMMENTED",
+                "body": "Hi @kaitoInfra! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!"
+              }
+            ],
+            "comments": [
+              {
+                "author": "lalalune",
+                "body": "nice"
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 1,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "0xRider",
+    "score": 4,
+    "summary": "0xRider is currently working on updating the Supabase schema by making changes to its schema.sql file, as evidenced by their recent pull request activity. Although they have not yet merged this PR or made any additional commits, issues, or code changes in other areas, their focus remains within the packages domain of the project.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/134025586?u=7bd17c62ffbdf27af3b6f94970fdd4a2c35ee5fa&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1660,
+            "title": "fix: Update Supabase schema.sql",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2025-01-01T22:06:01Z",
+            "updated_at": "2025-01-01T22:08:02Z",
+            "body": "There is an extra semicolon that causes a syntax error when trying to upload the schema to Supabase.\r\n\r\n(ie. by using the SQL editor in the GUI, it fails due to this syntax error)\r\n\r\n# Risks\r\n\r\nLow.\r\n\r\n## What does this PR do?\r\n\r\nFixes Supabase schema.\r\n\r\n## What kind of change is this?\r\n\r\nBug fixes (non-breaking change which fixes an issue)\r\n\r\n## Why are we doing this? Any context or related work?\r\nSo people can setup their Supabase db in the cloud.\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n# Testing\r\n\r\nVisit the Supabase SQL editor and copy paste the schema.\r\n\r\n### before\r\n<img width=\"434\" alt=\"Screen Shot 2025-01-01 at 3 02 10 PM\" src=\"https://github.com/user-attachments/assets/9210c0c8-527c-417c-b31a-c36f3d14a013\" />\r\n\r\n### after\r\n<img width=\"264\" alt=\"Screen Shot 2025-01-01 at 3 01 59 PM\" src=\"https://github.com/user-attachments/assets/a9a64a58-9cdc-4851-b1f5-69cda27ed753\" />\r\n\r\n\r\n## Detailed testing steps\r\n\r\nNone, automated tests are fine.\r\n\r\n\r\n## Discord username\r\n\r\n`@0x_rider`\r\n",
+            "files": [
+              {
+                "path": "packages/adapter-supabase/schema.sql",
+                "additions": 2,
+                "deletions": 2
+              }
+            ],
+            "reviews": [
+              {
+                "author": "github-actions",
+                "state": "COMMENTED",
+                "body": "Hi @0xRider! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 1,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "mdominikd",
+    "score": 2,
+    "summary": "mdominikd is currently focused on enhancing the project's accessibility to Hungarian speakers by adding a Hungarian README file, as evidenced by their recent pull request activity. Despite this being their only contribution so far, it indicates an effort towards internationalization and inclusivity within the project.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/154684992?u=64bf93baac6239f0f8ef43a1cdf450fa061715fc&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1645,
+            "title": "Added Hungarian README",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2025-01-01T19:23:54Z",
+            "updated_at": "2025-01-01T22:16:22Z",
+            "body": "# Risks\r\nzero \r\n\r\n## What does this PR do?\r\nAdd Hungarian README\r\n\r\n## Discord username\r\nmhoused\r\n",
+            "files": [
+              {
+                "path": "README.md",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "README_HU.md",
+                "additions": 133,
+                "deletions": 0
+              }
+            ],
+            "reviews": [
+              {
+                "author": "github-actions",
+                "state": "COMMENTED",
+                "body": "Hi @mdominikd! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!"
+              },
+              {
+                "author": "monilpat",
+                "state": "DISMISSED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 2,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "hellopleasures",
+    "score": 2,
+    "summary": "hellopleasures is currently working on enhancing their social media presence by developing a feature that allows an agent to post regular tweets or threads based on specified percentages. This effort involves creating a pull request for adding a new post thread functionality, although it has not yet been merged into the main codebase.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/99759672?u=b6a108e2d997342768a4a75dde071f0586527e8d&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1644,
+            "title": "add a post thread, agent will post a regular tweet or thread random base on what percent you gave",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2025-01-01T19:21:51Z",
+            "updated_at": "2025-01-01T22:14:18Z",
+            "body": "",
+            "files": [
+              {
+                "path": "packages/client-twitter/src/post.ts",
+                "additions": 191,
+                "deletions": 24
+              },
+              {
+                "path": "packages/core/src/types.ts",
+                "additions": 1,
+                "deletions": 0
+              }
+            ],
+            "reviews": [
+              {
+                "author": "github-actions",
+                "state": "COMMENTED",
+                "body": "Hi @hellopleasures! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 1,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "augchan42",
+    "score": 1,
+    "summary": "Augchan42 is currently addressing a bug related to the caching of character card profiles into the database indefinitely within the client-twitter project. Their recent activity has been focused on resolving this issue, as evidenced by their engagement in discussions and contributions through issues. However, they have not yet made any pull requests or commits towards fixing the problem at this time.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/20424105?u=d1a74732b07564927928798346f07cd50935c529&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 1638,
+            "title": "bug: client-twitter - character card profiles are cached into database indefinitely",
+            "state": "OPEN",
+            "created_at": "2025-01-01T15:47:33Z",
+            "updated_at": "2025-01-01T15:48:18Z",
+            "body": "We should not be caching character card into the database indefinitely\r\nAround line 725 in base.ts:\r\n\r\n```\r\nasync cacheProfile(profile: TwitterProfile) {\r\n    await this.runtime.cacheManager.set(\r\n        `twitter/${profile.username}/profile`,\r\n        profile\r\n    ); // No expiry - profile persists\r\n}\r\n```\r\n\r\nThat means once the profile is cached, even if the character card info is changed and agent process is restarted, the cached profile from the database is used.  This should be removed so that character card bios can be updated upon restart.  There's not much of a performance gain from caching anyway, as the bio is only loaded once on startup.\r\n\r\ntwitter login Cookies are also cached indefinitely, not sure if that's good or bad, but it doesn't seem right to me as twitter login cookies should eventually expire.",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  }
+]

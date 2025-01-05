@@ -1,0 +1,1877 @@
+[
+  {
+    "contributor": "ryanleecode",
+    "score": 39,
+    "summary": "Ryanleecode is actively working on improving the project's documentation, package management, and GitHub workflow by addressing issues related to PR titles, Node LTS versions, and strict Tsconfig settings. They have successfully merged two pull requests for allowing scoped PR titles and formatting package.json files with Prettier.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/21375952?u=24f232e3e3356e214d1464bde3bd64ffe79e0090&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 2,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1414,
+            "title": "chore: allow scoped pr titles",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-23T21:06:33Z",
+            "updated_at": "2024-12-23T21:58:08Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\nCloses: #1413\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\n## What kind of change is this?\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": ".github/workflows/pr.yaml",
+                "additions": 5,
+                "deletions": 3
+              }
+            ],
+            "reviews": [
+              {
+                "author": "twilwa",
+                "state": "APPROVED",
+                "body": "lgtm"
+              },
+              {
+                "author": "monilpat",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 1412,
+            "title": "chore: format package.json files with prettier",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-23T20:25:11Z",
+            "updated_at": "2024-12-23T22:03:25Z",
+            "body": "Runs prettier on all package json files. This will make reviewing https://github.com/elizaOS/eliza/pull/1365 easier.",
+            "files": [
+              {
+                "path": "agent/package.json",
+                "additions": 60,
+                "deletions": 60
+              },
+              {
+                "path": "client/package.json",
+                "additions": 45,
+                "deletions": 45
+              },
+              {
+                "path": "docs/package.json",
+                "additions": 53,
+                "deletions": 53
+              },
+              {
+                "path": "packages/adapter-postgres/package.json",
+                "additions": 18,
+                "deletions": 18
+              },
+              {
+                "path": "packages/adapter-redis/package.json",
+                "additions": 21,
+                "deletions": 21
+              },
+              {
+                "path": "packages/adapter-sqlite/package.json",
+                "additions": 22,
+                "deletions": 22
+              },
+              {
+                "path": "packages/adapter-sqljs/package.json",
+                "additions": 22,
+                "deletions": 22
+              },
+              {
+                "path": "packages/adapter-supabase/package.json",
+                "additions": 20,
+                "deletions": 20
+              },
+              {
+                "path": "packages/client-auto/package.json",
+                "additions": 25,
+                "deletions": 25
+              },
+              {
+                "path": "packages/client-direct/package.json",
+                "additions": 28,
+                "deletions": 28
+              },
+              {
+                "path": "packages/client-discord/package.json",
+                "additions": 31,
+                "deletions": 31
+              },
+              {
+                "path": "packages/client-farcaster/package.json",
+                "additions": 16,
+                "deletions": 16
+              },
+              {
+                "path": "packages/client-github/package.json",
+                "additions": 21,
+                "deletions": 21
+              },
+              {
+                "path": "packages/client-lens/package.json",
+                "additions": 22,
+                "deletions": 22
+              },
+              {
+                "path": "packages/client-slack/package.json",
+                "additions": 43,
+                "deletions": 43
+              },
+              {
+                "path": "packages/client-telegram/package.json",
+                "additions": 19,
+                "deletions": 19
+              },
+              {
+                "path": "packages/client-twitter/package.json",
+                "additions": 22,
+                "deletions": 22
+              },
+              {
+                "path": "packages/core/package.json",
+                "additions": 77,
+                "deletions": 77
+              },
+              {
+                "path": "packages/create-eliza-app/package.json",
+                "additions": 29,
+                "deletions": 29
+              },
+              {
+                "path": "packages/plugin-0g/package.json",
+                "additions": 16,
+                "deletions": 16
+              },
+              {
+                "path": "packages/plugin-aptos/package.json",
+                "additions": 24,
+                "deletions": 24
+              },
+              {
+                "path": "packages/plugin-bootstrap/package.json",
+                "additions": 17,
+                "deletions": 17
+              },
+              {
+                "path": "packages/plugin-coinbase/advanced-sdk-ts/package.json",
+                "additions": 32,
+                "deletions": 32
+              },
+              {
+                "path": "packages/plugin-coinbase/package.json",
+                "additions": 22,
+                "deletions": 22
+              },
+              {
+                "path": "packages/plugin-conflux/package.json",
+                "additions": 13,
+                "deletions": 13
+              },
+              {
+                "path": "packages/plugin-echochambers/package.json",
+                "additions": 13,
+                "deletions": 13
+              },
+              {
+                "path": "packages/plugin-evm/package.json",
+                "additions": 22,
+                "deletions": 22
+              },
+              {
+                "path": "packages/plugin-flow/package.json",
+                "additions": 34,
+                "deletions": 34
+              },
+              {
+                "path": "packages/plugin-goat/package.json",
+                "additions": 21,
+                "deletions": 21
+              },
+              {
+                "path": "packages/plugin-icp/package.json",
+                "additions": 22,
+                "deletions": 22
+              },
+              {
+                "path": "packages/plugin-image-generation/package.json",
+                "additions": 17,
+                "deletions": 17
+              },
+              {
+                "path": "packages/plugin-intiface/package.json",
+                "additions": 19,
+                "deletions": 19
+              },
+              {
+                "path": "packages/plugin-multiversx/package.json",
+                "additions": 24,
+                "deletions": 24
+              },
+              {
+                "path": "packages/plugin-near/package.json",
+                "additions": 23,
+                "deletions": 23
+              },
+              {
+                "path": "packages/plugin-nft-generation/package.json",
+                "additions": 28,
+                "deletions": 28
+              },
+              {
+                "path": "packages/plugin-node/package.json",
+                "additions": 87,
+                "deletions": 87
+              },
+              {
+                "path": "packages/plugin-solana/package.json",
+                "additions": 31,
+                "deletions": 31
+              },
+              {
+                "path": "packages/plugin-starknet/package.json",
+                "additions": 25,
+                "deletions": 25
+              },
+              {
+                "path": "packages/plugin-story/package.json",
+                "additions": 24,
+                "deletions": 24
+              },
+              {
+                "path": "packages/plugin-sui/package.json",
+                "additions": 24,
+                "deletions": 24
+              },
+              {
+                "path": "packages/plugin-tee/package.json",
+                "additions": 26,
+                "deletions": 26
+              },
+              {
+                "path": "packages/plugin-ton/package.json",
+                "additions": 23,
+                "deletions": 23
+              },
+              {
+                "path": "packages/plugin-trustdb/package.json",
+                "additions": 25,
+                "deletions": 25
+              },
+              {
+                "path": "packages/plugin-video-generation/package.json",
+                "additions": 17,
+                "deletions": 17
+              },
+              {
+                "path": "packages/plugin-web-search/package.json",
+                "additions": 16,
+                "deletions": 16
+              },
+              {
+                "path": "packages/plugin-whatsapp/package.json",
+                "additions": 24,
+                "deletions": 24
+              },
+              {
+                "path": "packages/plugin-zksync-era/package.json",
+                "additions": 18,
+                "deletions": 18
+              }
+            ],
+            "reviews": [
+              {
+                "author": "twilwa",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 3,
+        "opened": [
+          {
+            "number": 1413,
+            "title": "Scoped PR titles",
+            "state": "CLOSED",
+            "created_at": "2024-12-23T21:06:17Z",
+            "updated_at": "2024-12-23T22:34:09Z",
+            "body": "Title of PRs should be allowed to be something like this: `chore(postgres-adapter): fix it`",
+            "labels": [],
+            "comments": []
+          },
+          {
+            "number": 1411,
+            "title": "Minimum Node LTS",
+            "state": "OPEN",
+            "created_at": "2024-12-23T19:53:30Z",
+            "updated_at": "2024-12-23T19:53:30Z",
+            "body": "Current Node LTS is 22. Is there a reason why we require Node 23 in the package.json?\r\n\r\nhttps://github.com/elizaOS/eliza/blob/main/package.json#L51",
+            "labels": [],
+            "comments": []
+          },
+          {
+            "number": 1409,
+            "title": "Tsconfig settings need to be more strict",
+            "state": "OPEN",
+            "created_at": "2024-12-23T19:19:04Z",
+            "updated_at": "2024-12-23T19:19:04Z",
+            "body": "In the core package the tsconfig has strict set to false. This IMO is not good and will cause many bugs especially for a modern Typescript project. It would be better to inherit settings from @total-typescript/tsconfig which uses the best tsconfig practices.\r\n\r\nhttps://github.com/total-typescript/tsconfig",
+            "labels": [],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 3,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "jasonqindev",
+    "score": 31,
+    "summary": "Jasonqindev is actively working on improving the tweet scheduling functionality within a project, focusing primarily on resolving issues related to duplicate tweets being posted due to multiple invocations of generateNewTweetLoop method. They have contributed three pull requests aimed at fixing these problems and addressing bugs in the codebase.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/161962462?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 3,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1402,
+            "title": "fix: duplicate tweet log",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-23T13:38:31Z",
+            "updated_at": "2024-12-23T17:40:49Z",
+            "body": "- Resolved an issue where `generateNewTweetLoop` was called twice in the `start` method of /packages/client-twitter/src/post.ts.\r\n- The method was invoked at line 174 and line 190 without any conditional checks, leading to two independent tweet scheduling loops being created.\r\n- Move second `generateNewTweetLoop()` inside the `if (enableActionProcessing)`\r\n\r\nFixes #1395\r\n\r\n# Relates to:\r\n\r\nIssue #1395\r\n\r\n# Risks\r\n\r\nLow: Removing the redundant call ensures only one scheduling loop, minimal impact on other functionalities.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nThis PR fixes an issue where `generateNewTweetLoop` was called twice, leading multiple tweets to be posted. It ensures only a single scheduling loop is initialized by removing the redundant call.\r\n\r\n## What kind of change is this?\r\n\r\nBug fixes (non-breaking change which fixes an issue)\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nStart by reviewing the `start` method in /packages/client-twitter/src/post.ts, focusing on the moving second `generateNewTweetLoop()` inside the `if (enableActionProcessing)` condition.\r\n\r\n## Detailed testing steps\r\n\r\n1. Configure the Twitter client and set `POST_IMMEDIATELY=true` to enable immediate tweet posting.\r\n2. Start the service and observe if two tweets are sent, and check if the log contains multiple `Next tweet scheduled in xxx minutes` messages.\r\n3. Verify that after starting the service, only one tweet is sent and the `Next tweet scheduled in xxx minutes` message is logged only once.\r\n4. Confirm that tweets are still being scheduled correctly without any issues.\r\n",
+            "files": [
+              {
+                "path": "packages/client-twitter/src/post.ts",
+                "additions": 1,
+                "deletions": 1
+              }
+            ],
+            "reviews": [
+              {
+                "author": "monilpat",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": [
+              {
+                "author": "jasonqindev",
+                "body": "The PR I previously created has been closed, which was incorrect. I have created a new PR to merge into the develop branch."
+              }
+            ]
+          },
+          {
+            "number": 1401,
+            "title": "Fix/duplicate next tweet log",
+            "state": "CLOSED",
+            "merged": false,
+            "created_at": "2024-12-23T12:49:20Z",
+            "updated_at": "2024-12-23T13:35:31Z",
+            "body": "- Resolved an issue where `generateNewTweetLoop` was called twice in the `start` method of /packages/client-twitter/src/post.ts.\r\n- The method was invoked at line 174 and line 190 without any conditional checks, leading to two independent tweet scheduling loops being created.\r\n- Move second `generateNewTweetLoop()` inside the `if (enableActionProcessing)`\r\n\r\nFixes #1395\r\n\r\n# Relates to:\r\n\r\nIssue #1395\r\n\r\n# Risks\r\n\r\nLow: Removing the redundant call ensures only one scheduling loop, minimal impact on other functionalities.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nThis PR fixes an issue where `generateNewTweetLoop` was called twice, leading multiple tweets to be posted. It ensures only a single scheduling loop is initialized by removing the redundant call.\r\n\r\n## What kind of change is this?\r\n\r\nBug fixes (non-breaking change which fixes an issue)\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nStart by reviewing the `start` method in /packages/client-twitter/src/post.ts, focusing on the moving second `generateNewTweetLoop()` inside the `if (enableActionProcessing)` condition.\r\n\r\n## Detailed testing steps\r\n\r\n1. Configure the Twitter client and set `POST_IMMEDIATELY=true` to enable immediate tweet posting.\r\n2. Start the service and observe if two tweets are sent, and check if the log contains multiple `Next tweet scheduled in xxx minutes` messages.\r\n3. Verify that after starting the service, only one tweet is sent and the `Next tweet scheduled in xxx minutes` message is logged only once.\r\n4. Confirm that tweets are still being scheduled correctly without any issues.\r\n",
+            "files": [
+              {
+                "path": "packages/client-twitter/src/post.ts",
+                "additions": 1,
+                "deletions": 1
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "jasonqindev",
+                "body": "The PR I previously created was merged into the main branch and has been closed, which was incorrect. I have created a new PR to merge into the develop branch."
+              }
+            ]
+          },
+          {
+            "number": 1396,
+            "title": "Fix: Duplicate tweet scheduling loops in start method",
+            "state": "CLOSED",
+            "merged": false,
+            "created_at": "2024-12-23T08:42:03Z",
+            "updated_at": "2024-12-23T12:48:08Z",
+            "body": "- Resolved an issue where `generateNewTweetLoop` was called twice in the `start` method of /packages/client-twitter/src/post.ts.\r\n- The method was invoked at line 174 and line 190 without any conditional checks, leading to two independent tweet scheduling loops being created.\r\n- Removed one of the redundant `generateNewTweetLoop` calls to ensure only a single scheduling loop is initialized.\r\n\r\nFixes #1395\r\n\r\n# Relates to:\r\n\r\nIssue #1395\r\n\r\n# Risks\r\n\r\nLow: Removing the redundant call ensures only one scheduling loop, minimal impact on other functionalities.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nThis PR fixes an issue where `generateNewTweetLoop` was called twice, leading multiple tweets to be posted. It ensures only a single scheduling loop is initialized by removing the redundant call.\r\n\r\n## What kind of change is this?\r\n\r\nBug fixes (non-breaking change which fixes an issue)\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nStart by reviewing the `start` method in /packages/client-twitter/src/post.ts, focusing on the removal of the redundant `generateNewTweetLoop` call.\r\n\r\n## Detailed testing steps\r\n\r\n1. Configure the Twitter client and set `POST_IMMEDIATELY=true` to enable immediate tweet posting.\r\n2. Start the service and observe if two tweets are sent, and check if the log contains multiple `Next tweet scheduled in xxx minutes` messages.\r\n3. Verify that after starting the service, only one tweet is sent and the `Next tweet scheduled in xxx minutes` message is logged only once.\r\n4. Confirm that tweets are still being scheduled correctly without any issues.\r\n",
+            "files": [
+              {
+                "path": "packages/client-twitter/src/post.ts",
+                "additions": 1,
+                "deletions": 1
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "samarth30",
+                "body": "I think generateNewTweetLoop(); this second loop is applied in case processActionsLoop in being executed.\r\n\r\n```\r\nif (enableActionProcessing) {\r\n            processActionsLoop().catch((error) => {\r\n                elizaLogger.error(\r\n                    \"Fatal error in process actions loop:\",\r\n                    error\r\n                );\r\n            });\r\n            generateNewTweetLoop();\r\n        } else {\r\n            elizaLogger.log(\"Action processing loop disabled by configuration\");\r\n        }\r\n```\r\n        \r\n  If you can keep generateNewTweetLoop() function in the if condition then it will be good to merge"
+              },
+              {
+                "author": "jasonqindev",
+                "body": "> I think generateNewTweetLoop(); this second loop is applied in case processActionsLoop in being executed.\r\n> \r\n> ```\r\n> if (enableActionProcessing) {\r\n>             processActionsLoop().catch((error) => {\r\n>                 elizaLogger.error(\r\n>                     \"Fatal error in process actions loop:\",\r\n>                     error\r\n>                 );\r\n>             });\r\n>             generateNewTweetLoop();\r\n>         } else {\r\n>             elizaLogger.log(\"Action processing loop disabled by configuration\");\r\n>         }\r\n> ```\r\n> \r\n> If you can keep generateNewTweetLoop() function in the if condition then it will be good to merge\r\n\r\nI've updated the code to move `generateNewTweetLoop()` inside the `if (enableActionProcessing)` block as suggested."
+              },
+              {
+                "author": "samarth30",
+                "body": "LGTM"
+              },
+              {
+                "author": "jasonqindev",
+                "body": "\r\nIt seems that this should be merged into the develop branch, but I merged it into main instead. I will close this PR and create a new one."
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 1395,
+            "title": "Multiple generateNewTweetLoop method invocations caused multiple tweets to be posted.",
+            "state": "OPEN",
+            "created_at": "2024-12-23T08:10:03Z",
+            "updated_at": "2024-12-23T12:56:23Z",
+            "body": "**Describe the bug**\r\nWhen using the Eliza framework, I successfully configured the Twitter client and logged into my account. However, upon inspecting the runtime logs, I noticed that the message `[\"\u25ce Next tweet scheduled in 128 minutes\"] ` appeared twice. This indicates that `generateNewTweetLoop` was called twice, resulting in two independent tweet scheduling loops being initialized.\r\n\r\nThe issue occurs because the `start` method in `/packages/client-twitter/src/post.ts` calls `generateNewTweetLoop` twice\u2014once at line 174 and again at line 190\u2014without any conditional checks to prevent multiple timers.\r\n\r\n**To Reproduce**\r\n1. Add the following code to the relevant `character.json` file:\r\n\r\n   ```\r\n   \"clients\": [\"twitter\"]\r\n   ```\r\n\r\n2. Configure the Twitter-related parameters in the `.env` file, and set `POST_IMMEDIATELY=true` to enable immediate tweet posting.\r\n\r\n3. Start the model service.\r\n\r\n4. Check Twitter, and you will find that two tweets are posted simultaneously. Additionally, the logs show the message `Next tweet scheduled in xxx minutes` printed twice.\r\n\r\n**Expected behavior**\r\nThe generateNewTweetLoop method should only be invoked once during the start method, ensuring that only a single tweet scheduling loop is active. This would prevent duplicate logs and redundant scheduling timers.\r\n\r\n**Screenshots**\r\n<img width=\"833\" alt=\"image\" src=\"https://github.com/user-attachments/assets/0ebe87aa-ff46-488d-9961-90daf43b5aab\" />\r\n\r\n**Additional context**\r\n- File: /packages/client-twitter/src/post.ts\r\n- Method: start\r\n- Lines: 174 and 190\r\n- Observed Behavior: generateNewTweetLoop is called twice without a conditional check, causing two scheduling loops to be initialized.\r\n- Move second generateNewTweetLoop() inside the if (enableActionProcessing)",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 1,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "hcaumo",
+    "score": 29,
+    "summary": "hcaaumo is working to standardize boolean values and update the pattern for .env files, as evidenced by a merged pull request and an issue addressed within the packages code area. This activity focuses on improving configuration management and bug fixes in the project.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/65081463?u=9f619028d7846c88be6386e6f163b660319cc00e&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1392,
+            "title": "Standardize boolean values and update .env file pattern",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-23T07:13:51Z",
+            "updated_at": "2024-12-23T17:36:56Z",
+            "body": "Replace YES/NO with true/false for boolean variables in .env file. Ensure consistency across the codebase by removing the need for parseBooleanFromText.\r\nRelates to:\r\n<!-- [LINK TO ISSUE OR TICKET](https://github.com/elizaOS/eliza/issues/1391) -->\r\n\r\n#1391 - Standardize boolean values and fix pattern for .env file\r\n\r\n<!-- Low: This change only modifies how boolean values are handled in the .env file, ensuring consistency and preventing potential parsing errors. Medium: Existing functionality depending on the `parseBooleanFromText` function may need adjustments, but no major system parts are affected. -->\r\nBackground\r\nWhat does this PR do?\r\n\r\nThis PR replaces the \"YES\" and \"NO\" values used in the .env file for boolean variables with true and false to ensure consistency across the codebase. It removes the need for the parseBooleanFromText function, simplifying the parsing logic.\r\nWhat kind of change is this?\r\n\r\nTesting\r\nWhere should a reviewer start?\r\n\r\nThe reviewer should begin by checking the .env file to ensure that all boolean variables are now using true or false instead of \"YES\" or \"NO\".\r\nDetailed testing steps\r\n\r\n    Check the .env file and verify that all boolean variables (e.g., POST_IMMEDIATELY, TWITTER_SEARCH_ENABLE) now use true or false.\r\n    Ensure that no usage of parseBooleanFromText exists in the codebase anymore.\r\n    Test the functionality where these variables are used to ensure they work correctly as booleans.\r\n",
+            "files": [
+              {
+                "path": "packages/client-twitter/src/post.ts",
+                "additions": 4,
+                "deletions": 4
+              }
+            ],
+            "reviews": [
+              {
+                "author": "monilpat",
+                "state": "DISMISSED",
+                "body": ""
+              },
+              {
+                "author": "monilpat",
+                "state": "APPROVED",
+                "body": ""
+              },
+              {
+                "author": "odilitime",
+                "state": "CHANGES_REQUESTED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 1391,
+            "title": "Standardize boolean values and fix pattern for .env file",
+            "state": "OPEN",
+            "created_at": "2024-12-23T06:10:15Z",
+            "updated_at": "2024-12-23T08:25:52Z",
+            "body": "Title: Standardize boolean values and fix pattern for .env file\r\n\r\nDescribe the bug\r\nThe `.env` file contains some inconsistencies in how boolean values and specific strings are represented. For instance, the variable `POST_IMMEDIATELY` uses the string \"NO\", while a boolean value like `TWITTER_SEARCH_ENABLE` uses `false`. This inconsistency could lead to parsing issues and is prone to human error. \r\n\r\nTo Reproduce\r\n1. Open the `.env` file. 2. Observe that `POST_IMMEDIATELY=NO` is used instead of the expected `false`. \r\n\r\nExpected behavior\r\n Boolean variables should consistently use `true` or `false`, and all string-based boolean values such as `POST_IMMEDIATELY` should use `true`/`false` instead of `\"YES\"`/`\"NO\"`. \r\n\r\nAdditional context\r\n This change will standardize boolean values, making the `.env` file easier to parse and reducing the risk of errors. The `parseBooleanFromText` function, declared as `const parseBooleanFromText: (text: string) => boolean;`, can be used outside the `.env` context to ensure boolean parsing is consistent across the codebase. \r\n\r\nGuidelines for .env values\r\n\r\n1. **Boolean values**: Always use `true` or `false` (not `\"YES\"` or `\"NO\"`). \r\nExample: ``` TWITTER_SEARCH_ENABLE=true POST_IMMEDIATELY=false ``` \r\n\r\n Adhering to these guidelines will ensure consistency and make it easier for automated scripts to process the `.env` file while reduce  human error.",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": [
+              {
+                "author": "samarth30",
+                "body": "@hcaumo I think the POST_IMMEDIATELY is boolean only rather than YES and No."
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 1,
+        "total_reviews": 3,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "shakkernerd",
+    "score": 27,
+    "summary": "Shakkernerd is currently focused on improving the project's testing framework, as evidenced by their recent pull requests to split tests for better organization and require approval for integration test steps to ensure quality control. Additionally, they have made changes to the Continuous Integration (CI) trigger to streamline the development process.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/165377636?u=5560dd9f2d310e1ba61dbba864006a951391a582&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 3,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1390,
+            "title": "chore: split tests",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-23T05:45:12Z",
+            "updated_at": "2024-12-23T06:01:35Z",
+            "body": "",
+            "files": [
+              {
+                "path": ".github/workflows/integrationTests.yaml",
+                "additions": 1,
+                "deletions": 28
+              },
+              {
+                "path": ".github/workflows/smoke-tests.yml",
+                "additions": 26,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          },
+          {
+            "number": 1388,
+            "title": "chore: require approval for integration test step",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-23T04:27:08Z",
+            "updated_at": "2024-12-23T04:31:33Z",
+            "body": "",
+            "files": [
+              {
+                "path": ".github/workflows/integrationTests.yaml",
+                "additions": 12,
+                "deletions": 5
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          },
+          {
+            "number": 1387,
+            "title": "chore: change CI trigger",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-23T03:54:25Z",
+            "updated_at": "2024-12-23T03:55:26Z",
+            "body": "",
+            "files": [
+              {
+                "path": ".github/workflows/integrationTests.yaml",
+                "additions": 1,
+                "deletions": 1
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "ChristopherTrimboli",
+    "score": 22,
+    "summary": "ChristopherTrimboli is currently working on enhancing the system's flexibility by implementing dynamic plugin imports within the scripting area. This effort aims to streamline the integration and management of various plugins, although no merged pull requests or issues have been recorded yet in this endeavor.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/27584221?u=778f704e439917d770485e5355fa4467d9b7e1b4&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1383,
+            "title": "chore: dynamic plugin imports",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2024-12-22T22:44:43Z",
+            "updated_at": "2024-12-23T20:49:45Z",
+            "body": "# Relates to:\r\n\r\nNone, just looking for improvements. \r\n\r\n# Risks\r\n\r\nHIGH - could break plugins\r\n\r\n# Background\r\n\r\nPlugins even if unused are being always imported into the agent/index.ts at top of file.\r\nThis adds much memory usage to the JS runtime and not most efficient way to load optional plugins.\r\n\r\n## What does this PR do?\r\n\r\nDynamically imports plugins when needed based on ENV / secrets loaded.\r\n\r\n## What kind of change is this?\r\n\r\nImprovements (misc. changes to existing features)\r\n\r\n## Why are we doing this? Any context or related work?\r\n\r\nMakes Eliza faster / slimmer / less bloated / scales infinite plugins with minimal runtime overhead.\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n# Testing\r\n\r\nTry out different combinations of plugins off and on, see if loads or breaks.\r\n\r\n## Discord username\r\n\r\ncjft\r\n",
+            "files": [
+              {
+                "path": "agent/src/index.ts",
+                "additions": 151,
+                "deletions": 105
+              },
+              {
+                "path": "packages/core/src/index.ts",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/plugins.ts",
+                "additions": 34,
+                "deletions": 0
+              },
+              {
+                "path": "packages/core/src/types.ts",
+                "additions": 5,
+                "deletions": 0
+              },
+              {
+                "path": "scripts/dev.sh",
+                "additions": 11,
+                "deletions": 13
+              }
+            ],
+            "reviews": [
+              {
+                "author": "ryanleecode",
+                "state": "COMMENTED",
+                "body": ""
+              },
+              {
+                "author": "ChristopherTrimboli",
+                "state": "COMMENTED",
+                "body": ""
+              },
+              {
+                "author": "ryanleecode",
+                "state": "COMMENTED",
+                "body": ""
+              },
+              {
+                "author": "ryanleecode",
+                "state": "COMMENTED",
+                "body": ""
+              },
+              {
+                "author": "ChristopherTrimboli",
+                "state": "COMMENTED",
+                "body": ""
+              },
+              {
+                "author": "ryanleecode",
+                "state": "COMMENTED",
+                "body": ""
+              },
+              {
+                "author": "ryanleecode",
+                "state": "COMMENTED",
+                "body": ""
+              }
+            ],
+            "comments": [
+              {
+                "author": "ChristopherTrimboli",
+                "body": "P.S. - seems like passed all tests, omg, nice... just noticed could do same for all client packages: if we like this change, ill do another PR for dynamic client imports too, massive optz."
+              },
+              {
+                "author": "ChristopherTrimboli",
+                "body": "hmmm avaer told me that \"alot of wrappings\" I can make better abstraction for loading dynamic imports... I'll work on. Like a function for it instead. Bit complex because of all the diff conditionals / import styles / 1 is a default import. I'll see if can do nicely."
+              },
+              {
+                "author": "ChristopherTrimboli",
+                "body": "> hmmm avaer told me that \"alot of wrappings\" I can make better abstraction for loading dynamic imports... I'll work on. Like a function for it instead. Bit complex because of all the diff conditionals / import styles / 1 is a default import. I'll see if can do nicely.\r\n\r\ndone, now have `loadPlugin()` abstraction with very simple string based plugin config."
+              },
+              {
+                "author": "ryanleecode",
+                "body": "Why do it like this? Why not pass a callback to loadPlugin that is `async () => import('my plugin')`"
+              },
+              {
+                "author": "ryanleecode",
+                "body": "The probably is the public api is purely string base its not type safe where as if you do callback import and you don't have the dependency installed, typescript will not compile it."
+              },
+              {
+                "author": "odilitime",
+                "body": "Probably need to update https://github.com/elizaOS/eliza/blob/4c658d7d70433fdcb2feeffe879429eaef10685d/scripts/dev.sh#L45\r\n\r\nfor future plugin devs"
+              },
+              {
+                "author": "ChristopherTrimboli",
+                "body": "> Why do it like this? Why not pass a callback to loadPlugin that is `async () => import('my plugin')`\r\n\r\nOK yeah callback param is better, I'll update."
+              },
+              {
+                "author": "ChristopherTrimboli",
+                "body": "changed to callback params: https://github.com/elizaOS/eliza/pull/1383/commits/2efee641eb81c7570d78d045bb1ce6b7334737c0"
+              },
+              {
+                "author": "ChristopherTrimboli",
+                "body": "> Probably need to update\r\n> \r\n> https://github.com/elizaOS/eliza/blob/4c658d7d70433fdcb2feeffe879429eaef10685d/scripts/dev.sh#L45\r\n> \r\n> for future plugin devs\r\n\r\nhttps://github.com/elizaOS/eliza/pull/1383/commits/c5d4dc494675f11d370500d087273c7294a2ecee updated plugin instructions"
+              },
+              {
+                "author": "ryanleecode",
+                "body": "This doesn't work your `loadPlugin` returns null but the function is typed as `Promise<any>` where as the constructor parameter only takes `Plugin[]`. Giving it a null plugin will definately fail. \r\n\r\nIMO the correct approach would be something as follows.\r\n\r\n1. Create a dynamic Plugin type such as\r\n\r\n```ts\r\nexport type DynamicPlugin = {\r\n    readonly factory: () => Promise<Plugin>;\r\n    readonly shouldInit: (character: Character) => boolean;\r\n};\r\n```\r\n\r\n2. Make the AgenRuntime constructor private and create a static factory function that is async and accepts `ReadonlyArray<Plugin | DynamicPlugin>` as a parameter. Await the dynamic parameters in the async static factory. Bonus points for adding `_tag: 'Plugin'` and `_tag: 'DynamicPlugin` to the respective types, although this would be a high impact change since it would fuck over downstream plugins."
+              },
+              {
+                "author": "ChristopherTrimboli",
+                "body": "> This doesn't work your `loadPlugin` returns null but the function is typed as `Promise<any>` where as the constructor parameter only takes `Plugin[]`. Giving it a null plugin will definately fail.\r\n> \r\n> IMO the correct approach would be something as follows.\r\n> \r\n> 1. Create a dynamic Plugin type such as\r\n> \r\n> ```ts\r\n> export type DynamicPlugin = {\r\n>     readonly factory: () => Promise<Plugin>;\r\n>     readonly shouldInit: (character: Character) => boolean;\r\n> };\r\n> ```\r\n> \r\n> 2. Make the AgenRuntime constructor private and create a static factory function that is async and accepts `ReadonlyArray<Plugin | DynamicPlugin>` as a parameter. Await the dynamic parameters in the async static factory. Bonus points for adding `_tag: 'Plugin'` and `_tag: 'DynamicPlugin` to the respective types, although this would be a high impact change since it would fuck over downstream plugins.\r\n\r\nI see, more complex with types then I originally thought, will think about / work on, thanks for feedback."
+              },
+              {
+                "author": "ryanleecode",
+                "body": "> > This doesn't work your `loadPlugin` returns null but the function is typed as `Promise<any>` where as the constructor parameter only takes `Plugin[]`. Giving it a null plugin will definately fail.\r\n> > IMO the correct approach would be something as follows.\r\n> > \r\n> > 1. Create a dynamic Plugin type such as\r\n> > \r\n> > ```ts\r\n> > export type DynamicPlugin = {\r\n> >     readonly factory: () => Promise<Plugin>;\r\n> >     readonly shouldInit: (character: Character) => boolean;\r\n> > };\r\n> > ```\r\n> > \r\n> > \r\n> >     \r\n> >       \r\n> >     \r\n> > \r\n> >       \r\n> >     \r\n> > \r\n> >     \r\n> >   \r\n> > \r\n> > 2. Make the AgenRuntime constructor private and create a static factory function that is async and accepts `ReadonlyArray<Plugin | DynamicPlugin>` as a parameter. Await the dynamic parameters in the async static factory. Bonus points for adding `_tag: 'Plugin'` and `_tag: 'DynamicPlugin` to the respective types, although this would be a high impact change since it would fuck over downstream plugins.\r\n> \r\n> I see, more complex with types then I originally thought, will think about / work on, thanks for feedback.\r\n\r\nActually I stand mistaken since there is a `filter(Boolean)` and the end the nulls get filtered out. So this would work but I don't think we need the third parameter b/c u can do `import(\"whatever\").then((mod) => mod.myPlugin)` which is also type safe."
+              },
+              {
+                "author": "ryanleecode",
+                "body": "Few more comments.\r\n\r\n1. probably export the loadPlugin function\r\n2. create another function `loadPlugins`, and then i can just spread the resulting array"
+              },
+              {
+                "author": "ChristopherTrimboli",
+                "body": "OK strictly type loadPlugins with Plugin + mod style, this works and is type compliant however we now have 3 plugins not correctly typed to Plugin that were hidden found:\r\n\r\n@elizaos/plugin-solana\r\n@elizaos/plugin-near\r\n@elizaos/plugin-goat\r\n\r\n![image](https://github.com/user-attachments/assets/65ecb66d-0b63-4e03-9053-83573c562bb0)\r\n\r\nThis is bigger PR to fix all plugins now, was never type safe to begin with tbh."
+              },
+              {
+                "author": "ryanleecode",
+                "body": "Have you run `pnpm build` in the root of the monorepo?"
+              },
+              {
+                "author": "ChristopherTrimboli",
+                "body": "> Have you run `pnpm build` in the root of the monorepo?\r\n\r\nah, fixed, OK everything compiling / working great. Gonna work on:\r\n\r\n1.) export the loadPlugin function\r\n2.) create another function loadPlugins, and then i can just spread the resulting array\r\n\r\nto cleanup and ready for review / testing. thanks for help! TS god"
+              },
+              {
+                "author": "ChristopherTrimboli",
+                "body": "I went big boy AAA on this one: \r\n\r\nhttps://github.com/elizaOS/eliza/pull/1383/commits/23cb0806137e8abc08913bddbb679d301377ea9e\r\n\r\nI think this proper now. ready for review kind citizen."
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 7,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "proteanx",
+    "score": 17,
+    "summary": "Proteanx is actively enhancing image generation capabilities by introducing Venice style presets and providing an option to remove watermarks from generated images. This commit reflects a focused effort to expand the customization options available within their packages, as evidenced by one merged pull request with no open issues or additional commits in this area.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/29043582?u=d2261c451984df04b46d6fca1261eb8d245de59b&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1410,
+            "title": "feat: add venice style presets & option to remove watermark (image generation)",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-23T19:47:15Z",
+            "updated_at": "2024-12-23T19:55:39Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\nSuper simple PR to add the option to use venice's style presets on image generation as well as the ability to remove the default watermark. (Also added in seed field which I guess I missed)\r\n\r\n# Risks\r\n\r\nAs low as it gets!\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nadds the option to use venice's style presets on image generation as well as the ability to remove the default watermark.\r\n\r\n## What kind of change is this?\r\n\r\nFeatures (non-breaking change which adds functionality)\r\n\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\nNo, I guess we could add details about using venices image generation system but I don't think we have provider specific details in docs currently.\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nAdd the new options to character file and generate an image\r\n\r\n![image](https://github.com/user-attachments/assets/9c0ea9a7-654f-4fa2-b47a-4ce9b70493ef)\r\n\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "packages/core/src/generation.ts",
+                "additions": 8,
+                "deletions": 3
+              },
+              {
+                "path": "packages/core/src/types.ts",
+                "additions": 2,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-image-generation/src/index.ts",
+                "additions": 4,
+                "deletions": 0
+              }
+            ],
+            "reviews": [
+              {
+                "author": "monilpat",
+                "state": "APPROVED",
+                "body": "LGTM - thanks for adding this followup"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 1,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "YoungPhlo",
+    "score": 17,
+    "summary": "YoungPhlo is actively contributing to the documentation area, focusing on enhancing weekly progress notes. Recently, they have successfully merged a pull request titled \"docs: Add 'What Did You Get Done This Week? #6' notes,\" which adds valuable insights into their work process and accomplishments for that particular week.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/90307961?u=2e7b36c41a4576a4720529da97a57280df102b28&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1399,
+            "title": "docs: Add \"What Did You Get Done This Week? #6\" notes",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-23T11:01:33Z",
+            "updated_at": "2024-12-23T17:21:37Z",
+            "body": "# Relates to:\r\nDocumentation standardization effort\r\n\r\n# Risks\r\nLow - This is a documentation-only change that standardizes formatting across December 2024 stream notes.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n- Standardizes formatting for December stream documentation\r\n- Updates timestamp formatting to use markdown links\r\n- Improves readability with consistent bullet points and headers\r\n- Adds new stream notes for \"What Did You Get Done This Week? 6\"\r\n\r\n## What kind of change is this?\r\nImprovements (standardization of existing documentation)\r\n\r\n# Documentation changes needed?\r\nThese changes are documentation changes themselves, no additional documentation updates required.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\nReview the following files for consistent formatting:\r\n- docs/community/Streams/12-2024/2024-12-03.md\r\n- docs/community/Streams/12-2024/2024-12-05.md\r\n- docs/community/Streams/12-2024/2024-12-06.md\r\n- docs/community/Streams/12-2024/2024-12-13.md\r\n- docs/community/Streams/12-2024/2024-12-20.md\r\n\r\n## Detailed testing steps\r\n1. Verify timestamp links are properly formatted and functional\r\n2. Check that bullet points are consistently styled\r\n3. Confirm headers follow standard hierarchy\r\n4. Ensure all stream metadata (date, links) follows the new format\r\n5. Validate that content is preserved while improving readability\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\nYoungPhlo\r\n-->\r\n",
+            "files": [
+              {
+                "path": "docs/community/Streams/12-2024/2024-12-03.md",
+                "additions": 23,
+                "deletions": 64
+              },
+              {
+                "path": "docs/community/Streams/12-2024/2024-12-05.md",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "docs/community/Streams/12-2024/2024-12-06.md",
+                "additions": 46,
+                "deletions": 85
+              },
+              {
+                "path": "docs/community/Streams/12-2024/2024-12-10.md",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "docs/community/Streams/12-2024/2024-12-13.md",
+                "additions": 40,
+                "deletions": 77
+              },
+              {
+                "path": "docs/community/Streams/12-2024/2024-12-20.md",
+                "additions": 160,
+                "deletions": 0
+              }
+            ],
+            "reviews": [
+              {
+                "author": "monilpat",
+                "state": "APPROVED",
+                "body": "LGTM"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 1,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "ileana-pr",
+    "score": 17,
+    "summary": "Ileana-pr is currently focused on enhancing the documentation for a sample plugin, as evidenced by their recent pull request to improve package-related guides. This effort demonstrates an active contribution towards making the project more accessible and user-friendly without any direct code changes or issue resolutions at this time.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/103957712?u=b865d84e1f5bffd16f907c5318a177dfc9f927d0&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1385,
+            "title": "docs: sample plugin documentation",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2024-12-23T00:43:36Z",
+            "updated_at": "2024-12-23T06:58:02Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n\r\nchore: Document Missing Plugin Documentation and Examples #1200\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\nLow \r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nAdds sample plugin documentation to 0G plugin. Uploading for review and comments. If this is satisfactory I will create docs for all other plugins. \r\n\r\n## What kind of change is this?\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\nCheddarQueso \r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "packages/plugin-0g/readme.md",
+                "additions": 119,
+                "deletions": 7
+              }
+            ],
+            "reviews": [
+              {
+                "author": "shakkernerd",
+                "state": "APPROVED",
+                "body": "This is good!\r\nNice work."
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 1,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "harperaa",
+    "score": 15,
+    "summary": "Harperaa is currently focused on enhancing the dynamism and generics of a model, as evidenced by two pull requests aimed at resolving TODOs related to this goal. Although these PRs have not yet been merged, harperaa's efforts are concentrated within packages in the codebase.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1330944?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 2,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1408,
+            "title": "fix: resolve TODO to make model more dynamic and generic",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2024-12-23T18:57:43Z",
+            "updated_at": "2024-12-23T22:02:01Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\nhttps://github.com/elizaOS/eliza/issues/1223\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nRemoves hard wired model name in summarizeAction and instead uses the selected model, with fallback to gpt-4o-mini.\r\n\r\n## What kind of change is this?\r\n\r\nImprovements (misc. changes to existing features)\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\nMy changes do not require a change to the project documentation.\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\npnpm build passed, no linting issues.\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "packages/client-discord/src/actions/chat_with_attachments.ts",
+                "additions": 4,
+                "deletions": 1
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "harperaa",
+                "body": "Feedback is welcome on my first PR.  Let me know how I can improve, going forward."
+              },
+              {
+                "author": "twilwa",
+                "body": "LGTM, nice work! Can you please change the upstream for this to the 'develop' branch? Can merge it in there. :)"
+              }
+            ]
+          },
+          {
+            "number": 1404,
+            "title": "fix: resolve TODO to make model more dynamic and generic",
+            "state": "CLOSED",
+            "merged": false,
+            "created_at": "2024-12-23T17:01:46Z",
+            "updated_at": "2024-12-23T17:22:05Z",
+            "body": "# Relates to:\r\n\r\n[chore: Review TODO notes #1223](https://github.com/elizaOS/eliza/issues/1223)\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nFixes an open TODO\r\n\r\n## What kind of change is this?\r\n\r\nImprovements (misc. changes to existing features)\r\n\r\n## Why are we doing this? Any context or related work?\r\nThere was a TODO: \r\n\r\n// TODO: make this dynamic and generic\r\n\r\nI used an existing variable to fix this todo.\r\n\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n# Deploy Notes\r\nNone\r\n\r\n## Database changes\r\nNone\r\n\r\n## Deployment instructions\r\nNone\r\n\r\n## Discord username\r\naah8098\r\n",
+            "files": [
+              {
+                "path": "SECURITY.md",
+                "additions": 0,
+                "deletions": 125
+              },
+              {
+                "path": "packages/client-discord/src/actions/chat_with_attachments.ts",
+                "additions": 1,
+                "deletions": 1
+              }
+            ],
+            "reviews": [
+              {
+                "author": "harperaa",
+                "state": "COMMENTED",
+                "body": "Sorry, I don't know how to remove a file from a PR...once submitted."
+              }
+            ],
+            "comments": [
+              {
+                "author": "harperaa",
+                "body": "Deleting PR, will resubmit, still learning... sorry."
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 1,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "0xaguspunk",
+    "score": 10,
+    "summary": "0xaguspunk is enhancing the GOAT integration by introducing a feature that enables tool calling when using generateText. This improvement, reflected in their single pull request (PR), focuses on optimizing code areas related to agents and packages within the project. Currently, there are no merged PRs or issues reported under 0xaguspunk's activity.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/6149085?u=9f6af2484a7452d042a0c24d50e9d760284c689b&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1403,
+            "title": "feat: improve GOAT integration by allowing tool calling when using generateText",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2024-12-23T15:18:15Z",
+            "updated_at": "2024-12-23T21:56:48Z",
+            "body": "# Relates to:\r\n\r\nhttps://x.com/sunosuporno/status/1870967395780792741\r\n\r\n# Risks\r\n\r\nLow\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nTwo main things:\r\n1. Update `generateText` API to be able to pass through tool options to leverage the model's tool calling capabilities\r\n2. Update the GOAT plugin to use tool calling allowing it to perform complex onchain actions that require multiple steps. Now developers can define high level actions (swap, bet on Polymarket, stake, etc.) and GOAT will take care of handling each action (see the screenshots below)\r\n\r\n## What kind of change is this?\r\n\r\nImprovements (misc. changes to existing features)\r\n\r\n# Documentation changes needed?\r\n\r\nI have updated the documentation accordingly.\r\n\r\n# Testing\r\n\r\n## Detailed testing steps\r\n\r\n1. Clone the repo and build it\r\n2. Set up the `EVM_PRIVATE_KEY` and `EVM_PROVIDER_URL` env variables\r\n3. Uncomment lines 70-72 in the `actions.ts` file in the GOAT plugin\r\n4. Prompt the agent with \"Swap 0.1 USDC for MODE using KIM in a single hop\"\r\n5. In the agent logs you should see all the different steps that the agent is making\r\n6. The tx should fail unless you have ETH and USDC in MODE :)\r\n\r\n## Screenshots\r\n### Before\r\nAgent can just do one function call so you need to specify the inputs like this:\r\n\r\n![image](https://github.com/user-attachments/assets/11cec757-fdb1-43b8-affc-562380a38184)\r\n\r\n\r\n### After\r\nAgent can do multiple function calls in an action so inputs are more human friendly:\r\n![image](https://github.com/user-attachments/assets/3f80382c-f48f-4096-a2ab-a2cafa72477d)\r\n\r\nIn the background you can also log all the different tool interactions:\r\n<img width=\"630\" alt=\"Screenshot 2024-12-23 at 16 24 49\" src=\"https://github.com/user-attachments/assets/627792d8-eeb7-4110-b2ef-33dd8c83f3da\" />\r\n\r\n\r\n## Discord username\r\n\r\naguspunk\r\n",
+            "files": [
+              {
+                "path": "agent/src/index.ts",
+                "additions": 2,
+                "deletions": 2
+              },
+              {
+                "path": "packages/core/src/generation.ts",
+                "additions": 50,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-goat/README.md",
+                "additions": 10,
+                "deletions": 6
+              },
+              {
+                "path": "packages/plugin-goat/package.json",
+                "additions": 23,
+                "deletions": 21
+              },
+              {
+                "path": "packages/plugin-goat/src/actions.ts",
+                "additions": 147,
+                "deletions": 122
+              },
+              {
+                "path": "packages/plugin-goat/src/index.ts",
+                "additions": 2,
+                "deletions": 9
+              },
+              {
+                "path": "packages/plugin-goat/src/wallet.ts",
+                "additions": 4,
+                "deletions": 4
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 143,
+                "deletions": 58
+              }
+            ],
+            "reviews": [
+              {
+                "author": "HashWarlock",
+                "state": "COMMENTED",
+                "body": ""
+              },
+              {
+                "author": "0xaguspunk",
+                "state": "COMMENTED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 2,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "ameeetgaikwad",
+    "score": 9,
+    "summary": "ameeetgaikwad is currently addressing a login issue on Twitter, as evidenced by their recent activity which includes one reported problem related to the bug area. Despite this challenge, they have not made any commits or pull requests towards resolving it yet.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/76063569?u=9a7356a9bc17233a72113d31e29e23dd8cb69136&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 1398,
+            "title": "Not able to login in twitter",
+            "state": "CLOSED",
+            "created_at": "2024-12-23T10:10:36Z",
+            "updated_at": "2024-12-23T11:18:30Z",
+            "body": "**Describe the bug**\r\nI've provided my twitter credentials, but eliza is not able to login, it says failed login. \r\n<!-- A clear and concise description of what the bug is. -->\r\n![image](https://github.com/user-attachments/assets/23a87533-2fab-412b-b665-634930a1eabc)\r\n\r\n\r\n**To Reproduce**\r\n\r\n<!-- Steps to reproduce the behavior. -->\r\n\r\n**Expected behavior**\r\n\r\n<!-- A clear and concise description of what you expected to happen. -->\r\n\r\n**Screenshots**\r\n\r\n<!-- If applicable, add screenshots to help explain your problem. -->\r\n\r\n**Additional context**\r\n\r\n<!-- Add any other context about the problem here. -->\r\n",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": [
+              {
+                "author": "samarth30",
+                "body": "Hey @ameeetgaikwad , can you join the discord server to discuss more around this issue.\r\nI think the twitter credentials you are putting are wrong as authentication is failing."
+              },
+              {
+                "author": "ameeetgaikwad",
+                "body": "hey @samarth30 . The creds are right. This error refers to twitter thinking this is a suspicious login, and as a result not letting me login.\r\nSure i'll join the discord!"
+              },
+              {
+                "author": "samarth30",
+                "body": "Ohh Got it, I will suggest retry loging in with twitter , it might work.\r\nPlease join discord if you face further issue , i will try to assist you \ud83e\udd1d "
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 3,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "anilcse",
+    "score": 6,
+    "summary": "Anilcse is currently working on enhancing the platform's capabilities by adding a new cosmos plugin, as evidenced by their recent pull request activity. Although they have not yet merged any issues or made additional commits, this effort indicates an active engagement in expanding and improving code packages within the project.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/3479820?u=f8bf37076541ee6aa9895b202019d64eb31bef74&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1393,
+            "title": "add cosmos plugin",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2024-12-23T07:17:20Z",
+            "updated_at": "2024-12-23T17:32:57Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n# Relates to:\r\n<!-- LINK TO ISSUE OR TICKET -->\r\nNA\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n<!--\r\nLow, medium, large. List what kind of risks, and what could be effected.\r\n-->\r\nNA\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nThis PR adds a **Cosmos plugin** for Eliza, enabling agents to interact with any Cosmos SDK-based chains (e.g., Osmosis, Cosmos Hub, Akash).\r\n\r\n## What kind of change is this?\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n**Features** (non-breaking change which adds functionality)\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. \r\nIf there is a related issue it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\nMy changes do not require a change to the project documentation.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n- Look over the `plugin-cosmos` folder structure, especially `providers/wallet.ts`, `actions/transfer.ts`, and any environment or index files.\r\n- Check the integration tests in `tests/wallet.test.ts`.\r\n\r\n## Detailed testing steps\r\n1. **Install dependencies** for the plugin-cosmos package:\r\n   ```bash\r\n   pnpm install\r\n",
+            "files": [
+              {
+                "path": ".env.example",
+                "additions": 8,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-cosmos/.npmignore",
+                "additions": 6,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-cosmos/eslint.config.mjs",
+                "additions": 3,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-cosmos/package.json",
+                "additions": 29,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-cosmos/src/actions/transfer.ts",
+                "additions": 292,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-cosmos/src/environment.ts",
+                "additions": 53,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-cosmos/src/index.ts",
+                "additions": 14,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-cosmos/src/providers/wallet.ts",
+                "additions": 338,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-cosmos/src/tests/wallet.test.ts",
+                "additions": 163,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-cosmos/tsconfig.json",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-cosmos/tsup.config.ts",
+                "additions": 12,
+                "deletions": 0
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 731,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "proteanx",
+                "body": "This looks good from what I can tell so far. Might be good to go ahead and list ```COSMOS_RPC_URL``` in the .env.example so users know they can set their rpc if they choose.\r\n\r\nI haven't tested this yet, but can soon."
+              },
+              {
+                "author": "anilcse",
+                "body": "> This looks good from what I can tell so far. Might be good to go ahead and list `COSMOS_RPC_URL` in the .env.example so users know they can set their rpc if they choose.\r\n\r\nSure, I will add it. This would definitely avoid extra calls to chain-registry if the user can simply provide all these config details, optionally\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "lachiejames",
+    "score": 5,
+    "summary": "Lachiejames is currently working on enhancing the CDK setup by adding initial configurations for VPC, ECR, ECS, and Fargate within a project. This feature-focused pull request (PR) represents their most significant contribution to date in this area of development.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/47808687?u=b5248973c3b1f2c8dde2ac576dd360db138c408e&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1400,
+            "title": "feat(cdk): add initial CDK setup with VPC, ECR, ECS, and Fargate configuration",
+            "state": "CLOSED",
+            "merged": false,
+            "created_at": "2024-12-23T11:32:17Z",
+            "updated_at": "2024-12-23T11:32:51Z",
+            "body": "- Created a new package '@ai16z/cdk' with essential files including package.json, tsconfig.json, and tsup configuration.\n- Implemented a CDK stack that provisions a VPC, ECR repository, ECS cluster, and Fargate service.\n- Added ESLint configuration and .npmignore file to manage package exports.\n- Configured security group rules for the Fargate service to allow inbound HTTP traffic on port 3000.\n\n<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\n\n# Relates to:\n\n<!-- LINK TO ISSUE OR TICKET -->\n\n<!-- This risks section is to be filled out before final review and merge. -->\n\n# Risks\n\n<!--\nLow, medium, large. List what kind of risks, and what could be effected.\n-->\n\n# Background\n\n## What does this PR do?\n\n## What kind of change is this?\n\n<!--\nBug fixes (non-breaking change which fixes an issue)\nImprovements (misc. changes to existing features)\nFeatures (non-breaking change which adds functionality)\nUpdates (new versions of included code)\n-->\n\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\n<!--\n## Why are we doing this? Any context or related work?\n-->\n\n# Documentation changes needed?\n\n<!--\nMy changes do not require a change to the project documentation.\nMy changes require a change to the project documentation.\nIf a docs change is needed: I have updated the documentation accordingly.\n-->\n\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\n\n# Testing\n\n## Where should a reviewer start?\n\n## Detailed testing steps\n\n<!--\nNone, automated tests are fine.\n-->\n\n<!--\n- As [anon/admin], go to [link]\n\u00a0 - [do action]\n\u00a0 - verify [result]\n-->\n\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\n<!--\n## Screenshots\n### Before\n### After\n-->\n\n<!-- If there is anything about the deploy, please make a note. -->\n<!--\n# Deploy Notes\n-->\n\n<!-- \u00a0Copy and paste commandline output. -->\n<!--\n## Database changes\n-->\n\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\n<!--\n## Deployment instructions\n-->\n\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\n<!--\n## Discord username\n\n-->\n",
+            "files": [
+              {
+                "path": "packages/cdk/.npmignore",
+                "additions": 6,
+                "deletions": 0
+              },
+              {
+                "path": "packages/cdk/eslint.config.mjs",
+                "additions": 3,
+                "deletions": 0
+              },
+              {
+                "path": "packages/cdk/package.json",
+                "additions": 20,
+                "deletions": 0
+              },
+              {
+                "path": "packages/cdk/src/index.ts",
+                "additions": 104,
+                "deletions": 0
+              },
+              {
+                "path": "packages/cdk/tsconfig.json",
+                "additions": 10,
+                "deletions": 0
+              },
+              {
+                "path": "packages/cdk/tsup.config.ts",
+                "additions": 27,
+                "deletions": 0
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 422,
+                "deletions": 344
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "lachiejames",
+                "body": "Oops, this was pushed to the wrong remote."
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "jonathangus",
+    "score": 5,
+    "summary": "Jonathangus is currently working on enhancing the Lens Client by adding more storage options, as evidenced by his recent pull request submission. Although this is his only contribution to date, it indicates a focus on improving client functionality and user experience within the packages code area.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/7723195?u=2f07ca181065b387adcebe19eaf0798526e6f061&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1394,
+            "title": "feat: Add more storage options to Lens Client",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2024-12-23T07:55:02Z",
+            "updated_at": "2024-12-23T15:55:54Z",
+            "body": "<!-- Use this template by filling in information and copy and pasting relevant items out of the html comments. -->\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\nLow/Medium\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nEnable more storage options in Lens Client. With this PR we now support:\r\n- Arweave\r\n- Storj (default, to not introduce any breaking changes)\r\n- Pinata\r\n\r\n---\r\nFix: Improve`getProfilePictureUri` to use correct types instead of `any`\r\n\r\n## What kind of change is this?\r\n\r\nImprovements\r\n\r\n\r\n<!-- This \"Why\" section is most relevant if there is no linked issue explaining why. If there is a related issue it might make sense to skip this why section. -->\r\n\r\n## Why are we doing this? Any context or related work?\r\nWanted to use Lens Client and posts where stored on Storj that required a beta account so wanted to introduce more options.\r\n\r\nFix TODO for `packages/client-lens/src/actions.ts` in https://github.com/elizaOS/eliza/issues/1223\r\n\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf a docs change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested, and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\nCreate an agent with Lens Client enabled\r\n\r\n## Detailed testing steps\r\nChange the environment variables for each storage provider\r\n\r\n**Storj**: \r\n```\r\nLENS_STORAGE_PROVIDER=storj\r\nSTORJ_API_USERNAME=\r\nSTORJ_API_PASSWORD=\r\n```\r\n\r\n**Arweave**: \r\n```\r\nLENS_STORAGE_PROVIDER=arweave\r\nARWEAVE_JWK=\r\n```\r\n\r\n**Pinata**:\r\n```\r\nLENS_STORAGE_PROVIDER=pinata\r\nPINATA_JWT=\r\nPINATA_GATEWAY_URL=\r\n```\r\n\r\n\r\n<!--\r\nNone, automated tests are fine.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deploy, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste commandline output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0If there is something more than the automated steps, please specifiy deploy instructions. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for contribute role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": ".env.example",
+                "additions": 14,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-lens/package.json",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-lens/src/actions.ts",
+                "additions": 14,
+                "deletions": 5
+              },
+              {
+                "path": "packages/client-lens/src/index.ts",
+                "additions": 46,
+                "deletions": 5
+              },
+              {
+                "path": "packages/client-lens/src/interactions.ts",
+                "additions": 4,
+                "deletions": 3
+              },
+              {
+                "path": "packages/client-lens/src/post.ts",
+                "additions": 3,
+                "deletions": 6
+              },
+              {
+                "path": "packages/client-lens/src/providers/ArweaveProvider.ts",
+                "additions": 104,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-lens/src/providers/PinataProvider.ts",
+                "additions": 112,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-lens/src/providers/StorageProvider.ts",
+                "additions": 23,
+                "deletions": 0
+              },
+              {
+                "path": "packages/client-lens/src/providers/StorjProvider.ts",
+                "additions": 35,
+                "deletions": 13
+              },
+              {
+                "path": "packages/client-lens/src/utils.ts",
+                "additions": 21,
+                "deletions": 5
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 52,
+                "deletions": 21
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "luisalrp",
+    "score": 3,
+    "summary": "Luis Alrp is currently working on refining the image workflow process by making Docker images publicly available through a pull request that deletes an action not functioning as intended. This effort falls within the .github code area, and so far, he has made one pull request with no merged changes or issues reported.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/31384138?u=dd50e8885f7f8e2372d955b7fae623bba8be9ec2&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1397,
+            "title": "delete not working action on image workflow: Make Docker image public",
+            "state": "CLOSED",
+            "merged": false,
+            "created_at": "2024-12-23T09:59:44Z",
+            "updated_at": "2024-12-23T17:58:45Z",
+            "body": "# Relates to:\r\n\r\n[Publish an official Docker Image in ghcr. #876](https://github.com/elizaOS/eliza/issues/876)\r\n\r\n<!-- This risks section is to be filled out before final review and merge. -->\r\n\r\n# Risks\r\n\r\nLow.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nIt just deletes a github actions that does not work.\r\n\r\n## What kind of change is this?\r\n\r\nBug fixes (non-breaking change which fixes an issue)",
+            "files": [
+              {
+                "path": ".github/workflows/image.yaml",
+                "additions": 0,
+                "deletions": 10
+              }
+            ],
+            "reviews": [
+              {
+                "author": "monilpat",
+                "state": "CHANGES_REQUESTED",
+                "body": "Thanks for pointing this out feel free to make an issue for this. Rather than deleting it shouldn't we try to fix it? (No worries if you don't want to just close the PR and create the issue)"
+              }
+            ],
+            "comments": [
+              {
+                "author": "monilpat",
+                "body": "Going to close this out feel free to create an issue or reopen with a fix thanks :) "
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 1,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "bucurdavid",
+    "score": 3,
+    "summary": "Bucurdavid is currently working on a significant pull request for the Metaplex Bubblegum plugin feature (feat). This PR involves contributions to the agent and packages code areas, although there have been no commits or issues reported yet.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/46384319?u=dffe4f1adbd7bdf75f2c185f0db36007f42815ac&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1386,
+            "title": "feat: metaplex bubblegum plugin",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2024-12-23T01:23:07Z",
+            "updated_at": "2024-12-23T17:44:47Z",
+            "body": "\r\n# Risks\r\n\r\nLow\r\n\r\n# Background\r\n\r\nBubblegum is a Solana protocol program by Metaplex for creating compressed NFTs (cNFTs).\r\n\r\n## What does this PR do?\r\n\r\nIntroduces a new plugin for an agent to interact with Bubblegum.\r\n\r\n## What kind of change is this?\r\n\r\n`Feature`\r\n- Allows the agent to mint compressed NFTs.\r\n- Supports cNFTs transfers and metadata updates.\r\n- Adds functionality to retrieve cNFTs proofs and asset details.\r\n\r\n\r\n## Why are we doing this? Any context or related work?\r\n\r\n\r\n# Documentation changes needed?\r\n\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nNavigate to the `plugin-mpl-bubblegum` directory. Currently supports transfers of cNFTs. New features will be added.\r\n\r\n## Detailed testing steps\r\n\r\nEnable the `plugin-mpl-bubblegum` in the test agent and set the RPC URL and wallet private key in `.env`.\r\nFor unit tests, run pnpm test in the plugin-bubblegum directory.\r\n\r\n\r\n",
+            "files": [
+              {
+                "path": ".env.example",
+                "additions": 4,
+                "deletions": 0
+              },
+              {
+                "path": "agent/package.json",
+                "additions": 61,
+                "deletions": 60
+              },
+              {
+                "path": "agent/src/index.ts",
+                "additions": 5,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-mpl-bubblegum/.npmignore",
+                "additions": 6,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-mpl-bubblegum/eslint.config.mjs",
+                "additions": 3,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-mpl-bubblegum/package.json",
+                "additions": 27,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-mpl-bubblegum/src/actions/transfer.ts",
+                "additions": 165,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-mpl-bubblegum/src/environment.ts",
+                "additions": 40,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-mpl-bubblegum/src/index.ts",
+                "additions": 15,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-mpl-bubblegum/src/providers/bubblegumProvider.ts",
+                "additions": 276,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-mpl-bubblegum/src/tests/provider.test.ts",
+                "additions": 22,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-mpl-bubblegum/src/utils.ts",
+                "additions": 69,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-mpl-bubblegum/tsconfig.json",
+                "additions": 13,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-mpl-bubblegum/tsup.config.ts",
+                "additions": 21,
+                "deletions": 0
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 1681,
+                "deletions": 1005
+              }
+            ],
+            "reviews": [],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "0xCardinalError",
+    "score": 2,
+    "summary": "0xCardinalError is currently focused on improving the functionality of their software by addressing an issue where multiple agents can run simultaneously on localhost. This effort involves making a single pull request to fix this specific problem, demonstrating a commitment to enhancing user experience and system performance within the agent code area.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/8969767?u=04a3913eb3e4a79f395c8949e77d57eb179ee8ad&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 1415,
+            "title": "fix: Multiple Agents running at the same time on localhost",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2024-12-23T21:43:32Z",
+            "updated_at": "2024-12-23T21:53:12Z",
+            "body": "Currently, if you try to run multiple agents locally you get an error as they are bounded to port 3000.\r\nThis iterates and if 3000 is taken, it automatically goes to 3001 and you can have multiple agents running locally.\r\n\r\nWith that, there is also an option to have multiple agents running with VITE and browser, you just need to add SERVER_PORT value.  It is added in ELIZA logger how to do that so its easy to do.",
+            "files": [
+              {
+                "path": "agent/src/index.ts",
+                "additions": 36,
+                "deletions": 5
+              }
+            ],
+            "reviews": [
+              {
+                "author": "twilwa",
+                "state": "APPROVED",
+                "body": "LGTM, I see this is relevant for the direct client but afaik there aren't any others that need to map ports/if so, they should probably extend the directclient anyway"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 1,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "PendingReality",
+    "score": 1,
+    "summary": "PendingReality is currently addressing a bug related to better-sqlite error handling, as indicated by their recent activity on GitHub. They have focused solely on this issue area, working towards an alpha 1 release for version v0170 of the project. Despite no PRs or commits made yet, they are actively engaged in resolving this specific problem.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/56906693?u=1afa5a15a5675fea2a0c8731f57cb5446e00a5d1&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 1407,
+            "title": "v0170 alpha 1, better-sqlite error",
+            "state": "OPEN",
+            "created_at": "2024-12-23T18:36:53Z",
+            "updated_at": "2024-12-23T18:36:53Z",
+            "body": "**Describe the bug**\r\n\r\nFollowing original Agent AI dev school tut, run start after install and build had an issue with the following error. \r\n\u26d4 ERRORS\r\n   Error starting agent for character C-3PO: \r\n   {\"code\":\"ERR_DLOPEN_FAILED\"} \r\n\r\n [\"\u26d4 Error: The module '/home/user/dev/myAgent/eliza/node_modules/better-sqlite3/build/Release/better_sqlite3.node'\\nwas compiled against a different Node.js version using\\nNODE_MODULE_VERSION 108. This version of Node.js requires\\nNODE_MODULE_VERSION 131. Please try re-compiling or re-installing\\nthe module (for instance, using `npm rebuild` or `npm install`).\"] \r\n\r\n \u26d4 ERRORS\r\n   Error starting agents: \r\n   {\"code\":\"ERR_DLOPEN_FAILED\"} \r\n   \r\n   \r\n**To Reproduce**\r\nWSL2 approach, ubuntu, following AI Agent Dev School on v0170 alpha 1 \r\n\r\nResolved??? \r\nBy updating better-sqlite3 latest in cd packages/adapter-sqlite dir ",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "r4881t",
+    "score": 1,
+    "summary": "r4881t is currently working on enhancing the FerePro Plugin for Eliza, as evidenced by their recent activity on GitHub. They have contributed to one issue related to this plugin but have not yet made any commits or pull requests towards its development. Their focus remains on improving and adding features to the existing software.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/81687400?u=87b6f7d5e80aca40d9735f4d98047051b71188d1&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 1405,
+            "title": "FerePro Plugin for Eliza",
+            "state": "OPEN",
+            "created_at": "2024-12-23T17:16:40Z",
+            "updated_at": "2024-12-23T17:16:40Z",
+            "body": "# Is your feature request related to a problem? Please describe.\r\n\r\nWe'd like to extend Eliza's capabilities with FerePro Agent. FerePro is an agent developed by [FereAI](https://www.fereai.xyz) which can perform open world Q&A related to various crypto topics like - Token Research, Investment Decisions, KOL research, category research, actions (swap, trade and more). It can interpret and answer questions of various complexities. We believe that adding this as a plugin will significantly improve Eliza's capabilities to perform research and Q&A.\r\n\r\n# Describe the solution you'd like\r\n\r\nA Plugin for FerePro in Eliza's codebase.\r\n\r\n# Describe alternatives you've considered\r\n\r\nAs an alternate, we will need to add a lot of tools and multi agentic capabilities to Eliza. FerePro can abstract all of that. \r\nDisclaimer: I'm a co founder and core dev at FereAI.\r\n\r\n# Additional context\r\n\r\n## Architecture\r\n\r\n1. FerePro APIs can provide streaming answer as well as non streaming answer. This plugin must support both the use cases.\r\n2. FerePro APIs also provide a bunch of intermediate responses. This is usually shown in UI for users to get a view of happenings behind the scenes. They should only be enabled when this plugin is run in debug mode. Developers can use this info to troubleshoot or get support from Fere team.\r\n\r\n\r\n## Others\r\n\r\n1. Developers will need to [get API keys from FereAI](https://docs.fereai.xyz/docs/api/api_access). \r\n3. This key must be passed to the plugin for it to work.\r\n4. FerePro is a freemium API. There is a limit on questions that can be asked for free. (We can revise the limits based on community feedback). For extended use cases, the developers must top up their account by visiting fereai.xyz.\r\n\r\n",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "manasvi1627",
+    "score": 1,
+    "summary": "Manasvi1627 is currently addressing a bug related to the inability to initiate an Eliza agent while using Supabase, as evidenced by their recent activity on GitHub. They have not made any pull requests or commits yet but are actively working on resolving this issue through discussion and collaboration within the community.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/188824524?v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 1389,
+            "title": "Cannot initiate eliza agent while using Supabase ",
+            "state": "OPEN",
+            "created_at": "2024-12-23T05:18:49Z",
+            "updated_at": "2024-12-23T05:18:49Z",
+            "body": "**Describe the bug**\r\nWhen trying to replace the default sqlite db with supabase, facing issues starting the Eliza agent\r\n\r\n**To Reproduce**\r\n- Update the env file with the Supabase Url and key\r\n- Update the initializaDatabase function to use supabase db and return the db object to init\r\n- DB object is getting undefined \r\n- Hence the agent is not started and thus does not log in to twitter \r\n\r\n**Expected behavior**\r\n\r\nAgent should start and should post tweet and save it in supabase db correctly\r\n\r\n**Screenshots**\r\nmy initializeDatabase function to use supabase db\r\n![image](https://github.com/user-attachments/assets/7240d314-0b98-4b14-a8bd-f466d17d93f4)\r\n\r\nError while starting the server\r\n![image](https://github.com/user-attachments/assets/4079d3a0-bea7-4101-a2f2-14a23f2adf0b)\r\n\r\n",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "SumeetChougule",
+    "score": 1,
+    "summary": "SumeetChougule is currently addressing a bug related to the missing required properties in message attachments for the Slack client's Media type implementation. This issue falls under the category of bug fixes, and so far, there have been no pull requests or code changes made towards resolving it.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/101477214?u=7dddb5b1120e21b1c481bd7186d68d3fe76db437&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 1384,
+            "title": "fix: Slack client Media type implementation missing required properties in message attachments",
+            "state": "OPEN",
+            "created_at": "2024-12-23T00:08:40Z",
+            "updated_at": "2024-12-23T00:17:26Z",
+            "body": "\r\n### Describe the Bug\r\n\r\nTypeScript type error in Slack client when handling message attachments. The error occurs because the `attachments` property in the `Content` interface expects an array of `Media` type objects, but the code was only providing a subset of the required properties.\r\n\r\n**Error message:**\r\n\r\n```\r\nType '{ text: string; }[]' is not assignable to type 'Media[]'.\r\nType '{ text: string; }' is missing the following properties from type 'Media': id, url, title, source, description\r\n```\r\n\r\n---\r\n\r\n### To Reproduce\r\n\r\n1. Use the Slack client implementation.\r\n2. Try to create a message content with attachments.\r\n3. The code attempts to create an attachment with only the `text` property:\r\n\r\n```typescript\r\nattachments: attachmentContent ? [{ text: attachmentContent }] : undefined\r\n```\r\n\r\n---\r\n\r\n### Expected Behavior\r\n\r\nThe code should properly implement the `Media` type interface by providing all required properties:\r\n\r\n- `id` (string)\r\n- `url` (string)\r\n- `title` (string)\r\n- `source` (string)\r\n- `description` (string)\r\n- `text` (string)\r\n\r\n---\r\n\r\n### Solution\r\n\r\nUpdate the attachment creation to include all required `Media` type properties:\r\n\r\n```typescript\r\nattachments: attachmentContent\r\n    ? [{\r\n        id: stringToUuid(`${event.ts}-attachment`),\r\n        url: '',  // Since this is text content, no URL is needed\r\n        title: 'Text Attachment',\r\n        source: 'slack',\r\n        description: 'Text content from Slack message',\r\n        text: attachmentContent\r\n    }]\r\n    : undefined,\r\n```\r\n\r\n---\r\n\r\n### Additional Context\r\n\r\nThis issue affects the Slack client's message handling functionality in the `packages/client-slack/src/messages.ts` file. The fix ensures type safety while maintaining the intended functionality of handling text attachments from Slack messages.",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  }
+]
