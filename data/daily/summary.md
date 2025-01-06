@@ -1,42 +1,44 @@
-# elizaos Eliza (2025-01-05)
+# elizaos Eliza (2025-01-06)
     
 ## 📊 Overview
-Development focused on package improvements (update bootstrap plugin export), new features (Add Stargaze plugin), 1 bug fixes. with 25 contributors merging 9 PRs. Major work included various improvements.
+Development focused on package improvements (add callback to the evaluators for client-telegram), new features (add OpenWeather plugin), 5 bug fixes. with 41 contributors merging 19 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 25 |
-| 📝 Commits | 3 |
-| 🔄 Merged PRs | 9 |
-| ⚠️ New Issues | 17 |
+| 👥 Contributors | 41 |
+| 📝 Commits | 0 |
+| 🔄 Merged PRs | 19 |
+| ⚠️ New Issues | 16 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 2
-- 🐛 **Fixes**: 1
-- ✨ **Features**: 2
+- 🧹 **Chores**: 1
+- 🐛 **Fixes**: 5
+- ✨ **Features**: 6
 
 ## 📁 File Changes
-- **packages**: 22 files (+5428/-16 lines)
-- **root**: 6 files (+146/-117 lines)
-- **docs**: 2 files (+5/-5 lines)
-- **agent**: 3 files (+9/-0 lines)
+- **root**: 11 files (+1725/-2564 lines)
+- **packages**: 108 files (+1899/-1204 lines)
+- **agent**: 6 files (+46/-24 lines)
+- **docs**: 3 files (+30/-22 lines)
+- **scripts**: 1 files (+35/-5 lines)
 
 ## 🔥 Notable Changes
-- chore: support more debians distros
-- fix: Fix postinstall script
-- docs: Add DAO donation ask & dev discord
+- API route update
+- fix: resolved a bunch of type related errors and ensure project compiles
+- Fixed broken API Documentation URL
 
 ## 👥 Top Contributors
-- **odilitime**: odilitime is currently working on adding a DAO donation ask and developer discord feature, as well as making fixes and improvements to postinstall scripts and Debian distro support within the packages code areas on GitHub
-- **monilpat**: monilpat is currently focused on implementing more granular try-catch blocks in the /plugin-coinbase repository to enhance error handling
-- **ai16z-demirix**: ai16z-demirix is currently working on adding test setups for the Telegram client, implementing a workflow to maintain folder structure in the packages directory, and adding more tests for goals, memory, and provider while fixing issues in generation
+- **JoeyKhd**: JoeyKhd is currently working on updating API routes, fixing type-related errors to ensure project compilation, and resolving a broken API documentation URL
+- **zhourunlai**: zhourunlai is currently working on fixing issues related to undefined properties in Twitter result objects, removing case-sensitive paths, and handling empty input text to prevent memory content errors
+- **RatakondalaArun**: RatakondalaArun is currently working on adding a callback to the evaluators for the `telegram client` in the packages code area
 
 ## ⚠️ Issues
-- **New Issues**: 17
-- **Labels**: `enhancement` (8), `agent-generated` (8), `error handling` (8)
-- **Summary**: 8 bugs reported (including 'Broken FAQ link in Contributing.MD', 'Code Analysis Report: Security Issues and Vulnerabilities of Eliza') 8 feature requests (including 'Implement more granular try-catch blocks in /plugin-coinbase', 'Implement more granular try-catch blocks in /plugin-coinbase').
+- **New Issues**: 16
+- **Labels**: `enhancement` (6), `bug` (5), `question` (2)
+- **Summary**: 5 bugs reported (including 'llama-local does not find CUDA', 'Interaction.ts in twitter client error after generating image in image-generation plugin callback.') 6 feature requests (including 'Callback is not working in evaluators for `telegram client`', 'Feature:  Support wildcard "*" in TWITTER_TARGET_USERS').
 
 ## Top Contributors
-- **odilitime**: chore: support more debians distros
-- **ai16z-demirix**: test: adding more tests for goals,memory and provider. Fixing generation.test.ts
+- **JoeyKhd**: API route update
+- **zhourunlai**: fix: handle empty input text to avoid memory content empty error
+- **RatakondalaArun**: fix: add callback to the evaluators for client-telegram
