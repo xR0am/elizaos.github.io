@@ -256,7 +256,7 @@ def generate_thread(issues: List[str], prs: List[str], summaries: List[str],
             return response.choices[0].message.content.strip()
         else:
             from langchain_ollama import ChatOllama
-            model = ChatOllama(model='llama3.2:latest', temperature=0.1)
+            model = ChatOllama(model='phi3:14b-medium-4k-instruct-q5_K_M', temperature=0.1)
             prompt = PromptTemplate(
                 template=get_thread_prompt(issues, prs, summaries),
                 input_variables=[]
