@@ -1,71 +1,71 @@
 {
-  "title": "elizaos Eliza (2025-01-06)",
+  "title": "elizaos Eliza (2025-01-07)",
   "version": "",
-  "overview": "Development focused on package improvements (add callback to the evaluators for client-telegram), new features (add OpenWeather plugin), 5 bug fixes. with 41 contributors merging 19 PRs. Major work included various improvements.",
+  "overview": "Development focused on package improvements (adding tests for twitter plugin), new features (support for eternalai provider can write request/response log info), 6 bug fixes. with 46 contributors merging 20 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 41,
-    "merged_prs": 19,
-    "new_issues": 16,
-    "lines_changed": 7562
+    "contributors": 46,
+    "merged_prs": 20,
+    "new_issues": 24,
+    "lines_changed": 2052
   },
   "changes": {
     "features": [
-      "add OpenWeather plugin",
-      "Support wildcard in TWITTER_TARGET_USERS 1883",
-      "Use recommended settings in jupiter swap"
+      "support for eternalai provider can write request/response log info",
+      "support for eternalai provider can make request with chain_id extra data in body",
+      "Add fraxtal chain to evm"
     ],
     "fixes": [
-      "resolved a bunch of type related errors and ensure project compiles",
-      "handle empty input text to avoid memory content empty error",
-      "twitter result obj undefined properties"
+      "many fixes to the Telegram templates",
+      "SQLITE ERROR, zero-lenght vectors not supported",
+      "fixed error in C3PO and improved error handling feedback"
     ],
     "chores": [
-      "fix SUMMARIZE prompt",
-      "fix integrations and smoke tests"
+      "Enable all EVM chains by default",
+      "add embedding tests",
+      "Cleaner logs on agent startup"
     ]
   },
   "areas": [
     {
       "name": "packages",
-      "files": 108,
-      "additions": 1899,
-      "deletions": 1204
+      "files": 71,
+      "additions": 1411,
+      "deletions": 498
     },
     {
       "name": "root",
-      "files": 11,
-      "additions": 1725,
-      "deletions": 2564
+      "files": 20,
+      "additions": 20,
+      "deletions": 28
     },
     {
-      "name": "agent",
-      "files": 6,
-      "additions": 46,
-      "deletions": 24
+      "name": "docs",
+      "files": 15,
+      "additions": 18,
+      "deletions": 20
     }
   ],
-  "issues_summary": "working on 5 bugs including 'llama-local does not find CUDA', 'Interaction.ts in twitter client error after generating image in image-generation plugin callback.' and implementing 6 feature requests including 'Callback is not working in evaluators for `telegram client`', 'Feature:  Support wildcard \"*\" in TWITTER_TARGET_USERS'",
+  "issues_summary": "working on 20 bugs including 'Tests for core package are failling on develop branch, due they are outdated', 'fix: context for client-telegram' and implementing 3 feature requests including 'Debugging documentation out of date', 'support default grok in generate object for twitter plugin'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "JoeyKhd",
-      "summary": "JoeyKhd is currently working on updating API routes, fixing type-related errors to ensure project compilation, and resolving a broken API documentation URL",
-      "areas": [
-        "docs",
-        "packages",
-        "agent"
-      ]
-    },
-    {
-      "name": "zhourunlai",
-      "summary": "zhourunlai is currently working on fixing issues related to undefined properties in Twitter result objects, removing case-sensitive paths, and handling empty input text to prevent memory content errors",
+      "name": "ai16z-demirix",
+      "summary": "ai16z-demirix is currently working on adding and updating tests for the core package related to the Twitter functionality",
       "areas": [
         "packages"
       ]
     },
     {
-      "name": "RatakondalaArun",
-      "summary": "RatakondalaArun is currently working on adding a callback to the evaluators for the `telegram client` in the packages code area",
+      "name": "genesis-0000",
+      "summary": "genesis-0000 is currently working on adding support for the eternalai provider in their project, allowing for request/response log information to be written and for requests to be made with chain_id extra data in the body",
+      "areas": [
+        "packages",
+        ".env.example"
+      ]
+    },
+    {
+      "name": "Laurentiu-Andronache",
+      "summary": "Laurentiu-Andronache is currently working on adding debug logging for context, fixing context issues for the client-telegram, and making various fixes to the Telegram templates",
       "areas": [
         "packages"
       ]

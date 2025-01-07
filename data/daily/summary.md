@@ -1,44 +1,44 @@
-# elizaos Eliza (2025-01-06)
+# elizaos Eliza (2025-01-07)
     
 ## 📊 Overview
-Development focused on package improvements (add callback to the evaluators for client-telegram), new features (add OpenWeather plugin), 5 bug fixes. with 41 contributors merging 19 PRs. Major work included various improvements.
+Development focused on package improvements (adding tests for twitter plugin), new features (support for eternalai provider can write request/response log info), 6 bug fixes. with 46 contributors merging 20 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 41 |
+| 👥 Contributors | 46 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 19 |
-| ⚠️ New Issues | 16 |
+| 🔄 Merged PRs | 20 |
+| ⚠️ New Issues | 24 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 1
-- 🐛 **Fixes**: 5
-- ✨ **Features**: 6
+- 🧹 **Chores**: 4
+- 🐛 **Fixes**: 6
+- ✨ **Features**: 5
 
 ## 📁 File Changes
-- **root**: 11 files (+1725/-2564 lines)
-- **packages**: 108 files (+1899/-1204 lines)
-- **agent**: 6 files (+46/-24 lines)
-- **docs**: 3 files (+30/-22 lines)
-- **scripts**: 1 files (+35/-5 lines)
+- **packages**: 71 files (+1411/-498 lines)
+- **characters**: 1 files (+24/-27 lines)
+- **root**: 20 files (+20/-28 lines)
+- **docs**: 15 files (+18/-20 lines)
+- **agent**: 1 files (+1/-5 lines)
 
 ## 🔥 Notable Changes
-- API route update
-- fix: resolved a bunch of type related errors and ensure project compiles
-- Fixed broken API Documentation URL
+- test: changing test structure for core package. Fixing failling outdated tests
+- test: adding tests for twitter plugin
+- test: adding tests for twitter-client
 
 ## 👥 Top Contributors
-- **JoeyKhd**: JoeyKhd is currently working on updating API routes, fixing type-related errors to ensure project compilation, and resolving a broken API documentation URL
-- **zhourunlai**: zhourunlai is currently working on fixing issues related to undefined properties in Twitter result objects, removing case-sensitive paths, and handling empty input text to prevent memory content errors
-- **RatakondalaArun**: RatakondalaArun is currently working on adding a callback to the evaluators for the `telegram client` in the packages code area
+- **ai16z-demirix**: ai16z-demirix is currently working on adding and updating tests for the core package related to the Twitter functionality
+- **genesis-0000**: genesis-0000 is currently working on adding support for the eternalai provider in their project, allowing for request/response log information to be written and for requests to be made with chain_id extra data in the body
+- **Laurentiu-Andronache**: Laurentiu-Andronache is currently working on adding debug logging for context, fixing context issues for the client-telegram, and making various fixes to the Telegram templates
 
 ## ⚠️ Issues
-- **New Issues**: 16
-- **Labels**: `enhancement` (6), `bug` (5), `question` (2)
-- **Summary**: 5 bugs reported (including 'llama-local does not find CUDA', 'Interaction.ts in twitter client error after generating image in image-generation plugin callback.') 6 feature requests (including 'Callback is not working in evaluators for `telegram client`', 'Feature:  Support wildcard "*" in TWITTER_TARGET_USERS').
+- **New Issues**: 24
+- **Labels**: `bug` (20), `enhancement` (3)
+- **Summary**: 20 bugs reported (including 'Tests for core package are failling on develop branch, due they are outdated', 'fix: context for client-telegram') 3 feature requests (including 'Debugging documentation out of date', 'support default grok in generate object for twitter plugin').
 
 ## Top Contributors
-- **JoeyKhd**: API route update
-- **zhourunlai**: fix: handle empty input text to avoid memory content empty error
-- **RatakondalaArun**: fix: add callback to the evaluators for client-telegram
+- **ai16z-demirix**: test: changing test structure for core package. Fixing failling outdated tests
+- **genesis-0000**: feat: support for eternalai provider can write request/response log info
+- **Laurentiu-Andronache**: fix: many fixes to the Telegram templates
