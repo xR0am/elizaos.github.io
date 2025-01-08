@@ -94,7 +94,7 @@ jobs:
         
         # Generate weekly summaries
         [ -f data/weekly/contributors.json ] && mv data/weekly/contributors.json data/weekly/history/contributors_${TIMESTAMP}.json || true
-        python3 scripts/summarize.py summary data/weekly/scored.json data/weekly/contributors.json --model ollama
+        python3 scripts/summarize.py summary data/weekly/scored.json data/weekly/contributors.json --model openai
         
         # Generate and manage weekly thread
         bash scripts/generate_history_summaries.sh
