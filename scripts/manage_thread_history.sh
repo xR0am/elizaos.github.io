@@ -12,17 +12,11 @@ mkdir -p "$thread_dir" "$backup_dir"
 if [ -f "data/weekly/thread_$(date +%Y-%m-%d).txt" ]; then
     # Copy to threads directory with timestamp
     cp "data/weekly/thread_$(date +%Y-%m-%d).txt" "$thread_dir/thread_${timestamp}.txt"
-    
-    # Create backup with timestamp
-    cp "$thread_dir/thread_${timestamp}.txt" "$backup_dir/thread_${timestamp}.txt"
-    
-    # Create latest.txt symlink
-    ln -sf "$thread_dir/thread_${timestamp}.txt" "$thread_dir/latest.txt"
-    
+
+    # Use tee to update latest.txt and create backup
+    tee "$thread_dir/latest.txt" "$backup_dir/thread_${timestamp}.txt" < "$thread_dir/thread_${timestamp}.txt"
+
     echo "✓ Thread backup complete"
 else
     echo "✗ No thread file found for today"
 fi
-
-# Clean up old files (keep last 12 weeks)
-find "$backup_dir" -name "thread_*.txt" -type f -mtime +84 -delete
