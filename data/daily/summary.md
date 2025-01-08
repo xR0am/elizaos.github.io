@@ -1,44 +1,44 @@
-# elizaos Eliza (2025-01-07)
+# elizaos Eliza (2025-01-08)
     
 ## 📊 Overview
-Development focused on package improvements (adding tests for twitter plugin), new features (support for eternalai provider can write request/response log info), 6 bug fixes. with 46 contributors merging 20 PRs. Major work included various improvements.
+Development focused on package improvements (remove defillama plugin & improve rabbi trader), new features (add telegram api root config in env), 10 bug fixes. with 37 contributors merging 20 PRs. Major work included wtfsayo is currently working on fixing various issues related to the pglite db adapter implementation, removing conflicts with slippage and environment variables, and improving the rabbi trader in the agent and packages code areas.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 46 |
+| 👥 Contributors | 37 |
 | 📝 Commits | 0 |
 | 🔄 Merged PRs | 20 |
-| ⚠️ New Issues | 24 |
+| ⚠️ New Issues | 10 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 4
-- 🐛 **Fixes**: 6
-- ✨ **Features**: 5
+- 🧹 **Chores**: 1
+- 🐛 **Fixes**: 10
+- ✨ **Features**: 3
 
 ## 📁 File Changes
-- **packages**: 71 files (+1411/-498 lines)
-- **characters**: 1 files (+24/-27 lines)
-- **root**: 20 files (+20/-28 lines)
-- **docs**: 15 files (+18/-20 lines)
-- **agent**: 1 files (+1/-5 lines)
+- **packages**: 45 files (+2001/-1769 lines)
+- **scripts**: 17 files (+1160/-935 lines)
+- **root**: 12 files (+972/-834 lines)
+- **docs**: 7 files (+18/-41 lines)
+- **.github**: 2 files (+42/-7 lines)
 
 ## 🔥 Notable Changes
-- test: changing test structure for core package. Fixing failling outdated tests
-- test: adding tests for twitter plugin
-- test: adding tests for twitter-client
+- fix: remove defillama plugin & improve rabbi trader
+- fix: letzAi build issues
+- fix: remove near-solana slippage env conflict
 
 ## 👥 Top Contributors
-- **ai16z-demirix**: ai16z-demirix is currently working on adding and updating tests for the core package related to the Twitter functionality
-- **genesis-0000**: genesis-0000 is currently working on adding support for the eternalai provider in their project, allowing for request/response log information to be written and for requests to be made with chain_id extra data in the body
-- **Laurentiu-Andronache**: Laurentiu-Andronache is currently working on adding debug logging for context, fixing context issues for the client-telegram, and making various fixes to the Telegram templates
+- **wtfsayo**: wtfsayo is currently working on fixing various issues related to the pglite db adapter implementation, removing conflicts with slippage and environment variables, and improving the rabbi trader in the agent and packages code areas
+- **odilitime**: odilitime is currently working on fixing translation type issues and updating default settings in the 
+- **antman1p**: antman1p is currently working on adding conditionals for Supabase to the agent directory in a pull request
 
 ## ⚠️ Issues
-- **New Issues**: 24
-- **Labels**: `bug` (20), `enhancement` (3)
-- **Summary**: 20 bugs reported (including 'Tests for core package are failling on develop branch, due they are outdated', 'fix: context for client-telegram') 3 feature requests (including 'Debugging documentation out of date', 'support default grok in generate object for twitter plugin').
+- **New Issues**: 10
+- **Labels**: `bug` (8), `enhancement` (2)
+- **Summary**: 8 bugs reported (including 'Starknet plugin outdated', '`@elizaos/adapter-postgres` package does not bundle together `schema.sql`') 2 feature requests (including 'Suggestion - general logging system', 'WASM support for agents?').
 
 ## Top Contributors
-- **ai16z-demirix**: test: changing test structure for core package. Fixing failling outdated tests
-- **genesis-0000**: feat: support for eternalai provider can write request/response log info
-- **Laurentiu-Andronache**: fix: many fixes to the Telegram templates
+- **wtfsayo**: fix: remove defillama plugin & improve rabbi trader
+- **odilitime**: fix: fix .env.sample defaults
+- **antman1p**: Update .env.example
