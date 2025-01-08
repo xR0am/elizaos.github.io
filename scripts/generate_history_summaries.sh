@@ -39,7 +39,7 @@ generate_weekly_thread() {
     echo "Generating weekly development thread..."
     
     # Prepare input files using jq
-    cat data/weekly/issues.json | jq -r '.[] | "[\(.state)] \(.title): \(.body | split("\n") | map(select(length > 0 and (contains("**") | not) and (contains("<!--") | not))) | .[0] // "No description")"' > data/weekly/issues.txt
+    cat data/weekly/issues.json | jq -r '.[] | "[\(.state // "unknown")] \(.title // "Untitled"): \(.body // "No description" | split("\n") | map(select(length > 0 and (contains("**") | not) and (contains("<!--") | not))) | .[0] // "No description")"' > data/weekly/issues.txt
     
     cat data/weekly/scored.json | jq -r '.[].summary' > data/weekly/weekly.txt
     
@@ -53,7 +53,7 @@ generate_weekly_thread() {
         --prs data/weekly/prs.txt \
         --summaries data/weekly/weekly.txt \
         --output "$output_file" \
-        --model ollama -f
+        --model openai -f
     
     if [ $? -eq 0 ]; then
         echo "✓ Generated thread -> $output_file"
@@ -64,8 +64,6 @@ generate_weekly_thread() {
         echo "✗ Failed to generate thread"
     fi
     
-    # Cleanup temporary files
-    rm -f data/weekly/{issues,prs,weekly}.txt
 }
 
 # Process daily contributors files
