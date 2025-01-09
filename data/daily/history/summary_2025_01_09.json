@@ -1,0 +1,75 @@
+{
+  "title": "elizaos Eliza (2025-01-08)",
+  "version": "",
+  "overview": "Development focused on package improvements (remove defillama plugin & improve rabbi trader), new features (add telegram api root config in env), 10 bug fixes. with 37 contributors merging 20 PRs. Major work included wtfsayo is currently working on fixing various issues related to the pglite db adapter implementation, removing conflicts with slippage and environment variables, and improving the rabbi trader in the agent and packages code areas.",
+  "metrics": {
+    "contributors": 37,
+    "merged_prs": 20,
+    "new_issues": 10,
+    "lines_changed": 7786
+  },
+  "changes": {
+    "features": [
+      "add telegram api root config in env",
+      "Update the Galadriel LLM integration to reflect their product updates",
+      "implement getKnowledge, searchKnowledge, createKnowledge, removeKnowledge and clearKnowledge methods"
+    ],
+    "fixes": [
+      "remove defillama plugin & improve rabbi trader",
+      "letzAi build issues",
+      "remove near-solana slippage env conflict"
+    ],
+    "chores": [
+      "add pnpm lockfile consistency check workflow",
+      "update website url in lore.md"
+    ]
+  },
+  "areas": [
+    {
+      "name": "packages",
+      "files": 45,
+      "additions": 2001,
+      "deletions": 1769
+    },
+    {
+      "name": "scripts",
+      "files": 17,
+      "additions": 1160,
+      "deletions": 935
+    },
+    {
+      "name": "root",
+      "files": 12,
+      "additions": 972,
+      "deletions": 834
+    }
+  ],
+  "issues_summary": "working on 8 bugs including 'Starknet plugin outdated', '`@elizaos/adapter-postgres` package does not bundle together `schema.sql`' and implementing 2 feature requests including 'Suggestion - general logging system', 'WASM support for agents?'",
+  "questions": [],
+  "top_contributors": [
+    {
+      "name": "wtfsayo",
+      "summary": "wtfsayo is currently working on fixing various issues related to the pglite db adapter implementation, removing conflicts with slippage and environment variables, and improving the rabbi trader in the agent and packages code areas",
+      "areas": [
+        "pnpm-lock.yaml",
+        "packages",
+        ".env.example"
+      ]
+    },
+    {
+      "name": "odilitime",
+      "summary": "odilitime is currently working on fixing translation type issues and updating default settings in the ",
+      "areas": [
+        "packages",
+        ".env.example"
+      ]
+    },
+    {
+      "name": "antman1p",
+      "summary": "antman1p is currently working on adding conditionals for Supabase to the agent directory in a pull request",
+      "areas": [
+        ".env.example"
+      ]
+    }
+  ]
+}
