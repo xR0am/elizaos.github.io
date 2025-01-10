@@ -1,5 +1,86 @@
 [
   {
+    "id": "PR_kwDOMT5cIs6HZQop",
+    "number": 2138,
+    "title": "Docs improvements",
+    "body": "Hello!\r\nDuring reading the docs, my OCD observed some minor typos that I fixed.\r\nHope it help\r\nBr,\r\nTudor",
+    "state": "OPEN",
+    "merged": false,
+    "createdAt": "2025-01-10T22:37:04Z",
+    "updatedAt": "2025-01-10T22:37:42Z",
+    "author": {
+      "login": "tudorpintea999",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/87604944?u=00081f378d48a7f321223660ca97e61401467dac&v=4"
+    },
+    "labels": [],
+    "files": [
+      {
+        "path": "docs/README.md",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "path": "docs/api/classes/DatabaseAdapter.md",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "path": "docs/api/functions/composeContext.md",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "path": "docs/api/functions/configureSettings.md",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "path": "docs/api/functions/splitChunks.md",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "path": "docs/api/interfaces/ActionExample.md",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "path": "docs/api/interfaces/ConversationExample.md",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "path": "docs/docs/core/actions.md",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "path": "docs/docs/core/characterfile.md",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "path": "docs/docs/core/evaluators.md",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "path": "docs/docs/faq.md",
+        "additions": 1,
+        "deletions": 1
+      }
+    ],
+    "reviews": [
+      {
+        "id": "PRR_kwDOMT5cIs6XpHtT",
+        "author": "github-actions",
+        "body": "Hi @tudorpintea999! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!",
+        "state": "COMMENTED"
+      }
+    ],
+    "comments": []
+  },
+  {
     "id": "PR_kwDOMT5cIs6HZDAq",
     "number": 2137,
     "title": "feat: Add Mistral AI as new model provider",
@@ -415,17 +496,24 @@
   {
     "id": "PR_kwDOMT5cIs6HX_zi",
     "number": 2130,
-    "title": "Upload a sample photo via the client. Validate successful posting to Twitter.",
+    "title": "feat: Upload a sample photo via the client. Validate successful posting to Twitter.",
     "body": "Relates to\r\n<!-- LINK TO ISSUE OR TICKET -->\r\nNo issue linked (ensure to link related issues or tickets in future PRs).\r\nRisks\r\nRisk Level: Medium\r\nPotential Risks: Misconfiguration of environment variables could cause API authentication failure.\r\nAffected Areas: Twitter functionality, including posting photos, retweets, and likes.\r\nBackground\r\nWhat does this PR do?\r\nThis PR adds functionality for a Twitter client, including:\r\n\r\nSupport for posting photos to Twitter.\r\nAutomatic retweets and likes based on keywords.\r\nAPI authentication integration.\r\nConfiguration documentation.\r\nTemplates for environment variables.\r\nCharacter file configuration for Twitter client.\r\nWhat kind of change is this?\r\nFeature: Non-breaking changes that add functionality.\r\nDocumentation changes needed?\r\nStatus: Documentation changes are required.\r\nActions Taken: Documentation for configuration and environment variables has been updated accordingly.\r\nTesting\r\nWhere should a reviewer start?\r\nVerify the Twitter client configuration documentation.\r\nTest the environment variable templates.\r\nDetailed testing steps\r\nAPI Authentication Test:\r\n\r\nInitialize the client with the provided API keys and tokens.\r\nConfirm successful login.\r\nPhoto Posting Test:\r\n\r\nUpload a sample photo via the client.\r\nValidate successful posting to Twitter.\r\nKeyword-Based Interaction:\r\n\r\nSet keywords for retweets and likes in the configuration.\r\nObserve and verify automatic actions based on these keywords.\r\nCharacter Configuration Validation:\r\n\r\nLoad a sample character configuration file.\r\nVerify seamless integration with the Twitter client.\r\nDeploy Notes\r\nNo special deployment instructions; standard deployment process suffices.\r\nEnsure all environment variables are set correctly before deployment.\r\nAdditional Information\r\nDiscord username\r\nN/A (Please add your Discord username if you have one).",
     "state": "OPEN",
     "merged": false,
     "createdAt": "2025-01-10T19:39:17Z",
-    "updatedAt": "2025-01-10T22:35:48Z",
+    "updatedAt": "2025-01-10T22:36:10Z",
     "author": {
       "login": "kwanRoshi",
       "avatarUrl": "https://avatars.githubusercontent.com/u/41404218?u=b00ae376bd2c4114499a0e12bcd94faef32598cd&v=4"
     },
-    "labels": [],
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB0yW8_A",
+        "name": "Needs Refactor",
+        "color": "C97326",
+        "description": ""
+      }
+    ],
     "files": [
       {
         "path": "README.md",

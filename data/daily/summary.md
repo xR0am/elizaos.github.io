@@ -1,12 +1,12 @@
 # elizaos Eliza (2025-01-10)
     
 ## 📊 Overview
-Development focused on package improvements (Add Akash Network plugin with autonomous deployment capabilities), new features (Add Akash Network plugin with autonomous deployment capabilities), 8 bug fixes. with 40 contributors merging 16 PRs. Major work included various improvements.
+Development focused on package improvements (Add Akash Network plugin with autonomous deployment capabilities), new features (Add Akash Network plugin with autonomous deployment capabilities), 8 bug fixes. with 41 contributors merging 16 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 40 |
+| 👥 Contributors | 41 |
 | 📝 Commits | 0 |
 | 🔄 Merged PRs | 16 |
 | ⚠️ New Issues | 12 |
@@ -28,9 +28,9 @@ Development focused on package improvements (Add Akash Network plugin with auton
 - feat: Add Akash Network plugin with autonomous deployment capabilities
 
 ## 👥 Top Contributors
-- **mameikagou**: mameikagou is currently working on adding a name and description to the SttTtsPlugin in a pull request, fixing unused imports in another pull request, and addressing an issue related to the @elizaos/plugin-twitter package not being published on npm
-- **AIFlowML**: AIFlowML is currently working on adding an Akash Network plugin with autonomous deployment capabilities to the agent and packages code areas
-- **tsubasakong**: tsubasakong is currently working on adding the Heurist embedding model to the project's packages
+- **mameikagou**: mameikagou is currently working on adding a name and description to the SttTtsPlugin through a pull request
+- **AIFlowML**: AIFlowML is currently working on adding an Akash Network plugin with autonomous deployment capabilities to their project
+- **tsubasakong**: tsubasakong is currently working on adding the Heurist embedding model as a new feature in the packages section of the project
 
 ## ⚠️ Issues
 - **New Issues**: 12
