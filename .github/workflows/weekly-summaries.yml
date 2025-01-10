@@ -77,24 +77,46 @@ jobs:
         python scripts/summarize_daily.py data/daily/contributors.json -t md data/daily/summary.md --model openai
 
     # Weekly workflow using daily history
-    - name: Process weekly data
+    - name: Process weekly data and generate thread
       if: env.IS_FRIDAY == '5'
       env:
         GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
         # Create directories
-        mkdir -p data/weekly/history
+        mkdir -p data/weekly/history data/weekly/threads/history
         
         # Combine last 7 days of daily data
-        python scripts/merge_contributors.py \
+        python3 scripts/merge_contributors.py \
           --days 7 \
           --dir data/daily/history \
           -o data/weekly/scored.json
         
         # Generate weekly summaries
         [ -f data/weekly/contributors.json ] && mv data/weekly/contributors.json data/weekly/history/contributors_${TIMESTAMP}.json || true
-        python scripts/summarize.py data/weekly/scored.json data/weekly/contributors.json --model openai
+        python3 scripts/summarize.py summary data/weekly/scored.json data/weekly/contributors.json --model openai
+        
+        # Generate and manage weekly thread
+        bash scripts/generate_history_summaries.sh
+        bash scripts/manage_thread_history.sh
+        
+        # Verify and log thread generation
+        if [ -f "data/weekly/threads/latest.txt" ]; then
+          echo "Weekly thread generated successfully"
+          echo "Thread content:"
+          cat "data/weekly/threads/latest.txt"
+        else
+          echo "Warning: Thread generation may have failed"
+        fi
+
+    - name: Archive thread artifacts
+      if: env.IS_FRIDAY == '5'
+      uses: actions/upload-artifact@v2
+      with:
+        name: weekly-thread
+        path: |
+          data/weekly/threads/latest.txt
+          data/weekly/threads/history/
 
     # Monthly workflow using daily history
     - name: Process monthly data

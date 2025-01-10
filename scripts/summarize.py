@@ -150,7 +150,6 @@ def get_recent_activity(data: Dict, days: int = 90) -> List[str]:
     # Take top 15 most important activities, or all if less than 15
     return [item[2] for item in activity[:15]]
 
-
 def get_summary_prompt(data: Dict, activity: List[str], stats: Dict) -> str:
     """Get enhanced prompt for summary generation"""
     areas_str = ""
@@ -172,6 +171,35 @@ Activity Stats:
 
 Keep it brief and focus on main areas of work. Write in present tense. Start with "{data['contributor']} is" """
 
+def get_thread_prompt(issues: List[str], prs: List[str], summaries: List[str]) -> str:
+    """Generate prompt for Twitter thread creation"""
+    return f"""Create a Twitter thread summarizing this week's GitHub development activity. Format it exactly like this example, maintaining the same style and punchiness:
+
+1/ ai16z Eliza: This week saw major progress with {len(prs)} PRs merged and {len(issues)} new issues addressed. Here's the breakdown of key developments...
+
+2/ Infrastructure & Performance: [specific improvements with concrete metrics when possible]
+
+Recent activity to summarize:
+Issues:
+{chr(10).join(issues[:10])}
+
+Pull Requests:
+{chr(10).join(prs[:10])}
+
+Weekly Summaries:
+{chr(10).join(summaries)}
+
+Key requirements:
+- First tweet should be similar to this, with a small introduction: 1/ ai16z Eliza: This week saw major progress with {len(prs)} PRs merged and {len(issues)} new issues addressed. Here's the breakdown of key developments...
+- Maximum 10 tweets in the thread, numbered 1/ through 10/
+- Each tweet MUST start with the number and slash exactly like this: "1/ " (number, slash, space) and then the tweet content
+- NO hashtags
+- NO emojis
+- Keep each tweet under 280 characters
+- Focus on concrete improvements with specific metrics when possible
+- End with future roadmap and upcoming priorities
+
+Make each tweet information-dense and specific. Avoid vague statements - prefer concrete examples and metrics. Output the thread only, nothing else."""
 
 def generate_summary(data: Dict, model: str, api_key: str = None) -> str:
     """Generate summary using specified model"""
@@ -209,40 +237,116 @@ def generate_summary(data: Dict, model: str, api_key: str = None) -> str:
         print(f"Error generating {model} summary: {e}")
         return f"Unable to generate summary for {data['contributor']} due to an error."
 
-# Main function remains the same...
+def generate_thread(issues: List[str], prs: List[str], summaries: List[str], 
+                   model: str = "ollama", api_key: str = None) -> str:
+    """Generate Twitter thread from weekly activity"""
+    try:
+        if model == "openai" and api_key:
+            from openai import OpenAI
+            client = OpenAI(api_key=api_key)
+            response = client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "system", "content": "You are a technical writer creating engaging Twitter threads about software development progress."},
+                    {"role": "user", "content": get_thread_prompt(issues, prs, summaries)}
+                ],
+                temperature=0.3,
+                max_tokens=1000
+            )
+            return response.choices[0].message.content.strip()
+        else:
+            from langchain_ollama import ChatOllama
+            model = ChatOllama(model='phi3:14b-medium-4k-instruct-q5_K_M', temperature=0.1)
+            prompt = PromptTemplate(
+                template=get_thread_prompt(issues, prs, summaries),
+                input_variables=[]
+            )
+            response = model.invoke(prompt.format())
+            return response.content.strip()
+    except Exception as e:
+        print(f"Error generating thread using {model}: {e}")
+        return "Unable to generate thread due to an error."
+
+# Modify main() function to add thread generation option:
 def main():
-    parser = argparse.ArgumentParser(description="Generate contributor summaries")
-    parser.add_argument("input_file", help="Input JSON file")
-    parser.add_argument("output_file", help="Output JSON file")
-    parser.add_argument("--model", choices=["openai", "ollama"], required=True,
-                       help="Model to use for summary generation")
-    parser.add_argument("-f", "--force", action="store_true",
-                       help="Force overwrite output file")
+    parser = argparse.ArgumentParser(description="Generate contributor summaries and Twitter threads")
+    subparsers = parser.add_subparsers(dest="command", help="Command to run")
+    
+    # Summary command
+    summary_parser = subparsers.add_parser("summary", help="Generate contributor summaries")
+    summary_parser.add_argument("input_file", help="Input JSON file")
+    summary_parser.add_argument("output_file", help="Output JSON file")
+    summary_parser.add_argument("--model", choices=["openai", "ollama"], required=True,
+                              help="Model to use for generation")
+    summary_parser.add_argument("-f", "--force", action="store_true",
+                              help="Force overwrite output file")
+
+    # Thread command
+    thread_parser = subparsers.add_parser("thread", help="Generate Twitter thread")
+    thread_parser.add_argument("--issues", required=True, help="Issues file path")
+    thread_parser.add_argument("--prs", required=True, help="PRs file path")
+    thread_parser.add_argument("--summaries", required=True, help="Weekly summaries file path")
+    thread_parser.add_argument("--output", required=True, help="Output file for thread")
+    thread_parser.add_argument("--model", choices=["openai", "ollama"], 
+                             default="ollama", help="Model to use for generation")
+    thread_parser.add_argument("-f", "--force", action="store_true",
+                             help="Force overwrite output file")
+
     args = parser.parse_args()
 
-    if os.path.exists(args.output_file) and not args.force:
-        raise FileExistsError(f"Output file exists. Use -f to overwrite.")
+    if not args.command:
+        parser.print_help()
+        return
 
     # Check for OpenAI API key only if using OpenAI
     api_key = None
     if args.model == "openai":
         api_key = os.getenv("OPENAI_API_KEY")
         if not api_key:
-            raise ValueError("OPENAI_API_KEY environment variable required")
+            print("Warning: OPENAI_API_KEY not found, falling back to ollama")
+            args.model = "ollama"
 
-    with open(args.input_file) as f:
-        contributors = json.load(f)
+    if args.command == "summary":
+        if os.path.exists(args.output_file) and not args.force:
+            raise FileExistsError(f"Output file exists. Use -f to overwrite.")
 
-    for contributor in contributors:
-        print(f"\nProcessing {contributor['contributor']}...")
-        summary = generate_summary(contributor, args.model, api_key)
-        contributor['summary'] = summary
-        print(f"Summary: {summary[:100]}...")
+        with open(args.input_file) as f:
+            contributors = json.load(f)
 
-    with open(args.output_file, 'w') as f:
-        json.dump(contributors, f, indent=2)
-    
-    print(f"\nSaved summaries to {args.output_file}")
+        for contributor in contributors:
+            print(f"\nProcessing {contributor['contributor']}...")
+            summary = generate_summary(contributor, args.model, api_key)
+            contributor['summary'] = summary
+            print(f"Summary: {summary[:100]}...")
+
+        with open(args.output_file, 'w') as f:
+            json.dump(contributors, f, indent=2)
+        
+        print(f"\nSaved summaries to {args.output_file}")
+
+    elif args.command == "thread":
+        if os.path.exists(args.output) and not args.force:
+            raise FileExistsError(f"Output file exists. Use -f to overwrite.")
+
+        # Read input files
+        with open(args.issues) as f:
+            issues = [line.strip() for line in f if line.strip()]
+        with open(args.prs) as f:
+            prs = [line.strip() for line in f if line.strip()]
+        with open(args.summaries) as f:
+            summaries = [line.strip() for line in f if line.strip()]
+
+        # Generate thread
+        thread = generate_thread(issues, prs, summaries, args.model, api_key)
+
+        # Save thread
+        with open(args.output, 'w') as f:
+            f.write(thread)
+        
+        print(f"\nGenerated thread saved to {args.output}")
+        print("\nThread preview:")
+        print("---------------")
+        print(thread)
 
 if __name__ == "__main__":
     main()
