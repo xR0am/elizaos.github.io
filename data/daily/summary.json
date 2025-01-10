@@ -1,68 +1,71 @@
 {
-  "title": "elizaos Eliza (2025-01-09)",
+  "title": "elizaos Eliza (2025-01-10)",
   "version": "",
-  "overview": "Development focused on package improvements (full overhaul of client), new features (full overhaul of client), 7 bug fixes. with 37 contributors merging 13 PRs. Major work included various improvements.",
+  "overview": "Development focused on package improvements (Add Akash Network plugin with autonomous deployment capabilities), new features (Add Akash Network plugin with autonomous deployment capabilities), 8 bug fixes. with 40 contributors merging 16 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 37,
-    "merged_prs": 13,
-    "new_issues": 8,
-    "lines_changed": 24250
+    "contributors": 40,
+    "merged_prs": 16,
+    "new_issues": 12,
+    "lines_changed": 16004
   },
   "changes": {
     "features": [
-      "full overhaul of client",
-      "Proof of Pizza - Agentic Dominos Ordering"
+      "Add Akash Network plugin with autonomous deployment capabilities",
+      "add Heurist embedding model",
+      "support autonome platform"
     ],
     "fixes": [
-      "Bugfix in LetzAI Plugin -> missing named export and Plugin-type",
-      "update regex to allow Unicode characters in message processing",
-      "update slack client readme manifest"
+      "rm unused imports",
+      "prevent repeated login by reusing client-twitter session",
+      "Apply model settings for images and remove duplicate files"
     ],
-    "chores": []
+    "chores": [
+      "revert #1808 + add missing import for coin gecko plugin"
+    ]
   },
   "areas": [
     {
-      "name": "client",
-      "files": 74,
-      "additions": 15161,
-      "deletions": 749
+      "name": "packages",
+      "files": 102,
+      "additions": 7831,
+      "deletions": 4973
     },
     {
-      "name": "packages",
-      "files": 45,
-      "additions": 3729,
-      "deletions": 383
+      "name": "agent",
+      "files": 10,
+      "additions": 58,
+      "deletions": 21
     },
     {
       "name": "root",
-      "files": 6,
-      "additions": 2632,
-      "deletions": 1569
+      "files": 7,
+      "additions": 1538,
+      "deletions": 1465
     }
   ],
-  "issues_summary": "working on 5 bugs including 'A CUDA error is thrown when using `llama_local` - ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL, exit code 3221226505', 'Cannot read properties of undefined (reading 'actions') trying to test the whatsapp plugin ' and implementing 1 feature requests including 'Nillion nilDB Plugin'",
+  "issues_summary": "working on 4 bugs including '\u2009ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL\u2009', 'duplicate readme file in packages/plugin-story' and implementing 8 feature requests including '@elizaos/plugin-twitter has not published in npm', ' Refactor: Separate Data Providers into Plugins'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "bxngxl",
-      "summary": "bxngxl is currently working on updating and refining the README files for the project",
+      "name": "mameikagou",
+      "summary": "mameikagou is currently working on adding a name and description to the SttTtsPlugin in a pull request, fixing unused imports in another pull request, and addressing an issue related to the @elizaos/plugin-twitter package not being published on npm",
       "areas": [
-        "README_CN.md"
+        "packages"
       ]
     },
     {
-      "name": "YANGSEOKWOO",
-      "summary": "YANGSEOKWOO is currently updating the README_KOR",
+      "name": "AIFlowML",
+      "summary": "AIFlowML is currently working on adding an Akash Network plugin with autonomous deployment capabilities to the agent and packages code areas",
       "areas": [
-        "README_KOR.md"
+        "packages",
+        ".env.example",
+        "agent"
       ]
     },
     {
-      "name": "JoeyKhd",
-      "summary": "JoeyKhd is currently working on a significant pull request for a full overhaul of the client, with changes in the packages, ",
+      "name": "tsubasakong",
+      "summary": "tsubasakong is currently working on adding the Heurist embedding model to the project's packages",
       "areas": [
-        ".vscode",
-        "pnpm-lock.yaml",
         "packages"
       ]
     }

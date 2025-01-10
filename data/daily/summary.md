@@ -1,44 +1,43 @@
-# elizaos Eliza (2025-01-09)
+# elizaos Eliza (2025-01-10)
     
 ## 📊 Overview
-Development focused on package improvements (full overhaul of client), new features (full overhaul of client), 7 bug fixes. with 37 contributors merging 13 PRs. Major work included various improvements.
+Development focused on package improvements (Add Akash Network plugin with autonomous deployment capabilities), new features (Add Akash Network plugin with autonomous deployment capabilities), 8 bug fixes. with 40 contributors merging 16 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 37 |
+| 👥 Contributors | 40 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 13 |
-| ⚠️ New Issues | 8 |
+| 🔄 Merged PRs | 16 |
+| ⚠️ New Issues | 12 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 0
-- 🐛 **Fixes**: 6
-- ✨ **Features**: 2
+- 🧹 **Chores**: 1
+- 🐛 **Fixes**: 8
+- ✨ **Features**: 4
 
 ## 📁 File Changes
-- **client**: 74 files (+15161/-749 lines)
-- **root**: 6 files (+2632/-1569 lines)
-- **packages**: 45 files (+3729/-383 lines)
-- **docs**: 2 files (+10/-10 lines)
-- **.vscode**: 1 files (+2/-2 lines)
+- **packages**: 102 files (+7831/-4973 lines)
+- **root**: 7 files (+1538/-1465 lines)
+- **docs**: 3 files (+103/-15 lines)
+- **agent**: 10 files (+58/-21 lines)
 
 ## 🔥 Notable Changes
-- Update README_CN to match latest English README
-- docs: Update README_KOR.md
-- feat: full overhaul of client
+- Add name and description to SttTtsPlugin 
+- fix: rm unused imports
+- feat: Add Akash Network plugin with autonomous deployment capabilities
 
 ## 👥 Top Contributors
-- **bxngxl**: bxngxl is currently working on updating and refining the README files for the project
-- **YANGSEOKWOO**: YANGSEOKWOO is currently updating the README_KOR
-- **JoeyKhd**: JoeyKhd is currently working on a significant pull request for a full overhaul of the client, with changes in the packages, 
+- **mameikagou**: mameikagou is currently working on adding a name and description to the SttTtsPlugin in a pull request, fixing unused imports in another pull request, and addressing an issue related to the @elizaos/plugin-twitter package not being published on npm
+- **AIFlowML**: AIFlowML is currently working on adding an Akash Network plugin with autonomous deployment capabilities to the agent and packages code areas
+- **tsubasakong**: tsubasakong is currently working on adding the Heurist embedding model to the project's packages
 
 ## ⚠️ Issues
-- **New Issues**: 8
-- **Labels**: `bug` (5), `Need Feedback` (2), `enhancement` (1)
-- **Summary**: 5 bugs reported (including 'A CUDA error is thrown when using `llama_local` - ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL, exit code 3221226505', 'Cannot read properties of undefined (reading 'actions') trying to test the whatsapp plugin ') 1 feature requests (including 'Nillion nilDB Plugin').
+- **New Issues**: 12
+- **Labels**: `enhancement` (8), `bug` (4)
+- **Summary**: 4 bugs reported (including ' ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL ', 'duplicate readme file in packages/plugin-story') 8 feature requests (including '@elizaos/plugin-twitter has not published in npm', ' Refactor: Separate Data Providers into Plugins').
 
 ## Top Contributors
-- **bxngxl**: Update README_CN to match latest English README
-- **YANGSEOKWOO**: docs: Update README_KOR.md
-- **JoeyKhd**: feat: full overhaul of client
+- **mameikagou**: Add name and description to SttTtsPlugin 
+- **AIFlowML**: feat: Add Akash Network plugin with autonomous deployment capabilities
+- **tsubasakong**: feat: add Heurist embedding model
