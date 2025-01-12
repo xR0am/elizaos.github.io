@@ -20,6 +20,7 @@ older versions are backed up in `data/*/history` folders with timestamps
   - Detailed activity summaries with metrics and trends
   - Smart contributor scoring system
   - AI-powered activity summaries
+  - Thread-style weekly summaries for social sharing
 
 - **Contributor Profiles**
   - Interactive profile pages for each contributor
@@ -78,13 +79,29 @@ python scripts/calculate_scores.py data/combined.json data/scored.json
 
 # Generate summaries
 python scripts/summarize.py data/scored.json data/contributors.json --model openai
+
+# Generate weekly thread summary
+bash scripts/generate_history_summaries.sh
 ```
+
+### Weekly Thread Generation
+
+The system can generate social media-friendly thread summaries of weekly activity:
+
+1. **Automatic Generation**: Part of weekly workflow, runs every Friday
+2. **Manual Generation**: Run `generate_history_summaries.sh`
+3. **Output Location**: `data/weekly/thread_[DATE].txt`
+4. **Content**: 
+   - Comprehensive weekly summary in thread format
+   - Key metrics and achievements
+   - Notable PRs and improvements
+   - Future priorities and goals
 
 ### Automated Reports
 
 The included GitHub Actions workflow (`weekly-summaries.yml`) automatically:
 - Runs daily at 5:00 PM EST
-- Generates weekly reports on Fridays
+- Generates weekly reports and threads on Fridays
 - Creates monthly summaries on the 4th of each month
 
 ### Generate Static Site
@@ -133,6 +150,7 @@ The system generates structured JSON data for contributors:
 - Adjust summary generation in `summarize.py`
 - Customize profile pages in `ContributorProfile.js`
 - Configure report schedules in `weekly-summaries.yml`
+- Customize thread format in `generate_history_summaries.sh`
 
 ## Directory Structure
 
@@ -142,7 +160,8 @@ The system generates structured JSON data for contributors:
 ├── scripts/           # Core processing scripts
 │   ├── combine.py     # Data aggregation
 │   ├── calculate_scores.py    # Scoring system
-│   └── summarize.py   # Summary generation
+│   ├── summarize.py   # Summary generation
+│   └── generate_history_summaries.sh  # Thread generation
 ├── profiles/          # Generated static site
 └── .github/workflows  # Automation workflows
 ```
