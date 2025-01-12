@@ -1,5 +1,181 @@
-IyBHaXRIdWIgQ29udHJpYnV0b3IgQW5hbHl0aWNzIEdlbmVyYXRvcgoKQSBjb21wcmVoZW5zaXZlIGFuYWx5dGljcyBhbmQgcmVwb3J0aW5nIHN5c3RlbSBmb3IgdHJhY2tpbmcgR2l0SHViIHJlcG9zaXRvcnkgY29udHJpYnV0aW9ucywgZ2VuZXJhdGluZyBpbnNpZ2h0cywgYW5kIGNyZWF0aW5nIHN0YXRpYyBjb250cmlidXRvciBwcm9maWxlIHBhZ2VzLgoKW1dlYnNpdGVdKGh0dHBzOi8vZWxpemFvcy5haS8pIHwgW0Rpc2NvcmRdKGh0dHBzOi8vZGlzY29yZC5nZy9lbGl6YU9TKSB8IFtEQU9dKGh0dHBzOi8vd3d3LmRhb3MuZnVuL0hlTHA2TnVRa21ZQjRwWVdvMnpZczIybUVTSFhQUVl6WGJCOG40Vjk4andDKSB8IFtEb2NzXShodHRwczovL2VsaXphb3MuZ2l0aHViLmlvL2VsaXphLykKCmVsaXphb3MvZWxpemEgcGVybWFsaW5rczoKLSBodHRwczovL2VsaXphb3MuZ2l0aHViLmlvL2RhdGEvZGFpbHkvY29udHJpYnV0b3JzLmpzb24KICAtIGh0dHBzOi8vZWxpemFvcy5naXRodWIuaW8vZGF0YS9kYWlseS9zdW1tYXJ5Lmpzb24KICAtIGh0dHBzOi8vZWxpemFvcy5naXRodWIuaW8vZGF0YS9kYWlseS9zdW1tYXJ5Lm1kCi0gaHR0cHM6Ly9lbGl6YW9zLmdpdGh1Yi5pby9kYXRhL3dlZWtseS9jb250cmlidXRvcnMuanNvbgotIGh0dHBzOi8vZWxpemFvcy5naXRodWIuaW8vZGF0YS9tb250aGx5L2NvbnRyaWJ1dG9ycy5qc29uCgpvbGRlciB2ZXJzaW9ucyBhcmUgYmFja2VkIHVwIGluIGBkYXRhLyovaGlzdG9yeWAgZm9sZGVycyB3aXRoIHRpbWVzdGFtcHMKCiMjIEZlYXR1cmVzCgotICoqRGFpbHksIFdlZWtseSwgYW5kIE1vbnRobHkgUmVwb3J0cyoqCiAgLSBBdXRvbWF0ZWQgZGF0YSBjb2xsZWN0aW9uIHZpYSBHaXRIdWIgQWN0aW9ucwogIC0gRGV0YWlsZWQgYWN0aXZpdHkgc3VtbWFyaWVzIHdpdGggbWV0cmljcyBhbmQgdHJlbmRzCiAgLSBTbWFydCBjb250cmlidXRvciBzY29yaW5nIHN5c3RlbQogIC0gQUktcG93ZXJlZCBhY3Rpdml0eSBzdW1tYXJpZXMKICAtIFRocmVhZC1zdHlsZSB3ZWVrbHkgc3VtbWFyaWVzIGZvciBzb2NpYWwgc2hhcmluZwoKLSAqKkNvbnRyaWJ1dG9yIFByb2ZpbGVzKioKICAtIEludGVyYWN0aXZlIHByb2ZpbGUgcGFnZXMgZm9yIGVhY2ggY29udHJpYnV0b3IKICAtIEFjdGl2aXR5IHZpc3VhbGl6YXRpb24gd2l0aCBjaGFydHMgYW5kIG1ldHJpY3MKICAtIENvbnRyaWJ1dGlvbiBoaXN0b3J5IGFuZCBlbmdhZ2VtZW50IHRyYWNraW5nCiAgLSBSZXNwb25zaXZlIGRlc2lnbiB3aXRoIGRhcmsgbW9kZSBzdXBwb3J0CgotICoqQWN0aXZpdHkgVHJhY2tpbmcqKgogIC0gUHVsbCByZXF1ZXN0IGFuYWx5c2lzIHdpdGggZmlsZS1sZXZlbCBjaGFuZ2VzCiAgLSBJc3N1ZSB0cmFja2luZyB3aXRoIGxhYmVsIGFuYWx5dGljcwogIC0gQ29tbWl0IGhpc3RvcnkgYW5kIGltcGFjdCBtZWFzdXJlbWVudAogIC0gRW5nYWdlbWVudCBtZXRyaWNzIChjb21tZW50cywgcmV2aWV3cywgZXRjLikKCiMjIFNldHVwCgoxLiBDb25maWd1cmUgR2l0SHViIEF1dGhlbnRpY2F0aW9uOgpgYGBiYXNoCiMgU2V0IHlvdXIgR2l0SHViIGFjY2VzcyB0b2tlbgpleHBvcnQgR0hfQUNDRVNTX1RPS0VOPSJ5b3VyX3Rva2VuIgoKIyBGb3IgQUktcG93ZXJlZCBzdW1tYXJpZXMgKG9wdGlvbmFsKQpleHBvcnQgT1BFTkFJX0FQSV9LRVk9InlvdXJfa2V5Igpg
+# GitHub Contributor Analytics Generator
 
-...
+A comprehensive analytics and reporting system for tracking GitHub repository contributions, generating insights, and creating static contributor profile pages.
 
-[Content truncated for brevity - the full base64 encoded content was included in the actual request]
+[Website](https://elizaos.ai/) | [Discord](https://discord.gg/elizaOS) | [DAO](https://www.daos.fun/HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC) | [Docs](https://elizaos.github.io/eliza/)
+
+elizaos/eliza permalinks:
+- https://elizaos.github.io/data/daily/contributors.json
+  - https://elizaos.github.io/data/daily/summary.json
+  - https://elizaos.github.io/data/daily/summary.md
+- https://elizaos.github.io/data/weekly/contributors.json
+- https://elizaos.github.io/data/monthly/contributors.json
+
+older versions are backed up in `data/*/history` folders with timestamps
+
+## Features
+
+- **Daily, Weekly, and Monthly Reports**
+  - Automated data collection via GitHub Actions
+  - Detailed activity summaries with metrics and trends
+  - Smart contributor scoring system
+  - AI-powered activity summaries
+  - Thread-style weekly summaries for social sharing
+
+- **Contributor Profiles**
+  - Interactive profile pages for each contributor
+  - Activity visualization with charts and metrics
+  - Contribution history and engagement tracking
+  - Responsive design with dark mode support
+
+- **Activity Tracking**
+  - Pull request analysis with file-level changes
+  - Issue tracking with label analytics
+  - Commit history and impact measurement
+  - Engagement metrics (comments, reviews, etc.)
+
+## Setup
+
+1. Configure GitHub Authentication:
+```bash
+# Set your GitHub access token
+export GH_ACCESS_TOKEN=\"your_token\"
+
+# For AI-powered summaries (optional)
+export OPENAI_API_KEY=\"your_key\"
+```
+
+2. Install Dependencies:
+```bash
+# Install Python dependencies
+pip install openai langchain-core langchain-ollama
+
+# Install Node.js dependencies
+npm install
+```
+
+3. Configure Repository Settings:
+```bash
+# Update repository details in fetch_github.sh
+owner=\"your_org\"
+repo=\"your_repo\"
+```
+
+## Usage
+
+### Manual Data Collection
+
+```bash
+# Fetch recent activity
+./scripts/fetch_github.sh owner repo --type prs --days 7
+./scripts/fetch_github.sh owner repo --type issues --days 7
+./scripts/fetch_github.sh owner repo --type commits --days 7
+
+# Process and combine data
+python scripts/combine.py -p data/prs.json -i data/issues.json -c data/commits.json -o data/combined.json
+
+# Calculate contributor scores
+python scripts/calculate_scores.py data/combined.json data/scored.json
+
+# Generate summaries
+python scripts/summarize.py data/scored.json data/contributors.json --model openai
+
+# Generate weekly thread summary
+bash scripts/generate_history_summaries.sh
+```
+
+### Weekly Thread Generation
+
+The system can generate social media-friendly thread summaries of weekly activity:
+
+1. **Automatic Generation**: Part of weekly workflow, runs every Friday
+2. **Manual Generation**: Run `generate_history_summaries.sh`
+3. **Output Location**: `data/weekly/thread_[DATE].txt`
+4. **Content**: 
+   - Comprehensive weekly summary in thread format
+   - Key metrics and achievements
+   - Notable PRs and improvements
+   - Future priorities and goals
+
+### Automated Reports
+
+The included GitHub Actions workflow (`weekly-summaries.yml`) automatically:
+- Runs daily at 5:00 PM EST
+- Generates weekly reports and threads on Fridays
+- Creates monthly summaries on the 4th of each month
+
+### Generate Static Site
+
+```bash
+# Build and generate contributor profile pages
+npm run build
+npm run generate
+
+# View the site
+open profiles/index.html
+```
+
+## Data Structure
+
+The system generates structured JSON data for contributors:
+
+```json
+{
+  \"contributor\": \"username\",
+  \"score\": number,
+  \"avatar_url\": \"string\",
+  \"summary\": \"string\",
+  \"activity\": {
+    \"code\": {
+      \"total_commits\": number,
+      \"total_prs\": number,
+      \"commits\": array,
+      \"pull_requests\": array
+    },
+    \"issues\": {
+      \"total_opened\": number,
+      \"opened\": array
+    },
+    \"engagement\": {
+      \"total_comments\": number,
+      \"comments\": array
+    }
+  }
+}
+```
+
+## Customization
+
+- Modify scoring algorithms in `calculate_scores.py`
+- Adjust summary generation in `summarize.py`
+- Customize profile pages in `ContributorProfile.js`
+- Configure report schedules in `weekly-summaries.yml`
+- Customize thread format in `generate_history_summaries.sh`
+
+## Directory Structure
+
+```
+.
+├── data/               # Generated data and reports
+├── scripts/           # Core processing scripts
+│   ├── combine.py     # Data aggregation
+│   ├── calculate_scores.py    # Scoring system
+│   ├── summarize.py   # Summary generation
+│   └── generate_history_summaries.sh  # Thread generation
+├── profiles/          # Generated static site
+└── .github/workflows  # Automation workflows
+```
+
+## Requirements
+
+- Python 3.11+
+- Node.js 18+
+- GitHub Personal Access Token
+- OpenAI API Key (optional, for AI summaries)
+
+## Contributors
+
+## Notes
+
+`code2prompt -p README.md -p scripts/build.js -p scripts/components/ContributorProfile.js -p package.json -p profiles/madjin.html``,
+  `message`: `docs: add weekly thread generation feature documentation`
