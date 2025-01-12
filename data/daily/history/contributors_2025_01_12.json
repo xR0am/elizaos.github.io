@@ -2,7 +2,7 @@
   {
     "contributor": "ai16z-demirix",
     "score": 35,
-    "summary": "ai16z-demirix is currently working on adding tests to the Coinbase plugin and organizing test files in the correct directory structure within the packages code area. Their recent activity includes 2 merged PRs and 1 issue related to enhancing the testing process.",
+    "summary": "ai16z-demirix is currently working on adding tests to the Coinbase plugin, following the package structure. They have also moved uuid tests to the correct directory. Their recent activity focuses on testing enhancements in the packages code area.",
     "avatar_url": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4",
     "activity": {
       "code": {
@@ -76,9 +76,9 @@
           {
             "number": 2169,
             "title": "Coinbase-plugin - add tests acorrding to follow package structure",
-            "state": "OPEN",
+            "state": "CLOSED",
             "created_at": "2025-01-11T23:24:50Z",
-            "updated_at": "2025-01-11T23:24:50Z",
+            "updated_at": "2025-01-12T04:32:43Z",
             "body": "**Is your feature request related to a problem? Please describe.**\r\n\r\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\r\nWe should add tests in __tests__directory for coinbase plugin to cover wallet functionalities.\r\n**Describe the solution you'd like**\r\n\r\n<!-- A clear and concise description of what you want to happen. -->\r\n__tests__directory, vitest as a test runner with added tests and scripts to package.json \r\n**Describe alternatives you've considered**\r\n\r\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\r\n\r\n**Additional context**\r\n\r\n<!-- Add any other context or screenshots about the feature request here. -->\r\n",
             "labels": [
               {
@@ -101,8 +101,8 @@
   },
   {
     "contributor": "tcm390",
-    "score": 33,
-    "summary": "tcm390 is currently working on a PR for an nft plugin and a fix for the client-discord join voice action. These contributions are focused on the agent and packages code areas.",
+    "score": 34,
+    "summary": "tcm390 is currently working on a new feature for an NFT plugin and has also made a fix to the client-discord join voice action. These contributions are focused on the 'packages' and 'agent' code areas.",
     "avatar_url": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4",
     "activity": {
       "code": {
@@ -112,12 +112,12 @@
         "pull_requests": [
           {
             "number": 2167,
-            "title": "nft plugin",
+            "title": "feat: nft plugin",
             "state": "OPEN",
             "merged": false,
             "created_at": "2025-01-11T23:06:42Z",
-            "updated_at": "2025-01-12T00:47:31Z",
-            "body": "",
+            "updated_at": "2025-01-12T04:58:28Z",
+            "body": "This PR refactors the code to align with our codebase structure while ensuring that the core functionality remains unchanged.\r\n\r\nNote: It appears that some functions within the NFTService are not yet implemented. However, the current refactored structure should provide the foundation for the author to implement the remaining functions in subsequent iterations.\r\n\r\n![image](https://github.com/user-attachments/assets/a4f40f1e-d439-4583-ac6b-f08d87907fcd)\r\n",
             "files": [
               {
                 "path": ".gitignore",
@@ -126,18 +126,18 @@
               },
               {
                 "path": "agent/package.json",
-                "additions": 1,
+                "additions": 2,
                 "deletions": 1
               },
               {
                 "path": "agent/src/index.ts",
-                "additions": 5,
-                "deletions": 2
+                "additions": 65,
+                "deletions": 38
               },
               {
                 "path": "package.json",
-                "additions": 1,
-                "deletions": 1
+                "additions": 7,
+                "deletions": 6
               },
               {
                 "path": "packages/core/src/types.ts",
@@ -176,17 +176,17 @@
               },
               {
                 "path": "packages/plugin-nft-collections/src/actions/get-collections.ts",
-                "additions": 52,
+                "additions": 161,
                 "deletions": 0
               },
               {
                 "path": "packages/plugin-nft-collections/src/actions/list-nft.ts",
-                "additions": 149,
+                "additions": 159,
                 "deletions": 0
               },
               {
                 "path": "packages/plugin-nft-collections/src/actions/sweep-floor.ts",
-                "additions": 121,
+                "additions": 131,
                 "deletions": 0
               },
               {
@@ -206,12 +206,12 @@
               },
               {
                 "path": "packages/plugin-nft-collections/src/index.ts",
-                "additions": 11,
+                "additions": 86,
                 "deletions": 0
               },
               {
                 "path": "packages/plugin-nft-collections/src/providers/nft-collections.ts",
-                "additions": 110,
+                "additions": 100,
                 "deletions": 0
               },
               {
@@ -221,17 +221,12 @@
               },
               {
                 "path": "packages/plugin-nft-collections/src/services/coingecko.ts",
-                "additions": 105,
+                "additions": 94,
                 "deletions": 0
               },
               {
                 "path": "packages/plugin-nft-collections/src/services/market-intelligence.ts",
-                "additions": 40,
-                "deletions": 0
-              },
-              {
-                "path": "packages/plugin-nft-collections/src/services/nft-collections.ts",
-                "additions": 161,
+                "additions": 29,
                 "deletions": 0
               },
               {
@@ -241,7 +236,7 @@
               },
               {
                 "path": "packages/plugin-nft-collections/src/services/reservoir.ts",
-                "additions": 228,
+                "additions": 315,
                 "deletions": 0
               },
               {
@@ -251,7 +246,7 @@
               },
               {
                 "path": "packages/plugin-nft-collections/src/services/social-analytics.ts",
-                "additions": 95,
+                "additions": 84,
                 "deletions": 0
               },
               {
@@ -397,9 +392,218 @@
     }
   },
   {
+    "contributor": "dtbuchholz",
+    "score": 22,
+    "summary": "dtbuchholz is currently working on adding support for custom S3 endpoints in the `plugin-node` package. This work is reflected in an open issue and a corresponding pull request titled \"feat: custom s3 endpoint url for 'plugin-node'\". The focus of the contribution is in the packages area, specifically enhancing the functionality of the plugin.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/13358940?u=ca2e646d8765c1c504f78bbb77429a5960f01cf3&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 2176,
+            "title": "feat: custom s3 endpoint url for 'plugin-node'",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2025-01-12T04:01:32Z",
+            "updated_at": "2025-01-12T04:11:48Z",
+            "body": "# Relates to\r\n\r\nhttps://github.com/elizaOS/eliza/issues/2174\r\n\r\n# Risks\r\n\r\nLow. This affects only the `plugin-node`, and it changes logic in a way that is backward compatible. \r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nThis changes the `plugin-node` to, optionally, use a custom `AWS_S3_ENDPOINT`. If this value is not set, the existing behavior is used, which explicitly calls the official AWS S3 URL. If the value is set (e.g., `http://localhost:8014`), it instead uses this custom URL when reading/writing data. Closes https://github.com/elizaOS/eliza/issues/2174.\r\n\r\n## What kind of change is this?\r\n\r\nFeature; improves the S3 plugin functionality. \r\n\r\n## Why are we doing this? Any context or related work?\r\n\r\nEliza should make it so that AWS isn't the only S3 provider. Right now, it's an enshrined plugin. If we merge this PR, anyone that builds an S3-compatible tool can use the plugin; it becomes more flexible.\r\n\r\nFor reference, I'm building a web3 native object storage layer, which has S3 compatability\u2014called Basin: https://basin.textile.io. We have an S3 adapter that works with MinIO, boto3, etc. I tested this plugin against our adapter, and everything worked as expected (more on this below).\r\n\r\n# Documentation changes needed?\r\n\r\n- Updated the `plugin-node` README to mention this variable\r\n- Added to the `.env.example` file\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nIf you'd like to test this flow, you'll need to use some local S3 compatible server. A popular one is [MinIO](https://min.io/docs/minio/linux/reference/minio-mc.html). Once you have the server running, it should log the local port. You can then set the `.env` variable `AWS_S3_ENDPOINT` to this value (e.g., `http://localhost:8014), and then call `uploadFile`. \r\n\r\n## Detailed testing steps\r\n\r\nI tested this against our S3 adapter with both raw and resigned URLs. For example:\r\n```ts\r\nconst s3 = runtime?.getService(ServiceType.AWS_S3) as IAwsS3Service;\r\nconst tempFile = path.join(os.tmpdir(), \"test.txt\");\r\nwriteFileSync(tempFile, \"test content\");\r\nconst fileContent = readFileSync(tempFile, \"utf8\");\r\nelizaLogger.log(\"File content:\", fileContent);\r\nconst { success, url, error } = await s3.uploadFile(\r\n    tempFile,\r\n    \"\",\r\n    true,\r\n    3600\r\n);\r\nconsole.log(url);\r\n// Default `url` value: `http://localhost:8014/eliza/images/1736652765063-test.txt`\r\n// If presigned: `http://localhost:8014/eliza/images/1736652765063-test.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKEXAMPLES3S%2F20250112%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250112T033246Z&X-Amz-Expires=3600&X-Amz-Signature=ebd5aaaf39c272ff22017289327851512597cdc5e9549156cd1adee3426135de&X-Amz-SignedHeaders=host&x-id=GetObject`\r\n```\r\n\r\nIf `AWS_S3_ENDPOINT` is not set, then it uses the normal S3 format.\r\n\r\n## Discord username\r\n\r\ndtb_",
+            "files": [
+              {
+                "path": ".env.example",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-node/README.md",
+                "additions": 3,
+                "deletions": 2
+              },
+              {
+                "path": "packages/plugin-node/src/environment.ts",
+                "additions": 1,
+                "deletions": 0
+              },
+              {
+                "path": "packages/plugin-node/src/services/awsS3.ts",
+                "additions": 26,
+                "deletions": 4
+              },
+              {
+                "path": "pnpm-lock.yaml",
+                "additions": 4082,
+                "deletions": 11096
+              }
+            ],
+            "reviews": [
+              {
+                "author": "github-actions",
+                "state": "COMMENTED",
+                "body": "Hi @dtbuchholz! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!"
+              },
+              {
+                "author": "dtbuchholz",
+                "state": "COMMENTED",
+                "body": ""
+              },
+              {
+                "author": "dtbuchholz",
+                "state": "COMMENTED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 2174,
+            "title": "Add support for custom S3 endpoints in `plugin-node`",
+            "state": "OPEN",
+            "created_at": "2025-01-12T00:50:00Z",
+            "updated_at": "2025-01-12T00:50:27Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\r\n\r\nThe [`plugin-node`](https://github.com/elizaOS/eliza/tree/main/packages/plugin-node) gives you an S3-compatible API. However, it assumes you're _using_ AWS S3; it doesn't let you use S3-compatible tooling because the request URL is not configurable. \r\n\r\n**Describe the solution you'd like**\r\n\r\nWe should allow the plugin to take an additional (optional) env var called `AWS_S3_ENDPOINT`, which if set, will use the URL for bucket operations. The `plugin-node` only needs a small change [here](https://github.com/elizaOS/eliza/blob/ea9d1c02291dea26b25c815be30db5c91e6ceb21/packages/plugin-node/src/services/awsS3.ts#L60) to handle the URL. If it's set, use it; else, use AWS\u2014and this ensures the setup is backward compatible:\r\n```ts\r\nconst clientConfig: S3ClientConfig = {\r\n    region: AWS_REGION,\r\n    credentials: {\r\n        accessKeyId: AWS_ACCESS_KEY_ID,\r\n        secretAccessKey: AWS_SECRET_ACCESS_KEY,\r\n    },\r\n};\r\nif (AWS_S3_ENDPOINT) {\r\n    clientConfig.endpoint = AWS_S3_ENDPOINT;\r\n    clientConfig.forcePathStyle = true;\r\n}\r\n\r\nthis.s3Client = new S3Client(clientConfig);\r\n```\r\n\r\n**Describe alternatives you've considered**\r\n\r\nIf you're using non-AWS tooling that has an S3-compatible API, you **must** have the ability to customize this URL. There's no alternative. Without this feature, you'll get an error like this when, e.g., calling `uploadFile` against a local S3 service:\r\n```\r\nThe AWS Access Key Id you provided does not exist in our records.\r\n```\r\n\r\n**Additional context**\r\n\r\nYou can test this pattern against [something like MinIO](https://min.io/docs/minio/linux/index.html). Run a local MinIO server, set the env var `AWS_S3_ENDPOINT` in your Eliza setup, and then upload a file. \r\n\r\nOutside of the scope of this issue, it'd be nice if the S3 plugin had additional features for the following. These would be useful for additional agent memory or storage options.\r\n- Creating buckets\r\n- Listing buckets\r\n- Querying buckets\r\n- Getting / downloading objects\r\n\r\nIf these additional features are desirable, I can open a separate issue for adding new `plugin-node` S3 methods.",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": [
+              {
+                "author": "github-actions",
+                "body": "Hello @dtbuchholz! Welcome to the ai16z community. Thank you for opening your first issue; we appreciate your contribution. You are now a ai16z contributor!"
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 1,
+        "total_reviews": 3,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "nhodges",
+    "score": 20,
+    "summary": "nhodges is currently working on a pull request to fix a client-twitter issue by adding a mention deduplication utility in the packages code area. This is the only recent activity, with 1 pull request merged and no new commits or issues opened.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/371516?u=75efd42ae403e1c80edd2303df50f962471088a2&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 2178,
+            "title": "fix(client-twitter): add mention deduplication utility",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2025-01-12T04:19:46Z",
+            "updated_at": "2025-01-12T05:22:21Z",
+            "body": "# Relates to\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\n\r\nSuper low-risk, text mutation/scrub prior to sending Tweet.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nCurrently, the Grok LLM is generating duplicate mentions at the beginning of responses. This adds a simple safeguard to deduplicate mentions before sending the tweet.\r\n\r\n## What kind of change is this?\r\n\r\nImprovement\r\n\r\n## Why are we doing this? Any context or related work?\r\n\r\nBecause agents look like total nards when they tag the same person multiple times.\r\n\r\nhttps://x.com/0xEvaZero/status/1878293408500093358\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf documentation change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone: Automated tests are acceptable.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deployment, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste command line output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0Please specify deploy instructions if there is something more than the automated steps. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for the contributor role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "packages/client-twitter/src/utils.ts",
+                "additions": 32,
+                "deletions": 2
+              }
+            ],
+            "reviews": [
+              {
+                "author": "github-actions",
+                "state": "COMMENTED",
+                "body": "Hi @nhodges! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!"
+              },
+              {
+                "author": "odilitime",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 2,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "AAAkater",
+    "score": 20,
+    "summary": "AAAkater is currently working on setting file nesting for Markdown and DockerFile in the .vscode directory of the project. They have recently submitted a pull request for this feature, which has been merged successfully.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/125126227?u=549fb9da84d082bc538f5558521c76ad1429d019&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 2177,
+            "title": "feat: \ud83c\udf88 perf(vscode): Set file nesting for md and DockerFile",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2025-01-12T04:11:10Z",
+            "updated_at": "2025-01-12T05:23:57Z",
+            "body": "<!-- Use this template by filling in information and copying and pasting relevant items out of the HTML comments. -->\r\n\r\n# Relates to\r\n\r\nNone\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\n\r\nLow\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nMake the project workspace cleaner\r\n\r\nFolding the related files of \\*.md, Dockerfile, and package.json\r\n\r\n## What kind of change is this?\r\n\r\nFeatures\r\n\r\n# Documentation changes needed?\r\n\r\nno\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n![out1.webp](https://s2.loli.net/2025/01/12/ncuLOwIZxU1hKme.webp)\r\n\r\n![out2.webp](https://s2.loli.net/2025/01/12/sQ9v8CNqJhB6Y5b.webp)\r\n\r\n![out4.webp](https://s2.loli.net/2025/01/12/SH81RDzwyEQYJaX.webp)\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone: Automated tests are acceptable.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deployment, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste command line output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0Please specify deploy instructions if there is something more than the automated steps. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for the contributor role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": ".vscode/settings.json",
+                "additions": 11,
+                "deletions": 0
+              }
+            ],
+            "reviews": [
+              {
+                "author": "github-actions",
+                "state": "COMMENTED",
+                "body": "Hi @AAAkater! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!"
+              },
+              {
+                "author": "odilitime",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 2,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
     "contributor": "ChainRex",
     "score": 20,
-    "summary": "ChainRex is currently working on a pull request to fix the calculation of SUI/USD price in the packages code area. This is the only recent activity, with one pull request merged and no new commits or issues opened.",
+    "summary": "ChainRex is currently working on a pull request to fix the SUI/USD price calculation in the packages code area. This is the only recent activity, with 1 pull request merged and no new commits or issues opened.",
     "avatar_url": "https://avatars.githubusercontent.com/u/76983474?u=ccc9652dc8a585f7aa82c21b4bbbeb3e0f44f7a1&v=4",
     "activity": {
       "code": {
@@ -451,9 +655,124 @@
     }
   },
   {
+    "contributor": "Jonatan-Chaverri",
+    "score": 18,
+    "summary": "Jonatan-Chaverri is currently addressing a bug related to the Together AI Medium model in the 'packages' code area. They have submitted a pull request to fix the issue by replacing the invalid model with a corrected version.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/25421284?u=33c302e89c94d2100c6d2344ef0dccac1d034deb&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 2173,
+            "title": "Fix: replace invalid toghether ai medium model",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2025-01-12T00:28:17Z",
+            "updated_at": "2025-01-12T04:59:06Z",
+            "body": "<!-- Use this template by filling in information and copying and pasting relevant items out of the HTML comments. -->\r\n\r\n# Relates to\r\n\r\nhttps://github.com/elizaOS/eliza/issues/2172\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks and what could be affected.\r\n-->\r\nLow.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nReplaces the together medium model with a valid one.\r\n\r\n## What kind of change is this?\r\n\r\nBug fix.\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there are no linked issues explaining why. If there is a related issue, it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf documentation change is needed: I have updated the documentation accordingly.\r\n-->\r\nMy changes do not require a change to the project documentation.\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n- Try using the medium model of together ai\r\n- Go to https://api.together.ai/models and check for the valid models.\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone: Automated tests are acceptable.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deployment, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste command line output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0Please specify deploy instructions if there is something more than the automated steps. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for the contributor role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\njonatanchaverri\r\n-->\r\n",
+            "files": [
+              {
+                "path": "packages/core/src/models.ts",
+                "additions": 1,
+                "deletions": 1
+              }
+            ],
+            "reviews": [
+              {
+                "author": "odilitime",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 2172,
+            "title": "Together ai medium model invalid",
+            "state": "OPEN",
+            "created_at": "2025-01-12T00:24:56Z",
+            "updated_at": "2025-01-12T00:24:56Z",
+            "body": "**Describe the bug**\r\n\r\n<!-- A clear and concise description of what the bug is. -->\r\n\r\nThe together medium model described in https://github.com/elizaOS/eliza/blob/main/packages/core/src/models.ts is invalid (does not exists).\r\n\r\n**To Reproduce**\r\n\r\n<!-- Steps to reproduce the behavior. -->\r\n\r\nTry to use the model, will throw an error.\r\n\r\n**Expected behavior**\r\n\r\n<!-- A clear and concise description of what you expected to happen. -->\r\nWe should replace the model name with a valid one.\r\n\r\n**Screenshots**\r\n\r\n<!-- If applicable, add screenshots to help explain your problem. -->\r\n\r\n**Additional context**\r\n\r\n<!-- Add any other context about the problem here. -->\r\n",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 1,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
+    "contributor": "rferrari",
+    "score": 17,
+    "summary": "rferrari is currently working on fixing a missing langdetect issue in the plugin-tts package.json file. This is the only recent activity, with 1 pull request successfully merged in the 'packages' code area.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/495887?u=5a56d90f584ffc1827bb301541076597dca9cb3e&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 1,
+        "commits": [],
+        "pull_requests": [
+          {
+            "number": 2175,
+            "title": "fix: insert missing langdetect on plugin-tts package.json",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2025-01-12T03:28:10Z",
+            "updated_at": "2025-01-12T05:14:36Z",
+            "body": "<!-- Use this template by filling in information and copying and pasting relevant items out of the HTML comments. -->\r\n\r\n# Relates to\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\n\r\nLow\r\n<!--\r\nLow, medium, large. List what kind of risks and what could be affected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\ninsert missing langdetect on plugin-tts package.json\r\n\r\n## What kind of change is this?\r\n\r\nBug fixes (non-breaking change which fixes an issue)\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there are no linked issues explaining why. If there is a related issue, it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n\r\nWas not able to build last develop branch, so, after investigating, this lib was missing on plugin-tts/package.json and build was completed with success\r\n\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n<!--\r\nMy changes require a change to the project documentation.\r\nIf documentation change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n Tasks:    87 successful, 87 total\r\nCached:    48 cached, 87 total\r\n  Time:    4m59.249s \r\n\r\n\r\n## Where should a reviewer start?\r\n\r\npackages/plugin-tss/package.json\r\n\r\npnpm install\r\npnpm build\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone: Automated tests are acceptable.\r\n-->\r\n\r\ngit pull origin develop\r\npnpm install\r\npnpm build\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deployment, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste command line output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0Please specify deploy instructions if there is something more than the automated steps. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for the contributor role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "packages/plugin-tts/package.json",
+                "additions": 1,
+                "deletions": 0
+              }
+            ],
+            "reviews": [
+              {
+                "author": "odilitime",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": []
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 1,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
     "contributor": "ShreyGanatra",
     "score": 17,
-    "summary": "ShreyGanatra is currently working on a pull request related to inheriting character traits from a parent using the 'extends' keyword. The code changes are focused on the 'agent' and 'packages' code areas.",
+    "summary": "ShreyGanatra is currently working on a pull request that implements the inheritance of character from a parent using the 'extends' key in the packages and agent code areas. This is the only recent activity, with one pull request successfully merged.",
     "avatar_url": "https://avatars.githubusercontent.com/u/77409139?v=4",
     "activity": {
       "code": {
@@ -522,7 +841,7 @@
   {
     "contributor": "AnonJon",
     "score": 17,
-    "summary": "AnonJon is currently working on adding GitHub to client enumerations in the packages code area. They have made 1 pull request, which has been merged successfully.",
+    "summary": "AnonJon is currently working on adding GitHub to client enumerations in the packages code area. They have submitted one pull request, which has been merged successfully.",
     "avatar_url": "https://avatars.githubusercontent.com/u/43953219?u=5ec8eafcefb844e9d6f1c71dcafbb6befb812fbb&v=4",
     "activity": {
       "code": {
@@ -571,7 +890,7 @@
   {
     "contributor": "odilitime",
     "score": 16,
-    "summary": "odilitime is currently preparing version 0.1.8 by making chore updates in the 'dev' branch and merging them into 'main'. They have also made chore updates to bump the lockfile in the 'develop' branch. Their work spans across various code areas including packages, client, characters, and configuration files like .devcontainer and .vscode.",
+    "summary": "odilitime is currently working on preparing version 0.1.8 for deployment by updating the development branch to the main branch. They have also made changes to the lockfile in the development branch. Their recent activity is focused on the client, .devcontainer, agent, packages, characters, .vscode, .github code areas.",
     "avatar_url": "https://avatars.githubusercontent.com/u/16395496?u=45c152d8433e37c62520e66c0dd6d754ccf3eaf4&v=4",
     "activity": {
       "code": {
@@ -585,7 +904,7 @@
             "state": "OPEN",
             "merged": false,
             "created_at": "2025-01-11T23:36:42Z",
-            "updated_at": "2025-01-12T00:33:25Z",
+            "updated_at": "2025-01-12T05:23:58Z",
             "body": "- #1470\r\n- #2069\r\n- #2058\r\n- #2074\r\n- #2075\r\n- #2112\r\n- #2106\r\n- #2117\r\n- #2118\r\n- #2068\r\n- #2099\r\n- #1708\r\n- #2095\r\n- #2093\r\n- #2103\r\n- #2125\r\n- #2091\r\n- #2121 ?\r\n- #2131\r\n- #1767\r\n- #2129\r\n- #2128\r\n- #2111\r\n- #2101\r\n- #2138\r\n- #2142\r\n- #2100\r\n- #2135\r\n- #821\r\n- #2088\r\n- #2143\r\n- #2029\r\n- #1775\r\n- #2141\r\n- #2137\r\n- #2045\r\n- #1582\r\n- #2083\r\n- #2067\r\n- #2086\r\n- #2160\r\n- #2157\r\n- #2159\r\n- #2150\r\n- #2053\r\n- #1362\r\n- #1705\r\n- #2032\r\n- #2110\r\n- #2168\r\n",
             "files": [
               {
@@ -660,7 +979,7 @@
               },
               {
                 "path": ".vscode/settings.json",
-                "additions": 1,
+                "additions": 12,
                 "deletions": 1
               },
               {
@@ -1097,7 +1416,7 @@
               },
               {
                 "author": "monilpat",
-                "state": "APPROVED",
+                "state": "DISMISSED",
                 "body": "LGTM"
               }
             ],
@@ -1147,113 +1466,9 @@
     }
   },
   {
-    "contributor": "AIFlowML",
-    "score": 15,
-    "summary": "AIFlowML is currently working on fixing eslint issues in the full test suite within the 'packages' code area. They have submitted 1 pull request, which has been successfully merged.",
-    "avatar_url": "https://avatars.githubusercontent.com/u/154863472?u=59e432f5938e4980f7d045069304ce1eb0ee9e42&v=4",
-    "activity": {
-      "code": {
-        "total_commits": 0,
-        "total_prs": 1,
-        "commits": [],
-        "pull_requests": [
-          {
-            "number": 2143,
-            "title": "fix: eslint-fix-full-test-again",
-            "state": "MERGED",
-            "merged": true,
-            "created_at": "2025-01-11T05:06:57Z",
-            "updated_at": "2025-01-11T05:21:50Z",
-            "body": "## ESLint Fixes for Akash Plugin\r\n\r\n### Changes Made\r\n- Fixed ESLint warnings in multiple action files by addressing unused parameters\r\n- Changed `options` to `_options` in affected files to satisfy ESLint rules\r\n- Updated `@ts-ignore` to `@ts-expect-error` with improved documentation\r\n- Maintained existing functionality while fixing linting issues\r\n\r\n### Files Modified\r\n- `src/actions/closeDeployment.ts`\r\n- `src/actions/createDeployment.ts`\r\n- `src/actions/getDeploymentApi.ts`\r\n- `src/actions/getDeploymentStatus.ts`\r\n- `src/actions/getGPUPricing.ts`\r\n- `src/actions/getManifest.ts`\r\n- `src/actions/getProvidersList.ts`\r\n- `src/types.ts`\r\n- `src/index.ts`\r\n- `src/utils/paths.ts`\r\n- `src/providers/wallet.ts`\r\n- `src/error/error.ts`\r\n\r\n### Testing\r\n- All modified files have been tested to ensure functionality remains intact\r\n- Verified that ESLint passes without errors\r\n- Confirmed that type checking works correctly\r\n- Tested each action to ensure changes don't affect runtime behavior ",
-            "files": [
-              {
-                "path": "packages/plugin-akash/src/actions/closeDeployment.ts",
-                "additions": 4,
-                "deletions": 4
-              },
-              {
-                "path": "packages/plugin-akash/src/actions/createDeployment.ts",
-                "additions": 6,
-                "deletions": 5
-              },
-              {
-                "path": "packages/plugin-akash/src/actions/getDeploymentApi.ts",
-                "additions": 3,
-                "deletions": 4
-              },
-              {
-                "path": "packages/plugin-akash/src/actions/getDeploymentStatus.ts",
-                "additions": 1,
-                "deletions": 1
-              },
-              {
-                "path": "packages/plugin-akash/src/actions/getGPUPricing.ts",
-                "additions": 1,
-                "deletions": 1
-              },
-              {
-                "path": "packages/plugin-akash/src/actions/getManifest.ts",
-                "additions": 7,
-                "deletions": 7
-              },
-              {
-                "path": "packages/plugin-akash/src/actions/getProvidersList.ts",
-                "additions": 1,
-                "deletions": 1
-              },
-              {
-                "path": "packages/plugin-akash/src/error/error.ts",
-                "additions": 0,
-                "deletions": 1
-              },
-              {
-                "path": "packages/plugin-akash/src/index.ts",
-                "additions": 1,
-                "deletions": 1
-              },
-              {
-                "path": "packages/plugin-akash/src/providers/wallet.ts",
-                "additions": 2,
-                "deletions": 3
-              },
-              {
-                "path": "packages/plugin-akash/src/types.ts",
-                "additions": 3,
-                "deletions": 3
-              },
-              {
-                "path": "packages/plugin-akash/src/utils/paths.ts",
-                "additions": 1,
-                "deletions": 2
-              }
-            ],
-            "reviews": [
-              {
-                "author": "odilitime",
-                "state": "APPROVED",
-                "body": ""
-              }
-            ],
-            "comments": []
-          }
-        ]
-      },
-      "issues": {
-        "total_opened": 0,
-        "opened": []
-      },
-      "engagement": {
-        "total_comments": 0,
-        "total_reviews": 1,
-        "comments": [],
-        "reviews": []
-      }
-    }
-  },
-  {
     "contributor": "0xnogo",
     "score": 10,
-    "summary": "0xnogo is currently working on reorganizing README translations into a dedicated i18n directory structure. Their recent GitHub activity includes two pull requests related to this task, focusing on the i18n and .github code areas.",
+    "summary": "0xnogo is currently working on reorganizing README translations into a dedicated i18n directory structure. Their recent activity includes two pull requests related to this task, focusing on the i18n and .github code areas.",
     "avatar_url": "https://avatars.githubusercontent.com/u/110664798?u=7e8a19301d68b492e912a2123fab4d3f2fd2543f&v=4",
     "activity": {
       "code": {
@@ -1524,8 +1739,8 @@
   },
   {
     "contributor": "0xinugami",
-    "score": 8,
-    "summary": "0xinugami is currently working on resolving an issue related to incompatible parameter types in a fresh clone. The issue falls under the bug category, with no code changes or commits made yet.",
+    "score": 9,
+    "summary": "0xinugami is currently working on resolving an issue related to incompatible parameter types in a fresh clone. This issue falls under the bug category and has not yet resulted in any code changes or commits.",
     "avatar_url": "https://avatars.githubusercontent.com/u/92417510?u=e872a42d4a98c610ddbb7f3b5a9f03e764c5ba11&v=4",
     "activity": {
       "code": {
@@ -1542,7 +1757,7 @@
             "title": "Fresh Clone: Types of parameters 'url' and 'request' are incompatible",
             "state": "OPEN",
             "created_at": "2025-01-11T20:12:56Z",
-            "updated_at": "2025-01-11T22:50:57Z",
+            "updated_at": "2025-01-12T02:48:11Z",
             "body": "**Describe the bug**\r\nBuild error when running `pnpm build`\r\n\r\n<!-- A clear and concise description of what the bug is. -->\r\n```\r\n@elizaos/core:build: src/generation.ts(455,21): error TS2322: Type '(url: string, options: any) => Promise<Response>' is not assignable to type '{ (input: URL | RequestInfo, init?: RequestInit): Promise<Response>; (input: string | Request | URL, init?: RequestInit): Promise<...>; (request: Request, init?: RequestInit): Promise<...>; (url: string | ... 1 more ... | URL, init?: FetchRequestInit): Promise<...>; }'.\r\n@elizaos/core:build:   Types of parameters 'url' and 'request' are incompatible.\r\n@elizaos/core:build:     Type 'Request' is not assignable to type 'string'.\r\n@elizaos/core:build: \r\n@elizaos/core:build: Error: error occurred in dts build\r\n@elizaos/core:build:     at Worker.<anonymous> (/Volumes/StorageHub/Development/github/eliza/node_modules/tsup/dist/index.js:1541:26)\r\n@elizaos/core:build:     at Worker.emit (node:events:513:28)\r\n@elizaos/core:build:     at MessagePort.<anonymous> (node:internal/worker:267:53)\r\n@elizaos/core:build:     at [nodejs.internal.kHybridDispatch] (node:internal/event_target:827:20)\r\n@elizaos/core:build:     at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28)\r\n@elizaos/core:build: DTS Build error\r\n@elizaos/core:build: \u2009ELIFECYCLE\u2009 Command failed with exit code 1.\r\n```\r\n\r\n**To Reproduce**\r\n\r\n- git clone https://github.com/elizaos/eliza.git\r\n- cd eliza\r\n- pnpm install --no-frozen-lockfile\r\n- pnpm build\r\n\r\n**Expected behavior**\r\n\r\nSuccess build\r\n\r\n**Additional context**\r\n\r\nMacOS 15.1\r\nNode v23.3.0\r\nPNPM 9.14.4",
             "labels": [
               {
@@ -1559,13 +1774,17 @@
               {
                 "author": "ai16z-demirix",
                 "body": "Hello @0xinugami , what is your TypeScript version?"
+              },
+              {
+                "author": "0xinugami",
+                "body": "> Hello @0xinugami , what is your TypeScript version?\r\n\r\n```\r\ntsc --version\r\nVersion 5.6.3\r\n```"
               }
             ]
           }
         ]
       },
       "engagement": {
-        "total_comments": 2,
+        "total_comments": 3,
         "total_reviews": 0,
         "comments": [],
         "reviews": []
@@ -1575,7 +1794,7 @@
   {
     "contributor": "Peridax",
     "score": 8,
-    "summary": "Peridax is currently working on resolving an issue where Eliza does not join Discord voice channels upon request. This issue falls under the bug category, with no pull requests or commits made yet.",
+    "summary": "Peridax is currently working on addressing a bug where Eliza does not join Discord voice channels upon request. This is the only recent activity, with no pull requests or commits made yet.",
     "avatar_url": "https://avatars.githubusercontent.com/u/17075996?v=4",
     "activity": {
       "code": {
@@ -1623,55 +1842,9 @@
     }
   },
   {
-    "contributor": "dtbuchholz",
-    "score": 7,
-    "summary": "dtbuchholz is currently working on adding support for custom S3 endpoints in the `plugin-node` repository, focusing on an enhancement issue. There are no merged pull requests or commits yet, but the work is centered around this specific feature request.",
-    "avatar_url": "https://avatars.githubusercontent.com/u/13358940?u=ca2e646d8765c1c504f78bbb77429a5960f01cf3&v=4",
-    "activity": {
-      "code": {
-        "total_commits": 0,
-        "total_prs": 0,
-        "commits": [],
-        "pull_requests": []
-      },
-      "issues": {
-        "total_opened": 1,
-        "opened": [
-          {
-            "number": 2174,
-            "title": "Add support for custom S3 endpoints in `plugin-node`",
-            "state": "OPEN",
-            "created_at": "2025-01-12T00:50:00Z",
-            "updated_at": "2025-01-12T00:50:27Z",
-            "body": "**Is your feature request related to a problem? Please describe.**\r\n\r\nThe [`plugin-node`](https://github.com/elizaOS/eliza/tree/main/packages/plugin-node) gives you an S3-compatible API. However, it assumes you're _using_ AWS S3; it doesn't let you use S3-compatible tooling because the request URL is not configurable. \r\n\r\n**Describe the solution you'd like**\r\n\r\nWe should allow the plugin to take an additional (optional) env var called `AWS_S3_ENDPOINT`, which if set, will use the URL for bucket operations. The `plugin-node` only needs a small change [here](https://github.com/elizaOS/eliza/blob/ea9d1c02291dea26b25c815be30db5c91e6ceb21/packages/plugin-node/src/services/awsS3.ts#L60) to handle the URL. If it's set, use it; else, use AWS\u2014and this ensures the setup is backward compatible:\r\n```ts\r\nconst clientConfig: S3ClientConfig = {\r\n    region: AWS_REGION,\r\n    credentials: {\r\n        accessKeyId: AWS_ACCESS_KEY_ID,\r\n        secretAccessKey: AWS_SECRET_ACCESS_KEY,\r\n    },\r\n};\r\nif (AWS_S3_ENDPOINT) {\r\n    clientConfig.endpoint = AWS_S3_ENDPOINT;\r\n    clientConfig.forcePathStyle = true;\r\n}\r\n\r\nthis.s3Client = new S3Client(clientConfig);\r\n```\r\n\r\n**Describe alternatives you've considered**\r\n\r\nIf you're using non-AWS tooling that has an S3-compatible API, you **must** have the ability to customize this URL. There's no alternative. Without this feature, you'll get an error like this when, e.g., calling `uploadFile` against a local S3 service:\r\n```\r\nThe AWS Access Key Id you provided does not exist in our records.\r\n```\r\n\r\n**Additional context**\r\n\r\nYou can test this pattern against [something like MinIO](https://min.io/docs/minio/linux/index.html). Run a local MinIO server, set the env var `AWS_S3_ENDPOINT` in your Eliza setup, and then upload a file. \r\n\r\nOutside of the scope of this issue, it'd be nice if the S3 plugin had additional features for the following. These would be useful for additional agent memory or storage options.\r\n- Creating buckets\r\n- Listing buckets\r\n- Querying buckets\r\n- Getting / downloading objects\r\n\r\nIf these additional features are desirable, I can open a separate issue for adding new `plugin-node` S3 methods.",
-            "labels": [
-              {
-                "name": "enhancement",
-                "color": "a2eeef",
-                "description": "New feature or request"
-              }
-            ],
-            "comments": [
-              {
-                "author": "github-actions",
-                "body": "Hello @dtbuchholz! Welcome to the ai16z community. Thank you for opening your first issue; we appreciate your contribution. You are now a ai16z contributor!"
-              }
-            ]
-          }
-        ]
-      },
-      "engagement": {
-        "total_comments": 1,
-        "total_reviews": 0,
-        "comments": [],
-        "reviews": []
-      }
-    }
-  },
-  {
     "contributor": "chanta093",
     "score": 7,
-    "summary": "chanta093 is currently addressing a bug where replies to TWITTER_TARGET_USER are sent twice when ElizaOS is restarted. This is reflected in their recent activity, which includes working on one open issue related to this bug.",
+    "summary": "chanta093 is currently addressing a bug where replies to TWITTER_TARGET_USER are sent twice when ElizaOS is restarted. This is the only recent activity, with no code changes or commits made.",
     "avatar_url": "https://avatars.githubusercontent.com/u/110103668?u=d6303df979a08015882c495123f18a3fcdc0c6df&v=4",
     "activity": {
       "code": {
@@ -1717,7 +1890,7 @@
   {
     "contributor": "Ashwin1011",
     "score": 7,
-    "summary": "Ashwin1011 is currently working on resolving a login issue related to incorrect attempts. They have one open issue in the bug area, with no pull requests or commits made recently.",
+    "summary": "Ashwin1011 is currently addressing a login issue with the error message \"Incorrect. Please try again.\" This bug report is the only recent activity, with no code changes, commits, or pull requests associated with it.",
     "avatar_url": "https://avatars.githubusercontent.com/u/49445626?u=2be4450997c7a8c1cd143276d7b56400afb4037e&v=4",
     "activity": {
       "code": {
@@ -1761,10 +1934,10 @@
     }
   },
   {
-    "contributor": "Jonatan-Chaverri",
-    "score": 6,
-    "summary": "Jonatan-Chaverri is currently addressing a bug related to the Together AI medium model in the 'packages' code area. They have opened an issue and a pull request to fix the invalid model, with the PR yet to be merged.",
-    "avatar_url": "https://avatars.githubusercontent.com/u/25421284?u=33c302e89c94d2100c6d2344ef0dccac1d034deb&v=4",
+    "contributor": "Riroaki",
+    "score": 5,
+    "summary": "Riroaki is currently working on a pull request to fix deepseek support in getTokenForProvider within the agent code area. The contribution has not been merged yet, and there have been no other recent commits or code changes.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/26740837?v=4",
     "activity": {
       "code": {
         "total_commits": 0,
@@ -1772,49 +1945,43 @@
         "commits": [],
         "pull_requests": [
           {
-            "number": 2173,
-            "title": "Fix: replace invalid toghether ai medium model",
+            "number": 2179,
+            "title": "fix: deepseek support in getTokenForProvider",
             "state": "OPEN",
             "merged": false,
-            "created_at": "2025-01-12T00:28:17Z",
-            "updated_at": "2025-01-12T00:28:17Z",
-            "body": "<!-- Use this template by filling in information and copying and pasting relevant items out of the HTML comments. -->\r\n\r\n# Relates to\r\n\r\nhttps://github.com/elizaOS/eliza/issues/2172\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks and what could be affected.\r\n-->\r\nLow.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\nReplaces the together medium model with a valid one.\r\n\r\n## What kind of change is this?\r\n\r\nBug fix.\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there are no linked issues explaining why. If there is a related issue, it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf documentation change is needed: I have updated the documentation accordingly.\r\n-->\r\nMy changes do not require a change to the project documentation.\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n- Try using the medium model of together ai\r\n- Go to https://api.together.ai/models and check for the valid models.\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone: Automated tests are acceptable.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deployment, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste command line output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0Please specify deploy instructions if there is something more than the automated steps. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for the contributor role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\njonatanchaverri\r\n-->\r\n",
+            "created_at": "2025-01-12T04:49:17Z",
+            "updated_at": "2025-01-12T05:08:42Z",
+            "body": "<!-- Use this template by filling in information and copying and pasting relevant items out of the HTML comments. -->\r\n\r\n# Relates to\r\n\r\nhttps://github.com/elizaOS/eliza/pull/2067\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\n\r\nLow\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks and what could be affected.\r\n-->\r\n\r\n# Background\r\n\r\nDeepSeek is a leading AI model provider offering high-performance language models with OpenAI-compatible API format. And the model support was introduced (but incomplete) in the issue above.\r\n\r\n## What does this PR do?\r\n\r\nComplete the deepseek api support.\r\n\r\n## What kind of change is this?\r\n\r\nBug fixes (non-breaking change which fixes an issue)\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there are no linked issues explaining why. If there is a related issue, it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf documentation change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n1. agent/src/index.ts - Add deepseek in getTokenForProvider\r\n\r\n## Detailed testing steps\r\n\r\n- Set DEEPSEEK_API_KEY in .env\r\n- Configure a character to use \"deepseek\" as modelProvider\r\n- Start the agent and verify chat completion works\r\n- Verify different model classes (SMALL, MEDIUM, LARGE) work correctly\r\n\r\n<img width=\"1085\" alt=\"\u622a\u5c4f2025-01-12 12 47 55\" src=\"https://github.com/user-attachments/assets/eda46aef-8af2-4bad-8d2d-705477d6cfb3\" />\r\n\r\n<!--\r\nNone: Automated tests are acceptable.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deployment, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste command line output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0Please specify deploy instructions if there is something more than the automated steps. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for the contributor role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n\r\nNew environment variables needed:\r\n\r\n- DEEPSEEK_API_KEY\r\n- DEEPSEEK_API_URL (optional)\r\n- SMALL_DEEPSEEK_MODEL (optional)\r\n- MEDIUM_DEEPSEEK_MODEL (optional)\r\n- LARGE_DEEPSEEK_MODEL (optional)\r\n\r\n",
             "files": [
               {
-                "path": "packages/core/src/models.ts",
-                "additions": 1,
-                "deletions": 1
+                "path": "agent/src/index.ts",
+                "additions": 5,
+                "deletions": 0
               }
             ],
-            "reviews": [],
+            "reviews": [
+              {
+                "author": "github-actions",
+                "state": "COMMENTED",
+                "body": "Hi @Riroaki! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!"
+              },
+              {
+                "author": "odilitime",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
             "comments": []
           }
         ]
       },
       "issues": {
-        "total_opened": 1,
-        "opened": [
-          {
-            "number": 2172,
-            "title": "Together ai medium model invalid",
-            "state": "OPEN",
-            "created_at": "2025-01-12T00:24:56Z",
-            "updated_at": "2025-01-12T00:24:56Z",
-            "body": "**Describe the bug**\r\n\r\n<!-- A clear and concise description of what the bug is. -->\r\n\r\nThe together medium model described in https://github.com/elizaOS/eliza/blob/main/packages/core/src/models.ts is invalid (does not exists).\r\n\r\n**To Reproduce**\r\n\r\n<!-- Steps to reproduce the behavior. -->\r\n\r\nTry to use the model, will throw an error.\r\n\r\n**Expected behavior**\r\n\r\n<!-- A clear and concise description of what you expected to happen. -->\r\nWe should replace the model name with a valid one.\r\n\r\n**Screenshots**\r\n\r\n<!-- If applicable, add screenshots to help explain your problem. -->\r\n\r\n**Additional context**\r\n\r\n<!-- Add any other context about the problem here. -->\r\n",
-            "labels": [
-              {
-                "name": "bug",
-                "color": "d73a4a",
-                "description": "Something isn't working"
-              }
-            ],
-            "comments": []
-          }
-        ]
+        "total_opened": 0,
+        "opened": []
       },
       "engagement": {
         "total_comments": 0,
-        "total_reviews": 0,
+        "total_reviews": 2,
         "comments": [],
         "reviews": []
       }
@@ -1823,7 +1990,7 @@
   {
     "contributor": "kwanRoshi",
     "score": 5,
-    "summary": "kwanRoshi is currently working on a pull request to add changes related to characters, documentation, and packages. The pull request has not been merged yet, and there have been no commits or code changes in other areas.",
+    "summary": "kwanRoshi is currently working on a pull request to add features or updates to the codebase in the areas of packages, documentation, and characters. The pull request has not been merged yet, and there have been no recent commits or code changes beyond this contribution.",
     "avatar_url": "https://avatars.githubusercontent.com/u/41404218?u=b00ae376bd2c4114499a0e12bcd94faef32598cd&v=4",
     "activity": {
       "code": {
@@ -1941,7 +2108,7 @@
   {
     "contributor": "IkigaiLabsETH",
     "score": 5,
-    "summary": "IkigaiLabsETH is currently working on a pull request for a new feature related to NFT PRO in the code areas of docs, agent, and .github. This is the only recent activity, with no commits or merged pull requests.",
+    "summary": "IkigaiLabsETH is currently working on a pull request for a new feature related to NFT PRO. The code changes are focused on the documentation, agent, and GitHub-related areas.",
     "avatar_url": "https://avatars.githubusercontent.com/u/128307722?u=2b8f758e63324e47a129a504b4ea3fe788932788&v=4",
     "activity": {
       "code": {
@@ -2485,7 +2652,7 @@
   {
     "contributor": "lxcong",
     "score": 5,
-    "summary": "lxcong is currently working on a pull request for implementing the chainbase plugin for eliza in the agent and packages code areas. The pull request has not been merged yet, and there have been no commits or code changes in this recent activity.",
+    "summary": "lxcong is currently working on a pull request for adding the chainbase plugin for Eliza in the packages and agent code areas. This is the only recent activity, with no merged pull requests or commits at this time.",
     "avatar_url": "https://avatars.githubusercontent.com/u/8024426?u=cd7c1f1f718ffbf575a9c509acc5b64dde27d796&v=4",
     "activity": {
       "code": {
@@ -2499,7 +2666,7 @@
             "state": "OPEN",
             "merged": false,
             "created_at": "2025-01-11T19:39:53Z",
-            "updated_at": "2025-01-11T19:49:23Z",
+            "updated_at": "2025-01-12T03:22:55Z",
             "body": "# Relates to\r\nEliza AI agents, blockchain data analytics, Chainbase\r\n\r\n# Risks\r\nLow. This is a new feature that adds functionality without disrupting existing systems.\r\n\r\n# Background\r\n## What does this PR do? \r\nThis PR introduces a new Chainbase plugin for Eliza that enables AI agents to access and analyze blockchain data across multiple networks using natural language queries. The plugin leverages Chainbase's comprehensive data infrastructure to provide real-time insights.\r\n\r\n## What kind of change is this?\r\nFeatures (non-breaking change which adds functionality)\r\n\r\n## Why are we doing this? Any context or related work?\r\nEliza AI agents currently lack the ability to easily access and analyze on-chain data, especially across multiple blockchain networks. This plugin bridges that gap by allowing users to query blockchain data using natural language without requiring deep technical blockchain knowledge. It unlocks powerful new analytics and insight generation capabilities for Eliza.\r\n\r\nThis work builds upon Chainbase's existing multi-chain data infrastructure and Eliza's natural language processing capabilities. It is part of the broader initiative to make blockchain data more accessible and actionable for end users.\r\n\r\n# Documentation changes needed?\r\nMy changes require a change to the project documentation.\r\nI have updated the documentation to include:\r\n- Overview of the Chainbase plugin and its purpose\r\n- Installation and configuration instructions \r\n- Examples of natural language queries and the blockchain insights generated\r\n- API reference for key functions\r\n\r\n# Testing\r\n## Where should a reviewer start?\r\n1. Review the updated documentation to understand the purpose and functionality of the plugin\r\n2. Run the automated test suite: `npm run test`\r\n3. Follow the instructions to install and configure the plugin in a dev environment\r\n4. Test sample natural language queries against blockchain data and verify the insights generated match expected results\r\n5. Review the code changes, focusing on the integration between Eliza's NLP and Chainbase's data layer\r\n\r\n## Detailed testing steps\r\n1. Install and configure the Chainbase plugin by following the documentation \r\n2. From the Eliza interface, input a natural language query such as \"What is the total transaction volume on Ethereum in the last 24 hours?\" \r\n3. Verify the plugin converts this to the appropriate Chainbase query and returns the expected analytics\r\n4. Test queries across multiple supported blockchain networks \r\n5. Verify error handling for unsupported networks or malformed queries\r\n6. Run edge case tests from the automated test suite and ensure code coverage meets standards\r\n\r\n# Deployment instructions\r\n1. Merge PR after review and testing approval\r\n2. Update Eliza production environment to point to the new Chainbase plugin version\r\n3. Restart Eliza web servers\r\n4. Smoke test Chainbase queries from the production Eliza interface \r\n5. Monitor error logs and system metrics post-deployment to ensure stability\r\n\r\nLet me know if you need any other information to include in the PR description! I aimed to be thorough while following the provided template.\r\n\r\n# Screenshot\r\n<img width=\"979\" alt=\"image\" src=\"https://github.com/user-attachments/assets/a53778fc-45a1-43b1-9417-2d4dc622b6ed\" />\r\n\r\n<img width=\"1205\" alt=\"image\" src=\"https://github.com/user-attachments/assets/869d781e-96d4-459e-82c1-a16f18e1c2b1\" />\r\n\r\n\r\n",
             "files": [
               {
@@ -2595,7 +2762,12 @@
                 "body": "Hi @lxcong! Welcome to the ai16z community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now a ai16z contributor!"
               }
             ],
-            "comments": []
+            "comments": [
+              {
+                "author": "daizhengxue",
+                "body": "great work @lxcong \r\nWould it be possible to integrate Chainbase data API into other plugins? For example, @plugin-solana is currently using Birdeye for its wallet token list. It would be helpful to have Chainbase data provider as a second option.\r\nOther EVM plugins and blockchain plugins are facing similar issues with having only a single data provider.\r\n![image](https://github.com/user-attachments/assets/03de7983-fb46-4933-a2dd-6ca4f359b098)\r\n"
+              }
+            ]
           }
         ]
       },
@@ -2614,7 +2786,7 @@
   {
     "contributor": "2-A-M",
     "score": 5,
-    "summary": "2-A-M is currently working on revamping the README_PTBR.md file to provide clearer and updated instructions. This is reflected in a single pull request made by 2-A-M, with no commits or code changes reported.",
+    "summary": "2-A-M is currently working on revamping the README_PTBR.md to provide clearer and updated instructions. This is reflected in the recent pull request made by 2-A-M, with no other significant activity such as commits or code changes at the moment.",
     "avatar_url": "https://avatars.githubusercontent.com/u/96268540?u=f8fd14f1330f46d92f6453bc20f5796408e66058&v=4",
     "activity": {
       "code": {
@@ -2673,7 +2845,7 @@
   {
     "contributor": "UD1sto",
     "score": 5,
-    "summary": "UD1sto is currently working on integrating the Livepeer LLM provider into the agent and packages code areas, with one pull request submitted but not yet merged. No commits or code changes have been made besides this recent contribution.",
+    "summary": "UD1sto is currently working on integrating the Livepeer LLM provider into the packages and agent code areas. They have submitted a pull request for this integration, although it has not been merged yet.",
     "avatar_url": "https://avatars.githubusercontent.com/u/76160388?v=4",
     "activity": {
       "code": {
@@ -2736,7 +2908,7 @@
   {
     "contributor": "web3gh",
     "score": 5,
-    "summary": "web3gh is currently working on a pull request for the Koloxarto repository to fix ragknowledge for Postgres. This is the only recent activity, with no merged PRs, commits, or code changes in other areas. The focus is on the \"packages\" code area.",
+    "summary": "web3gh is currently working on a pull request for the Koloxarto repository to fix ragknowledge for Postgres. This is the only recent activity, with no merged pull requests, commits, or code changes in other areas.",
     "avatar_url": "https://avatars.githubusercontent.com/u/106516707?u=d039e9d226f6261fc1e51c8130d0672b1f424338&v=4",
     "activity": {
       "code": {
@@ -2837,7 +3009,7 @@
   {
     "contributor": "oksanaphmn",
     "score": 5,
-    "summary": "oksanaphmn is currently working on a pull request to update the documentation by replacing the name of the Twitter social network. This is the only recent activity, with no commits or code changes made.",
+    "summary": "oksanaphmn is currently working on a pull request to update the documentation by replacing the name of the Twitter social network. No commits or code changes have been made yet.",
     "avatar_url": "https://avatars.githubusercontent.com/u/122052334?u=ea8ae3625f341c8b2c982b9d593f743c1a567804&v=4",
     "activity": {
       "code": {
@@ -2891,7 +3063,7 @@
   {
     "contributor": "tudorpintea999",
     "score": 2,
-    "summary": "tudorpintea999 is currently working on adding a Romanian README file to the documentation. This is the only recent activity, with no commits or code changes made yet.",
+    "summary": "tudorpintea999 is currently working on adding a Romanian README file to the project's documentation. This is the only recent activity, with no commits or code changes made.",
     "avatar_url": "https://avatars.githubusercontent.com/u/87604944?u=00081f378d48a7f321223660ca97e61401467dac&v=4",
     "activity": {
       "code": {
@@ -2945,7 +3117,7 @@
   {
     "contributor": "daizhengxue",
     "score": 1,
-    "summary": "daizhengxue is currently addressing a database connection error related to an image generation plugin. They have opened an issue to track this bug, with no code changes or commits made yet.",
+    "summary": "daizhengxue is currently addressing a database connection error reported in the issue related to the Image Generation Plugin. This work is focused on resolving a bug in the plugin's functionality.",
     "avatar_url": "https://avatars.githubusercontent.com/u/47060721?u=51eb13280a596825a4a0b5e4e73a78310eed3fef&v=4",
     "activity": {
       "code": {
@@ -2986,7 +3158,7 @@
   {
     "contributor": "cxp-13",
     "score": 1,
-    "summary": "cxp-13 is currently working on an enhancement issue related to improving the action similarity in the codebase. They have not made any commits or pull requests yet, but are actively engaged in discussing and potentially implementing this enhancement.",
+    "summary": "cxp-13 is currently working on an enhancement issue related to improving similar actions for better due dates. There have been no pull requests or commits made yet in this particular issue.",
     "avatar_url": "https://avatars.githubusercontent.com/u/84974164?u=3b5b5c18f44af73f1e2f9921381fe2e800f474d1&v=4",
     "activity": {
       "code": {
