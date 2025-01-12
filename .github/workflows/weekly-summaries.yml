@@ -97,7 +97,7 @@ jobs:
         python scripts/summarize.py summary data/weekly/scored.json data/weekly/contributors.json --model openai
         
         # Generate and manage weekly thread
-        bash scripts/generate_history_summaries.sh
+        #bash scripts/generate_history_summaries.sh
         bash scripts/manage_thread_history.sh
         
         # Verify and log thread generation
