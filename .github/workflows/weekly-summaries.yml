@@ -72,7 +72,7 @@ jobs:
         
         python scripts/combine_raw.py -p data/daily/prs.json -i data/daily/issues.json -c data/daily/commits.json -o data/daily/combined.json
         python scripts/calculate_scores.py data/daily/combined.json data/daily/scored.json
-        python scripts/summarize.py data/daily/scored.json data/daily/contributors.json --model openai
+        python scripts/summarize.py summary data/daily/scored.json data/daily/contributors.json --model openai
         python scripts/summarize_daily.py data/daily/contributors.json -t json data/daily/summary.json --model openai
         python scripts/summarize_daily.py data/daily/contributors.json -t md data/daily/summary.md --model openai
 
@@ -94,7 +94,7 @@ jobs:
         
         # Generate weekly summaries
         [ -f data/weekly/contributors.json ] && mv data/weekly/contributors.json data/weekly/history/contributors_${TIMESTAMP}.json || true
-        python3 scripts/summarize.py summary data/weekly/scored.json data/weekly/contributors.json --model openai
+        python scripts/summarize.py summary data/weekly/scored.json data/weekly/contributors.json --model openai
         
         # Generate and manage weekly thread
         bash scripts/generate_history_summaries.sh
@@ -136,7 +136,7 @@ jobs:
         
         # Generate monthly summaries
         [ -f data/monthly/contributors.json ] && mv data/monthly/contributors.json data/monthly/history/contributors_${TIMESTAMP}.json || true
-        python scripts/summarize.py data/monthly/scored.json data/monthly/contributors.json --model openai
+        python scripts/summarize.py summary data/monthly/scored.json data/monthly/contributors.json --model openai
     
     - name: Build and generate site
       run: |
