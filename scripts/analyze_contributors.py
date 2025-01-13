@@ -6,9 +6,6 @@ import math
 from datetime import datetime, timedelta
 from collections import defaultdict
 from typing import Dict, Set, List, Any
-from openai import OpenAI
-from langchain_ollama import ChatOllama
-from langchain_core.prompts import PromptTemplate
 
 
 def parse_datetime(date_str):
@@ -120,14 +117,14 @@ class ContributorAnalyzer:
         
         return dict(tag_points)
 
-    def __init__(self, model_type: str = "openai", api_key: str = None):
-        self.model_type = model_type
-        if model_type == "openai":
-            if not api_key:
-                raise ValueError("OpenAI API key required")
-            self.client = OpenAI(api_key=api_key)
-        else:
-            self.client = ChatOllama(model='phi3:14b-medium-4k-instruct-q5_K_M', temperature=0.1)
+    #def __init__(self, model_type: str = "openai", api_key: str = None):
+    #    self.model_type = model_type
+    #    if model_type == "openai":
+    #        if not api_key:
+    #            raise ValueError("OpenAI API key required")
+    #        self.client = OpenAI(api_key=api_key)
+    #    else:
+    #        self.client = ChatOllama(model='phi3:14b-medium-4k-instruct-q5_K_M', temperature=0.1)
 
     def analyze_files(self, pr_data: Dict) -> Set[str]:
         """Analyze file paths to determine area tags."""
@@ -177,56 +174,55 @@ class ContributorAnalyzer:
         sorted_areas = sorted(dir_counts.items(), key=lambda x: x[1], reverse=True)
         return sorted_areas[:3]
 
-    def generate_summary(self, username: str, prs: List[Dict], tags: Set[str], 
-                        focus_areas: List[tuple], stats: Dict) -> str:
-        """Generate a natural language summary using either OpenAI or Ollama."""
-        recent_activity = [f"PR: {pr['title']}" for pr in prs[:5]]
-        
-        prompt = f"""Analyze the following GitHub activity for {username} and create a technical summary of their contributions:
-
-Recent Activity:
-{chr(10).join(recent_activity)}
-
-Repository Context:
-- Focus Areas: {', '.join(f'{area}: {count}' for area, count in focus_areas)}
-- Technical Tags: {', '.join(sorted(tags))}
-- Total PRs: {stats['total_prs']}
-- Merged PRs: {stats['merged_prs']}
-- Files Changed: {stats['total_files']}
-- Code Changes: +{stats['total_additions']}/-{stats['total_deletions']}
-
-Write a 2-3 sentence summary that:
-1. Starts with "{username} is"
-2. Highlights their primary areas of technical focus
-3. Mentions specific projects or features they're working on
-4. Notes any patterns in their contributions
-5. Uses present tense
-
-Keep the tone professional and focus on technical contributions."""
-
-        try:
-            if self.model_type == "openai":
-                response = self.client.chat.completions.create(
-                    model="gpt-3.5-turbo",
-                    messages=[
-                        {"role": "system", "content": "You are a technical writer specializing in developer portfolio analysis. Your goal is to create clear, specific summaries that highlight a developer's technical contributions and areas of focus."},
-                        {"role": "user", "content": prompt}
-                    ],
-                    temperature=0.3,
-                    max_tokens=150
-                )
-                return response.choices[0].message.content.strip()
-            else:
-                prompt_template = PromptTemplate(
-                    template=prompt,
-                    input_variables=[]
-                )
-                response = self.client.invoke(prompt_template.format())
-                return response.content.strip()
-        except Exception as e:
-            print(f"Error generating summary for {username}: {e}")
-            return f"Unable to generate summary for {username}'s contributions."
-
+#    def generate_summary(self, username: str, prs: List[Dict], tags: Set[str], 
+#                        focus_areas: List[tuple], stats: Dict) -> str:
+#        """Generate a natural language summary using either OpenAI or Ollama."""
+#        recent_activity = [f"PR: {pr['title']}" for pr in prs[:5]]
+#        
+#        prompt = f"""Analyze the following GitHub activity for {username} and create a technical summary of their contributions:
+#
+#Recent Activity:
+#{chr(10).join(recent_activity)}
+#
+#Repository Context:
+#- Focus Areas: {', '.join(f'{area}: {count}' for area, count in focus_areas)}
+#- Technical Tags: {', '.join(sorted(tags))}
+#- Total PRs: {stats['total_prs']}
+#- Merged PRs: {stats['merged_prs']}
+#- Files Changed: {stats['total_files']}
+#- Code Changes: +{stats['total_additions']}/-{stats['total_deletions']}
+#
+#Write a 2-3 sentence summary that:
+#1. Starts with "{username} is"
+#2. Highlights their primary areas of technical focus
+#3. Mentions specific projects or features they're working on
+#4. Notes any patterns in their contributions
+#5. Uses present tense
+#
+#Keep the tone professional and focus on technical contributions."""
+#
+#        try:
+#            if self.model_type == "openai":
+#                response = self.client.chat.completions.create(
+#                    model="gpt-3.5-turbo",
+#                    messages=[
+#                        {"role": "system", "content": "You are a technical writer specializing in developer portfolio analysis. Your goal is to create clear, specific summaries that highlight a developer's technical contributions and areas of focus."},
+#                        {"role": "user", "content": prompt}
+#                    ],
+#                    temperature=0.3,
+#                    max_tokens=150
+#                )
+#                return response.choices[0].message.content.strip()
+#            else:
+#                prompt_template = PromptTemplate(
+#                    template=prompt,
+#                    input_variables=[]
+#                )
+#                response = self.client.invoke(prompt_template.format())
+#                return response.content.strip()
+#        except Exception as e:
+#            print(f"Error generating summary for {username}: {e}")
+#            return f"Unable to generate summary for {username}'s contributions."
 
     def analyze_contributor(self, data: Dict[str, Any], after_date: datetime = None, before_date: datetime = None) -> Dict[str, Any]:
         """Enhanced contributor analysis with tag weights and levels."""
@@ -272,73 +268,70 @@ Keep the tone professional and focus on technical contributions."""
         for tag, score in analysis['tag_scores'].items():
             analysis['tag_levels'][tag] = self.calculate_tag_level(score)
         
-        # Calculate focus areas and generate summary
+        # Calculate focus areas
         analysis['focus_areas'] = self.get_focus_areas(filtered_prs)
-        analysis['summary'] = self._generate_enhanced_summary(
-            analysis['username'],
-            filtered_prs,
-            analysis['tag_levels'],
-            analysis['focus_areas'],
-            analysis['stats']
-        )
+        
+        # Keep existing summary from input data
+        if 'summary' in data:
+            analysis['summary'] = data['summary']
         
         # Convert sets to lists for JSON serialization
         analysis['tags'] = list(analysis['tags'])
-        analysis['tag_scores'] = dict(analysis['tag_scores'])  # Convert defaultdict to regular dict
+        analysis['tag_scores'] = dict(analysis['tag_scores'])
         analysis['stats']['files_by_type'] = dict(analysis['stats']['files_by_type'])
         analysis['stats']['prs_by_month'] = dict(analysis['stats']['prs_by_month'])
         
         return analysis
 
 
-    def _generate_enhanced_summary(self, username: str, prs: List[Dict], 
-                                 tag_levels: Dict, focus_areas: List[tuple], 
-                                 stats: Dict) -> str:
-        """Generate an enhanced summary including tag levels and expertise areas."""
-        # Sort tags by level
-        top_tags = sorted(
-            tag_levels.items(),
-            key=lambda x: (x[1]['level'], x[1]['points']),
-            reverse=True
-        )[:3]
-        
-        tag_descriptions = [
-            f"{tag} (Level {data['level']}, {data['points']:.1f} points)"
-            for tag, data in top_tags
-        ]
-        
-        prompt = f"""Analyze the following GitHub activity for {username}:
-
-Expertise Areas:
-{chr(10).join(f"- {desc}" for desc in tag_descriptions)}
-
-Focus Areas:
-{chr(10).join(f"- {area}: {count} contributions" for area, count in focus_areas[:3])}
-
-Statistics:
-- Total PRs: {stats['total_prs']}
-- Code Changes: +{stats['total_additions']}/-{stats['total_deletions']}
-
-Write a 2-3 sentence technical summary that highlights their expertise levels and primary contributions."""
-
-        try:
-            if self.model_type == "openai":
-                response = self.client.chat.completions.create(
-                    model="gpt-3.5-turbo",
-                    messages=[
-                        {"role": "system", "content": "You are a technical analyst specializing in developer expertise assessment."},
-                        {"role": "user", "content": prompt}
-                    ],
-                    temperature=0.3,
-                    max_tokens=150
-                )
-                return response.choices[0].message.content.strip()
-            else:
-                prompt_template = PromptTemplate(template=prompt, input_variables=[])
-                response = self.client.invoke(prompt_template.format())
-                return response.content.strip()
-        except Exception as e:
-            return f"Error generating summary for {username}: {str(e)}"
+#    def _generate_enhanced_summary(self, username: str, prs: List[Dict], 
+#                                 tag_levels: Dict, focus_areas: List[tuple], 
+#                                 stats: Dict) -> str:
+#        """Generate an enhanced summary including tag levels and expertise areas."""
+#        # Sort tags by level
+#        top_tags = sorted(
+#            tag_levels.items(),
+#            key=lambda x: (x[1]['level'], x[1]['points']),
+#            reverse=True
+#        )[:3]
+#        
+#        tag_descriptions = [
+#            f"{tag} (Level {data['level']}, {data['points']:.1f} points)"
+#            for tag, data in top_tags
+#        ]
+#        
+#        prompt = f"""Analyze the following GitHub activity for {username}:
+#
+#Expertise Areas:
+#{chr(10).join(f"- {desc}" for desc in tag_descriptions)}
+#
+#Focus Areas:
+#{chr(10).join(f"- {area}: {count} contributions" for area, count in focus_areas[:3])}
+#
+#Statistics:
+#- Total PRs: {stats['total_prs']}
+#- Code Changes: +{stats['total_additions']}/-{stats['total_deletions']}
+#
+#Write a 2-3 sentence technical summary that highlights their expertise levels and primary contributions."""
+#
+#        try:
+#            if self.model_type == "openai":
+#                response = self.client.chat.completions.create(
+#                    model="gpt-3.5-turbo",
+#                    messages=[
+#                        {"role": "system", "content": "You are a technical analyst specializing in developer expertise assessment."},
+#                        {"role": "user", "content": prompt}
+#                    ],
+#                    temperature=0.3,
+#                    max_tokens=150
+#                )
+#                return response.choices[0].message.content.strip()
+#            else:
+#                prompt_template = PromptTemplate(template=prompt, input_variables=[])
+#                response = self.client.invoke(prompt_template.format())
+#                return response.content.strip()
+#        except Exception as e:
+#            return f"Error generating summary for {username}: {str(e)}"
 
     def _is_pr_in_timeframe(self, pr: Dict, after_date: datetime, before_date: datetime) -> bool:
         """Check if PR falls within specified timeframe."""
@@ -389,14 +382,15 @@ Write a 2-3 sentence technical summary that highlights their expertise levels an
             month = created_at[:7]  # YYYY-MM
             stats['prs_by_month'][month] += 1
 
-def process_contributors(input_file: str, output_file: str, model_type: str = "openai", 
-                       api_key: str = None, after_date: datetime = None, 
-                       before_date: datetime = None, force: bool = False):
-    """Process the contributors file and generate analysis within the specified timeframe."""
+def process_contributors(input_file: str, output_file: str, 
+                       after_date: datetime = None, 
+                       before_date: datetime = None, 
+                       force: bool = False):
+    """Process contributors and generate analysis."""
     if os.path.exists(output_file) and not force:
         raise FileExistsError(f"Output file {output_file} already exists. Use -f to overwrite.")
     
-    analyzer = ContributorAnalyzer(model_type, api_key)
+    analyzer = ContributorAnalyzer()  # No longer needs model_type and api_key
     
     try:
         with open(input_file, 'r') as f:
@@ -406,7 +400,6 @@ def process_contributors(input_file: str, output_file: str, model_type: str = "o
         for contributor_data in contributors_data:
             print(f"\nAnalyzing {contributor_data['contributor']}...")
             
-            # Convert the data structure to match expected format
             contributor_info = {
                 'author': contributor_data['contributor'],
                 'prs': contributor_data['activity']['code']['pull_requests']
@@ -418,7 +411,6 @@ def process_contributors(input_file: str, output_file: str, model_type: str = "o
                 before_date=before_date
             )
             
-            # Include existing summary if no PRs found
             if analysis['stats']['total_prs'] == 0:
                 analysis['summary'] = contributor_data.get('summary', 
                     f"No activity found for {contributor_data['contributor']} in the specified timeframe.")
@@ -427,7 +419,6 @@ def process_contributors(input_file: str, output_file: str, model_type: str = "o
         
         analyzed_contributors.sort(key=lambda x: x['stats']['total_prs'], reverse=True)
         
-        # Prepare metadata with JSON-serializable types
         metadata = {
             'total_contributors': len(analyzed_contributors),
             'analysis_date': time.strftime('%Y-%m-%d'),
@@ -438,7 +429,6 @@ def process_contributors(input_file: str, output_file: str, model_type: str = "o
             'tags_found': sorted(list(set(tag for c in analyzed_contributors for tag in c['tags'])))
         }
         
-        # Save results
         with open(output_file, 'w') as f:
             json.dump({
                 'contributors': analyzed_contributors,
@@ -455,20 +445,12 @@ def main():
     parser = argparse.ArgumentParser(description="Analyze GitHub contributors and generate detailed reports")
     parser.add_argument("input_file", help="Input PR data file")
     parser.add_argument("output_file", help="Output analysis file")
-    parser.add_argument("--model", choices=["openai", "ollama"], default="openai",
-                       help="Model to use for summary generation")
     parser.add_argument("--after", help="Start date (YYYY-MM-DD), defaults to 7 days ago")
     parser.add_argument("--before", help="End date (YYYY-MM-DD), defaults to today")
     parser.add_argument("-f", "--force", action="store_true",
                        help="Force overwrite of output file if it exists")
     
     args = parser.parse_args()
-    
-    api_key = None
-    if args.model == "openai":
-        api_key = os.getenv('OPENAI_API_KEY')
-        if not api_key:
-            raise ValueError("OPENAI_API_KEY environment variable is required for OpenAI model")
     
     # Handle date arguments
     before_date = datetime.strptime(args.before, '%Y-%m-%d') if args.before else datetime.now()
@@ -484,8 +466,6 @@ def main():
     process_contributors(
         args.input_file,
         args.output_file,
-        model_type=args.model,
-        api_key=api_key,
         after_date=after_date,
         before_date=before_date,
         force=args.force
