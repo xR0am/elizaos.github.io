@@ -7,12 +7,8 @@ type ProfilePageProps = {
   params: Promise<{ username: string }>;
 };
 
-export async function generateStaticParams() {
-  const users = await getUsers();
-  return users.map((user) => ({
-    username: user.username,
-  }));
-}
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata({
   params,
 }: ProfilePageProps): Promise<Metadata> {
