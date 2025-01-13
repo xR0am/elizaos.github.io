@@ -19,11 +19,6 @@ permissions:
   pages: write
   id-token: write
 
-# Concurrency control
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: false
-
 jobs:
   update-contributors:
     timeout-minutes: 30
