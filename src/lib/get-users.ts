@@ -2,11 +2,16 @@ import { readFile } from "fs/promises";
 import path from "path";
 import { UserFocusAreaData } from "@/types/user-profile";
 
+let cachedUsers: UserFocusAreaData[] | null = null;
+
 export async function getUsers(): Promise<UserFocusAreaData[]> {
+  if (cachedUsers) return cachedUsers;
+
   try {
     const focusAreasPath = path.join(process.cwd(), "data/historical.json");
     const focusAreasData = JSON.parse(await readFile(focusAreasPath, "utf8"));
-    return focusAreasData.contributors || [];
+    cachedUsers = focusAreasData.contributors || [];
+    return cachedUsers;
   } catch (error) {
     console.error('Error reading users data:', error);
     return [];
