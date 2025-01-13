@@ -1,22 +1,34 @@
 import { getUsers, getUserById } from "@/lib/get-users";
 import UserProfile from "@/components/user-profile";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-interface ProfilePageProps {
-  params: {
-    username: string;
-  };
-}
+type ProfilePageProps = {
+  params: Promise<{ username: string }>;
+};
 
-export function generateStaticParams() {
-  const users = getUsers();
+export async function generateStaticParams() {
+  const users = await getUsers();
   return users.map((user) => ({
     username: user.username,
   }));
 }
+export async function generateMetadata({
+  params,
+}: ProfilePageProps): Promise<Metadata> {
+  const { username } = await params;
+  const user = await getUserById(username);
+  return {
+    title: user
+      ? `${user.username}'s Eliza Contributer Profile`
+      : "Profile Not Found",
+    description: user?.summary || "Eliza contributor profile",
+  };
+}
 
-export default function ProfilePage({ params }: ProfilePageProps) {
-  const user = getUserById(params.username);
+export default async function ProfilePage({ params }: ProfilePageProps) {
+  const { username } = await params;
+  const user = await getUserById(username);
 
   if (!user) {
     notFound();
