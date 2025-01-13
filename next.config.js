@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
-  basePath: process.env.GITHUB_ACTIONS ? "/elizaos.github.io" : "",
+  basePath: process.env.GITHUB_ACTIONS ? "/leaderboard" : "",
   images: {
     unoptimized: true, // Required for static export
   },
