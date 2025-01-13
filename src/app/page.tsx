@@ -1,8 +1,6 @@
 import { Leaderboard } from "@/components/leaderboard";
 import { getUsers } from "@/lib/get-users";
 
-export const dynamic = 'force-dynamic'
-
 export default async function Home() {
   const users = await getUsers() || [];
 
