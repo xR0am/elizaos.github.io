@@ -227,10 +227,6 @@ class ContributorAnalyzer:
     def analyze_contributor(self, data: Dict[str, Any], after_date: datetime = None, before_date: datetime = None) -> Dict[str, Any]:
         """Enhanced contributor analysis with tag weights and levels."""
         print(f"Analyzing PRs for {data['author']}...")
-        if data.get('prs'):
-            sample_pr = data['prs'][0]
-            print("Sample PR structure:")
-            print(json.dumps({k: v for k, v in sample_pr.items() if k not in ['body']}, indent=2))
         
         analysis = {
             'username': data['author'],
@@ -260,6 +256,11 @@ class ContributorAnalyzer:
                 pr_weights = self.calculate_tag_weights(pr)
                 for tag, weight in pr_weights.items():
                     analysis['tag_scores'][tag] += weight
+                    analysis['tags'].add(tag)  # Add tag to the set when we find it
+                
+                # Also add tags from analyze_files and analyze_pr_title
+                analysis['tags'].update(self.analyze_files(pr))
+                analysis['tags'].update(self.analyze_pr_title(pr.get('title', '')))
                 
                 # Update basic stats
                 self._update_pr_stats(analysis['stats'], pr)
@@ -276,13 +277,12 @@ class ContributorAnalyzer:
             analysis['summary'] = data['summary']
         
         # Convert sets to lists for JSON serialization
-        analysis['tags'] = list(analysis['tags'])
+        analysis['tags'] = list(analysis['tags'])  # Now this will include all found tags
         analysis['tag_scores'] = dict(analysis['tag_scores'])
         analysis['stats']['files_by_type'] = dict(analysis['stats']['files_by_type'])
         analysis['stats']['prs_by_month'] = dict(analysis['stats']['prs_by_month'])
         
         return analysis
-
 
 #    def _generate_enhanced_summary(self, username: str, prs: List[Dict], 
 #                                 tag_levels: Dict, focus_areas: List[tuple], 
