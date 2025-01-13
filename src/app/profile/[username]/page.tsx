@@ -3,8 +3,11 @@ import UserProfile from "@/components/user-profile";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-type ProfilePageProps = {
-  params: { username: string };
+type PageProps = {
+  params: {
+    username: string;
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
 };
 
 // This is required for static site generation with dynamic routes
@@ -17,7 +20,7 @@ export async function generateStaticParams(): Promise<Array<{ username: string }
 
 export async function generateMetadata({
   params,
-}: ProfilePageProps): Promise<Metadata> {
+}: PageProps): Promise<Metadata> {
   const user = await getUserById(params.username);
   return {
     title: user
@@ -27,7 +30,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProfilePage({ params }: ProfilePageProps) {
+export default async function ProfilePage({ params }: PageProps) {
   const user = await getUserById(params.username);
 
   if (!user) {
