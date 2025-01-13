@@ -3,7 +3,7 @@ import path from "path";
 import { UserFocusAreaData } from "@/types/user-profile";
 
 export async function getUsers(): Promise<UserFocusAreaData[]> {
-  const focusAreasPath = path.join(process.cwd(), "data/focus_areas2.json");
+  const focusAreasPath = path.join(process.cwd(), "data/historical.json");
   const focusAreasData = JSON.parse(await readFile(focusAreasPath, "utf8"));
   return focusAreasData.contributors;
 }
