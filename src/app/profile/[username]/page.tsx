@@ -3,16 +3,16 @@ import UserProfile from "@/components/user-profile";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-// This is required for static site generation with dynamic routes
-export async function generateStaticParams() {
+interface Props {
+  params: Promise<{ username: string }>;
+}
+
+// Make sure generateStaticParams is properly exported and types match
+export const generateStaticParams = async () => {
   const users = await getUsers();
   return users.map((user) => ({
     username: user.username,
   }));
-}
-
-interface Props {
-  params: Promise<{ username: string }>;
 }
 
 export async function generateMetadata({
