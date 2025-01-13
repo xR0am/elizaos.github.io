@@ -3,25 +3,23 @@ import UserProfile from "@/components/user-profile";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-type PageProps = {
-  params: {
-    username: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
-
 // This is required for static site generation with dynamic routes
-export async function generateStaticParams(): Promise<Array<{ username: string }>> {
+export async function generateStaticParams() {
   const users = await getUsers();
   return users.map((user) => ({
     username: user.username,
   }));
 }
 
+interface Props {
+  params: Promise<{ username: string }>;
+}
+
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
-  const user = await getUserById(params.username);
+}: Props): Promise<Metadata> {
+  const { username } = await params;
+  const user = await getUserById(username);
   return {
     title: user
       ? `${user.username}'s Eliza Contributer Profile`
@@ -30,8 +28,9 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProfilePage({ params }: PageProps) {
-  const user = await getUserById(params.username);
+export default async function ProfilePage({ params }: Props) {
+  const { username } = await params;
+  const user = await getUserById(username);
 
   if (!user) {
     notFound();
