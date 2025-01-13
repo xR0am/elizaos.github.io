@@ -103,7 +103,7 @@ jobs:
 
       - name: Archive thread artifacts
         if: env.IS_FRIDAY == '5'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: weekly-thread
           path: |
@@ -130,27 +130,11 @@ jobs:
           [ -f data/monthly/contributors.json ] && mv data/monthly/contributors.json data/monthly/history/contributors_${TIMESTAMP}.json || true
           python scripts/summarize.py summary data/monthly/scored.json data/monthly/contributors.json --model openai
 
-      - name: Build
-        run: bun run build
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./out
-
       - name: Commit and push if changed
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/ profiles/
-          git diff --staged --quiet || (git commit -m "Update contributor data and reports [skip ci]" && git push)
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-      - name: Commit and push if changed
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add data/ profiles/
+          git add data/ 
           git diff --staged --quiet || (git commit -m "Update contributor data and reports [skip ci]" && git push)
         env:
           GITHUB_TOKEN: ${{ github.token }}
