@@ -32,6 +32,8 @@ jobs:
 
       - name: Build
         run: bun run build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
