@@ -2,10 +2,10 @@ import { readFile } from "fs/promises";
 import path from "path";
 import { UserFocusAreaData } from "@/types/user-profile";
 
-let cachedUsers: UserFocusAreaData[] | null = null;
+let cachedUsers: UserFocusAreaData[] = [];
 
 export async function getUsers(): Promise<UserFocusAreaData[]> {
-  if (cachedUsers) return cachedUsers;
+  if (cachedUsers.length > 0) return cachedUsers;
 
   try {
     const focusAreasPath = path.join(process.cwd(), "data/historical.json");
