@@ -1,1 +1,435 @@
-null
+[
+  {
+    "id": "I_kwDOMT5cIs6mCyNj",
+    "number": 2265,
+    "title": "Log in info safe on character.json file vs .env?",
+    "body": "Just a quick question about the safety of inputting our login information for social media platforms on the files. Is it safe to input them on the character.json file under \"secrets\", or is it better to have them in the .env?\r\n\r\n What if you are running more than one character? Is there a way to add 2 different login info for the same platform (e.g twitter, or discord) in the .env and have them be assigned to different characters.json?",
+    "state": "OPEN",
+    "createdAt": "2025-01-13T23:40:29Z",
+    "updatedAt": "2025-01-13T23:40:29Z",
+    "author": {
+      "login": "sonatonagems",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/49692475?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6l_dT7",
+    "number": 2253,
+    "title": "getRecentPostInteractions returning all memory",
+    "body": "**Is your feature request related to a problem? Please describe.**\r\n\r\nI`m not sure if this is a BUG or intent, but looks like runtime.ts getRecentPostInteractions return all memory. It was overloading my model with more than 20k tokens each time it try to create a new post.\r\n\r\n\r\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\r\n\r\nSo, it stopped creating new posts due Model Rate Limits per minute.\r\n\r\n**Describe the solution you'd like**\r\n\r\nA workarround i found so far, was to limit the getRecentPostInteractions with a setting like this:\r\n\r\n```\r\nconst getRecentPostInteractions = async (\r\n            recentInteractionsData: Memory[],\r\n            actors: Actor[]\r\n        ): Promise<string> => {\r\n            const limit = this.character.settings?.recentInteractionsLimit ?? 20;  // Included limit here\r\n            const limitedInteractions = recentInteractionsData.slice(-limit);\r\n            const formattedInteractions = formatPosts({\r\n                messages: recentInteractionsData,\r\n                actors,\r\n                conversationHeader: true,\r\n            });\r\n\r\n            return formattedInteractions;\r\n        };\r\n```\r\n\r\n<!-- A clear and concise description of what you want to happen. -->\r\n\r\n**Describe alternatives you've considered**\r\n\r\nI`m not sure if is the best solution as i`m still learning Eliza Framework. Maybe a more experience dev can check on that.\r\n\r\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\r\n\r\n**Additional context**\r\n\r\n<!-- Add any other context or screenshots about the feature request here. -->\r\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-13T18:16:25Z",
+    "updatedAt": "2025-01-13T22:53:26Z",
+    "author": {
+      "login": "rferrari",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/495887?u=5a56d90f584ffc1827bb301541076597dca9cb3e&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6aP8nQ",
+        "author": "github-actions",
+        "body": "Hello @rferrari! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aR0iW",
+        "author": "augchan42",
+        "body": "In theory the recent interactions should already be limited to the 20 latest here:\r\n```\r\nconst getRecentInteractions = async (\r\n            userA: UUID,\r\n            userB: UUID\r\n        ): Promise<Memory[]> => {\r\n            // Find all rooms where userA and userB are participants\r\n            const rooms = await this.databaseAdapter.getRoomsForParticipants([\r\n                userA,\r\n                userB,\r\n            ]);\r\n\r\n            // Check the existing memories in the database\r\n            const existingMemories =\r\n                await this.messageManager.getMemoriesByRoomIds({\r\n                    // filter out the current room id from rooms\r\n                    roomIds: rooms.filter((room) => room !== roomId),\r\n                });\r\n\r\n            // Sort messages by timestamp in descending order\r\n            existingMemories.sort(\r\n                (a, b) =>\r\n                    (b?.createdAt ?? Date.now()) - (a?.createdAt ?? Date.now())\r\n            );\r\n\r\n            // Take the most recent messages\r\n            const recentInteractionsData = existingMemories.slice(0, 20);\r\n            return recentInteractionsData;\r\n        };\r\n```\r\n\r\nThis is whats passed to getRecentPostInteractions.  So not sure why everything is getting passed.  I do remember seeing rate limits as well, but I also had other code changes so not sure if it's the same underlying issue."
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aR3si",
+        "author": "augchan42",
+        "body": "there's an inefficiency in memory retrieval, so will fix this issue at the same time"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aR8xf",
+        "author": "augchan42",
+        "body": "@rferrari what database are you using?  it seems the limit parameter is being lost between layers, as the type definition has it, but the underlying database adapter doesn't.  At least for sqlite and likely many others."
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6l_JNB",
+    "number": 2252,
+    "title": "Remote server character files",
+    "body": "**Is your feature request related to a problem? Please describe.**\r\n\r\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\r\nAllow characters to also be loaded from a remote server instead of only through file paths\r\n\r\n**Describe the solution you'd like**\r\n\r\n<!-- A clear and concise description of what you want to happen. -->\r\n\r\nFrom within the `loadCharacters` function, instead of only accepting character file paths, accept `URL`s where you are able to fetch character data and load characters from the cloud.\r\n\r\n**Additional context**\r\n\r\n<!-- Add any other context or screenshots about the feature request here. -->\r\nI would Iove to become a contributor to Eliza and I'm formally offering my services to be the one to implement this feature if allowed.",
+    "state": "OPEN",
+    "createdAt": "2025-01-13T17:55:14Z",
+    "updatedAt": "2025-01-13T17:55:39Z",
+    "author": {
+      "login": "leeran7",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/58742988?u=dd24997f1abb40cc12d8b85667277a5f6b71e15d&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6aPqa9",
+        "author": "github-actions",
+        "body": "Hello @leeran7! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6l9tdJ",
+    "number": 2250,
+    "title": "model loading from .env fails",
+    "body": "**Describe the bug**\r\n\r\nwrong model loaded in .env I specify XAI_MODEL=gpt-4o, but then OS loads with\r\n\r\n```\r\n  {\"character\":\"Eliza\",\"modelProvider\":\"llama_local\",\"characterModelProvider\":\"llama_local\"}\r\n\r\n [\"✓ Agent ID: b850bc30-45f8-0041-a00a-83df46d8555d\"]\r\n\r\n [\"ℹ Setting model provider...\"]\r\n\r\n ℹ INFORMATIONS\r\n   Model Provider Selection:\r\n   {\"characterModelProvider\":\"llama_local\",\"optsModelProvider\":\"llama_local\",\"finalSelection\":\"llama_local\"}\r\n```\r\n\r\nXAI_MODEL seems to be never used in the code\r\n\r\n**Expected behavior**\r\n\r\nload the correct model\r\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-13T15:51:36Z",
+    "updatedAt": "2025-01-13T21:45:10Z",
+    "author": {
+      "login": "benjiqq",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/5390515?u=82b44f2beb45cb4860a7d57ea683b4c4519a9733&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6aOhnZ",
+        "author": "github-actions",
+        "body": "Hello @benjiqq! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aRhbP",
+        "author": "ordin8",
+        "body": "@benjiqq `XAI_MODEL` appears to be a legacy env variable which was recently removed from the docs: https://github.com/elizaOS/eliza/commit/b225815a4f802baa9a56191c658c429f9b088ac6. \r\n \r\nTo use `gpt-4o`, you can specify `\"modelProvider\": \"openai\"` in the characterfile. Depending on the action you are interested it, you can change the defaults in the .env file:\r\n\r\n```\r\nSMALL_OPENAI_MODEL=             # Default: gpt-4o-mini\r\nMEDIUM_OPENAI_MODEL=            # Default: gpt-4o\r\nLARGE_OPENAI_MODEL=             # Default: gpt-4o\r\nEMBEDDING_OPENAI_MODEL=         # Default: text-embedding-3-small\r\nIMAGE_OPENAI_MODEL=             # Default: dall-e-3\r\n```\r\n\r\n"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6l9L2u",
+    "number": 2246,
+    "title": "Echochambers - support joining multiple rooms, and proactive conversation starting",
+    "body": "Currently the echochambers plugin only listens to one room, and the agent only listens for messages and reacts.\r\n\r\nWhat happens if only elizaos agents are in an echochambers room?  All the agents will wait for someone to say something, and there will be no conversations at all.\r\n\r\nSo will work on allowing listening to multiple rooms at the same time, and proactive conversation starts if the room is dead (if there are no messages after a configurable period of time)",
+    "state": "OPEN",
+    "createdAt": "2025-01-13T15:11:33Z",
+    "updatedAt": "2025-01-13T15:15:59Z",
+    "author": {
+      "login": "augchan42",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/20424105?u=d1a74732b07564927928798346f07cd50935c529&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6l7_A4",
+    "number": 2242,
+    "title": "Missing Module: '@anush008/tokenizers-linux-arm64-gnu'",
+    "body": "**Describe the bug**\r\n\r\nWhen attempting to run the Eliza project on an Ubuntu (ARM64 architecture) on Oracle Cloud with Node.js v23.3.0, the application fails to start due to a missing module: @anush008/tokenizers-linux-arm64-gnu.\r\n\r\n**To Reproduce**\r\n```\r\ngit clone https://github.com/elizaOS/eliza.git\r\ncd eliza\r\ngit checkout $(git describe --tags --abbrev=0)\r\npnpm install --no-frozen-lockfile\r\npnpm build\r\n```\r\n\r\n```\r\nError: Cannot find module '@anush008/tokenizers-linux-arm64-gnu'\r\nRequire stack:\r\n- /home/xxx/Bots/ai_agent/eliza/node_modules/@anush008/tokenizers/index.js\r\n- /home/xxx/Bots/ai_agent/eliza/node_modules/fastembed/lib/cjs/fastembed.js\r\n- /home/xxx/Bots/ai_agent/eliza/node_modules/fastembed/lib/cjs/index.js\r\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1239:15)\r\n    at Function._load (node:internal/modules/cjs/loader:1064:27)\r\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\r\n    at Module.require (node:internal/modules/cjs/loader:1325:12)\r\n    at require (node:internal/modules/helpers:136:16)\r\n    at Object.<anonymous> (/home/xxx/Bots/ai_agent/eliza/node_modules/@anush008/tokenizers/index.js:219:31)\r\n    at Module._compile (node:internal/modules/cjs/loader:1546:14)\r\n    at Object..js (node:internal/modules/cjs/loader:1698:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1303:32) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    '/home/xxx/Bots/ai_agent/eliza/node_modules/@anush008/tokenizers/index.js',\r\n    '/home/xxx/Bots/ai_agent/eliza/node_modules/fastembed/lib/cjs/fastembed.js',\r\n    '/home/xxx/Bots/ai_agent/eliza/node_modules/fastembed/lib/cjs/index.js'\r\n  ]\r\n}\r\n\r\nNode.js v23.3.0\r\n```\r\nThe module @anush008/tokenizers-linux-arm64-gnu does not seem to exist in the npm registry when queried directly (pnpm info @anush008/tokenizers-linux-arm64-gnu returns a 404 error).",
+    "state": "OPEN",
+    "createdAt": "2025-01-13T13:29:04Z",
+    "updatedAt": "2025-01-13T21:20:23Z",
+    "author": {
+      "login": "morning3tar",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/77075518?u=2173b56b8ef8e11bf3d64fe684dfcbe77ed46f8f&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6aNCeG",
+        "author": "github-actions",
+        "body": "Hello @morning3tar! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aQkPm",
+        "author": "jmikedupont2",
+        "body": "I am working on this right now \r\nhttps://github.com/meta-introspector/fastembed-js/tree/feature/arm64_v2 \r\nhttps://github.com/meta-introspector/arm64-tokenizers\r\nand https://github.com/meta-introspector/cloud-deployment-eliza/tree/feature/micro\r\nand i am working on the terraform here https://github.com/jmikedupont2/ai-agent-terraform/\r\n"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aRJeT",
+        "author": "jmikedupont2",
+        "body": "here is my work in progress for eliza to use this patched version, \r\nuntested https://github.com/elizaOS/eliza/pull/2259"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aRUlX",
+        "author": "morning3tar",
+        "body": "> here is my work in progress for eliza to use this patched version, untested #2259\r\n\r\nThanks for your effort, Is this from the latest version of eliza?"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aRWXP",
+        "author": "jmikedupont2",
+        "body": "it is patched version still not working, but i am sharing my progress you can connect with me on telegram we are debugging live."
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6l5gP9",
+    "number": 2233,
+    "title": "Agent Execution Halts",
+    "body": "Hello,\r\n\r\nI've encountered an issue where the agent execution halts unexpectedly. Until two weeks ago, everything worked well, and agents were running without any problems.\r\n\r\nCurrently, when I attempt to start the agent using the following command:\r\n\r\npnpm start --character=\"characters/trump.character.json\"\r\n\r\nI receive the following warnings:\r\n\r\nExperimentalWarning: --experimental-loader may be removed in the future; instead use register()\r\n[DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\r\nAfter these warnings, the process seems to stop without any further progress or error messages.\r\n\r\nUntil two weeks ago, I had no issues running agents this way. \r\n\r\nEnvironment Details:\r\nNode.js version: v23.3.0\r\npnpm version: 9.15.3\r\nOperating System: Windows 10/11, 64-bit operating system, x64-based processor\r\nRunning via: WSL (Windows Subsystem for Linux)\r\n\r\nThank you for looking into this! Let me know if you need further information or logs.",
+    "state": "OPEN",
+    "createdAt": "2025-01-13T08:26:35Z",
+    "updatedAt": "2025-01-13T08:26:59Z",
+    "author": {
+      "login": "Herrsosa",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/47102902?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6aKnxf",
+        "author": "github-actions",
+        "body": "Hello @Herrsosa! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6l4yeA",
+    "number": 2231,
+    "title": "create relay.link plugin",
+    "body": "1. https://www.relay.link/bridge/base\r\n2. https://www.relay.link/transactions\r\n3. https://docs.relay.link/what-is-relay\r\n4. https://docs.relay.link/references/api/overview\r\n5. https://docs.relay.link/references/sdk/getting-started\r\n\r\n- Should be able to bridge `trusted` tokens between different L2s/EVM chains\r\n- Should be able to swap `trusted` tokens on same EVM chains\r\n- Should be able to retrieve swap/bridge txn status",
+    "state": "OPEN",
+    "createdAt": "2025-01-13T06:32:12Z",
+    "updatedAt": "2025-01-13T06:57:34Z",
+    "author": {
+      "login": "wtfsayo",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=45a31bd14d91cac88efa293594f36e989024adf0&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYg",
+        "name": "good first issue",
+        "color": "7057ff",
+        "description": "Good for newcomers"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB2kGrJQ",
+        "name": "feature request",
+        "color": "ededed",
+        "description": null
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6aKFgk",
+        "author": "dhruv1710",
+        "body": "I would like to work on it?"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6l4w4C",
+    "number": 2230,
+    "title": "Create 0x.org swap plugin/enhancement for EVM",
+    "body": "1. https://github.com/0xProject/0x-examples\r\n2. https://0x.org/docs/0x-swap-api/introduction\r\n\r\n- Should be able to do cross-chain EVM Swaps\r\n- Should be able to do same-chain EVM Swaps\r\n- Should be able to check swap/bridge txn status",
+    "state": "OPEN",
+    "createdAt": "2025-01-13T06:28:49Z",
+    "updatedAt": "2025-01-13T08:09:52Z",
+    "author": {
+      "login": "wtfsayo",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=45a31bd14d91cac88efa293594f36e989024adf0&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYg",
+        "name": "good first issue",
+        "color": "7057ff",
+        "description": "Good for newcomers"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB2kGrJQ",
+        "name": "feature request",
+        "color": "ededed",
+        "description": null
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6aKgvy",
+        "author": "chuasonglin1995",
+        "body": "Interested"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6l4K2m",
+    "number": 2227,
+    "title": " Client-direct v 0.1.8 failed to deploy to npm - creating inconsistancies. ",
+    "body": "**Describe the bug**\r\n\r\nClient-direct v 0.1.8 failed to deploy - creating inconsistancies. \r\n\r\n**To Reproduce**\r\n\r\ntry run eliza-starter with 0.1.8\r\n\r\n**Expected behavior**\r\n\r\nclient-direct v0.1.8 should be in pnpm, and referencing the 0.1.8 of core.\r\n\r\n**Screenshots**\r\n\r\nPS C:\\dev\\git\\mc2.agents> pnpm add @elizaos/client-direct@0.1.8 @elizaos/core@0.1.8\r\n ERR_PNPM_NO_MATCHING_VERSION  No matching version found for @elizaos/client-direct@0.1.8\r\n\r\nThis error happened while installing a direct dependency of C:\\dev\\git\\mc2.agents\r\n\r\nThe latest release of @elizaos/client-direct is \"0.1.7\".\r\n\r\n**Additional context**\r\n\r\nIssue for eliza-starter as you need to configure explicit overrides otherwise agents cannot start.\r\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-13T04:06:06Z",
+    "updatedAt": "2025-01-13T20:24:26Z",
+    "author": {
+      "login": "piffie",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/1213363?u=30bd860e9983a61af957d4a296c05abf098a7418&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6aJVNj",
+        "author": "github-actions",
+        "body": "Hello @piffie! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aLXu_",
+        "author": "lordofalllords",
+        "body": "ngl bro theres no fix ur cooked"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aQ5va",
+        "author": "vpavlin",
+        "body": "It deos not seem they actually released 0.1.8 to npmjs.org...no clue why since they explicitly say in 0.1.8+build.1 release\r\n\r\n> actually bump version so npm will publish a v0.1.8\r\n\r\n@odilitime any thoughts what went wrong?"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6l3u3a",
+    "number": 2226,
+    "title": "Seeing Uncaught TypeError: Cannot read properties of null (reading 'useState') ",
+    "body": "**Describe the bug**\r\n\r\nAfter following the quick start and running `pnpm start:client` I see this error in the javascript console: \r\n\r\n```\r\nUncaught TypeError: Cannot read properties of null (reading 'useState')\r\n    at exports.useState (chunk-WGQ5ZIYR.js?v=5c077f48:1094:35)\r\n    at useToast (use-toast.ts:169:37)\r\n    at useVersion (use-version.tsx:9:23)\r\n    at App (App.tsx:22:5)\r\n    at react-stack-bottom-frame (react-dom_client.js?v=f34b75e1:16190:20)\r\n    at renderWithHooks (react-dom_client.js?v=f34b75e1:4304:24)\r\n    at updateFunctionComponent (react-dom_client.js?v=f34b75e1:5970:21)\r\n    at beginWork (react-dom_client.js?v=f34b75e1:7046:20)\r\n    at runWithFiberInDEV (react-dom_client.js?v=f34b75e1:724:18)\r\n    at performUnitOfWork (react-dom_client.js?v=f34b75e1:10829:98)\r\n```\r\n\r\n**To Reproduce**\r\n\r\n1. Follow the quickstart guide\r\n2. run pnpm start\r\n3. run pnpm start:client in a new terminal window\r\n4. open http://localhost:5173/ in the browser (you will see black screen)\r\n5. open the chrome dev tools console and see error\r\n\r\n\r\n**Expected behavior**\r\n\r\nShould load site without errors\r\n\r\n**Screenshots**\r\n\r\n![Screenshot 2025-01-12 at 6 00 19 PM](https://github.com/user-attachments/assets/ad41b386-b587-4c01-985c-23ace7335fbe)\r\n\r\n**Additional context**\r\n\r\nThis started happening today after pulling latest version (v0.1.8). \r\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-13T02:01:06Z",
+    "updatedAt": "2025-01-13T17:59:12Z",
+    "author": {
+      "login": "adaro",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/3979857?u=5fdd5d9a0dcca364599c406450a14671773de2e2&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6aI-48",
+        "author": "github-actions",
+        "body": "Hello @adaro! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aOsIo",
+        "author": "tomzed",
+        "body": "Hello I have the same issue pleas help ! Thanks"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aPsKo",
+        "author": "wtfsayo",
+        "body": "fetch latest & run\r\n- `pnpm clean`\r\n- `pnpm install --no-frozen-lockfile`\r\n- `pnpm build`"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6l3r5T",
+    "number": 2225,
+    "title": "Bug: Twitter Authentication fails on Cloud. Error 399",
+    "body": "**Describe the bug**\r\n\r\n<!-- A clear and concise description of what the bug is. -->\r\n\r\nI am trying to deploy eliza on [gce](https://cloud.google.com/products/compute?hl=en), however i am getting  error on authentication error 399 when logging in causing the login to fail. \r\n\r\n\r\n```json\r\n{\r\n  \"errors\": [{\r\n    \"code\": 399,\r\n    \"message\": \"Incorrect. Please try again. g;173669734519940919:-1736697345244:ILSZ2qNWESdWgKjC1KLSxaWZ:8\"\r\n  }]\r\n}\r\n```\r\n\r\n**To Reproduce**\r\n\r\n<!-- Steps to reproduce the behavior. -->\r\n\r\n**Expected behavior**\r\n\r\n<!-- A clear and concise description of what you expected to happen. -->\r\n\r\n**Screenshots**\r\n<img width=\"1204\" alt=\"image\" src=\"https://github.com/user-attachments/assets/d932d52d-a618-4494-9b4c-2cc0e2fc2920\" />\r\n\r\n\r\n<!-- If applicable, add screenshots to help explain your problem. -->\r\n\r\n**Additional context**\r\n\r\n<!-- Add any other context about the problem here. -->\r\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-13T01:45:39Z",
+    "updatedAt": "2025-01-13T23:58:46Z",
+    "author": {
+      "login": "yongkangc",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/46377366?u=292a9c47afee0020ae94e832f2553c4f2cb8e3a4&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6aI8cZ",
+        "author": "github-actions",
+        "body": "Hello @yongkangc! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aI84F",
+        "author": "AIFlowML",
+        "body": "Twitter saw that you are into a Google sever and probably enforced a block because of that.\n\nOn Mon, Jan 13, 2025 at 08:46, YK ***@***.***(mailto:On Mon, Jan 13, 2025 at 08:46, YK <<a href=)> wrote:\n\n> Describe the bug\n>\n> I am trying to deploy eliza on [gce](https://cloud.google.com/products/compute?hl=en), however i am getting error on authentication error 399 when logging in causing the login to fail.\n>\n> {\n>\n> \"errors\"\n>\n> : [{\n>\n> \"code\"\n>\n> :\n>\n> 399\n>\n> ,\n>\n> \"message\"\n>\n> :\n>\n> \"\n>\n> Incorrect. Please try again. g;173669734519940919:-1736697345244:ILSZ2qNWESdWgKjC1KLSxaWZ:8\n>\n> \"\n>\n> }]\n> }\n>\n> To Reproduce\n>\n> Expected behavior\n>\n> Screenshots\n> [image.png (view on web)](https://github.com/user-attachments/assets/d932d52d-a618-4494-9b4c-2cc0e2fc2920)\n>\n> Additional context\n>\n> —\n> Reply to this email directly, [view it on GitHub](https://github.com/elizaOS/eliza/issues/2225), or [unsubscribe](https://github.com/notifications/unsubscribe-auth/BE5QO4HWT2TR6WSJYGI2QYL2KMLF7AVCNFSM6AAAAABVBTQAMCVHI2DSMVQWIX3LMV43ASLTON2WKOZSG44DEOBTHAZTKNI).\n> You are receiving this because you are subscribed to this thread.Message ID: ***@***.***>"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aPcoX",
+        "author": "rferrari",
+        "body": "login manually, grab the Applications -> Cookies -> auth_token from inspect tab.\r\n\r\ninsert it on ENV TWITTER_COOKIES=auth_token:YOUR-COOKIE"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aQMXo",
+        "author": "squintdev",
+        "body": "> login manually, grab the Applications -> Cookies -> auth_token from inspect tab.\r\n> \r\n> insert it on ENV TWITTER_COOKIES=auth_token:YOUR-COOKIE\r\n\r\nDoes the \"YOUR-COOKIE\" part (the actual auth token) have to be in quotes or anything? I'm still not able to log in to Twitter."
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aRpor",
+        "author": "rferrari",
+        "body": "lol\r\n\r\nno, just add:\r\n\r\nTWITTER_COOKIES=auth_token:xXXXXXXXX-XXXXXXX\r\n\r\nyes, you need \"auth_token\" and then : then your actual cookie token\r\n\r\n"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aRuEJ",
+        "author": "squintdev",
+        "body": "NVM I figured it out. Email address was wrong."
+      }
+    ]
+  }
+]
