@@ -5,6 +5,7 @@ A comprehensive analytics and reporting system for tracking GitHub repository co
 [Website](https://elizaos.ai/) | [Discord](https://discord.gg/elizaOS) | [DAO](https://www.daos.fun/HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC) | [Docs](https://elizaos.github.io/eliza/)
 
 elizaos/eliza permalinks:
+
 - https://elizaos.github.io/data/daily/contributors.json
   - https://elizaos.github.io/data/daily/summary.json
   - https://elizaos.github.io/data/daily/summary.md
@@ -16,6 +17,7 @@ older versions are backed up in `data/*/history` folders with timestamps
 ## Features
 
 - **Daily, Weekly, and Monthly Reports**
+
   - Automated data collection via GitHub Actions
   - Detailed activity summaries with metrics and trends
   - Smart contributor scoring system
@@ -23,6 +25,7 @@ older versions are backed up in `data/*/history` folders with timestamps
   - Thread-style weekly summaries for social sharing
 
 - **Contributor Profiles**
+
   - Interactive profile pages for each contributor
   - Activity visualization with charts and metrics
   - Contribution history and engagement tracking
@@ -37,6 +40,7 @@ older versions are backed up in `data/*/history` folders with timestamps
 ## Setup
 
 1. Configure GitHub Authentication:
+
 ```bash
 # Set your GitHub access token
 export GH_ACCESS_TOKEN=\"your_token\"
@@ -46,15 +50,21 @@ export OPENAI_API_KEY=\"your_key\"
 ```
 
 2. Install Dependencies:
+
+[Bun is recommended for this project.](https://bun.sh/)
+
 ```bash
 # Install Python dependencies
 pip install openai langchain-core langchain-ollama
 
 # Install Node.js dependencies
+bun install
+# OR if you are too lazy to install bun
 npm install
 ```
 
 3. Configure Repository Settings:
+
 ```bash
 # Update repository details in fetch_github.sh
 owner=\"your_org\"
@@ -91,7 +101,7 @@ The system can generate social media-friendly thread summaries of weekly activit
 1. **Automatic Generation**: Part of weekly workflow, runs every Friday
 2. **Manual Generation**: Run `generate_history_summaries.sh`
 3. **Output Location**: `data/weekly/thread_[DATE].txt`
-4. **Content**: 
+4. **Content**:
    - Comprehensive weekly summary in thread format
    - Key metrics and achievements
    - Notable PRs and improvements
@@ -100,6 +110,7 @@ The system can generate social media-friendly thread summaries of weekly activit
 ### Automated Reports
 
 The included GitHub Actions workflow (`weekly-summaries.yml`) automatically:
+
 - Runs daily at 5:00 PM EST
 - Generates weekly reports and threads on Fridays
 - Creates monthly summaries on the 4th of each month
@@ -108,12 +119,13 @@ The included GitHub Actions workflow (`weekly-summaries.yml`) automatically:
 
 ```bash
 # Build and generate contributor profile pages
-npm run build
-npm run generate
+bun run build
 
 # View the site
-open profiles/index.html
+bunx serve@latest out
 ```
+
+Or use npm...
 
 ## Data Structure
 
@@ -177,5 +189,5 @@ The system generates structured JSON data for contributors:
 
 ## Notes
 
-`code2prompt -p README.md -p scripts/build.js -p scripts/components/ContributorProfile.js -p package.json -p profiles/madjin.html``,
-  `message`: `docs: add weekly thread generation feature documentation`
+` code2prompt -p README.md -p scripts/build.js -p scripts/components/ContributorProfile.js -p package.json -p profiles/madjin.html``,
+   `message`: `docs: add weekly thread generation feature documentation`

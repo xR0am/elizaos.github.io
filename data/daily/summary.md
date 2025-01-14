@@ -1,44 +1,43 @@
-# elizaos Eliza (2025-01-12)
+# elizaos Eliza (2025-01-14)
     
 ## 📊 Overview
-Development focused on package improvements (change prompt to ensure it returns json), new features (nft plugin), 6 bug fixes. with 38 contributors merging 22 PRs. Major work included odilitime is actively working on merging pull requests, fixing json format issues, bumping versions, and making code changes in various areas such as agent, client, characters, and documentation within the project repository.
+Development focused on package improvements (add support for gravity chain in EVM plugin), new features (add support for gravity chain in EVM plugin). with 38 contributors merging 5 PRs. Major work included howieduhzit is currently updating and enhancing the start script and setup functions in the project, focusing on improving environment configuration and user documentation.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
 | 👥 Contributors | 38 |
-| 📝 Commits | 96 |
-| 🔄 Merged PRs | 22 |
-| ⚠️ New Issues | 19 |
+| 📝 Commits | 53 |
+| 🔄 Merged PRs | 5 |
+| ⚠️ New Issues | 12 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 5
-- 🐛 **Fixes**: 6
+- 🧹 **Chores**: 0
+- 🐛 **Fixes**: 0
 - ✨ **Features**: 2
 
 ## 📁 File Changes
-- **client**: 59 files (+14758/-503 lines)
-- **packages**: 321 files (+9170/-622 lines)
-- **root**: 41 files (+2438/-1017 lines)
-- **agent**: 11 files (+485/-151 lines)
-- **.github**: 9 files (+261/-230 lines)
+- **scripts**: 1 files (+694/-52 lines)
+- **docs**: 3 files (+317/-1 lines)
+- **packages**: 5 files (+276/-3 lines)
+- **root**: 3 files (+159/-2 lines)
 
 ## 🔥 Notable Changes
-- fix(plugin-twitter): change prompt to ensure it returns json
-- chore: 0.1.8.build.1 (dev => main)
-- chore: Prep 0.1.8.build.1
+- Merge my Eliza Installer with the current start.sh script
+- feat: add support for gravity chain in EVM plugin
+- docs: Add Farsi (Persian )readme
 
 ## 👥 Top Contributors
-- **odilitime**: odilitime is actively working on merging pull requests, fixing JSON format issues, bumping versions, and making code changes in various areas such as agent, client, characters, and documentation within the project repository
-- **tcm390**: tcm390 is currently working on adding support for deepseek, updating README in Greek language, adding a new nft plugin, and making corrections to parameters and return values in the codebase
-- **ai16z-demirix**: ai16z-demirix is currently working on adding tests for various plugins, such as the Coinbase and WhatsApp plugins, to enhance the packages in the codebase
+- **HowieDuhzit**: HowieDuhzit is currently updating and enhancing the start script and setup functions in the project, focusing on improving environment configuration and user documentation
+- **Stumble**: Stumble is currently working on adding support for the gravity chain in the EVM plugin
+- **oxlupo**: oxlupo is currently working on adding a Persian README file to the project documentation
 
 ## ⚠️ Issues
-- **New Issues**: 19
-- **Labels**: `enhancement` (9), `bug` (7), `Need Feedback` (3)
-- **Summary**: 7 bugs reported (including 'Together ai medium model invalid', 'SttTtsPlugin error when launching space') 9 feature requests (including 'Add tests for WhatsApp plugin', 'Coinbase-plugin - add tests acorrding to follow package structure').
+- **New Issues**: 12
+- **Labels**: `bug` (7), `enhancement` (5), `good first issue` (2)
+- **Summary**: 7 bugs reported (including 'Bug: Twitter Authentication fails on Cloud. Error 399', 'Missing Module: '@anush008/tokenizers-linux-arm64-gnu'') 5 feature requests (including 'create relay.link plugin', 'Create 0x.org swap plugin/enhancement for EVM').
 
 ## Top Contributors
-- **odilitime**: fix(plugin-twitter): change prompt to ensure it returns json
-- **tcm390**: feat: nft plugin
-- **ai16z-demirix**: feature: adding tests for whatsapp plugin
+- **HowieDuhzit**: Merge my Eliza Installer with the current start.sh script
+- **Stumble**: feat: add support for gravity chain in EVM plugin
+- **oxlupo**: docs: Add Farsi (Persian )readme
