@@ -1,0 +1,206 @@
+[
+  {
+    "id": "I_kwDOMT5cIs6mL-U2",
+    "number": 2304,
+    "title": "Trying to find how to run Eliza locally with two graphical cards. ",
+    "body": "**Is your feature request related to a problem? Please describe.**\r\nI would like to have more information concerning how to run Eliza locally with multiple graphical cards. \r\n\r\n**Describe the solution you'd like**\r\nI don't really know where to start with solving this issue, for example, I am not sure if the problem comes from my installation, or a necessary modification of the Eliza code.  \r\nThe ideal solution would be to have notes in the documentation on the subject. \r\n\r\n**Describe alternatives you've considered**\r\nI asked on the Discord if anybody was aware of a solution, but unfortunately, nobody could help. \r\n\r\n**Additional context**\r\nI run the system on a Debian. The two graphical cards are NVIDIA ones, but of different generations. \r\nEliza works properly using a single card with CUDA, cuBLAS, cuDNN and node-llama-cpp installed, but I am not certain of the necessary installation to run the second card. \r\nnividia-detect and nvidia-smi show both my cards. \r\n\r\nAlso, I was not certain that it was the right place to post, but as it is not related to a bug or a security issue, I figured that \"Features request\" would be my best bet. \r\n\r\nThanks in advance.\r\n\r\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-14T19:48:59Z",
+    "updatedAt": "2025-01-14T19:49:23Z",
+    "author": {
+      "login": "Nautilusera",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/37840566?u=f6d54d9a5ac19c05dbd610807a8a77d07b9e796f&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6abyMW",
+        "author": "github-actions",
+        "body": "Hello @Nautilusera! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6mLrfY",
+    "number": 2302,
+    "title": "farcaster-client fails to embed",
+    "body": "**Describe the bug**\r\n\r\nI'm brand new to this so forgive me, but it seems all incoming memories (from mentions) are using an empty vector when trying to embed. Is this desired, or should it embed the text from the cast?\r\n\r\nI see this in the code for memory processing:\r\n\r\nhttps://github.com/elizaOS/eliza/blob/d55c86c961960b4b34528c358eb34b2ff4b34d87/packages/client-farcaster/src/memory.ts#L45C8-L45C45\r\n\r\n```\r\nembedding: getEmbeddingZeroVector(),\r\n```\r\n\r\nIt looks to be hardcoded to always be empty.\r\n\r\nI'm using 0.1.7\r\n\r\n**To Reproduce**\r\n\r\nConnect farcaster client and get inbound messages from replies. See these log messages:\r\n\r\n◎ LOGS\r\n   Creating Memory\r\n   c749dce0-4f97-0878-870f-ae92d34be101\r\n   @agentpaddington why is it so hard\r\n\r\n ⚠ WARNINGS\r\n   Invalid embedding input:\r\n   {\"input\":\"\",\"type\":\"string\",\"length\":0}\r\n\r\n\r\n\r\n**Expected behavior**\r\n\r\nActual embedding of the memories. \r\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-14T19:05:24Z",
+    "updatedAt": "2025-01-14T22:32:45Z",
+    "author": {
+      "login": "CryptoGraffe",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/95149165?u=62e721cdf9d1e7a8f978fad972b0a6e0aad97b45&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6abfLZ",
+        "author": "github-actions",
+        "body": "Hello @CryptoGraffe! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6ac0AN",
+        "author": "AndriyAntonenko",
+        "body": "Yes, I've faced the same issue today. Also memories doesn't used in the prompt to answer."
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6mGcn8",
+    "number": 2282,
+    "title": "feat: add ntf-starter and nft-generator",
+    "body": "**Is your feature request related to a problem? Please describe.**\r\n\r\nCurrently, agents' data (character configuration and memory) are stored locally, making it difficult to share, transfer, or authorize agents between different users and systems. There's no standardized way to manage agent ownership and data sharing.\r\n\r\n**Describe the solution you'd like**\r\n\r\nImplement Agent NFT following [ERC-7857](https://github.com/0glabs/ERCs/blob/master/ERCS/erc-7857.md) standard to:\r\n1. Store agent data (character configuration and SQLite memory) on the [0G storage](https://docs.0g.ai/0g-storage)\r\n2. Provide ownership management through NFTs\r\n3. Enable agent data transfer, cloning, and authorization\r\n4. Allow starting agents from existing NFTs with proper ownership validation\r\n\r\nKey components:\r\n1. AgentNFTClient for smart contract interaction\r\n2. Generate NFT functionality with local agent data\r\n3. NFT-based agent startup with data validation and retrieval\r\n\r\n**Describe alternatives you've considered**\r\n\r\n1. Traditional database storage with access control\r\n2. Centralized cloud storage solutions\r\n3. Custom token implementation without NFT standard\r\n4. Local file sharing and manual authorization\r\n\r\n**Additional context**\r\n\r\nThe implementation requires:\r\n1. Integration with [0G](https://0g.ai/) blockchain\r\n2. [ERC-7857](https://github.com/0glabs/ERCs/blob/master/ERCS/erc-7857.md) smart contract deployment\r\n\r\nEnvironment configuration:\r\n1. ZEROG_RPC_URL\r\n2. ZEROG_INDEXER_RPC_URL\r\n3. ZEROG_PRIVATE_KEY\r\n4. ZEROG_AGENT_NFT_CONTRACT_ADDRESS\r\n\r\nFor more details:\r\n1. [ERC-7857](https://github.com/0glabs/ERCs/blob/master/ERCS/erc-7857.md)\r\n2. [0G-Agent-NFT](https://github.com/0glabs/0g-agent-nft/tree/eip-7857-draft) \r\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-14T09:53:15Z",
+    "updatedAt": "2025-01-14T15:30:02Z",
+    "author": {
+      "login": "Wilbert957",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/161988856?u=5fb1e5f079f796e3e83992fbec4800d2ecff976d&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6mGNj0",
+    "number": 2279,
+    "title": "got compilation runtime error when running pnpm start command (Wasm SIMD unsupported) ",
+    "body": "OS version: ubuntu 22\r\nnode version: 23.3.0\r\n\r\nevery step is running good except running the command:\r\npnpm start --character=\"characters/trump.character.json\"\r\n\r\n![4171601](https://github.com/user-attachments/assets/e94aec45-ed12-4add-9b22-136863fbb52f)\r\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-14T09:23:09Z",
+    "updatedAt": "2025-01-14T16:32:29Z",
+    "author": {
+      "login": "holiccoder",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/38061345?u=9aff3c4a27f5cd9e3fea92f91c65bcf81fa10bcf&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6aV0I2",
+        "author": "github-actions",
+        "body": "Hello @holiccoder! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aZnDk",
+        "author": "Endytech",
+        "body": "\r\n![image](https://github.com/user-attachments/assets/b580d047-6729-45ab-b767-2d43e4586657)\r\n\r\nI have same error too: \"Wasm SIMD unsupported\"\r\nOS version: Ubuntu 22.04.5 LTS\r\nnode version: 23.3.0\r\n\r\n(node:1175100) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\r\n(node:1175100) ExperimentalWarning: CommonJS module /home/eliza/eliza2/node_modules/@3land/listings-sdk/dist/utility/utils.js is loading ES Module /home/eliza/eliza2/node_modules/@3land/listings-sdk/node_modules/node-fetch/src/index.js using require().\r\nSupport for loading ES Module in require() is an experimental feature and might change at any time\r\nfailed to asynchronously prepare wasm: CompileError: WebAssembly.instantiate(): Wasm SIMD unsupported @+59\r\nAborted(CompileError: WebAssembly.instantiate(): Wasm SIMD unsupported @+59)\r\n/home/eliza/eliza2/node_modules/@primuslabs/zktls-core-sdk/dist/algorithm/client_plugin.js:1\r\nvar Module=typeof Module!=\"undefined\"?Module:{};var moduleOverrides=Object.assign({},Module);var arguments_=[];var thisProgram=\"./this.program\";var quit_=(status,toThrow)=>{throw toThrow};var ENVIRONMENT_IS_WEB=typeof window==\"object\";\r\n...\r\nvar parts=path.spli/home/eliza/eliza/agent:\r\n ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @elizaos/agent@0.1.8+build.1 start: `node --loader ts-node/esm src/index.ts \"--isRoot\" \"--characters=characters/test.character.json\"`\r\nExit status 7\r\n ELIFECYCLE  Command failed with exit code 7."
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6mFWYi",
+    "number": 2277,
+    "title": "the tweets are getting cutoff... where can i adjust the tweet length?",
+    "body": "i gave longer examples posts to the character....\r\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-14T07:10:03Z",
+    "updatedAt": "2025-01-14T14:13:14Z",
+    "author": {
+      "login": "aiopinions",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/161578121?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6aU8cn",
+        "author": "github-actions",
+        "body": "Hello @aiopinions! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aWUMu",
+        "author": "KarimovMurodilla",
+        "body": "> i gave longer examples posts to the character....\r\n\r\nAre you using twitter template?\r\n\r\nIf not, check this: https://elizaos.github.io/eliza/docs/core/characterfile/#example-twitter-post-template"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aYLWZ",
+        "author": "tcm390",
+        "body": "Do you have a premium account? If not, Twitter only allows you to post a maximum of 280 characters."
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6mE0Ws",
+    "number": 2272,
+    "title": "Chat Input Sends Multiple Messages When Using IME",
+    "body": "\r\n**Describe the bug**\r\n\r\nWhen using an Input Method Editor (IME) for languages like Chinese, Japanese, or Korean, pressing Enter while composing text sometimes causes the same message to be sent multiple times.\r\n\r\n**To Reproduce**\r\n\r\nSteps to reproduce the behavior:\r\n\r\nSet the input language to a language requiring IME (e.g., Chinese, Japanese, Korean).\r\nOpen the chat input box.\r\nStart typing text using the IME and press Enter while still composing.\r\nObserve that the same message is sent multiple times.\r\n\r\n**Expected behavior**\r\n\r\nThe message should only be sent once when the Enter key is pressed, even if an IME is active and composing text.\r\n\r\n**Screenshots**\r\n\r\n<img width=\"1516\" alt=\"image\" src=\"https://github.com/user-attachments/assets/1dcd81b0-df4f-48a5-a32d-ee76ce54d167\" />\r\n\r\n**Additional context**\r\n\r\nThis issue primarily affects users of languages that require IME for text input, such as Korean, which I used.\r\n",
+    "state": "CLOSED",
+    "createdAt": "2025-01-14T05:11:40Z",
+    "updatedAt": "2025-01-14T17:31:51Z",
+    "author": {
+      "login": "lincheoll",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/53032750?u=ff3890e429047d07a870d870c54e8834ba1faac3&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6aUUa5",
+        "author": "github-actions",
+        "body": "Hello @lincheoll! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6mCyNj",
+    "number": 2265,
+    "title": "Log in info safe on character.json file vs .env?",
+    "body": "Just a quick question about the safety of inputting our login information for social media platforms on the files. Is it safe to input them on the character.json file under \"secrets\", or is it better to have them in the .env?\r\n\r\n What if you are running more than one character? Is there a way to add 2 different login info for the same platform (e.g twitter, or discord) in the .env and have them be assigned to different characters.json?",
+    "state": "OPEN",
+    "createdAt": "2025-01-13T23:40:29Z",
+    "updatedAt": "2025-01-13T23:40:29Z",
+    "author": {
+      "login": "sonatonagems",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/49692475?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  }
+]
