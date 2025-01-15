@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+export const revalidate = 60; // Revalidate every 60 seconds
+
 export async function GET(request: Request) {
   const cookies = request.headers.get("cookie");
   const githubUsername = cookies?.split(";")
