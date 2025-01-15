@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import {
+  type DailySummary,
   getAllDailySummaryDates,
   getDailySummary,
   getLatestDailySummary,
@@ -7,7 +8,7 @@ import {
 import { extractDateFromTitle } from "@/lib/date-utils";
 
 export interface DailySummaryResult {
-  summary: any; // Replace 'any' with your actual summary type
+  summary: DailySummary;
   navigation: {
     prevDate: string | null;
     nextDate: string | null;
@@ -16,7 +17,7 @@ export interface DailySummaryResult {
 }
 
 interface DateData {
-  latestSummary: any; // Replace with your actual summary type
+  latestSummary: DailySummary;
   latestDate: string;
   allDates: string[];
 }
