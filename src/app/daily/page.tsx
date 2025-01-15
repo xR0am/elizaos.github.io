@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { getDailySummary } from "@/lib/get-daily-summary";
 import { getAllDailySummaryDates } from "@/lib/get-daily-summaries";
+import { extractDateFromTitle } from "@/lib/date-utils";
 
 export default async function DailyPage() {
   const [summary, dates] = await Promise.all([
@@ -9,8 +10,7 @@ export default async function DailyPage() {
   ]);
 
   // Get the current date from the summary title
-  const dateMatch = summary.title.match(/\(([^)]+)\)/);
-  const currentDate = dateMatch ? dateMatch[1] : dates[0];
+  const currentDate = extractDateFromTitle(summary.title) || dates[0];
 
   // Redirect to the current date's page
   redirect(`/daily/${currentDate}`);

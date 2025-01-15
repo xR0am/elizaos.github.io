@@ -14,6 +14,19 @@ import { LeaderboardCard } from "./leaderboard-card";
 import { LeaderboardPeriod, UserFocusAreaData } from "@/types/user-profile";
 import { useRouter, useSearchParams } from "next/navigation";
 
+export function LeaderboardFallback() {
+  return (
+    <div className="animate-pulse space-y-4">
+      <div className="h-8 bg-muted rounded w-48"></div>
+      <div className="space-y-3">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <div key={i} className="h-24 bg-muted rounded"></div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export interface LeaderboardProps {
   users: UserFocusAreaData[];
   period: LeaderboardPeriod;
@@ -126,7 +139,7 @@ export function Leaderboard({ users, period }: LeaderboardProps) {
           {/* <TabsTrigger value="weekly">Weekly</TabsTrigger> */}
         </TabsList>
         <TabsContent value="all">
-          <LeaderboardContent
+          <LeaderboardList
             users={filteredUsers}
             onSkillClick={handleSkillChange}
           />
@@ -142,7 +155,7 @@ export function Leaderboard({ users, period }: LeaderboardProps) {
   );
 }
 
-const LeaderboardContent = ({
+const LeaderboardList = ({
   users,
   onSkillClick,
 }: {
