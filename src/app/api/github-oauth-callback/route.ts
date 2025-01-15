@@ -32,7 +32,13 @@ export async function GET(request: Request) {
 
     const { login: username } = await userResponse.json();
 
-    // TODO: Store the username in a session or cookie
+    const response = NextResponse.redirect("/leaderboard");
+    response.cookies.set("github_username", username, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 60 * 60 * 24 * 7 // 1 week
+    });
 
     return NextResponse.redirect("/leaderboard");
   } catch (error) {

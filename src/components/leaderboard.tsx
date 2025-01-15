@@ -52,6 +52,21 @@ export function Leaderboard({ users, period }: LeaderboardProps) {
     window.location.href = url;
   };
   useEffect(() => {
+    const checkAuthentication = async () => {
+      try {
+        // Check if the user is authenticated (e.g., by checking the session or cookie)
+        const response = await fetch("/api/check-auth");
+        if (response.ok) {
+          setIsAuthenticated(true);
+        }
+      } catch (error) {
+        console.error("Error checking authentication:", error);
+      }
+    };
+  
+    checkAuthentication();
+  }, []);
+  useEffect(() => {
     setSelectedSkill(searchParams.get("skill") || "all");
   }, [searchParams]);
 
