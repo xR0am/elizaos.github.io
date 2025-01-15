@@ -1,41 +1,41 @@
 # elizaos Eliza (2025-01-15)
     
 ## 📊 Overview
-Development focused on new features (add getMemoryByIds to database adapters), 2 bug fixes. with 31 contributors merging 8 PRs. Major work included sweetmantech is currently working on three pull requests related to the agentkit plugin, focusing on code areas such as agent and packages.
+Development focused on new features (Onchain Agent Transformer - transform any Eliza agents into unstoppable Solidity smart contracts deployed on 10+ blockchains), 2 bug fixes. with 35 contributors merging 4 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 31 |
-| 📝 Commits | 28 |
-| 🔄 Merged PRs | 8 |
+| 👥 Contributors | 35 |
+| 📝 Commits | 38 |
+| 🔄 Merged PRs | 4 |
 | ⚠️ New Issues | 8 |
 
 ## 🔄 Pull Request Summary
 - 🧹 **Chores**: 0
 - 🐛 **Fixes**: 2
-- ✨ **Features**: 2
+- ✨ **Features**: 1
 
 ## 📁 File Changes
-- **packages**: 34 files (+924/-375 lines)
-- **root**: 5 files (+382/-13 lines)
-- **docs**: 5 files (+222/-9 lines)
-- **agent**: 2 files (+6/-1 lines)
+- **packages**: 5 files (+107/-3 lines)
+- **root**: 2 files (+6/-4 lines)
+- **agent**: 1 files (+1/-1 lines)
 
 ## 🔥 Notable Changes
-- Fixes
-- Revert "feat: Add support for VoyageAI embeddings API"
+- feat: Onchain Agent Transformer - transform any Eliza agents into unstoppable Solidity smart contracts deployed on 10+ blockchains
+- fix: correct OPENROUTER_API_KEY env in config
 - fix: farcaster memory
 
 ## 👥 Top Contributors
-- **sweetmantech**: sweetmantech is currently working on three pull requests related to the AgentKit plugin, focusing on code areas such as agent and packages
-- **shakkernerd**: shakkernerd is currently working on merging branches, fixing issues, and making chore updates related to the CryptoGraffe project
-- **wtfsayo**: wtfsayo is currently working on merging pull requests related to adding new services and features, such as memories retrieval, client agent CRUD operations, and a Gitcoin passport plugin
+- **wtfsayo**: wtfsayo is primarily working on updating various TypeScript files in the project, including tokenProvider
+- **eternal-ai-org**: eternal-ai-org is currently focusing on merging branches and developing support for the eternalai provider to obtain onchain system prompts
+- **everimbaq**: everimbaq is currently working on fixing the OPENROUTER_API_KEY environment variable in the agent configuration
 
 ## ⚠️ Issues
 - **New Issues**: 8
-- **Labels**: `bug` (6), `enhancement` (2)
-- **Summary**: 6 bugs reported (including 'farcaster-client fails to embed', 'the tweets are getting cutoff... where can i adjust the tweet length?') 2 feature requests (including 'feat: add ntf-starter and nft-generator', 'Trying to find how to run Eliza locally with two graphical cards. ').
+- **Labels**: `bug` (4), `enhancement` (3)
+- **Summary**: 4 bugs reported (including 'Duplicate responses to an action', 'Issue running multiple characters with API key') 3 feature requests (including 'Fix: [plugin-chainbase] Enhance Query Text Extraction and Validation for QUERY_BLOCKCHAIN_DATA Action', 'Feature - ragKnowledge enhancements (double byte support, caching, load from directories)').
 
 ## Top Contributors
-- **shakkernerd**: Fixes
+- **eternal-ai-org**: feat: Onchain Agent Transformer - transform any Eliza agents into unstoppable Solidity smart contracts deployed on 10+ blockchains
+- **everimbaq**: fix: correct OPENROUTER_API_KEY env in config

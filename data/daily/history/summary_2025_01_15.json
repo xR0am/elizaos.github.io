@@ -1,19 +1,19 @@
 {
   "title": "elizaos Eliza (2025-01-15)",
   "version": "",
-  "overview": "Development focused on new features (Gitcoin passport), 3 bug fixes. with 33 contributors merging 8 PRs. Major work included various improvements.",
+  "overview": "Development focused on new features (add getMemoryByIds to database adapters), 2 bug fixes. with 31 contributors merging 8 PRs. Major work included sweetmantech is currently working on three pull requests related to the agentkit plugin, focusing on code areas such as agent and packages.",
   "metrics": {
-    "contributors": 33,
+    "contributors": 31,
     "merged_prs": 8,
     "new_issues": 8,
-    "lines_changed": 1737
+    "lines_changed": 1932
   },
   "changes": {
     "features": [
+      "add getMemoryByIds to database adapters",
       "Gitcoin passport"
     ],
     "fixes": [
-      "IME causes multiple messages on Enter (Fixes #2272)",
       "farcaster memory",
       "fix derive key and update remote attestation"
     ],
@@ -22,9 +22,9 @@
   "areas": [
     {
       "name": "packages",
-      "files": 26,
-      "additions": 734,
-      "deletions": 367
+      "files": 34,
+      "additions": 924,
+      "deletions": 375
     },
     {
       "name": "root",
@@ -39,29 +39,27 @@
       "deletions": 9
     }
   ],
-  "issues_summary": "working on 6 bugs including 'Chat Input Sends Multiple Messages When Using IME', 'farcaster-client fails to embed' and implementing 2 feature requests including 'Trying to find how to run Eliza locally with two graphical cards. ', 'feat: add ntf-starter and nft-generator'",
+  "issues_summary": "working on 6 bugs including 'farcaster-client fails to embed', 'the tweets are getting cutoff... where can i adjust the tweet length?' and implementing 2 feature requests including 'feat: add ntf-starter and nft-generator', 'Trying to find how to run Eliza locally with two graphical cards. '",
   "questions": [],
   "top_contributors": [
     {
       "name": "sweetmantech",
-      "summary": "sweetmantech is currently working on developing a plugin called AgentKit, with a focus on the agent and packages code areas",
+      "summary": "sweetmantech is currently working on three pull requests related to the AgentKit plugin, focusing on code areas such as agent and packages",
       "areas": []
     },
     {
       "name": "shakkernerd",
-      "summary": "shakkernerd is currently working on merging branches and pull requests related to fixing issues in the CryptoGraffe project, as well as making chore updates to the codebase",
+      "summary": "shakkernerd is currently working on merging branches, fixing issues, and making chore updates related to the CryptoGraffe project",
       "areas": [
         "pnpm-lock.yaml",
-        ".env.example",
-        "packages"
+        "packages",
+        ".env.example"
       ]
     },
     {
-      "name": "lincheoll",
-      "summary": "lincheoll is currently working on fixing a bug related to the Chat Input sending multiple messages when using an Input Method Editor (IME)",
-      "areas": [
-        "client"
-      ]
+      "name": "wtfsayo",
+      "summary": "wtfsayo is currently working on merging pull requests related to adding new services and features, such as memories retrieval, client agent CRUD operations, and a Gitcoin passport plugin",
+      "areas": []
     }
   ]
 }

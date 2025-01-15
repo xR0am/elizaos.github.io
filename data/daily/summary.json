@@ -1,65 +1,65 @@
 {
   "title": "elizaos Eliza (2025-01-15)",
   "version": "",
-  "overview": "Development focused on new features (add getMemoryByIds to database adapters), 2 bug fixes. with 31 contributors merging 8 PRs. Major work included sweetmantech is currently working on three pull requests related to the agentkit plugin, focusing on code areas such as agent and packages.",
+  "overview": "Development focused on new features (Onchain Agent Transformer - transform any Eliza agents into unstoppable Solidity smart contracts deployed on 10+ blockchains), 2 bug fixes. with 35 contributors merging 4 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 31,
-    "merged_prs": 8,
+    "contributors": 35,
+    "merged_prs": 4,
     "new_issues": 8,
-    "lines_changed": 1932
+    "lines_changed": 122
   },
   "changes": {
     "features": [
-      "add getMemoryByIds to database adapters",
-      "Gitcoin passport"
+      "Onchain Agent Transformer - transform any Eliza agents into unstoppable Solidity smart contracts deployed on 10+ blockchains"
     ],
     "fixes": [
-      "farcaster memory",
-      "fix derive key and update remote attestation"
+      "correct OPENROUTER_API_KEY env in config",
+      "farcaster memory"
     ],
     "chores": []
   },
   "areas": [
     {
       "name": "packages",
-      "files": 34,
-      "additions": 924,
-      "deletions": 375
+      "files": 5,
+      "additions": 107,
+      "deletions": 3
     },
     {
       "name": "root",
-      "files": 5,
-      "additions": 382,
-      "deletions": 13
+      "files": 2,
+      "additions": 6,
+      "deletions": 4
     },
     {
-      "name": "docs",
-      "files": 5,
-      "additions": 222,
-      "deletions": 9
+      "name": "agent",
+      "files": 1,
+      "additions": 1,
+      "deletions": 1
     }
   ],
-  "issues_summary": "working on 6 bugs including 'farcaster-client fails to embed', 'the tweets are getting cutoff... where can i adjust the tweet length?' and implementing 2 feature requests including 'feat: add ntf-starter and nft-generator', 'Trying to find how to run Eliza locally with two graphical cards. '",
+  "issues_summary": "working on 4 bugs including 'Duplicate responses to an action', 'Issue running multiple characters with API key' and implementing 3 feature requests including 'Fix: [plugin-chainbase] Enhance Query Text Extraction and Validation for QUERY_BLOCKCHAIN_DATA Action', 'Feature - ragKnowledge enhancements (double byte support, caching, load from directories)'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "sweetmantech",
-      "summary": "sweetmantech is currently working on three pull requests related to the AgentKit plugin, focusing on code areas such as agent and packages",
+      "name": "wtfsayo",
+      "summary": "wtfsayo is primarily working on updating various TypeScript files in the project, including tokenProvider",
       "areas": []
     },
     {
-      "name": "shakkernerd",
-      "summary": "shakkernerd is currently working on merging branches, fixing issues, and making chore updates related to the CryptoGraffe project",
+      "name": "eternal-ai-org",
+      "summary": "eternal-ai-org is currently focusing on merging branches and developing support for the eternalai provider to obtain onchain system prompts",
       "areas": [
-        "pnpm-lock.yaml",
         "packages",
         ".env.example"
       ]
     },
     {
-      "name": "wtfsayo",
-      "summary": "wtfsayo is currently working on merging pull requests related to adding new services and features, such as memories retrieval, client agent CRUD operations, and a Gitcoin passport plugin",
-      "areas": []
+      "name": "everimbaq",
+      "summary": "everimbaq is currently working on fixing the OPENROUTER_API_KEY environment variable in the agent configuration",
+      "areas": [
+        "agent"
+      ]
     }
   ]
 }
