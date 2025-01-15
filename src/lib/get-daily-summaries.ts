@@ -46,6 +46,20 @@ export async function getAllDailySummaryDates(): Promise<string[]> {
     .reverse();
 }
 
+/**
+ * Get the latest daily summary from summary.json
+ */
+export async function getLatestDailySummary(): Promise<DailySummary> {
+  const summaryPath = path.join(process.cwd(), "data/daily/summary.json");
+  const summaryData = JSON.parse(
+    await fs.promises.readFile(summaryPath, "utf8")
+  );
+  return summaryData;
+}
+
+/**
+ * Get a daily summary for a specific date from the history folder
+ */
 export async function getDailySummary(
   date: string
 ): Promise<DailySummary | null> {
