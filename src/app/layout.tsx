@@ -8,7 +8,7 @@ import Link from "next/link";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Eliza Leaderboard",
+  title: "ElizaOS Leaderboard",
   description: "Stats for GitHub contributors to Eliza",
 };
 
@@ -29,7 +29,7 @@ export default function RootLayout({
           <div className="min-h-screen bg-background">
             <header className="container mx-auto p-4 flex justify-between items-center">
               <Link href="/" className="hover:opacity-80 transition-opacity">
-                <h1 className="text-xl font-bold">Eliza Leaderboard</h1>
+                <h1 className="text-xl font-bold">ElizaOS</h1>
               </Link>
               <ThemeToggle />
             </header>
