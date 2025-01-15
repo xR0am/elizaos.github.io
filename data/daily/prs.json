@@ -402,7 +402,7 @@
     "state": "OPEN",
     "merged": false,
     "createdAt": "2025-01-14T18:48:54Z",
-    "updatedAt": "2025-01-15T03:00:53Z",
+    "updatedAt": "2025-01-15T05:08:31Z",
     "author": {
       "login": "kesar",
       "avatarUrl": "https://avatars.githubusercontent.com/u/1288106?u=7762d83a184d77c5137fa8a1cd54154e2ad43ac6&v=4"
@@ -522,7 +522,7 @@
     "state": "OPEN",
     "merged": false,
     "createdAt": "2025-01-14T17:01:12Z",
-    "updatedAt": "2025-01-14T20:32:45Z",
+    "updatedAt": "2025-01-15T05:06:34Z",
     "author": {
       "login": "sweetmantech",
       "avatarUrl": "https://avatars.githubusercontent.com/u/23249402?u=724d25cb47efbb540eebee32d8ff8fab744e81a0&v=4"
@@ -702,6 +702,11 @@
         "id": "IC_kwDOMT5cIs6acC6H",
         "author": "sweetmantech",
         "body": "What's next @wtfsayo ? 🧑‍🔧 "
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aeOHB",
+        "author": "wtfsayo",
+        "body": "> What's next @wtfsayo ? 🧑‍🔧 \n\nCan you share a demo / screenshots of this works"
       }
     ]
   },
@@ -1421,10 +1426,10 @@
     "number": 2293,
     "title": "feat: add getMemoryByIds to database adapters",
     "body": "# Relates to\r\n#1186 - Add getMemoriesByIds\r\n\r\n# Risks\r\nLow - Added new feature and tested (non-breaking change which adds functionality)\r\n\r\n# Background\r\n## What does this PR do?\r\nAdds `getMemoriesByIds` method to all database adapters (pglite, postgres, sqlite, sqljs and supabase) to support batch memory retrieval. This enables fetching multiple memories by their IDs in a single query, with optional filtering by table name.\r\n\r\n## What kind of change is this?\r\nFeatures (non-breaking change which adds functionality)\r\n\r\n# Documentation changes needed?\r\nDocumentation update is needed but there's a current issue with typedoc generation:\r\n- Error: \"Hook useDocsSidebar is called outside the <DocsSidebarProvider>\"\r\n- Affects API documentation build\r\n- Using @elizaos/core v0.1.8+build.1 \r\n- Node v23.3.0\r\n\r\nThis will need to be addressed in a separate PR to fix the documentation build process.\r\n\r\n# Testing\r\n## Where should a reviewer start?\r\n1. Review the implementation of `getMemoriesByIds` in each database adapter:\r\n   - `pglite` implementation\r\n   - `postgres` implementation\r\n   - `sqlite` implementation\r\n   - `sqljs` implementation\r\n   - `supabase` implementation\r\n2. For testing, I've created separated branch: `1186-add-get-memories-by-ids-test` where you can test the impl for all adapters.\r\n\r\n## Detailed testing steps\r\n1. Clone and checkout the test branch:\r\n   ```bash\r\n   git clone https://github.com/elizaOS/eliza.git\r\n   cd eliza\r\n   git checkout 1186-add-get-memories-by-ids-test\r\n   \r\nbranch for testing:   https://github.com/bbopar/eliza/tree/1186-add-get-memories-by-ids-test\r\n\r\n2. Choose and set up the database adapter you want to test (pglite/postgres/sqlite/sqljs/supabase)\r\n\r\n3. Test cases (using temporary API endpoint for validation):\r\n\r\nTest Case 1: Basic memory retrieval with table filter\r\n\r\n```\r\ncurl -X POST http://localhost:3000/agents/bed6bfd7-be02-074a-9474-52354571ee7c/memories/batch \\\r\n  -H \"Content-Type: application/json\" \\\r\n  -d '{\r\n    \"memoryIds\": [\r\n      \"dddabf84-30ff-00f9-b7e5-e3dd3db5f4d5\",\r\n      \"4517881e-058e-0f3d-afb3-92e7e3461cca\",\r\n      \"2942ba68-1513-024c-baae-eac424a16b0f\"\r\n    ],\r\n    \"tableName\": \"documents\"\r\n  }'\r\n```\r\n  \r\nExpected output:\r\n    \r\n<img width=\"1778\" alt=\"image\" src=\"https://github.com/user-attachments/assets/15273fa8-a6e1-4e76-8e20-7e86c05f735b\" />\r\n  \r\n  Test Case 2: Invalid table name handling\r\n  \r\n  ```\r\n  curl -X POST http://localhost:3000/agents/bed6bfd7-be02-074a-9474-52354571ee7c/memories/batch \\\r\n  -H \"Content-Type: application/json\" \\\r\n  -d '{\r\n    \"memoryIds\": [\r\n      \"dddabf84-30ff-00f9-b7e5-e3dd3db5f4d5\",\r\n      \"4517881e-058e-0f3d-afb3-92e7e3461cca\"\r\n    ],\r\n    \"tableName\": \"invalid_table\"\r\n  }'\r\n  ```\r\n  \r\n  Expected output:\r\n\r\n<img width=\"685\" alt=\"image\" src=\"https://github.com/user-attachments/assets/ab616654-db86-4876-9642-dcac566e7815\" />\r\n\r\n  \r\n  Test Case 3: Empty memory IDs array\r\n  \r\n  ```\r\n  curl -X POST http://localhost:3000/agents/bed6bfd7-be02-074a-9474-52354571ee7c/memories/batch \\\r\n  -H \"Content-Type: application/json\" \\\r\n  -d '{\r\n    \"memoryIds\": [],\r\n    \"tableName\": \"documents\"\r\n  }'\r\n  ```\r\n  \r\nExpected output:\r\n  \r\n  \r\n<img width=\"693\" alt=\"image\" src=\"https://github.com/user-attachments/assets/6b9170da-4754-4dec-9953-a30838e41def\" />\r\n\r\n  \r\n  Test Case 4: Missing table name (no type filter)\r\n  \r\n  ```\r\n  curl -X POST http://localhost:3000/agents/bed6bfd7-be02-074a-9474-52354571ee7c/memories/batch \\\r\n  -H \"Content-Type: application/json\" \\\r\n  -d '{\r\n    \"memoryIds\": [\r\n      \"dddabf84-30ff-00f9-b7e5-e3dd3db5f4d5\",\r\n      \"4517881e-058e-0f3d-afb3-92e7e3461cca\"\r\n    ]\r\n  }'\r\n  ```\r\n  \r\nExpected output:\r\n    \r\n<img width=\"1779\" alt=\"image\" src=\"https://github.com/user-attachments/assets/23c45ac0-7651-46db-be0a-06b020ff9dfc\" />\r\n  \r\n  Test Case 5: Large batch retrieval\r\n  \r\n  ```\r\n  curl -X POST http://localhost:3000/agents/bed6bfd7-be02-074a-9474-52354571ee7c/memories/batch \\\r\n  -H \"Content-Type: application/json\" \\\r\n  -d '{\r\n    \"memoryIds\": [\r\n      \"dddabf84-30ff-00f9-b7e5-e3dd3db5f4d5\",\r\n      \"4517881e-058e-0f3d-afb3-92e7e3461cca\",\r\n      \"2942ba68-1513-024c-baae-eac424a16b0f\",\r\n      \"0d3ad1ac-f322-03ff-88f5-14784ac098ea\",\r\n      \"134c90e2-92e4-05e6-80c1-cea061663586\",\r\n      \"640c3d8e-cbf6-0787-8c32-4ae86404ce75\"\r\n    ],\r\n    \"tableName\": \"documents\"\r\n  }'\r\n  ```\r\n  \r\nExpected output:\r\n  \r\n  \r\n<img width=\"1786\" alt=\"image\" src=\"https://github.com/user-attachments/assets/cd01bc29-5556-4dd7-bd26-a2232dddbf6d\" />\r\n\r\n Discord username: `.0xbbjoker`\r\n     ",
-    "state": "OPEN",
-    "merged": false,
+    "state": "MERGED",
+    "merged": true,
     "createdAt": "2025-01-14T14:21:32Z",
-    "updatedAt": "2025-01-14T14:26:31Z",
+    "updatedAt": "2025-01-15T05:33:10Z",
     "author": {
       "login": "bbopar",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?v=4"
@@ -1448,13 +1453,13 @@
       },
       {
         "path": "packages/adapter-sqljs/src/index.ts",
-        "additions": 62,
-        "deletions": 19
+        "additions": 29,
+        "deletions": 0
       },
       {
         "path": "packages/adapter-supabase/src/index.ts",
-        "additions": 100,
-        "deletions": 58
+        "additions": 25,
+        "deletions": 0
       },
       {
         "path": "packages/core/__tests__/database.test.ts",
@@ -1470,11 +1475,6 @@
         "path": "packages/core/src/types.ts",
         "additions": 30,
         "deletions": 6
-      },
-      {
-        "path": "pnpm-lock.yaml",
-        "additions": 1,
-        "deletions": 1
       }
     ],
     "reviews": [
@@ -1483,9 +1483,32 @@
         "author": "github-actions",
         "body": "Hi @bbopar! Welcome to the elizaOS community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now an elizaOS contributor!",
         "state": "COMMENTED"
+      },
+      {
+        "id": "PRR_kwDOMT5cIs6YFh4Y",
+        "author": "coderabbitai",
+        "body": "**Actionable comments posted: 1**\n\n<details>\n<summary>🧹 Nitpick comments (2)</summary><blockquote>\n\n<details>\n<summary>packages/core/__tests__/database.test.ts (1)</summary><blockquote>\n\n`18-29`: **Enhance mock implementation to utilize tableName parameter.**\n\nThe mock implementation currently ignores the `tableName` parameter. Consider filtering memories based on the provided `tableName` to better simulate real database behavior.\n\n```diff\n async getMemoriesByIds(\n     memoryIds: UUID[],\n-    _tableName?: string\n+    tableName?: string\n ): Promise<Memory[]> {\n-    return memoryIds.map((id) => ({\n+    let memories = memoryIds.map((id) => ({\n         id: id,\n         content: { text: \"Test Memory\" },\n         roomId: \"room-id\" as UUID,\n         userId: \"user-id\" as UUID,\n         agentId: \"agent-id\" as UUID,\n+        type: \"default-type\"\n     })) as Memory[];\n+    return tableName ? memories.filter(m => m.type === tableName) : memories;\n }\n```\n\n</blockquote></details>\n<details>\n<summary>packages/adapter-sqlite/src/index.ts (1)</summary><blockquote>\n\n`207-232`: **Strong implementation with minor type improvement needed.**\n\nThe implementation is robust with proper SQL injection prevention and data type handling. Consider using a more specific type for queryParams.\n\n\n```diff\n-const queryParams: any[] = [];\n+const queryParams: (UUID | string)[] = [];\n```\n\n</blockquote></details>\n\n</blockquote></details>\n\n<details>\n<summary>📜 Review details</summary>\n\n**Configuration used: CodeRabbit UI**\n**Review profile: CHILL**\n**Plan: Pro**\n\n<details>\n<summary>📥 Commits</summary>\n\nReviewing files that changed from the base of the PR and between 89b6a190449a2e42aaeeef4cb6caec6448442614 and e5403eca53bd4a6c1abf71f801dba748dc0673a1.\n\n</details>\n\n<details>\n<summary>📒 Files selected for processing (8)</summary>\n\n* `packages/adapter-pglite/src/index.ts` (1 hunks)\n* `packages/adapter-postgres/src/index.ts` (1 hunks)\n* `packages/adapter-sqlite/src/index.ts` (1 hunks)\n* `packages/adapter-sqljs/src/index.ts` (1 hunks)\n* `packages/adapter-supabase/src/index.ts` (1 hunks)\n* `packages/core/__tests__/database.test.ts` (1 hunks)\n* `packages/core/src/database.ts` (2 hunks)\n* `packages/core/src/types.ts` (4 hunks)\n\n</details>\n\n<details>\n<summary>👮 Files not reviewed due to content moderation or server errors (4)</summary>\n\n* packages/adapter-sqljs/src/index.ts\n* packages/core/src/types.ts\n* packages/adapter-pglite/src/index.ts\n* packages/adapter-postgres/src/index.ts\n\n</details>\n\n<details>\n<summary>⏰ Context from checks skipped due to timeout of 90000ms (2)</summary>\n\n* GitHub Check: smoke-tests\n* GitHub Check: integration-tests\n\n</details>\n\n<details>\n<summary>🔇 Additional comments (1)</summary><blockquote>\n\n<details>\n<summary>packages/core/src/database.ts (1)</summary>\n\n`103-112`: **LGTM! Well-documented abstract method.**\n\nThe method signature and documentation clearly define the contract for retrieving multiple memories by their IDs.\n\n</details>\n\n</blockquote></details>\n\n</details>\n\n<!-- This is an auto-generated comment by CodeRabbit for review status -->",
+        "state": "COMMENTED"
+      },
+      {
+        "id": "PRR_kwDOMT5cIs6YFiq0",
+        "author": "wtfsayo",
+        "body": "",
+        "state": "APPROVED"
       }
     ],
-    "comments": []
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6aed6P",
+        "author": "wtfsayo",
+        "body": "@coderabbitai review"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aefYg",
+        "author": "coderabbitai",
+        "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n\n\n<!-- walkthrough_start -->\n\n<details>\n<summary>📝 Walkthrough</summary>\n\n## Walkthrough\n\nA new method `getMemoriesByIds` has been consistently added across multiple database adapter implementations (PGLite, Postgres, SQLite, SQLjs, Supabase) and the core database types. This method allows retrieving multiple memories by their IDs, with an optional table name parameter for type filtering. The implementation follows a similar pattern across different database adapters, enhancing the system's flexibility in memory retrieval.\n\n## Changes\n\n| File | Change Summary |\n|------|----------------|\n| `packages/core/src/types.ts` | Added `getMemoriesByIds` method to `IDatabaseAdapter` interface; updated method signatures for `IMemoryManager` and `IIrysService` interfaces |\n| `packages/core/src/database.ts` | Added abstract `getMemoriesByIds` method to `DatabaseAdapter` class |\n| `packages/core/__tests__/database.test.ts` | Added `getMemoriesByIds` method to `MockDatabaseAdapter` |\n| `packages/adapter-*/src/index.ts` | Added `getMemoriesByIds` method to database-specific adapters (PGLite, Postgres, SQLite, SQLjs, Supabase) |\n\n</details>\n\n<!-- walkthrough_end -->\n<!-- internal state start -->\n\n\n<!-- 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 -->\n\n<!-- internal state end -->\n<!-- finishing_touch_checkbox_start -->\n\n## Finishing Touches\n\n- [ ] <!-- {\"checkboxId\": \"7962f53c-55bc-4827-bfbf-6a18da830691\"} --> 📝 Generate Docstrings (Beta)\n\n<!-- finishing_touch_checkbox_end -->\n<!-- tips_start -->\n\n---\n\n\n\n<details>\n<summary>🪧 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n> ‼️ **IMPORTANT**\n> Auto-reply has been disabled for this repository in the CodeRabbit settings. The CodeRabbit bot will not respond to your replies unless it is explicitly tagged.\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR. ([Beta](https://docs.coderabbit.ai/early-access#beta))\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
+      }
+    ]
   },
   {
     "id": "PR_kwDOMT5cIs6HteMt",
@@ -1495,7 +1518,7 @@
     "state": "OPEN",
     "merged": false,
     "createdAt": "2025-01-14T14:12:33Z",
-    "updatedAt": "2025-01-14T18:12:38Z",
+    "updatedAt": "2025-01-15T05:11:43Z",
     "author": {
       "login": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=45a31bd14d91cac88efa293594f36e989024adf0&v=4"
@@ -2410,7 +2433,7 @@
     "state": "OPEN",
     "merged": false,
     "createdAt": "2025-01-14T10:13:58Z",
-    "updatedAt": "2025-01-14T18:58:10Z",
+    "updatedAt": "2025-01-15T05:12:30Z",
     "author": {
       "login": "mrparracho",
       "avatarUrl": "https://avatars.githubusercontent.com/u/90929109?v=4"
@@ -2518,15 +2541,22 @@
     "number": 2283,
     "title": "feat: add ntf-starter and nft-generator",
     "body": "# Relates to\r\n\r\n#2282 Implementation of Agent NFT feature for agent data management, ownership, and usage.\r\n\r\n# Risks\r\n\r\nLow, DO NOT affect the original agent startup method.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nImplements Agent NFT functionality following [ERC-7857](https://github.com/0glabs/ERCs/blob/master/ERCS/erc-7857.md) standard to:\r\n1. Store agent data on [0G storage](https://docs.0g.ai/0g-storage)\r\n2. Manage agent ownership through NFTs\r\n3. Enable agent transfer, cloning, and authorization features\r\n4. Add NFT-based agent startup capability\r\n\r\n## What kind of change is this?\r\n\r\nFeatures (non-breaking change which adds functionality)\r\n1. New AgentNFTClient implementation\r\n2. NFT generation and management features\r\n3. Scripts for NFT operations\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes require a change to the project documentation.\r\n\r\nAdded [Agent NFT feature documentation](https://github.com/0glabs/0g-eliza/blob/agent-nft-merge/docs/docs/advanced/agent-nft.md).\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n1. Review AgentNFTClient implementation\r\n2. Check NFT generation flow\r\n3. Verify agent startup from NFT process\r\n\r\n## Detailed testing steps\r\n\r\n1. Configure environment variables:\r\nZEROG_RPC_URL\r\nZEROG_INDEXER_RPC_URL\r\nZEROG_PRIVATE_KEY\r\nZEROG_AGENT_NFT_CONTRACT_ADDRESS\r\n\r\n2. Generate new NFT:\r\nexecute `pnpm generate-nft --dir=\"./data\"`\r\n\r\n3. Start agent from NFT:\r\nexecute `pnpm start --token=\"0\"`\r\n## Screenshots\r\n1. Generate Agent NFT:\r\n<img width=\"1509\" alt=\"Screenshot 2025-01-14 at 18 10 19\" src=\"https://github.com/user-attachments/assets/6aba4794-4043-4134-870e-4556ceebdbf8\" />\r\n\r\n2. Start Agent with Agent NFT:\r\n<img width=\"1505\" alt=\"Screenshot 2025-01-14 at 18 11 22\" src=\"https://github.com/user-attachments/assets/550ba648-593c-495d-9f1d-0a6175c38fef\" />\r\n\r\n### Before\r\n### After\r\n## Discord username\r\n\r\n# References\r\n1. [ERC-7857](https://github.com/0glabs/ERCs/blob/master/ERCS/erc-7857.md)\r\n2. [0G-Agent-NFT](https://github.com/0glabs/0g-agent-nft/tree/eip-7857-draft)\r\n",
-    "state": "OPEN",
+    "state": "CLOSED",
     "merged": false,
     "createdAt": "2025-01-14T10:12:08Z",
-    "updatedAt": "2025-01-15T02:42:49Z",
+    "updatedAt": "2025-01-15T05:11:23Z",
     "author": {
       "login": "Wilbert957",
       "avatarUrl": "https://avatars.githubusercontent.com/u/161988856?u=5fb1e5f079f796e3e83992fbec4800d2ecff976d&v=4"
     },
-    "labels": [],
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB3Tmwwg",
+        "name": "needs more work",
+        "color": "1C3FF9",
+        "description": ""
+      }
+    ],
     "files": [
       {
         "path": ".env.example",
@@ -2610,7 +2640,18 @@
       }
     ],
     "reviews": [],
-    "comments": []
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6aeau1",
+        "author": "wtfsayo",
+        "body": "similar to this https://github.com/elizaOS/eliza/pull/2107/\r\n\r\ncan you do similar plugin implementation rather"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aebAV",
+        "author": "wtfsayo",
+        "body": "closing till updates"
+      }
+    ]
   },
   {
     "id": "PR_kwDOMT5cIs6Hriqm",
@@ -2620,7 +2661,7 @@
     "state": "OPEN",
     "merged": false,
     "createdAt": "2025-01-14T09:40:28Z",
-    "updatedAt": "2025-01-14T16:13:00Z",
+    "updatedAt": "2025-01-15T05:38:50Z",
     "author": {
       "login": "v1xingyue",
       "avatarUrl": "https://avatars.githubusercontent.com/u/974169?u=96c6a113a91978c041e5cf90965d7b66c5540af4&v=4"
@@ -2629,8 +2670,8 @@
     "files": [
       {
         "path": "agent/src/index.ts",
-        "additions": 30,
-        "deletions": 9
+        "additions": 31,
+        "deletions": 7
       }
     ],
     "reviews": [],
@@ -2644,7 +2685,7 @@
     "state": "OPEN",
     "merged": false,
     "createdAt": "2025-01-14T09:33:18Z",
-    "updatedAt": "2025-01-14T19:44:04Z",
+    "updatedAt": "2025-01-15T05:34:19Z",
     "author": {
       "login": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=45a31bd14d91cac88efa293594f36e989024adf0&v=4"
@@ -2668,7 +2709,7 @@
     "state": "OPEN",
     "merged": false,
     "createdAt": "2025-01-14T08:19:58Z",
-    "updatedAt": "2025-01-15T01:45:06Z",
+    "updatedAt": "2025-01-15T04:32:10Z",
     "author": {
       "login": "pythonberg1997",
       "avatarUrl": "https://avatars.githubusercontent.com/u/48975233?v=4"
@@ -2707,7 +2748,7 @@
       },
       {
         "path": "packages/plugin-bnb/src/actions/bridge.ts",
-        "additions": 403,
+        "additions": 465,
         "deletions": 0
       },
       {
@@ -2717,27 +2758,27 @@
       },
       {
         "path": "packages/plugin-bnb/src/actions/faucet.ts",
-        "additions": 193,
+        "additions": 222,
         "deletions": 0
       },
       {
         "path": "packages/plugin-bnb/src/actions/getBalance.ts",
-        "additions": 207,
+        "additions": 271,
         "deletions": 0
       },
       {
         "path": "packages/plugin-bnb/src/actions/stake.ts",
-        "additions": 281,
+        "additions": 338,
         "deletions": 0
       },
       {
         "path": "packages/plugin-bnb/src/actions/swap.ts",
-        "additions": 150,
+        "additions": 185,
         "deletions": 0
       },
       {
         "path": "packages/plugin-bnb/src/actions/transfer.ts",
-        "additions": 234,
+        "additions": 260,
         "deletions": 0
       },
       {
@@ -3002,8 +3043,8 @@
     "createdAt": "2025-01-14T05:47:36Z",
     "updatedAt": "2025-01-14T14:13:32Z",
     "author": {
-      "login": "moon-taky",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/194221706?v=4"
+      "login": "justinmoonai",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/194221706?u=2dd0222591f7c119f8d47d85bd997064a2724e28&v=4"
     },
     "labels": [],
     "files": [
@@ -3165,198 +3206,5 @@
         "body": "closing in favor of #2292 "
       }
     ]
-  },
-  {
-    "id": "PR_kwDOMT5cIs6HqRTk",
-    "number": 2274,
-    "title": "Fix: IME causes multiple messages on Enter (Fixes #2272)",
-    "body": "<!-- Use this template by filling in information and copying and pasting relevant items out of the HTML comments. -->\r\n\r\n# Relates to\r\n\r\nFixes [#2272](https://github.com/elizaOS/eliza/issues/2272)\r\n\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\n\r\nLow:\r\n- This change only affects the `onKeyDown` event handling logic in `chat.tsx`.\r\n- It has been confirmed to work correctly even in non-IME environments.\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nThis PR resolves an issue where using an Input Method Editor (IME) for languages like Korean, Japanese, or Chinese would cause multiple messages to be sent when pressing Enter. Now, pressing Enter after input will only send the message once.\r\n\r\n## What kind of change is this?\r\n\r\n**Bug fix**:\r\n- Modified the `onKeyDown` event handling logic in `chat.tsx` to properly handle IME input and ensure a single message is sent.\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n- Review the `onKeyDown` event handling logic in the `chat.tsx` file.\r\n\r\n## Detailed testing steps\r\n\r\n1. Launch the application.\r\n2. Enable an IME (e.g., Korean).\r\n3. Type text into the chat input field.\r\n4. Press Enter after typing:\r\n   - **Verify**: The message is sent only once.\r\n\r\n---\r\n\r\n# Deploy Notes\r\n\r\nNo special deployment instructions are needed. Follow standard build and deployment processes.\r\n\r\n# Database changes\r\n\r\nNone.\r\n\r\n# Deployment instructions\r\n\r\nStandard deployment process\r\n# Discord username\r\n\r\nlincheol\r\n",
-    "state": "MERGED",
-    "merged": true,
-    "createdAt": "2025-01-14T05:34:19Z",
-    "updatedAt": "2025-01-14T17:31:50Z",
-    "author": {
-      "login": "lincheoll",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/53032750?u=ff3890e429047d07a870d870c54e8834ba1faac3&v=4"
-    },
-    "labels": [],
-    "files": [
-      {
-        "path": "client/src/components/chat.tsx",
-        "additions": 3,
-        "deletions": 0
-      }
-    ],
-    "reviews": [
-      {
-        "id": "PRR_kwDOMT5cIs6X7FtQ",
-        "author": "github-actions",
-        "body": "Hi @lincheoll! Welcome to the elizaOS community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now an elizaOS contributor!",
-        "state": "COMMENTED"
-      },
-      {
-        "id": "PRR_kwDOMT5cIs6YBaf0",
-        "author": "tcm390",
-        "body": "",
-        "state": "APPROVED"
-      }
-    ],
-    "comments": []
-  },
-  {
-    "id": "PR_kwDOMT5cIs6HqQ2K",
-    "number": 2273,
-    "title": "feat: #1631 - add plugin-twilio",
-    "body": "<!-- Use this template by filling in information and copying and pasting relevant items out of the HTML comments. -->\r\n\r\n# Relates to\r\n\r\nIssue #1631 \r\n\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\n\r\nLow risk, adds a new plugin.\r\n\r\n# Background\r\n\r\nImplements texting and calling support using Twilio as specified in issue #1631.\r\n\r\n## What does this PR do?\r\n\r\nAdds a new plugin, `plugin-twilio`. It facilitates text and phone call interaction with the agent. It uses Elevenlabs for text-to-speech.\r\n\r\n## What kind of change is this?\r\n\r\nFeatures (non-breaking change which adds functionality).\r\n\r\nIssue #1631 requests a plugin be made to utilized Twilio for text and phone call interactions. \r\n<!-- This \"Why\" section is most relevant if there are no linked issues explaining why. If there is a related issue, it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\nI have updated the documentation accordingly.\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\nCheck out the demo: https://streamable.com/0lhmjn\r\n\r\n## Where should a reviewer start?\r\n\r\nStart with reading `index.ts` in the `plugin-twilio` folder.\r\n\r\n## Detailed testing steps\r\n\r\nI used the plugin many times to make sure it functioned correctly.\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n  - [do action]\r\n  - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deployment, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!--  Copy and paste command line output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!--  Please specify deploy instructions if there is something more than the automated steps. -->\r\n<!--\r\n## Deployment instructions\r\nCreate an ElevenLabs account and get an API key\r\nCreate an ngrok account and get an auth token\r\nProvision a static domain on ngrok and get the domain name\r\nTwilio communicates with API clients using webhooks. In order for this to happen, a web server needs to be exposed to the internet. This plugin uses ngrok to acheive this.\r\n\r\nOnce you have a static domain on ngrok, set the `NGROK_DOMAIN` environment variable to your ngrok domain and configure Twilio to send voice call webhooks requests to `${NGROK_DOMAIN}/call` and text message webhooks requests to `${NGROK_DOMAIN}/message`. Make sure you configure ngrok to send `POST` requests to both endpoints.\r\n\r\nProvide your ElevenLabs API key, model ID, and voice ID to the plugin by setting the `ELEVENLABS_XI_API_KEY`, `ELEVENLABS_MODEL_ID`, and `ELEVENLABS_VOICE_ID` environment variables (`ELEVENLABS_MODEL_ID` and `ELEVENLABS_VOICE_ID` have defualts in `.env.example`).\r\n\r\nYou should now be ready to go!\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for the contributor role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n@mot1se\r\n-->\r\n",
-    "state": "OPEN",
-    "merged": false,
-    "createdAt": "2025-01-14T05:32:22Z",
-    "updatedAt": "2025-01-15T00:17:48Z",
-    "author": {
-      "login": "mot1se",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/190892463?v=4"
-    },
-    "labels": [],
-    "files": [
-      {
-        "path": ".env.example",
-        "additions": 4,
-        "deletions": 0
-      },
-      {
-        "path": "packages/core/src/runtime.ts",
-        "additions": 27,
-        "deletions": 21
-      },
-      {
-        "path": "packages/plugin-twilio/.npmignore",
-        "additions": 6,
-        "deletions": 0
-      },
-      {
-        "path": "packages/plugin-twilio/README.md",
-        "additions": 66,
-        "deletions": 0
-      },
-      {
-        "path": "packages/plugin-twilio/package.json",
-        "additions": 39,
-        "deletions": 0
-      },
-      {
-        "path": "packages/plugin-twilio/src/environment.ts",
-        "additions": 48,
-        "deletions": 0
-      },
-      {
-        "path": "packages/plugin-twilio/src/index.ts",
-        "additions": 184,
-        "deletions": 0
-      },
-      {
-        "path": "packages/plugin-twilio/tsconfig.json",
-        "additions": 9,
-        "deletions": 0
-      },
-      {
-        "path": "packages/plugin-twilio/tsup.config.ts",
-        "additions": 10,
-        "deletions": 0
-      },
-      {
-        "path": "packages/plugin-twilio/vitest.config.ts",
-        "additions": 14,
-        "deletions": 0
-      },
-      {
-        "path": "pnpm-lock.yaml",
-        "additions": 231,
-        "deletions": 37
-      }
-    ],
-    "reviews": [
-      {
-        "id": "PRR_kwDOMT5cIs6X7FQu",
-        "author": "github-actions",
-        "body": "Hi @mot1se! Welcome to the elizaOS community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now an elizaOS contributor!",
-        "state": "COMMENTED"
-      }
-    ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6aUZod",
-        "author": "mot1se",
-        "body": "May not be clear in the video but I texted the agent \"Who is Andrej Karpathy?\" for the demonstration."
-      },
-      {
-        "id": "IC_kwDOMT5cIs6adP_g",
-        "author": "mot1se",
-        "body": "@Freytes "
-      },
-      {
-        "id": "IC_kwDOMT5cIs6adRXm",
-        "author": "mot1se",
-        "body": "This PR also fixes a runtime bug where services can be initialized twice, which is problematic and can cause errors."
-      }
-    ]
-  },
-  {
-    "id": "PR_kwDOMT5cIs6Hp17K",
-    "number": 2271,
-    "title": "fix: twitter email authentication failure ",
-    "body": "<!-- Use this template by filling in information and copying and pasting relevant items out of the HTML comments. -->\r\n\r\n# Relates to\r\n\r\nFixes issue with Twitter authentication failing due to improper email validation and environment variable handling, while maintaining all original functionality and timing configurations.\r\n\r\ninitializeClients \r\n  [\"discord\",\"twitter\"] \r\n  for \r\n  MaryJaine \r\n\r\n[\"✓ Registering action: JOIN_VOICE\"] \r\n\r\n[\"✓ Registering action: LEAVE_VOICE\"] \r\n\r\n[\"✓ Registering action: SUMMARIZE_CONVERSATION\"] \r\n\r\n[\"✓ Registering action: CHAT_WITH_ATTACHMENTS\"] \r\n\r\n[\"✓ Registering action: TRANSCRIBE_MEDIA\"] \r\n\r\n[\"✓ Registering action: DOWNLOAD_MEDIA\"] \r\n\r\n⛔ ERRORS\r\n  Error starting agent for character MaryJaine: \r\n  {} \r\n\r\n[\"⛔ Error: X/Twitter configuration validation failed:\\nTWITTER_EMAIL: Valid X/Twitter email is required\"] \r\n\r\n⛔ ERRORS\r\n  Error starting agents: \r\n  {} \r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\n\r\nLow \r\n<!--\r\nLow, medium, large. List what kind of risks and what could be affected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\n# Twitter Client Configuration Improvements\r\n\r\n## Changes\r\n- Added `getConfigValue` helper function to properly handle environment variables with `$` prefix references\r\n- Added detailed logging of configuration values for better debugging capabilities\r\n- Improved error handling with explicit validation checks and clearer error messages\r\n- Maintained all original timing configurations and functionality\r\n\r\nThis helper properly handles both direct values and environment variable references, fixing issues with `$`-prefixed values.\r\n\r\n### 2. Enhanced Logging\r\nAdded detailed logging for configuration debugging:\r\n\r\n\r\n### 3. Maintained Original Timing Configurations\r\nPreserved all critical timing values:\r\n- `TWITTER_POLL_INTERVAL`: 120s (2m)\r\n- `POST_INTERVAL_MIN`: 90m (1.5h)\r\n- `POST_INTERVAL_MAX`: 180m (3h)\r\n- `ACTION_INTERVAL`: 5m\r\n- `MAX_ACTIONS_PROCESSING`: 1\r\n\r\n### 4. Type Safety and Validation\r\n- Maintained Zod's type-safe validation\r\n- Kept all original schema definitions and constraints\r\n- Preserved username and password validation rules\r\n- Retained all boolean flags and numeric constraints\r\n\r\n### 5. Functionality Preservation\r\nMaintained all existing features:\r\n- Target user parsing with `parseTargetUsers`\r\n- Default values for optional fields\r\n- Boolean flag handling\r\n- Integer parsing with safety checks\r\n- Timeline type handling\r\n\r\n## What kind of change is this?\r\n\r\nBug fixes (non-breaking change which fixes an issue)\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there are no linked issues explaining why. If there is a related issue, it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf documentation change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\npnpm i --no-frozen-lockfile \r\npnpm build \r\npnpm run dev (character should employ twitter plugin) \r\n\r\nemail authentication error no longer present \r\n\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone: Automated tests are acceptable.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n  - [do action]\r\n  - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deployment, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!--  Copy and paste command line output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!--  Please specify deploy instructions if there is something more than the automated steps. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for the contributor role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n@cheddarqueso \r\n\r\n-->\r\n ",
-    "state": "OPEN",
-    "merged": false,
-    "createdAt": "2025-01-14T03:57:33Z",
-    "updatedAt": "2025-01-14T05:37:34Z",
-    "author": {
-      "login": "ileana-pr",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/103957712?u=b865d84e1f5bffd16f907c5318a177dfc9f927d0&v=4"
-    },
-    "labels": [],
-    "files": [
-      {
-        "path": "packages/client-twitter/src/environment.ts",
-        "additions": 64,
-        "deletions": 159
-      }
-    ],
-    "reviews": [],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6aUZHV",
-        "author": "wtfsayo",
-        "body": "@coderabbitai summary"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6aUZRC",
-        "author": "coderabbitai",
-        "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n\n<!-- internal state start -->\n\n\n<!-- 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= -->\n\n<!-- internal state end -->\n<!-- walkthrough_start -->\n\n<details>\n<summary>📝 Walkthrough</summary>\n\n## Walkthrough\n\nThe pull request modifies the `environment.ts` file in the Twitter client package, focusing on enhancing configuration validation for Twitter-related settings. The changes introduce a new helper function `getConfigValue` for more flexible configuration retrieval, improve error handling, and add logging capabilities. The validation process for Twitter configuration has been restructured to provide more robust and explicit checks for required fields like email, username, and password.\n\n## Changes\n\n| File | Change Summary |\n|------|----------------|\n| `packages/client-twitter/src/environment.ts` | - Added `getConfigValue` helper function for config retrieval<br>- Enhanced email validation logic<br>- Introduced `elizaLogger` for logging<br>- Improved error handling in `validateTwitterConfig`<br>- Restructured configuration validation process |\n\n</details>\n\n<!-- walkthrough_end -->\n\n---\n\n<details>\n<summary>📜 Recent review details</summary>\n\n**Configuration used: CodeRabbit UI**\n**Review profile: CHILL**\n**Plan: Pro**\n\n<details>\n<summary>📥 Commits</summary>\n\nReviewing files that changed from the base of the PR and between ecfd42c763bddcc324111d9e4d6aee87f0e8d5b3 and eb30911e8fd4252c6b9b8f9134026a97875ccadf.\n\n</details>\n\n<details>\n<summary>📒 Files selected for processing (1)</summary>\n\n* `packages/client-twitter/src/environment.ts` (4 hunks)\n\n</details>\n\n</details>\n<!-- finishing_touch_checkbox_start -->\n\n## Finishing Touches\n\n- [ ] <!-- {\"checkboxId\": \"7962f53c-55bc-4827-bfbf-6a18da830691\"} --> 📝 Generate Docstrings (Beta)\n\n<!-- finishing_touch_checkbox_end -->\n<!-- tips_start -->\n\n---\n\n\n\n<details>\n<summary>🪧 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n> ‼️ **IMPORTANT**\n> Auto-reply has been disabled for this repository in the CodeRabbit settings. The CodeRabbit bot will not respond to your replies unless it is explicitly tagged.\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR. ([Beta](https://docs.coderabbit.ai/early-access#beta))\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
-      }
-    ]
-  },
-  {
-    "id": "PR_kwDOMT5cIs6HpxqS",
-    "number": 2270,
-    "title": "fix: update message structure in TwitterInteractionClient to include tweet content",
-    "body": "# Relates to:\nN/A\n\n# Risks\nLow - This change only affects how tweet data is passed to action handlers internally, with no external API changes.\n\n# Background\n\n## What does this PR do?\nThis PR enhances the tweet interaction handling process by including the complete tweet data in `message.content` when calling `processActions`. This allows action handlers to access comprehensive information about the tweet being processed.\n\nKey changes:\n- Modified the `handleTweet` method in `TwitterInteractionClient` to pass the entire tweet object in the message content\n- Updated message structure to include tweet data alongside existing content\n\n## What kind of change is this?\nImprovements (misc. changes to existing features)\n\n## Why are we doing this? Any context or related work?\nPreviously, when processing tweet interactions, action handlers only had access to the tweet's text content through `message.content`. This limited their ability to make informed decisions or perform complex operations that might require additional tweet metadata (like author information, timestamps, media attachments, etc.).\n\nBy including the complete tweet object in the message content, we enable action handlers to:\n1. Access rich tweet metadata for more contextual decision making\n2. Handle tweet-specific features more effectively\n3. Implement more sophisticated interaction logic based on tweet properties\n4. Reduce the need for additional API calls to fetch tweet information\n\nThis enhancement provides a more robust foundation for implementing advanced tweet interaction features and improves the overall flexibility of the action handling system.\n\n# Documentation changes needed?\nMy changes do not require a change to the project documentation.\n\n# Testing\n\n## Where should a reviewer start?\n1. Review the changes in `packages/client-twitter/src/interactions.ts`\n2. Focus on the `handleTweet` method where tweet data is now included in the message content\n\n## Detailed testing steps\n1. Run the Twitter interaction client with test tweets\n2. Verify that action handlers receive the complete tweet object through `message.content.tweet`\n3. Test various action handlers to ensure they can properly access and utilize the additional tweet metadata\n4. Verify that existing functionality continues to work as expected\n\n## Screenshots\nN/A\n\n# Deploy Notes\nNo special deployment steps required. Standard deployment process applies.\n\n## Database changes\nNone\n\n## Deployment instructions\nStandard deployment process",
-    "state": "OPEN",
-    "merged": false,
-    "createdAt": "2025-01-14T03:45:01Z",
-    "updatedAt": "2025-01-14T03:45:01Z",
-    "author": {
-      "login": "sin-bufan",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/9634610?u=5b6a8fe2b8d4cf4eaf793b9efae76569e9b6ea0e&v=4"
-    },
-    "labels": [],
-    "files": [
-      {
-        "path": "packages/client-twitter/src/interactions.ts",
-        "additions": 7,
-        "deletions": 2
-      }
-    ],
-    "reviews": [],
-    "comments": []
   }
 ]
