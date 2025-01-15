@@ -3,6 +3,7 @@ import Link from "next/link";
 import {
   getAllDailySummaryDates,
   getDailySummary,
+  getLatestDailySummary,
 } from "@/lib/get-daily-summaries";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -11,33 +12,74 @@ import { extractDateFromTitle } from "@/lib/date-utils";
 
 interface PageProps {
   params: Promise<{
-    date: string;
+    date?: string[];
   }>;
 }
 
 export async function generateStaticParams() {
-  const dates = await getAllDailySummaryDates();
-  return dates.map((date) => ({
-    date,
-  }));
+  // Get both latest and historical dates
+  const [latestSummary, historicalDates] = await Promise.all([
+    getLatestDailySummary(),
+    getAllDailySummaryDates(),
+  ]);
+
+  const latestDate = extractDateFromTitle(latestSummary.title);
+  if (!latestDate) {
+    throw new Error("Latest summary does not contain a valid date");
+  }
+
+  // Combine latest date with historical dates, removing duplicates
+  const allDates = [
+    latestDate,
+    ...historicalDates.filter((date) => date !== latestDate),
+  ];
+
+  return [
+    { date: [] }, // For /daily
+    ...allDates.map((date) => ({
+      date: [date], // For /daily/[date]
+    })),
+  ];
 }
 
 export default async function DailySummaryPage({ params }: PageProps) {
-  const { date: urlDate } = await params;
-  const [summary, dates] = await Promise.all([
-    getDailySummary(urlDate),
+  const { date } = await params;
+
+  // Get both latest and historical dates
+  const [latestSummary, historicalDates] = await Promise.all([
+    getLatestDailySummary(),
     getAllDailySummaryDates(),
   ]);
+
+  const latestDate = extractDateFromTitle(latestSummary.title);
+  if (!latestDate) {
+    throw new Error("Latest summary does not contain a valid date");
+  }
+
+  // Combine latest date with historical dates, removing duplicates
+  const allDates = [
+    latestDate,
+    ...historicalDates.filter((date) => date !== latestDate),
+  ];
+
+  // If no date is provided, use the latest date
+  const targetDate = date?.[0] || latestDate;
+
+  // Get the summary for the target date
+  const summary =
+    targetDate === latestDate
+      ? latestSummary
+      : await getDailySummary(targetDate);
 
   if (!summary) {
     notFound();
   }
 
   // Find current date index and adjacent dates
-  const currentIndex = dates.indexOf(urlDate);
+  const currentIndex = allDates.indexOf(targetDate);
   const prevDate =
-    currentIndex < dates.length - 1 ? dates[currentIndex + 1] : null;
-  const nextDate = currentIndex > 0 ? dates[currentIndex - 1] : null;
+    currentIndex < allDates.length - 1 ? allDates[currentIndex + 1] : null;
+  const nextDate = currentIndex > 0 ? allDates[currentIndex - 1] : null;
 
   // Extract date from title (format: "elizaos Eliza (2025-01-12)")
   const displayDate = extractDateFromTitle(summary.title) || "";
@@ -45,8 +87,6 @@ export default async function DailySummaryPage({ params }: PageProps) {
   return (
     <div className="container mx-auto py-8">
       <div className="max-w-4xl mx-auto">
-        {/* <h1 className="text-2xl font-semibold mb-6">Daily Summary</h1> */}
-
         <div className="flex items-center justify-between mb-6">
           <Button
             variant="outline"

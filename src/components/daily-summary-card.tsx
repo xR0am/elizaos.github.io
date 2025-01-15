@@ -6,11 +6,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { DailySummaryData } from "@/lib/get-daily-summary";
+import { DailySummary } from "@/lib/get-daily-summaries";
 import { DailySummaryContent } from "@/components/daily-summary-content";
 import { extractDateFromTitle } from "@/lib/date-utils";
 
-export function DailySummaryCard({ data }: { data: DailySummaryData }) {
+export function DailySummaryCard({ data }: { data: DailySummary }) {
   const date = extractDateFromTitle(data.title) || "";
 
   return (
