@@ -1,6 +1,11 @@
 import fs from "fs";
 import path from "path";
 import { glob } from "glob";
+import {
+  extractDateFromFilename,
+  normalizeDate,
+  denormalizeDate,
+} from "@/lib/date-utils";
 
 export interface DailySummary {
   title: string;
@@ -35,10 +40,7 @@ export interface DailySummary {
 export async function getAllDailySummaryDates(): Promise<string[]> {
   const summaryFiles = await glob("data/daily/history/summary_*.json");
   return summaryFiles
-    .map((file) => {
-      const match = file.match(/summary_(\d{4}[-_]\d{2}[-_]\d{2})\.json$/);
-      return match ? match[1].replace(/_/g, "-") : null;
-    })
+    .map((file) => extractDateFromFilename(file))
     .filter((date): date is string => date !== null)
     .sort()
     .reverse();
@@ -47,17 +49,32 @@ export async function getAllDailySummaryDates(): Promise<string[]> {
 export async function getDailySummary(
   date: string
 ): Promise<DailySummary | null> {
-  const normalizedDate = date.replace(/-/g, "_");
-  const filePath = path.join(
-    process.cwd(),
-    "data/daily/history",
-    `summary_${normalizedDate}.json`
-  );
+  const normalizedDate = normalizeDate(date);
+  const denormalizedDate = denormalizeDate(date);
 
-  try {
-    const fileContents = await fs.promises.readFile(filePath, "utf8");
-    return JSON.parse(fileContents);
-  } catch (error) {
-    return null;
+  // Try both formats
+  const filePaths = [
+    path.join(
+      process.cwd(),
+      "data/daily/history",
+      `summary_${normalizedDate}.json`
+    ),
+    path.join(
+      process.cwd(),
+      "data/daily/history",
+      `summary_${denormalizedDate}.json`
+    ),
+  ];
+
+  for (const filePath of filePaths) {
+    try {
+      const fileContents = await fs.promises.readFile(filePath, "utf8");
+      return JSON.parse(fileContents);
+    } catch {
+      continue;
+    }
   }
+
+  console.warn(`No daily summary found for ${date}`);
+  return null;
 }

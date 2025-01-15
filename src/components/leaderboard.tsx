@@ -126,7 +126,7 @@ export function Leaderboard({ users, period }: LeaderboardProps) {
           {/* <TabsTrigger value="weekly">Weekly</TabsTrigger> */}
         </TabsList>
         <TabsContent value="all">
-          <LeaderboardContent
+          <LeaderboardList
             users={filteredUsers}
             onSkillClick={handleSkillChange}
           />
@@ -142,7 +142,7 @@ export function Leaderboard({ users, period }: LeaderboardProps) {
   );
 }
 
-const LeaderboardContent = ({
+const LeaderboardList = ({
   users,
   onSkillClick,
 }: {

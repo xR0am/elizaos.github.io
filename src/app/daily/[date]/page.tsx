@@ -7,11 +7,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { DailySummaryContent } from "@/components/daily-summary-content";
+import { extractDateFromTitle } from "@/lib/date-utils";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     date: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -22,8 +23,9 @@ export async function generateStaticParams() {
 }
 
 export default async function DailySummaryPage({ params }: PageProps) {
+  const { date: urlDate } = await params;
   const [summary, dates] = await Promise.all([
-    getDailySummary(params.date),
+    getDailySummary(urlDate),
     getAllDailySummaryDates(),
   ]);
 
@@ -32,14 +34,13 @@ export default async function DailySummaryPage({ params }: PageProps) {
   }
 
   // Find current date index and adjacent dates
-  const currentIndex = dates.indexOf(params.date);
+  const currentIndex = dates.indexOf(urlDate);
   const prevDate =
     currentIndex < dates.length - 1 ? dates[currentIndex + 1] : null;
   const nextDate = currentIndex > 0 ? dates[currentIndex - 1] : null;
 
   // Extract date from title (format: "elizaos Eliza (2025-01-12)")
-  const dateMatch = summary.title.match(/\(([^)]+)\)/);
-  const date = dateMatch ? dateMatch[1] : "";
+  const displayDate = extractDateFromTitle(summary.title) || "";
 
   return (
     <div className="container mx-auto py-8">
@@ -72,8 +73,8 @@ export default async function DailySummaryPage({ params }: PageProps) {
             </Link>
           </Button>
 
-          <time dateTime={date} className="text-md font-bold">
-            {date}
+          <time dateTime={displayDate} className="text-md font-bold">
+            {displayDate}
           </time>
 
           <Button

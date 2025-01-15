@@ -8,11 +8,10 @@ import {
 } from "@/components/ui/accordion";
 import { DailySummaryData } from "@/lib/get-daily-summary";
 import { DailySummaryContent } from "@/components/daily-summary-content";
+import { extractDateFromTitle } from "@/lib/date-utils";
 
 export function DailySummaryCard({ data }: { data: DailySummaryData }) {
-  // Extract date from title (format: "elizaos Eliza (2025-01-12)")
-  const dateMatch = data.title.match(/\(([^)]+)\)/);
-  const date = dateMatch ? dateMatch[1] : "";
+  const date = extractDateFromTitle(data.title) || "";
 
   return (
     <Card className="bg-muted/50 transition-colors">
