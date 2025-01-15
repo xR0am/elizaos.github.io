@@ -1,36 +1,36 @@
 {
-  "title": "elizaos Eliza (2025-01-14)",
+  "title": "elizaos Eliza (2025-01-15)",
   "version": "",
-  "overview": "Development focused on package improvements (missing @elizaos/plugin-b2), new features (Gitcoin passport), 5 bug fixes. with 34 contributors merging 10 PRs. Major work included shakkernerd is currently working on merging pull requests related to fixing issues with plugins and optimizing recent interactions queries.",
+  "overview": "Development focused on new features (Gitcoin passport), 3 bug fixes. with 33 contributors merging 8 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 34,
-    "merged_prs": 10,
-    "new_issues": 7,
-    "lines_changed": 2190
+    "contributors": 33,
+    "merged_prs": 8,
+    "new_issues": 8,
+    "lines_changed": 1737
   },
   "changes": {
     "features": [
       "Gitcoin passport"
     ],
     "fixes": [
-      "missing @elizaos/plugin-b2",
-      "test/lint develop",
-      "IME causes multiple messages on Enter (Fixes #2272)"
+      "IME causes multiple messages on Enter (Fixes #2272)",
+      "farcaster memory",
+      "fix derive key and update remote attestation"
     ],
     "chores": []
   },
   "areas": [
     {
       "name": "packages",
-      "files": 46,
-      "additions": 959,
-      "deletions": 495
+      "files": 26,
+      "additions": 734,
+      "deletions": 367
     },
     {
       "name": "root",
-      "files": 6,
-      "additions": 397,
-      "deletions": 83
+      "files": 5,
+      "additions": 382,
+      "deletions": 13
     },
     {
       "name": "docs",
@@ -39,29 +39,28 @@
       "deletions": 9
     }
   ],
-  "issues_summary": "working on 5 bugs including 'Chat Input Sends Multiple Messages When Using IME', 'the tweets are getting cutoff... where can i adjust the tweet length?' and implementing 2 feature requests including 'Trying to find how to run Eliza locally with two graphical cards. ', 'feat: add ntf-starter and nft-generator'",
+  "issues_summary": "working on 6 bugs including 'Chat Input Sends Multiple Messages When Using IME', 'farcaster-client fails to embed' and implementing 2 feature requests including 'Trying to find how to run Eliza locally with two graphical cards. ', 'feat: add ntf-starter and nft-generator'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "shakkernerd",
-      "summary": "shakkernerd is currently working on merging pull requests related to fixing issues with plugins and optimizing recent interactions queries",
-      "areas": [
-        "agent",
-        "packages",
-        ".env.example"
-      ]
-    },
-    {
       "name": "sweetmantech",
-      "summary": "sweetmantech is currently working on three pull requests related to the Plugin: AgentKit in the packages and agent code areas",
+      "summary": "sweetmantech is currently working on developing a plugin called AgentKit, with a focus on the agent and packages code areas",
       "areas": []
     },
     {
-      "name": "odilitime",
-      "summary": "odilitime is currently working on merging various branches and pull requests related to different features and fixes, including adding a BirdEye plugin, updating code for Squid Bridge, and making improvements to the EVM OZ Governance plugin",
+      "name": "shakkernerd",
+      "summary": "shakkernerd is currently working on merging branches and pull requests related to fixing issues in the CryptoGraffe project, as well as making chore updates to the codebase",
       "areas": [
-        "packages",
-        "pnpm-lock.yaml"
+        "pnpm-lock.yaml",
+        ".env.example",
+        "packages"
+      ]
+    },
+    {
+      "name": "lincheoll",
+      "summary": "lincheoll is currently working on fixing a bug related to the Chat Input sending multiple messages when using an Input Method Editor (IME)",
+      "areas": [
+        "client"
       ]
     }
   ]

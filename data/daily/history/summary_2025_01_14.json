@@ -1,65 +1,67 @@
 {
   "title": "elizaos Eliza (2025-01-14)",
   "version": "",
-  "overview": "Development focused on package improvements (add support for gravity chain in EVM plugin), new features (add support for gravity chain in EVM plugin). with 38 contributors merging 5 PRs. Major work included howieduhzit is currently updating and enhancing the start script and setup functions in the project, focusing on improving environment configuration and user documentation.",
+  "overview": "Development focused on package improvements (missing @elizaos/plugin-b2), new features (Gitcoin passport), 5 bug fixes. with 34 contributors merging 10 PRs. Major work included shakkernerd is currently working on merging pull requests related to fixing issues with plugins and optimizing recent interactions queries.",
   "metrics": {
-    "contributors": 38,
-    "merged_prs": 5,
-    "new_issues": 12,
-    "lines_changed": 1504
+    "contributors": 34,
+    "merged_prs": 10,
+    "new_issues": 7,
+    "lines_changed": 2190
   },
   "changes": {
     "features": [
-      "add support for gravity chain in EVM plugin",
-      "CoinGecko - add price per address functionality"
+      "Gitcoin passport"
     ],
-    "fixes": [],
+    "fixes": [
+      "missing @elizaos/plugin-b2",
+      "test/lint develop",
+      "IME causes multiple messages on Enter (Fixes #2272)"
+    ],
     "chores": []
   },
   "areas": [
     {
       "name": "packages",
-      "files": 5,
-      "additions": 276,
-      "deletions": 3
+      "files": 46,
+      "additions": 959,
+      "deletions": 495
     },
     {
       "name": "root",
-      "files": 3,
-      "additions": 159,
-      "deletions": 2
+      "files": 6,
+      "additions": 397,
+      "deletions": 83
     },
     {
       "name": "docs",
-      "files": 3,
-      "additions": 317,
-      "deletions": 1
+      "files": 5,
+      "additions": 222,
+      "deletions": 9
     }
   ],
-  "issues_summary": "working on 7 bugs including 'Bug: Twitter Authentication fails on Cloud. Error 399', 'Missing Module: '@anush008/tokenizers-linux-arm64-gnu'' and implementing 5 feature requests including 'create relay.link plugin', 'Create 0x.org swap plugin/enhancement for EVM'",
+  "issues_summary": "working on 5 bugs including 'Chat Input Sends Multiple Messages When Using IME', 'the tweets are getting cutoff... where can i adjust the tweet length?' and implementing 2 feature requests including 'Trying to find how to run Eliza locally with two graphical cards. ', 'feat: add ntf-starter and nft-generator'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "HowieDuhzit",
-      "summary": "HowieDuhzit is currently updating and enhancing the start script and setup functions in the project, focusing on improving environment configuration and user documentation",
+      "name": "shakkernerd",
+      "summary": "shakkernerd is currently working on merging pull requests related to fixing issues with plugins and optimizing recent interactions queries",
       "areas": [
-        "pnpm-lock.yaml",
-        "README.md",
-        "scripts"
+        "agent",
+        "packages",
+        ".env.example"
       ]
     },
     {
-      "name": "Stumble",
-      "summary": "Stumble is currently working on adding support for the gravity chain in the EVM plugin",
-      "areas": [
-        "packages"
-      ]
+      "name": "sweetmantech",
+      "summary": "sweetmantech is currently working on three pull requests related to the Plugin: AgentKit in the packages and agent code areas",
+      "areas": []
     },
     {
-      "name": "oxlupo",
-      "summary": "oxlupo is currently working on adding a Persian README file to the project documentation",
+      "name": "odilitime",
+      "summary": "odilitime is currently working on merging various branches and pull requests related to different features and fixes, including adding a BirdEye plugin, updating code for Squid Bridge, and making improvements to the EVM OZ Governance plugin",
       "areas": [
-        "README_FARSI.md"
+        "packages",
+        "pnpm-lock.yaml"
       ]
     }
   ]
