@@ -13,6 +13,8 @@ import {
 import { LeaderboardCard } from "./leaderboard-card";
 import { LeaderboardPeriod, UserFocusAreaData } from "@/types/user-profile";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { SolanaWalletForm } from "./solana-wallet-form";
 
 export function LeaderboardFallback() {
   return (
@@ -40,7 +42,15 @@ export function Leaderboard({ users, period }: LeaderboardProps) {
     searchParams.get("skill") || "all"
   );
   const [currentPeriod, setCurrentPeriod] = useState<LeaderboardPeriod>(period);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  const handleGitHubLogin = () => {
+    const clientId = "Ov23lieDjESjIvkc5uO0";
+    const redirectUri = "https://xr0am.github.io/elizaos.github.io/api/auth/callback/github";
+    const scope = "user:email";
+    const url = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
+    window.location.href = url;
+  };
   useEffect(() => {
     setSelectedSkill(searchParams.get("skill") || "all");
   }, [searchParams]);
@@ -128,7 +138,14 @@ export function Leaderboard({ users, period }: LeaderboardProps) {
           </SelectContent>
         </Select>
       </div>
-
+      
+      <div className="flex justify-end">
+        {isAuthenticated ? (
+          <SolanaWalletForm />
+        ) : (
+          <Button onClick={handleGitHubLogin}>Sign in with GitHub</Button>
+        )}
+      </div>
       <Tabs
         value={currentPeriod}
         onValueChange={(value) => setCurrentPeriod(value as LeaderboardPeriod)}
