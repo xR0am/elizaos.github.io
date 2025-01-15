@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
+export const revalidate = 60; // Revalidate every 60 seconds
+
 export async function POST(request: Request) {
   const { walletAddress } = await request.json();
 
