@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/select";
 import { LeaderboardCard } from "./leaderboard-card";
 import { LeaderboardPeriod, UserFocusAreaData } from "@/types/user-profile";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export interface LeaderboardProps {
   users: UserFocusAreaData[];
@@ -19,15 +20,37 @@ export interface LeaderboardProps {
 }
 
 export function Leaderboard({ users, period }: LeaderboardProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedSkill, setSelectedSkill] = useState("all");
+  const [selectedSkill, setSelectedSkill] = useState(
+    searchParams.get("skill") || "all"
+  );
   const [currentPeriod, setCurrentPeriod] = useState<LeaderboardPeriod>(period);
+
+  useEffect(() => {
+    setSelectedSkill(searchParams.get("skill") || "all");
+  }, [searchParams]);
 
   const allSkills = useMemo(() => {
     return Array.from(
       new Set(users.flatMap((user) => Object.keys(user.tag_levels)))
     );
   }, [users]);
+
+  const handleSkillChange = useCallback(
+    (value: string) => {
+      setSelectedSkill(value);
+      const params = new URLSearchParams(searchParams);
+      if (value === "all") {
+        params.delete("skill");
+      } else {
+        params.set("skill", value);
+      }
+      router.replace(`?${params.toString()}`);
+    },
+    [searchParams, router]
+  );
 
   const filteredUsers = useMemo(() => {
     return users
@@ -58,6 +81,15 @@ export function Leaderboard({ users, period }: LeaderboardProps) {
 
   return (
     <div className="space-y-4">
+      <h2 className="text-2xl font-bold capitalize">
+        {selectedSkill === "all" ? (
+          "Overall"
+        ) : (
+          <span className="text-primary">{selectedSkill}</span>
+        )}{" "}
+        Leaderboard
+      </h2>
+
       <div className="flex justify-between">
         <Input
           placeholder="Search players..."
@@ -65,8 +97,12 @@ export function Leaderboard({ users, period }: LeaderboardProps) {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="max-w-sm"
         />
-        <Select value={selectedSkill} onValueChange={setSelectedSkill}>
-          <SelectTrigger className="w-[180px]">
+        <Select value={selectedSkill} onValueChange={handleSkillChange}>
+          <SelectTrigger
+            className={`w-[180px] ${
+              selectedSkill !== "all" ? "border-primary" : ""
+            }`}
+          >
             <SelectValue placeholder="Filter by skill" />
           </SelectTrigger>
           <SelectContent>
@@ -90,7 +126,10 @@ export function Leaderboard({ users, period }: LeaderboardProps) {
           {/* <TabsTrigger value="weekly">Weekly</TabsTrigger> */}
         </TabsList>
         <TabsContent value="all">
-          <LeaderboardContent users={filteredUsers} />
+          <LeaderboardContent
+            users={filteredUsers}
+            onSkillClick={handleSkillChange}
+          />
         </TabsContent>
         {/* <TabsContent value="monthly">
           <LeaderboardContent users={filteredUsers} />
@@ -103,11 +142,22 @@ export function Leaderboard({ users, period }: LeaderboardProps) {
   );
 }
 
-const LeaderboardContent = ({ users }: { users: UserFocusAreaData[] }) => {
+const LeaderboardContent = ({
+  users,
+  onSkillClick,
+}: {
+  users: UserFocusAreaData[];
+  onSkillClick: (skill: string) => void;
+}) => {
   return (
     <div className="border rounded-lg divide-y">
       {users.map((user, index) => (
-        <LeaderboardCard key={user.username} user={user} rank={index + 1} />
+        <LeaderboardCard
+          key={user.username}
+          user={user}
+          rank={index + 1}
+          onSkillClick={onSkillClick}
+        />
       ))}
     </div>
   );

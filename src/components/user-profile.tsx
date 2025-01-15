@@ -17,6 +17,7 @@ import {
 import { UserFocusAreaData, TagLevel } from "@/types/user-profile";
 import { skillIcons } from "@/lib/skill-icons";
 import { CircleSlash, Github } from "lucide-react";
+import Link from "next/link";
 
 const SkillCard = ({
   name,
@@ -44,29 +45,31 @@ const SkillCard = ({
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Card
-            className={`group relative overflow-hidden border-2 hover:border-primary/50 transition-all ${getRankStyles()}`}
-          >
-            <CardContent className="p-2 sm:p-4">
-              <div className="flex items-center gap-3">
-                <div className="relative shrink-0">
-                  <div className="absolute inset-0 bg-primary/5 rounded-full scale-0 group-hover:scale-150 transition-transform duration-500" />
-                  <Icon className="w-6 h-6 sm:w-8 sm:h-8 relative z-10 text-primary/80" />
-                </div>
-                <div className="min-w-0">
-                  <p className="font-medium text-sm capitalize truncate">
-                    {name}
-                  </p>
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-xs text-muted-foreground">LVL</span>
-                    <span className="text-xl font-bold font-mono tabular-nums">
-                      {data.level}
-                    </span>
+          <Link href={`/?skill=${name.toLowerCase()}`}>
+            <Card
+              className={`group relative overflow-hidden border-2 hover:border-primary/50 transition-all cursor-pointer ${getRankStyles()}`}
+            >
+              <CardContent className="p-2 sm:p-4">
+                <div className="flex items-center gap-3">
+                  <div className="relative shrink-0">
+                    <div className="absolute inset-0 bg-primary/5 rounded-full scale-0 group-hover:scale-150 transition-transform duration-500" />
+                    <Icon className="w-6 h-6 sm:w-8 sm:h-8 relative z-10 text-primary/80" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-medium text-sm capitalize truncate">
+                      {name}
+                    </p>
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-xs text-muted-foreground">LVL</span>
+                      <span className="text-xl font-bold font-mono tabular-nums">
+                        {data.level}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </Link>
         </TooltipTrigger>
         <TooltipContent className="w-64">
           <div className="space-y-3">

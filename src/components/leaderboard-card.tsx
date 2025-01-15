@@ -6,9 +6,11 @@ import { UserFocusAreaData } from "@/types/user-profile";
 export function LeaderboardCard({
   user,
   rank,
+  onSkillClick,
 }: {
   user: UserFocusAreaData;
   rank: number;
+  onSkillClick: (skill: string) => void;
 }) {
   const totalXp = Math.round(
     Object.values(user.tag_scores).reduce((a, b) => a + b, 0)
@@ -20,6 +22,11 @@ export function LeaderboardCard({
   const topSkills = Object.entries(user.tag_levels)
     .sort(([, a], [, b]) => b.level - a.level)
     .slice(0, 3);
+
+  const handleSkillClick = (skill: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    onSkillClick(skill.toLowerCase());
+  };
 
   return (
     <Link href={`/profile/${user.username}`}>
@@ -54,7 +61,8 @@ export function LeaderboardCard({
                   <Badge
                     key={name}
                     variant="outline"
-                    className="text-xs flex items-center gap-1"
+                    className="text-xs flex items-center gap-1 cursor-pointer hover:border-primary "
+                    onClick={(e) => handleSkillClick(name, e)}
                   >
                     <span>{name}</span>
                     <span className="font-mono bg-secondary-foreground/10 -mr-2.5 -my-0.5 py-0.5 px-1.5 rounded-r-[inherit]">
@@ -70,7 +78,8 @@ export function LeaderboardCard({
               <Badge
                 key={name}
                 variant="outline"
-                className="text-xs flex items-center gap-1"
+                className="text-xs flex items-center gap-1 cursor-pointer hover:border-primary"
+                onClick={(e) => handleSkillClick(name, e)}
               >
                 <span>{name}</span>
                 <span className="font-mono bg-secondary-foreground/10 -mr-2.5 -my-0.5 py-0.5 px-1.5 rounded-r-[inherit]">
