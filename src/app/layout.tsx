@@ -3,9 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { CalendarDays } from "lucide-react";
+import { Navigation } from "@/components/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,11 +28,7 @@ export default function RootLayout({
         >
           <div className="min-h-screen bg-background">
             <header className="container mx-auto p-4 flex justify-between items-center">
-              <div className="flex items-center gap-6">
-                <Link href="/" className="hover:opacity-80 transition-opacity">
-                  <h1 className="text-xl font-bold">ElizaOS</h1>
-                </Link>
-              </div>
+              <Navigation />
               <ThemeToggle />
             </header>
             {children}
