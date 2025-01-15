@@ -1,7 +1,7 @@
 # elizaos Eliza (2025-01-15)
     
 ## 📊 Overview
-Development focused on new features (add getMemoryByIds to database adapters), 2 bug fixes. with 31 contributors merging 8 PRs. Major work included sweetmantech is currently working on three pull requests related to the agentkit plugin, focusing on code areas such as agent and packages.
+Development focused on new features (add getMemoryByIds to database adapters), 2 bug fixes. with 31 contributors merging 8 PRs. Major work included unable to generate summary for sweetmantech due to an error.
 
 ## 📈 Key Metrics
 | Metric | Count |
@@ -28,9 +28,9 @@ Development focused on new features (add getMemoryByIds to database adapters), 2
 - fix: farcaster memory
 
 ## 👥 Top Contributors
-- **sweetmantech**: sweetmantech is currently working on three pull requests related to the AgentKit plugin, focusing on code areas such as agent and packages
-- **shakkernerd**: shakkernerd is currently working on merging branches, fixing issues, and making chore updates related to the CryptoGraffe project
-- **wtfsayo**: wtfsayo is currently working on merging pull requests related to adding new services and features, such as memories retrieval, client agent CRUD operations, and a Gitcoin passport plugin
+- **sweetmantech**: Unable to generate summary for sweetmantech due to an error
+- **shakkernerd**: Unable to generate summary for shakkernerd due to an error
+- **wtfsayo**: Unable to generate summary for wtfsayo due to an error
 
 ## ⚠️ Issues
 - **New Issues**: 8
