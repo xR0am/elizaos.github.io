@@ -4,8 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Navigation } from "@/components/navigation";
-import { SignInButton } from "@/components/SignInButton"; // Import the SignInButton
-import { SessionProvider } from "next-auth/react"; // Import SessionProvider
+import AuthButtonWrapper from "@/components/AuthButtonWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,27 +21,24 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        {/* Wrap the entire layout with SessionProvider */}
-        <SessionProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <div className="min-h-screen bg-background">
-              {/* Header section */}
-              <header className="container mx-auto p-4 flex justify-between items-center">
-                <Navigation />
-                <div className="flex items-center gap-4">
-                  <SignInButton /> {/* Add the SignInButton here */}
-                  <ThemeToggle />
-                </div>
-              </header>
-              {children}
-            </div>
-          </ThemeProvider>
-        </SessionProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="min-h-screen bg-background">
+            <header className="container mx-auto p-4 flex justify-between items-center">
+              <Navigation />
+              <div className="flex items-center gap-4">
+                <AuthButtonWrapper />
+                <ThemeToggle />
+              </div>
+              <ThemeToggle />
+            </header>
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
