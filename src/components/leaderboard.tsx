@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useCallback, useEffect } from "react";
+import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -13,6 +13,7 @@ import {
 import { LeaderboardCard } from "./leaderboard-card";
 import { LeaderboardPeriod, UserFocusAreaData } from "@/types/user-profile";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useWindowVirtualizer } from "@tanstack/react-virtual";
 
 export function LeaderboardFallback() {
   return (
@@ -103,7 +104,7 @@ export function Leaderboard({ users, period }: LeaderboardProps) {
         Leaderboard
       </h2>
 
-      <div className="flex justify-between">
+      <div className="flex flex-col sm:flex-row sm:justify-between gap-3">
         <Input
           placeholder="Search players..."
           value={searchTerm}
@@ -135,8 +136,6 @@ export function Leaderboard({ users, period }: LeaderboardProps) {
       >
         <TabsList>
           <TabsTrigger value="all">All Time</TabsTrigger>
-          {/* <TabsTrigger value="monthly">Monthly</TabsTrigger> */}
-          {/* <TabsTrigger value="weekly">Weekly</TabsTrigger> */}
         </TabsList>
         <TabsContent value="all">
           <LeaderboardList
@@ -144,16 +143,61 @@ export function Leaderboard({ users, period }: LeaderboardProps) {
             onSkillClick={handleSkillChange}
           />
         </TabsContent>
-        {/* <TabsContent value="monthly">
-          <LeaderboardContent users={filteredUsers} />
-        </TabsContent>
-        <TabsContent value="weekly">
-          <LeaderboardContent users={filteredUsers} />
-        </TabsContent> */}
       </Tabs>
     </div>
   );
 }
+
+const VirtualizedLeaderboardList = ({
+  users,
+  onSkillClick,
+}: {
+  users: UserFocusAreaData[];
+  onSkillClick: (skill: string) => void;
+}) => {
+  const listRef = useRef<HTMLDivElement>(null);
+
+  const virtualizer = useWindowVirtualizer({
+    count: users.length,
+    estimateSize: () => 72,
+    overscan: 15,
+    scrollMargin: listRef.current?.offsetTop ?? 0,
+  });
+
+  return (
+    <div ref={listRef} className="border rounded-lg divide-y">
+      <div
+        style={{
+          height: `${virtualizer.getTotalSize()}px`,
+          width: "100%",
+          position: "relative",
+        }}
+      >
+        {virtualizer.getVirtualItems().map((virtualRow) => (
+          <div
+            key={virtualRow.key}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: `${virtualRow.size}px`,
+              transform: `translateY(${
+                virtualRow.start - virtualizer.options.scrollMargin
+              }px)`,
+            }}
+          >
+            <LeaderboardCard
+              user={users[virtualRow.index]}
+              rank={virtualRow.index + 1}
+              onSkillClick={onSkillClick}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const LeaderboardList = ({
   users,
@@ -163,15 +207,6 @@ const LeaderboardList = ({
   onSkillClick: (skill: string) => void;
 }) => {
   return (
-    <div className="border rounded-lg divide-y">
-      {users.map((user, index) => (
-        <LeaderboardCard
-          key={user.username}
-          user={user}
-          rank={index + 1}
-          onSkillClick={onSkillClick}
-        />
-      ))}
-    </div>
+    <VirtualizedLeaderboardList users={users} onSkillClick={onSkillClick} />
   );
 };
