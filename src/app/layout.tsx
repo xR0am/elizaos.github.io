@@ -30,8 +30,10 @@ export default function RootLayout({
           <div className="min-h-screen bg-background">
             <header className="container mx-auto p-4 flex justify-between items-center">
               <Navigation />
-              <AuthButtonWrapper />
-              <ThemeToggle />
+              <div className="flex items-center gap-4">
+                <AuthButtonWrapper />
+                <ThemeToggle />
+              </div>
             </header>
             {children}
           </div>
