@@ -1,4 +1,4 @@
-# elizaos Eliza (2025-01-15)
+# elizaos Eliza (2025-01-16)
     
 ## 📊 Overview
 Development focused on new features (Onchain Agent Transformer - transform any Eliza agents into unstoppable Solidity smart contracts deployed on 10+ blockchains), 2 bug fixes. with 35 contributors merging 4 PRs. Major work included various improvements.
@@ -27,9 +27,9 @@ Development focused on new features (Onchain Agent Transformer - transform any E
 - fix: farcaster memory
 
 ## 👥 Top Contributors
-- **wtfsayo**: wtfsayo is primarily working on updating various TypeScript files in the project, including tokenProvider
-- **eternal-ai-org**: eternal-ai-org is currently focusing on merging branches and developing support for the eternalai provider to obtain onchain system prompts
-- **everimbaq**: everimbaq is currently working on fixing the OPENROUTER_API_KEY environment variable in the agent configuration
+- **wtfsayo**: Unable to generate summary for wtfsayo due to an error
+- **eternal-ai-org**: Unable to generate summary for eternal-ai-org due to an error
+- **everimbaq**: Unable to generate summary for everimbaq due to an error
 
 ## ⚠️ Issues
 - **New Issues**: 8
