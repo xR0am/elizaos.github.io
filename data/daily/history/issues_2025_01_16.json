@@ -1,0 +1,407 @@
+[
+  {
+    "id": "I_kwDOMT5cIs6mh6ow",
+    "number": 2403,
+    "title": "Add tests for slack client. Move and update existing tests to __tests__ directory",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nSince we are changing project structure, add new tests for slack client. Move existing to __tests__ directory.\n**Describe the solution you'd like**\n\n<!-- A clear and concise description of what you want to happen. -->\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-16T22:26:11Z",
+    "updatedAt": "2025-01-16T22:26:11Z",
+    "author": {
+      "login": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6mgX2k",
+    "number": 2395,
+    "title": "Cannot figure out how to effectively execute multiple dependent actions in response to a single user message",
+    "body": "Hi everybody!\n\nI watched the dev school videos and i think the framework has a great potential.\n\nI am trying to build an agent focused on crypto trading advice. Its main goal is to answer user queries pulling data from APIs. \n\nI am having trouble in understanding how to be able to execute multiple api calls in response to a single user message. The API calls order is also important because some of them are not independent (i need the results of an API call to be able to call another one). \n\nWhat would be the best way to achieve this behaviour? I was trying to wrap api calls in actions but the issue is that from what i understand the framework only executes a single action per user message.\n\nMaybe it is better to wrap api calls in providers instead of actions? Otherwise should i create an ActionAggregator action that chooses which api calls are needed (and in which order), performs all of them and then sends a response to the user using the API calls results?\n\nI am surprised that the framework does not provide a more straightforward way to handle this type of scenario, which i think is quite common, but maybe i am missing something. Any advice would be greatly appreciated!\n\nAlso i don't know if a github issue is the correct place to ask this type of question, but i did not find anywhere else to ask support.",
+    "state": "OPEN",
+    "createdAt": "2025-01-16T18:47:40Z",
+    "updatedAt": "2025-01-16T22:00:07Z",
+    "author": {
+      "login": "Andrea98Palermo",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/57013723?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB1o4rCg",
+        "name": "Need Feedback",
+        "color": "2365DD",
+        "description": ""
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6awyTu",
+        "author": "github-actions",
+        "body": "Hello @Andrea98Palermo! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6ayuMc",
+        "author": "JoeyKhd",
+        "body": "Hey @Andrea98Palermo \n\nI suggest you keep diving deeper into other plugins and learn from them.\nAlso since this issue is not related to Eliza directly, I suggest you join us on Discord and chat with other dev's: https://discord.com/elizaOS"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6ayv7C",
+        "author": "AIFlowML",
+        "body": "@Andrea98Palermo Ciao Andrea!\n\nSo the best way to architecture this is to build a a substrate in the actions itself. \nYou have 3 ways.\n\nWorkflows\nI mean if you want to have the agent following the prompts is a selective way you need to build youself a some workflows where the apis are already chained. Then you selectinbely call the worflows based on the prompt.\n\nAPI pool\nYou call all the apis all the time and filter the result out with the prompt. \n\nAPI batch process.\nYou store the APIs that have not constant change (no price related) on a DB then you use the prompts to pick the data as the user ask. \n\nI personally prefer Prompts and Workflows. \n"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6meeDx",
+    "number": 2387,
+    "title": "unset variables docker compose bug",
+    "body": "```\n⛔ ERRORS\n   Error in wallet provider: \n   {} \n\nError in Story wallet provider: Error: invalid private key, expected hex or 32 bytes, got string\n    at normPrivateKeyToScalar (file:///app/node_modules/viem/node_modules/@noble/curves/esm/abstract/weierstrass.js:218:19)\n    at Point.fromPrivateKey (file:///app/node_modules/viem/node_modules/@noble/curves/esm/abstract/weierstrass.js:335:40)\n    at Object.getPublicKey (file:///app/node_modules/viem/node_modules/@noble/curves/esm/abstract/weierstrass.js:804:22)\n    at privateKeyToAccount (file:///app/node_modules/viem/_esm/accounts/privateKeyToAccount.js:17:39)\n    at new WalletProvider (file:///app/packages/plugin-story/dist/index.js:40:25)\n    at Object.get (file:///app/packages/plugin-story/dist/index.js:99:36)\n    at file:///app/packages/core/dist/index.js:30042:31\n    at Array.map (<anonymous>)\n    at getProviders (file:///app/packages/core/dist/index.js:30041:66)\n    at AgentRuntime.composeState (file:///app/packages/core/dist/index.js:31316:13)\nError in client provider: Error: invalid private key, expected hex or 32 bytes, got string\n    at normPrivateKeyToScalar (file:///app/packages/plugin-genlayer/dist/index.js:1706:19)\n    at Point2.fromPrivateKey (file:///app/packages/plugin-genlayer/dist/index.js:1803:41)\n    at Object.getPublicKey (file:///app/packages/plugin-genlayer/dist/index.js:2248:23)\n    at privateKeyToAccount (file:///app/packages/plugin-genlayer/dist/index.js:4850:39)\n    at new ClientProvider (file:///app/packages/plugin-genlayer/dist/index.js:4900:24)\n    at Object.get (file:///app/packages/plugin-genlayer/dist/index.js:4907:30)\n    at file:///app/packages/core/dist/index.js:30042:31\n    at Array.map (<anonymous>)\n    at getProviders (file:///app/packages/core/dist/index.js:30041:66)\n    at AgentRuntime.composeState (file:///app/packages/core/dist/index.js:31316:13)\n\n ⛔ ERRORS\n   ❌ Error handling message: \n   {} \n\n ⛔ ERRORS\n   Error sending message: \n   {} \n\nCache miss for fetchPortfolioValue\nCache miss for fetchPrices\nError getting wallet balance: TypeError: Invalid URL\n    at new URL (node:internal/url:818:25)\n    at dispatchHttpRequest (/app/node_modules/axios/dist/node/axios.cjs:2777:20)\n    at /app/node_modules/axios/dist/node/axios.cjs:2697:5\n    at new Promise (<anonymous>)\n    at wrapAsync (/app/node_modules/axios/dist/node/axios.cjs:2677:10)\n    at http (/app/node_modules/axios/dist/node/axios.cjs:2715:10)\n    at Axios.dispatchRequest (/app/node_modules/axios/dist/node/axios.cjs:4092:10)\n    at Axios._request (/app/node_modules/axios/dist/node/axios.cjs:4385:33)\n    at Axios.request (/app/node_modules/axios/dist/node/axios.cjs:4247:25)\n    at Axios.httpMethod [as post] (/app/node_modules/axios/dist/node/axios.cjs:4424:19)\n    at Axios.request (/app/node_modules/axios/dist/node/axios.cjs:4252:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async HttpApi.doCall (/app/node_modules/@ton/ton/dist/client/api/HttpApi.js:263:19)\n    at async TonClient.getContractState (/app/node_modules/@ton/ton/dist/client/TonClient.js:233:20)\n    at async Object.getState (/app/node_modules/@ton/ton/dist/client/TonClient.js:340:25)\n    at async WalletContractV4.getBalance (/app/node_modules/@ton/ton/dist/wallets/WalletContractV4.js:42:21)\n    at async WalletProvider.getWalletBalance (file:///app/packages/plugin-ton/dist/index.js:4202:29)\n    at async WalletProvider.fetchPortfolioValue (file:///app/packages/plugin-ton/dist/index.js:4156:40)\n    at async WalletProvider.getFormattedPortfolio (file:///app/packages/plugin-ton/dist/index.js:4177:31)\n    at async Object.get (file:///app/packages/plugin-ton/dist/index.js:4231:20) {\n  code: 'ERR_INVALID_URL',\n  input: '# ton rpc'\n}\nFetched portfolio: { totalUsd: '0', totalNativeToken: '0' }\n```\n\nCan someone help me resolve this? I had no issues locally with such thing, I am not suing ton or story wallet, this is when running docker-compose in cloud",
+    "state": "CLOSED",
+    "createdAt": "2025-01-16T14:55:47Z",
+    "updatedAt": "2025-01-16T15:01:44Z",
+    "author": {
+      "login": "WNUMIK",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/98759136?u=561d47e97462a38b01bc5a32595df4fb1f5e2fc7&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6mdJWm",
+    "number": 2381,
+    "title": "A bug in dev.sh - When using \"pnpm dev --character=xx\", the character fails to load",
+    "body": "**Describe the bug**\n\n<!-- A clear and concise description of what the bug is. -->\n\nWhen using the `pnpm dev --character=\"characters/trump.character.json\"` command, the `character` parameter fails to load correctly, resulting in only the default `character` being loaded.\n\n**To Reproduce**\n\n<!-- Steps to reproduce the behavior. -->\n\nstep 1:\nopen the `dev.sh` file\n`vim scripts/dev.sh`\n\nstep 2:\n\nadd a new path for WORKING_FOLDERS\n\n```shell\n# List of working folders to watch (relative to $PACKAGES_DIR)\nWORKING_FOLDERS=(\"client-direct\" \"plugin-test\") # Core is handled separately\n```\n\nstep 3:\nrun\n`pnpm dev --character=\"characters/trump.character.json\"`\n\nstep 4:\nWill see that the default character \"Eliza\" has been loaded, instead of the specified \"trump.character.json\"\n\n**Expected behavior**\n\n<!-- A clear and concise description of what you expected to happen. -->\n\nCharacter \"trump\" should be loaded\n\n**Screenshots**\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\nNo screenshots\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n\nThe reason for this situation is that a wrong symbol was used in `dev.sh`\n\n![Image](https://github.com/user-attachments/assets/4de0cb45-366c-445f-9632-f2fba2c588a0)\n\nShould use `*` instead of `@`\nUsing `@` causes the command to be forcibly wrapped into a new line (and it's an incorrect line break)\n\nThis is the correct code:\n```shell\nCOMMANDS+=(\"nodemon ${WATCH_PATHS[*]} -e js,json,map --delay 2 --exec 'pnpm --dir agent dev -- $*'\")\n```",
+    "state": "OPEN",
+    "createdAt": "2025-01-16T12:48:57Z",
+    "updatedAt": "2025-01-16T22:07:09Z",
+    "author": {
+      "login": "MyJoiT",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/8382072?u=fab5c63b219baa878fea862a173c7e52ff59e2a7&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB0yW8_A",
+        "name": "Needs Refactor",
+        "color": "C97326",
+        "description": ""
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6atLb1",
+        "author": "github-actions",
+        "body": "Hello @MyJoiT! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6ayzE5",
+        "author": "AIFlowML",
+        "body": "Hello @MyJoiT nice catch. \nWanna push a PR ? "
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6mcdAz",
+    "number": 2376,
+    "title": "RAG/Knowledge for No ascii characters",
+    "body": "**Describe the bug**\r\n\r\nThe knowledge preprocessing function incorrectly removes non-ASCII characters like Chinese text due to an overly restrictive regex pattern that only allows ASCII alphanumeric characters.\r\n\r\n**To Reproduce**\r\n\r\n1. Create a knowledge item with non-ASCII characters like Chinese text\r\n2. Call the preprocess function with this content:\r\n\r\n```\r\nconst input = \"你好 Eliza\";\r\nknowledge.preprocess(input)\r\n```\r\n\r\n3. The Chinese characters are removed from the output\r\n\r\n**Expected behavior**\r\n\r\nThe preprocess function should preserve non-ASCII characters like Chinese text",
+    "state": "OPEN",
+    "createdAt": "2025-01-16T11:36:49Z",
+    "updatedAt": "2025-01-16T22:09:18Z",
+    "author": {
+      "login": "jolestar",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/77268?u=456e9ebf7bea3870e5c323cd65aef73f98e514a6&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB1o4rCg",
+        "name": "Need Feedback",
+        "color": "2365DD",
+        "description": ""
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6asPae",
+        "author": "github-actions",
+        "body": "Hello @jolestar! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6ayzv7",
+        "author": "AIFlowML",
+        "body": "Hello @jolestar I thnk that flter is somehow added to avoid some techniques of prompt injects. \nWe will address this soon in a more sophisticated way. "
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6mcPjs",
+    "number": 2373,
+    "title": "(plugin-node) Bugs related to image description service",
+    "body": "A few things are broken in `plugin-node` related to image description:\n\n1. GIF frame extraction doesn't work for me (the call to `gifFrames` fails), and also uses an unmaintained dependency with vulnerabilities\n\nhttps://github.com/elizaOS/eliza/blob/5076588d998603d871e705af1c76144ac68bbc2f/packages/plugin-node/src/services/image.ts#L339-L346\n\nref: https://github.com/benwiley4000/gif-frames/\n\n2. Image data loading loads the first GIF frame as PNG but the local image provider expects a JPEG\n\nhttps://github.com/elizaOS/eliza/blob/5076588d998603d871e705af1c76144ac68bbc2f/packages/plugin-node/src/services/image.ts#L113-L122\n\n3. The local image provider calls Transformers.js API incorrectly, it passes a data URL but `RawImage.fromURL` does not support that\n\n`RawImage.fromURL`:\n\nhttps://github.com/huggingface/transformers.js/blob/e1753ac0ff363183552bbc35488937e0d42c9cf8/src/utils/image.js#L147-L153\n\nWhich calls `getFile`, which does not support data URLs:\n\nhttps://github.com/huggingface/transformers.js/blob/e1753ac0ff363183552bbc35488937e0d42c9cf8/src/utils/hub.js#L190-L193\n\n4. Users running Ollama expect to be using the local image vision provider if nothing's set, but instead just error out right now\n\nhttps://github.com/elizaOS/eliza/blob/fd35fd9914825401a84aa4db0334d17b705f8ae6/packages/plugin-node/src/services/image.ts#L311-L315\n\n5. In the describe image action, depending on the model used the file location result object can look like\n\n`{ object: fileLocation }` or `{ fileLocation }`\n\nhttps://github.com/elizaOS/eliza/blob/fd35fd9914825401a84aa4db0334d17b705f8ae6/packages/plugin-node/src/actions/describe-image.ts#L38-L51\n\n6. Image data loading currently only classifies images as \"animated GIFs\" and \"everything else\", which fails to handle a number of input image cases since the APIs support mostly JPEG and PNG\n\nhttps://github.com/elizaOS/eliza/blob/fd35fd9914825401a84aa4db0334d17b705f8ae6/packages/plugin-node/src/services/image.ts#L357-L369\n\nref:\nhttps://platform.openai.com/docs/guides/vision#what-type-of-files-can-i-upload\nhttps://firebase.google.com/docs/vertex-ai/input-file-requirements#images-mime-types\n\n---\n\nPR coming shortly.",
+    "state": "OPEN",
+    "createdAt": "2025-01-16T11:09:40Z",
+    "updatedAt": "2025-01-16T22:14:30Z",
+    "author": {
+      "login": "ae9is",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/125031666?u=54ae3c01dfc3721007d67d4fd73bace05d98ea21&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB1o4rCg",
+        "name": "Need Feedback",
+        "color": "2365DD",
+        "description": ""
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6asCft",
+        "author": "github-actions",
+        "body": "Hello @ae9is! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6ay1ji",
+        "author": "AIFlowML",
+        "body": "This bug wll be probably fixed by #2375 \nI wait the merge and I keep it open waiting your Feedback."
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6mcEQN",
+    "number": 2372,
+    "title": "Twitter Authentication Fails on AWS EC2 Instance (Error 399)",
+    "body": "'m experiencing an issue with Twitter authentication when running Eliza OS on an AWS EC2 instance. While the application works fine locally, it fails to authenticate on EC2 with the following errors:\r\n\r\n\r\n\r\n```\r\n[\"◎ Waiting for Twitter login\"]\r\n[\"⛔ Login attempt failed: {\"errors\":[{\"code\":399,\"message\":\"Incorrect. Please try again. g;173702389163775059:-1737023891718:RCxMpaDzkjFs0VKtNQFAmmAH:8\"}]}\"]\r\n[\"⛔ Failed to login to Twitter. Retrying... (4 attempts left)\"]\r\n[\"⛔ Login attempt failed: Authentication error: DenyLoginSubtask\"]\r\n[\"⛔ Failed to login to Twitter. Retrying... (3 attempts left)\"]\r\n[\"⛔ Login attempt failed: Authentication error: DenyLoginSubtask\"]\r\n[\"⛔ Failed to login to Twitter. Retrying... (2 attempts left)\"]\r\n```\r\n\r\nThe application keeps retrying but fails each time with either Error 399 or DenyLoginSubtask.\r\n\r\nSteps to reproduce:\r\nDeploy Eliza OS on an AWS EC2 instance\r\nAttempt to log in to Twitter through the application\r\n\r\nExpected behavior:\r\nSuccessful Twitter authentication and login\r\nActual behavior:\r\nRepeated authentication failures with Error 399 and DenyLoginSubtask errors\r\n\r\nAdditional context:\r\nThe application works correctly on my local machine\r\nThis issue seems specific to the AWS EC2 environment\r\nAny assistance in resolving this authentication problem would be greatly appreciated.",
+    "state": "OPEN",
+    "createdAt": "2025-01-16T10:49:43Z",
+    "updatedAt": "2025-01-16T22:18:02Z",
+    "author": {
+      "login": "jeongtai",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/41337277?u=8cd0997c01cce2192df4a764957a8cd2579ce9f6&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB1o4rCg",
+        "name": "Need Feedback",
+        "color": "2365DD",
+        "description": ""
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6ar4IK",
+        "author": "github-actions",
+        "body": "Hello @jeongtai! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6asIrk",
+        "author": "JoeyKhd",
+        "body": "@jeongtai \n\nrefer to: https://github.com/elizaOS/eliza/issues/2225"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6ay2uI",
+        "author": "AIFlowML",
+        "body": "Hello @jeongtai I copy a solution for you. \n\nwhat u need to do is:\n1/ go to the agent's twitter -> settings -> security and account access -> security -> two-factor authentication\n2/ enable Authentication App\n3/ click the button under the QR code to view it as string (it's 16 uppercase letters and numbers) - this is your 2FA SECRET\n4/ complete the 2fa setup with an app like google authenticator\n5/ add the 2fa secret to your .env file like this:\nTWITTER_2FA_SECRET=\"YOUR_SECRET_CODE\"\n\nbut you should also try to manual login from the server to point your location there for the TOS."
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6ma9mS",
+    "number": 2360,
+    "title": "Can't start on macOS",
+    "body": "**Describe the bug**\r\n\r\nI followed the Quick Start but it doesn't work for me, I get the following error:\r\n\r\n```\r\nError: Could not locate the bindings file. Tried:\r\n → ./eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/build/better_sqlite3.node\r\n → ./eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/build/Debug/better_sqlite3.node\r\n → ./eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/build/Release/better_sqlite3.node\r\n → ./eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/out/Debug/better_sqlite3.node\r\n → ./eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/Debug/better_sqlite3.node\r\n → ./eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/out/Release/better_sqlite3.node\r\n → ./eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/Release/better_sqlite3.node\r\n → ./eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/build/default/better_sqlite3.node\r\n → ./eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/compiled/23.3.0/darwin/arm64/better_sqlite3.node\r\n → ./eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/addon-build/release/install-root/better_sqlite3.node\r\n → ./eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/addon-build/debug/install-root/better_sqlite3.node\r\n → ./eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/addon-build/default/install-root/better_sqlite3.node\r\n → ./eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/lib/binding/node-v131-darwin-arm64/better_sqlite3.node\r\n    at bindings (./eliza-starter/node_modules/.pnpm/bindings@1.5.0/node_modules/bindings/bindings.js:126:9)\r\n    at new Database (./eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/lib/database.js:48:64)\r\n    at initializeDatabase (file://./eliza-starter/src/database/index.ts:15:46)\r\n    at startAgent (file://./eliza-starter/src/index.ts:53:20)\r\n    at startAgents (file://./eliza-starter/src/index.ts:98:19)\r\n    at file://./eliza-starter/src/index.ts:124:1 {\r\n  tries: [\r\n    './eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/build/better_sqlite3.node',\r\n    './eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/build/Debug/better_sqlite3.node',\r\n    './eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/build/Release/better_sqlite3.node',\r\n    './eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/out/Debug/better_sqlite3.node',\r\n    './eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/Debug/better_sqlite3.node',\r\n    './eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/out/Release/better_sqlite3.node',\r\n    './eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/Release/better_sqlite3.node',\r\n    './eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/build/default/better_sqlite3.node',\r\n    './eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/compiled/23.3.0/darwin/arm64/better_sqlite3.node',\r\n    './eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/addon-build/release/install-root/better_sqlite3.node',\r\n    './eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/addon-build/debug/install-root/better_sqlite3.node',\r\n    './eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/addon-build/default/install-root/better_sqlite3.node',\r\n    './eliza-starter/node_modules/.pnpm/better-sqlite3@11.5.0/node_modules/better-sqlite3/lib/binding/node-v131-darwin-arm64/better_sqlite3.node'\r\n  ]\r\n}\r\n```\r\n\r\n**To Reproduce**\r\n\r\nFollow the Quick Start on macOS 15.2.\r\n\r\n**Expected behavior**\r\n\r\nThings to work nicely.\r\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-16T08:53:18Z",
+    "updatedAt": "2025-01-16T22:21:48Z",
+    "author": {
+      "login": "ziodave",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/11438?u=4941c623f4136c661d8ddfd05abc5cb9f4971639&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB1o4rCg",
+        "name": "Need Feedback",
+        "color": "2365DD",
+        "description": ""
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6aq0Ju",
+        "author": "github-actions",
+        "body": "Hello @ziodave! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6arMgo",
+        "author": "lincheoll",
+        "body": "you tried this??\r\n\r\n<img width=\"710\" alt=\"image\" src=\"https://github.com/user-attachments/assets/5ba3a8f1-57d2-4fa3-b3f0-637a7e0920cc\" />\r\n\r\n\r\n\r\n\r\n"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6arRbx",
+        "author": "ziodave",
+        "body": "Hello,\r\n\r\nYes, `pnpm rebuild better-sqlite3` doesn't yield anything. Removing `node_modules` and pruning the pnpm store doesn't solve.\r\n\r\nI am using:\r\n- node v23.3.0\r\n- pnpm v10.0.0 (using node v23.3.0)\r\n\r\nI am not getting any error about the `NODE_MODULE_VERSION`."
+      },
+      {
+        "id": "IC_kwDOMT5cIs6arW6Q",
+        "author": "bckcolin",
+        "body": "I have the same problem."
+      },
+      {
+        "id": "IC_kwDOMT5cIs6arztw",
+        "author": "bckcolin",
+        "body": "I try to run pnpm add better-sqlite3@latest --force and npm rebuild better-sqlite3. It is ok now."
+      },
+      {
+        "id": "IC_kwDOMT5cIs6ay4B3",
+        "author": "AIFlowML",
+        "body": "@ziodave @bckcolin \n\nI can run on apple silicon so we can debug this. \nbetter-sqlite library is sensitive to some injected permissions at the install. \nThe add + force rebuild can help for sure. \nLet me know if you solved."
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6mXmS0",
+    "number": 2344,
+    "title": "Tests for Solana Plugin",
+    "body": "**Is your feature request related to a problem? Please describe.**\r\n\r\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\r\nWe should add tests for solana plugin.\r\n**Describe the solution you'd like**\r\nSince we are improving project structure, we need to add tests for solana plugin located in __tests__ directory\r\n<!-- A clear and concise description of what you want to happen. -->\r\n\r\n**Describe alternatives you've considered**\r\n\r\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\r\n\r\n**Additional context**\r\n\r\n<!-- Add any other context or screenshots about the feature request here. -->\r\n",
+    "state": "CLOSED",
+    "createdAt": "2025-01-15T23:20:16Z",
+    "updatedAt": "2025-01-16T18:41:15Z",
+    "author": {
+      "login": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6mXbyq",
+    "number": 2343,
+    "title": "Running in cloud from docker image BUG",
+    "body": "I have following error when running pnpm start in cloud in my docker container, my .env has CACHE_STORE=database\r\nbut I also have URL for REDIS_URL\r\nWhat can be wrong?\r\n```\r\n [\"⛔ Error: Invalid cache store: database # Defaults to database. Other available cache store: redis and filesystem or required configuration missing.\"] \r\n\r\n [\"✓ Successfully connected to PostgreSQL database\"] \r\n\r\n ⛔ ERRORS\r\n   Error starting agents: \r\n   {} \r\n```\r\n\r\nalso the second error I have is\r\n```\r\n\r\n# pnpm build\r\n\r\n> eliza@ build /app\r\n> turbo run build --filter=!eliza-docs\r\n\r\nturbo 2.3.3\r\n\r\n  x No package found with name 'eliza-docs' in workspace\r\n\r\n ELIFECYCLE  Command failed with exit code 1.\r\n# \r\n```",
+    "state": "CLOSED",
+    "createdAt": "2025-01-15T23:00:02Z",
+    "updatedAt": "2025-01-16T14:29:20Z",
+    "author": {
+      "login": "WNUMIK",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/98759136?u=561d47e97462a38b01bc5a32595df4fb1f5e2fc7&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6anvmJ",
+        "author": "github-actions",
+        "body": "Hello @WNUMIK! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6an9jR",
+        "author": "Freytes",
+        "body": "What happens when you leave it blank?"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aoGtF",
+        "author": "Freytes",
+        "body": "@WNUMIK there was a fix release in development can you try that?"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aoebG",
+        "author": "HashWarlock",
+        "body": "Run `pnpm build-docker` the docs aren't included in the docker image so this is the error you see "
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aonNv",
+        "author": "WNUMIK",
+        "body": "I managed to run it but I have issue with env not sure why:\r\n\r\n```\r\n [\"⛔ Error: Telegram configuration validation failed:\\nTELEGRAM_BOT_TOKEN: Required\"] \r\n\r\n ⛔ ERRORS\r\n   Error starting agents: \r\n   {} \r\n\r\n```\r\nI added .env to docker-compose-docs.yaml before building image, shouldn't it resolve .env issue? ofc I have `TELEGRAM_BOT_TOKEN` in .env so..\r\n\r\n```\r\nservices:\r\n    docs:\r\n        build:\r\n            dockerfile: Dockerfile.docs\r\n            context: .\r\n            target: serve\r\n        ports:\r\n            - \"3000:3000\"\r\n        env_file:\r\n            - .env\r\n\r\n```\r\nalso this persists:\r\n\r\n```\r\n ⛔ ERRORS\r\n   Error starting agent for character Agent Bill the DeSci Guy: \r\n   {} \r\n\r\n [\"⛔ Error: Invalid cache store: database # Defaults to database. Other available cache store: redis and filesystem or required configuration missing.\"] \r\n\r\n ⛔ ERRORS\r\n   Error starting agents: \r\n   {} \r\n\r\n```"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6arkmW",
+        "author": "WNUMIK",
+        "body": "> I managed to run it but I have issue with env not sure why:\r\n> \r\n> ```\r\n>  [\"⛔ Error: Telegram configuration validation failed:\\nTELEGRAM_BOT_TOKEN: Required\"] \r\n> \r\n>  ⛔ ERRORS\r\n>    Error starting agents: \r\n>    {} \r\n> ```\r\n> \r\n> I added .env to docker-compose-docs.yaml before building image, shouldn't it resolve .env issue? ofc I have `TELEGRAM_BOT_TOKEN` in .env so..\r\n> \r\n> ```\r\n> services:\r\n>     docs:\r\n>         build:\r\n>             dockerfile: Dockerfile.docs\r\n>             context: .\r\n>             target: serve\r\n>         ports:\r\n>             - \"3000:3000\"\r\n>         env_file:\r\n>             - .env\r\n> ```\r\n> \r\n> also this persists:\r\n> \r\n> ```\r\n>  ⛔ ERRORS\r\n>    Error starting agent for character Agent Bill the DeSci Guy: \r\n>    {} \r\n> \r\n>  [\"⛔ Error: Invalid cache store: database # Defaults to database. Other available cache store: redis and filesystem or required configuration missing.\"] \r\n> \r\n>  ⛔ ERRORS\r\n>    Error starting agents: \r\n>    {} \r\n> ```\r\n\r\nSame error with `TELEGRAM_BOT_TOKEN: Required`\r\n\r\nfor this config:\r\n```\r\nservices:\r\n    eliza:\r\n        build:\r\n            context: .\r\n            dockerfile: Dockerfile\r\n        stdin_open: true\r\n        tty: true\r\n        volumes:\r\n            - /var/run/tappd.sock:/var/run/tappd.sock\r\n            - eliza:/app/packages/client-twitter/src/tweetcache\r\n            - eliza:/app/db.sqlite\r\n        environment:\r\n            - OPENAI_API_KEY=\r\n            - CACHE_STORE=database\r\n            - REDIS_URL=\r\n            - POSTGRES_URL=\r\n            - SERVER_PORT=3000\r\n            - TELEGRAM_BOT_TOKEN=\r\n            - COINMARKETCAP_API_KEY=\r\n            - GIPHY_API_KEY=\r\n            - COINGECKO_PRO_API_KEY=\r\n            - COINGECKO_API_KEY=\r\n            - AKASH_ENV=mainnet\r\n            - AKASH_NET=https://raw.githubusercontent.com/ovrclk/net/master/mainnet\r\n            - RPC_ENDPOINT=https://rpc.akashnet.net:443\r\n            - AKASH_GAS_PRICES=0.025uakt\r\n            - AKASH_GAS_ADJUSTMENT=1.5\r\n            - AKASH_KEYRING_BACKEND=os\r\n            - AKASH_FROM=default\r\n            - AKASH_FEES=20000uakt\r\n            - AKASH_DEPOSIT=500000uakt\r\n            - AKASH_PRICING_API_URL=https://console-api.akash.network/v1/pricing\r\n            - AKASH_DEFAULT_CPU=1000\r\n            - AKASH_DEFAULT_MEMORY=1000000000\r\n            - AKASH_DEFAULT_STORAGE=1000000000\r\n            - AKASH_SDL=example.sdl.yml\r\n            - AKASH_CLOSE_DEP=closeAll\r\n            - AKASH_CLOSE_DSEQ=19729929\r\n            - AKASH_PROVIDER_INFO=akash1ccktptfkvdc67msasmesuy5m7gpc76z75kukpz\r\n            - AKASH_DEP_STATUS=dseq\r\n            - AKASH_DEP_DSEQ=19729929\r\n            - AKASH_GAS_OPERATION=close\r\n            - AKASH_GAS_DSEQ=19729929\r\n            - AKASH_MANIFEST_MODE=auto\r\n            - AKASH_MANIFEST_VALIDATION_LEVEL=strict\r\n        ports:\r\n            - \"3000:3000\"\r\n            - \"5173:5173\"\r\n        restart: always\r\n\r\nvolumes:\r\n    eliza:\r\n```\r\n"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6arvSs",
+        "author": "JoeyKhd",
+        "body": "@WNUMIK \n\n`I added .env to docker-compose-docs.yaml `\n\nMake sure you are using docker-compose.yaml and in the given example, `- TELEGRAM_BOT_TOKEN=` is empty. It seems you are mixing up the docs' Dockerfile with the normal one\n"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6arzBy",
+        "author": "WNUMIK",
+        "body": "> @WNUMIK\r\n> \r\n> `I added .env to docker-compose-docs.yaml `\r\n> \r\n> Make sure you are using docker-compose.yaml and in the given example, `- TELEGRAM_BOT_TOKEN=` is empty. It seems you are mixing up the docs' Dockerfile with the normal one\r\n\r\nCan you describe how the process looks?\r\n\r\nHere is mine. build using dockerfile, push to docker hub, pull on AWS from docker hub, create container, go in container `pnpm install --no-frozen-lockfile` `pnpm build-docker` `pnpm start`\r\n\r\nI'm newbie to Docker so having hard time with it right now\r\n"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6ar2qb",
+        "author": "TbLtzk",
+        "body": "I also have the error saying `No package found with name 'eliza-docs'`\r\nI do not want to spam this issue. Should I open a separate issue for that? For now, I solved the problem by removing the `--filter=!eliza-docs` param from the turbo build command."
+      },
+      {
+        "id": "IC_kwDOMT5cIs6ar23s",
+        "author": "WNUMIK",
+        "body": "> I also have the error saying `No package found with name 'eliza-docs'` I do not want to spam this issue. Should I open a separate issue for that? For now, I solved the problem by removing the `--filter=!eliza-docs` param from the turbo build command.\r\n\r\nuse  `pnpm build-docker`"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6asEXZ",
+        "author": "TbLtzk",
+        "body": "nvm, I was operating on an old fork of this repo. I still have issues with building via docker, but for now, I try to resolve them on my own. Sorry for bothering you"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6as55Q",
+        "author": "TbLtzk",
+        "body": "solved it on my local machine. I'm on a windows OS and it was a matter of line endings. Running `git config --local core.autocrlf false` keeps the `LF` ending from the repo. After that, the `docker-compose build` went smoothly to the end."
+      },
+      {
+        "id": "IC_kwDOMT5cIs6atCAv",
+        "author": "WNUMIK",
+        "body": "> compose\n\nyou did a deploy to AWS?\n\ncause this is the place where I have troubles"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6aufob",
+        "author": "WNUMIK",
+        "body": "nvm im dumb"
+      }
+    ]
+  }
+]

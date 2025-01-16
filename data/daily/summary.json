@@ -1,64 +1,76 @@
 {
-  "title": "elizaos Eliza (2025-01-15)",
+  "title": "elizaos Eliza (2025-01-16)",
   "version": "",
-  "overview": "Development focused on new features (Onchain Agent Transformer - transform any Eliza agents into unstoppable Solidity smart contracts deployed on 10+ blockchains), 2 bug fixes. with 35 contributors merging 4 PRs. Major work included various improvements.",
+  "overview": "Development focused on package improvements (adding tests for plugin-solana), new features (adding tests for plugin-solana), 8 bug fixes. with 47 contributors merging 21 PRs. Major work included odilitime is currently working on merging pull requests related to code fixes and improvements in various areas such as packages, documentation, and client features.",
   "metrics": {
-    "contributors": 35,
-    "merged_prs": 4,
-    "new_issues": 8,
-    "lines_changed": 122
+    "contributors": 47,
+    "merged_prs": 21,
+    "new_issues": 10,
+    "lines_changed": 7212
   },
   "changes": {
     "features": [
-      "Onchain Agent Transformer - transform any Eliza agents into unstoppable Solidity smart contracts deployed on 10+ blockchains"
+      "adding tests for plugin-solana",
+      "add safe_mode (& cfg_scale) for venice image generation",
+      "(ragKnowledge) Enhance RAG knowledge handling"
     ],
     "fixes": [
-      "correct OPENROUTER_API_KEY env in config",
-      "farcaster memory"
+      "lint errors",
+      "docker images+compose and broken documentation",
+      "Prevent app crash when REMOTE_CHARACTER_URLS is undefined"
     ],
-    "chores": []
+    "chores": [
+      "lint",
+      "Prep 0.1.9-alpha.1",
+      "improve descriptions"
+    ]
   },
   "areas": [
     {
       "name": "packages",
-      "files": 5,
-      "additions": 107,
-      "deletions": 3
+      "files": 142,
+      "additions": 1614,
+      "deletions": 809
     },
     {
       "name": "root",
-      "files": 2,
-      "additions": 6,
-      "deletions": 4
+      "files": 10,
+      "additions": 2244,
+      "deletions": 2451
     },
     {
       "name": "agent",
-      "files": 1,
-      "additions": 1,
-      "deletions": 1
+      "files": 6,
+      "additions": 23,
+      "deletions": 16
     }
   ],
-  "issues_summary": "working on 4 bugs including 'Duplicate responses to an action', 'Issue running multiple characters with API key' and implementing 3 feature requests including 'Fix: [plugin-chainbase] Enhance Query Text Extraction and Validation for QUERY_BLOCKCHAIN_DATA Action', 'Feature - ragKnowledge enhancements (double byte support, caching, load from directories)'",
+  "issues_summary": "working on 5 bugs including 'unset variables docker compose bug', 'Running in cloud from docker image BUG' and implementing 2 feature requests including 'Add tests for slack client. Move and update existing tests to __tests__ directory', 'Tests for Solana Plugin'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "wtfsayo",
-      "summary": "wtfsayo is primarily working on updating various TypeScript files in the project, including tokenProvider",
-      "areas": []
-    },
-    {
-      "name": "eternal-ai-org",
-      "summary": "eternal-ai-org is currently focusing on merging branches and developing support for the eternalai provider to obtain onchain system prompts",
+      "name": "odilitime",
+      "summary": "odilitime is currently working on merging pull requests related to code fixes and improvements in various areas such as packages, documentation, and client features",
       "areas": [
-        "packages",
-        ".env.example"
+        "docs",
+        "agent",
+        "lerna.json"
       ]
     },
     {
-      "name": "everimbaq",
-      "summary": "everimbaq is currently working on fixing the OPENROUTER_API_KEY environment variable in the agent configuration",
+      "name": "shakkernerd",
+      "summary": "shakkernerd is currently working on merging pull requests related to cleanup tasks, feature enhancements, and fixes in various branches of the repository",
       "areas": [
-        "agent"
+        "packages"
+      ]
+    },
+    {
+      "name": "JoeyKhd",
+      "summary": "JoeyKhd is currently working on improving the logger and S3 flexibility in the codebase",
+      "areas": [
+        "Dockerfile",
+        "docs",
+        ".dockerignore"
       ]
     }
   ]
