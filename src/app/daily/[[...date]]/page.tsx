@@ -24,7 +24,7 @@ export default async function DailySummaryPage({ params }: PageProps) {
   const { summary, navigation } = await getDailySummaryData(date?.[0]);
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8 px-6 md:px-8">
       <div className="max-w-4xl mx-auto">
         <DateNavigation {...navigation} />
         <DailySummaryContent data={summary} />
