@@ -5,7 +5,7 @@ import { SignInButton } from "@/components/SignInButton";
 
 export default function AuthButtonWrapper() {
   return (
-    <SessionProvider>
+    <SessionProvider basePath="https://elizaos-github-io.vercel.app/api/auth">
       <SignInButton /> {/* Only wrap the SignInButton with SessionProvider */}
     </SessionProvider>
   );
