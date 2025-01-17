@@ -1,5 +1,49 @@
 [
   {
+    "id": "I_kwDOMT5cIs6mrkZM",
+    "number": 2469,
+    "title": "tests for redis adapter",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nChanging project structure, we need to cover and add tests for redis adapter.\n**Describe the solution you'd like**\nTests for redis adapter are configured and added to __tests__ directory.\n<!-- A clear and concise description of what you want to happen. -->\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-17T22:56:02Z",
+    "updatedAt": "2025-01-17T22:56:02Z",
+    "author": {
+      "login": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6mre-N",
+    "number": 2467,
+    "title": "tests for database adapters: sqlite and supabase",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nSince we are changing project structure, we should cover database adapters with tests in __tests__ directory.\n**Describe the solution you'd like**\nAdd tests configuration and tests for: \n- supabase adapter\n- sqlite adapter\n<!-- A clear and concise description of what you want to happen. -->\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-17T22:38:07Z",
+    "updatedAt": "2025-01-17T22:38:07Z",
+    "author": {
+      "login": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
     "id": "I_kwDOMT5cIs6mraeE",
     "number": 2466,
     "title": "telegram client polling is incompatible with blue-green deployments",
@@ -304,7 +348,7 @@
     "body": "**Describe the bug**\n\nI am running latest version Eliza v0.1.8+build.1 with my own character using anthropic api and twitter client. \n\n**To Reproduce**\n\n    \"clients\": [\"twitter\"],\n    \"modelProvider\": \"anthropic\",\n    \"plugins\": [],\n    \"settings\": {\n        \"ragKnowledge\": false\n    },\n\nsetup .env with X and anthropic credentials.\n\n\n**Expected behavior**\n\ncreate tweet and send it....\n\n\n\n**Screenshots**\n\n\n ⛔ ERRORS\n   API Response: \n   <html>\n  <head><title>504 Gateway Time-out</title></head>\n  <body>\n  <center><h1>504 Gateway Time-out</h1></center>\n  </body>\n  </html>\n   \n\n ⛔ ERRORS\n   Full error details: \n   {} \n\n ⛔ ERRORS\n   Error generating new tweet: \n   {} \n\n\n**Additional context**\n\nSo the API Response I guess it comes from Anthropic API, but this is happening all the time... does that mean that Anthropic is too busy or is there a way to improve this? \n\nIs it just me? I don't find much info about that out there...",
     "state": "OPEN",
     "createdAt": "2025-01-17T04:10:27Z",
-    "updatedAt": "2025-01-17T16:14:03Z",
+    "updatedAt": "2025-01-17T22:48:31Z",
     "author": {
       "login": "amosin",
       "avatarUrl": "https://avatars.githubusercontent.com/u/3101055?u=62663abc2a087f162ed5d4eaa874abb41a9eae1f&v=4"
@@ -332,6 +376,16 @@
         "id": "IC_kwDOMT5cIs6a5Quu",
         "author": "amosin",
         "body": "> Seems like an issue related to Anthropic being down for a little bit. This issue is not related to Eliza.\n\nthat's what I think too, but that happens too often.. Probably need to look for alternatives."
+      },
+      {
+        "id": "IC_kwDOMT5cIs6a7o7B",
+        "author": "amosin",
+        "body": "and the problem is... there is no retry, it fail and it says tweet already responded... so it never responds.  I would say this is a bug.\n\n\n ◎ LOGS\n   Processing Tweet:  \n   1880384084263989546 \n\n ⛔ ERRORS\n   API Response: \n   <html>\n  <head><title>504 Gateway Time-out</title></head>\n  <body>\n  <center><h1>504 Gateway Time-out</h1></center>\n  </body>\n  </html>\n   \n\n ⛔ ERRORS\n   Full error details: \n   {} \n\n ⛔ ERRORS\n   Error handling Twitter interactions: \n   {} \n\n [\"◎ Checking Twitter interactions\"] \n\n ◎ LOGS\n   Completed checking mentioned tweets: \n   17 \n\n [\"◎ No target users configured, processing only mentions\"] \n\n [\"◎ Already responded to tweet 1880384084263989546, skipping\"] "
+      },
+      {
+        "id": "IC_kwDOMT5cIs6a7rOW",
+        "author": "amosin",
+        "body": "tried Grok, and got same issue. Maybe something with my Character. "
       }
     ]
   },
@@ -386,56 +440,6 @@
         "id": "IC_kwDOMT5cIs6aztc7",
         "author": "github-actions",
         "body": "Hello @simoleoita! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6miArY",
-    "number": 2406,
-    "title": "Add tests in __tests__ for github client",
-    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nSince we are changing project structure, we need to add tests for github client.\n**Describe the solution you'd like**\nTests for github client are added to packages/client-github/__tests__\n<!-- A clear and concise description of what you want to happen. -->\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
-    "state": "CLOSED",
-    "createdAt": "2025-01-16T22:46:04Z",
-    "updatedAt": "2025-01-16T23:04:19Z",
-    "author": {
-      "login": "ai16z-demirix",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
-        "name": "enhancement",
-        "color": "a2eeef",
-        "description": "New feature or request"
-      }
-    ],
-    "comments": []
-  },
-  {
-    "id": "I_kwDOMT5cIs6mh_TZ",
-    "number": 2405,
-    "title": "[plugin-tee-log] Error: Invalid TEE configuration when enabling tee-log",
-    "body": "**Describe the bug**\n\nWhen I enable tee-log plugin with below values in my .env, I get an error saying `Invalid TEE configuration`\n\n```env\nTEE_MODE=LOCAL\nWALLET_SECRET_SALT=my_wallet_secret_salt             \nENABLE_TEE_LOG=true \n```\n\n**To Reproduce**\n\nOn local dev, set the values above (like mentioned in the documentation) and launch the agent\n\n**Expected behavior**\n\nThere is no invalid TEE configuration error\n\n**Screenshots**\n\n![Image](https://github.com/user-attachments/assets/5a8013a6-2aff-45fb-a780-b9eec88e11e3)\n\n**Additional context**\n\nI think the root cause is located at https://github.com/elizaOS/eliza/blob/main/packages/plugin-tee-log/src/services/teeLogService.ts#L50  . The code below does not make sense as the expression `!teeMode` will always its value equal to `false`, but I do not know if it was made on purpose and why. \n\n```ts\nconst useTdxDstack = !teeMode && teeMode !== TEEMode.OFF && walletSecretSalt;\n```\n",
-    "state": "OPEN",
-    "createdAt": "2025-01-16T22:41:00Z",
-    "updatedAt": "2025-01-17T00:20:23Z",
-    "author": {
-      "login": "bundinho",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/8318762?u=610af9286ca8d85b5d3e7be15fe069597b1beddf&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6ay-YD",
-        "author": "github-actions",
-        "body": "Hello @bundinho! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
       }
     ]
   }

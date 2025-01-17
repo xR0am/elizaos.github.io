@@ -2,7 +2,7 @@
   {
     "contributor": "wtfsayo",
     "score": 79,
-    "summary": "wtfsayo is primarily working on fixing spelling issues, setting OpenAI as the default provider for characters, and resolving conflicts in the quickstart.md file. They have also addressed a bug where the OpenAI provider was being overwritten by LLAMA_LOCAL during the `pnpm start` command.",
+    "summary": "wtfsayo is currently working on fixing spelling issues, setting OpenAI as the default provider for characters, and resolving conflicts in the quickstart.md file. They have also addressed a bug where the OpenAI provider was being overwritten by LLAMA_LOCAL during the `pnpm start` process.",
     "avatar_url": "https://avatars.githubusercontent.com/u/82053242?u=45a31bd14d91cac88efa293594f36e989024adf0&v=4",
     "activity": {
       "code": {
@@ -220,7 +220,7 @@
   {
     "contributor": "twilwa",
     "score": 57,
-    "summary": "twilwa is currently working on dockerizing smoke tests, adding a workflow to block minified JS, and managing code changes in the .github directory on GitHub. They have successfully merged all three pull requests related to these tasks.",
+    "summary": "twilwa is currently working on dockerizing smoke tests, adding a workflow to block minified JS, and managing code changes in the .github directory. They have successfully merged all three pull requests related to these tasks.",
     "avatar_url": "https://avatars.githubusercontent.com/u/111034762?u=0d3eed7c5f6e6fd4ddee24801aae9f88b0330380&v=4",
     "activity": {
       "code": {
@@ -352,7 +352,7 @@
   {
     "contributor": "tcm390",
     "score": 55,
-    "summary": "tcm390 is currently working on fixing spelling and typo issues in the codebase, as well as resolving conflicts and improving code quality. They have made significant contributions to the agent and packages areas, with a total of 6 commits and 2 merged pull requests.",
+    "summary": "tcm390 is currently working on fixing spelling and typo errors in the codebase, as well as addressing specific issues related to Tweet ID parameters and provider settings. Their recent contributions include merging pull requests and making code changes in the 'agent' and 'packages' code areas.",
     "avatar_url": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4",
     "activity": {
       "code": {
@@ -522,13 +522,13 @@
   },
   {
     "contributor": "ai16z-demirix",
-    "score": 43,
-    "summary": "ai16z-demirix is currently adding tests for the Instagram and GitHub clients in the 'packages' code area. They have opened 2 issues, made 2 commits, and had 2 pull requests merged, resulting in a net code change of +358/-4. The work is focused on enhancing test coverage for the clients.",
+    "score": 36,
+    "summary": "ai16z-demirix is currently working on adding test configurations and tests for various database adapters, including Redis, SQLite, and Supabase. They have also been enhancing the Instagram client by adding tests for it, with a total of 3 PRs, 3 issues, and 1 commit in the packages code area.",
     "avatar_url": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4",
     "activity": {
       "code": {
-        "total_commits": 2,
-        "total_prs": 2,
+        "total_commits": 1,
+        "total_prs": 3,
         "commits": [
           {
             "sha": "5a85d7fd2742707f3c0ea2d20f0f3184213470b9",
@@ -537,17 +537,96 @@
             "additions": 215,
             "deletions": 2,
             "changed_files": 3
-          },
-          {
-            "sha": "b614a376828b3ad59a981c4e77d4419fb612999c",
-            "message": "feat: adding tests for github client",
-            "created_at": "2025-01-16T22:45:02Z",
-            "additions": 143,
-            "deletions": 2,
-            "changed_files": 3
           }
         ],
         "pull_requests": [
+          {
+            "number": 2470,
+            "title": "test: adding test configuration and tests for redis adapter",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2025-01-17T22:57:08Z",
+            "updated_at": "2025-01-17T22:57:52Z",
+            "body": "<!-- Use this template by filling in information and copying and pasting relevant items out of the HTML comments. -->\r\n\r\n# Relates to\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\nhttps://github.com/elizaOS/eliza/issues/2469\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks and what could be affected.\r\n-->\r\nLow: adding tests and test configuration.\r\n# Background\r\n\r\n## What does this PR do?\r\nhttps://github.com/elizaOS/eliza/issues/2469\r\n## What kind of change is this?\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\nFeatures/Tests\r\n<!-- This \"Why\" section is most relevant if there are no linked issues explaining why. If there is a related issue, it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\nhttps://github.com/elizaOS/eliza/issues/2469\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf documentation change is needed: I have updated the documentation accordingly.\r\n-->\r\nNone\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\npackages/adapter-redis\r\n## Detailed testing steps\r\npnpm install in root of the directory\r\nnavigate to desired directory to see tests\r\nrun pnpm test to run tests\r\n<!--\r\nNone: Automated tests are acceptable.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deployment, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste command line output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0Please specify deploy instructions if there is something more than the automated steps. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for the contributor role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "packages/adapter-redis/__tests__/redis-adapter.test.ts",
+                "additions": 183,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-redis/package.json",
+                "additions": 5,
+                "deletions": 2
+              },
+              {
+                "path": "packages/adapter-redis/vitest.config.ts",
+                "additions": 8,
+                "deletions": 0
+              }
+            ],
+            "reviews": [],
+            "comments": [
+              {
+                "author": "coderabbitai",
+                "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- This is an auto-generated comment: failure by coderabbit.ai -->\n\n> [!CAUTION]\n> ## Review failed\n> \n> The head commit changed during the review from 0fa5c0e468f38278dbf56216a5c32ca05c6ac88d to 90f9445e154fe90838f7ea2f24d359a3493739a2.\n\n<!-- end of auto-generated comment: failure by coderabbit.ai -->\n\n<!-- tips_start -->\n\n---\n\n\n\n<details>\n<summary>\ud83e\udea7 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR. ([Beta](https://docs.coderabbit.ai/early-access#beta))\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
+              }
+            ]
+          },
+          {
+            "number": 2468,
+            "title": "tests for db adapters: supabase and sqlite",
+            "state": "OPEN",
+            "merged": false,
+            "created_at": "2025-01-17T22:39:32Z",
+            "updated_at": "2025-01-17T22:43:25Z",
+            "body": "<!-- Use this template by filling in information and copying and pasting relevant items out of the HTML comments. -->\r\n\r\n# Relates to\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\nhttps://github.com/elizaOS/eliza/issues/2467\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks and what could be affected.\r\n-->\r\nLow: adding tests\r\n# Background\r\n\r\n## What does this PR do?\r\nhttps://github.com/elizaOS/eliza/issues/2467\r\n## What kind of change is this?\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\nfeatures/tests\r\n<!-- This \"Why\" section is most relevant if there are no linked issues explaining why. If there is a related issue, it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf documentation change is needed: I have updated the documentation accordingly.\r\n-->\r\nNone\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\npackages/adapter-sqlite\r\npackages/adapter-supabase\r\n## Detailed testing steps\r\npnpm install in root\r\nnavigate to desired directories to see tests\r\nrun pnpm test to run tests\r\n<!--\r\nNone: Automated tests are acceptable.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deployment, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste command line output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0Please specify deploy instructions if there is something more than the automated steps. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for the contributor role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
+            "files": [
+              {
+                "path": "packages/adapter-sqlite/__tests__/sqlite-adapter.test.ts",
+                "additions": 171,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-sqlite/package.json",
+                "additions": 6,
+                "deletions": 2
+              },
+              {
+                "path": "packages/adapter-sqlite/vitest.config.ts",
+                "additions": 8,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-supabase/__tests__/supabase-adapter.test.ts",
+                "additions": 239,
+                "deletions": 0
+              },
+              {
+                "path": "packages/adapter-supabase/package.json",
+                "additions": 6,
+                "deletions": 2
+              },
+              {
+                "path": "packages/adapter-supabase/vitest.config.ts",
+                "additions": 8,
+                "deletions": 0
+              }
+            ],
+            "reviews": [
+              {
+                "author": "coderabbitai",
+                "state": "COMMENTED",
+                "body": "**Actionable comments posted: 0**\n\n<details>\n<summary>\ud83e\uddf9 Nitpick comments (7)</summary><blockquote>\n\n<details>\n<summary>packages/adapter-sqlite/__tests__/sqlite-adapter.test.ts (1)</summary><blockquote>\n\n`8-16`: **Consider using a dedicated mock file for elizaLogger.**\n\nThe inline mock could be moved to a separate mock file to improve maintainability.\n\n</blockquote></details>\n<details>\n<summary>packages/adapter-supabase/package.json (1)</summary><blockquote>\n\n`26-29`: **Lock the Vitest dependency versions.**\n\nUsing caret ranges (`^`) for test dependencies can lead to inconsistent test behavior. Consider using fixed versions.\n\n```diff\n-        \"@vitest/coverage-v8\": \"^3.0.2\",\n-        \"@vitest/ui\": \"^0.34.7\",\n-        \"vitest\": \"^3.0.2\"\n+        \"@vitest/coverage-v8\": \"3.0.2\",\n+        \"@vitest/ui\": \"0.34.7\",\n+        \"vitest\": \"3.0.2\"\n```\n\n</blockquote></details>\n<details>\n<summary>packages/adapter-sqlite/package.json (1)</summary><blockquote>\n\n`29-31`: **Lock the Vitest dependency versions.**\n\nSimilar to the Supabase adapter, use fixed versions for test dependencies.\n\n```diff\n-        \"vitest\": \"^3.0.2\",\n-        \"@vitest/coverage-v8\": \"^3.0.2\",\n-        \"@vitest/ui\": \"^3.0.2\"\n+        \"vitest\": \"3.0.2\",\n+        \"@vitest/coverage-v8\": \"3.0.2\",\n+        \"@vitest/ui\": \"0.34.7\"\n```\n\n</blockquote></details>\n<details>\n<summary>packages/adapter-supabase/__tests__/supabase-adapter.test.ts (4)</summary><blockquote>\n\n`10-11`: **Consider using a more type-safe approach instead of type assertion.**\n\nReplace `...actual as any` with proper type definitions to maintain type safety.\n\n```diff\n- ...actual as any,\n+ ...(actual as typeof import('@elizaos/core')),\n```\n\n---\n\n`46-47`: **Avoid @ts-ignore by properly typing the mock.**\n\nInstead of using @ts-ignore, consider defining proper types for the mock implementation.\n\n```diff\n- // @ts-ignore - we're mocking the implementation\n- adapter.supabase = mockSupabase;\n+ (adapter as any).supabase = mockSupabase; // TODO: Consider exposing a protected property for testing\n```\n\n---\n\n`103-141`: **Add test for empty participants array.**\n\nConsider adding a test case where the query returns an empty array to ensure proper handling of users with no participants.\n\n```typescript\nit('should return empty array when user has no participants', async () => {\n    mockSupabase.eq.mockResolvedValueOnce({ \n        data: [],\n        error: null \n    });\n\n    const userId = 'user-no-participants' as UUID;\n    const result = await adapter.getParticipantsForAccount(userId);\n    \n    expect(result).toEqual([]);\n});\n```\n\n---\n\n`223-225`: **Enhance error message with more details.**\n\nThe current error message could be more informative by including the error details.\n\n```diff\n- .toThrow('Failed to set participant user state');\n+ .toThrow(`Failed to set participant user state: ${error.message}`);\n```\n\n</blockquote></details>\n\n</blockquote></details>\n\n<details>\n<summary>\ud83d\udcdc Review details</summary>\n\n**Configuration used: CodeRabbit UI**\n**Review profile: CHILL**\n**Plan: Pro**\n\n<details>\n<summary>\ud83d\udce5 Commits</summary>\n\nReviewing files that changed from the base of the PR and between d666e485b96bba3315b29bceb97c8be0c4061dcd and e79b0f3ea1eca29dd5151fb952bab3840a089e84.\n\n</details>\n\n<details>\n<summary>\ud83d\udcd2 Files selected for processing (6)</summary>\n\n* `packages/adapter-sqlite/__tests__/sqlite-adapter.test.ts` (1 hunks)\n* `packages/adapter-sqlite/package.json` (1 hunks)\n* `packages/adapter-sqlite/vitest.config.ts` (1 hunks)\n* `packages/adapter-supabase/__tests__/supabase-adapter.test.ts` (1 hunks)\n* `packages/adapter-supabase/package.json` (1 hunks)\n* `packages/adapter-supabase/vitest.config.ts` (1 hunks)\n\n</details>\n\n<details>\n<summary>\u2705 Files skipped from review due to trivial changes (2)</summary>\n\n* packages/adapter-supabase/vitest.config.ts\n* packages/adapter-sqlite/vitest.config.ts\n\n</details>\n\n<details>\n<summary>\ud83d\udd07 Additional comments (4)</summary><blockquote>\n\n<details>\n<summary>packages/adapter-sqlite/__tests__/sqlite-adapter.test.ts (2)</summary>\n\n`72-99`: **Add edge case tests for getParticipantsForAccount.**\n\nThe current tests cover basic scenarios but miss important edge cases:\n- Invalid user ID\n- Database errors\n\n---\n\n`159-170`: **Add error handling tests for init and close methods.**\n\nThe current tests only verify successful scenarios. Add tests for:\n- Database initialization failures\n- Connection closure errors\n\n</details>\n<details>\n<summary>packages/adapter-supabase/__tests__/supabase-adapter.test.ts (2)</summary>\n\n`56-101`: **Well-structured test suite for getRoom!**\n\nGood coverage of success, failure, and error cases with proper assertions.\n\n---\n\n`143-191`: **Excellent test coverage for getParticipantUserState!**\n\nGood handling of mock chains and verification of multiple eq calls.\n\n</details>\n\n</blockquote></details>\n\n</details>\n\n<!-- This is an auto-generated comment by CodeRabbit for review status -->"
+              }
+            ],
+            "comments": [
+              {
+                "author": "coderabbitai",
+                "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n\n\n<!-- walkthrough_start -->\n\n<details>\n<summary>\ud83d\udcdd Walkthrough</summary>\n\n## Walkthrough\n\nThe pull request introduces comprehensive testing infrastructure for SQLite and Supabase database adapters using Vitest. It adds test suites for `SqliteDatabaseAdapter` and `SupabaseDatabaseAdapter`, covering methods like room retrieval, participant management, and user state handling. The changes include new configuration files, package scripts, and detailed unit tests to ensure robust functionality across different database adapter implementations.\n\n## Changes\n\n| File | Change Summary |\n|------|----------------|\n| `packages/adapter-sqlite/__tests__/sqlite-adapter.test.ts` | Added comprehensive Vitest test suite for `SqliteDatabaseAdapter` covering room, participant, and user state methods |\n| `packages/adapter-sqlite/package.json` | Added Vitest-related dev dependencies and testing scripts |\n| `packages/adapter-sqlite/vitest.config.ts` | Created Vitest configuration file with node environment settings |\n| `packages/adapter-supabase/__tests__/supabase-adapter.test.ts` | Added comprehensive Vitest test suite for `SupabaseDatabaseAdapter` with method-specific tests |\n| `packages/adapter-supabase/package.json` | Added Vitest-related dev dependencies and testing scripts |\n| `packages/adapter-supabase/vitest.config.ts` | Created Vitest configuration file with node environment settings |\n\n## Possibly related issues\n\n- `elizaOS/eliza#2467`: Directly addresses the issue's request for adding tests to SQLite and Supabase database adapters, providing comprehensive test coverage in the `__tests__` directory\n\n</details>\n\n<!-- walkthrough_end -->\n<!-- internal state start -->\n\n\n<!-- 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 -->\n\n<!-- internal state end -->\n<!-- finishing_touch_checkbox_start -->\n\n## Finishing Touches\n\n- [ ] <!-- {\"checkboxId\": \"7962f53c-55bc-4827-bfbf-6a18da830691\"} --> \ud83d\udcdd Generate Docstrings (Beta)\n\n<!-- finishing_touch_checkbox_end -->\n<!-- tips_start -->\n\n---\n\n\n\n<details>\n<summary>\ud83e\udea7 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR. ([Beta](https://docs.coderabbit.ai/early-access#beta))\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
+              }
+            ]
+          },
           {
             "number": 2454,
             "title": "feat: adding tests for instagram client",
@@ -591,53 +670,19 @@
                 "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n\n\n<!-- walkthrough_start -->\n\n<details>\n<summary>\ud83d\udcdd Walkthrough</summary>\n\n## Walkthrough\n\nThe pull request introduces comprehensive testing for the Instagram client package using Vitest. The changes include adding test suites for environment configuration validation and the `InstagramClientInterface`, along with updating the package configuration to support testing. These tests cover various scenarios such as configuration validation, service initialization, error handling, and different runtime modes.\n\n## Changes\n\n| File | Change Summary |\n|------|----------------|\n| `packages/client-instagram/__tests__/environment.test.ts` | Added test suite for Instagram environment configuration validation, including tests for valid configs, optional fields, username format, and missing required fields |\n| `packages/client-instagram/__tests__/index.test.ts` | Implemented unit tests for `InstagramClientInterface`, covering startup, dry-run mode, error handling, and graceful shutdown |\n| `packages/client-instagram/package.json` | Added Vitest dependency and test scripts for running and watching tests |\n\n</details>\n\n<!-- walkthrough_end -->\n<!-- internal state start -->\n\n\n<!-- FAHghAtBAEAqAWBLAztF0CGA7TBXALgPYQDmAplmQE4b5kAm0AxoQLasX4Bc0ADldEIAjAFZkm+RADcyqIQE9mhetQxChifADoMiaFAB8wY+CjGAxOegAFAErQAyrnYYq84wjJ9cAGx/QqMgBHXFl8aEl8HwZoACIAMzJaHgx6ekQsEgiw1HjCAQzkfAwSGlZmH0ROWOgAdwxUZFwhVk06RgUI+C9cZGpMRABGADYALwgVVqpEAA9MLEZ0RBUsSXiqxgabeyxnIX6AJgAWAFYjrThuvmnWV0VhMQlpL0J4rvQ7NFQiNFWqZVwTC8dCKuXyXS8AEksEUSmUKlVVnVNEgcPgrvxCI9tNBIeF0JUsABrGI/FBNLy7Vj7ATHE4AZkEOAA4poABLNAA0dSQTHg10IUmWskwaU0iEIWAw/hYqzIM3CeQE6K8fOw5DkZAyWVuKi0HiuUvwuECgjeKuY8HVXnQTFoZBI+UQoxiWww0EStBNZG5yF44kQ6ztfkUeSYvW1TOyRW1F08ARQRNQDWQhCYiHtjFqKPeybFkklmFNKjIHEYPkItW5W00vykhB8Mm+V0QrF40Q4q1oEpwr2j+FQ2fRhAImB8dGmmWg8pQkin8VwWCekul4tkcauGAI8HBVtQGXSdvaXVo0CwhGg9DTzk43cLasyItclPEsmQd0wyYCsl84T76I+Wx9WAAAxcEQTnLILQfDVuUCIUyFqahk2LRBAgkUkL1hKh8TRK4AANeAwJgiRKWQAHomEqTgIEKYpSgwVh8MvNDxCINwNy8dC2E7FRGCKMheH3JcfFwFQAkXLBI0IrBeHKOjpR8ZiMghAJCEIcJ0nQ9j5G5KUhRIbspx+C0/QDdYYi0tj8l0+ZGHlcQCGk3hZPKCDmJ+GRpniRQLQXJcCylSp8Huc1DUQ/tkGAgB5LzFO5ADUE+XRWG+C8KCtJdgSuQJKjURBgtC1ToVhBjyioxFwk6CgmknKCrXxfE82CXB7R8XywgYBLukCTpZXwaYhCc4yLwtQVVD8aAQlXEKzVUlgVCEBoyE47ZmGwaB9kwJggWQPpNnCPyGwrbMpwAVVsAAZHgAG14HwfAhK4cjyJIFFmi0FhWHIshKlGDBoocH6/owcjeF8HxyLpI4AF0AAp7se5Bnte96hE+thgedAGgd+7GwYhqHTiOABKYDDBMSAYAoRg+y3IhSAoVRjy+ztuGuQRRDY545EUBbVHUTQdD0CnTBgBAlmTHB6eIchKBoFmeM4HgaFqaAmhcNxNr55QBY0bRdH0CAjEpsxgCIkiyOQSjqNWWiYXospyIAfWdiDkFdn6sCFf4sDZrQIID5HgFiUPgEsaAAEFIUZ+XM3V5xbi1vsYNkA1VUyjVfgGgEgUwM8IoghPNC8JVoCkVd6CMrISsdxjp29tDJTZpQsHWEgTTvHAI2Mq4ADUS6KftI3iMpEPyIlVqLpoS9+KixJFPo4v8Iu7T6ZtTz5cQiVU/zlyCzQiotfCK8qKu6FruFGIAYUldvmL3wKLmMQYLgAKjf2Awmga/luQD+uDAGgMAmAH8+6Vx/nfRAHcFY9gAXAHIJ5wjuhYFQbS7V1YDUBMaQIjBL5lVbu3TugVObYi+OXSu8cmg7TfAuEMFw8TQFYGmJMql8LkHwA4MgD1tTMQ4MOWmYUvD4WYSRWwi5JAcA8heQIODpa8ExPwDMdAKGiRFGXJIfJCHQOIT2aAJJ5D6mAfoaAH9oq8ECtKaAAAhHub4o47RHKseBDhWwFVcBEUaVx1hUCHhBbkQ1cLzxUFLQQFiexWIsj4RgZcLRDWQBkexxEWASNxAAEW5DVE0kZ0Snj8oufe60cCZXoNEbRMCu6DhzIQcJK5/BETHhOKKQCQGmLftCU+yxoBnT6FQKUHBoBgSoLcfA8Cv6giQfMacaDwToHRP8WoOBajdDwj0Xp/TS75BGeQjInTGBwxWiQLQ3J+q6CklOXZEC1Q0Awr4smLSTEfwALLkkjLYFqrFGAgSqNE/+b8eDjIHJMja1B/gFGbAspZKzvwhE+R6H59BkC+kBPyLYFoiJ7VqPkeg1ZTStD2iPf4bkriyiIbAyUwEDjvzfk8lh2oxkEQ4VwnhmQ+HcJ3IIthoiiTiNWK2MgylUDcswurVsvh7QsXiIkQISJSU6PJTgZAQIpTTEIEiscJ0R7gn6v8PwpIwiRn/FcPZXdoAVjekwYC9JqUAFEZkCDZNgUp9L/mXGBIglM1BDoNTYSai+Dsr6sFvm3aBD8CkkNQeg3y8AFmoFBfkMEBRvZXKgRUwK6qsl1TUvE8I8aBAlMJEc4wsUJo+G6i+NW09cCzwytgXaqkIKRhYHFcgHpwT4PhHKtNei/U9kyTCbJvdTxCA0vyPZdk6wppDd2yUKEvAYAUf8JRbVFAFoYMBCwVhI7jmZj2NKqkVBUVcJUua8peD5GPOCcGQhKhMAbpEKoyBjAwAAHIXmlBOE9JkriHp8Me9Np6ZjnpwjEK9zRb33rXIOagXhdQ2jwugdIUr9Sh1iM+s2FtSIahtpVe2pUnau3dp7A88oA5hCDoA1D4ct0xzlszGIGsk5FVTk+4A8ZMRCj4pKt4GQc70EBE+dW3C5qLlrO7NtyoCIdpvrbfA0IJzxGIgK6APd6peAHkXRt84x5YqoJPXEVUHSFG1mgNsF7IyUF2u+LWzD+PRClowblkYVD+gWBQdMshuQZGCTkgieN/qXUICQcgVBmJOqE1QIU9bcrxx+NJ+ScobkAfC+e0Eq1uWNDFX+lRcSyBWiFOCI1sgvAuZpu5x91Y/CVi1QIHVx19UxinBQH2zdODNLY1cKts90BFCoNg70WYczunwiEpgg1lM3pYZM9zC6mjZZFKwX8iB2zuqHmvdc0AADqKIVKJU2hWEi1ZoD4X2EqMgNriLwDDQFPRiGyDrEoIwH4gQ+jhAyxOjI4pVwunztyiSfKBldt0YWU7+QvCaP5IHS46BM0ilybmy7/Z/vCXzlRJIirih0GAvGHxfjv7re5PhbCQLqFWboRgocqLJq9Ki7IfC3IvKBkfZM4+8Xr6yfk9QRTQItDE7ZQI34X2/oikjWxdqJzugkV83knK3CTSPdIWxVuxRjMqAezERRXrmdl1S8ghY2dVCFJp4gXaDDkE+FTJ+XpQL4eqQXYo6YErzVvSnGmcMvjLyDrU5g1wxpeACis9jq4fRZRPfx8tQnxOUf0DcBAPrOBbMCoSog3L+WJQCCKwbqg3OvDLIoGwyEL6HCwEjsyWwkcnnOzSbYAAms7WwZ0X3MVe5BchFA1DRHoGbhutU4c+tMtQWnqArxng0j7nCvxcxMN1hO230F8jaTNUFphb4yLkLowrdd6d3hUDD2tiPx211xvtcPr34+/f09FYt+boS81dEhSZ4+TLuGQX5xyuaFo/vx8kStAzlpt4bzerCJs4c6JY5687FA4Rv7KBKBoJi6KCBDYjNheCYj4rzr67mrIHTJgpB6lwZBWKrwH5E5EBCTQAMRAjk7yCX6M4WSAEF4BplTs6VSc7Z5KYQE1LQHlhBZYH25LqO4qIcB7Rr554Y41K8C+ZeDG6m7FrLxlrzSZwii1pZQNr47jQ0CtqxJSYMFlBMGcAsE56X6ZrS7hAVyqq9DqzKquASjqreaiTpBTik60K+Dn64C8Dcgx7yBx6LjT4qCZL2rQAFrajVj67kH3bOHIDwAEBXiLK4rzoqDTR0AYIQRb7GDUZRw7oKr7oWi/r/p7qAbAaXoCDXoQacBQbPrQBvpjifoAbfolbiB/qZH5EXqgZFHgYm6QaSAihIR4qpDwZT5IbxAoZhzABQAQDGCYZWw4Y0QKRlRgzERYYrQiCphYCUZhwRzRyxz0b8SJwfgpwKGsbxgsaT7HwTHkBaBLGSgPwFSbKSbCIAAC/mGAaqUxdsMxZQzEpx8GwS2UcR6QJCdMBcasKgMgFYcknAl4gkZWS4ig4WtmTOR4eRtRFh0wFijQ3MFKjg/o6YQYiktkx8wJaSkJbmS4j6ze6JOA54asthC8qA+EsQQoEEsQPAsQAAeq/FSoMLEGFhWJkAkuJBaDOI1lkKVsSUwPcDgHSXcSFP6NbBEa4LwEyXECyQAAxaD0hUrKlckMKrLHZKookDhkn7wJRYqAnInLZAr5ZeD7D56pB8Q8B0mMnMkMnfzx5ckToOlhBcD1D4B8iKn0mDz4BcncjLIm78jc4FSaASrx7nJQQer67el8g1aWjWjqovZYmSAgmGJRz5gRIhhHaszuh7ibRkA2lpCujxATiqSCmt50mEiBnN5jbmmeJMJnIq44Ca4CAABSDg0UL6EmIykEG6aR261RiJXidRR6jRfYZ6zRtMrRN67RpRnRrGr6EUIpKwYpoodpx2/pjpSp7JWgnJykEpBJRJG5pJc0hE8xkxFU0x2hjEcxlsZxFxWA+EIxFREUepTZtpDA9psQe5u5Lpi4bpKkROjZqJzEfYV5T5FEt5rx9530nx5xyxb5q5asX5FiW5v5O5EEXptAvpTpAZIFEpGFBpl5nx1scF+AeGdciF15z5KFIcwxFMoAVMDcnKMsmxm+jArMysAQGA6FOxWsfUusNAgsBsIsxsrFUASg7AmgzsywHs8EVQSE9AzsxORsJsYs04gwAAHAAOy6VHD0gACcDIGA9IIwwwQgJlJlww8QTAJwJlyp8QRwypBwwwTARwQg9A7lZAZwypQgmlpsMArM8lilzsyliEDAzsNMmlQAA=== -->\n\n<!-- internal state end -->\n<!-- finishing_touch_checkbox_start -->\n\n## Finishing Touches\n\n- [ ] <!-- {\"checkboxId\": \"7962f53c-55bc-4827-bfbf-6a18da830691\"} --> \ud83d\udcdd Generate Docstrings (Beta)\n\n<!-- finishing_touch_checkbox_end -->\n<!-- tips_start -->\n\n---\n\n\n\n<details>\n<summary>\ud83e\udea7 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR. ([Beta](https://docs.coderabbit.ai/early-access#beta))\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
               }
             ]
-          },
-          {
-            "number": 2407,
-            "title": "feat: adding tests for github client",
-            "state": "MERGED",
-            "merged": true,
-            "created_at": "2025-01-16T22:47:19Z",
-            "updated_at": "2025-01-16T23:04:15Z",
-            "body": "<!-- Use this template by filling in information and copying and pasting relevant items out of the HTML comments. -->\r\n\r\n# Relates to\r\nhttps://github.com/elizaOS/eliza/issues/2406\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks and what could be affected.\r\n-->\r\nLow: adding tests\r\n# Background\r\n\r\n## What does this PR do?\r\nThis PR adds tests for github client.\r\n## What kind of change is this?\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\nFeatures/test\r\n<!-- This \"Why\" section is most relevant if there are no linked issues explaining why. If there is a related issue, it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf documentation change is needed: I have updated the documentation accordingly.\r\n-->\r\nNone\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\npackages/client-github\r\n## Detailed testing steps\r\npnpm install in root, navigate to packages/client-github and run pnpm test\r\n<!--\r\nNone: Automated tests are acceptable.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n\u00a0 - [do action]\r\n\u00a0 - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deployment, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste command line output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0Please specify deploy instructions if there is something more than the automated steps. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for the contributor role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
-            "files": [
-              {
-                "path": "packages/client-github/__tests__/environment.test.ts",
-                "additions": 50,
-                "deletions": 0
-              },
-              {
-                "path": "packages/client-github/__tests__/index.test.ts",
-                "additions": 88,
-                "deletions": 0
-              },
-              {
-                "path": "packages/client-github/package.json",
-                "additions": 5,
-                "deletions": 2
-              }
-            ],
-            "reviews": [
-              {
-                "author": "shakkernerd",
-                "state": "APPROVED",
-                "body": ""
-              }
-            ],
-            "comments": []
           }
         ]
       },
       "issues": {
-        "total_opened": 2,
+        "total_opened": 3,
         "opened": [
           {
-            "number": 2453,
-            "title": "Add tests for instagram client",
+            "number": 2469,
+            "title": "tests for redis adapter",
             "state": "OPEN",
-            "created_at": "2025-01-17T18:17:48Z",
-            "updated_at": "2025-01-17T18:17:48Z",
-            "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nSince we are changing project structure, we should add tests to __tests__ directory in packages/client-instagram\n**Describe the solution you'd like**\nTests are added ti packages/client-instagram.\n<!-- A clear and concise description of what you want to happen. -->\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+            "created_at": "2025-01-17T22:56:02Z",
+            "updated_at": "2025-01-17T22:56:02Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nChanging project structure, we need to cover and add tests for redis adapter.\n**Describe the solution you'd like**\nTests for redis adapter are configured and added to __tests__ directory.\n<!-- A clear and concise description of what you want to happen. -->\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
             "labels": [
               {
                 "name": "enhancement",
@@ -648,12 +693,28 @@
             "comments": []
           },
           {
-            "number": 2406,
-            "title": "Add tests in __tests__ for github client",
-            "state": "CLOSED",
-            "created_at": "2025-01-16T22:46:04Z",
-            "updated_at": "2025-01-16T23:04:19Z",
-            "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nSince we are changing project structure, we need to add tests for github client.\n**Describe the solution you'd like**\nTests for github client are added to packages/client-github/__tests__\n<!-- A clear and concise description of what you want to happen. -->\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+            "number": 2467,
+            "title": "tests for database adapters: sqlite and supabase",
+            "state": "OPEN",
+            "created_at": "2025-01-17T22:38:07Z",
+            "updated_at": "2025-01-17T22:38:07Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nSince we are changing project structure, we should cover database adapters with tests in __tests__ directory.\n**Describe the solution you'd like**\nAdd tests configuration and tests for: \n- supabase adapter\n- sqlite adapter\n<!-- A clear and concise description of what you want to happen. -->\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+            "labels": [
+              {
+                "name": "enhancement",
+                "color": "a2eeef",
+                "description": "New feature or request"
+              }
+            ],
+            "comments": []
+          },
+          {
+            "number": 2453,
+            "title": "Add tests for instagram client",
+            "state": "OPEN",
+            "created_at": "2025-01-17T18:17:48Z",
+            "updated_at": "2025-01-17T18:17:48Z",
+            "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nSince we are changing project structure, we should add tests to __tests__ directory in packages/client-instagram\n**Describe the solution you'd like**\nTests are added ti packages/client-instagram.\n<!-- A clear and concise description of what you want to happen. -->\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
             "labels": [
               {
                 "name": "enhancement",
@@ -676,7 +737,7 @@
   {
     "contributor": "Dimitrolito",
     "score": 33,
-    "summary": "Dimitrolito is primarily focused on fixing spelling errors in the \"packages\" code area. They have made a total of 6 commits and successfully merged 1 pull request addressing these issues.",
+    "summary": "Dimitrolito is currently focused on fixing spelling errors in the \"packages\" code area. They have made 6 commits and successfully merged 1 pull request addressing these issues.",
     "avatar_url": "https://avatars.githubusercontent.com/u/46675332?u=823fd64bf56818d15fd06284daa4f1cb5cf71917&v=4",
     "activity": {
       "code": {
@@ -816,113 +877,9 @@
     }
   },
   {
-    "contributor": "bundinho",
-    "score": 33,
-    "summary": "bundinho is currently working on fixing errors related to the TEE Log plugin at agent startup. This involves addressing an issue with an invalid TEE configuration when enabling the tee-log feature. The work is focused on the packages code area and is categorized as a bug fix.",
-    "avatar_url": "https://avatars.githubusercontent.com/u/8318762?u=610af9286ca8d85b5d3e7be15fe069597b1beddf&v=4",
-    "activity": {
-      "code": {
-        "total_commits": 1,
-        "total_prs": 1,
-        "commits": [
-          {
-            "sha": "2ea872aa29be2c3432b14fdcce7c62d0da4b18df",
-            "message": "fix TEE Log plugin errors at agent startup (#2415)\n\n* fix TEE Log configuration error\n\n* fix error telling 'Cannot open database because the directory does not exist'\n\n* fix error telling 'Invalid TEE_MODE: undefined. Must be one of: LOCAL, DOCKER, PRODUCTION' at start up",
-            "created_at": "2025-01-17T15:19:14Z",
-            "additions": 6,
-            "deletions": 3,
-            "changed_files": 2
-          }
-        ],
-        "pull_requests": [
-          {
-            "number": 2415,
-            "title": "fix TEE Log plugin errors at agent startup",
-            "state": "MERGED",
-            "merged": true,
-            "created_at": "2025-01-17T04:12:04Z",
-            "updated_at": "2025-01-17T15:19:15Z",
-            "body": "<!-- Use this template by filling in information and copying and pasting relevant items out of the HTML comments. -->\r\n\r\n# Relates to\r\n\r\n#2405 \r\n\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\n\r\nMedium: not sure if the condition causing the bug was made on purpose\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\n- Fix the error about TEE configuration being invalid when TEE log is enabled\r\n- Fix error telling 'Cannot open database because the directory does not exist'\r\n- Fix error telling 'Invalid TEE_MODE: undefined. Must be one of: LOCAL, DOCKER, PRODUCTION' at start up\r\n\r\n## What kind of change is this?\r\n\r\nBug fix\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nStarting an agent with tee-log enabled using TDX_DSSTACK\r\n\r\n## Detailed testing steps\r\n\r\n As a developer, \r\n- configure the agent to use tee-log with TDX_DSSTACK by editing the .env file as follows\r\n\r\n```env\r\nTEE_MODE=LOCAL\r\nWALLET_SECRET_SALT=your_wallet_secret_salt             \r\nENABLE_TEE_LOG=true \r\n```\r\n\r\n- start TEE simulator as described in https://elizaos.github.io/eliza/docs/advanced/eliza-in-tee/#environment-setup\r\n\r\n```bash\r\ndocker pull phalanetwork/tappd-simulator:latest\r\n# by default the simulator is available in localhost:8090\r\ndocker run --rm -p 8090:8090 phalanetwork/tappd-simulator:latest\r\n``` \r\n- start the agent \r\n\r\n```bash\r\npnpm start\r\n```\r\n- verify the console and make sure there is no more error saying\r\n  - ~~Invalid TEE configuration~~\r\n  - ~~Cannot open database because the directory does not exist~~\r\n  - ~~Invalid TEE_MODE: undefined. Must be one of: LOCAL, DOCKER, PRODUCTION~~\r\n\u00a0\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deployment, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste command line output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0Please specify deploy instructions if there is something more than the automated steps. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for the contributor role and join us in #development-feed -->\r\n## Discord username\r\nbundinho5608\r\n",
-            "files": [
-              {
-                "path": "packages/plugin-tee-log/src/services/teeLogManager.ts",
-                "additions": 1,
-                "deletions": 1
-              },
-              {
-                "path": "packages/plugin-tee-log/src/services/teeLogService.ts",
-                "additions": 5,
-                "deletions": 2
-              }
-            ],
-            "reviews": [
-              {
-                "author": "github-actions",
-                "state": "COMMENTED",
-                "body": "Hi @bundinho! Welcome to the elizaOS community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now an elizaOS contributor!"
-              },
-              {
-                "author": "coderabbitai",
-                "state": "COMMENTED",
-                "body": "**Actionable comments posted: 0**\n\n<details>\n<summary>\ud83e\uddf9 Nitpick comments (1)</summary><blockquote>\n\n<details>\n<summary>packages/plugin-tee-log/src/services/teeLogService.ts (1)</summary><blockquote>\n\n`53-53`: **Consider using explicit enum comparison.**\n\nThe condition could be more explicit by comparing with the enum value.\n\n```diff\n-const useTdxDstack = teeMode && teeMode !== TEEMode.OFF && walletSecretSalt;\n+const useTdxDstack = teeMode && TEEMode[teeMode as keyof typeof TEEMode] !== TEEMode.OFF && walletSecretSalt;\n```\n\n</blockquote></details>\n\n</blockquote></details>\n\n<details>\n<summary>\ud83d\udcdc Review details</summary>\n\n**Configuration used: CodeRabbit UI**\n**Review profile: CHILL**\n**Plan: Pro**\n\n<details>\n<summary>\ud83d\udce5 Commits</summary>\n\nReviewing files that changed from the base of the PR and between f70c1cdbd1462a0ffa0fbd1eda1f2625ca1b1f8c and 601453e4494beda4dbfea787d5ee8d7bd69f181f.\n\n</details>\n\n<details>\n<summary>\ud83d\udcd2 Files selected for processing (2)</summary>\n\n* `packages/plugin-tee-log/src/services/teeLogManager.ts` (1 hunks)\n* `packages/plugin-tee-log/src/services/teeLogService.ts` (2 hunks)\n\n</details>\n\n<details>\n<summary>\ud83d\udd07 Additional comments (3)</summary><blockquote>\n\n<details>\n<summary>packages/plugin-tee-log/src/services/teeLogManager.ts (1)</summary>\n\n`101-103`: **LGTM! Verify attestation generation with different TEE modes.**\n\nThe addition of `teeMode` parameter to `TdxAttestationProvider` constructor fixes the undefined TEE_MODE issue.\n\n\n<details>\n<summary>\u2705 Verification successful</summary>\n\n<!-- [monologue]\n[task verify_attestation_final]\n[observations]\n- RemoteAttestationProvider properly handles teeMode parameter\n- Constructor validates teeMode against TEEMode enum\n- Supports LOCAL, DOCKER, and PRODUCTION modes\n- Each mode configures appropriate endpoint for TappdClient\n- Invalid modes throw descriptive errors\n[analysis]\n- The implementation is robust:\n  1. teeMode parameter is properly typed and optional\n  2. Clear endpoint configuration based on mode\n  3. Proper error handling for invalid modes\n  4. TappdClient initialization respects the mode settings\n- The change in teeLogManager.ts correctly uses this implementation\n[actions]\nGenerate verified response as the implementation is sound\n-->\n\n**\u2713 Implementation verified - teeMode handling is correct**\n\nThe RemoteAttestationProvider properly handles all TEE modes (LOCAL, DOCKER, PRODUCTION) with appropriate endpoint configuration and error handling. \n\n</details>\n\n<details>\n<summary>\ud83c\udfc1 Scripts executed</summary>\n\nThe following scripts were executed for the analysis:\n\nScript:\n\n```shell\n#!/bin/bash\n# Verify TdxAttestationProvider usage across the codebase\nast-grep --pattern 'new TdxAttestationProvider($$$)'\n\n```\n\nLength of output: 1684\n\n---\n\nScript:\n\n```shell\n#!/bin/bash\n# Check TdxAttestationProvider implementation\nast-grep --pattern 'class TdxAttestationProvider {\n  $$$\n}'\n\n# Backup search using ripgrep\nrg -A 10 \"class TdxAttestationProvider\"\n\n```\n\nLength of output: 103\n\n---\n\nScript:\n\n```shell\n#!/bin/bash\n# Find files containing TdxAttestationProvider\nfd -t f . | xargs rg \"TdxAttestationProvider\"\n\n# Search for attestation-related files\nfd -t f -e ts -e js attestation\n\n```\n\nLength of output: 610\n\n---\n\nScript:\n\n```shell\n#!/bin/bash\n# Check RemoteAttestationProvider implementation\ncat packages/plugin-tee/src/providers/remoteAttestationProvider.ts\n\n# Check for teeMode usage in the file\nrg -A 5 \"teeMode\" packages/plugin-tee/src/providers/remoteAttestationProvider.ts\n\n```\n\nLength of output: 4678\n\n</details>\n\n</details>\n<details>\n<summary>packages/plugin-tee-log/src/services/teeLogService.ts (2)</summary>\n\n`10-10`: **LGTM! Using absolute path for database.**\n\nUsing `path.resolve` ensures consistent database path resolution across different working directories.\n\n---\n\n`50-51`: **LGTM! Proper TEE mode validation.**\n\nUsing enum indexing ensures only valid TEE modes are accepted, fixing the invalid TEE_MODE error.\n\n\n<details>\n<summary>\u2705 Verification successful</summary>\n\n<!-- [monologue]\n[task verify_tee_mode_2/2]\nAnalyze TEE mode implementation completeness\n[observations]\n1. TEEMode enum definition found in packages/plugin-tee/src/types/tee.ts:\n   - OFF, LOCAL, DOCKER, PRODUCTION modes\n   - All modes have string values\n2. TEEMode usage analysis:\n   - Used consistently in multiple services\n   - Proper switch-case handling in providers\n   - Default to OFF when not specified\n3. teeMode assignments:\n   - Two locations found:\n     1. teeLogService.ts: Uses enum indexing for validation\n     2. teeLogManager.ts: Direct assignment in constructor\n[analysis]\n- The implementation is correct and complete:\n  1. Enum properly defines all valid modes\n  2. The validation in teeLogService.ts ensures only valid enum values\n  3. All usages follow the enum pattern\n  4. No unsafe string assignments found\n[actions]\nGenerate verification success response\n-->\n\n**TEE mode implementation verified as secure**\n\nThe enum indexing validation is properly implemented and consistently used across the codebase. \n\n</details>\n\n<details>\n<summary>\ud83c\udfc1 Scripts executed</summary>\n\nThe following scripts were executed for the analysis:\n\nScript:\n\n```shell\n#!/bin/bash\n# Check for any hardcoded TEE mode strings that might bypass validation\nrg -i \"TEE_MODE.*=.*['\\\"]\" --type ts\n\n```\n\nLength of output: 40\n\n---\n\nScript:\n\n```shell\n#!/bin/bash\n# Find TEEMode enum definition and usages\nast-grep --pattern 'enum TEEMode {\n  $$$\n}'\n\n# Find all places where TEEMode is referenced\nrg \"TEEMode\" -A 2 --type ts\n\n# Find any direct assignments to teeMode\nast-grep --pattern 'this.teeMode = $_'\n\n```\n\nLength of output: 8332\n\n</details>\n\n</details>\n\n</blockquote></details>\n\n</details>\n\n<!-- This is an auto-generated comment by CodeRabbit for review status -->"
-              },
-              {
-                "author": "wtfsayo",
-                "state": "APPROVED",
-                "body": ""
-              }
-            ],
-            "comments": [
-              {
-                "author": "wtfsayo",
-                "body": "@coderabbitai review"
-              },
-              {
-                "author": "coderabbitai",
-                "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n\n\n<!-- walkthrough_start -->\n\n<details>\n<summary>\ud83d\udcdd Walkthrough</summary>\n\n## Walkthrough\n\nThe pull request introduces modifications to the `TeeLogManager` and `TeeLogService` classes within the plugin-tee-log package. The changes primarily focus on adjusting the initialization of the `TdxAttestationProvider` and refining the TEE mode configuration. The updates involve updating the instantiation method for the attestation provider and improving the database path resolution and mode detection logic.\n\n## Changes\n\n| File | Change Summary |\n|------|----------------|\n| `packages/plugin-tee-log/src/services/teeLogManager.ts` | Updated `TdxAttestationProvider` instantiation to include `this.teeMode` as a parameter |\n| `packages/plugin-tee-log/src/services/teeLogService.ts` | - Resolved database path using `path.resolve`<br>- Updated `teeMode` assignment to map correctly to `TEEMode` enum<br>- Modified `useTdxDstack` condition to check `teeMode` validity |\n\n</details>\n\n<!-- walkthrough_end -->\n<!-- internal state start -->\n\n\n<!-- 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 -->\n\n<!-- internal state end -->\n<!-- finishing_touch_checkbox_start -->\n\n## Finishing Touches\n\n- [ ] <!-- {\"checkboxId\": \"7962f53c-55bc-4827-bfbf-6a18da830691\"} --> \ud83d\udcdd Generate Docstrings (Beta)\n\n<!-- finishing_touch_checkbox_end -->\n<!-- tips_start -->\n\n---\n\n\n\n<details>\n<summary>\ud83e\udea7 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n> \u203c\ufe0f **IMPORTANT**\n> Auto-reply has been disabled for this repository in the CodeRabbit settings. The CodeRabbit bot will not respond to your replies unless it is explicitly tagged.\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR. ([Beta](https://docs.coderabbit.ai/early-access#beta))\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
-              }
-            ]
-          }
-        ]
-      },
-      "issues": {
-        "total_opened": 1,
-        "opened": [
-          {
-            "number": 2405,
-            "title": "[plugin-tee-log] Error: Invalid TEE configuration when enabling tee-log",
-            "state": "OPEN",
-            "created_at": "2025-01-16T22:41:00Z",
-            "updated_at": "2025-01-17T00:20:23Z",
-            "body": "**Describe the bug**\n\nWhen I enable tee-log plugin with below values in my .env, I get an error saying `Invalid TEE configuration`\n\n```env\nTEE_MODE=LOCAL\nWALLET_SECRET_SALT=my_wallet_secret_salt             \nENABLE_TEE_LOG=true \n```\n\n**To Reproduce**\n\nOn local dev, set the values above (like mentioned in the documentation) and launch the agent\n\n**Expected behavior**\n\nThere is no invalid TEE configuration error\n\n**Screenshots**\n\n![Image](https://github.com/user-attachments/assets/5a8013a6-2aff-45fb-a780-b9eec88e11e3)\n\n**Additional context**\n\nI think the root cause is located at https://github.com/elizaOS/eliza/blob/main/packages/plugin-tee-log/src/services/teeLogService.ts#L50  . The code below does not make sense as the expression `!teeMode` will always its value equal to `false`, but I do not know if it was made on purpose and why. \n\n```ts\nconst useTdxDstack = !teeMode && teeMode !== TEEMode.OFF && walletSecretSalt;\n```\n",
-            "labels": [
-              {
-                "name": "bug",
-                "color": "d73a4a",
-                "description": "Something isn't working"
-              }
-            ],
-            "comments": [
-              {
-                "author": "github-actions",
-                "body": "Hello @bundinho! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-              }
-            ]
-          }
-        ]
-      },
-      "engagement": {
-        "total_comments": 1,
-        "total_reviews": 3,
-        "comments": [],
-        "reviews": []
-      }
-    }
-  },
-  {
     "contributor": "AIFlowML",
     "score": 29,
-    "summary": "AIFlowML is currently working on implementing a Pyth Data Plugin, with a focus on the agent, characters, and packages code areas. This contribution includes a significant code change of +12035/-463 lines, with 1 pull request successfully merged.",
+    "summary": "AIFlowML is currently working on implementing a new Pyth Data Plugin, with a focus on characters, agent, and packages. This work includes a significant code change of +12035/-463 lines, with one pull request successfully merged.",
     "avatar_url": "https://avatars.githubusercontent.com/u/154863472?u=99689ad0f9ec0be78ba3b726c1ef10df796fbe7d&v=4",
     "activity": {
       "code": {
@@ -1186,9 +1143,91 @@
     }
   },
   {
+    "contributor": "bundinho",
+    "score": 26,
+    "summary": "bundinho is currently working on fixing TEE Log plugin errors at agent startup, with one commit and one merged pull request in the packages code area. The code changes include adding 6 lines and removing 3 lines to address the issue.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/8318762?u=610af9286ca8d85b5d3e7be15fe069597b1beddf&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 1,
+        "total_prs": 1,
+        "commits": [
+          {
+            "sha": "2ea872aa29be2c3432b14fdcce7c62d0da4b18df",
+            "message": "fix TEE Log plugin errors at agent startup (#2415)\n\n* fix TEE Log configuration error\n\n* fix error telling 'Cannot open database because the directory does not exist'\n\n* fix error telling 'Invalid TEE_MODE: undefined. Must be one of: LOCAL, DOCKER, PRODUCTION' at start up",
+            "created_at": "2025-01-17T15:19:14Z",
+            "additions": 6,
+            "deletions": 3,
+            "changed_files": 2
+          }
+        ],
+        "pull_requests": [
+          {
+            "number": 2415,
+            "title": "fix TEE Log plugin errors at agent startup",
+            "state": "MERGED",
+            "merged": true,
+            "created_at": "2025-01-17T04:12:04Z",
+            "updated_at": "2025-01-17T15:19:15Z",
+            "body": "<!-- Use this template by filling in information and copying and pasting relevant items out of the HTML comments. -->\r\n\r\n# Relates to\r\n\r\n#2405 \r\n\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\n\r\nMedium: not sure if the condition causing the bug was made on purpose\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\n- Fix the error about TEE configuration being invalid when TEE log is enabled\r\n- Fix error telling 'Cannot open database because the directory does not exist'\r\n- Fix error telling 'Invalid TEE_MODE: undefined. Must be one of: LOCAL, DOCKER, PRODUCTION' at start up\r\n\r\n## What kind of change is this?\r\n\r\nBug fix\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\nStarting an agent with tee-log enabled using TDX_DSSTACK\r\n\r\n## Detailed testing steps\r\n\r\n As a developer, \r\n- configure the agent to use tee-log with TDX_DSSTACK by editing the .env file as follows\r\n\r\n```env\r\nTEE_MODE=LOCAL\r\nWALLET_SECRET_SALT=your_wallet_secret_salt             \r\nENABLE_TEE_LOG=true \r\n```\r\n\r\n- start TEE simulator as described in https://elizaos.github.io/eliza/docs/advanced/eliza-in-tee/#environment-setup\r\n\r\n```bash\r\ndocker pull phalanetwork/tappd-simulator:latest\r\n# by default the simulator is available in localhost:8090\r\ndocker run --rm -p 8090:8090 phalanetwork/tappd-simulator:latest\r\n``` \r\n- start the agent \r\n\r\n```bash\r\npnpm start\r\n```\r\n- verify the console and make sure there is no more error saying\r\n  - ~~Invalid TEE configuration~~\r\n  - ~~Cannot open database because the directory does not exist~~\r\n  - ~~Invalid TEE_MODE: undefined. Must be one of: LOCAL, DOCKER, PRODUCTION~~\r\n\u00a0\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deployment, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!-- \u00a0Copy and paste command line output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!-- \u00a0Please specify deploy instructions if there is something more than the automated steps. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/ai16z and state your Discord username here for the contributor role and join us in #development-feed -->\r\n## Discord username\r\nbundinho5608\r\n",
+            "files": [
+              {
+                "path": "packages/plugin-tee-log/src/services/teeLogManager.ts",
+                "additions": 1,
+                "deletions": 1
+              },
+              {
+                "path": "packages/plugin-tee-log/src/services/teeLogService.ts",
+                "additions": 5,
+                "deletions": 2
+              }
+            ],
+            "reviews": [
+              {
+                "author": "github-actions",
+                "state": "COMMENTED",
+                "body": "Hi @bundinho! Welcome to the elizaOS community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now an elizaOS contributor!"
+              },
+              {
+                "author": "coderabbitai",
+                "state": "COMMENTED",
+                "body": "**Actionable comments posted: 0**\n\n<details>\n<summary>\ud83e\uddf9 Nitpick comments (1)</summary><blockquote>\n\n<details>\n<summary>packages/plugin-tee-log/src/services/teeLogService.ts (1)</summary><blockquote>\n\n`53-53`: **Consider using explicit enum comparison.**\n\nThe condition could be more explicit by comparing with the enum value.\n\n```diff\n-const useTdxDstack = teeMode && teeMode !== TEEMode.OFF && walletSecretSalt;\n+const useTdxDstack = teeMode && TEEMode[teeMode as keyof typeof TEEMode] !== TEEMode.OFF && walletSecretSalt;\n```\n\n</blockquote></details>\n\n</blockquote></details>\n\n<details>\n<summary>\ud83d\udcdc Review details</summary>\n\n**Configuration used: CodeRabbit UI**\n**Review profile: CHILL**\n**Plan: Pro**\n\n<details>\n<summary>\ud83d\udce5 Commits</summary>\n\nReviewing files that changed from the base of the PR and between f70c1cdbd1462a0ffa0fbd1eda1f2625ca1b1f8c and 601453e4494beda4dbfea787d5ee8d7bd69f181f.\n\n</details>\n\n<details>\n<summary>\ud83d\udcd2 Files selected for processing (2)</summary>\n\n* `packages/plugin-tee-log/src/services/teeLogManager.ts` (1 hunks)\n* `packages/plugin-tee-log/src/services/teeLogService.ts` (2 hunks)\n\n</details>\n\n<details>\n<summary>\ud83d\udd07 Additional comments (3)</summary><blockquote>\n\n<details>\n<summary>packages/plugin-tee-log/src/services/teeLogManager.ts (1)</summary>\n\n`101-103`: **LGTM! Verify attestation generation with different TEE modes.**\n\nThe addition of `teeMode` parameter to `TdxAttestationProvider` constructor fixes the undefined TEE_MODE issue.\n\n\n<details>\n<summary>\u2705 Verification successful</summary>\n\n<!-- [monologue]\n[task verify_attestation_final]\n[observations]\n- RemoteAttestationProvider properly handles teeMode parameter\n- Constructor validates teeMode against TEEMode enum\n- Supports LOCAL, DOCKER, and PRODUCTION modes\n- Each mode configures appropriate endpoint for TappdClient\n- Invalid modes throw descriptive errors\n[analysis]\n- The implementation is robust:\n  1. teeMode parameter is properly typed and optional\n  2. Clear endpoint configuration based on mode\n  3. Proper error handling for invalid modes\n  4. TappdClient initialization respects the mode settings\n- The change in teeLogManager.ts correctly uses this implementation\n[actions]\nGenerate verified response as the implementation is sound\n-->\n\n**\u2713 Implementation verified - teeMode handling is correct**\n\nThe RemoteAttestationProvider properly handles all TEE modes (LOCAL, DOCKER, PRODUCTION) with appropriate endpoint configuration and error handling. \n\n</details>\n\n<details>\n<summary>\ud83c\udfc1 Scripts executed</summary>\n\nThe following scripts were executed for the analysis:\n\nScript:\n\n```shell\n#!/bin/bash\n# Verify TdxAttestationProvider usage across the codebase\nast-grep --pattern 'new TdxAttestationProvider($$$)'\n\n```\n\nLength of output: 1684\n\n---\n\nScript:\n\n```shell\n#!/bin/bash\n# Check TdxAttestationProvider implementation\nast-grep --pattern 'class TdxAttestationProvider {\n  $$$\n}'\n\n# Backup search using ripgrep\nrg -A 10 \"class TdxAttestationProvider\"\n\n```\n\nLength of output: 103\n\n---\n\nScript:\n\n```shell\n#!/bin/bash\n# Find files containing TdxAttestationProvider\nfd -t f . | xargs rg \"TdxAttestationProvider\"\n\n# Search for attestation-related files\nfd -t f -e ts -e js attestation\n\n```\n\nLength of output: 610\n\n---\n\nScript:\n\n```shell\n#!/bin/bash\n# Check RemoteAttestationProvider implementation\ncat packages/plugin-tee/src/providers/remoteAttestationProvider.ts\n\n# Check for teeMode usage in the file\nrg -A 5 \"teeMode\" packages/plugin-tee/src/providers/remoteAttestationProvider.ts\n\n```\n\nLength of output: 4678\n\n</details>\n\n</details>\n<details>\n<summary>packages/plugin-tee-log/src/services/teeLogService.ts (2)</summary>\n\n`10-10`: **LGTM! Using absolute path for database.**\n\nUsing `path.resolve` ensures consistent database path resolution across different working directories.\n\n---\n\n`50-51`: **LGTM! Proper TEE mode validation.**\n\nUsing enum indexing ensures only valid TEE modes are accepted, fixing the invalid TEE_MODE error.\n\n\n<details>\n<summary>\u2705 Verification successful</summary>\n\n<!-- [monologue]\n[task verify_tee_mode_2/2]\nAnalyze TEE mode implementation completeness\n[observations]\n1. TEEMode enum definition found in packages/plugin-tee/src/types/tee.ts:\n   - OFF, LOCAL, DOCKER, PRODUCTION modes\n   - All modes have string values\n2. TEEMode usage analysis:\n   - Used consistently in multiple services\n   - Proper switch-case handling in providers\n   - Default to OFF when not specified\n3. teeMode assignments:\n   - Two locations found:\n     1. teeLogService.ts: Uses enum indexing for validation\n     2. teeLogManager.ts: Direct assignment in constructor\n[analysis]\n- The implementation is correct and complete:\n  1. Enum properly defines all valid modes\n  2. The validation in teeLogService.ts ensures only valid enum values\n  3. All usages follow the enum pattern\n  4. No unsafe string assignments found\n[actions]\nGenerate verification success response\n-->\n\n**TEE mode implementation verified as secure**\n\nThe enum indexing validation is properly implemented and consistently used across the codebase. \n\n</details>\n\n<details>\n<summary>\ud83c\udfc1 Scripts executed</summary>\n\nThe following scripts were executed for the analysis:\n\nScript:\n\n```shell\n#!/bin/bash\n# Check for any hardcoded TEE mode strings that might bypass validation\nrg -i \"TEE_MODE.*=.*['\\\"]\" --type ts\n\n```\n\nLength of output: 40\n\n---\n\nScript:\n\n```shell\n#!/bin/bash\n# Find TEEMode enum definition and usages\nast-grep --pattern 'enum TEEMode {\n  $$$\n}'\n\n# Find all places where TEEMode is referenced\nrg \"TEEMode\" -A 2 --type ts\n\n# Find any direct assignments to teeMode\nast-grep --pattern 'this.teeMode = $_'\n\n```\n\nLength of output: 8332\n\n</details>\n\n</details>\n\n</blockquote></details>\n\n</details>\n\n<!-- This is an auto-generated comment by CodeRabbit for review status -->"
+              },
+              {
+                "author": "wtfsayo",
+                "state": "APPROVED",
+                "body": ""
+              }
+            ],
+            "comments": [
+              {
+                "author": "wtfsayo",
+                "body": "@coderabbitai review"
+              },
+              {
+                "author": "coderabbitai",
+                "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n\n\n<!-- walkthrough_start -->\n\n<details>\n<summary>\ud83d\udcdd Walkthrough</summary>\n\n## Walkthrough\n\nThe pull request introduces modifications to the `TeeLogManager` and `TeeLogService` classes within the plugin-tee-log package. The changes primarily focus on adjusting the initialization of the `TdxAttestationProvider` and refining the TEE mode configuration. The updates involve updating the instantiation method for the attestation provider and improving the database path resolution and mode detection logic.\n\n## Changes\n\n| File | Change Summary |\n|------|----------------|\n| `packages/plugin-tee-log/src/services/teeLogManager.ts` | Updated `TdxAttestationProvider` instantiation to include `this.teeMode` as a parameter |\n| `packages/plugin-tee-log/src/services/teeLogService.ts` | - Resolved database path using `path.resolve`<br>- Updated `teeMode` assignment to map correctly to `TEEMode` enum<br>- Modified `useTdxDstack` condition to check `teeMode` validity |\n\n</details>\n\n<!-- walkthrough_end -->\n<!-- internal state start -->\n\n\n<!-- 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 -->\n\n<!-- internal state end -->\n<!-- finishing_touch_checkbox_start -->\n\n## Finishing Touches\n\n- [ ] <!-- {\"checkboxId\": \"7962f53c-55bc-4827-bfbf-6a18da830691\"} --> \ud83d\udcdd Generate Docstrings (Beta)\n\n<!-- finishing_touch_checkbox_end -->\n<!-- tips_start -->\n\n---\n\n\n\n<details>\n<summary>\ud83e\udea7 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n> \u203c\ufe0f **IMPORTANT**\n> Auto-reply has been disabled for this repository in the CodeRabbit settings. The CodeRabbit bot will not respond to your replies unless it is explicitly tagged.\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR. ([Beta](https://docs.coderabbit.ai/early-access#beta))\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
+              }
+            ]
+          }
+        ]
+      },
+      "issues": {
+        "total_opened": 0,
+        "opened": []
+      },
+      "engagement": {
+        "total_comments": 0,
+        "total_reviews": 3,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
     "contributor": "carlos-cne",
     "score": 26,
-    "summary": "carlos-cne is currently working on fixing React rules in the AgentRoute component to prevent runtime errors. They have made 1 commit and 1 pull request, which has been successfully merged, with code changes focused on the client-side.",
+    "summary": "carlos-cne is currently working on fixing React rules in the AgentRoute component to prevent runtime errors. This includes making a commit to address the issue and creating a pull request that has been successfully merged. The changes involve a conditional use of useQuery in the client-side codebase.",
     "avatar_url": "https://avatars.githubusercontent.com/u/41330782?u=ee447ceaf76078b6c0edd2df1f68799af0badbb9&v=4",
     "activity": {
       "code": {
@@ -1269,7 +1308,7 @@
   {
     "contributor": "thearyanag",
     "score": 24,
-    "summary": "thearyanag is currently working on adding new features to the Solana Agent Kit, with a recent commit and pull request reflecting code changes in the agent and packages sections. The contribution involves a significant code change of +3389/-2049 lines.",
+    "summary": "thearyanag is currently working on adding new features to the Solana Agent Kit, with a recent commit and pull request reflecting code changes in the agent and packages sections. The contribution includes a significant code change of +3389/-2049 lines.",
     "avatar_url": "https://avatars.githubusercontent.com/u/48391385?u=69b973169b5cf83dc86bc72d44c548ecb544628c&v=4",
     "activity": {
       "code": {
@@ -1473,7 +1512,7 @@
   {
     "contributor": "RubinovaAn1097",
     "score": 23,
-    "summary": "RubinovaAn1097 is currently focusing on improving documentation by fixing typos in the project's documentation. They have made one commit and one pull request, which has been successfully merged, resulting in a net code change of +3/-3 in the docs section.",
+    "summary": "RubinovaAn1097 is currently focusing on improving documentation by fixing typos. They have made one commit and one pull request, both related to correcting errors in the documentation. Their recent activity shows a code change of +3/-3 in the docs section.",
     "avatar_url": "https://avatars.githubusercontent.com/u/161742104?u=d1a4639351f6c5cc9e10171b0c8f474c5533d499&v=4",
     "activity": {
       "code": {
@@ -1551,7 +1590,7 @@
   {
     "contributor": "Pistasha",
     "score": 23,
-    "summary": "Pistasha is currently working on fixing spelling and grammar errors in the client and characters code areas. They have made 1 commit and 1 pull request, which has been successfully merged, resulting in a net code change of +4/-4.",
+    "summary": "Pistasha is currently working on fixing spelling errors in texts and components within the client and characters code areas. They have made 1 commit and 1 pull request, which has been successfully merged, resulting in a net code change of +4/-4.",
     "avatar_url": "https://avatars.githubusercontent.com/u/162179706?u=e6ea080a0e8a4d711720eaabc9757f8a5dddb343&v=4",
     "activity": {
       "code": {
@@ -1634,7 +1673,7 @@
   {
     "contributor": "savageops",
     "score": 22,
-    "summary": "savageops is currently working on adding Windows support by creating a version.cmd file in the client codebase. This contribution includes one merged pull request with 25 code changes and 1 commit.",
+    "summary": "savageops is currently working on creating a version.cmd file to support Windows in the client codebase. This work includes a single commit and pull request with 25 lines of code changes, all of which have been successfully merged.",
     "avatar_url": "https://avatars.githubusercontent.com/u/94788596?u=3a4d84bbcfc9ef1147fdca5072da698d29f8b55a&v=4",
     "activity": {
       "code": {
@@ -1702,7 +1741,7 @@
   {
     "contributor": "dedyshkaPexto",
     "score": 20,
-    "summary": "dedyshkaPexto is currently working on making a typo fix in the read.me file within the packages code area. This contribution includes one commit and one pull request, which has already been merged successfully.",
+    "summary": "dedyshkaPexto is currently focusing on making typo fixes in the read.me file within the packages code area. They have made one commit and one pull request, both related to correcting a typo in the readme file, which has been successfully merged.",
     "avatar_url": "https://avatars.githubusercontent.com/u/193693502?u=dd2b31d7dab8c643066ca0e62f288c7ea6398a60&v=4",
     "activity": {
       "code": {
@@ -1770,7 +1809,7 @@
   {
     "contributor": "MarsonKotovi4",
     "score": 20,
-    "summary": "MarsonKotovi4 is currently working on fixing an error message and removing a duplicate version field in the agent codebase. They have made one commit and one pull request, which has already been merged.",
+    "summary": "MarsonKotovi4 is currently working on fixing an error message and removing a duplicate version field in the agent code. They have made 1 commit and 1 pull request, which has been successfully merged into the main branch.",
     "avatar_url": "https://avatars.githubusercontent.com/u/137284002?u=619f670f01df23822e05a3eab4dbbf1f142757ae&v=4",
     "activity": {
       "code": {
@@ -1843,7 +1882,7 @@
   {
     "contributor": "Hopium21",
     "score": 20,
-    "summary": "Hopium21 is currently updating the README.md file and fixing a link related to zero Gravity (0G) in the project's packages. This work includes 1 commit and 1 merged pull request, with a code change of +1/-1.",
+    "summary": "Hopium21 is currently updating the README.md file and fixing a link related to zero Gravity (0G) in the project's packages. They have made 1 commit and 1 pull request, which has already been merged.",
     "avatar_url": "https://avatars.githubusercontent.com/u/135053852?u=0264e45c1c6a746aa851c24bdf37b3d8482eb6ba&v=4",
     "activity": {
       "code": {
@@ -1911,7 +1950,7 @@
   {
     "contributor": "leopardracer",
     "score": 20,
-    "summary": "leopardracer is currently working on updating the seed.sql file in the packages code area of the project. They have recently made a commit to address typos in the Supabase seed file, which was successfully merged after submitting a pull request.",
+    "summary": "leopardracer is currently working on updating the seed file for the Supabase project, focusing on fixing typos in the SQL script. This work involves making a single commit and a pull request, with the changes primarily impacting the packages code area.",
     "avatar_url": "https://avatars.githubusercontent.com/u/136604165?u=7ca681dd63a1e9991929157a38f094609d7a42f0&v=4",
     "activity": {
       "code": {
@@ -1979,7 +2018,7 @@
   {
     "contributor": "snobbee",
     "score": 19,
-    "summary": "snobbee is currently working on adding a default logger level setting to the project, which allows for setting the logger level to display. This work involves one merged pull request and one commit with code changes in the 'packages' code area.",
+    "summary": "snobbee is currently working on adding a default logger level setting to the codebase, with one commit and one merged pull request in the \"packages\" area. The recent commit introduces a feature to set the logger level for displaying logs.",
     "avatar_url": "https://avatars.githubusercontent.com/u/125891987?u=ba9ca14b922f8fb73f38ba0981d157247af3dd03&v=4",
     "activity": {
       "code": {
@@ -2047,7 +2086,7 @@
   {
     "contributor": "donatik27",
     "score": 19,
-    "summary": "donatik27 is currently updating the README.md file in the packages section, with a recent commit and a merged pull request to update documentation links. The code changes show a net increase of 1 line of code.",
+    "summary": "donatik27 is currently updating the README.md file in the packages code area, with a recent commit and a merged pull request to update documentation links. This activity shows a focus on maintaining and improving the documentation for the project.",
     "avatar_url": "https://avatars.githubusercontent.com/u/125606576?u=8559435cba147648c803316bd730d986c3c7886c&v=4",
     "activity": {
       "code": {
@@ -2110,7 +2149,7 @@
   {
     "contributor": "tsubasakong",
     "score": 19,
-    "summary": "tsubasakong is currently working on updating environment variable examples for the heurist feature. They have made 1 commit and 1 pull request, with a total of 4 code additions and 2 deletions.",
+    "summary": "tsubasakong is currently working on updating environmental variable examples for the heurist feature. They have made 1 commit and 1 pull request, with a net code change of +4/-2.",
     "avatar_url": "https://avatars.githubusercontent.com/u/97429702?u=dd986c0614a1416f2d6dc205cd76b7b29f16dd81&v=4",
     "activity": {
       "code": {
@@ -2173,7 +2212,7 @@
   {
     "contributor": "JoeyKhd",
     "score": 18,
-    "summary": "JoeyKhd is currently working on improving the logger and updating the default server port setting in the client-side codebase. They have made 2 commits with a total of +173/-271 code changes, including a merged pull request addressing the default server port issue.",
+    "summary": "JoeyKhd is currently working on improving the logger and updating the handling of the VITE_SERVER_PORT variable in the client-side codebase. They have made 2 commits with a net code change of -98 lines, focusing on enhancing functionality and ensuring a default port value is used when necessary.",
     "avatar_url": "https://avatars.githubusercontent.com/u/23193015?u=0fe43f6e6fcb27fb84102a8bf37fbb0d4dedcfc8&v=4",
     "activity": {
       "code": {
@@ -2239,7 +2278,7 @@
   {
     "contributor": "YoungPhlo",
     "score": 18,
-    "summary": "YoungPhlo is currently updating documentation by adding notes for the weekly contributor meeting on 2025-01-14. This includes a commit and a pull request with code changes focused on the docs section.",
+    "summary": "YoungPhlo is currently contributing to the documentation by adding notes for the weekly contributor meeting on 2025-01-14. This includes a commit and a pull request with code changes focused on the docs section, with a total of +56/-0 lines of code.",
     "avatar_url": "https://avatars.githubusercontent.com/u/90307961?u=2e7b36c41a4576a4720529da97a57280df102b28&v=4",
     "activity": {
       "code": {
@@ -2297,7 +2336,7 @@
   {
     "contributor": "suleigolden",
     "score": 11,
-    "summary": "suleigolden is currently working on resolving a type error for children in the animated.div component and developing a plugin related to football. Their recent activity includes 2 pull requests, with no merged changes, focusing on code areas such as agent, client, and packages.",
+    "summary": "suleigolden is currently working on fixing a type error related to children in the animated.div component. Additionally, they have started work on a plugin related to football. Their recent activity has focused on the client, agent, and packages code areas.",
     "avatar_url": "https://avatars.githubusercontent.com/u/29685335?u=80538aefb0690ea06d1978ef4d3922a2d1434b76&v=4",
     "activity": {
       "code": {
@@ -2455,7 +2494,7 @@
   {
     "contributor": "0xSero",
     "score": 11,
-    "summary": "0xSero is currently working on removing eslint, prettier, and tslint from the project and replacing them with biome. Their recent activity includes two pull requests related to this improvement in various code areas such as agent, docs, client, and packages.",
+    "summary": "0xSero is currently working on improving the project by removing eslint, prettier, and tslint, and replacing them with biome. Their recent activity includes two pull requests related to this task in various code areas such as .github, scripts, agent, client, docs, and packages.",
     "avatar_url": "https://avatars.githubusercontent.com/u/69639595?u=1a820d7074a01e232eb363b4bc1f885ef614594f&v=4",
     "activity": {
       "code": {
@@ -3473,9 +3512,71 @@
     }
   },
   {
+    "contributor": "amosin",
+    "score": 11,
+    "summary": "amosin is currently working on addressing a bug related to a 504 Timeout issue in the Anthropic project on GitHub. This involves investigating and resolving the issue to improve the project's performance and functionality.",
+    "avatar_url": "https://avatars.githubusercontent.com/u/3101055?u=62663abc2a087f162ed5d4eaa874abb41a9eae1f&v=4",
+    "activity": {
+      "code": {
+        "total_commits": 0,
+        "total_prs": 0,
+        "commits": [],
+        "pull_requests": []
+      },
+      "issues": {
+        "total_opened": 1,
+        "opened": [
+          {
+            "number": 2414,
+            "title": "Anthropic 504 Timeout",
+            "state": "OPEN",
+            "created_at": "2025-01-17T04:10:27Z",
+            "updated_at": "2025-01-17T22:48:31Z",
+            "body": "**Describe the bug**\n\nI am running latest version Eliza v0.1.8+build.1 with my own character using anthropic api and twitter client. \n\n**To Reproduce**\n\n    \"clients\": [\"twitter\"],\n    \"modelProvider\": \"anthropic\",\n    \"plugins\": [],\n    \"settings\": {\n        \"ragKnowledge\": false\n    },\n\nsetup .env with X and anthropic credentials.\n\n\n**Expected behavior**\n\ncreate tweet and send it....\n\n\n\n**Screenshots**\n\n\n \u26d4 ERRORS\n   API Response: \n   <html>\n  <head><title>504 Gateway Time-out</title></head>\n  <body>\n  <center><h1>504 Gateway Time-out</h1></center>\n  </body>\n  </html>\n   \n\n \u26d4 ERRORS\n   Full error details: \n   {} \n\n \u26d4 ERRORS\n   Error generating new tweet: \n   {} \n\n\n**Additional context**\n\nSo the API Response I guess it comes from Anthropic API, but this is happening all the time... does that mean that Anthropic is too busy or is there a way to improve this? \n\nIs it just me? I don't find much info about that out there...",
+            "labels": [
+              {
+                "name": "bug",
+                "color": "d73a4a",
+                "description": "Something isn't working"
+              }
+            ],
+            "comments": [
+              {
+                "author": "github-actions",
+                "body": "Hello @amosin! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+              },
+              {
+                "author": "JoeyKhd",
+                "body": "Seems like an issue related to Anthropic being down for a little bit. This issue is not related to Eliza."
+              },
+              {
+                "author": "amosin",
+                "body": "> Seems like an issue related to Anthropic being down for a little bit. This issue is not related to Eliza.\n\nthat's what I think too, but that happens too often.. Probably need to look for alternatives."
+              },
+              {
+                "author": "amosin",
+                "body": "and the problem is... there is no retry, it fail and it says tweet already responded... so it never responds.  I would say this is a bug.\n\n\n \u25ce LOGS\n   Processing Tweet:  \n   1880384084263989546 \n\n \u26d4 ERRORS\n   API Response: \n   <html>\n  <head><title>504 Gateway Time-out</title></head>\n  <body>\n  <center><h1>504 Gateway Time-out</h1></center>\n  </body>\n  </html>\n   \n\n \u26d4 ERRORS\n   Full error details: \n   {} \n\n \u26d4 ERRORS\n   Error handling Twitter interactions: \n   {} \n\n [\"\u25ce Checking Twitter interactions\"] \n\n \u25ce LOGS\n   Completed checking mentioned tweets: \n   17 \n\n [\"\u25ce No target users configured, processing only mentions\"] \n\n [\"\u25ce Already responded to tweet 1880384084263989546, skipping\"] "
+              },
+              {
+                "author": "amosin",
+                "body": "tried Grok, and got same issue. Maybe something with my Character. "
+              }
+            ]
+          }
+        ]
+      },
+      "engagement": {
+        "total_comments": 5,
+        "total_reviews": 0,
+        "comments": [],
+        "reviews": []
+      }
+    }
+  },
+  {
     "contributor": "krustevalexander",
     "score": 9,
-    "summary": "krustevalexander is currently working on resolving an issue related to a missing module '@anush008/tokenizers-linux-arm64-gnu' when starting a Docker container on M-based Mac. The focus is on addressing a bug in the setup process to ensure smooth functionality for users.",
+    "summary": "krustevalexander is currently addressing an issue related to a missing module '@anush008/tokenizers-linux-arm64-gnu' when starting a Docker container on M-based Mac systems. The focus of their recent activity is on resolving this bug to ensure smooth operation of the container environment.",
     "avatar_url": "https://avatars.githubusercontent.com/u/84629176?v=4",
     "activity": {
       "code": {
@@ -3529,7 +3630,7 @@
   {
     "contributor": "harrisrobin",
     "score": 9,
-    "summary": "harrisrobin is currently addressing a bug related to an error while using `<QueryClientProvider />`. They have opened an issue to track and resolve this issue, with no code changes or commits made yet.",
+    "summary": "harrisrobin is currently addressing a bug related to an error while using <QueryClientProvider />. They have opened one issue to track and resolve this issue, with no code changes or pull requests made yet.",
     "avatar_url": "https://avatars.githubusercontent.com/u/3880008?u=3221387b524a78145e2d4bfe7d195f122f6ea00d&v=4",
     "activity": {
       "code": {
@@ -3581,63 +3682,9 @@
     }
   },
   {
-    "contributor": "amosin",
-    "score": 9,
-    "summary": "amosin is currently working on addressing a timeout issue labeled as Anthropic 504 in the bug area. So far, there have been no pull requests or commits made related to this issue.",
-    "avatar_url": "https://avatars.githubusercontent.com/u/3101055?u=62663abc2a087f162ed5d4eaa874abb41a9eae1f&v=4",
-    "activity": {
-      "code": {
-        "total_commits": 0,
-        "total_prs": 0,
-        "commits": [],
-        "pull_requests": []
-      },
-      "issues": {
-        "total_opened": 1,
-        "opened": [
-          {
-            "number": 2414,
-            "title": "Anthropic 504 Timeout",
-            "state": "OPEN",
-            "created_at": "2025-01-17T04:10:27Z",
-            "updated_at": "2025-01-17T16:14:03Z",
-            "body": "**Describe the bug**\n\nI am running latest version Eliza v0.1.8+build.1 with my own character using anthropic api and twitter client. \n\n**To Reproduce**\n\n    \"clients\": [\"twitter\"],\n    \"modelProvider\": \"anthropic\",\n    \"plugins\": [],\n    \"settings\": {\n        \"ragKnowledge\": false\n    },\n\nsetup .env with X and anthropic credentials.\n\n\n**Expected behavior**\n\ncreate tweet and send it....\n\n\n\n**Screenshots**\n\n\n \u26d4 ERRORS\n   API Response: \n   <html>\n  <head><title>504 Gateway Time-out</title></head>\n  <body>\n  <center><h1>504 Gateway Time-out</h1></center>\n  </body>\n  </html>\n   \n\n \u26d4 ERRORS\n   Full error details: \n   {} \n\n \u26d4 ERRORS\n   Error generating new tweet: \n   {} \n\n\n**Additional context**\n\nSo the API Response I guess it comes from Anthropic API, but this is happening all the time... does that mean that Anthropic is too busy or is there a way to improve this? \n\nIs it just me? I don't find much info about that out there...",
-            "labels": [
-              {
-                "name": "bug",
-                "color": "d73a4a",
-                "description": "Something isn't working"
-              }
-            ],
-            "comments": [
-              {
-                "author": "github-actions",
-                "body": "Hello @amosin! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-              },
-              {
-                "author": "JoeyKhd",
-                "body": "Seems like an issue related to Anthropic being down for a little bit. This issue is not related to Eliza."
-              },
-              {
-                "author": "amosin",
-                "body": "> Seems like an issue related to Anthropic being down for a little bit. This issue is not related to Eliza.\n\nthat's what I think too, but that happens too often.. Probably need to look for alternatives."
-              }
-            ]
-          }
-        ]
-      },
-      "engagement": {
-        "total_comments": 3,
-        "total_reviews": 0,
-        "comments": [],
-        "reviews": []
-      }
-    }
-  },
-  {
     "contributor": "jeongtai",
     "score": 8,
-    "summary": "jeongtai is currently addressing unexpected behavior in a Twitter bot, specifically focusing on issues related to the bot ignoring custom Twitter target users and encountering unexpected JSON metadata in replies. Their recent activity is centered around bug fixes in the Twitter bot functionality.",
+    "summary": "jeongtai is currently addressing unexpected behavior in a Twitter bot, specifically focusing on issues related to the bot ignoring custom target users and encountering unexpected JSON metadata in replies. Their recent activity includes working on 2 bug-related issues with no code changes or commits made so far.",
     "avatar_url": "https://avatars.githubusercontent.com/u/41337277?u=8cd0997c01cce2192df4a764957a8cd2579ce9f6&v=4",
     "activity": {
       "code": {
@@ -3699,7 +3746,7 @@
   {
     "contributor": "chen4903",
     "score": 8,
-    "summary": "chen4903 is currently working on resolving an issue related to the plugin-evm, specifically addressing the error message \"Failed to resolve entry for package '@elizaos/core'.\" The issue falls under the bug category, with no recent code changes or merged pull requests.",
+    "summary": "chen4903 is currently working on resolving an issue related to the plugin-evm, specifically addressing the error message \"Failed to resolve entry for package \"@elizaos/core\". The issue falls under the bug category, with no code changes or commits made yet.",
     "avatar_url": "https://avatars.githubusercontent.com/u/108803001?u=94e740388ff4f16ccac22cbb257c7d19450e5f5c&v=4",
     "activity": {
       "code": {
@@ -3749,7 +3796,7 @@
   {
     "contributor": "jimtracy1007",
     "score": 7,
-    "summary": "jimtracy1007 is currently working on a pull request titled \"feat:add plugin-lightning\" in the code areas of agent and packages. This is the only recent activity, with no commits or code changes reported.",
+    "summary": "jimtracy1007 is currently working on a pull request titled \"feat:add plugin-lightning\" in the code areas of agent and packages. This is the only recent activity, with no merged PRs, commits, or code changes.",
     "avatar_url": "https://avatars.githubusercontent.com/u/149987098?v=4",
     "activity": {
       "code": {
@@ -3889,7 +3936,7 @@
   {
     "contributor": "0xPBIT",
     "score": 7,
-    "summary": "0xPBIT is currently addressing an issue related to the incompatibility of the Telegram client polling with blue-green deployments. This work falls under the bug category and involves no code changes or commits at this time.",
+    "summary": "0xPBIT is currently addressing an issue related to the incompatibility of telegram client polling with blue-green deployments. This work falls under the bug category and involves no code changes or commits at this time.",
     "avatar_url": "https://avatars.githubusercontent.com/u/5788534?u=be4fc26d53b95d68c57f12fbf8ae846f10e73743&v=4",
     "activity": {
       "code": {
@@ -3935,7 +3982,7 @@
   {
     "contributor": "aspiers",
     "score": 7,
-    "summary": "aspiers is currently addressing a bug related to the failure of building documentation for docker-compose-docs.yaml. This is the only issue they are currently working on, with no pull requests or commits made yet.",
+    "summary": "aspiers is currently addressing a bug related to the failure of building documentation in the docker-compose-docs.yaml file. This is reflected in their recent activity, with no merged pull requests or commits, but one open issue focusing on resolving this documentation build issue.",
     "avatar_url": "https://avatars.githubusercontent.com/u/100738?v=4",
     "activity": {
       "code": {
@@ -3981,7 +4028,7 @@
   {
     "contributor": "dantgw",
     "score": 7,
-    "summary": "dantgw is currently addressing a parsing error related to receiving OpenAI responses. This bug is the main focus of their recent GitHub activity, with no code changes or commits made yet.",
+    "summary": "dantgw is currently addressing a parsing error related to receiving OpenAI responses. This issue falls under the bug category and has not yet resulted in any code changes or merged pull requests.",
     "avatar_url": "https://avatars.githubusercontent.com/u/6827314?u=200b3f85e8dbc96492f4d132f270b3b323e910b5&v=4",
     "activity": {
       "code": {
@@ -4027,7 +4074,7 @@
   {
     "contributor": "Aave-Khan",
     "score": 7,
-    "summary": "Aave-Khan is currently addressing a bug related to package installation that is preventing it from working properly. There have been no pull requests or commits made yet, but the focus is on resolving this issue in the code.",
+    "summary": "Aave-Khan is currently addressing a bug related to package installation that is preventing it from working properly. This is the only issue they have been working on recently, with no pull requests or code changes made yet.",
     "avatar_url": "https://avatars.githubusercontent.com/u/194741512?v=4",
     "activity": {
       "code": {
@@ -4073,7 +4120,7 @@
   {
     "contributor": "MustBeSimo",
     "score": 7,
-    "summary": "MustBeSimo is currently working on addressing an issue in the @elizaos/plugin-image-generation repository. They have not made any pull requests or commits yet, but are actively engaged in resolving the reported issue.",
+    "summary": "MustBeSimo is currently working on an issue related to the @elizaos/plugin-image-generation project on GitHub. There have been no pull requests or commits made, but one issue has been opened.",
     "avatar_url": "https://avatars.githubusercontent.com/u/49583351?v=4",
     "activity": {
       "code": {
@@ -4111,58 +4158,9 @@
     }
   },
   {
-    "contributor": "shakkernerd",
-    "score": 6,
-    "summary": "shakkernerd is currently merging pull requests related to testing client integrations with GitHub and Slack. They have made a total of 3 commits with a significant code change of +769/-836 lines.",
-    "avatar_url": null,
-    "activity": {
-      "code": {
-        "total_commits": 3,
-        "total_prs": 0,
-        "commits": [
-          {
-            "sha": "8ab8be583e10ad70008f551dcaaadbb99a611b65",
-            "message": "Merge pull request #2407 from ai16z-demirix/test/client-github\n\nfeat: adding tests for github client",
-            "created_at": "2025-01-16T23:04:15Z",
-            "additions": 143,
-            "deletions": 2,
-            "changed_files": 3
-          },
-          {
-            "sha": "cbbd6df15ae2bd00b03a04a2ebe8dc25e722e886",
-            "message": "Merge branch 'develop' into test/client-github",
-            "created_at": "2025-01-16T22:52:18Z",
-            "additions": 313,
-            "deletions": 417,
-            "changed_files": 8
-          },
-          {
-            "sha": "1000dd6f8dbb90d8a74bcef5b091da54596dd387",
-            "message": "Merge pull request #2404 from ai16z-demirix/test/client-slack\n\nfeat: adding tests for slack client. Moving existing tests to new __tests__ directory.",
-            "created_at": "2025-01-16T22:50:39Z",
-            "additions": 313,
-            "deletions": 417,
-            "changed_files": 8
-          }
-        ],
-        "pull_requests": []
-      },
-      "issues": {
-        "total_opened": 0,
-        "opened": []
-      },
-      "engagement": {
-        "total_comments": 0,
-        "total_reviews": 0,
-        "comments": [],
-        "reviews": []
-      }
-    }
-  },
-  {
     "contributor": "0xrubusdata",
     "score": 5,
-    "summary": "0xrubusdata is currently working on adding OpenAI integration for text generation in the \"packages\" code area. This involves a single pull request that has not been merged yet.",
+    "summary": "0xrubusdata is currently working on adding OpenAI integration for text generation in the \"packages\" code area. This involves a single pull request for a new feature plugin, with no merged changes yet.",
     "avatar_url": "https://avatars.githubusercontent.com/u/195490912?u=da29b2371dfa3af2e5935f50d82f8c1e71ded780&v=4",
     "activity": {
       "code": {
@@ -4241,7 +4239,7 @@
   {
     "contributor": "rrw-zilliqa",
     "score": 5,
-    "summary": "rrw-zilliqa is currently working on a new plugin for the Zilliqa blockchain, with a focus on the agent and packages code areas. This contribution is reflected in a pull request that has not yet been merged.",
+    "summary": "rrw-zilliqa is currently working on a plugin for the Zilliqa blockchain, with a focus on the agent and packages code areas. The contribution includes one pull request, although it has not been merged yet.",
     "avatar_url": "https://avatars.githubusercontent.com/u/108257153?v=4",
     "activity": {
       "code": {
@@ -4330,7 +4328,7 @@
   {
     "contributor": "beatsfoundation",
     "score": 5,
-    "summary": "beatsfoundation is currently working on adding a media creation engine to the agent and packages code areas. They have submitted one pull request for this feature, although it has not been merged yet.",
+    "summary": "beatsfoundation is currently working on adding a media creation engine to the agent and packages code areas. This involves a single pull request that has not been merged yet, with no other recent activity in terms of commits or code changes.",
     "avatar_url": "https://avatars.githubusercontent.com/u/194855838?u=520e3df271dc949a2df3812a080e8f5db556fabe&v=4",
     "activity": {
       "code": {
@@ -4514,7 +4512,7 @@
   {
     "contributor": "No148",
     "score": 5,
-    "summary": "No148 is currently working on a pull request related to Platinum development. The code areas being focused on include the agent, .github, characters, and packages. So far, there have been no commits or code changes merged.",
+    "summary": "No148 is currently working on a pull request related to Platinum development, focusing on code areas such as characters, packages, agent, and .github. The pull request has not been merged yet, and there have been no commits or code changes in this recent activity.",
     "avatar_url": "https://avatars.githubusercontent.com/u/37482892?u=12905b3efdb5b85df566f686d19da47efda0fd84&v=4",
     "activity": {
       "code": {
@@ -4703,7 +4701,7 @@
   {
     "contributor": "alvarosps",
     "score": 5,
-    "summary": "alvarosps is currently working on a pull request for creating an Archetype Selector feature in the client and packages code areas. The pull request has not been merged yet, and there have been no commits or code changes beyond this feature implementation.",
+    "summary": "alvarosps is currently working on a pull request for creating an Archetype Selector in the client and packages code areas. The pull request has not been merged yet, and there have been no commits or code changes in this recent activity.",
     "avatar_url": "https://avatars.githubusercontent.com/u/22122640?u=f487e0d718ece8224dc9765145156ba8f40aebe7&v=4",
     "activity": {
       "code": {
@@ -4960,7 +4958,7 @@
   {
     "contributor": "timmyg",
     "score": 5,
-    "summary": "timmyg is currently working on a pull request for a reddit client in the packages code area. The pull request has not been merged yet, and there have been no commits or code changes in this recent activity.",
+    "summary": "timmyg is currently working on a pull request for a reddit client in the \"packages\" code area. The pull request has not been merged yet, and there have been no commits or code changes in this recent activity.",
     "avatar_url": "https://avatars.githubusercontent.com/u/1144242?u=196f1d1c545fe60423fc8718257bd5cd79c25e2f&v=4",
     "activity": {
       "code": {
@@ -5069,7 +5067,7 @@
   {
     "contributor": "zy-bc-ai",
     "score": 4,
-    "summary": "zy-bc-ai is currently working on adding a Mind Network plugin to the agent and packages code areas. This work is reflected in a pull request that has not been merged yet.",
+    "summary": "zy-bc-ai is currently working on a pull request to add the Mind Network plugin to the agent and packages code areas. The pull request has not been merged yet, but it indicates ongoing development in this specific feature.",
     "avatar_url": "https://avatars.githubusercontent.com/u/161017766?v=4",
     "activity": {
       "code": {
@@ -5183,7 +5181,7 @@
   {
     "contributor": "r4topunk",
     "score": 4,
-    "summary": "r4topunk is currently working on fixing a seed typo in the adapter-supabase package. This is the only recent activity, with no merged PRs, commits, or code changes in other areas.",
+    "summary": "r4topunk is currently working on fixing a typo in the seed adapter for the Supabase project. This is their most recent activity on GitHub, with a focus on the packages code area.",
     "avatar_url": "https://avatars.githubusercontent.com/u/43586732?u=1710faf1985a35d5a58dca8b50dfbaf001e1f2f9&v=4",
     "activity": {
       "code": {
@@ -5237,7 +5235,7 @@
   {
     "contributor": "boohyunsik",
     "score": 3,
-    "summary": "boohyunsik is currently working on a new plugin, with the most recent activity being a pull request to initialize the plugin. The code changes are focused on the agent, scripts, and packages areas, with no merged pull requests or commits at this time.",
+    "summary": "boohyunsik is currently working on a new plugin feature, with a pull request titled \"feat: initia plugin.\" The code changes are focused on scripts, agent, and packages, with no commits or merged pull requests at the moment.",
     "avatar_url": "https://avatars.githubusercontent.com/u/22348566?u=2bfa47a5a1057fb546f004fcb75143a8244c95d0&v=4",
     "activity": {
       "code": {
@@ -5351,7 +5349,7 @@
   {
     "contributor": "azep-ninja",
     "score": 2,
-    "summary": "azep-ninja is currently working on adding TG autonomous functionality, with a recent commit showing a significant code change of +435/-259. There are no open pull requests or issues associated with this recent activity.",
+    "summary": "azep-ninja is currently working on adding TG autonomous functionality, with a recent commit showing a significant code change of +435/-259. This contribution indicates a focus on developing autonomous features within the project.",
     "avatar_url": null,
     "activity": {
       "code": {
@@ -5417,7 +5415,7 @@
   {
     "contributor": "KacperKoza343",
     "score": 2,
-    "summary": "KacperKoza343 is currently working on implementing the feature for Inter-Blockchain Communication (IBC) transfer on Cosmos blockchains. This work involves a significant code change of adding 1210 lines and removing 4 lines.",
+    "summary": "KacperKoza343 is currently working on implementing the feature for inter-blockchain transfer (IBC) on Cosmos blockchains, with a significant commit that includes adding 1210 lines of code and modifying 4 lines.",
     "avatar_url": null,
     "activity": {
       "code": {
@@ -5450,7 +5448,7 @@
   {
     "contributor": "zo-eth",
     "score": 2,
-    "summary": "zo-eth is currently working on a feature that involves coding in a plugin to load characters from a blockchain. This recent commit shows significant code changes with a net addition of 421 lines.",
+    "summary": "zo-eth is currently working on a new feature called Code In Plugin, which involves loading characters from the blockchain. This recent commit shows significant code changes with a net addition of 421 lines.",
     "avatar_url": null,
     "activity": {
       "code": {
@@ -5483,7 +5481,7 @@
   {
     "contributor": "sweetmantech",
     "score": 2,
-    "summary": "sweetmantech is currently working on developing a Coinbase agentkit plugin for Eliza, with a recent commit showing a significant code change of +530/-1. There are no open pull requests or issues associated with their recent activity.",
+    "summary": "sweetmantech is currently working on developing a new plugin for Eliza that integrates with Coinbase through the agentkit framework. This recent commit includes significant code changes with a net addition of 529 lines of code.",
     "avatar_url": null,
     "activity": {
       "code": {
@@ -5516,7 +5514,7 @@
   {
     "contributor": "UD1sto",
     "score": 2,
-    "summary": "UD1sto is currently integrating the Livepeer LLM provider into the project, with a significant commit showing code changes of +218/-30. No pull requests or issues have been opened or merged recently.",
+    "summary": "UD1sto is currently integrating the Livepeer LLM provider into the project, with a single commit showing significant code changes of +218/-30. No pull requests or issues have been opened or merged by UD1sto recently.",
     "avatar_url": null,
     "activity": {
       "code": {
@@ -5549,7 +5547,7 @@
   {
     "contributor": "enigmarikki",
     "score": 2,
-    "summary": "enigmarikki is currently working on a new feature related to an injective plugin, with a recent commit showing significant code changes of +33252/-343. This indicates a substantial development effort in progress towards implementing the injective plugin feature.",
+    "summary": "enigmarikki is currently working on a new feature related to an injective plugin, with a significant code change of +33252/-343. This is reflected in the recent commit labeled \"feat: injective plugin (#1764).\"",
     "avatar_url": null,
     "activity": {
       "code": {
@@ -5580,9 +5578,9 @@
     }
   },
   {
-    "contributor": "odilitime",
+    "contributor": "shakkernerd",
     "score": 2,
-    "summary": "odilitime is currently working on merging a pull request related to S3 improvements, with one commit showing code changes of +17/-0. No new pull requests or issues have been created by odilitime recently.",
+    "summary": "shakkernerd is currently merging a pull request related to testing the client-github functionality, with a significant code change of +143/-2. This is the only commit made recently, with no new pull requests or issues opened.",
     "avatar_url": null,
     "activity": {
       "code": {
@@ -5590,11 +5588,11 @@
         "total_prs": 0,
         "commits": [
           {
-            "sha": "dda5feb85e12df56b5853fe55d2b4a95bf42e7d6",
-            "message": "Merge pull request #2379 from JoeyKhd/s3-improvement\n\nfeat: better S3 flexibility",
-            "created_at": "2025-01-16T22:57:56Z",
-            "additions": 17,
-            "deletions": 0,
+            "sha": "8ab8be583e10ad70008f551dcaaadbb99a611b65",
+            "message": "Merge pull request #2407 from ai16z-demirix/test/client-github\n\nfeat: adding tests for github client",
+            "created_at": "2025-01-16T23:04:15Z",
+            "additions": 143,
+            "deletions": 2,
             "changed_files": 3
           }
         ],
