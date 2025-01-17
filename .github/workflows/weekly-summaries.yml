@@ -38,6 +38,12 @@ jobs:
           echo "IS_MONTH_START=$(date +'%d')" >> $GITHUB_ENV
           echo "DATE_START=2024-10-15" >> $GITHUB_ENV
           echo "DATE_END=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+          # Calculate days since project start
+          start_date="2024-10-15"          
+          current_date=$(date +'%Y-%m-%d')
+          days_since_start=$(( ( $(date -d "$current_date" +%s) - $(date -d "$DATE_START" +%s) ) / 86400 ))
+          echo "DAYS_SINCE_START=$days_since_start" >> $GITHUB_ENV
+
 
       # Daily workflow
       - name: Process daily data
@@ -64,9 +70,11 @@ jobs:
           python scripts/summarize_daily.py data/daily/contributors.json -t json data/daily/summary.json --model openai
           python scripts/summarize_daily.py data/daily/contributors.json -t md data/daily/summary.md --model openai
 
-          python scripts/merge_contributors.py --days 85 --dir data/daily/history -o data/historical_merge.json
+          python scripts/merge_contributors.py --days $DAYS_SINCE_START --dir data/daily/history -o data/historical_merge.json
           python scripts/analyze_contributors.py data/historical_merge.json data/analysis.json --after ${DATE_START} --before ${DATE_END} -f
-          python scripts/merge_contributors_xp.py data/historical_merge.json data/analysis.json data/historical.json
+
+          python scripts/calculate_scores.py data/historical_merge.json data/historical_merge_scored.json
+          python scripts/merge_contributors_xp.py data/historical_merge_scored.json data/analysis.json data/historical.json
 
       # Weekly workflow using daily history
       - name: Process weekly data and generate thread
