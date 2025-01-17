@@ -9,11 +9,6 @@ const handler = NextAuth({
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET!,
-  pages: {
-    signIn: '/auth/signin',
-    error: '/auth/error',
-    signOut: '/auth/signout'
-  },
   callbacks: {
     async jwt({ token, account }) {
       if (account) {
