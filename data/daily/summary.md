@@ -1,43 +1,44 @@
-# elizaos Eliza (2025-01-14)
+# elizaos Eliza (2025-01-16)
     
 ## 📊 Overview
-Development focused on package improvements (add support for gravity chain in EVM plugin), new features (add support for gravity chain in EVM plugin). with 38 contributors merging 5 PRs. Major work included howieduhzit is currently updating and enhancing the start script and setup functions in the project, focusing on improving environment configuration and user documentation.
+Development focused on package improvements (adding tests for plugin-solana), new features (adding tests for plugin-solana), 8 bug fixes. with 47 contributors merging 21 PRs. Major work included odilitime is currently working on merging pull requests related to code fixes and improvements in various areas such as packages, documentation, and client features.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 38 |
-| 📝 Commits | 53 |
-| 🔄 Merged PRs | 5 |
-| ⚠️ New Issues | 12 |
+| 👥 Contributors | 47 |
+| 📝 Commits | 73 |
+| 🔄 Merged PRs | 21 |
+| ⚠️ New Issues | 10 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 0
-- 🐛 **Fixes**: 0
-- ✨ **Features**: 2
+- 🧹 **Chores**: 4
+- 🐛 **Fixes**: 8
+- ✨ **Features**: 4
 
 ## 📁 File Changes
-- **scripts**: 1 files (+694/-52 lines)
-- **docs**: 3 files (+317/-1 lines)
-- **packages**: 5 files (+276/-3 lines)
-- **root**: 3 files (+159/-2 lines)
+- **root**: 10 files (+2244/-2451 lines)
+- **packages**: 142 files (+1614/-809 lines)
+- **docs**: 6 files (+23/-23 lines)
+- **agent**: 6 files (+23/-16 lines)
+- **client**: 3 files (+4/-2 lines)
 
 ## 🔥 Notable Changes
-- Merge my Eliza Installer with the current start.sh script
-- feat: add support for gravity chain in EVM plugin
-- docs: Add Farsi (Persian )readme
+- chore: lint
+- chore: Prep 0.1.9-alpha.1
+- fix: lint errors
 
 ## 👥 Top Contributors
-- **HowieDuhzit**: HowieDuhzit is currently updating and enhancing the start script and setup functions in the project, focusing on improving environment configuration and user documentation
-- **Stumble**: Stumble is currently working on adding support for the gravity chain in the EVM plugin
-- **oxlupo**: oxlupo is currently working on adding a Persian README file to the project documentation
+- **odilitime**: odilitime is currently working on merging pull requests related to code fixes and improvements in various areas such as packages, documentation, and client features
+- **shakkernerd**: shakkernerd is currently working on merging pull requests related to cleanup tasks, feature enhancements, and fixes in various branches of the repository
+- **JoeyKhd**: JoeyKhd is currently working on improving the logger and S3 flexibility in the codebase
 
 ## ⚠️ Issues
-- **New Issues**: 12
-- **Labels**: `bug` (7), `enhancement` (5), `good first issue` (2)
-- **Summary**: 7 bugs reported (including 'Bug: Twitter Authentication fails on Cloud. Error 399', 'Missing Module: '@anush008/tokenizers-linux-arm64-gnu'') 5 feature requests (including 'create relay.link plugin', 'Create 0x.org swap plugin/enhancement for EVM').
+- **New Issues**: 10
+- **Labels**: `bug` (5), `Need Feedback` (5), `enhancement` (2)
+- **Summary**: 5 bugs reported (including 'unset variables docker compose bug', 'Running in cloud from docker image BUG') 2 feature requests (including 'Add tests for slack client. Move and update existing tests to __tests__ directory', 'Tests for Solana Plugin').
 
 ## Top Contributors
-- **HowieDuhzit**: Merge my Eliza Installer with the current start.sh script
-- **Stumble**: feat: add support for gravity chain in EVM plugin
-- **oxlupo**: docs: Add Farsi (Persian )readme
+- **odilitime**: chore: lint
+- **shakkernerd**: fix: lint errors
+- **JoeyKhd**: fix: docker images+compose and broken documentation

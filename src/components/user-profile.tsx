@@ -1,13 +1,7 @@
 import * as React from "react";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Tooltip,
   TooltipContent,
@@ -17,6 +11,8 @@ import {
 import { UserFocusAreaData, TagLevel } from "@/types/user-profile";
 import { skillIcons } from "@/lib/skill-icons";
 import { CircleSlash, Github } from "lucide-react";
+import Link from "next/link";
+import { formatCompactNumber } from "@/lib/format-number";
 
 const SkillCard = ({
   name,
@@ -44,29 +40,31 @@ const SkillCard = ({
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Card
-            className={`group relative overflow-hidden border-2 hover:border-primary/50 transition-all ${getRankStyles()}`}
-          >
-            <CardContent className="p-2 sm:p-4">
-              <div className="flex items-center gap-3">
-                <div className="relative shrink-0">
-                  <div className="absolute inset-0 bg-primary/5 rounded-full scale-0 group-hover:scale-150 transition-transform duration-500" />
-                  <Icon className="w-6 h-6 sm:w-8 sm:h-8 relative z-10 text-primary/80" />
-                </div>
-                <div className="min-w-0">
-                  <p className="font-medium text-sm capitalize truncate">
-                    {name}
-                  </p>
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-xs text-muted-foreground">LVL</span>
-                    <span className="text-xl font-bold font-mono tabular-nums">
-                      {data.level}
-                    </span>
+          <Link href={`/?skill=${name.toLowerCase()}`}>
+            <Card
+              className={`group relative overflow-hidden border-2 hover:border-primary/50 transition-all cursor-pointer ${getRankStyles()}`}
+            >
+              <CardContent className="p-2 sm:p-4">
+                <div className="flex items-center gap-3">
+                  <div className="relative shrink-0">
+                    <div className="absolute inset-0 bg-primary/5 rounded-full scale-0 group-hover:scale-150 transition-transform duration-500" />
+                    <Icon className="w-6 h-6 sm:w-8 sm:h-8 relative z-10 text-primary/80" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-medium text-sm capitalize truncate">
+                      {name}
+                    </p>
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-xs text-muted-foreground">LVL</span>
+                      <span className="text-lg md:text-xl font-bold font-mono tabular-nums">
+                        {data.level}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </Link>
         </TooltipTrigger>
         <TooltipContent className="w-64">
           <div className="space-y-3">
@@ -87,7 +85,7 @@ const SkillCard = ({
                 <span className="text-muted-foreground">Current XP</span>
                 <span className="font-medium">
                   {data.points.toLocaleString(undefined, {
-                    maximumFractionDigits: 2,
+                    maximumFractionDigits: 0,
                   })}
                 </span>
               </div>
@@ -95,7 +93,7 @@ const SkillCard = ({
                 <span className="text-muted-foreground">Next Level</span>
                 <span className="font-medium">
                   {data.points_next_level.toLocaleString(undefined, {
-                    maximumFractionDigits: 2,
+                    maximumFractionDigits: 0,
                   })}
                 </span>
               </div>
@@ -124,8 +122,8 @@ export default function UserProfile(props: UserFocusAreaData) {
     .sort((a, b) => b.xp - a.xp);
 
   return (
-    <Card className="w-full max-w-4xl mx-auto">
-      <CardHeader className="flex flex-row items-center gap-4">
+    <div className="w-full max-w-4xl mx-auto sm:p-4 space-y-6">
+      <div className="flex flex-col md:flex-row items-center gap-4">
         <Avatar className="w-20 h-20">
           <AvatarImage
             src={`https://github.com/${props.username}.png`}
@@ -134,8 +132,10 @@ export default function UserProfile(props: UserFocusAreaData) {
           <AvatarFallback>{props.username[0].toUpperCase()}</AvatarFallback>
         </Avatar>
         <div className="flex-grow">
-          <div className="flex items-center gap-2">
-            <CardTitle className="text-2xl">{props.username}</CardTitle>
+          <div className="flex flex-col items-center md:items-start gap-2">
+            <h1 className="text-lg sm:text-2xl max-w-full font-bold">
+              {props.username}
+            </h1>
             <a
               href={`https://github.com/${props.username}`}
               target="_blank"
@@ -146,137 +146,136 @@ export default function UserProfile(props: UserFocusAreaData) {
               <span className="sr-only">View GitHub Profile</span>
             </a>
           </div>
-          <CardDescription className="mt-2">{props.summary}</CardDescription>
+          <p className="text-muted-foreground mt-2">{props.summary}</p>
         </div>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex divide-x">
-              <div className="px-4 first:pl-0 last:pr-0">
-                <p className="text-sm font-medium text-muted-foreground">
-                  Total Level
-                </p>
-                <div className="text-2xl font-bold font-mono mt-1">
-                  {totalLevel}
-                </div>
+      </div>
+
+      <Card>
+        <CardContent className="p-4">
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <p className="text-sm font-medium text-muted-foreground">
+                Total Level
+              </p>
+              <div className="text-lg sm:text-2xl font-bold font-mono mt-1">
+                {totalLevel}
               </div>
-              <div className="px-4 first:pl-0 last:pr-0">
-                <p className="text-sm font-medium text-muted-foreground">
-                  Total XP
-                </p>
-                <div className="text-2xl font-bold font-mono mt-1">
-                  {Math.round(totalXp).toLocaleString()}
-                </div>
+            </div>
+            <div>
+              <p className="text-sm font-medium text-muted-foreground">
+                Total XP
+              </p>
+              <div className="text-lg sm:text-2xl font-bold font-mono mt-1">
+                {Math.round(totalXp).toLocaleString()}
               </div>
-              <div className="px-4 first:pl-0 last:pr-0 flex-grow">
-                <p className="text-sm font-medium text-muted-foreground">
-                  Focus Areas
-                </p>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {props.focus_areas.map(([area], index) => (
-                    <Badge
-                      key={index}
-                      variant="secondary"
-                      className="px-3 py-1 text-sm"
-                    >
-                      {area}
-                    </Badge>
-                  ))}
+            </div>
+            <div className="col-span-2">
+              <p className="text-sm font-medium text-muted-foreground">
+                Focus Areas
+              </p>
+              <div className="flex flex-wrap gap-2 mt-2">
+                {props.focus_areas.map(([area], index) => (
+                  <Badge
+                    key={index}
+                    variant="secondary"
+                    className="px-1.5 py-0.5 text-xs sm:px-3 sm:py-1 sm:text-sm"
+                  >
+                    {area}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <Card className="overflow-hidden">
+          <CardHeader className="p-3">
+            <CardTitle className="text-sm font-medium text-muted-foreground">
+              Pull Requests
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-3 pt-0">
+            <div className="grid grid-cols-3 gap-1 sm:gap-2">
+              <div className="text-center">
+                <div className="text-xl sm:text-2xl font-bold font-mono">
+                  {props.stats.total_prs}
                 </div>
+                <p className="text-[10px] sm:text-xs text-muted-foreground">
+                  Total
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="text-xl sm:text-2xl font-bold font-mono">
+                  {props.stats.merged_prs}
+                </div>
+                <p className="text-[10px] sm:text-xs text-muted-foreground">
+                  Merged
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="text-xl sm:text-2xl font-bold font-mono">
+                  {props.stats.closed_prs}
+                </div>
+                <p className="text-[10px] sm:text-xs text-muted-foreground">
+                  Closed
+                </p>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <Card className="overflow-hidden">
-            <CardHeader className="p-3">
-              <CardTitle className="text-sm font-medium text-muted-foreground">
-                Pull Requests
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-3 pt-0">
-              <div className="grid grid-cols-3 gap-1 sm:gap-2">
-                <div className="text-center">
-                  <div className="text-xl sm:text-2xl font-bold font-mono">
-                    {props.stats.total_prs}
-                  </div>
-                  <p className="text-[10px] sm:text-xs text-muted-foreground">
-                    Total
-                  </p>
+        <Card className="overflow-hidden">
+          <CardHeader className="p-3">
+            <CardTitle className="text-sm font-medium text-muted-foreground">
+              Code Contributions
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-3 pt-0">
+            <div className="grid grid-cols-3 gap-1 sm:gap-2">
+              <div className="text-center">
+                <div className="text-lg sm:text-2xl font-bold font-mono">
+                  {props.stats.total_files}
                 </div>
-                <div className="text-center">
-                  <div className="text-xl sm:text-2xl font-bold font-mono">
-                    {props.stats.merged_prs}
-                  </div>
-                  <p className="text-[10px] sm:text-xs text-muted-foreground">
-                    Merged
-                  </p>
-                </div>
-                <div className="text-center">
-                  <div className="text-xl sm:text-2xl font-bold font-mono">
-                    {props.stats.closed_prs}
-                  </div>
-                  <p className="text-[10px] sm:text-xs text-muted-foreground">
-                    Closed
-                  </p>
-                </div>
+                <p className="text-[10px] sm:text-xs text-muted-foreground">
+                  Files
+                </p>
               </div>
-            </CardContent>
-          </Card>
-
-          <Card className="overflow-hidden">
-            <CardHeader className="p-3">
-              <CardTitle className="text-sm font-medium text-muted-foreground">
-                Code Contributions
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-3 pt-0">
-              <div className="grid grid-cols-3 gap-1 sm:gap-2">
-                <div className="text-center">
-                  <div className="text-xl sm:text-2xl font-bold font-mono">
-                    {props.stats.total_files}
-                  </div>
-                  <p className="text-[10px] sm:text-xs text-muted-foreground">
-                    Files
-                  </p>
+              <div className="text-center">
+                <div className="text-lg sm:text-2xl font-bold font-mono text-emerald-500">
+                  +{formatCompactNumber(props.stats.total_additions)}
                 </div>
-                <div className="text-center">
-                  <div className="text-xl sm:text-2xl font-bold font-mono text-emerald-500">
-                    +{props.stats.total_additions.toLocaleString()}
-                  </div>
-                  <p className="text-[10px] sm:text-xs text-muted-foreground">
-                    Additions
-                  </p>
-                </div>
-                <div className="text-center">
-                  <div className="text-xl sm:text-2xl font-bold font-mono text-red-500">
-                    -{props.stats.total_deletions.toLocaleString()}
-                  </div>
-                  <p className="text-[10px] sm:text-xs text-muted-foreground">
-                    Deletions
-                  </p>
-                </div>
+                <p className="text-[10px] sm:text-xs text-muted-foreground">
+                  Additions
+                </p>
               </div>
-            </CardContent>
-          </Card>
-        </div>
+              <div className="text-center">
+                <div className="text-lg sm:text-2xl font-bold font-mono text-red-500">
+                  -{formatCompactNumber(props.stats.total_deletions)}
+                </div>
+                <p className="text-[10px] sm:text-xs text-muted-foreground">
+                  Deletions
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
 
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Skills</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {sortedSkills.map(({ name, data }, index) => (
-              <SkillCard
-                key={name}
-                name={name}
-                data={data}
-                rank={index < 3 ? index + 1 : undefined}
-              />
-            ))}
-          </div>
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Skills</h3>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {sortedSkills.map(({ name, data }, index) => (
+            <SkillCard
+              key={name}
+              name={name}
+              data={data}
+              rank={index < 3 ? index + 1 : undefined}
+            />
+          ))}
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }
