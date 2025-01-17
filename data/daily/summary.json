@@ -1,76 +1,75 @@
 {
-  "title": "elizaos Eliza (2025-01-16)",
-  "version": "",
-  "overview": "Development focused on package improvements (adding tests for plugin-solana), new features (adding tests for plugin-solana), 8 bug fixes. with 47 contributors merging 21 PRs. Major work included odilitime is currently working on merging pull requests related to code fixes and improvements in various areas such as packages, documentation, and client features.",
+  "title": "elizaos Eliza (2025-01-17)",
+  "version": "create version.cmd for windows support",
+  "overview": "Development focused on package improvements (adding tests for instagram client), new features (add workflow to block minified JS), 10 bug fixes. with 53 contributors merging 28 PRs. Major work included wtfsayo is primarily working on fixing spelling issues, setting openai as the default provider for characters, and resolving conflicts in the quickstart.",
   "metrics": {
-    "contributors": 47,
-    "merged_prs": 21,
-    "new_issues": 10,
-    "lines_changed": 7212
+    "contributors": 53,
+    "merged_prs": 28,
+    "new_issues": 15,
+    "lines_changed": 26113
   },
   "changes": {
     "features": [
-      "adding tests for plugin-solana",
-      "add safe_mode (& cfg_scale) for venice image generation",
-      "(ragKnowledge) Enhance RAG knowledge handling"
+      "add workflow to block minified JS",
+      "adding tests for instagram client",
+      "adding tests for github client"
     ],
     "fixes": [
-      "lint errors",
-      "docker images+compose and broken documentation",
-      "Prevent app crash when REMOTE_CHARACTER_URLS is undefined"
+      "missing import",
+      "quickstart.md conflicts",
+      "OPENAI provider being overwritten by LLAMA_LOCAL on pnpm start"
     ],
     "chores": [
-      "lint",
-      "Prep 0.1.9-alpha.1",
-      "improve descriptions"
+      "set openai as default character's provider",
+      "remove tate character"
     ]
   },
   "areas": [
     {
       "name": "packages",
-      "files": 142,
-      "additions": 1614,
-      "deletions": 809
-    },
-    {
-      "name": "root",
-      "files": 10,
-      "additions": 2244,
-      "deletions": 2451
+      "files": 78,
+      "additions": 12996,
+      "deletions": 296
     },
     {
       "name": "agent",
-      "files": 6,
-      "additions": 23,
-      "deletions": 16
+      "files": 9,
+      "additions": 38,
+      "deletions": 23
+    },
+    {
+      "name": "root",
+      "files": 7,
+      "additions": 7786,
+      "deletions": 4706
     }
   ],
-  "issues_summary": "working on 5 bugs including 'unset variables docker compose bug', 'Running in cloud from docker image BUG' and implementing 2 feature requests including 'Add tests for slack client. Move and update existing tests to __tests__ directory', 'Tests for Solana Plugin'",
+  "issues_summary": "working on 12 bugs including 'OPENAI provider being overwritten by LLAMA_LOCAL on `pnpm start`', '[plugin-tee-log] Error: Invalid TEE configuration when enabling tee-log' and implementing 2 feature requests including 'Add tests for instagram client', 'Add tests in __tests__ for github client'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "odilitime",
-      "summary": "odilitime is currently working on merging pull requests related to code fixes and improvements in various areas such as packages, documentation, and client features",
+      "name": "wtfsayo",
+      "summary": "wtfsayo is primarily working on fixing spelling issues, setting OpenAI as the default provider for characters, and resolving conflicts in the quickstart",
       "areas": [
         "docs",
         "agent",
-        "lerna.json"
-      ]
-    },
-    {
-      "name": "shakkernerd",
-      "summary": "shakkernerd is currently working on merging pull requests related to cleanup tasks, feature enhancements, and fixes in various branches of the repository",
-      "areas": [
         "packages"
       ]
     },
     {
-      "name": "JoeyKhd",
-      "summary": "JoeyKhd is currently working on improving the logger and S3 flexibility in the codebase",
+      "name": "twilwa",
+      "summary": "twilwa is currently working on dockerizing smoke tests, adding a workflow to block minified JS, and managing code changes in the ",
       "areas": [
-        "Dockerfile",
-        "docs",
-        ".dockerignore"
+        ".github"
+      ]
+    },
+    {
+      "name": "tcm390",
+      "summary": "tcm390 is currently working on fixing spelling and typo issues in the codebase, as well as resolving conflicts and improving code quality",
+      "areas": [
+        ".env.example",
+        "agent",
+        "packages"
       ]
     }
   ]
