@@ -1,1 +1,1 @@
-export const FOCUS_AREAS_PATH = "data/focus_areas2.json";
+export const FOCUS_AREAS_PATH = "data/analysis.json";
