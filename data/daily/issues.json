@@ -1,55 +1,12 @@
 [
   {
-    "id": "I_kwDOMT5cIs6mun40",
-    "number": 2511,
-    "title": "database/index.ts file not using CACHE_STORE environment variable",
-    "body": "**Describe the bug**\n\nI could not get better-sql to work, so I tried switching to CACHE_STORE: filesystem in the .env file, but eliza still tried to use the better-sql.  Looking at the database/index.ts file, it looks like it does not respect the setting of CACHE_STORE\n\n**To Reproduce**\n\nset CACHE_STORE: filesystem in .env file\n\n**Expected behavior**\n\nNot use better-sql\n\n**Screenshots**\n\nNone\n\n**Additional context**\n\nHere is the better-sql error if you have any insight on how to fix that as well:\n\n ⛔ ERRORS\n   Error starting agent for character Eliza: \n   {\"tries\":[\"/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/build/better_sqlite3.node\",\"/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/build/Debug/better_sqlite3.node\",\"/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/build/Release/better_sqlite3.node\",\"/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/out/Debug/better_sqlite3.node\",\"/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/Debug/better_sqlite3.node\",\"/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/out/Release/better_sqlite3.node\",\"/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/Release/better_sqlite3.node\",\"/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/build/default/better_sqlite3.node\",\"/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/compiled/23.3.0/darwin/arm64/better_sqlite3.node\",\"/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/addon-build/release/install-root/better_sqlite3.node\",\"/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/addon-build/debug/install-root/better_sqlite3.node\",\"/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/addon-build/default/install-root/better_sqlite3.node\",\"/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/lib/binding/node-v131-darwin-arm64/better_sqlite3.node\"]} \n\nError: Could not locate the bindings file. Tried:\n → /Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/build/better_sqlite3.node\n → /Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/build/Debug/better_sqlite3.node\n → /Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/build/Release/better_sqlite3.node\n → /Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/out/Debug/better_sqlite3.node\n → /Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/Debug/better_sqlite3.node\n → /Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/out/Release/better_sqlite3.node\n → /Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/Release/better_sqlite3.node\n → /Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/build/default/better_sqlite3.node\n → /Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/compiled/23.3.0/darwin/arm64/better_sqlite3.node\n → /Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/addon-build/release/install-root/better_sqlite3.node\n → /Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/addon-build/debug/install-root/better_sqlite3.node\n → /Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/addon-build/default/install-root/better_sqlite3.node\n → /Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/lib/binding/node-v131-darwin-arm64/better_sqlite3.node\n    at bindings (/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/bindings@1.5.0/node_modules/bindings/bindings.js:126:9)\n    at new Database (/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/lib/database.js:48:64)\n    at initializeDatabase (file:///Users/rogerbos/Node_HOME/eliza-starter/src/database/index.ts:15:46)\n    at startAgent (file:///Users/rogerbos/Node_HOME/eliza-starter/src/index.ts:55:20)\n    at startAgents (file:///Users/rogerbos/Node_HOME/eliza-starter/src/index.ts:102:19)\n    at file:///Users/rogerbos/Node_HOME/eliza-starter/src/index.ts:128:1 {\n  tries: [\n    '/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/build/better_sqlite3.node',\n    '/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/build/Debug/better_sqlite3.node',\n    '/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/build/Release/better_sqlite3.node',\n    '/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/out/Debug/better_sqlite3.node',\n    '/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/Debug/better_sqlite3.node',\n    '/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/out/Release/better_sqlite3.node',\n    '/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/Release/better_sqlite3.node',\n    '/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/build/default/better_sqlite3.node',\n    '/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/compiled/23.3.0/darwin/arm64/better_sqlite3.node',\n    '/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/addon-build/release/install-root/better_sqlite3.node',\n    '/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/addon-build/debug/install-root/better_sqlite3.node',\n    '/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/addon-build/default/install-root/better_sqlite3.node',\n    '/Users/rogerbos/Node_HOME/eliza-starter/node_modules/.pnpm/better-sqlite3@7.6.2/node_modules/better-sqlite3/lib/binding/node-v131-darwin-arm64/better_sqlite3.node'\n  ]\n}",
+    "id": "I_kwDOMT5cIs6mw723",
+    "number": 2533,
+    "title": "test configuration and test suite for client-lens",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nThe client-lens package needed a comprehensive testing solution that wouldn't interfere with the existing production code. The main challenges are:\n\nTesting interactions with the Lens Protocol without modifying the core functionality\nEnsuring test coverage for key features like authentication, profile management, and post creation\nManaging complex mock data structures for the Lens Protocol client\n**Describe the solution you'd like**\n\n<!-- A clear and concise description of what you want to happen. -->\nImplement a test suite with the following key features:\n\nA separate test-utils.ts file containing test-specific implementations\nComprehensive mocking of the Lens Protocol client\nThree main test files:\nclient.test.ts: Testing core client functionality \ninteractions.test.ts: Testing interaction handling \npost.test.ts: Testing post creation and validation \n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
     "state": "OPEN",
-    "createdAt": "2025-01-18T22:11:01Z",
-    "updatedAt": "2025-01-18T22:11:24Z",
-    "author": {
-      "login": "rogerjbos",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/4925977?u=8891510fd2148a7a979957be7823520a5e062efd&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6a-3fI",
-        "author": "github-actions",
-        "body": "Hello @rogerjbos! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6muGnX",
-    "number": 2509,
-    "title": "Add retry mechanism to RemoteAttestationProvider",
-    "body": "Following up from PR #2508\n\nCurrently, RemoteAttestationProvider lacks retry logic for transient failures. We should:\n\n1. Implement retry mechanism similar to `fetchWithRetry` in WalletProvider\n2. Add exponential backoff for failed attempts\n3. Add test cases to verify retry behavior\n\nRelated PR: #2508\nRelated comment: https://github.com/elizaOS/eliza/pull/2508#discussion_r1921117950\n\ncc @ai16z-demirix",
-    "state": "OPEN",
-    "createdAt": "2025-01-18T17:59:26Z",
-    "updatedAt": "2025-01-18T17:59:26Z",
-    "author": {
-      "login": "coderabbitai",
-      "avatarUrl": "https://avatars.githubusercontent.com/in/347564?v=4"
-    },
-    "labels": [],
-    "comments": []
-  },
-  {
-    "id": "I_kwDOMT5cIs6muFpJ",
-    "number": 2507,
-    "title": "plugin-tee: adjust test configuration and add new tests",
-    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nMove existing tests to __tests__ directory\nAdd new timeout tests\n**Describe the solution you'd like**\nExisting tests are reviewed and added to __tests__directory\nAdd timeout tests\n<!-- A clear and concise description of what you want to happen. -->\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
-    "state": "OPEN",
-    "createdAt": "2025-01-18T17:51:50Z",
-    "updatedAt": "2025-01-18T17:51:50Z",
+    "createdAt": "2025-01-19T21:43:23Z",
+    "updatedAt": "2025-01-19T21:43:23Z",
     "author": {
       "login": "ai16z-demirix",
       "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
@@ -65,44 +22,16 @@
     "comments": []
   },
   {
-    "id": "I_kwDOMT5cIs6mteAQ",
-    "number": 2488,
-    "title": "Client twitter - making agents interact in more natural ways on TWITTER SPACES",
-    "body": "**Is your feature request related to a problem? Please describe.**\n\nCurrently agents hosting twitter spaces can only start processing audio from other human speakers after the speakers are muted. This not only introduces delay in most situations but also makes the conversation flow feel less natural. On the other hand, agents sometimes have very long responses that basically become monologues and there is no way the human speakers can interrupt the agent to change the direction of conversation as needed.\n\n**Describe the solution you'd like**\n\n1. I propose that the agent should be always \"listening\" while others speak, so that the agent can already work on a prompt based on the context of the conversation and relevant knowledge to respond as soon as the others finish speaking or even jump into conversations if needed.\n\n2. Allow the human speaker to use keywords such as stop, halt or anything else to the same effect to essentially tell the agentruntime to stop streaming the audio chunks from elevenlabs and start listening again straightaway.\n\n**Additional context**\n\nI took a first stab at my proposed solutions but didn't have any luck so far.\n\nSome issues I faced\n- I was not able to collect audio data, convert at fixed intervals and temporarily store as well as checking against RAG to get relevance scores which should be the trigger to send the prompt and generate response.\n- The main issue with trying to get the agent to pick out \"stop\" and related keywords was that the audio capture came from both the human speaker and the agent which makes it difficult to recognise the stop request.\n\n\n\n\n**Some failed attempts**\n\n**Listen, search RAG and respond**\n\n```typescript\nprivate async addToQueue(userId: string, text: string) {\n    this.messageQueue.push({\n        userId,\n        text,\n        timestamp: Date.now(),\n        isProcessed: false\n    });\n\n    if (!this.isProcessingQueue) {\n        await this.processQueue();\n    }\n}\n\nprivate async processQueue() {\n    if (this.isProcessingQueue) return;\n    this.isProcessingQueue = true;\n\n    try {\n        // Wait for transcription accumulation window\n        await new Promise(resolve => setTimeout(resolve, this.transcriptionAccumulationTimeMs));\n\n        while (this.messageQueue.length > 0) {\n            // Process all messages that arrived within the last window\n            const now = Date.now();\n            const windowStart = now - this.transcriptionAccumulationTimeMs;\n            const messagesInWindow = this.messageQueue\n                .filter(item => !item.isProcessed && item.timestamp >= windowStart);\n\n            if (messagesInWindow.length === 0) break;\n\n            // Combine all messages in the window\n            const combinedText = messagesInWindow\n                .map(item => item.text)\n                .join(\" \")\n                .trim();\n\n            if (combinedText.length > 0) {\n                const relevanceScore = await this.checkRelevance(combinedText);\n                elizaLogger.info(`[SttTtsPlugin] Processing combined messages: \"${combinedText}\", Score: ${relevanceScore}`);\n\n                if (relevanceScore > 0.3) {\n                    // Check if anyone is currently speaking\n                    const anyActiveSpeakers = Array.from(this.speakerStates.values())\n                        .some(state => state.isSpeaking);\n\n                    if (!anyActiveSpeakers) {\n                        await this.generateAndSpeakResponse(combinedText);\n                        // Mark all processed messages\n                        messagesInWindow.forEach(item => item.isProcessed = true);\n                        // Remove processed messages from queue\n                        this.messageQueue = this.messageQueue.filter(item => !item.isProcessed);\n                        break;\n                    }\n                }\n            }\n\n            // Mark messages as processed\n            messagesInWindow.forEach(item => item.isProcessed = true);\n            // Clean up processed messages\n            this.messageQueue = this.messageQueue.filter(item => !item.isProcessed);\n\n            // Brief pause before next iteration\n            await new Promise(resolve => setTimeout(resolve, 300));\n        }\n    } finally {\n        this.isProcessingQueue = false;\n    }\n}\n\nprivate async checkRelevance(text: string): Promise<number> {\n    try {\n        elizaLogger.info(\"[SttTtsPlugin] Checking relevance for text:\", {\n            text,\n            length: text.length\n        });\n\n        // Respond to very short messages if they might be addressing the agent\n        if (text.length < 5) {\n            // Check if it sounds like \"hey\", \"hi\", \"yo\" etc\n            if (/^(hey|hi|yo|oh|um|uh|you|byte)\\b/i.test(text)) {\n                elizaLogger.info(\"[SttTtsPlugin] Detected greeting/acknowledgment:\", text);\n                return 0.7; // 70% base score for greetings\n            }\n        }\n\n        // Always respond to questions or direct address\n        const isQuestion = text.includes('?') || /^(what|who|where|when|why|how|can|could|would|will|do|does|did|is|are|was|were)\\b/i.test(text);\n        const isDirectAddress = this.agentName ? text.toLowerCase().includes(this.agentName.toLowerCase()) : false;\n\n        if (isQuestion || isDirectAddress) {\n            elizaLogger.info(`[SttTtsPlugin] High priority message detected:`, {\n                text,\n                isQuestion,\n                isDirectAddress,\n                agentName: this.agentName\n            });\n            return 0.9; // 90% base score for questions/direct address\n        }\n\n        // Get relevant knowledge with more detailed logging\n        elizaLogger.info(\"[SttTtsPlugin] Querying RAG knowledge for:\", text);\n        const knowledgeData = await this.runtime.ragKnowledgeManager.getKnowledge({\n            query: text,\n            limit: 3\n        }).catch(err => {\n            elizaLogger.error(\"[SttTtsPlugin] Error getting knowledge:\", err);\n            return [];\n        });\n\n        // Log retrieved knowledge\n        knowledgeData.forEach((k, index) => {\n            elizaLogger.info(`[SttTtsPlugin] RAG Knowledge ${index + 1}:`, {\n                text: k?.content?.text,\n                score: k?.score,\n                source: k?.source\n            });\n        });\n\n        // Calculate relevance score with detailed logging\n        let relevanceScore = 0;\n        const scoreDetails: string[] = [];\n\n        // Base score for any non-empty message\n        if (text.length > 0) {\n            relevanceScore += 0.2;\n            scoreDetails.push(\"+0.2 (non-empty message)\");\n        }\n\n        knowledgeData.forEach((k, index) => {\n            if (!k?.content?.text) return;\n\n            // Check for exact phrase matches\n            if (k.content.text.toLowerCase().includes(text.toLowerCase())) {\n                relevanceScore += 0.4;\n                scoreDetails.push(`+0.4 (exact match in knowledge ${index + 1})`);\n            }\n\n            // Add base score for relevant knowledge\n            relevanceScore += 0.2;\n            scoreDetails.push(`+0.2 (relevant knowledge ${index + 1})`);\n        });\n\n        // Log final relevance calculation\n        elizaLogger.info(\"[SttTtsPlugin] Relevance calculation complete:\", {\n            inputText: text,\n            finalScore: relevanceScore,\n            scoreBreakdown: scoreDetails,\n            knowledgeCount: knowledgeData.length\n        });\n\n        return relevanceScore;\n    } catch (error) {\n        elizaLogger.error(\"[SttTtsPlugin] Error in checkRelevance:\", error);\n        return 0.5; // Default to 50% relevance on error\n    }\n}\n\nprivate async shouldRespondToMessage(text: string): Promise<boolean> {\n    const relevanceScore = await this.checkRelevance(text);\n    const randomChance = Math.random();\n    let shouldRespond = false;\n    let reason = \"\";\n\n    if (relevanceScore > 0.4) {\n        shouldRespond = randomChance < 0.9;\n        reason = \"High relevance (>0.4), 90% chance to respond\";\n    } else if (relevanceScore > 0.2) {\n        shouldRespond = randomChance < 0.7;\n        reason = \"Medium relevance (>0.2), 70% chance to respond\";\n    } else {\n        shouldRespond = randomChance < 0.4;\n        reason = \"Low relevance, 40% chance to respond\";\n    }\n\n    elizaLogger.info(\"[SttTtsPlugin] Response decision:\", {\n        inputText: text,\n        relevanceScore,\n        randomChance,\n        shouldRespond,\n        reason\n    });\n\n    return shouldRespond;\n}\n```\n\n\n\n**Receive stop command**\n```typescript    \nprivate async onAudioData(data: AudioDataWithUser): Promise<void> {\n        // ... existing code ...\n\n        // Quick transcription for stop commands if we're speaking\n        if (this.isSpeaking) {\n            try {\n                const wavBuffer = await this.convertPcmToWavInMemory(data.samples, data.sampleRate);\n                const text = await this.transcriptionService.transcribe(Buffer.from(wavBuffer));\n                \n                if (text) {\n                    const normalizedText = text.toLowerCase().trim();\n                    const isStopCommand = this.stopPhrases.some(phrase => normalizedText.includes(phrase));\n                    \n                    if (isStopCommand) {\n                        elizaLogger.info(\"[SttTtsPlugin] Stop command detected:\", { text });\n                        this.shouldStopSpeaking = true;\n                        this.ttsQueue = []; // Clear pending speech\n                        return;\n                    }\n                }\n            } catch (err) {\n                // Ignore errors in stop detection - don't want to affect main flow\n                elizaLogger.debug(\"[SttTtsPlugin] Error checking for stop command:\", err);\n            }\n        }\n```\n\n\n**Stop playing audio chunks**\n```typescript    \nprivate async streamToJanus(samples: Int16Array, sampleRate: number): Promise<void> {\n        // ... existing code ...\n\n        for (let offset = 0; offset + FRAME_SIZE <= samples.length; offset += FRAME_SIZE) {\n            // Check for stop command\n            if (this.shouldStopSpeaking) {\n                elizaLogger.info(\"[SttTtsPlugin] Interrupting audio stream on request\", {\n                    framesStreamed,\n                    totalFrames,\n                    percentComplete: Math.round((framesStreamed / totalFrames) * 100)\n                });\n                return;\n            }\n            // ... rest of streaming code ...\n        }\n```\n\n\n",
+    "id": "I_kwDOMT5cIs6mwy61",
+    "number": 2530,
+    "title": "@elizaos/agent@0.1.9-alpha.1 start: `node --loader ts-node/esm src/index.ts \"--isRoot\" \"--characters=characters/eternalai.character.json\"`",
+    "body": "I did pnpm start with whole bunch of node versions but still get stuck with it, I suppose it is a bug, due to pnpm i and pnpm build were without problems\n\nC:\\Users\\Admin\\eliza>pnpm start --characters=\"characters/eternalai.character.json\"\n WARN  Unsupported engine: wanted: {\"node\":\"23.3.0\"} (current: {\"node\":\"v22.13.0\",\"pnpm\":\"9.15.4\"})\n\n> eliza@ start C:\\Users\\Admin\\eliza\n> pnpm --filter \"@elizaos/agent\" start --isRoot \"--characters=characters/eternalai.character.json\"\n\n.                                        |  WARN  Unsupported engine: wanted: {\"node\":\"23.3.0\"} (current: {\"node\":\"v22.13.0\",\"pnpm\":\"9.14.4\"})\ndocs                                     |  WARN  Unsupported engine: wanted: {\"node\":\"23.3.0\"} (current: {\"node\":\"v22.13.0\",\"pnpm\":\"9.14.4\"})\n\n> @elizaos/agent@0.1.9-alpha.1 start C:\\Users\\Admin\\eliza\\agent\n> node --loader ts-node/esm src/index.ts \"--isRoot\" \"--characters=characters/eternalai.character.json\"\n\n(node:12932) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\n(node:12932) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n\nnode:internal/modules/run_main:122\n    triggerUncaughtException(\n    ^\n[Object: null prototype] {\n  [Symbol(nodejs.util.inspect.custom)]: [Function: [nodejs.util.inspect.custom]]\n}\n\nNode.js v22.13.0\nC:\\Users\\Admin\\eliza\\agent:\n ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @elizaos/agent@0.1.9-alpha.1 start: `node --loader ts-node/esm src/index.ts \"--isRoot\" \"--characters=characters/eternalai.character.json\"`\nExit status 1\n ELIFECYCLE  Command failed with exit code 1.\n\nC:\\Users\\Admin\\eliza>",
     "state": "OPEN",
-    "createdAt": "2025-01-18T11:44:55Z",
-    "updatedAt": "2025-01-18T21:24:41Z",
+    "createdAt": "2025-01-19T20:13:23Z",
+    "updatedAt": "2025-01-19T22:10:29Z",
     "author": {
-      "login": "daniellinuk",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/13429143?u=4c34d164296a53ce843c6f526475e06b903cb080&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
-        "name": "enhancement",
-        "color": "a2eeef",
-        "description": "New feature or request"
-      }
-    ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6a9AUv",
-        "author": "github-actions",
-        "body": "Hello @daniellinuk! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6mtbpI",
-    "number": 2487,
-    "title": "MODULE_NOT_FOUND error when starting the agent",
-    "body": "**Describe the bug**\nI get such error when i use pnpm start for my own agent. I use windows ubuntu wsl.\n\n{\"level\":50,\"time\":1737199046766,\"pid\":44084,\"hostname\":\"XXX\",\"code\":\"MODULE_NOT_FOUND\",\"requireStack\":[\"/mnt/c/Users/XXX/OneDrive/Desktop/final2/eliza/node_modules/body-parser/lib/types/urlencoded.js\",\"/mnt/c/Users/XXX/OneDrive/Desktop/final2/eliza/node_modules/body-parser/index.js\"],\"msg\":\"Unhandled error in startAgents:\"}\n/mnt/c/Users/XXX/OneDrive/Desktop/final2/eliza/agent:\n ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @elizaos/agent@0.1.9-alpha.1 start: `node --loader ts-node/esm src/index.ts \"--isRoot\" \"--characters=normai.character.json\"`\nExit status 1\n ELIFECYCLE  Command failed with exit code 1.\n\n**Additional context**\n\nI installed all dependecies but still get such error. What is the solution ?\n",
-    "state": "OPEN",
-    "createdAt": "2025-01-18T11:23:46Z",
-    "updatedAt": "2025-01-18T11:24:08Z",
-    "author": {
-      "login": "normaieditor",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/195549498?v=4"
+      "login": "illink7",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/167812620?v=4"
     },
     "labels": [
       {
@@ -114,49 +43,28 @@
     ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6a8_Ad",
+        "id": "IC_kwDOMT5cIs6bCDMU",
         "author": "github-actions",
-        "body": "Hello @normaieditor! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6mtbAb",
-    "number": 2486,
-    "title": "Add timeout test coverage for Binance plugin price service",
-    "body": "Add test coverage for API timeout scenarios in the PriceService.\n\nThis enhancement will improve error handling test coverage by validating the behavior when API requests time out.\n\nRelated PR: https://github.com/elizaOS/eliza/pull/2482#discussion_r1921039279",
-    "state": "OPEN",
-    "createdAt": "2025-01-18T11:16:33Z",
-    "updatedAt": "2025-01-18T11:17:00Z",
-    "author": {
-      "login": "coderabbitai",
-      "avatarUrl": "https://avatars.githubusercontent.com/in/347564?v=4"
-    },
-    "labels": [],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6a8-ll",
-        "author": "github-actions",
-        "body": "Hello @coderabbitai[bot]! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+        "body": "Hello @illink7! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
       },
       {
-        "id": "IC_kwDOMT5cIs6a8-mG",
-        "author": "coderabbitai",
-        "body": "<!-- This is an auto-generated reply by CodeRabbit -->\nSkipped: Cannot respond to another bot."
+        "id": "IC_kwDOMT5cIs6bCLwr",
+        "author": "mgunnin",
+        "body": "It's pretty clear that you need to be running node v23.3.0 -- You are using 22.13.0.\n\nJust run \n`nvm install 23.3.0`\n`nvm use 23.3.0`"
       }
     ]
   },
   {
-    "id": "I_kwDOMT5cIs6mta7Z",
-    "number": 2484,
-    "title": "Docs for the RagKnowledge that was implemented",
-    "body": "I am finding it challenging to understand the implementation of the new RagKnowledge feature for processing PDF files and similar document types. Currently, there is a lack of comprehensive documentation or step-by-step guides for where these files need to be in the project for the character to pull them into the db. This makes it difficult to fully utilize its capabilities, especially for users new to the feature.\n\nI would like to see detailed documentation for the RagKnowledge implementation. This should include:\n\nAn overview of the feature and its purpose.\nStep-by-step instructions for setting up and using RagKnowledge to process PDFs, including sample code.\nExamples of how to integrate it into existing workflows or applications.\nBest practices for optimizing the performance of this feature.\nTroubleshooting common issues and errors related to RagKnowledge.\nDescribe alternatives you've considered\n\nSearching for community tutorials or blog posts about RagKnowledge.\nExperimenting with trial and error to understand the functionality better.\nRequesting assistance from the developer community through forums or social media.\nWhile these alternatives can provide some insights, they are time-consuming and may not provide the depth and reliability that official documentation would offer.\n\nHaving official documentation would not only improve the user experience but also encourage more developers to adopt and implement RagKnowledge in their projects. This could include a dedicated section in the knowledge base, video tutorials, or example repositories on GitHub.",
+    "id": "I_kwDOMT5cIs6mwV8a",
+    "number": 2522,
+    "title": "Virtuals Terminal API integration",
+    "body": "### Feature Request: ElizaOS Agent Integration with Virtuals Terminal\n\n**Is your feature request related to a problem? Please describe.**\n\nCurrently, there is no streamlined or standardized way for an ElizaOS agent deployed on Virtuals as a token to log its actions or report its activities to the Virtuals Terminal. This lack of integration creates a gap in transparency and monitoring, making it difficult to track agent behavior, analyze interactions, and ensure alignment with operational or ethical guidelines.\n\nFor example, actions such as user interactions, data processing, or decision-making events are not being logged in the Virtuals Terminal, resulting in limited visibility and accountability for deployed agents.\n\n---\n\n**Describe the solution you'd like**\n\nI propose the development of a dedicated plugin or module that seamlessly integrates with the [Virtuals Terminal API](https://whitepaper.virtuals.io/developer-documents/terminal-api) to report all agent actions and events. \n\nThe plugin/module should:\n1. **Log Key Actions:** Automatically capture and send details of all actions performed by the agent, such as user interactions, system updates, or triggered events.\n2. **Token-Based Authentication:** Use the Virtuals Terminal API key to ensure secure and authenticated communication between the agent and the Terminal.\n3. **Customizable Reporting:** Allow configuration of which actions to log and report to minimize unnecessary data flow and enhance relevance.\n4. **Real-Time Logging:** Enable near real-time reporting of activities to provide immediate visibility into agent behavior.\n5. **Error Handling:** Include mechanisms for handling API errors or downtime gracefully, ensuring that logs are not lost during connectivity issues.\n\n---\n\n**Describe alternatives you've considered**\n\n1. **Manual Logging:** Setting up a custom logging system to track agent actions. However, this approach lacks the integration with Virtuals Terminal and increases development overhead.\n2. **Third-Party Tools:** Using generic logging or monitoring tools. These solutions do not provide the tailored insights or secure connection offered by the Virtuals ecosystem.\n\n---\n\n**Additional context**\n\nThe integration with Virtuals Terminal will significantly enhance transparency and trust in ElizaOS agents by providing a clear and accessible activity log. This feature will be invaluable for monitoring agent performance, auditing behavior, and ensuring alignment with user expectations and Virtuals platform standards.\n\nFor more information on the Virtuals Terminal API, refer to the [official documentation](https://whitepaper.virtuals.io/developer-documents/terminal-api).",
     "state": "OPEN",
-    "createdAt": "2025-01-18T11:15:42Z",
-    "updatedAt": "2025-01-18T11:25:41Z",
+    "createdAt": "2025-01-19T15:42:14Z",
+    "updatedAt": "2025-01-19T15:42:45Z",
     "author": {
-      "login": "KeyesCode",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/112845092?u=e334ef38c2c9b80338ace461d2377b38a216c3d0&v=4"
+      "login": "mikirov",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/29272392?u=a4773a399c1cbcd34cdca9a7877cd61824c5bf09&v=4"
     },
     "labels": [
       {
@@ -168,50 +76,23 @@
     ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6a8-im",
+        "id": "IC_kwDOMT5cIs6bBtYs",
         "author": "github-actions",
-        "body": "Hello @KeyesCode! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6a8_Iw",
-        "author": "KeyesCode",
-        "body": "I don't know if you would want to set it up like this?\n\n\n# Knowledge Directory\n\nThis directory contains all the knowledge files used by the Eliza agents. The files here are used for RAG (Retrieval-Augmented Generation) to provide context and information to the agents during conversations.\n\n## Directory Structure\n\n```\nknowledge/\n├── shared/          # Shared knowledge accessible to all agents\n└── {agent-name}/    # Agent-specific knowledge directories\n```\n\n## Supported File Types\n\n- PDF files (.pdf)\n- Markdown files (.md)\n- Text files (.txt)\n\n## Usage\n\n1. **Shared Knowledge**\n\n    - Place files in the `shared` directory if they should be accessible to all agents\n    - Example: general documentation, common guidelines, etc.\n\n2. **Agent-Specific Knowledge**\n    - Create a directory with the agent's name\n    - Place files specific to that agent in their directory\n    - Example: `knowledge/{agent-name}/` for Agent-name-specific knowledge\n\n## Configuration\n\nTo use these knowledge files, update your agent's character configuration file (in `characters/`) with the appropriate knowledge entries:\n\n```json\n{\n    \"knowledge\": [\n        {\n            \"directory\": \"knowledge/shared\",\n            \"shared\": true\n        },\n        {\n            \"directory\": \"knowledge/agent-name\",\n            \"shared\": false\n        },\n        {\n            \"path\": \"knowledge/agent-name/specific-file.pdf\",\n            \"shared\": false\n        }\n    ]\n}\n```\n\n## Best Practices\n\n1. Keep files organized and well-named\n2. Use appropriate file formats for the content type\n3. Break large documents into logical smaller files\n4. Include metadata and context in markdown files\n5. Regularly review and update knowledge files\n"
+        "body": "Hello @mikirov! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
       }
     ]
   },
   {
-    "id": "I_kwDOMT5cIs6mtWm_",
-    "number": 2481,
-    "title": "Add test configuration and tests for binance plugin",
-    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nSince we are improving project strucutre, we need to add test configuration and coverage for binance plugin.\n**Describe the solution you'd like**\n\n<!-- A clear and concise description of what you want to happen. -->\nAdd test configuration and tests for binance plugin. Cover following: \n- Account service\n- Trade service\n- Price service\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "id": "I_kwDOMT5cIs6mwNzY",
+    "number": 2521,
+    "title": "Agent doesn't reply to new target users tweets, says already responded, skipping",
+    "body": "**Describe the bug**\n\nThe agent doesn't reply to target users' new tweets after a few weeks of it running. It says \"already responded to tweet, skipping\" even though it hasn't replied yet\n\n**To Reproduce**\n\nNot sure, ran 3 agents simultaneously, been replying for a month, after that it stops replying, it says skips new tweets even tho haven't replied to them yet\n\n**Expected behavior**\n\nIt should reply to new tweets of users inside the target users list\n\n**Screenshots**\n\n![Image](https://github.com/user-attachments/assets/ad3fbdc5-7bee-4ca7-9660-9918ea075807)\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\nBuild: v0.1.8+build.1\nAgents running: 3\nDatabase: Sqlite\n",
     "state": "OPEN",
-    "createdAt": "2025-01-18T10:36:19Z",
-    "updatedAt": "2025-01-18T10:36:19Z",
+    "createdAt": "2025-01-19T14:32:14Z",
+    "updatedAt": "2025-01-19T14:43:28Z",
     "author": {
-      "login": "ai16z-demirix",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
-        "name": "enhancement",
-        "color": "a2eeef",
-        "description": "New feature or request"
-      }
-    ],
-    "comments": []
-  },
-  {
-    "id": "I_kwDOMT5cIs6ms-0G",
-    "number": 2478,
-    "title": "WSL 2:onnxruntime package error",
-    "body": "Whether directly through pnpm install or through [eliza-Installer]([HowieDuhzit/Eliza-Installer: Automated Eliza Install Script](https://github.com/HowieDuhzit/Eliza-Installer)), the same issue was encountered.\n\n![Image](https://github.com/user-attachments/assets/807c4568-e8ac-44a0-99c7-704ecdd462de)",
-    "state": "OPEN",
-    "createdAt": "2025-01-18T07:01:01Z",
-    "updatedAt": "2025-01-18T14:30:19Z",
-    "author": {
-      "login": "shichen1iu",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/95514554?u=c45713c0e0b1a04ff721658b178db5c0a1463cd2&v=4"
+      "login": "medardm",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/20562573?u=3876b7dfd53a61d58d55274ce703025b85095dd0&v=4"
     },
     "labels": [
       {
@@ -223,58 +104,25 @@
     ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6a8oTb",
+        "id": "IC_kwDOMT5cIs6bBmB8",
         "author": "github-actions",
-        "body": "Hello @shichen1iu! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+        "body": "Hello @medardm! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
       },
       {
-        "id": "IC_kwDOMT5cIs6a81zr",
-        "author": "gauthking",
-        "body": "hey man, \ntry following the steps mentioned in https://elizas.com/eliza/docs/guides/wsl/#install-wsl, it worked for me 2 days ago haha. \ntry it out and let me know!"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6a9OTS",
-        "author": "shichen1iu",
-        "body": "it didnt worked fo me TvT\n\n> hey man, try following the steps mentioned in https://elizas.com/eliza/docs/guides/wsl/#install-wsl, it worked for me 2 days ago haha. try it out and let me know!\n\n"
+        "id": "IC_kwDOMT5cIs6bBm9V",
+        "author": "medardm",
+        "body": "It starts replying again once you delete the sqlite file. Is this advisable everytime?"
       }
     ]
   },
   {
-    "id": "I_kwDOMT5cIs6mrqaM",
-    "number": 2471,
-    "title": "MacOS - Eliza Client not able to connect \"Connecting\" -> \"Disconnected\"",
-    "body": "Unable to get Eliza to run on MacOS\n\nFollow the instructions in the Startup guide. \n\nRun pnpm start --character=\"characters/c3po.character.json\"\nGet a number of warnings, but doesn't look like anything failed and then it says: \n [\"✓ REST API bound to 0.0.0.0:3001. If running locally, access it at http://localhost:3001.\"] \nCheck http://localhost:3001 and it is running\n\nGot to a new terminal tab and run:\npnpm start:client\nIt runs and says:\n\n```\n WARN  Unsupported engine: wanted: {\"node\":\"23.3.0\"} (current: {\"node\":\"v23.4.0\",\"pnpm\":\"9.15.3\"})\n\n> eliza@ start:client /Users/bradn/Documents/dev/eliza\n> pnpm --dir client dev\n\n\n> client@ dev /Users/bradn/Documents/dev/eliza/client\n> pnpm run extract-version && vite\n\n\n> client@ extract-version /Users/bradn/Documents/dev/eliza/client\n> ./version.sh\n\ninfo.json created with version: 0.1.8+build.1\n\n  VITE v6.0.7  ready in 194 ms\n\n  ➜  Local:   http://localhost:5173/\n  ➜  Network: use --host to expose\n  ➜  press h + enter to show help\n\n```\n\nVisit http://localhost:5173/\nSee the client interface, but not able to interact. \nLower left corner says Connecting and Then says Disconnected and repeats. \n\nhttps://github.com/user-attachments/assets/a5afeb02-b162-423c-9e0f-e3e8fbfbb44d",
-    "state": "OPEN",
-    "createdAt": "2025-01-17T23:22:33Z",
-    "updatedAt": "2025-01-17T23:43:01Z",
-    "author": {
-      "login": "clickbrain",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/963889?v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6a72GU",
-        "author": "JoeyKhd",
-        "body": "VITE_SERVER_PORT should be set to 3001 if you are running port 3001"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6mrkZM",
-    "number": 2469,
-    "title": "tests for redis adapter",
-    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nChanging project structure, we need to cover and add tests for redis adapter.\n**Describe the solution you'd like**\nTests for redis adapter are configured and added to __tests__ directory.\n<!-- A clear and concise description of what you want to happen. -->\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "id": "I_kwDOMT5cIs6mwJ9S",
+    "number": 2519,
+    "title": "Add Test Coverage for plugin-rabbi-trader Package",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\n\nThe plugin-rabbi-trader package lacks comprehensive test coverage, making it difficult to ensure reliability and catch potential issues during development. Without proper tests, we risk introducing bugs when making changes and have no automated way to verify core functionality like wallet operations, DEX interactions, and token utilities.\n\n**Describe the solution you'd like**\n\n<!-- A clear and concise description of what you want to happen. -->\n\nImplement comprehensive test coverage for the plugin-rabbi-trader package using vitest. The solution includes:\n\nTest Infrastructure Setup:\n- Configure vitest with appropriate settings\n- Add test dependencies and scripts to package.json\n- Set up proper mocking utilities\nCore Component Tests:\n- Wallet functionality (keypair generation, balance checking)\n- DexScreener integration (data fetching, pair analysis)\n- Token utilities (address loading, validation)\nTest Coverage Requirements:\n- Success and error cases for each component\n- Edge case handling\n- Proper mocking of external dependencies\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n1. Using Jest instead of vitest, but vitest provides better performance and ESM support\n2. End-to-end testing with real network calls, but this would make tests slower and less reliable\n3. Snapshot testing for complex objects, but unit tests provide better specificity and error messages\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
     "state": "CLOSED",
-    "createdAt": "2025-01-17T22:56:02Z",
-    "updatedAt": "2025-01-18T01:23:26Z",
+    "createdAt": "2025-01-19T13:58:58Z",
+    "updatedAt": "2025-01-19T16:25:02Z",
     "author": {
       "login": "ai16z-demirix",
       "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
@@ -287,26 +135,32 @@
         "description": "New feature or request"
       }
     ],
-    "comments": []
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6bBw3q",
+        "author": "ai16z-demirix",
+        "body": "Done."
+      }
+    ]
   },
   {
-    "id": "I_kwDOMT5cIs6mre-N",
-    "number": 2467,
-    "title": "tests for database adapters: sqlite and supabase",
-    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nSince we are changing project structure, we should cover database adapters with tests in __tests__ directory.\n**Describe the solution you'd like**\nAdd tests configuration and tests for: \n- supabase adapter\n- sqlite adapter\n<!-- A clear and concise description of what you want to happen. -->\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
-    "state": "CLOSED",
-    "createdAt": "2025-01-17T22:38:07Z",
-    "updatedAt": "2025-01-18T01:25:00Z",
+    "id": "I_kwDOMT5cIs6mvXM0",
+    "number": 2513,
+    "title": "Issue with Installing @elizaos/plugin-0g",
+    "body": "I am encountering issues while trying to install the @elizaos/plugin-0g package using pnpm. The error message indicates that the package @elizaos/runtime is not found in the registry.\n\nSteps taken:\n\nConfigured .npmrc with the following:\n\n\n@elizaos:registry=https://npm.pkg.github.com/\n//npm.pkg.github.com/:_authToken=MY_PERSONAL_ACCESS_TOKEN\nVerified my token permissions (read:packages scope included).\nChecked the GitHub repository for @elizaos/plugin-0g and its dependencies.\n\nError:\nERR_PNPM_FETCH_404  GET https://registry.npmjs.org/@elizaos%2Fruntime: Not Found - 404\nCould you confirm if:\n\nThe package @elizaos/plugin-0g and its dependency @elizaos/runtime are correctly published to the GitHub registry?\nThere are any additional steps or permissions required to access these packages?\nThank you!\n\n\n\n\n\n\n\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-19T05:39:50Z",
+    "updatedAt": "2025-01-19T05:39:50Z",
     "author": {
-      "login": "ai16z-demirix",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
+      "login": "Aave-Khan",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/194741512?v=4"
     },
     "labels": [
       {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
-        "name": "enhancement",
-        "color": "a2eeef",
-        "description": "New feature or request"
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
       }
     ],
     "comments": []

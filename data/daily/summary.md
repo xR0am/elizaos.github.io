@@ -1,44 +1,43 @@
-# elizaos Eliza (2025-01-18)
+# elizaos Eliza (2025-01-19)
     
 ## 📊 Overview
-Development focused on package improvements (adding test configuration and test coverage for binance plugin), new features (adding test configuration and test coverage for binance plugin), 1 bug fixes. with 30 contributors merging 14 PRs. Major work included ai16z-demirix is currently working on adding tests and configurations for various database adapters such as sqlite, supabase, and redis.
+Development focused on package improvements (plugin rabbi trader tests), new features (plugin rabbi trader tests), 1 bug fixes. with 21 contributors merging 5 PRs. Major work included ai16z-demirix is currently working on enhancing test configurations and adding new tests for various plugins, such as plugin-tee, plugin-binance, and plugin rabbi trader.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 30 |
-| 📝 Commits | 41 |
-| 🔄 Merged PRs | 14 |
-| ⚠️ New Issues | 12 |
+| 👥 Contributors | 21 |
+| 📝 Commits | 15 |
+| 🔄 Merged PRs | 5 |
+| ⚠️ New Issues | 6 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 7
+- 🧹 **Chores**: 1
 - 🐛 **Fixes**: 1
-- ✨ **Features**: 4
+- ✨ **Features**: 2
 
 ## 📁 File Changes
-- **packages**: 22 files (+1292/-108 lines)
-- **root**: 1 files (+263/-136 lines)
-- **agent**: 1 files (+22/-6 lines)
-- **.github**: 1 files (+14/-5 lines)
-- **client**: 2 files (+10/-5 lines)
+- **packages**: 13 files (+397/-16 lines)
+- **docs**: 1 files (+180/-0 lines)
+- **root**: 1 files (+15/-2 lines)
+- **agent**: 1 files (+8/-2 lines)
 
 ## 🔥 Notable Changes
-- feat: adding test configuration and test coverage for binance plugin 
-- test: adding test configuration and tests for redis adapter
-- feat: tests for supabase and sqlite db adapters
+- feat: plugin rabbi trader tests
+- feat: add support for NVIDIA inference for ElizaOS
+- chore: add eliza technical report/paper
 
 ## 👥 Top Contributors
-- **ai16z-demirix**: ai16z-demirix is currently working on adding tests and configurations for various database adapters such as sqlite, supabase, and redis
-- **Olexandr88**: Olexandr88 is currently updating multiple README files in different languages and making chore-related corrections, particularly focusing on fixing links and references within the project
-- **shakkernerd**: shakkernerd is primarily working on code maintenance tasks, such as renaming variables and updating dependencies
+- **ai16z-demirix**: ai16z-demirix is currently working on enhancing test configurations and adding new tests for various plugins, such as plugin-tee, plugin-binance, and plugin rabbi trader
+- **AIFlowML**: AIFlowML is currently working on adding support for NVIDIA inference for ElizaOS
+- **tomguluson92**: tomguluson92 is currently working on adding the Eliza technical report/paper to the project, with a recent commit and pull request related to this task
 
 ## ⚠️ Issues
-- **New Issues**: 12
-- **Labels**: `enhancement` (6), `bug` (4)
-- **Summary**: 4 bugs reported (including 'WSL 2:onnxruntime package error', 'database/index.ts file not using CACHE_STORE environment variable') 6 feature requests (including 'plugin-tee: adjust test configuration and add new tests', 'Add test configuration and tests for binance plugin').
+- **New Issues**: 6
+- **Labels**: `enhancement` (3), `bug` (3)
+- **Summary**: 3 bugs reported (including '@elizaos/agent@0.1.9-alpha.1 start: `node --loader ts-node/esm src/index.ts "--isRoot" "--characters=characters/eternalai.character.json"`', 'Agent doesn't reply to new target users tweets, says already responded, skipping') 3 feature requests (including 'test configuration and test suite for client-lens', 'Add Test Coverage for plugin-rabbi-trader Package').
 
 ## Top Contributors
-- **ai16z-demirix**: feat: adding test configuration and test coverage for binance plugin 
-- **Olexandr88**: chore: corrected the link to the banner
-- **shakkernerd**: fix: linting errors
+- **ai16z-demirix**: feat: plugin rabbi trader tests
+- **AIFlowML**: feat: add support for NVIDIA inference for ElizaOS
+- **tomguluson92**: chore: add eliza technical report/paper
