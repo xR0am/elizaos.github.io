@@ -1,4 +1,4 @@
-# elizaos Eliza (2025-01-18)
+# elizaos Eliza (2025-01-19)
     
 ## 📊 Overview
 Development focused on new features (Onchain Agent Transformer - transform any Eliza agents into unstoppable Solidity smart contracts deployed on 10+ blockchains), 2 bug fixes. with 35 contributors merging 4 PRs. Major work included various improvements.
