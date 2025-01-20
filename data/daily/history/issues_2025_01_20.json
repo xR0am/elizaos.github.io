@@ -1,0 +1,259 @@
+[
+  {
+    "id": "I_kwDOMT5cIs6m6acT",
+    "number": 2572,
+    "title": "test config and tests for plugin-agentkit",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nThe problem is a lack of test coverage for the plugin-agentkit package, particularly around its wallet management functionality. Without proper tests, there was no automated way to verify that the wallet creation, loading, and error handling were working correctly. This could lead to potential issues going undetected, especially when making changes to the codebase.\n\n**Describe the solution you'd like**\n\n<!-- A clear and concise description of what you want to happen. -->\nImplement a comprehensive test suite for plugin-agentkit that:\n\nTests wallet management functionality:\n- Creating new wallets\n- Loading existing wallets\n- Handling file system operations\nVerifies configuration options:\n- Network selection via environment variables\n- Wallet data persistence\n- Tests error handling:\n- File system errors\n- Configuration failures\n- Wallet operation errors\nThe solution should follow the project's conventions by:\n\n- Placing tests in __tests__ directory\n- Using vitest as the testing framework\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-20T22:01:43Z",
+    "updatedAt": "2025-01-20T22:01:43Z",
+    "author": {
+      "login": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6m6IYI",
+    "number": 2569,
+    "title": "Incorrect OpenAI Error on clean start where i don't use openai key anywhere",
+    "body": "\nDescribe the bug\nWhen attempting to start ElizaOS with a custom character configuration using GROQ API, the application fails due to missing API key authentication of **openai**. The error indicates that no API key was provided in the request headers.\nTo Reproduce\n\nInstall dependencies:\n```bash\npnpm install --no-frozen-lockfile\n```\n\nBuild the project:\n```bash\npnpm build\n```\n\nAttempt to start with standart character with groq model:\n```bash\npnpm start --character=\"characters/trump.character.json\"\n```\n\n\nExpected behavior\nThe application should successfully start with the specified character configuration file, making authenticated requests to the GROQ API.\nError Output\n```json\n{\n    \"error\": {\n        \"message\": \"You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": null,\n        \"code\": null\n    }\n}\n```\n\nso i can't run any character cause openai key needed somewhere",
+    "state": "OPEN",
+    "createdAt": "2025-01-20T20:54:30Z",
+    "updatedAt": "2025-01-20T21:01:33Z",
+    "author": {
+      "login": "veebull",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/9640387?u=5e430dd37cf0fcd13f838b0835dc1122f04d1652&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6bKe74",
+        "author": "github-actions",
+        "body": "Hello @veebull! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6m6BLz",
+    "number": 2566,
+    "title": "client-farcaster package test config and tests",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\n\nThe client-farcaster package needed a comprehensive testing infrastructure similar to client-lens. The main challenges were:\n\nNo existing test setup or configuration\nNeed to test Farcaster-specific functionality like casts, interactions, and profile management\nEnsuring proper mocking of the Neynar API client to avoid real API calls during tests\n\n\n**Describe the solution you'd like**\n\n<!-- A clear and concise description of what you want to happen. -->\n\nTest Configuration:\n- Added Vitest as the testing framework\n- Created vitest.config.ts for test configuration\n- Added test scripts to package.json (test, test:watch, test:coverage)\nTest Structure:\n- Created __tests__ directory with three main test files:\n- client.test.ts: Testing core client functionality\n- interactions.test.ts: Testing Farcaster interactions (recasts, replies, likes)\n- cast.test.ts: Testing cast creation and validation\nTest Utilities:\n- Created test-utils.ts with shared testing functions:\n- createTestInteraction: Generates test interactions based on cast engagement\n- handleTestInteraction: Handles different interaction types\n- createTestCast: Creates and validates test casts\nMocking:\n- Implemented comprehensive mocks for the Neynar API client\n- Mocked profile fetching, cast creation, and interaction handling\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-20T20:29:56Z",
+    "updatedAt": "2025-01-20T20:29:56Z",
+    "author": {
+      "login": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6m50b0",
+    "number": 2565,
+    "title": "Integrating searxng",
+    "body": "\n\nCurrently, Eliza agents lack integrated web search capabilities, limiting their ability to access and retrieve up-to-date information from the internet. This constraint hampers their performance in tasks requiring real-time data or comprehensive knowledge beyond their pre-existing datasets.\n\nDescribe the solution you’d like\n\nIntegrate SearXNG, a free and open-source metasearch engine, into the Eliza framework. SearXNG aggregates results from various search services and databases without tracking or profiling users, aligning with privacy considerations. By embedding SearXNG, Eliza agents can perform real-time web searches, enhancing their ability to provide accurate and current information.  ￼\n\nDescribe alternatives you’ve considered\n\t•\tDeveloping a Custom Search Integration: Creating a proprietary search solution tailored to Eliza’s needs. However, this approach would require significant development resources and ongoing maintenance to ensure comprehensive coverage and relevance of search results.\n\t•\tUtilizing Other Search APIs: Leveraging existing search engine APIs (e.g., Google, Bing). While feasible, these options may involve usage costs, rate limitations, and potential privacy concerns due to data tracking practices.\n\nAdditional context\n\nSearXNG is a fork of the Searx project, designed to provide faster debugging and fixes of engine errors. It supports over 70 different search engines and does not collect information about users, ensuring privacy.  ￼ Integrating SearXNG into Eliza would involve setting up a SearXNG instance, which can be configured optimally for use with applications like Open WebUI.  ￼ This integration would significantly enhance Eliza agents’ capabilities by providing them with access to a vast array of information sources in real-time.",
+    "state": "OPEN",
+    "createdAt": "2025-01-20T19:48:01Z",
+    "updatedAt": "2025-01-20T19:48:25Z",
+    "author": {
+      "login": "mosif16",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/123289494?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6bKMcr",
+        "author": "github-actions",
+        "body": "Hello @mosif16! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6m5hCt",
+    "number": 2563,
+    "title": "Bot is only responding to target users and ignoring all other mentions on twitter",
+    "body": "**Describe the bug**\n\nBot is only responding to target users and ignoring all other mentions on twitter using default client-twitter\n\n**To Reproduce**\n\nSetup my custom actions using client-twitter with eliza main repo. \n\n**Expected behavior**\n\n It should reply to all users, not only target users.\n\n**Screenshots**\n\n<img width=\"543\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ba6d8255-e3ae-4499-be74-2c9a5b5846d6\" />\n\n<img width=\"1109\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/80cc4644-0b33-4793-87fa-26dd239e112b\" />\n\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-20T18:46:01Z",
+    "updatedAt": "2025-01-20T18:46:39Z",
+    "author": {
+      "login": "Xayaan",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/5237930?u=7840b286463bde982c8af8f389e61e26a01328cb&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6bJ51q",
+        "author": "github-actions",
+        "body": "Hello @Xayaan! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6m5S22",
+    "number": 2561,
+    "title": "Add Router Nitro Agent",
+    "body": "## Router Nitro Bridge Integration\n\n**Is your feature request related to a problem? Please describe.**\nWe'd like to extend Eliza's capabilities with Router Nitro Agent. We'd like to extend Eliza's capabilities with Router Protocol's Nitro bridge. Router Nitro is a high-performance cross-chain bridge that enables fast, secure, and cost-effective asset transfers across multiple blockchain networks. Adding Router Nitro integration would significantly enhance Eliza's cross-chain capabilities.\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\n\n**Describe the solution you'd like**\nA Plugin for Router Nitro bridge integration in Eliza's codebase, simplifying the process of building bridging requests for users without requiring specialized front-end logic.\n\n<!-- A clear and concise description of what you want to happen. -->\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n<!-- **Additional context** -->\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-20T18:06:06Z",
+    "updatedAt": "2025-01-20T18:06:30Z",
+    "author": {
+      "login": "RaveenaBhasin",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73697080?u=cbe63f4204277190599fce2be4e35fd359c414dc&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6bJsze",
+        "author": "github-actions",
+        "body": "Hello @RaveenaBhasin! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6m4oh0",
+    "number": 2559,
+    "title": "Incorrect Boolean Parsing for ENABLE_OPEN_AI_COMMUNITY_PLUGIN Setting",
+    "body": "Describe the bug\nThere was an issue with loading the ENABLE_OPEN_AI_COMMUNITY_PLUGIN setting. Regardless of whether true or false was set, the value was always interpreted as a string, causing the setting to always be enabled.\n\nTo Reproduce\nSteps to reproduce the behavior:\n\nSet ENABLE_OPEN_AI_COMMUNITY_PLUGIN to true or false in the configuration.\nRun the application.\nObserve that the feature is always enabled, regardless of the intended value.\nExpected behavior\nThe feature should only be enabled when ENABLE_OPEN_AI_COMMUNITY_PLUGIN is set to true. When set to false, the feature should remain disabled.\n\nScreenshots\n\nAdditional context\nI will fix it\n\n\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-20T16:46:19Z",
+    "updatedAt": "2025-01-20T16:46:19Z",
+    "author": {
+      "login": "lincheoll",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/53032750?u=ff3890e429047d07a870d870c54e8834ba1faac3&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6m32YB",
+    "number": 2557,
+    "title": "telegram client not working or responding",
+    "body": "\n [\"ℹ Telegram Message: [object Object]\"]\n\n ◎ LOGS\n   Creating Memory\n   cd87f4c9-e60c-0c23-9c90-91cc0b4851e7\n   Hi\n\n ⛔ ERRORS\n   API Response:\n   Domain is unavailable\n\n\n ⛔ ERRORS\n   Full error details:\n   {}\n\n ⛔ ERRORS\n   ❌ Error handling message:\n   {}\n\n ⛔ ERRORS\n   Error sending message:\n   {}\n\n\n\n\nwhy do i keep on getting this issue ?? i setup defaultcharacter , i put client as telegram and modelprovider as gaianet.. \ni ve made sure ive provided all the env values for gainet and for the telegram_bot_token.\nafter i run pnpm run start.. and send a \"hi\" message from the telegram bot , the above error keeps on coming.. pls tell me what im doing wrong????\n\n\n![Image](https://github.com/user-attachments/assets/b913351a-674c-47dd-ac81-9b12101a6c13)",
+    "state": "OPEN",
+    "createdAt": "2025-01-20T15:51:41Z",
+    "updatedAt": "2025-01-20T20:21:09Z",
+    "author": {
+      "login": "gauthking",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/90638995?u=d3354ae87c8767d97bb2fcfb1d5f6447ddac4b8f&v=4"
+    },
+    "labels": [],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6bIwXz",
+        "author": "github-actions",
+        "body": "Hello @gauthking! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6bJElw",
+        "author": "ai16z-demirix",
+        "body": "Hello @gauthking , have you run pnpm build before starting agent ?"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6bJJEm",
+        "author": "gauthking",
+        "body": "> Hello [@gauthking](https://github.com/gauthking) , have you run pnpm build before starting agent ?\n\nyes i did.. every time.. it gives me the same error.. and now my local vite frontend client is also not connecting to the 3001 port.. \npls help"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6bJ_tP",
+        "author": "ai16z-demirix",
+        "body": "@gauthking \nCan you access api.telegram.org via your browser? \nDo you maybe use VPN or something that might be blocking your access to api.telegram.org ?\nDoes your bot have the necessary permissions to send messages in the group/channel where it is?"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6bKJmy",
+        "author": "gauthking",
+        "body": "> [@gauthking](https://github.com/gauthking) Can you access api.telegram.org via your browser? Do you maybe use VPN or something that might be blocking your access to api.telegram.org ? Does your bot have the necessary permissions to send messages in the group/channel where it is?\n\nim not using any vpn, but is it necessary to talk to the bot via a telegram channel/group , can't  we just directly dm it on telegram chats coz i was doing that all this time.. \n"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6bKVtW",
+        "author": "ai16z-demirix",
+        "body": "@gauthking I assumed that you are messaging bot via channel/group, you should be able to do both.  \nAre you able to start agent with any other clients, discord, etc., or just start the agent itself ? "
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6mxrMH",
+    "number": 2540,
+    "title": "chat client unstable connection, :ERR_BLOCKED_BY_CLIENT, 3000 port woks fine, agent list not displaying",
+    "body": "OS: ubuntu 22.4\nnode version: 23.3.0\n\nexecuted command:\n\n![Image](https://github.com/user-attachments/assets/c9374a23-1e96-47eb-8ce3-a05d084a4cfb)\n\n\n![Image](https://github.com/user-attachments/assets/0ba42e3b-a353-462e-a172-b7b321fa74cf)\n\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-20T02:41:19Z",
+    "updatedAt": "2025-01-20T17:17:57Z",
+    "author": {
+      "login": "holiccoder",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/38061345?u=9aff3c4a27f5cd9e3fea92f91c65bcf81fa10bcf&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6bEcej",
+        "author": "lynerlwl",
+        "body": "If you are not running on localhost but on a server, edit line 3 in client/src/lib/api.ts and change localhost to your server's IP address."
+      },
+      {
+        "id": "IC_kwDOMT5cIs6bJaxO",
+        "author": "gauthking",
+        "body": "> If you are not running on localhost but on a server, edit line 3 in client/src/lib/api.ts and change localhost to your server's IP address.\n\nwhat if our rest api is bound to 3001 port localhost .. so for the vite frontend client do we have to change the baseURL to \"http://localhost:3001\""
+      }
+    ]
+  }
+]

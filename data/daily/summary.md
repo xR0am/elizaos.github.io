@@ -1,43 +1,43 @@
-# elizaos Eliza (2025-01-19)
+# elizaos Eliza (2025-01-20)
     
 ## 📊 Overview
-Development focused on package improvements (plugin rabbi trader tests), new features (plugin rabbi trader tests), 1 bug fixes. with 21 contributors merging 5 PRs. Major work included ai16z-demirix is currently working on enhancing test configurations and adding new tests for various plugins, such as plugin-tee, plugin-binance, and plugin rabbi trader.
+Development focused on package improvements (implement client-agnostic Devin plugin), new features (Updated READ.me file with pre-requisites to enable telegram bot), 2 bug fixes. with 30 contributors merging 8 PRs. Major work included unable to generate summary for devin-ai-integration due to an error.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 21 |
+| 👥 Contributors | 30 |
 | 📝 Commits | 15 |
-| 🔄 Merged PRs | 5 |
-| ⚠️ New Issues | 6 |
+| 🔄 Merged PRs | 8 |
+| ⚠️ New Issues | 9 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 1
-- 🐛 **Fixes**: 1
-- ✨ **Features**: 2
+- 🧹 **Chores**: 3
+- 🐛 **Fixes**: 2
+- ✨ **Features**: 1
 
 ## 📁 File Changes
-- **packages**: 13 files (+397/-16 lines)
-- **docs**: 1 files (+180/-0 lines)
-- **root**: 1 files (+15/-2 lines)
-- **agent**: 1 files (+8/-2 lines)
+- **root**: 2 files (+1268/-763 lines)
+- **packages**: 16 files (+917/-15 lines)
+- **.github**: 4 files (+41/-35 lines)
+- **agent**: 3 files (+30/-17 lines)
 
 ## 🔥 Notable Changes
-- feat: plugin rabbi trader tests
-- feat: add support for NVIDIA inference for ElizaOS
-- chore: add eliza technical report/paper
+- chore(revert): optimize pnpm cache configuration
+- chore: optimize pnpm cache configuration
+- chore: remove cleanup step from integration tests workflow
 
 ## 👥 Top Contributors
-- **ai16z-demirix**: ai16z-demirix is currently working on enhancing test configurations and adding new tests for various plugins, such as plugin-tee, plugin-binance, and plugin rabbi trader
-- **AIFlowML**: AIFlowML is currently working on adding support for NVIDIA inference for ElizaOS
-- **tomguluson92**: tomguluson92 is currently working on adding the Eliza technical report/paper to the project, with a recent commit and pull request related to this task
+- **devin-ai-integration**: Unable to generate summary for devin-ai-integration due to an error
+- **tcm390**: Unable to generate summary for tcm390 due to an error
+- **neelkanani**: Unable to generate summary for neelkanani due to an error
 
 ## ⚠️ Issues
-- **New Issues**: 6
-- **Labels**: `enhancement` (3), `bug` (3)
-- **Summary**: 3 bugs reported (including '@elizaos/agent@0.1.9-alpha.1 start: `node --loader ts-node/esm src/index.ts "--isRoot" "--characters=characters/eternalai.character.json"`', 'Agent doesn't reply to new target users tweets, says already responded, skipping') 3 feature requests (including 'test configuration and test suite for client-lens', 'Add Test Coverage for plugin-rabbi-trader Package').
+- **New Issues**: 9
+- **Labels**: `enhancement` (4), `bug` (4)
+- **Summary**: 4 bugs reported (including 'chat client unstable connection, :ERR_BLOCKED_BY_CLIENT, 3000 port woks fine, agent list not displaying', 'Incorrect OpenAI Error on clean start where i don't use openai key anywhere') 4 feature requests (including 'test config and tests for plugin-agentkit', 'client-farcaster package test config and tests').
 
 ## Top Contributors
-- **ai16z-demirix**: feat: plugin rabbi trader tests
-- **AIFlowML**: feat: add support for NVIDIA inference for ElizaOS
-- **tomguluson92**: chore: add eliza technical report/paper
+- **devin-ai-integration**: chore(revert): optimize pnpm cache configuration
+- **tcm390**: fix: develop branch build/start failed
+- **neelkanani**: feat: Updated READ.me file with pre-requisites to enable telegram bot

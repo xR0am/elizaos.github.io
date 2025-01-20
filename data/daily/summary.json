@@ -1,68 +1,73 @@
 {
-  "title": "elizaos Eliza (2025-01-19)",
+  "title": "elizaos Eliza (2025-01-20)",
   "version": "",
-  "overview": "Development focused on package improvements (plugin rabbi trader tests), new features (plugin rabbi trader tests), 1 bug fixes. with 21 contributors merging 5 PRs. Major work included ai16z-demirix is currently working on enhancing test configurations and adding new tests for various plugins, such as plugin-tee, plugin-binance, and plugin rabbi trader.",
+  "overview": "Development focused on package improvements (implement client-agnostic Devin plugin), new features (Updated READ.me file with pre-requisites to enable telegram bot), 2 bug fixes. with 30 contributors merging 8 PRs. Major work included unable to generate summary for devin-ai-integration due to an error.",
   "metrics": {
-    "contributors": 21,
-    "merged_prs": 5,
-    "new_issues": 6,
-    "lines_changed": 620
+    "contributors": 30,
+    "merged_prs": 8,
+    "new_issues": 9,
+    "lines_changed": 3086
   },
   "changes": {
     "features": [
-      "plugin rabbi trader tests",
-      "add support for NVIDIA inference for ElizaOS"
+      "implement client-agnostic Devin plugin",
+      "Updated READ.me file with pre-requisites to enable telegram bot"
     ],
     "fixes": [
-      "use coingecko headerKey from api config"
+      "develop branch build/start failed",
+      "develop branch build/start failed"
     ],
     "chores": [
-      "add eliza technical report/paper"
+      "optimize pnpm cache configuration",
+      "optimize pnpm cache configuration",
+      "remove cleanup step from integration tests workflow"
     ]
   },
   "areas": [
     {
       "name": "packages",
-      "files": 13,
-      "additions": 397,
-      "deletions": 16
+      "files": 16,
+      "additions": 917,
+      "deletions": 15
+    },
+    {
+      "name": ".github",
+      "files": 4,
+      "additions": 41,
+      "deletions": 35
     },
     {
       "name": "agent",
-      "files": 1,
-      "additions": 8,
-      "deletions": 2
-    },
-    {
-      "name": "root",
-      "files": 1,
-      "additions": 15,
-      "deletions": 2
+      "files": 3,
+      "additions": 30,
+      "deletions": 17
     }
   ],
-  "issues_summary": "working on 3 bugs including '@elizaos/agent@0.1.9-alpha.1 start: `node --loader ts-node/esm src/index.ts \"--isRoot\" \"--characters=characters/eternalai.character.json\"`', 'Agent doesn't reply to new target users tweets, says already responded, skipping' and implementing 3 feature requests including 'test configuration and test suite for client-lens', 'Add Test Coverage for plugin-rabbi-trader Package'",
+  "issues_summary": "working on 4 bugs including 'chat client unstable connection, :ERR_BLOCKED_BY_CLIENT, 3000 port woks fine, agent list not displaying', 'Incorrect OpenAI Error on clean start where i don't use openai key anywhere' and implementing 4 feature requests including 'test config and tests for plugin-agentkit', 'client-farcaster package test config and tests'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "ai16z-demirix",
-      "summary": "ai16z-demirix is currently working on enhancing test configurations and adding new tests for various plugins, such as plugin-tee, plugin-binance, and plugin rabbi trader",
+      "name": "devin-ai-integration",
+      "summary": "Unable to generate summary for devin-ai-integration due to an error",
       "areas": [
-        "packages"
+        ".env.example",
+        "agent",
+        ".github"
       ]
     },
     {
-      "name": "AIFlowML",
-      "summary": "AIFlowML is currently working on adding support for NVIDIA inference for ElizaOS",
+      "name": "tcm390",
+      "summary": "Unable to generate summary for tcm390 due to an error",
       "areas": [
         "agent",
         "packages"
       ]
     },
     {
-      "name": "tomguluson92",
-      "summary": "tomguluson92 is currently working on adding the Eliza technical report/paper to the project, with a recent commit and pull request related to this task",
+      "name": "neelkanani",
+      "summary": "Unable to generate summary for neelkanani due to an error",
       "areas": [
-        "README.md"
+        "packages"
       ]
     }
   ]

@@ -1,12 +1,12 @@
 [
   {
-    "id": "I_kwDOMT5cIs6mw723",
-    "number": 2533,
-    "title": "test configuration and test suite for client-lens",
-    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nThe client-lens package needed a comprehensive testing solution that wouldn't interfere with the existing production code. The main challenges are:\n\nTesting interactions with the Lens Protocol without modifying the core functionality\nEnsuring test coverage for key features like authentication, profile management, and post creation\nManaging complex mock data structures for the Lens Protocol client\n**Describe the solution you'd like**\n\n<!-- A clear and concise description of what you want to happen. -->\nImplement a test suite with the following key features:\n\nA separate test-utils.ts file containing test-specific implementations\nComprehensive mocking of the Lens Protocol client\nThree main test files:\nclient.test.ts: Testing core client functionality \ninteractions.test.ts: Testing interaction handling \npost.test.ts: Testing post creation and validation \n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "id": "I_kwDOMT5cIs6m6acT",
+    "number": 2572,
+    "title": "test config and tests for plugin-agentkit",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nThe problem is a lack of test coverage for the plugin-agentkit package, particularly around its wallet management functionality. Without proper tests, there was no automated way to verify that the wallet creation, loading, and error handling were working correctly. This could lead to potential issues going undetected, especially when making changes to the codebase.\n\n**Describe the solution you'd like**\n\n<!-- A clear and concise description of what you want to happen. -->\nImplement a comprehensive test suite for plugin-agentkit that:\n\nTests wallet management functionality:\n- Creating new wallets\n- Loading existing wallets\n- Handling file system operations\nVerifies configuration options:\n- Network selection via environment variables\n- Wallet data persistence\n- Tests error handling:\n- File system errors\n- Configuration failures\n- Wallet operation errors\nThe solution should follow the project's conventions by:\n\n- Placing tests in __tests__ directory\n- Using vitest as the testing framework\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
     "state": "OPEN",
-    "createdAt": "2025-01-19T21:43:23Z",
-    "updatedAt": "2025-01-19T21:43:23Z",
+    "createdAt": "2025-01-20T22:01:43Z",
+    "updatedAt": "2025-01-20T22:01:43Z",
     "author": {
       "login": "ai16z-demirix",
       "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
@@ -22,16 +22,16 @@
     "comments": []
   },
   {
-    "id": "I_kwDOMT5cIs6mwy61",
-    "number": 2530,
-    "title": "@elizaos/agent@0.1.9-alpha.1 start: `node --loader ts-node/esm src/index.ts \"--isRoot\" \"--characters=characters/eternalai.character.json\"`",
-    "body": "I did pnpm start with whole bunch of node versions but still get stuck with it, I suppose it is a bug, due to pnpm i and pnpm build were without problems\n\nC:\\Users\\Admin\\eliza>pnpm start --characters=\"characters/eternalai.character.json\"\n WARN  Unsupported engine: wanted: {\"node\":\"23.3.0\"} (current: {\"node\":\"v22.13.0\",\"pnpm\":\"9.15.4\"})\n\n> eliza@ start C:\\Users\\Admin\\eliza\n> pnpm --filter \"@elizaos/agent\" start --isRoot \"--characters=characters/eternalai.character.json\"\n\n.                                        |  WARN  Unsupported engine: wanted: {\"node\":\"23.3.0\"} (current: {\"node\":\"v22.13.0\",\"pnpm\":\"9.14.4\"})\ndocs                                     |  WARN  Unsupported engine: wanted: {\"node\":\"23.3.0\"} (current: {\"node\":\"v22.13.0\",\"pnpm\":\"9.14.4\"})\n\n> @elizaos/agent@0.1.9-alpha.1 start C:\\Users\\Admin\\eliza\\agent\n> node --loader ts-node/esm src/index.ts \"--isRoot\" \"--characters=characters/eternalai.character.json\"\n\n(node:12932) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\n(node:12932) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n\nnode:internal/modules/run_main:122\n    triggerUncaughtException(\n    ^\n[Object: null prototype] {\n  [Symbol(nodejs.util.inspect.custom)]: [Function: [nodejs.util.inspect.custom]]\n}\n\nNode.js v22.13.0\nC:\\Users\\Admin\\eliza\\agent:\n ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @elizaos/agent@0.1.9-alpha.1 start: `node --loader ts-node/esm src/index.ts \"--isRoot\" \"--characters=characters/eternalai.character.json\"`\nExit status 1\n ELIFECYCLE  Command failed with exit code 1.\n\nC:\\Users\\Admin\\eliza>",
+    "id": "I_kwDOMT5cIs6m6IYI",
+    "number": 2569,
+    "title": "Incorrect OpenAI Error on clean start where i don't use openai key anywhere",
+    "body": "\nDescribe the bug\nWhen attempting to start ElizaOS with a custom character configuration using GROQ API, the application fails due to missing API key authentication of **openai**. The error indicates that no API key was provided in the request headers.\nTo Reproduce\n\nInstall dependencies:\n```bash\npnpm install --no-frozen-lockfile\n```\n\nBuild the project:\n```bash\npnpm build\n```\n\nAttempt to start with standart character with groq model:\n```bash\npnpm start --character=\"characters/trump.character.json\"\n```\n\n\nExpected behavior\nThe application should successfully start with the specified character configuration file, making authenticated requests to the GROQ API.\nError Output\n```json\n{\n    \"error\": {\n        \"message\": \"You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": null,\n        \"code\": null\n    }\n}\n```\n\nso i can't run any character cause openai key needed somewhere",
     "state": "OPEN",
-    "createdAt": "2025-01-19T20:13:23Z",
-    "updatedAt": "2025-01-19T22:10:29Z",
+    "createdAt": "2025-01-20T20:54:30Z",
+    "updatedAt": "2025-01-20T21:01:33Z",
     "author": {
-      "login": "illink7",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/167812620?v=4"
+      "login": "veebull",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/9640387?u=5e430dd37cf0fcd13f838b0835dc1122f04d1652&v=4"
     },
     "labels": [
       {
@@ -43,86 +43,20 @@
     ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6bCDMU",
+        "id": "IC_kwDOMT5cIs6bKe74",
         "author": "github-actions",
-        "body": "Hello @illink7! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6bCLwr",
-        "author": "mgunnin",
-        "body": "It's pretty clear that you need to be running node v23.3.0 -- You are using 22.13.0.\n\nJust run \n`nvm install 23.3.0`\n`nvm use 23.3.0`"
+        "body": "Hello @veebull! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
       }
     ]
   },
   {
-    "id": "I_kwDOMT5cIs6mwV8a",
-    "number": 2522,
-    "title": "Virtuals Terminal API integration",
-    "body": "### Feature Request: ElizaOS Agent Integration with Virtuals Terminal\n\n**Is your feature request related to a problem? Please describe.**\n\nCurrently, there is no streamlined or standardized way for an ElizaOS agent deployed on Virtuals as a token to log its actions or report its activities to the Virtuals Terminal. This lack of integration creates a gap in transparency and monitoring, making it difficult to track agent behavior, analyze interactions, and ensure alignment with operational or ethical guidelines.\n\nFor example, actions such as user interactions, data processing, or decision-making events are not being logged in the Virtuals Terminal, resulting in limited visibility and accountability for deployed agents.\n\n---\n\n**Describe the solution you'd like**\n\nI propose the development of a dedicated plugin or module that seamlessly integrates with the [Virtuals Terminal API](https://whitepaper.virtuals.io/developer-documents/terminal-api) to report all agent actions and events. \n\nThe plugin/module should:\n1. **Log Key Actions:** Automatically capture and send details of all actions performed by the agent, such as user interactions, system updates, or triggered events.\n2. **Token-Based Authentication:** Use the Virtuals Terminal API key to ensure secure and authenticated communication between the agent and the Terminal.\n3. **Customizable Reporting:** Allow configuration of which actions to log and report to minimize unnecessary data flow and enhance relevance.\n4. **Real-Time Logging:** Enable near real-time reporting of activities to provide immediate visibility into agent behavior.\n5. **Error Handling:** Include mechanisms for handling API errors or downtime gracefully, ensuring that logs are not lost during connectivity issues.\n\n---\n\n**Describe alternatives you've considered**\n\n1. **Manual Logging:** Setting up a custom logging system to track agent actions. However, this approach lacks the integration with Virtuals Terminal and increases development overhead.\n2. **Third-Party Tools:** Using generic logging or monitoring tools. These solutions do not provide the tailored insights or secure connection offered by the Virtuals ecosystem.\n\n---\n\n**Additional context**\n\nThe integration with Virtuals Terminal will significantly enhance transparency and trust in ElizaOS agents by providing a clear and accessible activity log. This feature will be invaluable for monitoring agent performance, auditing behavior, and ensuring alignment with user expectations and Virtuals platform standards.\n\nFor more information on the Virtuals Terminal API, refer to the [official documentation](https://whitepaper.virtuals.io/developer-documents/terminal-api).",
+    "id": "I_kwDOMT5cIs6m6BLz",
+    "number": 2566,
+    "title": "client-farcaster package test config and tests",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\n\nThe client-farcaster package needed a comprehensive testing infrastructure similar to client-lens. The main challenges were:\n\nNo existing test setup or configuration\nNeed to test Farcaster-specific functionality like casts, interactions, and profile management\nEnsuring proper mocking of the Neynar API client to avoid real API calls during tests\n\n\n**Describe the solution you'd like**\n\n<!-- A clear and concise description of what you want to happen. -->\n\nTest Configuration:\n- Added Vitest as the testing framework\n- Created vitest.config.ts for test configuration\n- Added test scripts to package.json (test, test:watch, test:coverage)\nTest Structure:\n- Created __tests__ directory with three main test files:\n- client.test.ts: Testing core client functionality\n- interactions.test.ts: Testing Farcaster interactions (recasts, replies, likes)\n- cast.test.ts: Testing cast creation and validation\nTest Utilities:\n- Created test-utils.ts with shared testing functions:\n- createTestInteraction: Generates test interactions based on cast engagement\n- handleTestInteraction: Handles different interaction types\n- createTestCast: Creates and validates test casts\nMocking:\n- Implemented comprehensive mocks for the Neynar API client\n- Mocked profile fetching, cast creation, and interaction handling\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
     "state": "OPEN",
-    "createdAt": "2025-01-19T15:42:14Z",
-    "updatedAt": "2025-01-19T15:42:45Z",
-    "author": {
-      "login": "mikirov",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/29272392?u=a4773a399c1cbcd34cdca9a7877cd61824c5bf09&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
-        "name": "enhancement",
-        "color": "a2eeef",
-        "description": "New feature or request"
-      }
-    ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6bBtYs",
-        "author": "github-actions",
-        "body": "Hello @mikirov! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6mwNzY",
-    "number": 2521,
-    "title": "Agent doesn't reply to new target users tweets, says already responded, skipping",
-    "body": "**Describe the bug**\n\nThe agent doesn't reply to target users' new tweets after a few weeks of it running. It says \"already responded to tweet, skipping\" even though it hasn't replied yet\n\n**To Reproduce**\n\nNot sure, ran 3 agents simultaneously, been replying for a month, after that it stops replying, it says skips new tweets even tho haven't replied to them yet\n\n**Expected behavior**\n\nIt should reply to new tweets of users inside the target users list\n\n**Screenshots**\n\n![Image](https://github.com/user-attachments/assets/ad3fbdc5-7bee-4ca7-9660-9918ea075807)\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\nBuild: v0.1.8+build.1\nAgents running: 3\nDatabase: Sqlite\n",
-    "state": "OPEN",
-    "createdAt": "2025-01-19T14:32:14Z",
-    "updatedAt": "2025-01-19T14:43:28Z",
-    "author": {
-      "login": "medardm",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/20562573?u=3876b7dfd53a61d58d55274ce703025b85095dd0&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6bBmB8",
-        "author": "github-actions",
-        "body": "Hello @medardm! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6bBm9V",
-        "author": "medardm",
-        "body": "It starts replying again once you delete the sqlite file. Is this advisable everytime?"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6mwJ9S",
-    "number": 2519,
-    "title": "Add Test Coverage for plugin-rabbi-trader Package",
-    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\n\nThe plugin-rabbi-trader package lacks comprehensive test coverage, making it difficult to ensure reliability and catch potential issues during development. Without proper tests, we risk introducing bugs when making changes and have no automated way to verify core functionality like wallet operations, DEX interactions, and token utilities.\n\n**Describe the solution you'd like**\n\n<!-- A clear and concise description of what you want to happen. -->\n\nImplement comprehensive test coverage for the plugin-rabbi-trader package using vitest. The solution includes:\n\nTest Infrastructure Setup:\n- Configure vitest with appropriate settings\n- Add test dependencies and scripts to package.json\n- Set up proper mocking utilities\nCore Component Tests:\n- Wallet functionality (keypair generation, balance checking)\n- DexScreener integration (data fetching, pair analysis)\n- Token utilities (address loading, validation)\nTest Coverage Requirements:\n- Success and error cases for each component\n- Edge case handling\n- Proper mocking of external dependencies\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n1. Using Jest instead of vitest, but vitest provides better performance and ESM support\n2. End-to-end testing with real network calls, but this would make tests slower and less reliable\n3. Snapshot testing for complex objects, but unit tests provide better specificity and error messages\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
-    "state": "CLOSED",
-    "createdAt": "2025-01-19T13:58:58Z",
-    "updatedAt": "2025-01-19T16:25:02Z",
+    "createdAt": "2025-01-20T20:29:56Z",
+    "updatedAt": "2025-01-20T20:29:56Z",
     "author": {
       "login": "ai16z-demirix",
       "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
@@ -135,25 +69,171 @@
         "description": "New feature or request"
       }
     ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6m50b0",
+    "number": 2565,
+    "title": "Integrating searxng",
+    "body": "\n\nCurrently, Eliza agents lack integrated web search capabilities, limiting their ability to access and retrieve up-to-date information from the internet. This constraint hampers their performance in tasks requiring real-time data or comprehensive knowledge beyond their pre-existing datasets.\n\nDescribe the solution you’d like\n\nIntegrate SearXNG, a free and open-source metasearch engine, into the Eliza framework. SearXNG aggregates results from various search services and databases without tracking or profiling users, aligning with privacy considerations. By embedding SearXNG, Eliza agents can perform real-time web searches, enhancing their ability to provide accurate and current information.  ￼\n\nDescribe alternatives you’ve considered\n\t•\tDeveloping a Custom Search Integration: Creating a proprietary search solution tailored to Eliza’s needs. However, this approach would require significant development resources and ongoing maintenance to ensure comprehensive coverage and relevance of search results.\n\t•\tUtilizing Other Search APIs: Leveraging existing search engine APIs (e.g., Google, Bing). While feasible, these options may involve usage costs, rate limitations, and potential privacy concerns due to data tracking practices.\n\nAdditional context\n\nSearXNG is a fork of the Searx project, designed to provide faster debugging and fixes of engine errors. It supports over 70 different search engines and does not collect information about users, ensuring privacy.  ￼ Integrating SearXNG into Eliza would involve setting up a SearXNG instance, which can be configured optimally for use with applications like Open WebUI.  ￼ This integration would significantly enhance Eliza agents’ capabilities by providing them with access to a vast array of information sources in real-time.",
+    "state": "OPEN",
+    "createdAt": "2025-01-20T19:48:01Z",
+    "updatedAt": "2025-01-20T19:48:25Z",
+    "author": {
+      "login": "mosif16",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/123289494?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6bBw3q",
+        "id": "IC_kwDOMT5cIs6bKMcr",
+        "author": "github-actions",
+        "body": "Hello @mosif16! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6m5hCt",
+    "number": 2563,
+    "title": "Bot is only responding to target users and ignoring all other mentions on twitter",
+    "body": "**Describe the bug**\n\nBot is only responding to target users and ignoring all other mentions on twitter using default client-twitter\n\n**To Reproduce**\n\nSetup my custom actions using client-twitter with eliza main repo. \n\n**Expected behavior**\n\n It should reply to all users, not only target users.\n\n**Screenshots**\n\n<img width=\"543\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ba6d8255-e3ae-4499-be74-2c9a5b5846d6\" />\n\n<img width=\"1109\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/80cc4644-0b33-4793-87fa-26dd239e112b\" />\n\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-20T18:46:01Z",
+    "updatedAt": "2025-01-20T18:46:39Z",
+    "author": {
+      "login": "Xayaan",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/5237930?u=7840b286463bde982c8af8f389e61e26a01328cb&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6bJ51q",
+        "author": "github-actions",
+        "body": "Hello @Xayaan! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6m5S22",
+    "number": 2561,
+    "title": "Add Router Nitro Agent",
+    "body": "## Router Nitro Bridge Integration\n\n**Is your feature request related to a problem? Please describe.**\nWe'd like to extend Eliza's capabilities with Router Nitro Agent. We'd like to extend Eliza's capabilities with Router Protocol's Nitro bridge. Router Nitro is a high-performance cross-chain bridge that enables fast, secure, and cost-effective asset transfers across multiple blockchain networks. Adding Router Nitro integration would significantly enhance Eliza's cross-chain capabilities.\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\n\n**Describe the solution you'd like**\nA Plugin for Router Nitro bridge integration in Eliza's codebase, simplifying the process of building bridging requests for users without requiring specialized front-end logic.\n\n<!-- A clear and concise description of what you want to happen. -->\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n<!-- **Additional context** -->\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-20T18:06:06Z",
+    "updatedAt": "2025-01-20T18:06:30Z",
+    "author": {
+      "login": "RaveenaBhasin",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73697080?u=cbe63f4204277190599fce2be4e35fd359c414dc&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6bJsze",
+        "author": "github-actions",
+        "body": "Hello @RaveenaBhasin! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6m4oh0",
+    "number": 2559,
+    "title": "Incorrect Boolean Parsing for ENABLE_OPEN_AI_COMMUNITY_PLUGIN Setting",
+    "body": "Describe the bug\nThere was an issue with loading the ENABLE_OPEN_AI_COMMUNITY_PLUGIN setting. Regardless of whether true or false was set, the value was always interpreted as a string, causing the setting to always be enabled.\n\nTo Reproduce\nSteps to reproduce the behavior:\n\nSet ENABLE_OPEN_AI_COMMUNITY_PLUGIN to true or false in the configuration.\nRun the application.\nObserve that the feature is always enabled, regardless of the intended value.\nExpected behavior\nThe feature should only be enabled when ENABLE_OPEN_AI_COMMUNITY_PLUGIN is set to true. When set to false, the feature should remain disabled.\n\nScreenshots\n\nAdditional context\nI will fix it\n\n\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-20T16:46:19Z",
+    "updatedAt": "2025-01-20T16:46:19Z",
+    "author": {
+      "login": "lincheoll",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/53032750?u=ff3890e429047d07a870d870c54e8834ba1faac3&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6m32YB",
+    "number": 2557,
+    "title": "telegram client not working or responding",
+    "body": "\n [\"ℹ Telegram Message: [object Object]\"]\n\n ◎ LOGS\n   Creating Memory\n   cd87f4c9-e60c-0c23-9c90-91cc0b4851e7\n   Hi\n\n ⛔ ERRORS\n   API Response:\n   Domain is unavailable\n\n\n ⛔ ERRORS\n   Full error details:\n   {}\n\n ⛔ ERRORS\n   ❌ Error handling message:\n   {}\n\n ⛔ ERRORS\n   Error sending message:\n   {}\n\n\n\n\nwhy do i keep on getting this issue ?? i setup defaultcharacter , i put client as telegram and modelprovider as gaianet.. \ni ve made sure ive provided all the env values for gainet and for the telegram_bot_token.\nafter i run pnpm run start.. and send a \"hi\" message from the telegram bot , the above error keeps on coming.. pls tell me what im doing wrong????\n\n\n![Image](https://github.com/user-attachments/assets/b913351a-674c-47dd-ac81-9b12101a6c13)",
+    "state": "OPEN",
+    "createdAt": "2025-01-20T15:51:41Z",
+    "updatedAt": "2025-01-20T20:21:09Z",
+    "author": {
+      "login": "gauthking",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/90638995?u=d3354ae87c8767d97bb2fcfb1d5f6447ddac4b8f&v=4"
+    },
+    "labels": [],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6bIwXz",
+        "author": "github-actions",
+        "body": "Hello @gauthking! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6bJElw",
         "author": "ai16z-demirix",
-        "body": "Done."
+        "body": "Hello @gauthking , have you run pnpm build before starting agent ?"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6bJJEm",
+        "author": "gauthking",
+        "body": "> Hello [@gauthking](https://github.com/gauthking) , have you run pnpm build before starting agent ?\n\nyes i did.. every time.. it gives me the same error.. and now my local vite frontend client is also not connecting to the 3001 port.. \npls help"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6bJ_tP",
+        "author": "ai16z-demirix",
+        "body": "@gauthking \nCan you access api.telegram.org via your browser? \nDo you maybe use VPN or something that might be blocking your access to api.telegram.org ?\nDoes your bot have the necessary permissions to send messages in the group/channel where it is?"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6bKJmy",
+        "author": "gauthking",
+        "body": "> [@gauthking](https://github.com/gauthking) Can you access api.telegram.org via your browser? Do you maybe use VPN or something that might be blocking your access to api.telegram.org ? Does your bot have the necessary permissions to send messages in the group/channel where it is?\n\nim not using any vpn, but is it necessary to talk to the bot via a telegram channel/group , can't  we just directly dm it on telegram chats coz i was doing that all this time.. \n"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6bKVtW",
+        "author": "ai16z-demirix",
+        "body": "@gauthking I assumed that you are messaging bot via channel/group, you should be able to do both.  \nAre you able to start agent with any other clients, discord, etc., or just start the agent itself ? "
       }
     ]
   },
   {
-    "id": "I_kwDOMT5cIs6mvXM0",
-    "number": 2513,
-    "title": "Issue with Installing @elizaos/plugin-0g",
-    "body": "I am encountering issues while trying to install the @elizaos/plugin-0g package using pnpm. The error message indicates that the package @elizaos/runtime is not found in the registry.\n\nSteps taken:\n\nConfigured .npmrc with the following:\n\n\n@elizaos:registry=https://npm.pkg.github.com/\n//npm.pkg.github.com/:_authToken=MY_PERSONAL_ACCESS_TOKEN\nVerified my token permissions (read:packages scope included).\nChecked the GitHub repository for @elizaos/plugin-0g and its dependencies.\n\nError:\nERR_PNPM_FETCH_404  GET https://registry.npmjs.org/@elizaos%2Fruntime: Not Found - 404\nCould you confirm if:\n\nThe package @elizaos/plugin-0g and its dependency @elizaos/runtime are correctly published to the GitHub registry?\nThere are any additional steps or permissions required to access these packages?\nThank you!\n\n\n\n\n\n\n\n",
+    "id": "I_kwDOMT5cIs6mxrMH",
+    "number": 2540,
+    "title": "chat client unstable connection, :ERR_BLOCKED_BY_CLIENT, 3000 port woks fine, agent list not displaying",
+    "body": "OS: ubuntu 22.4\nnode version: 23.3.0\n\nexecuted command:\n\n![Image](https://github.com/user-attachments/assets/c9374a23-1e96-47eb-8ce3-a05d084a4cfb)\n\n\n![Image](https://github.com/user-attachments/assets/0ba42e3b-a353-462e-a172-b7b321fa74cf)\n\n",
     "state": "OPEN",
-    "createdAt": "2025-01-19T05:39:50Z",
-    "updatedAt": "2025-01-19T05:39:50Z",
+    "createdAt": "2025-01-20T02:41:19Z",
+    "updatedAt": "2025-01-20T17:17:57Z",
     "author": {
-      "login": "Aave-Khan",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/194741512?v=4"
+      "login": "holiccoder",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/38061345?u=9aff3c4a27f5cd9e3fea92f91c65bcf81fa10bcf&v=4"
     },
     "labels": [
       {
@@ -163,6 +243,17 @@
         "description": "Something isn't working"
       }
     ],
-    "comments": []
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6bEcej",
+        "author": "lynerlwl",
+        "body": "If you are not running on localhost but on a server, edit line 3 in client/src/lib/api.ts and change localhost to your server's IP address."
+      },
+      {
+        "id": "IC_kwDOMT5cIs6bJaxO",
+        "author": "gauthking",
+        "body": "> If you are not running on localhost but on a server, edit line 3 in client/src/lib/api.ts and change localhost to your server's IP address.\n\nwhat if our rest api is bound to 3001 port localhost .. so for the vite frontend client do we have to change the baseURL to \"http://localhost:3001\""
+      }
+    ]
   }
 ]

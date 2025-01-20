@@ -1,197 +1,197 @@
 [
   {
-    "sha": "cfd1f48c3f13a55c8bad632b430e0ddd00fd275c",
-    "message": "plugin-tts: enhance TTS generation flow and caching (#2506)\n\n* refactor(tts-generation): enhance TTS generation flow and caching\n\n* refactor(tts-generation): add error handling for language detection\n\n---------\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
-    "committedDate": "2025-01-19T15:17:09Z",
-    "author": {
-      "user": {
-        "login": "bfontes"
-      }
-    },
-    "additions": 63,
-    "deletions": 87,
-    "changedFiles": 1
-  },
-  {
-    "sha": "adace37d4d8c8ada3679d74bdaee331518e51cc9",
-    "message": "chore: add eliza technical report/paper (#2517)\n\n* Update README.md with Technical report\n\n* add image alt\n\nCo-authored-by: coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>\n\n---------\n\nCo-authored-by: Sayo <hi@sayo.wtf>\nCo-authored-by: coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>",
-    "committedDate": "2025-01-19T15:03:40Z",
-    "author": {
-      "user": {
-        "login": "tomguluson92"
-      }
-    },
-    "additions": 15,
-    "deletions": 2,
-    "changedFiles": 1
-  },
-  {
-    "sha": "5514e08f3c896f4e4df6e1bb4e08643e5e342bc5",
-    "message": "feat: plugin rabbi trader tests (#2520)\n\n* test: plugin-rabbi-trader - test configuration\n\n* test: plugin-rabbi-trader - tests for wallet, dexscreener and token\n\n* test: plugin-rabbi-trader - providing mocked key\n\n---------\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
-    "committedDate": "2025-01-19T14:57:29Z",
+    "sha": "3a69164b0e2951342806dc2650a0617f87b6311f",
+    "message": "test configuration and tests for client-lens (#2534)\n\n* client-lens: test configuration\n\n* client-lens: test utils\n\n* client-lens: client tests\n\n* client-lens: interaction tests\n\n* client-lens: post tests",
+    "committedDate": "2025-01-20T14:41:36Z",
     "author": {
       "user": {
         "login": "ai16z-demirix"
       }
     },
-    "additions": 328,
-    "deletions": 1,
-    "changedFiles": 5
+    "additions": 404,
+    "deletions": 7,
+    "changedFiles": 7
   },
   {
-    "sha": "eee5539c57490f0fd086ee1d69fe370c803ef166",
-    "message": "Replace user ID with room ID in MemoryManager and other improvements (#2492)\n\n* Update MemoryManager.md\n\n* Update autonomous-trading.md\n\n* Update fine-tuning.md\n\n---------\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
-    "committedDate": "2025-01-19T14:40:35Z",
+    "sha": "227d9de3b0db017fa4250515d01c883357fbbd14",
+    "message": "chore(attempt): optimize pnpm cache configuration (#2556)\n\n* chore: optimize pnpm cache configuration\n\n- Move pnpm setup before cache configuration\n- Add architecture-specific cache keys\n- Include package.json in cache key for better specificity\n- Add explicit store-dir configuration\n- Improve restore-keys with more specific fallbacks\n\nThis change aims to improve package reuse during installation while maintaining existing functionality.\n\nCo-Authored-By: Sayo <hi@sayo.wtf>\n\n* chore: integrate setup-node pnpm caching\n\n- Add pnpm caching via actions/setup-node\n- Configure cache-dependency-path for pnpm-lock.yaml\n- Separate pnpm configuration step for better visibility\n- Add pnpm config list for debugging\n\nCo-Authored-By: Sayo <hi@sayo.wtf>\n\n* fix: update pnpm cache paths to match actual store locations\n\nCo-Authored-By: Sayo <hi@sayo.wtf>\n\n* fix: align pnpm store directory with cache paths\n\nCo-Authored-By: Sayo <hi@sayo.wtf>\n\n* fix: remove duplicate pnpm caching, use setup-node's built-in cache\n\nCo-Authored-By: Sayo <hi@sayo.wtf>\n\n* - Remove redundant pnpm caching steps\n- Reorder workflow steps for better cache utilization\n- Rely on setup-node's built-in pnpm caching\n\nCo-Authored-By: Sayo <hi@sayo.wtf>\n\n* fix: update pnpm store directory path to fix permission error\n\nCo-Authored-By: Sayo <hi@sayo.wtf>\n\n* revert pnpm caching\n\n---------\n\nCo-authored-by: Devin AI <158243242+devin-ai-integration[bot]@users.noreply.github.com>\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-20T14:16:06Z",
     "author": {
       "user": {
-        "login": "Haisen772"
+        "login": "devin-ai-integration[bot]"
       }
     },
-    "additions": 4,
-    "deletions": 4,
+    "additions": 10,
+    "deletions": 22,
+    "changedFiles": 1
+  },
+  {
+    "sha": "6110782963008ec25a3a14dca9770a29e05bc929",
+    "message": "feat: add a way to create/store/restore agents in the filesystem (#2389)\n\n* Add a way to create/store/restore agents in the filesystem at agents/data/characters\n\n* Update .env.example\n\n---------\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-20T13:47:24Z",
+    "author": {
+      "user": {
+        "login": "maxcoto"
+      }
+    },
+    "additions": 75,
+    "deletions": 5,
     "changedFiles": 3
   },
   {
-    "sha": "319840c23debb6a28d22ed1f5126f2d93a13bb0f",
-    "message": "test: plugin-tee - adjusting project structure and new tests (#2508)\n\n* test: plugin-tee - adjusting project strucutre and new tests\n\n* test: plugin-tee - ficed test structure\n\n---------\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
-    "committedDate": "2025-01-19T13:49:37Z",
+    "sha": "9fbdab82a0b1bed87fcbf2e526af242bdbb8700d",
+    "message": "chore: optimize pnpm cache configuration (#2555)\n\n- Move pnpm setup before cache configuration\n- Add architecture-specific cache keys\n- Include package.json in cache key for better specificity\n- Add explicit store-dir configuration\n- Improve restore-keys with more specific fallbacks\n\nThis change aims to improve package reuse during installation while maintaining existing functionality.\n\nCo-authored-by: Devin AI <158243242+devin-ai-integration[bot]@users.noreply.github.com>\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-20T13:10:09Z",
     "author": {
       "user": {
-        "login": "ai16z-demirix"
+        "login": "devin-ai-integration[bot]"
       }
     },
-    "additions": 130,
-    "deletions": 35,
-    "changedFiles": 4
-  },
-  {
-    "sha": "ace85aecc7a58455a9f9b9660ad1c109d01f6426",
-    "message": "fix: use header key from api config (#2518)\n\nCo-authored-by: Marcel Rableski <marcel.rableski@sva.de>\nCo-authored-by: Sayo <hi@sayo.wtf>",
-    "committedDate": "2025-01-19T13:09:55Z",
-    "author": {
-      "user": {
-        "login": "visionpixel"
-      }
-    },
-    "additions": 13,
-    "deletions": 13,
-    "changedFiles": 5
-  },
-  {
-    "sha": "1c3da82d3ee413ac3a9840ffe6f7867a5f60e4f1",
-    "message": "docs: add docs/README_JA.md (#2515)\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
-    "committedDate": "2025-01-19T12:58:23Z",
-    "author": {
-      "user": {
-        "login": "eltociear"
-      }
-    },
-    "additions": 180,
-    "deletions": 0,
+    "additions": 14,
+    "deletions": 9,
     "changedFiles": 1
   },
   {
-    "sha": "631cd6d2b8447edcfe75342cb99817aed1b59e83",
-    "message": "AgentKit - Default Agent Config (#2505)\n\n* I add files for plugin-agentkit\n\n* instructions added to gitignore.\n\n* I update package name.\n\n* I add updated files.\n\n* I add ENV requirements to prevent default Eliza bugs.\n\n* rollback index\n\n* simple agentkit import.\n\n* I load existing wallet data for provider.\n\n* remove dev logging\n\n* Update pnpm-lock.yaml\n\n* update .env.example and support non 'base-sepolia'\n\n* Update pnpm-lock.yaml\n\n* Update package lock for smoke tests.\n\n* I rollback changes to pnpm-lock file.\n\n* fixing smoke tests for pnpm missing\n\n* rollback changes to agent start file.\n\n* I rollback changes to smoke test.\n\n* Update pnpm-lock.yaml\n\n* packages/plugin-agentkit/README.md - package name\n    - actual: @ai16z/plugin-agentkit\n    - required: @elizaos/plugin-agentkit\n\n* add example network for agentkit.\n\n* update plugin-agentkit README package name to correct ORG prefix.\n\n* agent/src/index.ts - default plugin\n    - actual:agentKitPlugin missing from AgentRuntime.plugins\n    - required: agentKitPlugin added to AgentRuntime.plugins\n\n* stylish build logging.\n\n* wallet read from ENV instead of function variable.\n\n* remove unintended changes to agent index.\n\n---------\n\nCo-authored-by: Sayo <82053242+wtfsayo@users.noreply.github.com>\nCo-authored-by: Sayo <hi@sayo.wtf>",
-    "committedDate": "2025-01-19T11:23:21Z",
+    "sha": "e10b7f4efeadfc1ee34a2a24c0e12dbb2cb79aee",
+    "message": "chore: remove cleanup step from integration tests workflow (#2553)\n\nCo-authored-by: Devin AI <158243242+devin-ai-integration[bot]@users.noreply.github.com>\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-20T12:30:03Z",
     "author": {
       "user": {
-        "login": "sweetmantech"
+        "login": "devin-ai-integration[bot]"
       }
     },
-    "additions": 43,
-    "deletions": 34,
-    "changedFiles": 6
-  },
-  {
-    "sha": "9319fd34fbc2262ac41691471f461bb84786d30c",
-    "message": "feat(plugin-openai): add OpenAI integration for text generation (#2463)\n\n* feat: add plugin-openai for text generation using OpenAI API (#1234)\n\n* fix: apply code review suggestions from coderabbitai\n\n* add remaining updates for plugin\n\n* Refactor: Centralize OpenAI action utilities in action.ts\n\n- Introduced shared constants (DEFAULT_MODEL, DEFAULT_MAX_TOKENS, etc.).\n- Added reusable functions:\n  - validatePrompt: Validates text input for OpenAI actions.\n  - validateApiKey: Ensures API key is present.\n  - callOpenAiApi: Handles HTTP requests with timeout and error handling.\n  - buildRequestData: Creates structured request payloads.\n- Updated all action files to leverage shared logic.\n- Improved maintainability and consistency across all OpenAI-related actions.\n\n* feat(plugin-openai): finalize plugin setup and configuration\n\n- Updated  to enhance terminal output with plugin details and accounts (Twitter, GitHub).\n- Adjusted  scripts and dependencies for compatibility and functionality.\n- Added a localized  for specific TypeScript configurations within the plugin.\n- Improved initialization and logging to streamline the startup process.\n\nThis commit completes the setup for the OpenAI plugin and ensures integration with the framework.\n\n---------\n\nCo-authored-by: 0xrubusdata <0xrubusdatas@gmail.com>\nCo-authored-by: Sayo <hi@sayo.wtf>\nCo-authored-by: Sayo <82053242+wtfsayo@users.noreply.github.com>",
-    "committedDate": "2025-01-19T07:23:22Z",
-    "author": {
-      "user": {
-        "login": "0xrubusdata"
-      }
-    },
-    "additions": 1565,
-    "deletions": 735,
-    "changedFiles": 17
-  },
-  {
-    "sha": "a5dccdb30d1f204ab5567763620e25a1e86c81a7",
-    "message": "feat: add support for NVIDIA inference for ElizaOS (#2512)\n\n* Adding support for NVIDIA inference for ElizaOS\n\n* removed wrong image generation\n\n* Fixed wrong indentation\n\n---------\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
-    "committedDate": "2025-01-19T07:08:04Z",
-    "author": {
-      "user": {
-        "login": "AIFlowML"
-      }
-    },
-    "additions": 64,
-    "deletions": 4,
-    "changedFiles": 4
-  },
-  {
-    "sha": "3206ef471d19d3e7ddf89c36874d57d861b33b65",
-    "message": "test: api timeout handling for plugin-binance (#2504)\n\n* test: api timeout handling for plugin-binance\n\n* test: api timeout handling for plugin-binance - PR feedback\n\n---------\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
-    "committedDate": "2025-01-19T06:50:23Z",
-    "author": {
-      "user": {
-        "login": "ai16z-demirix"
-      }
-    },
-    "additions": 27,
-    "deletions": 1,
-    "changedFiles": 1
-  },
-  {
-    "sha": "f8bfefe44cf24fef535edb8eeef433f38e717159",
-    "message": "Merge pull request #2510 from elizaOS/tcm-telegram-media\n\nfeat: Add Extra Multimedia Support for Telegram Client",
-    "committedDate": "2025-01-18T23:30:39Z",
-    "author": {
-      "user": {
-        "login": "tcm390"
-      }
-    },
-    "additions": 227,
-    "deletions": 119,
-    "changedFiles": 1
-  },
-  {
-    "sha": "bf16a87e5c96d926ff699ea7b41f8fa8069d667a",
-    "message": "Replace type assertions",
-    "committedDate": "2025-01-18T22:41:17Z",
-    "author": {
-      "user": {
-        "login": "tcm390"
-      }
-    },
-    "additions": 1,
-    "deletions": 1,
-    "changedFiles": 1
-  },
-  {
-    "sha": "f612bb1ba50749fc5c25b63e80d329efa9aab9d7",
-    "message": "Replace type assertions",
-    "committedDate": "2025-01-18T22:40:22Z",
-    "author": {
-      "user": {
-        "login": "tcm390"
-      }
-    },
-    "additions": 3,
+    "additions": 0,
     "deletions": 3,
     "changedFiles": 1
   },
   {
-    "sha": "79fe0bf27184ca1196cd7d270f5edbf9619b4fa7",
-    "message": "destroy file system after sending media",
-    "committedDate": "2025-01-18T22:35:02Z",
+    "sha": "02a4b61570b7fc54d21a74651a50ecef1103b64c",
+    "message": "feat: Add more actions to Abstract Plugin (#2531)\n\n* Start on adding more actions to abstract plugin\n\n* format and lint code\n\n* update on coderabbit comments\n\n---------\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-20T12:11:29Z",
+    "author": {
+      "user": {
+        "login": "jonathangus"
+      }
+    },
+    "additions": 1381,
+    "deletions": 396,
+    "changedFiles": 15
+  },
+  {
+    "sha": "63d1eccc2a3709b4c75d67a0972f8b704b037457",
+    "message": "feat: add anthropic image provider for vision (#2524)\n\n* feat: add anthropic image provider for vision\n\n* update model to haiku\n\nupdated to cheaper model haiku",
+    "committedDate": "2025-01-20T12:03:47Z",
+    "author": {
+      "user": {
+        "login": "BitWonka"
+      }
+    },
+    "additions": 64,
+    "deletions": 4,
+    "changedFiles": 1
+  },
+  {
+    "sha": "db3c8358b465600926da00612d9cb2f7268a0128",
+    "message": "feat: improve integrationtests workflow caching (#2551)\n\n- Add pnpm cache step using actions/cache@v4 for node_modules and pnpm store\n- Remove redundant pnpm cache from setup-node step\n- Add plugin dist cache to prevent unnecessary rebuilds\n\nSimilar to the caching strategy in smoke-tests.yml, this change should\nsignificantly reduce workflow execution time by caching both dependencies\nand build artifacts.\n\nCo-authored-by: Devin AI <158243242+devin-ai-integration[bot]@users.noreply.github.com>\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-20T11:49:58Z",
+    "author": {
+      "user": {
+        "login": "devin-ai-integration[bot]"
+      }
+    },
+    "additions": 17,
+    "deletions": 1,
+    "changedFiles": 1
+  },
+  {
+    "sha": "9c84c37cdaf2b219e6782f9275b5816052243f94",
+    "message": "feat: Updated READ.me file with pre-requisites to enable telegram bot (#2547)\n\n* Updated READ.me file with pre-requisites to enable telegram bot\n\n* Conversation resolution\n\n---------\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-20T11:39:17Z",
+    "author": {
+      "user": {
+        "login": "neelkanani"
+      }
+    },
+    "additions": 32,
+    "deletions": 5,
+    "changedFiles": 1
+  },
+  {
+    "sha": "8cdcb97e9e892f2180f3e8155c93839b27e9a062",
+    "message": "feat(plugin-devin): implement client-agnostic Devin plugin (#2549)\n\n* feat(plugin-devin): implement Devin plugin with session management\n\n- Add startSessionAction for creating Devin sessions\n- Add devinProvider for managing session state\n- Add devinRequests for API interaction\n- Wire up plugin in index.ts\n\nCo-Authored-By: Sayo <hi@sayo.wtf>\n\n* - Remove Discord-specific implementation for client agnosticism\n\nCo-Authored-By: Sayo <hi@sayo.wtf>\n\n* docs(plugin-devin): add README documentation\n\nCo-Authored-By: Sayo <hi@sayo.wtf>\n\n* feat(plugin-devin): add plugin initialization\n\n- Add plugin initialization in agent/src/index.ts\n- Follow API integration documentation requirements\n- Note: Module resolution warning expected until plugin is built\n\nCo-Authored-By: Sayo <hi@sayo.wtf>\n\n* chore(plugin-devin): update environment configuration and remove redundant validation\n\nCo-Authored-By: Sayo <hi@sayo.wtf>\n\n* refactor(plugin-devin): convert default export to named export\n\nCo-Authored-By: Sayo <hi@sayo.wtf>\n\n* Update package.json\n\n* fix startup issue\n\n---------\n\nCo-authored-by: Devin AI <158243242+devin-ai-integration[bot]@users.noreply.github.com>\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-20T11:38:11Z",
+    "author": {
+      "user": {
+        "login": "devin-ai-integration[bot]"
+      }
+    },
+    "additions": 2140,
+    "deletions": 765,
+    "changedFiles": 17
+  },
+  {
+    "sha": "bb69cb0e26ac7b86b6d684d853e181a1515f4d6f",
+    "message": "Merge pull request #2546 from elizaOS/tcm-fix-devlop2\n\nfix: develop branch build/start failed",
+    "committedDate": "2025-01-20T09:01:37Z",
     "author": {
       "user": {
         "login": "tcm390"
       }
     },
-    "additions": 10,
-    "deletions": 5,
+    "additions": 8,
+    "deletions": 7,
     "changedFiles": 1
+  },
+  {
+    "sha": "da23468497db483f1b06c3954db0044a7a19ef60",
+    "message": "use generateObject",
+    "committedDate": "2025-01-20T09:00:07Z",
+    "author": {
+      "user": {
+        "login": "tcm390"
+      }
+    },
+    "additions": 8,
+    "deletions": 7,
+    "changedFiles": 1
+  },
+  {
+    "sha": "e3a4e779a125ce20d2d9827e356ba07df4677095",
+    "message": "Merge pull request #2545 from elizaOS/tcm-fix-devlop\n\nfix: develop branch build/start failed",
+    "committedDate": "2025-01-20T08:52:36Z",
+    "author": {
+      "user": {
+        "login": "tcm390"
+      }
+    },
+    "additions": 35,
+    "deletions": 18,
+    "changedFiles": 2
+  },
+  {
+    "sha": "d364b7432a29407f3a502a1a863d475dece29c4d",
+    "message": "handle undefined env variable",
+    "committedDate": "2025-01-20T08:47:42Z",
+    "author": {
+      "user": {
+        "login": "tcm390"
+      }
+    },
+    "additions": 35,
+    "deletions": 18,
+    "changedFiles": 2
+  },
+  {
+    "sha": "4d5be44894709aa4a65f1fdad3a8e6190bf63535",
+    "message": "feat:add plugin-lightning (#2429)\n\n* feat:add plugin-lightning\n\n* fix:readme\n\n* Update packages/plugin-lightning/package.json\n\nCo-authored-by: coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>\n\n* Update packages/plugin-lightning/tsup.config.ts\n\nCo-authored-by: coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>\n\n* Update packages/plugin-lightning/src/providers/lightning.ts\n\nCo-authored-by: coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>\n\n* Update packages/plugin-lightning/src/providers/lightning.ts\n\nCo-authored-by: coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>\n\n* Update payInvoice.ts\n\n* Apply suggestions from code review\n\nCo-authored-by: coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>\n\n* Update packages/plugin-lightning/src/actions/payInvoice.ts\n\nCo-authored-by: coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>\n\n* Update packages/plugin-lightning/src/actions/createInvoice.ts\n\nCo-authored-by: coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>\n\n* Update payInvoice.ts\n\n* Update package.json\n\n* code format\n\n* fix:pr 2429 code format\n\n---------\n\nCo-authored-by: Sayo <hi@sayo.wtf>\nCo-authored-by: coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>",
+    "committedDate": "2025-01-20T07:46:00Z",
+    "author": {
+      "user": {
+        "login": "jimtracy1007"
+      }
+    },
+    "additions": 1038,
+    "deletions": 257,
+    "changedFiles": 16
   }
 ]
