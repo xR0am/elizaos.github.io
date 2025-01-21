@@ -1,43 +1,42 @@
-# elizaos Eliza (2025-01-20)
+# elizaos Eliza (2025-01-21)
     
 ## 📊 Overview
-Development focused on package improvements (implement client-agnostic Devin plugin), new features (Updated READ.me file with pre-requisites to enable telegram bot), 2 bug fixes. with 30 contributors merging 8 PRs. Major work included unable to generate summary for devin-ai-integration due to an error.
+Development focused on package improvements (nvidia-nim-plugin), new features (nvidia-nim-plugin), 2 bug fixes. with 45 contributors merging 8 PRs. Major work included unable to generate summary for aiflowml due to an error.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 30 |
-| 📝 Commits | 15 |
+| 👥 Contributors | 45 |
+| 📝 Commits | 18 |
 | 🔄 Merged PRs | 8 |
-| ⚠️ New Issues | 9 |
+| ⚠️ New Issues | 20 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 3
+- 🧹 **Chores**: 0
 - 🐛 **Fixes**: 2
-- ✨ **Features**: 1
+- ✨ **Features**: 4
 
 ## 📁 File Changes
-- **root**: 2 files (+1268/-763 lines)
-- **packages**: 16 files (+917/-15 lines)
-- **.github**: 4 files (+41/-35 lines)
-- **agent**: 3 files (+30/-17 lines)
+- **packages**: 92 files (+6707/-144 lines)
+- **root**: 8 files (+796/-511 lines)
+- **agent**: 7 files (+178/-160 lines)
+- **.github**: 3 files (+22/-24 lines)
 
 ## 🔥 Notable Changes
-- chore(revert): optimize pnpm cache configuration
-- chore: optimize pnpm cache configuration
-- chore: remove cleanup step from integration tests workflow
+- feat: nvidia-nim-plugin
+- feat: add router nitro plugin
+- feat: Add Cronos Evm
 
 ## 👥 Top Contributors
-- **devin-ai-integration**: Unable to generate summary for devin-ai-integration due to an error
-- **tcm390**: Unable to generate summary for tcm390 due to an error
-- **neelkanani**: Unable to generate summary for neelkanani due to an error
+- **AIFlowML**: Unable to generate summary for AIFlowML due to an error
+- **simsaidev**: Unable to generate summary for simsaidev due to an error
+- **RaveenaBhasin**: Unable to generate summary for RaveenaBhasin due to an error
 
 ## ⚠️ Issues
-- **New Issues**: 9
-- **Labels**: `enhancement` (4), `bug` (4)
-- **Summary**: 4 bugs reported (including 'chat client unstable connection, :ERR_BLOCKED_BY_CLIENT, 3000 port woks fine, agent list not displaying', 'Incorrect OpenAI Error on clean start where i don't use openai key anywhere') 4 feature requests (including 'test config and tests for plugin-agentkit', 'client-farcaster package test config and tests').
+- **New Issues**: 20
+- **Labels**: `bug` (8), `enhancement` (5)
+- **Summary**: 8 bugs reported (including 'Client App not load due a error', 'Error Cloning') 5 feature requests (including 'plugin abstract: test config and test configuration', 'Add Sequelize Database Client').
 
 ## Top Contributors
-- **devin-ai-integration**: chore(revert): optimize pnpm cache configuration
-- **tcm390**: fix: develop branch build/start failed
-- **neelkanani**: feat: Updated READ.me file with pre-requisites to enable telegram bot
+- **AIFlowML**: feat: nvidia-nim-plugin
+- **RaveenaBhasin**: feat: add router nitro plugin
