@@ -1,69 +1,73 @@
 {
-  "title": "elizaos Eliza (2025-01-21)",
+  "title": "elizaos Eliza (2025-01-22)",
   "version": "",
-  "overview": "Development focused on package improvements (nvidia-nim-plugin), new features (nvidia-nim-plugin), 2 bug fixes. with 45 contributors merging 8 PRs. Major work included unable to generate summary for aiflowml due to an error.",
+  "overview": "Development focused on package improvements (suno Eliza plugin), 2 bug fixes. with 41 contributors merging 10 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 45,
-    "merged_prs": 8,
-    "new_issues": 20,
-    "lines_changed": 8542
+    "contributors": 41,
+    "merged_prs": 10,
+    "new_issues": 14,
+    "lines_changed": 4164
   },
   "changes": {
     "features": [
-      "nvidia-nim-plugin",
-      "add router nitro plugin",
-      "Add Cronos Evm"
+      "suno Eliza plugin",
+      "add email-plugin + improve: fixed avail plugin duplicate dependency"
     ],
     "fixes": [
-      "add missing plugin",
-      "Add instruction to escape quotes on JSON generation"
+      "Resolve chat error in openai-plugin (#2649)",
+      "a typo bug in conflux plugin",
+      "sentientAI description"
     ],
-    "chores": []
+    "chores": [
+      "fix develop build and tests",
+      "docs",
+      "update dependency vite [security]"
+    ]
   },
   "areas": [
     {
       "name": "packages",
-      "files": 92,
-      "additions": 6707,
-      "deletions": 144
+      "files": 63,
+      "additions": 1069,
+      "deletions": 1222
     },
     {
       "name": "root",
-      "files": 8,
-      "additions": 796,
-      "deletions": 511
+      "files": 9,
+      "additions": 1010,
+      "deletions": 820
     },
     {
       "name": "agent",
-      "files": 7,
-      "additions": 178,
-      "deletions": 160
+      "files": 8,
+      "additions": 10,
+      "deletions": 10
     }
   ],
-  "issues_summary": "working on 8 bugs including 'Client App not load due a error', 'Error Cloning' and implementing 5 feature requests including 'plugin abstract: test config and test configuration', 'Add Sequelize Database Client'",
+  "issues_summary": "working on 8 bugs including 'Integration Tests are failing in CI', 'Error Occurs When Sending a Chat After Including openaiPlugin' and implementing 5 feature requests including 'feat: add EmailClient Plugin', 'LLM Often Overlooks GitBook Provider Output Due to Lack of Context'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "AIFlowML",
-      "summary": "Unable to generate summary for AIFlowML due to an error",
+      "name": "Freytes",
+      "summary": "Unable to generate summary for Freytes due to an error",
       "areas": [
+        "agent",
         ".env.example",
-        ".gitignore",
-        ".github"
+        "packages"
       ]
     },
     {
-      "name": "simsaidev",
-      "summary": "Unable to generate summary for simsaidev due to an error",
+      "name": "normand1",
+      "summary": "Unable to generate summary for normand1 due to an error",
       "areas": []
     },
     {
-      "name": "RaveenaBhasin",
-      "summary": "Unable to generate summary for RaveenaBhasin due to an error",
+      "name": "wtfsayo",
+      "summary": "Unable to generate summary for wtfsayo due to an error",
       "areas": [
-        "pnpm-lock.yaml",
+        "agent",
         ".env.example",
-        "agent"
+        "packages"
       ]
     }
   ]

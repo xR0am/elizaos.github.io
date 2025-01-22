@@ -1,42 +1,43 @@
-# elizaos Eliza (2025-01-21)
+# elizaos Eliza (2025-01-22)
     
 ## 📊 Overview
-Development focused on package improvements (nvidia-nim-plugin), new features (nvidia-nim-plugin), 2 bug fixes. with 45 contributors merging 8 PRs. Major work included unable to generate summary for aiflowml due to an error.
+Development focused on package improvements (suno Eliza plugin), 2 bug fixes. with 41 contributors merging 10 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 45 |
-| 📝 Commits | 18 |
-| 🔄 Merged PRs | 8 |
-| ⚠️ New Issues | 20 |
+| 👥 Contributors | 41 |
+| 📝 Commits | 19 |
+| 🔄 Merged PRs | 10 |
+| ⚠️ New Issues | 14 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 0
+- 🧹 **Chores**: 1
 - 🐛 **Fixes**: 2
-- ✨ **Features**: 4
+- ✨ **Features**: 0
 
 ## 📁 File Changes
-- **packages**: 92 files (+6707/-144 lines)
-- **root**: 8 files (+796/-511 lines)
-- **agent**: 7 files (+178/-160 lines)
-- **.github**: 3 files (+22/-24 lines)
+- **packages**: 63 files (+1069/-1222 lines)
+- **root**: 9 files (+1010/-820 lines)
+- **agent**: 8 files (+10/-10 lines)
+- **docs**: 3 files (+8/-8 lines)
+- **.github**: 1 files (+1/-4 lines)
 
 ## 🔥 Notable Changes
-- feat: nvidia-nim-plugin
-- feat: add router nitro plugin
-- feat: Add Cronos Evm
+- feat(new-plugin): suno Eliza plugin
+- Revert "feat(new-plugin): suno Eliza plugin"
+- chore: fix develop build and tests
 
 ## 👥 Top Contributors
-- **AIFlowML**: Unable to generate summary for AIFlowML due to an error
-- **simsaidev**: Unable to generate summary for simsaidev due to an error
-- **RaveenaBhasin**: Unable to generate summary for RaveenaBhasin due to an error
+- **Freytes**: Unable to generate summary for Freytes due to an error
+- **normand1**: Unable to generate summary for normand1 due to an error
+- **wtfsayo**: Unable to generate summary for wtfsayo due to an error
 
 ## ⚠️ Issues
-- **New Issues**: 20
+- **New Issues**: 14
 - **Labels**: `bug` (8), `enhancement` (5)
-- **Summary**: 8 bugs reported (including 'Client App not load due a error', 'Error Cloning') 5 feature requests (including 'plugin abstract: test config and test configuration', 'Add Sequelize Database Client').
+- **Summary**: 8 bugs reported (including 'Integration Tests are failing in CI', 'Error Occurs When Sending a Chat After Including openaiPlugin') 5 feature requests (including 'feat: add EmailClient Plugin', 'LLM Often Overlooks GitBook Provider Output Due to Lack of Context').
 
 ## Top Contributors
-- **AIFlowML**: feat: nvidia-nim-plugin
-- **RaveenaBhasin**: feat: add router nitro plugin
+- **Freytes**: feat(new-plugin): suno Eliza plugin
+- **wtfsayo**: Revert "feat(new-plugin): suno Eliza plugin"
