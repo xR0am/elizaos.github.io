@@ -1,1 +1,1 @@
-export const FOCUS_AREAS_PATH = "data/analysis.json";
+// Configuration constants will be added here as needed

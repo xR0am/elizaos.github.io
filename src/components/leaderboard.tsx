@@ -28,29 +28,47 @@ export function LeaderboardFallback() {
   );
 }
 
-export interface LeaderboardProps {
+export interface LeaderboardTab {
+  id: LeaderboardPeriod;
+  title: string;
   users: UserFocusAreaData[];
-  period: LeaderboardPeriod;
 }
 
-export function Leaderboard({ users, period }: LeaderboardProps) {
+export interface LeaderboardProps {
+  tabs: LeaderboardTab[];
+}
+
+export function Leaderboard({ tabs }: LeaderboardProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedSkill, setSelectedSkill] = useState(
     searchParams.get("skill") || "all"
   );
-  const [currentPeriod, setCurrentPeriod] = useState<LeaderboardPeriod>(period);
+  const [currentPeriod, setCurrentPeriod] = useState<LeaderboardPeriod>(
+    (searchParams.get("period") as LeaderboardPeriod) || "all"
+  );
+
+  const currentTab = useMemo(
+    () => tabs.find((tab) => tab.id === currentPeriod) || tabs[0],
+    [tabs, currentPeriod]
+  );
 
   useEffect(() => {
     setSelectedSkill(searchParams.get("skill") || "all");
   }, [searchParams]);
 
+  useEffect(() => {
+    setCurrentPeriod(
+      (searchParams.get("period") as LeaderboardPeriod) || "all"
+    );
+  }, [searchParams]);
+
   const allSkills = useMemo(() => {
     return Array.from(
-      new Set(users.flatMap((user) => Object.keys(user.tag_levels)))
+      new Set(currentTab.users.flatMap((user) => Object.keys(user.tag_levels)))
     );
-  }, [users]);
+  }, [currentTab]);
 
   const handleSkillChange = useCallback(
     (value: string) => {
@@ -66,8 +84,22 @@ export function Leaderboard({ users, period }: LeaderboardProps) {
     [searchParams, router]
   );
 
+  const handlePeriodChange = useCallback(
+    (value: string) => {
+      setCurrentPeriod(value as LeaderboardPeriod);
+      const params = new URLSearchParams(searchParams);
+      if (value === "all") {
+        params.delete("period");
+      } else {
+        params.set("period", value);
+      }
+      router.replace(`?${params.toString()}`);
+    },
+    [searchParams, router]
+  );
+
   const filteredUsers = useMemo(() => {
-    return users
+    return currentTab.users
       .filter(
         (user) =>
           user.username.toLowerCase().includes(searchTerm.toLowerCase()) &&
@@ -91,15 +123,22 @@ export function Leaderboard({ users, period }: LeaderboardProps) {
           return skillB - skillA;
         }
       });
-  }, [users, searchTerm, selectedSkill]);
+  }, [currentTab.users, searchTerm, selectedSkill]);
 
   return (
     <div className="space-y-4">
       <h2 className="text-2xl font-bold capitalize">
         {selectedSkill === "all" ? (
-          "Overall"
+          currentPeriod === "all" ? (
+            "Overall"
+          ) : (
+            `${currentPeriod}`
+          )
         ) : (
-          <span className="text-primary">{selectedSkill}</span>
+          <>
+            {currentPeriod !== "all" && <span>{currentPeriod} </span>}
+            <span className="text-primary">{selectedSkill}</span>
+          </>
         )}{" "}
         Leaderboard
       </h2>
@@ -130,19 +169,22 @@ export function Leaderboard({ users, period }: LeaderboardProps) {
         </Select>
       </div>
 
-      <Tabs
-        value={currentPeriod}
-        onValueChange={(value) => setCurrentPeriod(value as LeaderboardPeriod)}
-      >
-        <TabsList>
-          <TabsTrigger value="all">All Time</TabsTrigger>
+      <Tabs value={currentPeriod} onValueChange={handlePeriodChange}>
+        <TabsList className="grid w-full grid-cols-3">
+          {tabs.map((tab) => (
+            <TabsTrigger key={tab.id} value={tab.id}>
+              {tab.title}
+            </TabsTrigger>
+          ))}
         </TabsList>
-        <TabsContent value="all">
-          <LeaderboardList
-            users={filteredUsers}
-            onSkillClick={handleSkillChange}
-          />
-        </TabsContent>
+        {tabs.map((tab) => (
+          <TabsContent key={tab.id} value={tab.id}>
+            <LeaderboardList
+              users={filteredUsers}
+              onSkillClick={handleSkillChange}
+            />
+          </TabsContent>
+        ))}
       </Tabs>
     </div>
   );

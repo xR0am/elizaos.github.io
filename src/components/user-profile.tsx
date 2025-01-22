@@ -123,7 +123,7 @@ export default function UserProfile(props: UserFocusAreaData) {
 
   return (
     <div className="w-full max-w-4xl mx-auto sm:p-4 space-y-6">
-      <div className="flex flex-col md:flex-row items-center gap-4">
+      <div className="flex flex-col items-center md:flex-row md:items-start gap-4">
         <Avatar className="w-20 h-20">
           <AvatarImage
             src={`https://github.com/${props.username}.png`}

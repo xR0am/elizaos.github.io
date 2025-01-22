@@ -1,11 +1,22 @@
+const ALL_TIME_DATA_PATH = "data/analysis.json";
+const WEEKLY_DATA_PATH = "data/weekly_analysis.json";
+const MONTHLY_DATA_PATH = "data/monthly_analysis.json";
+
 import { readFile } from "fs/promises";
 import path from "path";
 import { UserFocusAreaData } from "@/types/user-profile";
-import { FOCUS_AREAS_PATH } from "@/config";
 
-export async function getUsers(): Promise<UserFocusAreaData[]> {
+export async function getUsers(
+  period: "all" | "weekly" | "monthly" = "all"
+): Promise<UserFocusAreaData[]> {
   try {
-    const focusAreasPath = path.join(process.cwd(), FOCUS_AREAS_PATH);
+    const dataPath = {
+      all: ALL_TIME_DATA_PATH,
+      weekly: WEEKLY_DATA_PATH,
+      monthly: MONTHLY_DATA_PATH,
+    }[period];
+
+    const focusAreasPath = path.join(process.cwd(), dataPath);
     const rawData = await readFile(focusAreasPath, "utf8");
 
     try {
@@ -24,7 +35,9 @@ export async function getUsers(): Promise<UserFocusAreaData[]> {
   } catch (error: unknown) {
     if (error instanceof Error) {
       if ("code" in error && error.code === "ENOENT") {
-        throw new Error(`Focus areas file not found at: ${FOCUS_AREAS_PATH}`);
+        throw new Error(
+          `Focus areas file not found at: ${ALL_TIME_DATA_PATH}, ${WEEKLY_DATA_PATH}, or ${MONTHLY_DATA_PATH}`
+        );
       }
       throw new Error(`Failed to load focus areas data: ${error.message}`);
     }
