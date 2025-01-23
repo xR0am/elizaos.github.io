@@ -1,0 +1,257 @@
+[
+  {
+    "id": "I_kwDOMT5cIs6nXn3y",
+    "number": 2722,
+    "title": "Deepseek support in Eliza eliza-starter repository",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nI see there is the support for Deepseek it it  looks like it hasn't been updated in eliza-starter repository yet\n\n**Describe the solution you'd like**\n\nHave deepseek in the `eliza-starter` repository\n\n<!-- A clear and concise description of what you want to happen. -->\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-23T21:48:38Z",
+    "updatedAt": "2025-01-23T21:49:01Z",
+    "author": {
+      "login": "tskoyo",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/43699919?u=014dafce5d863672aed32dea821a23471833e6c7&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6bogbn",
+        "author": "github-actions",
+        "body": "Hello @tskoyo! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6nXJAA",
+    "number": 2721,
+    "title": "@elizaos/plugin-tee-log@0.1.8 has incorrect workspace dependency reference",
+    "body": "**Describe the bug**\nInstallation fails when using pnpm due to an incorrect workspace dependency reference in `@elizaos/plugin-tee-log@0.1.8`. The package incorrectly references `@elizaos/core` using a workspace protocol (`workspace:*`) instead of a proper version number.\n\n**To Reproduce**\n1. Create a new project\n2. Add the following to package.json:\n```json\n{\n  \"dependencies\": {\n    \"@elizaos/adapter-supabase\": \"0.1.8\",\n    \"@elizaos/client-discord\": \"0.1.8\",\n    \"@elizaos/client-direct\": \"0.1.8\",\n    \"@elizaos/core\": \"0.1.8\",\n    \"@elizaos/plugin-bootstrap\": \"0.1.8\",\n    \"@elizaos/plugin-node\": \"0.1.8\"\n  }\n}\n```\n3. Run `pnpm install`\n4. Observe the error:\n```bash\nERR_PNPM_WORKSPACE_PKG_NOT_FOUND  In : \"@elizaos/core@workspace:*\" is in the dependencies but no package named \"@elizaos/core\" is present in the workspace\n\nThis error happened while installing the dependencies of @elizaos/client-direct@0.1.8\n at @elizaos/plugin-tee-log@0.1.8\n```\n\n**Expected behavior**\nThe package should install successfully using pnpm. The `@elizaos/plugin-tee-log` package should reference `@elizaos/core` using a proper version number (e.g. \"0.1.8\") instead of using workspace protocol.\n\n**Additional context**\n- Error occurs in `@elizaos/plugin-tee-log@0.1.8` which is a dependency of `@elizaos/client-direct@0.1.8`\n- Attempted workarounds:\n  - Using different package managers (npm, yarn, pnpm)\n  - Configuring .npmrc with various workspace settings\n  - Trying to disable workspace protocol resolution\n- Using yarn instead of pnpm appears to work around the issue\n- Environment:\n  - OS: macOS 21.6.0\n  - Package Manager: pnpm\n  - Node.js version: [22.13.1]\n```\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-23T20:40:47Z",
+    "updatedAt": "2025-01-23T20:41:28Z",
+    "author": {
+      "login": "genialtechie",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/34590952?u=5b6f6d900e101080bcc439d641080992a12967ec&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6boE6v",
+        "author": "github-actions",
+        "body": "Hello @genialtechie! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6nW_UN",
+    "number": 2718,
+    "title": "client-eliza-home package: test config and tests",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nThe client-eliza-home package currently lacks comprehensive test coverage, particularly for critical components like the SmartThingsApi and CommandParser. This makes it difficult to ensure reliability and catch potential issues when making changes to the codebase.\n\n**Describe the solution you'd like**\n\n<!-- A clear and concise description of what you want to happen. -->\n\nAdd test coverage for the client-eliza-home package using vitest, focusing on:\n1. CommandParser class:\n    * Test parsing of various home automation commands (turn on/off, brightness, temperature, color)\n    * Test device command mapping functionality\n    * Test error handling for unknown or invalid commands\n2. SmartThingsApi class:\n    * Test token validation and initialization\n    * Test device operations (list, get, execute commands)\n    * Test scene operations (list, execute)\n    * Test room operations (list, get)\n    * Test error handling for API responses\nThe tests should be implemented without modifying existing code, ensuring backward compatibility.\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-23T20:16:33Z",
+    "updatedAt": "2025-01-23T20:16:33Z",
+    "author": {
+      "login": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6nS-km",
+    "number": 2700,
+    "title": "Error in fetching Tweet in client-twitter",
+    "body": "**Describe the bug**\n\nWhile building conversation thread in twitter \nError fetching parent tweet: \n{\"tweetId\":\"1882398231231095114\",\"error\":{}} \n\nEven though the parent tweet existed at the time function was called the getTweet function failed to fetch.  No error message displayed.\n\nFunction:- buildConversationThread, file_path: packages/client-twitter/src/utils.ts\n\nWorked for second tweet.",
+    "state": "OPEN",
+    "createdAt": "2025-01-23T12:23:24Z",
+    "updatedAt": "2025-01-23T12:23:48Z",
+    "author": {
+      "login": "ShreyGanatra",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/77409139?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6bjICV",
+        "author": "github-actions",
+        "body": "Hello @ShreyGanatra! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6nSfk8",
+    "number": 2697,
+    "title": "Create an hardcoded response in an action",
+    "body": "**Describe the bug**\n\nI'm trying to create a hardcoded response for my Twitter agent based on an action\n\n**To Reproduce**\n\nIn an action, I’m using callback after fetching an API I want to give a hardcoded response a bit like what’s done here https://github.com/elizaOS/eliza/pull/1880/files#diff-7fa74fbce3f58e88d1bec33034c0cf89b09ff973d62fc7ceea661742a4be880aR85\n\nUsing this example, the chat response or tweet of my agent is never the `text` property I gave him and always differs.\n\n\n**Expected behavior**\n\nI would like the agent to answer the text I gave him to answer, so a basic hardcoded answer. I followed the same model as [the weather plugin example](packages/plugin-open-weather/src/examples.ts) for my `example.ts` \n\nIt seems that there is no easy way to do this and I think it should be done. Or am I missing something?",
+    "state": "OPEN",
+    "createdAt": "2025-01-23T11:23:22Z",
+    "updatedAt": "2025-01-23T11:23:51Z",
+    "author": {
+      "login": "fricoben",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/78437165?u=3e19502b328cc624ac82bbc81326f3cb42ca58ed&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6biqVt",
+        "author": "github-actions",
+        "body": "Hello @fricoben! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6nQsuc",
+    "number": 2695,
+    "title": "Plugins field unusable in character.json?",
+    "body": "**Describe the bug**\n\nWhat is the purpose of the plugins field in the character.json file if the createAgent function returns AgentRuntime where plugins are created depending on environment variables?\n\n**Expected behavior**\n\nPlugins from the character.json file should be woken up in AgentRuntime independently of other plugins.\n\n**Additional context**\n\nv0.1.8+build.1\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-23T07:47:05Z",
+    "updatedAt": "2025-01-23T07:47:31Z",
+    "author": {
+      "login": "IvanOvchynnikov",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/129381537?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6bg1gk",
+        "author": "github-actions",
+        "body": "Hello @IvanOvchynnikov! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6nPYGq",
+    "number": 2689,
+    "title": "bug: ragKnowledge doesn't properly check for scoped Ids for existing knowledge",
+    "body": "We are incorrectly re-indexing knowledge on startup because we are using one id format for storage (with shared- or private- prefix) and another id format for checking (no scope prefix).",
+    "state": "CLOSED",
+    "createdAt": "2025-01-23T03:39:27Z",
+    "updatedAt": "2025-01-23T12:11:04Z",
+    "author": {
+      "login": "augchan42",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/20424105?u=d1a74732b07564927928798346f07cd50935c529&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6nPYD8",
+    "number": 2688,
+    "title": "Duplicate API calls due to inefficient vector similarity search in memory cache",
+    "body": "**Describe the bug**\n\nI'm using `plugin-coinmarketcp` to check the crypto price and when I'm making repeated requests for the same information (e.g., crypto prices), the system wasn't effectively reusing similar memories, leading to duplicate API calls and database entries.\n\n**To Reproduce**\n\n- Add `VERBOSE=True` in the `.env` file.\n- Enable `plugin-coinmarketcap` and start the server.\n- Now, ask this `what's the current price of bitcoin?`.\n- check the console logs.\n\n**Expected behavior**\n\nWhen sending repeated request for the same info then it should be served from cache after first request.\n\n**Debug logs**\n\n[logs.txt](https://github.com/user-attachments/files/18514774/logs.txt)\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-23T03:39:16Z",
+    "updatedAt": "2025-01-23T05:16:43Z",
+    "author": {
+      "login": "metatxn",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/122878048?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6bftM3",
+        "author": "github-actions",
+        "body": "Hello @metatxn! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6nOrDI",
+    "number": 2684,
+    "title": "Debug logging no longer works when using pnpm start:debug target",
+    "body": "Seems [feat: add email-plugin (](https://github.com/elizaOS/eliza/commit/27acd7bc6034371f9ead7b221c5f5f05b699eb37)https://github.com/elizaOS/eliza/pull/2645[)](https://github.com/elizaOS/eliza/commit/27acd7bc6034371f9ead7b221c5f5f05b699eb37)\n  clobbered my change to package.json\n\n",
+    "state": "CLOSED",
+    "createdAt": "2025-01-23T00:45:23Z",
+    "updatedAt": "2025-01-23T02:46:51Z",
+    "author": {
+      "login": "augchan42",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/20424105?u=d1a74732b07564927928798346f07cd50935c529&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6nOFSj",
+    "number": 2680,
+    "title": "Potential for Unethical Use on Social Media Platforms",
+    "body": "Hi team!\n\nthe ToS seems vague on use and I’m afraid this is being used for the wrong reasons.\n\nI’m noticing a number of users mentioning use on social media platforms like X at concerning volumes.  Is there a way to determine the distribution and volume of use via specific social media platforms?\n\nI would love to use your tool, but I’d like to understand your control of this system versus “it just works”. ",
+    "state": "CLOSED",
+    "createdAt": "2025-01-22T22:37:19Z",
+    "updatedAt": "2025-01-22T23:47:07Z",
+    "author": {
+      "login": "Swernado",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/17411138?v=4"
+    },
+    "labels": [],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6beTNb",
+        "author": "github-actions",
+        "body": "Hello @Swernado! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  }
+]

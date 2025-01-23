@@ -1,72 +1,70 @@
 {
-  "title": "elizaos Eliza (2025-01-22)",
+  "title": "elizaos Eliza (2025-01-23)",
   "version": "",
-  "overview": "Development focused on package improvements (suno Eliza plugin), 2 bug fixes. with 41 contributors merging 10 PRs. Major work included various improvements.",
+  "overview": "Development focused on package improvements (correct stt plugin userId type), new features (add error message), 4 bug fixes. with 37 contributors merging 13 PRs. Major work included unable to generate summary for tcm390 due to an error.",
   "metrics": {
-    "contributors": 41,
-    "merged_prs": 10,
-    "new_issues": 14,
-    "lines_changed": 4164
+    "contributors": 37,
+    "merged_prs": 13,
+    "new_issues": 10,
+    "lines_changed": 8093
   },
   "changes": {
     "features": [
-      "suno Eliza plugin",
-      "add email-plugin + improve: fixed avail plugin duplicate dependency"
+      "add error message",
+      "[Space] improving handling of user ids and memory storage",
+      "Eliza OmniFlix Plugin"
     ],
     "fixes": [
-      "Resolve chat error in openai-plugin (#2649)",
-      "a typo bug in conflux plugin",
-      "sentientAI description"
+      "remove duplicated handlePendingTweet",
+      "Unexpected JSON Metadata in Twitter Bot Replies",
+      "correct stt plugin userId type"
     ],
     "chores": [
-      "fix develop build and tests",
-      "docs",
-      "update dependency vite [security]"
+      "fix types syntax issue"
     ]
   },
   "areas": [
     {
       "name": "packages",
-      "files": 63,
-      "additions": 1069,
-      "deletions": 1222
+      "files": 66,
+      "additions": 6510,
+      "deletions": 345
     },
     {
       "name": "root",
-      "files": 9,
-      "additions": 1010,
-      "deletions": 820
+      "files": 5,
+      "additions": 499,
+      "deletions": 407
     },
     {
       "name": "agent",
-      "files": 8,
-      "additions": 10,
-      "deletions": 10
+      "files": 4,
+      "additions": 11,
+      "deletions": 4
     }
   ],
-  "issues_summary": "working on 8 bugs including 'Integration Tests are failing in CI', 'Error Occurs When Sending a Chat After Including openaiPlugin' and implementing 5 feature requests including 'feat: add EmailClient Plugin', 'LLM Often Overlooks GitBook Provider Output Due to Lack of Context'",
+  "issues_summary": "working on 7 bugs including 'bug: ragKnowledge doesn't properly check for scoped Ids for existing knowledge', 'Debug logging no longer works when using pnpm start:debug target' and implementing 2 feature requests including 'Deepseek support in Eliza eliza-starter repository', 'client-eliza-home package: test config and tests'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "Freytes",
-      "summary": "Unable to generate summary for Freytes due to an error",
+      "name": "tcm390",
+      "summary": "Unable to generate summary for tcm390 due to an error",
       "areas": [
-        "agent",
-        ".env.example",
         "packages"
       ]
     },
     {
-      "name": "normand1",
-      "summary": "Unable to generate summary for normand1 due to an error",
-      "areas": []
+      "name": "augchan42",
+      "summary": "Unable to generate summary for augchan42 due to an error",
+      "areas": [
+        "packages",
+        "package.json"
+      ]
     },
     {
-      "name": "wtfsayo",
-      "summary": "Unable to generate summary for wtfsayo due to an error",
+      "name": "worksgoodcompany",
+      "summary": "Unable to generate summary for worksgoodcompany due to an error",
       "areas": [
-        "agent",
-        ".env.example",
         "packages"
       ]
     }

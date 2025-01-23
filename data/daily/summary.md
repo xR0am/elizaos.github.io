@@ -1,43 +1,44 @@
-# elizaos Eliza (2025-01-22)
+# elizaos Eliza (2025-01-23)
     
 ## 📊 Overview
-Development focused on package improvements (suno Eliza plugin), 2 bug fixes. with 41 contributors merging 10 PRs. Major work included various improvements.
+Development focused on package improvements (correct stt plugin userId type), new features (add error message), 4 bug fixes. with 37 contributors merging 13 PRs. Major work included unable to generate summary for tcm390 due to an error.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 41 |
-| 📝 Commits | 19 |
-| 🔄 Merged PRs | 10 |
-| ⚠️ New Issues | 14 |
+| 👥 Contributors | 37 |
+| 📝 Commits | 56 |
+| 🔄 Merged PRs | 13 |
+| ⚠️ New Issues | 10 |
 
 ## 🔄 Pull Request Summary
 - 🧹 **Chores**: 1
-- 🐛 **Fixes**: 2
-- ✨ **Features**: 0
+- 🐛 **Fixes**: 4
+- ✨ **Features**: 3
 
 ## 📁 File Changes
-- **packages**: 63 files (+1069/-1222 lines)
-- **root**: 9 files (+1010/-820 lines)
-- **agent**: 8 files (+10/-10 lines)
-- **docs**: 3 files (+8/-8 lines)
-- **.github**: 1 files (+1/-4 lines)
+- **packages**: 66 files (+6510/-345 lines)
+- **root**: 5 files (+499/-407 lines)
+- **docs**: 1 files (+128/-140 lines)
+- **characters**: 1 files (+49/-0 lines)
+- **agent**: 4 files (+11/-4 lines)
 
 ## 🔥 Notable Changes
-- feat(new-plugin): suno Eliza plugin
-- Revert "feat(new-plugin): suno Eliza plugin"
-- chore: fix develop build and tests
+- feat: add error message
+- Remove the log as it may potentially cause the app to crash
+- fix: remove duplicated handlePendingTweet
 
 ## 👥 Top Contributors
-- **Freytes**: Unable to generate summary for Freytes due to an error
-- **normand1**: Unable to generate summary for normand1 due to an error
-- **wtfsayo**: Unable to generate summary for wtfsayo due to an error
+- **tcm390**: Unable to generate summary for tcm390 due to an error
+- **augchan42**: Unable to generate summary for augchan42 due to an error
+- **worksgoodcompany**: Unable to generate summary for worksgoodcompany due to an error
 
 ## ⚠️ Issues
-- **New Issues**: 14
-- **Labels**: `bug` (8), `enhancement` (5)
-- **Summary**: 8 bugs reported (including 'Integration Tests are failing in CI', 'Error Occurs When Sending a Chat After Including openaiPlugin') 5 feature requests (including 'feat: add EmailClient Plugin', 'LLM Often Overlooks GitBook Provider Output Due to Lack of Context').
+- **New Issues**: 10
+- **Labels**: `bug` (7), `enhancement` (2)
+- **Summary**: 7 bugs reported (including 'bug: ragKnowledge doesn't properly check for scoped Ids for existing knowledge', 'Debug logging no longer works when using pnpm start:debug target') 2 feature requests (including 'Deepseek support in Eliza eliza-starter repository', 'client-eliza-home package: test config and tests').
 
 ## Top Contributors
-- **Freytes**: feat(new-plugin): suno Eliza plugin
-- **wtfsayo**: Revert "feat(new-plugin): suno Eliza plugin"
+- **tcm390**: feat: add error message
+- **augchan42**: fix(ragKnowledge): Ensure scoped IDs are properly used to check for existing knowledge
+- **worksgoodcompany**: feat: [Space] improving handling of user ids and memory storage
