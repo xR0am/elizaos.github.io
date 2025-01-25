@@ -1,15 +1,15 @@
-# elizaos Eliza (2025-01-23)
+# elizaos Eliza (2025-01-25)
     
 ## 📊 Overview
-Development focused on package improvements (correct stt plugin userId type), new features (add error message), 4 bug fixes. with 37 contributors merging 13 PRs. Major work included unable to generate summary for tcm390 due to an error.
+Development focused on package improvements (client-twitter homeTimeline name parse bug), new features (create /.turbo/config.json), 4 bug fixes. with 35 contributors merging 9 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 37 |
-| 📝 Commits | 56 |
-| 🔄 Merged PRs | 13 |
-| ⚠️ New Issues | 10 |
+| 👥 Contributors | 35 |
+| 📝 Commits | 36 |
+| 🔄 Merged PRs | 9 |
+| ⚠️ New Issues | 6 |
 
 ## 🔄 Pull Request Summary
 - 🧹 **Chores**: 1
@@ -17,28 +17,28 @@ Development focused on package improvements (correct stt plugin userId type), ne
 - ✨ **Features**: 3
 
 ## 📁 File Changes
-- **packages**: 66 files (+6510/-345 lines)
-- **root**: 5 files (+499/-407 lines)
-- **docs**: 1 files (+128/-140 lines)
-- **characters**: 1 files (+49/-0 lines)
-- **agent**: 4 files (+11/-4 lines)
+- **packages**: 41 files (+5110/-12 lines)
+- **root**: 4 files (+618/-609 lines)
+- **.github**: 3 files (+11/-0 lines)
+- **agent**: 3 files (+5/-0 lines)
+- **.turbo**: 1 files (+3/-0 lines)
 
 ## 🔥 Notable Changes
-- feat: add error message
-- Remove the log as it may potentially cause the app to crash
-- fix: remove duplicated handlePendingTweet
+- fix: client-twitter homeTimeline name parse bug
+- fix: topics formatting bug at composeState
+- fix: ethers/viem issue in mind network plugin
 
 ## 👥 Top Contributors
-- **tcm390**: Unable to generate summary for tcm390 due to an error
-- **augchan42**: Unable to generate summary for augchan42 due to an error
-- **worksgoodcompany**: Unable to generate summary for worksgoodcompany due to an error
+- **JhChoy**: Unable to generate summary for JhChoy due to an error
+- **wtfsayo**: Unable to generate summary for wtfsayo due to an error
+- **twilwa**: Unable to generate summary for twilwa due to an error
 
 ## ⚠️ Issues
-- **New Issues**: 10
-- **Labels**: `bug` (7), `enhancement` (2)
-- **Summary**: 7 bugs reported (including 'bug: ragKnowledge doesn't properly check for scoped Ids for existing knowledge', 'Debug logging no longer works when using pnpm start:debug target') 2 feature requests (including 'Deepseek support in Eliza eliza-starter repository', 'client-eliza-home package: test config and tests').
+- **New Issues**: 6
+- **Labels**: `enhancement` (5), `good first issue` (3)
+- **Summary**: 5 feature requests (including 'Setup one click deploy on Render.com', 'Setup one click deploy on DigitalOcean').
 
 ## Top Contributors
-- **tcm390**: feat: add error message
-- **augchan42**: fix(ragKnowledge): Ensure scoped IDs are properly used to check for existing knowledge
-- **worksgoodcompany**: feat: [Space] improving handling of user ids and memory storage
+- **JhChoy**: fix: client-twitter homeTimeline name parse bug
+- **wtfsayo**: fix: ethers/viem issue in mind network plugin
+- **twilwa**: feat: create /.turbo/config.json
