@@ -1,44 +1,36 @@
-# elizaos Eliza (2025-01-25)
+# elizaos Eliza (2025-01-26)
     
 ## 📊 Overview
-Development focused on package improvements (client-twitter homeTimeline name parse bug), new features (create /.turbo/config.json), 4 bug fixes. with 35 contributors merging 9 PRs. Major work included various improvements.
+Development focused on 1 bug fixes. with 16 contributors merging 1 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 35 |
-| 📝 Commits | 36 |
-| 🔄 Merged PRs | 9 |
-| ⚠️ New Issues | 6 |
+| 👥 Contributors | 16 |
+| 📝 Commits | 8 |
+| 🔄 Merged PRs | 1 |
+| ⚠️ New Issues | 8 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 1
-- 🐛 **Fixes**: 4
-- ✨ **Features**: 3
+- 🧹 **Chores**: 0
+- 🐛 **Fixes**: 1
+- ✨ **Features**: 0
 
 ## 📁 File Changes
-- **packages**: 41 files (+5110/-12 lines)
-- **root**: 4 files (+618/-609 lines)
-- **.github**: 3 files (+11/-0 lines)
-- **agent**: 3 files (+5/-0 lines)
-- **.turbo**: 1 files (+3/-0 lines)
+- **packages**: 1 files (+1/-1 lines)
 
 ## 🔥 Notable Changes
-- fix: client-twitter homeTimeline name parse bug
-- fix: topics formatting bug at composeState
-- fix: ethers/viem issue in mind network plugin
+- fix: bug in goal objectives update lookup logic
 
 ## 👥 Top Contributors
-- **JhChoy**: Unable to generate summary for JhChoy due to an error
-- **wtfsayo**: Unable to generate summary for wtfsayo due to an error
-- **twilwa**: Unable to generate summary for twilwa due to an error
+- **Alirun**: Unable to generate summary for Alirun due to an error
+- **actuallyrizzn**: Unable to generate summary for actuallyrizzn due to an error
+- **ai16z-demirix**: Unable to generate summary for ai16z-demirix due to an error
 
 ## ⚠️ Issues
-- **New Issues**: 6
-- **Labels**: `enhancement` (5), `good first issue` (3)
-- **Summary**: 5 feature requests (including 'Setup one click deploy on Render.com', 'Setup one click deploy on DigitalOcean').
+- **New Issues**: 8
+- **Labels**: `bug` (4), `enhancement` (3)
+- **Summary**: 4 bugs reported (including 'Headless Web Interface Won't Connect (0.1.8+build-1)', 'Unable to get Discord to work as a channel. Infinite loop, <Lyra is typing...> infinitely') 3 feature requests (including 'plugin-0x: test configuration and test coverage', 'plugin-0g: test configuration and test coverage').
 
 ## Top Contributors
-- **JhChoy**: fix: client-twitter homeTimeline name parse bug
-- **wtfsayo**: fix: ethers/viem issue in mind network plugin
-- **twilwa**: feat: create /.turbo/config.json
+- **Alirun**: fix: bug in goal objectives update lookup logic
