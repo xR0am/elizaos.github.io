@@ -1,11 +1,310 @@
 [
   {
-    "sha": "0f9441a03ff4e721937c37e89aea87827166ada1",
-    "message": "Fixed bug in goal objectives update lookup logic (#2791)\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
-    "committedDate": "2025-01-26T13:09:11Z",
+    "sha": "a7554ddd5e811c6c04cd15e77c7b375b9fee6a55",
+    "message": "feat(new-plugin): deva client integration (#1238)\n\n* feature: Deva client init\r\n\r\n* feat:Deva client bot author\r\n\r\n* fix:Codestyle indentation fix\r\n\r\n* fix:Packages order\r\n\r\n* fix:package.json packages order\r\n\r\n* fix: Removing twitter client\r\n\r\n* fix:Update package.json removed agent-twitter-client\r\n\r\n* fix: updating the core package\r\n\r\n* fix: lock file\r\n\r\n* fix: package imports\r\n\r\n* fix: Additional data check inside fetching data\r\n\r\n* feat: Docs update\r\n\r\n* fix: documentation indentation\r\n\r\n* fix: documentation graph\r\n\r\n* fix: docs/clients.md indentation\r\n\r\n* fix: indentation, spaces\r\n\r\n* fix: client package.json indentation\r\n\r\n* fix: comments\r\n\r\n* fix: Merge of types\r\n\r\n---------\r\n\r\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T22:28:50Z",
     "author": {
       "user": {
-        "login": "Alirun"
+        "login": "stopmalone"
+      }
+    },
+    "additions": 662,
+    "deletions": 21,
+    "changedFiles": 20
+  },
+  {
+    "sha": "47d43714811d28230e26ba62fff51d277bb34748",
+    "message": "feat: Add arbitrage plugin with example character (#2784)\n\n* feat: Add arbitrage plugin with example character\n\n* update intialization\n\n* Update .env.example\n\n---------\n\nCo-authored-by: 0xmarf <mitch@integral.link>\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T18:49:01Z",
+    "author": {
+      "user": {
+        "login": "mmarfinetz"
+      }
+    },
+    "additions": 3193,
+    "deletions": 1041,
+    "changedFiles": 25
+  },
+  {
+    "sha": "a3133edd06fb3973665558fe2638b20d55411e2f",
+    "message": "feat(new-plugin): support apro plugin (#2794)\n\n* feat: add plugin-apro\n\n* fix: improve error handling and update dependencies in plugin-apro\n\n* fix: update logging and improve message handling in priceQuery and verifyData actions\n\n* feat: enhance templates for agent configuration and trading pair extraction with strict validation rules\n\n* feat: refine trading pair extraction rules and enhance price query action logging\n\n* Create README.MD for plugin-apro\n\n* feat: implement ATTPS price query action with validation and API integration\n\n* feat: add number cleaning function for price data formatting in ATTPS price query",
+    "committedDate": "2025-01-27T16:29:07Z",
+    "author": {
+      "user": {
+        "login": "fifahuihua"
+      }
+    },
+    "additions": 1090,
+    "deletions": 0,
+    "changedFiles": 11
+  },
+  {
+    "sha": "4e62ac989c65f513a2f0c2655960c1d68f14c010",
+    "message": "chore(add-tests): plugin anyone: test config and test coverage (#2854)\n\n* plugin-anyone: vitest config\n\n* plugin-anyone: vitest config\n\n* plugin-anyone: vitest config - fixing coverage\n\n* plugin-anyone: start anyone tests\n\n* plugin-anyone: stop anyone tests\n\n---------\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T16:27:09Z",
+    "author": {
+      "user": {
+        "login": "ai16z-demirix"
+      }
+    },
+    "additions": 225,
+    "deletions": 1,
+    "changedFiles": 4
+  },
+  {
+    "sha": "e30481ea9e283cd3acaa6135f2b802cb69755833",
+    "message": "plugin 3d generation: test config and test coverage (#2850)\n\n* plugin-3d-generation - test script in package.json\n\n* plugin-3d-generation - vitest config\n\n* plugin-3d-generation - tests\n\n---------\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T16:16:09Z",
+    "author": {
+      "user": {
+        "login": "ai16z-demirix"
+      }
+    },
+    "additions": 238,
+    "deletions": 1,
+    "changedFiles": 3
+  },
+  {
+    "sha": "c0f6bebc8a7da086c19c4df30b31a4af64ed188e",
+    "message": "feat: client for Telegram account (#2839)\n\n* feat: client telegram account\n\n* Update package.json\n\n* fix tests\n\n* fix(client telegram account): remove duplicate lines in a template\n\n---------\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T15:41:32Z",
+    "author": {
+      "user": {
+        "login": "tgaru"
+      }
+    },
+    "additions": 1259,
+    "deletions": 50,
+    "changedFiles": 16
+  },
+  {
+    "sha": "ddd9ce63f1281e8c52763eb4db730fc1b2ae6315",
+    "message": "refactor: simplify and fix exports in Imgflip meme generation plugin. (#2846)",
+    "committedDate": "2025-01-27T14:13:39Z",
+    "author": {
+      "user": {
+        "login": "krustevalexander"
+      }
+    },
+    "additions": 32,
+    "deletions": 64,
+    "changedFiles": 3
+  },
+  {
+    "sha": "4fa62087b5b6a4d605dbd4375f0e9c0f655af455",
+    "message": "feat(new-plugin): A plugin for the Zilliqa blockchain (#2842)\n\n* (feat) A plugin for the Zilliqa blockchain\n\n* (feat) Conditionalise zilliqa plugin\n(fix) Add action to example\n(feat) Document zilliqa enable secret\n\n* (fix) Harmonise versions of @goat-sdk/core to ensure that subtype tests work\n\n* (fix) address PR feedback\n\n* (fix) Fix import\n\n* (fix) Fix error message names\n\n* (fix) Fix missing import\n\n* Update package.json\n\n---------\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T14:11:45Z",
+    "author": {
+      "user": {
+        "login": "rrw-zilliqa"
+      }
+    },
+    "additions": 712,
+    "deletions": 160,
+    "changedFiles": 11
+  },
+  {
+    "sha": "2c314b0c53bec2270c11128bf4765ef2c1a7a2da",
+    "message": "Fix: Update bs58 version to resolve integration test dependency issues (#2848)\n\n* revert: btcfun plugin fixes integration tests\n\n* Fix: Update bs58 version to 5.0.0 to resolve dependency issue\n\nCo-Authored-By: Sayo <hi@sayo.wtf>\n\n---------\n\nCo-authored-by: Sayo <hi@sayo.wtf>\nCo-authored-by: Devin AI <158243242+devin-ai-integration[bot]@users.noreply.github.com>",
+    "committedDate": "2025-01-27T13:33:20Z",
+    "author": {
+      "user": {
+        "login": "devin-ai-integration[bot]"
+      }
+    },
+    "additions": 648,
+    "deletions": 1701,
+    "changedFiles": 13
+  },
+  {
+    "sha": "4ff686756579c408fe15bc4079f27ec47d579596",
+    "message": "Fixed all the typing issues all around the files (#2840)\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T11:24:20Z",
+    "author": {
+      "user": {
+        "login": "AIFlowML"
+      }
+    },
+    "additions": 17,
+    "deletions": 16,
+    "changedFiles": 5
+  },
+  {
+    "sha": "cb1efdbb5c9a2ab7f15cd26d67cad423b59d40ab",
+    "message": "Fixed all the typing errors and also removed the malformed use of the state (#2843)",
+    "committedDate": "2025-01-27T11:21:49Z",
+    "author": {
+      "user": {
+        "login": "AIFlowML"
+      }
+    },
+    "additions": 14,
+    "deletions": 14,
+    "changedFiles": 3
+  },
+  {
+    "sha": "9b8f7c4e92c7892c9f0159754bf72e19a6813c0d",
+    "message": "Fixed all the logic and type issues (#2844)",
+    "committedDate": "2025-01-27T11:20:06Z",
+    "author": {
+      "user": {
+        "login": "AIFlowML"
+      }
+    },
+    "additions": 50,
+    "deletions": 43,
+    "changedFiles": 9
+  },
+  {
+    "sha": "4712839f97bc3abd99872b9cb92875a932c8cb05",
+    "message": "fix: akash splash bis (#2838)\n\n* added missing chalk in the package.json\n\n* mimssing package.json",
+    "committedDate": "2025-01-27T09:49:31Z",
+    "author": {
+      "user": {
+        "login": "AIFlowML"
+      }
+    },
+    "additions": 4,
+    "deletions": 1,
+    "changedFiles": 1
+  },
+  {
+    "sha": "84b59aeddfe063b604504057a733a6819c2ecd0e",
+    "message": "Fixed all errors and warnings from biome (#2836)\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T09:44:03Z",
+    "author": {
+      "user": {
+        "login": "AIFlowML"
+      }
+    },
+    "additions": 19,
+    "deletions": 20,
+    "changedFiles": 3
+  },
+  {
+    "sha": "12f2bab67a3ef4daa59f5f61b2008fd77d6b62c8",
+    "message": "fixed minor issues with typing (#2837)\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T09:42:41Z",
+    "author": {
+      "user": {
+        "login": "AIFlowML"
+      }
+    },
+    "additions": 2,
+    "deletions": 2,
+    "changedFiles": 1
+  },
+  {
+    "sha": "37e48b988be4889b96b001790d9dc637cae8db06",
+    "message": "Fixed multiple issues (#2832)\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T09:41:10Z",
+    "author": {
+      "user": {
+        "login": "AIFlowML"
+      }
+    },
+    "additions": 43,
+    "deletions": 23,
+    "changedFiles": 2
+  },
+  {
+    "sha": "93253587f5dd56b44e7f7397ce021d147406aa56",
+    "message": "fix(deps): update dependency cookie to v0.7.0 [security] (#2834)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T09:20:43Z",
+    "author": {
+      "user": {
+        "login": "renovate[bot]"
+      }
+    },
+    "additions": 2,
+    "deletions": 2,
+    "changedFiles": 2
+  },
+  {
+    "sha": "c61943a1be3787c991ea633bb1fe67c634f3d1e7",
+    "message": "fixed some minor types issues (#2833)\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T09:04:45Z",
+    "author": {
+      "user": {
+        "login": "AIFlowML"
+      }
+    },
+    "additions": 2,
+    "deletions": 2,
+    "changedFiles": 1
+  },
+  {
+    "sha": "18b5d94dabaf627589238f506d2cab8147149911",
+    "message": "chore(update-plugin-initialization): btcfun & trikon plugin (#2643)\n\n* btcfun plugin support\n\n* Merge remote-tracking branch 'origin/develop' into pr/2643\n\n* update ts related\n\n* update plugin initialisation\n\n* init trikon plugin\n\n* Update pnpm-lock.yaml\n\n* attempt fix build\n\n---------\n\nCo-authored-by: Nevermore-Ray <Nevermore-Ray@btcfun.com>\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T09:04:05Z",
+    "author": {
+      "user": {
+        "login": "Nevermore-Ray"
+      }
+    },
+    "additions": 1516,
+    "deletions": 347,
+    "changedFiles": 10
+  },
+  {
+    "sha": "a7cefb8e2e77374587af9ed14c1879664c49ed5a",
+    "message": "feat(new-plugin): trikon plugin for eliza (#2653)\n\n* POC:plugin-trikon\n\n* fix:wallet.ts\n\n* Update trikon.ts\n\n* fix:according to coderabbit review\n\n* Fixes\n\n---------\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T08:06:43Z",
+    "author": {
+      "user": {
+        "login": "AmriteshTrikon"
+      }
+    },
+    "additions": 410,
+    "deletions": 0,
+    "changedFiles": 10
+  },
+  {
+    "sha": "da706be7a56a7e23afc99b1b2e4e039dc2db1d87",
+    "message": "feat: XMTP Client (#2786)\n\n* feat\n\n* agent\n\n* update dependencies and client init\n\n* Update index.ts\n\n* Update agent.md\n\n* Update agent.md\n\n---------\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T07:57:09Z",
+    "author": {
+      "user": {
+        "login": "humanagent"
+      }
+    },
+    "additions": 249,
+    "deletions": 2,
+    "changedFiles": 10
+  },
+  {
+    "sha": "86c6bf09cbc7d57fe1eb7ca0ddbcb396489f11b5",
+    "message": "btcfun Plugin for Eliza (#2797)\n\n* btcfun plugin support\n\n* support runes import\n\n---------\n\nCo-authored-by: Nevermore-Ray <Nevermore-Ray@btcfun.com>",
+    "committedDate": "2025-01-27T07:45:05Z",
+    "author": {
+      "user": {
+        "login": "Nevermore-Ray"
+      }
+    },
+    "additions": 388,
+    "deletions": 1,
+    "changedFiles": 10
+  },
+  {
+    "sha": "9ca2762a0b16b4e1e16e3979a1aa76f8a57372c4",
+    "message": "feat: add new readmes, move some others for consistency (#2828)\n\n* add new readmes, move some others for consistency\n\n* remove long string",
+    "committedDate": "2025-01-27T07:44:16Z",
+    "author": {
+      "user": {
+        "login": "madjin"
+      }
+    },
+    "additions": 597,
+    "deletions": 6,
+    "changedFiles": 10
+  },
+  {
+    "sha": "959c843f40fb534d9d66cb94cda228778d016d53",
+    "message": "fix: still run fc client loop if error (#2830)\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T07:37:05Z",
+    "author": {
+      "user": {
+        "login": "rubinovitz"
       }
     },
     "additions": 1,
@@ -13,94 +312,601 @@
     "changedFiles": 1
   },
   {
-    "sha": "227baf7bd62394a50ae261e934669e4a9520b87f",
-    "message": "Merge pull request #1248 from ileana-pr/news-plugin\n\nfeat: news-plugin",
-    "committedDate": "2025-01-26T06:21:49Z",
+    "sha": "fdf9c5ba034496b62344f3ac16b17bbef8345ef8",
+    "message": "feat(new-plugin): create gelato plugin relay (#2799)\n\n* [feat]: plugin for gelato relay\n\n* remove un-necessary changes\n\n---------\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T07:36:15Z",
     "author": {
       "user": {
-        "login": "shakkernerd"
+        "login": "anirudhmakhana"
       }
     },
-    "additions": 468,
+    "additions": 1824,
     "deletions": 1,
-    "changedFiles": 12
+    "changedFiles": 18
   },
   {
-    "sha": "2a967afbc00f01fe94849835883c28d6fc2a30b8",
-    "message": "feat: add missing env examples",
-    "committedDate": "2025-01-26T06:18:33Z",
+    "sha": "55a8e20d5b6f6ba44c0a5275a375e94cb758a751",
+    "message": "fix(plugin-zerion): fix type safety in provider and portfolio handling (#2822)\n\n- Added proper type definitions for ZerionProvider interface\n- Removed 'any' type usage in provider implementation\n- Added type guard for PortfolioData vs PositionData differentiation\n- Improved type safety in data handling without changing core functionality\n- Maintained existing API response structure and error handling\n\nThis commit ensures better type safety while maintaining backward compatibility\nand existing functionality of the Zerion plugin.\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T06:58:04Z",
+    "author": {
+      "user": {
+        "login": "AIFlowML"
+      }
+    },
+    "additions": 22,
+    "deletions": 9,
+    "changedFiles": 3
+  },
+  {
+    "sha": "1f59424e6f37f832f1595953c838a099aa4312d0",
+    "message": "Fixed multiple non criticla issues. (#2823)\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T06:57:22Z",
+    "author": {
+      "user": {
+        "login": "AIFlowML"
+      }
+    },
+    "additions": 3,
+    "deletions": 3,
+    "changedFiles": 1
+  },
+  {
+    "sha": "65239b65d8ce09a07ad6ea4ff6ea05a44128b7d3",
+    "message": "fixed non critical issues put in evidence by biome (#2824)",
+    "committedDate": "2025-01-27T06:56:51Z",
+    "author": {
+      "user": {
+        "login": "AIFlowML"
+      }
+    },
+    "additions": 10,
+    "deletions": 10,
+    "changedFiles": 4
+  },
+  {
+    "sha": "1477425f121f68f126b688c7645aa59b7aa49915",
+    "message": "Fixed a logic error in the post.ts and few non critical issues (#2827)\n\nCo-authored-by: Sayo <hi@sayo.wtf>",
+    "committedDate": "2025-01-27T06:56:17Z",
+    "author": {
+      "user": {
+        "login": "AIFlowML"
+      }
+    },
+    "additions": 6,
+    "deletions": 11,
+    "changedFiles": 2
+  },
+  {
+    "sha": "fa758b94e8c67ed20a62ba367ba7cb45dc6398d5",
+    "message": "fixed non critical isues in the file index.ts (#2829)",
+    "committedDate": "2025-01-27T06:55:09Z",
+    "author": {
+      "user": {
+        "login": "AIFlowML"
+      }
+    },
+    "additions": 12,
+    "deletions": 9,
+    "changedFiles": 1
+  },
+  {
+    "sha": "85369856b7758fa9fdd41e2777ffa06c4f505b08",
+    "message": "Merge pull request #2818 from elizaOS/tcm-post-media\n\nfeat: twitter post media",
+    "committedDate": "2025-01-27T06:54:04Z",
+    "author": {
+      "user": {
+        "login": "tcm390"
+      }
+    },
+    "additions": 89,
+    "deletions": 72,
+    "changedFiles": 3
+  },
+  {
+    "sha": "b2e2c56b5e82fd972552f091e99956e3b27020f2",
+    "message": "Merge branch 'develop' into tcm-post-media",
+    "committedDate": "2025-01-27T05:04:19Z",
+    "author": {
+      "user": {
+        "login": "tcm390"
+      }
+    },
+    "additions": 182,
+    "deletions": 26,
+    "changedFiles": 5
+  },
+  {
+    "sha": "872b13e9ab88b61667a36fb270a8a216602224ee",
+    "message": "docs: update embedding function (#2821)\n\n* docs: update embedding function\r\n\r\n* fix: embed runtime param\r\n\r\n---------\r\n\r\nCo-authored-by: Shakker Nerd <165377636+shakkernerd@users.noreply.github.com>",
+    "committedDate": "2025-01-27T04:55:48Z",
+    "author": {
+      "user": {
+        "login": "rubinovitz"
+      }
+    },
+    "additions": 6,
+    "deletions": 2,
+    "changedFiles": 1
+  },
+  {
+    "sha": "880901bc3de879c98508bee7220a72973ab41328",
+    "message": "Update README.md (#2814)\n\nJust corrected some formatting issues, and added details about configuration of advanced features via character.json files.\r\n\r\nCo-authored-by: Shakker Nerd <165377636+shakkernerd@users.noreply.github.com>",
+    "committedDate": "2025-01-27T04:50:28Z",
+    "author": {
+      "user": {
+        "login": "actuallyrizzn"
+      }
+    },
+    "additions": 55,
+    "deletions": 13,
+    "changedFiles": 1
+  },
+  {
+    "sha": "3f7f6106b19733e28da53bcdbba1acb2a087c978",
+    "message": "Merge pull request #2812 from actuallyrizzn/patch-1\n\ndocs: Create client-discord readme.md",
+    "committedDate": "2025-01-27T04:49:33Z",
     "author": {
       "user": {
         "login": "shakkernerd"
       }
     },
-    "additions": 29,
+    "additions": 102,
     "deletions": 0,
     "changedFiles": 1
   },
   {
-    "sha": "540a5799832f11c12ef2de9dd893782cce58c329",
-    "message": "Merge remote-tracking branch 'upstream/develop' into news-plugin",
-    "committedDate": "2025-01-26T01:54:40Z",
-    "author": {
-      "user": {
-        "login": "ileana-pr"
-      }
-    },
-    "additions": 27599,
-    "deletions": 1426,
-    "changedFiles": 280
-  },
-  {
-    "sha": "1281911b66307c4b1497f749adba60ae2c77e198",
-    "message": "feat: plugin Solana web3.js V2 & automated LPing on Orca (#2136)\n\n* Build web3.js v2 plugin\r\n\r\n* Finish plugin V2 base\r\n\r\n* Try solve deps\r\n\r\n* Resolved deps\r\n\r\n* Clean up\r\n\r\n* Enable TEE mode\r\n\r\n* Close position action\r\n\r\n* Close position action\r\n\r\n* Add all components. Fixes needed\r\n\r\n* Add README\r\n\r\n* Fix lock\r\n\r\n* Fix Provider. Fix first Action. WIP Evaluator.\r\n\r\n* Working demo set-up. Additional work needed\r\n\r\n* Finish building and testing. New docs needed.\r\n\r\n* Add character. Fix bug\r\n\r\n* Update docs and rpc url reference\r\n\r\n* Cleanup\r\n\r\n* Update lockfile\r\n\r\n* Final nits\r\n\r\n* Fix typo\r\n\r\n* Restore agents/sr/index.ts\r\n\r\n* Fix lockfile\r\n\r\n* Fix lockfile\r\n\r\n---------\r\n\r\nCo-authored-by: Calin Simon <calintje@mac.local>\r\nCo-authored-by: Odilitime <janesmith@airmail.cc>",
-    "committedDate": "2025-01-25T23:22:34Z",
-    "author": {
-      "user": {
-        "login": "calintje"
-      }
-    },
-    "additions": 3330,
-    "deletions": 1390,
-    "changedFiles": 24
-  },
-  {
-    "sha": "d29efbd5a846878f2af4ca3216d84cb42b4cfb47",
-    "message": "Merge pull request #2782 from juanc07/fix/DTS-error-mismatch-LanguageModelV1-in-ai-sdk-mistral-model\n\nFix: DTS Error mismatch LanguageModelV1interface/Version in ai-sdk mistral model",
-    "committedDate": "2025-01-25T22:51:19Z",
+    "sha": "f7f4f06f306b6c06222d34dd07a1bcf1a167dc7c",
+    "message": "Merge branch 'develop' into patch-1",
+    "committedDate": "2025-01-27T04:48:58Z",
     "author": {
       "user": {
         "login": "shakkernerd"
       }
     },
-    "additions": 766,
-    "deletions": 602,
-    "changedFiles": 4
+    "additions": 769,
+    "deletions": 182,
+    "changedFiles": 22
   },
   {
-    "sha": "4e7ca0901e10e5df3de9195aa77cd51bb12e9626",
-    "message": "chore: pnpm lock file",
-    "committedDate": "2025-01-25T22:50:13Z",
+    "sha": "7d562a3fafb8ebb33b482502464a530588f11f30",
+    "message": "- Replace non-null assertion with fallback in useGetAccount (#2819)\n\n- Avoid parameter reassignment in transferAction handler\r\n- Add explicit typing for hash variable\r\n- Convert string concatenations to template literals\r\n- Remove commented-out legacy code\r\n\r\nThese changes maintain existing functionality while improving code quality.",
+    "committedDate": "2025-01-27T04:08:56Z",
     "author": {
       "user": {
-        "login": "shakkernerd"
+        "login": "AIFlowML"
       }
     },
-    "additions": 683,
-    "deletions": 5715,
+    "additions": 19,
+    "deletions": 11,
+    "changedFiles": 2
+  },
+  {
+    "sha": "77754ae72a77b3d6e770c0bb45dec63f88ec0a7a",
+    "message": "Merge branch 'develop' into tcm-post-media",
+    "committedDate": "2025-01-27T03:43:41Z",
+    "author": {
+      "user": {
+        "login": "tcm390"
+      }
+    },
+    "additions": 1114,
+    "deletions": 59,
+    "changedFiles": 27
+  },
+  {
+    "sha": "480647a7d08753c4f3184c41570d0ddc3d8b96e9",
+    "message": "Merge pull request #2772 from elizaOS/tcm-improve-message-parsing\n\nfeat: improve message parsing",
+    "committedDate": "2025-01-27T03:40:22Z",
+    "author": {
+      "user": {
+        "login": "tcm390"
+      }
+    },
+    "additions": 105,
+    "deletions": 114,
+    "changedFiles": 5
+  },
+  {
+    "sha": "b4ca76e2864047fb360a6e6c32d49959a14c9032",
+    "message": "add MediaData to post",
+    "committedDate": "2025-01-27T03:25:22Z",
+    "author": {
+      "user": {
+        "login": "tcm390"
+      }
+    },
+    "additions": 9,
+    "deletions": 4,
     "changedFiles": 1
   },
   {
-    "sha": "5e24e772883d3f9417392bd847b939248755fc44",
-    "message": "Merge branch 'develop' into pr/juanc07/2782",
-    "committedDate": "2025-01-25T22:47:17Z",
+    "sha": "b6fffdb1e1ff470cabd991c420d419a6bd468b64",
+    "message": "Merge branch 'develop' into tcm-improve-message-parsing",
+    "committedDate": "2025-01-27T03:23:51Z",
     "author": {
       "user": {
         "login": "shakkernerd"
       }
     },
-    "additions": 220716,
-    "deletions": 9126,
-    "changedFiles": 1895
+    "additions": 4,
+    "deletions": 4,
+    "changedFiles": 2
+  },
+  {
+    "sha": "21e5e6059120b08725a8a721db7837022dafa94a",
+    "message": "add MediaData type",
+    "committedDate": "2025-01-27T03:22:56Z",
+    "author": {
+      "user": {
+        "login": "tcm390"
+      }
+    },
+    "additions": 6,
+    "deletions": 1,
+    "changedFiles": 2
+  },
+  {
+    "sha": "832f60a7bed2e81d2da713c245c0c32214efdb64",
+    "message": "rename",
+    "committedDate": "2025-01-27T03:19:31Z",
+    "author": {
+      "user": {
+        "login": "tcm390"
+      }
+    },
+    "additions": 38,
+    "deletions": 38,
+    "changedFiles": 1
+  },
+  {
+    "sha": "3bf79924252a264a6e96b44dab57c751ca0a713f",
+    "message": "fetch media data",
+    "committedDate": "2025-01-27T03:19:18Z",
+    "author": {
+      "user": {
+        "login": "tcm390"
+      }
+    },
+    "additions": 7,
+    "deletions": 2,
+    "changedFiles": 1
+  },
+  {
+    "sha": "0263834f4eb109e555783744f09a6484d81c4e42",
+    "message": "fix: nvidia nim environment (#2817)\n\n* Fixed typo in the NVIDIA_OFFTOPIC_SYSTEM and NVIDIA_OFFTOPIC_USER\r\n\r\n* Fixed other typo in validatio.ts\r\n\r\n---------\r\n\r\nCo-authored-by: Shakker Nerd <165377636+shakkernerd@users.noreply.github.com>",
+    "committedDate": "2025-01-27T03:19:12Z",
+    "author": {
+      "user": {
+        "login": "AIFlowML"
+      }
+    },
+    "additions": 4,
+    "deletions": 4,
+    "changedFiles": 2
+  },
+  {
+    "sha": "a0758469c82cd45d752ea27ede5f41a9da2f5400",
+    "message": "extract media data handling",
+    "committedDate": "2025-01-27T03:18:22Z",
+    "author": {
+      "user": {
+        "login": "tcm390"
+      }
+    },
+    "additions": 33,
+    "deletions": 31,
+    "changedFiles": 1
+  },
+  {
+    "sha": "0612b874f2dec6cd81453a77f2ab0721330ee6d0",
+    "message": "Merge branch 'develop' into tcm-improve-message-parsing",
+    "committedDate": "2025-01-27T03:10:26Z",
+    "author": {
+      "user": {
+        "login": "tcm390"
+      }
+    },
+    "additions": 637,
+    "deletions": 53,
+    "changedFiles": 12
+  },
+  {
+    "sha": "0707f519647599fbdf021fd7276a85779ae77b84",
+    "message": "Merge pull request #2816 from AIFlowML/fix-akash-splash\n\nfix: akash splash",
+    "committedDate": "2025-01-27T03:02:04Z",
+    "author": {
+      "user": {
+        "login": "shakkernerd"
+      }
+    },
+    "additions": 80,
+    "deletions": 39,
+    "changedFiles": 1
+  },
+  {
+    "sha": "3c8b1dbdf1ca0d9feab8ce433f99b5743355daaf",
+    "message": "Merge branch 'develop' into fix-akash-splash",
+    "committedDate": "2025-01-27T03:00:55Z",
+    "author": {
+      "user": {
+        "login": "shakkernerd"
+      }
+    },
+    "additions": 557,
+    "deletions": 14,
+    "changedFiles": 11
+  },
+  {
+    "sha": "1cb34a8ec1e930d7169605e2d24bccd4fefba7c6",
+    "message": "Merge pull request #2807 from ai16z-demirix/tests/plugin-0x\n\ntest: plugin-0x test configuration and coverage",
+    "committedDate": "2025-01-27T02:59:39Z",
+    "author": {
+      "user": {
+        "login": "shakkernerd"
+      }
+    },
+    "additions": 218,
+    "deletions": 1,
+    "changedFiles": 3
+  },
+  {
+    "sha": "2a3793c0b2644ffe87c3a6ad729970e3cfc02c15",
+    "message": "Merge branch 'develop' into tests/plugin-0x",
+    "committedDate": "2025-01-27T02:57:11Z",
+    "author": {
+      "user": {
+        "login": "shakkernerd"
+      }
+    },
+    "additions": 343,
+    "deletions": 13,
+    "changedFiles": 9
+  },
+  {
+    "sha": "6eb6d7376cdac8c2fc6dd54a560e4064c4de473e",
+    "message": "Merge pull request #2805 from ai16z-demirix/tests/plugin-0g\n\nchore: plugin-0g test configuration and test coverage",
+    "committedDate": "2025-01-27T02:56:22Z",
+    "author": {
+      "user": {
+        "login": "shakkernerd"
+      }
+    },
+    "additions": 260,
+    "deletions": 1,
+    "changedFiles": 3
+  },
+  {
+    "sha": "2ce68f3be971858e5560990d706178494ccdcc0a",
+    "message": "fix: jest.Mock -> vi.Mock",
+    "committedDate": "2025-01-27T02:55:17Z",
+    "author": {
+      "user": {
+        "login": "shakkernerd"
+      }
+    },
+    "additions": 2,
+    "deletions": 2,
+    "changedFiles": 1
+  },
+  {
+    "sha": "31e43d58575e9f2fb61c1c2a1d456dbf66dbb5d3",
+    "message": "Merge branch 'develop' into tests/plugin-0g",
+    "committedDate": "2025-01-27T02:52:39Z",
+    "author": {
+      "user": {
+        "login": "shakkernerd"
+      }
+    },
+    "additions": 83,
+    "deletions": 12,
+    "changedFiles": 6
+  },
+  {
+    "sha": "61b934b57b16d5737d8b6c8053a0becf27ce076e",
+    "message": "Merge pull request #2810 from elpulpo0/develop\n\nfeat: Add Access Token Management to MultiversX Plugin",
+    "committedDate": "2025-01-27T02:52:02Z",
+    "author": {
+      "user": {
+        "login": "shakkernerd"
+      }
+    },
+    "additions": 79,
+    "deletions": 12,
+    "changedFiles": 5
+  },
+  {
+    "sha": "33776ebc237f6d5974c7c899518d6a128c504e41",
+    "message": "Merge branch 'develop' into develop",
+    "committedDate": "2025-01-27T02:51:12Z",
+    "author": {
+      "user": {
+        "login": "shakkernerd"
+      }
+    },
+    "additions": 4,
+    "deletions": 0,
+    "changedFiles": 1
+  },
+  {
+    "sha": "c2a63e14575503414763189129010f1fef6589df",
+    "message": "fix: ACCESS_TOKEN_MANAGMENT_TO -> ACCESS_TOKEN_MANAGEMENT_TO and console -> elizaLogger",
+    "committedDate": "2025-01-27T02:50:52Z",
+    "author": {
+      "user": {
+        "login": "shakkernerd"
+      }
+    },
+    "additions": 4,
+    "deletions": 4,
+    "changedFiles": 1
+  },
+  {
+    "sha": "9b26beac0317252346b89aa37ac752b100c04f4f",
+    "message": "Merge branch 'develop' into tcm-improve-message-parsing",
+    "committedDate": "2025-01-27T02:50:06Z",
+    "author": {
+      "user": {
+        "login": "tcm390"
+      }
+    },
+    "additions": 4,
+    "deletions": 0,
+    "changedFiles": 1
+  },
+  {
+    "sha": "b47981390c4277e0f61fdddb860215e855244845",
+    "message": "fix: console -> elizaLogger",
+    "committedDate": "2025-01-27T02:48:33Z",
+    "author": {
+      "user": {
+        "login": "shakkernerd"
+      }
+    },
+    "additions": 5,
+    "deletions": 5,
+    "changedFiles": 1
+  },
+  {
+    "sha": "27ac2b8cca3156bee32237272d011867ac10d172",
+    "message": "fix: console -> elizaLogger",
+    "committedDate": "2025-01-27T02:47:17Z",
+    "author": {
+      "user": {
+        "login": "shakkernerd"
+      }
+    },
+    "additions": 5,
+    "deletions": 5,
+    "changedFiles": 1
+  },
+  {
+    "sha": "097e2e7fa461808ca2ca693d83832102624e8b09",
+    "message": "Merge branch 'develop' into fix-akash-splash",
+    "committedDate": "2025-01-27T02:46:17Z",
+    "author": {
+      "user": {
+        "login": "AIFlowML"
+      }
+    },
+    "additions": 0,
+    "deletions": 0,
+    "changedFiles": 0
+  },
+  {
+    "sha": "77cc4e1b56464278cc2a58a9c459efcf27723532",
+    "message": "fix: console -> elizaLogger",
+    "committedDate": "2025-01-27T02:45:59Z",
+    "author": {
+      "user": {
+        "login": "shakkernerd"
+      }
+    },
+    "additions": 5,
+    "deletions": 5,
+    "changedFiles": 1
+  },
+  {
+    "sha": "84bde2982eba8b35c55368afd1a1a44c74784d8f",
+    "message": "chore: ACCESS_TOKEN_MANAGMENT_TO -> ACCESS_TOKEN_MANAGEMENT_TO",
+    "committedDate": "2025-01-27T02:44:23Z",
+    "author": {
+      "user": {
+        "login": "shakkernerd"
+      }
+    },
+    "additions": 1,
+    "deletions": 1,
+    "changedFiles": 1
+  },
+  {
+    "sha": "10f9d8cca1706809804480f5c3a36c9f89030818",
+    "message": "Merge pull request #2813 from AIFlowML/update-gitignore\n\nfix: adding exclusion for extra folder for faster future rebase",
+    "committedDate": "2025-01-27T02:35:41Z",
+    "author": {
+      "user": {
+        "login": "shakkernerd"
+      }
+    },
+    "additions": 4,
+    "deletions": 0,
+    "changedFiles": 1
+  },
+  {
+    "sha": "91fe88c4dc8a1a5aa5d585c44b2a8da8c4b9e35d",
+    "message": "fixed splash for Akash and upgraded the design",
+    "committedDate": "2025-01-27T02:32:12Z",
+    "author": {
+      "user": {
+        "login": "AIFlowML"
+      }
+    },
+    "additions": 80,
+    "deletions": 39,
+    "changedFiles": 1
+  },
+  {
+    "sha": "bd4b3b68b1d0f8633b1a759a5a13cb5dc18d7390",
+    "message": "adding exclusion for extra folder for faster future rebase",
+    "committedDate": "2025-01-27T02:16:02Z",
+    "author": {
+      "user": {
+        "login": "AIFlowML"
+      }
+    },
+    "additions": 4,
+    "deletions": 0,
+    "changedFiles": 1
+  },
+  {
+    "sha": "38e5e2e96f922e2000109056e81d51998710d50b",
+    "message": "adding exclusion for extra folder for faster future rebase",
+    "committedDate": "2025-01-27T02:13:33Z",
+    "author": {
+      "user": {
+        "login": "AIFlowML"
+      }
+    },
+    "additions": 4,
+    "deletions": 0,
+    "changedFiles": 1
+  },
+  {
+    "sha": "b0aad50756236f95175bc107ec1faa682abc7fff",
+    "message": "Merge branch 'develop' into tcm-improve-message-parsing",
+    "committedDate": "2025-01-27T02:09:50Z",
+    "author": {
+      "user": {
+        "login": "tcm390"
+      }
+    },
+    "additions": 469,
+    "deletions": 2,
+    "changedFiles": 13
+  },
+  {
+    "sha": "01a27f271df9482574ce408bc6a22627d514b959",
+    "message": "resolve build error",
+    "committedDate": "2025-01-27T02:08:07Z",
+    "author": {
+      "user": {
+        "login": "tcm390"
+      }
+    },
+    "additions": 2,
+    "deletions": 4,
+    "changedFiles": 1
+  },
+  {
+    "sha": "7009adb84f1f912ff122114bd05c517e2e11542b",
+    "message": "Create readme.md\n\nAdding basic instructions. Will look to expand this with some common issues and solutions as I come across them.",
+    "committedDate": "2025-01-27T01:48:01Z",
+    "author": {
+      "user": {
+        "login": "actuallyrizzn"
+      }
+    },
+    "additions": 102,
+    "deletions": 0,
+    "changedFiles": 1
   }
 ]
