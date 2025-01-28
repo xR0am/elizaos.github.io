@@ -218,11 +218,11 @@ def main():
     with open(output_file, 'w') as f:
         json.dump(contributors, f, indent=2)
     
-    # Optionally save a backup in the data directory
-    if output_file != default_output_file:
-        print(f"Also writing a timestamped backup to {default_output_file}")
-        with open(default_output_file, 'w') as f:
-            json.dump(contributors, f, indent=2)
+    ## Optionally save a backup in the data directory
+    #if output_file != default_output_file:
+    #    print(f"Also writing a timestamped backup to {default_output_file}")
+    #    with open(default_output_file, 'w') as f:
+    #        json.dump(contributors, f, indent=2)
     
     print(f"\nProcessed {len(contributors)} contributors:")
     for contrib in contributors[:5]:  # Show top 5
