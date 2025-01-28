@@ -1,7 +1,7 @@
 # elizaos Eliza (2025-01-28)
     
 ## 📊 Overview
-Development focused on package improvements (plugin-story), new features (twitter post media), 18 bug fixes. with 32 contributors merging 30 PRs. Major work included unable to generate summary for aiflowml due to an error.
+Development focused on package improvements (plugin-story), new features (twitter post media), 18 bug fixes. with 32 contributors merging 30 PRs. Major work included aiflowml is currently focused on fixing typing issues, logic errors, and non-critical issues across multiple files in the project.
 
 ## 📈 Key Metrics
 | Metric | Count |
@@ -28,9 +28,9 @@ Development focused on package improvements (plugin-story), new features (twitte
 - fix: plugin-suno
 
 ## 👥 Top Contributors
-- **AIFlowML**: Unable to generate summary for AIFlowML due to an error
-- **ai16z-demirix**: Unable to generate summary for ai16z-demirix due to an error
-- **tcm390**: Unable to generate summary for tcm390 due to an error
+- **AIFlowML**: AIFlowML is currently focused on fixing typing issues, logic errors, and non-critical issues across multiple files in the project
+- **ai16z-demirix**: ai16z-demirix is currently working on adding test coverage and configuration for various plugins, including plugin-asterai, plugin anyone, and plugin 3d generation
+- **tcm390**: tcm390 is currently working on adding MediaData handling to post messages and improving message parsing in the codebase
 
 ## ⚠️ Issues
 - **New Issues**: 11
