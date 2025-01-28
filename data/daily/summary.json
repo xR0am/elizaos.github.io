@@ -1,72 +1,73 @@
 {
   "title": "elizaos Eliza (2025-01-28)",
-  "version": "update bs58 version to resolve integration test dependency issues",
-  "overview": "Development focused on package improvements (plugin-story), new features (twitter post media), 18 bug fixes. with 32 contributors merging 30 PRs. Major work included aiflowml is currently focused on fixing typing issues, logic errors, and non-critical issues across multiple files in the project.",
+  "version": "bump version to 0.1.9",
+  "overview": "Development focused on package improvements (plugin-arbitrage), 19 bug fixes. with 36 contributors merging 28 PRs. Major work included aiflowml is currently focusing on fixing typing issues and logic errors in the codebase, particularly related to state reassignment and code structure.",
   "metrics": {
-    "contributors": 32,
-    "merged_prs": 30,
-    "new_issues": 11,
-    "lines_changed": 6567
+    "contributors": 36,
+    "merged_prs": 28,
+    "new_issues": 17,
+    "lines_changed": 6992
   },
   "changes": {
     "features": [
-      "twitter post media",
-      "client for Telegram account",
-      "add new readmes, move some others for consistency"
+      "improve gas price optimization and volume calculation"
     ],
     "fixes": [
-      "plugin-story",
-      "plugin-sui",
-      "plugin-suno"
+      "plugin-arbitrage",
+      "plugin-omniflix",
+      "plugin-opacity"
     ],
     "chores": [
-      "plugin anyone: test config and test coverage",
-      "plugin 3d generation: test config and test coverage"
+      "bump version to 0.1.9",
+      "fix spell errors"
     ]
   },
   "areas": [
     {
       "name": "packages",
-      "files": 97,
-      "additions": 2790,
-      "deletions": 809
+      "files": 170,
+      "additions": 1864,
+      "deletions": 1261
     },
     {
       "name": "root",
-      "files": 7,
-      "additions": 1302,
-      "deletions": 1316
+      "files": 9,
+      "additions": 508,
+      "deletions": 519
     },
     {
       "name": "agent",
-      "files": 6,
-      "additions": 179,
-      "deletions": 163
+      "files": 2,
+      "additions": 1578,
+      "deletions": 1190
     }
   ],
-  "issues_summary": "working on 3 bugs including 'Btcfun crash', 'node-llama-cpp' and implementing 6 feature requests including 'plugin-asterai: test config and test coverage', 'plugin anyone: test config and coverate'",
+  "issues_summary": "working on 10 bugs including '{{maxTweetLength}} doesn't work in tweet post template', 'ragKnowledge blows up prompt by retrieving entire documents.' and implementing 4 feature requests including '[Feature Request] Runtime Configuration.', '[Feature Request] - Implement Reranked Contextual Embedding + cBM25 as per Anthropic Blog as default RAG Implementation'",
   "questions": [],
   "top_contributors": [
     {
       "name": "AIFlowML",
-      "summary": "AIFlowML is currently focused on fixing typing issues, logic errors, and non-critical issues across multiple files in the project",
+      "summary": "AIFlowML is currently focusing on fixing typing issues and logic errors in the codebase, particularly related to state reassignment and code structure",
       "areas": [
-        "packages",
-        ".gitignore"
+        "packages"
       ]
     },
     {
-      "name": "ai16z-demirix",
-      "summary": "ai16z-demirix is currently working on adding test coverage and configuration for various plugins, including plugin-asterai, plugin anyone, and plugin 3d generation",
+      "name": "odilitime",
+      "summary": "odilitime is primarily working on merging pull requests related to fixing vulnerabilities and code issues in various packages",
       "areas": [
-        "packages"
+        "packages",
+        "pnpm-lock.yaml",
+        "agent"
       ]
     },
     {
       "name": "tcm390",
-      "summary": "tcm390 is currently working on adding MediaData handling to post messages and improving message parsing in the codebase",
+      "summary": "tcm390 is currently working on cleaning up code, defining server ports, and implementing null checks in the agent, client, and packages code areas",
       "areas": [
-        "packages"
+        "client",
+        ".env.example",
+        "agent"
       ]
     }
   ]

@@ -1,5 +1,385 @@
 [
   {
+    "id": "I_kwDOMT5cIs6n4-Nd",
+    "number": 2927,
+    "title": "{{maxTweetLength}} doesn't work in tweet post template",
+    "body": "The template tag {{maxTweetLength}} doesn't exist. \n\nhttps://github.com/elizaOS/eliza/blob/3b4bc8579a845fde2d1098cb1fdce7bc31a4703b/packages/client-twitter/src/post.ts#L55\n\n\nMaybe it would be nice to pass custom inputs into composeContext:\nhttps://github.com/elizaOS/eliza/blob/3b4bc8579a845fde2d1098cb1fdce7bc31a4703b/packages/client-twitter/src/post.ts#L524\n\nOr perhaps just populate the maxTweetLength in the template directly in this case before sending to composeContext?\n\nThere might be an obvious simple fix for this in alignment with Eliza architecture that I'm not seeing. Would love to learn from more experienced devs the correct way to fix this simple issue. \n",
+    "state": "OPEN",
+    "createdAt": "2025-01-28T21:14:58Z",
+    "updatedAt": "2025-01-28T21:14:58Z",
+    "author": {
+      "login": "LinuxIsCool",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/31582215?u=b8eb5d3849bf877a3a0b686cf1632aca92e744ae&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6n4LVQ",
+    "number": 2922,
+    "title": "[Feature Request] Runtime Configuration.",
+    "body": "It would be nice if the following were all exposed via configuration:\n\nLore count:\nhttps://github.com/elizaOS/eliza/blob/678144b8cefe6225a7107400f83f65f2be929386/packages/core/src/runtime.ts#L1337\n\n---\n\nPost Example count:\nhttps://github.com/elizaOS/eliza/blob/678144b8cefe6225a7107400f83f65f2be929386/packages/core/src/runtime.ts#L1347C17-L1347C21\n\n---\n\nBio count:\nhttps://github.com/elizaOS/eliza/blob/678144b8cefe6225a7107400f83f65f2be929386/packages/core/src/runtime.ts#L1448\n\n---\n\nRAG Knowledge Recent Message Context:\nhttps://github.com/elizaOS/eliza/blob/678144b8cefe6225a7107400f83f65f2be929386/packages/core/src/runtime.ts#L1457C20-L1457C22\n\n---\n\nRAG Knowledge Count: \nhttps://github.com/elizaOS/eliza/blob/678144b8cefe6225a7107400f83f65f2be929386/packages/core/src/runtime.ts#L1464\n\n---\n\nExample topics count:\nhttps://github.com/elizaOS/eliza/blob/678144b8cefe6225a7107400f83f65f2be929386/packages/core/src/runtime.ts#L1511C37-L1511C39\n\n---\n\nMemories Count:\nhttps://github.com/elizaOS/eliza/blob/678144b8cefe6225a7107400f83f65f2be929386/packages/core/src/runtime.ts#L1388C1-L1389C1\n\n---\n\nConversation Length:\nhttps://github.com/elizaOS/eliza/blob/678144b8cefe6225a7107400f83f65f2be929386/packages/core/src/runtime.ts#L78\n\n---\n\nAny others I'm missing? All of these parameters should be really well documented. \n\nIt might be nice to configure chunkSize and bleed from knowledge processing in a similar way as well.\n\nWhat's the correct way to expose these via configuration in alignment with ElizaOS architectural principles? Thanks!",
+    "state": "OPEN",
+    "createdAt": "2025-01-28T19:15:22Z",
+    "updatedAt": "2025-01-28T19:30:11Z",
+    "author": {
+      "login": "LinuxIsCool",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/31582215?u=b8eb5d3849bf877a3a0b686cf1632aca92e744ae&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6n30k_",
+    "number": 2920,
+    "title": "plugin-solana 'SEND_TOKEN' action verification set to false",
+    "body": "**Describe the bug**\n\nI tried to use the SEND_TOKEN action and the action is triggered as expected. However, since the verification returns false, it does not proceed. In order to test, I updated the plugin to return true. The transaction signature is generated; however, the transaction does not confirm and times out from time to time. I am using Helios RPC on mainnet-beta cluster. It works as expected for other actions, such as, EXECUTE_SWAP\n\n**To Reproduce**\n\nCheck out the main branch and set up a character with plugin-solana and a few message examples that allow the SEND_TOKEN action. Run the server and the client locally and send a prompt to character with messages similar to the examples. It should trigger the SEND_TOKEN action, but not proceed.\n\n\n**Expected behavior**\n\nThe SEND_TOKEN action should proceed and transaction should be confirmed on-chain in mainnet-beta\n",
+    "state": "CLOSED",
+    "createdAt": "2025-01-28T18:24:21Z",
+    "updatedAt": "2025-01-28T19:08:38Z",
+    "author": {
+      "login": "deusexmachina892",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/27721589?u=063814e0b7abc724161407a87e8e60437792f16f&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cJkkq",
+        "author": "github-actions",
+        "body": "Hello @deusexmachina892! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6n3n4k",
+    "number": 2919,
+    "title": "[Feature Request] - Implement Reranked Contextual Embedding + cBM25 as per Anthropic Blog as default RAG Implementation",
+    "body": "Contextual retrieval with reranking seems like the state of the art for RAG. It would be amazing if this was implemented as the default RAG system in ElizaOS. \n\nhttps://www.anthropic.com/news/contextual-retrieval\n\n\n![Image](https://github.com/user-attachments/assets/603ef4c1-b3bc-4153-a8a9-48c08c5a4b35)",
+    "state": "OPEN",
+    "createdAt": "2025-01-28T17:56:30Z",
+    "updatedAt": "2025-01-28T17:56:30Z",
+    "author": {
+      "login": "LinuxIsCool",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/31582215?u=b8eb5d3849bf877a3a0b686cf1632aca92e744ae&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6n3iJv",
+    "number": 2918,
+    "title": "[V2] Consolidate RAG Knowledge into Knowledge",
+    "body": "Right now we have RAGKnowledge and Knowledge, but knowledge *should be* RAG already, so we should try to consolidate these so we don't have overlap of ideas.",
+    "state": "OPEN",
+    "createdAt": "2025-01-28T17:45:03Z",
+    "updatedAt": "2025-01-28T18:55:49Z",
+    "author": {
+      "login": "lalalune",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB1dE8Sw",
+        "name": "V2",
+        "color": "1670F6",
+        "description": "Eliza 0.2.0"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cJ0up",
+        "author": "LinuxIsCool",
+        "body": "Currently chunkSize and bleed are being parameterized in four separate places. Would be nice to move them into a configuration point. \n\nhttps://github.com/elizaOS/eliza/blob/678144b8cefe6225a7107400f83f65f2be929386/packages/core/src/generation.ts#L1368\n\nhttps://github.com/elizaOS/eliza/blob/678144b8cefe6225a7107400f83f65f2be929386/packages/core/src/knowledge.ts#L67\n\nhttps://github.com/elizaOS/eliza/blob/678144b8cefe6225a7107400f83f65f2be929386/packages/core/src/ragknowledge.ts#L306\n\nhttps://github.com/elizaOS/eliza/blob/678144b8cefe6225a7107400f83f65f2be929386/packages/core/src/ragknowledge.ts#L550"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6n3e1u",
+    "number": 2917,
+    "title": "[V2] Move text splitting into core, remove langchain deps",
+    "body": "We are currently importing langchain just for the text splitting. Instead we should consolidate this into core so we don't need the dependency.",
+    "state": "OPEN",
+    "createdAt": "2025-01-28T17:38:27Z",
+    "updatedAt": "2025-01-28T17:38:48Z",
+    "author": {
+      "login": "lalalune",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB1dE8Sw",
+        "name": "V2",
+        "color": "1670F6",
+        "description": "Eliza 0.2.0"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6n3PZ1",
+    "number": 2915,
+    "title": "facts not working. messageCount always returns 1 when `unique=true` causing facts to not work properly",
+    "body": "\n\nSee the validate section in facts: \n\nhttps://github.com/elizaOS/eliza/blob/678144b8cefe6225a7107400f83f65f2be929386/packages/plugin-bootstrap/src/evaluators/fact.ts#L122\n\nI find that countMemories() is always return 1 when unique=true (the default). So to get this working I had to set unique=false in this function call. Also the validate logic here is generally confusing and could be improved.",
+    "state": "OPEN",
+    "createdAt": "2025-01-28T17:10:29Z",
+    "updatedAt": "2025-01-28T17:10:29Z",
+    "author": {
+      "login": "LinuxIsCool",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/31582215?u=b8eb5d3849bf877a3a0b686cf1632aca92e744ae&v=4"
+    },
+    "labels": [],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6n3JgD",
+    "number": 2914,
+    "title": "ragKnowledge blows up prompt by retrieving entire documents.",
+    "body": "**Describe the bug**\n\nragKnowledge embeds entire documents and then retrieves them at runtime, blowing up prompts.\n\n**To Reproduce**\n\nPut a large (>1MB) text file in rag knowledge, and then message your agent with a large portion of that document so that it gets retrieved via ragKnowledge during runtime.\n\n**Expected behavior**\n\nEither don't embed entire documents or filter them out in runtime.\n\n\n**Additional context**\n\nThere is some code duplication in ragKnowledge.ts between processFile and createKnowledge. I think those can be cleaned up and we must consdier 1. Do we need entire document embeddings? How to properly filter them out at runtime retrieval especially if they are too big?\n\nI have a temporary fix in sqlite adapter doing this: \n```\n        let sql = `SELECT * FROM knowledge WHERE (isMain = 0) AND (agentId = ? OR isShared = 1)`;\n```\n\n\nI originally commented on this here: https://github.com/elizaOS/eliza/pull/1620#issuecomment-2619551664 ",
+    "state": "OPEN",
+    "createdAt": "2025-01-28T16:59:28Z",
+    "updatedAt": "2025-01-28T16:59:55Z",
+    "author": {
+      "login": "LinuxIsCool",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/31582215?u=b8eb5d3849bf877a3a0b686cf1632aca92e744ae&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cI3fh",
+        "author": "github-actions",
+        "body": "Hello @LinuxIsCool! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6n1th-",
+    "number": 2908,
+    "title": "[V2] Embeddings",
+    "body": "Right now we have hardcoded embedding handling, and switching embedding providers with different dimensions causes issues\n\n1. Dynamic embedding tables -- embeddings for each provider are different, and have different lengths. They are not compatible with each other, even if they are same length. We should dynamically check and create embedding tables per provider and per embedding length (i.e. openai embeddings aren't even all the same length, ada embeddings vs large vs small for example)\n\n2. Move hardcoded embeddings out to plugins -- currently all embedding handling is inside the core, but we should have a runtime.call('generate::embedding', text) which plugins register to. Then adding new embeddings is as easy as registering a plugin\n\n3. Move all current embeddings to plugins\n\nNote: If I register Anthropic plugin, then OpenAI plugin, it should default to Anthropic models *except* for embeddings-- Anthropic doesn't provide embeddings, but OpenAI does. To the call will use the first available model and fall back to other models if not available.",
+    "state": "OPEN",
+    "createdAt": "2025-01-28T14:39:32Z",
+    "updatedAt": "2025-01-28T14:40:38Z",
+    "author": {
+      "login": "lalalune",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4"
+    },
+    "labels": [],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6n1T0F",
+    "number": 2907,
+    "title": "Parsing Issue When Sending a Message",
+    "body": "**Describe the bug**\nWhen using the Ollama API with the llava model, there is a parsing error when generating a message response. Additionally, tweets are being generated repeatedly on the same topic, and the localhost chat (http://localhost:5173) either doesn’t respond or delays for about two minutes before failing.\n\n**To Reproduce**\nSteps to reproduce the behavior:\n\t1.\tDownload the llava model via Ollama.\n\t2.\tStart the API and observe that it shows it is running.\n\t3.\tAttempt to generate messages via the localhost:5173 chat.\n\t4.\tObserve the JSON parsing error in the console logs.\n\n**Expected behavior**\nThe JSON response should parse correctly, tweets should have varied content, and the localhost chat should respond promptly.\n\n**Screenshots**\nN/A (Add if available to show the error logs or behavior).\n\n**Error Logs**\n\nℹ Using Ollama API at http://localhost:11434 with model llava\n\nError parsing JSON: SyntaxError: Expected property name or '}' in JSON at position 4 (line 1 column 5)\n    at JSON.parse (<anonymous>)\n    at parseJSONObjectFromText (file:///path/to/project/packages/core/dist/index.js:2424:33)\n    at generateMessageResponse (file:///path/to/project/packages/core/dist/index.js:29181:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async file:///path/to/project/packages/client-direct/dist/index.js:4470:30\n\n**Additional context**\n\t•\tThe API says it is running, but the generated tweets seem repetitive and lack variety.\n\t•\tTThere seems to be a delay in the localhost:5173 chat response sometimes, and if not every time, it doesn’t respond at all.\n\t•\tIt’s unclear if this is an issue with the llava model integration or a broader parsing issue within the core/dist or client-direct code.",
+    "state": "OPEN",
+    "createdAt": "2025-01-28T14:01:58Z",
+    "updatedAt": "2025-01-28T14:02:22Z",
+    "author": {
+      "login": "hellogreencow",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/12766164?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cHDNB",
+        "author": "github-actions",
+        "body": "Hello @hellogreencow! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6nxUhn",
+    "number": 2891,
+    "title": "Second Tweet from Agent Replies to User Instead of Initial Agent Tweet",
+    "body": "**Describe the bug**\nWhen the agent initiates an action (i.e. GENERATE_VIDEO), it sends two tweets:\n1. An initial tweet indicating the action has started.\n2. A second tweet with the payload once the action completes.\n\nHowever, the second tweet (with the payload) replies directly to the user’s original tweet instead of replying to the agent’s initial tweet. This disrupts the expected reply chain and makes the interaction unclear.\n\n**To Reproduce**\n1. Post a tweet to the agent requesting something (e.g., “generate a video of a butterfly”).\n2. Observe the agent’s initial tweet acknowledging the action initiation.\n3. Wait for the video generation process to complete.\n4. Observe the agent’s second tweet with the payload replying to the user’s original tweet instead of the agent’s initial tweet.\n\n**Expected behavior**\nThe second tweet (containing the payload) should reply to the agent’s initial tweet, maintaining a logical and consistent reply chain.\n\n**Additional context**\n\n- The issue may stem from how the framework handles inReplyToId or how the initial tweet ID is stored/passed to the second tweet.\n- A potential fix might involve explicitly capturing the agent’s initial tweet ID and ensuring it is passed as inReplyToId when sending the second tweet.\n\nLet me know if you need further adjustments! 🚀",
+    "state": "OPEN",
+    "createdAt": "2025-01-28T06:11:58Z",
+    "updatedAt": "2025-01-28T06:14:11Z",
+    "author": {
+      "login": "KennethAshley",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/1138619?u=2a975620c7a96d4898e162b58349d5e8ee6cfd99&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cCxiw",
+        "author": "github-actions",
+        "body": "Hello @KennethAshley! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6nxOBV",
+    "number": 2889,
+    "title": "SYSTEM PROMPT hack for actionExamples --  deepseek fix to remove (NONE), (CONTINUE), etc. to the text response",
+    "body": "**Describe the bug**\n\nwhen using deepseek-chat model,  often (NONE) or (CONTINUE) is added to the response.\n\n**To Reproduce**\n\nuse deepseek and converse\n\n**Expected behavior**\n\ndon't put that stuff in there\n\n**Screenshots**\n\n** code hack to to fix it: **\n\n`            actionExamples:\n                actionsData.length > 0\n                    ? addHeader(\n                          \"# Action Examples:  Each action such as CONTINUE, NONE, IGNORE, MUTE_ROOM, etc. is represented below in parenthesis for example: (CONTINUE).  These are indicators of which action should be called.  Do not include the items in parentheses in the response.\",\n                          composeActionExamples(actionsData, 10)\n                      )\n                    : \"\",\n`\n\n\n**Additional context**\n\n![Image](https://github.com/user-attachments/assets/b185e622-46bb-4969-a6fc-2d2ca7f8ecac)",
+    "state": "OPEN",
+    "createdAt": "2025-01-28T05:51:34Z",
+    "updatedAt": "2025-01-28T05:51:34Z",
+    "author": {
+      "login": "metakai1",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/174664733?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6nw23l",
+    "number": 2885,
+    "title": "Eliza chatbot client is not running on http://localhost:5173/",
+    "body": "http://localhost:5173/ on this host its not connecting showing disconnected like in the following SS but on 3000 its showing the REST API running.\n\n<img width=\"1792\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3d1840ca-8d5d-439d-9d6c-3059494fcb12\" />",
+    "state": "OPEN",
+    "createdAt": "2025-01-28T04:33:11Z",
+    "updatedAt": "2025-01-28T05:56:45Z",
+    "author": {
+      "login": "yasir23",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/46179498?u=89dcf261b397bb2930cbedce61e09b8df01998e6&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cCNHV",
+        "author": "github-actions",
+        "body": "Hello @yasir23! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6cCs9y",
+        "author": "tcm390",
+        "body": "Could you open the network tab and check which port is being used for fetching the agent?"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6cCtKi",
+        "author": "tcm390",
+        "body": "Maybe related to this: https://github.com/elizaOS/eliza/issues/2726"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6nwYGo",
+    "number": 2875,
+    "title": "Additional prompt feature based on service providers",
+    "body": "**Request feature**\n\nAnthropic supports a prefill feature that allows for more optimized and accurate responses. Similarly, GoogleAI offers a similar \"blank prompt prefill\" capability. Currently, there is no way to leverage these options in the system, which can hinder the performance of agents tasked with complex or delicate operations.\n\n**Describe the solution you'd like**\n\nAdd an optional prefill prompt field in the character.json configuration file. This would function similarly to the existing \"custom prompt\" field but would be specific to prefill-enabled providers like Anthropic and GoogleAI.\n\n**Example**\n```\n    \"clients\": [],\n    \"modelProvider\": \"anthropic\",\n    \"settings\": {\n        \"temperature\": 0,\n        \"secrets\": {},\n        \"voice\": {\n            \"model\": \"en_US-female-medium\"\n        }\n    },\n   \"prefill_prompt\" : \"You act as a character, who is currently working as a professional detective office. Remain this tone and narrative as an actor.\"\n```\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-28T02:23:36Z",
+    "updatedAt": "2025-01-28T02:24:00Z",
+    "author": {
+      "login": "naiveai-dev",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/196733228?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cBb-l",
+        "author": "github-actions",
+        "body": "Hello @naiveai-dev! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6nwE5j",
+    "number": 2871,
+    "title": "Error after updating to latest version",
+    "body": "I am getting the following error. Would like to know how to resolve this: \n(node:23019) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\n(node:23019) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n\nnode:internal/modules/run_main:104\n    triggerUncaughtException(\n    ^\nError: Cannot find module '/home/sonat/eliza/agent/node_modules/@elizaos/adapter-pglite/dist/index.js' imported from /home/sonat/eliza/agent/src/index.ts\n    at finalizeResolution (/home/sonat/eliza/node_modules/ts-node/dist-raw/node-internal-modules-esm-resolve.js:352:11)\n    at moduleResolve (/home/sonat/eliza/node_modules/ts-node/dist-raw/node-internal-modules-esm-resolve.js:801:10)\n    at Object.defaultResolve (/home/sonat/eliza/node_modules/ts-node/dist-raw/node-internal-modules-esm-resolve.js:912:11)\n    at /home/sonat/eliza/node_modules/ts-node/src/esm.ts:218:35\n    at entrypointFallback (/home/sonat/eliza/node_modules/ts-node/src/esm.ts:168:34)\n    at /home/sonat/eliza/node_modules/ts-node/src/esm.ts:217:14\n    at addShortCircuitFlag (/home/sonat/eliza/node_modules/ts-node/src/esm.ts:409:21)\n    at resolve (/home/sonat/eliza/node_modules/ts-node/src/esm.ts:197:12)\n    at nextResolve (node:internal/modules/esm/hooks:748:28)\n    at Hooks.resolve (node:internal/modules/esm/hooks:240:30)\n\nNode.js v23.5.0",
+    "state": "OPEN",
+    "createdAt": "2025-01-28T01:17:20Z",
+    "updatedAt": "2025-01-28T04:15:55Z",
+    "author": {
+      "login": "sonatonagems",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/49692475?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cCIlS",
+        "author": "naiveai-dev",
+        "body": "Same happened in Node 23.3.0.\nNode 23.6.0 also seems like not compatible with 0.1.8.\nIt works fine in 0.1.7 for some reason"
+      }
+    ]
+  },
+  {
     "id": "I_kwDOMT5cIs6nvvd1",
     "number": 2867,
     "title": "TypeError: basex is not a function",
@@ -46,233 +426,6 @@
         "id": "IC_kwDOMT5cIs6b_P4D",
         "author": "github-actions",
         "body": "Hello @photografereth! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6nt04Q",
-    "number": 2859,
-    "title": "plugin-asterai: test config and test coverage",
-    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nThe plugin-asterai package lacks comprehensive test coverage, which makes it difficult to ensure reliability and catch potential issues. \n**Describe the solution you'd like**\n\n<!-- A clear and concise description of what you want to happen. -->\n-Test coverage for all key functionalities:\nEnvironment configuration validation\nQuery handling and responses\nError handling scenarios\nProvider summary fetching and caching\nMemory management through the knowledge manager\n-Test organization improvements:\nClear test structure with describe/it blocks\nProper beforeEach setup for each test\nConsistent mock implementations across test files\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
-    "state": "OPEN",
-    "createdAt": "2025-01-27T18:53:15Z",
-    "updatedAt": "2025-01-27T18:53:15Z",
-    "author": {
-      "login": "ai16z-demirix",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
-        "name": "enhancement",
-        "color": "a2eeef",
-        "description": "New feature or request"
-      }
-    ],
-    "comments": []
-  },
-  {
-    "id": "I_kwDOMT5cIs6ntshK",
-    "number": 2858,
-    "title": "[V2] Move all models to runtime.call() and implement runtime.call() from v2-research",
-    "body": "Currently models are hardcoded into core as embedding, image model, text generation model, etc.\n\nWe have a new pattern in `v2-research` where the runtime calls an async function using `async runtime.call(functionName, functionParams)` -- we want to migrate this pattern to core and remove all hardcoded models, embedding providers, etc. Instead, handlers will be registered through plugins by function name. The first registered function will be called.\n\nStuff like this will go away completely:\n```\nexport const EmbeddingProvider = {\n    OpenAI: \"OpenAI\",\n    Ollama: \"Ollama\",\n    GaiaNet: \"GaiaNet\",\n    Heurist: \"Heurist\",\n    BGE: \"BGE\",\n} as const;\n```\n\nWe should make sure to call trimTokens inside each model provider to make sure the token length is right, so we don't need to pass model info back into the runtime.\n\nWe should add events for the generation as well, so we can hook in proofs or attestations or hashes or whatever a user might want to add.\n\nWe should add runtime tests for calls and events.\n\nFor local modelProvider, we should make ollama a plugin that operates separately and move the code that is currently in the llama service.\n\nchunkSize has been set by model settings, if hardcoding chunk size is bad then we may want to get a call('getModelContextLength') function\n\nWe've been calling image generation through plugin-node/src/services/image.ts -- this is a bad pattern anyways, but also we can migrate this code to runtime.call()",
-    "state": "OPEN",
-    "createdAt": "2025-01-27T18:35:59Z",
-    "updatedAt": "2025-01-27T23:17:13Z",
-    "author": {
-      "login": "lalalune",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAAB1dE8Sw",
-        "name": "V2",
-        "color": "1670F6",
-        "description": "Eliza 0.2.0"
-      }
-    ],
-    "comments": []
-  },
-  {
-    "id": "I_kwDOMT5cIs6ntrLA",
-    "number": 2857,
-    "title": "[V2] Consolidate RagKnowledge and Knowledge",
-    "body": "In the current core we have duplicate uses of RAG. knowledge.ts should serve all of our knowledge retrieval needs, and ragKnowledge.ts should get rolled up into this",
-    "state": "OPEN",
-    "createdAt": "2025-01-27T18:33:10Z",
-    "updatedAt": "2025-01-27T18:33:10Z",
-    "author": {
-      "login": "lalalune",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAAB1dE8Sw",
-        "name": "V2",
-        "color": "1670F6",
-        "description": "Eliza 0.2.0"
-      }
-    ],
-    "comments": []
-  },
-  {
-    "id": "I_kwDOMT5cIs6ns5rO",
-    "number": 2856,
-    "title": "A feature to collect information from Telegram group or Discord channel",
-    "body": "I would like to collect information about communities in Telegram groups and Discord channels. Based on my review so far, it seems possible to infiltrate communities using bots or connect sessions with user accounts in the case of Telegram, but these methods are quite limited. It would be great if the Eliza-provided Agent could include an additional feature to collect community information and export it.",
-    "state": "OPEN",
-    "createdAt": "2025-01-27T17:03:54Z",
-    "updatedAt": "2025-01-27T17:04:27Z",
-    "author": {
-      "login": "Resister-boy",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/104838360?v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
-        "name": "enhancement",
-        "color": "a2eeef",
-        "description": "New feature or request"
-      }
-    ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6b8tU6",
-        "author": "github-actions",
-        "body": "Hello @Resister-boy! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6nsYXU",
-    "number": 2853,
-    "title": "plugin anyone: test config and coverate",
-    "body": "**Is your feature request related to a problem? Please describe.**\nThe plugin-anyone package lacks proper test coverage for its core functionality, specifically the startAnyone and stopAnyone actions. Without comprehensive tests, we couldn't ensure the reliability of the Anyone client and proxy service initialization/cleanup processes, making it difficult to catch potential issues before they affect production.\n**Describe the solution you'd like**\n\n<!-- A clear and concise description of what you want to happen. -->\n- Add Vitest as testing framework\n* Create __tests__ directory in package root\n* Add tests for startAnyone and stopAnyone actions\n* No use of undefined, unknown or other unsafe type casts\n* Add basic vitest config\n* Add test scripts to package.json:\n    * test: Run tests once\n    * test:watch: Run tests in watch mode\nThe tests should cover:\n* Action validation\n* Handler functionality\n* Service initialization/cleanup\n* Error handling\n* Action metadata validation\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
-    "state": "CLOSED",
-    "createdAt": "2025-01-27T16:08:56Z",
-    "updatedAt": "2025-01-27T16:59:10Z",
-    "author": {
-      "login": "ai16z-demirix",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
-        "name": "enhancement",
-        "color": "a2eeef",
-        "description": "New feature or request"
-      }
-    ],
-    "comments": []
-  },
-  {
-    "id": "I_kwDOMT5cIs6nr-FZ",
-    "number": 2851,
-    "title": "Publish plugin-sui",
-    "body": "**Is your feature request related to a problem? Please describe.**\n\nWe can't install plugin-sui because `@elizaos/plugin-sui is not in the npm registry, or you have no permission to fetch it.`\n\n**Describe the solution you'd like**\n\nPublish `plugin-sui` as npm registry \n",
-    "state": "OPEN",
-    "createdAt": "2025-01-27T15:24:50Z",
-    "updatedAt": "2025-01-27T15:41:49Z",
-    "author": {
-      "login": "hoangquocvietuet",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/108970301?u=53396fc47cb2060adc755700e0067bcb23d40fac&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
-        "name": "enhancement",
-        "color": "a2eeef",
-        "description": "New feature or request"
-      }
-    ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6b7e8V",
-        "author": "github-actions",
-        "body": "Hello @hoangquocvietuet! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6b7poG",
-        "author": "hoangquocvietuet",
-        "body": "May i ask why some packages are published, some aren't?\n\ncc: @shakkernerd "
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6nrj81",
-    "number": 2849,
-    "title": "plugin-3d-generation: test config and test coverage",
-    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nThe 3D generation plugin will need enhanced test coverage in several areas that will be important for future development:\n1. The test suite will need to cover queue update callback functionality from the FAL API\n2. There will be a need to test different types of 3D model responses (various file formats and sizes)\n3. The error handling tests will need to be more specific about different types of API errors that could occur\n**Describe the solution you'd like**\n\n<!-- A clear and concise description of what you want to happen. -->\n1. New test cases for queue updates will:\n    * Test how progress updates will be handled during generation\n    * Verify how queue position updates will be managed\n    * Ensure cancellation scenarios will be properly handled\n2. Additional test cases for different model formats will:\n    * Verify how .glb files will be processed\n    * Ensure .obj files will be handled correctly\n    * Test how different file sizes will be managed\n3. Enhanced error handling tests will:\n    * Cover specific API error codes that might occur\n    * Verify how network timeouts will be handled\n    * Test how rate limiting will be managed\n    * Ensure invalid API key formats will be properly detected\nThese improvements will make our test suite more comprehensive and will help catch edge cases before they become issues in production.\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
-    "state": "CLOSED",
-    "createdAt": "2025-01-27T14:42:07Z",
-    "updatedAt": "2025-01-27T16:59:19Z",
-    "author": {
-      "login": "ai16z-demirix",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
-        "name": "enhancement",
-        "color": "a2eeef",
-        "description": "New feature or request"
-      }
-    ],
-    "comments": []
-  },
-  {
-    "id": "I_kwDOMT5cIs6nnfQx",
-    "number": 2825,
-    "title": "chore: Add missing README.md files for packages folder",
-    "body": "**Is your feature request related to a problem? Please describe.**\n\nMissing README.md files:\n\n- [ ] adapter-mongodb\n- [ ] adapter-pglite\n- [ ] adapter-postgres\n- [ ] adapter-qdrant\n- [ ] adapter-redis\n- [ ] adapter-sqlite\n- [ ] adapter-sqljs\n- [ ] adapter-supabase\n- [ ] client-alexa\n- [ ] client-auto\n- [ ] client-direct\n- [x] client-discord\n- [ ] client-eliza-home\n- [ ] client-farcaster\n- [ ] client-lens\n- [ ] client-simsai\n- [ ] client-twitter\n- [ ] core\n- [ ] _examples\n- [x] plugin-allora\n- [x] plugin-ankr\n- [x] plugin-anyone\n- [x] plugin-autonome\n- [x] plugin-dexscreener\n- [x] plugin-genlayer\n- [x] plugin-goplus\n- [x] plugin-nvidia-nim\n- [x] plugin-omniflix\n- [x] plugin-solana-agent-kit\n- [ ] plugin-solana-agentkit\n- [ ] plugin-story\n\n**Describe the solution you'd like**\n\nAdd a README for each\n\n**Describe alternatives you've considered**\n\n\n**Additional context**\n\n",
-    "state": "OPEN",
-    "createdAt": "2025-01-27T05:58:00Z",
-    "updatedAt": "2025-01-27T06:27:45Z",
-    "author": {
-      "login": "madjin",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/32600939?u=cdcf89f44c7a50906c7a80d889efa85023af2049&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWw",
-        "name": "documentation",
-        "color": "0075ca",
-        "description": "Improvements or additions to documentation"
-      },
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
-        "name": "enhancement",
-        "color": "a2eeef",
-        "description": "New feature or request"
-      }
-    ],
-    "comments": []
-  },
-  {
-    "id": "I_kwDOMT5cIs6nm0R2",
-    "number": 2815,
-    "title": "node-llama-cpp",
-    "body": "I continue getting this when following the install instructions and running `pnpm install --no-frozen-lockfile`\n\n```\nnode_modules/canvas: Running install script...\nnode_modules/node-llama-cpp: Running postinstall script, failed in 2.4s\nnode_modules/node-llama-cpp postinstall$ node ./dist/cli/cli.js postinstall\n└─ Failed in 2.4s at /eliza/node_modules/node-llama-cpp\n```\n\nRunning on `Apple M1 Max 64 GB Sonoma`\n\nI get the same issue on the main and latest branch \n\nThere have been multiple issues created about this and suggested workarounds that I've tried but the error is still persisting. Is there a more official/consistent solution? Can the post install script be skipped outright? \n",
-    "state": "OPEN",
-    "createdAt": "2025-01-27T02:39:54Z",
-    "updatedAt": "2025-01-27T02:40:20Z",
-    "author": {
-      "login": "emmajane1313",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/72898465?u=a9243eb7c3b305d3c805622b7a9bce59e15d096c&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6b2e2c",
-        "author": "github-actions",
-        "body": "Hello @emmajane1313! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
       }
     ]
   }
