@@ -213,9 +213,16 @@ def generate_summary(data: Dict, model: str, api_key: str = None) -> str:
         
         if model == "openai":
             from openai import OpenAI
-            client = OpenAI(api_key=api_key)
+            client = OpenAI(
+                api_key=api_key,
+                base_url="https://openrouter.ai/api/v1",
+                default_headers={
+                    "HTTP-Referer": os.getenv("SITE_URL", "https://elizaos.github.io"),
+                    "X-Title": os.getenv("SITE_NAME", "ElizaOS Contributors")
+                }
+            )
             response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="openai/gpt-3.5-turbo",  # Specify OpenAI model via OpenRouter
                 messages=[
                     {"role": "system", "content": "You are a technical writer analyzing GitHub contributions."},
                     {"role": "user", "content": get_summary_prompt(data, activity, stats)}
@@ -243,9 +250,16 @@ def generate_thread(issues: List[str], prs: List[str], summaries: List[str],
     try:
         if model == "openai" and api_key:
             from openai import OpenAI
-            client = OpenAI(api_key=api_key)
+            client = OpenAI(
+                api_key=api_key,
+                base_url="https://openrouter.ai/api/v1",
+                default_headers={
+                    "HTTP-Referer": os.getenv("SITE_URL", "https://elizaos.github.io"),
+                    "X-Title": os.getenv("SITE_NAME", "ElizaOS Contributors")
+                }
+            )
             response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="openai/gpt-3.5-turbo",  # Specify OpenAI model via OpenRouter
                 messages=[
                     {"role": "system", "content": "You are a technical writer creating engaging Twitter threads about software development progress."},
                     {"role": "user", "content": get_thread_prompt(issues, prs, summaries)}
@@ -298,12 +312,12 @@ def main():
         parser.print_help()
         return
 
-    # Check for OpenAI API key only if using OpenAI
+    # Check for API key (OpenRouter first, fallback to OpenAI)
     api_key = None
     if args.model == "openai":
-        api_key = os.getenv("OPENAI_API_KEY")
+        api_key = os.getenv("OPENROUTER_API_KEY") or os.getenv("OPENAI_API_KEY")
         if not api_key:
-            print("Warning: OPENAI_API_KEY not found, falling back to ollama")
+            print("Warning: Neither OPENROUTER_API_KEY nor OPENAI_API_KEY found, falling back to ollama")
             args.model = "ollama"
 
     if args.command == "summary":
