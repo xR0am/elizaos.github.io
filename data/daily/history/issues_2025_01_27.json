@@ -1,5 +1,55 @@
 [
   {
+    "id": "I_kwDOMT5cIs6nvvd1",
+    "number": 2867,
+    "title": "TypeError: basex is not a function",
+    "body": "Setup:\nnode 23.3.0\npnpm 9.15.2\nWindows 10 Pro\n\nI can install and build ok, but when I start the app: \n\n> pnpm start --character=\"characters/mycharacter.character.json”\n\nI keep getting this error:\n\nTypeError: **basex is not a function**\n    at Object.<anonymous> (C:\\Users\\raftus\\Documents\\Websites\\eliza\\packages\\plugin-nft-generation\\node_modules\\@solana\\web3.js\\node_modules\\bs58\\bs58\\index.js:4:18)\n    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n    at Object..js (node:internal/modules/cjs/loader:1698:10)\n    at Module.load (node:internal/modules/cjs/loader:1303:32)\n    at Function._load (node:internal/modules/cjs/loader:1117:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n    at Module.require (node:internal/modules/cjs/loader:1325:12)\n    at require (node:internal/modules/helpers:136:16)\n    at Object.<anonymous> (C:\\Users\\raftus\\Documents\\Websites\\eliza\\packages\\plugin-nft-generation\\node_modules\\@solana\\web3.js\\lib\\index.cjs.js:s.js:6:12)\n\nThe only .env variables I've set are OPENAI_API_KEY and USE_OPENAI_EMBEDDING\n\n![Image](https://github.com/user-attachments/assets/62740db1-32f4-4e7d-92d6-863cab78139f)\n\nAll the references to bs58 seem to be consistent (\"6.0.0\"). Anyone else come across this problem?",
+    "state": "OPEN",
+    "createdAt": "2025-01-27T23:54:43Z",
+    "updatedAt": "2025-01-27T23:54:43Z",
+    "author": {
+      "login": "RalphLavelle",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/1059059?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6nvWGP",
+    "number": 2864,
+    "title": "Btcfun crash",
+    "body": "**Describe the bug**\n\nBtcfun auto start plugin is crashing with code 7.\nAparently Two node versions conflict on btcfun plugin\n\n**To Reproduce**\n\n1. last version repo \n2. start default character\n3. llocal_llama model\n\n**Screenshots**\n\n{preloadDylibs();dylibsLoaded=true;if(runDependencies>0){return}}if(ENVIRONMENT_IS_PTHREAD){initRuntime();startWorker(Module);return}preRun();if(runDependencies>0){return}function doRun(){if(calledRun)return;calledRun=true;Module[\"calledRun\"]=true;if(ABORT)return;initRuntime();preMain();if(Module[\"onRuntimeInitialized\"])Module[\"onRuntimeInitialized\"]();if(shouldRunNow)callMain(args);postRun()}if(Module[\"setStatus\"]){Module[\"setStatus\"](\"Running...\");setTimeout(function(){setTimeout(function(){Module[\"setStatus\"](\"\")},1);doRun()},1)}else{doRun()}checkStackCookie()}function checkUnflushedContent(){var oldOut=out;var oldErr=err;var has=false;out=err=x=>{has=true};try{_fflush(0);[\"stdout\",\"stderr\"].forEach(function(name){var info=FS.analyzePath(\"/dev/\"+name);if(!info)return;var stream=info.object;var rdev=stream.rdev;var tty=TTY.ttys[rdev];if(tty&&tty.output&&tty.output.length){has=true}})}catch(e){}out=oldOut;err=oldErr;if(has){warnOnce(\"stdio streams had content in them that was not flushed. you should set EXIT_RUNTIME to 1 (see the FAQ), or make sure to emit a newline when you printf etc.\")}}if(Module[\"preInit\"]){if(typeof Module[\"preInit\"]==\"function\")Module[\"preInit\"]=[Module[\"preInit\"]];while(Module[\"preInit\"].length>0){Module[\"preInit\"].pop()()}}var shouldRunNow=true;if(Module[\"noInitialRun\"])shouldRunNow=false;run();\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            \n\nError: Dynamic require of \"buffer\" is not supported\n    at file:///Users/Documents/eliza/packages/plugin-btcfun/dist/index.js:12:11\n    at ../../node_modules/bitcoinjs-lib/src/types.js (file:///Users/Documents/eliza/packages/plugin-btcfun/dist/index.js:954:24)\n    at __require2 (file:///Users/Documents/eliza/packages/plugin-btcfun/dist/index.js:15:52)\n    at ../../node_modules/bitcoinjs-lib/src/script_signature.js (file:///Users//Documents/eliza/packages/plugin-btcfun/dist/index.js:1041:21)\n    at __require2 (file:///Users/Documents/eliza/packages/plugin-btcfun/dist/index.js:15:52)\n    at ../../node_modules/bitcoinjs-lib/src/script.js (file:///Users/Documents/eliza/packages/plugin-btcfun/dist/index.js:1108:31)\n    at __require2 (file:///Users/Documents/eliza/packages/plugin-btcfun/dist/index.js:15:52)\n    at ../../node_modules/bitcoinjs-lib/src/payments/embed.js (file:///Users/Documents/eliza/packages/plugin-btcfun/dist/index.js:1321:23)\n    at __require2 (file:///Users/Documents/eliza/packages/plugin-btcfun/dist/index.js:15:52)\n    at ../../node_modules/bitcoinjs-lib/src/payments/index.js (file:///Users/Documents/eliza/packages/plugin-btcfun/dist/index.js:4669:23)\n    at __require2 (file:///Users/Documents/eliza/packages/plugin-btcfun/dist/index.js:15:52)\n    at ../../node_modules/bitcoinjs-lib/src/address.js (file:///Users/Documents/eliza/packages/plugin-btcfun/dist/index.js:4734:24)\n    at __require2 (file:///Users/Documents/eliza/packages/plugin-btcfun/dist/index.js:15:52)\n    at ../../node_modules/bitcoinjs-lib/src/index.js (file:///Users/Documents/eliza/packages/plugin-btcfun/dist/index.js:8966:23)\n    at __require2 (file:///Users/Documents/eliza/packages/plugin-btcfun/dist/index.js:15:52)\n    at file:///Users/Documents/eliza/packages/plugin-btcfun/dist/index.js:14297:36\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\n\nNode.js v23.3.0\n/Users/Documents/eliza/agent:\n ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @elizaos/agent@0.1.9-alpha.1 start: `node --loader ts-node/esm src/index.ts \"--isRoot\"`\nExit status 7\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-27T22:40:00Z",
+    "updatedAt": "2025-01-27T22:40:26Z",
+    "author": {
+      "login": "photografereth",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/108369375?u=1f75b8587e3d6ac304cca64bec6d2cd1c345459d&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6b_P4D",
+        "author": "github-actions",
+        "body": "Hello @photografereth! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
     "id": "I_kwDOMT5cIs6nt04Q",
     "number": 2859,
     "title": "plugin-asterai: test config and test coverage",
@@ -25,10 +75,10 @@
     "id": "I_kwDOMT5cIs6ntshK",
     "number": 2858,
     "title": "[V2] Move all models to runtime.call() and implement runtime.call() from v2-research",
-    "body": "Currently models are hardcoded into core as embedding, image model, text generation model, etc.\n\nWe have a new pattern in `v2-research` where the runtime calls an async function using `async runtime.call(functionName, functionParams)` -- we want to migrate this pattern to core and remove all hardcoded models, embedding providers, etc. Instead, handlers will be registered through plugins by function name. The first registered function will be called.\n\nStuff like this will go away completely:\n```\nexport const EmbeddingProvider = {\n    OpenAI: \"OpenAI\",\n    Ollama: \"Ollama\",\n    GaiaNet: \"GaiaNet\",\n    Heurist: \"Heurist\",\n    BGE: \"BGE\",\n} as const;\n```",
+    "body": "Currently models are hardcoded into core as embedding, image model, text generation model, etc.\n\nWe have a new pattern in `v2-research` where the runtime calls an async function using `async runtime.call(functionName, functionParams)` -- we want to migrate this pattern to core and remove all hardcoded models, embedding providers, etc. Instead, handlers will be registered through plugins by function name. The first registered function will be called.\n\nStuff like this will go away completely:\n```\nexport const EmbeddingProvider = {\n    OpenAI: \"OpenAI\",\n    Ollama: \"Ollama\",\n    GaiaNet: \"GaiaNet\",\n    Heurist: \"Heurist\",\n    BGE: \"BGE\",\n} as const;\n```\n\nWe should make sure to call trimTokens inside each model provider to make sure the token length is right, so we don't need to pass model info back into the runtime.\n\nWe should add events for the generation as well, so we can hook in proofs or attestations or hashes or whatever a user might want to add.\n\nWe should add runtime tests for calls and events.\n\nFor local modelProvider, we should make ollama a plugin that operates separately and move the code that is currently in the llama service.\n\nchunkSize has been set by model settings, if hardcoding chunk size is bad then we may want to get a call('getModelContextLength') function\n\nWe've been calling image generation through plugin-node/src/services/image.ts -- this is a bad pattern anyways, but also we can migrate this code to runtime.call()",
     "state": "OPEN",
     "createdAt": "2025-01-27T18:35:59Z",
-    "updatedAt": "2025-01-27T18:35:59Z",
+    "updatedAt": "2025-01-27T23:17:13Z",
     "author": {
       "login": "lalalune",
       "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4"

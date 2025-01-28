@@ -1,36 +1,43 @@
-# elizaos Eliza (2025-01-26)
+# elizaos Eliza (2025-01-27)
     
 ## 📊 Overview
-Development focused on 1 bug fixes. with 16 contributors merging 1 PRs. Major work included various improvements.
+Development focused on package improvements (plugin-story), new features (twitter post media), 18 bug fixes. with 29 contributors merging 30 PRs. Major work included unable to generate summary for aiflowml due to an error.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 16 |
-| 📝 Commits | 8 |
-| 🔄 Merged PRs | 1 |
-| ⚠️ New Issues | 8 |
+| 👥 Contributors | 29 |
+| 📝 Commits | 70 |
+| 🔄 Merged PRs | 30 |
+| ⚠️ New Issues | 9 |
 
 ## 🔄 Pull Request Summary
 - 🧹 **Chores**: 0
-- 🐛 **Fixes**: 1
-- ✨ **Features**: 0
+- 🐛 **Fixes**: 18
+- ✨ **Features**: 3
 
 ## 📁 File Changes
-- **packages**: 1 files (+1/-1 lines)
+- **packages**: 97 files (+2790/-809 lines)
+- **root**: 7 files (+1302/-1316 lines)
+- **agent**: 6 files (+179/-163 lines)
+- **docs**: 1 files (+6/-2 lines)
 
 ## 🔥 Notable Changes
-- fix: bug in goal objectives update lookup logic
+- fix: plugin-story
+- fix: plugin-sui
+- fix: plugin-suno
 
 ## 👥 Top Contributors
-- **Alirun**: Unable to generate summary for Alirun due to an error
-- **actuallyrizzn**: Unable to generate summary for actuallyrizzn due to an error
+- **AIFlowML**: Unable to generate summary for AIFlowML due to an error
 - **ai16z-demirix**: Unable to generate summary for ai16z-demirix due to an error
+- **rubinovitz**: Unable to generate summary for rubinovitz due to an error
 
 ## ⚠️ Issues
-- **New Issues**: 8
-- **Labels**: `bug` (4), `enhancement` (3)
-- **Summary**: 4 bugs reported (including 'Headless Web Interface Won't Connect (0.1.8+build-1)', 'Unable to get Discord to work as a channel. Infinite loop, <Lyra is typing...> infinitely') 3 feature requests (including 'plugin-0x: test configuration and test coverage', 'plugin-0g: test configuration and test coverage').
+- **New Issues**: 9
+- **Labels**: `enhancement` (6), `V2` (2), `documentation` (1)
+- **Summary**: 1 bugs reported (including 'node-llama-cpp') 6 feature requests (including 'plugin-asterai: test config and test coverage', 'plugin anyone: test config and coverate').
 
 ## Top Contributors
-- **Alirun**: fix: bug in goal objectives update lookup logic
+- **AIFlowML**: fix: plugin-story
+- **ai16z-demirix**: chore(add-tests): plugin anyone: test config and test coverage
+- **rubinovitz**: fix: still run Farcaster client loop if error
