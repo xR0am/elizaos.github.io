@@ -49,7 +49,9 @@ jobs:
       - name: Process daily data
         env:
           GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          SITE_URL: 'https://elizaos.github.io'
+          SITE_NAME: 'ElizaOS Contributors'
         run: |
           # Create directories
           mkdir -p data/daily data/daily/history
@@ -81,7 +83,9 @@ jobs:
         if: env.IS_FRIDAY == '5'
         env:
           GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          SITE_URL: 'https://elizaos.github.io'
+          SITE_NAME: 'ElizaOS Contributors'
         run: |
           # Create directories
           mkdir -p data/weekly/history data/weekly/threads/history
@@ -124,7 +128,9 @@ jobs:
         if: env.IS_MONTH_START == '4'
         env:
           GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          SITE_URL: 'https://elizaos.github.io'
+          SITE_NAME: 'ElizaOS Contributors'
         run: |
           # Create directories
           mkdir -p data/monthly/history

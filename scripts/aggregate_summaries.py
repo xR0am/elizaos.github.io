@@ -18,9 +18,12 @@ except ImportError:
     ChatOllama = None
 
 class ContributorAnalyzer:
-    def __init__(self, model: str = "ollama", api_key: str = None):
+    def __init__(self, model: str = "ollama", api_key: str = None, 
+                 site_url: str = None, site_name: str = None):
         self.model_type = model
         self.api_key = api_key
+        self.site_url = site_url
+        self.site_name = site_name
         self.llm = self._init_model()
         
     def _init_model(self):
@@ -31,7 +34,18 @@ class ContributorAnalyzer:
                 temperature=0.1
             )
         elif self.model_type == "openai" and self.api_key:
-            return OpenAI(api_key=self.api_key)
+            base_url = "https://openrouter.ai/api/v1" if self.site_url else None
+            default_headers = {}
+            if self.site_url:
+                default_headers["HTTP-Referer"] = self.site_url
+            if self.site_name:
+                default_headers["X-Title"] = self.site_name
+                
+            return OpenAI(
+                api_key=self.api_key,
+                base_url=base_url,
+                default_headers=default_headers if default_headers else None
+            )
         return None
 
     def generate_period_summary(self, contributor: Dict, period: str) -> str:
@@ -239,9 +253,18 @@ def main():
     # Initialize analyzer if using a model
     analyzer = None
     if args.model != "none":
-        api_key = os.getenv("OPENAI_API_KEY") if args.model == "openai" else None
-        analyzer = ContributorAnalyzer(model=args.model, api_key=api_key)
-    
+        api_key = os.getenv("OPENROUTER_API_KEY") or os.getenv("OPENAI_API_KEY")
+        site_url = os.getenv("SITE_URL")
+        site_name = os.getenv("SITE_NAME")
+        
+        if api_key:
+            analyzer = ContributorAnalyzer(
+                model=args.model, 
+                api_key=api_key,
+                site_url=site_url,
+                site_name=site_name
+            )
+
     # Load analysis.json
     print(f"\nLoading analysis from {args.analysis}")
     with open(args.analysis) as f:
