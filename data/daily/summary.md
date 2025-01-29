@@ -1,44 +1,44 @@
-# elizaos Eliza (2025-01-28)
+# elizaos Eliza (2025-01-29)
     
 ## 📊 Overview
-Development focused on package improvements (plugin-arbitrage), 19 bug fixes. with 36 contributors merging 28 PRs. Major work included aiflowml is currently focusing on fixing typing issues and logic errors in the codebase, particularly related to state reassignment and code structure.
+Development focused on package improvements (plugin-image-generation), new features (add public access to packages.), 25 bug fixes. with 31 contributors merging 46 PRs. Major work included aiflowml is currently fixing typing issues and errors in the codebase, with a focus on imports and type annotations.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 36 |
-| 📝 Commits | 67 |
-| 🔄 Merged PRs | 28 |
+| 👥 Contributors | 31 |
+| 📝 Commits | 131 |
+| 🔄 Merged PRs | 46 |
 | ⚠️ New Issues | 17 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 2
-- 🐛 **Fixes**: 19
-- ✨ **Features**: 0
+- 🧹 **Chores**: 4
+- 🐛 **Fixes**: 25
+- ✨ **Features**: 2
 
 ## 📁 File Changes
-- **packages**: 170 files (+1864/-1261 lines)
-- **agent**: 2 files (+1578/-1190 lines)
-- **root**: 9 files (+508/-519 lines)
-- **client**: 2 files (+33/-24 lines)
-- **patches**: 1 files (+13/-0 lines)
+- **root**: 3 files (+2833/-3496 lines)
+- **packages**: 108 files (+3563/-984 lines)
+- **agent**: 3 files (+163/-171 lines)
+- **i18n**: 1 files (+138/-23 lines)
+- **scripts**: 1 files (+25/-0 lines)
 
 ## 🔥 Notable Changes
-- fix: plugin-arbitrage 
-- fix: plugin-omniflix
-- fix: plugin-opacity
+- fix(lint): plugin-image-generation
+- fix(lint): plugin-imgflip
+- fix: plugin-initia 
 
 ## 👥 Top Contributors
-- **AIFlowML**: AIFlowML is currently focusing on fixing typing issues and logic errors in the codebase, particularly related to state reassignment and code structure
-- **odilitime**: odilitime is primarily working on merging pull requests related to fixing vulnerabilities and code issues in various packages
-- **tcm390**: tcm390 is currently working on cleaning up code, defining server ports, and implementing null checks in the agent, client, and packages code areas
+- **AIFlowML**: AIFlowML is currently fixing typing issues and errors in the codebase, with a focus on imports and type annotations
+- **tcm390**: tcm390 is currently working on adding missing plugins and states to the agent and packages code areas
+- **ai16z-demirix**: ai16z-demirix is currently working on creating tests and configurations for various plugins such as plugin-avalanche and plugin-avail
 
 ## ⚠️ Issues
 - **New Issues**: 17
-- **Labels**: `bug` (10), `enhancement` (4), `V2` (2)
-- **Summary**: 10 bugs reported (including '{{maxTweetLength}} doesn't work in tweet post template', 'ragKnowledge blows up prompt by retrieving entire documents.') 4 feature requests (including '[Feature Request] Runtime Configuration.', '[Feature Request] - Implement Reranked Contextual Embedding + cBM25 as per Anthropic Blog as default RAG Implementation').
+- **Labels**: `enhancement` (11), `bug` (3), `ton-plugin-bounty` (2)
+- **Summary**: 3 bugs reported (including 'Latest release version `v0.1.8-alpha.1` is NOT BUILDING', 'Bug: Error when loading client without OpenAI API key') 11 feature requests (including 'plugin avalanche: test config and coverate', 'plugin-avail: test config and coverage').
 
 ## Top Contributors
-- **AIFlowML**: fix: plugin-arbitrage 
-- **odilitime**: chore: bump version to 0.1.9
-- **tcm390**: fix: client server port
+- **AIFlowML**: fix(lint): plugin-image-generation
+- **tcm390**: fix: ensure action tweet replies to agent's initial tweet
+- **ai16z-demirix**: feat (chore): plugin avalanche test config and coverage

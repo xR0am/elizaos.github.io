@@ -1,0 +1,471 @@
+[
+  {
+    "id": "I_kwDOMT5cIs6oDV2X",
+    "number": 3002,
+    "title": "add new plugin fuse",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nFuse Network EVM chain doesn't have yet actions specific to this blockchain, Avalanche and other EVM chains have a plugin dedicated to their chain so Fuse should have also.\n\n**Describe the solution you'd like**\n\nI would like to build plugin-fuse for actions specific to this blockchain as Avalanche has done.\n\n**Describe alternatives you've considered**\n\nI've considered to use first plugin-evm and it worked but only with native token transfers so it's too limited.\n\n**Additional context**\n\nWill improve this plugin incrementally, proposing a basic version first.\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-29T22:12:09Z",
+    "updatedAt": "2025-01-29T22:12:09Z",
+    "author": {
+      "login": "bertux",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/5703?u=d610e95806f6c2c59e9f6e8b14350fabb0d86e39&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6oC3_9",
+    "number": 3001,
+    "title": "Bug: Error when loading client without OpenAI API key",
+    "body": "**Describe the bug**\n\nOpenAI embeddings set to TRUE in .env configuration causing error when loading character without an OpenAI API key. \n\n![Image](https://github.com/user-attachments/assets/e577983a-2775-4c05-a5b8-5b1cecad93af)\n\n<!-- A clear and concise description of what the bug is. -->\n\n**To Reproduce**\n\n- pull latest develop branch\n- run agent without OpenAI API key configured in .env file \n- see error \n\n<!-- Steps to reproduce the behavior. -->\n\n**Expected behavior**\nexpect agent to run without using OpenAI API key. \n\n<!-- A clear and concise description of what you expected to happen. -->\n\n**Screenshots**\n\n![Image](https://github.com/user-attachments/assets/08f515cc-4ee1-4073-8aaa-9955aae7ddb6)\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n\ntried setting OpenAI embeddings to default but the agent gets stuck in generating text: \n\n![Image](https://github.com/user-attachments/assets/18dabe87-1a61-4315-92be-1cc4673bda4e)\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-29T21:08:37Z",
+    "updatedAt": "2025-01-29T21:32:23Z",
+    "author": {
+      "login": "ileana-pr",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/103957712?u=b865d84e1f5bffd16f907c5318a177dfc9f927d0&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cVZ9n",
+        "author": "github-actions",
+        "body": "Hello @ileana-pr! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6cVkS8",
+        "author": "JoelAlexander",
+        "body": "Thanks for reporting, as it provided me a workaround for using venice api."
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6oCQjp",
+    "number": 2998,
+    "title": "plugin avalanche: test config and coverate",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nThe Avalanche plugin's tokenMillCreate action needs comprehensive test coverage to ensure reliable token creation functionality. The current implementation lacks proper test coverage for validation, action properties, and core token creation scenarios.\n\n**Describe the solution you'd like**\n\nWe should implement a complete test suite that covers:\n1. Validation (2 tests):\n    * Should confirm proper validation with valid configuration\n    * Should verify failure when private key is missing\n2. Action Properties (2 tests):\n    * Should validate correct action properties (name, description)\n    * Should ensure examples are properly structured\n3. Token Creation (2 tests):\n    * Should confirm successful token creation flow\n    * Should handle invalid content appropriately\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "CLOSED",
+    "createdAt": "2025-01-29T20:08:51Z",
+    "updatedAt": "2025-01-29T22:08:34Z",
+    "author": {
+      "login": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6oB-HR",
+    "number": 2996,
+    "title": "plugin-avail: test config and coverage",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nThe plugin-avail package currently lacks proper test coverage. There are no tests to verify the functionality of the actions, error handling, or integration with the Avail network. This makes it difficult to ensure reliability and catch potential issues before they reach production.\n\n**Describe the solution you'd like**\n\nAdd comprehensive test coverage using vitest for the plugin-avail package, including:\n* Unit tests for all actions (submitData, transfer)\n* Error handling tests\n* Mock implementations for Avail SDK\n* Test utilities and fixtures\n* Proper test configuration\nThis will help ensure code reliability and make it easier to maintain and extend the package in the future.\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "CLOSED",
+    "createdAt": "2025-01-29T19:32:46Z",
+    "updatedAt": "2025-01-29T22:09:25Z",
+    "author": {
+      "login": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6oB15E",
+    "number": 2995,
+    "title": "[bug] issue with sharing knowledge in the multi-agent ragknowledge setup.",
+    "body": "Currently, the ragknowledge setup accepts a parameter per knowledge file which is `shared=bool` but there is a problem in that this currently only allows knowledge to be unique to a single agent, or shared across all agents. I think it would nice to remove this parameter all together and just have a list of paths for knowledge for each character so that the programmer can precisely describe which agents have access to which knowledge.",
+    "state": "OPEN",
+    "createdAt": "2025-01-29T19:19:57Z",
+    "updatedAt": "2025-01-29T19:19:57Z",
+    "author": {
+      "login": "LinuxIsCool",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/31582215?u=b8eb5d3849bf877a3a0b686cf1632aca92e744ae&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6oAJuU",
+    "number": 2991,
+    "title": "plugin-autonome: test config and coverage",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nThe plugin-autonome package lacks proper test configuration and coverage reporting capabilities. Without a standardized test configuration, it's difficult to maintain consistent test practices across the codebase and track test coverage effectively. This makes it harder to ensure code quality and identify areas that need additional testing.\n\n**Describe the solution you'd like**\n\n The solution consists of two main parts:\n1. Test Infrastructure:\n* A vitest.config.ts file with proper test environment setup and coverage configuration\n* Enhanced test scripts in package.json for running tests, watching tests, and generating coverage reports\n* Proper test file patterns and exclusions to ensure only relevant files are tested\n1. Comprehensive Test Implementation:\n* Created thorough test suite for the launchAgent action covering:\n    * Basic validation (action properties, validation logic)\n    * Success path (proper agent launch, API call formatting)\n    * Error handling (invalid content, API errors)\n    * Edge cases (undefined/invalid responses)\n* Tests utilize Vitest's mocking capabilities to:\n    * Isolate tests from external dependencies (axios, core utilities)\n    * Ensure reliable and repeatable test execution\n    * Validate proper error message propagation\n    * Verify callback message formatting\nThis solution provides both the infrastructure for effective testing and actual test coverage of critical functionality, establishing a pattern for future test development in the package.\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "CLOSED",
+    "createdAt": "2025-01-29T15:56:14Z",
+    "updatedAt": "2025-01-29T22:10:11Z",
+    "author": {
+      "login": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6n_zCb",
+    "number": 2989,
+    "title": "504 gateway time out running agent",
+    "body": "Getting  \n\nERRORS\n   API Response:\n   <html>\n  <head><title>504 Gateway Time-out</title></head>\n  <body>\n  <center><h1>504 Gateway Time-out</h1></center>\n  </body>\n  </html>\n\nwhile running agent for twitter. \n\n![Image](https://github.com/user-attachments/assets/8772cc42-6042-443a-8cfa-8ef1848d14bb)\n\nCould be an internet issue?",
+    "state": "OPEN",
+    "createdAt": "2025-01-29T15:19:22Z",
+    "updatedAt": "2025-01-29T15:19:22Z",
+    "author": {
+      "login": "whatwhat2",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/196861923?v=4"
+    },
+    "labels": [],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6n_mJE",
+    "number": 2988,
+    "title": "Error handling Twitter interactions: {\"code\":\"SQLITE_ERROR\"}",
+    "body": "Got this error \"ERRORS Error handling Twitter interactions: {\"code\":\"SQLITE_ERROR\"}\" after using pnpm start --character=\"characters/xxxx.json\"\nWas working fine yesterday but recently switched to OpenAI API for tweets.\n\n![Image](https://github.com/user-attachments/assets/2f48809f-9c14-4e40-84e8-2fdf5aae3371)",
+    "state": "OPEN",
+    "createdAt": "2025-01-29T14:59:35Z",
+    "updatedAt": "2025-01-29T17:42:36Z",
+    "author": {
+      "login": "whatwhat2",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/196861923?v=4"
+    },
+    "labels": [],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cRvif",
+        "author": "github-actions",
+        "body": "Hello @whatwhat2! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6cR2PI",
+        "author": "whatwhat2",
+        "body": "Just solved the issue. Turns out needed to download Nodejs files for OpenAI . Ran npm install openai at Ubuntu root"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6cTwIY",
+        "author": "yasir23",
+        "body": "I got that error but I am using windows, how can I solve that!!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6n-t4k",
+    "number": 2984,
+    "title": "TON Connect integration in TON Plugin",
+    "body": "### **Description**  \nEnhance the TON Plugin to support seamless integration with **[TON Connect](https://docs.ton.org/v3/guidelines/ton-connect/overview/)**, enabling AI agents to interact securely with blockchain accounts. This feature will allow AI-driven applications to authenticate and manage user sessions programmatically through TON Connect.  \n\nThe implementation should be integrated into the **[elizaOS TON Plugin](https://github.com/elizaOS/eliza/tree/develop/packages/plugin-ton)** repository.\n\n### **What is TON Connect**?\nTON Connect is a standardized protocol that allows dApps (decentralized applications), web services, and bots to connect seamlessly to a user’s TON wallet. It works similarly to WalletConnect in Ethereum-based ecosystems.\n\nhttps://github.com/user-attachments/assets/4febeb0b-5634-4327-9d0d-d19297e80d5e\n\n### **Key Requirements**  \n\n- Action to initialize a **TON Connect** session.  \n- Support for multiple wallets and seamless wallet switching.  \n- Ensure persistent and session-based connections for AI agents.  \n- Ensure compatibility with **elizaOS modules**, allowing AI-driven automation of blockchain interactions.  \n- The integration should use the official TON Connect library from https://github.com/ton-connect to ensure compatibility and reliability (forks are not allowed).\n- Documentation on how AI agents utilize actions and how users can interact with them.\n\n### **Useful Resources**  \n- [TON Connect Overview](https://docs.ton.org/v3/guidelines/ton-connect/overview/)  \n- [How TON Connect Works](https://docs.ton.org/v3/guidelines/ton-connect/guidelines/how-ton-connect-works)  \n- [TON Connect Developer Guidelines](https://docs.ton.org/v3/guidelines/ton-connect/guidelines/developers)  \n\n### **Definition of Done**  \n- Fully integrated **TON Connect** actions for authentication and session handling.  \n- Verified compatibility with TON Connect standard and security best practices.  \n- Documentation on how AI agents can use each action.  \n\n### **Bounty**  \n**Estimated Reward:** $1700 in TON  \n\nFor questions or further discussion, feel free to reach out in the **bounty program working group**:  \nTelegram: [@ton_ai_bounty](https://t.me/ton_ai_bounty)",
+    "state": "OPEN",
+    "createdAt": "2025-01-29T13:32:08Z",
+    "updatedAt": "2025-01-29T21:24:51Z",
+    "author": {
+      "login": "delovoyhomie",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/92427892?u=d922f90b70071a1c48a3581fbaf07a73de2b0350&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB4Sk5Mw",
+        "name": "ton-plugin-bounty",
+        "color": "c2e0c6",
+        "description": ""
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cQ2_U",
+        "author": "github-actions",
+        "body": "Hello @delovoyhomie! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6n-Z8-",
+    "number": 2981,
+    "title": "plugin-arbitrage: test config and test coverage",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nThe plugin-arbitrage package lacks test coverage for its critical components:\n1. The arbitrage plugin handles real financial transactions and market operations, but has no automated tests to ensure its reliability and correctness.\n2. Key components like market evaluation, arbitrage execution, and WebSocket connections are not tested, which could lead to:\n    * Missed arbitrage opportunities\n    * Failed transactions\n    * Incorrect profit calculations\n    * Connection handling issues\n    * Memory leaks from unmanaged WebSocket connections\n3. The service initialization and configuration validation are not tested, risking improper setup in production.\n\n**Describe the solution you'd like**\n\nAdd a comprehensive test suite for the plugin-apro package that covers:\n1. Core Actions Testing\n    * Test all main actions (create, verify, query) with both success and failure scenarios\n    * Ensure proper error handling and message propagation\n    * Validate action metadata and examples\n2. Integration Testing\n    * Test interaction with external SDKs and dependencies\n    * Verify proper handling of blockchain transactions\n    * Test configuration and environment variable handling\n3. Input Validation\n    * Test input parameter validation\n    * Verify schema compliance\n    * Test edge cases and invalid inputs\nThis will help ensure the package's reliability and make it easier to maintain and extend the codebase with confidence.\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "CLOSED",
+    "createdAt": "2025-01-29T13:01:23Z",
+    "updatedAt": "2025-01-29T15:40:25Z",
+    "author": {
+      "login": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6n-Ulm",
+    "number": 2979,
+    "title": "plugin-apro: test coverage and test config",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nThe plugin-apro package currently lacks comprehensive test coverage for its core functionality. Without proper tests, we cannot ensure the reliability of the package's features or catch potential regressions when making changes. This is particularly concerning for critical operations like agent creation and data verification.\n\n**Describe the solution you'd like**\n\nAdd a comprehensive test suite for the plugin-apro package that covers:\n1. Core Actions Testing\n    * Test all main actions (create, verify, query) with both success and failure scenarios\n    * Ensure proper error handling and message propagation\n    * Validate action metadata and examples\n2. Integration Testing\n    * Test interaction with external SDKs and dependencies\n    * Verify proper handling of blockchain transactions\n    * Test configuration and environment variable handling\n3. Input Validation\n    * Test input parameter validation\n    * Verify schema compliance\n    * Test edge cases and invalid inputs\nThis will help ensure the package's reliability and make it easier to maintain and extend the codebase with confidence.\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "CLOSED",
+    "createdAt": "2025-01-29T12:52:28Z",
+    "updatedAt": "2025-01-29T15:40:31Z",
+    "author": {
+      "login": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6n9-4W",
+    "number": 2977,
+    "title": "Add ideogram.ai integration",
+    "body": "**Is your feature request related to a problem? Please describe.**  \n\nCurrently, elizaOS does not support generating images via [Ideogram](https://ideogram.ai). Many users might prefer Ideogram over other AI image-generation tools due to its unique capabilities, such as better text rendering and a different artistic approach. Without an Ideogram plugin, users have to manually generate images outside of elizaOS, disrupting their workflow.  \n\n**Describe the solution you'd like**  \n\nA new plugin that integrates Ideogram into elizaOS, allowing users to generate images directly within the system. The plugin should provide an easy-to-use interface for specifying prompts, selecting styles, and handling generated images seamlessly. Ideally, it would support API-based integration (if available) or an alternative method to interact with Ideogram efficiently.  \n\n**Describe alternatives you've considered**  \n\n- Using existing AI image-generation plugins within elizaOS, but they do not provide the same features as Ideogram.  \n- Manually generating images via Ideogram's website, but this disrupts the workflow and requires extra steps.  \n\n**Additional context**  \n\n- Ideogram is gaining popularity due to its ability to generate images with embedded text more effectively than other AI tools.  \n- If Ideogram has an API, integrating it into elizaOS could improve accessibility for users who frequently work with AI-generated images.  ",
+    "state": "OPEN",
+    "createdAt": "2025-01-29T12:13:32Z",
+    "updatedAt": "2025-01-29T12:13:58Z",
+    "author": {
+      "login": "derrix060",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/14082769?u=1ffb5bf17794dff7d70abc79dca2412f5707090e&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cQJQP",
+        "author": "github-actions",
+        "body": "Hello @derrix060! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6n8VgT",
+    "number": 2963,
+    "title": "Latest release version `v0.1.8-alpha.1` is NOT BUILDING",
+    "body": "**Describe the bug**\n\nTrying to use the latest released version `#v0.1.8-alpha.1`  and it's failing to build.\n\n\n<!-- A clear and concise description of what the bug is. -->\n\n**To Reproduce**\n\nnvm use 23.3.0\npnpm clean \npnpm cache delete\npnpm install -r --no-frozen-lockfile  / pnpm install  --no-frozen-lockfile  \npnpm build\n\n<!-- Steps to reproduce the behavior. -->\n\n**Expected behavior**\n\n<!-- A clear and concise description of what you expected to happen. -->\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\n```bash \n@elizaos/core:build: src/generation.ts(535,21): error TS2322: Type 'import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1' is not assignable to type 'import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1'.\n@elizaos/core:build:   The types returned by 'doStream(...)' are incompatible between these types.\n@elizaos/core:build:     Type 'PromiseLike<{ stream: ReadableStream<import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart>; rawCall: { ...; }; rawResponse?: { ...; }; request?: { ...; }; warnings?: import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_...' is not assignable to type 'PromiseLike<{ stream: ReadableStream<import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart>; rawCall: { rawPrompt: unknown; rawSettings: Record<...>; }; rawResponse?: { ...; }; request?: { ...; }; warnings?: import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/p...'.\n@elizaos/core:build:       Type '{ stream: ReadableStream<import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart>; rawCall: { ...; }; rawResponse?: { ...; }; request?: { ...; }; warnings?: import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_modules/@ai-...' is not assignable to type '{ stream: ReadableStream<import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart>; rawCall: { rawPrompt: unknown; rawSettings: Record<...>; }; rawResponse?: { ...; }; request?: { ...; }; warnings?: import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/provider/dist...'.\n@elizaos/core:build:         Types of property 'stream' are incompatible.\n@elizaos/core:build:           Type 'ReadableStream<import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart>' is not assignable to type 'ReadableStream<import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart>'.\n@elizaos/core:build:             Type 'import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart' is not assignable to type 'import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart'.\n@elizaos/core:build:               Type '{ type: \"reasoning\"; textDelta: string; }' is not assignable to type 'LanguageModelV1StreamPart'.\n@elizaos/core:build:                 Type '{ type: \"reasoning\"; textDelta: string; }' is not assignable to type '{ type: \"text-delta\"; textDelta: string; }'.\n@elizaos/core:build:                   Types of property 'type' are incompatible.\n@elizaos/core:build:                     Type '\"reasoning\"' is not assignable to type '\"text-delta\"'.\n@elizaos/core:build: src/generation.ts(2094,9): error TS2769: No overload matches this call.\n@elizaos/core:build:   The last overload gave the following error.\n@elizaos/core:build:     Type 'import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1' is not assignable to type 'import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1'.\n@elizaos/core:build:       The types returned by 'doStream(...)' are incompatible between these types.\n@elizaos/core:build:         Type 'PromiseLike<{ stream: ReadableStream<import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart>; rawCall: { ...; }; rawResponse?: { ...; }; request?: { ...; }; warnings?: import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_...' is not assignable to type 'PromiseLike<{ stream: ReadableStream<import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart>; rawCall: { rawPrompt: unknown; rawSettings: Record<...>; }; rawResponse?: { ...; }; request?: { ...; }; warnings?: import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/p...'.\n@elizaos/core:build:           Type '{ stream: ReadableStream<import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart>; rawCall: { ...; }; rawResponse?: { ...; }; request?: { ...; }; warnings?: import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_modules/@ai-...' is not assignable to type '{ stream: ReadableStream<import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart>; rawCall: { rawPrompt: unknown; rawSettings: Record<...>; }; rawResponse?: { ...; }; request?: { ...; }; warnings?: import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/provider/dist...'.\n@elizaos/core:build:             Types of property 'stream' are incompatible.\n@elizaos/core:build:               Type 'ReadableStream<import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart>' is not assignable to type 'ReadableStream<import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart>'.\n@elizaos/core:build:                 Type 'import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart' is not assignable to type 'import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart'.\n@elizaos/core:build:                   Type '{ type: \"reasoning\"; textDelta: string; }' is not assignable to type 'LanguageModelV1StreamPart'.\n@elizaos/core:build:                     Type '{ type: \"reasoning\"; textDelta: string; }' is not assignable to type '{ type: \"text-delta\"; textDelta: string; }'.\n@elizaos/core:build:                       Types of property 'type' are incompatible.\n@elizaos/core:build:                         Type '\"reasoning\"' is not assignable to type '\"text-delta\"'.\n@elizaos/core:build:                           Type '\"auto\" | \"json\" | \"tool\"' is not assignable to type '\"json\"'.\n@elizaos/core:build:                             Type '\"auto\"' is not assignable to type '\"json\"'.\n@elizaos/core:build: src/generation.ts(2098,9): error TS2769: No overload matches this call.\n@elizaos/core:build:   The last overload gave the following error.\n@elizaos/core:build:     Type 'import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1' is not assignable to type 'import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1'.\n@elizaos/core:build:       The types returned by 'doStream(...)' are incompatible between these types.\n@elizaos/core:build:         Type 'PromiseLike<{ stream: ReadableStream<import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart>; rawCall: { ...; }; rawResponse?: { ...; }; request?: { ...; }; warnings?: import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_...' is not assignable to type 'PromiseLike<{ stream: ReadableStream<import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart>; rawCall: { rawPrompt: unknown; rawSettings: Record<...>; }; rawResponse?: { ...; }; request?: { ...; }; warnings?: import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/p...'.\n@elizaos/core:build:           Type '{ stream: ReadableStream<import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart>; rawCall: { ...; }; rawResponse?: { ...; }; request?: { ...; }; warnings?: import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_modules/@ai-...' is not assignable to type '{ stream: ReadableStream<import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart>; rawCall: { rawPrompt: unknown; rawSettings: Record<...>; }; rawResponse?: { ...; }; request?: { ...; }; warnings?: import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/provider/dist...'.\n@elizaos/core:build:             Types of property 'stream' are incompatible.\n@elizaos/core:build:               Type 'ReadableStream<import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart>' is not assignable to type 'ReadableStream<import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart>'.\n@elizaos/core:build:                 Type 'import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/mistral/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart' is not assignable to type 'import(\"/Users/bucurdavid/dev/eliza/node_modules/@ai-sdk/provider/dist/index\").LanguageModelV1StreamPart'.\n@elizaos/core:build:                   Type '{ type: \"reasoning\"; textDelta: string; }' is not assignable to type 'LanguageModelV1StreamPart'.\n@elizaos/core:build:                     Type '{ type: \"reasoning\"; textDelta: string; }' is not assignable to type '{ type: \"text-delta\"; textDelta: string; }'.\n@elizaos/core:build:                       Types of property 'type' are incompatible.\n@elizaos/core:build:                         Type '\"reasoning\"' is not assignable to type '\"text-delta\"'.\n@elizaos/core:build:                           Type '\"auto\" | \"json\" | \"tool\"' is not assignable to type '\"json\"'.\n@elizaos/core:build:                             Type '\"auto\"' is not assignable to type '\"json\"'.\n@elizaos/core:build: \n@elizaos/core:build: Error: error occurred in dts build\n```\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-29T09:03:12Z",
+    "updatedAt": "2025-01-29T21:01:31Z",
+    "author": {
+      "login": "bucurdavid",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/46384319?u=dffe4f1adbd7bdf75f2c185f0db36007f42815ac&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cOgUR",
+        "author": "github-actions",
+        "body": "Hello @bucurdavid! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6cQTNE",
+        "author": "olegshilov",
+        "body": "\n\n<img width=\"825\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cc821eac-0100-4a77-a222-0054faad5cb2\" />\n\n<img width=\"822\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/56a54ba1-4ce1-4957-97bf-87e979eb8292\" />\n\nsame issue.\nlooks like npm packages, doesn't include any source at all"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6cSJbG",
+        "author": "WhaSukGO",
+        "body": "Which version or commit ID should I roll back to? ..."
+      },
+      {
+        "id": "IC_kwDOMT5cIs6cSRLf",
+        "author": "WhaSukGO",
+        "body": "```sh\n$ git checkout cbb95e7ed1b9571806e06865e2c96c02a40d4907\n```\nFYI, this one builds succesfully"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6cVWNA",
+        "author": "JoelAlexander",
+        "body": "@WhaSukGO \n\ncbb95e7ed1b9571806e06865e2c96c02a40d4907 is not a commit in elizaOS/eliza.  How are you getting a successful build?"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6n8RxC",
+    "number": 2962,
+    "title": "Implement Action Set for NFT Creation & Management in TON Plugin",
+    "body": "**Description**  \nExtend the TON Plugin to provide an action set enabling AI agents to create and manage NFTs according to the [TEP-62](https://github.com/ton-blockchain/TEPs/blob/master/text/0062-nft-standard.md) standard. The new actions should handle various NFT workflows, including metadata handling (on-chain/off-chain with IPFS support), minting, transferring, and editing metadata, giving AI agents direct blockchain interaction capabilities.\n\n**Key Requirements**  \n1. **NFT Creation & Metadata Handling**  \n   - Action to initialize an NFT Collection or standalone NFT.  \n   - Provide options for metadata storage: on-chain, off-chain.  \n   - Allow selection of different IPFS providers.  \n\n2. **Mint NFT**  \n   - Action to mint new NFT items within a collection.  \n   - Ensure minted items follow TEP-62 and store or reference metadata appropriately.\n\n3. **Transfer NFT**  \n   - Action to transfer ownership of an existing NFT item.  \n   - Verify that only authorized agents can invoke this action, respecting any access controls.\n\n4. **Edit Metadata**  \n   - Action to update NFT metadata post-mint.  \n   - Support partial or full metadata edits, following on-chain or off-chain constraints.\n\n5. **AI Agent Integration**  \n   - Ensure each action is exposed in a manner that AI agents can call programmatically.  \n   - Provide clear function signatures or APIs for elizaOS modules interacting with these actions.\n\n**Useful Resources**  \n- [TEP-62: TON NFT Stantard](https://github.com/ton-blockchain/TEPs/blob/master/text/0062-nft-standard.md)\n- [Reference NFT implementation](https://github.com/ton-blockchain/token-contract/tree/main/nft)\n\n**Definition of Done**  \n- Deployed and tested actions for NFT creation, minting, transferring, and metadata editing.  \n- Verified interoperability with TEP-62.  \n- Documentation detailing how AI agents can invoke and use each action.  \n\n**Bounty**  \n- **Estimated Reward**: $1500 in TON \n\nFor questions or further discussion, feel free to reach out in the bounty program working group: [Telegram: @ton_ai_bounty](https://t.me/ton_ai_bounty)",
+    "state": "OPEN",
+    "createdAt": "2025-01-29T08:55:18Z",
+    "updatedAt": "2025-01-29T21:25:00Z",
+    "author": {
+      "login": "alefmanvladimir",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/33995040?u=eab691a8773965a2d5cc190166ca6d0f98be0166&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB4Sk5Mw",
+        "name": "ton-plugin-bounty",
+        "color": "c2e0c6",
+        "description": ""
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cOcT-",
+        "author": "github-actions",
+        "body": "Hello @alefmanvladimir! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6cU1Ba",
+        "author": "KodeSage",
+        "body": "Hello @alefmanvladimir and Eliza admin, I will love to work on this."
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6n6vdx",
+    "number": 2948,
+    "title": "Add the deepseek as the model provider to run it locally",
+    "body": "Deepseek model to AI agent\nRunning local models like r1 (7b, 8b,14b and etc)\n\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-29T04:09:30Z",
+    "updatedAt": "2025-01-29T09:05:23Z",
+    "author": {
+      "login": "yasir23",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/46179498?u=89dcf261b397bb2930cbedce61e09b8df01998e6&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cNHIV",
+        "author": "yasir23",
+        "body": "From Ollama local models\n"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6cOao3",
+        "author": "bucurdavid",
+        "body": "You can run any model through ollama, but you should setup your current model in the `.env`\n\n```bash\nOLLAMA_SERVER_URL=   # Default: localhost:11434        \nOLLAMA_MODEL= deepseek-r1:7b                      # Default: llama3.2\nSMALL_OLLAMA_MODEL= deepseek-r1:7b            # Default: llama3.2\nMEDIUM_OLLAMA_MODEL=  deepseek-r1:7b          # Default: hermes3\nLARGE_OLLAMA_MODEL=   deepseek-r1:7b          # Default: hermes3:70b\n```\n\n\n"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6n6qvr",
+    "number": 2946,
+    "title": "Docker build fails using Gitlab CI (docker in docker)",
+    "body": "I get the following error in the docker build when running in Gitlab CI Docker in Docker. Running directly on Ubuntu works fine.\n\n```\n#13 78.55 Progress: resolved 5558, reused 0, downloaded 1, added 0\n#13 78.83  ERR_PNPM_PATCH_NOT_APPLIED  The following patches were not applied: @solana-developers/helpers\n#13 78.83 \n#13 78.83 Either remove them from \"patchedDependencies\" or update them to match packages in your dependencies.\n#13 ERROR: process \"/bin/sh -c pnpm install --no-frozen-lockfile\" did not complete successfully: exit code: 1\n------\n > [builder 6/7] RUN pnpm install --no-frozen-lockfile:\n73.55 Progress: resolved 5504, reused 0, downloaded 1, added 0\n74.55 Progress: resolved 5510, reused 0, downloaded 1, added 0\n75.55 Progress: resolved 5521, reused 0, downloaded 1, added 0\n76.12 packages/plugin-bnb                      |  WARN  deprecated @sei-js/core@3.2.1\n76.55 Progress: resolved 5547, reused 0, downloaded 1, added 0\n77.55 Progress: resolved 5556, reused 0, downloaded 1, added 0\n78.55 Progress: resolved 5558, reused 0, downloaded 1, added 0\n78.83  ERR_PNPM_PATCH_NOT_APPLIED  The following patches were not applied: @solana-developers/helpers\n78.83 \n78.83 Either remove them from \"patchedDependencies\" or update them to match packages in your dependencies.\n------\nDockerfile:41\n--------------------\n  39 |     \n  40 |     # Install dependencies\n  41 | >>> RUN pnpm install --no-frozen-lockfile\n  42 |     \n  43 |     # Build the project\n--------------------\nERROR: failed to solve: process \"/bin/sh -c pnpm install --no-frozen-lockfile\" did not complete successfully: exit code: 1\n```\n\nAfter some investigation I found a workaround here: https://github.com/pnpm/pnpm/issues/5234\n\nI added the following to my gitlab ci script before the docker build and now it works fine:\n```\njq '.pnpm.allowNonAppliedPatches = true' package.json > tmp.json && mv tmp.json package.json\n```\n\nI have a few questions:\n- Is this going to break anything at runtime by adding this option?\n- If it's not a problem, can it be added to the package.json permanently?\n- Is there some other way to fix this error when running Docker in Docker?\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-29T03:46:42Z",
+    "updatedAt": "2025-01-29T05:54:51Z",
+    "author": {
+      "login": "jason51553262",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/4665758?u=ffad0fdaebbe9d0d4ffa0018b2d2553deb877a13&v=4"
+    },
+    "labels": [],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cNGBR",
+        "author": "jason51553262",
+        "body": "It's failing again further down the build on something else now:\n```\n#15 [stage-1  4/16] COPY --from=builder /app/package.json ./\n#15 DONE 0.1s\n#16 [stage-1  5/16] COPY --from=builder /app/pnpm-workspace.yaml ./\n#16 CACHED\n#17 [stage-1  6/16] COPY --from=builder /app/eslint.config.mjs ./\n#17 ERROR: failed to calculate checksum of ref 991332c1-515d-4657-9f62-78beabce2e98::f96j18ce0fvj7vd62zq7728ba: \"/app/eslint.config.mjs\": not found\n#18 [stage-1  7/16] COPY --from=builder /app/.eslintrc.json ./\n#18 ERROR: failed to calculate checksum of ref 991332c1-515d-4657-9f62-78beabce2e98::f96j18ce0fvj7vd62zq7728ba: \"/app/.eslintrc.json\": not found\n------\n > [stage-1  6/16] COPY --from=builder /app/eslint.config.mjs ./:\n------\n------\n > [stage-1  7/16] COPY --from=builder /app/.eslintrc.json ./:\n------\nDockerfile:66\n--------------------\n  64 |     COPY --from=builder /app/pnpm-workspace.yaml ./\n  65 |     COPY --from=builder /app/eslint.config.mjs ./\n  66 | >>> COPY --from=builder /app/.eslintrc.json ./\n  67 |     COPY --from=builder /app/.npmrc ./\n  68 |     COPY --from=builder /app/turbo.json ./\n--------------------\nERROR: failed to solve: failed to compute cache key: failed to calculate checksum of ref 991332c1-515d-4657-9f62-78beabce2e98::f96j18ce0fvj7vd62zq7728ba: \"/app/.eslintrc.json\": not found\nCleaning up project directory and file based variables\n00:00\nERROR: Job failed: exit code 1\n```"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6cNe90",
+        "author": "hammer0x419",
+        "body": "running into this as well"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6n6G4-",
+    "number": 2936,
+    "title": "CONTRIBUTING.md needs an update",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nThe `CONTRIBUTING.md` file currently says to \n\nFork the repo and create your branch from `main`.\n\n This is outdated as now contributors should be forking from the `develop` branch\n\n\n\n**Describe the solution you'd like**\n\nUpdate the CONTRIBUTING.md file to say \n\nFork the repo and create your branch from `develop`.\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-29T01:20:13Z",
+    "updatedAt": "2025-01-29T01:20:38Z",
+    "author": {
+      "login": "iskysun96",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/52557585?u=3202947978e1b0f91091e1ac246ebabbda38669a&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cL-8i",
+        "author": "github-actions",
+        "body": "Hello @iskysun96! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  }
+]

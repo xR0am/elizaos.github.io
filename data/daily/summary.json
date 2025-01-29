@@ -1,73 +1,73 @@
 {
-  "title": "elizaos Eliza (2025-01-28)",
-  "version": "bump version to 0.1.9",
-  "overview": "Development focused on package improvements (plugin-arbitrage), 19 bug fixes. with 36 contributors merging 28 PRs. Major work included aiflowml is currently focusing on fixing typing issues and logic errors in the codebase, particularly related to state reassignment and code structure.",
+  "title": "elizaos Eliza (2025-01-29)",
+  "version": "handle whitespace in quote conversion",
+  "overview": "Development focused on package improvements (plugin-image-generation), new features (add public access to packages.), 25 bug fixes. with 31 contributors merging 46 PRs. Major work included aiflowml is currently fixing typing issues and errors in the codebase, with a focus on imports and type annotations.",
   "metrics": {
-    "contributors": 36,
-    "merged_prs": 28,
+    "contributors": 31,
+    "merged_prs": 46,
     "new_issues": 17,
-    "lines_changed": 6992
+    "lines_changed": 11418
   },
   "changes": {
     "features": [
-      "improve gas price optimization and volume calculation"
+      "plugin avalanche test config and coverage",
+      "plugin avail test config and coverage",
+      "plugin-autonome test config and coverage"
     ],
     "fixes": [
-      "plugin-arbitrage",
-      "plugin-omniflix",
-      "plugin-opacity"
+      "plugin-image-generation",
+      "plugin-imgflip",
+      "plugin-initia"
     ],
     "chores": [
-      "bump version to 0.1.9",
-      "fix spell errors"
+      "inconsistent folder naming conventipn",
+      "lockfile audit",
+      "correction typos chat_2024-12-04.md"
     ]
   },
   "areas": [
     {
       "name": "packages",
-      "files": 170,
-      "additions": 1864,
-      "deletions": 1261
+      "files": 108,
+      "additions": 3563,
+      "deletions": 984
     },
     {
-      "name": "root",
-      "files": 9,
-      "additions": 508,
-      "deletions": 519
+      "name": ".github",
+      "files": 4,
+      "additions": 5,
+      "deletions": 5
     },
     {
       "name": "agent",
-      "files": 2,
-      "additions": 1578,
-      "deletions": 1190
+      "files": 3,
+      "additions": 163,
+      "deletions": 171
     }
   ],
-  "issues_summary": "working on 10 bugs including '{{maxTweetLength}} doesn't work in tweet post template', 'ragKnowledge blows up prompt by retrieving entire documents.' and implementing 4 feature requests including '[Feature Request] Runtime Configuration.', '[Feature Request] - Implement Reranked Contextual Embedding + cBM25 as per Anthropic Blog as default RAG Implementation'",
+  "issues_summary": "working on 3 bugs including 'Latest release version `v0.1.8-alpha.1` is NOT BUILDING', 'Bug: Error when loading client without OpenAI API key' and implementing 11 feature requests including 'plugin avalanche: test config and coverate', 'plugin-avail: test config and coverage'",
   "questions": [],
   "top_contributors": [
     {
       "name": "AIFlowML",
-      "summary": "AIFlowML is currently focusing on fixing typing issues and logic errors in the codebase, particularly related to state reassignment and code structure",
+      "summary": "AIFlowML is currently fixing typing issues and errors in the codebase, with a focus on imports and type annotations",
       "areas": [
         "packages"
       ]
     },
     {
-      "name": "odilitime",
-      "summary": "odilitime is primarily working on merging pull requests related to fixing vulnerabilities and code issues in various packages",
+      "name": "tcm390",
+      "summary": "tcm390 is currently working on adding missing plugins and states to the agent and packages code areas",
       "areas": [
         "packages",
-        "pnpm-lock.yaml",
         "agent"
       ]
     },
     {
-      "name": "tcm390",
-      "summary": "tcm390 is currently working on cleaning up code, defining server ports, and implementing null checks in the agent, client, and packages code areas",
+      "name": "ai16z-demirix",
+      "summary": "ai16z-demirix is currently working on creating tests and configurations for various plugins such as plugin-avalanche and plugin-avail",
       "areas": [
-        "client",
-        ".env.example",
-        "agent"
+        "packages"
       ]
     }
   ]

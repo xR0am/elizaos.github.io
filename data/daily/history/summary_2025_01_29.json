@@ -1,0 +1,74 @@
+{
+  "title": "elizaos Eliza (2025-01-28)",
+  "version": "bump version to 0.1.9",
+  "overview": "Development focused on package improvements (plugin-arbitrage), 19 bug fixes. with 36 contributors merging 28 PRs. Major work included aiflowml is currently focusing on fixing typing issues and logic errors in the codebase, particularly related to state reassignment and code structure.",
+  "metrics": {
+    "contributors": 36,
+    "merged_prs": 28,
+    "new_issues": 17,
+    "lines_changed": 6992
+  },
+  "changes": {
+    "features": [
+      "improve gas price optimization and volume calculation"
+    ],
+    "fixes": [
+      "plugin-arbitrage",
+      "plugin-omniflix",
+      "plugin-opacity"
+    ],
+    "chores": [
+      "bump version to 0.1.9",
+      "fix spell errors"
+    ]
+  },
+  "areas": [
+    {
+      "name": "packages",
+      "files": 170,
+      "additions": 1864,
+      "deletions": 1261
+    },
+    {
+      "name": "root",
+      "files": 9,
+      "additions": 508,
+      "deletions": 519
+    },
+    {
+      "name": "agent",
+      "files": 2,
+      "additions": 1578,
+      "deletions": 1190
+    }
+  ],
+  "issues_summary": "working on 10 bugs including '{{maxTweetLength}} doesn't work in tweet post template', 'ragKnowledge blows up prompt by retrieving entire documents.' and implementing 4 feature requests including '[Feature Request] Runtime Configuration.', '[Feature Request] - Implement Reranked Contextual Embedding + cBM25 as per Anthropic Blog as default RAG Implementation'",
+  "questions": [],
+  "top_contributors": [
+    {
+      "name": "AIFlowML",
+      "summary": "AIFlowML is currently focusing on fixing typing issues and logic errors in the codebase, particularly related to state reassignment and code structure",
+      "areas": [
+        "packages"
+      ]
+    },
+    {
+      "name": "odilitime",
+      "summary": "odilitime is primarily working on merging pull requests related to fixing vulnerabilities and code issues in various packages",
+      "areas": [
+        "packages",
+        "pnpm-lock.yaml",
+        "agent"
+      ]
+    },
+    {
+      "name": "tcm390",
+      "summary": "tcm390 is currently working on cleaning up code, defining server ports, and implementing null checks in the agent, client, and packages code areas",
+      "areas": [
+        "client",
+        ".env.example",
+        "agent"
+      ]
+    }
+  ]
+}
