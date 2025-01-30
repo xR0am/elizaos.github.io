@@ -1,74 +1,66 @@
 {
-  "title": "elizaos Eliza (2025-01-29)",
-  "version": "handle whitespace in quote conversion",
-  "overview": "Development focused on package improvements (plugin-image-generation), new features (add public access to packages.), 25 bug fixes. with 31 contributors merging 46 PRs. Major work included aiflowml is currently fixing typing issues and errors in the codebase, with a focus on imports and type annotations.",
+  "title": "elizaos Eliza (2025-01-30)",
+  "version": "",
+  "overview": "Development focused on package improvements (plugin-ethstorage), new features (add  Fleek Eliza deployment to Readme_CN), 11 bug fixes. with 30 contributors merging 28 PRs. Major work included aiflowml is currently focusing on fixing errors and adding the biome feature to the codebase.",
   "metrics": {
-    "contributors": 31,
-    "merged_prs": 46,
-    "new_issues": 17,
-    "lines_changed": 11418
+    "contributors": 30,
+    "merged_prs": 28,
+    "new_issues": 18,
+    "lines_changed": 2279
   },
   "changes": {
     "features": [
-      "plugin avalanche test config and coverage",
-      "plugin avail test config and coverage",
-      "plugin-autonome test config and coverage"
+      "add  Fleek Eliza deployment to Readme_CN",
+      "use Aggregator swap sui tokens"
     ],
     "fixes": [
-      "plugin-image-generation",
-      "plugin-imgflip",
-      "plugin-initia"
+      "plugin-ethstorage",
+      "plugin-evm",
+      "plugin-flow"
     ],
-    "chores": [
-      "inconsistent folder naming conventipn",
-      "lockfile audit",
-      "correction typos chat_2024-12-04.md"
-    ]
+    "chores": []
   },
   "areas": [
     {
       "name": "packages",
-      "files": 108,
-      "additions": 3563,
-      "deletions": 984
+      "files": 94,
+      "additions": 1752,
+      "deletions": 468
     },
     {
-      "name": ".github",
-      "files": 4,
-      "additions": 5,
-      "deletions": 5
+      "name": "root",
+      "files": 2,
+      "additions": 41,
+      "deletions": 1
     },
     {
-      "name": "agent",
-      "files": 3,
-      "additions": 163,
-      "deletions": 171
+      "name": "docs",
+      "files": 2,
+      "additions": 3,
+      "deletions": 3
     }
   ],
-  "issues_summary": "working on 3 bugs including 'Latest release version `v0.1.8-alpha.1` is NOT BUILDING', 'Bug: Error when loading client without OpenAI API key' and implementing 11 feature requests including 'plugin avalanche: test config and coverate', 'plugin-avail: test config and coverage'",
+  "issues_summary": "working on 3 bugs including 'Anthropic doesn't support JSON mode object generation.', 'Authentication Failure When Using Deepseek API with Eliza: \"Authentication Fails (no such user)\" Error (401 Status Code)' and implementing 14 feature requests including 'plugin chainbase: test coverage and config', 'plugin-bootstrap: test config and test coverage'",
   "questions": [],
   "top_contributors": [
     {
       "name": "AIFlowML",
-      "summary": "AIFlowML is currently fixing typing issues and errors in the codebase, with a focus on imports and type annotations",
+      "summary": "AIFlowML is currently focusing on fixing errors and adding the Biome feature to the codebase",
       "areas": [
         "packages"
       ]
     },
     {
       "name": "tcm390",
-      "summary": "tcm390 is currently working on adding missing plugins and states to the agent and packages code areas",
-      "areas": [
-        "packages",
-        "agent"
-      ]
-    },
-    {
-      "name": "ai16z-demirix",
-      "summary": "ai16z-demirix is currently working on creating tests and configurations for various plugins such as plugin-avalanche and plugin-avail",
+      "summary": "tcm390 is currently working on image model handling, image vision model provider, and correcting regex patterns in the codebase",
       "areas": [
         "packages"
       ]
+    },
+    {
+      "name": "shakkernerd",
+      "summary": "shakkernerd is currently working on merging various pull requests related to fixing and improving plugins within the AIFlowML project",
+      "areas": []
     }
   ]
 }

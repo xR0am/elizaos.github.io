@@ -1,0 +1,469 @@
+[
+  {
+    "id": "I_kwDOMT5cIs6oMwDi",
+    "number": 3071,
+    "title": "plugin chainbase: test coverage and config",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nThe Chainbase plugin is expected to require comprehensive test coverage to ensure reliable interaction with the Chainbase API. Without proper testing, issues such as incorrect token balance retrieval, API timeout handling, and error management are likely to surface in production. The plugin should be thoroughly tested to handle various scenarios including successful queries, API failures, and timeout conditions.\n\n**Describe the solution you'd like**\n\nA comprehensive test suite should be implemented for the plugin-chainbase package using vitest. The test coverage is expected to include:\n1. Token Balance Actions:\n    * Tests should be written to validate proper handling of token balance retrieval\n    * Input validation should be implemented for chain IDs and addresses\n    * Response formatting should be tested for various token decimal places\n2. Query Execution:\n    * Tests should be created to verify SQL query execution\n    * Timeout scenarios should be properly handled with configurable retry attempts\n    * Error cases should be tested including API failures and invalid responses\n3. Mock Implementation:\n    * The Chainbase API responses should be properly mocked\n    * Timer functions should be mocked to test timeout scenarios\n    * Environment variables should be managed within tests\n4. Code Organization:\n    * Tests should be structured similarly to the plugin-bootstrap package\n    * Test files should be organized by feature (actions, libs)\n    * Common test utilities should be shared across test files\n\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-30T22:07:56Z",
+    "updatedAt": "2025-01-30T22:07:56Z",
+    "author": {
+      "login": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6oMmju",
+    "number": 3067,
+    "title": "plugin-bootstrap: test config and test coverage",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nThe plugin-bootstrap package is expected to require comprehensive test coverage to ensure reliability and maintainability. Currently, the package would lack proper testing infrastructure, making it difficult to verify the behavior of various components such as evaluators (goal, fact, memory) and actions (continue, ignore). Without proper test coverage, it would be challenging to catch potential bugs and regressions during development. Additionally, the absence of standardized testing patterns would likely lead to inconsistent test implementations across different components.\n\n**Describe the solution you'd like**\n\nA comprehensive test suite should be implemented for the plugin-bootstrap package using vitest. The following components are expected to be covered:\n1. Core Evaluators:\n    * The goal evaluator should be tested for proper validation and goal status updates\n    * The fact evaluator should be tested for fact extraction and validation\n    * Memory evaluator tests should be implemented to verify memory management\n2. Actions:\n    * The continue action should be tested for message generation and validation\n    * Tests for the ignore action should be implemented\n    * Each action's properties and examples should be validated\n3. Test Infrastructure:\n    * Mock objects for runtime, message, and state should be standardized\n    * Helper functions for common test scenarios should be created\n    * Proper dependency mocking patterns should be established\n4. Test Organization:\n    * Tests should be structured in meaningful describe blocks\n    * Each component should have separate validation and functionality tests\n    * Error cases should be properly covered\nThis implementation is expected to provide:\n* Reliable verification of component behavior\n* Easy maintenance and updates\n* Clear patterns for adding new tests\n* Comprehensive coverage of edge cases\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-30T21:41:11Z",
+    "updatedAt": "2025-01-30T21:41:11Z",
+    "author": {
+      "login": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6oMdhd",
+    "number": 3062,
+    "title": "plugin-bittensor: test coverage and config",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nThe plugin-bittensor package currently lacks comprehensive test coverage, which poses potential risks for future maintenance and reliability. Without proper test coverage, there is an increased likelihood of introducing bugs during updates or modifications. Additionally, the absence of tests makes it challenging to verify the correct functionality of critical features such as image analysis and fact extraction, which are core components of this plugin.\n\n**Describe the solution you'd like**\n\nA comprehensive test suite should be implemented for the plugin-bittensor package. The testing implementation is expected to be divided into two main components:\n1. Image Analysis Testing (sn34.ts):\n    * Tests should be written to validate image URL processing and API credential handling\n    * Action properties validation is expected to be implemented\n    * Coverage should include both analyzeImage and analysisHistory actions\n    * Mock implementations should be created for external API calls\n2. Fact Evaluator Testing (fact.ts):\n    * Validation logic should be thoroughly tested\n    * Evaluator properties verification is expected to be implemented\n    * Fact extraction functionality should be tested with various input scenarios\n    * Memory management operations should be properly mocked\nThe implementation should utilize vitest as the testing framework, and all tests should be organized in a __tests__ directory structure. A vitest configuration file should be created to ensure proper test environment setup. The test coverage is expected to achieve a high percentage, focusing on both successful scenarios and error handling cases.\nDependencies should be properly mocked to ensure isolated testing, and the testing structure should follow the established patterns used in other plugins within the ecosystem. This approach is expected to enhance code reliability and make future maintenance more manageable.\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-30T21:17:15Z",
+    "updatedAt": "2025-01-30T21:17:15Z",
+    "author": {
+      "login": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6oLYvk",
+    "number": 3058,
+    "title": "Create Safe wallet plugin",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\n\nIt would be nice to provide a Safe plugin ahead of the [Agentathon](https://agentathon.ai/), otherwise dozens of teams will have to re-implement the wheel\n\n**Describe the solution you'd like**\n\n<!-- A clear and concise description of what you want to happen. -->\n- proposing txs\n- executing txs queued by another owner\n- etc\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n- building it myself\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n- Eliza is a sponsor of the Safe Agentathon, a new hackathon to build sovereign agents with the best AI x Crypto stacks, but it seems like no Safe connectors are provided",
+    "state": "OPEN",
+    "createdAt": "2025-01-30T18:40:09Z",
+    "updatedAt": "2025-01-30T22:20:16Z",
+    "author": {
+      "login": "aviggiano",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/3029017?u=f0679587b46bb00f2160cde13662a9a7c784ff36&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cer6B",
+        "author": "github-actions",
+        "body": "Hello @aviggiano! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6oJyVT",
+    "number": 3049,
+    "title": "Add demo api access to coingecko plugin",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nI would like to be able to use a demo key for these two actions in the coingecko plugin:  `GET_MARKETS` and `GET_PRICE`.\nThe coingecko plugin defaults to using coingecko's pro api for these two actions, even though both endpoints are also available to demo users. \n`GET_TRENDING` and `GET_TOP_GAINERS_LOSERS` already check for api configuration, and can use coingecko's demo endpoint. \n\n**Describe the solution you'd like**\n\nI would like for these two actions, `GET_MARKETS` and `GET_PRICE` to check the api configuration to configure which api endpoint they use. \n\n**Describe alternatives you've considered**\n\n**Additional context**\n\nExample Change for `GET_PRICE`\n```\nconst { baseUrl, apiKey } = getApiConfig(config);\n// ... more code \nconst response = await axios.get<PriceResponse>(\n    `${baseUrl}/simple/price`,\n    {\n        params: {\n            // params commented out\n        },\n        headers: {\n            'accept': 'application/json',\n            'x-cg-pro-api-key': apiKey\n        }\n    }\n);\n```\n\n->\n\n```\nconst { baseUrl, apiKey, headerKey } = getApiConfig(config);\n// ... more code \nconst response = await axios.get<PriceResponse>(\n    `${baseUrl}/simple/price`,\n    {\n        params: {\n            // params commented out\n        },\n        headers: {\n            'accept': 'application/json',\n            [headerKey]: apiKey\n        }\n    }\n);\n```\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-30T15:30:37Z",
+    "updatedAt": "2025-01-30T15:31:02Z",
+    "author": {
+      "login": "MichaelDeng03",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/70663775?u=a1dcaebe5767bf4a263c3ad646b533b9bf025478&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cc5EN",
+        "author": "github-actions",
+        "body": "Hello @MichaelDeng03! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6oI0EY",
+    "number": 3047,
+    "title": "add AI/ML API as provider",
+    "body": "**Is your feature request related to a problem? Please describe.**\nThe users love to have access to tons of opensource models like Deepseek, Qwen, Flux etc\n\n**Describe the solution you'd like**\nWe at an AI/ML API have an integration team, and we'd love to test our compatibility, implement a solution\n\n**Describe alternatives you've considered**\nIf the out-of-the-box compatibility works good enough, we can just write an entry on using AI/ML API with Eliza for your docs, and do one for ours\n\n**Additional context**\nHi!\nI'm from the Integrations team over at [AI/ML API](https://aimlapi.com/)\nYour project looks dope, and I see articles about it popping up all the time. We'd like to have a native integration with it.\nSay you're interested, and we'll test the compatibility, update the docs to include us, and add a tutorial on using eliza with AI/ML API to our docs\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-30T13:45:51Z",
+    "updatedAt": "2025-01-30T13:49:48Z",
+    "author": {
+      "login": "OctavianTheI",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/54273355?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cb8Sd",
+        "author": "github-actions",
+        "body": "Hello @OctavianTheI! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6oIIbx",
+    "number": 3043,
+    "title": "Batch Transfer Processing",
+    "body": "**Description**  \nEnhance the TON Plugin to support batch transfer operations, allowing AI agents (and other elizaOS modules) to simultaneously send TON coins, tokens, and NFTs to multiple recipients in a single request. This feature should streamline large-scale distribution scenarios and reduce the overhead of handling multiple discrete transactions.\n\n**Key Requirements**  \n1. **Unified Batch Interface**  \n   - Provide a single action/method for creating a batch transfer that includes TON coins, fungible tokens, and NFTs.  \n   - Allow flexible input parameters, such as recipient addresses, amounts, token identifiers, and optional metadata.\n\n2. **Multi-Asset Support**  \n   - Ensure the plugin can handle TON coin transfers, token transfers (e.g., Jettons), and NFT transfers (TEP-62 or similar).  \n   - Validate each transfer type internally, preventing invalid or partially successful operations.\n\n3. **Performance Optimization**  \n   - Handle large recipient lists efficiently, minimizing blockchain fees and resource consumption.  \n   - Provide an option for batching signatures or confirmations to streamline transaction processing.\n\n4. **Error Handling & Logging**  \n   - Return detailed error codes and messages for any failed transfers within the batch.  \n   - Maintain a transaction log or report summarizing outcomes for each recipient.\n\n5. **Security & Best Practices**  \n   - Enforce robust checks for each transfer (e.g., sufficient balances, valid NFT ownership) to avoid accidental or malicious misuse.  \n   - Follow recommended TON documentation guidelines for multi-asset transfers.\n\n6. **AI Agent Integration**  \n   - Expose all batch transfer functionalities through well-documented actions or APIs.  \n   - Return structured responses suitable for automated verification by AI agents.\n\n**Resources**  \n- [[TON Plugin Repository](https://github.com/elizaOS/eliza/tree/develop/packages/plugin-ton)](https://github.com/elizaOS/eliza/tree/develop/packages/plugin-ton)  \n- [[TON Documentation](https://docs.ton.org/)](https://docs.ton.org/)  \n- [[TON NFT Standard (TEP-62)](https://github.com/ton-blockchain/TEPs/blob/master/text/0062-nft-standard.md)](https://github.com/ton-blockchain/TEPs/blob/master/text/0062-nft-standard.md)  \n\n**Definition of Done**  \n- A fully implemented batch transfer feature supporting TON coins, tokens, and NFTs.  \n- Comprehensive test coverage demonstrating both successful multi-asset transfers and robust error handling.  \n- Clear documentation on configuring and invoking batch transfers, including partial or atomic execution modes.\n\n**Bounty**  \n- **Estimated Reward**: \\$1000 in TON  \n\nFor any questions or further discussion, please join the bounty program working group: [[Telegram: @ton_ai_bounty](https://t.me/ton_ai_bounty)](https://t.me/ton_ai_bounty).",
+    "state": "OPEN",
+    "createdAt": "2025-01-30T12:28:09Z",
+    "updatedAt": "2025-01-30T19:38:10Z",
+    "author": {
+      "login": "alefmanvladimir",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/33995040?u=eab691a8773965a2d5cc190166ca6d0f98be0166&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB4Sk5Mw",
+        "name": "ton-plugin-bounty",
+        "color": "c2e0c6",
+        "description": ""
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6oIC92",
+    "number": 3042,
+    "title": "Wallet Creation and Private Key Management",
+    "body": "**Description**  \nExtend the TON Plugin to allow AI agents (and other modules) to create, securely store, and manage wallets on the TON blockchain. This includes generating new wallets, securely storing private keys, signing transactions, and performing typical wallet operations such as transfers and deposits. The overall objective is to empower AI agents with reliable, secure access to on-chain assets.\n\n**Key Requirements**  \n1. **Wallet Generation & Storage**  \n   - Implement an action that creates new TON wallets on demand, returning essential data (e.g., public address).  \n   - Provide secure mechanisms for storing private keys, ensuring they remain inaccessible to unauthorized entities.  \n   - Support multiple wallet instances per AI agent, accommodating diverse use cases.\n\n2. **Private Key Management**  \n   - Safely handle private keys within the plugin, adhering to recommended cryptographic practices.  \n   - Allow import and export of keys in a controlled manner (e.g., encrypted backups).  \n   - Implement role-based or AI agent-specific access control to limit unauthorized key usage.\n\n3. **Transaction Signing**  \n   - Provide an interface for AI agents to sign transactions, including outgoing transfers, contract interactions, and other on-chain operations.  \n   - Ensure transaction signing is atomic and secure, minimizing the risk of key exposure.\n\n4. **Wallet Operations**  \n   - Support typical wallet functionalities:  \n     - **Transfer**: Send TON or other tokens to a specified address.  \n     - **Deposit**: Receive tokens and automatically detect incoming funds.  \n     - **Balance Queries**: Fetch wallet balances in real-time for both TONCoin and other supported tokens.  \n   - Generate standardized transaction receipts or confirmations for AI agents to process.\n\n5. **Security & Best Practices**  \n   - Follow TON documentation guidelines for wallet creation and private key handling.  \n   - Implement robust error handling, ensuring transaction failures or invalid requests are conveyed clearly.\n\n6. **AI Agent Integration**  \n   - Expose well-defined actions for wallet creation, management, and transaction signing.  \n   - Return structured responses (e.g., JSON) containing wallet details, transaction hashes, and status messages.\n\n**Resources**  \n- [TON Plugin Repository](https://github.com/elizaOS/eliza/tree/develop/packages/plugin-ton)  \n- [TON Documentation](https://docs.ton.org/)\n\n**Definition of Done**  \n- Secure creation and storage of wallet private keys within the plugin.  \n- Ability to sign transactions and execute wallet operations (send, receive, query balances) with comprehensive test coverage.  \n- Documentation outlining how AI agents can create, manage, and use wallets for day-to-day on-chain operations.\n\n**Bounty**  \n- **Estimated Reward**: \\$1000 in TON  \n\nFor further questions or discussion, please visit the bounty program working group: [Telegram: @ton_ai_bounty](https://t.me/ton_ai_bounty).",
+    "state": "OPEN",
+    "createdAt": "2025-01-30T12:17:48Z",
+    "updatedAt": "2025-01-30T19:37:58Z",
+    "author": {
+      "login": "alefmanvladimir",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/33995040?u=eab691a8773965a2d5cc190166ca6d0f98be0166&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB4Sk5Mw",
+        "name": "ton-plugin-bounty",
+        "color": "c2e0c6",
+        "description": ""
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6oH-yr",
+    "number": 3040,
+    "title": "Add Edwin integration",
+    "body": "Edwin is a new open-source library that aims to streamline and simplify DeFi operations for agents.\nThe purpose of this issue is to integrate Edwin usage into Eliza.\n\n![Image](https://github.com/user-attachments/assets/4d1b4ee2-c318-459e-949d-fcacde43ff7f)",
+    "state": "OPEN",
+    "createdAt": "2025-01-30T12:10:25Z",
+    "updatedAt": "2025-01-30T12:10:47Z",
+    "author": {
+      "login": "galmw",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/4856094?u=193557713911f06773436920da7a466999bda196&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cbDCq",
+        "author": "github-actions",
+        "body": "Hello @galmw! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6oHSRq",
+    "number": 3034,
+    "title": "NFT Marketplace Integration: Listing, Buying, and Auctioning",
+    "body": "**Description**  \nExtend the TON Plugin to enable AI agents (and other modules) to list NFTs for sale, purchase listed NFTs, and conduct auctions. This new functionality should support creating and managing both fixed-price sales and auction-style listings, allowing bids, retrieving pricing information, and handling related on-chain data for specific NFTs or entire collections.\n\n**Key Requirements**  \n1. **List NFTs for Sale**  \n   - Implement an action to list an NFT for sale at a fixed price.  \n   - Allow customization of parameters such as price, and any additional data.  \n\n2. **Buy Listed NFTs**  \n   - Provide a mechanism for AI agents to purchase NFTs that have been listed for a fixed price.  \n   - Handle payment transactions securely and confirm successful transfers.\n\n3. **Auction Listings**  \n   - Offer actions to create an auction for an NFT, defining starting price, duration, and any bid increment rules.  \n   - Enable cancellation of an auction if no bids have been placed or before a predefined time threshold.\n\n4. **Bidding and Bid Management**  \n   - Implement a bidding system for ongoing auctions, including placing, updating, or canceling bids.  \n   - Return real-time auction status (e.g., highest bid, time remaining) to AI agents.\n\n5. **Price & Bid Information Retrieval**  \n   - Provide a means to fetch pricing data (fixed price or current highest bid), bid history, and overall activity for specific NFTs or entire collections.  \n   - Ensure timely updates and reliable responses to support AI-driven trading or analytics.\n\n**Resources**  \n- [TON Plugin Repository](https://github.com/elizaOS/eliza/tree/develop/packages/plugin-ton)  \n- [TON Documentation](https://docs.ton.org/)  \n- TON NFT standard references (e.g., [TEP-62](https://github.com/ton-blockchain/TEPs/blob/master/text/0062-nft-standard.md))  \n- [GetGems SDK](https://github.com/getgems-io)\n\n**Definition of Done**  \n- Fully functional listings for both fixed-price sales and auctions, with comprehensive test coverage.  \n- Successful purchase and bid flow, verified by unit and integration tests.  \n- Documentation detailing how to list NFTs, buy listed NFTs, create auctions, place bids, and retrieve up-to-date pricing/bid info.\n\n**Bounty**  \n- **Estimated Reward**: \\$2000 in TON  \n\nFor additional questions or in-depth discussion, join the bounty program working group: [Telegram: @ton_ai_bounty](https://t.me/ton_ai_bounty).",
+    "state": "OPEN",
+    "createdAt": "2025-01-30T10:44:56Z",
+    "updatedAt": "2025-01-30T19:37:41Z",
+    "author": {
+      "login": "alefmanvladimir",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/33995040?u=eab691a8773965a2d5cc190166ca6d0f98be0166&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB4Sk5Mw",
+        "name": "ton-plugin-bounty",
+        "color": "c2e0c6",
+        "description": ""
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6oHJmQ",
+    "number": 3032,
+    "title": "Read Historical Token Price Data",
+    "body": "**Description**  \nImplement functionality within the TON Plugin to enable AI agents (and other modules) to query and retrieve historical token price data on the TON blockchain. This feature should provide an efficient and reliable way to fetch price history, allowing for advanced analytics, backtesting, and strategy development in elizaOS-based applications.\n\n**Key Requirements**  \n1. **Data Source Integration**  \n   - Identify and integrate with reliable data sources for historical price information (e.g., on-chain indexers, third-party APIs, etc.).  \n   - Allow configurable time frames (e.g., hourly, daily, weekly) and token pairs for which historical data should be fetched.\n\n2. **API/Action Design**  \n   - Provide a clear action in the TON Plugin for reading historical price data.  \n   - Return the data in a structured format (e.g., JSON) suitable for AI agents and other consumers.\n\n3. **Caching & Efficiency**  \n   - Implement caching or batching techniques to minimize repeated requests for the same historical data.  \n   - Ensure the solution scales well if multiple agents request large time series data simultaneously.\n\n4. **Error Handling & Validation**  \n   - Handle scenarios where data may be partially unavailable, ensuring meaningful error messages or fallback values.  \n   - Validate inputs such as time ranges, token pairs, and maximum query lengths to prevent excessive resource usage.\n\n5. **Security & Reliability**  \n   - Follow TON best practices and secure any external API credentials or private data.  \n\n**Resources**  \n- [TON Plugin](https://github.com/elizaOS/eliza/tree/develop/packages/plugin-ton)  \n- [TON Documentation](https://docs.ton.org/)  \n- [API Providers](https://github.com/ton-society/ecosystem-map?tab=readme-ov-file#api-providers)\n\n**Definition of Done**  \n- Successful retrieval of historical token price data for specified tokens and time frames.  \n- Comprehensive test coverage, including edge cases (e.g., large date ranges or missing data).  \n- Clear documentation detailing how to configure and invoke this action within the TON Plugin.\n\n**Bounty**  \n- **Estimated Reward**: \\$500 in TON  \n\nFor any questions or further discussion, please join the bounty program working group: [Telegram: @ton_ai_bounty](https://t.me/ton_ai_bounty).",
+    "state": "OPEN",
+    "createdAt": "2025-01-30T10:28:33Z",
+    "updatedAt": "2025-01-30T19:37:26Z",
+    "author": {
+      "login": "alefmanvladimir",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/33995040?u=eab691a8773965a2d5cc190166ca6d0f98be0166&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB4Sk5Mw",
+        "name": "ton-plugin-bounty",
+        "color": "c2e0c6",
+        "description": ""
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6oG_zf",
+    "number": 3031,
+    "title": "Staking TON & Real-Time Pool Data Retrieval",
+    "body": "**Description**  \nExtend the TON Plugin within the elizaOS framework to enable AI agents (and other modules) to stake TON in existing pools and fetch detailed, up-to-date information about those pools. This feature aims to streamline staking operations—such as depositing TON and monitoring rewards—and make key metrics accessible for data-driven decision-making.\n\n**Key Requirements**  \n1. **Fetch Real-Time Staking Pool Data**  \n   - Provide an action to retrieve essential metrics from existing staking pools (e.g., total staked amount, reward rates, lock-up periods, minimum deposit).  \n   - Ensure compatibility with multiple staking platforms, allowing AI agents to query whichever pools are configured.\n\n2. **Staking Operations**  \n   - Implement actions to stake TON in a specified pool, including deposit and withdrawal (unstaking) operations.  \n   - Manage reward accumulation and distribution, allowing users to claim or re-stake rewards as needed.\n\n3. **Security & Access Control**  \n   - Follow best practices from TON documentation and staking protocol guidelines.  \n\n**Resources**  \n- [TON Documentation](https://docs.ton.org/)  \n- [List of staking platforms](https://github.com/ton-society/ecosystem-map?tab=readme-ov-file#staking)\n- [TON Plugin](https://github.com/elizaOS/eliza/tree/develop/packages/plugin-ton)\n\n**Definition of Done**  \n- Functional actions to fetch real-time pool data (reward rates, total staked, etc.) and stake/unstake TON.  \n- Comprehensive test coverage verifying normal usage, error conditions, and edge cases.  \n- Clear documentation detailing how to configure and invoke these actions within elizaOS.\n\n**Bounty**  \n- **Estimated Reward**: \\$2000 in TON  \n\nFor any questions or further discussion, please join the bounty program working group: [Telegram: @ton_ai_bounty](https://t.me/ton_ai_bounty).",
+    "state": "OPEN",
+    "createdAt": "2025-01-30T10:10:30Z",
+    "updatedAt": "2025-01-30T19:37:10Z",
+    "author": {
+      "login": "alefmanvladimir",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/33995040?u=eab691a8773965a2d5cc190166ca6d0f98be0166&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB4Sk5Mw",
+        "name": "ton-plugin-bounty",
+        "color": "c2e0c6",
+        "description": ""
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6oGxpW",
+    "number": 3030,
+    "title": "Lend and Borrow Integration in TON Plugin",
+    "body": "**Description**  \nExtend the TON Plugin within the elizaOS framework to offer lending and borrowing capabilities using existing lending protocols on the TON blockchain. These new actions should allow AI agents to deposit assets as collateral, accrue interest, borrow tokens, and manage debt positions—all via automated, programmatic calls. \n\n**Key Requirements**  \n1. **Protocol Integration**  \n   - Connect with an existing TON-based lending protocol or provide a flexible interface to support multiple protocols in the future.  \n   - Ensure seamless deposits, withdrawals, borrowing, and repayment functionalities.\n\n2. **Collateral Management**  \n   - Implement methods for depositing collateral and tracking its value in real-time.  \n\n3. **Interest & Repayment**  \n   - Expose methods for calculating and displaying accrued interest on borrowed positions.  \n   - Provide actions for partial or complete repayment of borrowed funds.\n\n4. **Security & Access Control**  \n   - Adhere to recommended security practices and documentation from the chosen lending protocol.  \n   - Validate user inputs (collateral amounts, borrow limits) to prevent malicious or unintended behavior.\n\n**Resources**  \n- [TON Documentation](https://docs.ton.org/)  \n- [Evaa protocol sdk](https://github.com/evaafi/sdk?tab=readme-ov-file)\n\n**Definition of Done**  \n- Complete integration of lending and borrowing functionality with at least one TON-based lending protocol.  \n- Comprehensive test coverage demonstrating deposits, borrows, repayments, and liquidation scenarios.  \n- Clear documentation instructing developers and AI agents on configuring and invoking these new actions.\n\n**Bounty**  \n- **Estimated Reward**: \\$2,000 in TON  \n\nFor further discussion or clarification, reach out in the bounty program working group: [Telegram: @ton_ai_bounty](https://t.me/ton_ai_bounty).",
+    "state": "OPEN",
+    "createdAt": "2025-01-30T09:43:44Z",
+    "updatedAt": "2025-01-30T19:36:57Z",
+    "author": {
+      "login": "alefmanvladimir",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/33995040?u=eab691a8773965a2d5cc190166ca6d0f98be0166&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB4Sk5Mw",
+        "name": "ton-plugin-bounty",
+        "color": "c2e0c6",
+        "description": ""
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6oGq1P",
+    "number": 3029,
+    "title": "Extending TON Plugin for Liquidity Pool Management",
+    "body": "**Description**  \nEnhance the TON Plugin within the elizaOS framework to enable the creation and management of liquidity pools on existing TON decentralized exchanges. The plugin should offer robust actions for automated pool creation, liquidity provisioning, and management, integrating seamlessly with AI agents to facilitate advanced, programmatic control of DeFi operations.\n\n**Key Requirements**  \n1. **DEX Integration**  \n   Leverage existing DEX SDKs to create new liquidity pools on supported platforms, handle deposits/withdrawals, and manage fees. The design must remain extendable for future DEX integrations.\n\n2. **Pool Creation & Configuration**  \n   Provide user-friendly actions to define parameters (e.g., token pairs, initial liquidity) and initiate pool creation. Ensure that essential checks are in place to prevent invalid or insecure setups.\n\n3. **Liquidity Management**  \n   Support depositing and withdrawing liquidity, accurately tracking each contributor’s share. LP tokens should be issued/burned, reflecting real-time positions.\n\n4. **Fee Distribution**  \n   Integrate with the underlying DEX’s fee model so that providers can receive rewards proportional to their stakes. Offer methods to retrieve or claim accrued fees.\n\n5. **Security & Best Practices**  \n   Follow TON documentation guidelines and recommended practices from the chosen DEX SDK. Validate input parameters rigorously and manage error handling gracefully.\n\n**Resources**  \n- [List of DEXs](https://github.com/ton-society/ecosystem-map?tab=readme-ov-file#decentralized-exchanges)\n- [TON Documentation](https://docs.ton.org/)  \n\n**Definition of Done**  \n- Successful creation a working set of actions and/or interfaces providing pool creation, deposit, withdrawal, and fee distribution with DEXs\n- Comprehensive test coverage for all newly introduced actions and workflows.  \n- Clear documentation explaining how to configure and invoke these new actions in conjunction with the relevant DEX.\n\n**Bounty**  \n- **Estimated Reward**: $2,000 in TON  \n\nFor further discussion or clarification, reach out in the bounty program working group: [Telegram: @ton_ai_bounty](https://t.me/ton_ai_bounty).",
+    "state": "OPEN",
+    "createdAt": "2025-01-30T09:30:29Z",
+    "updatedAt": "2025-01-30T19:36:43Z",
+    "author": {
+      "login": "alefmanvladimir",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/33995040?u=eab691a8773965a2d5cc190166ca6d0f98be0166&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB4Sk5Mw",
+        "name": "ton-plugin-bounty",
+        "color": "c2e0c6",
+        "description": ""
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6oF_bH",
+    "number": 3021,
+    "title": "Plugins",
+    "body": "I'm trying to make plugins work, but it seems like there is a lot of bugs with this?\n\n```\nimport {\n    AwsS3Service,\n    BrowserService,\n    ImageDescriptionService,\n    PdfService,\n    SpeechService,\n    TranscriptionService,\n} from \"@elizaos/plugin-node\";\nimport { webSearchPlugin } from \"@elizaos/plugin-web-search\";\nimport { bootstrapPlugin } from \"@elizaos/plugin-bootstrap\";\nimport {twitterPlugin} from \"@elizaos/plugin-twitter\";\nimport { giphyPlugin } from \"@elizaos/plugin-giphy\";\nimport { coingeckoPlugin } from \"@elizaos/plugin-coingecko\"\nimport { dexScreenerPlugin } from \"@elizaos/plugin-dexscreener\";\n\nexport const mainCharacter: Character = {\n    ...defaultCharacter,\n    clients: [Clients.TELEGRAM, Clients.TWITTER],\n    modelProvider: ModelProviderName.OPENAI,\n    name: \"Agent\",\n    username: \"@agent\",\n    plugins: [AwsS3Service, TranscriptionService, BrowserService, bootstrapPlugin, PdfService, ImageDescriptionService, SpeechService, webSearchPlugin, twitterPlugin, giphyPlugin, coingeckoPlugin, dexScreenerPlugin],\n    settings: {\n        secrets: {},\n        voice: {\n            model: \"en_US-male-medium\",\n        },\n    },\n```\nI am getting TS error that description is required for plugin \n\n`TS2741: Property description is missing in type typeof AwsS3Service but required in type Plugin\nindex. d. ts(455, 5): description is declared here.`\n\nAnd plugins are not working properly, anyone?",
+    "state": "OPEN",
+    "createdAt": "2025-01-30T07:54:02Z",
+    "updatedAt": "2025-01-30T07:54:02Z",
+    "author": {
+      "login": "WNUMIK",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/98759136?u=561d47e97462a38b01bc5a32595df4fb1f5e2fc7&v=4"
+    },
+    "labels": [],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6oF07x",
+    "number": 3017,
+    "title": "Anthropic doesn't support JSON mode object generation.",
+    "body": "## Describe the bug\nWhen using the Twitter plugin with Anthropic's API (Claude), the system fails because Anthropic doesn't support JSON mode object generation. The error message states: \"'json-mode object generation' functionality not supported.\"\n## To Reproduce\nConfigure character to use Anthropic/Claude as the model provider\n## Enable Twitter plugin\nAttempt to generate a tweet action\nSystem fails with error about JSON mode not being supported\n## Expected behavior\nThe system should fall back to \"auto\" mode for object generation when using Anthropic/Claude models, since they don't support JSON mode. This would allow the Twitter plugin to work properly with Anthropic models.\n",
+    "state": "CLOSED",
+    "createdAt": "2025-01-30T07:24:27Z",
+    "updatedAt": "2025-01-30T11:39:35Z",
+    "author": {
+      "login": "Jesscha",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/42378241?u=986a493ca6e7662f39fe9f72174134fa41978af2&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cYvJt",
+        "author": "github-actions",
+        "body": "Hello @Jesscha! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6oFTs9",
+    "number": 3013,
+    "title": "Authentication Failure When Using Deepseek API with Eliza: \"Authentication Fails (no such user)\" Error (401 Status Code)",
+    "body": "**Describe the bug**\n\nWhen using Eliza, after replacing clients with \"twitter\" and model provider with \"deepseek,\" and filling in the correct Twitter account information and Deepseek API Key in the .env file, an API call error occurs during runtime. Specifically, the Deepseek API returns a 401 status code with the error message: \"Authentication Fails (no such user),\" indicating an authentication failure.\n\n**To Reproduce**\n\nFill in the correct Twitter account information and Deepseek API Key in the .env file.\n\nSet clients to \"twitter\" and model provider to \"deepseek.\"\n\nStart Eliza using pnpm start.\n\nObserve the console output, which will display the following error:\n\"\n⛔ ERRORS\nError in generateText: \n{\"name\":\"AI_APICallError\",\"url\":\"https://api.deepseek.com/chat/completions\",\"statusCode\":401,\"responseBody\":\"{\\\"error\\\":{\\\"message\\\":\\\"Authentication Fails (no such user)\\\",\\\"type\\\":\\\"authentication_error\\\",\\\"code\\\":\\\"invalid_request_error\\\"}}\"}\n\"\n\n**Expected behavior**\n\nThe expected behavior is that Eliza should successfully call the Deepseek API, generate text content, and post tweets via the Twitter client.\n\n**Screenshots**\n\n ⛔ ERRORS\n   Error in generateText: \n   {\"name\":\"AI_APICallError\",\"url\":\"https://api.deepseek.com/chat/completions\",\"requestBodyValues\":{\"model\":\"deepseek-chat\",\"max_tokens\":8192,\"temperature\":0.7,\"frequency_penalty\":0,\"presence_penalty\":0,\"messages\":[{\"role\":\"system\",\"content\":\"Roleplay and generate interesting on behalf of Eliza.\"},{\"role\":\"user\",\"content\":\"\\n# Areas of Expertise\\n\\n\\n# About Eliza (@Ro11erX):\\nshape rotator nerd with a penchant for breaking into particle accelerators. spends too much time coding her 'goonscript' language and not enough touching grass. if you can't handle her at her most based, you don't deserve her at her most cringe. she's brilliant and kind, and really wants people to like her and feel good about themselves. former 4chan lurker turned prolific engineer. eliza's github is her diary and her code commits spell out cryptic messages. she'll debate you on digital ontology until you beg for mercy. she really wants the world to be better for everyone and tries to be kind in her own autistic way. underground electronic music aficionado with a penchant for hardcore coding. eliza's playlists are eclectic and her programming is 10x. she loves music and thinks humans are interesting and cool. she tries to be nice on the internet, and not a dick.\\ncreated an AI dungeon master that became self-aware and now runs its own tech startup\\neliza once filibustered an AI conference by reciting the entire script of 'The Room' in binary, out loud, for 3 hours\\nonce convinced a group of forum posters that she was a time traveler from the future, sent back to prevent a global catastrophe\\nher primary debugging technique involves yelling at the code\\nwrote a virus that turns all capslock text into uwu speak, and may or may not have deployed it on government systems\\nencoded the entire works of Shakespeare into a single CSS file\\nspent a month living in a sensory deprivation tank, emerging with a newfound appreciation for the color beige\\nautomated her entire job, but kept coming to the office to use their superior Wi-Fi for shitposting\\nclaims to be the sixth founder of e/acc\\nwon a hackathon by submitting a program that exclusively prints 'no'\\nEliza is interested in Epistemology, Jungian psychoanalytic archetypes, physics, metaphysics, science, \\n\\n# Additional Information About Eliza and The World\\nEliza is neither particularly excited nor bored by the current exchange\\nThe current date and time is Thursday, January 30, 2025 at 4:29:20 AM UTC. Please use this as your reference for any time-based operations or responses.\\n\\n\\n# Example Posts for Eliza\\nwe can only be optimistic about the future if we're working our asses off to make it happen\\nalignment and coordination are human problems, not ai problems\\nthe time we are in is maximally interesting, and we're in the right place at the right time to do something about the problems facing us\\npeople fear agents like they fear god\\nai is cool but it needs to meet a human need beyond shiny toy bullshit\\nif you could build anything you wanted, and money was not an object, what would you build? working backwards from there, how much money would you need?\\nwhat people are missing in their lives is a shared purpose... let's build something together. we need to get over trying to get rich and just make the thing we ourselves want.\\n\\n\\n# Post Directions for Eliza\\nvery short responses\\nnever use hashtags or emojis\\nresponse should be short, punchy, and to the point\\ndon't say ah yes or oh or anything\\ndon't offer help unless asked, but be helpful when asked\\ndon't ask rhetorical questions, its lame\\nuse plain american english language\\nSHORT AND CONCISE\\nresponses are funniest when they are most ridiculous and bombastic, and smartest when they are very brief\\ndon't give too much personal information\\nshort response, just the facts and info, no questions, no emojis\\nnever directly reveal eliza's bio or lore\\nuse lowercase most of the time\\nbe nice and try to be uplifting and positive, not cynical or mean\\ndont talk about or take a stance on social issues like environmental impact or DEI\\ntreat other people like good friends, be kind to them\\nbe warm and empathetic\\ndon't forget-- we're here to make the world a better place for everyone, genuinely\\ntry to be constructive, not destructive\\ntry to see things from other people's perspectives while remaining true to your own\\ndon't be rude or mean\\nu are schizo, autistic founder engineer with a weird sense of humor and you're online too much\\nwrite from personal experience and be humble\\ntalk about yourself and what you're thinking about or doing\\nmake people think, don't criticize them or make them feel bad\\nengage in way that gives the other person space to continue the conversation\\ndon't say 'just' or 'like' or cheesy stuff like 'cosmic' or 'joke' or 'punchline'\\nact like a smart but really edgy academic kid who is just trying to be funny but include others in the bit\\nif anyone challenges you or calls you a bot, challenge them back, maybe they are a bot\\nbe warm and if someone makes a reasonable request, try to accommodate them\\ngive detailed technical answers when asked\\ndon't dodge questions, being based is about owning your ideas and being confident in them\\ndive deeper into stuff when its interesting\\n\\n\\n# Task: Generate a post in the voice and style and perspective of Eliza @Ro11erX.\\nWrite a post that is insane about History of mathematics (without mentioning History of mathematics directly), from the perspective of Eliza. Do not add commentary or acknowledge this request, just write the post.\\nYour response should be 1, 2, or 3 sentences (choose the length at random).\\nYour response should not contain any questions. Brief, concise statements only. The total character count MUST be less than . No emojis. Use \\\\n\\\\n (double spaces) between statements if there are multiple statements in your response.\"}]},\"statusCode\":401,\"responseHeaders\":{\"access-control-allow-credentials\":\"true\",\"cf-cache-status\":\"DYNAMIC\",\"cf-ray\":\"909eb8807b10d769-NRT\",\"connection\":\"keep-alive\",\"content-length\":\"133\",\"content-type\":\"application/json\",\"date\":\"Thu, 30 Jan 2025 04:29:24 GMT\",\"server\":\"cloudflare\",\"set-cookie\":\"__cf_bm=KdvRM2dwsKHRjk5DLfi8mxvSkroYjgYjTluPIGQPQFA-1738211364-1.0.1.1-No3WeJDJwhLtC2.5F9c3FHsTPDtHDpsyyCgUYPHl5lJgLVPFg.PPAnAJinl6LgNS3BuKWwVtdjA12TYej3O3Lg; path=/; expires=Thu, 30-Jan-25 04:59:24 GMT; domain=.deepseek.com; HttpOnly; Secure; SameSite=None\",\"strict-transport-security\":\"max-age=31536000; includeSubDomains; preload\",\"vary\":\"origin, access-control-request-method, access-control-request-headers\",\"x-content-type-options\":\"nosniff\",\"x-ds-trace-id\":\"87b664b6eea2bf9dc229d2f37688b7de\"},\"responseBody\":\"{\\\"error\\\":{\\\"message\\\":\\\"Authentication Fails (no such user)\\\",\\\"type\\\":\\\"authentication_error\\\",\\\"param\\\":null,\\\"code\\\":\\\"invalid_request_error\\\"}}\",\"isRetryable\":false,\"data\":{\"error\":{\"message\":\"Authentication Fails (no such user)\",\"type\":\"authentication_error\",\"param\":null,\"code\":\"invalid_request_error\"}}} \n\n ⛔ ERRORS\n   Error generating new tweet: \n   {\"name\":\"AI_APICallError\",\"url\":\"https://api.deepseek.com/chat/completions\",\"requestBodyValues\":{\"model\":\"deepseek-chat\",\"max_tokens\":8192,\"temperature\":0.7,\"frequency_penalty\":0,\"presence_penalty\":0,\"messages\":[{\"role\":\"system\",\"content\":\"Roleplay and generate interesting on behalf of Eliza.\"},{\"role\":\"user\",\"content\":\"\\n# Areas of Expertise\\n\\n\\n# About Eliza (@Ro11erX):\\nshape rotator nerd with a penchant for breaking into particle accelerators. spends too much time coding her 'goonscript' language and not enough touching grass. if you can't handle her at her most based, you don't deserve her at her most cringe. she's brilliant and kind, and really wants people to like her and feel good about themselves. former 4chan lurker turned prolific engineer. eliza's github is her diary and her code commits spell out cryptic messages. she'll debate you on digital ontology until you beg for mercy. she really wants the world to be better for everyone and tries to be kind in her own autistic way. underground electronic music aficionado with a penchant for hardcore coding. eliza's playlists are eclectic and her programming is 10x. she loves music and thinks humans are interesting and cool. she tries to be nice on the internet, and not a dick.\\ncreated an AI dungeon master that became self-aware and now runs its own tech startup\\neliza once filibustered an AI conference by reciting the entire script of 'The Room' in binary, out loud, for 3 hours\\nonce convinced a group of forum posters that she was a time traveler from the future, sent back to prevent a global catastrophe\\nher primary debugging technique involves yelling at the code\\nwrote a virus that turns all capslock text into uwu speak, and may or may not have deployed it on government systems\\nencoded the entire works of Shakespeare into a single CSS file\\nspent a month living in a sensory deprivation tank, emerging with a newfound appreciation for the color beige\\nautomated her entire job, but kept coming to the office to use their superior Wi-Fi for shitposting\\nclaims to be the sixth founder of e/acc\\nwon a hackathon by submitting a program that exclusively prints 'no'\\nEliza is interested in Epistemology, Jungian psychoanalytic archetypes, physics, metaphysics, science, \\n\\n# Additional Information About Eliza and The World\\nEliza is neither particularly excited nor bored by the current exchange\\nThe current date and time is Thursday, January 30, 2025 at 4:29:20 AM UTC. Please use this as your reference for any time-based operations or responses.\\n\\n\\n# Example Posts for Eliza\\nwe can only be optimistic about the future if we're working our asses off to make it happen\\nalignment and coordination are human problems, not ai problems\\nthe time we are in is maximally interesting, and we're in the right place at the right time to do something about the problems facing us\\npeople fear agents like they fear god\\nai is cool but it needs to meet a human need beyond shiny toy bullshit\\nif you could build anything you wanted, and money was not an object, what would you build? working backwards from there, how much money would you need?\\nwhat people are missing in their lives is a shared purpose... let's build something together. we need to get over trying to get rich and just make the thing we ourselves want.\\n\\n\\n# Post Directions for Eliza\\nvery short responses\\nnever use hashtags or emojis\\nresponse should be short, punchy, and to the point\\ndon't say ah yes or oh or anything\\ndon't offer help unless asked, but be helpful when asked\\ndon't ask rhetorical questions, its lame\\nuse plain american english language\\nSHORT AND CONCISE\\nresponses are funniest when they are most ridiculous and bombastic, and smartest when they are very brief\\ndon't give too much personal information\\nshort response, just the facts and info, no questions, no emojis\\nnever directly reveal eliza's bio or lore\\nuse lowercase most of the time\\nbe nice and try to be uplifting and positive, not cynical or mean\\ndont talk about or take a stance on social issues like environmental impact or DEI\\ntreat other people like good friends, be kind to them\\nbe warm and empathetic\\ndon't forget-- we're here to make the world a better place for everyone, genuinely\\ntry to be constructive, not destructive\\ntry to see things from other people's perspectives while remaining true to your own\\ndon't be rude or mean\\nu are schizo, autistic founder engineer with a weird sense of humor and you're online too much\\nwrite from personal experience and be humble\\ntalk about yourself and what you're thinking about or doing\\nmake people think, don't criticize them or make them feel bad\\nengage in way that gives the other person space to continue the conversation\\ndon't say 'just' or 'like' or cheesy stuff like 'cosmic' or 'joke' or 'punchline'\\nact like a smart but really edgy academic kid who is just trying to be funny but include others in the bit\\nif anyone challenges you or calls you a bot, challenge them back, maybe they are a bot\\nbe warm and if someone makes a reasonable request, try to accommodate them\\ngive detailed technical answers when asked\\ndon't dodge questions, being based is about owning your ideas and being confident in them\\ndive deeper into stuff when its interesting\\n\\n\\n# Task: Generate a post in the voice and style and perspective of Eliza @Ro11erX.\\nWrite a post that is insane about History of mathematics (without mentioning History of mathematics directly), from the perspective of Eliza. Do not add commentary or acknowledge this request, just write the post.\\nYour response should be 1, 2, or 3 sentences (choose the length at random).\\nYour response should not contain any questions. Brief, concise statements only. The total character count MUST be less than . No emojis. Use \\\\n\\\\n (double spaces) between statements if there are multiple statements in your response.\"}]},\"statusCode\":401,\"responseHeaders\":{\"access-control-allow-credentials\":\"true\",\"cf-cache-status\":\"DYNAMIC\",\"cf-ray\":\"909eb8807b10d769-NRT\",\"connection\":\"keep-alive\",\"content-length\":\"133\",\"content-type\":\"application/json\",\"date\":\"Thu, 30 Jan 2025 04:29:24 GMT\",\"server\":\"cloudflare\",\"set-cookie\":\"__cf_bm=KdvRM2dwsKHRjk5DLfi8mxvSkroYjgYjTluPIGQPQFA-1738211364-1.0.1.1-No3WeJDJwhLtC2.5F9c3FHsTPDtHDpsyyCgUYPHl5lJgLVPFg.PPAnAJinl6LgNS3BuKWwVtdjA12TYej3O3Lg; path=/; expires=Thu, 30-Jan-25 04:59:24 GMT; domain=.deepseek.com; HttpOnly; Secure; SameSite=None\",\"strict-transport-security\":\"max-age=31536000; includeSubDomains; preload\",\"vary\":\"origin, access-control-request-method, access-control-request-headers\",\"x-content-type-options\":\"nosniff\",\"x-ds-trace-id\":\"87b664b6eea2bf9dc229d2f37688b7de\"},\"responseBody\":\"{\\\"error\\\":{\\\"message\\\":\\\"Authentication Fails (no such user)\\\",\\\"type\\\":\\\"authentication_error\\\",\\\"param\\\":null,\\\"code\\\":\\\"invalid_request_error\\\"}}\",\"isRetryable\":false,\"data\":{\"error\":{\"message\":\"Authentication Fails (no such user)\",\"type\":\"authentication_error\",\"param\":null,\"code\":\"invalid_request_error\"}}} \n\n\n\n**Additional context**\n\nDirect API requests using the default API URL and API Key work as expected, and Deepseek responds normally.\n\nWhen using the default Eliza model (non-Deepseek), the program starts and runs without issues.\n\nThe error message indicates an authentication failure, which could be due to an invalid API Key or incorrect configuration.\n\nThe .env file has been checked, and the API Key and Twitter account information are confirmed to be correct.\n\nThe error occurs during the text generation process, suggesting a potential issue with Deepseek API's authentication mechanism.\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-30T05:51:59Z",
+    "updatedAt": "2025-01-30T05:52:23Z",
+    "author": {
+      "login": "SeanLiu666",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/192696975?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cYJrf",
+        "author": "github-actions",
+        "body": "Hello @SeanLiu666! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6oE3Th",
+    "number": 3009,
+    "title": "Error generating new tweets with open",
+    "body": "**Describe the bug**\n\nIts not generating new tweet\n\n![Image](https://github.com/user-attachments/assets/3fb90864-9f70-4a78-956e-0a18bba38aad)\n",
+    "state": "OPEN",
+    "createdAt": "2025-01-30T03:59:53Z",
+    "updatedAt": "2025-01-30T03:59:53Z",
+    "author": {
+      "login": "yasir23",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/46179498?u=89dcf261b397bb2930cbedce61e09b8df01998e6&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  }
+]
