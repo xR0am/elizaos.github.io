@@ -1,15 +1,15 @@
-# elizaos Eliza (2025-02-01)
+# elizaos Eliza (2025-02-02)
     
 ## 📊 Overview
-with 17 contributors merging 0 PRs. Major work included various improvements.
+with 22 contributors merging 0 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 17 |
-| 📝 Commits | 1 |
+| 👥 Contributors | 22 |
+| 📝 Commits | 0 |
 | 🔄 Merged PRs | 0 |
-| ⚠️ New Issues | 9 |
+| ⚠️ New Issues | 7 |
 
 ## 🔄 Pull Request Summary
 - 🧹 **Chores**: 0
@@ -23,13 +23,13 @@ with 17 contributors merging 0 PRs. Major work included various improvements.
 
 
 ## 👥 Top Contributors
-- **Y-DA007**: Y-DA007 is currently working on adding a trading signals plugin, with three pull requests submitted for this feature
-- **ai16z-demirix**: ai16z-demirix is currently working on enhancing the plugins for coinmarketcap and coingecko by testing configurations and improving coverage in the packages code areas
-- **yohairosen**: yohairosen is currently working on adding Google vertex provider support, with two pull requests submitted in the packages and agent code areas
+- **AIFlowML**: AIFlowML is currently working on fixing various plugins, including plugin-3g-generation, plugin-abstract, plugin-0x, plugin-agentkit, plugin-akash, and plugin-allora
+- **juanc07**: juanc07 is currently working on fixing an issue in the embeddings
+- **midoan2**: midoan2 is currently working on setting up an issue related to a bug
 
 ## ⚠️ Issues
-- **New Issues**: 9
-- **Labels**: `bug` (7), `enhancement` (2)
-- **Summary**: 7 bugs reported (including 'Hajajajajajajjaja', 'Jajajsjsjsjjs') 2 feature requests (including 'plugin coinmarketcap: test config and coverage', 'plugin-coingecko: test config and coverage').
+- **New Issues**: 7
+- **Labels**: `bug` (5), `enhancement` (1)
+- **Summary**: 5 bugs reported (including 'set up', '@ai-sdk/provider-utils does not provide an export named 'delay'') 1 feature requests (including 'feat: Snapshot plugin for DAOs').
 
 ## Top Contributors
