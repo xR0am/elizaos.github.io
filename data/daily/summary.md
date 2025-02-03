@@ -1,35 +1,42 @@
-# elizaos Eliza (2025-02-02)
+# elizaos Eliza (2025-02-03)
     
 ## 📊 Overview
-with 22 contributors merging 0 PRs. Major work included various improvements.
+Development focused on package improvements (add Biome configuration to Solana ecosystem plugins 07), new features (TON Plugin: NFT collection, item creation, metadata change and transfer actions), 7 bug fixes. with 24 contributors merging 15 PRs. Major work included aiflowml is currently working on adding biome configuration to various plugins within the solana ecosystem, including blockchain, storage, story, and tee-related plugins.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 22 |
+| 👥 Contributors | 24 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 0 |
-| ⚠️ New Issues | 7 |
+| 🔄 Merged PRs | 15 |
+| ⚠️ New Issues | 6 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 0
-- 🐛 **Fixes**: 0
-- ✨ **Features**: 0
+- 🧹 **Chores**: 2
+- 🐛 **Fixes**: 7
+- ✨ **Features**: 2
 
 ## 📁 File Changes
-
+- **packages**: 92 files (+4778/-169 lines)
+- **docs**: 9 files (+125/-12 lines)
+- **root**: 4 files (+13/-3 lines)
 
 ## 🔥 Notable Changes
-
+- chore: add Biome configuration to Solana ecosystem plugins 07
+- fix: multi-biome-02
+- fix: multi-biome-01
 
 ## 👥 Top Contributors
-- **AIFlowML**: AIFlowML is currently working on fixing various plugins, including plugin-3g-generation, plugin-abstract, plugin-0x, plugin-agentkit, plugin-akash, and plugin-allora
-- **juanc07**: juanc07 is currently working on fixing an issue in the embeddings
-- **midoan2**: midoan2 is currently working on setting up an issue related to a bug
+- **AIFlowML**: AIFlowML is currently working on adding Biome configuration to various plugins within the Solana ecosystem, including blockchain, storage, story, and TEE-related plugins
+- **tcm390**: tcm390 is currently working on fixing issues related to extracting attributes from raw text and updating provider-utils in the packages code area on GitHub
+- **nilaysarma**: nilaysarma is currently working on updating the Twitter information in the README file, as indicated by the recent issue and pull request related to documentation
 
 ## ⚠️ Issues
-- **New Issues**: 7
-- **Labels**: `bug` (5), `enhancement` (1)
-- **Summary**: 5 bugs reported (including 'set up', '@ai-sdk/provider-utils does not provide an export named 'delay'') 1 feature requests (including 'feat: Snapshot plugin for DAOs').
+- **New Issues**: 6
+- **Labels**: `bug` (4), `documentation` (1)
+- **Summary**: 4 bugs reported (including 'Build errors when trying to deploy on render.com', 'Runtime import error: ERR_PACKAGE_PATH_NOT_EXPORTED in NestJs').
 
 ## Top Contributors
+- **AIFlowML**: chore: add Biome configuration to Solana ecosystem plugins 07
+- **tcm390**: fix: extract attribute from raw text instead of normalized json
+- **nilaysarma**: docs: Update Twitter to X (Twitter)

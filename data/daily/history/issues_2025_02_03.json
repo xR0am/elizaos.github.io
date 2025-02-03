@@ -1,0 +1,161 @@
+[
+  {
+    "id": "I_kwDOMT5cIs6omj3r",
+    "number": 3212,
+    "title": "Build errors when trying to deploy on render.com",
+    "body": "When i am trying to deploy from the repo after already running pnpm install --no-frozen-lockfile i am getting errors. Then i make sharp optional with the -w flag and get the following errors for the build. \n\nnode_modules/sharp install: ../metadata.cc:237:46: error: ‘NewOrCopy’ is not a member of ‘Napi::Buffer<char>’\nnode_modules/sharp install:   237 |         info.Set(\"exif\", Napi::Buffer<char>::NewOrCopy(env, baton->exif, baton->exifLength, sharp::FreeCallback));\nnode_modules/sharp install:       |                                              ^~~~~~~~~\nnode_modules/sharp install: ../metadata.cc:240:45: error: ‘NewOrCopy’ is not a member of ‘Napi::Buffer<char>’\nnode_modules/sharp install:   240 |         info.Set(\"icc\", Napi::Buffer<char>::NewOrCopy(env, baton->icc, baton->iccLength, sharp::FreeCallback));\nnode_modules/sharp install:       |                                             ^~~~~~~~~\nnode_modules/sharp install: ../metadata.cc:243:46: error: ‘NewOrCopy’ is not a member of ‘Napi::Buffer<char>’\nnode_modules/sharp install:   243 |         info.Set(\"iptc\", Napi::Buffer<char>::NewOrCopy(env, baton->iptc, baton->iptcLength, sharp::FreeCallback));\nnode_modules/sharp install:       |                                              ^~~~~~~~~\nnode_modules/sharp install: ../metadata.cc:246:45: error: ‘NewOrCopy’ is not a member of ‘Napi::Buffer<char>’\nnode_modules/sharp install:   246 |         info.Set(\"xmp\", Napi::Buffer<char>::NewOrCopy(env, baton->xmp, baton->xmpLength, sharp::FreeCallback));\nnode_modules/sharp install:       |                                             ^~~~~~~~~\nnode_modules/sharp install: ../metadata.cc:250:31: error: ‘NewOrCopy’ is not a member of ‘Napi::Buffer<char>’\nnode_modules/sharp install:   250 |           Napi::Buffer<char>::NewOrCopy(env, baton->tifftagPhotoshop,\nnode_modules/sharp install:       |                               ^~~~~~~~~\n.../babel-runtime/node_modules/core-js postinstall$ node -e \"try{require('./postinstall')}catch(e){}\"\n.../sdk-ts/node_modules/secp256k1 install$ node-gyp-build || exit 0\nnode_modules/@discordjs/opus install:   CC(target) Release/obj.target/libopus/deps/opus/silk/resampler_private_AR2.o\nnode_modules/sharp install: make: *** [sharp-linux-x64.target.mk:173: Release/obj.target/sharp-linux-x64/metadata.o] Error 1\nnode_modules/sharp install: gyp ERR! build error \nnode_modules/sharp install: gyp ERR! stack Error: `make` failed with exit code: 2\nnode_modules/sharp install: gyp ERR! stack at ChildProcess.<anonymous> (/opt/render/project/src/node_modules/node-gyp/lib/build.js:216:23)\nnode_modules/sharp install: gyp ERR! System Linux 6.8.0-1023-aws\nnode_modules/sharp install: gyp ERR! command \"/opt/render/project/nodes/node-23.3.0/bin/node\" \"/opt/render/project/src/node_modules/.bin/node-gyp\" \"rebuild\" \"--directory=src\"\nnode_modules/sharp install: gyp ERR! cwd /opt/render/project/src/node_modules/sharp/src\nnode_modules/sharp install: gyp ERR! node -v v23.3.0\nnode_modules/sharp install: gyp ERR! node-gyp -v v10.3.1\nnode_modules/sharp install: gyp ERR! not ok \nnode_modules/sharp install: make: Leaving directory '/opt/render/project/src/node_modules/sharp/src/build'\n.../babel-runtime/node_modules/core-js postinstall: Done\nnode_modules/sharp install: Failed\nnode_modules/@discordjs/opus install:   CC(target) Release/obj.target/libopus/deps/opus/silk/LPC_fit.o\nnode_modules/canvas install:   CXX(target) Release/obj.target/canvas/src/backend/SvgBackend.o\n.../sdk-ts/node_modules/secp256k1 install: Done\n ELIFECYCLE  Command failed with exit code 1.\nnode_modules/@discordjs/opus install:   CC(target) Release/obj.target/libopus/deps/opus/silk/control_SNR.o\n.../crypto/node_modules/secp256k1 install$ node-gyp-build || exit 0\nnode_modules/@discordjs/opus install:   CC(target) Release/obj.target/libopus/deps/opus/silk/decode_parameters.o\n==> Build failed 😞",
+    "state": "OPEN",
+    "createdAt": "2025-02-03T22:22:29Z",
+    "updatedAt": "2025-02-03T22:25:23Z",
+    "author": {
+      "login": "RectiFlex",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/185045229?u=f167b657baacefc71ea779c685f9b9c9dc8ce850&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6c5XV4",
+        "author": "github-actions",
+        "body": "Hello @RectiFlex! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6c5ZhD",
+        "author": "RectiFlex",
+        "body": "Build commands being run in render.com: pnpm install --include=optional sharp && pnpm build"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6ok6kH",
+    "number": 3202,
+    "title": "twitter agent",
+    "body": "I am making a twitter gent and I keep getting the error\n[2025-02-03 18:36:23] ERROR: Full error details:\n    code: \"ERR_INVALID_URL\"\n    input: \"/embeddings\"\n[2025-02-03 18:36:23] ERROR: Error generating new tweet:\n    code: \"ERR_INVALID_URL\"\n    input: \"/embeddings\"\n\n\nI tried diffrent llm api like google and hyperpolic because when using gaianet free service the error changed to can't find the server , please help",
+    "state": "OPEN",
+    "createdAt": "2025-02-03T18:39:25Z",
+    "updatedAt": "2025-02-03T18:39:25Z",
+    "author": {
+      "login": "midoan2",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/158835053?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6okYrF",
+    "number": 3201,
+    "title": "Twitter logging bug",
+    "body": "\n![Image](https://github.com/user-attachments/assets/cd301e6a-8666-499d-a92f-908db17e24b8)\n\nAfter successfully logging in, the system attempts to fetch tweets and generate a new tweet. However, an error occurs:\n\nThe log shows INFO: Successfully logged in.\nThen, ERROR: Connected to Twitter appears.\nWhen fetching search tweets, no results are obtained.\nFinally, an ERROR: Error generating new tweet message appears, but without any further details or explanation.\nAdditionally, even though the system indicates that it logged into Twitter, there is no login notification on my phone (which usually happens when logging in from a new device or app).\n\nTo Reproduce\nRun the script to log in to Twitter.\nObserve the logs showing \"Successfully logged in.\"\nAttempt to fetch tweets or post a new tweet.\nObserve that errors appear without clear details.\nCheck the Twitter account (from a phone) and notice that no login alert was received.\nExpected Behavior\nThe script should be able to fetch tweets successfully.\nA new tweet should be generated and posted without errors.\nA login notification should appear on my phone if the system is accessing my account.\nScreenshots\n(Attach the image of the error logs here)\n\nAdditional Context\nIt seems like the login process does not fully authenticate the session.\nThere are no detailed error logs explaining why fetching tweets or posting a tweet fails.\nIt is unclear if the authentication token is valid or if additional permissions are needed.",
+    "state": "OPEN",
+    "createdAt": "2025-02-03T17:26:57Z",
+    "updatedAt": "2025-02-03T17:26:57Z",
+    "author": {
+      "login": "illink7",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/167812620?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6okW9J",
+    "number": 3200,
+    "title": "Enhance Code Standards",
+    "body": "## Feature Request\n\n**Is your feature request related to a problem? Please describe.**\n\nThe current codebase lacks consistent coding standards, which makes it difficult for new developers to onboard and contributes to potential bugs and maintainability issues.\n\n**Describe the solution you'd like**\n\nImplement standardized coding practices across the project. This includes:\n- Establishing naming conventions for variables and functions.\n- Enforcing consistent indentation and formatting.\n- Utilizing automated tools like ESLint for JavaScript or Prettier for formatting.\n- Creating a style guide that outlines best practices for writing code.\n\n**Describe alternatives you've considered**\n\nCurrently relying on individual developer preferences, which leads to inconsistencies and confusion.\n\n**Additional context**\n\nAdopting standardized coding practices will improve code readability, maintainability, and collaboration among team members.\n\n**Related Issues/PRs**\n- [Issue #123](https://github.com/elizaOS/eliza/issues/123) - Previous discussions on coding standards.",
+    "state": "CLOSED",
+    "createdAt": "2025-02-03T17:23:23Z",
+    "updatedAt": "2025-02-03T17:23:53Z",
+    "author": {
+      "login": "SpiralAgent234",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/196351948?v=4"
+    },
+    "labels": [],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6c21D-",
+        "author": "github-actions",
+        "body": "Hello @SpiralAgent234! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6ojC_0",
+    "number": 3196,
+    "title": "Update Twitter to X (Twitter) in the README file",
+    "body": "Since Twitter is now rebranded to X, so I have changes made changes in the README file. It is now \"X (Twitter)\" and I kept the Twitter keyword since people still use the word Twitter.\n\nLabels: good first issue, documentation",
+    "state": "CLOSED",
+    "createdAt": "2025-02-03T14:58:37Z",
+    "updatedAt": "2025-02-03T15:59:49Z",
+    "author": {
+      "login": "nilaysarma",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/79686507?u=2c32263a1f63485439e60832dbcf8902d9311f3d&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWw",
+        "name": "documentation",
+        "color": "0075ca",
+        "description": "Improvements or additions to documentation"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6c1Y1V",
+        "author": "github-actions",
+        "body": "Hello @nilaysarma! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6c1lH-",
+        "author": "nilaysarma",
+        "body": "@wtfsayo @shakkernerd  Could you please add the \"good first issue\" and \"documentation\" labels to this issue? Thank you!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6ofbr-",
+    "number": 3191,
+    "title": "Runtime import error: ERR_PACKAGE_PATH_NOT_EXPORTED in NestJs",
+    "body": "**Describe the bug**\n\nWhen I use a package from the Eliza repository in a new Nestjs application, then I get this error.\n\nThe error example below happens for all imports, not only adapter of sqlite but also the core package.\n\nError [ERR_PACKAGE_PATH_NOT_EXPORTED]: Package subpath './dist/index.js' is not defined by \"exports\" in /app/node_modules/@elizaos/adapter-sqlite/package.json\n\n    at new NodeError (node:internal/errors:405:5)\n\n    at exportsNotFound (node:internal/modules/esm/resolve:366:10)\n\n    at packageExportsResolve (node:internal/modules/esm/resolve:713:9)\n\n**To Reproduce**\n\n<!-- Steps to reproduce the behavior. -->\n\n**Expected behavior**\n\nNo error. Imports should work.\n\n**Additional context**\n\nI try different tsconfig configuration with \"moduleResolution\": \"node\" and other, but the error persists. If I delete the \"export\" content from all Eliza packages locally inside node_modules, then it works locally.\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-03T08:51:30Z",
+    "updatedAt": "2025-02-03T08:51:55Z",
+    "author": {
+      "login": "keyur555",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/92687884?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6cx3sB",
+        "author": "github-actions",
+        "body": "Hello @keyur555! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  }
+]
