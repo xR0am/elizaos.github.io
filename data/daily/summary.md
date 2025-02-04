@@ -1,42 +1,38 @@
-# elizaos Eliza (2025-02-03)
+# elizaos Eliza (2025-02-04)
     
 ## 📊 Overview
-Development focused on package improvements (add Biome configuration to Solana ecosystem plugins 07), new features (TON Plugin: NFT collection, item creation, metadata change and transfer actions), 7 bug fixes. with 24 contributors merging 15 PRs. Major work included aiflowml is currently working on adding biome configuration to various plugins within the solana ecosystem, including blockchain, storage, story, and tee-related plugins.
+Development focused on new features (Add configuration for enabling/disabling Twitter post generation), 1 bug fixes. with 26 contributors merging 2 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 24 |
+| 👥 Contributors | 26 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 15 |
-| ⚠️ New Issues | 6 |
+| 🔄 Merged PRs | 2 |
+| ⚠️ New Issues | 10 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 2
-- 🐛 **Fixes**: 7
-- ✨ **Features**: 2
+- 🧹 **Chores**: 0
+- 🐛 **Fixes**: 1
+- ✨ **Features**: 1
 
 ## 📁 File Changes
-- **packages**: 92 files (+4778/-169 lines)
-- **docs**: 9 files (+125/-12 lines)
-- **root**: 4 files (+13/-3 lines)
+- **packages**: 3 files (+18/-4 lines)
+- **root**: 1 files (+1/-0 lines)
 
 ## 🔥 Notable Changes
-- chore: add Biome configuration to Solana ecosystem plugins 07
-- fix: multi-biome-02
-- fix: multi-biome-01
+- feat: Add configuration for enabling/disabling Twitter post generation
+- fix: remove duplicated dependencies
 
 ## 👥 Top Contributors
-- **AIFlowML**: AIFlowML is currently working on adding Biome configuration to various plugins within the Solana ecosystem, including blockchain, storage, story, and TEE-related plugins
-- **tcm390**: tcm390 is currently working on fixing issues related to extracting attributes from raw text and updating provider-utils in the packages code area on GitHub
-- **nilaysarma**: nilaysarma is currently working on updating the Twitter information in the README file, as indicated by the recent issue and pull request related to documentation
+- **tcm390**: tcm390 is currently working on adding a configuration option to enable/disable Twitter post generation and has also fixed duplicated dependencies in the project's codebase
+- **praveen-kaia**: praveen-kaia is currently working on adding the KAIA Plugin to the packages and agent code areas
+- **stasionok**: stasionok is currently working on a Pull Request for the TON Plugin, specifically focusing on implementing Ton Connect
 
 ## ⚠️ Issues
-- **New Issues**: 6
-- **Labels**: `bug` (4), `documentation` (1)
-- **Summary**: 4 bugs reported (including 'Build errors when trying to deploy on render.com', 'Runtime import error: ERR_PACKAGE_PATH_NOT_EXPORTED in NestJs').
+- **New Issues**: 10
+- **Labels**: `enhancement` (5), `bug` (4)
+- **Summary**: 4 bugs reported (including 'Model configuration is not loaded from character file', 'twitter Post and reply formatting errors') 5 feature requests (including 'feat: Add KAIA Plugin', 'plugin-cronos: test setup and coverage').
 
 ## Top Contributors
-- **AIFlowML**: chore: add Biome configuration to Solana ecosystem plugins 07
-- **tcm390**: fix: extract attribute from raw text instead of normalized json
-- **nilaysarma**: docs: Update Twitter to X (Twitter)
+- **tcm390**: feat: Add configuration for enabling/disabling Twitter post generation

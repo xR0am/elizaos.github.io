@@ -1,72 +1,56 @@
 {
-  "title": "elizaos Eliza (2025-02-03)",
+  "title": "elizaos Eliza (2025-02-04)",
   "version": "",
-  "overview": "Development focused on package improvements (add Biome configuration to Solana ecosystem plugins 07), new features (TON Plugin: NFT collection, item creation, metadata change and transfer actions), 7 bug fixes. with 24 contributors merging 15 PRs. Major work included aiflowml is currently working on adding biome configuration to various plugins within the solana ecosystem, including blockchain, storage, story, and tee-related plugins.",
+  "overview": "Development focused on new features (Add configuration for enabling/disabling Twitter post generation), 1 bug fixes. with 26 contributors merging 2 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 24,
-    "merged_prs": 15,
-    "new_issues": 6,
-    "lines_changed": 5100
+    "contributors": 26,
+    "merged_prs": 2,
+    "new_issues": 10,
+    "lines_changed": 23
   },
   "changes": {
     "features": [
-      "TON Plugin: NFT collection, item creation, metadata change and transfer actions",
-      "Add CREATE_POOL action in MultiversX plugin"
+      "Add configuration for enabling/disabling Twitter post generation"
     ],
     "fixes": [
-      "multi-biome-02",
-      "multi-biome-01",
-      "plugin-0g"
+      "remove duplicated dependencies"
     ],
-    "chores": [
-      "add Biome configuration to Solana ecosystem plugins 07",
-      "Fix Typos and Improve Consistency in Community Chat Logs"
-    ]
+    "chores": []
   },
   "areas": [
     {
       "name": "packages",
-      "files": 92,
-      "additions": 4778,
-      "deletions": 169
-    },
-    {
-      "name": "docs",
-      "files": 9,
-      "additions": 125,
-      "deletions": 12
+      "files": 3,
+      "additions": 18,
+      "deletions": 4
     },
     {
       "name": "root",
-      "files": 4,
-      "additions": 13,
-      "deletions": 3
+      "files": 1,
+      "additions": 1,
+      "deletions": 0
     }
   ],
-  "issues_summary": "working on 4 bugs including 'Build errors when trying to deploy on render.com', 'Runtime import error: ERR_PACKAGE_PATH_NOT_EXPORTED in NestJs'",
+  "issues_summary": "working on 4 bugs including 'Model configuration is not loaded from character file', 'twitter Post and reply formatting errors' and implementing 5 feature requests including 'feat: Add KAIA Plugin', 'plugin-cronos: test setup and coverage'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "AIFlowML",
-      "summary": "AIFlowML is currently working on adding Biome configuration to various plugins within the Solana ecosystem, including blockchain, storage, story, and TEE-related plugins",
-      "areas": [
-        "packages"
-      ]
-    },
-    {
       "name": "tcm390",
-      "summary": "tcm390 is currently working on fixing issues related to extracting attributes from raw text and updating provider-utils in the packages code area on GitHub",
+      "summary": "tcm390 is currently working on adding a configuration option to enable/disable Twitter post generation and has also fixed duplicated dependencies in the project's codebase",
       "areas": [
         "packages",
-        "package.json"
+        ".env.example"
       ]
     },
     {
-      "name": "nilaysarma",
-      "summary": "nilaysarma is currently working on updating the Twitter information in the README file, as indicated by the recent issue and pull request related to documentation",
-      "areas": [
-        "README.md"
-      ]
+      "name": "praveen-kaia",
+      "summary": "praveen-kaia is currently working on adding the KAIA Plugin to the packages and agent code areas",
+      "areas": []
+    },
+    {
+      "name": "stasionok",
+      "summary": "stasionok is currently working on a Pull Request for the TON Plugin, specifically focusing on implementing Ton Connect",
+      "areas": []
     }
   ]
 }

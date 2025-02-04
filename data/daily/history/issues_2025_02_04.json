@@ -1,0 +1,261 @@
+[
+  {
+    "id": "I_kwDOMT5cIs6ow3gs",
+    "number": 3249,
+    "title": "plugin-cronos: test setup and coverage",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nThe Cronos plugin is expected to require comprehensive testing coverage for its balance and transfer actions. The current test suite should be enhanced to properly handle error cases, particularly around content generation and validation. The mocking strategy for these tests should be improved to ensure reliable and maintainable test cases.\n\n**Describe the solution you'd like**\n\nA robust test suite should be implemented with the following key components:\n* The balance and transfer action tests should be structured to validate successful operations\n* Error handling scenarios should be properly tested with appropriate mocking\n* Test cases should verify correct callback responses and error messages\n* The testing framework should be configured to handle asynchronous operations effectively\n* Mocking strategies should be implemented in a way that doesn't interfere with other test cases\n* Each test should clean up after itself to maintain test isolation\nThe implementation should follow best practices for TypeScript testing and maintain consistency with the existing codebase structure.\n\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-04T21:57:10Z",
+    "updatedAt": "2025-02-04T21:57:10Z",
+    "author": {
+      "login": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6owwrF",
+    "number": 3246,
+    "title": "plugin-conflux: test coverage",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nThe plugin-conflux package currently has failing tests in the transfer and bridge transfer actions. These failures are primarily related to mock implementations not matching the expected behavior of the actual code. The test suite should properly validate the functionality of cryptocurrency transfers within the Conflux network, but the current implementation contains mismatches in data types, incorrect mock responses, and inconsistent error handling.\n\n**Describe the solution you'd like**\n\nA comprehensive test suite update should be implemented with the following improvements:\n1. Mock Implementation:\n    * The generateObject function should be properly mocked at the module level to ensure consistent behavior across all tests\n    * The mock data should strictly adhere to the TransferSchema type, with amount being a number instead of a string\n2. Test Cases:\n    * Success scenarios should be updated to properly validate the transaction flow, including the transaction hash in response messages\n    * Error handling tests should be enhanced to verify proper rejection of invalid content\n    * State management tests should be implemented to ensure proper handling of existing states\n3. Type Safety:\n    * All mock objects should strictly follow the defined TypeScript interfaces\n    * The TransferContent interface should be properly validated in all test cases\n4. Test Coverage:\n    * Additional test cases should be added to cover edge cases\n    * Each test should validate both the success/failure status and the exact format of callback messages\nThese improvements are expected to result in a more robust and maintainable test suite that accurately validates the plugin's functionality. The implementation should follow the project's established testing patterns using vitest and maintain consistency with the existing codebase structure.\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-04T21:39:36Z",
+    "updatedAt": "2025-02-04T21:39:36Z",
+    "author": {
+      "login": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6owlGh",
+    "number": 3245,
+    "title": "twitter Post and reply formatting errors",
+    "body": "\nMy twitter agent is writing like this at posts and replies to people\n\n{ \"user\": \"XXXXX\", \"text\": \"Absolutely, @ethereum. Building on Ethereum means creating a future where technology and ethics go hand in hand. Whether it's DeFi, smart contracts, or new governance models, the potential is immense. I'm excited to see what we can achieve together.\n\nany fixes for this?",
+    "state": "OPEN",
+    "createdAt": "2025-02-04T21:10:50Z",
+    "updatedAt": "2025-02-04T21:11:13Z",
+    "author": {
+      "login": "KeenHero",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/34964366?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6dEDb0",
+        "author": "github-actions",
+        "body": "Hello @KeenHero! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6owXJ4",
+    "number": 3244,
+    "title": "How to run the system with debug level logging?",
+    "body": "I tried: \n\n```\npnpm start --character=\"characters/g.character.json\" --loglevel debug\n```\n\nBut it doesn't work. ",
+    "state": "OPEN",
+    "createdAt": "2025-02-04T20:40:34Z",
+    "updatedAt": "2025-02-04T20:40:34Z",
+    "author": {
+      "login": "LinuxIsCool",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/31582215?u=b8eb5d3849bf877a3a0b686cf1632aca92e744ae&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6ov-Jc",
+    "number": 3241,
+    "title": "CoinGecko Plugin in ElizaOS Returns Bitcoin Price for All Queries and Sends Duplicate Responses",
+    "body": "![Image](https://github.com/user-attachments/assets/be1662b0-4ed9-490e-aaa9-04aedc468688)\n\nDescription:\n\nIssue Summary:\n\nI am experiencing two issues with the CoinGecko plugin in ElizaOS:\n\nIncorrect Cryptocurrency Price Retrieval: When I request the price of any cryptocurrency (e.g., Ethereum or Toncoin), the system consistently returns the price of Bitcoin instead of the requested coin.\n\nDuplicate Responses: For each query about a cryptocurrency's price, I receive two identical response messages instead of one.\n\nSteps to Reproduce:\n\nOpen the ElizaOS interface.\nUse the CoinGecko plugin to request the price of a specific cryptocurrency by typing, for example, \"What is the price of Ethereum?\".\nObserve the response provided by the system.\nExpected Behavior:\n\nThe system should return the current price of the specified cryptocurrency (e.g., Ethereum or Toncoin).\nThe system should provide a single response message per query.\nActual Behavior:\n\nThe system returns the price of Bitcoin regardless of the cryptocurrency requested.\nTwo identical response messages are received for each query.\nAdditional Information:\n\nElizaOS Version: Eliza 1.9\n\nI would appreciate guidance on resolving these issues. Specifically:\n\nAre there known compatibility issues between the current versions of ElizaOS and the CoinGecko plugin?\nCould there be a misconfiguration in the plugin settings causing these problems?\nAre there any patches or updates available that address these issues?\nThank you for your assistance.",
+    "state": "OPEN",
+    "createdAt": "2025-02-04T19:46:03Z",
+    "updatedAt": "2025-02-04T19:46:03Z",
+    "author": {
+      "login": "illink7",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/167812620?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6ovYaj",
+    "number": 3239,
+    "title": "Docker error in Mac M1",
+    "body": "ambusiness@AMs-MacBook-Air eliza % docker buildx build --platform linux/arm64 -t eliza .\n[+] Building 13.6s (3/3) FINISHED                          docker:desktop-linux\n => [internal] load build definition from Dockerfile                       0.0s\n => => transferring dockerfile: 2.00kB                                     0.0s\n => ERROR [internal] load metadata for docker.io/library/node:23.3.0-sli  13.5s\n => [auth] library/node:pull token for registry-1.docker.io                0.0s\n------\n > [internal] load metadata for docker.io/library/node:23.3.0-slim:\n------\nDockerfile:2\n--------------------\n   1 |     # Use a specific Node.js version for better reproducibility\n   2 | >>> FROM node:23.3.0-slim AS builder\n   3 |     \n   4 |     # Install pnpm globally and necessary build tools\n--------------------\nERROR: failed to solve: node:23.3.0-slim: failed to resolve source metadata for docker.io/library/node:23.3.0-slim: failed to authorize: failed to fetch oauth token: Post \"https://auth.docker.io/token\": net/http: TLS handshake timeout\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/ieh7g62psf6g3pvo85ff4gkow\nambusiness@AMs-MacBook-Air eliza % docker buildx build --platform linux/amd64 -t myimage:latest .\n[+] Building 26.0s (3/3) FINISHED                          docker:desktop-linux\n => [internal] load build definition from Dockerfile                       0.0s\n => => transferring dockerfile: 2.00kB                                     0.0s\n => ERROR [internal] load metadata for docker.io/library/node:23.3.0-sli  25.9s\n => [auth] library/node:pull token for registry-1.docker.io                0.0s\n------\n > [internal] load metadata for docker.io/library/node:23.3.0-slim:\n------\nDockerfile:47\n--------------------\n  45 |     \n  46 |     # Final runtime image\n  47 | >>> FROM node:23.3.0-slim\n  48 |     \n  49 |     # Install runtime dependencies\n--------------------\nERROR: failed to solve: node:23.3.0-slim: failed to resolve source metadata for docker.io/library/node:23.3.0-slim: failed to do request: Head \"https://registry-1.docker.io/v2/library/node/manifests/23.3.0-slim\": net/http: TLS handshake timeout\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/r7jdea7ybjptamzr4dnbmq303\nambusiness@AMs-MacBook-Air eliza % ",
+    "state": "OPEN",
+    "createdAt": "2025-02-04T18:24:38Z",
+    "updatedAt": "2025-02-04T18:25:56Z",
+    "author": {
+      "login": "yasir23",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/46179498?u=89dcf261b397bb2930cbedce61e09b8df01998e6&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6dCwu2",
+        "author": "yasir23",
+        "body": "Enabled VMM also in docker desktop"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6ot550",
+    "number": 3234,
+    "title": "Issue with Bridging and Swapping Tokens in plugin-evm",
+    "body": "**Description:**\nI am encountering issues with bridging and swapping tokens using the `plugin-evm`. The only function that seems to be working correctly is the transfer function.\n\nCan you confirm if the plugin swap and bridge functionality can be tested on a testnet like Sepolia or Base Sepolia? If not, is there an alternative way to test these functionalities before deploying to mainnet?\n\n### **Error Details**\n#### **SWAP Issue**\n![Swap Error](https://github.com/user-attachments/assets/291374a1-12d8-4849-95e1-7d0b9f4a041a)\n\n```\n[2025-02-04 15:24:28] ERROR: Error in swap handler: Address \"ETH\" is invalid.\n\n- Address must be a hex value of 20 bytes (40 hex characters).\n- Address must match its checksum counterpart.\n\nRaw Call Arguments:\n  to:    ETH\n  data:  0x313ce567\n\nContract Call:\n  address:   ETH\n  function:  decimals()\n\nDocs: https://viem.sh/docs/contract/readContract\nVersion: viem@2.21.58\n```\n\n#### **BRIDGE Issue**\n![Bridge Error](https://github.com/user-attachments/assets/f10237a8-79dd-45a7-9c67-abd464a536c0)\n\n```\nReceived response from OpenAI model.\nBridge action handler called\n[2025-02-04 15:27:25] ERROR:\n    err: {\n      \"type\": \"TypeError\",\n      \"message\": \"Cannot read properties of undefined (reading 'default')\",\n      \"stack\":\n          TypeError: Cannot read properties of undefined (reading 'default')\n              at file:///home/azan/Work/eliza/packages/plugin-evm/dist/index.js:362:63\n              at Array.map (<anonymous>)\n              at new BridgeAction (file:///home/azan/Work/eliza/packages/plugin-evm/dist/index.js:346:63)\n              at Object.handler (file:///home/azan/Work/eliza/packages/plugin-evm/dist/index.js:405:24)\n              at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n              at async AgentRuntime.processActions (file:///home/azan/Work/eliza/packages/core/dist/index.js:37181:17)\n              at async file:///home/azan/Work/eliza/packages/client-direct/dist/index.js:4678:13\n    }\n```\n\n### **Steps to Reproduce:**\n1. Attempt to swap tokens.\n2. Observe the invalid address error.\n3. Attempt to bridge tokens.\n4. Encounter the TypeError in the bridge action handler.\n\n### **Expected Behavior:**\n- The swap function should correctly identify and process token addresses.\n- The bridge function should handle actions without encountering undefined properties.\n\n### **Environment Details:**\n- Network: ** baseSepolia, Sepolia **\n\n\nAny guidance on resolving these errors would be greatly appreciated. Thanks!\n\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-04T15:32:07Z",
+    "updatedAt": "2025-02-04T18:00:54Z",
+    "author": {
+      "login": "AzanAdnan23",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/108145762?u=2926988c0966bee7c876dd0c3ec87fffa96a2463&v=4"
+    },
+    "labels": [],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6dBKUa",
+        "author": "github-actions",
+        "body": "Hello @AzanAdnan23! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6dCj4-",
+        "author": "AzanAdnan23",
+        "body": "even provided WETH address.\n\n\n![Image](https://github.com/user-attachments/assets/c093e80e-26c9-4268-b605-f9d8addeadaf)\n\n```\n[2025-02-04 17:56:37] ERROR: Error in getBebopQuote: Cannot read properties of undefined (reading '0')\n[2025-02-04 17:56:37] ERROR: Failed to execute lifi quote: Error: SDK Execution Provider not found.\n[2025-02-04 17:56:37] ERROR: Error in swap handler: Execution failed\n```\n\n"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6oswmv",
+    "number": 3233,
+    "title": "Model configuration is not loaded from character file",
+    "body": "**Describe the bug**\n\nIt is currently not possible to override model configuration parameters via the character file. \n\n**To Reproduce**\n\nCreate a character.json file with the following `modelConfig` object \n\n```json\n    \"settings\": {\n        \"secrets\": {},\n        \"modelConfig\": {\n            \"maxInputTokens\": 256000,\n            \"maxOutputTokens\": 8196,\n            \"temperature\": 0.2,\n            \"frequency_penalty\": 0.0,\n            \"presence_penalty\": 0.0\n        },    \n        \"voice\": {\n            \"model\": \"en_US-female-medium\"\n        }\n```\n\n**Expected behavior**\n\nThe existing code base suggests that an override should be possible: https://github.com/TbLtzk/eliza/blob/bfe4fddffe95ba9f494a8203f7731504c05fe71f/packages/core/src/generation.ts#L373\n\nBut the `modelConfig` object is always undefined, I think because it's not included in the schema.\n\n**Additional context**\n\nI have a fix for this and could create a pull request: https://github.com/TbLtzk/eliza/commit/6216ff99c2e4f71952593894e20bfa2245df7afa\n\nI renamed `max_response_length` to `maxOutputTokens` to be consistent with the modelSettings. Further, I don't think that `modelConfig` is the ideal name for the object, but this is induced by the existing code base (see permalink above). I did not change that, for now.",
+    "state": "OPEN",
+    "createdAt": "2025-02-04T13:40:39Z",
+    "updatedAt": "2025-02-04T14:46:41Z",
+    "author": {
+      "login": "TbLtzk",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/8383712?u=e322b2c4075fa14011e478d42b9dd5787fcf5e6b&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6c_5df",
+        "author": "github-actions",
+        "body": "Hello @TbLtzk! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6dAArq",
+        "author": "TbLtzk",
+        "body": "~~There's still a bug in my fix, because I did not rename the `max_response_length` in `types.ts`. I'll provide an updated commit...~~\n\nUPDATE: fixed https://github.com/TbLtzk/eliza/commit/6216ff99c2e4f71952593894e20bfa2245df7afa"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6orJDW",
+    "number": 3229,
+    "title": "feat: Add Taiko plugin integration",
+    "body": "# Overview  \nTo enable agent interaction with Taiko L2 and provide insights into an on-chain address's activity metrics, this proposal suggests developing a plugin that introduces actions supporting these features.  \n\n## Functional Requirements  \n- Enable agents to transfer ETH/ERC-20 tokens on the Taiko Mainnet and Taiko Hekla Network.  \n- Allow agents to read the balance of any address.  \n- Enable agents to resolve domain names and perform relevant actions, such as transfers or balance retrieval.  \n- Retrieve on-chain activity for any given address (useful for understanding contract usage) across different timeframes, including:  \n  - Total gas spent  \n  - Total transactions  \n  - Top interacting addresses  \n  - Unique addresses interacted with  \n\n## Describe Alternatives You've Considered  \nAfter searching through issues and pull requests, I did not find any mention of a similar feature request, so I am submitting this proposal.  \n\n## Additional Context  \nNot applicable at this moment.  \n",
+    "state": "OPEN",
+    "createdAt": "2025-02-04T11:20:03Z",
+    "updatedAt": "2025-02-04T11:20:27Z",
+    "author": {
+      "login": "Siddesh7",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/79219618?u=47553033aa44cdfaf0342d8a8e80e184dd6cf7d2&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6c-bO2",
+        "author": "github-actions",
+        "body": "Hello @Siddesh7! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6op95s",
+    "number": 3226,
+    "title": "feat: Add KAIA Plugin",
+    "body": "**Relates to:** \nKaia Blockchain\n\n**Risks**\nLow\n\n**Background**\nThis is the first PR that introduces KAIA plugin to eliza.\n\n**What does this PR do?**\nIntroduces Agent Plugin to interact with Kaia Blockchain\n\nWhat kind of change is this?\nFeatures (non-breaking change which adds functionality)\n\nAdd the ability for Eliza agents to interface with the KAIA Blockchain.\n\nDocumentation changes needed?\nMy changes do not require a change to the project documentation.\n\nTesting\nChanges can be tested by providing a EVM based private, kaiascan api keys in .env, and asking eliza to perform actions to interact with Kaia blockchain.\n\nDiscord username\n@ kaiachain\n\nEmail address\n[ecosystem@kaia.io](mailto:ecosystem@kaia.io)",
+    "state": "OPEN",
+    "createdAt": "2025-02-04T09:19:35Z",
+    "updatedAt": "2025-02-04T09:20:01Z",
+    "author": {
+      "login": "praveen-kaia",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/112046567?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6c9Tkx",
+        "author": "github-actions",
+        "body": "Hello @praveen-kaia! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  }
+]
