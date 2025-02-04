@@ -25,14 +25,14 @@ Development focused on new features (Add configuration for enabling/disabling Tw
 - fix: remove duplicated dependencies
 
 ## 👥 Top Contributors
-- **tcm390**: tcm390 is currently working on adding a configuration option to enable/disable Twitter post generation and has also fixed duplicated dependencies in the project's codebase
+- **tcm390**: tcm390 is currently working on adding a configuration option for enabling/disabling Twitter post generation and has also resolved a issue related to duplicated dependencies in the project's codebase
 - **praveen-kaia**: praveen-kaia is currently working on adding the KAIA Plugin to the packages and agent code areas
-- **stasionok**: stasionok is currently working on a Pull Request for the TON Plugin, specifically focusing on implementing Ton Connect
+- **stasionok**: stasionok is currently working on a Pull Request for the TON Plugin, specifically focusing on the implementation of Ton Connect
 
 ## ⚠️ Issues
 - **New Issues**: 10
 - **Labels**: `enhancement` (5), `bug` (4)
-- **Summary**: 4 bugs reported (including 'Model configuration is not loaded from character file', 'twitter Post and reply formatting errors') 5 feature requests (including 'feat: Add KAIA Plugin', 'plugin-cronos: test setup and coverage').
+- **Summary**: 4 bugs reported (including 'twitter Post and reply formatting errors', 'Model configuration is not loaded from character file') 5 feature requests (including 'feat: Add KAIA Plugin', 'plugin-cronos: test setup and coverage').
 
 ## Top Contributors
 - **tcm390**: feat: Add configuration for enabling/disabling Twitter post generation
