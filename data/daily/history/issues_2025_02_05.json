@@ -1,0 +1,242 @@
+[
+  {
+    "id": "I_kwDOMT5cIs6o6ufH",
+    "number": 3292,
+    "title": "ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL.  Command failed with exit code 7",
+    "body": "hi there. I am encountering this error when running the agent. \n\n`pnpm I` and `pnpm build` run without problems, the error occurs after` pnpm start --character=\"/Users/main/Desktop/scripts/eliza/characters/character.json”`\n\n<img width=\"1206\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6d75167a-4482-41e4-abe6-0b574545c46d\" />\n\n**Additional context**\n\nmacOS, M4, Node.js 23.3.0\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-05T21:09:44Z",
+    "updatedAt": "2025-02-05T21:10:10Z",
+    "author": {
+      "login": "sosi-fcfs",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/192063692?u=7d1e9046dbd481f1a9e39837597c28af71b3a6a5&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6dPR9x",
+        "author": "github-actions",
+        "body": "Hello @sosi-fcfs! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6o5U8s",
+    "number": 3282,
+    "title": "Speech to text in Discord",
+    "body": "**Describe the bug**\n\nEncountered error converting to audio when using Discord. I've entered the audio monitoring for the channel, but getting errors with converting to audio, OpenAI speech-to-text conversion, and ffprobe.\n\n\n**Expected behavior**\n\n* speech input and output in Discord voice channel\n\n**Screenshots**\n```\nStarting audio monitor for user: 518126625511178240\nStarting transcription...\n[2025-02-05 17:48:13] ERROR: Error converting audio:\n    code: 127\n    killed: false\n    signal: null\n    cmd: \"ffprobe -v error -show_entries stream=codec_name,sample_rate,channels -of json \\\"/Users/kgsmbp/Projects/eliza/packages/content_cache/input_1738777693423.wav\\\"\"\n    stdout: \"\"\n    stderr: \"/bin/sh: ffprobe: command not found\\n\"\n[2025-02-05 17:48:13] ERROR: Error in OpenAI speech-to-text conversion:\n    code: 127\n    killed: false\n    signal: null\n    cmd: \"ffprobe -v error -show_entries stream=codec_name,sample_rate,channels -of json \\\"/Users/kgsmbp/Projects/eliza/packages/content_cache/input_1738777693423.wav\\\"\"\n    stdout: \"\"\n    stderr: \"/bin/sh: ffprobe: command not found\\n\"\n[2025-02-05 17:48:13] ERROR: Error setting up request: Command failed: ffprobe -v error -show_entries stream=codec_name,sample_rate,channels -of json \"/Users/kgsmbp/Projects/eliza/packages/content_cache/input_1738777693423.wav\"\n/bin/sh: ffprobe: command not found\n```",
+    "state": "OPEN",
+    "createdAt": "2025-02-05T17:54:31Z",
+    "updatedAt": "2025-02-05T18:38:20Z",
+    "author": {
+      "login": "kevinghim",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/6951929?u=687cabd771e4b89ec52a4b65398e8aead1cbeafd&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB0PEeUw",
+        "name": "Needs Testing",
+        "color": "84C035",
+        "description": ""
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB1o4rCg",
+        "name": "Need Feedback",
+        "color": "2365DD",
+        "description": ""
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6dNxu6",
+        "author": "github-actions",
+        "body": "Hello @kevinghim! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6dOIdv",
+        "author": "AIFlowML",
+        "body": "Hello @kevinghim \nWe will look into it. "
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6o4azP",
+    "number": 3279,
+    "title": "Action Processing Doesn't Work After Cache/DB Reset",
+    "body": "When enabling action processing on the Twitter client, even after removing the cache/DB, the client does not process any actions. Instead, it logs messages like:\n\n```\nAlready processed tweet ID: XXXX\nAlready responded to tweet XXXX, skipping\n```\n\nEven for tweets we haven't interacted with before, the system still considers them as already processed.\n\nThis might be due to the initial caching behavior where we store the last 20 tweets and all timelines:\n[L663](https://github.com/elizaOS/eliza/blob/9a292cc63297611edfdacb7e1180701a62dda703/packages/client-twitter/src/base.ts#L663)\n[L664](https://github.com/elizaOS/eliza/blob/9a292cc63297611edfdacb7e1180701a62dda703/packages/client-twitter/src/base.ts#L664)\n\nIt might be worth reviewing the reasoning behind this initial caching step. If it's unnecessary or causing unintended side effects, we should consider modifying it to ensure tweets are processed correctly after a reset.",
+    "state": "OPEN",
+    "createdAt": "2025-02-05T16:05:14Z",
+    "updatedAt": "2025-02-05T18:39:25Z",
+    "author": {
+      "login": "tcm390",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB0PEeUw",
+        "name": "Needs Testing",
+        "color": "84C035",
+        "description": ""
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB1o4rCg",
+        "name": "Need Feedback",
+        "color": "2365DD",
+        "description": ""
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6dMu5a",
+        "author": "github-actions",
+        "body": "Hello @tcm390! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6dNuck",
+        "author": "yasir23",
+        "body": "You can contact me there on my gig I will help you out!\n\nhttps://www.fiverr.com/s/gDjxQeA"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6o38Fd",
+    "number": 3276,
+    "title": "Fix JSON syntax error in package.json causing pnpm install failure",
+    "body": "\n# **Describe the bug**  \nThe `package.json` file in the `plugin-solana-v2` package contains an incorrect trailing comma in the `devDependencies` section. This causes `pnpm install` to fail with the following error message:\n\n```\nERROR  Expected double-quoted property name in JSON at position 825 (line 26 column 5) while parsing '{    \"name\": \"@elizaos/plugin-solana-v2' in /Users/efecelik/eliza/packages/plugin-solana-v2/package.json\n```\n\n# **To Reproduce**  \nSteps to reproduce the behavior:  \n1. Navigate to the `plugin-solana-v2` package.  \n2. Run `pnpm install`.  \n3. Observe the error message indicating an invalid `package.json` format.\n\n# **Expected behavior**  \n`pnpm install` should run successfully without JSON parsing errors.\n\n# **Screenshots**  \n\n<img width=\"785\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fbf1e679-47c7-49ee-8807-4197cef94410\" />\n\n# **Additional context**  \nThe issue is caused by a trailing comma after the last entry in the `devDependencies` section:\n\n```json\n\"vitest\": \"2.1.9\",\n```\n\nRemoving this comma resolves the issue:\n\n```json\n\"vitest\": \"2.1.9\"\n```\n\nA PR will be submitted to fix this syntax error. 🚀\n\n---\n\n",
+    "state": "CLOSED",
+    "createdAt": "2025-02-05T15:15:00Z",
+    "updatedAt": "2025-02-05T15:27:08Z",
+    "author": {
+      "login": "efeecllk",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/98906252?u=716d70b69fabfd38aaa44912aef892be2894ca75&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6dMGEn",
+        "author": "github-actions",
+        "body": "Hello @efeecllk! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6ozpXY",
+    "number": 3265,
+    "title": "Availability of a ccxt plugin.",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nThis woud be nice to have this library available on the ElizaOS.\n\n**Describe the solution you'd like**\n\nHave a ccxt plugin, that provides capability to trade on 100 bitcoin/altcoin exchanges.\n\n**Describe alternatives you've considered**\n\nProbably other librairies available.\n\n**Additional context**\n\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-05T07:14:18Z",
+    "updatedAt": "2025-02-05T07:14:40Z",
+    "author": {
+      "login": "pallyndr",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/665424?u=3ea6d0cfe1cfcb959ea7774ad159cc752ade02a5&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6dHCmJ",
+        "author": "github-actions",
+        "body": "Hello @pallyndr! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6oyvt3",
+    "number": 3259,
+    "title": "Issues with Anime Character Prompt",
+    "body": "**Describe the issue**\nThe current prompt in the documentation contains inappropriate content and problematic design direction that needs to be addressed. The prompt promotes sexualization of female characters.\n\n**To Reproduce**\nCurrent problematic prompt in documentation:\n`A cute anime girl with big breasts and straight long black hair wearing orange T-shirt. The T-shirt has \"ai16z\" texts in the front. The girl is looking at the viewer`\n\nSource: https://github.com/elizaOS/eliza/blob/ffa4c1dcdacc096d5b451f246b53fbaa266b0f64/docs/docs/guides/configuration.md?plain=1#L149\n\n**Expected behavior**\n- Documentation should provide professional, respectful prompts that focus on relevant technical details\n- Character descriptions should avoid unnecessary sexualization\n- Grammar and formatting should be correct\n- Prompts should be clear and technically useful\n\n**Screenshots**\nN/A\n\n**Additional context**\nSuggested revision for the prompt:\n`Anime-style character wearing an orange t-shirt with \"ai16z\". Character has long black hair  and is facing forward.`\n\nKey changes:\n- Removed inappropriate physical descriptions\n- Fixed grammar (\"texts\")\n- Maintained essential design elements while focusing on professional presentation",
+    "state": "CLOSED",
+    "createdAt": "2025-02-05T04:43:32Z",
+    "updatedAt": "2025-02-05T19:51:57Z",
+    "author": {
+      "login": "FloppyDisck",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/34169809?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB1o4rCg",
+        "name": "Need Feedback",
+        "color": "2365DD",
+        "description": ""
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6dGXSB",
+        "author": "github-actions",
+        "body": "Hello @FloppyDisck! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6dOwG1",
+        "author": "odilitime",
+        "body": "That's a physical description of the properties of a character. I'm sorry you do not like how objects in the world look to majority others. For prompts to be useful, they need accurate descriptions, particularly how they are generally entered into the training. I am not going to change this."
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6oxcYU",
+    "number": 3252,
+    "title": "Bot posting reply of \"Please use the format: query onchain data: <your natural language query>\" every time after each reply",
+    "body": "This bug happens every time the agent try to reply a tweet.\n\nTo reproduce the behavior, i just followed every steps in the doc and run the agent locally.\n\nIn some reply that the agent sent, there will be a query section included in the comment like this\n\n![Image](https://github.com/user-attachments/assets/348fdf95-48cb-4a38-9869-a65dc7355b8c)\n\nAnd after every reply on other twitter account's tweet, there will be another reply sent just like the screenshot below\n\n![Image](https://github.com/user-attachments/assets/f8d35d95-91e4-4732-a0e5-7aae83a40bb9)\n\nDon't know if this is related to any .env file setup error, looks like the agent is trying to use some sort of natural query function to fetch onchain data on the backend during posting the reply, but it got posted on twitter as the content.\n\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-04T23:57:11Z",
+    "updatedAt": "2025-02-05T03:20:49Z",
+    "author": {
+      "login": "cobecheng",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/70381122?u=f32908dfe87f391b26385d5f0fa9cf3f62f6618b&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6dFFzT",
+        "author": "github-actions",
+        "body": "Hello @cobecheng! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6dGEsH",
+        "author": "tcm390",
+        "body": "This is `plugin-chainbase`. If you're not using it, you can just disable it. It looks like the action was triggered."
+      }
+    ]
+  }
+]

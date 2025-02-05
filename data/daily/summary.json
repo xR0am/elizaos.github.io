@@ -1,56 +1,69 @@
 {
-  "title": "elizaos Eliza (2025-02-04)",
+  "title": "elizaos Eliza (2025-02-05)",
   "version": "",
-  "overview": "Development focused on new features (Add configuration for enabling/disabling Twitter post generation), 1 bug fixes. with 26 contributors merging 2 PRs. Major work included various improvements.",
+  "overview": "Development focused on package improvements (quick-intel plugin: optimize template/add suppress init msg), 9 bug fixes. with 29 contributors merging 15 PRs. Major work included tcm390 is currently focusing on fixing various issues related to package dependencies and handling invalid json data.",
   "metrics": {
-    "contributors": 26,
-    "merged_prs": 2,
-    "new_issues": 10,
-    "lines_changed": 23
+    "contributors": 29,
+    "merged_prs": 15,
+    "new_issues": 7,
+    "lines_changed": 362
   },
   "changes": {
-    "features": [
-      "Add configuration for enabling/disabling Twitter post generation"
-    ],
+    "features": [],
     "fixes": [
-      "remove duplicated dependencies"
+      "DenyLoginSubtask",
+      "Dynamic require of \"http\" is not supported error",
+      "pnpm install"
     ],
-    "chores": []
+    "chores": [
+      "fix spelling issues"
+    ]
   },
   "areas": [
     {
       "name": "packages",
-      "files": 3,
-      "additions": 18,
-      "deletions": 4
+      "files": 72,
+      "additions": 236,
+      "deletions": 104
     },
     {
       "name": "root",
-      "files": 1,
-      "additions": 1,
-      "deletions": 0
+      "files": 4,
+      "additions": 10,
+      "deletions": 4
+    },
+    {
+      "name": "docs",
+      "files": 4,
+      "additions": 4,
+      "deletions": 4
     }
   ],
-  "issues_summary": "working on 4 bugs including 'twitter Post and reply formatting errors', 'Model configuration is not loaded from character file' and implementing 5 feature requests including 'feat: Add KAIA Plugin', 'plugin-cronos: test setup and coverage'",
+  "issues_summary": "working on 5 bugs including 'Action Processing Doesn't Work After Cache/DB Reset', 'ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL.\u2009 Command failed with exit code 7' and implementing 1 feature requests including 'Availability of a ccxt plugin.'",
   "questions": [],
   "top_contributors": [
     {
       "name": "tcm390",
-      "summary": "tcm390 is currently working on adding a configuration option for enabling/disabling Twitter post generation and has also resolved a issue related to duplicated dependencies in the project's codebase",
+      "summary": "tcm390 is currently focusing on fixing various issues related to package dependencies and handling invalid JSON data",
       "areas": [
         "packages",
         ".env.example"
       ]
     },
     {
-      "name": "praveen-kaia",
-      "summary": "praveen-kaia is currently working on adding the KAIA Plugin to the packages and agent code areas",
-      "areas": []
+      "name": "azep-ninja",
+      "summary": "azep-ninja is currently working on adding the ability to suppress actions in various plugins such as Twitter, Telegram, and Discord",
+      "areas": [
+        "packages"
+      ]
     },
     {
-      "name": "stasionok",
-      "summary": "stasionok is currently working on a Pull Request for the TON Plugin, specifically focusing on the implementation of Ton Connect",
-      "areas": []
+      "name": "renovate",
+      "summary": "Renovate is currently updating the dependency \"vitest\" to address security vulnerabilities in the codebase",
+      "areas": [
+        "package.json",
+        "packages"
+      ]
     }
   ]
 }
