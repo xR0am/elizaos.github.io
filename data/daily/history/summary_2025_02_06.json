@@ -1,0 +1,69 @@
+{
+  "title": "elizaos Eliza (2025-02-05)",
+  "version": "",
+  "overview": "Development focused on package improvements (quick-intel plugin: optimize template/add suppress init msg), 9 bug fixes. with 29 contributors merging 15 PRs. Major work included tcm390 is currently focusing on fixing various issues related to package dependencies and handling invalid json data.",
+  "metrics": {
+    "contributors": 29,
+    "merged_prs": 15,
+    "new_issues": 7,
+    "lines_changed": 362
+  },
+  "changes": {
+    "features": [],
+    "fixes": [
+      "DenyLoginSubtask",
+      "Dynamic require of \"http\" is not supported error",
+      "pnpm install"
+    ],
+    "chores": [
+      "fix spelling issues"
+    ]
+  },
+  "areas": [
+    {
+      "name": "packages",
+      "files": 72,
+      "additions": 236,
+      "deletions": 104
+    },
+    {
+      "name": "root",
+      "files": 4,
+      "additions": 10,
+      "deletions": 4
+    },
+    {
+      "name": "docs",
+      "files": 4,
+      "additions": 4,
+      "deletions": 4
+    }
+  ],
+  "issues_summary": "working on 5 bugs including 'Action Processing Doesn't Work After Cache/DB Reset', 'ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL.\u2009 Command failed with exit code 7' and implementing 1 feature requests including 'Availability of a ccxt plugin.'",
+  "questions": [],
+  "top_contributors": [
+    {
+      "name": "tcm390",
+      "summary": "tcm390 is currently focusing on fixing various issues related to package dependencies and handling invalid JSON data",
+      "areas": [
+        "packages",
+        ".env.example"
+      ]
+    },
+    {
+      "name": "azep-ninja",
+      "summary": "azep-ninja is currently working on adding the ability to suppress actions in various plugins such as Twitter, Telegram, and Discord",
+      "areas": [
+        "packages"
+      ]
+    },
+    {
+      "name": "renovate",
+      "summary": "Renovate is currently updating the dependency \"vitest\" to address security vulnerabilities in the codebase",
+      "areas": [
+        "package.json",
+        "packages"
+      ]
+    }
+  ]
+}

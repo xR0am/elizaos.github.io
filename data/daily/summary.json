@@ -1,68 +1,76 @@
 {
-  "title": "elizaos Eliza (2025-02-05)",
-  "version": "",
-  "overview": "Development focused on package improvements (quick-intel plugin: optimize template/add suppress init msg), 9 bug fixes. with 29 contributors merging 15 PRs. Major work included tcm390 is currently focusing on fixing various issues related to package dependencies and handling invalid json data.",
+  "title": "elizaos Eliza (2025-02-06)",
+  "version": "add missing version property to package.json",
+  "overview": "Development focused on package improvements (Fix plugin-solana-v2 package.json), new features (set package publish access to public), 6 bug fixes. with 32 contributors merging 15 PRs. Major work included tcm390 is currently working on merging pull requests related to fixing model configurations and unit tests.",
   "metrics": {
-    "contributors": 29,
+    "contributors": 32,
     "merged_prs": 15,
-    "new_issues": 7,
-    "lines_changed": 362
+    "new_issues": 10,
+    "lines_changed": 12498
   },
   "changes": {
-    "features": [],
+    "features": [
+      "set package publish access to public",
+      "allow plugins to interact w messangerManager to post on telegram"
+    ],
     "fixes": [
-      "DenyLoginSubtask",
-      "Dynamic require of \"http\" is not supported error",
-      "pnpm install"
+      "models unit test",
+      "parsing unit test failure",
+      "clean json before normalized"
     ],
     "chores": [
-      "fix spelling issues"
+      "develop => main",
+      "develop => main",
+      "remove remnant files/folders"
     ]
   },
   "areas": [
     {
       "name": "packages",
-      "files": 72,
-      "additions": 236,
-      "deletions": 104
-    },
-    {
-      "name": "root",
-      "files": 4,
-      "additions": 10,
-      "deletions": 4
+      "files": 392,
+      "additions": 5850,
+      "deletions": 5675
     },
     {
       "name": "docs",
-      "files": 4,
-      "additions": 4,
-      "deletions": 4
+      "files": 14,
+      "additions": 144,
+      "deletions": 144
+    },
+    {
+      "name": "root",
+      "files": 6,
+      "additions": 44,
+      "deletions": 25
     }
   ],
-  "issues_summary": "working on 5 bugs including 'Action Processing Doesn't Work After Cache/DB Reset', 'ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL.\u2009 Command failed with exit code 7' and implementing 1 feature requests including 'Availability of a ccxt plugin.'",
+  "issues_summary": "working on 7 bugs including 'Latest Build Failing', 'Build Error Caused by Zod Dependency Issues' and implementing 3 feature requests including 'Default Download of Hermes llama model', 'Add template system documentation to docs'",
   "questions": [],
   "top_contributors": [
     {
       "name": "tcm390",
-      "summary": "tcm390 is currently focusing on fixing various issues related to package dependencies and handling invalid JSON data",
+      "summary": "tcm390 is currently working on merging pull requests related to fixing model configurations and unit tests",
       "areas": [
+        "CONTRIBUTING.md",
         "packages",
-        ".env.example"
+        ".github"
       ]
     },
     {
-      "name": "azep-ninja",
-      "summary": "azep-ninja is currently working on adding the ability to suppress actions in various plugins such as Twitter, Telegram, and Discord",
+      "name": "shakkernerd",
+      "summary": "shakkernerd is currently working on merging pull requests related to fixing errors in Twitter posts, updating package",
       "areas": [
+        "docs",
         "packages"
       ]
     },
     {
-      "name": "renovate",
-      "summary": "Renovate is currently updating the dependency \"vitest\" to address security vulnerabilities in the codebase",
+      "name": "odilitime",
+      "summary": "odilitime is currently working on merging pull requests related to code cleanup and version updates in the packages, docs, and agent code areas",
       "areas": [
-        "package.json",
-        "packages"
+        "docs",
+        "packages",
+        "agent"
       ]
     }
   ]
