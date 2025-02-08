@@ -1,7 +1,7 @@
-# elizaos Eliza (2025-02-06)
+# elizaos Eliza (2025-02-08)
     
 ## 📊 Overview
-Development focused on package improvements (Fix plugin-solana-v2 package.json), new features (set package publish access to public), 6 bug fixes. with 32 contributors merging 15 PRs. Major work included tcm390 is currently working on merging pull requests related to fixing model configurations and unit tests.
+Development focused on package improvements (Fix plugin-solana-v2 package.json), new features (set package publish access to public), 6 bug fixes. with 32 contributors merging 15 PRs. Major work included tcm390 is currently focusing on merging pull requests related to model configurations and unit tests, as well as updating endpoints and making code changes in various areas such as characters, .
 
 ## 📈 Key Metrics
 | Metric | Count |
@@ -29,9 +29,9 @@ Development focused on package improvements (Fix plugin-solana-v2 package.json),
 - chore: develop => main
 
 ## 👥 Top Contributors
-- **tcm390**: tcm390 is currently working on merging pull requests related to fixing model configurations and unit tests
-- **shakkernerd**: shakkernerd is currently working on merging pull requests related to fixing errors in Twitter posts, updating package
-- **odilitime**: odilitime is currently working on merging pull requests related to code cleanup and version updates in the packages, docs, and agent code areas
+- **tcm390**: tcm390 is currently focusing on merging pull requests related to model configurations and unit tests, as well as updating endpoints and making code changes in various areas such as characters, 
+- **shakkernerd**: shakkernerd is currently working on merging pull requests related to fixing errors in package
+- **odilitime**: odilitime is currently working on merging pull requests related to version updates and code clean-up in the 'develop' branch of the elizaOS repository
 
 ## ⚠️ Issues
 - **New Issues**: 10

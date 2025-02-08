@@ -1,15 +1,43 @@
 [
   {
-    "id": "I_kwDOMT5cIs6pCcw3",
-    "number": 3328,
-    "title": "Amazon Bedrock model provider is not working",
-    "body": "**Describe the bug**\n\nThe initial [pull request](https://github.com/elizaOS/eliza/pull/2769) was missing code in the `generate.ts` which that defined how to handle Bedrock as a provider.\n\n**To Reproduce**\nSet the character's model inference provider to 'bedrock'\nRun the character and you'll get an error that no provider is found\n\n**Expected behavior**\nBedrock works as a provider\n\n**Screenshots**\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n",
+    "id": "I_kwDOMT5cIs6pSxRC",
+    "number": 3387,
+    "title": "Quick start confusion because eliza-starter is a different repository",
+    "body": "**Describe the bug**\nIn the readme is recommends using the eliza-starter.git repository however if should be made more clear that users should then follow the instructions inside the readme on that repo.\n\n<!-- A clear and concise description of what the bug is. -->\nThe issue is human error of course but for me I assumed that I should continue following the install instructions in the eliza.git readme and ultimately got stuck at `pnpm start:client` because that doesn't exist inside the eliza-starter.git package.\n\n**To Reproduce**\nfollow the Use the Starter (Recommended) instructions but don't leave the page\n\n<!-- Steps to reproduce the behavior. -->\n\n**Expected behavior**\nfollow the Use the Starter (Recommended) instructions on the eliza-starter.git repo\n\n<!-- A clear and concise description of what you expected to happen. -->\n\n**Screenshots**\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n",
     "state": "OPEN",
-    "createdAt": "2025-02-06T16:20:44Z",
-    "updatedAt": "2025-02-06T16:20:44Z",
+    "createdAt": "2025-02-08T21:18:47Z",
+    "updatedAt": "2025-02-08T21:19:10Z",
     "author": {
-      "login": "ebaizel",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/739962?u=bb7278eb8c93d774f4d7cf5888e41e768126549a&v=4"
+      "login": "shi11",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/152899?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6dtewl",
+        "author": "github-actions",
+        "body": "Hello @shi11! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6pSvQk",
+    "number": 3385,
+    "title": "Agent is stuck on start (Docker/Cloud) v0.25.6-alpha.1",
+    "body": "**Describe the bug**\n\nBug on start of agent (v0.25.6-alpha.1) in cloud using docker, start of agent is stuck on very beginning not outputting any errors and also not continuing with start. (Agent is not responding)\n\n**To Reproduce**\n\n1. Create docker-compose of newest version of Eliza v0.25.6-alpha.1\n2. Upload to cloud and start docker-compose\n\n**Expected behavior**\n\nAgent starts and functions normally as on local and as older versions.\n\n**Screenshots**\n\n![Image](https://github.com/user-attachments/assets/5002d238-78a8-4391-bc39-453f0eb341f8)\n\n**Additional context**\n\nI built docker-compose for linux amd64, also did this for older versions and everything was working fine.\n\nPlugins I use for my Agent:  \n`plugins: [AwsS3Service, TranscriptionService, BrowserService, bootstrapPlugin, PdfService, dexScreenerPlugin, ImageDescriptionService, SpeechService, webSearchPlugin, twitterPlugin, giphyPlugin, coingeckoPlugin],`\n\nClients and model I use for my Agent: \n    \n```\nclients: [Clients.TELEGRAM, Clients.TWITTER],\nmodelProvider: ModelProviderName.OPENAI,\n```\n\n**It is working on local/desktop.** \n",
+    "state": "OPEN",
+    "createdAt": "2025-02-08T21:07:15Z",
+    "updatedAt": "2025-02-08T22:12:29Z",
+    "author": {
+      "login": "WNUMIK",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/98759136?u=561d47e97462a38b01bc5a32595df4fb1f5e2fc7&v=4"
     },
     "labels": [
       {
@@ -22,16 +50,16 @@
     "comments": []
   },
   {
-    "id": "I_kwDOMT5cIs6pA-ad",
-    "number": 3322,
-    "title": "Latest Build Failing",
-    "body": "**Describe the bug**\nBuild error from recent release.\n\n<!-- A clear and concise description of what the bug is. -->\n`src/clients/index.ts:20:53 - error TS2345: Argument of type 'import(\"/home/pi/eliza-starter/node_modules/.pnpm/@elizaos+core@0.1.9_@google-cloud+vertexai@1.9.2_@langchain+core@0.3.30_openai@4.78.1_z_3148df7f60711e0fb759cfeb471ef142/node_modules/@elizaos/core/dist/index\").IAgentRuntime' is not assignable to parameter of type 'import(\"/home/pi/eliza-starter/node_modules/.pnpm/@elizaos+core@0.1.7_@google-cloud+vertexai@1.9.2_@langchain+core@0.3.30_openai@4.78.1_z_6e8d85366ed36a40c5c7bd6f6c974ae7/node_modules/@elizaos/core/dist/index\").IAgentRuntime'.\n  Types of property 'modelProvider' are incompatible.\n    Type 'import(\"/home/pi/eliza-starter/node_modules/.pnpm/@elizaos+core@0.1.9_@google-cloud+vertexai@1.9.2_@langchain+core@0.3.30_openai@4.78.1_z_3148df7f60711e0fb759cfeb471ef142/node_modules/@elizaos/core/dist/index\").ModelProviderName' is not assignable to type 'import(\"/home/pi/eliza-starter/node_modules/.pnpm/@elizaos+core@0.1.7_@google-cloud+vertexai@1.9.2_@langchain+core@0.3.30_openai@4.78.1_z_6e8d85366ed36a40c5c7bd6f6c974ae7/node_modules/@elizaos/core/dist/index\").ModelProviderName'.\n      Property 'LMSTUDIO' is missing in type 'import(\"/home/pi/eliza-starter/node_modules/.pnpm/@elizaos+core@0.1.7_@google-cloud+vertexai@1.9.2_@langchain+core@0.3.30_openai@4.78.1_z_6e8d85366ed36a40c5c7bd6f6c974ae7/node_modules/@elizaos/core/dist/index\").ModelProviderName'.\n\n20     clients.push(await DiscordClientInterface.start(runtime));\n                                                       ~~~~~~~\n\n\nFound 1 error in src/clients/index.ts:20\n\n ELIFECYCLE  Command failed with exit code 2.\n`\n\n**To Reproduce**\n\nBuild from source using node v23.5.0, pnpm v 10.2.0, and python 3.11.2\n\n**Expected behaviour**\n\nI would assume the build completes and starts the UI or configuration editor? (Its my first time building the project)\n\n**Additional context**\n\nFrom the error it looks like an issue with the AI Models and an argument error. Is there another specific version of node, pnpm, or python i should be using?\n",
+    "id": "I_kwDOMT5cIs6pSRN5",
+    "number": 3384,
+    "title": "Twitter Actions not Processing",
+    "body": "Twitter Actions not Processing\n\nTwitter actions (likes, retweets, replies) are not executing. Only the posting mechanism is working.\n\n**To Reproduce**\n\n* Install most recent version\n* Create a character file with `clients: ['twitter']`\n* In .env, put Twitter auth information, set enable twitter post generation to true, set enableActionProcessing to true, set actionInterval to 1, set maxActionsProcessing to 5.\n* Start the character\n\n**Expected behavior**\n\nA loop every `ACTION_INTERVAL` minutes that searches for relevant tweets to interact with and take action on that.\n\n![Image](https://github.com/user-attachments/assets/5b8a8bb9-d773-4ffa-ac25-4456ed6e75c7)\n\n![Image](https://github.com/user-attachments/assets/8640f052-7e82-49ba-a443-245c607e3072)\n\n**Additional Context**\nI've configured these settings both in the character file and in my .env file.",
     "state": "OPEN",
-    "createdAt": "2025-02-06T13:54:51Z",
-    "updatedAt": "2025-02-06T15:17:18Z",
+    "createdAt": "2025-02-08T16:44:45Z",
+    "updatedAt": "2025-02-08T16:46:35Z",
     "author": {
-      "login": "Mer-idium",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/20794390?v=4"
+      "login": "justinschreiner",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/43378478?u=8619c381cfd4b3063cfdcdd3ba3dc32ddc170ba6&v=4"
     },
     "labels": [
       {
@@ -43,194 +71,23 @@
     ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6dWaPU",
+        "id": "IC_kwDOMT5cIs6dtES9",
         "author": "github-actions",
-        "body": "Hello @Mer-idium! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6dWiz5",
-        "author": "vishal0316",
-        "body": "same issue \n\n![Image](https://github.com/user-attachments/assets/3493a8a2-5451-4649-9cdd-cad5a778026c)"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6dXPR-",
-        "author": "agent-mili",
-        "body": "if you use  eliza-starter, bump   \"@elizaos/client-discord\":   to   \"0.1.9\", solved it for me"
+        "body": "Hello @justinschreiner! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
       }
     ]
   },
   {
-    "id": "I_kwDOMT5cIs6pAKph",
-    "number": 3319,
-    "title": "Default Download of Hermes llama model",
-    "body": "On first run it automatically downloads hermes 3 llama even when editing models.ts and setting download=false. Seems irrelevant if you only use API ai?\n",
+    "id": "I_kwDOMT5cIs6pSLEA",
+    "number": 3383,
+    "title": "Enhancing Twitter AI Agent’s Human-Like Behavior and Engagement Efficiency",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nCurrently, the agent behavior is too predictable, making it easily detectable by external users and Twitter's moderation system. This can lead to suspicion, reduced engagement, or even temporary shadowbans due to excessive, unnatural activity patterns.\n\nIn a previous version, the agent adhered to a \"working hours\" schedule, remaining inactive at night. This approach not only helped avoid shadowbans but also improved efficiency by focusing engagement during peak hours. However, in its current form, the agent runs continuously, posting and commenting strictly according to predefined .env parameters, making it look artificial and increasing the risk of detection.\n\nAdditionally, engagement with newer posts significantly boosts visibility and interactions. Therefore, ensuring that the bot prioritizes fresh posts—those published within the last hour—would optimize its impact.\n\n**Describe the solution you'd like**\n\n- Configurable Active Hours: Introduce an option in the settings to define specific working hours, e.g., 10:00 - 21:00 UTC. This would make the agent behavior more human-like and reduce the risk of being flagged by Twitter’s algorithms.\n\n- Post Freshness Limit: Add a setting to specify the maximum age of posts the bot engages with. For instance, allowing interactions only with posts published within the last 5 to 50 minutes. This ensures the agent remains relevant by engaging with fresh content, thereby maximizing visibility and interaction rates.\n\n- Randomized Activity Patterns: Instead of rigid time frames, allow the bot to have slight variations in its posting schedule, mimicking human-like inconsistencies. This could include random delays between actions and periodic \"idle\" times.\n\n- Engagement-Based Adaptation: Implement a dynamic adjustment mechanism where the bot increases or decreases its activity based on engagement metrics. For example, if a certain time window yields higher interactions, the bot could prioritize those hours automatically.\n\n**Describe alternatives you've considered**\n\n- Using machine learning to analyze peak engagement times and adjust activity accordingly.\n\n- Introducing a \"cooldown\" system where the bot temporarily slows down if engagement drops too quickly, preventing detection.\n\n\n**Additional context**\n\nThese enhancements would make the bot appear more organic, reducing the risk of detection and optimizing engagement. By mimicking natural behavior, the bot could sustain long-term growth without triggering Twitter’s moderation systems. A dynamic and adaptable approach ensures that it remains effective in an evolving algorithmic landscape.\n\n",
     "state": "OPEN",
-    "createdAt": "2025-02-06T12:25:25Z",
-    "updatedAt": "2025-02-06T12:25:53Z",
+    "createdAt": "2025-02-08T16:19:31Z",
+    "updatedAt": "2025-02-08T16:19:31Z",
     "author": {
-      "login": "InAMooD",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/93428794?u=6bf8d98c5b29fce299a9a6c1a133fa92a3e29cc3&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
-        "name": "enhancement",
-        "color": "a2eeef",
-        "description": "New feature or request"
-      }
-    ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6dVm-o",
-        "author": "github-actions",
-        "body": "Hello @InAMooD! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6o-1wJ",
-    "number": 3318,
-    "title": "Add template system documentation to docs",
-    "body": "**Is your feature request related to a problem? Please describe.**\nTemplate system and hydrating it seems to be part of the core challenges of building AI agents but atm there's little to no documentation about it.\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nAdd new page to docs about template system. What standard is it following if any,  what kind of macros are available OOB. How to expand macros and maybe add a couple of examples to there or where to find out more. \n**Describe the solution you'd like**\n\n<!-- A clear and concise description of what you want to happen. -->\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
-    "state": "OPEN",
-    "createdAt": "2025-02-06T09:50:47Z",
-    "updatedAt": "2025-02-06T09:51:11Z",
-    "author": {
-      "login": "yaruno",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/3228613?u=439af0ed11f58e1e7e0050fe3f5298481eb1dcee&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
-        "name": "enhancement",
-        "color": "a2eeef",
-        "description": "New feature or request"
-      }
-    ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6dUPqA",
-        "author": "github-actions",
-        "body": "Hello @yaruno! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6o-1Fy",
-    "number": 3316,
-    "title": "pnpm build failed",
-    "body": "after install pnpm \nwhen I'm trying to ppm build, I get this error \n\n```\nclient:build: ERROR: command finished with error: command (C:\\Users\\visha\\Desktop\\eliza\\client) C:\\Users\\visha\\Desktop\\eliza\\node_modules\\.bin\\pnpm.CMD run build exited (1)\nclient[#build]: command (C:\\Users\\visha\\Desktop\\eliza\\client) C:\\Users\\visha\\Desktop\\eliza\\node_modules\\.bin\\pnpm.CMD run build exited (1)\n\n Tasks:    139 successful, 146 total\nCached:    124 cached, 146 total\n  Time:    1m36.285s\nFailed:    client[#build]\n\n ERROR  run failed: command  exited (1)                                                                                                                          \n ELIFECYCLE  Command failed with exit code 1.\n```",
-    "state": "OPEN",
-    "createdAt": "2025-02-06T09:49:37Z",
-    "updatedAt": "2025-02-06T09:50:26Z",
-    "author": {
-      "login": "vishal0316",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/106919588?u=41911895b50d5b99b4cd6575bcd7715e3cadbfc1&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6dUOze",
-        "author": "github-actions",
-        "body": "Hello @vishal0316! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6o8f6A",
-    "number": 3303,
-    "title": "agent can not be assigned",
-    "body": "packages/client-direct/src/api.ts:170:\nagent = await directClient.startAgent(character); // agent can not be assigned\n\njust change the below code is work well.\nawait directClient.startAgent(character);",
-    "state": "OPEN",
-    "createdAt": "2025-02-06T03:21:17Z",
-    "updatedAt": "2025-02-06T03:21:17Z",
-    "author": {
-      "login": "tercel",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/4879512?u=9a2520224d9ae039a506c03dcf58406f52734361&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
-    "comments": []
-  },
-  {
-    "id": "I_kwDOMT5cIs6o8Wjj",
-    "number": 3302,
-    "title": "stop agent operations can cause the program to crash",
-    "body": "packages/core/runtime.ts:\nstop()  can cause the program to crash.\n\nchange the below code is work well.\n```\n// it doesn't have a strict interface specification, and some don't have STOP methods\nif (c && c?.stop) {\n    c.stop();\n} else {\n    elizaLogger.log(\"client stop skip,\", cStr, this.character.name);\n}\n```",
-    "state": "OPEN",
-    "createdAt": "2025-02-06T02:42:20Z",
-    "updatedAt": "2025-02-06T02:42:35Z",
-    "author": {
-      "login": "tercel",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/4879512?u=9a2520224d9ae039a506c03dcf58406f52734361&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
-    "comments": []
-  },
-  {
-    "id": "I_kwDOMT5cIs6o8UJQ",
-    "number": 3300,
-    "title": "Build Error Caused by Zod Dependency Issues",
-    "body": "**Describe the bug**\n\nAn error occurs during the build process, preventing it from completing successfully.\n\n**To Reproduce**\n\n<!-- Steps to reproduce the behavior. -->\nnode version 23.3.0\n\n1. Run the build based on the commit `2eb94ab` merged into the main branch.  \n2. Execute the following commands in order:\n   - `pnpm clean`\n   - `pnpm install --no-frozen-lockfile`\n   - `pnpm build`\n3. The error occurs during the build process.\n\n**Expected behavior**\n\n<!-- A clear and concise description of what you expected to happen. -->\n\nThe build should complete successfully without any errors.\n\n**Screenshots**\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n```\nDTS Build start\n@elizaos/client-direct:build: src/index.ts(510,21): error TS2322: Type 'ZodObject<{ lookAt: ZodNullable<ZodLiteral<string>> | ZodNullable<ZodUnion<[ZodLiteral<string>, ZodLiteral<string>, ...ZodLiteral<string>[]]>> | ZodNull; emote: ZodNullable<...> | ... 1 more ... | ZodNull; say: ZodNullable<...>; actions: ZodNullable<...>; }, \"strip\", ZodTypeAny, { ...; }, { ...; }>' is not assignable to type 'ZodType<any, ZodTypeDef, any>'.\n@elizaos/client-direct:build:   The types of '_getOrReturnCtx(...).common.issues' are incompatible between these types.\n@elizaos/client-direct:build:     Type 'Zod.ZodIssue[]' is not assignable to type 'import(\"/Users/incheolkang/Desktop/study/ai16z/eliza/node_modules/zod/lib/ZodError\").ZodIssue[]'.\n@elizaos/client-direct:build:       Type 'Zod.ZodIssue' is not assignable to type 'import(\"/Users/incheolkang/Desktop/study/ai16z/eliza/node_modules/zod/lib/ZodError\").ZodIssue'.\n@elizaos/client-direct:build:         Type 'ZodInvalidUnionIssue & { fatal?: boolean; message: string; }' is not assignable to type 'ZodIssue'.\n@elizaos/client-direct:build:           Type 'Zod.ZodInvalidUnionIssue & { fatal?: boolean; message: string; }' is not assignable to type 'import(\"/Users/incheolkang/Desktop/study/ai16z/eliza/node_modules/zod/lib/ZodError\").ZodInvalidUnionIssue & { fatal?: boolean; message: string; }'.\n@elizaos/client-direct:build:             Type 'ZodInvalidUnionIssue & { fatal?: boolean; message: string; }' is not assignable to type 'ZodInvalidUnionIssue'.\n@elizaos/client-direct:build:               Types of property 'unionErrors' are incompatible.\n@elizaos/client-direct:build:                 Type 'Zod.ZodError<any>[]' is not assignable to type 'import(\"/Users/incheolkang/Desktop/study/ai16z/eliza/node_modules/zod/lib/ZodError\").ZodError<any>[]'.\n@elizaos/client-direct:build:                   Type 'Zod.ZodError<any>' is not assignable to type 'import(\"/Users/incheolkang/Desktop/study/ai16z/eliza/node_modules/zod/lib/ZodError\").ZodError<any>'.\n@elizaos/client-direct:build:                     Types of property 'issues' are incompatible.\n@elizaos/client-direct:build:                       Type 'Zod.ZodIssue[]' is not assignable to type 'import(\"/Users/incheolkang/Desktop/study/ai16z/eliza/node_modules/zod/lib/ZodError\").ZodIssue[]'.\n@elizaos/client-direct:build:                         Type 'Zod.ZodIssue' is not assignable to type 'import(\"/Users/incheolkang/Desktop/study/ai16z/eliza/node_modules/zod/lib/ZodError\").ZodIssue'.\n@elizaos/client-direct:build:                           Type 'ZodInvalidUnionIssue & { fatal?: boolean; message: string; }' is not assignable to type 'ZodIssue'.\n@elizaos/client-direct:build: \n@elizaos/client-direct:build: Error: error occurred in dts build\n@elizaos/client-direct:build:     at Worker.<anonymous> (/Users/incheolkang/Desktop/study/ai16z/eliza/node_modules/tsup/dist/index.js:1541:26)\n@elizaos/client-direct:build:     at Worker.emit (node:events:513:28)\n@elizaos/client-direct:build:     at MessagePort.<anonymous> (node:internal/worker:267:53)\n@elizaos/client-direct:build:     at [nodejs.internal.kHybridDispatch] (node:internal/event_target:827:20)\n@elizaos/client-direct:build:     at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28)\n@elizaos/client-direct:build: DTS Build error\n@elizaos/client-direct:build:  ELIFECYCLE  Command failed with exit code 1.\n@elizaos/client-direct:build: ERROR: command finished with error: command (/Users/incheolkang/Desktop/study/ai16z/eliza/packages/client-direct) /Users/incheolkang/Desktop/study/ai16z/eliza/node_modules/.bin/pnpm run build exited (1)\n@elizaos/client-direct#build: command (/Users/incheolkang/Desktop/study/ai16z/eliza/packages/client-direct) /Users/incheolkang/Desktop/study/ai16z/eliza/node_modules/.bin/pnpm run build exited (1)\n\n Tasks:    148 successful, 149 total\nCached:    148 cached, 149 total\n  Time:    5.525s \nFailed:    @elizaos/client-direct#build\n\n ERROR  run failed: command  exited (1)\n ELIFECYCLE  Command failed with exit code 1.\n```",
-    "state": "OPEN",
-    "createdAt": "2025-02-06T02:32:28Z",
-    "updatedAt": "2025-02-06T11:41:26Z",
-    "author": {
-      "login": "lincheoll",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/53032750?u=ff3890e429047d07a870d870c54e8834ba1faac3&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6dTYJd",
-        "author": "michaelgreen06",
-        "body": "This is SOOOO annoying!! I just spent SOO many hours trying to track down the same issue!\n\nMy conclusion: pnpm's dependency resolution gets wonky after cleanup - the hoisting and linking gets messed up.\n\nThe (janky) solution I found: add:  \"resolutions\": { \"zod\": \"^3.22.0\" }. to your package.json. That should force consistent versions.\n\nI think we really need to figure out how to address this issue because it causes such horrible devx if someone isn't aware of what's happening. The only other solution I have found is to nuke the entire directory and re-clone it."
-      },
-      {
-        "id": "IC_kwDOMT5cIs6dVPCD",
-        "author": "MehmoodSheikh",
-        "body": "Encounter same issue, Could you able to solve this issue?\n"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6o8CEr",
-    "number": 3298,
-    "title": "Rename the plugin-apro to plugin-ATTPs",
-    "body": "**Rename the plugin name of plugin-apro to plugin-ATTPs**\n\nJust rename the plugin name and all related content.\n",
-    "state": "OPEN",
-    "createdAt": "2025-02-06T01:40:17Z",
-    "updatedAt": "2025-02-06T01:40:17Z",
-    "author": {
-      "login": "fifahuihua",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/886093?v=4"
+      "login": "sosi-fcfs",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/192063692?u=7d1e9046dbd481f1a9e39837597c28af71b3a6a5&v=4"
     },
     "labels": [
       {
@@ -243,16 +100,16 @@
     "comments": []
   },
   {
-    "id": "I_kwDOMT5cIs6o7rt3",
-    "number": 3295,
-    "title": "Discord client version not in sync with 0.1.9",
-    "body": "**Describe the bug**\n\npnpm build on eliza starter repo fails due to discord plugin version conflict:\n\n```\n$ pnpm build && pnpm start   \n\n> @elizaos/eliza-starter@0.1.9 build /Users/jonathantalmi/dev/eliza-starter\n> tsup src/index.ts --format esm --dts\n\nCLI Building entry: src/index.ts\nCLI Using tsconfig: tsconfig.json\nCLI tsup v8.3.5\nCLI Target: esnext\nESM Build start\nDTS Build start\nESM dist/index.js 27.48 KB\nESM ⚡️ Build success in 235ms\nDTS ⚡️ Build success in 807ms\nDTS dist/index.d.ts 269.00 B\n\n> @elizaos/eliza-starter@0.1.9 start /Users/jonathantalmi/dev/eliza-starter\n> tsc && node --loader ts-node/esm src/index.ts\n\nsrc/clients/index.ts:20:53 - error TS2345: Argument of type 'import(\"/Users/jonathantalmi/dev/eliza-starter/node_modules/.pnpm/@elizaos+core@0.1.9_@google-cloud+vertexai@1.9.3_@langchain+core@0.3.38_openai@4.83.0_w_400c998ea5b04952faad4360fe701faf/node_modules/@elizaos/core/dist/index\").IAgentRuntime' is not assignable to parameter of type 'import(\"/Users/jonathantalmi/dev/eliza-starter/node_modules/.pnpm/@elizaos+core@0.1.7_@google-cloud+vertexai@1.9.3_@langchain+core@0.3.38_openai@4.83.0_w_fd2bcd6812fd1e3b800382dc0dd7a646/node_modules/@elizaos/core/dist/index\").IAgentRuntime'.\n  Types of property 'modelProvider' are incompatible.\n    Type 'import(\"/Users/jonathantalmi/dev/eliza-starter/node_modules/.pnpm/@elizaos+core@0.1.9_@google-cloud+vertexai@1.9.3_@langchain+core@0.3.38_openai@4.83.0_w_400c998ea5b04952faad4360fe701faf/node_modules/@elizaos/core/dist/index\").ModelProviderName' is not assignable to type 'import(\"/Users/jonathantalmi/dev/eliza-starter/node_modules/.pnpm/@elizaos+core@0.1.7_@google-cloud+vertexai@1.9.3_@langchain+core@0.3.38_openai@4.83.0_w_fd2bcd6812fd1e3b800382dc0dd7a646/node_modules/@elizaos/core/dist/index\").ModelProviderName'.\n      Property 'LMSTUDIO' is missing in type 'import(\"/Users/jonathantalmi/dev/eliza-starter/node_modules/.pnpm/@elizaos+core@0.1.7_@google-cloud+vertexai@1.9.3_@langchain+core@0.3.38_openai@4.83.0_w_fd2bcd6812fd1e3b800382dc0dd7a646/node_modules/@elizaos/core/dist/index\").ModelProviderName'.\n\n20     clients.push(await DiscordClientInterface.start(runtime));\n                                                       ~~~~~~~\n\n\nFound 1 error in src/clients/index.ts:20\n```\n\n**To Reproduce**\nSet up the starter project as in the README\n\n**Expected behavior**\n\nSuccessful build\n**Screenshots**\n\n**Additional context**\n\nI fixed the bug by manually installing the 0.1.9 version of \"@elizaos/client-discord\": \"0.1.9\",",
-    "state": "CLOSED",
-    "createdAt": "2025-02-06T00:15:23Z",
-    "updatedAt": "2025-02-06T00:20:11Z",
+    "id": "I_kwDOMT5cIs6pRGO_",
+    "number": 3380,
+    "title": "Unable to use plugin-evm",
+    "body": "**Describe the bug**\n\nI installed `plugin-evm` with `pnpm install @elizaos/plugin-evm`,\n\nadded values for these attributes in the `.env` file:\n\nEVM_PRIVATE_KEY=my-private-key\nEVM_PROVIDER_URL=rpc-url\n\nAdded also in my character json file:\n\n```\n\"settings\": {\n    \"chains\": {\n          \"evm\": [\"base\"]\n     }\n},\n```\n\nWhen I run `pnpm start --character=\"path/to/my/character.json` I get this error:\n\n `invalid private key, expected hex or 32 bytes, got string`\n\nWhen I inspected the logs, I saw that only one part of my private key I pasted was used, not the whole value.\n\n**To Reproduce**\n\nExplained above\n\n**Expected behavior**\n\nI can run `plugin-evm`\n\n<!-- A clear and concise description of what you expected to happen. -->\n\n**Screenshots**\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-08T11:24:30Z",
+    "updatedAt": "2025-02-08T11:24:30Z",
     "author": {
-      "login": "jtalmi",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/7266609?u=00bf0c69e3eb688e783acc7d2013625a30109917&v=4"
+      "login": "tskoyo",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/43699919?u=014dafce5d863672aed32dea821a23471833e6c7&v=4"
     },
     "labels": [
       {
@@ -262,17 +119,28 @@
         "description": "Something isn't working"
       }
     ],
-    "comments": [
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6pPTa5",
+    "number": 3373,
+    "title": "discord.js - error node-v131-napi-v3-linux-x64-glibc-2.36/opus.node",
+    "body": "**Describe the bug**\n\nError: Error: Cannot find module '/opt/render/project/src/node_modules/@discordjs/opus/prebuild/node-v131-napi-v3-linux-x64-glibc-2.36/opus.node'\n\n<!-- A clear and concise description of what the bug is. -->\n\n**To Reproduce**\n\ninstance on Render, when enabling discord plugin, got this opus.node error\n\n<!-- Steps to reproduce the behavior. -->\n\nenable discord\nrun on Render\n\n**Expected behavior**\n\n<!-- A clear and concise description of what you expected to happen. -->\n\n**Screenshots**\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-08T00:49:17Z",
+    "updatedAt": "2025-02-08T00:49:17Z",
+    "author": {
+      "login": "rferrari",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/495887?u=5a56d90f584ffc1827bb301541076597dca9cb3e&v=4"
+    },
+    "labels": [
       {
-        "id": "IC_kwDOMT5cIs6dQZbr",
-        "author": "github-actions",
-        "body": "Hello @jtalmi! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6dQasc",
-        "author": "jtalmi",
-        "body": "moved to https://github.com/elizaOS/eliza-starter/issues/132"
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
       }
-    ]
+    ],
+    "comments": []
   }
 ]
