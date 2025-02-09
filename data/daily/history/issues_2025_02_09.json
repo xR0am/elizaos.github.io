@@ -1,0 +1,24 @@
+[
+  {
+    "id": "I_kwDOMT5cIs6pTeBt",
+    "number": 3394,
+    "title": "Bot Generates Multiple Replies Due to DEFAULT_MAX_TWEET_LENGTH",
+    "body": "**Eliza Version**\nlatest v0.1.9\n\n**Issue Summary**  \nWhen testing a bot that replies to its followers, I noticed that it sometimes generates multiple replies to a single tweet. The API logs indicate that the bot only makes two calls per response (one for the medium model and one for the large model). However, due to `DEFAULT_MAX_TWEET_LENGTH`, the generated response is split into multiple tweets to fit within the 280-character limit.  \n\nThis is usually a minor compliance issue, but in some cases, the agent detects these split responses as incomplete sentences and attempts to generate additional replies repeatedly. As a result, the API sometimes makes **4 to 6 calls instead of 2**, leading to excessive LLM token usage and increased costs.  \n\n**Steps to Reproduce**  \n1. Enable the bot to reply to follower tweets.  \n2. Observe API logs, which show only two calls being made.  \n3. Due to `DEFAULT_MAX_TWEET_LENGTH`, the reply is split into multiple tweets.  \n4. In some cases, the agent perceives the split content as incomplete and generates additional responses.  \n5. The bot may end up making **4–6 API calls per tweet**, leading to unnecessary token consumption.  \n\n**Expected Behavior**  \n- The bot should generate only **one** response per tweet and appropriately split it if needed, without triggering unnecessary additional responses.  \n\n**Actual Behavior**  \n- The bot sometimes misinterprets split responses as incomplete and keeps generating additional replies, leading to multiple API calls (4–6 instead of 2).  \n\n**Impact**  \n- **High token usage**, leading to increased API costs.  \n- **Potential rate limits or compliance issues** with excessive replies to a single tweet.  \n\n**Temporary Fixes**  \n- set `DEFAULT_MAX_TWEET_LENGTH` to much higher number(like 500)\n\nI think this is mainly from `interation.ts` and `continue.ts`.\n\n**Screenshots**\n\n<img width=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b70be945-2446-4d4e-aa37-d13213b2cbb6\" />\n\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-09T05:35:03Z",
+    "updatedAt": "2025-02-09T05:35:03Z",
+    "author": {
+      "login": "naiveai-dev",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/196733228?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  }
+]

@@ -1,44 +1,38 @@
-# elizaos Eliza (2025-02-08)
+# elizaos Eliza (2025-02-09)
     
 ## 📊 Overview
-Development focused on package improvements (Fix plugin-solana-v2 package.json), new features (set package publish access to public), 6 bug fixes. with 32 contributors merging 15 PRs. Major work included tcm390 is currently focusing on merging pull requests related to model configurations and unit tests, as well as updating endpoints and making code changes in various areas such as characters, .
+with 13 contributors merging 2 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 32 |
-| 📝 Commits | 53 |
-| 🔄 Merged PRs | 15 |
-| ⚠️ New Issues | 10 |
+| 👥 Contributors | 13 |
+| 📝 Commits | 0 |
+| 🔄 Merged PRs | 2 |
+| ⚠️ New Issues | 1 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 5
-- 🐛 **Fixes**: 6
-- ✨ **Features**: 2
+- 🧹 **Chores**: 0
+- 🐛 **Fixes**: 0
+- ✨ **Features**: 0
 
 ## 📁 File Changes
-- **packages**: 392 files (+5850/-5675 lines)
-- **characters**: 2 files (+552/-0 lines)
-- **docs**: 14 files (+144/-144 lines)
-- **root**: 6 files (+44/-25 lines)
-- **.github**: 1 files (+0/-60 lines)
+- **packages**: 2 files (+13/-10 lines)
+- **root**: 2 files (+2/-1 lines)
 
 ## 🔥 Notable Changes
-- fix: models unit test
-- fix: parsing unit test failure
-- chore: develop => main
+- chore(fix): need to build core first + added `build:core`
+- fix build `bun run build` in root
 
 ## 👥 Top Contributors
-- **tcm390**: tcm390 is currently focusing on merging pull requests related to model configurations and unit tests, as well as updating endpoints and making code changes in various areas such as characters, 
-- **shakkernerd**: shakkernerd is currently working on merging pull requests related to fixing errors in package
-- **odilitime**: odilitime is currently working on merging pull requests related to version updates and code clean-up in the 'develop' branch of the elizaOS repository
+- **wtfsayo**: wtfsayo is currently working on adding character methods and fixing the build process in the core package
+- **ayyubibrahimi**: ayyubibrahimi is currently working on two pull requests related to editing the Twitter client system message and fixing the flow within the AI system
+- **AlekseyChusov**: AlekseyChusov is currently working on creating a new pull request for VangAI
 
 ## ⚠️ Issues
-- **New Issues**: 10
-- **Labels**: `bug` (7), `enhancement` (3)
-- **Summary**: 7 bugs reported (including 'Latest Build Failing', 'Build Error Caused by Zod Dependency Issues') 3 feature requests (including 'Default Download of Hermes llama model', 'Add template system documentation to docs').
+- **New Issues**: 1
+- **Labels**: `bug` (1)
+- **Summary**: 1 bugs reported (including 'Bot Generates Multiple Replies Due to DEFAULT_MAX_TWEET_LENGTH').
 
 ## Top Contributors
-- **tcm390**: fix: models unit test
-- **shakkernerd**: chore: develop => main
-- **odilitime**: chore: bump version to 0.25.6-alpha.1
+- **wtfsayo**: chore(fix): need to build core first + added `build:core`
