@@ -1,15 +1,15 @@
-# elizaos Eliza (2025-02-09)
+# elizaos Eliza (2025-02-10)
     
 ## 📊 Overview
-with 13 contributors merging 2 PRs. Major work included various improvements.
+with 18 contributors merging 2 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 13 |
+| 👥 Contributors | 18 |
 | 📝 Commits | 0 |
 | 🔄 Merged PRs | 2 |
-| ⚠️ New Issues | 1 |
+| ⚠️ New Issues | 3 |
 
 ## 🔄 Pull Request Summary
 - 🧹 **Chores**: 0
@@ -17,22 +17,22 @@ with 13 contributors merging 2 PRs. Major work included various improvements.
 - ✨ **Features**: 0
 
 ## 📁 File Changes
-- **packages**: 2 files (+13/-10 lines)
-- **root**: 2 files (+2/-1 lines)
+- **packages**: 3 files (+226/-1 lines)
 
 ## 🔥 Notable Changes
-- chore(fix): need to build core first + added `build:core`
-- fix build `bun run build` in root
+- feat/added agent commands
+- typo
 
 ## 👥 Top Contributors
-- **wtfsayo**: wtfsayo is currently working on adding character methods and fixing the build process in the core package
-- **ayyubibrahimi**: ayyubibrahimi is currently working on two pull requests related to editing the Twitter client system message and fixing the flow within the AI system
-- **AlekseyChusov**: AlekseyChusov is currently working on creating a new pull request for VangAI
+- **wtfsayo**: wtfsayo is currently working on a feature branch that adds agent commands to the project's packages
+- **threewebcode**: threewebcode is currently working on updating the change log as a chore task
+- **tcm390**: tcm390 is currently working on correcting a typo in the packages code area
 
 ## ⚠️ Issues
-- **New Issues**: 1
-- **Labels**: `bug` (1)
-- **Summary**: 1 bugs reported (including 'Bot Generates Multiple Replies Due to DEFAULT_MAX_TWEET_LENGTH').
+- **New Issues**: 3
+- **Labels**: `enhancement` (2), `bug` (1)
+- **Summary**: 1 bugs reported (including 'Cannot find module '@anush008/tokenizers-linux-arm64-gnu'') 2 feature requests (including 'Decouple service types and 3rd party service development', 'Integrate BAML to enable structured outputs from LLMs').
 
 ## Top Contributors
-- **wtfsayo**: chore(fix): need to build core first + added `build:core`
+- **wtfsayo**: feat/added agent commands
+- **tcm390**: typo

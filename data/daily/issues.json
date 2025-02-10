@@ -1,15 +1,37 @@
 [
   {
-    "id": "I_kwDOMT5cIs6pTeBt",
-    "number": 3394,
-    "title": "Bot Generates Multiple Replies Due to DEFAULT_MAX_TWEET_LENGTH",
-    "body": "**Eliza Version**\nlatest v0.1.9\n\n**Issue Summary**  \nWhen testing a bot that replies to its followers, I noticed that it sometimes generates multiple replies to a single tweet. The API logs indicate that the bot only makes two calls per response (one for the medium model and one for the large model). However, due to `DEFAULT_MAX_TWEET_LENGTH`, the generated response is split into multiple tweets to fit within the 280-character limit.  \n\nThis is usually a minor compliance issue, but in some cases, the agent detects these split responses as incomplete sentences and attempts to generate additional replies repeatedly. As a result, the API sometimes makes **4 to 6 calls instead of 2**, leading to excessive LLM token usage and increased costs.  \n\n**Steps to Reproduce**  \n1. Enable the bot to reply to follower tweets.  \n2. Observe API logs, which show only two calls being made.  \n3. Due to `DEFAULT_MAX_TWEET_LENGTH`, the reply is split into multiple tweets.  \n4. In some cases, the agent perceives the split content as incomplete and generates additional responses.  \n5. The bot may end up making **4–6 API calls per tweet**, leading to unnecessary token consumption.  \n\n**Expected Behavior**  \n- The bot should generate only **one** response per tweet and appropriately split it if needed, without triggering unnecessary additional responses.  \n\n**Actual Behavior**  \n- The bot sometimes misinterprets split responses as incomplete and keeps generating additional replies, leading to multiple API calls (4–6 instead of 2).  \n\n**Impact**  \n- **High token usage**, leading to increased API costs.  \n- **Potential rate limits or compliance issues** with excessive replies to a single tweet.  \n\n**Temporary Fixes**  \n- set `DEFAULT_MAX_TWEET_LENGTH` to much higher number(like 500)\n\nI think this is mainly from `interation.ts` and `continue.ts`.\n\n**Screenshots**\n\n<img width=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b70be945-2446-4d4e-aa37-d13213b2cbb6\" />\n\n",
+    "id": "I_kwDOMT5cIs6pa6f2",
+    "number": 3420,
+    "title": "Decouple service types and 3rd party service development",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nPlugin system has been decoupled from the development of the elizaos main repo, but developing new service extensions is still dependent on upkeeping the service type definitions located under core package types. \n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\n\n**Describe the solution you'd like**\n\nDecouple definition of service types e.g. like clients and plugins have been decoupled from the main code repository.\n\n<!-- A clear and concise description of what you want to happen. -->\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
     "state": "OPEN",
-    "createdAt": "2025-02-09T05:35:03Z",
-    "updatedAt": "2025-02-09T05:35:03Z",
+    "createdAt": "2025-02-10T13:24:57Z",
+    "updatedAt": "2025-02-10T13:24:57Z",
     "author": {
-      "login": "naiveai-dev",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/196733228?v=4"
+      "login": "yaruno",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/3228613?u=439af0ed11f58e1e7e0050fe3f5298481eb1dcee&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6pavb1",
+    "number": 3418,
+    "title": "Cannot find module '@anush008/tokenizers-linux-arm64-gnu'",
+    "body": "I am trying to run ElizaOS on a Jetson Orin NX 8GB.\n\nI am very new to Linux and all this so I may not be precise. \n\nI am getting an error that I cant' solve when I try to start Eliza:\n\n\"Cannot find module '@anush008/tokenizers-linux-arm64-gnu'\"\n\n\n**To Reproduce**\n-=============================================================================================================\n(after removing /create-eliza-app directory) \npnpm install\npnpm start\n-=============================================================================================================\n\n** Output:\n-=============================================================================================================\n> eliza@ start /home/james/eliza\n> pnpm --filter \"@elizaos/agent\" start --isRoot\n\n\n> @elizaos/agent@0.25.6-alpha.1 start /home/james/eliza/agent\n> node --loader ts-node/esm src/index.ts \"--isRoot\"\n\n(node:1646566) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\n(node:1646566) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\n(Use `node --trace-deprecation ...` to show where the warning was created)\nnode:internal/modules/cjs/loader:1239\n  const err = new Error(message);\n              ^\n\nError: Cannot find module '@anush008/tokenizers-linux-arm64-gnu'\nRequire stack:\n- /home/james/eliza/node_modules/@anush008/tokenizers/index.js\n- /home/james/eliza/node_modules/fastembed/lib/cjs/fastembed.js\n- /home/james/eliza/node_modules/fastembed/lib/cjs/index.js\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1239:15)\n    at Function._load (node:internal/modules/cjs/loader:1064:27)\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n    at Module.require (node:internal/modules/cjs/loader:1325:12)\n    at require (node:internal/modules/helpers:136:16)\n    at Object.<anonymous> (/home/james/eliza/node_modules/@anush008/tokenizers/index.js:219:31)\n    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n    at Object..js (node:internal/modules/cjs/loader:1698:10)\n    at Module.load (node:internal/modules/cjs/loader:1303:32) {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/james/eliza/node_modules/@anush008/tokenizers/index.js',\n    '/home/james/eliza/node_modules/fastembed/lib/cjs/fastembed.js',\n    '/home/james/eliza/node_modules/fastembed/lib/cjs/index.js'\n  ]\n}\n\nNode.js v23.3.0\n/home/james/eliza/agent:\n ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @elizaos/agent@0.25.6-alpha.1 start: `node --loader ts-node/esm src/index.ts \"--isRoot\"`\nExit status 1\n ELIFECYCLE  Command failed with exit code 1.\n\n-=============================================================================================================\n*\n\n**Additional context**\nI cannot access a possible solution posted by h$ckerm1ke in this post:\nhttps://github.com/elizaOS/eliza/issues/2242\n\nAre there any news/suggestions? Many thanks.\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-10T13:07:29Z",
+    "updatedAt": "2025-02-10T13:07:55Z",
+    "author": {
+      "login": "GDA63",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/198586686?v=4"
     },
     "labels": [
       {
@@ -17,6 +39,34 @@
         "name": "bug",
         "color": "d73a4a",
         "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6d1FE8",
+        "author": "github-actions",
+        "body": "Hello @GDA63! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6pYDM2",
+    "number": 3411,
+    "title": "Integrate BAML to enable structured outputs from LLMs",
+    "body": "\n**Describe the solution you'd like**\n\nI would like to integrate BAML (a domain-specific language for generating structured outputs from LLMs) into eliza workflow. BAML provides an excellent developer experience with features like type-safe outputs, flexibility across different LLMs and languages, and a robust online playground for testing prompts. It allows viewing and running prompts directly within the editor, similar to Markdown Preview, without additional setup.\n\n\n**Additional context**\n\nBAML enables building reliable agents and chatbots with Retrieval-Augmented Generation (RAG) capabilities, extracting data from PDFs, and more. It offers a state-of-the-art structured output experience that even outperforms OpenAI with their models and supports open-source models. The BAML VSCode playground provides an amazingly fast developer experience for prompting, with fully type-safe outputs even when streaming structured data. For more information, please refer to the BAML products, guide, playground, examples, reference, and motivation sections.\n\nhttps://github.com/BoundaryML/baml\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-10T08:14:00Z",
+    "updatedAt": "2025-02-10T08:14:12Z",
+    "author": {
+      "login": "bucurdavid",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/46384319?u=dffe4f1adbd7bdf75f2c185f0db36007f42815ac&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
       }
     ],
     "comments": []
