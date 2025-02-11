@@ -1,37 +1,15 @@
 [
   {
-    "id": "I_kwDOMT5cIs6pa6f2",
-    "number": 3420,
-    "title": "Decouple service types and 3rd party service development",
-    "body": "**Is your feature request related to a problem? Please describe.**\n\nPlugin system has been decoupled from the development of the elizaos main repo, but developing new service extensions is still dependent on upkeeping the service type definitions located under core package types. \n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\n\n**Describe the solution you'd like**\n\nDecouple definition of service types e.g. like clients and plugins have been decoupled from the main code repository.\n\n<!-- A clear and concise description of what you want to happen. -->\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "id": "I_kwDOMT5cIs6pq7e_",
+    "number": 3449,
+    "title": ".env not being read at all?",
+    "body": "**Describe the bug**\n\nI added `SERVER_PORT=3005` to the .env, as well as filled out my preferred local Ollama models.\n\nbut it keeps running on 3000 (I'm getting a 500 error on localhost:3000, but that's another issue)\n\nIt's also loading hermes-3 by default, even though I've set the default to be deepseek-r1 in the .env\n\nAm I missing a step in the installation process?\n\n\n**To Reproduce**\n\n`pnpm i && pnpm build && pnpm start` and then run `pnpm start:client`\n\n**Expected behavior**\n\nEliza to start running\n\n\n**Additional context**\n\non macOS on an M3\n",
     "state": "OPEN",
-    "createdAt": "2025-02-10T13:24:57Z",
-    "updatedAt": "2025-02-10T13:24:57Z",
+    "createdAt": "2025-02-11T21:51:21Z",
+    "updatedAt": "2025-02-11T22:05:52Z",
     "author": {
-      "login": "yaruno",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/3228613?u=439af0ed11f58e1e7e0050fe3f5298481eb1dcee&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
-        "name": "enhancement",
-        "color": "a2eeef",
-        "description": "New feature or request"
-      }
-    ],
-    "comments": []
-  },
-  {
-    "id": "I_kwDOMT5cIs6pavb1",
-    "number": 3418,
-    "title": "Cannot find module '@anush008/tokenizers-linux-arm64-gnu'",
-    "body": "I am trying to run ElizaOS on a Jetson Orin NX 8GB.\n\nI am very new to Linux and all this so I may not be precise. \n\nI am getting an error that I cant' solve when I try to start Eliza:\n\n\"Cannot find module '@anush008/tokenizers-linux-arm64-gnu'\"\n\n\n**To Reproduce**\n-=============================================================================================================\n(after removing /create-eliza-app directory) \npnpm install\npnpm start\n-=============================================================================================================\n\n** Output:\n-=============================================================================================================\n> eliza@ start /home/james/eliza\n> pnpm --filter \"@elizaos/agent\" start --isRoot\n\n\n> @elizaos/agent@0.25.6-alpha.1 start /home/james/eliza/agent\n> node --loader ts-node/esm src/index.ts \"--isRoot\"\n\n(node:1646566) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\n(node:1646566) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\n(Use `node --trace-deprecation ...` to show where the warning was created)\nnode:internal/modules/cjs/loader:1239\n  const err = new Error(message);\n              ^\n\nError: Cannot find module '@anush008/tokenizers-linux-arm64-gnu'\nRequire stack:\n- /home/james/eliza/node_modules/@anush008/tokenizers/index.js\n- /home/james/eliza/node_modules/fastembed/lib/cjs/fastembed.js\n- /home/james/eliza/node_modules/fastembed/lib/cjs/index.js\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1239:15)\n    at Function._load (node:internal/modules/cjs/loader:1064:27)\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\n    at Module.require (node:internal/modules/cjs/loader:1325:12)\n    at require (node:internal/modules/helpers:136:16)\n    at Object.<anonymous> (/home/james/eliza/node_modules/@anush008/tokenizers/index.js:219:31)\n    at Module._compile (node:internal/modules/cjs/loader:1546:14)\n    at Object..js (node:internal/modules/cjs/loader:1698:10)\n    at Module.load (node:internal/modules/cjs/loader:1303:32) {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [\n    '/home/james/eliza/node_modules/@anush008/tokenizers/index.js',\n    '/home/james/eliza/node_modules/fastembed/lib/cjs/fastembed.js',\n    '/home/james/eliza/node_modules/fastembed/lib/cjs/index.js'\n  ]\n}\n\nNode.js v23.3.0\n/home/james/eliza/agent:\n ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @elizaos/agent@0.25.6-alpha.1 start: `node --loader ts-node/esm src/index.ts \"--isRoot\"`\nExit status 1\n ELIFECYCLE  Command failed with exit code 1.\n\n-=============================================================================================================\n*\n\n**Additional context**\nI cannot access a possible solution posted by h$ckerm1ke in this post:\nhttps://github.com/elizaOS/eliza/issues/2242\n\nAre there any news/suggestions? Many thanks.\n",
-    "state": "OPEN",
-    "createdAt": "2025-02-10T13:07:29Z",
-    "updatedAt": "2025-02-10T13:07:55Z",
-    "author": {
-      "login": "GDA63",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/198586686?v=4"
+      "login": "jordanurbs",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/44348964?u=e23b78939648dcdf89d4f29fafdaf34b691231e4&v=4"
     },
     "labels": [
       {
@@ -43,23 +21,51 @@
     ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6d1FE8",
-        "author": "github-actions",
-        "body": "Hello @GDA63! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+        "id": "IC_kwDOMT5cIs6eFOtz",
+        "author": "jordanurbs",
+        "body": "I'm noticing it's a different .env file when I use the `git clone https://github.com/elizaos/eliza-starter.git` vs `git clone https://github.com/elizaos/eliza.git` so that's where I'm at now... looks like a lot more I can control in here, going to start over."
       }
     ]
   },
   {
-    "id": "I_kwDOMT5cIs6pYDM2",
-    "number": 3411,
-    "title": "Integrate BAML to enable structured outputs from LLMs",
-    "body": "\n**Describe the solution you'd like**\n\nI would like to integrate BAML (a domain-specific language for generating structured outputs from LLMs) into eliza workflow. BAML provides an excellent developer experience with features like type-safe outputs, flexibility across different LLMs and languages, and a robust online playground for testing prompts. It allows viewing and running prompts directly within the editor, similar to Markdown Preview, without additional setup.\n\n\n**Additional context**\n\nBAML enables building reliable agents and chatbots with Retrieval-Augmented Generation (RAG) capabilities, extracting data from PDFs, and more. It offers a state-of-the-art structured output experience that even outperforms OpenAI with their models and supports open-source models. The BAML VSCode playground provides an amazingly fast developer experience for prompting, with fully type-safe outputs even when streaming structured data. For more information, please refer to the BAML products, guide, playground, examples, reference, and motivation sections.\n\nhttps://github.com/BoundaryML/baml\n",
+    "id": "I_kwDOMT5cIs6pqdqj",
+    "number": 3448,
+    "title": "\"pnpm start\" process getting hung up at INFO: Initializing LlamaService...",
+    "body": "**Describe the bug**\n\nAfter running \"pnpm start\", my terminal is getting hung up on INFO: Initializing LlamaService...\n\nIt just seems to stop. No errors or anything, but I'll wait 15-20 minutes and it still hasn't initialized.\n\nIt did get past this, ONE time, and completed the start. That was probably the 4th try... Now I'm on try 7 or so and it's still just staying put each time I try. Have restarted the machine several times.\n\n**To Reproduce**\n\nRunn pnpm i && pnpm build && pnpm start after pulling the repo\n\n**Expected behavior**\n\nFor the agent to start smoothly\n\n**Context**\nRunning macOS on an M3 Max\nOllama already installed",
     "state": "OPEN",
-    "createdAt": "2025-02-10T08:14:00Z",
-    "updatedAt": "2025-02-10T08:14:12Z",
+    "createdAt": "2025-02-11T20:49:57Z",
+    "updatedAt": "2025-02-11T20:50:23Z",
     "author": {
-      "login": "bucurdavid",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/46384319?u=dffe4f1adbd7bdf75f2c185f0db36007f42815ac&v=4"
+      "login": "jordanurbs",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/44348964?u=e23b78939648dcdf89d4f29fafdaf34b691231e4&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6eEuMr",
+        "author": "github-actions",
+        "body": "Hello @jordanurbs! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6poI9W",
+    "number": 3444,
+    "title": "Enhancement: Improve TwitterPostClient dry run functionality",
+    "body": "Please note: You'll find me happy to implement this change once approved. It'd be my first open-source contribution!\n\n**Is your feature request related to a problem? Please describe.**\n\nThe TwitterPostClient's dry run mode currently only logs tweet content via elizaLogger.info() without returning the data. This makes it difficult to programmatically access draft tweets, requiring workarounds like runtime method overriding. Specifically, applications need to override the info logger at runtime to capture the draft tweet content, which is brittle and hard to maintain.\n\n**Describe the solution you'd like**\n\nModify the generateNewTweet() method to return a structured result object while maintaining existing logging behavior:\n\n```typescript\ninterface TweetGenerationResult {\n  success: boolean;\n  dryRun?: boolean;\n  tweet?: string;\n  error?: string;\n}\n```\n\nThis would allow applications to programmatically access draft tweets while maintaining backwards compatibility through continued logging.\n\n`isDryRun`'s current `return` in `main`: https://github.com/elizaOS/eliza/blob/81a35281b93d5e8ca0745e9d13a1943e9a90681b/packages/client-twitter/src/post.ts#L605-L610\n\n**Describe alternatives you've considered**\n\n- Runtime method overriding (current workaround)\n- Creating a separate dryRun method\n- Using events to emit draft tweets\n\nThe structured return object provides the cleanest solution with the least impact on existing code.\n\nAgain, you'd find me happy to implement this change.\n\n**Additional context**\n\nThis enhancement would improve the developer experience when building applications on top of the client-twitter package. The current implementation forces developers to use workarounds that make code harder to maintain and test.\n\nRelated file: packages/client-twitter/src/post.ts",
+    "state": "OPEN",
+    "createdAt": "2025-02-11T16:23:54Z",
+    "updatedAt": "2025-02-11T16:24:28Z",
+    "author": {
+      "login": "spencerf2",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/85589251?u=d5e192f880fbfd123a166d8c856f7ce15be239f9&v=4"
     },
     "labels": [
       {
@@ -67,6 +73,84 @@
         "name": "enhancement",
         "color": "a2eeef",
         "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6eCBEO",
+        "author": "github-actions",
+        "body": "Hello @spencerf2! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6pmGrm",
+    "number": 3441,
+    "title": "Long messages cause an error",
+    "body": "**Describe the bug**\n\nLong messages cause an error.\n\n**To Reproduce**\n\nUsing PostgreSQL as the database, sending a message longer than 255 characters causes an error.\n\nAlternatively, if the most recent message is too long (an error occurs in factsProvider), the issue arises due to the message length. Since it uses the levenshtein function, the error message:\n\n\"levenshtein argument exceeds maximum length of 255 characters\"\n\nappears when a long message is processed. This happens immediately when sending a long message at once. Applying slicing resolves the issue, but I'm not sure if that's the right approach.\n\nIt would be great if someone could fix this.\n\nI'm curious about the best way to handle this, though I haven't tested it on other databases.\n\n**Expected behavior**\n\nLong texts or past chat history should not cause errors.\n\n**Screenshots**\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\nI don’t think this happened before… I’m not sure. I don’t know where to look.\n<!-- Add any other context about the problem here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-11T13:03:07Z",
+    "updatedAt": "2025-02-11T13:03:07Z",
+    "author": {
+      "login": "lincheoll",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/53032750?u=ff3890e429047d07a870d870c54e8834ba1faac3&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6pk8Ke",
+    "number": 3440,
+    "title": "RagKnowledge is cleaned up on runtime initialization",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nOur team developed a service to manage agent RagKnowledge, it interacts with the RagKnowledge instance under agent runtime directly\n\nwe support loading a txt/pdf file from a remote URL, and creating knowledge via ragKnowledge#processFile, at the moment we set the content.metadata.source to be the URL string, here is how the content file in db looks like in our case\n\n```json\n{\n   \"text\":\"I like txt file, because it's plain\\n\",\n   \"metadata\":{\n      \"type\":\"txt\",\n      \"source\":\"https://........./knowledge/test.txt\",\n      \"isShared\":false\n   }\n}\n```\n\nHowever we found in the recent change, that there is a cleanup operation to remove knowledge that's missing local source file \nhttps://github.com/elizaOS/eliza/blob/main/packages/core/src/runtime.ts#L560\n\nand this will clean up all the rag-knowledge that created from a remote file\n\n**Describe the solution you'd like**\n\nCan we either set some flag in the knowledge metadata or detect the source string format to prevent cleaning up such remote sourced knowledge, so that there is more flexibility in knowledge management\n\n**Describe alternatives you've considered**\n\n- we have considered touching a fake file or removing the source string from the metadata to bypass the cleanup, but none of those is an elegant or robust way\n\nI would like to hear what's your thoughts on this, or if there is some way to avoid such knowledge from being cleaned up without changing the current logic, cheers\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-11T10:58:04Z",
+    "updatedAt": "2025-02-11T11:00:44Z",
+    "author": {
+      "login": "JustinFeng",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/1527902?u=5910337f1512185172145a296d73e4e0cadb77f1&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6d-tMx",
+        "author": "github-actions",
+        "body": "Hello @JustinFeng! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6piPni",
+    "number": 3434,
+    "title": "Fix ragKnowledge Handling for stringKnowledge",
+    "body": "**Describe the bug**\n\nWhen ragKnowledge is enabled, stringKnowledge is incorrectly being stored in memories instead of knowledge.\n\n**To Reproduce**\n\nSteps to reproduce the behavior:\n\n1. Enable ragKnowledge in the configuration.\n2. Store a value in stringKnowledge.\n3. Observe that it is stored in memories instead of knowledge.\n\n**Expected behavior**\n\nstringKnowledge should be correctly stored in knowledge when ragKnowledge is enabled.\n\n**Screenshots**\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-11T05:42:44Z",
+    "updatedAt": "2025-02-11T05:42:44Z",
+    "author": {
+      "login": "lincheoll",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/53032750?u=ff3890e429047d07a870d870c54e8834ba1faac3&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
       }
     ],
     "comments": []

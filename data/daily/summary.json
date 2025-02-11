@@ -1,44 +1,58 @@
 {
-  "title": "elizaos Eliza (2025-02-10)",
+  "title": "elizaos Eliza (2025-02-11)",
   "version": "",
-  "overview": "with 18 contributors merging 2 PRs. Major work included various improvements.",
+  "overview": "Development focused on 1 bug fixes. with 13 contributors merging 5 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 18,
-    "merged_prs": 2,
-    "new_issues": 3,
-    "lines_changed": 227
+    "contributors": 13,
+    "merged_prs": 5,
+    "new_issues": 6,
+    "lines_changed": 984
   },
   "changes": {
     "features": [],
-    "fixes": [],
-    "chores": []
+    "fixes": [
+      "add @solana/web3.js deps"
+    ],
+    "chores": [
+      "sqlite tests",
+      "db path resolution",
+      "refactor + fixes to chat bubble ui + lint fixes + cleanup"
+    ]
   },
   "areas": [
     {
       "name": "packages",
+      "files": 12,
+      "additions": 695,
+      "deletions": 276
+    },
+    {
+      "name": "root",
       "files": 3,
-      "additions": 226,
-      "deletions": 1
+      "additions": 9,
+      "deletions": 4
     }
   ],
-  "issues_summary": "working on 1 bugs including 'Cannot find module '@anush008/tokenizers-linux-arm64-gnu'' and implementing 2 feature requests including 'Decouple service types and 3rd party service development', 'Integrate BAML to enable structured outputs from LLMs'",
+  "issues_summary": "working on 4 bugs including '.env not being read at all?', '\"pnpm start\" process getting hung up at INFO: Initializing LlamaService...' and implementing 2 feature requests including 'Enhancement: Improve TwitterPostClient dry run functionality', 'RagKnowledge is cleaned up on runtime initialization'",
   "questions": [],
   "top_contributors": [
     {
       "name": "wtfsayo",
-      "summary": "wtfsayo is currently working on a feature branch that adds agent commands to the project's packages",
+      "summary": "wtfsayo is currently working on various chore tasks related to package management, database path resolution, and UI improvements in a chat application",
       "areas": [
-        "packages"
+        "packages",
+        "bun.lockb",
+        "package.json"
       ]
     },
     {
-      "name": "threewebcode",
-      "summary": "threewebcode is currently working on updating the change log as a chore task",
+      "name": "jordanurbs",
+      "summary": "jordanurbs is currently addressing two bug-related issues, one involving the ",
       "areas": []
     },
     {
       "name": "tcm390",
-      "summary": "tcm390 is currently working on correcting a typo in the packages code area",
+      "summary": "tcm390 is currently working on fixing issues related to npm run dev and adding dependencies for @solana/web3",
       "areas": [
         "packages"
       ]
