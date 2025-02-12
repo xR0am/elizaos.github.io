@@ -1,58 +1,48 @@
 {
-  "title": "elizaos Eliza (2025-02-11)",
+  "title": "elizaos Eliza (2025-02-12)",
   "version": "",
-  "overview": "Development focused on 1 bug fixes. with 13 contributors merging 5 PRs. Major work included various improvements.",
+  "overview": "Development focused on package improvements (client speech to text), 3 bug fixes. with 12 contributors merging 3 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 13,
-    "merged_prs": 5,
-    "new_issues": 6,
-    "lines_changed": 984
+    "contributors": 12,
+    "merged_prs": 3,
+    "new_issues": 2,
+    "lines_changed": 26
   },
   "changes": {
     "features": [],
     "fixes": [
-      "add @solana/web3.js deps"
+      "client speech to text",
+      "client speech to text",
+      "just minor biome pref'd lint issues"
     ],
-    "chores": [
-      "sqlite tests",
-      "db path resolution",
-      "refactor + fixes to chat bubble ui + lint fixes + cleanup"
-    ]
+    "chores": []
   },
   "areas": [
     {
       "name": "packages",
-      "files": 12,
-      "additions": 695,
-      "deletions": 276
-    },
-    {
-      "name": "root",
-      "files": 3,
-      "additions": 9,
-      "deletions": 4
+      "files": 4,
+      "additions": 15,
+      "deletions": 11
     }
   ],
-  "issues_summary": "working on 4 bugs including '.env not being read at all?', '\"pnpm start\" process getting hung up at INFO: Initializing LlamaService...' and implementing 2 feature requests including 'Enhancement: Improve TwitterPostClient dry run functionality', 'RagKnowledge is cleaned up on runtime initialization'",
+  "issues_summary": "working on 2 bugs including 'supressInitialMessage  not working with action', 'client starts but with sqlite-vec errors'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "wtfsayo",
-      "summary": "wtfsayo is currently working on various chore tasks related to package management, database path resolution, and UI improvements in a chat application",
+      "name": "tcm390",
+      "summary": "tcm390 is currently working on contributing to the development of the elevenlabs plugin, focusing on fixing issues related to client speech-to-text functionality",
       "areas": [
-        "packages",
-        "bun.lockb",
-        "package.json"
+        "packages"
       ]
     },
     {
-      "name": "jordanurbs",
-      "summary": "jordanurbs is currently addressing two bug-related issues, one involving the ",
+      "name": "PisK4",
+      "summary": "PisK4 is currently working on configuring environment settings and developing a new plugin for the characters, client, agent, packages, and documentation areas in the project",
       "areas": []
     },
     {
-      "name": "tcm390",
-      "summary": "tcm390 is currently working on fixing issues related to npm run dev and adding dependencies for @solana/web3",
+      "name": "wtfsayo",
+      "summary": "wtfsayo is currently working on fixing minor lint issues in the biome pref'd code within the packages area",
       "areas": [
         "packages"
       ]

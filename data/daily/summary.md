@@ -1,40 +1,39 @@
-# elizaos Eliza (2025-02-11)
+# elizaos Eliza (2025-02-12)
     
 ## 📊 Overview
-Development focused on 1 bug fixes. with 13 contributors merging 5 PRs. Major work included various improvements.
+Development focused on package improvements (client speech to text), 3 bug fixes. with 12 contributors merging 3 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 13 |
+| 👥 Contributors | 12 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 5 |
-| ⚠️ New Issues | 6 |
+| 🔄 Merged PRs | 3 |
+| ⚠️ New Issues | 2 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 4
-- 🐛 **Fixes**: 1
+- 🧹 **Chores**: 0
+- 🐛 **Fixes**: 3
 - ✨ **Features**: 0
 
 ## 📁 File Changes
-- **packages**: 12 files (+695/-276 lines)
-- **root**: 3 files (+9/-4 lines)
+- **packages**: 4 files (+15/-11 lines)
 
 ## 🔥 Notable Changes
-- chore: sqlite tests
-- chore: db path resolution
-- chore: refactor + fixes to chat bubble ui + lint fixes + cleanup
+- fix: client speech to text
+- fix: client speech to text
+- fix: just minor biome pref'd lint issues
 
 ## 👥 Top Contributors
-- **wtfsayo**: wtfsayo is currently working on various chore tasks related to package management, database path resolution, and UI improvements in a chat application
-- **jordanurbs**: jordanurbs is currently addressing two bug-related issues, one involving the 
-- **tcm390**: tcm390 is currently working on fixing issues related to npm run dev and adding dependencies for @solana/web3
+- **tcm390**: tcm390 is currently working on contributing to the development of the elevenlabs plugin, focusing on fixing issues related to client speech-to-text functionality
+- **PisK4**: PisK4 is currently working on configuring environment settings and developing a new plugin for the characters, client, agent, packages, and documentation areas in the project
+- **wtfsayo**: wtfsayo is currently working on fixing minor lint issues in the biome pref'd code within the packages area
 
 ## ⚠️ Issues
-- **New Issues**: 6
-- **Labels**: `bug` (4), `enhancement` (2)
-- **Summary**: 4 bugs reported (including '.env not being read at all?', '"pnpm start" process getting hung up at INFO: Initializing LlamaService...') 2 feature requests (including 'Enhancement: Improve TwitterPostClient dry run functionality', 'RagKnowledge is cleaned up on runtime initialization').
+- **New Issues**: 2
+- **Labels**: `bug` (2)
+- **Summary**: 2 bugs reported (including 'supressInitialMessage  not working with action', 'client starts but with sqlite-vec errors').
 
 ## Top Contributors
-- **wtfsayo**: chore: sqlite tests
-- **tcm390**: fix: add @solana/web3.js deps
+- **tcm390**: fix: client speech to text
+- **wtfsayo**: fix: just minor biome pref'd lint issues
