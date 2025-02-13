@@ -1,39 +1,38 @@
-# elizaos Eliza (2025-02-12)
+# elizaos Eliza (2025-02-13)
     
 ## 📊 Overview
-Development focused on package improvements (client speech to text), 3 bug fixes. with 12 contributors merging 3 PRs. Major work included various improvements.
+Development focused on package improvements (add basic tests to openai plugin), new features (add anthropic local embedding + misc). with 15 contributors merging 3 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 12 |
+| 👥 Contributors | 15 |
 | 📝 Commits | 0 |
 | 🔄 Merged PRs | 3 |
-| ⚠️ New Issues | 2 |
+| ⚠️ New Issues | 4 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 0
-- 🐛 **Fixes**: 3
-- ✨ **Features**: 0
+- 🧹 **Chores**: 1
+- 🐛 **Fixes**: 0
+- ✨ **Features**: 2
 
 ## 📁 File Changes
-- **packages**: 4 files (+15/-11 lines)
+- **packages**: 7 files (+183/-21 lines)
 
 ## 🔥 Notable Changes
-- fix: client speech to text
-- fix: client speech to text
-- fix: just minor biome pref'd lint issues
+- feat: add anthropic local embedding + misc
+- chore: add tests for anthropic and improve oai test
+- feat: add basic tests to openai plugin
 
 ## 👥 Top Contributors
-- **tcm390**: tcm390 is currently working on contributing to the development of the elevenlabs plugin, focusing on fixing issues related to client speech-to-text functionality
-- **PisK4**: PisK4 is currently working on configuring environment settings and developing a new plugin for the characters, client, agent, packages, and documentation areas in the project
-- **wtfsayo**: wtfsayo is currently working on fixing minor lint issues in the biome pref'd code within the packages area
+- **wtfsayo**: wtfsayo is currently working on adding anthropic local embedding and basic tests to the openai plugin
+- **gkfyr**: gkfyr is currently addressing an issue related to an incorrect image path in the Korean documentation page
+- **lggg123**: lggg123 is currently working on adding a DeFi Token Analysis Plugin (plugin-expuzi) to the project
 
 ## ⚠️ Issues
-- **New Issues**: 2
-- **Labels**: `bug` (2)
-- **Summary**: 2 bugs reported (including 'supressInitialMessage  not working with action', 'client starts but with sqlite-vec errors').
+- **New Issues**: 4
+- **Labels**: `bug` (2), `enhancement` (2)
+- **Summary**: 2 bugs reported (including 'Incorrect image path in the Korean documentation page', 'pnpm build failure on macOS 15.3') 2 feature requests (including 'Add DeFi Token Analysis Plugin (plugin-expuzi)', 'Let's bring exSAT blockchain to eliza').
 
 ## Top Contributors
-- **tcm390**: fix: client speech to text
-- **wtfsayo**: fix: just minor biome pref'd lint issues
+- **wtfsayo**: feat: add anthropic local embedding + misc

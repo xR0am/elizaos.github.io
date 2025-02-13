@@ -1,51 +1,50 @@
 {
-  "title": "elizaos Eliza (2025-02-12)",
+  "title": "elizaos Eliza (2025-02-13)",
   "version": "",
-  "overview": "Development focused on package improvements (client speech to text), 3 bug fixes. with 12 contributors merging 3 PRs. Major work included various improvements.",
+  "overview": "Development focused on package improvements (add basic tests to openai plugin), new features (add anthropic local embedding + misc). with 15 contributors merging 3 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 12,
+    "contributors": 15,
     "merged_prs": 3,
-    "new_issues": 2,
-    "lines_changed": 26
+    "new_issues": 4,
+    "lines_changed": 204
   },
   "changes": {
-    "features": [],
-    "fixes": [
-      "client speech to text",
-      "client speech to text",
-      "just minor biome pref'd lint issues"
+    "features": [
+      "add anthropic local embedding + misc",
+      "add basic tests to openai plugin"
     ],
-    "chores": []
+    "fixes": [],
+    "chores": [
+      "add tests for anthropic and improve oai test"
+    ]
   },
   "areas": [
     {
       "name": "packages",
-      "files": 4,
-      "additions": 15,
-      "deletions": 11
+      "files": 7,
+      "additions": 183,
+      "deletions": 21
     }
   ],
-  "issues_summary": "working on 2 bugs including 'supressInitialMessage  not working with action', 'client starts but with sqlite-vec errors'",
+  "issues_summary": "working on 2 bugs including 'Incorrect image path in the Korean documentation page', 'pnpm build failure on macOS 15.3' and implementing 2 feature requests including 'Add DeFi Token Analysis Plugin (plugin-expuzi)', 'Let's bring exSAT blockchain to eliza'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "tcm390",
-      "summary": "tcm390 is currently working on contributing to the development of the elevenlabs plugin, focusing on fixing issues related to client speech-to-text functionality",
+      "name": "wtfsayo",
+      "summary": "wtfsayo is currently working on adding anthropic local embedding and basic tests to the openai plugin",
       "areas": [
         "packages"
       ]
     },
     {
-      "name": "PisK4",
-      "summary": "PisK4 is currently working on configuring environment settings and developing a new plugin for the characters, client, agent, packages, and documentation areas in the project",
+      "name": "gkfyr",
+      "summary": "gkfyr is currently addressing an issue related to an incorrect image path in the Korean documentation page",
       "areas": []
     },
     {
-      "name": "wtfsayo",
-      "summary": "wtfsayo is currently working on fixing minor lint issues in the biome pref'd code within the packages area",
-      "areas": [
-        "packages"
-      ]
+      "name": "lggg123",
+      "summary": "lggg123 is currently working on adding a DeFi Token Analysis Plugin (plugin-expuzi) to the project",
+      "areas": []
     }
   ]
 }
