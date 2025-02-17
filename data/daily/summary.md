@@ -1,4 +1,4 @@
-# elizaos Eliza (2025-02-16)
+# elizaos Eliza (2025-02-17)
     
 ## 📊 Overview
 Development focused on 3 bug fixes. with 13 contributors merging 4 PRs. Major work included various improvements.
@@ -28,9 +28,9 @@ Development focused on 3 bug fixes. with 13 contributors merging 4 PRs. Major wo
 - fix: discord test
 
 ## 👥 Top Contributors
-- **tcm390**: tcm390 is currently working on fixing issues related to the vitest and voice features in the packages code area of the project
-- **renovate**: Renovate is currently working on updating the dependency "vitest" to address security vulnerabilities
-- **odilitime**: odilitime is currently working on merging a development branch into the main branch for the 0
+- **tcm390**: tcm390 is currently working on fixing issues related to voice testing in the packages section of the project
+- **renovate**: Renovate is currently updating the dependency "vitest" in the "packages" code area to address security vulnerabilities
+- **odilitime**: odilitime is currently working on merging a pull request for the development to main branch in the 0
 
 ## ⚠️ Issues
 - **New Issues**: 2
