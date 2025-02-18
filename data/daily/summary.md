@@ -1,42 +1,42 @@
-# elizaos Eliza (2025-02-17)
+# elizaos Eliza (2025-02-18)
     
 ## 📊 Overview
-Development focused on 3 bug fixes. with 13 contributors merging 4 PRs. Major work included various improvements.
+Development focused on new features (discord + twitter e2e test), 2 bug fixes. with 20 contributors merging 6 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 13 |
+| 👥 Contributors | 20 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 4 |
-| ⚠️ New Issues | 2 |
+| 🔄 Merged PRs | 6 |
+| ⚠️ New Issues | 8 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 1
-- 🐛 **Fixes**: 3
-- ✨ **Features**: 0
+- 🧹 **Chores**: 2
+- 🐛 **Fixes**: 2
+- ✨ **Features**: 2
 
 ## 📁 File Changes
-- **packages**: 19 files (+355/-3072 lines)
-- **root**: 2 files (+102/-36 lines)
-- **agent**: 1 files (+1/-1 lines)
-- **docs**: 1 files (+1/-1 lines)
+- **docs**: 20 files (+2651/-1569 lines)
+- **packages**: 15 files (+1178/-681 lines)
+- **root**: 2 files (+588/-0 lines)
 
 ## 🔥 Notable Changes
-- fix: tg vitest
-- fix: add elevenlabs default voice
-- fix: discord test
+- feat: discord + twitter e2e test
+- fix: add log
+- fix: [discord] add test channel id for e2e test + fix _shouldRespond function
 
 ## 👥 Top Contributors
-- **tcm390**: tcm390 is currently working on fixing issues related to voice testing in the packages section of the project
-- **renovate**: Renovate is currently updating the dependency "vitest" in the "packages" code area to address security vulnerabilities
-- **odilitime**: odilitime is currently working on merging a pull request for the development to main branch in the 0
+- **tcm390**: tcm390 is currently working on fixing and enhancing features related to Discord and Twitter end-to-end tests in the "packages" code area
+- **wtfsayo**: wtfsayo is currently working on database-related tasks, including gracefully handling database operations and implementing database-driven character management
+- **madjin**: madjin is currently updating and cleaning up documentation in the repository
 
 ## ⚠️ Issues
-- **New Issues**: 2
-- **Labels**: `bug` (2)
-- **Summary**: 2 bugs reported (including 'Text Transcription Error For Discord Plugin', 'advanced-sdk-ts wrong import').
+- **New Issues**: 8
+- **Labels**: `bug` (6), `enhancement` (1)
+- **Summary**: 6 bugs reported (including 'Always connecting when set SERVER_PORT=3000 in .env and use `SERVER_PORT=3001 pnpm start:client`', 'No work upload files 0G plugin') 1 feature requests (including 'Add plugin-merkle').
 
 ## Top Contributors
-- **tcm390**: fix: tg vitest
-- **odilitime**: chore: bump version & lockfile
+- **tcm390**: feat: discord + twitter e2e test
+- **wtfsayo**: chore: gracefully handle database operations
+- **madjin**: chore: Update and cleanup docs

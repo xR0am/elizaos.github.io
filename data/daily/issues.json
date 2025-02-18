@@ -1,15 +1,36 @@
 [
   {
-    "id": "I_kwDOMT5cIs6qZUKx",
-    "number": 3556,
-    "title": "ERROR  run failed: command  exited (137) during build",
-    "body": "**Describe the bug**\n\nI'm trying to run pnpm build in WSL but I get this error:\n\n`Tasks:    4 successful, 141 total\nCached:    4 cached, 141 total\n  Time:    1m34.98s\nFailed:    @elizaos/plugin-arbitrage#build\n\n ERROR  run failed: command  exited (137)\n ELIFECYCLE  Command failed with exit code 137.`\n\n**To Reproduce**\n\nI am running WSL on Windows 11. I ran this command:\n`pnpm build`\n\n**Expected behavior**\n\nI should be able to finish the build without error\n",
+    "id": "I_kwDOMT5cIs6qh7-R",
+    "number": 3578,
+    "title": "Repeated issue connecting front end and back end",
+    "body": "I am dealing with a recurring issue where the frontend disconnects from the backend when sending a chat message, leading to a CORS  issue. 1. My frontend is running on `localhost:5173`. 2. My backend  is expected to run on `localhost:3000`. 3. When I send a message, the frontend tries to call `http://localhost:3000/agents`, but the request gets blocked due to CORS and the front. 4. The moment I interact (e.g., send \"hello\"), the backend crashes or loses connection. Before this issue it disconnected and crashed before I even started, but adding 'proxy' localhost:3000 to client package-json helped establish the connection, except it is extremely unstable. Any ideas how to solve this bug? Local llama3.1 7B, no other models in current setup as I got frustrated with llama_local issues. Thanks",
     "state": "OPEN",
-    "createdAt": "2025-02-17T20:48:21Z",
-    "updatedAt": "2025-02-17T20:48:46Z",
+    "createdAt": "2025-02-18T16:44:38Z",
+    "updatedAt": "2025-02-18T16:45:32Z",
     "author": {
-      "login": "KristofferGW",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/112932893?u=964e98051c7ef984cddc0eb521602621c196217d&v=4"
+      "login": "henrikaxelsen",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/70016702?u=4c3aa276878ea3bd908096713c4046baab09745d&v=4"
+    },
+    "labels": [],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6e7AxA",
+        "author": "github-actions",
+        "body": "Hello @henrikaxelsen! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6qhIxK",
+    "number": 3576,
+    "title": "No work upload files 0G plugin",
+    "body": "[\"✓ Normalized action: zgupload\"]\n\n [\"ℹ Executing handler for action: ZG_UPLOAD\"]\n\n ℹ INFORMATIONS\n   ZG_UPLOAD action started\n   {\"messageId\":\"dd1a0a90-4dbe-00c8-9e72-5ffbfa88c53c\",\"hasState\":true,\"hasCallback\":true}\n\nError in generateObject: InvalidArgumentError [AI_InvalidArgumentError]: Invalid argument for parameter schema: Schema is required for object output.\n    at validateObjectGenerationInput (file:///home/mioku/0g-eliza/packages/core/node_modules/ai/dist/index.mjs:1955:13)\n    at generateObject (file:///home/mioku/0g-eliza/packages/core/node_modules/ai/dist/index.mjs:2051:3)\n    at handleOpenAI (file:///home/mioku/0g-eliza/packages/core/dist/index.js:29609:18)\n    at handleProvider (file:///home/mioku/0g-eliza/packages/core/dist/index.js:29573:26)\n    at generateObject (file:///home/mioku/0g-eliza/packages/core/dist/index.js:29535:32)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.handler (file:///home/mioku/0g-eliza/packages/plugin-0g/dist/index.js:321:29)\n    at async AgentRuntime.processActions (file:///home/mioku/0g-eliza/packages/core/dist/index.js:30964:17)\n    at async file:///home/mioku/0g-eliza/packages/client-direct/dist/index.js:4490:13 {\n  cause: undefined,\n  parameter: 'schema',\n  value: undefined,\n  [Symbol(vercel.ai.error)]: true,\n  [Symbol(vercel.ai.error.AI_InvalidArgumentError)]: true\n}\n Regardless of the model, OpenAI, Anthropic, Grok, this error keeps occurring. \n\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-18T15:30:41Z",
+    "updatedAt": "2025-02-18T15:31:10Z",
+    "author": {
+      "login": "mioku50",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/122398677?u=6dd351a5205ed5c24c148d2e76dcfbe0fd1932a3&v=4"
     },
     "labels": [
       {
@@ -21,23 +42,112 @@
     ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6eyjXb",
+        "id": "IC_kwDOMT5cIs6e6N-W",
         "author": "github-actions",
-        "body": "Hello @KristofferGW! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+        "body": "Hello @mioku50! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
       }
     ]
   },
   {
-    "id": "I_kwDOMT5cIs6qWLvJ",
-    "number": 3547,
-    "title": "Plugin for notion.so",
-    "body": "Implementation of a plugin for integration with notion.so\n",
+    "id": "I_kwDOMT5cIs6qfrIZ",
+    "number": 3571,
+    "title": "Getting errors while install node module",
+    "body": "Hi, Team\nI am getting the issues while installing node module.\nnode version: 23.3.0\nnpm version: 10.9.0\n\nMy OS is windows 11.\n\n![Image](https://github.com/user-attachments/assets/a3b8d547-5816-41a7-887e-0d766af74789)\n\n\nHow can I fix this?",
     "state": "OPEN",
-    "createdAt": "2025-02-17T13:56:57Z",
-    "updatedAt": "2025-02-17T13:57:24Z",
+    "createdAt": "2025-02-18T13:16:27Z",
+    "updatedAt": "2025-02-18T13:16:56Z",
     "author": {
-      "login": "cpereiramt",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/7027364?u=6e70f8a1c9e06603b05d6c3e60e4dcb5cf07cb8f&v=4"
+      "login": "0xcodercrane",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/108444211?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6e4zfw",
+        "author": "github-actions",
+        "body": "Hello @0xcodercrane! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6qeBhS",
+    "number": 3569,
+    "title": "Always connecting when set SERVER_PORT=3000 in .env and use `SERVER_PORT=3001 pnpm start:client`",
+    "body": "**Describe the bug**\n\nNow latest code commit is 81a35281b93d5e8ca0745e9d13a1943e9a90681b.\nOs: ubuntu\n\n**To Reproduce**\n```\npnpm install\npnpm start --character=\"xxx.json\"\n// new terminal \nSERVER_PORT=3000 pnpm start:client --host\nSERVER_PORT=3001 pnpm start:client --host  both try\n```\n**Expected behavior**\n\n\n**Screenshots**\n\n![Image](https://github.com/user-attachments/assets/5a5eec15-bcee-4a5b-b20c-161da4783c18)\n\n![Image](https://github.com/user-attachments/assets/f84d9076-8893-4219-8896-0ba8042cd4b3)\n\n![Image](https://github.com/user-attachments/assets/c2490d88-c81c-4642-933e-0c4ddec8951e)\n\n**Additional context**\n\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-18T10:35:24Z",
+    "updatedAt": "2025-02-18T12:38:07Z",
+    "author": {
+      "login": "ccbond",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/49605145?u=2826837850e2d1bf700315f7646232a5a1de9087&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6e3Dcf",
+        "author": "github-actions",
+        "body": "Hello @ccbond! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6e4cl3",
+        "author": "ccbond",
+        "body": "found error, but i don't know how to fix it.\n\n![Image](https://github.com/user-attachments/assets/13dfa06f-7fd9-417f-b446-411d9a6507cf)\n\nI have deployed this on a remote server, but the browser is still sending requests to localhost, which is why it can't find the agents."
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6qdnm9",
+    "number": 3567,
+    "title": "feat: enable .env to configure a default model provider for characters that do not specify a model",
+    "body": "**Feature request**\n\n- Allow `.env` file to configure a default LLM provider\n- Currently the character (JSON or otherwise) determines the LLM provider to use - OpenAI, OpenRouter, etc\n- Suggestion:\n    - Add a `DEFAULT_MODEL_PROVIDER` key to the `.env` file\n    - If a character does not configure a model provider, it will fall back on the one selected through `DEFAULT_MODEL_PROVIDER`\n\n**To Reproduce**\n\nIn the `.env` file, I set the following entries:\n```shell\nOPENROUTER_API_KEY=sk-or-v1-abcdefabcdefabcdefabcdefabcdefabcdef\nOPENROUTER_MODEL=meta-llama/llama-3.2-1b-instruct\n```\n(replace placeholder API key with actual)\n\nNote that all of the `OPENAI_*` entries are left as default.\n\nThen start the server, point it to a character file.\n(Note that I can't really reproduce this, this is a feature request)\n\nThen start the web client.\n\nIn the web client, select the agent, and enter any chat message.\n\n**Expected behavior**\n\nIn client:\n- spinner appears momentarily\n- LLM response from OpenRouter is shown as the reply message from the agent\n\nIn server:\n- LLM request is made to OpenRouter, using the values set in `.env` for `OPENROUTER_API_KEY` and `OPENROUTER_MODEL`, plus user inputs\n- LLM response is received from OpenRouter\n\n**Actual behaviour**\n\nIn client:\n- Forever spinner\n\nIn server:\n- LLM request is made to OpenAi, ignoring the values set in `.env` for `OPENROUTER_API_KEY` and `OPENROUTER_MODEL`\n- LLM response is received from OpenAi: `{\"message\":\"You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null}}`\n\n**Screenshots**\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-18T09:52:57Z",
+    "updatedAt": "2025-02-18T10:03:27Z",
+    "author": {
+      "login": "bguiz",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/1773785?u=9980b44b7ea9d8e63d444f65d3142eeba3f925fd&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6e2pZ5",
+        "author": "github-actions",
+        "body": "Hello @bguiz! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6qc0hy",
+    "number": 3564,
+    "title": "Add plugin-merkle",
+    "body": "Relates to:\nAptos Blockchain & Merkle Trade\n\nRisks:\nMedium\n\nBackground:\nThis is the first PR that introduces the Merkle Trade plugin to elizaos. \nI am a developer at [Merkle Trade](https://merkle.trade/), and we plan to integrate our plugin into elizaos to enable robust trading functionality on the Aptos blockchain. This integration is set to be showcased at Consensus HK2025, which you can learn more about here: [Consensus HK2025](https://consensus-hongkong2025.coindesk.com/).\n\nWhat does this PR do?\nIntroduces the Merkle Trade plugin to enable Eliza agents to interact with the Merkle Trade platform on the Aptos blockchain.\n\nWhat kind of change is this?\nFeatures (non-breaking change which adds functionality)\n\nDetails:\n- Adds the ability for Eliza agents to perform trading operations using the Merkle Trade plugin.\n- Enhances the user experience for agents interacting with the Merkle Trade platform.\n\nDiscord username:\n@coldbell\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-18T08:23:59Z",
+    "updatedAt": "2025-02-18T08:30:21Z",
+    "author": {
+      "login": "ice-coldbell",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/60144158?u=decb980f4ad0c197d6ea95f324cfd40732d872ca&v=4"
     },
     "labels": [
       {
@@ -49,25 +159,66 @@
     ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6evWeT",
+        "id": "IC_kwDOMT5cIs6e12eD",
         "author": "github-actions",
-        "body": "Hello @cpereiramt! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+        "body": "Hello @ice-coldbell! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
       }
     ]
   },
   {
-    "id": "I_kwDOMT5cIs6qU8Vm",
-    "number": 3546,
-    "title": "RAG Search Error",
-    "body": "I have following error for RAG knowledge search, any idea how to solve it?\n\n`[RAG Search Error] Error: Error searching knowledge: Could not find the function public.search_knowledge(match_count, match_threshold, query_agent_id, query_embedding, search_text) in the schema cache`\n\nAdvice much appreciated!",
+    "id": "I_kwDOMT5cIs6qcfqq",
+    "number": 3563,
+    "title": "Vulnerability related to defaiza",
+    "body": "Hello Team,\n\nI have found a vulnerability related to defaiza.\nAs the email to report vulnerability does not exist . I have raised an issue here .\nKindly let me know how to proceed.\n",
     "state": "OPEN",
-    "createdAt": "2025-02-17T11:47:35Z",
-    "updatedAt": "2025-02-17T11:49:56Z",
+    "createdAt": "2025-02-18T07:39:50Z",
+    "updatedAt": "2025-02-18T07:40:13Z",
     "author": {
-      "login": "WNUMIK",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/98759136?u=561d47e97462a38b01bc5a32595df4fb1f5e2fc7&v=4"
+      "login": "faeeq",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/65448770?v=4"
     },
-    "labels": [],
-    "comments": []
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6e1iay",
+        "author": "github-actions",
+        "body": "Hello @faeeq! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6qcYWF",
+    "number": 3562,
+    "title": "Misleading and diverging instructions in client-twitter/src/interactions.ts",
+    "body": "**Describe the bug**\n\nIn https://github.com/elizaos/eliza/blob/main/packages/client-twitter/src/interactions.ts the prompt template tells \"just respond with \"true\" or \"false\" and then later say respond with options....\n########################\nexport const twitterShouldRespondTemplate = (targetUsersStr: string) =>\n    `# INSTRUCTIONS: Determine if {{agentName}} (@{{twitterUserName}}) should respond to the message and participate in the conversation. Do not comment. Just respond with \"true\" or \"false\".\n\nResponse options are RESPOND, IGNORE and STOP.\n########################\n\nSome not so sharp models (gemini) always get stuck with \"true\" or \"false\" therefore agent gets stuck there. \n\ni removed just that last sentence and works without problem:\nhttps://github.com/amirmabhout/DataBarista_v0.1/blob/dev/packages/client-twitter/src/interactions.ts\n\n**To Reproduce**\n\n<!-- Steps to reproduce the behavior. -->\n\n**Expected behavior**\n\n<!-- A clear and concise description of what you expected to happen. -->\n\n**Screenshots**\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-18T07:22:58Z",
+    "updatedAt": "2025-02-18T07:23:19Z",
+    "author": {
+      "login": "amirmabhout",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/90555973?u=79a7fd12aaf8bb25bb9b25a8dc7624ddd75a9b3a&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6e1b57",
+        "author": "github-actions",
+        "body": "Hello @amirmabhout! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
   }
 ]

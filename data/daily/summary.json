@@ -1,66 +1,71 @@
 {
-  "title": "elizaos Eliza (2025-02-17)",
-  "version": "bump version & lockfile",
-  "overview": "Development focused on 3 bug fixes. with 13 contributors merging 4 PRs. Major work included various improvements.",
+  "title": "elizaos Eliza (2025-02-18)",
+  "version": "",
+  "overview": "Development focused on new features (discord + twitter e2e test), 2 bug fixes. with 20 contributors merging 6 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 13,
-    "merged_prs": 4,
-    "new_issues": 2,
-    "lines_changed": 3569
+    "contributors": 20,
+    "merged_prs": 6,
+    "new_issues": 8,
+    "lines_changed": 6667
   },
   "changes": {
-    "features": [],
+    "features": [
+      "discord + twitter e2e test",
+      "db-driven-character management"
+    ],
     "fixes": [
-      "tg vitest",
-      "add elevenlabs default voice",
-      "discord test"
+      "add log",
+      "[discord] add test channel id for e2e test + fix _shouldRespond function"
     ],
     "chores": [
-      "bump version & lockfile"
+      "gracefully handle database operations",
+      "Update and cleanup docs"
     ]
   },
   "areas": [
     {
+      "name": "docs",
+      "files": 20,
+      "additions": 2651,
+      "deletions": 1569
+    },
+    {
       "name": "packages",
-      "files": 19,
-      "additions": 355,
-      "deletions": 3072
+      "files": 15,
+      "additions": 1178,
+      "deletions": 681
     },
     {
       "name": "root",
       "files": 2,
-      "additions": 102,
-      "deletions": 36
-    },
-    {
-      "name": "agent",
-      "files": 1,
-      "additions": 1,
-      "deletions": 1
+      "additions": 588,
+      "deletions": 0
     }
   ],
-  "issues_summary": "working on 2 bugs including 'Text Transcription Error For Discord Plugin', 'advanced-sdk-ts wrong import'",
+  "issues_summary": "working on 6 bugs including 'Always connecting when set SERVER_PORT=3000 in .env and use `SERVER_PORT=3001 pnpm start:client`', 'No work upload files 0G plugin' and implementing 1 feature requests including 'Add plugin-merkle'",
   "questions": [],
   "top_contributors": [
     {
       "name": "tcm390",
-      "summary": "tcm390 is currently working on fixing issues related to voice testing in the packages section of the project",
+      "summary": "tcm390 is currently working on fixing and enhancing features related to Discord and Twitter end-to-end tests in the \"packages\" code area",
       "areas": [
         "packages"
       ]
     },
     {
-      "name": "renovate",
-      "summary": "Renovate is currently updating the dependency \"vitest\" in the \"packages\" code area to address security vulnerabilities",
-      "areas": []
+      "name": "wtfsayo",
+      "summary": "wtfsayo is currently working on database-related tasks, including gracefully handling database operations and implementing database-driven character management",
+      "areas": [
+        "bun.lockb",
+        "Eliza.json",
+        "packages"
+      ]
     },
     {
-      "name": "odilitime",
-      "summary": "odilitime is currently working on merging a pull request for the development to main branch in the 0",
+      "name": "madjin",
+      "summary": "madjin is currently updating and cleaning up documentation in the repository",
       "areas": [
-        "packages",
-        "pnpm-lock.yaml",
-        "lerna.json"
+        "docs"
       ]
     }
   ]
