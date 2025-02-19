@@ -1,4 +1,4 @@
-# elizaos Eliza (2025-02-18)
+# elizaos Eliza (2025-02-19)
     
 ## 📊 Overview
 Development focused on new features (discord + twitter e2e test), 2 bug fixes. with 20 contributors merging 6 PRs. Major work included various improvements.
@@ -27,8 +27,8 @@ Development focused on new features (discord + twitter e2e test), 2 bug fixes. w
 - fix: [discord] add test channel id for e2e test + fix _shouldRespond function
 
 ## 👥 Top Contributors
-- **tcm390**: tcm390 is currently working on fixing and enhancing features related to Discord and Twitter end-to-end tests in the "packages" code area
-- **wtfsayo**: wtfsayo is currently working on database-related tasks, including gracefully handling database operations and implementing database-driven character management
+- **tcm390**: tcm390 is currently working on fixing small issues and adding new features related to Discord and Twitter end-to-end testing in the "packages" code area
+- **wtfsayo**: wtfsayo is currently working on implementing database-driven character management and improving the handling of database operations within the project's packages
 - **madjin**: madjin is currently updating and cleaning up documentation in the repository
 
 ## ⚠️ Issues

@@ -1,0 +1,154 @@
+[
+  {
+    "id": "I_kwDOMT5cIs6qpxuH",
+    "number": 3596,
+    "title": "Key error of map in Skeleton Item of the AppSidebar.",
+    "body": "I am getting the error on the AppSidebar.\nIn AppSidebar, to render SkeletonItem, we are using map function.\nIn this component, key is set to \"skeleton-item\", but it must be unique.\n\n![Image](https://github.com/user-attachments/assets/9a4e740a-a061-4a3b-b95f-b836b2ebf805)",
+    "state": "OPEN",
+    "createdAt": "2025-02-19T11:41:54Z",
+    "updatedAt": "2025-02-19T11:41:54Z",
+    "author": {
+      "login": "0xcodercrane",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/108444211?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6qm6v8",
+    "number": 3592,
+    "title": "pnpm start:client is not fetching localhost:3000",
+    "body": "I run the server by `pnpm start`\nAlso run the client by `pnpm start:client`, but it's not fetching `localhost:3000`\n\n![Image](https://github.com/user-attachments/assets/078cab07-7656-47b7-87bd-a4b69806f8ac)",
+    "state": "OPEN",
+    "createdAt": "2025-02-19T06:24:27Z",
+    "updatedAt": "2025-02-19T18:28:29Z",
+    "author": {
+      "login": "soladity",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/4592567?u=c5587c809de4b3e9cc3cc9f862885bb026bb149e&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6fAIzE",
+        "author": "github-actions",
+        "body": "Hello @soladity! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6fDZCQ",
+        "author": "anthonykimani",
+        "body": "Could be your DefaultCharacter didn't launch correctly, what model provider are you using in the defaultCharacter.ts file? and check if you correctly configured your apikeys in .env file"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6fFCVb",
+        "author": "soladity",
+        "body": "@anthonykimani \nThanks for answering.\n\nIf I use `openai` as `modalProvider` in json, should I have paid open ai key or is it ok to have free version openai key in env?\n\nI used this below command, so need to check only `lpmanager.character.json` right?\n\n![Image](https://github.com/user-attachments/assets/f04f56bd-e64c-4ead-a9ef-bad7f81916a5)"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6fFksK",
+        "author": "anthonykimani",
+        "body": "@soladity Open AI Free API keys hits rate limits faster, I opted for openrouter in my case. What error does it output on the Terminal?"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6fHHol",
+        "author": "soladity",
+        "body": "![Image](https://github.com/user-attachments/assets/f7ec07c0-4afd-42e9-ba34-b9bd99118036)\n\n![Image](https://github.com/user-attachments/assets/7449d2f0-a011-4154-ace3-45e11f86a765)\n\nI set openrouter but not working.\n"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6fHHw-",
+        "author": "soladity",
+        "body": "@anthonykimani "
+      },
+      {
+        "id": "IC_kwDOMT5cIs6fHIVX",
+        "author": "soladity",
+        "body": "I am using vpn, but does it matter for this issue?"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6qmWda",
+    "number": 3588,
+    "title": "Issue with Controlling Reply Length and Single Tweet Format",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nI am using Eliza to interact with target users on Twitter, and every time I reply to a comment, the response is split into a 2-3 tweet thread. I see in the code that the reply content is automatically split into multiple tweets if it exceeds 280 characters.\n\nI have tried adjusting the `OPENAI_MAX_TOKENS=65` configuration in OpenAI, but it doesn’t seem to solve the problem. \n\n**Describe the solution you'd like**\n\nIs there a parameter or setting to limit the reply content to a maximum of 280 characters, so that it doesn’t get split into multiple tweets?\n\n**Describe alternatives you've considered**\n\nFor paid users, a single tweet can exceed 280 characters. Is there any other way to ensure the reply stays as a single tweet, aside from modifying the 280-character limit in the code?\n\n**Additional context**\n\nOPENAI_MAX_TOKENS=65",
+    "state": "OPEN",
+    "createdAt": "2025-02-19T04:21:47Z",
+    "updatedAt": "2025-02-19T04:21:47Z",
+    "author": {
+      "login": "kent-neo",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/199869537?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6qmVFR",
+    "number": 3587,
+    "title": "Issue with Automatic Reply to Twitter Thread Tweets",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nI am using Eliza to interact with target users on Twitter. When a target user tweets a single tweet, my account responds automatically, which works fine. However, when the target user posts a thread (usually containing more than 5 tweets), my account fails to reply. I’ve tried restarting the Eliza service immediately after the target user posts a thread, and sometimes the automatic reply works, but not every time.\n\n**Describe the solution you'd like**\n\nI would like the service to consistently respond to a user's tweet thread just like it does with single tweets, without the need to restart the service.\n\n**Describe alternatives you've considered**\n\nI’ve tried adjusting the `TWITTER_POLL_INTERVAL` and other configuration options, but the issue persists. Restarting the service sometimes works but isn't reliable.\n\n**Additional context**\n\nMy current configuration is:\n```\nTWITTER_POLL_INTERVAL=3600\nTWITTER_TARGET_USERS=twitter_user1,twitter_user2,twitter_user3,twitter_user4,twitter_user5,twitter_user6\n```\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-19T04:16:00Z",
+    "updatedAt": "2025-02-19T04:16:34Z",
+    "author": {
+      "login": "kent-neo",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/199869537?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6e_lq3",
+        "author": "github-actions",
+        "body": "Hello @kent-neo! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6qmJ0p",
+    "number": 3585,
+    "title": "feat: make eliza server URL configurable via env var when starting  eliza client",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\n- When running the Eliza server that is served on anything other than `http://localhost:3000`\n- Eliza client is hardcoded to only connect to this URL\n\n**Describe the solution you'd like**\n\n- Make this configurable rather than hard coded\n\n**Describe alternatives you've considered**\n\n- What works is manually editing `const BASE_URL = ...` in `eliza/client/src/lib/api.ts`\n\n**Additional context**\n\nNil.\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-19T03:30:30Z",
+    "updatedAt": "2025-02-19T03:30:30Z",
+    "author": {
+      "login": "bguiz",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/1773785?u=9980b44b7ea9d8e63d444f65d3142eeba3f925fd&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  }
+]
