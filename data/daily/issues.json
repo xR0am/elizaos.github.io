@@ -1,37 +1,15 @@
 [
   {
-    "id": "I_kwDOMT5cIs6qpxuH",
-    "number": 3596,
-    "title": "Key error of map in Skeleton Item of the AppSidebar.",
-    "body": "I am getting the error on the AppSidebar.\nIn AppSidebar, to render SkeletonItem, we are using map function.\nIn this component, key is set to \"skeleton-item\", but it must be unique.\n\n![Image](https://github.com/user-attachments/assets/9a4e740a-a061-4a3b-b95f-b836b2ebf805)",
+    "id": "I_kwDOMT5cIs6q0ajB",
+    "number": 3614,
+    "title": "It is mostly replying \"I see a visual representation of a stylized illustration with a subtle background of digital elements\" for image and also for non image based tweet.",
+    "body": "I am running multiple agents, but one of my agent mostly replies below description like he is trying to understand image and for some time he does same for text based tweet, where my other agent understands and replies properly.\n\nRecent Replies \"\nI see a visual representation of a stylized illustration with a subtle background of digital elements, possibly featuring a clock or a timer, conveying a sense of anticipation and expectation in the world of [#PiNetwork](https://x.com/hashtag/PiNetwork?src=hashtag_click) and cryptocurrency.\"\nhttps://x.com/TheBitcoinSon/status/1892519722932908356\n\nWhere on same tweet my other agents works fine.\nhttps://x.com/gabbarsingh_ai/status/1892518688160465063\n\nI am using GROQ paid account and same API keys for both.\n\n\n<img width=\"641\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a3ef591d-c2b9-4ada-b9ea-66c0e91b42fa\" />\n\n\nOther Issues Link --Where it is saying same \"visual representation\"\nhttps://x.com/TheBitcoinSon/status/1892527643511361784\nhttps://x.com/TheBitcoinSon/status/1892527577891250207\nhttps://x.com/TheBitcoinSon/status/1892526398591385623\nhttps://x.com/TheBitcoinSon/status/1892526016251199837\nhttps://x.com/TheBitcoinSon/status/1892444826203017630\n\nConclusion - My agent https://x.com/TheBitcoinSon  always respond invalid message or his thinking in the reply and mostly it start with the text content \"I see a visual representation\".\n\n<img width=\"637\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/653bf01d-81c4-4be2-9362-3269d6a79fe2\" />\n\n\nAgent With Issue - https://x.com/TheBitcoinSon \nAgent Works Fine - https://x.com/gabbarsingh_ai \n",
     "state": "OPEN",
-    "createdAt": "2025-02-19T11:41:54Z",
-    "updatedAt": "2025-02-19T11:41:54Z",
+    "createdAt": "2025-02-20T11:19:26Z",
+    "updatedAt": "2025-02-20T11:19:51Z",
     "author": {
-      "login": "0xcodercrane",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/108444211?v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
-    "comments": []
-  },
-  {
-    "id": "I_kwDOMT5cIs6qm6v8",
-    "number": 3592,
-    "title": "pnpm start:client is not fetching localhost:3000",
-    "body": "I run the server by `pnpm start`\nAlso run the client by `pnpm start:client`, but it's not fetching `localhost:3000`\n\n![Image](https://github.com/user-attachments/assets/078cab07-7656-47b7-87bd-a4b69806f8ac)",
-    "state": "OPEN",
-    "createdAt": "2025-02-19T06:24:27Z",
-    "updatedAt": "2025-02-19T18:28:29Z",
-    "author": {
-      "login": "soladity",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/4592567?u=c5587c809de4b3e9cc3cc9f862885bb026bb149e&v=4"
+      "login": "sharif331",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/28489280?v=4"
     },
     "labels": [
       {
@@ -43,110 +21,58 @@
     ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6fAIzE",
+        "id": "IC_kwDOMT5cIs6fN1qB",
         "author": "github-actions",
-        "body": "Hello @soladity! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6fDZCQ",
-        "author": "anthonykimani",
-        "body": "Could be your DefaultCharacter didn't launch correctly, what model provider are you using in the defaultCharacter.ts file? and check if you correctly configured your apikeys in .env file"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6fFCVb",
-        "author": "soladity",
-        "body": "@anthonykimani \nThanks for answering.\n\nIf I use `openai` as `modalProvider` in json, should I have paid open ai key or is it ok to have free version openai key in env?\n\nI used this below command, so need to check only `lpmanager.character.json` right?\n\n![Image](https://github.com/user-attachments/assets/f04f56bd-e64c-4ead-a9ef-bad7f81916a5)"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6fFksK",
-        "author": "anthonykimani",
-        "body": "@soladity Open AI Free API keys hits rate limits faster, I opted for openrouter in my case. What error does it output on the Terminal?"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6fHHol",
-        "author": "soladity",
-        "body": "![Image](https://github.com/user-attachments/assets/f7ec07c0-4afd-42e9-ba34-b9bd99118036)\n\n![Image](https://github.com/user-attachments/assets/7449d2f0-a011-4154-ace3-45e11f86a765)\n\nI set openrouter but not working.\n"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6fHHw-",
-        "author": "soladity",
-        "body": "@anthonykimani "
-      },
-      {
-        "id": "IC_kwDOMT5cIs6fHIVX",
-        "author": "soladity",
-        "body": "I am using vpn, but does it matter for this issue?"
+        "body": "Hello @sharif331! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
       }
     ]
   },
   {
-    "id": "I_kwDOMT5cIs6qmWda",
-    "number": 3588,
-    "title": "Issue with Controlling Reply Length and Single Tweet Format",
-    "body": "**Is your feature request related to a problem? Please describe.**\n\nI am using Eliza to interact with target users on Twitter, and every time I reply to a comment, the response is split into a 2-3 tweet thread. I see in the code that the reply content is automatically split into multiple tweets if it exceeds 280 characters.\n\nI have tried adjusting the `OPENAI_MAX_TOKENS=65` configuration in OpenAI, but it doesn’t seem to solve the problem. \n\n**Describe the solution you'd like**\n\nIs there a parameter or setting to limit the reply content to a maximum of 280 characters, so that it doesn’t get split into multiple tweets?\n\n**Describe alternatives you've considered**\n\nFor paid users, a single tweet can exceed 280 characters. Is there any other way to ensure the reply stays as a single tweet, aside from modifying the 280-character limit in the code?\n\n**Additional context**\n\nOPENAI_MAX_TOKENS=65",
+    "id": "I_kwDOMT5cIs6qzFoz",
+    "number": 3610,
+    "title": "Fix plugin import from plugin registry",
+    "body": "**Describe the bug**\n\n<!-- A clear and concise description of what the bug is. -->\n\nImporting plugins from the plugin registry doesn't work on develop. Due to the fact that the plugin names changed from `@elizaos/plugin-<>` to `@elizaos-plugins/plugin-<>`\n\n**To Reproduce**\n\n<!-- Steps to reproduce the behavior. -->\n\n1. `npx elizaos plugins add @elizaos-plugins/plugin-compass`\n2. `pnpm run build`\n3. add `@elizaos-plugins/plugin-compass` to character file\n4. [Optional], make [this](https://github.com/royalnine/eliza/blob/b0586346b05adce86a24802b07aa8d62d6d35e89/agent/src/index.ts#L377-L380) print the error stack:\n```\nelizaLogger.error(\n                        `Failed to import plugin: ${plugin}`,\n                        importError.stack || importError\n                    );\n```\n\n**Expected behavior**\n\nPlugin import should work on the new plugins from the plugin registry\n\n<!-- A clear and concise description of what you expected to happen. -->\n\n**Screenshots**\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n",
     "state": "OPEN",
-    "createdAt": "2025-02-19T04:21:47Z",
-    "updatedAt": "2025-02-19T04:21:47Z",
+    "createdAt": "2025-02-20T09:04:01Z",
+    "updatedAt": "2025-02-20T09:07:50Z",
     "author": {
-      "login": "kent-neo",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/199869537?v=4"
+      "login": "royalnine",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/17271567?u=539803beb97acc7d5924d80c51d844077da3f3a1&v=4"
     },
     "labels": [
       {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
-        "name": "enhancement",
-        "color": "a2eeef",
-        "description": "New feature or request"
-      }
-    ],
-    "comments": []
-  },
-  {
-    "id": "I_kwDOMT5cIs6qmVFR",
-    "number": 3587,
-    "title": "Issue with Automatic Reply to Twitter Thread Tweets",
-    "body": "**Is your feature request related to a problem? Please describe.**\n\nI am using Eliza to interact with target users on Twitter. When a target user tweets a single tweet, my account responds automatically, which works fine. However, when the target user posts a thread (usually containing more than 5 tweets), my account fails to reply. I’ve tried restarting the Eliza service immediately after the target user posts a thread, and sometimes the automatic reply works, but not every time.\n\n**Describe the solution you'd like**\n\nI would like the service to consistently respond to a user's tweet thread just like it does with single tweets, without the need to restart the service.\n\n**Describe alternatives you've considered**\n\nI’ve tried adjusting the `TWITTER_POLL_INTERVAL` and other configuration options, but the issue persists. Restarting the service sometimes works but isn't reliable.\n\n**Additional context**\n\nMy current configuration is:\n```\nTWITTER_POLL_INTERVAL=3600\nTWITTER_TARGET_USERS=twitter_user1,twitter_user2,twitter_user3,twitter_user4,twitter_user5,twitter_user6\n```\n",
-    "state": "OPEN",
-    "createdAt": "2025-02-19T04:16:00Z",
-    "updatedAt": "2025-02-19T04:16:34Z",
-    "author": {
-      "login": "kent-neo",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/199869537?v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
-        "name": "enhancement",
-        "color": "a2eeef",
-        "description": "New feature or request"
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
       }
     ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6e_lq3",
-        "author": "github-actions",
-        "body": "Hello @kent-neo! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+        "id": "IC_kwDOMT5cIs6fMks1",
+        "author": "royalnine",
+        "body": "https://github.com/elizaOS/eliza/pull/3611/files"
       }
     ]
   },
   {
-    "id": "I_kwDOMT5cIs6qmJ0p",
-    "number": 3585,
-    "title": "feat: make eliza server URL configurable via env var when starting  eliza client",
-    "body": "**Is your feature request related to a problem? Please describe.**\n\n- When running the Eliza server that is served on anything other than `http://localhost:3000`\n- Eliza client is hardcoded to only connect to this URL\n\n**Describe the solution you'd like**\n\n- Make this configurable rather than hard coded\n\n**Describe alternatives you've considered**\n\n- What works is manually editing `const BASE_URL = ...` in `eliza/client/src/lib/api.ts`\n\n**Additional context**\n\nNil.\n",
+    "id": "I_kwDOMT5cIs6qvXQm",
+    "number": 3604,
+    "title": "bug: unclear readme in client-direct",
+    "body": "**Describe the bug**\n\nhttps://github.com/elizaOS/eliza/tree/develop/packages/client-direct/src\nseems more related to a fine-tuning plugin, not the direct client.",
     "state": "OPEN",
-    "createdAt": "2025-02-19T03:30:30Z",
-    "updatedAt": "2025-02-19T03:30:30Z",
+    "createdAt": "2025-02-19T22:37:17Z",
+    "updatedAt": "2025-02-19T22:39:21Z",
     "author": {
-      "login": "bguiz",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/1773785?u=9980b44b7ea9d8e63d444f65d3142eeba3f925fd&v=4"
+      "login": "madjin",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/32600939?u=cdcf89f44c7a50906c7a80d889efa85023af2049&v=4"
     },
     "labels": [
       {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
-        "name": "enhancement",
-        "color": "a2eeef",
-        "description": "New feature or request"
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
       }
     ],
     "comments": []

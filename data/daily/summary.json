@@ -1,71 +1,70 @@
 {
-  "title": "elizaos Eliza (2025-02-19)",
+  "title": "elizaos Eliza (2025-02-20)",
   "version": "",
-  "overview": "Development focused on new features (discord + twitter e2e test), 2 bug fixes. with 20 contributors merging 6 PRs. Major work included various improvements.",
+  "overview": "Development focused on package improvements (improve test plugin), new features (improve test plugin), 6 bug fixes. with 10 contributors merging 8 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 20,
-    "merged_prs": 6,
-    "new_issues": 8,
-    "lines_changed": 6667
+    "contributors": 10,
+    "merged_prs": 8,
+    "new_issues": 3,
+    "lines_changed": 2772
   },
   "changes": {
     "features": [
-      "discord + twitter e2e test",
-      "db-driven-character management"
+      "improve test plugin"
     ],
     "fixes": [
-      "add log",
-      "[discord] add test channel id for e2e test + fix _shouldRespond function"
+      "set agent from api",
+      "installing packages from new registry",
+      "catch typing error"
     ],
     "chores": [
-      "gracefully handle database operations",
-      "Update and cleanup docs"
+      "docs update"
     ]
   },
   "areas": [
     {
       "name": "docs",
-      "files": 20,
-      "additions": 2651,
-      "deletions": 1569
+      "files": 100,
+      "additions": 1613,
+      "deletions": 643
     },
     {
       "name": "packages",
-      "files": 15,
-      "additions": 1178,
-      "deletions": 681
+      "files": 16,
+      "additions": 304,
+      "deletions": 169
     },
     {
-      "name": "root",
+      "name": "agent",
       "files": 2,
-      "additions": 588,
-      "deletions": 0
+      "additions": 6,
+      "deletions": 7
     }
   ],
-  "issues_summary": "working on 6 bugs including 'Always connecting when set SERVER_PORT=3000 in .env and use `SERVER_PORT=3001 pnpm start:client`', 'No work upload files 0G plugin' and implementing 1 feature requests including 'Add plugin-merkle'",
+  "issues_summary": "working on 3 bugs including 'Fix plugin import from plugin registry', 'bug: unclear readme in client-direct'",
   "questions": [],
   "top_contributors": [
     {
+      "name": "daniel-trevino",
+      "summary": "daniel-trevino is currently working on fixing issues related to setting the agent from the API and installing packages from a new registry",
+      "areas": [
+        "packages",
+        "client",
+        ".npmrc"
+      ]
+    },
+    {
       "name": "tcm390",
-      "summary": "tcm390 is currently working on fixing small issues and adding new features related to Discord and Twitter end-to-end testing in the \"packages\" code area",
+      "summary": "tcm390 is currently working on fixing typing errors and improving a test plugin in the packages code area on GitHub",
       "areas": [
         "packages"
       ]
     },
     {
-      "name": "wtfsayo",
-      "summary": "wtfsayo is currently working on implementing database-driven character management and improving the handling of database operations within the project's packages",
+      "name": "royalnine",
+      "summary": "royalnine is currently working on fixing a bug related to importing plugins from the plugin registry in the agent code area",
       "areas": [
-        "packages",
-        "Eliza.json",
-        "bun.lockb"
-      ]
-    },
-    {
-      "name": "madjin",
-      "summary": "madjin is currently updating and cleaning up documentation in the repository",
-      "areas": [
-        "docs"
+        "agent"
       ]
     }
   ]

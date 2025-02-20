@@ -1,42 +1,44 @@
-# elizaos Eliza (2025-02-19)
+# elizaos Eliza (2025-02-20)
     
 ## 📊 Overview
-Development focused on new features (discord + twitter e2e test), 2 bug fixes. with 20 contributors merging 6 PRs. Major work included various improvements.
+Development focused on package improvements (improve test plugin), new features (improve test plugin), 6 bug fixes. with 10 contributors merging 8 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 20 |
+| 👥 Contributors | 10 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 6 |
-| ⚠️ New Issues | 8 |
+| 🔄 Merged PRs | 8 |
+| ⚠️ New Issues | 3 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 2
-- 🐛 **Fixes**: 2
-- ✨ **Features**: 2
+- 🧹 **Chores**: 1
+- 🐛 **Fixes**: 6
+- ✨ **Features**: 1
 
 ## 📁 File Changes
-- **docs**: 20 files (+2651/-1569 lines)
-- **packages**: 15 files (+1178/-681 lines)
-- **root**: 2 files (+588/-0 lines)
+- **docs**: 100 files (+1613/-643 lines)
+- **packages**: 16 files (+304/-169 lines)
+- **root**: 2 files (+20/-2 lines)
+- **agent**: 2 files (+6/-7 lines)
+- **.devcontainer**: 1 files (+3/-3 lines)
 
 ## 🔥 Notable Changes
-- feat: discord + twitter e2e test
-- fix: add log
-- fix: [discord] add test channel id for e2e test + fix _shouldRespond function
+- fix: set agent from api
+- fix: installing packages from new registry
+- fix: catch typing error
 
 ## 👥 Top Contributors
-- **tcm390**: tcm390 is currently working on fixing small issues and adding new features related to Discord and Twitter end-to-end testing in the "packages" code area
-- **wtfsayo**: wtfsayo is currently working on implementing database-driven character management and improving the handling of database operations within the project's packages
-- **madjin**: madjin is currently updating and cleaning up documentation in the repository
+- **daniel-trevino**: daniel-trevino is currently working on fixing issues related to setting the agent from the API and installing packages from a new registry
+- **tcm390**: tcm390 is currently working on fixing typing errors and improving a test plugin in the packages code area on GitHub
+- **royalnine**: royalnine is currently working on fixing a bug related to importing plugins from the plugin registry in the agent code area
 
 ## ⚠️ Issues
-- **New Issues**: 8
-- **Labels**: `bug` (6), `enhancement` (1)
-- **Summary**: 6 bugs reported (including 'Always connecting when set SERVER_PORT=3000 in .env and use `SERVER_PORT=3001 pnpm start:client`', 'No work upload files 0G plugin') 1 feature requests (including 'Add plugin-merkle').
+- **New Issues**: 3
+- **Labels**: `bug` (3)
+- **Summary**: 3 bugs reported (including 'Fix plugin import from plugin registry', 'bug: unclear readme in client-direct').
 
 ## Top Contributors
-- **tcm390**: feat: discord + twitter e2e test
-- **wtfsayo**: chore: gracefully handle database operations
-- **madjin**: chore: Update and cleanup docs
+- **daniel-trevino**: fix: set agent from api
+- **tcm390**: fix: catch typing error
+- **royalnine**: FIX: importing plugins from registry
