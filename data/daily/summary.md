@@ -1,4 +1,4 @@
-# elizaos Eliza (2025-02-20)
+# elizaos Eliza (2025-02-22)
     
 ## 📊 Overview
 Development focused on package improvements (improve test plugin), new features (improve test plugin), 6 bug fixes. with 10 contributors merging 8 PRs. Major work included various improvements.
@@ -30,7 +30,7 @@ Development focused on package improvements (improve test plugin), new features 
 
 ## 👥 Top Contributors
 - **daniel-trevino**: daniel-trevino is currently working on fixing issues related to setting the agent from the API and installing packages from a new registry
-- **tcm390**: tcm390 is currently working on fixing typing errors and improving a test plugin in the packages code area on GitHub
+- **tcm390**: tcm390 is currently working on fixing a typing error and improving a test plugin in the "packages" code area on GitHub
 - **royalnine**: royalnine is currently working on fixing a bug related to importing plugins from the plugin registry in the agent code area
 
 ## ⚠️ Issues

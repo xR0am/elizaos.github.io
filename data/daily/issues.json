@@ -1,15 +1,15 @@
 [
   {
-    "id": "I_kwDOMT5cIs6q0ajB",
-    "number": 3614,
-    "title": "It is mostly replying \"I see a visual representation of a stylized illustration with a subtle background of digital elements\" for image and also for non image based tweet.",
-    "body": "I am running multiple agents, but one of my agent mostly replies below description like he is trying to understand image and for some time he does same for text based tweet, where my other agent understands and replies properly.\n\nRecent Replies \"\nI see a visual representation of a stylized illustration with a subtle background of digital elements, possibly featuring a clock or a timer, conveying a sense of anticipation and expectation in the world of [#PiNetwork](https://x.com/hashtag/PiNetwork?src=hashtag_click) and cryptocurrency.\"\nhttps://x.com/TheBitcoinSon/status/1892519722932908356\n\nWhere on same tweet my other agents works fine.\nhttps://x.com/gabbarsingh_ai/status/1892518688160465063\n\nI am using GROQ paid account and same API keys for both.\n\n\n<img width=\"641\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a3ef591d-c2b9-4ada-b9ea-66c0e91b42fa\" />\n\n\nOther Issues Link --Where it is saying same \"visual representation\"\nhttps://x.com/TheBitcoinSon/status/1892527643511361784\nhttps://x.com/TheBitcoinSon/status/1892527577891250207\nhttps://x.com/TheBitcoinSon/status/1892526398591385623\nhttps://x.com/TheBitcoinSon/status/1892526016251199837\nhttps://x.com/TheBitcoinSon/status/1892444826203017630\n\nConclusion - My agent https://x.com/TheBitcoinSon  always respond invalid message or his thinking in the reply and mostly it start with the text content \"I see a visual representation\".\n\n<img width=\"637\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/653bf01d-81c4-4be2-9362-3269d6a79fe2\" />\n\n\nAgent With Issue - https://x.com/TheBitcoinSon \nAgent Works Fine - https://x.com/gabbarsingh_ai \n",
+    "id": "I_kwDOMT5cIs6rHDjm",
+    "number": 3639,
+    "title": "Type Alias \"Adapter\" is not defined",
+    "body": "**Describe the bug**\n\nThe type alias \"Adapter\" described at [here](https://elizaos.github.io/eliza/api/type-aliases/Adapter/) is not defined in https://github.com/elizaOS/eliza/blob/main/packages/core/src/types.ts#L637",
     "state": "OPEN",
-    "createdAt": "2025-02-20T11:19:26Z",
-    "updatedAt": "2025-02-20T11:19:51Z",
+    "createdAt": "2025-02-22T13:52:37Z",
+    "updatedAt": "2025-02-22T13:53:00Z",
     "author": {
-      "login": "sharif331",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/28489280?v=4"
+      "login": "Luks3110",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/6136276?u=b9cfb853c75bb04d3dd6a5424f8e67ed551da32b&v=4"
     },
     "labels": [
       {
@@ -21,60 +21,10 @@
     ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6fN1qB",
+        "id": "IC_kwDOMT5cIs6fg-Rr",
         "author": "github-actions",
-        "body": "Hello @sharif331! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+        "body": "Hello @Luks3110! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
       }
     ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6qzFoz",
-    "number": 3610,
-    "title": "Fix plugin import from plugin registry",
-    "body": "**Describe the bug**\n\n<!-- A clear and concise description of what the bug is. -->\n\nImporting plugins from the plugin registry doesn't work on develop. Due to the fact that the plugin names changed from `@elizaos/plugin-<>` to `@elizaos-plugins/plugin-<>`\n\n**To Reproduce**\n\n<!-- Steps to reproduce the behavior. -->\n\n1. `npx elizaos plugins add @elizaos-plugins/plugin-compass`\n2. `pnpm run build`\n3. add `@elizaos-plugins/plugin-compass` to character file\n4. [Optional], make [this](https://github.com/royalnine/eliza/blob/b0586346b05adce86a24802b07aa8d62d6d35e89/agent/src/index.ts#L377-L380) print the error stack:\n```\nelizaLogger.error(\n                        `Failed to import plugin: ${plugin}`,\n                        importError.stack || importError\n                    );\n```\n\n**Expected behavior**\n\nPlugin import should work on the new plugins from the plugin registry\n\n<!-- A clear and concise description of what you expected to happen. -->\n\n**Screenshots**\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n",
-    "state": "OPEN",
-    "createdAt": "2025-02-20T09:04:01Z",
-    "updatedAt": "2025-02-20T09:07:50Z",
-    "author": {
-      "login": "royalnine",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/17271567?u=539803beb97acc7d5924d80c51d844077da3f3a1&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6fMks1",
-        "author": "royalnine",
-        "body": "https://github.com/elizaOS/eliza/pull/3611/files"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6qvXQm",
-    "number": 3604,
-    "title": "bug: unclear readme in client-direct",
-    "body": "**Describe the bug**\n\nhttps://github.com/elizaOS/eliza/tree/develop/packages/client-direct/src\nseems more related to a fine-tuning plugin, not the direct client.",
-    "state": "OPEN",
-    "createdAt": "2025-02-19T22:37:17Z",
-    "updatedAt": "2025-02-19T22:39:21Z",
-    "author": {
-      "login": "madjin",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/32600939?u=cdcf89f44c7a50906c7a80d889efa85023af2049&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
-    "comments": []
   }
 ]
