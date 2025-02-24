@@ -1,36 +1,35 @@
-# elizaos Eliza (2025-02-23)
+# elizaos Eliza (2025-02-24)
     
 ## 📊 Overview
-Development focused on 1 bug fixes. with 3 contributors merging 3 PRs. Major work included various improvements.
+Development focused on package improvements (Fix plugins.md formatting), 1 bug fixes. with 11 contributors merging 3 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 3 |
-| 📝 Commits | 2 |
+| 👥 Contributors | 11 |
+| 📝 Commits | 1 |
 | 🔄 Merged PRs | 3 |
 | ⚠️ New Issues | 0 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 1
+- 🧹 **Chores**: 0
 - 🐛 **Fixes**: 1
 - ✨ **Features**: 0
 
 ## 📁 File Changes
-- **root**: 4 files (+1676/-1865 lines)
-- **packages**: 5 files (+56/-7 lines)
-- **.github**: 3 files (+4/-4 lines)
-- **client**: 1 files (+1/-1 lines)
+- **packages**: 9 files (+689/-464 lines)
+- **docs**: 1 files (+4/-4 lines)
+- **root**: 1 files (+0/-0 lines)
 
 ## 🔥 Notable Changes
-- chore: stablize develop
-- update discord link
-- fix: generate structured objects and images with NEAR AI
+- docs: Fix plugins.md formatting
+- fix: Handle short text items in knowledge processing
+- refactor api routes into file based
 
 ## 👥 Top Contributors
-- **odilitime**: odilitime is currently working on updating the discord link and stabilizing the develop branch in the 
-- **think-in-universe**: think-in-universe is currently working on a pull request to fix the generation of structured objects and images with NEAR AI in the packages code area
-- **corymaklin**: corymaklin is currently working on a pull request for the Hyperlane GOAT Plugin, focusing on code areas such as characters, agent, and packages
+- **Doge-is-Dope**: Doge-is-Dope is currently working on fixing the formatting of the plugins
+- **boolkeys**: boolkeys is currently working on fixing an issue related to handling short text items in knowledge processing within the packages code area on GitHub
+- **wtfsayo**: wtfsayo is currently working on refactoring API routes into file-based structure within the "packages" code area
 
 ## ⚠️ Issues
 - **New Issues**: 0
@@ -38,5 +37,6 @@ Development focused on 1 bug fixes. with 3 contributors merging 3 PRs. Major wor
 - **Summary**: 
 
 ## Top Contributors
-- **odilitime**: chore: stablize develop
-- **think-in-universe**: fix: generate structured objects and images with NEAR AI
+- **Doge-is-Dope**: docs: Fix plugins.md formatting
+- **boolkeys**: fix: Handle short text items in knowledge processing
+- **wtfsayo**: refactor api routes into file based
