@@ -1,42 +1,43 @@
-# elizaos Eliza (2025-02-24)
+# elizaos Eliza (2025-02-25)
     
 ## 📊 Overview
-Development focused on package improvements (Fix plugins.md formatting), 1 bug fixes. with 11 contributors merging 3 PRs. Major work included various improvements.
+Development focused on package improvements (set up dimension before starting client), new features (checking the plugin is installed and display the result), 5 bug fixes. with 10 contributors merging 10 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 11 |
-| 📝 Commits | 1 |
-| 🔄 Merged PRs | 3 |
-| ⚠️ New Issues | 0 |
+| 👥 Contributors | 10 |
+| 📝 Commits | 0 |
+| 🔄 Merged PRs | 10 |
+| ⚠️ New Issues | 2 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 0
-- 🐛 **Fixes**: 1
-- ✨ **Features**: 0
+- 🧹 **Chores**: 1
+- 🐛 **Fixes**: 5
+- ✨ **Features**: 1
 
 ## 📁 File Changes
-- **packages**: 9 files (+689/-464 lines)
-- **docs**: 1 files (+4/-4 lines)
-- **root**: 1 files (+0/-0 lines)
+- **packages**: 34 files (+1790/-1158 lines)
+- **root**: 1 files (+22/-4 lines)
+- **i18n**: 1 files (+8/-9 lines)
+- **.github**: 2 files (+2/-2 lines)
 
 ## 🔥 Notable Changes
-- docs: Fix plugins.md formatting
-- fix: Handle short text items in knowledge processing
-- refactor api routes into file based
+- fix: add participant error
+- fix: set up dimension before starting client
+- fix: [twitter-space] handle speaker removal
 
 ## 👥 Top Contributors
-- **Doge-is-Dope**: Doge-is-Dope is currently working on fixing the formatting of the plugins
-- **boolkeys**: boolkeys is currently working on fixing an issue related to handling short text items in knowledge processing within the packages code area on GitHub
-- **wtfsayo**: wtfsayo is currently working on refactoring API routes into file-based structure within the "packages" code area
+- **tcm390**: tcm390 is currently working on fixing various issues related to participant errors, speaker removal, setting up dimensions, and making small fixes in the Twitter space feature within the packages code areas
+- **cryptokatze**: cryptokatze is currently updating the Korean README file in the documentation repository
+- **wtfsayo**: wtfsayo is currently working on fixing extensions and migrations in the codebase, as well as cleaning up the server
 
 ## ⚠️ Issues
-- **New Issues**: 0
-- **Labels**: 
-- **Summary**: 
+- **New Issues**: 2
+- **Labels**: `bug` (2)
+- **Summary**: 2 bugs reported (including 'RAG Knowledge JavaScript Heap Out of Memory', 'Docker file issue:  Invalid cachestore').
 
 ## Top Contributors
-- **Doge-is-Dope**: docs: Fix plugins.md formatting
-- **boolkeys**: fix: Handle short text items in knowledge processing
-- **wtfsayo**: refactor api routes into file based
+- **tcm390**: fix: add participant error
+- **cryptokatze**: docs: Update README_KOR.md
+- **wtfsayo**: clean up server

@@ -1,63 +1,69 @@
 {
-  "title": "elizaos Eliza (2025-02-24)",
+  "title": "elizaos Eliza (2025-02-25)",
   "version": "",
-  "overview": "Development focused on package improvements (Fix plugins.md formatting), 1 bug fixes. with 11 contributors merging 3 PRs. Major work included various improvements.",
+  "overview": "Development focused on package improvements (set up dimension before starting client), new features (checking the plugin is installed and display the result), 5 bug fixes. with 10 contributors merging 10 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 11,
-    "merged_prs": 3,
-    "new_issues": 0,
-    "lines_changed": 1161
+    "contributors": 10,
+    "merged_prs": 10,
+    "new_issues": 2,
+    "lines_changed": 2995
   },
   "changes": {
-    "features": [],
-    "fixes": [
-      "Handle short text items in knowledge processing"
+    "features": [
+      "checking the plugin is installed and display the result"
     ],
-    "chores": []
+    "fixes": [
+      "add participant error",
+      "set up dimension before starting client",
+      "[twitter-space] handle speaker removal"
+    ],
+    "chores": [
+      "(refactor) - plugin-local-ai-final"
+    ]
   },
   "areas": [
     {
       "name": "packages",
-      "files": 9,
-      "additions": 689,
-      "deletions": 464
+      "files": 34,
+      "additions": 1790,
+      "deletions": 1158
     },
     {
-      "name": "docs",
-      "files": 1,
-      "additions": 4,
-      "deletions": 4
+      "name": ".github",
+      "files": 2,
+      "additions": 2,
+      "deletions": 2
     },
     {
-      "name": "root",
+      "name": "i18n",
       "files": 1,
-      "additions": 0,
-      "deletions": 0
+      "additions": 8,
+      "deletions": 9
     }
   ],
-  "issues_summary": "",
+  "issues_summary": "working on 2 bugs including 'RAG Knowledge JavaScript Heap Out of Memory', 'Docker file issue:  Invalid cachestore'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "Doge-is-Dope",
-      "summary": "Doge-is-Dope is currently working on fixing the formatting of the plugins",
-      "areas": [
-        "docs"
-      ]
-    },
-    {
-      "name": "boolkeys",
-      "summary": "boolkeys is currently working on fixing an issue related to handling short text items in knowledge processing within the packages code area on GitHub",
+      "name": "tcm390",
+      "summary": "tcm390 is currently working on fixing various issues related to participant errors, speaker removal, setting up dimensions, and making small fixes in the Twitter space feature within the packages code areas",
       "areas": [
         "packages"
       ]
     },
     {
-      "name": "wtfsayo",
-      "summary": "wtfsayo is currently working on refactoring API routes into file-based structure within the \"packages\" code area",
+      "name": "cryptokatze",
+      "summary": "cryptokatze is currently updating the Korean README file in the documentation repository",
       "areas": [
-        "packages",
-        "bun.lockb"
+        "i18n",
+        ".github"
+      ]
+    },
+    {
+      "name": "wtfsayo",
+      "summary": "wtfsayo is currently working on fixing extensions and migrations in the codebase, as well as cleaning up the server",
+      "areas": [
+        "packages"
       ]
     }
   ]

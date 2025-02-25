@@ -1,1 +1,118 @@
-[]
+[
+  {
+    "id": "I_kwDOMT5cIs6rhfR2",
+    "number": 3664,
+    "title": "RAG Knowledge JavaScript Heap Out of Memory",
+    "body": "## Description\nThe application is crashing with a \"JavaScript heap out of memory\" error when processing knowledge/messages. The error occurs during runtime execution with a heap size of approximately 4GB.\n\n## To Reproduce\n1. Run the application with Node.js v23.8.0/v23.3.0\n2. Process single path or single directory knowledge \n3. Application crashes with heap out of memory error\n\n## Error Details\n```\nFATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory\n```\n\n## Stack Trace\nKey components in stack trace:\n1. Heap allocation failure during garbage collection\n2. Error occurs during array push operations\n3. Triggered during async function processing and microtask execution\n\n## Technical Details\n- Node.js Version: v23.8.0/v23.3.0\n- Platform: macOS\n- Current Memory Usage: ~4075MB before crash\n\n## Proposed Solutions\nUnaware\n\n## Additional Context\n- Error occurs during knowledge processing with ragKnowledge enabled ONLY\n\n## Error\n```\n[2025-02-25 08:58:52] INFO: [Timing] Main embedding: 0.15s\n\n<--- Last few GCs --->\n\n[11338:0x140008000]    18160 ms: Scavenge (interleaved) 4075.1 (4085.0) -> 4075.1 (4108.0) MB, pooled: 0 MB, 20.17 / 0.00 ms  (average mu = 0.179, current mu = 0.138) allocation failure; \n[11338:0x140008000]    19484 ms: Mark-Compact (reduce) 4075.8 (4108.0) -> 4075.8 (4078.8) MB, pooled: 0 MB, 1188.88 / 0.00 ms  (+ 9.5 ms in 0 steps since start of marking, biggest step 0.0 ms, walltime since start of marking 1202 ms) (average mu = 0.160, \n\n<--- JS stacktrace --->\n\nFATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory\n----- Native stack trace -----\n\n 1: node::OOMErrorHandler(char const*, v8::OOMDetails const&) \n 2: v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, v8::OOMDetails const&) \n 3: v8::internal::Heap::stack() \n 4: v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags)::$_1::operator()() const \n 5: void heap::base::Stack::SetMarkerAndCallbackImpl<v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags)::$_1>(heap::base::Stack*, void*, void const*) \n 6: PushAllRegistersAndIterateStack \n 7: v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) \n 8: v8::internal::StackGuard::HandleInterrupts(v8::internal::StackGuard::InterruptLevel) \n 9: v8::internal::Runtime_StackGuard(int, unsigned long*, v8::internal::Isolate*) \n10: Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit \n11: Builtins_ArrayPrototypePush \n12:  \n13: Builtins_InterpreterEntryTrampoline \n14: Builtins_InterpreterEntryTrampoline \n15: Builtins_AsyncFunctionAwaitResolveClosure \n16: Builtins_PromiseFulfillReactionJob \n17: Builtins_RunMicrotasks \n18: Builtins_JSRunMicrotasksEntry \n19: v8::internal::(anonymous namespace)::Invoke(v8::internal::Isolate*, v8::internal::(anonymous namespace)::InvokeParams const&) \n20: v8::internal::(anonymous namespace)::InvokeWithTryCatch(v8::internal::Isolate*, v8::internal::(anonymous namespace)::InvokeParams const&) \n21: v8::internal::Execution::TryRunMicrotasks(v8::internal::Isolate*, v8::internal::MicrotaskQueue*) \n22: v8::internal::MicrotaskQueue::RunMicrotasks(v8::internal::Isolate*) \n23: v8::internal::MicrotaskQueue::PerformCheckpoint(v8::Isolate*) \n24: node::InternalCallbackScope::Close() \n25: node::InternalMakeCallback(node::Environment*, v8::Local<v8::Object>, v8::Local<v8::Object>, v8::Local<v8::Function>, int, v8::Local<v8::Value>*, node::async_context, v8::Local<v8::Value>) \n26: node::InternalMakeCallback(v8::Isolate*, v8::Local<v8::Object>, v8::Local<v8::Function>, int, v8::Local<v8::Value>*, node::async_context, v8::Local<v8::Value>) \n27: node::Environment::CheckImmediate(uv_check_s*) \n28: uv__run_check \n29: uv_run \n30: node::SpinEventLoopInternal(node::Environment*) \n31: node::NodeMainInstance::Run() \n32: node::Start(int, char**) \n33: start \nsh: line 1: 11338 Abort trap: 6           node --loader ts-node/esm src/index.ts --characters=./characters/kaiadevbot.character.json\n ELIFECYCLE  Command failed with exit code 134.\n```",
+    "state": "OPEN",
+    "createdAt": "2025-02-25T09:14:41Z",
+    "updatedAt": "2025-02-25T21:58:57Z",
+    "author": {
+      "login": "suryanshkushwaha",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/112935210?u=46b197f80080add4a7ce2f271a2eb00429a2d2fe&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6f0IO_",
+        "author": "github-actions",
+        "body": "Hello @suryanshkushwaha! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6f07Cu",
+        "author": "metatxn",
+        "body": "@suryanshkushwaha try this. it worked for me.\n\n```\nexport NODE_OPTIONS=\"--max-old-space-size=4096\"\n```"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6f1Lwv",
+        "author": "boolkeys",
+        "body": "> [@suryanshkushwaha](https://github.com/suryanshkushwaha) try this. it worked for me.\n> \n> ```\n> export NODE_OPTIONS=\"--max-old-space-size=4096\"\n> ```\n\nthat also worked for me.\n\nIf you want to set a different memory size, you can adjust the number: \n2GB: --max-old-space-size=2048 \n6GB: --max-old-space-size=6144 \n8GB: --max-old-space-size=81924"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6f2Gku",
+        "author": "myconite",
+        "body": "Same issue.\n\n@boolkeys or @metatxn, where to set the export NODE_OPTIONS=\"--max-old-space-size=4096\"?"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6f2H9A",
+        "author": "boolkeys",
+        "body": "> Same issue.\n> \n> @boolkeys or @metatxn, where to set the export NODE_OPTIONS=\"--max-old-space-size=4096\"?\n\nJust run it in CLI in the same place where you run pnpm commands"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6f2tm7",
+        "author": "darab-ui",
+        "body": "افزایش حافظه: دستور: `node --max-old-space-size=8192 --loader ts-node/esm src/index.ts --characters=./characters/kaiadevbot.character.json  8192 به معنای ۸ گیگابایت حافظه است. مدیریت حافظه:  استفاده کمتر از آرایه‌ها و اشیاء بزرگ، استفاده از جریان‌های داده (Streams)بهینه‌سازی داده‌های غیرهمزمان، تقسیم داده‌ها به بخش‌های کوچک‌تر\n"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6f2vCh",
+        "author": "myconite",
+        "body": "@boolkeys did it in CLI with command:\n\npnpm start --characters=\"characters/default.character.json\" --max-old-space-size=8192\n\nbut it's not working for me :/\n\n<--- Last few GCs --->\n\n[35053:0x2f83c000]    27258 ms: Scavenge 1949.1 (1966.9) -> 1949.1 (1981.9) MB, pooled: 0 MB, 40.30 / 0.00 ms  (average mu = 0.385, current mu = 0.245) allocation failure; \n[35053:0x2f83c000]    34786 ms: Mark-Compact 2537.9 (2555.7) -> 2155.1 (2188.4) MB, pooled: 0 MB, 3447.22 / 0.00 ms  (average mu = 0.527, current mu = 0.594) allocation failure; scavenge might not succeed\n\n\n<--- JS stacktrace --->\n\nFATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory\n\n----- Native stack trace -----\n\n 1: 0xe7e015 node::OOMErrorHandler(char const*, v8::OOMDetails const&) [node]\n 2: 0x12e8be0 v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [node]\n 3: 0x12e8f7c v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [node]\n 4: 0x154be55  [node]\n 5: 0x155f262 v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [node]\n 6: 0x1537d82 v8::internal::HeapAllocator::AllocateRawWithLightRetrySlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [node]\n 7: 0x15380b8 v8::internal::HeapAllocator::AllocateRawWithRetryOrFailSlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [node]\n 8: 0x150f340 v8::internal::Factory::NewFillerObject(int, v8::internal::AllocationAlignment, v8::internal::AllocationType, v8::internal::AllocationOrigin) [node]\n 9: 0x199136b v8::internal::Runtime_AllocateInYoungGeneration(int, unsigned long*, v8::internal::Isolate*) [node]\n10: 0x71fe4666f276 \nAborted (core dumped)\n/home/urban/projects/eliza/agent:\n ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @elizaos/agent@0.25.8 start: `node --loader ts-node/esm src/index.ts \"--isRoot\" \"--characters=characters/default.character.json\" \"--max-old-space-size=8192\"`\nExit status 134\n ELIFECYCLE  Command failed with exit code 134."
+      },
+      {
+        "id": "IC_kwDOMT5cIs6f3IM2",
+        "author": "boolkeys",
+        "body": "> @boolkeys did it in CLI with command:\n> \n> pnpm start --characters=\"characters/default.character.json\" --max-old-space-size=8192\n> \n> but it's not working for me :/\n> \n> <--- Last few GCs --->\n> \n> [35053:0x2f83c000]    27258 ms: Scavenge 1949.1 (1966.9) -> 1949.1 (1981.9) MB, pooled: 0 MB, 40.30 / 0.00 ms  (average mu = 0.385, current mu = 0.245) allocation failure; \n> [35053:0x2f83c000]    34786 ms: Mark-Compact 2537.9 (2555.7) -> 2155.1 (2188.4) MB, pooled: 0 MB, 3447.22 / 0.00 ms  (average mu = 0.527, current mu = 0.594) allocation failure; scavenge might not succeed\n> \n> \n> <--- JS stacktrace --->\n> \n> FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory\n> \n> ----- Native stack trace -----\n> \n>  1: 0xe7e015 node::OOMErrorHandler(char const*, v8::OOMDetails const&) [node]\n>  2: 0x12e8be0 v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [node]\n>  3: 0x12e8f7c v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [node]\n>  4: 0x154be55  [node]\n>  5: 0x155f262 v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [node]\n>  6: 0x1537d82 v8::internal::HeapAllocator::AllocateRawWithLightRetrySlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [node]\n>  7: 0x15380b8 v8::internal::HeapAllocator::AllocateRawWithRetryOrFailSlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [node]\n>  8: 0x150f340 v8::internal::Factory::NewFillerObject(int, v8::internal::AllocationAlignment, v8::internal::AllocationType, v8::internal::AllocationOrigin) [node]\n>  9: 0x199136b v8::internal::Runtime_AllocateInYoungGeneration(int, unsigned long*, v8::internal::Isolate*) [node]\n> 10: 0x71fe4666f276 \n> Aborted (core dumped)\n> /home/urban/projects/eliza/agent:\n>  ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @elizaos/agent@0.25.8 start: `node --loader ts-node/esm src/index.ts \"--isRoot\" \"--characters=characters/default.character.json\" \"--max-old-space-size=8192\"`\n> Exit status 134\n>  ELIFECYCLE  Command failed with exit code 134.\n\nNo, just type it as a new command, not with pnpm start. Just type in CLI:\n\nexport NODE_OPTIONS=\"--max-old-space-size=4096\""
+      },
+      {
+        "id": "IC_kwDOMT5cIs6f3Qt5",
+        "author": "myconite",
+        "body": "@boolkeys cheers, javascript is not something I use often. That seems to have worked and was applied. However my host machine (vm) then crashed later after trying to run the character and apply rag knowledge. I have 6 gb allocated to it in total. Seems like there was too much memory consumption..."
+      },
+      {
+        "id": "IC_kwDOMT5cIs6f3Xqi",
+        "author": "darab-ui",
+        "body": "برای بهینه‌سازی مصرف حافظه در Node.js، ابتدا باید بخش‌های پرمصرف را شناسایی کنیم. سپس از روش‌هایی مانند استفاده از جریان‌ها (Streams)، پردازش داده‌ها به بخش‌های کوچکتر، و استفاده از Garbage Collection دستی برای کاهش مصرف حافظه بهره ببریم"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6f4LlM",
+        "author": "DEVMYTH123",
+        "body": "same issue even using --max-old-space-size=8192 and even 16384 which is 16GB of ram. Idts it is the issue of the less ram."
+      },
+      {
+        "id": "IC_kwDOMT5cIs6f50sH",
+        "author": "darab-ui",
+        "body": "تحلیل و بهینه سازی node --inspect --loader ts-node/esm src/index.ts --characters=./characters/default.character.json،از Garbage collectionبرای جمع اوری زباله  و اینکه فواصل بین عملیات را افزایش دهد تا فرصت بیشتری برای پردازش داده ها باشد ،بررسی الگوریتم های بهینه تز تا حافظه کمتری استفاده شود ،پروفایلتان و مانیتورینگ و اینکه کدام بخش ها نیار به بهینه سازی دارد clinic.jsیاheapdumpو اینکه تقسیم فرایندها به بخش های کوچک تر \n \nیا اینکه کلا \nconst fs = require('fs');\nconst readline = require('readline');\nconst stream = require('stream');\nconst { program } = require('commander');\n\n// جریان تبدیل برای پردازش خطی\nclass LineTransform extends stream.Transform {\n  constructor() {\n    super({ readableObjectMode: true });\n  }\n\n  _transform(chunk, encoding, callback) {\n    const lines = chunk.toString().split('\\n');\n    lines.forEach(line => {\n      const cleanedLine = line.trim();\n      if (cleanedLine.length > 0) {\n        this.push(cleanedLine);\n      }\n    });\n    callback();\n  }\n}\n\nasync function processFile(filePath) {\n  try {\n    if (!fs.existsSync(filePath)) {\n      console.error(`❌ خطا: فایل \"${filePath}\" یافت نشد.`);\n      return;\n    }\n\n    const fileStream = fs.createReadStream(filePath, { highWaterMark: 64 * 1024 }); // بافر 64KB\n    fileStream.on('error', (err) => console.error(`❌ خطا در باز کردن فایل: ${err.message}`));\n\n    const lineTransform = new LineTransform();\n    let lineCount = 0;\n\n    lineTransform.on('data', (line) => {\n      console.log(`پردازش خط: ${line}`);\n      lineCount++;\n      if (lineCount % 50 === 0) {\n        console.log(`📊 ${lineCount} خط پردازش شد`);\n      }\n    });\n\n    lineTransform.on('end', () => {\n      console.log('✅ پردازش فایل با موفقیت انجام شد');\n    });\n\n    fileStream.pipe(lineTransform);\n\n  } catch (error) {\n    console.error('❌ خطا در پردازش فایل:', error);\n  }\n}\n\n// تنظیمات CLI\nprogram\n  .version('1.0.0')\n  .description('برنامه پردازش فایل')\n  .argument('<file>', 'فایل ورودی')\n  .action((file) => processFile(file));\n\nprogram.parse(process.argv);"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6f8T7y",
+        "author": "t-phoenix",
+        "body": "Facing the same issue, using MAC M2\ntried  `export NODE_OPTIONS=\"--max-old-space-size=4096\"` don't seem to be working for me.\nPlease fix asap"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6rgrBc",
+    "number": 3661,
+    "title": "Docker file issue:  Invalid cachestore",
+    "body": "**Describe the bug**\n\n<!-- A clear and concise description of what the bug is. -->\nI published a docker image from macOS using the command `docker buildx build --platform linux/amd64 -t eliza-starter:v1 --load .\n` and it build the image. when i run it using `docker run --env-file .env sha256:XYZ` it is throwing me this error: \n [\":no_entry: Error: Invalid cache store: database # Defaults to database. Other available cache store: redis and filesystem or required configuration missing.\"]\n\n**To Reproduce**\n\n<!-- Steps to reproduce the behavior. -->\n\n**Expected behavior**\n\n<!-- A clear and concise description of what you expected to happen. -->\n\n**Screenshots**\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\nNOTE: I deleted redis and all other adapters/clients/plugins that i didn't want to use. ",
+    "state": "OPEN",
+    "createdAt": "2025-02-25T08:00:12Z",
+    "updatedAt": "2025-02-25T08:00:40Z",
+    "author": {
+      "login": "avdheshcharjan",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/49278246?u=8fad573791a9fcc83703100ff961fdfa7e259680&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6fzT-c",
+        "author": "github-actions",
+        "body": "Hello @avdheshcharjan! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  }
+]
