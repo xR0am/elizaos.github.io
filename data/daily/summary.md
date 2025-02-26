@@ -1,43 +1,42 @@
-# elizaos Eliza (2025-02-25)
+# elizaos Eliza (2025-02-26)
     
 ## 📊 Overview
-Development focused on package improvements (set up dimension before starting client), new features (checking the plugin is installed and display the result), 5 bug fixes. with 10 contributors merging 10 PRs. Major work included various improvements.
+Development focused on package improvements (mock agent form on client!), new features (Performance Improvements and Metadata Refactoring), 7 bug fixes. with 16 contributors merging 14 PRs. Major work included tcm390 is currently working on fixing various issues related to pdf message sending failure, discord voice actions, twitter crashes, telegram vitest, and media download actions within the packages code areas.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 10 |
+| 👥 Contributors | 16 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 10 |
-| ⚠️ New Issues | 2 |
+| 🔄 Merged PRs | 14 |
+| ⚠️ New Issues | 6 |
 
 ## 🔄 Pull Request Summary
 - 🧹 **Chores**: 1
-- 🐛 **Fixes**: 5
-- ✨ **Features**: 1
+- 🐛 **Fixes**: 7
+- ✨ **Features**: 4
 
 ## 📁 File Changes
-- **packages**: 34 files (+1790/-1158 lines)
-- **root**: 1 files (+22/-4 lines)
-- **i18n**: 1 files (+8/-9 lines)
-- **.github**: 2 files (+2/-2 lines)
+- **packages**: 92 files (+5869/-4863 lines)
+- **docs**: 101 files (+281/-237 lines)
+- **agent**: 1 files (+37/-2 lines)
 
 ## 🔥 Notable Changes
-- fix: add participant error
-- fix: set up dimension before starting client
-- fix: [twitter-space] handle speaker removal
+- fix: media download action
+- fix: PDF Message Sending Failure & getInstance Bug
+- fix: discord voiceJoin/voiceLeave action
 
 ## 👥 Top Contributors
-- **tcm390**: tcm390 is currently working on fixing various issues related to participant errors, speaker removal, setting up dimensions, and making small fixes in the Twitter space feature within the packages code areas
-- **cryptokatze**: cryptokatze is currently updating the Korean README file in the documentation repository
-- **wtfsayo**: wtfsayo is currently working on fixing extensions and migrations in the codebase, as well as cleaning up the server
+- **tcm390**: tcm390 is currently working on fixing various issues related to PDF message sending failure, discord voice actions, Twitter crashes, Telegram vitest, and media download actions within the packages code areas
+- **hkhangus**: hkhangus is currently working on a pull request to fix the character knowledge add directory in the packages code area
+- **lalalune**: lalalune is focusing on performance improvements, metadata refactoring, and adding new features like roles, ownership state, and world settings to the core packages
 
 ## ⚠️ Issues
-- **New Issues**: 2
-- **Labels**: `bug` (2)
-- **Summary**: 2 bugs reported (including 'RAG Knowledge JavaScript Heap Out of Memory', 'Docker file issue:  Invalid cachestore').
+- **New Issues**: 6
+- **Labels**: `bug` (3)
+- **Summary**: 3 bugs reported (including 'Not loading any character files', 'Twitter Agent won't post / respond as it should').
 
 ## Top Contributors
-- **tcm390**: fix: add participant error
-- **cryptokatze**: docs: Update README_KOR.md
-- **wtfsayo**: clean up server
+- **tcm390**: fix: media download action
+- **hkhangus**: fix: character knowledge add directory
+- **lalalune**: feat: Performance Improvements and Metadata Refactoring

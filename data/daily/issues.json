@@ -1,15 +1,15 @@
 [
   {
-    "id": "I_kwDOMT5cIs6rhfR2",
-    "number": 3664,
-    "title": "RAG Knowledge JavaScript Heap Out of Memory",
-    "body": "## Description\nThe application is crashing with a \"JavaScript heap out of memory\" error when processing knowledge/messages. The error occurs during runtime execution with a heap size of approximately 4GB.\n\n## To Reproduce\n1. Run the application with Node.js v23.8.0/v23.3.0\n2. Process single path or single directory knowledge \n3. Application crashes with heap out of memory error\n\n## Error Details\n```\nFATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory\n```\n\n## Stack Trace\nKey components in stack trace:\n1. Heap allocation failure during garbage collection\n2. Error occurs during array push operations\n3. Triggered during async function processing and microtask execution\n\n## Technical Details\n- Node.js Version: v23.8.0/v23.3.0\n- Platform: macOS\n- Current Memory Usage: ~4075MB before crash\n\n## Proposed Solutions\nUnaware\n\n## Additional Context\n- Error occurs during knowledge processing with ragKnowledge enabled ONLY\n\n## Error\n```\n[2025-02-25 08:58:52] INFO: [Timing] Main embedding: 0.15s\n\n<--- Last few GCs --->\n\n[11338:0x140008000]    18160 ms: Scavenge (interleaved) 4075.1 (4085.0) -> 4075.1 (4108.0) MB, pooled: 0 MB, 20.17 / 0.00 ms  (average mu = 0.179, current mu = 0.138) allocation failure; \n[11338:0x140008000]    19484 ms: Mark-Compact (reduce) 4075.8 (4108.0) -> 4075.8 (4078.8) MB, pooled: 0 MB, 1188.88 / 0.00 ms  (+ 9.5 ms in 0 steps since start of marking, biggest step 0.0 ms, walltime since start of marking 1202 ms) (average mu = 0.160, \n\n<--- JS stacktrace --->\n\nFATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory\n----- Native stack trace -----\n\n 1: node::OOMErrorHandler(char const*, v8::OOMDetails const&) \n 2: v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, v8::OOMDetails const&) \n 3: v8::internal::Heap::stack() \n 4: v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags)::$_1::operator()() const \n 5: void heap::base::Stack::SetMarkerAndCallbackImpl<v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags)::$_1>(heap::base::Stack*, void*, void const*) \n 6: PushAllRegistersAndIterateStack \n 7: v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) \n 8: v8::internal::StackGuard::HandleInterrupts(v8::internal::StackGuard::InterruptLevel) \n 9: v8::internal::Runtime_StackGuard(int, unsigned long*, v8::internal::Isolate*) \n10: Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit \n11: Builtins_ArrayPrototypePush \n12:  \n13: Builtins_InterpreterEntryTrampoline \n14: Builtins_InterpreterEntryTrampoline \n15: Builtins_AsyncFunctionAwaitResolveClosure \n16: Builtins_PromiseFulfillReactionJob \n17: Builtins_RunMicrotasks \n18: Builtins_JSRunMicrotasksEntry \n19: v8::internal::(anonymous namespace)::Invoke(v8::internal::Isolate*, v8::internal::(anonymous namespace)::InvokeParams const&) \n20: v8::internal::(anonymous namespace)::InvokeWithTryCatch(v8::internal::Isolate*, v8::internal::(anonymous namespace)::InvokeParams const&) \n21: v8::internal::Execution::TryRunMicrotasks(v8::internal::Isolate*, v8::internal::MicrotaskQueue*) \n22: v8::internal::MicrotaskQueue::RunMicrotasks(v8::internal::Isolate*) \n23: v8::internal::MicrotaskQueue::PerformCheckpoint(v8::Isolate*) \n24: node::InternalCallbackScope::Close() \n25: node::InternalMakeCallback(node::Environment*, v8::Local<v8::Object>, v8::Local<v8::Object>, v8::Local<v8::Function>, int, v8::Local<v8::Value>*, node::async_context, v8::Local<v8::Value>) \n26: node::InternalMakeCallback(v8::Isolate*, v8::Local<v8::Object>, v8::Local<v8::Function>, int, v8::Local<v8::Value>*, node::async_context, v8::Local<v8::Value>) \n27: node::Environment::CheckImmediate(uv_check_s*) \n28: uv__run_check \n29: uv_run \n30: node::SpinEventLoopInternal(node::Environment*) \n31: node::NodeMainInstance::Run() \n32: node::Start(int, char**) \n33: start \nsh: line 1: 11338 Abort trap: 6           node --loader ts-node/esm src/index.ts --characters=./characters/kaiadevbot.character.json\n ELIFECYCLE  Command failed with exit code 134.\n```",
+    "id": "I_kwDOMT5cIs6ry-sv",
+    "number": 3693,
+    "title": "Twitter Agent won't post / respond as it should",
+    "body": "I'm trying to run the X agent and have configured the openai api and the X login in the env files. The agent seems to be online but it won't post or comment like it should be doing. I'm able to talk to the agent by running pnpm start client and talk to it but It is unable to make new posts or anything. I'm using openai's api \n\n\n![Image](https://github.com/user-attachments/assets/d5dfc40e-d698-4ee3-9028-edd19dfbb99f)\nThis is the last message I can see on the wsl terminal. \n\n\n",
     "state": "OPEN",
-    "createdAt": "2025-02-25T09:14:41Z",
-    "updatedAt": "2025-02-25T21:58:57Z",
+    "createdAt": "2025-02-26T17:08:51Z",
+    "updatedAt": "2025-02-26T17:11:09Z",
     "author": {
-      "login": "suryanshkushwaha",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/112935210?u=46b197f80080add4a7ce2f271a2eb00429a2d2fe&v=4"
+      "login": "mohsinn3",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/126658950?v=4"
     },
     "labels": [
       {
@@ -21,83 +21,70 @@
     ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6f0IO_",
+        "id": "IC_kwDOMT5cIs6gFFHt",
         "author": "github-actions",
-        "body": "Hello @suryanshkushwaha! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6f07Cu",
-        "author": "metatxn",
-        "body": "@suryanshkushwaha try this. it worked for me.\n\n```\nexport NODE_OPTIONS=\"--max-old-space-size=4096\"\n```"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6f1Lwv",
-        "author": "boolkeys",
-        "body": "> [@suryanshkushwaha](https://github.com/suryanshkushwaha) try this. it worked for me.\n> \n> ```\n> export NODE_OPTIONS=\"--max-old-space-size=4096\"\n> ```\n\nthat also worked for me.\n\nIf you want to set a different memory size, you can adjust the number: \n2GB: --max-old-space-size=2048 \n6GB: --max-old-space-size=6144 \n8GB: --max-old-space-size=81924"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6f2Gku",
-        "author": "myconite",
-        "body": "Same issue.\n\n@boolkeys or @metatxn, where to set the export NODE_OPTIONS=\"--max-old-space-size=4096\"?"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6f2H9A",
-        "author": "boolkeys",
-        "body": "> Same issue.\n> \n> @boolkeys or @metatxn, where to set the export NODE_OPTIONS=\"--max-old-space-size=4096\"?\n\nJust run it in CLI in the same place where you run pnpm commands"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6f2tm7",
-        "author": "darab-ui",
-        "body": "افزایش حافظه: دستور: `node --max-old-space-size=8192 --loader ts-node/esm src/index.ts --characters=./characters/kaiadevbot.character.json  8192 به معنای ۸ گیگابایت حافظه است. مدیریت حافظه:  استفاده کمتر از آرایه‌ها و اشیاء بزرگ، استفاده از جریان‌های داده (Streams)بهینه‌سازی داده‌های غیرهمزمان، تقسیم داده‌ها به بخش‌های کوچک‌تر\n"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6f2vCh",
-        "author": "myconite",
-        "body": "@boolkeys did it in CLI with command:\n\npnpm start --characters=\"characters/default.character.json\" --max-old-space-size=8192\n\nbut it's not working for me :/\n\n<--- Last few GCs --->\n\n[35053:0x2f83c000]    27258 ms: Scavenge 1949.1 (1966.9) -> 1949.1 (1981.9) MB, pooled: 0 MB, 40.30 / 0.00 ms  (average mu = 0.385, current mu = 0.245) allocation failure; \n[35053:0x2f83c000]    34786 ms: Mark-Compact 2537.9 (2555.7) -> 2155.1 (2188.4) MB, pooled: 0 MB, 3447.22 / 0.00 ms  (average mu = 0.527, current mu = 0.594) allocation failure; scavenge might not succeed\n\n\n<--- JS stacktrace --->\n\nFATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory\n\n----- Native stack trace -----\n\n 1: 0xe7e015 node::OOMErrorHandler(char const*, v8::OOMDetails const&) [node]\n 2: 0x12e8be0 v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [node]\n 3: 0x12e8f7c v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [node]\n 4: 0x154be55  [node]\n 5: 0x155f262 v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [node]\n 6: 0x1537d82 v8::internal::HeapAllocator::AllocateRawWithLightRetrySlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [node]\n 7: 0x15380b8 v8::internal::HeapAllocator::AllocateRawWithRetryOrFailSlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [node]\n 8: 0x150f340 v8::internal::Factory::NewFillerObject(int, v8::internal::AllocationAlignment, v8::internal::AllocationType, v8::internal::AllocationOrigin) [node]\n 9: 0x199136b v8::internal::Runtime_AllocateInYoungGeneration(int, unsigned long*, v8::internal::Isolate*) [node]\n10: 0x71fe4666f276 \nAborted (core dumped)\n/home/urban/projects/eliza/agent:\n ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @elizaos/agent@0.25.8 start: `node --loader ts-node/esm src/index.ts \"--isRoot\" \"--characters=characters/default.character.json\" \"--max-old-space-size=8192\"`\nExit status 134\n ELIFECYCLE  Command failed with exit code 134."
-      },
-      {
-        "id": "IC_kwDOMT5cIs6f3IM2",
-        "author": "boolkeys",
-        "body": "> @boolkeys did it in CLI with command:\n> \n> pnpm start --characters=\"characters/default.character.json\" --max-old-space-size=8192\n> \n> but it's not working for me :/\n> \n> <--- Last few GCs --->\n> \n> [35053:0x2f83c000]    27258 ms: Scavenge 1949.1 (1966.9) -> 1949.1 (1981.9) MB, pooled: 0 MB, 40.30 / 0.00 ms  (average mu = 0.385, current mu = 0.245) allocation failure; \n> [35053:0x2f83c000]    34786 ms: Mark-Compact 2537.9 (2555.7) -> 2155.1 (2188.4) MB, pooled: 0 MB, 3447.22 / 0.00 ms  (average mu = 0.527, current mu = 0.594) allocation failure; scavenge might not succeed\n> \n> \n> <--- JS stacktrace --->\n> \n> FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory\n> \n> ----- Native stack trace -----\n> \n>  1: 0xe7e015 node::OOMErrorHandler(char const*, v8::OOMDetails const&) [node]\n>  2: 0x12e8be0 v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [node]\n>  3: 0x12e8f7c v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [node]\n>  4: 0x154be55  [node]\n>  5: 0x155f262 v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [node]\n>  6: 0x1537d82 v8::internal::HeapAllocator::AllocateRawWithLightRetrySlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [node]\n>  7: 0x15380b8 v8::internal::HeapAllocator::AllocateRawWithRetryOrFailSlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [node]\n>  8: 0x150f340 v8::internal::Factory::NewFillerObject(int, v8::internal::AllocationAlignment, v8::internal::AllocationType, v8::internal::AllocationOrigin) [node]\n>  9: 0x199136b v8::internal::Runtime_AllocateInYoungGeneration(int, unsigned long*, v8::internal::Isolate*) [node]\n> 10: 0x71fe4666f276 \n> Aborted (core dumped)\n> /home/urban/projects/eliza/agent:\n>  ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @elizaos/agent@0.25.8 start: `node --loader ts-node/esm src/index.ts \"--isRoot\" \"--characters=characters/default.character.json\" \"--max-old-space-size=8192\"`\n> Exit status 134\n>  ELIFECYCLE  Command failed with exit code 134.\n\nNo, just type it as a new command, not with pnpm start. Just type in CLI:\n\nexport NODE_OPTIONS=\"--max-old-space-size=4096\""
-      },
-      {
-        "id": "IC_kwDOMT5cIs6f3Qt5",
-        "author": "myconite",
-        "body": "@boolkeys cheers, javascript is not something I use often. That seems to have worked and was applied. However my host machine (vm) then crashed later after trying to run the character and apply rag knowledge. I have 6 gb allocated to it in total. Seems like there was too much memory consumption..."
-      },
-      {
-        "id": "IC_kwDOMT5cIs6f3Xqi",
-        "author": "darab-ui",
-        "body": "برای بهینه‌سازی مصرف حافظه در Node.js، ابتدا باید بخش‌های پرمصرف را شناسایی کنیم. سپس از روش‌هایی مانند استفاده از جریان‌ها (Streams)، پردازش داده‌ها به بخش‌های کوچکتر، و استفاده از Garbage Collection دستی برای کاهش مصرف حافظه بهره ببریم"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6f4LlM",
-        "author": "DEVMYTH123",
-        "body": "same issue even using --max-old-space-size=8192 and even 16384 which is 16GB of ram. Idts it is the issue of the less ram."
-      },
-      {
-        "id": "IC_kwDOMT5cIs6f50sH",
-        "author": "darab-ui",
-        "body": "تحلیل و بهینه سازی node --inspect --loader ts-node/esm src/index.ts --characters=./characters/default.character.json،از Garbage collectionبرای جمع اوری زباله  و اینکه فواصل بین عملیات را افزایش دهد تا فرصت بیشتری برای پردازش داده ها باشد ،بررسی الگوریتم های بهینه تز تا حافظه کمتری استفاده شود ،پروفایلتان و مانیتورینگ و اینکه کدام بخش ها نیار به بهینه سازی دارد clinic.jsیاheapdumpو اینکه تقسیم فرایندها به بخش های کوچک تر \n \nیا اینکه کلا \nconst fs = require('fs');\nconst readline = require('readline');\nconst stream = require('stream');\nconst { program } = require('commander');\n\n// جریان تبدیل برای پردازش خطی\nclass LineTransform extends stream.Transform {\n  constructor() {\n    super({ readableObjectMode: true });\n  }\n\n  _transform(chunk, encoding, callback) {\n    const lines = chunk.toString().split('\\n');\n    lines.forEach(line => {\n      const cleanedLine = line.trim();\n      if (cleanedLine.length > 0) {\n        this.push(cleanedLine);\n      }\n    });\n    callback();\n  }\n}\n\nasync function processFile(filePath) {\n  try {\n    if (!fs.existsSync(filePath)) {\n      console.error(`❌ خطا: فایل \"${filePath}\" یافت نشد.`);\n      return;\n    }\n\n    const fileStream = fs.createReadStream(filePath, { highWaterMark: 64 * 1024 }); // بافر 64KB\n    fileStream.on('error', (err) => console.error(`❌ خطا در باز کردن فایل: ${err.message}`));\n\n    const lineTransform = new LineTransform();\n    let lineCount = 0;\n\n    lineTransform.on('data', (line) => {\n      console.log(`پردازش خط: ${line}`);\n      lineCount++;\n      if (lineCount % 50 === 0) {\n        console.log(`📊 ${lineCount} خط پردازش شد`);\n      }\n    });\n\n    lineTransform.on('end', () => {\n      console.log('✅ پردازش فایل با موفقیت انجام شد');\n    });\n\n    fileStream.pipe(lineTransform);\n\n  } catch (error) {\n    console.error('❌ خطا در پردازش فایل:', error);\n  }\n}\n\n// تنظیمات CLI\nprogram\n  .version('1.0.0')\n  .description('برنامه پردازش فایل')\n  .argument('<file>', 'فایل ورودی')\n  .action((file) => processFile(file));\n\nprogram.parse(process.argv);"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6f8T7y",
-        "author": "t-phoenix",
-        "body": "Facing the same issue, using MAC M2\ntried  `export NODE_OPTIONS=\"--max-old-space-size=4096\"` don't seem to be working for me.\nPlease fix asap"
+        "body": "Hello @mohsinn3! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
       }
     ]
   },
   {
-    "id": "I_kwDOMT5cIs6rgrBc",
-    "number": 3661,
-    "title": "Docker file issue:  Invalid cachestore",
-    "body": "**Describe the bug**\n\n<!-- A clear and concise description of what the bug is. -->\nI published a docker image from macOS using the command `docker buildx build --platform linux/amd64 -t eliza-starter:v1 --load .\n` and it build the image. when i run it using `docker run --env-file .env sha256:XYZ` it is throwing me this error: \n [\":no_entry: Error: Invalid cache store: database # Defaults to database. Other available cache store: redis and filesystem or required configuration missing.\"]\n\n**To Reproduce**\n\n<!-- Steps to reproduce the behavior. -->\n\n**Expected behavior**\n\n<!-- A clear and concise description of what you expected to happen. -->\n\n**Screenshots**\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\nNOTE: I deleted redis and all other adapters/clients/plugins that i didn't want to use. ",
-    "state": "OPEN",
-    "createdAt": "2025-02-25T08:00:12Z",
-    "updatedAt": "2025-02-25T08:00:40Z",
+    "id": "I_kwDOMT5cIs6ry71b",
+    "number": 3692,
+    "title": "Unexpected ERR_USE_AFTER_CLOSE error while running Eliza on Docker",
+    "body": "I'm trying to deploy the docker provided in `eliza-starter` repo for the first time with my new character. \nI was able to build the docker in my CI and run it in a container which looks ok.\nAt some point in the booting process of the service I get this weird `ERR_USE_AFTER_CLOSE` error which kills the process:\n\n```\n[2025-02-26 16:56:29] INFO: Buzz Feeley(2b6886f3-374d-0904-9c25-357b4472f50f) - Initializing AgentRuntime with options:\n    character: \"Buzz Feeley\"\n    modelProvider: \"anthropic\"\n    characterModelProvider: \"anthropic\"\n[2025-02-26 16:56:29] INFO: Buzz Feeley(2b6886f3-374d-0904-9c25-357b4472f50f) - Setting Model Provider:\n    characterModelProvider: \"anthropic\"\n    optsModelProvider: \"anthropic\"\n    finalSelection: \"anthropic\"\n[2025-02-26 16:56:29] INFO: Buzz Feeley(2b6886f3-374d-0904-9c25-357b4472f50f) - Selected model provider: anthropic\n[2025-02-26 16:56:29] INFO: Buzz Feeley(2b6886f3-374d-0904-9c25-357b4472f50f) - Selected image model provider: anthropic\n[2025-02-26 16:56:29] INFO: Buzz Feeley(2b6886f3-374d-0904-9c25-357b4472f50f) - Selected image vision model provider: anthropic\n[2025-02-26 16:56:29] INFO: Initializing LlamaService...\n[2025-02-26 16:56:29] ERROR: Unhandled error in startAgents:\n    code: \"ERR_USE_AFTER_CLOSE\"\n ELIFECYCLE  Command failed with exit code 1.\n```\n\nI looked for the Eliza code and didn't find any related code, the only thing I found is [this resolved bug](https://github.com/elizaOS/eliza/issues/1168). \n\n\n\nThis is my docker file (unchanged from the eliza-starter):\n```\n# Use a specific Node.js version for better reproducibility\nFROM node:23.3.0-slim AS builder\n\n# Install pnpm globally and install necessary build tools\nRUN npm install -g pnpm@9.15.1 && \\\n    apt-get update && \\\n    apt-get install -y git python3 make g++ && \\\n    apt-get clean && \\\n    rm -rf /var/lib/apt/lists/*\n\n# Set Python 3 as the default python\nRUN ln -s /usr/bin/python3 /usr/bin/python\n\n# Set the working directory\nWORKDIR /app\n\n# Copy package.json and other configuration files\nCOPY package.json ./\nCOPY pnpm-lock.yaml ./\nCOPY tsconfig.json ./\n\n# Copy the rest of the application code\nCOPY ./src ./src\nCOPY ./characters ./characters\n\n# Install dependencies and build the project\nRUN pnpm install \nRUN pnpm build \n\n# Create dist directory and set permissions\nRUN mkdir -p /app/dist && \\\n    chown -R node:node /app && \\\n    chmod -R 755 /app\n\n# Switch to node user\nUSER node\n\n# Create a new stage for the final image\nFROM node:23.3.0-slim\n\n# Install runtime dependencies if needed\nRUN npm install -g pnpm@9.15.1\nRUN apt-get update && \\\n    apt-get install -y git python3 && \\\n    apt-get clean && \\\n    rm -rf /var/lib/apt/lists/*\n\nWORKDIR /app\n\n# Copy built artifacts and production dependencies from the builder stage\nCOPY --from=builder /app/package.json /app/\nCOPY --from=builder /app/node_modules /app/node_modules\nCOPY --from=builder /app/src /app/src\nCOPY --from=builder /app/characters /app/characters\nCOPY --from=builder /app/dist /app/dist\nCOPY --from=builder /app/tsconfig.json /app/\nCOPY --from=builder /app/pnpm-lock.yaml /app/\n\nEXPOSE 3000\n# Set the command to run the application\nCMD [\"pnpm\", \"start\", \"--non-interactive\"]\n```\n\nAnd this is the container configuration: \n```\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: eliza-service\n  namespace: eliza\nspec:\n  replicas: 1\n  selector:\n    matchLabels:\n      app: eliza-service\n  template:\n    metadata:\n      labels:\n        app: eliza-service\n    spec:\n      serviceAccountName: eliza-sa\n      containers:\n      - name: my-application\n        image: REDUCTED\n        command: [\"pnpm\", \"start\", \"--character=./characters/buzzfeeley.character.json\", \"--non-interactive\"]\n        imagePullPolicy: Always\n        env:\n        - name: SERVER_PORT\n          value: '3000'\n        ports:\n        - containerPort: 3000\n```\n\nPackage.json:\n```\n{\n  \"name\": \"@elizaos/eliza-starter\",\n  \"version\": \"0.1.9\",\n  \"main\": \"src/index.ts\",\n  \"type\": \"module\",\n  \"scripts\": {\n    \"build\": \"tsup src/index.ts --format esm --dts\",\n    \"start\": \"tsc && node --loader ts-node/esm src/index.ts\",\n    \"clean\": \"./scripts/clean.sh\",\n    \"start:service:all\": \"pm2 start pnpm --name=\\\"all\\\" --restart-delay=3000 --max-restarts=10 -- run start:all\",\n    \"stop:service:all\": \"pm2 stop all\"\n  },\n  \"dependencies\": {\n    \"@elizaos/adapter-postgres\": \"0.1.9\",\n    \"@elizaos/adapter-sqlite\": \"0.1.9\",\n    \"@elizaos/client-auto\": \"0.1.9\",\n    \"@elizaos/client-direct\": \"0.1.9\",\n    \"@elizaos/client-discord\": \"0.1.9\",\n    \"@elizaos/client-telegram\": \"0.1.9\",\n    \"@elizaos/client-twitter\": \"0.1.9\",\n    \"@elizaos/core\": \"0.1.9\",\n    \"@elizaos/plugin-bootstrap\": \"0.1.9\",\n    \"@elizaos/plugin-image-generation\": \"0.1.9\",\n    \"@elizaos/plugin-node\": \"0.1.9\",\n    \"@elizaos/plugin-solana\": \"0.1.9\",\n    \"@elizaos/plugin-starknet\": \"0.1.9\",\n    \"@tavily/core\": \"0.0.2\",\n    \"amqplib\": \"0.10.5\",\n    \"better-sqlite3\": \"11.5.0\",\n    \"dotenv\": \"^16.4.7\",\n    \"fs\": \"0.0.1-security\",\n    \"net\": \"1.0.2\",\n    \"path\": \"0.12.7\",\n    \"readline\": \"1.3.0\",\n    \"url\": \"0.11.4\",\n    \"ws\": \"8.18.0\",\n    \"yargs\": \"17.7.2\"\n  },\n  \"engines\": {\n    \"node\": \">=22\"\n  },\n  \"pnpm\": {\n    \"overrides\": {\n      \"onnxruntime-node\": \"1.20.0\"\n    },\n    \"ignoredBuiltDependencies\": [\n      \"@discordjs/opus\",\n      \"@elizaos/plugin-node\",\n      \"bigint-buffer\",\n      \"bufferutil\",\n      \"canvas\",\n      \"es5-ext\",\n      \"esbuild\",\n      \"ffmpeg-static\",\n      \"keccak\",\n      \"node-hid\",\n      \"node-llama-cpp\",\n      \"onnxruntime-node\",\n      \"protobufjs\",\n      \"puppeteer\",\n      \"secp256k1\",\n      \"sharp\",\n      \"sodium-native\",\n      \"usb\",\n      \"utf-8-validate\",\n      \"wtf_wikipedia\",\n      \"youtube-dl-exec\"\n    ],\n    \"onlyBuiltDependencies\": [\n      \"better-sqlite3\"\n    ]\n  },\n  \"devDependencies\": {\n    \"pm2\": \"5.4.3\",\n    \"ts-node\": \"10.9.2\",\n    \"tsup\": \"8.3.5\",\n    \"typescript\": \"5.6.3\"\n  }\n}\n```",
+    "state": "CLOSED",
+    "createdAt": "2025-02-26T17:04:50Z",
+    "updatedAt": "2025-02-26T17:08:43Z",
     "author": {
-      "login": "avdheshcharjan",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/49278246?u=8fad573791a9fcc83703100ff961fdfa7e259680&v=4"
+      "login": "ido567",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/2265476?u=85117e255e4a0028c11823cc67f451a1a179def5&v=4"
+    },
+    "labels": [],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6gFCjH",
+        "author": "github-actions",
+        "body": "Hello @ido567! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6gFEyD",
+        "author": "ido567",
+        "body": "Found a solution in the issues of Eliza starter. \nWhile running inside a docker file, DAEMON_PROCESS ENV variable should be set to true"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6ryGXO",
+    "number": 3689,
+    "title": "wallet issues",
+    "body": "i keep getting this issue\ncan i get some help please r in EVM wallet provider: Error: Invalid chain name\n    at _WalletProvider.genChainFromName (file:///Users/adamwilliams/eliza/node_modules/.pnpm/@elizaos+plugin-evm@0.25.6-alpha.1_@google-cloud+vertexai@1.9.3_encoding@0.1.13__@langchain+c_li2r2iulvfp4qkhfwkh6v5bwxe/node_modules/@elizaos/plugin-evm/dist/index.js:190:13)\n    at genChainsFromRuntime (file:///Users/adamwilliams/eliza/node_modules/.pnpm/@elizaos+plugin-evm@0.25.6-alpha.1_@google-cloud+vertexai@1.9.3_encoding@0.1.13__@langchain+c_li2r2iulvfp4qkhfwkh6v5bwxe/node_modules/@elizaos/plugin-evm/dist/index.js:211:34)\n    at initWalletProvider (file:///Users/adamwilliams/eliza/node_modules/.pnpm/@elizaos+plugin-evm@0.25.6-alpha.1_@google-cloud+vertexai@1.9.3_encoding@0.1.13__@langchain+c_li2r2iulvfp4qkhfwkh6v5bwxe/node_modules/@elizaos/plugin-evm/dist/index.js:226:18)\n    at Object.get (file:///Users/adamwilliams/eliza/node_modules/.pnpm/@elizaos+plugin-evm@0.25.6-alpha.1_@google-cloud+vertexai@1.9.3_encoding@0.1.13__@langchain+c_li2r2iulvfp4qkhfwkh6v5bwxe/node_modules/@elizaos/plugin-evm/dist/index.js:258:36)\n    at file:///Users/adamwilliams/eliza/packages/core/dist/index.js:8276:31\n    at Array.map (<anonymous>)\n    at getProviders (file:///Users/adamwilliams/eliza/packages/core/dist/index.js:8275:66)\n    at AgentRuntime.composeState (file:///Users/adamwilliams/eliza/packages/core/dist/index.js:13953:13)\n    at async file:///Users/adamwilliams/eliza/packages/client-direct/dist/index.js:4688:25\n[2025-02-26 15:39:37] INFO: Generating text with options:\n    modelProvider: \"hyperbolic\"\n    model: \"large\"\n[2025-02-26 15:39:37] INFO: Selected model: meta-llama/Llama-3.2-3B-Instruct\nReceived response from OpenAI model.\n[2025-02-26 15:39:40] INFO: Executing handler for action: CONTINUE\n\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-26T15:40:32Z",
+    "updatedAt": "2025-02-26T15:40:57Z",
+    "author": {
+      "login": "Adz30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/97726852?v=4"
+    },
+    "labels": [],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6gEKiA",
+        "author": "github-actions",
+        "body": "Hello @Adz30! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6ruhie",
+    "number": 3685,
+    "title": "Twitter media is being ignored when discord approvals is enabled",
+    "body": "**Describe the bug**\n\nWhen Eliza is configured to post messages to Discord for approval, images are not sent. Images are not visible in both Discord and Twitter.\n\n**To Reproduce**\n\n- Enable Discord approvals\n- Create a tweet that includes a media file, for example an image.\n- Approve the message in Discord\n- Check the message on Twitter, it is not included.\n\n**Expected behavior**\n\nIf the original message contained any media files, they should appear in the message when posted to Twitter.\n\n**Screenshots**\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-26T10:39:38Z",
+    "updatedAt": "2025-02-26T10:40:01Z",
+    "author": {
+      "login": "tomicvladan",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/15090003?u=439fc49f648171506bd4d07e5161c2cf2118662a&v=4"
     },
     "labels": [
       {
@@ -109,9 +96,68 @@
     ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6fzT-c",
+        "id": "IC_kwDOMT5cIs6gA3tN",
         "author": "github-actions",
-        "body": "Hello @avdheshcharjan! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+        "body": "Hello @tomicvladan! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6rtEQ4",
+    "number": 3683,
+    "title": "Utilize ChatGPT assistant API keys",
+    "body": "Can ElizaOS integrate with ChatGPT assistant API keys?\n\nI want to use custom model with elizaOS but not sure if it capable or how can I do it since .env file contain only OPEN_API_KEYS and OPEN_API_URL.",
+    "state": "OPEN",
+    "createdAt": "2025-02-26T08:36:51Z",
+    "updatedAt": "2025-02-26T08:37:15Z",
+    "author": {
+      "login": "0xJACKSON-dev",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/97287125?u=a2e09c5d97b56e11b653e69e4f891d703bd92ed8&v=4"
+    },
+    "labels": [],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6f_vXK",
+        "author": "github-actions",
+        "body": "Hello @0xJACKSON-dev! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6rq1vA",
+    "number": 3679,
+    "title": "Not loading any character files",
+    "body": "When attempting to load any character file, including the provided one for c3po, I receive the error:\n\n[2025-02-26 04:02:21] INFO: Processing knowledge for  VAL  -  Medical equipment operation\n[2025-02-26 04:06:17] ERROR: Error starting agent for character VAL:\n[2025-02-26 04:06:17] ERROR:\n    err: {\n      \"type\": \"RangeError\",\n      \"message\": \"Invalid array length\",\n      \"stack\":\n          RangeError: Invalid array length\n              at Array.push (<anonymous>)\n              at splitText (file:///home/jza/agent/eliza/packages/core/dist/index.js:7239:16)\n              at splitChunks (file:///home/jza/agent/eliza/packages/core/dist/index.js:7227:20)\n              at Object.set (file:///home/jza/agent/eliza/packages/core/dist/index.js:12556:29)\n              at async AgentRuntime.processCharacterKnowledge (file:///home/jza/agent/eliza/packages/core/dist/index.js:13310:13)\n              at async AgentRuntime.initialize (file:///home/jza/agent/eliza/packages/core/dist/index.js:13282:17)\n              at async startAgent (file:///home/jza/agent/eliza/agent/src/index.ts:552:9)\n              at async startAgents (file:///home/jza/agent/eliza/agent/src/index.ts:599:13)\n    }\n[2025-02-26 04:06:17] ERROR: Error starting agents:\n\nAs seen in the screenshot\n\n![Image](https://github.com/user-attachments/assets/01a552a8-eca2-4893-9915-1f983a0e30b8)\n",
+    "state": "OPEN",
+    "createdAt": "2025-02-26T04:10:06Z",
+    "updatedAt": "2025-02-26T16:12:22Z",
+    "author": {
+      "login": "jgarrettvml",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/854590?u=94382a8c76e99879e9211748153fec3d1c6fccfb&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6f-NTh",
+        "author": "jgarrettvml",
+        "body": "Here is a fresh install, downloaded submodule for character files for c3po, same error\n\n![Image](https://github.com/user-attachments/assets/0774015e-508f-4f84-bbfa-036912150942)"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6gCctC",
+        "author": "abhithtez",
+        "body": "Same issue. Any solution ??\n"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6gEfd5",
+        "author": "thomasjvu",
+        "body": "Looks like a bug with the knowledge field. Try removing that field and its data from the `c3po.character.json` file to see if that temporarily fixes things."
       }
     ]
   }
