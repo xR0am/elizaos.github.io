@@ -1,163 +1,27 @@
 [
   {
-    "id": "I_kwDOMT5cIs6ry-sv",
-    "number": 3693,
-    "title": "Twitter Agent won't post / respond as it should",
-    "body": "I'm trying to run the X agent and have configured the openai api and the X login in the env files. The agent seems to be online but it won't post or comment like it should be doing. I'm able to talk to the agent by running pnpm start client and talk to it but It is unable to make new posts or anything. I'm using openai's api \n\n\n![Image](https://github.com/user-attachments/assets/d5dfc40e-d698-4ee3-9028-edd19dfbb99f)\nThis is the last message I can see on the wsl terminal. \n\n\n",
+    "id": "I_kwDOMT5cIs6r49Rt",
+    "number": 3702,
+    "title": "No REST API backend",
+    "body": "Description:\nI followed all the steps in the quickstart tutorial, but can interact with agent.\n\nSteps to Reproduce:\n```\ngit clone https://github.com/elizaos/eliza.git\ncd eliza\ngit checkout $(git describe --tags --abbrev=0)\ngit submodule update --init\ncp .env.example .env\n```\nThen setup .env file, provide OPENAPI key, set use_openapi_embedding to True\n```\npnpm install --no-frozen-lockfile\npnpm build\npnpm start --characters=\"eliza/characters/eternalai.character.json\"\npnpm start:client\n```\n\nI cant see vscode show the port that I expect REST API will bound to\nHere is the log after I run pnpm start --characters=\"eliza/characters/eternalai.character.json\"\n WARN  Unsupported engine: wanted: {\"node\":\"23.3.0\"} (current: {\"node\":\"v23.6.0\",\"pnpm\":\"9.12.3\"})\n\n> eliza@ start /home/khanh/aidenlabs/eliza\n> pnpm --filter \"@elizaos/agent\" start --isRoot \"--characters=eliza/characters/eternalai.character.json\"\n\n.                                        |  WARN  Unsupported engine: wanted: {\"node\":\"23.3.0\"} (current: {\"node\":\"v23.6.0\",\"pnpm\":\"9.15.0\"})\ndocs                                     |  WARN  Unsupported engine: wanted: {\"node\":\"23.3.0\"} (current: {\"node\":\"v23.6.0\",\"pnpm\":\"9.15.0\"})\n\n> @elizaos/agent@0.25.8 start /home/khanh/aidenlabs/eliza/agent\n> node --loader ts-node/esm src/index.ts \"--isRoot\" \"--characters=eliza/characters/eternalai.character.json\"\n\n(node:2679015) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\n(node:2679015) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n[2025-02-27 08:45:26] INFO: Loading embedding settings:\n    USE_OPENAI_EMBEDDING: \"TRUE\"\n    USE_OLLAMA_EMBEDDING: \"\"\n    OLLAMA_EMBEDDING_MODEL: \"mxbai-embed-large\"\n(node:2679015) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n[2025-02-27 08:45:26] INFO: Loading character settings:\n    ARGV: [\n      \"/home/khanh/.nvm/versions/node/v23.6.0/bin/node\",\n      \"/home/khanh/aidenlabs/eliza/agent/src/index.ts\",\n      \"--isRoot\",\n      \"--characters=eliza/characters/eternalai.character.json\"\n    ]\n    CWD: \"/home/khanh/aidenlabs/eliza/agent\"\n[2025-02-27 08:45:26] INFO: Parsed settings:\n    USE_OPENAI_EMBEDDING: \"TRUE\"\n    USE_OPENAI_EMBEDDING_TYPE: \"string\"\n    USE_OLLAMA_EMBEDDING: \"\"\n    USE_OLLAMA_EMBEDDING_TYPE: \"string\"\n    OLLAMA_EMBEDDING_MODEL: \"mxbai-embed-large\"\n[2025-02-27 08:45:26] INFO: Trying paths:\n    0: {\n      \"path\": \"eliza/characters/eternalai.character.json\",\n      \"exists\": false\n    }\n    1: {\n      \"path\": \"/home/khanh/aidenlabs/eliza/agent/eliza/characters/eternalai.character.json\",\n      \"exists\": false\n    }\n    2: {\n      \"path\": \"/home/khanh/aidenlabs/eliza/agent/agent/eliza/characters/eternalai.character.json\",\n      \"exists\": false\n    }\n    3: {\n      \"path\": \"/home/khanh/aidenlabs/eliza/agent/src/eliza/characters/eternalai.character.json\",\n      \"exists\": false\n    }\n    4: {\n      \"path\": \"/home/khanh/aidenlabs/eliza/agent/src/characters/eternalai.character.json\",\n      \"exists\": false\n    }\n    5: {\n      \"path\": \"/home/khanh/aidenlabs/eliza/agent/characters/eternalai.character.json\",\n      \"exists\": false\n    }\n    6: {\n      \"path\": \"/home/khanh/aidenlabs/eliza/characters/eternalai.character.json\",\n      \"exists\": true\n    }\n[2025-02-27 08:45:26] INFO: Successfully loaded character from: /home/khanh/aidenlabs/eliza/characters/eternalai.character.json\n[2025-02-27 08:45:26] INFO: TrollDetective.Exe(025e0996-69d7-0dce-8189-390e354fd1c1) - Initializing AgentRuntime with options:\n    character: \"TrollDetective.Exe\"\n    modelProvider: \"openai\"\n    characterModelProvider: \"openai\"\n[2025-02-27 08:45:26] INFO: TrollDetective.Exe(025e0996-69d7-0dce-8189-390e354fd1c1) - Setting Model Provider:\n    characterModelProvider: \"openai\"\n    optsModelProvider: \"openai\"\n    finalSelection: \"openai\"\n[2025-02-27 08:45:26] INFO: TrollDetective.Exe(025e0996-69d7-0dce-8189-390e354fd1c1) - Selected model provider: openai\n[2025-02-27 08:45:26] INFO: TrollDetective.Exe(025e0996-69d7-0dce-8189-390e354fd1c1) - Selected image model provider: openai\n[2025-02-27 08:45:26] INFO: TrollDetective.Exe(025e0996-69d7-0dce-8189-390e354fd1c1) - Selected image vision model provider: openai\n[2025-02-27 08:45:26] INFO: Initializing SQLite database at /home/khanh/aidenlabs/eliza/agent/data/db.sqlite...\n[2025-02-27 08:45:26] INFO: Using Database Cache...\n[2025-02-27 08:45:26] INFO: Run `pnpm start:client` to start the client and visit the outputted URL (http://localhost:5173) to chat with your agents. When running multiple agents, use client with different port `SERVER_PORT=3001 pnpm start:client`\n\nNo line show that rest API is working\nPlease help",
     "state": "OPEN",
-    "createdAt": "2025-02-26T17:08:51Z",
-    "updatedAt": "2025-02-26T17:11:09Z",
+    "createdAt": "2025-02-27T08:46:15Z",
+    "updatedAt": "2025-02-27T16:35:59Z",
     "author": {
-      "login": "mohsinn3",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/126658950?v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6gFFHt",
-        "author": "github-actions",
-        "body": "Hello @mohsinn3! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6ry71b",
-    "number": 3692,
-    "title": "Unexpected ERR_USE_AFTER_CLOSE error while running Eliza on Docker",
-    "body": "I'm trying to deploy the docker provided in `eliza-starter` repo for the first time with my new character. \nI was able to build the docker in my CI and run it in a container which looks ok.\nAt some point in the booting process of the service I get this weird `ERR_USE_AFTER_CLOSE` error which kills the process:\n\n```\n[2025-02-26 16:56:29] INFO: Buzz Feeley(2b6886f3-374d-0904-9c25-357b4472f50f) - Initializing AgentRuntime with options:\n    character: \"Buzz Feeley\"\n    modelProvider: \"anthropic\"\n    characterModelProvider: \"anthropic\"\n[2025-02-26 16:56:29] INFO: Buzz Feeley(2b6886f3-374d-0904-9c25-357b4472f50f) - Setting Model Provider:\n    characterModelProvider: \"anthropic\"\n    optsModelProvider: \"anthropic\"\n    finalSelection: \"anthropic\"\n[2025-02-26 16:56:29] INFO: Buzz Feeley(2b6886f3-374d-0904-9c25-357b4472f50f) - Selected model provider: anthropic\n[2025-02-26 16:56:29] INFO: Buzz Feeley(2b6886f3-374d-0904-9c25-357b4472f50f) - Selected image model provider: anthropic\n[2025-02-26 16:56:29] INFO: Buzz Feeley(2b6886f3-374d-0904-9c25-357b4472f50f) - Selected image vision model provider: anthropic\n[2025-02-26 16:56:29] INFO: Initializing LlamaService...\n[2025-02-26 16:56:29] ERROR: Unhandled error in startAgents:\n    code: \"ERR_USE_AFTER_CLOSE\"\n ELIFECYCLE  Command failed with exit code 1.\n```\n\nI looked for the Eliza code and didn't find any related code, the only thing I found is [this resolved bug](https://github.com/elizaOS/eliza/issues/1168). \n\n\n\nThis is my docker file (unchanged from the eliza-starter):\n```\n# Use a specific Node.js version for better reproducibility\nFROM node:23.3.0-slim AS builder\n\n# Install pnpm globally and install necessary build tools\nRUN npm install -g pnpm@9.15.1 && \\\n    apt-get update && \\\n    apt-get install -y git python3 make g++ && \\\n    apt-get clean && \\\n    rm -rf /var/lib/apt/lists/*\n\n# Set Python 3 as the default python\nRUN ln -s /usr/bin/python3 /usr/bin/python\n\n# Set the working directory\nWORKDIR /app\n\n# Copy package.json and other configuration files\nCOPY package.json ./\nCOPY pnpm-lock.yaml ./\nCOPY tsconfig.json ./\n\n# Copy the rest of the application code\nCOPY ./src ./src\nCOPY ./characters ./characters\n\n# Install dependencies and build the project\nRUN pnpm install \nRUN pnpm build \n\n# Create dist directory and set permissions\nRUN mkdir -p /app/dist && \\\n    chown -R node:node /app && \\\n    chmod -R 755 /app\n\n# Switch to node user\nUSER node\n\n# Create a new stage for the final image\nFROM node:23.3.0-slim\n\n# Install runtime dependencies if needed\nRUN npm install -g pnpm@9.15.1\nRUN apt-get update && \\\n    apt-get install -y git python3 && \\\n    apt-get clean && \\\n    rm -rf /var/lib/apt/lists/*\n\nWORKDIR /app\n\n# Copy built artifacts and production dependencies from the builder stage\nCOPY --from=builder /app/package.json /app/\nCOPY --from=builder /app/node_modules /app/node_modules\nCOPY --from=builder /app/src /app/src\nCOPY --from=builder /app/characters /app/characters\nCOPY --from=builder /app/dist /app/dist\nCOPY --from=builder /app/tsconfig.json /app/\nCOPY --from=builder /app/pnpm-lock.yaml /app/\n\nEXPOSE 3000\n# Set the command to run the application\nCMD [\"pnpm\", \"start\", \"--non-interactive\"]\n```\n\nAnd this is the container configuration: \n```\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: eliza-service\n  namespace: eliza\nspec:\n  replicas: 1\n  selector:\n    matchLabels:\n      app: eliza-service\n  template:\n    metadata:\n      labels:\n        app: eliza-service\n    spec:\n      serviceAccountName: eliza-sa\n      containers:\n      - name: my-application\n        image: REDUCTED\n        command: [\"pnpm\", \"start\", \"--character=./characters/buzzfeeley.character.json\", \"--non-interactive\"]\n        imagePullPolicy: Always\n        env:\n        - name: SERVER_PORT\n          value: '3000'\n        ports:\n        - containerPort: 3000\n```\n\nPackage.json:\n```\n{\n  \"name\": \"@elizaos/eliza-starter\",\n  \"version\": \"0.1.9\",\n  \"main\": \"src/index.ts\",\n  \"type\": \"module\",\n  \"scripts\": {\n    \"build\": \"tsup src/index.ts --format esm --dts\",\n    \"start\": \"tsc && node --loader ts-node/esm src/index.ts\",\n    \"clean\": \"./scripts/clean.sh\",\n    \"start:service:all\": \"pm2 start pnpm --name=\\\"all\\\" --restart-delay=3000 --max-restarts=10 -- run start:all\",\n    \"stop:service:all\": \"pm2 stop all\"\n  },\n  \"dependencies\": {\n    \"@elizaos/adapter-postgres\": \"0.1.9\",\n    \"@elizaos/adapter-sqlite\": \"0.1.9\",\n    \"@elizaos/client-auto\": \"0.1.9\",\n    \"@elizaos/client-direct\": \"0.1.9\",\n    \"@elizaos/client-discord\": \"0.1.9\",\n    \"@elizaos/client-telegram\": \"0.1.9\",\n    \"@elizaos/client-twitter\": \"0.1.9\",\n    \"@elizaos/core\": \"0.1.9\",\n    \"@elizaos/plugin-bootstrap\": \"0.1.9\",\n    \"@elizaos/plugin-image-generation\": \"0.1.9\",\n    \"@elizaos/plugin-node\": \"0.1.9\",\n    \"@elizaos/plugin-solana\": \"0.1.9\",\n    \"@elizaos/plugin-starknet\": \"0.1.9\",\n    \"@tavily/core\": \"0.0.2\",\n    \"amqplib\": \"0.10.5\",\n    \"better-sqlite3\": \"11.5.0\",\n    \"dotenv\": \"^16.4.7\",\n    \"fs\": \"0.0.1-security\",\n    \"net\": \"1.0.2\",\n    \"path\": \"0.12.7\",\n    \"readline\": \"1.3.0\",\n    \"url\": \"0.11.4\",\n    \"ws\": \"8.18.0\",\n    \"yargs\": \"17.7.2\"\n  },\n  \"engines\": {\n    \"node\": \">=22\"\n  },\n  \"pnpm\": {\n    \"overrides\": {\n      \"onnxruntime-node\": \"1.20.0\"\n    },\n    \"ignoredBuiltDependencies\": [\n      \"@discordjs/opus\",\n      \"@elizaos/plugin-node\",\n      \"bigint-buffer\",\n      \"bufferutil\",\n      \"canvas\",\n      \"es5-ext\",\n      \"esbuild\",\n      \"ffmpeg-static\",\n      \"keccak\",\n      \"node-hid\",\n      \"node-llama-cpp\",\n      \"onnxruntime-node\",\n      \"protobufjs\",\n      \"puppeteer\",\n      \"secp256k1\",\n      \"sharp\",\n      \"sodium-native\",\n      \"usb\",\n      \"utf-8-validate\",\n      \"wtf_wikipedia\",\n      \"youtube-dl-exec\"\n    ],\n    \"onlyBuiltDependencies\": [\n      \"better-sqlite3\"\n    ]\n  },\n  \"devDependencies\": {\n    \"pm2\": \"5.4.3\",\n    \"ts-node\": \"10.9.2\",\n    \"tsup\": \"8.3.5\",\n    \"typescript\": \"5.6.3\"\n  }\n}\n```",
-    "state": "CLOSED",
-    "createdAt": "2025-02-26T17:04:50Z",
-    "updatedAt": "2025-02-26T17:08:43Z",
-    "author": {
-      "login": "ido567",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/2265476?u=85117e255e4a0028c11823cc67f451a1a179def5&v=4"
+      "login": "lqkhanh195",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/131540429?u=2a91caac65b889cde1065eb296d448e3fc780f65&v=4"
     },
     "labels": [],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6gFCjH",
+        "id": "IC_kwDOMT5cIs6gLJ79",
         "author": "github-actions",
-        "body": "Hello @ido567! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+        "body": "Hello @lqkhanh195! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
       },
       {
-        "id": "IC_kwDOMT5cIs6gFEyD",
-        "author": "ido567",
-        "body": "Found a solution in the issues of Eliza starter. \nWhile running inside a docker file, DAEMON_PROCESS ENV variable should be set to true"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6ryGXO",
-    "number": 3689,
-    "title": "wallet issues",
-    "body": "i keep getting this issue\ncan i get some help please r in EVM wallet provider: Error: Invalid chain name\n    at _WalletProvider.genChainFromName (file:///Users/adamwilliams/eliza/node_modules/.pnpm/@elizaos+plugin-evm@0.25.6-alpha.1_@google-cloud+vertexai@1.9.3_encoding@0.1.13__@langchain+c_li2r2iulvfp4qkhfwkh6v5bwxe/node_modules/@elizaos/plugin-evm/dist/index.js:190:13)\n    at genChainsFromRuntime (file:///Users/adamwilliams/eliza/node_modules/.pnpm/@elizaos+plugin-evm@0.25.6-alpha.1_@google-cloud+vertexai@1.9.3_encoding@0.1.13__@langchain+c_li2r2iulvfp4qkhfwkh6v5bwxe/node_modules/@elizaos/plugin-evm/dist/index.js:211:34)\n    at initWalletProvider (file:///Users/adamwilliams/eliza/node_modules/.pnpm/@elizaos+plugin-evm@0.25.6-alpha.1_@google-cloud+vertexai@1.9.3_encoding@0.1.13__@langchain+c_li2r2iulvfp4qkhfwkh6v5bwxe/node_modules/@elizaos/plugin-evm/dist/index.js:226:18)\n    at Object.get (file:///Users/adamwilliams/eliza/node_modules/.pnpm/@elizaos+plugin-evm@0.25.6-alpha.1_@google-cloud+vertexai@1.9.3_encoding@0.1.13__@langchain+c_li2r2iulvfp4qkhfwkh6v5bwxe/node_modules/@elizaos/plugin-evm/dist/index.js:258:36)\n    at file:///Users/adamwilliams/eliza/packages/core/dist/index.js:8276:31\n    at Array.map (<anonymous>)\n    at getProviders (file:///Users/adamwilliams/eliza/packages/core/dist/index.js:8275:66)\n    at AgentRuntime.composeState (file:///Users/adamwilliams/eliza/packages/core/dist/index.js:13953:13)\n    at async file:///Users/adamwilliams/eliza/packages/client-direct/dist/index.js:4688:25\n[2025-02-26 15:39:37] INFO: Generating text with options:\n    modelProvider: \"hyperbolic\"\n    model: \"large\"\n[2025-02-26 15:39:37] INFO: Selected model: meta-llama/Llama-3.2-3B-Instruct\nReceived response from OpenAI model.\n[2025-02-26 15:39:40] INFO: Executing handler for action: CONTINUE\n\n",
-    "state": "OPEN",
-    "createdAt": "2025-02-26T15:40:32Z",
-    "updatedAt": "2025-02-26T15:40:57Z",
-    "author": {
-      "login": "Adz30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/97726852?v=4"
-    },
-    "labels": [],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6gEKiA",
-        "author": "github-actions",
-        "body": "Hello @Adz30! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6ruhie",
-    "number": 3685,
-    "title": "Twitter media is being ignored when discord approvals is enabled",
-    "body": "**Describe the bug**\n\nWhen Eliza is configured to post messages to Discord for approval, images are not sent. Images are not visible in both Discord and Twitter.\n\n**To Reproduce**\n\n- Enable Discord approvals\n- Create a tweet that includes a media file, for example an image.\n- Approve the message in Discord\n- Check the message on Twitter, it is not included.\n\n**Expected behavior**\n\nIf the original message contained any media files, they should appear in the message when posted to Twitter.\n\n**Screenshots**\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n",
-    "state": "OPEN",
-    "createdAt": "2025-02-26T10:39:38Z",
-    "updatedAt": "2025-02-26T10:40:01Z",
-    "author": {
-      "login": "tomicvladan",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/15090003?u=439fc49f648171506bd4d07e5161c2cf2118662a&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6gA3tN",
-        "author": "github-actions",
-        "body": "Hello @tomicvladan! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6rtEQ4",
-    "number": 3683,
-    "title": "Utilize ChatGPT assistant API keys",
-    "body": "Can ElizaOS integrate with ChatGPT assistant API keys?\n\nI want to use custom model with elizaOS but not sure if it capable or how can I do it since .env file contain only OPEN_API_KEYS and OPEN_API_URL.",
-    "state": "OPEN",
-    "createdAt": "2025-02-26T08:36:51Z",
-    "updatedAt": "2025-02-26T08:37:15Z",
-    "author": {
-      "login": "0xJACKSON-dev",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/97287125?u=a2e09c5d97b56e11b653e69e4f891d703bd92ed8&v=4"
-    },
-    "labels": [],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6f_vXK",
-        "author": "github-actions",
-        "body": "Hello @0xJACKSON-dev! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6rq1vA",
-    "number": 3679,
-    "title": "Not loading any character files",
-    "body": "When attempting to load any character file, including the provided one for c3po, I receive the error:\n\n[2025-02-26 04:02:21] INFO: Processing knowledge for  VAL  -  Medical equipment operation\n[2025-02-26 04:06:17] ERROR: Error starting agent for character VAL:\n[2025-02-26 04:06:17] ERROR:\n    err: {\n      \"type\": \"RangeError\",\n      \"message\": \"Invalid array length\",\n      \"stack\":\n          RangeError: Invalid array length\n              at Array.push (<anonymous>)\n              at splitText (file:///home/jza/agent/eliza/packages/core/dist/index.js:7239:16)\n              at splitChunks (file:///home/jza/agent/eliza/packages/core/dist/index.js:7227:20)\n              at Object.set (file:///home/jza/agent/eliza/packages/core/dist/index.js:12556:29)\n              at async AgentRuntime.processCharacterKnowledge (file:///home/jza/agent/eliza/packages/core/dist/index.js:13310:13)\n              at async AgentRuntime.initialize (file:///home/jza/agent/eliza/packages/core/dist/index.js:13282:17)\n              at async startAgent (file:///home/jza/agent/eliza/agent/src/index.ts:552:9)\n              at async startAgents (file:///home/jza/agent/eliza/agent/src/index.ts:599:13)\n    }\n[2025-02-26 04:06:17] ERROR: Error starting agents:\n\nAs seen in the screenshot\n\n![Image](https://github.com/user-attachments/assets/01a552a8-eca2-4893-9915-1f983a0e30b8)\n",
-    "state": "OPEN",
-    "createdAt": "2025-02-26T04:10:06Z",
-    "updatedAt": "2025-02-26T16:12:22Z",
-    "author": {
-      "login": "jgarrettvml",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/854590?u=94382a8c76e99879e9211748153fec3d1c6fccfb&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6f-NTh",
-        "author": "jgarrettvml",
-        "body": "Here is a fresh install, downloaded submodule for character files for c3po, same error\n\n![Image](https://github.com/user-attachments/assets/0774015e-508f-4f84-bbfa-036912150942)"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6gCctC",
-        "author": "abhithtez",
-        "body": "Same issue. Any solution ??\n"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6gEfd5",
-        "author": "thomasjvu",
-        "body": "Looks like a bug with the knowledge field. Try removing that field and its data from the `c3po.character.json` file to see if that temporarily fixes things."
+        "id": "IC_kwDOMT5cIs6gP02N",
+        "author": "mohsinn3",
+        "body": "@lqkhanh195 Hey I'm having the same issue, please let me know here if you figure it out"
       }
     ]
   }

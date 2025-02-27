@@ -1,42 +1,42 @@
-# elizaos Eliza (2025-02-26)
+# elizaos Eliza (2025-02-27)
     
 ## 📊 Overview
-Development focused on package improvements (mock agent form on client!), new features (Performance Improvements and Metadata Refactoring), 7 bug fixes. with 16 contributors merging 14 PRs. Major work included tcm390 is currently working on fixing various issues related to pdf message sending failure, discord voice actions, twitter crashes, telegram vitest, and media download actions within the packages code areas.
+Development focused on package improvements (better plugin loading error handling / json5 support for character file), new features (better plugin loading error handling / json5 support for character file), 2 bug fixes. with 9 contributors merging 6 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 16 |
+| 👥 Contributors | 9 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 14 |
-| ⚠️ New Issues | 6 |
+| 🔄 Merged PRs | 6 |
+| ⚠️ New Issues | 1 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 1
-- 🐛 **Fixes**: 7
-- ✨ **Features**: 4
+- 🧹 **Chores**: 0
+- 🐛 **Fixes**: 2
+- ✨ **Features**: 3
 
 ## 📁 File Changes
-- **packages**: 92 files (+5869/-4863 lines)
-- **docs**: 101 files (+281/-237 lines)
-- **agent**: 1 files (+37/-2 lines)
+- **root**: 3 files (+1019/-84 lines)
+- **packages**: 17 files (+334/-406 lines)
+- **agent**: 2 files (+29/-17 lines)
 
 ## 🔥 Notable Changes
-- fix: media download action
-- fix: PDF Message Sending Failure & getInstance Bug
-- fix: discord voiceJoin/voiceLeave action
+- fix: CLI - escape paths with spaces correctly
+- feat: better plugin loading error handling / json5 support for character file
+- feat: CLI install improvements
 
 ## 👥 Top Contributors
-- **tcm390**: tcm390 is currently working on fixing various issues related to PDF message sending failure, discord voice actions, Twitter crashes, Telegram vitest, and media download actions within the packages code areas
-- **hkhangus**: hkhangus is currently working on a pull request to fix the character knowledge add directory in the packages code area
-- **lalalune**: lalalune is focusing on performance improvements, metadata refactoring, and adding new features like roles, ownership state, and world settings to the core packages
+- **odilitime**: odilitime is currently working on security updates and improvements for the CLI, including better plugin loading error handling and support for json5 in character files
+- **khiemsoft**: khiemsoft is currently working on a feature to submit an update environment for the plugin viction
+- **wtfsayo**: wtfsayo is currently working on lint and turbo fixes in one pull request, and also on Agent GUI enhancements in another pull request
 
 ## ⚠️ Issues
-- **New Issues**: 6
-- **Labels**: `bug` (3)
-- **Summary**: 3 bugs reported (including 'Not loading any character files', 'Twitter Agent won't post / respond as it should').
+- **New Issues**: 1
+- **Labels**: 
+- **Summary**: .
 
 ## Top Contributors
-- **tcm390**: fix: media download action
-- **hkhangus**: fix: character knowledge add directory
-- **lalalune**: feat: Performance Improvements and Metadata Refactoring
+- **odilitime**: fix: CLI - escape paths with spaces correctly
+- **khiemsoft**: feat: submit update env for plugin viction
+- **wtfsayo**: lint and turbo fixes

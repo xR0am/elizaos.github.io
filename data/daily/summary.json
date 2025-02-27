@@ -1,70 +1,70 @@
 {
-  "title": "elizaos Eliza (2025-02-26)",
+  "title": "elizaos Eliza (2025-02-27)",
   "version": "",
-  "overview": "Development focused on package improvements (mock agent form on client!), new features (Performance Improvements and Metadata Refactoring), 7 bug fixes. with 16 contributors merging 14 PRs. Major work included tcm390 is currently working on fixing various issues related to pdf message sending failure, discord voice actions, twitter crashes, telegram vitest, and media download actions within the packages code areas.",
+  "overview": "Development focused on package improvements (better plugin loading error handling / json5 support for character file), new features (better plugin loading error handling / json5 support for character file), 2 bug fixes. with 9 contributors merging 6 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 16,
-    "merged_prs": 14,
-    "new_issues": 6,
-    "lines_changed": 11289
+    "contributors": 9,
+    "merged_prs": 6,
+    "new_issues": 1,
+    "lines_changed": 1889
   },
   "changes": {
     "features": [
-      "Performance Improvements and Metadata Refactoring",
-      "Add roles, ownership state and world settings to core",
-      "mock agent form on client!"
+      "better plugin loading error handling / json5 support for character file",
+      "CLI install improvements",
+      "submit update env for plugin viction"
     ],
     "fixes": [
-      "media download action",
-      "PDF Message Sending Failure & getInstance Bug",
-      "discord voiceJoin/voiceLeave action"
+      "CLI - escape paths with spaces correctly",
+      "character creator"
     ],
-    "chores": [
-      "Update docs, adds changelog notes, merges pages, cleanup"
-    ]
+    "chores": []
   },
   "areas": [
     {
-      "name": "docs",
-      "files": 101,
-      "additions": 281,
-      "deletions": 237
+      "name": "packages",
+      "files": 17,
+      "additions": 334,
+      "deletions": 406
     },
     {
-      "name": "packages",
-      "files": 92,
-      "additions": 5869,
-      "deletions": 4863
+      "name": "root",
+      "files": 3,
+      "additions": 1019,
+      "deletions": 84
     },
     {
       "name": "agent",
-      "files": 1,
-      "additions": 37,
-      "deletions": 2
+      "files": 2,
+      "additions": 29,
+      "deletions": 17
     }
   ],
-  "issues_summary": "working on 3 bugs including 'Not loading any character files', 'Twitter Agent won't post / respond as it should'",
+  "issues_summary": "",
   "questions": [],
   "top_contributors": [
     {
-      "name": "tcm390",
-      "summary": "tcm390 is currently working on fixing various issues related to PDF message sending failure, discord voice actions, Twitter crashes, Telegram vitest, and media download actions within the packages code areas",
+      "name": "odilitime",
+      "summary": "odilitime is currently working on security updates and improvements for the CLI, including better plugin loading error handling and support for json5 in character files",
       "areas": [
-        "packages"
+        "packages",
+        "agent",
+        "pnpm-lock.yaml"
       ]
     },
     {
-      "name": "hkhangus",
-      "summary": "hkhangus is currently working on a pull request to fix the character knowledge add directory in the packages code area",
+      "name": "khiemsoft",
+      "summary": "khiemsoft is currently working on a feature to submit an update environment for the plugin viction",
       "areas": [
-        "packages"
+        ".env.example"
       ]
     },
     {
-      "name": "lalalune",
-      "summary": "lalalune is focusing on performance improvements, metadata refactoring, and adding new features like roles, ownership state, and world settings to the core packages",
+      "name": "wtfsayo",
+      "summary": "wtfsayo is currently working on lint and turbo fixes in one pull request, and also on Agent GUI enhancements in another pull request",
       "areas": [
-        "packages"
+        "packages",
+        "turbo.json"
       ]
     }
   ]
