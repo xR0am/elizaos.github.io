@@ -1,42 +1,40 @@
-# elizaos Eliza (2025-02-27)
+# elizaos Eliza (2025-03-01)
     
 ## 📊 Overview
-Development focused on package improvements (better plugin loading error handling / json5 support for character file), new features (better plugin loading error handling / json5 support for character file), 2 bug fixes. with 9 contributors merging 6 PRs. Major work included various improvements.
+Development focused on package improvements (update readme.md for the custom plugins how-to). with 6 contributors merging 2 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 9 |
+| 👥 Contributors | 6 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 6 |
-| ⚠️ New Issues | 1 |
+| 🔄 Merged PRs | 2 |
+| ⚠️ New Issues | 0 |
 
 ## 🔄 Pull Request Summary
 - 🧹 **Chores**: 0
-- 🐛 **Fixes**: 2
-- ✨ **Features**: 3
+- 🐛 **Fixes**: 0
+- ✨ **Features**: 0
 
 ## 📁 File Changes
-- **root**: 3 files (+1019/-84 lines)
-- **packages**: 17 files (+334/-406 lines)
-- **agent**: 2 files (+29/-17 lines)
+- **packages**: 1 files (+75/-24 lines)
+- **docs**: 2 files (+80/-0 lines)
+- **.specstory**: 1 files (+54/-0 lines)
+- **root**: 1 files (+42/-0 lines)
 
 ## 🔥 Notable Changes
-- fix: CLI - escape paths with spaces correctly
-- feat: better plugin loading error handling / json5 support for character file
-- feat: CLI install improvements
+- docs: update readme.md for the custom plugins how-to
+- Update plugins.md for custom plugins not in registry
 
 ## 👥 Top Contributors
-- **odilitime**: odilitime is currently working on security updates and improvements for the CLI, including better plugin loading error handling and support for json5 in character files
-- **khiemsoft**: khiemsoft is currently working on a feature to submit an update environment for the plugin viction
-- **wtfsayo**: wtfsayo is currently working on lint and turbo fixes in one pull request, and also on Agent GUI enhancements in another pull request
+- **Xayaan**: Xayaan is currently working on updating documentation related to custom plugins in the project
+- **Tony363**: Tony363 is currently working on a pull request related to making a request, specifically focusing on the packages and characters code areas
+- **wtfsayo**: wtfsayo is currently working on updating agent endpoints in the packages code area, with 1 pull request submitted but not yet merged
 
 ## ⚠️ Issues
-- **New Issues**: 1
+- **New Issues**: 0
 - **Labels**: 
-- **Summary**: .
+- **Summary**: 
 
 ## Top Contributors
-- **odilitime**: fix: CLI - escape paths with spaces correctly
-- **khiemsoft**: feat: submit update env for plugin viction
-- **wtfsayo**: lint and turbo fixes
+- **Xayaan**: docs: update readme.md for the custom plugins how-to
