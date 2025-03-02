@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "id": "I_kwDOMT5cIs6sPClh",
+    "number": 3745,
+    "title": "RAG processFile attempts to embed entire files causing errors for large documents",
+    "body": "**Describe the bug**\n\n`ragknowledge.ts` file is running `embd` function on the entire content of the document, often causing errors with going over token limitations of the underlying model. The code attempts to embed the entire document, and then chunks it out.\n\n**To Reproduce**\n\n1. Create 'knowledge' directory in 'characters' directory.\n2. Add a large pdf to the directory\n3. Update *character.json file `knowledge` property to run embeddings on the file\n4. Update *character.json file `settings.ragKnowledge` property to 'true'\n5. Configure .env file to use `USE_OPENAI_EMBEDDING=true` and provide `OPENAI_API_KEY` and `EMBEDDING_OPENAI_MODEL=text-embedding-3-large` (or small)\n6. Start the server, notice errors: \n```\n[2025-03-02 15:14:48] ERROR: API Response: {\n  \"error\": {\n    \"message\": \"This model's maximum context length is 8192 tokens, however you requested 16376 tokens (16376 in your prompt; 0 for the completion). Please reduce your prompt; or completion length.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": null\n  }\n}\n```\n\n**Expected behavior**\nAll supported documents embedded without errors\n\n**Screenshots**\n\n![Image](https://github.com/user-attachments/assets/c1d4f359-74b9-4fe5-a38d-c90012a52f27)\n\n**Additional context**\n\nThe code that does this was added on Jan5. It apppears to be in the latest release tag. Its possible Im setting something up wrong, but its not clear what.\n",
+    "state": "OPEN",
+    "createdAt": "2025-03-02T15:42:28Z",
+    "updatedAt": "2025-03-02T15:42:55Z",
+    "author": {
+      "login": "omikolaj",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/15240703?u=28f3d882266cced45ba7b7f7f3e256958075dacf&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6ggK4D",
+        "author": "github-actions",
+        "body": "Hello @omikolaj! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  }
+]

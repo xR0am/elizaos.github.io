@@ -1,58 +1,65 @@
 {
-  "title": "elizaos Eliza (2025-03-01)",
-  "version": "",
-  "overview": "Development focused on package improvements (update readme.md for the custom plugins how-to). with 6 contributors merging 2 PRs. Major work included various improvements.",
+  "title": "elizaos Eliza (2025-03-02)",
+  "version": "bump ver to 0.25.9",
+  "overview": "Development focused on package improvements (CLI handle plugin dependencies / trusdb), 1 bug fixes. with 7 contributors merging 6 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 6,
-    "merged_prs": 2,
-    "new_issues": 0,
-    "lines_changed": 275
+    "contributors": 7,
+    "merged_prs": 6,
+    "new_issues": 1,
+    "lines_changed": 3336
   },
   "changes": {
     "features": [],
-    "fixes": [],
-    "chores": []
+    "fixes": [
+      "CLI handle plugin dependencies / trusdb"
+    ],
+    "chores": [
+      "dev =>  main (rel 0.25.9 prep)",
+      "bump ver to 0.25.9"
+    ]
   },
   "areas": [
     {
       "name": "docs",
-      "files": 2,
-      "additions": 80,
-      "deletions": 0
+      "files": 96,
+      "additions": 267,
+      "deletions": 223
+    },
+    {
+      "name": "packages",
+      "files": 28,
+      "additions": 1147,
+      "deletions": 878
     },
     {
       "name": "root",
-      "files": 1,
-      "additions": 42,
-      "deletions": 0
-    },
-    {
-      "name": ".specstory",
-      "files": 1,
-      "additions": 54,
-      "deletions": 0
+      "files": 4,
+      "additions": 426,
+      "deletions": 295
     }
   ],
-  "issues_summary": "",
+  "issues_summary": "working on 1 bugs including 'RAG processFile attempts to embed entire files causing errors for large documents'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "Xayaan",
-      "summary": "Xayaan is currently working on updating documentation related to custom plugins in the project",
+      "name": "odilitime",
+      "summary": "odilitime is currently working on updating the version to 0",
       "areas": [
+        "pnpm-lock.yaml",
         "docs",
-        "packages",
-        "README.md"
+        "agent"
       ]
     },
     {
-      "name": "Tony363",
-      "summary": "Tony363 is currently working on a pull request related to making a request, specifically focusing on the packages and characters code areas",
-      "areas": []
+      "name": "wtfsayo",
+      "summary": "wtfsayo is currently working on merging the agent and character in a recent pull request",
+      "areas": [
+        "packages"
+      ]
     },
     {
-      "name": "wtfsayo",
-      "summary": "wtfsayo is currently working on updating agent endpoints in the packages code area, with 1 pull request submitted but not yet merged",
+      "name": "omikolaj",
+      "summary": "omikolaj is currently addressing a bug related to the RAG processFile function, which is attempting to embed entire files and causing errors for large documents",
       "areas": []
     }
   ]
