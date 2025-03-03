@@ -1,29 +1,22 @@
 [
   {
-    "id": "I_kwDOMT5cIs6sPClh",
-    "number": 3745,
-    "title": "RAG processFile attempts to embed entire files causing errors for large documents",
-    "body": "**Describe the bug**\n\n`ragknowledge.ts` file is running `embd` function on the entire content of the document, often causing errors with going over token limitations of the underlying model. The code attempts to embed the entire document, and then chunks it out.\n\n**To Reproduce**\n\n1. Create 'knowledge' directory in 'characters' directory.\n2. Add a large pdf to the directory\n3. Update *character.json file `knowledge` property to run embeddings on the file\n4. Update *character.json file `settings.ragKnowledge` property to 'true'\n5. Configure .env file to use `USE_OPENAI_EMBEDDING=true` and provide `OPENAI_API_KEY` and `EMBEDDING_OPENAI_MODEL=text-embedding-3-large` (or small)\n6. Start the server, notice errors: \n```\n[2025-03-02 15:14:48] ERROR: API Response: {\n  \"error\": {\n    \"message\": \"This model's maximum context length is 8192 tokens, however you requested 16376 tokens (16376 in your prompt; 0 for the completion). Please reduce your prompt; or completion length.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": null\n  }\n}\n```\n\n**Expected behavior**\nAll supported documents embedded without errors\n\n**Screenshots**\n\n![Image](https://github.com/user-attachments/assets/c1d4f359-74b9-4fe5-a38d-c90012a52f27)\n\n**Additional context**\n\nThe code that does this was added on Jan5. It apppears to be in the latest release tag. Its possible Im setting something up wrong, but its not clear what.\n",
+    "id": "I_kwDOMT5cIs6sXE35",
+    "number": 3758,
+    "title": "Telegram client not working, no initialization message or errors",
+    "body": "I am trying to connect my Agent to my Telegram Bot, from Telegram side bot isn't answering.\nI checked [client-telegram](https://github.com/elizaos-plugins/client-telegram) and saw that there should be:\n` Startup Logging: Logs successful initialization of the Telegram client for better debugging.` but for some reason there's not a single thing about Telegram. My top of json looks like this:\n\n![Image](https://github.com/user-attachments/assets/ed4bac71-899e-4db4-a0dc-afa0dd999559)\n\n\nI've added `TELEGRAM_BOT_TOKEN` to both json and .env, I have needed dependency installed which is currently on this version `@elizaos/client-telegram 0.25.6-alpha.1` and from Telegram side Bot is responding to /getMe\n\nIs there something that I've missed of requirements?",
     "state": "OPEN",
-    "createdAt": "2025-03-02T15:42:28Z",
-    "updatedAt": "2025-03-02T15:42:55Z",
+    "createdAt": "2025-03-03T16:33:43Z",
+    "updatedAt": "2025-03-03T16:36:05Z",
     "author": {
-      "login": "omikolaj",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/15240703?u=28f3d882266cced45ba7b7f7f3e256958075dacf&v=4"
+      "login": "JJOptimist",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/86833563?u=8e85e765228bbdbaf26731d83ad81b90322191b1&v=4"
     },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
+    "labels": [],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6ggK4D",
+        "id": "IC_kwDOMT5cIs6goaqG",
         "author": "github-actions",
-        "body": "Hello @omikolaj! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+        "body": "Hello @JJOptimist! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
       }
     ]
   }

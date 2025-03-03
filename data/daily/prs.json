@@ -1,128 +1,264 @@
 [
   {
-    "id": "PR_kwDOMT5cIs6NE7LG",
-    "number": 3747,
-    "title": "Fix Typos and Improve Consistency in Discord Chat Logs",
-    "body": "### **Description:**\r\n\r\nThis PR updates several archived Discord chat log files by fixing minor typos and inconsistencies. Changes include:\r\n\r\n- **Corrected spelling and grammar mistakes** in the following files:\r\n    - `chat_2024-11-08.md`\r\n    - `chat_2024-11-21.md`\r\n    - `chat_2024-11-30.md`\r\n    - `chat_2024-12-04.md`\r\n- Standardized terminology for improved readability.\r\n- Ensured correct naming conventions and formatting in various discussion entries.\r\n\r\nThese refinements help maintain accurate and high-quality documentation for future reference.\r\n\r\n### **Comment:**",
+    "id": "PR_kwDOMT5cIs6NNyoR",
+    "number": 3763,
+    "title": "chore: lock bump",
+    "body": "fix develop again",
     "state": "OPEN",
     "merged": false,
-    "createdAt": "2025-03-02T22:26:08Z",
-    "updatedAt": "2025-03-02T22:26:16Z",
+    "createdAt": "2025-03-03T22:02:42Z",
+    "updatedAt": "2025-03-03T22:07:02Z",
     "author": {
-      "login": "gap-editor",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/64627729?u=9273b350b599f2d644d4fc3169488e5ef389d331&v=4"
+      "login": "odilitime",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/16395496?u=c9bac48e632aae594a0d85aaf9e9c9c69b674d8b&v=4"
     },
     "labels": [],
     "files": [
       {
-        "path": "docs/community/Discord/development/coders/chat_2024-11-08.md",
-        "additions": 1,
-        "deletions": 1
+        "path": "pnpm-lock.yaml",
+        "additions": 9,
+        "deletions": 0
       },
       {
-        "path": "docs/community/Discord/development/coders/chat_2024-11-21.md",
+        "path": "tests/testLibrary.mjs",
+        "additions": 1,
+        "deletions": 1
+      }
+    ],
+    "reviews": [],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6grJ9-",
+        "author": "coderabbitai",
+        "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- This is an auto-generated comment: skip review by coderabbit.ai -->\n\n> [!IMPORTANT]\n> ## Review skipped\n> \n> Auto reviews are disabled on this repository.\n> \n> Please check the settings in the CodeRabbit UI or the `.coderabbit.yaml` file in this repository. To trigger a single review, invoke the `@coderabbitai review` command.\n> \n> You can disable this status message by setting the `reviews.review_status` to `false` in the CodeRabbit configuration file.\n\n<!-- end of auto-generated comment: skip review by coderabbit.ai -->\n<!-- tips_start -->\n\n---\n\nThank you for using CodeRabbit. We offer it for free to the OSS community and would appreciate your support in helping us grow. If you find it useful, would you consider giving us a shout-out on your favorite social media?\n\n<details>\n<summary>❤️ Share</summary>\n\n- [X](https://twitter.com/intent/tweet?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A&url=https%3A//coderabbit.ai)\n- [Mastodon](https://mastodon.social/share?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A%20https%3A%2F%2Fcoderabbit.ai)\n- [Reddit](https://www.reddit.com/submit?title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&text=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code.%20Check%20it%20out%3A%20https%3A//coderabbit.ai)\n- [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcoderabbit.ai&mini=true&title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&summary=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code)\n\n</details>\n\n<details>\n<summary>🪧 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR.\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
+      }
+    ]
+  },
+  {
+    "id": "PR_kwDOMT5cIs6NNmBF",
+    "number": 3762,
+    "title": "chore: bump lock",
+    "body": "fixing develop branch",
+    "state": "MERGED",
+    "merged": true,
+    "createdAt": "2025-03-03T21:33:13Z",
+    "updatedAt": "2025-03-03T21:35:49Z",
+    "author": {
+      "login": "odilitime",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/16395496?u=c9bac48e632aae594a0d85aaf9e9c9c69b674d8b&v=4"
+    },
+    "labels": [],
+    "files": [
+      {
+        "path": "pnpm-lock.yaml",
         "additions": 3,
-        "deletions": 3
-      },
-      {
-        "path": "docs/community/Discord/development/coders/chat_2024-11-30.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/community/Discord/development/coders/chat_2024-12-04.md",
-        "additions": 1,
-        "deletions": 1
+        "deletions": 0
       }
     ],
     "reviews": [],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6ggv_x",
+        "id": "IC_kwDOMT5cIs6gq6V-",
         "author": "graphite-app",
-        "body": "## How to use the Graphite Merge Queue\n\nAdd either label to this PR to merge it via the merge queue:\n- <kbd>merge-queue</kbd> - adds this PR to the back of the merge queue\n- <kbd>merge-queue-hotfix</kbd> - for urgent hot fixes, skip the queue and merge this PR next\n\nYou must have a Graphite account in order to use the merge queue. Sign up using [this link](https://app.graphite.dev/invite/github/elizaOS?ref=merge-queue-instructions-comment&prId=5949621047).\n\n<h2></h2>\n<sub>\n\nAn organization admin has enabled the [Graphite Merge Queue](https://graphite.dev/docs/graphite-merge-queue) in this repository.\n\n</sub>\n\n<sub>\n\nPlease do not merge from GitHub as this will restart CI on PRs being processed by the merge queue.\n\n</sub>"
+        "body": "## How to use the Graphite Merge Queue\n\nAdd either label to this PR to merge it via the merge queue:\n- <kbd>merge-queue</kbd> - adds this PR to the back of the merge queue\n- <kbd>merge-queue-hotfix</kbd> - for urgent hot fixes, skip the queue and merge this PR next\n\nYou must have a Graphite account in order to use the merge queue. Sign up using [this link](https://app.graphite.dev/invite/github/elizaOS?ref=merge-queue-instructions-comment&prId=5954024198).\n\n<h2></h2>\n<sub>\n\nAn organization admin has enabled the [Graphite Merge Queue](https://graphite.dev/docs/graphite-merge-queue) in this repository.\n\n</sub>\n\n<sub>\n\nPlease do not merge from GitHub as this will restart CI on PRs being processed by the merge queue.\n\n</sub>"
       },
       {
-        "id": "IC_kwDOMT5cIs6ggv_2",
+        "id": "IC_kwDOMT5cIs6gq6W5",
         "author": "coderabbitai",
         "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- This is an auto-generated comment: skip review by coderabbit.ai -->\n\n> [!IMPORTANT]\n> ## Review skipped\n> \n> Auto reviews are disabled on this repository.\n> \n> Please check the settings in the CodeRabbit UI or the `.coderabbit.yaml` file in this repository. To trigger a single review, invoke the `@coderabbitai review` command.\n> \n> You can disable this status message by setting the `reviews.review_status` to `false` in the CodeRabbit configuration file.\n\n<!-- end of auto-generated comment: skip review by coderabbit.ai -->\n<!-- tips_start -->\n\n---\n\nThank you for using CodeRabbit. We offer it for free to the OSS community and would appreciate your support in helping us grow. If you find it useful, would you consider giving us a shout-out on your favorite social media?\n\n<details>\n<summary>❤️ Share</summary>\n\n- [X](https://twitter.com/intent/tweet?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A&url=https%3A//coderabbit.ai)\n- [Mastodon](https://mastodon.social/share?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A%20https%3A%2F%2Fcoderabbit.ai)\n- [Reddit](https://www.reddit.com/submit?title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&text=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code.%20Check%20it%20out%3A%20https%3A//coderabbit.ai)\n- [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcoderabbit.ai&mini=true&title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&summary=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code)\n\n</details>\n\n<details>\n<summary>🪧 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR.\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
       }
     ]
   },
   {
-    "id": "PR_kwDOMT5cIs6NEjhR",
-    "number": 3746,
-    "title": "Revert short knowledge items handling",
-    "body": "# Relates to\r\n\r\nhttps://github.com/elizaOS/eliza/pull/3652\r\nhttps://github.com/elizaOS/eliza/pull/3653\r\n\r\n# Risks\r\n\r\nLow\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nRevert's back to the original behavior since the change on https://github.com/elizaOS/eliza/pull/3652 where only needed if the splitText function misbehaves.\r\n\r\n## What kind of change is this?\r\n\r\nImprovements (misc. changes to existing features)\r\n\r\n## Why are we doing this? Any context or related work?\r\n\r\nBecause less code doing the same is better =)\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\npackages/core/src/knowledge.ts - Check the deleted code.\r\n\r\n## Detailed testing steps\r\n\r\nAdd a very short knowledge entry into a character (less than 15 characters and it should be enough) and then start the project with that character.\r\n\r\n## Discord username\r\n\r\nfcatena",
+    "id": "PR_kwDOMT5cIs6NNlb8",
+    "number": 3761,
+    "title": "fix linting and syntax errors in core swarm components",
+    "body": "🛠️ Fix linting and syntax errors in core swarm components\r\n\r\n🔍 Summary\r\nThis PR addresses several linting and syntax issues across multiple files:\r\n\r\n✅ Fixed syntax errors in the updateWorld function\r\n🧹 Fixed linting errors in src/actions/settings.ts\r\n🐛 Fixed linting errors in src/swarm/scenario.ts\r\n\r\n💡 Details\r\nThese changes improve code quality and ensure proper function calls throughout the codebase, making the system more robust and maintainable.",
     "state": "OPEN",
     "merged": false,
-    "createdAt": "2025-03-02T18:13:25Z",
-    "updatedAt": "2025-03-02T18:13:32Z",
+    "createdAt": "2025-03-03T21:31:33Z",
+    "updatedAt": "2025-03-03T21:36:29Z",
     "author": {
-      "login": "batudo",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/82539708?u=cd1f38be487e17b550d3bbd0e5f7b1a777d6baae&v=4"
+      "login": "yungalgo",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4"
     },
-    "labels": [],
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB1dE8Sw",
+        "name": "V2",
+        "color": "1670F6",
+        "description": "Eliza 0.2.0"
+      }
+    ],
     "files": [
       {
-        "path": "packages/core/src/knowledge.ts",
-        "additions": 0,
-        "deletions": 19
+        "path": "packages/agent/src/swarm/scenario.ts",
+        "additions": 3,
+        "deletions": 2
+      },
+      {
+        "path": "packages/core/src/actions/roles.ts",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "path": "packages/core/src/actions/settings.ts",
+        "additions": 4,
+        "deletions": 3
       }
     ],
     "reviews": [],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6ggYi4",
+        "id": "IC_kwDOMT5cIs6gq5ov",
         "author": "coderabbitai",
         "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- This is an auto-generated comment: skip review by coderabbit.ai -->\n\n> [!IMPORTANT]\n> ## Review skipped\n> \n> Auto reviews are disabled on this repository.\n> \n> Please check the settings in the CodeRabbit UI or the `.coderabbit.yaml` file in this repository. To trigger a single review, invoke the `@coderabbitai review` command.\n> \n> You can disable this status message by setting the `reviews.review_status` to `false` in the CodeRabbit configuration file.\n\n<!-- end of auto-generated comment: skip review by coderabbit.ai -->\n<!-- tips_start -->\n\n---\n\nThank you for using CodeRabbit. We offer it for free to the OSS community and would appreciate your support in helping us grow. If you find it useful, would you consider giving us a shout-out on your favorite social media?\n\n<details>\n<summary>❤️ Share</summary>\n\n- [X](https://twitter.com/intent/tweet?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A&url=https%3A//coderabbit.ai)\n- [Mastodon](https://mastodon.social/share?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A%20https%3A%2F%2Fcoderabbit.ai)\n- [Reddit](https://www.reddit.com/submit?title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&text=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code.%20Check%20it%20out%3A%20https%3A//coderabbit.ai)\n- [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcoderabbit.ai&mini=true&title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&summary=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code)\n\n</details>\n\n<details>\n<summary>🪧 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR.\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
       }
     ]
   },
   {
-    "id": "PR_kwDOMT5cIs6NER8K",
-    "number": 3744,
-    "title": "audio api related semantic updates",
+    "id": "PR_kwDOMT5cIs6NLwwZ",
+    "number": 3760,
+    "title": "fix: gui speech to text",
     "body": "",
     "state": "MERGED",
     "merged": true,
-    "createdAt": "2025-03-02T15:17:31Z",
-    "updatedAt": "2025-03-02T15:17:39Z",
+    "createdAt": "2025-03-03T17:15:03Z",
+    "updatedAt": "2025-03-03T17:16:14Z",
     "author": {
-      "login": "wtfsayo",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4"
+      "login": "tcm390",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4"
     },
-    "labels": [],
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB1dE8Sw",
+        "name": "V2",
+        "color": "1670F6",
+        "description": "Eliza 0.2.0"
+      }
+    ],
+    "files": [
+      {
+        "path": "packages/client/src/components/audio-recorder.tsx",
+        "additions": 3,
+        "deletions": 3
+      }
+    ],
+    "reviews": [],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6go0aQ",
+        "author": "coderabbitai",
+        "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- This is an auto-generated comment: skip review by coderabbit.ai -->\n\n> [!IMPORTANT]\n> ## Review skipped\n> \n> Auto reviews are disabled on this repository.\n> \n> Please check the settings in the CodeRabbit UI or the `.coderabbit.yaml` file in this repository. To trigger a single review, invoke the `@coderabbitai review` command.\n> \n> You can disable this status message by setting the `reviews.review_status` to `false` in the CodeRabbit configuration file.\n\n<!-- end of auto-generated comment: skip review by coderabbit.ai -->\n<!-- tips_start -->\n\n---\n\nThank you for using CodeRabbit. We offer it for free to the OSS community and would appreciate your support in helping us grow. If you find it useful, would you consider giving us a shout-out on your favorite social media?\n\n<details>\n<summary>❤️ Share</summary>\n\n- [X](https://twitter.com/intent/tweet?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A&url=https%3A//coderabbit.ai)\n- [Mastodon](https://mastodon.social/share?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A%20https%3A%2F%2Fcoderabbit.ai)\n- [Reddit](https://www.reddit.com/submit?title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&text=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code.%20Check%20it%20out%3A%20https%3A//coderabbit.ai)\n- [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcoderabbit.ai&mini=true&title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&summary=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code)\n\n</details>\n\n<details>\n<summary>🪧 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR.\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
+      }
+    ]
+  },
+  {
+    "id": "PR_kwDOMT5cIs6NLe9a",
+    "number": 3759,
+    "title": "fix: client chat",
+    "body": "",
+    "state": "MERGED",
+    "merged": true,
+    "createdAt": "2025-03-03T16:41:33Z",
+    "updatedAt": "2025-03-03T16:56:45Z",
+    "author": {
+      "login": "tcm390",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB1dE8Sw",
+        "name": "V2",
+        "color": "1670F6",
+        "description": "Eliza 0.2.0"
+      }
+    ],
     "files": [
       {
         "path": "packages/agent/src/server/api/agent.ts",
-        "additions": 177,
-        "deletions": 82
+        "additions": 3,
+        "deletions": 0
       },
       {
-        "path": "packages/client/src/lib/api.ts",
-        "additions": 17,
-        "deletions": 2
+        "path": "packages/client/src/components/app-sidebar.tsx",
+        "additions": 8,
+        "deletions": 11
+      },
+      {
+        "path": "packages/client/src/components/chat.tsx",
+        "additions": 19,
+        "deletions": 12
+      },
+      {
+        "path": "packages/client/src/components/ui/chat/chat-bubble.tsx",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "path": "packages/client/src/routes/home.tsx",
+        "additions": 1,
+        "deletions": 1
       }
     ],
     "reviews": [],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6ggIiY",
+        "id": "IC_kwDOMT5cIs6gofvT",
         "author": "coderabbitai",
         "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- This is an auto-generated comment: skip review by coderabbit.ai -->\n\n> [!IMPORTANT]\n> ## Review skipped\n> \n> Auto reviews are disabled on this repository.\n> \n> Please check the settings in the CodeRabbit UI or the `.coderabbit.yaml` file in this repository. To trigger a single review, invoke the `@coderabbitai review` command.\n> \n> You can disable this status message by setting the `reviews.review_status` to `false` in the CodeRabbit configuration file.\n\n<!-- end of auto-generated comment: skip review by coderabbit.ai -->\n<!-- tips_start -->\n\n---\n\nThank you for using CodeRabbit. We offer it for free to the OSS community and would appreciate your support in helping us grow. If you find it useful, would you consider giving us a shout-out on your favorite social media?\n\n<details>\n<summary>❤️ Share</summary>\n\n- [X](https://twitter.com/intent/tweet?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A&url=https%3A//coderabbit.ai)\n- [Mastodon](https://mastodon.social/share?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A%20https%3A%2F%2Fcoderabbit.ai)\n- [Reddit](https://www.reddit.com/submit?title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&text=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code.%20Check%20it%20out%3A%20https%3A//coderabbit.ai)\n- [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcoderabbit.ai&mini=true&title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&summary=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code)\n\n</details>\n\n<details>\n<summary>🪧 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR.\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
       }
     ]
   },
   {
-    "id": "PR_kwDOMT5cIs6NEPcT",
-    "number": 3743,
-    "title": "fix apis and server startup",
-    "body": "",
+    "id": "PR_kwDOMT5cIs6NKrRV",
+    "number": 3757,
+    "title": "fix: properly acquire and release connection",
+    "body": "# PostgreSQL Connection Pool Management Fix\r\n\r\n## Description\r\nThis PR addresses issues with PostgreSQL connection handling by implementing proper connection acquisition and release patterns. The previous implementation was using the entire connection pool object directly, rather than acquiring individual client connections for operations, which could lead to connection leaks and eventual pool exhaustion.\r\n\r\n## Changes\r\n- Modified PostgresConnectionManager to provide methods for proper client connection handling\r\n- Implemented a proper connection lifecycle in PgDatabaseAdapter.withDatabase() method to:\r\n  - Acquire a dedicated client connection from the pool\r\n  - Execute the database operation\r\n  - Release the connection back to the pool when finished (even in error scenarios)\r\n- Removed debugging code (console.trace)\r\n- Ensured connections are properly released in all cases, including error scenarios\r\n\r\n## Impact\r\nThese changes significantly improve database reliability by:\r\n- Preventing connection leaks\r\n- Avoiding pool exhaustion under load\r\n- Ensuring connections are properly returned to the pool\r\n- Implementing connection handling best practices\r\n\r\nThe fix ensures the application can maintain stable database connectivity even during high traffic periods or when errors occur.\r\n",
     "state": "MERGED",
     "merged": true,
-    "createdAt": "2025-03-02T14:57:00Z",
-    "updatedAt": "2025-03-02T14:57:09Z",
+    "createdAt": "2025-03-03T15:06:48Z",
+    "updatedAt": "2025-03-03T17:02:37Z",
+    "author": {
+      "login": "0xbbjoker",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?v=4"
+    },
+    "labels": [],
+    "files": [
+      {
+        "path": "packages/plugin-sql/src/base.ts",
+        "additions": 0,
+        "deletions": 2
+      },
+      {
+        "path": "packages/plugin-sql/src/pg/adapter.ts",
+        "additions": 11,
+        "deletions": 2
+      },
+      {
+        "path": "packages/plugin-sql/src/pg/manager.ts",
+        "additions": 9,
+        "deletions": 0
+      }
+    ],
+    "reviews": [],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6gnfAa",
+        "author": "coderabbitai",
+        "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- This is an auto-generated comment: skip review by coderabbit.ai -->\n\n> [!IMPORTANT]\n> ## Review skipped\n> \n> Auto reviews are disabled on this repository.\n> \n> Please check the settings in the CodeRabbit UI or the `.coderabbit.yaml` file in this repository. To trigger a single review, invoke the `@coderabbitai review` command.\n> \n> You can disable this status message by setting the `reviews.review_status` to `false` in the CodeRabbit configuration file.\n\n<!-- end of auto-generated comment: skip review by coderabbit.ai -->\n<!-- tips_start -->\n\n---\n\nThank you for using CodeRabbit. We offer it for free to the OSS community and would appreciate your support in helping us grow. If you find it useful, would you consider giving us a shout-out on your favorite social media?\n\n<details>\n<summary>❤️ Share</summary>\n\n- [X](https://twitter.com/intent/tweet?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A&url=https%3A//coderabbit.ai)\n- [Mastodon](https://mastodon.social/share?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A%20https%3A%2F%2Fcoderabbit.ai)\n- [Reddit](https://www.reddit.com/submit?title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&text=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code.%20Check%20it%20out%3A%20https%3A//coderabbit.ai)\n- [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcoderabbit.ai&mini=true&title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&summary=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code)\n\n</details>\n\n<details>\n<summary>🪧 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR.\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
+      }
+    ]
+  },
+  {
+    "id": "PR_kwDOMT5cIs6NKpvB",
+    "number": 3756,
+    "title": "fix-delete issues",
+    "body": "fixes delete issues for agents",
+    "state": "MERGED",
+    "merged": true,
+    "createdAt": "2025-03-03T15:03:59Z",
+    "updatedAt": "2025-03-03T15:04:16Z",
     "author": {
       "login": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4"
@@ -131,58 +267,397 @@
     "files": [
       {
         "path": "packages/agent/src/index.ts",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "packages/agent/src/server/api/agent.ts",
-        "additions": 583,
-        "deletions": 348
-      },
-      {
-        "path": "packages/agent/src/server/index.ts",
-        "additions": 1,
-        "deletions": 4
-      },
-      {
-        "path": "packages/core/src/database.ts",
         "additions": 2,
         "deletions": 1
       },
       {
-        "path": "packages/core/src/runtime.ts",
-        "additions": 3,
-        "deletions": 2
-      },
-      {
-        "path": "packages/core/src/types.ts",
+        "path": "packages/client/tsconfig.node.tsbuildinfo",
         "additions": 1,
         "deletions": 1
       },
       {
+        "path": "packages/plugin-sql/drizzle/migrations/20250302132443_init.sql",
+        "additions": 34,
+        "deletions": 36
+      },
+      {
+        "path": "packages/plugin-sql/drizzle/migrations/meta/20250302132443_snapshot.json",
+        "additions": 32,
+        "deletions": 25
+      },
+      {
         "path": "packages/plugin-sql/src/base.ts",
-        "additions": 25,
+        "additions": 28,
+        "deletions": 0
+      },
+      {
+        "path": "packages/plugin-sql/src/schema/cache.ts",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "path": "packages/plugin-sql/src/schema/component.ts",
+        "additions": 5,
+        "deletions": 5
+      },
+      {
+        "path": "packages/plugin-sql/src/schema/entity.ts",
+        "additions": 3,
+        "deletions": 1
+      },
+      {
+        "path": "packages/plugin-sql/src/schema/goal.ts",
+        "additions": 3,
+        "deletions": 3
+      },
+      {
+        "path": "packages/plugin-sql/src/schema/memory.ts",
+        "additions": 3,
+        "deletions": 3
+      },
+      {
+        "path": "packages/plugin-sql/src/schema/participant.ts",
+        "additions": 3,
+        "deletions": 3
+      },
+      {
+        "path": "packages/plugin-sql/src/schema/relationship.ts",
+        "additions": 5,
+        "deletions": 5
+      },
+      {
+        "path": "packages/plugin-sql/src/schema/room.ts",
+        "additions": 2,
         "deletions": 2
+      },
+      {
+        "path": "packages/plugin-sql/src/schema/worldTable.ts",
+        "additions": 1,
+        "deletions": 1
       }
     ],
     "reviews": [],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6ggGWm",
+        "id": "IC_kwDOMT5cIs6gndOx",
         "author": "coderabbitai",
         "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- This is an auto-generated comment: skip review by coderabbit.ai -->\n\n> [!IMPORTANT]\n> ## Review skipped\n> \n> Auto reviews are disabled on this repository.\n> \n> Please check the settings in the CodeRabbit UI or the `.coderabbit.yaml` file in this repository. To trigger a single review, invoke the `@coderabbitai review` command.\n> \n> You can disable this status message by setting the `reviews.review_status` to `false` in the CodeRabbit configuration file.\n\n<!-- end of auto-generated comment: skip review by coderabbit.ai -->\n<!-- tips_start -->\n\n---\n\nThank you for using CodeRabbit. We offer it for free to the OSS community and would appreciate your support in helping us grow. If you find it useful, would you consider giving us a shout-out on your favorite social media?\n\n<details>\n<summary>❤️ Share</summary>\n\n- [X](https://twitter.com/intent/tweet?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A&url=https%3A//coderabbit.ai)\n- [Mastodon](https://mastodon.social/share?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A%20https%3A%2F%2Fcoderabbit.ai)\n- [Reddit](https://www.reddit.com/submit?title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&text=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code.%20Check%20it%20out%3A%20https%3A//coderabbit.ai)\n- [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcoderabbit.ai&mini=true&title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&summary=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code)\n\n</details>\n\n<details>\n<summary>🪧 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR.\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
       }
     ]
   },
   {
-    "id": "PR_kwDOMT5cIs6NEHRz",
-    "number": 3742,
-    "title": "Merge agent & character",
+    "id": "PR_kwDOMT5cIs6NKFMe",
+    "number": 3755,
+    "title": "allow delete with null",
+    "body": "",
+    "state": "CLOSED",
+    "merged": false,
+    "createdAt": "2025-03-03T14:01:32Z",
+    "updatedAt": "2025-03-03T14:10:32Z",
+    "author": {
+      "login": "wtfsayo",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4"
+    },
+    "labels": [],
+    "files": [
+      {
+        "path": "packages/plugin-sql/drizzle/migrations/20250302132443_init.sql",
+        "additions": 67,
+        "deletions": 1
+      },
+      {
+        "path": "packages/plugin-sql/src/base.ts",
+        "additions": 16,
+        "deletions": 4
+      },
+      {
+        "path": "packages/plugin-sql/src/schema/cache.ts",
+        "additions": 3,
+        "deletions": 1
+      },
+      {
+        "path": "packages/plugin-sql/src/schema/component.ts",
+        "additions": 12,
+        "deletions": 4
+      },
+      {
+        "path": "packages/plugin-sql/src/schema/entity.ts",
+        "additions": 3,
+        "deletions": 1
+      },
+      {
+        "path": "packages/plugin-sql/src/schema/goal.ts",
+        "additions": 9,
+        "deletions": 3
+      },
+      {
+        "path": "packages/plugin-sql/src/schema/memory.ts",
+        "additions": 9,
+        "deletions": 3
+      },
+      {
+        "path": "packages/plugin-sql/src/schema/participant.ts",
+        "additions": 9,
+        "deletions": 3
+      },
+      {
+        "path": "packages/plugin-sql/src/schema/relationship.ts",
+        "additions": 9,
+        "deletions": 3
+      },
+      {
+        "path": "packages/plugin-sql/src/schema/room.ts",
+        "additions": 6,
+        "deletions": 2
+      },
+      {
+        "path": "packages/plugin-sql/src/schema/worldTable.ts",
+        "additions": 3,
+        "deletions": 1
+      }
+    ],
+    "reviews": [],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6gmtvZ",
+        "author": "coderabbitai",
+        "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- This is an auto-generated comment: skip review by coderabbit.ai -->\n\n> [!IMPORTANT]\n> ## Review skipped\n> \n> Auto reviews are disabled on this repository.\n> \n> Please check the settings in the CodeRabbit UI or the `.coderabbit.yaml` file in this repository. To trigger a single review, invoke the `@coderabbitai review` command.\n> \n> You can disable this status message by setting the `reviews.review_status` to `false` in the CodeRabbit configuration file.\n\n<!-- end of auto-generated comment: skip review by coderabbit.ai -->\n<!-- tips_start -->\n\n---\n\nThank you for using CodeRabbit. We offer it for free to the OSS community and would appreciate your support in helping us grow. If you find it useful, would you consider giving us a shout-out on your favorite social media?\n\n<details>\n<summary>❤️ Share</summary>\n\n- [X](https://twitter.com/intent/tweet?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A&url=https%3A//coderabbit.ai)\n- [Mastodon](https://mastodon.social/share?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A%20https%3A%2F%2Fcoderabbit.ai)\n- [Reddit](https://www.reddit.com/submit?title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&text=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code.%20Check%20it%20out%3A%20https%3A//coderabbit.ai)\n- [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcoderabbit.ai&mini=true&title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&summary=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code)\n\n</details>\n\n<details>\n<summary>🪧 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR.\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
+      }
+    ]
+  },
+  {
+    "id": "PR_kwDOMT5cIs6NJrwz",
+    "number": 3754,
+    "title": "fix: small client fix",
     "body": "",
     "state": "MERGED",
     "merged": true,
-    "createdAt": "2025-03-02T13:37:24Z",
-    "updatedAt": "2025-03-02T14:22:27Z",
+    "createdAt": "2025-03-03T13:14:43Z",
+    "updatedAt": "2025-03-03T13:41:24Z",
+    "author": {
+      "login": "tcm390",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB1dE8Sw",
+        "name": "V2",
+        "color": "1670F6",
+        "description": "Eliza 0.2.0"
+      }
+    ],
+    "files": [
+      {
+        "path": "packages/agent/src/server/api/agent.ts",
+        "additions": 2,
+        "deletions": 49
+      },
+      {
+        "path": "packages/client/src/components/agent-creator.tsx",
+        "additions": 3,
+        "deletions": 0
+      },
+      {
+        "path": "packages/client/src/components/agent-settings.tsx",
+        "additions": 12,
+        "deletions": 0
+      },
+      {
+        "path": "packages/client/src/components/character-form.tsx",
+        "additions": 8,
+        "deletions": 8
+      }
+    ],
+    "reviews": [],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6gmJ7m",
+        "author": "coderabbitai",
+        "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- This is an auto-generated comment: skip review by coderabbit.ai -->\n\n> [!IMPORTANT]\n> ## Review skipped\n> \n> Auto reviews are disabled on this repository.\n> \n> Please check the settings in the CodeRabbit UI or the `.coderabbit.yaml` file in this repository. To trigger a single review, invoke the `@coderabbitai review` command.\n> \n> You can disable this status message by setting the `reviews.review_status` to `false` in the CodeRabbit configuration file.\n\n<!-- end of auto-generated comment: skip review by coderabbit.ai -->\n<!-- tips_start -->\n\n---\n\nThank you for using CodeRabbit. We offer it for free to the OSS community and would appreciate your support in helping us grow. If you find it useful, would you consider giving us a shout-out on your favorite social media?\n\n<details>\n<summary>❤️ Share</summary>\n\n- [X](https://twitter.com/intent/tweet?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A&url=https%3A//coderabbit.ai)\n- [Mastodon](https://mastodon.social/share?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A%20https%3A%2F%2Fcoderabbit.ai)\n- [Reddit](https://www.reddit.com/submit?title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&text=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code.%20Check%20it%20out%3A%20https%3A//coderabbit.ai)\n- [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcoderabbit.ai&mini=true&title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&summary=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code)\n\n</details>\n\n<details>\n<summary>🪧 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR.\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
+      }
+    ]
+  },
+  {
+    "id": "PR_kwDOMT5cIs6NJTAS",
+    "number": 3753,
+    "title": "[WIP] Integrate weather and tavily plugin in slack",
+    "body": "",
+    "state": "CLOSED",
+    "merged": false,
+    "createdAt": "2025-03-03T12:27:55Z",
+    "updatedAt": "2025-03-03T12:31:39Z",
+    "author": {
+      "login": "pranavjadhav007",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/88050656?u=282852928d9d9b181cb30cbe8df1d1ce6338b18e&v=4"
+    },
+    "labels": [],
+    "files": [
+      {
+        "path": ".env.example",
+        "additions": 12,
+        "deletions": 0
+      },
+      {
+        "path": ".github/workflows/greetings.yml",
+        "additions": 0,
+        "deletions": 16
+      },
+      {
+        "path": ".github/workflows/integrationTests.yaml",
+        "additions": 0,
+        "deletions": 41
+      },
+      {
+        "path": ".github/workflows/pr.yaml",
+        "additions": 0,
+        "deletions": 30
+      },
+      {
+        "path": ".github/workflows/smoke-tests.yml",
+        "additions": 0,
+        "deletions": 26
+      },
+      {
+        "path": ".gitignore",
+        "additions": 0,
+        "deletions": 2
+      },
+      {
+        "path": "Dockerfile",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "path": "characters/nova.character.json",
+        "additions": 155,
+        "deletions": 0
+      },
+      {
+        "path": "client/.env.example",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "path": "client/src/lib/api.ts",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "path": "docker-compose.yaml",
+        "additions": 23,
+        "deletions": 37
+      },
+      {
+        "path": "package.json",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "path": "packages/client-github/testClient.ts",
+        "additions": 51,
+        "deletions": 0
+      },
+      {
+        "path": "packages/client-slack/src/actions/getCurrentWeather.ts",
+        "additions": 107,
+        "deletions": 0
+      },
+      {
+        "path": "packages/client-slack/src/actions/summarize_updates.ts",
+        "additions": 205,
+        "deletions": 0
+      },
+      {
+        "path": "packages/client-slack/src/actions/summarize_updates_for_user.ts",
+        "additions": 197,
+        "deletions": 0
+      },
+      {
+        "path": "packages/client-slack/src/actions/web_search.ts",
+        "additions": 211,
+        "deletions": 0
+      },
+      {
+        "path": "packages/client-slack/src/environment_weather.ts",
+        "additions": 30,
+        "deletions": 0
+      },
+      {
+        "path": "packages/client-slack/src/examples_weather.ts",
+        "additions": 79,
+        "deletions": 0
+      },
+      {
+        "path": "packages/client-slack/src/index.ts",
+        "additions": 14,
+        "deletions": 0
+      },
+      {
+        "path": "packages/client-slack/src/messages.ts",
+        "additions": 90,
+        "deletions": 12
+      },
+      {
+        "path": "packages/client-slack/src/services_weather.ts",
+        "additions": 38,
+        "deletions": 0
+      },
+      {
+        "path": "packages/client-slack/src/templates.ts",
+        "additions": 29,
+        "deletions": 0
+      },
+      {
+        "path": "packages/client-slack/src/types_weather.ts",
+        "additions": 63,
+        "deletions": 0
+      },
+      {
+        "path": "packages/client-slack/src/utils/slack-utils.ts",
+        "additions": 219,
+        "deletions": 0
+      },
+      {
+        "path": "pnpm-lock.yaml",
+        "additions": 1116,
+        "deletions": 41
+      },
+      {
+        "path": "pnpm-workspace.yaml",
+        "additions": 0,
+        "deletions": 1
+      }
+    ],
+    "reviews": [
+      {
+        "id": "PRR_kwDOMT5cIs6eMLly",
+        "author": "github-actions",
+        "body": "Hi @pranavjadhav007! Welcome to the elizaOS community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now an elizaOS contributor!",
+        "state": "COMMENTED"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6gllnd",
+        "author": "graphite-app",
+        "body": "## How to use the Graphite Merge Queue\n\nAdd either label to this PR to merge it via the merge queue:\n- <kbd>merge-queue</kbd> - adds this PR to the back of the merge queue\n- <kbd>merge-queue-hotfix</kbd> - for urgent hot fixes, skip the queue and merge this PR next\n\nYou must have a Graphite account in order to use the merge queue. Sign up using [this link](https://app.graphite.dev/invite/github/elizaOS?ref=merge-queue-instructions-comment&prId=5952600624).\n\n<h2></h2>\n<sub>\n\nAn organization admin has enabled the [Graphite Merge Queue](https://graphite.dev/docs/graphite-merge-queue) in this repository.\n\n</sub>\n\n<sub>\n\nPlease do not merge from GitHub as this will restart CI on PRs being processed by the merge queue.\n\n</sub>"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6gllob",
+        "author": "coderabbitai",
+        "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- This is an auto-generated comment: skip review by coderabbit.ai -->\n\n> [!IMPORTANT]\n> ## Review skipped\n> \n> Auto reviews are disabled on this repository.\n> \n> Please check the settings in the CodeRabbit UI or the `.coderabbit.yaml` file in this repository. To trigger a single review, invoke the `@coderabbitai review` command.\n> \n> You can disable this status message by setting the `reviews.review_status` to `false` in the CodeRabbit configuration file.\n\n<!-- end of auto-generated comment: skip review by coderabbit.ai -->\n<!-- tips_start -->\n\n---\n\nThank you for using CodeRabbit. We offer it for free to the OSS community and would appreciate your support in helping us grow. If you find it useful, would you consider giving us a shout-out on your favorite social media?\n\n<details>\n<summary>❤️ Share</summary>\n\n- [X](https://twitter.com/intent/tweet?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A&url=https%3A//coderabbit.ai)\n- [Mastodon](https://mastodon.social/share?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A%20https%3A%2F%2Fcoderabbit.ai)\n- [Reddit](https://www.reddit.com/submit?title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&text=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code.%20Check%20it%20out%3A%20https%3A//coderabbit.ai)\n- [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcoderabbit.ai&mini=true&title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&summary=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code)\n\n</details>\n\n<details>\n<summary>🪧 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR.\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
+      }
+    ]
+  },
+  {
+    "id": "PR_kwDOMT5cIs6NHiSM",
+    "number": 3752,
+    "title": "fix server apis and server",
+    "body": "\\",
+    "state": "MERGED",
+    "merged": true,
+    "createdAt": "2025-03-03T09:07:35Z",
+    "updatedAt": "2025-03-03T11:25:08Z",
     "author": {
       "login": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4"
@@ -191,88 +666,80 @@
     "files": [
       {
         "path": "packages/agent/src/server/api/agent.ts",
-        "additions": 1,
-        "deletions": 1
+        "additions": 141,
+        "deletions": 169
       },
       {
-        "path": "packages/cli/src/database.ts",
+        "path": "packages/agent/src/server/index.ts",
+        "additions": 10,
+        "deletions": 25
+      },
+      {
+        "path": "packages/cli/src/commands/agent.ts",
+        "additions": 141,
+        "deletions": 48
+      },
+      {
+        "path": "packages/cli/src/commands/character.ts",
+        "additions": 80,
+        "deletions": 56
+      },
+      {
+        "path": "packages/cli/src/utils/helpers.ts",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "path": "packages/client/tsconfig.node.tsbuildinfo",
         "additions": 1,
         "deletions": 1
       },
       {
         "path": "packages/core/src/database.ts",
-        "additions": 41,
-        "deletions": 33
+        "additions": 0,
+        "deletions": 7
       },
       {
         "path": "packages/core/src/runtime.ts",
-        "additions": 5,
-        "deletions": 42
+        "additions": 0,
+        "deletions": 22
       },
       {
         "path": "packages/core/src/types.ts",
-        "additions": 15,
-        "deletions": 18
-      },
-      {
-        "path": "packages/plugin-sql/drizzle/migrations/20250226020822_create_extensions.sql",
         "additions": 0,
-        "deletions": 6
-      },
-      {
-        "path": "packages/plugin-sql/drizzle/migrations/20250302132443_init.sql",
-        "additions": 18,
-        "deletions": 20
-      },
-      {
-        "path": "packages/plugin-sql/drizzle/migrations/meta/20250302132443_snapshot.json",
-        "additions": 79,
-        "deletions": 126
-      },
-      {
-        "path": "packages/plugin-sql/drizzle/migrations/meta/_journal.json",
-        "additions": 2,
-        "deletions": 9
-      },
-      {
-        "path": "packages/plugin-sql/src/base.ts",
-        "additions": 56,
-        "deletions": 59
-      },
-      {
-        "path": "packages/plugin-sql/src/schema/agent.ts",
-        "additions": 28,
         "deletions": 2
       },
       {
-        "path": "packages/plugin-sql/src/schema/character.ts",
-        "additions": 0,
-        "deletions": 82
-      },
-      {
-        "path": "packages/plugin-sql/src/schema/index.ts",
-        "additions": 0,
-        "deletions": 1
+        "path": "packages/plugin-sql/src/base.ts",
+        "additions": 5,
+        "deletions": 29
       }
     ],
-    "reviews": [],
+    "reviews": [
+      {
+        "id": "PRR_kwDOMT5cIs6eLm4M",
+        "author": "tcm390",
+        "body": "",
+        "state": "APPROVED"
+      }
+    ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6gf-vI",
+        "id": "IC_kwDOMT5cIs6gjpfg",
         "author": "coderabbitai",
         "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- This is an auto-generated comment: skip review by coderabbit.ai -->\n\n> [!IMPORTANT]\n> ## Review skipped\n> \n> Auto reviews are disabled on this repository.\n> \n> Please check the settings in the CodeRabbit UI or the `.coderabbit.yaml` file in this repository. To trigger a single review, invoke the `@coderabbitai review` command.\n> \n> You can disable this status message by setting the `reviews.review_status` to `false` in the CodeRabbit configuration file.\n\n<!-- end of auto-generated comment: skip review by coderabbit.ai -->\n<!-- tips_start -->\n\n---\n\nThank you for using CodeRabbit. We offer it for free to the OSS community and would appreciate your support in helping us grow. If you find it useful, would you consider giving us a shout-out on your favorite social media?\n\n<details>\n<summary>❤️ Share</summary>\n\n- [X](https://twitter.com/intent/tweet?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A&url=https%3A//coderabbit.ai)\n- [Mastodon](https://mastodon.social/share?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A%20https%3A%2F%2Fcoderabbit.ai)\n- [Reddit](https://www.reddit.com/submit?title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&text=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code.%20Check%20it%20out%3A%20https%3A//coderabbit.ai)\n- [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcoderabbit.ai&mini=true&title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&summary=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code)\n\n</details>\n\n<details>\n<summary>🪧 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR.\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
       }
     ]
   },
   {
-    "id": "PR_kwDOMT5cIs6ND-pg",
-    "number": 3741,
-    "title": "fix: cli use axios replace fetch",
-    "body": "Use axios instead of system fetch, cause axios support proxy from system env.",
-    "state": "OPEN",
-    "merged": false,
-    "createdAt": "2025-03-02T12:16:42Z",
-    "updatedAt": "2025-03-02T12:16:50Z",
+    "id": "PR_kwDOMT5cIs6NF_J1",
+    "number": 3751,
+    "title": "feat: set proxy by  env AGENT_PROXY",
+    "body": "Sometimes agent's running env  is not good enough to connect with resources. \r\nSo just set global proxy by env settings : `AGENT_PROXY` .\r\n\r\n",
+    "state": "MERGED",
+    "merged": true,
+    "createdAt": "2025-03-03T04:42:51Z",
+    "updatedAt": "2025-03-03T21:54:28Z",
     "author": {
       "login": "v1xingyue",
       "avatarUrl": "https://avatars.githubusercontent.com/u/974169?u=96c6a113a91978c041e5cf90965d7b66c5540af4&v=4"
@@ -280,693 +747,303 @@
     "labels": [],
     "files": [
       {
-        "path": "packages/cli/index.js",
-        "additions": 3,
-        "deletions": 2
+        "path": ".env.example",
+        "additions": 5,
+        "deletions": 1
       },
       {
-        "path": "packages/cli/package.json",
+        "path": "agent/package.json",
         "additions": 1,
         "deletions": 0
-      }
-    ],
-    "reviews": [],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6gf2la",
-        "author": "graphite-app",
-        "body": "## How to use the Graphite Merge Queue\n\nAdd either label to this PR to merge it via the merge queue:\n- <kbd>merge-queue</kbd> - adds this PR to the back of the merge queue\n- <kbd>merge-queue-hotfix</kbd> - for urgent hot fixes, skip the queue and merge this PR next\n\nYou must have a Graphite account in order to use the merge queue. Sign up using [this link](https://app.graphite.dev/invite/github/elizaOS?ref=merge-queue-instructions-comment&prId=5947478492).\n\n<h2></h2>\n<sub>\n\nAn organization admin has enabled the [Graphite Merge Queue](https://graphite.dev/docs/graphite-merge-queue) in this repository.\n\n</sub>\n\n<sub>\n\nPlease do not merge from GitHub as this will restart CI on PRs being processed by the merge queue.\n\n</sub>"
       },
       {
-        "id": "IC_kwDOMT5cIs6gf2lv",
+        "path": "agent/src/index.ts",
+        "additions": 116,
+        "deletions": 55
+      }
+    ],
+    "reviews": [
+      {
+        "id": "PRR_kwDOMT5cIs6eRlwL",
+        "author": "odilitime",
+        "body": "does this only affect undici? what about fetch/axios calls?",
+        "state": "APPROVED"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6gh-1G",
         "author": "coderabbitai",
         "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- This is an auto-generated comment: skip review by coderabbit.ai -->\n\n> [!IMPORTANT]\n> ## Review skipped\n> \n> Auto reviews are disabled on this repository.\n> \n> Please check the settings in the CodeRabbit UI or the `.coderabbit.yaml` file in this repository. To trigger a single review, invoke the `@coderabbitai review` command.\n> \n> You can disable this status message by setting the `reviews.review_status` to `false` in the CodeRabbit configuration file.\n\n<!-- end of auto-generated comment: skip review by coderabbit.ai -->\n<!-- tips_start -->\n\n---\n\nThank you for using CodeRabbit. We offer it for free to the OSS community and would appreciate your support in helping us grow. If you find it useful, would you consider giving us a shout-out on your favorite social media?\n\n<details>\n<summary>❤️ Share</summary>\n\n- [X](https://twitter.com/intent/tweet?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A&url=https%3A//coderabbit.ai)\n- [Mastodon](https://mastodon.social/share?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A%20https%3A%2F%2Fcoderabbit.ai)\n- [Reddit](https://www.reddit.com/submit?title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&text=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code.%20Check%20it%20out%3A%20https%3A//coderabbit.ai)\n- [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcoderabbit.ai&mini=true&title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&summary=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code)\n\n</details>\n\n<details>\n<summary>🪧 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR.\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6gh-1m",
+        "author": "graphite-app",
+        "body": "## How to use the Graphite Merge Queue\n\nAdd either label to this PR to merge it via the merge queue:\n- <kbd>merge-queue</kbd> - adds this PR to the back of the merge queue\n- <kbd>merge-queue-hotfix</kbd> - for urgent hot fixes, skip the queue and merge this PR next\n\nYou must have a Graphite account in order to use the merge queue. Sign up using [this link](https://app.graphite.dev/invite/github/elizaOS?ref=merge-queue-instructions-comment&prId=5951000864).\n\n<h2></h2>\n<sub>\n\nAn organization admin has enabled the [Graphite Merge Queue](https://graphite.dev/docs/graphite-merge-queue) in this repository.\n\n</sub>\n\n<sub>\n\nPlease do not merge from GitHub as this will restart CI on PRs being processed by the merge queue.\n\n</sub>"
       }
     ]
   },
   {
-    "id": "PR_kwDOMT5cIs6NDv6I",
-    "number": 3740,
-    "title": "automatically deploy cvm",
-    "body": "<!-- Use this template by filling in information and copying and pasting relevant items out of the HTML comments. -->\r\n\r\n# Relates to\r\n\r\n<!-- LINK TO ISSUE OR TICKET -->\r\n\r\n<!-- This risks section must be filled out before the final review and merge. -->\r\n\r\n# Risks\r\n\r\n<!--\r\nLow, medium, large. List what kind of risks and what could be affected.\r\n-->\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\n## What kind of change is this?\r\n\r\n<!--\r\nBug fixes (non-breaking change which fixes an issue)\r\nImprovements (misc. changes to existing features)\r\nFeatures (non-breaking change which adds functionality)\r\nUpdates (new versions of included code)\r\n-->\r\n\r\n<!-- This \"Why\" section is most relevant if there are no linked issues explaining why. If there is a related issue, it might make sense to skip this why section. -->\r\n<!--\r\n## Why are we doing this? Any context or related work?\r\n-->\r\n\r\n# Documentation changes needed?\r\n\r\n<!--\r\nMy changes do not require a change to the project documentation.\r\nMy changes require a change to the project documentation.\r\nIf documentation change is needed: I have updated the documentation accordingly.\r\n-->\r\n\r\n<!-- Please show how you tested the PR. This will really help if the PR needs to be retested and probably help the PR get merged quicker. -->\r\n\r\n# Testing\r\n\r\n## Where should a reviewer start?\r\n\r\n## Detailed testing steps\r\n\r\n<!--\r\nNone: Automated tests are acceptable.\r\n-->\r\n\r\n<!--\r\n- As [anon/admin], go to [link]\r\n  - [do action]\r\n  - verify [result]\r\n-->\r\n\r\n<!-- If there is a UI change, please include before and after screenshots or videos. This will speed up PRs being merged. It is extra nice to annotate screenshots with arrows or boxes pointing out the differences. -->\r\n<!--\r\n## Screenshots\r\n### Before\r\n### After\r\n-->\r\n\r\n<!-- If there is anything about the deployment, please make a note. -->\r\n<!--\r\n# Deploy Notes\r\n-->\r\n\r\n<!--  Copy and paste command line output. -->\r\n<!--\r\n## Database changes\r\n-->\r\n\r\n<!--  Please specify deploy instructions if there is something more than the automated steps. -->\r\n<!--\r\n## Deployment instructions\r\n-->\r\n\r\n<!-- If you are on Discord, please join https://discord.gg/elizaOS and state your Discord username here for the contributor role and join us in #development-feed -->\r\n<!--\r\n## Discord username\r\n\r\n-->\r\n",
-    "state": "CLOSED",
-    "merged": false,
-    "createdAt": "2025-03-02T09:37:30Z",
-    "updatedAt": "2025-03-02T10:25:54Z",
+    "id": "PR_kwDOMT5cIs6NF7f_",
+    "number": 3750,
+    "title": "fix: gui - WIP",
+    "body": "**Fixes and Improvements in GUI:**\r\nFixed issue where agents were not listed on the home page.\r\nFixed issue preventing agent creation.\r\nFixed issue preventing agent edits from working.\r\nFixed start/stop agent API functionality.\r\n\r\n**Refactored the start/stop agent mechanism:**\r\nPreviously, it checked the enabled flag in the database, which didn't really make sense to me 🤔. In this pr it checks the agent's runtime existence to determine whether to start or stop it.\r\n\r\n\r\nIn this PR, I removed some redundant components I noticed to simplify the UI and ensure everything functions correctly first.\r\nUI/UX improvements can be considered in a future iteration.\r\n\r\n**TODO:**\r\nAll UI functionalities work in this PR except chat.\r\nChat functionality will be addressed in a separate PR to keep this one manageable and easy to track.",
+    "state": "MERGED",
+    "merged": true,
+    "createdAt": "2025-03-03T04:28:00Z",
+    "updatedAt": "2025-03-03T12:49:12Z",
     "author": {
-      "login": "www222fff",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/7625606?u=c61e2360ca4a505f5d31c2aa7f44ae3de1760995&v=4"
+      "login": "tcm390",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4"
     },
-    "labels": [],
-    "files": [],
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB1dE8Sw",
+        "name": "V2",
+        "color": "1670F6",
+        "description": "Eliza 0.2.0"
+      }
+    ],
+    "files": [
+      {
+        "path": "packages/agent/src/index.ts",
+        "additions": 11,
+        "deletions": 1
+      },
+      {
+        "path": "packages/agent/src/server/api/agent.ts",
+        "additions": 283,
+        "deletions": 144
+      },
+      {
+        "path": "packages/agent/src/server/api/index.ts",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "path": "packages/agent/src/server/index.ts",
+        "additions": 11,
+        "deletions": 25
+      },
+      {
+        "path": "packages/cli/src/commands/agent.ts",
+        "additions": 141,
+        "deletions": 48
+      },
+      {
+        "path": "packages/cli/src/utils/helpers.ts",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "path": "packages/client/src/App.tsx",
+        "additions": 2,
+        "deletions": 0
+      },
+      {
+        "path": "packages/client/src/components/agent-creator.tsx",
+        "additions": 5,
+        "deletions": 6
+      },
+      {
+        "path": "packages/client/src/components/agent-settings.tsx",
+        "additions": 10,
+        "deletions": 78
+      },
+      {
+        "path": "packages/client/src/components/app-sidebar.tsx",
+        "additions": 17,
+        "deletions": 15
+      },
+      {
+        "path": "packages/client/src/components/character-form.tsx",
+        "additions": 8,
+        "deletions": 44
+      },
+      {
+        "path": "packages/client/src/components/chat.tsx",
+        "additions": 8,
+        "deletions": 51
+      },
+      {
+        "path": "packages/client/src/components/plugins-panel.tsx",
+        "additions": 3,
+        "deletions": 3
+      },
+      {
+        "path": "packages/client/src/components/profile-card.tsx",
+        "additions": 4,
+        "deletions": 2
+      },
+      {
+        "path": "packages/client/src/components/secret-panel.tsx",
+        "additions": 4,
+        "deletions": 3
+      },
+      {
+        "path": "packages/client/src/hooks/use-agent-management.ts",
+        "additions": 142,
+        "deletions": 0
+      },
+      {
+        "path": "packages/client/src/hooks/use-query-hooks.ts",
+        "additions": 37,
+        "deletions": 17
+      },
+      {
+        "path": "packages/client/src/lib/api.ts",
+        "additions": 65,
+        "deletions": 26
+      },
+      {
+        "path": "packages/client/src/routes/home.tsx",
+        "additions": 57,
+        "deletions": 45
+      },
+      {
+        "path": "packages/client/src/routes/settings.tsx",
+        "additions": 3,
+        "deletions": 3
+      },
+      {
+        "path": "packages/client/tsconfig.node.tsbuildinfo",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "path": "packages/core/src/database.ts",
+        "additions": 0,
+        "deletions": 7
+      },
+      {
+        "path": "packages/core/src/runtime.ts",
+        "additions": 0,
+        "deletions": 22
+      },
+      {
+        "path": "packages/core/src/types.ts",
+        "additions": 0,
+        "deletions": 2
+      },
+      {
+        "path": "packages/plugin-sql/src/base.ts",
+        "additions": 52,
+        "deletions": 199
+      },
+      {
+        "path": "packages/plugin-sql/src/schema/agent.ts",
+        "additions": 6,
+        "deletions": 2
+      }
+    ],
     "reviews": [
       {
-        "id": "PRR_kwDOMT5cIs6eHJpu",
-        "author": "github-actions",
-        "body": "Hi @www222fff! Welcome to the elizaOS community. Thanks for submitting your first pull request; your efforts are helping us accelerate towards AGI. We'll review it shortly. You are now an elizaOS contributor!",
+        "id": "PRR_kwDOMT5cIs6eJk-R",
+        "author": "wtfsayo",
+        "body": "",
+        "state": "COMMENTED"
+      },
+      {
+        "id": "PRR_kwDOMT5cIs6eJlLQ",
+        "author": "wtfsayo",
+        "body": "",
         "state": "COMMENTED"
       }
     ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6gfoTa",
+        "id": "IC_kwDOMT5cIs6gh7T0",
+        "author": "coderabbitai",
+        "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- This is an auto-generated comment: skip review by coderabbit.ai -->\n\n> [!IMPORTANT]\n> ## Review skipped\n> \n> Auto reviews are disabled on this repository.\n> \n> Please check the settings in the CodeRabbit UI or the `.coderabbit.yaml` file in this repository. To trigger a single review, invoke the `@coderabbitai review` command.\n> \n> You can disable this status message by setting the `reviews.review_status` to `false` in the CodeRabbit configuration file.\n\n<!-- end of auto-generated comment: skip review by coderabbit.ai -->\n<!-- tips_start -->\n\n---\n\nThank you for using CodeRabbit. We offer it for free to the OSS community and would appreciate your support in helping us grow. If you find it useful, would you consider giving us a shout-out on your favorite social media?\n\n<details>\n<summary>❤️ Share</summary>\n\n- [X](https://twitter.com/intent/tweet?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A&url=https%3A//coderabbit.ai)\n- [Mastodon](https://mastodon.social/share?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A%20https%3A%2F%2Fcoderabbit.ai)\n- [Reddit](https://www.reddit.com/submit?title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&text=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code.%20Check%20it%20out%3A%20https%3A//coderabbit.ai)\n- [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcoderabbit.ai&mini=true&title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&summary=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code)\n\n</details>\n\n<details>\n<summary>🪧 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR.\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
+      }
+    ]
+  },
+  {
+    "id": "PR_kwDOMT5cIs6NF5g9",
+    "number": 3749,
+    "title": "feat: add registerMiddleware",
+    "body": "Same as #3648 ",
+    "state": "MERGED",
+    "merged": true,
+    "createdAt": "2025-03-03T04:19:13Z",
+    "updatedAt": "2025-03-03T21:46:31Z",
+    "author": {
+      "login": "v1xingyue",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/974169?u=96c6a113a91978c041e5cf90965d7b66c5540af4&v=4"
+    },
+    "labels": [],
+    "files": [
+      {
+        "path": "packages/client-direct/src/index.ts",
+        "additions": 24,
+        "deletions": 10
+      }
+    ],
+    "reviews": [
+      {
+        "id": "PRR_kwDOMT5cIs6eRmyl",
+        "author": "odilitime",
+        "body": "",
+        "state": "APPROVED"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6gh5W_",
         "author": "graphite-app",
-        "body": "## How to use the Graphite Merge Queue\n\nAdd either label to this PR to merge it via the merge queue:\n- <kbd>merge-queue</kbd> - adds this PR to the back of the merge queue\n- <kbd>merge-queue-hotfix</kbd> - for urgent hot fixes, skip the queue and merge this PR next\n\nYou must have a Graphite account in order to use the merge queue. Sign up using [this link](https://app.graphite.dev/invite/github/elizaOS?ref=merge-queue-instructions-comment&prId=5946986775).\n\n<h2></h2>\n<sub>\n\nAn organization admin has enabled the [Graphite Merge Queue](https://graphite.dev/docs/graphite-merge-queue) in this repository.\n\n</sub>\n\n<sub>\n\nPlease do not merge from GitHub as this will restart CI on PRs being processed by the merge queue.\n\n</sub>"
+        "body": "## How to use the Graphite Merge Queue\n\nAdd either label to this PR to merge it via the merge queue:\n- <kbd>merge-queue</kbd> - adds this PR to the back of the merge queue\n- <kbd>merge-queue-hotfix</kbd> - for urgent hot fixes, skip the queue and merge this PR next\n\nYou must have a Graphite account in order to use the merge queue. Sign up using [this link](https://app.graphite.dev/invite/github/elizaOS?ref=merge-queue-instructions-comment&prId=5950917116).\n\n<h2></h2>\n<sub>\n\nAn organization admin has enabled the [Graphite Merge Queue](https://graphite.dev/docs/graphite-merge-queue) in this repository.\n\n</sub>\n\n<sub>\n\nPlease do not merge from GitHub as this will restart CI on PRs being processed by the merge queue.\n\n</sub>"
       },
       {
-        "id": "IC_kwDOMT5cIs6gfoTb",
+        "id": "IC_kwDOMT5cIs6gh5XU",
         "author": "coderabbitai",
         "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- This is an auto-generated comment: skip review by coderabbit.ai -->\n\n> [!IMPORTANT]\n> ## Review skipped\n> \n> Auto reviews are disabled on this repository.\n> \n> Please check the settings in the CodeRabbit UI or the `.coderabbit.yaml` file in this repository. To trigger a single review, invoke the `@coderabbitai review` command.\n> \n> You can disable this status message by setting the `reviews.review_status` to `false` in the CodeRabbit configuration file.\n\n<!-- end of auto-generated comment: skip review by coderabbit.ai -->\n<!-- tips_start -->\n\n---\n\nThank you for using CodeRabbit. We offer it for free to the OSS community and would appreciate your support in helping us grow. If you find it useful, would you consider giving us a shout-out on your favorite social media?\n\n<details>\n<summary>❤️ Share</summary>\n\n- [X](https://twitter.com/intent/tweet?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A&url=https%3A//coderabbit.ai)\n- [Mastodon](https://mastodon.social/share?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A%20https%3A%2F%2Fcoderabbit.ai)\n- [Reddit](https://www.reddit.com/submit?title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&text=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code.%20Check%20it%20out%3A%20https%3A//coderabbit.ai)\n- [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcoderabbit.ai&mini=true&title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&summary=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code)\n\n</details>\n\n<details>\n<summary>🪧 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR.\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
       }
     ]
   },
   {
-    "id": "PR_kwDOMT5cIs6NDcxN",
-    "number": 3739,
-    "title": "chore: dev =>  main (rel 0.25.9 prep)",
-    "body": "Changelog:\r\n- #3649\r\n- #3640\r\n- #3652\r\n- #3670\r\n- #3660\r\n- #3656\r\n- #3673\r\n- #3694\r\n- #3678\r\n- #3686\r\n- #3684\r\n- #3697\r\n- #3699\r\n- #3701\r\n- #3711\r\n- #3700\r\n- #3716\r\n- #3722\r\n- #3729\r\n- #3707\r\n- #3653\r\n- #3736\r\n- #3737\r\n- #3738",
+    "id": "PR_kwDOMT5cIs6NFWUO",
+    "number": 3748,
+    "title": "docs: Fix grammatical and consistency improvements in documentation",
+    "body": "Changed to: Use pnpm audits to check for known vulnerabilities\r\nReason: \"audit\" is a singular noun, but in this context, \"audits\" is incorrect since pnpm audit is an actual command in pnpm. The original form is correct.\r\nFile Modified: [security-policy.md]\r\n\r\nEnable branch protection on main branches\r\nChanged to: Enable branch protection for main branches\r\nReason: The preposition \"for\" is more appropriate in this context because we are specifying what the protection is meant for. \"Protection for\" is a more natural phrasing than \"protection on.\"\r\nFile Modified: [contributing.md]\r\n\r\n# Проект швидко розвивається, іноді потрібно очищати проект, якщо ви повертаєтесь до нього через деякий час\r\nChanged to: # Проєкт швидко розвивається, іноді потрібно очищати проєкт, якщо ви повертаєтесь до нього через деякий час\r\nReason: The word \"Проєкт\" follows modern Ukrainian orthography rules, replacing \"Проект,\" which is an outdated or Russian-influenced form. This change aligns with contemporary Ukrainian linguistic standards.\r\nFile Modified: [README_UA.md]\r\n\r\n",
     "state": "MERGED",
     "merged": true,
-    "createdAt": "2025-03-02T05:31:29Z",
-    "updatedAt": "2025-03-02T05:38:08Z",
+    "createdAt": "2025-03-03T01:43:58Z",
+    "updatedAt": "2025-03-03T21:43:51Z",
     "author": {
-      "login": "odilitime",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/16395496?u=c9bac48e632aae594a0d85aaf9e9c9c69b674d8b&v=4"
+      "login": "SITADRITA1",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/200515703?u=39c22f6be2c2b8b0556f89c6590e0d561801b21e&v=4"
     },
     "labels": [],
     "files": [
       {
-        "path": ".env.example",
-        "additions": 6,
-        "deletions": 0
-      },
-      {
-        "path": "README.md",
-        "additions": 42,
-        "deletions": 0
-      },
-      {
-        "path": "agent/package.json",
-        "additions": 7,
-        "deletions": 7
-      },
-      {
-        "path": "agent/src/defaultCharacter.ts",
+        "path": "SECURITY.md",
         "additions": 1,
         "deletions": 1
       },
       {
-        "path": "agent/src/index.ts",
-        "additions": 64,
-        "deletions": 18
-      },
-      {
-        "path": "docs/api/classes/AgentRuntime.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/classes/CacheManager.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/classes/DatabaseAdapter.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/classes/DbCacheAdapter.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/classes/FsCacheAdapter.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/classes/MemoryCacheAdapter.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/classes/MemoryManager.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/classes/RAGKnowledgeManager.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/classes/Service.md",
-        "additions": 5,
-        "deletions": 5
-      },
-      {
-        "path": "docs/api/enumerations/ActionTimelineType.md",
-        "additions": 3,
-        "deletions": 3
-      },
-      {
-        "path": "docs/api/enumerations/CacheKeyPrefix.md",
-        "additions": 2,
-        "deletions": 2
-      },
-      {
-        "path": "docs/api/enumerations/CacheStore.md",
-        "additions": 4,
-        "deletions": 4
-      },
-      {
-        "path": "docs/api/enumerations/GoalStatus.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/enumerations/IrysDataType.md",
-        "additions": 4,
-        "deletions": 4
-      },
-      {
-        "path": "docs/api/enumerations/IrysMessageType.md",
-        "additions": 4,
-        "deletions": 4
-      },
-      {
-        "path": "docs/api/enumerations/KnowledgeScope.md",
-        "additions": 3,
-        "deletions": 3
-      },
-      {
-        "path": "docs/api/enumerations/LoggingLevel.md",
-        "additions": 4,
-        "deletions": 4
-      },
-      {
-        "path": "docs/api/enumerations/ModelClass.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/enumerations/ModelProviderName.md",
-        "additions": 54,
-        "deletions": 42
-      },
-      {
-        "path": "docs/api/enumerations/ServiceType.md",
-        "additions": 28,
-        "deletions": 18
-      },
-      {
-        "path": "docs/api/enumerations/TokenizerType.md",
-        "additions": 3,
-        "deletions": 3
-      },
-      {
-        "path": "docs/api/enumerations/TranscriptionProvider.md",
-        "additions": 4,
-        "deletions": 4
-      },
-      {
-        "path": "docs/api/functions/addHeader.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/cleanJsonResponse.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/composeActionExamples.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/composeContext.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/composeRandomUser.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/configureSettings.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/createGoal.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/createRelationship.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/embed.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/extractAttributes.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/findNearestEnvFile.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/formatActionNames.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/formatActions.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/formatActors.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/formatEvaluatorExampleDescriptions.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/formatEvaluatorExamples.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/formatEvaluatorNames.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/formatEvaluators.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/formatGoalsAsString.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/formatMessages.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/formatPosts.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/formatRelationships.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/formatTimestamp.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/generateCaption.md",
-        "additions": 2,
-        "deletions": 2
-      },
-      {
-        "path": "docs/api/functions/generateImage.md",
-        "additions": 2,
-        "deletions": 2
-      },
-      {
-        "path": "docs/api/functions/generateMessageResponse.md",
-        "additions": 2,
-        "deletions": 2
-      },
-      {
-        "path": "docs/api/functions/generateObject.md",
-        "additions": 2,
-        "deletions": 2
-      },
-      {
-        "path": "docs/api/functions/generateObjectArray.md",
-        "additions": 2,
-        "deletions": 2
-      },
-      {
-        "path": "docs/api/functions/generateObjectDeprecated.md",
-        "additions": 2,
-        "deletions": 2
-      },
-      {
-        "path": "docs/api/functions/generateShouldRespond.md",
-        "additions": 2,
-        "deletions": 2
-      },
-      {
-        "path": "docs/api/functions/generateText.md",
-        "additions": 2,
-        "deletions": 2
-      },
-      {
-        "path": "docs/api/functions/generateTextArray.md",
-        "additions": 2,
-        "deletions": 2
-      },
-      {
-        "path": "docs/api/functions/generateTrueOrFalse.md",
-        "additions": 2,
-        "deletions": 2
-      },
-      {
-        "path": "docs/api/functions/generateTweetActions.md",
-        "additions": 4,
-        "deletions": 2
-      },
-      {
-        "path": "docs/api/functions/getActorDetails.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/getEmbeddingConfig.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/getEmbeddingModelSettings.md",
-        "additions": 2,
-        "deletions": 2
-      },
-      {
-        "path": "docs/api/functions/getEmbeddingType.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/getEmbeddingZeroVector.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/getEndpoint.md",
-        "additions": 2,
-        "deletions": 2
-      },
-      {
-        "path": "docs/api/functions/getEnvVariable.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/getGoals.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/getImageModelSettings.md",
-        "additions": 2,
-        "deletions": 2
-      },
-      {
-        "path": "docs/api/functions/getModelSettings.md",
-        "additions": 2,
-        "deletions": 2
-      },
-      {
-        "path": "docs/api/functions/getProviders.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/getRelationship.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/getRelationships.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/handleProvider.md",
-        "additions": 4,
-        "deletions": 4
-      },
-      {
-        "path": "docs/api/functions/hasEnvVariable.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/loadEnvConfig.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/normalizeJsonString.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/parseActionResponseFromText.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/parseBooleanFromText.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/parseJSONObjectFromText.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/parseJsonArrayFromText.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/parseShouldRespondFromText.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/splitChunks.md",
-        "additions": 4,
-        "deletions": 4
-      },
-      {
-        "path": "docs/api/functions/splitText.md",
-        "additions": 21,
-        "deletions": 0
-      },
-      {
-        "path": "docs/api/functions/stringToUuid.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/trimTokens.md",
-        "additions": 2,
-        "deletions": 2
-      },
-      {
-        "path": "docs/api/functions/truncateToCompleteSentence.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/updateGoal.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/validateCharacterConfig.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/validateEnv.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/functions/validateUuid.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/index.md",
-        "additions": 2,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/interfaces/Account.md",
-        "additions": 7,
-        "deletions": 7
-      },
-      {
-        "path": "docs/api/interfaces/Action.md",
-        "additions": 8,
-        "deletions": 8
-      },
-      {
-        "path": "docs/api/interfaces/ActionExample.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/interfaces/ActionResponse.md",
-        "additions": 5,
-        "deletions": 5
-      },
-      {
-        "path": "docs/api/interfaces/Actor.md",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/api/interfaces/ChunkRow.md",
-        "additions": 2,
-        "deletions": 2
-      },
-      {
-        "path": "docs/api/interfaces/Content.md",
+        "path": "i18n/readme/README_UA.md",
         "additions": 1,
         "deletions": 1
       }
     ],
-    "reviews": [],
+    "reviews": [
+      {
+        "id": "PRR_kwDOMT5cIs6eRnrX",
+        "author": "odilitime",
+        "body": "",
+        "state": "APPROVED"
+      }
+    ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6gfVFs",
+        "id": "IC_kwDOMT5cIs6ghPO8",
         "author": "coderabbitai",
         "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- This is an auto-generated comment: skip review by coderabbit.ai -->\n\n> [!IMPORTANT]\n> ## Review skipped\n> \n> Auto reviews are disabled on this repository.\n> \n> Please check the settings in the CodeRabbit UI or the `.coderabbit.yaml` file in this repository. To trigger a single review, invoke the `@coderabbitai review` command.\n> \n> You can disable this status message by setting the `reviews.review_status` to `false` in the CodeRabbit configuration file.\n\n<!-- end of auto-generated comment: skip review by coderabbit.ai -->\n<!-- tips_start -->\n\n---\n\nThank you for using CodeRabbit. We offer it for free to the OSS community and would appreciate your support in helping us grow. If you find it useful, would you consider giving us a shout-out on your favorite social media?\n\n<details>\n<summary>❤️ Share</summary>\n\n- [X](https://twitter.com/intent/tweet?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A&url=https%3A//coderabbit.ai)\n- [Mastodon](https://mastodon.social/share?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A%20https%3A%2F%2Fcoderabbit.ai)\n- [Reddit](https://www.reddit.com/submit?title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&text=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code.%20Check%20it%20out%3A%20https%3A//coderabbit.ai)\n- [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcoderabbit.ai&mini=true&title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&summary=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code)\n\n</details>\n\n<details>\n<summary>🪧 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR.\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
       },
       {
-        "id": "IC_kwDOMT5cIs6gfVF0",
+        "id": "IC_kwDOMT5cIs6ghPPC",
         "author": "graphite-app",
-        "body": "## How to use the Graphite Merge Queue\n\nAdd either label to this PR to merge it via the merge queue:\n- <kbd>merge-queue</kbd> - adds this PR to the back of the merge queue\n- <kbd>merge-queue-hotfix</kbd> - for urgent hot fixes, skip the queue and merge this PR next\n\nYou must have a Graphite account in order to use the merge queue. Sign up using [this link](https://app.graphite.dev/invite/github/elizaOS?ref=merge-queue-instructions-comment&prId=5946229120).\n\n<h2></h2>\n<sub>\n\nAn organization admin has enabled the [Graphite Merge Queue](https://graphite.dev/docs/graphite-merge-queue) in this repository.\n\n</sub>\n\n<sub>\n\nPlease do not merge from GitHub as this will restart CI on PRs being processed by the merge queue.\n\n</sub>"
-      }
-    ]
-  },
-  {
-    "id": "PR_kwDOMT5cIs6NDcme",
-    "number": 3738,
-    "title": "chore: bump ver to 0.25.9",
-    "body": "",
-    "state": "MERGED",
-    "merged": true,
-    "createdAt": "2025-03-02T05:28:53Z",
-    "updatedAt": "2025-03-02T05:30:39Z",
-    "author": {
-      "login": "odilitime",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/16395496?u=c9bac48e632aae594a0d85aaf9e9c9c69b674d8b&v=4"
-    },
-    "labels": [],
-    "files": [
-      {
-        "path": "agent/package.json",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "docs/package.json",
-        "additions": 3,
-        "deletions": 5
-      },
-      {
-        "path": "lerna.json",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "packages/adapter-sqlite/package.json",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "packages/cli/package.json",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "packages/client-direct/package.json",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "packages/core/package.json",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "packages/plugin-bootstrap/package.json",
-        "additions": 1,
-        "deletions": 1
-      },
-      {
-        "path": "pnpm-lock.yaml",
-        "additions": 377,
-        "deletions": 294
-      }
-    ],
-    "reviews": [],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6gfU2m",
-        "author": "coderabbitai",
-        "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- This is an auto-generated comment: skip review by coderabbit.ai -->\n\n> [!IMPORTANT]\n> ## Review skipped\n> \n> Auto reviews are disabled on this repository.\n> \n> Please check the settings in the CodeRabbit UI or the `.coderabbit.yaml` file in this repository. To trigger a single review, invoke the `@coderabbitai review` command.\n> \n> You can disable this status message by setting the `reviews.review_status` to `false` in the CodeRabbit configuration file.\n\n<!-- end of auto-generated comment: skip review by coderabbit.ai -->\n<!-- tips_start -->\n\n---\n\nThank you for using CodeRabbit. We offer it for free to the OSS community and would appreciate your support in helping us grow. If you find it useful, would you consider giving us a shout-out on your favorite social media?\n\n<details>\n<summary>❤️ Share</summary>\n\n- [X](https://twitter.com/intent/tweet?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A&url=https%3A//coderabbit.ai)\n- [Mastodon](https://mastodon.social/share?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A%20https%3A%2F%2Fcoderabbit.ai)\n- [Reddit](https://www.reddit.com/submit?title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&text=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code.%20Check%20it%20out%3A%20https%3A//coderabbit.ai)\n- [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcoderabbit.ai&mini=true&title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&summary=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code)\n\n</details>\n\n<details>\n<summary>🪧 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR.\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
-      }
-    ]
-  },
-  {
-    "id": "PR_kwDOMT5cIs6NDZfY",
-    "number": 3737,
-    "title": "fix: CLI handle plugin dependencies / trusdb",
-    "body": "# Risks\r\n\r\nLow\r\n\r\n# Background\r\n\r\n## What does this PR do?\r\n\r\nfixes\r\n```\r\nMaking sure plugin has access to @elizaos/core\r\nUpdating plugins package.json name to @elizaos-plugins/elizaos-plugin-multichain\r\nAdding plugin @elizaos-plugins/plugin-multichain to agent/package.json\r\nerror Error: Command failed: pnpm add @elizaos-plugins/plugin-multichain@workspace:* --filter ./agent\r\n    at genericNodeError (node:internal/errors:983:15)\r\n    at wrappedFn (node:internal/errors:537:14)\r\n    at checkExecSyncError (node:child_process:882:11)\r\n    at execSync (node:child_process:954:15)\r\n    at Command.<anonymous> (/Users/anon/Projects/eliza-hackathon/packages/cli/index.js:129:38)\r\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {\r\n  status: 1,\r\n  signal: null,\r\n  output: [\r\n    null,\r\n    <Buffer 2e 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 7c 20 e2 80 89 57 41 52 4e ... 686 more bytes>,\r\n    <Buffer >\r\n  ],\r\n  pid: 98376,\r\n  stdout: <Buffer 2e 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 7c 20 e2 80 89 57 41 52 4e ... 686 more bytes>,\r\n  stderr: <Buffer >\r\n}\r\n@elizaos-plugins/plugin-multichain attempted installation is complete\r\nRemember to add it to your character file's plugin field: [\"@elizaos-plugins/plugin-multichain\"]\r\n[ble: elapsed 12.028s (CPU 93.3%)] npx elizaos plugins add @elizaos-plugins/pl\r\n```\r\n\r\n## What kind of change is this?\r\n\r\nBug fixes (non-breaking change which fixes an issue)\r\n\r\n## Why are we doing this? Any context or related work?\r\n\r\nMake sure plugin installation is easy as possible for as many plugins as possible\r\n\r\n# Documentation changes needed?\r\n\r\nMy changes do not require a change to the project documentation.\r\n",
-    "state": "MERGED",
-    "merged": true,
-    "createdAt": "2025-03-02T04:39:44Z",
-    "updatedAt": "2025-03-02T04:43:31Z",
-    "author": {
-      "login": "odilitime",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/16395496?u=c9bac48e632aae594a0d85aaf9e9c9c69b674d8b&v=4"
-    },
-    "labels": [],
-    "files": [
-      {
-        "path": "packages/cli/index.js",
-        "additions": 86,
-        "deletions": 30
-      }
-    ],
-    "reviews": [],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6gfR69",
-        "author": "coderabbitai",
-        "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- This is an auto-generated comment: skip review by coderabbit.ai -->\n\n> [!IMPORTANT]\n> ## Review skipped\n> \n> Auto reviews are disabled on this repository.\n> \n> Please check the settings in the CodeRabbit UI or the `.coderabbit.yaml` file in this repository. To trigger a single review, invoke the `@coderabbitai review` command.\n> \n> You can disable this status message by setting the `reviews.review_status` to `false` in the CodeRabbit configuration file.\n\n<!-- end of auto-generated comment: skip review by coderabbit.ai -->\n<!-- tips_start -->\n\n---\n\nThank you for using CodeRabbit. We offer it for free to the OSS community and would appreciate your support in helping us grow. If you find it useful, would you consider giving us a shout-out on your favorite social media?\n\n<details>\n<summary>❤️ Share</summary>\n\n- [X](https://twitter.com/intent/tweet?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A&url=https%3A//coderabbit.ai)\n- [Mastodon](https://mastodon.social/share?text=I%20just%20used%20%40coderabbitai%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20the%20proprietary%20code.%20Check%20it%20out%3A%20https%3A%2F%2Fcoderabbit.ai)\n- [Reddit](https://www.reddit.com/submit?title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&text=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code.%20Check%20it%20out%3A%20https%3A//coderabbit.ai)\n- [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcoderabbit.ai&mini=true&title=Great%20tool%20for%20code%20review%20-%20CodeRabbit&summary=I%20just%20used%20CodeRabbit%20for%20my%20code%20review%2C%20and%20it%27s%20fantastic%21%20It%27s%20free%20for%20OSS%20and%20offers%20a%20free%20trial%20for%20proprietary%20code)\n\n</details>\n\n<details>\n<summary>🪧 Tips</summary>\n\n### Chat\n\nThere are 3 ways to chat with [CodeRabbit](https://coderabbit.ai):\n\n- Review comments: Directly reply to a review comment made by CodeRabbit. Example:\n  - `I pushed a fix in commit <commit_id>, please review it.`\n  - `Generate unit testing code for this file.`\n  - `Open a follow-up GitHub issue for this discussion.`\n- Files and specific lines of code (under the \"Files changed\" tab): Tag `@coderabbitai` in a new review comment at the desired location with your query. Examples:\n  - `@coderabbitai generate unit testing code for this file.`\n  -\t`@coderabbitai modularize this function.`\n- PR comments: Tag `@coderabbitai` in a new PR comment to ask questions about the PR branch. For the best results, please provide a very specific query, as very limited context is provided in this mode. Examples:\n  - `@coderabbitai gather interesting stats about this repository and render them as a table. Additionally, render a pie chart showing the language distribution in the codebase.`\n  - `@coderabbitai read src/utils.ts and generate unit testing code.`\n  - `@coderabbitai read the files in the src/scheduler package and generate a class diagram using mermaid and a README in the markdown format.`\n  - `@coderabbitai help me debug CodeRabbit configuration file.`\n\nNote: Be mindful of the bot's finite context window. It's strongly recommended to break down tasks such as reading entire modules into smaller chunks. For a focused discussion, use review comments to chat about specific files and their changes, instead of using the PR comments.\n\n### CodeRabbit Commands (Invoked using PR comments)\n\n- `@coderabbitai pause` to pause the reviews on a PR.\n- `@coderabbitai resume` to resume the paused reviews.\n- `@coderabbitai review` to trigger an incremental review. This is useful when automatic reviews are disabled for the repository.\n- `@coderabbitai full review` to do a full review from scratch and review all the files again.\n- `@coderabbitai summary` to regenerate the summary of the PR.\n- `@coderabbitai generate docstrings` to [generate docstrings](https://docs.coderabbit.ai/finishing-touches/docstrings) for this PR.\n- `@coderabbitai resolve` resolve all the CodeRabbit review comments.\n- `@coderabbitai configuration` to show the current CodeRabbit configuration for the repository.\n- `@coderabbitai help` to get help.\n\n### Other keywords and placeholders\n\n- Add `@coderabbitai ignore` anywhere in the PR description to prevent this PR from being reviewed.\n- Add `@coderabbitai summary` to generate the high-level summary at a specific location in the PR description.\n- Add `@coderabbitai` anywhere in the PR title to generate the title automatically.\n\n### CodeRabbit Configuration File (`.coderabbit.yaml`)\n\n- You can programmatically configure CodeRabbit by adding a `.coderabbit.yaml` file to the root of your repository.\n- Please see the [configuration documentation](https://docs.coderabbit.ai/guides/configure-coderabbit) for more information.\n- If your editor has YAML language server enabled, you can add the path at the top of this file to enable auto-completion and validation: `# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json`\n\n### Documentation and Community\n\n- Visit our [Documentation](https://docs.coderabbit.ai) for detailed information on how to use CodeRabbit.\n- Join our [Discord Community](http://discord.gg/coderabbit) to get help, request features, and share feedback.\n- Follow us on [X/Twitter](https://twitter.com/coderabbitai) for updates and announcements.\n\n</details>\n\n<!-- tips_end -->"
+        "body": "## How to use the Graphite Merge Queue\n\nAdd either label to this PR to merge it via the merge queue:\n- <kbd>merge-queue</kbd> - adds this PR to the back of the merge queue\n- <kbd>merge-queue-hotfix</kbd> - for urgent hot fixes, skip the queue and merge this PR next\n\nYou must have a Graphite account in order to use the merge queue. Sign up using [this link](https://app.graphite.dev/invite/github/elizaOS?ref=merge-queue-instructions-comment&prId=5950353252).\n\n<h2></h2>\n<sub>\n\nAn organization admin has enabled the [Graphite Merge Queue](https://graphite.dev/docs/graphite-merge-queue) in this repository.\n\n</sub>\n\n<sub>\n\nPlease do not merge from GitHub as this will restart CI on PRs being processed by the merge queue.\n\n</sub>"
       }
     ]
   }

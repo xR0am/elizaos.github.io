@@ -1,66 +1,72 @@
 {
-  "title": "elizaos Eliza (2025-03-02)",
-  "version": "bump ver to 0.25.9",
-  "overview": "Development focused on package improvements (CLI handle plugin dependencies / trusdb), 1 bug fixes. with 7 contributors merging 6 PRs. Major work included various improvements.",
+  "title": "elizaos Eliza (2025-03-03)",
+  "version": "bump lock",
+  "overview": "Development focused on package improvements (client chat), new features (set proxy by  env AGENT_PROXY), 5 bug fixes. with 9 contributors merging 11 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 7,
-    "merged_prs": 6,
+    "contributors": 9,
+    "merged_prs": 11,
     "new_issues": 1,
-    "lines_changed": 3336
+    "lines_changed": 2958
   },
   "changes": {
-    "features": [],
+    "features": [
+      "set proxy by  env AGENT_PROXY",
+      "add registerMiddleware"
+    ],
     "fixes": [
-      "CLI handle plugin dependencies / trusdb"
+      "gui speech to text",
+      "client chat",
+      "small client fix"
     ],
     "chores": [
-      "dev =>  main (rel 0.25.9 prep)",
-      "bump ver to 0.25.9"
+      "bump lock"
     ]
   },
   "areas": [
     {
-      "name": "docs",
-      "files": 96,
-      "additions": 267,
-      "deletions": 223
-    },
-    {
       "name": "packages",
-      "files": 28,
-      "additions": 1147,
-      "deletions": 878
+      "files": 64,
+      "additions": 1480,
+      "deletions": 1293
     },
     {
       "name": "root",
-      "files": 4,
-      "additions": 426,
-      "deletions": 295
+      "files": 3,
+      "additions": 9,
+      "deletions": 2
+    },
+    {
+      "name": "agent",
+      "files": 2,
+      "additions": 117,
+      "deletions": 55
     }
   ],
-  "issues_summary": "working on 1 bugs including 'RAG processFile attempts to embed entire files causing errors for large documents'",
+  "issues_summary": "",
   "questions": [],
   "top_contributors": [
     {
-      "name": "odilitime",
-      "summary": "odilitime is currently working on updating the version to 0",
-      "areas": [
-        "pnpm-lock.yaml",
-        "docs",
-        "agent"
-      ]
-    },
-    {
-      "name": "wtfsayo",
-      "summary": "wtfsayo is currently working on merging the agent and character in a recent pull request",
+      "name": "tcm390",
+      "summary": "tcm390 is currently working on fixing issues related to the GUI, speech-to-text functionality, and client chat in the packages code area",
       "areas": [
         "packages"
       ]
     },
     {
-      "name": "omikolaj",
-      "summary": "omikolaj is currently addressing a bug related to the RAG processFile function, which is attempting to embed entire files and causing errors for large documents",
-      "areas": []
+      "name": "v1xingyue",
+      "summary": "v1xingyue is currently working on adding new features to the project, including setting the proxy using environment variables and implementing a registerMiddleware function",
+      "areas": [
+        "packages",
+        "agent",
+        ".env.example"
+      ]
+    },
+    {
+      "name": "wtfsayo",
+      "summary": "wtfsayo is currently working on allowing delete with null, fixing delete issues, and improving server APIs and server functionality in the packages code area",
+      "areas": [
+        "packages"
+      ]
     }
   ]
 }

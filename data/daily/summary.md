@@ -1,42 +1,43 @@
-# elizaos Eliza (2025-03-02)
+# elizaos Eliza (2025-03-03)
     
 ## 📊 Overview
-Development focused on package improvements (CLI handle plugin dependencies / trusdb), 1 bug fixes. with 7 contributors merging 6 PRs. Major work included various improvements.
+Development focused on package improvements (client chat), new features (set proxy by  env AGENT_PROXY), 5 bug fixes. with 9 contributors merging 11 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 7 |
-| 📝 Commits | 3 |
-| 🔄 Merged PRs | 6 |
+| 👥 Contributors | 9 |
+| 📝 Commits | 0 |
+| 🔄 Merged PRs | 11 |
 | ⚠️ New Issues | 1 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 2
-- 🐛 **Fixes**: 1
-- ✨ **Features**: 0
+- 🧹 **Chores**: 1
+- 🐛 **Fixes**: 5
+- ✨ **Features**: 2
 
 ## 📁 File Changes
-- **packages**: 28 files (+1147/-878 lines)
-- **root**: 4 files (+426/-295 lines)
-- **docs**: 96 files (+267/-223 lines)
-- **agent**: 4 files (+73/-27 lines)
+- **packages**: 64 files (+1480/-1293 lines)
+- **agent**: 2 files (+117/-55 lines)
+- **root**: 3 files (+9/-2 lines)
+- **i18n**: 1 files (+1/-1 lines)
 
 ## 🔥 Notable Changes
-- chore: dev =>  main (rel 0.25.9 prep)
-- chore: bump ver to 0.25.9
-- fix: CLI handle plugin dependencies / trusdb
+- fix: gui speech to text
+- fix: client chat
+- fix: small client fix
 
 ## 👥 Top Contributors
-- **odilitime**: odilitime is currently working on updating the version to 0
-- **wtfsayo**: wtfsayo is currently working on merging the agent and character in a recent pull request
-- **omikolaj**: omikolaj is currently addressing a bug related to the RAG processFile function, which is attempting to embed entire files and causing errors for large documents
+- **tcm390**: tcm390 is currently working on fixing issues related to the GUI, speech-to-text functionality, and client chat in the packages code area
+- **v1xingyue**: v1xingyue is currently working on adding new features to the project, including setting the proxy using environment variables and implementing a registerMiddleware function
+- **wtfsayo**: wtfsayo is currently working on allowing delete with null, fixing delete issues, and improving server APIs and server functionality in the packages code area
 
 ## ⚠️ Issues
 - **New Issues**: 1
-- **Labels**: `bug` (1)
-- **Summary**: 1 bugs reported (including 'RAG processFile attempts to embed entire files causing errors for large documents').
+- **Labels**: 
+- **Summary**: .
 
 ## Top Contributors
-- **odilitime**: chore: dev =>  main (rel 0.25.9 prep)
-- **wtfsayo**: audio api related semantic updates
+- **tcm390**: fix: gui speech to text
+- **v1xingyue**: feat: set proxy by  env AGENT_PROXY
+- **wtfsayo**: fix-delete issues
