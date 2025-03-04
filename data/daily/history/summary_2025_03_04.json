@@ -1,45 +1,42 @@
 {
-  "title": "elizaos Eliza (2025-03-03)",
-  "version": "bump lock",
-  "overview": "Development focused on package improvements (client chat), new features (set proxy by  env AGENT_PROXY), 5 bug fixes. with 9 contributors merging 11 PRs. Major work included various improvements.",
+  "title": "elizaos Eliza (2025-03-04)",
+  "version": "",
+  "overview": "Development focused on package improvements (remove duplicate documentation in plugins.md), new features (add button for directing to home/chat page), 2 bug fixes. with 6 contributors merging 5 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 9,
-    "merged_prs": 11,
-    "new_issues": 1,
-    "lines_changed": 2958
+    "contributors": 6,
+    "merged_prs": 5,
+    "new_issues": 0,
+    "lines_changed": 260
   },
   "changes": {
     "features": [
-      "set proxy by  env AGENT_PROXY",
-      "add registerMiddleware"
+      "add button for directing to home/chat page",
+      "optimize fact retrieval, env fix, reflection guard"
     ],
     "fixes": [
-      "gui speech to text",
-      "client chat",
-      "small client fix"
+      "api issues",
+      "build error"
     ],
-    "chores": [
-      "bump lock"
-    ]
+    "chores": []
   },
   "areas": [
     {
       "name": "packages",
-      "files": 64,
-      "additions": 1480,
-      "deletions": 1293
+      "files": 8,
+      "additions": 85,
+      "deletions": 133
+    },
+    {
+      "name": "docs",
+      "files": 1,
+      "additions": 0,
+      "deletions": 40
     },
     {
       "name": "root",
-      "files": 3,
-      "additions": 9,
-      "deletions": 2
-    },
-    {
-      "name": "agent",
-      "files": 2,
-      "additions": 117,
-      "deletions": 55
+      "files": 1,
+      "additions": 2,
+      "deletions": 0
     }
   ],
   "issues_summary": "",
@@ -47,26 +44,22 @@
   "top_contributors": [
     {
       "name": "tcm390",
-      "summary": "tcm390 is currently working on fixing issues related to the GUI, speech-to-text functionality, and client chat in the packages code area",
+      "summary": "tcm390 is currently working on adding a new button for directing users to the home/chat page, fixing API issues, and resolving build errors in the packages code area",
       "areas": [
         "packages"
       ]
     },
     {
-      "name": "v1xingyue",
-      "summary": "v1xingyue is currently working on adding new features to the project, including setting the proxy using environment variables and implementing a registerMiddleware function",
+      "name": "notorious-d-e-v",
+      "summary": "notorious-d-e-v is currently working on removing duplicate documentation in the plugins",
       "areas": [
-        "packages",
-        "agent",
-        ".env.example"
+        "docs"
       ]
     },
     {
-      "name": "wtfsayo",
-      "summary": "wtfsayo is currently working on allowing delete with null, fixing delete issues, and improving server APIs and server functionality in the packages code area",
-      "areas": [
-        "packages"
-      ]
+      "name": "YoungPhlo",
+      "summary": "YoungPhlo is currently working on updating documentation for the project, including adding meeting notes for weekly contributor meetings and \"What Did You Get Done This Week?\" notes",
+      "areas": []
     }
   ]
 }

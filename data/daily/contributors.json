@@ -2,7 +2,7 @@
   {
     "contributor": "tcm390",
     "score": 35,
-    "summary": "tcm390 is currently working on adding a new button for directing users to the home/chat page, fixing API issues, and resolving build errors in the packages code area. They have successfully merged all three pull requests related to these tasks.",
+    "summary": "tcm390 is currently working on adding a button for directing to the home/chat page and resolving API issues and build errors in the packages code area. They have successfully merged all three pull requests related to these tasks.",
     "avatar_url": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4",
     "activity": {
       "code": {
@@ -112,7 +112,7 @@
   {
     "contributor": "notorious-d-e-v",
     "score": 18,
-    "summary": "notorious-d-e-v is currently working on removing duplicate documentation in the plugins.md file. This is their most recent activity on GitHub, with one pull request successfully merged in the docs code area.",
+    "summary": "notorious-d-e-v is currently working on removing duplicate documentation in the plugins.md file. This is their most recent activity on GitHub, with one pull request successfully merged in the documentation area.",
     "avatar_url": "https://avatars.githubusercontent.com/u/189247757?u=57d631abf52f54843d1e3e9b3311d5ca4820429a&v=4",
     "activity": {
       "code": {
@@ -175,7 +175,7 @@
   {
     "contributor": "YoungPhlo",
     "score": 11,
-    "summary": "YoungPhlo is currently working on updating documentation for the project, including adding meeting notes for weekly contributor meetings and \"What Did You Get Done This Week?\" notes. They have made 2 pull requests related to documentation, but none have been merged yet.",
+    "summary": "YoungPhlo is currently working on updating documentation by adding meeting notes for weekly contributor meetings and \"What Did You Get Done This Week?\" notes. The focus of their recent activity is on enhancing the documentation for the project.",
     "avatar_url": "https://avatars.githubusercontent.com/u/90307961?u=2e7b36c41a4576a4720529da97a57280df102b28&v=4",
     "activity": {
       "code": {
@@ -255,7 +255,7 @@
   {
     "contributor": "odilitime",
     "score": 10,
-    "summary": "odilitime is currently working on optimizing fact retrieval, fixing environment issues, and implementing reflection guards in the packages code area. They have recently contributed one pull request, which has been successfully merged.",
+    "summary": "odilitime is currently working on optimizing fact retrieval, fixing environment issues, and implementing reflection guards in the packages code area. They have recently submitted one pull request, which has been merged successfully.",
     "avatar_url": "https://avatars.githubusercontent.com/u/16395496?u=c9bac48e632aae594a0d85aaf9e9c9c69b674d8b&v=4",
     "activity": {
       "code": {
@@ -318,7 +318,7 @@
   {
     "contributor": "0xbbjoker",
     "score": 5,
-    "summary": "0xbbjoker is currently working on a pull request titled \"fix static migrations\" in the packages code area. The pull request has not been merged yet, and there have been no commits or code changes associated with this activity.",
+    "summary": "0xbbjoker is currently working on fixing static migrations in the scripts and packages code areas, with one pull request submitted but not yet merged.",
     "avatar_url": "https://avatars.githubusercontent.com/u/54844437?v=4",
     "activity": {
       "code": {
@@ -332,13 +332,13 @@
             "state": "OPEN",
             "merged": false,
             "created_at": "2025-03-04T17:42:23Z",
-            "updated_at": "2025-03-04T19:34:42Z",
-            "body": "# Risks\r\nLow risk. This PR fixes static migration functionality for both PostgreSQL and PGlite, improving reliability when running database migrations.\r\n\r\n## Background\r\n### What does this PR do?\r\nThis PR fixes issues in the database migration process for both PostgreSQL and PGlite. The changes include:\r\n1. Improved error handling and proper process exit codes in the migration runner\r\n1. Better resource management (connection closing) for both database types\r\n1. More consistent logging between PostgreSQL and PGlite migrations\r\n1. Fixed client release in the PostgreSQL connection manager\r\n1. Added proper shutdown handling for PGlite to prevent hanging processes\r\n\r\n## Important Workflow Information\r\n**Correct setup process for a fresh project:**\r\n1. Build the project first\r\n1. Run migrations with `bun migrate` from the root\r\n1. Then run `bun swarm` from the root\r\n\r\n**Issue with alternative approach:**\r\nIf you try to run bun run migrate followed by cd packages/agent bun start -- --swar, it won't work correctly. This is because bun swarm triggers a rebuild after migrations complete, which creates conflicts with the previous migration process.\r\n\r\nThis PR addresses some of the underlying issues in the migration process, but users should still follow the recommended workflow to avoid build-related problems.\r\n\r\n## What kind of change is this?\r\nBug fixes (non-breaking change which fixes an issue)\r\n\r\n## Documentation changes needed?\r\nMy changes do not require a change to the project documentation.\r\n\r\n## Testing\r\n### Where should a reviewer start?\r\n1. Review the packages/plugin-sql/src/migrate.ts file to understand the migration flow\r\n1. Check the connection management in both PostgreSQL and PGlite managers\r\n1. Verify error handling and resource cleanup\r\n\r\n### Detailed testing steps\r\n* Run the migration script with different database configurations:\r\n  * Configure a PostgreSQL connection to test Postgres migrations\r\n  * Run with PGlite configuration to verify PGlite migrations\r\n* Verify error handling by intentionally causing a migration failure\r\n* Check that connections are properly closed in all scenarios\r\n* **Important**: Test the complete workflow for a fresh project:\r\n  1. Build the project\r\n  1. Run migrations with bun migrate\r\n  1. Start the application with bun swarm\r\n  1. Verify everything works correctly\r\n* **Verify problematic workflow is addressed:**\r\n  1. Try running bun run migrate followed by cd packages/agent bun start -- --swarm\r\n  1. Observe and confirm the improved behavior with the fixes in this PR",
+            "updated_at": "2025-03-04T23:24:32Z",
+            "body": "# Migration System Improvements\r\n\r\n## Overview\r\nThis PR enhances the database migration system to support both PostgreSQL and PGlite databases with improved reliability and flexibility.\r\n\r\n## Key Improvements\r\n* **Environment-Aware Migrations**: Migrations now properly read from .env at runtime instead of build time\r\n* **Direct Migration Script**: Added a bash script that bypasses Turbo's caching, allowing database switching without --force rebuilds\r\n* **Improved Error Handling**: Better error handling with proper process exit codes\r\n* **Resource Management**: Proper connection closing for both database types\r\n* **Consistent Logging**: Standardized logging between PostgreSQL and PGlite operations\r\n\r\n## Workflow Recommendations\r\n\r\n### Correct Setup Process\r\n1. Build the project: `bun build`\r\n2. Run migrations using the direct script: `bun migrate:direct`\r\n3. Start the application: `bun swarm`\r\n\r\n### Environment Configuration\r\nThe migration system now properly reads the database configuration from .env at runtime, allowing you to:\r\n* Switch between PostgreSQL and PGlite without rebuilding\r\n* Configure database connections without touching the codebase\r\n* Run migrations consistently regardless of which database was used during build\r\n\r\n### Avoiding Common Issues\r\n* The direct migration script (`bun migrate:direct`) should be used instead of the Turbo-based approach to avoid caching issues\r\n* This eliminates the need for `--force` flags that could cause build inconsistencies\r\n* Connections are properly closed in all scenarios, preventing resource leaks\r\n\r\n## Testing\r\nWhen testing these changes, verify:\r\n* Migrations work with both PostgreSQL and PGlite configurations\r\n* Switching between database types works without rebuilds\r\n* Error scenarios are properly handled with clean shutdowns\r\n* The application starts correctly after migrations complete",
             "files": [
               {
                 "path": "package.json",
                 "additions": 1,
-                "deletions": 1
+                "deletions": 0
               },
               {
                 "path": "packages/plugin-sql/src/migrate.ts",
@@ -347,8 +347,8 @@
               },
               {
                 "path": "packages/plugin-sql/src/pg-lite/manager.ts",
-                "additions": 18,
-                "deletions": 4
+                "additions": 19,
+                "deletions": 5
               },
               {
                 "path": "packages/plugin-sql/src/pg/manager.ts",
@@ -359,6 +359,11 @@
                 "path": "packages/plugin-sql/src/types.ts",
                 "additions": 0,
                 "deletions": 1
+              },
+              {
+                "path": "scripts/migrate.sh",
+                "additions": 15,
+                "deletions": 0
               }
             ],
             "reviews": [],
@@ -386,7 +391,7 @@
   {
     "contributor": "madjin",
     "score": 2,
-    "summary": "madjin is currently working on improving the quickstart process, plugin showcase, and documentation fixes. They have made one pull request related to documentation, with no code changes or commits.",
+    "summary": "madjin is currently working on improving the quickstart process, updating the plugin showcase, and making documentation fixes in the code areas related to documentation. This work is reflected in a recent pull request that has not been merged yet.",
     "avatar_url": "https://avatars.githubusercontent.com/u/32600939?u=cdcf89f44c7a50906c7a80d889efa85023af2049&v=4",
     "activity": {
       "code": {

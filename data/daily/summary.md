@@ -27,9 +27,9 @@ Development focused on package improvements (remove duplicate documentation in p
 - fix: build error
 
 ## 👥 Top Contributors
-- **tcm390**: tcm390 is currently working on adding a new button for directing users to the home/chat page, fixing API issues, and resolving build errors in the packages code area
+- **tcm390**: tcm390 is currently working on adding a button for directing to the home/chat page and resolving API issues and build errors in the packages code area
 - **notorious-d-e-v**: notorious-d-e-v is currently working on removing duplicate documentation in the plugins
-- **YoungPhlo**: YoungPhlo is currently working on updating documentation for the project, including adding meeting notes for weekly contributor meetings and "What Did You Get Done This Week?" notes
+- **YoungPhlo**: YoungPhlo is currently working on updating documentation by adding meeting notes for weekly contributor meetings and "What Did You Get Done This Week?" notes
 
 ## ⚠️ Issues
 - **New Issues**: 0
