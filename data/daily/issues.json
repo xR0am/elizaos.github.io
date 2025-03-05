@@ -1,1 +1,113 @@
-[]
+[
+  {
+    "id": "I_kwDOMT5cIs6sudat",
+    "number": 3783,
+    "title": "agent won't post to Twitter, Unsupported provider: venice",
+    "body": "**Describe the bug**\n\n<!-- A clear and concise description of what the bug is. -->\n\n**To Reproduce**\n\n<!-- Steps to reproduce the behavior. -->\n\n**Expected behavior**\n\n<!-- A clear and concise description of what you expected to happen. -->\n\n**Screenshots**\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-03-05T16:50:34Z",
+    "updatedAt": "2025-03-05T16:58:59Z",
+    "author": {
+      "login": "Ulysseus",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/10251137?u=aa9b272de836dea86814dafc17c8329a1cc43927&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6hBd2A",
+        "author": "github-actions",
+        "body": "Hello @Ulysseus! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6hBjAu",
+        "author": "Ulysseus",
+        "body": "Agent using the new @elizaos/plugin-twitter will generate tweets and post to Twitter using openai, but if I use the venice api key it fails with the following error,\n\n[2025-03-05 12:08:38] DEBUG: Using provider: venice, model: dolphin-2.9.2-qwen2-72b, temperature: 0.6, max response length: 8192\n[2025-03-05 12:08:38] DEBUG: Initializing Venice model.\n[2025-03-05 12:08:40] DEBUG: Received response from Venice model.\n[2025-03-05 12:08:40] ERROR: Unsupported provider: venice\nError in generateObject: Error: Unsupported provider: venice\n    at handleProvider (file:///Users/don/Documents/Work/eliza/node_modules/.pnpm/@elizaos+core@0.25.6-alpha.1_@google-cloud+vertexai@1.9.3_encoding@0.1.13__@langchain+core@0._zzmnmgzcrxapugpiwkjyihduim/node_modules/@elizaos/core/dist/index.js:37682:13)\n    at generateObject (file:///Users/don/Documents/Work/eliza/node_modules/.pnpm/@elizaos+core@0.25.6-alpha.1_@google-cloud+vertexai@1.9.3_encoding@0.1.13__@langchain+core@0._zzmnmgzcrxapugpiwkjyihduim/node_modules/@elizaos/core/dist/index.js:37609:28)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async composeTweet (file:///Users/don/Documents/Work/eliza/node_modules/.pnpm/@elizaos+plugin-twitter@0.25.6-alpha.1_@google-cloud+vertexai@1.9.3_encoding@0.1.13__@langcha_xz6gqsnczaj64qlrku56omr2ae/node_modules/@elizaos/plugin-twitter/dist/index.js:4097:32)\n    at async Object.handler (file:///Users/don/Documents/Work/eliza/node_modules/.pnpm/@elizaos+plugin-twitter@0.25.6-alpha.1_@google-cloud+vertexai@1.9.3_encoding@0.1.13__@langcha_xz6gqsnczaj64qlrku56omr2ae/node_modules/@elizaos/plugin-twitter/dist/index.js:4200:28)\n    at async AgentRuntime.processActions (file:///Users/don/Documents/Work/eliza/packages/core/dist/index.js:5283:17)\n    at async file:///Users/don/Documents/Work/eliza/packages/client-direct/dist/index.js:558:13\n[2025-03-05 12:08:40] LOG: Creating Memory 06c331cf-66c5-0f41-89eb-2837209b9eca oh, you're asking me what i say? well, i say let's keep this crypto train on track. tweeting away.\n[2025-03-05 12:08:40] SUCCESS: Normalized action: posttweet\n[2025-03-05 12:08:40] INFO: Executing handler for action: POST_TWEET\n[2025-03-05 12:08:40] LOG: Evaluating GET_FACTS\n[2025-03-05 12:08:40] LOG: Evaluating UPDATE_GOAL\n[2025-03-05 12:08:40] ERROR: Error composing tweet:\n[2025-03-05 12:08:40] ERROR: Error in post action:\n\nLooking at node_modules/.pnpm/@elizaos+core@0.25.6-alpha.1_@google-cloud+vertexai@1.9.3_encoding@0.1.13__@langchain+core@0._zzmnmgzcrxapugpiwkjyihduim/node_modules/@elizaos/core/dist/index.js at lines 37641 its clear there is no option for Venice. From the DEBUG trace it's also clear that it received a response from the Venice model. Which leads me to suspect that the code for Venice is missing from the switch statement\nAlso I can chat with the agent on the  http://localhost:5173/ interface using Venice.\n\nThe way to replicate the error is to setup an agent that uses the Venice API, and see if it can generate a tweet. \n"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6sr3ZB",
+    "number": 3779,
+    "title": "parseJSONObjectFromText broke in or before 0.25.9",
+    "body": "**Describe the bug**\n\n`parseJSONObjectFromText` broke for me in or before 0.25.9\nIt was working OK for me in 0.18\n\nThe problem imo is the `normalizeJSONString` function.\n\n**To Reproduce**\n\n1. Run `node` interpreter in your eliza repo.\n2. Run the following:\n```\nconst { parseJSONObjectFromText, cleanJsonResponse } = await import(\"@elizaos/core\");\n\nlet text = '```json{    \"success\": true,    \"result\": {        \"serviceAdCID\": \"zdpuB1ZVfhZFX4iaVhXkyhTuGUhPA1Ac3LuQdSWe9zcdXrKce\",        \"wallet\": \"9ovkK7WoiSXyEJDM5cZG3or3W95bdzZLDDHhuMgSJT9U\",        \"desiredServiceID\": \"Landing Page Creation\",        \"desiredUnitAmount\": \"1\"    }}```'\n\nparseJSONObjectFromText(text)\n```\nYou will see an error, and then the code tries to handle it by doing `extractAttributes(text)`\nBut `extractAttributesText` cannot handle nested objects.\n\n![Image](https://github.com/user-attachments/assets/2cb0d3bc-c662-4f4b-b3b3-59ab0e2f02a0)\n\n**Expected behavior**\n\nIn my opinion, running the text through `cleanJsonResponse` and then `JSON.parse` should be enough, as `JSON.parse` handles a lot of the stuff that `normalizeJSONString` is trying to handle.\n\nAdditionally, the code should fail if `JSON.parse` can't parse it, instead of trying to fix the problem with `extractAttributesText`.\nThat way the user can fix their AI prompt.\n\n![Image](https://github.com/user-attachments/assets/da93c13d-ede8-4e50-bc83-5e069dfa36b3)\n\n\n**Additional context**\n\nHappy to help with this and write some test cases around it. Documenting the issue in case someone gets to it before me.",
+    "state": "OPEN",
+    "createdAt": "2025-03-05T12:20:46Z",
+    "updatedAt": "2025-03-05T12:21:09Z",
+    "author": {
+      "login": "notorious-d-e-v",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/189247757?u=57d631abf52f54843d1e3e9b3311d5ca4820429a&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6g-pS8",
+        "author": "github-actions",
+        "body": "Hello @notorious-d-e-v! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6sq33W",
+    "number": 3776,
+    "title": "Add create pool, open position and add/remove liquidity in plugin-sui",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\nPlease add more defi basic features in plugin-sui, like:\n- create clmm pool\n- open position with liquidity\n- remove liquidity\n- more..\n\n**Describe the solution you'd like**\nNone\n<!-- A clear and concise description of what you want to happen. -->\n\n**Describe alternatives you've considered**\nNone\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\n**Additional context**\nNone\n<!-- Add any other context or screenshots about the feature request here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-03-05T10:30:17Z",
+    "updatedAt": "2025-03-05T10:30:17Z",
+    "author": {
+      "login": "0xBondSUI",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/173979004?u=06113793a1ef2ee9c138b2c822caa9014699545b&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6sq2aV",
+    "number": 3775,
+    "title": "Support swap in any token pair in plugin-sui",
+    "body": "**Is your feature request related to a problem? Please describe.**\n\nNow, plugin-sui just support swap in sui and usdc, i want to swap between any token pairs.\n\n<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->\n\n**Describe the solution you'd like**\n\n<!-- A clear and concise description of what you want to happen. -->\n\nNone\n\n**Describe alternatives you've considered**\n\n<!-- A clear and concise description of any alternative solutions or features you've considered. -->\n\nNone\n\n**Additional context**\n\n<!-- Add any other context or screenshots about the feature request here. -->\n\nNone\n",
+    "state": "OPEN",
+    "createdAt": "2025-03-05T10:27:56Z",
+    "updatedAt": "2025-03-05T10:28:24Z",
+    "author": {
+      "login": "0xBondSUI",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/173979004?u=06113793a1ef2ee9c138b2c822caa9014699545b&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6g9mSo",
+        "author": "github-actions",
+        "body": "Hello @0xBondSUI! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  }
+]
