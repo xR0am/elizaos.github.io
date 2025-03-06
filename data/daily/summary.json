@@ -1,65 +1,51 @@
 {
-  "title": "elizaos Eliza (2025-03-05)",
+  "title": "elizaos Eliza (2025-03-06)",
   "version": "",
-  "overview": "Development focused on new features (add logs functionality). with 6 contributors merging 4 PRs. Major work included various improvements.",
+  "overview": "with 3 contributors merging 1 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 6,
-    "merged_prs": 4,
-    "new_issues": 4,
-    "lines_changed": 778
+    "contributors": 3,
+    "merged_prs": 1,
+    "new_issues": 0,
+    "lines_changed": 129
   },
   "changes": {
-    "features": [
-      "add logs functionality"
-    ],
+    "features": [],
     "fixes": [],
-    "chores": [
-      "v2 lint and docs build stuff",
-      "v2 specific init changes"
-    ]
+    "chores": []
   },
   "areas": [
     {
-      "name": "packages",
-      "files": 32,
-      "additions": 661,
-      "deletions": 108
-    },
-    {
-      "name": ".github",
+      "name": "root",
       "files": 1,
-      "additions": 3,
+      "additions": 1,
       "deletions": 0
     },
     {
-      "name": "root",
+      "name": "packages",
       "files": 1,
-      "additions": 3,
-      "deletions": 2
+      "additions": 50,
+      "deletions": 78
     }
   ],
-  "issues_summary": "working on 2 bugs including 'agent won't post to Twitter, Unsupported provider: venice', 'parseJSONObjectFromText broke in or before 0.25.9' and implementing 2 feature requests including 'Add create pool, open position and add/remove liquidity in plugin-sui', 'Support swap in any token pair in plugin-sui'",
+  "issues_summary": "",
   "questions": [],
   "top_contributors": [
     {
       "name": "wtfsayo",
-      "summary": "wtfsayo is currently working on improving Docker builds, updating linting and documentation for version 2, making specific initialization changes, and adding functionality for logging in the codebase",
+      "summary": "wtfsayo is currently working on fixing build start issues in the V2 version and updating the CLI to work with newer APIs",
       "areas": [
-        ".github",
-        "packages",
-        "package.json"
+        "package.json",
+        "packages"
       ]
     },
     {
-      "name": "Shelpin",
-      "summary": "Shelpin is currently updating the quickstart documentation with Twitter configurations",
-      "areas": [
-        "docs"
-      ]
+      "name": "HashWarlock",
+      "summary": "HashWarlock is currently working on fixing errors related to Docker configurations, specifically addressing issues with hard-linking files and hard-coded paths in environment files within the \"packages\" code area",
+      "areas": []
     },
     {
-      "name": "0xBondSUI",
-      "summary": "0xBondSUI is currently working on enhancing the plugin-sui by adding features such as creating pools, opening positions, and managing liquidity",
+      "name": "552020",
+      "summary": "552020 is currently working on updating the introduction documentation by fixing a missing space in the intro",
       "areas": []
     }
   ]

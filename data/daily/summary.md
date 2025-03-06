@@ -1,42 +1,37 @@
-# elizaos Eliza (2025-03-05)
+# elizaos Eliza (2025-03-06)
     
 ## 📊 Overview
-Development focused on new features (add logs functionality). with 6 contributors merging 4 PRs. Major work included various improvements.
+with 3 contributors merging 1 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 6 |
+| 👥 Contributors | 3 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 4 |
-| ⚠️ New Issues | 4 |
+| 🔄 Merged PRs | 1 |
+| ⚠️ New Issues | 0 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 2
+- 🧹 **Chores**: 0
 - 🐛 **Fixes**: 0
-- ✨ **Features**: 1
+- ✨ **Features**: 0
 
 ## 📁 File Changes
-- **packages**: 32 files (+661/-108 lines)
-- **root**: 1 files (+3/-2 lines)
-- **.github**: 1 files (+3/-0 lines)
-- **docs**: 1 files (+1/-0 lines)
+- **packages**: 1 files (+50/-78 lines)
+- **root**: 1 files (+1/-0 lines)
 
 ## 🔥 Notable Changes
-- chore: v2 lint and docs build stuff
-- feat: add logs functionality
-- chore: v2 specific init changes
+- fix cli with newer apis
 
 ## 👥 Top Contributors
-- **wtfsayo**: wtfsayo is currently working on improving Docker builds, updating linting and documentation for version 2, making specific initialization changes, and adding functionality for logging in the codebase
-- **Shelpin**: Shelpin is currently updating the quickstart documentation with Twitter configurations
-- **0xBondSUI**: 0xBondSUI is currently working on enhancing the plugin-sui by adding features such as creating pools, opening positions, and managing liquidity
+- **wtfsayo**: wtfsayo is currently working on fixing build start issues in the V2 version and updating the CLI to work with newer APIs
+- **HashWarlock**: HashWarlock is currently working on fixing errors related to Docker configurations, specifically addressing issues with hard-linking files and hard-coded paths in environment files within the "packages" code area
+- **552020**: 552020 is currently working on updating the introduction documentation by fixing a missing space in the intro
 
 ## ⚠️ Issues
-- **New Issues**: 4
-- **Labels**: `enhancement` (2), `bug` (2)
-- **Summary**: 2 bugs reported (including 'agent won't post to Twitter, Unsupported provider: venice', 'parseJSONObjectFromText broke in or before 0.25.9') 2 feature requests (including 'Add create pool, open position and add/remove liquidity in plugin-sui', 'Support swap in any token pair in plugin-sui').
+- **New Issues**: 0
+- **Labels**: 
+- **Summary**: 
 
 ## Top Contributors
-- **wtfsayo**: chore: v2 lint and docs build stuff
-- **Shelpin**: docs: Update quickstart with twitter configs.md
+- **wtfsayo**: fix cli with newer apis
