@@ -2,6 +2,7 @@ import {
   ContributorData,
   PullRequestSchema,
   CommitSchema,
+  PullRequestFileSchema,
   PullRequestReviewSchema,
   IssueSchema,
   CommentSchema,
@@ -92,6 +93,7 @@ export const defaultScoringConfig: ScoringConfig = {
 };
 
 type PR = z.infer<typeof PullRequestSchema>;
+type PRFile = z.infer<typeof PullRequestFileSchema>;
 type Commit = z.infer<typeof CommitSchema>;
 type Review = z.infer<typeof PullRequestReviewSchema>;
 type Issue = z.infer<typeof IssueSchema>;
@@ -135,11 +137,19 @@ const fuzzyMatch = (text: string, patterns: readonly string[]): boolean => {
   });
 };
 
-const calculateImpactMultiplier = (pr: PR, config: ScoringConfig): number => {
+interface CodeChange {
+  files?: PRFile[];
+  title?: string;
+}
+
+const calculateCodeChangeMultiplier = (
+  item: CodeChange,
+  config: ScoringConfig
+): number => {
   let multiplier = 1.0;
 
   // Check file types affected
-  const paths = pr.files?.map((f) => f.path) ?? [];
+  const paths = item.files?.map((f) => f.path) ?? [];
   const hasCore = paths.some(
     (f) => f.includes("src/core") || f.includes("src/lib")
   );
@@ -155,8 +165,8 @@ const calculateImpactMultiplier = (pr: PR, config: ScoringConfig): number => {
   if (hasTests) multiplier *= config.testFileMultiplier;
   if (hasDocs) multiplier *= config.docsFileMultiplier;
 
-  // Check only PR title for impact indicators with fuzzy matching
-  const title = pr.title ?? "";
+  // Check only title for impact indicators with fuzzy matching
+  const title = item.title ?? "";
 
   if (fuzzyMatch(title, impactIndicators.security)) {
     multiplier *= config.securityFixMultiplier;
@@ -190,7 +200,7 @@ const calculatePRPoints = (pr: PR, config: ScoringConfig): number => {
     points += approvedReviews * config.prApprovedReviewPoints;
 
     // Apply impact multiplier
-    points *= calculateImpactMultiplier(pr, config);
+    points *= calculateCodeChangeMultiplier(pr, config);
   }
 
   // Points for review comments
@@ -259,15 +269,9 @@ const calculateCommitPoints = (
   const points = config.baseCommitPoints;
 
   // Add impact multiplier for commits
-  const multiplier = calculateImpactMultiplier(
+  const multiplier = calculateCodeChangeMultiplier(
     {
-      number: 0, // Placeholder
       title: commit.message ?? "",
-      state: "closed",
-      merged: true,
-      created_at: commit.created_at,
-      updated_at: commit.created_at,
-      body: commit.message ?? "",
       files: [
         {
           path: commit.sha,
@@ -275,8 +279,6 @@ const calculateCommitPoints = (
           deletions: commit.deletions,
         },
       ],
-      reviews: [],
-      comments: [],
     },
     config
   );

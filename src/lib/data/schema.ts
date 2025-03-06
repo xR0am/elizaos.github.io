@@ -71,9 +71,13 @@ export const tags = sqliteTable("tags", {
 export const userTagScores = sqliteTable(
   "user_tag_scores",
   {
-    id: text("id").primaryKey(), // username_tag
-    username: text("username").references(() => users.username),
-    tag: text("tag").references(() => tags.name),
+    id: text("id").primaryKey(),
+    username: text("username")
+      .notNull()
+      .references(() => users.username),
+    tag: text("tag")
+      .notNull()
+      .references(() => tags.name),
     score: real("score").notNull().default(0),
     level: integer("level").notNull().default(0),
     progress: real("progress").notNull().default(0),
