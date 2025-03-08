@@ -1,51 +1,66 @@
 {
-  "title": "elizaos Eliza (2025-03-06)",
+  "title": "elizaos Eliza (2025-03-08)",
   "version": "",
-  "overview": "with 3 contributors merging 1 PRs. Major work included various improvements.",
+  "overview": "Development focused on package improvements (update dependency docusaurus-plugin-typedoc to v1.2.3). with 9 contributors merging 26 PRs. Major work included renovate is updating various dependencies across different packages, such as anthropic, @langchain/openai, and bs58, to their latest versions.",
   "metrics": {
-    "contributors": 3,
-    "merged_prs": 1,
+    "contributors": 9,
+    "merged_prs": 26,
     "new_issues": 0,
-    "lines_changed": 129
+    "lines_changed": 6449
   },
   "changes": {
     "features": [],
-    "fixes": [],
-    "chores": []
+    "fixes": [
+      "update pnpm to v9.15.7",
+      "update dependency zod to v3.24.2",
+      "update dependency langchain to ^0.3.11"
+    ],
+    "chores": [
+      "update solana packages to v1.98.0",
+      "update dependency typescript-eslint to ^8.26.0",
+      "update dependency docusaurus-plugin-typedoc to v1.2.3"
+    ]
   },
   "areas": [
     {
-      "name": "root",
-      "files": 1,
-      "additions": 1,
-      "deletions": 0
+      "name": "packages",
+      "files": 115,
+      "additions": 2797,
+      "deletions": 41
     },
     {
-      "name": "packages",
-      "files": 1,
-      "additions": 50,
-      "deletions": 78
+      "name": "root",
+      "files": 10,
+      "additions": 60,
+      "deletions": 80
+    },
+    {
+      "name": "scripts",
+      "files": 8,
+      "additions": 146,
+      "deletions": 108
     }
   ],
   "issues_summary": "",
   "questions": [],
   "top_contributors": [
     {
-      "name": "wtfsayo",
-      "summary": "wtfsayo is currently working on fixing build start issues in the V2 version and updating the CLI to work with newer APIs",
+      "name": "renovate",
+      "summary": "Renovate is updating various dependencies across different packages, such as anthropic, @langchain/openai, and bs58, to their latest versions",
       "areas": [
-        "package.json",
-        "packages"
+        "renovate.json",
+        ".github",
+        "docs"
       ]
     },
     {
-      "name": "HashWarlock",
-      "summary": "HashWarlock is currently working on fixing errors related to Docker configurations, specifically addressing issues with hard-linking files and hard-coded paths in environment files within the \"packages\" code area",
+      "name": "lalalune",
+      "summary": "lalalune is actively merging and updating dependencies across various packages in the project, including typescript-eslint-monorepo, solana-packages, and docker-login-action-digest",
       "areas": []
     },
     {
-      "name": "552020",
-      "summary": "552020 is currently working on updating the introduction documentation by fixing a missing space in the intro",
+      "name": "renovate[bot]",
+      "summary": "renovate[bot] is updating various dependencies across the project, including solana packages, typescript-eslint, and docusaurus-plugin-typedoc",
       "areas": []
     }
   ]

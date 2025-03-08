@@ -1,32 +1,37 @@
-# elizaos Eliza (2025-03-06)
+# elizaos Eliza (2025-03-08)
     
 ## 📊 Overview
-with 3 contributors merging 1 PRs. Major work included various improvements.
+Development focused on package improvements (update dependency docusaurus-plugin-typedoc to v1.2.3). with 9 contributors merging 26 PRs. Major work included renovate is updating various dependencies across different packages, such as anthropic, @langchain/openai, and bs58, to their latest versions.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 3 |
-| 📝 Commits | 0 |
-| 🔄 Merged PRs | 1 |
+| 👥 Contributors | 9 |
+| 📝 Commits | 42 |
+| 🔄 Merged PRs | 26 |
 | ⚠️ New Issues | 0 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 0
+- 🧹 **Chores**: 2
 - 🐛 **Fixes**: 0
 - ✨ **Features**: 0
 
 ## 📁 File Changes
-- **packages**: 1 files (+50/-78 lines)
-- **root**: 1 files (+1/-0 lines)
+- **docs**: 3 files (+2256/-934 lines)
+- **packages**: 115 files (+2797/-41 lines)
+- **scripts**: 8 files (+146/-108 lines)
+- **root**: 10 files (+60/-80 lines)
+- **i18n**: 1 files (+7/-6 lines)
 
 ## 🔥 Notable Changes
-- fix cli with newer apis
+- chore(deps): update solana packages to v1.98.0
+- chore(deps): update dependency typescript-eslint to ^8.26.0
+- chore(deps): update dependency docusaurus-plugin-typedoc to v1.2.3
 
 ## 👥 Top Contributors
-- **wtfsayo**: wtfsayo is currently working on fixing build start issues in the V2 version and updating the CLI to work with newer APIs
-- **HashWarlock**: HashWarlock is currently working on fixing errors related to Docker configurations, specifically addressing issues with hard-linking files and hard-coded paths in environment files within the "packages" code area
-- **552020**: 552020 is currently working on updating the introduction documentation by fixing a missing space in the intro
+- **renovate**: Renovate is updating various dependencies across different packages, such as anthropic, @langchain/openai, and bs58, to their latest versions
+- **lalalune**: lalalune is actively merging and updating dependencies across various packages in the project, including typescript-eslint-monorepo, solana-packages, and docker-login-action-digest
+- **renovate[bot]**: renovate[bot] is updating various dependencies across the project, including solana packages, typescript-eslint, and docusaurus-plugin-typedoc
 
 ## ⚠️ Issues
 - **New Issues**: 0
@@ -34,4 +39,4 @@ with 3 contributors merging 1 PRs. Major work included various improvements.
 - **Summary**: 
 
 ## Top Contributors
-- **wtfsayo**: fix cli with newer apis
+- **renovate**: chore(deps): update solana packages to v1.98.0
