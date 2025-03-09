@@ -1,42 +1,37 @@
-# elizaos Eliza (2025-03-08)
+# elizaos Eliza (2025-03-09)
     
 ## 📊 Overview
-Development focused on package improvements (update dependency docusaurus-plugin-typedoc to v1.2.3). with 9 contributors merging 26 PRs. Major work included renovate is updating various dependencies across different packages, such as anthropic, @langchain/openai, and bs58, to their latest versions.
+with 6 contributors merging 2 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 9 |
-| 📝 Commits | 42 |
-| 🔄 Merged PRs | 26 |
-| ⚠️ New Issues | 0 |
+| 👥 Contributors | 6 |
+| 📝 Commits | 0 |
+| 🔄 Merged PRs | 2 |
+| ⚠️ New Issues | 3 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 2
+- 🧹 **Chores**: 0
 - 🐛 **Fixes**: 0
 - ✨ **Features**: 0
 
 ## 📁 File Changes
-- **docs**: 3 files (+2256/-934 lines)
-- **packages**: 115 files (+2797/-41 lines)
-- **scripts**: 8 files (+146/-108 lines)
-- **root**: 10 files (+60/-80 lines)
-- **i18n**: 1 files (+7/-6 lines)
+- **packages**: 2 files (+4/-1 lines)
 
 ## 🔥 Notable Changes
-- chore(deps): update solana packages to v1.98.0
-- chore(deps): update dependency typescript-eslint to ^8.26.0
-- chore(deps): update dependency docusaurus-plugin-typedoc to v1.2.3
+- fix missing moment rollup external, the-org
+- Add core types.
 
 ## 👥 Top Contributors
-- **renovate**: Renovate is updating various dependencies across different packages, such as anthropic, @langchain/openai, and bs58, to their latest versions
-- **lalalune**: lalalune is actively merging and updating dependencies across various packages in the project, including typescript-eslint-monorepo, solana-packages, and docker-login-action-digest
-- **renovate[bot]**: renovate[bot] is updating various dependencies across the project, including solana packages, typescript-eslint, and docusaurus-plugin-typedoc
+- **ChristopherTrimboli**: ChristopherTrimboli is currently working on fixing a missing moment rollup external in the-org package and adding core types
+- **small-talk**: small-talk is currently working on resolving an issue related to the inability to proceed past the pnpm install and build process
+- **552020**: 552020 is currently working on fixing a bug related to building a Social AI Agent in 15 minutes
 
 ## ⚠️ Issues
-- **New Issues**: 0
-- **Labels**: 
-- **Summary**: 
+- **New Issues**: 3
+- **Labels**: `bug` (2)
+- **Summary**: 2 bugs reported (including 'Fix Building a Social AI Agent in 15 Minutes', 'Error processing tweet undefined').
 
 ## Top Contributors
-- **renovate**: chore(deps): update solana packages to v1.98.0
+- **ChristopherTrimboli**: fix missing moment rollup external, the-org
