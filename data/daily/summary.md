@@ -1,15 +1,15 @@
-# elizaos Eliza (2025-03-09)
+# elizaos Eliza (2025-03-10)
     
 ## 📊 Overview
-with 6 contributors merging 2 PRs. Major work included various improvements.
+with 3 contributors merging 1 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 6 |
+| 👥 Contributors | 3 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 2 |
-| ⚠️ New Issues | 3 |
+| 🔄 Merged PRs | 1 |
+| ⚠️ New Issues | 2 |
 
 ## 🔄 Pull Request Summary
 - 🧹 **Chores**: 0
@@ -17,21 +17,20 @@ with 6 contributors merging 2 PRs. Major work included various improvements.
 - ✨ **Features**: 0
 
 ## 📁 File Changes
-- **packages**: 2 files (+4/-1 lines)
+- **packages**: 1 files (+38/-49 lines)
 
 ## 🔥 Notable Changes
-- fix missing moment rollup external, the-org
-- Add core types.
+- fix chat bubbles
 
 ## 👥 Top Contributors
-- **ChristopherTrimboli**: ChristopherTrimboli is currently working on fixing a missing moment rollup external in the-org package and adding core types
-- **small-talk**: small-talk is currently working on resolving an issue related to the inability to proceed past the pnpm install and build process
-- **552020**: 552020 is currently working on fixing a bug related to building a Social AI Agent in 15 minutes
+- **wtfsayo**: wtfsayo is currently working on fixing chat bubbles in the packages code area
+- **aiden-cao**: aiden-cao is currently working on addressing a bug related to the conversion of JSON null values
+- **aiqubits**: aiqubits is currently working on an issue related to enhancing the 中文AI Agent 社区交流群 community discussion group
 
 ## ⚠️ Issues
-- **New Issues**: 3
-- **Labels**: `bug` (2)
-- **Summary**: 2 bugs reported (including 'Fix Building a Social AI Agent in 15 Minutes', 'Error processing tweet undefined').
+- **New Issues**: 2
+- **Labels**: `bug` (1), `enhancement` (1)
+- **Summary**: 1 bugs reported (including 'Conversion of JSON null values') 1 feature requests (including '中文AI Agent 社区交流群').
 
 ## Top Contributors
-- **ChristopherTrimboli**: fix missing moment rollup external, the-org
+- **wtfsayo**: fix chat bubbles

@@ -1,41 +1,15 @@
 [
   {
-    "id": "I_kwDOMT5cIs6tMQXD",
-    "number": 3882,
-    "title": "Can't get past pnpm install and build.",
-    "body": "I'm stuck with the same issue I was getting with pnpm install (I managed to make this work). I switched to the main eliza from the eliza-starter (because that was not working for me), and now I can't get past the initial pnpm install and build. Both come up with this \"Failed to switch pnpm to v9.15.7. Looks like pnpm CLI is missing at ...\" error. I forced pnpm to switch to v9.15.7 (pnpm --version confirms), and this seemed to get me past install, but here I am again when I try to run the build command.\n\n• Packages in scope: @elizaos-plugins/adapter-sqlite, @elizaos/agent, @elizaos/client-direct, @elizaos/core, @elizaos/plugin-bootstrap, cli, client, dynamic-imports\n• Running build in 8 packages\n• Remote caching disabled\n@elizaos/client-direct:build: cache miss, executing 851b36d4358197d5\n@elizaos/core:build: cache miss, executing 59e600e82c4b2365\n@elizaos/client-direct:build:\n@elizaos/core:build:\n@elizaos/client-direct:build:  ERROR  Failed to switch pnpm to v9.15.7. Looks like pnpm CLI is missing at \"/root/.local/share/pnpm/.tools/pnpm/9.15.7/bin\" or is incorrect\n@elizaos/client-direct:build: spawnSync /root/.local/share/pnpm/.tools/pnpm/9.15.7/bin/pnpm ENOENT\n@elizaos/core:build:  ERROR  Failed to switch pnpm to v9.15.7. Looks like pnpm CLI is missing at \"/root/.local/share/pnpm/.tools/pnpm/9.15.7/bin\" or is incorrect\n@elizaos/core:build: spawnSync /root/.local/share/pnpm/.tools/pnpm/9.15.7/bin/pnpm ENOENT\n@elizaos/core:build: ERROR: command finished with error: command (/root/eliza/packages/core) /root/eliza/node_modules/.bin/pnpm run build exited (1)\n@elizaos/client-direct:build: ERROR: command finished with error: command (/root/eliza/packages/client-direct) /root/eliza/node_modules/.bin/pnpm run build exited (1)\n@elizaos/core#build: command (/root/eliza/packages/core) /root/eliza/node_modules/.bin/pnpm run build exited (1)\n@elizaos/client-direct#build: command (/root/eliza/packages/client-direct) /root/eliza/node_modules/.bin/pnpm run build exited (1)\n\n Tasks:    0 successful, 2 total\nCached:    0 cached, 2 total\n  Time:    1.958s\nFailed:    @elizaos/client-direct#build, @elizaos/core#build\n\n\nWhat seems like it should be simple has turned into a bit of a mess. Any help would be much appreciated.",
+    "id": "I_kwDOMT5cIs6tRfpG",
+    "number": 3886,
+    "title": "Conversion of JSON null values",
+    "body": "**Describe the bug**\n\n{ \"name\": null }  will be converted to { \"name\": \"null\" }\n\n<!-- A clear and concise description of what the bug is. -->\n\n**To Reproduce**\n\n<!-- Steps to reproduce the behavior. -->\n\n**Expected behavior**\n\n<!-- A clear and concise description of what you expected to happen. -->\n\n**Screenshots**\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n",
     "state": "OPEN",
-    "createdAt": "2025-03-09T20:58:34Z",
-    "updatedAt": "2025-03-09T21:05:35Z",
+    "createdAt": "2025-03-10T12:03:14Z",
+    "updatedAt": "2025-03-10T12:04:31Z",
     "author": {
-      "login": "small-talk",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/8185371?v=4"
-    },
-    "labels": [],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6heQjG",
-        "author": "github-actions",
-        "body": "Hello @small-talk! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6heRNA",
-        "author": "small-talk",
-        "body": "I'll add that I'm using Ubuntu on WSL Windows 10"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6tLQeS",
-    "number": 3880,
-    "title": "Fix Building a Social AI Agent in 15 Minutes",
-    "body": "**Describe the bug**\n\nOn the page https://elizaos.github.io/eliza/docs/tutorials/nader_tutorial_15min/\n\n1. The embedded video by Nader Dabit [How to Build a Social AI Agent in 15 minutes with X, Telegram, Onchain Capabilities | Full Tutorial](https://www.youtube.com/watch?v=6PZVwNTl5hI&ab_channel=NaderDabit) seems to be outdated. \n2. The textual description below the video, to setup the Twitter Agent, doesn't follow the video and it's outdated as well. \n\n**To Reproduce**\n\n1. Follow the video and check if it works\n2. Follow the description below the video and check if it works\n\n**Expected behavior**\n\nA tutorial that let developer to build a Social Agent in 15 minutes\n\n**Screenshots**\n\nN/A\n\n**Additional context**\n\nI'm happy to help to fix it, but I'm still working my way through the documentation to understand how to implement the Twitter/X agent. \n\n---\n\nWhat is also a little bit confusing is that in the docs Twitter is described as a Client ...\n\n<img width=\"857\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dd2147a8-707b-4fbe-bd9f-d75934e4239c\" />\n\n\n... but the link brings us to the repo plugins/twitter-client ...\n\n\n<img width=\"1314\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f5e22f87-bb2d-4f59-b3de-81af1b80015b\" />\n\nSo apparently some of the plugins are clients but not all plugins are client. \n\n---\n\nThe doc for the plugins page seems also to be outdated since it uses the package `elizaos-plugins/plugin-twitter`, that probably doesn't exist anymore. \n\n<img width=\"874\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1cef0e85-2561-416a-b992-9644d3fdc446\" />\n\n---\n\nIn the README of the twitter plugin, this snippet is suggested for installation but it's not clear in which file it should be places. I suppose in `src/index.ts` \n\n<img width=\"932\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/42784a1e-f6d7-48c9-a6f9-90112eb99b5e\" />\n\n---\n\n### **Nader Dabit** approach\n\nNadir is creating a new file `mainCharacter` file in `/agent/src` https://github.com/dabit3/ai-agent-cognitivedriftt/blob/main/agent/src/mainCharacter.ts. \n```\nimport { Character, ModelProviderName, Clients } from \"@ai16z/eliza\";\nimport { defaultCharacter } from './defaultCharacter.ts'\n\nexport const mainCharacter: Character = {\n    ...defaultCharacter,\n    clients: [Clients.TWITTER],\n    modelProvider: ModelProviderName.CLAUDE_VERTEX,\n    name: \"cognitivedriftt\",\n}\n```\n1. Eliza has been moved from `@ai16z/eliza`\n2. The Twitter Client is an autonomous plugin now. So ` clients: [Clients.TWITTER],` is not valid anymore. \n\n### Approach in the description below the video\n\n```\nimport { DefaultCharacter } from \"./defaultCharacter\";\nimport { clients } from \"../globalClients\";\n\nexport const mainCharacter = {\n    ...DefaultCharacter,\n    clients: { twitter: clients.twitter },\n    modelProvider: modelProviders.anthropic,\n};\n```\n\nThe `globalClinets` file doesn't exist anymore anywhere in the Eliza repo and it doesn't seem to fit the way we are supposed to integrate the Twitter Plugin/Client as described in the README of https://github.com/elizaos-plugins/client-twitter",
-    "state": "OPEN",
-    "createdAt": "2025-03-09T12:51:15Z",
-    "updatedAt": "2025-03-09T13:12:47Z",
-    "author": {
-      "login": "552020",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/60273337?u=02cfd6f8d6b0bb8b2eaf360ee6df8184a80fce27&v=4"
+      "login": "aiden-cao",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/104969608?u=458182e247a50f5985ff5cfcc2163953c54404b4&v=4"
     },
     "labels": [
       {
@@ -47,38 +21,32 @@
     ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6hdaPp",
+        "id": "IC_kwDOMT5cIs6hjMDW",
         "author": "github-actions",
-        "body": "Hello @552020! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+        "body": "Hello @aiden-cao! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
       }
     ]
   },
   {
-    "id": "I_kwDOMT5cIs6tKJNh",
-    "number": 3877,
-    "title": "Error processing tweet undefined",
-    "body": "i installed plugins: \n    \"@elizaos-plugins/client-twitter\",\n    \"@elizaos-plugins/plugin-ferePro\",\n    \"@elizaos-plugins/plugin-web-search\",\n    \"@elizaos-plugins/plugin-image\"\nall worked perfectly until last launch, i also checked updates and my fork is up to date \nno matter with enabled ragKnowledge or disabled, it failing to process twitter actions. \n\nNODE_OPTIONS=--max-old-space-size=8192 pnpm start --character=\"characters/c3po.character.json\"\n\n> eliza@ start /home/bottomtxt/jphdmain\n> pnpm --filter \"@elizaos/agent\" start --isRoot \"--character=characters/c3po.character.json\"\n\n\n> @elizaos/agent@0.25.9 start /home/bottomtxt/jphdmain/agent\n> node --loader ts-node/esm src/index.ts \"--isRoot\" \"--character=characters/c3po.character.json\"\n\n(node:9032) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\n(node:9032) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n[2025-03-09 00:41:01] INFO: Loading embedding settings:\n    USE_OPENAI_EMBEDDING: \"\"\n    USE_OLLAMA_EMBEDDING: \"\"\n    OLLAMA_EMBEDDING_MODEL: \"mxbai-embed-large\"\n(node:9032) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n[2025-03-09 00:41:01] INFO: Parsed settings:\n    USE_OPENAI_EMBEDDING: \"\"\n    USE_OPENAI_EMBEDDING_TYPE: \"string\"\n    USE_OLLAMA_EMBEDDING: \"\"\n    USE_OLLAMA_EMBEDDING_TYPE: \"string\"\n    OLLAMA_EMBEDDING_MODEL: \"mxbai-embed-large\"\nFailed to import plugin: @elizaos-plugins/client-telegram Error: Cannot find package '@elizaos-plugins/client-telegram' imported from /home/bottomtxt/jphdmain/agent/src/index.ts\n    at packageResolve (/home/bottomtxt/jphdmain/node_modules/.pnpm/ts-node@10.9.2_@swc+core@1.11.4_@swc+helpers@0.5.15__@types+node@22.13.5_typescript@5.8.2/node_modules/ts-node/dist-raw/node-internal-modules-esm-resolve.js:757:9)\n    at moduleResolve (/home/bottomtxt/jphdmain/node_modules/.pnpm/ts-node@10.9.2_@swc+core@1.11.4_@swc+helpers@0.5.15__@types+node@22.13.5_typescript@5.8.2/node_modules/ts-node/dist-raw/node-internal-modules-esm-resolve.js:798:18)\n    at Object.defaultResolve (/home/bottomtxt/jphdmain/node_modules/.pnpm/ts-node@10.9.2_@swc+core@1.11.4_@swc+helpers@0.5.15__@types+node@22.13.5_typescript@5.8.2/node_modules/ts-node/dist-raw/node-internal-modules-esm-resolve.js:912:11)\n    at /home/bottomtxt/jphdmain/node_modules/.pnpm/ts-node@10.9.2_@swc+core@1.11.4_@swc+helpers@0.5.15__@types+node@22.13.5_typescript@5.8.2/node_modules/ts-node/src/esm.ts:218:35\n    at entrypointFallback (/home/bottomtxt/jphdmain/node_modules/.pnpm/ts-node@10.9.2_@swc+core@1.11.4_@swc+helpers@0.5.15__@types+node@22.13.5_typescript@5.8.2/node_modules/ts-node/src/esm.ts:168:34)\n    at /home/bottomtxt/jphdmain/node_modules/.pnpm/ts-node@10.9.2_@swc+core@1.11.4_@swc+helpers@0.5.15__@types+node@22.13.5_typescript@5.8.2/node_modules/ts-node/src/esm.ts:217:14\n    at addShortCircuitFlag (/home/bottomtxt/jphdmain/node_modules/.pnpm/ts-node@10.9.2_@swc+core@1.11.4_@swc+helpers@0.5.15__@types+node@22.13.5_typescript@5.8.2/node_modules/ts-node/src/esm.ts:409:21)\n    at resolve (/home/bottomtxt/jphdmain/node_modules/.pnpm/ts-node@10.9.2_@swc+core@1.11.4_@swc+helpers@0.5.15__@types+node@22.13.5_typescript@5.8.2/node_modules/ts-node/src/esm.ts:197:12)\n    at nextResolve (node:internal/modules/esm/hooks:748:28)\n    at Hooks.resolve (node:internal/modules/esm/hooks:240:30)\n[2025-03-09 00:41:02] INFO: C-3PO loaded plugins: [\n    \"@elizaos-plugins/client-twitter\",\n    \"@elizaos-plugins/plugin-ferePro\",\n    \"@elizaos-plugins/plugin-web-search\",\n    \"@elizaos-plugins/plugin-image\"\n]\n[2025-03-09 00:41:02] INFO: C-3PO(e61b079d-5226-06e9-9763-a33094aa8d82) - Initializing AgentRuntime with options:\n    character: \"C-3PO\"\n    modelProvider: \"openai\"\n    characterModelProvider: \"openai\"\n[2025-03-09 00:41:02] INFO: C-3PO(e61b079d-5226-06e9-9763-a33094aa8d82) - Setting Model Provider:\n    characterModelProvider: \"openai\"\n    optsModelProvider: \"openai\"\n    finalSelection: \"openai\"\n[2025-03-09 00:41:02] INFO: C-3PO(e61b079d-5226-06e9-9763-a33094aa8d82) - Selected model provider: openai\n[2025-03-09 00:41:02] INFO: C-3PO(e61b079d-5226-06e9-9763-a33094aa8d82) - Selected image model provider: openai\n[2025-03-09 00:41:02] INFO: C-3PO(e61b079d-5226-06e9-9763-a33094aa8d82) - Selected image vision model provider: openai\n[2025-03-09 00:41:02] INFO: Initializing SQLite database at /home/bottomtxt/jphdmain/agent/data/db.sqlite...\n[2025-03-09 00:41:02] INFO: Using Database Cache...\n[2025-03-09 00:41:03] INFO: Successfully logged in.\n[2025-03-09 00:41:03] INFO: Caching cookies\n[2025-03-09 00:41:08] INFO: Run `pnpm start:client` to start the client and visit the outputted URL (http://localhost:5173) to chat with your agents. When running multiple agents, use client with different port `SERVER_PORT=3001 pnpm start:client`\n[2025-03-09 00:41:08] WARN: Invalid embedding input:\n    input: \"\"\n    type: \"string\"\n    length: 0\n[2025-03-09 00:41:08] INFO: Generating text with options:\n    modelProvider: \"openai\"\n    model: \"small\"\n[2025-03-09 00:41:08] INFO: Selected model: gpt-4o-mini\n[2025-03-09 00:41:08] WARN: Invalid message for knowledge query:\n    message: {\n      \"userId\": \"e61b079d-5226-06e9-9763-a33094aa8d82\",\n      \"roomId\": \"38153dbc-2563-0b10-9bdd-cdb1e080fca3\",\n      \"agentId\": \"e61b079d-5226-06e9-9763-a33094aa8d82\",\n      \"content\": {\n        \"text\": \"\",\n        \"action\": \"\"\n      }\n    }\n    content: {\n      \"text\": \"\",\n      \"action\": \"\"\n    }\n    text: \"\"\n[2025-03-09 00:41:08] WARN: Invalid embedding input:\n    input: \"\"\n    type: \"string\"\n    length: 0\n[2025-03-09 00:41:08] INFO: Generating text with options:\n    modelProvider: \"openai\"\n    model: \"small\"\n[2025-03-09 00:41:08] INFO: Selected model: gpt-4o-mini\nReceived response from OpenAI model.\n[2025-03-09 00:41:07] ERROR: Error processing tweet undefined:\nReceived response from OpenAI model.\n\n**To Reproduce**\n\n<!-- Steps to reproduce the behavior. -->\n\n**Expected behavior**\n\n<!-- A clear and concise description of what you expected to happen. -->\n\n**Screenshots**\n\n<!-- If applicable, add screenshots to help explain your problem. -->\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n",
+    "id": "I_kwDOMT5cIs6tRAji",
+    "number": 3885,
+    "title": "中文AI Agent 社区交流群",
+    "body": "![Image](https://github.com/user-attachments/assets/46d70eb9-8067-4b77-a6d7-4dab2915e2d5)",
     "state": "OPEN",
-    "createdAt": "2025-03-09T01:08:59Z",
-    "updatedAt": "2025-03-09T01:09:26Z",
+    "createdAt": "2025-03-10T11:12:25Z",
+    "updatedAt": "2025-03-10T11:12:25Z",
     "author": {
-      "login": "fction",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/193834767?v=4"
+      "login": "aiqubits",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/35585232?u=2526b0e5fdcc3bfa289a1b20cc4129b3ccfe00e4&v=4"
     },
     "labels": [
       {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
       }
     ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6hcfID",
-        "author": "github-actions",
-        "body": "Hello @fction! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      }
-    ]
+    "comments": []
   }
 ]
