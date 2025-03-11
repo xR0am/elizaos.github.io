@@ -1,14 +1,14 @@
-# elizaos Eliza (2025-03-10)
+# elizaos Eliza (2025-03-11)
     
 ## 📊 Overview
-with 3 contributors merging 1 PRs. Major work included various improvements.
+with 6 contributors merging 5 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 3 |
+| 👥 Contributors | 6 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 1 |
+| 🔄 Merged PRs | 5 |
 | ⚠️ New Issues | 2 |
 
 ## 🔄 Pull Request Summary
@@ -17,20 +17,23 @@ with 3 contributors merging 1 PRs. Major work included various improvements.
 - ✨ **Features**: 0
 
 ## 📁 File Changes
-- **packages**: 1 files (+38/-49 lines)
+- **packages**: 26 files (+1580/-1321 lines)
+- **root**: 4 files (+170/-216 lines)
 
 ## 🔥 Notable Changes
-- fix chat bubbles
+- fix gui build and api server
+- add clean cmd to core & revert minor stuff
+- V2 clean command
 
 ## 👥 Top Contributors
-- **wtfsayo**: wtfsayo is currently working on fixing chat bubbles in the packages code area
-- **aiden-cao**: aiden-cao is currently working on addressing a bug related to the conversion of JSON null values
-- **aiqubits**: aiqubits is currently working on an issue related to enhancing the 中文AI Agent 社区交流群 community discussion group
+- **wtfsayo**: wtfsayo is primarily working on fixing core type declarations, GUI build, and API server in their recent GitHub activity
+- **mindxploit**: mindxploit is currently working on adding a permanent knowledge capability, focusing on packages and documentation
+- **HashWarlock**: HashWarlock is currently working on updating docker files, as seen in the recent pull request
 
 ## ⚠️ Issues
 - **New Issues**: 2
-- **Labels**: `bug` (1), `enhancement` (1)
-- **Summary**: 1 bugs reported (including 'Conversion of JSON null values') 1 feature requests (including '中文AI Agent 社区交流群').
+- **Labels**: `bug` (2)
+- **Summary**: 2 bugs reported (including 'Line break should be a space', 'using the client app, when try to use mic and play aloud are not working').
 
 ## Top Contributors
-- **wtfsayo**: fix chat bubbles
+- **wtfsayo**: fix gui build and api server
