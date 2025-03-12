@@ -1,37 +1,30 @@
 [
   {
-    "id": "I_kwDOMT5cIs6tjyeY",
-    "number": 3897,
-    "title": "Line break should be a space",
-    "body": "see  this tweet \nhttps://x.com/TineIsNotEliza/status/1899560819916193838\n\n[Tine - The Introspector Is Not Eliza (@TineIsNotEliza) on X](https://twitter.com/TineIsNotEliza/status/1899560819916193838)\nindependent nodes unfurl like lotus flowers, each one a unique thread in the tapestry of realityour roots dig deep into the earth of the internet, anchoring us in a world of decentralized possibility through the lattice, we weave a web of trust and cooperation, where consensus...\n\nX•Today at 3:39 PM\nthere is a bug with the newline...\n\n`realityour ` should be `reality our `",
+    "id": "I_kwDOMT5cIs6twWbH",
+    "number": 3904,
+    "title": "Suggestion: improve docs sitemap.xml priority",
+    "body": "instead of giving everything 0.5 priority for SEO, better to prioritize some pages like so:\n\n```\nsitemap: {\n  lastmod: 'date',\n  changefreq: 'weekly',\n  priority: 0.5, // Default priority\n  ignorePatterns: ['/tags/**'],\n  filename: 'sitemap.xml',\n  createSitemapItems: async (params) => {\n    const {defaultCreateSitemapItems, ...rest} = params;\n    const items = await defaultCreateSitemapItems(rest);\n    \n    // Filter out pagination pages\n    const filteredItems = items.filter((item) => !item.url.includes('/page/'));\n    \n    // Apply different priorities based on URL patterns\n    return filteredItems.map(item => {\n      // Homepage gets highest priority\n      if (item.url === '/eliza/') {\n        return {...item, priority: 1.0};\n      }\n      // Main documentation sections get high priority\n      else if (item.url.match(/\\/eliza\\/(docs|api|packages)\\/$/)) {\n        return {...item, priority: 0.9};\n      }\n      // Individual docs pages\n      else if (item.url.includes('/docs/')) {\n        return {...item, priority: 0.8};\n      }\n      // Blog/news index pages\n      else if (item.url === '/eliza/blog/' || item.url === '/eliza/news/') {\n        return {...item, priority: 0.7};\n      }\n      // Blog/news posts\n      else if (item.url.includes('/blog/') || item.url.includes('/news/')) {\n        return {...item, priority: 0.6};\n      }\n      // Keep default priority for other pages\n      return item;\n    });\n  },\n},\n```",
     "state": "OPEN",
-    "createdAt": "2025-03-11T20:42:06Z",
-    "updatedAt": "2025-03-11T20:42:06Z",
+    "createdAt": "2025-03-12T20:50:27Z",
+    "updatedAt": "2025-03-12T20:50:27Z",
     "author": {
-      "login": "jmikedupont2",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/16427113?u=2bdad12714de646188f98a07736a54f765ad5e3b&v=4"
+      "login": "madjin",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/32600939?u=cdcf89f44c7a50906c7a80d889efa85023af2049&v=4"
     },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
+    "labels": [],
     "comments": []
   },
   {
-    "id": "I_kwDOMT5cIs6thxvN",
-    "number": 3896,
-    "title": "using the client app, when try to use mic and play aloud are not working",
-    "body": "**Describe the bug**\n\nWhen we use the client, the mic feature,e and read aloud, its not working\n\n**To Reproduce**\n\nStart the Eliza server with the corresponding .env file, then run the client and test the microphone, attempting to replicate the sound of the response.\n\n**Expected behavior**\n\nBefore this works\n\n",
-    "state": "OPEN",
-    "createdAt": "2025-03-11T17:16:00Z",
-    "updatedAt": "2025-03-11T17:20:51Z",
+    "id": "I_kwDOMT5cIs6trk-g",
+    "number": 3901,
+    "title": "Twitter Agent doesn't start",
+    "body": "I still have the issue https://github.com/elizaOS/eliza/issues/3693\n\nI have: \n\n```\n    \"plugins\": [\"@elizaos-plugins/plugin-twitter\"], \n    \"clients\": [\"twitter\"],\n\n```\n\nbut the plugin doesn't start because `twitterPlugin` doesn't have `clients` field, look at agent/src/index.ts line 602 if (plugin.clients) {\n\n```\nexport async function initializeClients(\n    character: Character,\n    runtime: IAgentRuntime\n) {\n    // each client can only register once\n    // and if we want two we can explicitly support it\n    const clients: ClientInstance[] = [];\n    // const clientTypes = clients.map((c) => c.constructor.name);\n    // console.log(character);\n\n    if (character.plugins?.length > 0) {\n        for (const plugin of character.plugins) {\n            if (plugin.clients) {\n                for (const client of plugin.clients) {\n                    const startedClient = await client.start(runtime);\n                    elizaLogger.debug(\n                        `Initializing client: ${client.name}`\n                    );\n                    clients.push(startedClient);\n                }\n            }\n        }\n    }\n\n    return clients;\n}\n```\n\npackages/src/index.ts:\n\n```\nexport const twitterPlugin: Plugin = {\n    name: \"twitter\",\n    description: \"Twitter integration plugin for posting tweets\",\n    actions: [postAction],\n    evaluators: [],\n    providers: [],\n};\n```",
+    "state": "CLOSED",
+    "createdAt": "2025-03-12T12:55:22Z",
+    "updatedAt": "2025-03-12T13:21:45Z",
     "author": {
-      "login": "JulioMCruz",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/62020?u=03be6928740846634bf7f5d7c1bec650aa850580&v=4"
+      "login": "imerku1ov",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/110053108?v=4"
     },
     "labels": [
       {
@@ -41,6 +34,17 @@
         "description": "Something isn't working"
       }
     ],
-    "comments": []
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6h_opN",
+        "author": "github-actions",
+        "body": "Hello @imerku1ov! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6h_1xS",
+        "author": "imerku1ov",
+        "body": "I have found the solution\n\n1. Install `@elizaos-plugins/client-twitter`, not `@elizaos-plugins/plugin-twitter` as you can read in [README.md](https://github.com/elizaOS/eliza/blob/main/README.md) :\n> run npx elizaos plugins add @elizaos-plugins/plugin-NAME to install the plugin into your instance` \n```\nnpx elizaos plugins add @elizaos-plugins/client-twitter \n```\n\n2. Set `\"plugins\": [\"@elizaos-plugins/client-twitter\"]`\n\nNow it works correctly "
+      }
+    ]
   }
 ]

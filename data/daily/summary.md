@@ -1,14 +1,14 @@
-# elizaos Eliza (2025-03-11)
+# elizaos Eliza (2025-03-12)
     
 ## 📊 Overview
-with 6 contributors merging 5 PRs. Major work included various improvements.
+with 6 contributors merging 1 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
 | 👥 Contributors | 6 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 5 |
+| 🔄 Merged PRs | 1 |
 | ⚠️ New Issues | 2 |
 
 ## 🔄 Pull Request Summary
@@ -17,23 +17,21 @@ with 6 contributors merging 5 PRs. Major work included various improvements.
 - ✨ **Features**: 0
 
 ## 📁 File Changes
-- **packages**: 26 files (+1580/-1321 lines)
-- **root**: 4 files (+170/-216 lines)
+- **root**: 1 files (+55/-50 lines)
+- **packages**: 1 files (+9/-2 lines)
 
 ## 🔥 Notable Changes
-- fix gui build and api server
-- add clean cmd to core & revert minor stuff
-- V2 clean command
+- fix core dts generation
 
 ## 👥 Top Contributors
-- **wtfsayo**: wtfsayo is primarily working on fixing core type declarations, GUI build, and API server in their recent GitHub activity
-- **mindxploit**: mindxploit is currently working on adding a permanent knowledge capability, focusing on packages and documentation
-- **HashWarlock**: HashWarlock is currently working on updating docker files, as seen in the recent pull request
+- **wtfsayo**: wtfsayo is currently working on fixing core dts generation in the packages code area, with one pull request successfully merged
+- **imerku1ov**: imerku1ov is currently working on resolving an issue with the Twitter Agent that is preventing it from starting
+- **RiverZ-pingu**: RiverZ-pingu is currently working on a chore in the packages/core codebase to fix a typo
 
 ## ⚠️ Issues
 - **New Issues**: 2
-- **Labels**: `bug` (2)
-- **Summary**: 2 bugs reported (including 'Line break should be a space', 'using the client app, when try to use mic and play aloud are not working').
+- **Labels**: `bug` (1)
+- **Summary**: 1 bugs reported (including 'Twitter Agent doesn't start').
 
 ## Top Contributors
-- **wtfsayo**: fix gui build and api server
+- **wtfsayo**: fix core dts generation
