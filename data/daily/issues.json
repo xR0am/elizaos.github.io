@@ -1,49 +1,44 @@
 [
   {
-    "id": "I_kwDOMT5cIs6twWbH",
-    "number": 3904,
-    "title": "Suggestion: improve docs sitemap.xml priority",
-    "body": "instead of giving everything 0.5 priority for SEO, better to prioritize some pages like so:\n\n```\nsitemap: {\n  lastmod: 'date',\n  changefreq: 'weekly',\n  priority: 0.5, // Default priority\n  ignorePatterns: ['/tags/**'],\n  filename: 'sitemap.xml',\n  createSitemapItems: async (params) => {\n    const {defaultCreateSitemapItems, ...rest} = params;\n    const items = await defaultCreateSitemapItems(rest);\n    \n    // Filter out pagination pages\n    const filteredItems = items.filter((item) => !item.url.includes('/page/'));\n    \n    // Apply different priorities based on URL patterns\n    return filteredItems.map(item => {\n      // Homepage gets highest priority\n      if (item.url === '/eliza/') {\n        return {...item, priority: 1.0};\n      }\n      // Main documentation sections get high priority\n      else if (item.url.match(/\\/eliza\\/(docs|api|packages)\\/$/)) {\n        return {...item, priority: 0.9};\n      }\n      // Individual docs pages\n      else if (item.url.includes('/docs/')) {\n        return {...item, priority: 0.8};\n      }\n      // Blog/news index pages\n      else if (item.url === '/eliza/blog/' || item.url === '/eliza/news/') {\n        return {...item, priority: 0.7};\n      }\n      // Blog/news posts\n      else if (item.url.includes('/blog/') || item.url.includes('/news/')) {\n        return {...item, priority: 0.6};\n      }\n      // Keep default priority for other pages\n      return item;\n    });\n  },\n},\n```",
+    "id": "I_kwDOMT5cIs6t65cr",
+    "number": 3914,
+    "title": "Usage of typebox for safety",
+    "body": "Feature Request: Adopt TypeBox for Type Safety in elizaos/eliza\nIs your feature request related to a problem? Please describe.\nYes, this feature request addresses the challenge of ensuring data integrity when handling dynamic inputs in elizaos/eliza, such as API responses, user inputs, or LLM-generated JSON. Without proper validation, malformed data can lead to runtime errors, inconsistent behavior, or bugs that are hard to debug. For example, if eliza processes a JSON response expecting a confidence field as a number between 0 and 1, but receives a string or out-of-range value, it could cause unexpected failures or incorrect logic.\nDescribe the solution you'd like\nI propose integrating TypeBox, a lightweight TypeScript library, to introduce type safety into eliza. TypeBox combines JSON schema validation with TypeScript type inference, providing both compile-time and runtime safety. Here’s how it could work:\nDefine Schemas: Create TypeBox schemas for key data structures, such as API responses:\ntypescript\n\nimport { Type, Static } from '@sinclair/typebox';\n\nconst ElizaResponseSchema = Type.Object({\n  intent: Type.String(),\n  confidence: Type.Number({ minimum: 0, maximum: 1 }),\n  entities: Type.Array(Type.String())\n});\n\ntype ElizaResponse = Static<typeof ElizaResponseSchema>;\n\nValidate Data: Use TypeBox to validate incoming data at runtime:\ntypescript\n\nfunction validateElizaResponse(json: unknown): ElizaResponse {\n  const result = ElizaResponseSchema.safeParse(json);\n  if (!result.success) throw new Error(`Validation failed: ${result.error.message}`);\n  return result.data;\n}\n\nIntegrate: Apply this to a small component (e.g., API response parsing) to start, ensuring data integrity without disrupting existing workflows.\n\nThis solution ensures eliza processes data safely, reducing errors and improving reliability.\nDescribe alternatives you've considered  \nZod: Another popular schema validation library for TypeScript. While Zod offers similar features (type inference, runtime validation), it has a slightly larger footprint and a different syntax that might feel less JSON Schema-like compared to TypeBox. TypeBox’s alignment with JSON Schema standards makes it more interoperable with existing systems.\n\nManual Type Guards: Writing custom type guards in TypeScript (e.g., isElizaResponse functions) can provide some safety but lacks the robustness of schema-based validation and doesn’t scale well for complex data structures.\n\nNo Validation: Continuing without validation risks runtime errors, especially as eliza scales to handle more dynamic data sources, which could degrade user experience or system stability.\n\nAdditional Context\nTypeBox is lightweight (minimal overhead), widely used, and well-documented, making it an easy adoption for the Eliza team. It provides immediate benefits—error prevention, improved developer productivity through TypeScript integration, and a foundation for scaling to more advanced validation or formal methods in the future. Starting with a small integration allows the team to evaluate its impact with minimal risk, paving the way for broader adoption across elizaos/eliza.\n\n",
     "state": "OPEN",
-    "createdAt": "2025-03-12T20:50:27Z",
-    "updatedAt": "2025-03-12T20:50:27Z",
+    "createdAt": "2025-03-13T17:15:46Z",
+    "updatedAt": "2025-03-13T17:15:46Z",
     "author": {
-      "login": "madjin",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/32600939?u=cdcf89f44c7a50906c7a80d889efa85023af2049&v=4"
-    },
-    "labels": [],
-    "comments": []
-  },
-  {
-    "id": "I_kwDOMT5cIs6trk-g",
-    "number": 3901,
-    "title": "Twitter Agent doesn't start",
-    "body": "I still have the issue https://github.com/elizaOS/eliza/issues/3693\n\nI have: \n\n```\n    \"plugins\": [\"@elizaos-plugins/plugin-twitter\"], \n    \"clients\": [\"twitter\"],\n\n```\n\nbut the plugin doesn't start because `twitterPlugin` doesn't have `clients` field, look at agent/src/index.ts line 602 if (plugin.clients) {\n\n```\nexport async function initializeClients(\n    character: Character,\n    runtime: IAgentRuntime\n) {\n    // each client can only register once\n    // and if we want two we can explicitly support it\n    const clients: ClientInstance[] = [];\n    // const clientTypes = clients.map((c) => c.constructor.name);\n    // console.log(character);\n\n    if (character.plugins?.length > 0) {\n        for (const plugin of character.plugins) {\n            if (plugin.clients) {\n                for (const client of plugin.clients) {\n                    const startedClient = await client.start(runtime);\n                    elizaLogger.debug(\n                        `Initializing client: ${client.name}`\n                    );\n                    clients.push(startedClient);\n                }\n            }\n        }\n    }\n\n    return clients;\n}\n```\n\npackages/src/index.ts:\n\n```\nexport const twitterPlugin: Plugin = {\n    name: \"twitter\",\n    description: \"Twitter integration plugin for posting tweets\",\n    actions: [postAction],\n    evaluators: [],\n    providers: [],\n};\n```",
-    "state": "CLOSED",
-    "createdAt": "2025-03-12T12:55:22Z",
-    "updatedAt": "2025-03-12T13:21:45Z",
-    "author": {
-      "login": "imerku1ov",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/110053108?v=4"
+      "login": "jmikedupont2",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/16427113?u=2bdad12714de646188f98a07736a54f765ad5e3b&v=4"
     },
     "labels": [
       {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
       }
     ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6t5BnL",
+    "number": 3912,
+    "title": "v2/autodoc fileUsageDoc is missing context",
+    "body": "The usage doc is only passing in the file name and the ai is hallucinating the rest. \n\n```\nDetermine multiple use cases for the provided code, and give examples of how to use the code:\n\n### Common Use Cases\n1. [First use case with code example]\n2. [Second use case with code example]\n\n### Best Practices\n- [Best practice 1]\n- [Best practice 2]\n\nFormat in markdown without adding any additional headers.\n\nFor file: actions/unfollowRoom.ts\n\nWith components:\n```\n\n",
+    "state": "OPEN",
+    "createdAt": "2025-03-13T14:40:18Z",
+    "updatedAt": "2025-03-13T14:45:22Z",
+    "author": {
+      "login": "jmikedupont2",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/16427113?u=2bdad12714de646188f98a07736a54f765ad5e3b&v=4"
+    },
+    "labels": [],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6h_opN",
-        "author": "github-actions",
-        "body": "Hello @imerku1ov! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6h_1xS",
-        "author": "imerku1ov",
-        "body": "I have found the solution\n\n1. Install `@elizaos-plugins/client-twitter`, not `@elizaos-plugins/plugin-twitter` as you can read in [README.md](https://github.com/elizaOS/eliza/blob/main/README.md) :\n> run npx elizaos plugins add @elizaos-plugins/plugin-NAME to install the plugin into your instance` \n```\nnpx elizaos plugins add @elizaos-plugins/client-twitter \n```\n\n2. Set `\"plugins\": [\"@elizaos-plugins/client-twitter\"]`\n\nNow it works correctly "
+        "id": "IC_kwDOMT5cIs6iNx25",
+        "author": "jmikedupont2",
+        "body": "https://github.com/elizaOS/eliza/pull/3911 found with this"
       }
     ]
   }

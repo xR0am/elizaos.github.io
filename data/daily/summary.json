@@ -1,52 +1,70 @@
 {
-  "title": "elizaos Eliza (2025-03-12)",
+  "title": "elizaos Eliza (2025-03-13)",
   "version": "",
-  "overview": "with 6 contributors merging 1 PRs. Major work included various improvements.",
+  "overview": "Development focused on package improvements (discord plugin error), new features (set avatar from assets folder), 3 bug fixes. with 5 contributors merging 6 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 6,
-    "merged_prs": 1,
+    "contributors": 5,
+    "merged_prs": 6,
     "new_issues": 2,
-    "lines_changed": 116
+    "lines_changed": 9059
   },
   "changes": {
-    "features": [],
-    "fixes": [],
-    "chores": []
+    "features": [
+      "set avatar from assets folder",
+      "gui thumbnail"
+    ],
+    "fixes": [
+      "discord plugin error",
+      "add missing packages + fix ci",
+      "migration race condition"
+    ],
+    "chores": [
+      "major docs cleanup"
+    ]
   },
   "areas": [
     {
-      "name": "root",
-      "files": 1,
-      "additions": 55,
-      "deletions": 50
+      "name": "docs",
+      "files": 97,
+      "additions": 4839,
+      "deletions": 3176
     },
     {
       "name": "packages",
-      "files": 1,
-      "additions": 9,
-      "deletions": 2
+      "files": 27,
+      "additions": 552,
+      "deletions": 199
+    },
+    {
+      "name": "root",
+      "files": 3,
+      "additions": 91,
+      "deletions": 99
     }
   ],
-  "issues_summary": "working on 1 bugs including 'Twitter Agent doesn't start'",
+  "issues_summary": "implementing 1 feature requests including 'Usage of typebox for safety'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "wtfsayo",
-      "summary": "wtfsayo is currently working on fixing core dts generation in the packages code area, with one pull request successfully merged",
+      "name": "tcm390",
+      "summary": "tcm390 is currently working on fixing a Discord plugin error, adding a feature to set avatars from the assets folder, and implementing a GUI thumbnail feature",
       "areas": [
-        "bun.lock",
         "packages"
       ]
     },
     {
-      "name": "imerku1ov",
-      "summary": "imerku1ov is currently working on resolving an issue with the Twitter Agent that is preventing it from starting",
+      "name": "jmikedupont2",
+      "summary": "jmikedupont2 is currently working on two pull requests related to the feature/v2/autodoc local branch and addressing issues regarding the usage of typebox for safety and missing context in the v2/autodoc fileUsageDoc",
       "areas": []
     },
     {
-      "name": "RiverZ-pingu",
-      "summary": "RiverZ-pingu is currently working on a chore in the packages/core codebase to fix a typo",
-      "areas": []
+      "name": "madjin",
+      "summary": "madjin is currently working on a major cleanup of documentation in the repository, focusing on the docs and ",
+      "areas": [
+        ".github",
+        "CONTRIBUTING.md",
+        "docs"
+      ]
     }
   ]
 }
