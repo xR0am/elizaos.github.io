@@ -1,69 +1,76 @@
 {
-  "title": "elizaos Eliza (2025-03-13)",
+  "title": "elizaos Eliza (2025-03-15)",
   "version": "",
-  "overview": "Development focused on package improvements (discord plugin error), new features (set avatar from assets folder), 3 bug fixes. with 5 contributors merging 6 PRs. Major work included various improvements.",
+  "overview": "Development focused on package improvements (changes to plugin-sql docs), new features (upgrade pckg manager), 6 bug fixes. with 8 contributors merging 14 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 5,
-    "merged_prs": 6,
+    "contributors": 8,
+    "merged_prs": 14,
     "new_issues": 2,
-    "lines_changed": 9059
+    "lines_changed": 1747
   },
   "changes": {
     "features": [
-      "set avatar from assets folder",
-      "gui thumbnail"
+      "upgrade pckg manager",
+      "Build cli command",
+      "use socketio, remove wss, use bun instead of node in the-org"
     ],
     "fixes": [
-      "discord plugin error",
-      "add missing packages + fix ci",
-      "migration race condition"
+      "delete memory",
+      "logger not properly formatting.",
+      "agent last message animation + improbved profile card"
     ],
     "chores": [
-      "major docs cleanup"
+      "Cleaning Up",
+      "consistent cli command imports"
     ]
   },
   "areas": [
     {
-      "name": "docs",
-      "files": 97,
-      "additions": 4839,
-      "deletions": 3176
-    },
-    {
       "name": "packages",
-      "files": 27,
-      "additions": 552,
-      "deletions": 199
+      "files": 39,
+      "additions": 1037,
+      "deletions": 433
     },
     {
       "name": "root",
-      "files": 3,
-      "additions": 91,
-      "deletions": 99
+      "files": 6,
+      "additions": 120,
+      "deletions": 155
+    },
+    {
+      "name": "docs",
+      "files": 1,
+      "additions": 1,
+      "deletions": 1
     }
   ],
-  "issues_summary": "implementing 1 feature requests including 'Usage of typebox for safety'",
+  "issues_summary": "implementing 1 feature requests including 'feat: upload .env file to webui configurator'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "tcm390",
-      "summary": "tcm390 is currently working on fixing a Discord plugin error, adding a feature to set avatars from the assets folder, and implementing a GUI thumbnail feature",
+      "name": "0xbbjoker",
+      "summary": "0xbbjoker is currently working on upgrading the package manager, implementing package-scoped singleton database connections, and making changes to the plugin-sql documentation",
       "areas": [
-        "packages"
+        "packages",
+        "bun.lock",
+        "package.json"
       ]
     },
     {
-      "name": "jmikedupont2",
-      "summary": "jmikedupont2 is currently working on two pull requests related to the feature/v2/autodoc local branch and addressing issues regarding the usage of typebox for safety and missing context in the v2/autodoc fileUsageDoc",
-      "areas": []
+      "name": "shakkernerd",
+      "summary": "shakkernerd is currently working on reverting a change to get the client back up, fixing logger formatting issues, and adding a new CLI command feature",
+      "areas": [
+        "packages",
+        "bun.lock",
+        "package.json"
+      ]
     },
     {
-      "name": "madjin",
-      "summary": "madjin is currently working on a major cleanup of documentation in the repository, focusing on the docs and ",
+      "name": "wtfsayo",
+      "summary": "wtfsayo is currently working on improving the user interface by fixing agent last message animation, enhancing the profile card, and implementing consistent CLI command imports",
       "areas": [
-        ".github",
-        "CONTRIBUTING.md",
-        "docs"
+        "packages",
+        "bun.lock"
       ]
     }
   ]
