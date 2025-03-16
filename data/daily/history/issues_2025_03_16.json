@@ -1,0 +1,74 @@
+[
+  {
+    "id": "I_kwDOMT5cIs6uOvZG",
+    "number": 3956,
+    "title": "V2 preflight check",
+    "body": "I would like a CLI tool to list the current chars and do a preflight check for them,\n1. check if the llm is working (write one text)\n2. check if the twitter login works (login and write a tweet)\n3. check if the discord is working\n4. check if all the plugins are loading and needed\n\n\nCurrently the start command takes some time to check everything and generate a tweet so it would be great\nto check everything.\n",
+    "state": "OPEN",
+    "createdAt": "2025-03-16T14:28:23Z",
+    "updatedAt": "2025-03-16T14:28:23Z",
+    "author": {
+      "login": "jmikedupont2",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/16427113?u=2bdad12714de646188f98a07736a54f765ad5e3b&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6uOXR_",
+    "number": 3955,
+    "title": "opus.node",
+    "body": "on branch https://github.com/meta-introspector/cloud-deployment-eliza/pull/54/commits/beebca40341a7d7ad6069c055ae9d0136d0711a5\n```\n[2025-03-16 12:33:01] INFO: Initializing platform detection...\n 7 |       return data;\n 8 |     } catch (e) {\n 9 |       errorLog.push(e);\n10 |     }\n11 |   }\n12 |   throw new Error(errorLog.join('\\n'));\n             ^\nerror: ResolveMessage: Cannot find module '/mnt/data1/nix/time/2025/01/13/cloud-deployment-eliza/node_modules/prism-media/node_modules/@discordjs/opus/prebuild/node-v127-napi-v3-linux-x64-glibc-2.29/opus.node' from '/mnt/data1/nix/time/2025/01/13/cloud-deployment-eliza/node_modules/prism-media/node_modules/@discordjs/opus/lib/index.js'\nResolveMessage: Cannot find package 'node-opus' from '/mnt/data1/nix/time/2025/01/13/cloud-deployment-eliza/node_modules/prism-media/src/util/loader.js'\nResolveMessage: Cannot find package 'opusscript' from '/mnt/data1/nix/time/2025/01/13/cloud-deployment-eliza/node_modules/prism-media/src/util/loader.js'\n      at loader (/mnt/data1/nix/time/2025/01/13/cloud-deployment-eliza/node_modules/prism-media/src/util/loader.js:12:9)\n      at loadOpus (/mnt/data1/nix/time/2025/01/13/cloud-deployment-eliza/node_modules/prism-media/src/opus/Opus.js:17:17)\n      at new OpusStream (/mnt/data1/nix/time/2025/01/13/cloud-deployment-eliza/node_modules/prism-media/src/opus/Opus.js:46:10)\n      at new Decoder (1:23)\n      at <anonymous> (/mnt/data1/nix/time/2025/01/13/cloud-deployment-eliza/packages/plugin-discord/dist/index.js:2772:25)\n      at monitorMember (/mnt/data1/nix/time/2025/01/13/cloud-deployment-eliza/packages/plugin-discord/dist/index.js:2760:23)\n      at <anonymous> (/mnt/data1/nix/time/2025/01/13/cloud-deployment-eliza/packages/plugin-discord/dist/index.js:2722:16)\n      at <anonymous> (/mnt/data1/nix/time/2025/01/13/cloud-deployment-eliza/packages/plugin-discord/dist/index.js:2712:55)\n      at emit (node:events:89:22)\n      at onPacket (/mnt/data1/nix/time/2025/01/13/cloud-deployment-eliza/node_modules/@discordjs/voice/dist/index.mjs:1435:12)\n      at onUdpMessage (/mnt/data1/nix/time/2025/01/13/cloud-deployment-eliza/node_modules/@discordjs/voice/dist/index.mjs:1571:19)\n      at emit (node:events:89:22)\n      at onMessage (/mnt/data1/nix/time/2025/01/13/cloud-deployment-eliza/node_modules/@discordjs/voice/dist/index.mjs:273:10)\n      at emit (node:events:92:22)\n      at <anonymous> (node:dgram:170:22)\n```\n",
+    "state": "OPEN",
+    "createdAt": "2025-03-16T12:37:39Z",
+    "updatedAt": "2025-03-16T12:37:39Z",
+    "author": {
+      "login": "jmikedupont2",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/16427113?u=2bdad12714de646188f98a07736a54f765ad5e3b&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6uNMoS",
+    "number": 3952,
+    "title": "Discord Messages disappearing randomly",
+    "body": "**Describe the bug**\n\nMessages randomly disappear after they are sent to Discord using callback().\n\n**To Reproduce**\n\nJust send about 2-4 messages back to back, and you'd see some of those disappearing. Happens to me.\n\n**Expected behavior**\n\nAll messages to stay in chat.\n\n**Screenshots**\n\n[issue demonstration](https://drive.google.com/file/d/1BgjRX4UCPKi4Mk73WG7gnyfq--AdIxhm/view?usp=sharing)\n\n**Additional context**\n\n<!-- Add any other context about the problem here. -->\n",
+    "state": "OPEN",
+    "createdAt": "2025-03-16T01:39:40Z",
+    "updatedAt": "2025-03-16T01:40:03Z",
+    "author": {
+      "login": "D3nii",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/56127751?u=01aab7ad5bc55231e65fb35bacf8aaceef9365e0&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6ijH7U",
+        "author": "github-actions",
+        "body": "Hello @D3nii! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  }
+]

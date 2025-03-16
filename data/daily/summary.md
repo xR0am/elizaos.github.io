@@ -1,42 +1,42 @@
-# elizaos Eliza (2025-03-15)
+# elizaos Eliza (2025-03-16)
     
 ## 📊 Overview
-Development focused on package improvements (changes to plugin-sql docs), new features (upgrade pckg manager), 6 bug fixes. with 8 contributors merging 14 PRs. Major work included various improvements.
+Development focused on package improvements (plugin-local-ai), new features (view and edit memories of an agent), 1 bug fixes. with 13 contributors merging 4 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 8 |
-| 📝 Commits | 0 |
-| 🔄 Merged PRs | 14 |
-| ⚠️ New Issues | 2 |
+| 👥 Contributors | 13 |
+| 📝 Commits | 2 |
+| 🔄 Merged PRs | 4 |
+| ⚠️ New Issues | 3 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 2
-- 🐛 **Fixes**: 6
-- ✨ **Features**: 3
+- 🧹 **Chores**: 1
+- 🐛 **Fixes**: 1
+- ✨ **Features**: 1
 
 ## 📁 File Changes
-- **packages**: 39 files (+1037/-433 lines)
-- **root**: 6 files (+120/-155 lines)
-- **docs**: 1 files (+1/-1 lines)
+- **packages**: 29 files (+1197/-184 lines)
+- **root**: 1 files (+9/-20 lines)
+- **scripts**: 1 files (+1/-1 lines)
 
 ## 🔥 Notable Changes
-- docs: changes to plugin-sql docs
-- feat: upgrade pckg manager
-- fix: delete memory
+- support any custom embedding server
+- fix: plugin-local-ai
+- chore: fix missing `await` for tweet scraping
 
 ## 👥 Top Contributors
-- **0xbbjoker**: 0xbbjoker is currently working on upgrading the package manager, implementing package-scoped singleton database connections, and making changes to the plugin-sql documentation
-- **shakkernerd**: shakkernerd is currently working on reverting a change to get the client back up, fixing logger formatting issues, and adding a new CLI command feature
-- **wtfsayo**: wtfsayo is currently working on improving the user interface by fixing agent last message animation, enhancing the profile card, and implementing consistent CLI command imports
+- **hishboy**: hishboy is currently working on a Pull Request (PR) to support any custom embedding server within the packages code area
+- **AIFlowML**: AIFlowML is currently working on fixing the 'plugin-local-ai' issue in the 'packages' code area, with one pull request successfully merged
+- **hexcow**: hexcow is currently working on fixing a missing `await` issue for tweet scraping in the scripts code area
 
 ## ⚠️ Issues
-- **New Issues**: 2
-- **Labels**: `enhancement` (1), `V2` (1)
-- **Summary**: 1 feature requests (including 'feat: upload .env file to webui configurator').
+- **New Issues**: 3
+- **Labels**: `bug` (2), `enhancement` (1)
+- **Summary**: 2 bugs reported (including 'Discord Messages disappearing randomly', 'opus.node') 1 feature requests (including 'V2 preflight check').
 
 ## Top Contributors
-- **0xbbjoker**: docs: changes to plugin-sql docs
-- **shakkernerd**: revert: gets client back up (coming back to you)
-- **wtfsayo**: fix: agent last message animation + improbved profile card
+- **hishboy**: support any custom embedding server
+- **AIFlowML**: fix: plugin-local-ai
+- **hexcow**: chore: fix missing `await` for tweet scraping
