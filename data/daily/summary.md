@@ -1,42 +1,40 @@
-# elizaos Eliza (2025-03-16)
+# elizaos Eliza (2025-03-17)
     
 ## 📊 Overview
-Development focused on package improvements (plugin-local-ai), new features (view and edit memories of an agent), 1 bug fixes. with 13 contributors merging 4 PRs. Major work included various improvements.
+Development focused on new features (add clear logs method and api), 5 bug fixes. with 9 contributors merging 8 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 13 |
-| 📝 Commits | 2 |
-| 🔄 Merged PRs | 4 |
-| ⚠️ New Issues | 3 |
+| 👥 Contributors | 9 |
+| 📝 Commits | 0 |
+| 🔄 Merged PRs | 8 |
+| ⚠️ New Issues | 1 |
 
 ## 🔄 Pull Request Summary
 - 🧹 **Chores**: 1
-- 🐛 **Fixes**: 1
-- ✨ **Features**: 1
+- 🐛 **Fixes**: 5
+- ✨ **Features**: 2
 
 ## 📁 File Changes
-- **packages**: 29 files (+1197/-184 lines)
-- **root**: 1 files (+9/-20 lines)
-- **scripts**: 1 files (+1/-1 lines)
+- **packages**: 116 files (+4883/-3079 lines)
 
 ## 🔥 Notable Changes
-- support any custom embedding server
-- fix: plugin-local-ai
-- chore: fix missing `await` for tweet scraping
+- fix: aiwriter rerender issue
+- fix: show thoughts message in real time
+- fix: refactor bubble layout
 
 ## 👥 Top Contributors
-- **hishboy**: hishboy is currently working on a Pull Request (PR) to support any custom embedding server within the packages code area
-- **AIFlowML**: AIFlowML is currently working on fixing the 'plugin-local-ai' issue in the 'packages' code area, with one pull request successfully merged
-- **hexcow**: hexcow is currently working on fixing a missing `await` issue for tweet scraping in the scripts code area
+- **tcm390**: tcm390 is currently working on fixing issues related to the AI writer rerender problem, real-time display of thoughts message, and refactoring bubble layout in the "packages" code area
+- **wtfsayo**: wtfsayo is currently working on adding a clear logs method and API, fixing log display and APIs, and simplifying connection status in the packages code areas on GitHub
+- **madjin**: madjin is currently working on implementing versioning for documentation in the packages section of the project
 
 ## ⚠️ Issues
-- **New Issues**: 3
-- **Labels**: `bug` (2), `enhancement` (1)
-- **Summary**: 2 bugs reported (including 'Discord Messages disappearing randomly', 'opus.node') 1 feature requests (including 'V2 preflight check').
+- **New Issues**: 1
+- **Labels**: `bug` (1)
+- **Summary**: 1 bugs reported (including 'Raw newLine characters in tweets').
 
 ## Top Contributors
-- **hishboy**: support any custom embedding server
-- **AIFlowML**: fix: plugin-local-ai
-- **hexcow**: chore: fix missing `await` for tweet scraping
+- **tcm390**: fix: aiwriter rerender issue
+- **wtfsayo**: feat: add clear logs method and api
+- **madjin**: feat: docs versioning

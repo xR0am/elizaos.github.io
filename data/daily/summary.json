@@ -1,66 +1,57 @@
 {
-  "title": "elizaos Eliza (2025-03-16)",
-  "version": "",
-  "overview": "Development focused on package improvements (plugin-local-ai), new features (view and edit memories of an agent), 1 bug fixes. with 13 contributors merging 4 PRs. Major work included various improvements.",
+  "title": "elizaos Eliza (2025-03-17)",
+  "version": "docs versioning",
+  "overview": "Development focused on new features (add clear logs method and api), 5 bug fixes. with 9 contributors merging 8 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 13,
-    "merged_prs": 4,
-    "new_issues": 3,
-    "lines_changed": 1412
+    "contributors": 9,
+    "merged_prs": 8,
+    "new_issues": 1,
+    "lines_changed": 7962
   },
   "changes": {
     "features": [
-      "view and edit memories of an agent"
+      "add clear logs method and api",
+      "docs versioning"
     ],
     "fixes": [
-      "plugin-local-ai"
+      "aiwriter rerender issue",
+      "show thoughts message in real time",
+      "refactor bubble layout"
     ],
     "chores": [
-      "fix missing `await` for tweet scraping"
+      "simplify connection status"
     ]
   },
   "areas": [
     {
       "name": "packages",
-      "files": 29,
-      "additions": 1197,
-      "deletions": 184
-    },
-    {
-      "name": "scripts",
-      "files": 1,
-      "additions": 1,
-      "deletions": 1
-    },
-    {
-      "name": "root",
-      "files": 1,
-      "additions": 9,
-      "deletions": 20
+      "files": 116,
+      "additions": 4883,
+      "deletions": 3079
     }
   ],
-  "issues_summary": "working on 2 bugs including 'Discord Messages disappearing randomly', 'opus.node' and implementing 1 feature requests including 'V2 preflight check'",
+  "issues_summary": "working on 1 bugs including 'Raw newLine characters in tweets'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "hishboy",
-      "summary": "hishboy is currently working on a Pull Request (PR) to support any custom embedding server within the packages code area",
+      "name": "tcm390",
+      "summary": "tcm390 is currently working on fixing issues related to the AI writer rerender problem, real-time display of thoughts message, and refactoring bubble layout in the \"packages\" code area",
       "areas": [
         "packages"
       ]
     },
     {
-      "name": "AIFlowML",
-      "summary": "AIFlowML is currently working on fixing the 'plugin-local-ai' issue in the 'packages' code area, with one pull request successfully merged",
+      "name": "wtfsayo",
+      "summary": "wtfsayo is currently working on adding a clear logs method and API, fixing log display and APIs, and simplifying connection status in the packages code areas on GitHub",
       "areas": [
         "packages"
       ]
     },
     {
-      "name": "hexcow",
-      "summary": "hexcow is currently working on fixing a missing `await` issue for tweet scraping in the scripts code area",
+      "name": "madjin",
+      "summary": "madjin is currently working on implementing versioning for documentation in the packages section of the project",
       "areas": [
-        "scripts"
+        "packages"
       ]
     }
   ]
