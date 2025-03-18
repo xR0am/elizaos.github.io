@@ -1,40 +1,42 @@
-# elizaos Eliza (2025-03-17)
+# elizaos Eliza (2025-03-18)
     
 ## 📊 Overview
-Development focused on new features (add clear logs method and api), 5 bug fixes. with 9 contributors merging 8 PRs. Major work included various improvements.
+Development focused on package improvements (error in plugin-tee), 3 bug fixes. with 6 contributors merging 5 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 9 |
+| 👥 Contributors | 6 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 8 |
-| ⚠️ New Issues | 1 |
+| 🔄 Merged PRs | 5 |
+| ⚠️ New Issues | 2 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 1
-- 🐛 **Fixes**: 5
-- ✨ **Features**: 2
+- 🧹 **Chores**: 0
+- 🐛 **Fixes**: 3
+- ✨ **Features**: 0
 
 ## 📁 File Changes
-- **packages**: 116 files (+4883/-3079 lines)
+- **packages**: 6 files (+24/-19 lines)
+- **docs**: 2 files (+3/-3 lines)
+- **root**: 1 files (+1/-1 lines)
 
 ## 🔥 Notable Changes
-- fix: aiwriter rerender issue
-- fix: show thoughts message in real time
-- fix: refactor bubble layout
+- Update README.md
+- fix: Fixed missing comma between regex expressions
+- fix: error in plugin-tee
 
 ## 👥 Top Contributors
-- **tcm390**: tcm390 is currently working on fixing issues related to the AI writer rerender problem, real-time display of thoughts message, and refactoring bubble layout in the "packages" code area
-- **wtfsayo**: wtfsayo is currently working on adding a clear logs method and API, fixing log display and APIs, and simplifying connection status in the packages code areas on GitHub
-- **madjin**: madjin is currently working on implementing versioning for documentation in the packages section of the project
+- **jmikedupont2**: jmikedupont2 is currently working on identifying if a specific section in the package
+- **ozrg**: ozrg is currently working on fixing a missing comma between regex expressions in the documentation
+- **HashWarlock**: HashWarlock is currently working on fixing an error in the plugin-tee package
 
 ## ⚠️ Issues
-- **New Issues**: 1
-- **Labels**: `bug` (1)
-- **Summary**: 1 bugs reported (including 'Raw newLine characters in tweets').
+- **New Issues**: 2
+- **Labels**: `enhancement` (2), `V2` (1)
+- **Summary**: 2 feature requests (including 'Check if this is a plugin (package.json contains 'eliza' section with type='plugin')?', 'How to debug remotely v2').
 
 ## Top Contributors
-- **tcm390**: fix: aiwriter rerender issue
-- **wtfsayo**: feat: add clear logs method and api
-- **madjin**: feat: docs versioning
+- **jmikedupont2**: Update README.md
+- **ozrg**: fix: Fixed missing comma between regex expressions
+- **HashWarlock**: fix: error in plugin-tee

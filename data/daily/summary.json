@@ -1,55 +1,62 @@
 {
-  "title": "elizaos Eliza (2025-03-17)",
-  "version": "docs versioning",
-  "overview": "Development focused on new features (add clear logs method and api), 5 bug fixes. with 9 contributors merging 8 PRs. Major work included various improvements.",
+  "title": "elizaos Eliza (2025-03-18)",
+  "version": "",
+  "overview": "Development focused on package improvements (error in plugin-tee), 3 bug fixes. with 6 contributors merging 5 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 9,
-    "merged_prs": 8,
-    "new_issues": 1,
-    "lines_changed": 7962
+    "contributors": 6,
+    "merged_prs": 5,
+    "new_issues": 2,
+    "lines_changed": 51
   },
   "changes": {
-    "features": [
-      "add clear logs method and api",
-      "docs versioning"
-    ],
+    "features": [],
     "fixes": [
-      "aiwriter rerender issue",
-      "show thoughts message in real time",
-      "refactor bubble layout"
+      "Fixed missing comma between regex expressions",
+      "error in plugin-tee",
+      "Make client use relative URL & firefox fixes"
     ],
-    "chores": [
-      "simplify connection status"
-    ]
+    "chores": []
   },
   "areas": [
     {
       "name": "packages",
-      "files": 116,
-      "additions": 4883,
-      "deletions": 3079
+      "files": 6,
+      "additions": 24,
+      "deletions": 19
+    },
+    {
+      "name": "docs",
+      "files": 2,
+      "additions": 3,
+      "deletions": 3
+    },
+    {
+      "name": "root",
+      "files": 1,
+      "additions": 1,
+      "deletions": 1
     }
   ],
-  "issues_summary": "working on 1 bugs including 'Raw newLine characters in tweets'",
+  "issues_summary": "implementing 2 feature requests including 'Check if this is a plugin (package.json contains 'eliza' section with type='plugin')?', 'How to debug remotely v2'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "tcm390",
-      "summary": "tcm390 is currently working on fixing issues related to the AI writer rerender problem, real-time display of thoughts message, and refactoring bubble layout in the \"packages\" code area",
+      "name": "jmikedupont2",
+      "summary": "jmikedupont2 is currently working on identifying if a specific section in the package",
       "areas": [
-        "packages"
+        "README.md"
       ]
     },
     {
-      "name": "wtfsayo",
-      "summary": "wtfsayo is currently working on adding a clear logs method and API, fixing log display and APIs, and simplifying connection status in the packages code areas on GitHub",
+      "name": "ozrg",
+      "summary": "ozrg is currently working on fixing a missing comma between regex expressions in the documentation",
       "areas": [
-        "packages"
+        "docs"
       ]
     },
     {
-      "name": "madjin",
-      "summary": "madjin is currently working on implementing versioning for documentation in the packages section of the project",
+      "name": "HashWarlock",
+      "summary": "HashWarlock is currently working on fixing an error in the plugin-tee package",
       "areas": [
         "packages"
       ]
