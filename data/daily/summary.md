@@ -1,4 +1,4 @@
-# elizaos Eliza (2025-03-18)
+# elizaos Eliza (2025-03-19)
     
 ## 📊 Overview
 Development focused on package improvements (error in plugin-tee), 3 bug fixes. with 6 contributors merging 5 PRs. Major work included various improvements.
@@ -27,9 +27,9 @@ Development focused on package improvements (error in plugin-tee), 3 bug fixes. 
 - fix: error in plugin-tee
 
 ## 👥 Top Contributors
-- **jmikedupont2**: jmikedupont2 is currently working on identifying if a specific section in the package
+- **jmikedupont2**: jmikedupont2 is currently working on addressing two issues related to checking for a specific section in package
 - **ozrg**: ozrg is currently working on fixing a missing comma between regex expressions in the documentation
-- **HashWarlock**: HashWarlock is currently working on fixing an error in the plugin-tee package
+- **HashWarlock**: HashWarlock is currently working on fixing an error in the plugin-tee package, with one pull request successfully merged in the packages code area
 
 ## ⚠️ Issues
 - **New Issues**: 2
