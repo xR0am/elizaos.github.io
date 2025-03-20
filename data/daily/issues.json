@@ -1,15 +1,59 @@
 [
   {
-    "id": "I_kwDOMT5cIs6usePq",
-    "number": 3993,
-    "title": "Ollama LLM Response Parsing Fails (TypeError: null is not an object)",
-    "body": "**Describe the bug**\n\nWhen using Ollama as the LLM engine in ElizaOS (v1.0.0-beta.2), the response parsing fails with a TypeError: null is not an object (evaluating 'responseObject.providers'). The issue occurs because parseJSONObjectFromText(response) returns null, which suggests that the response from Ollama is not valid JSON.\n\n**To Reproduce**\n\n```\nUSE_OLLAMA_TEXT_MODELS=true\n\nOLLAMA_SERVER_URL=http://localhost:11434\nOLLAMA_MODEL=llama3.2:1b\nSMALL_OLLAMA_MODEL=llama3.2:1b\nMEDIUM_OLLAMA_MODEL=llama3.2:1b\nLARGE_OLLAMA_MODEL=llama3.2:1b\n```\n\n\n**Screenshots**\n\n![Image](https://github.com/user-attachments/assets/d05c5b44-a568-4c08-aca2-522695c43b2f)\n\n**Additional context**\n\n- Ollama works fine when tested via the Ollama WebUI.\n",
-    "state": "OPEN",
-    "createdAt": "2025-03-19T08:31:41Z",
-    "updatedAt": "2025-03-19T08:32:09Z",
+    "id": "I_kwDOMT5cIs6u_lAS",
+    "number": 4024,
+    "title": "Ollama LLM Response Parsing Fails (TypeError: null is not an object) GH #3993",
+    "body": "**Describe the Bug:**\n\nWhen using Ollama as the LLM engine in ElizaOS (v1.0.0-beta.2), the response parsing fails with a TypeError: null is not an object (evaluating 'responseObject.providers'). The issue occurs because parseJSONObjectFromText(response) returns null, which suggests that the response from Ollama is not valid JSON.\n\n**<br>To Reproduce:**\n\nUSE_OLLAMA_TEXT_MODELS=true\n\nOLLAMA_SERVER_URL=[http://localhost:11434](http://localhost:11434)\n\nOLLAMA_MODEL=llama3.2:1b\n\nSMALL_OLLAMA_MODEL=llama3.2:1b\n\nMEDIUM_OLLAMA_MODEL=llama3.2:1b\n\nLARGE_OLLAMA_MODEL=llama3.2:1b\n\n<br>**Screenshots:**\n\n<img src=\"https://uploads.linear.app/186bdefa-3633-464a-80cd-6e86fe765a5c/ae46c573-23ff-47fd-a48a-9087bc3da2c0/109f5dae-c5e7-44dc-b708-7353c6cdb28d?signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXRoIjoiLzE4NmJkZWZhLTM2MzMtNDY0YS04MGNkLTZlODZmZTc2NWE1Yy9hZTQ2YzU3My0yM2ZmLTQ3ZmQtYTQ4YS05MDg3YmMzZGEyYzAvMTA5ZjVkYWUtYzVlNy00NGRjLWI3MDgtNzM1M2M2Y2RiMjhkIiwiaWF0IjoxNzQyNDg1MTQyLCJleHAiOjMzMzEzMDQ1MTQyfQ.1Gb77mOV4YkFJisP6ht2wf2s6C5KvoPOyB3X9O8W6Gk \" alt=\"image.png\" width=\"929\" data-linear-height=\"956\" />\n\n**Additional context**\n\n* Ollama works fine when tested via the Ollama WebUI.",
+    "state": "CLOSED",
+    "createdAt": "2025-03-20T15:37:58Z",
+    "updatedAt": "2025-03-20T15:40:48Z",
     "author": {
-      "login": "thewhitewizard",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/7402560?u=c40f9f5818512adc3cae9bb5784f37771b27dd27&v=4"
+      "login": "linear",
+      "avatarUrl": "https://avatars.githubusercontent.com/in/20150?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6u_kqB",
+    "number": 4023,
+    "title": "Version is 1 point behind in client GH #4009",
+    "body": "In the client, the version is copied and built when the client is built, but the version is changed on publish. We need to split our setup so we version, build, publish in that order.",
+    "state": "CLOSED",
+    "createdAt": "2025-03-20T15:37:29Z",
+    "updatedAt": "2025-03-20T15:40:47Z",
+    "author": {
+      "login": "linear",
+      "avatarUrl": "https://avatars.githubusercontent.com/in/20150?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6u_kH7",
+    "number": 4022,
+    "title": "npx elizaos agent list fetch failed GH #4020",
+    "body": "npx elizaos agent list<br>\\[2025-03-20 11:18:26\\] USERLVL: An error occurred:<br>\\[2025-03-20 11:18:26\\] USERLVL: Error details: fetch failed<br>\\[2025-03-20 11:18:26\\] USERLVL: Stack trace: TypeError: fetch failed<br>at node:internal/deps/undici/undici:13484:13<br>at process.processTicksAndRejections (node:internal/process/task_queues:105:5)<br>at async getAgents (file:///Users/alexander/Sources/eliza/liza/node_modules/@elizaos/cli/dist/chunk-NXPHQUQ5.js:106:20)<br>at async \\_Command. (file:///Users/alexander/Sources/eliza/liza/node_modules/@elizaos/cli/dist/chunk-NXPHQUQ5.js:132:20)<br>at async \\_Command.parseAsync (file:///Users/alexander/Sources/eliza/liza/node_modules/@elizaos/cli/dist/chunk-5LH7NKB4.js:1721:9)<br>at async main (file:///Users/alexander/Sources/eliza/liza/node_modules/@elizaos/cli/dist/index.js:148:3)",
+    "state": "CLOSED",
+    "createdAt": "2025-03-20T15:36:44Z",
+    "updatedAt": "2025-03-20T15:40:47Z",
+    "author": {
+      "login": "linear",
+      "avatarUrl": "https://avatars.githubusercontent.com/in/20150?v=4"
     },
     "labels": [
       {
@@ -21,23 +65,56 @@
     ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6jD-ED",
+        "id": "IC_kwDOMT5cIs6jXoky",
         "author": "github-actions",
-        "body": "Hello @thewhitewizard! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+        "body": "Hello @linear[bot]! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
       }
     ]
   },
   {
-    "id": "I_kwDOMT5cIs6uqvPI",
-    "number": 3989,
-    "title": "fix: Getting started instruction issues",
-    "body": "## `npm install -g @elizaos/cli`\n\n### Where Found\n\n- https://eliza.how/docs/quickstart\n- https://eliza.how/docs/faq\n- https://eliza.how/docs/intro\n\n```\neliza-v2/test » npm install -g @elizaos/cli\nnpm error code ETARGET\nnpm error notarget No matching version found for @elizaos/plugin-sql@^0.25.6.\nnpm error notarget In most cases you or one of your dependencies are requesting\nnpm error notarget a package version that doesn't exist.\nnpm error A complete log of this run can be found in: /home/jin/.npm/_logs/2025-03-19T04_34_02_115Z-debug-0.log\n```\n\n> Note, tested this too: eliza-v2/test » bun install -g @elizaos/cli\n> bun add v1.2.5 (013fdddc)\n> error: No version matching \"^0.25.6\" found for specifier \"@elizaos/plugin-sql\" (but package exists)\n> error: @elizaos/plugin-sql@^0.25.6 failed to resolve\n\nTest on machine 2 (debian bookworm)\n\n```\n➜  test2 npm install -g @elizaos/cli\nnpm error code ETARGET\nnpm error notarget No matching version found for @elizaos/plugin-sql@^0.25.6.\nnpm error notarget In most cases you or one of your dependencies are requesting\nnpm error notarget a package version that doesn't exist.\nnpm error A complete log of this run can be found in: /home/jintern/.npm/_logs/2025-03-19T04_41_19_499Z-debug-0.log\n```\n\n---\n\n## `npx elizaos start`\n\n### Where Found\n\n- https://eliza.how/docs/quickstart\n- https://eliza.how/docs/faq\n- https://eliza.how/docs/intro\n\n\n```\ncode/eliza-v2 » npx elizaos start\n\nVersion: 1.0.0-beta.0\nStartup successful!\nGo to the dashboard at http://localhost:3000\n\n[2025-03-19 04:13:50] INFO: Using default Eliza character with all plugins\n[2025-03-19 04:13:51] INFO: Plugin @elizaos/plugin-local-ai not installed, installing into /home/jin/code/eliza-v2...\nbun add v1.2.5 (013fdddc)\n  🔍 Resolving [1/66] [2025-03-19 04:13:51] INFO: Installing plugin: @elizaos/plugin-local-ai\n\ninstalled @elizaos/plugin-local-ai@1.0.0-beta.0\n\n410 packages installed [3.78s]\n\nBlocked 3 postinstalls. Run `bun pm untrusted` for details.\n{\"level\":50,\"time\":1742357635302,\"pid\":970489,\"hostname\":\"tank\",\"code\":\"ERR_MODULE_NOT_FOUND\",\"msg\":\"Failed to import plugin: @elizaos/plugin-local-ai\"}\n[2025-03-19 04:13:55] ERROR: Failed to run database migrations:\n```\n\neither that or:\n\n`npm error could not determine executable to run`\n\nfull error:\n\n```\n8 verbose argv \"exec\" \"--\" \"elizaos\" \"start\"\n9 verbose logfile logs-max:10 dir:/home/jintern/.npm/_logs/2025-03-19T04_39_54_057Z-\n10 verbose logfile /home/jintern/.npm/_logs/2025-03-19T04_39_54_057Z-debug-0.log\n11 silly logfile start cleaning logs, removing 2 files\n12 silly packumentCache heap:2197815296 maxSize:549453824 maxEntrySize:274726912\n13 silly logfile done cleaning log files\n14 http fetch GET 200 https://registry.npmjs.org/elizaos 209ms (cache updated)\n15 verbose stack Error: could not determine executable to run\n15 verbose stack     at getBinFromManifest (/home/jintern/.nvm/versions/node/v23.7.0/lib/node_modules/npm/node_modules/libnpmexec/lib/get-bin-from-manifest.js:17:23)\n15 verbose stack     at exec (/home/jintern/.nvm/versions/node/v23.7.0/lib/node_modules/npm/node_modules/libnpmexec/lib/index.js:202:15)\n15 verbose stack     at async Npm.exec (/home/jintern/.nvm/versions/node/v23.7.0/lib/node_modules/npm/lib/npm.js:207:9)\n15 verbose stack     at async module.exports (/home/jintern/.nvm/versions/node/v23.7.0/lib/node_modules/npm/lib/cli/entry.js:74:5)\n16 verbose pkgid elizaos@0.25.6-alpha.1\n17 error could not determine executable to run\n18 verbose cwd /home/jintern/Documents/v2/test\n```\n\nusing node 23",
+    "id": "I_kwDOMT5cIs6u8bi-",
+    "number": 4020,
+    "title": "npx elizaos agent list fetch failed",
+    "body": "npx elizaos agent list\n[2025-03-20 11:18:26] USERLVL: An error occurred:\n[2025-03-20 11:18:26] USERLVL: Error details: fetch failed\n[2025-03-20 11:18:26] USERLVL: Stack trace: TypeError: fetch failed\n    at node:internal/deps/undici/undici:13484:13\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async getAgents (file:///Users/alexander/Sources/eliza/liza/node_modules/@elizaos/cli/dist/chunk-NXPHQUQ5.js:106:20)\n    at async _Command.<anonymous> (file:///Users/alexander/Sources/eliza/liza/node_modules/@elizaos/cli/dist/chunk-NXPHQUQ5.js:132:20)\n    at async _Command.parseAsync (file:///Users/alexander/Sources/eliza/liza/node_modules/@elizaos/cli/dist/chunk-5LH7NKB4.js:1721:9)\n    at async main (file:///Users/alexander/Sources/eliza/liza/node_modules/@elizaos/cli/dist/index.js:148:3)",
     "state": "OPEN",
-    "createdAt": "2025-03-19T04:46:31Z",
-    "updatedAt": "2025-03-19T20:05:14Z",
+    "createdAt": "2025-03-20T11:19:16Z",
+    "updatedAt": "2025-03-20T19:17:43Z",
     "author": {
-      "login": "madjin",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/32600939?u=cdcf89f44c7a50906c7a80d889efa85023af2049&v=4"
+      "login": "OlexanderKulyk",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/133014356?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6jUa04",
+        "author": "github-actions",
+        "body": "Hello @OlexanderKulyk! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6jZxnI",
+        "author": "tcm390",
+        "body": "Hi @OlexanderKulyk, the fix has been merged into the v2-develop branch. Could you kindly test if the commands work? Also, you need to run the app (bun run start) before executing the command."
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6u36kr",
+    "number": 4009,
+    "title": "Version is 1 point behind in client",
+    "body": "In the client, the version is copied and built when the client is built, but the version is changed on publish. We need to split our setup so we version, build, publish in that order.",
+    "state": "OPEN",
+    "createdAt": "2025-03-20T03:11:11Z",
+    "updatedAt": "2025-03-20T03:11:11Z",
+    "author": {
+      "login": "lalalune",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4"
     },
     "labels": [
       {
@@ -53,42 +130,6 @@
         "description": "Eliza 0.2.0"
       }
     ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6jCdPH",
-        "author": "madjin",
-        "body": "This is new since yesterday, some issue with Named export 'EventEmitter' not found:\n\n```\neliza-v2/testing » npm create eliza@beta\n\n> npx\n> create-eliza\n\n✔ What would you like to create? › Project - Contains agents and plugins\n✔ What would you like to name your project? … new\n✔ Select your database: › pglite\n[2025-03-19 04:50:41] INFO: Copying project template from /home/jin/.npm/_npx/3fbc3408ef3b4759/node_modules/@elizaos/cli/templates/project-starter to /home/jin/repo/eliza-v2/testing/new\n[2025-03-19 04:50:41] INFO: Setting @elizaos/cli to use latest version dynamically\n[2025-03-19 04:50:41] INFO: Setting @elizaos/core to use latest version dynamically\n[2025-03-19 04:50:41] INFO: Setting @elizaos/plugin-anthropic to use latest version dynamically\n[2025-03-19 04:50:41] INFO: Setting @elizaos/plugin-openai to use latest version dynamically\n[2025-03-19 04:50:41] INFO: Setting @elizaos/plugin-sql to use latest version dynamically\n[2025-03-19 04:50:41] INFO: Installing dependencies...\n\nchanged 5 packages in 2s\nbun install v1.2.5 (013fdddc)\n\n+ prettier@3.5.3\n+ tsup@8.4.0\n+ @elizaos/cli@1.0.0-beta.1\n+ @elizaos/core@1.0.0-beta.1\n+ @elizaos/plugin-anthropic@1.0.0-beta.1\n+ @elizaos/plugin-openai@1.0.0-beta.1\n+ @elizaos/plugin-sql@1.0.0-beta.1\n+ zod@3.24.2\n\n296 packages installed [2.81s]\n[2025-03-19 04:50:46] INFO: Building project...\n[2025-03-19 04:50:46] INFO: Using build script from package.json\n$ tsup\nCLI Building entry: src/index.ts\nCLI Using tsconfig: tsconfig.build.json\nCLI tsup v8.4.0\nCLI Using tsup config: /home/jin/repo/eliza-v2/testing/new/tsup.config.ts\nCLI Target: esnext\nCLI Cleaning output folder\nESM Build start\nESM dist/index.js     19.50 KB\nESM dist/index.js.map 36.40 KB\nESM ⚡️ Build success in 18ms\n[2025-03-19 04:50:46] INFO: Build completed successfully with bun\n[2025-03-19 04:50:46] INFO: \nYour project is ready! Here's what you can do next:\n1. `cd /home/jin/repo/eliza-v2/testing/new` to change into your project directory\n2. Run `npx @elizaos/cli start` to start your project\n3. Visit `http://localhost:3000` to view your project in the browser\neliza-v2/testing » cd new \ntesting/new » npm run start\n\n> new@1.0.0-beta.0 start\n> npx @elizaos/cli start\n\n\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⠀⠙⠛⠿⢤⣦⣐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣐⣿⣿⢰⡀⠀⠀⠀⠈⠻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠤⠾⠛⠛⣿⣶⣇⠀⠀⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⢰⣋⡳⡄⠀⠀⠀⢨⣭⡀⠀⡤⠀⣀⣝⢿⣶⣿⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⢸⣯⠀⣇⠀⠀⠀⣼⣿⣿⣆⢷⣴⣿⣿⡏⣛⡉⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⢸⣿⣿⠀⠀⠀⠀⠀⣿⣿⡇⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⣾⣿⣿⣧⠀⠀⠀⢸⠟⢀⣴⣿⣿⣿⣿⣦⡀⣠⣾⣿⣿⣿⣿⣦⡙⢿⠀\n⠀⠀⠀⠙⢷⣮⠀⠀⢸⣿⣿⣿⣿⣷⣯⣟⣏⣼⣷⣅⠾⡟⠀⠀⢸⣿⣇⣀⣀⣀⠀⢸⣿⣿⠀⠀⠀⠀⠀⣿⣿⡇⠀⠀⠀⣠⣿⣿⠟⠁⠀⠀⣼⣿⡟⣿⣿⣆⠀⠀⠀⠀⣿⣿⠋⠀⠈⠻⣿⡇⣿⣿⣅⣀⣀⡛⠛⠃⠀⠀\n⠀⠀⠀⠀⠀⠁⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⠀⠀⠀⠀⢸⣿⡿⠿⠿⠿⠀⢸⣿⣿⠀⠀⠀⠀⠀⣿⣿⡇⠀⣠⣾⣿⠟⠁⠀⠀⠀⣰⣿⣿⣁⣸⣿⣿⡄⠀⠀⠀⣿⣿⡀⠀⠀⢘⣿⣿⢈⣛⠿⠿⠿⣿⣷⡄⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⣿⣿⣿⣿⣿⣿⣉⡟⠀⠀⠀⠀⠀⢸⣿⣧⣤⣤⣤⣤⢸⣿⣿⣦⣤⣤⣤⡄⣿⣿⡇⣾⣿⣿⣧⣤⣤⣤⡄⢰⣿⣿⠟⠛⠛⠻⣿⣿⡄⢠⡀⠻⣿⣿⣦⣴⣿⣿⠇⢿⣿⣦⣤⣤⣿⣿⠇⣠⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⢰⡈⠛⠿⣿⣿⣿⣿⣿⠋⠀⣦⣤⣄⠀⠀⠘⠛⠛⠛⠛⠛⠛⠈⠛⠛⠛⠛⠛⠛⠃⠛⠛⠃⠛⠛⠛⠛⠛⠛⠛⠃⠛⠛⠃⠀⠀⠀⠀⠙⠛⠃⠘⠛⠀⠈⠛⠛⠛⠛⠁⠀⠀⠙⠛⠛⠛⠛⠁⠚⠛⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡦⠀⠀⠉⠛⠿⠃⠀⠀⠀⠁⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⢾⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n\nVersion: 1.0.0-beta.1\n[2025-03-19 04:50:57] USERLVL: Found project by description in package.json\nStartup successful!\nGo to the dashboard at http://localhost:3000\n\n[2025-03-19 04:50:58] USERLVL: Plugin @elizaos/plugin-local-ai not installed, installing into /home/jin/repo/eliza-v2/testing/new...\n[2025-03-19 04:50:58] USERLVL: Installing plugin: @elizaos/plugin-local-ai\nbun add v1.2.5 (013fdddc)\n\ninstalled @elizaos/plugin-local-ai@1.0.0-beta.1\n\n225 packages installed [1.63s]\n\nBlocked 3 postinstalls. Run `bun pm untrusted` for details.\n[2025-03-19 04:50:59] USERLVL: Failed to install plugin @elizaos/plugin-local-ai: SyntaxError: Named export 'EventEmitter' not found. The requested module 'eventemitter3' is a CommonJS module, which may not support all module.exports as named exports.\nCommonJS modules can always be imported via the default export, for example using:\n\nimport pkg from 'eventemitter3';\nconst { EventEmitter } = pkg;\n\n[2025-03-19 04:50:59] USERLVL: Also failed to import from project node_modules: Named export 'EventEmitter' not found. The requested module 'eventemitter3' is a CommonJS module, which may not support all module.exports as named exports.\nCommonJS modules can always be imported via the default export, for example using:\n\nimport pkg from 'eventemitter3';\nconst { EventEmitter } = pkg;\n\n[2025-03-19 04:50:59] USERLVL: Error starting agent Eliza: TypeError: Cannot convert undefined or null to object\n[2025-03-19 04:50:59] USERLVL: Failed to start any agents from project, falling back to custom character\n[2025-03-19 04:50:59] USERLVL: Plugin @elizaos/plugin-local-ai not installed, installing into /home/jin/repo/eliza-v2/testing/new...\n[2025-03-19 04:50:59] USERLVL: Installing plugin: @elizaos/plugin-local-ai\nbun add v1.2.5 (013fdddc)\n\ninstalled @elizaos/plugin-local-ai@1.0.0-beta.1\n\n[9.00ms] done\n[2025-03-19 04:51:00] USERLVL: Failed to install plugin @elizaos/plugin-local-ai: SyntaxError: Named export 'EventEmitter' not found. The requested module 'eventemitter3' is a CommonJS module, which may not support all module.exports as named exports.\nCommonJS modules can always be imported via the default export, for example using:\n\nimport pkg from 'eventemitter3';\nconst { EventEmitter } = pkg;\n\n[2025-03-19 04:51:00] USERLVL: Also failed to import from project node_modules: Named export 'EventEmitter' not found. The requested module 'eventemitter3' is a CommonJS module, which may not support all module.exports as named exports.\nCommonJS modules can always be imported via the default export, for example using:\n\nimport pkg from 'eventemitter3';\nconst { EventEmitter } = pkg;\n\n[2025-03-19 04:51:00] USERLVL: An error occurred:\n[2025-03-19 04:51:00] USERLVL: Error details: Cannot convert undefined or null to object\n[2025-03-19 04:51:00] USERLVL: Stack trace: TypeError: Cannot convert undefined or null to object\n    at Function.keys (<anonymous>)\n    at startAgent (file:///home/jin/repo/eliza-v2/testing/new/node_modules/@elizaos/cli/dist/chunk-IKVXP3AZ.js:85451:47)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async startAgents (file:///home/jin/repo/eliza-v2/testing/new/node_modules/@elizaos/cli/dist/chunk-IKVXP3AZ.js:85651:9)\n    at async _Command.<anonymous> (file:///home/jin/repo/eliza-v2/testing/new/node_modules/@elizaos/cli/dist/chunk-IKVXP3AZ.js:85707:7)\n    at async _Command.parseAsync (file:///home/jin/repo/eliza-v2/testing/new/node_modules/@elizaos/cli/dist/chunk-5LH7NKB4.js:1721:9)\n    at async main (file:///home/jin/repo/eliza-v2/testing/new/node_modules/@elizaos/cli/dist/index.js:149:3)\n```"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6jDU6G",
-        "author": "OlexanderKulyk",
-        "body": "same error"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6jDZHZ",
-        "author": "OlexanderKulyk",
-        "body": "node -v\nv23.10.0\nroot@local:~# npm install -g @elizaos/cli\nnpm ERR! code ETARGET\nnpm ERR! notarget No matching version found for @elizaos/plugin-sql@^0.25.6.\nnpm ERR! notarget In most cases you or one of your dependencies are requesting\nnpm ERR! notarget a package version that doesn't exist.\n\nnpm ERR! A complete log of this run can be found in:\nnpm ERR!     /root/.npm/_logs/2025-03-19T07_20_12_449Z-debug-0.log"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6jDfU0",
-        "author": "jnschilling",
-        "body": "+1"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6jDqfY",
-        "author": "OlexanderKulyk",
-        "body": "I just decided to study this library and it immediately broke, can you recommend a working previous version?"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6jLlTv",
-        "author": "madjin",
-        "body": "When you run `npm install -g @elizaos/cli`, it's failing because it can't find version `^0.25.6` of `@elizaos/plugin-sql`.\n\nLooking at your registry file and the code, I can see where the problem is happening. Here's what's going on:\n\n1. In the `cli/package.json`, the dependency is listed as `\"@elizaos/plugin-sql\": \"^1.0.0-beta.2\"`, but the error indicates it's looking for `^0.25.6`.\n\n2. The registry in `paste-2.txt` shows that most of the plugins are referenced with GitHub URLs (e.g., `\"github:elizaos/plugin-sql\"`), but NPM is trying to fetch a specific version.\n\n3. Looking at `cli/src/utils/registry/index.ts`, the code tries to get plugin versions from multiple sources, including a hardcoded fallback that returns `0.25.9` if it can't determine a version elsewhere. This might be related to the version discrepancy.\n\nHere are a couple of possible solutions:\n\n### Option 1: Install from GitHub directly \n\nTry installing directly from GitHub instead of using npm:\n\n```bash\nnpm install -g github:elizaos/cli\n```\n\n### Option 2: Clone the repo and install locally\n\n```bash\ngit clone https://github.com/elizaos/elizaos.git\ncd elizaos/packages/cli\nnpm install\nnpm link\n```\n\n### Option 3: Install a specific version that might work\n\n```bash\nnpm install -g @elizaos/cli@0.25.6\n```\n\n### Option 4: Modify package.json locally\n\nIf you're working with the source code:\n\n1. Edit `cli/package.json` to change the dependency for `@elizaos/plugin-sql` to match GitHub URL pattern:\n   ```json\n   \"@elizaos/plugin-sql\": \"github:elizaos/plugin-sql\"\n   ```\n\n2. Then build and install the CLI\n\nThis appears to be a versioning mismatch issue where the CLI is looking for a specific npm version of a package that's primarily distributed via GitHub. The versions in the repository don't align with what's published on npm."
-      },
-      {
-        "id": "IC_kwDOMT5cIs6jMiJ9",
-        "author": "Block3AI",
-        "body": "Having similar issue thanks for sharing. Seems the @elizaos/cli package depends on @elizaos/plugin-sql@^0.25.6, but this version does not exist in the npm registry."
-      }
-    ]
+    "comments": []
   }
 ]

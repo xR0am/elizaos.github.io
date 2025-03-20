@@ -1,0 +1,135 @@
+[
+  {
+    "id": "I_kwDOMT5cIs6u_lAS",
+    "number": 4024,
+    "title": "Ollama LLM Response Parsing Fails (TypeError: null is not an object) GH #3993",
+    "body": "**Describe the Bug:**\n\nWhen using Ollama as the LLM engine in ElizaOS (v1.0.0-beta.2), the response parsing fails with a TypeError: null is not an object (evaluating 'responseObject.providers'). The issue occurs because parseJSONObjectFromText(response) returns null, which suggests that the response from Ollama is not valid JSON.\n\n**<br>To Reproduce:**\n\nUSE_OLLAMA_TEXT_MODELS=true\n\nOLLAMA_SERVER_URL=[http://localhost:11434](http://localhost:11434)\n\nOLLAMA_MODEL=llama3.2:1b\n\nSMALL_OLLAMA_MODEL=llama3.2:1b\n\nMEDIUM_OLLAMA_MODEL=llama3.2:1b\n\nLARGE_OLLAMA_MODEL=llama3.2:1b\n\n<br>**Screenshots:**\n\n<img src=\"https://uploads.linear.app/186bdefa-3633-464a-80cd-6e86fe765a5c/ae46c573-23ff-47fd-a48a-9087bc3da2c0/109f5dae-c5e7-44dc-b708-7353c6cdb28d?signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXRoIjoiLzE4NmJkZWZhLTM2MzMtNDY0YS04MGNkLTZlODZmZTc2NWE1Yy9hZTQ2YzU3My0yM2ZmLTQ3ZmQtYTQ4YS05MDg3YmMzZGEyYzAvMTA5ZjVkYWUtYzVlNy00NGRjLWI3MDgtNzM1M2M2Y2RiMjhkIiwiaWF0IjoxNzQyNDg1MTQyLCJleHAiOjMzMzEzMDQ1MTQyfQ.1Gb77mOV4YkFJisP6ht2wf2s6C5KvoPOyB3X9O8W6Gk \" alt=\"image.png\" width=\"929\" data-linear-height=\"956\" />\n\n**Additional context**\n\n* Ollama works fine when tested via the Ollama WebUI.",
+    "state": "CLOSED",
+    "createdAt": "2025-03-20T15:37:58Z",
+    "updatedAt": "2025-03-20T15:40:48Z",
+    "author": {
+      "login": "linear",
+      "avatarUrl": "https://avatars.githubusercontent.com/in/20150?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6u_kqB",
+    "number": 4023,
+    "title": "Version is 1 point behind in client GH #4009",
+    "body": "In the client, the version is copied and built when the client is built, but the version is changed on publish. We need to split our setup so we version, build, publish in that order.",
+    "state": "CLOSED",
+    "createdAt": "2025-03-20T15:37:29Z",
+    "updatedAt": "2025-03-20T15:40:47Z",
+    "author": {
+      "login": "linear",
+      "avatarUrl": "https://avatars.githubusercontent.com/in/20150?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6u_kH7",
+    "number": 4022,
+    "title": "npx elizaos agent list fetch failed GH #4020",
+    "body": "npx elizaos agent list<br>\\[2025-03-20 11:18:26\\] USERLVL: An error occurred:<br>\\[2025-03-20 11:18:26\\] USERLVL: Error details: fetch failed<br>\\[2025-03-20 11:18:26\\] USERLVL: Stack trace: TypeError: fetch failed<br>at node:internal/deps/undici/undici:13484:13<br>at process.processTicksAndRejections (node:internal/process/task_queues:105:5)<br>at async getAgents (file:///Users/alexander/Sources/eliza/liza/node_modules/@elizaos/cli/dist/chunk-NXPHQUQ5.js:106:20)<br>at async \\_Command. (file:///Users/alexander/Sources/eliza/liza/node_modules/@elizaos/cli/dist/chunk-NXPHQUQ5.js:132:20)<br>at async \\_Command.parseAsync (file:///Users/alexander/Sources/eliza/liza/node_modules/@elizaos/cli/dist/chunk-5LH7NKB4.js:1721:9)<br>at async main (file:///Users/alexander/Sources/eliza/liza/node_modules/@elizaos/cli/dist/index.js:148:3)",
+    "state": "CLOSED",
+    "createdAt": "2025-03-20T15:36:44Z",
+    "updatedAt": "2025-03-20T15:40:47Z",
+    "author": {
+      "login": "linear",
+      "avatarUrl": "https://avatars.githubusercontent.com/in/20150?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6jXoky",
+        "author": "github-actions",
+        "body": "Hello @linear[bot]! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6u8bi-",
+    "number": 4020,
+    "title": "npx elizaos agent list fetch failed",
+    "body": "npx elizaos agent list\n[2025-03-20 11:18:26] USERLVL: An error occurred:\n[2025-03-20 11:18:26] USERLVL: Error details: fetch failed\n[2025-03-20 11:18:26] USERLVL: Stack trace: TypeError: fetch failed\n    at node:internal/deps/undici/undici:13484:13\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async getAgents (file:///Users/alexander/Sources/eliza/liza/node_modules/@elizaos/cli/dist/chunk-NXPHQUQ5.js:106:20)\n    at async _Command.<anonymous> (file:///Users/alexander/Sources/eliza/liza/node_modules/@elizaos/cli/dist/chunk-NXPHQUQ5.js:132:20)\n    at async _Command.parseAsync (file:///Users/alexander/Sources/eliza/liza/node_modules/@elizaos/cli/dist/chunk-5LH7NKB4.js:1721:9)\n    at async main (file:///Users/alexander/Sources/eliza/liza/node_modules/@elizaos/cli/dist/index.js:148:3)",
+    "state": "OPEN",
+    "createdAt": "2025-03-20T11:19:16Z",
+    "updatedAt": "2025-03-20T19:17:43Z",
+    "author": {
+      "login": "OlexanderKulyk",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/133014356?v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6jUa04",
+        "author": "github-actions",
+        "body": "Hello @OlexanderKulyk! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6jZxnI",
+        "author": "tcm390",
+        "body": "Hi @OlexanderKulyk, the fix has been merged into the v2-develop branch. Could you kindly test if the commands work? Also, you need to run the app (bun run start) before executing the command."
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6u36kr",
+    "number": 4009,
+    "title": "Version is 1 point behind in client",
+    "body": "In the client, the version is copied and built when the client is built, but the version is changed on publish. We need to split our setup so we version, build, publish in that order.",
+    "state": "OPEN",
+    "createdAt": "2025-03-20T03:11:11Z",
+    "updatedAt": "2025-03-20T03:11:11Z",
+    "author": {
+      "login": "lalalune",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB1dE8Sw",
+        "name": "V2",
+        "color": "1670F6",
+        "description": "Eliza 0.2.0"
+      }
+    ],
+    "comments": []
+  }
+]

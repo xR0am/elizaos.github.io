@@ -1,42 +1,41 @@
-# elizaos Eliza (2025-03-19)
+# elizaos Eliza (2025-03-20)
     
 ## 📊 Overview
-Development focused on package improvements (error in plugin-tee), 3 bug fixes. with 6 contributors merging 5 PRs. Major work included various improvements.
+Development focused on new features (add maxStatck back), 7 bug fixes. with 13 contributors merging 15 PRs. Major work included tcm390 is currently working on fixing various issues and adding new features to the cli agent command, profile overflow, openai stt, grid size adjustment, and room stack.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 6 |
+| 👥 Contributors | 13 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 5 |
-| ⚠️ New Issues | 2 |
+| 🔄 Merged PRs | 15 |
+| ⚠️ New Issues | 5 |
 
 ## 🔄 Pull Request Summary
 - 🧹 **Chores**: 0
-- 🐛 **Fixes**: 3
-- ✨ **Features**: 0
+- 🐛 **Fixes**: 7
+- ✨ **Features**: 6
 
 ## 📁 File Changes
-- **packages**: 6 files (+24/-19 lines)
-- **docs**: 2 files (+3/-3 lines)
-- **root**: 1 files (+1/-1 lines)
+- **packages**: 26 files (+973/-626 lines)
+- **root**: 1 files (+89/-46 lines)
 
 ## 🔥 Notable Changes
-- Update README.md
-- fix: Fixed missing comma between regex expressions
-- fix: error in plugin-tee
+- fix: cli agent command
+- fix: profile overflow issue
+- fix: openai stt
 
 ## 👥 Top Contributors
-- **jmikedupont2**: jmikedupont2 is currently working on addressing two issues related to checking for a specific section in package
-- **ozrg**: ozrg is currently working on fixing a missing comma between regex expressions in the documentation
-- **HashWarlock**: HashWarlock is currently working on fixing an error in the plugin-tee package, with one pull request successfully merged in the packages code area
+- **tcm390**: tcm390 is currently working on fixing various issues and adding new features to the CLI agent command, profile overflow, openai stt, grid size adjustment, and room stack
+- **wtfsayo**: wtfsayo is currently working on enhancing the memory viewer, improving the profile UI and layout, and adding a create button with home page layout improvements in the packages code areas
+- **Jordaniswatching**: Jordaniswatching is currently updating the README
 
 ## ⚠️ Issues
-- **New Issues**: 2
-- **Labels**: `enhancement` (2), `V2` (1)
-- **Summary**: 2 feature requests (including 'Check if this is a plugin (package.json contains 'eliza' section with type='plugin')?', 'How to debug remotely v2').
+- **New Issues**: 5
+- **Labels**: `bug` (5), `V2` (1)
+- **Summary**: 5 bugs reported (including 'Ollama LLM Response Parsing Fails (TypeError: null is not an object) GH #3993', 'Version is 1 point behind in client GH #4009').
 
 ## Top Contributors
-- **jmikedupont2**: Update README.md
-- **ozrg**: fix: Fixed missing comma between regex expressions
-- **HashWarlock**: fix: error in plugin-tee
+- **tcm390**: fix: cli agent command
+- **wtfsayo**: feat: better memory viewer
+- **Jordaniswatching**: Update README.md

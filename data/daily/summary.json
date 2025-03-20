@@ -1,65 +1,62 @@
 {
-  "title": "elizaos Eliza (2025-03-19)",
+  "title": "elizaos Eliza (2025-03-20)",
   "version": "",
-  "overview": "Development focused on package improvements (error in plugin-tee), 3 bug fixes. with 6 contributors merging 5 PRs. Major work included various improvements.",
+  "overview": "Development focused on new features (add maxStatck back), 7 bug fixes. with 13 contributors merging 15 PRs. Major work included tcm390 is currently working on fixing various issues and adding new features to the cli agent command, profile overflow, openai stt, grid size adjustment, and room stack.",
   "metrics": {
-    "contributors": 6,
-    "merged_prs": 5,
-    "new_issues": 2,
-    "lines_changed": 51
+    "contributors": 13,
+    "merged_prs": 15,
+    "new_issues": 5,
+    "lines_changed": 1734
   },
   "changes": {
-    "features": [],
+    "features": [
+      "add maxStatck back",
+      "update agents status in group",
+      "improve stack"
+    ],
     "fixes": [
-      "Fixed missing comma between regex expressions",
-      "error in plugin-tee",
-      "Make client use relative URL & firefox fixes"
+      "cli agent command",
+      "profile overflow issue",
+      "openai stt"
     ],
     "chores": []
   },
   "areas": [
     {
       "name": "packages",
-      "files": 6,
-      "additions": 24,
-      "deletions": 19
-    },
-    {
-      "name": "docs",
-      "files": 2,
-      "additions": 3,
-      "deletions": 3
+      "files": 26,
+      "additions": 973,
+      "deletions": 626
     },
     {
       "name": "root",
       "files": 1,
-      "additions": 1,
-      "deletions": 1
+      "additions": 89,
+      "deletions": 46
     }
   ],
-  "issues_summary": "implementing 2 feature requests including 'Check if this is a plugin (package.json contains 'eliza' section with type='plugin')?', 'How to debug remotely v2'",
+  "issues_summary": "working on 5 bugs including 'Ollama LLM Response Parsing Fails (TypeError: null is not an object)\u00a0GH #3993', 'Version is 1 point behind in client\u00a0GH #4009'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "jmikedupont2",
-      "summary": "jmikedupont2 is currently working on addressing two issues related to checking for a specific section in package",
-      "areas": [
-        "README.md"
-      ]
-    },
-    {
-      "name": "ozrg",
-      "summary": "ozrg is currently working on fixing a missing comma between regex expressions in the documentation",
-      "areas": [
-        "docs"
-      ]
-    },
-    {
-      "name": "HashWarlock",
-      "summary": "HashWarlock is currently working on fixing an error in the plugin-tee package, with one pull request successfully merged in the packages code area",
+      "name": "tcm390",
+      "summary": "tcm390 is currently working on fixing various issues and adding new features to the CLI agent command, profile overflow, openai stt, grid size adjustment, and room stack",
       "areas": [
         "packages"
       ]
+    },
+    {
+      "name": "wtfsayo",
+      "summary": "wtfsayo is currently working on enhancing the memory viewer, improving the profile UI and layout, and adding a create button with home page layout improvements in the packages code areas",
+      "areas": [
+        "packages",
+        "bun.lock"
+      ]
+    },
+    {
+      "name": "Jordaniswatching",
+      "summary": "Jordaniswatching is currently updating the README",
+      "areas": []
     }
   ]
 }
