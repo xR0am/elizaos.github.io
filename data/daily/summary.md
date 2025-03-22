@@ -1,7 +1,7 @@
-# elizaos Eliza (2025-03-20)
+# elizaos Eliza (2025-03-22)
     
 ## 📊 Overview
-Development focused on new features (add maxStatck back), 7 bug fixes. with 13 contributors merging 15 PRs. Major work included tcm390 is currently working on fixing various issues and adding new features to the cli agent command, profile overflow, openai stt, grid size adjustment, and room stack.
+Development focused on new features (add maxStatck back), 7 bug fixes. with 13 contributors merging 15 PRs. Major work included tcm390 is primarily focused on fixing various issues and adding new features related to the cli agent command, profile overflow, openai stt, grid size adjustment, room stack, and group chat functionalities.
 
 ## 📈 Key Metrics
 | Metric | Count |
@@ -26,9 +26,9 @@ Development focused on new features (add maxStatck back), 7 bug fixes. with 13 c
 - fix: openai stt
 
 ## 👥 Top Contributors
-- **tcm390**: tcm390 is currently working on fixing various issues and adding new features to the CLI agent command, profile overflow, openai stt, grid size adjustment, and room stack
-- **wtfsayo**: wtfsayo is currently working on enhancing the memory viewer, improving the profile UI and layout, and adding a create button with home page layout improvements in the packages code areas
-- **Jordaniswatching**: Jordaniswatching is currently updating the README
+- **tcm390**: tcm390 is primarily focused on fixing various issues and adding new features related to the CLI agent command, profile overflow, openai stt, grid size adjustment, room stack, and group chat functionalities
+- **wtfsayo**: wtfsayo is currently working on improving the memory viewer, enhancing the profile UI and layout, and making layout improvements to the home page
+- **Jordaniswatching**: Jordaniswatching is currently working on updating the README
 
 ## ⚠️ Issues
 - **New Issues**: 5
