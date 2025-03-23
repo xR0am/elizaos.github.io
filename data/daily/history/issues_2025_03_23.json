@@ -1,0 +1,45 @@
+[
+  {
+    "id": "I_kwDOMT5cIs6vTCqe",
+    "number": 4050,
+    "title": "Need help with client-twitter, How do I let eliza post images along with tweets??",
+    "body": "I am trying to create a twitter agent that does basic work like tweeting and replying to tweets, now how do I enable it to post/tweet images too???\n\nPlease help!!",
+    "state": "OPEN",
+    "createdAt": "2025-03-23T07:53:49Z",
+    "updatedAt": "2025-03-23T07:54:12Z",
+    "author": {
+      "login": "Quanta-Naut",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/123290216?v=4"
+    },
+    "labels": [],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6jrcll",
+        "author": "github-actions",
+        "body": "Hello @Quanta-Naut! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+      }
+    ]
+  },
+  {
+    "id": "I_kwDOMT5cIs6vSLDI",
+    "number": 4049,
+    "title": "AI_LoadAPIKeyError: Anthropic API key is missing. Pass it using the 'apiKey' parameter or the ANTHROPIC_API_KEY",
+    "body": "```\n2025-03-22 22:45:31] INFO: [useModel] TEXT_EMBEDDING completed in 0.03ms\nJoining channel: General\nError selecting or joining a voice channel: 1416 |   get voiceAdapterCreator() {\n1417 |     return methods => {\n1418 |       this.client.voice.adapters.set(this.id, methods);\n1419 |       return {\n1420 |         sendPayload: data => {\n1421 |           if (this.shard.status !== Status.Ready) return false;\n                          ^\nTypeError: undefined is not an object (evaluating 'this.shard.status')\n      at sendPayload (/app/node_modules/discord.js/src/structures/Guild.js:1421:20)\n      at createVoiceConnection (/app/node_modules/@discordjs/voice/dist/index.mjs:2078:102)\n      at <anonymous> (/app/packages/plugin-discord/dist/index.js:2658:24)\n      at joinChannel (/app/packages/plugin-discord/dist/index.js:2647:21)\n      at <anonymous> (/app/packages/plugin-discord/dist/index.js:3148:20)\n\n[2025-03-22 22:45:32] INFO: Successfully started 1 agents from project\nServing static assets from the client dist path\n[2025-03-22 22:45:32] INFO: Client build path: /app/packages/cli/dist\n[2025-03-22 22:45:32] INFO: Server started at http://localhost:3000\n[2025-03-22 22:45:32] INFO (Str Introspector $SOLFUNMEME): Creating world:\n    id: \"ee07ef86-47e3-068b-afd1-a1336dba76db\"\n    serverId: \"1029599029258108998\"\n    agentId: \"1ee9e4ad-f1a9-0946-8498-edce550b222c\"\n[2025-03-22 22:45:32] INFO: World ee07ef86-47e3-068b-afd1-a1336dba76db created successfully.\n[2025-03-22 22:45:33] INFO: Handling server sync event for server: Str Introspector $SOLFUNMEME\n[2025-03-22 22:45:35] INFO: Initialized settings config for server 1029599029258108998\n[2025-03-22 22:47:01] INFO: [useModel] TEXT_EMBEDDING completed in 0.03ms\n[2025-03-22 22:47:01] ERROR: OpenAI API error: 401 - Unauthorized\n[2025-03-22 22:47:01] INFO: [useModel] TEXT_EMBEDDING completed in 102.35ms\n14 |   constructor({\n15 |     name: name14,\n16 |     message,\n17 |     cause\n18 |   }) {\n19 |     super(message);\n         ^\nAI_LoadAPIKeyError: Anthropic API key is missing. Pass it using the 'apiKey' parameter or the ANTHROPIC_API_KEY environment variable.\n      cause: undefined,\n vercel.ai.error: true,\n vercel.ai.error.AI_LoadAPIKeyError: true,\n\n      at new _AISDKError (/app/node_modules/@ai-sdk/provider/dist/index.mjs:19:5)\n[2025-03-22 22:47:01] WARN: PROVIDERS Provider took 3ms to respond\n[2025-03-22 22:47:01] WARN: ENTITIES Provider took 14ms to respond\n```",
+    "state": "OPEN",
+    "createdAt": "2025-03-22T22:49:05Z",
+    "updatedAt": "2025-03-22T22:49:05Z",
+    "author": {
+      "login": "jmikedupont2",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/16427113?u=2bdad12714de646188f98a07736a54f765ad5e3b&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": []
+  }
+]

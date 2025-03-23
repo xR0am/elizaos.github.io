@@ -1,41 +1,35 @@
-# elizaos Eliza (2025-03-22)
+# elizaos Eliza (2025-03-23)
     
 ## 📊 Overview
-Development focused on new features (add maxStatck back), 7 bug fixes. with 13 contributors merging 15 PRs. Major work included tcm390 is primarily focused on fixing various issues and adding new features related to the cli agent command, profile overflow, openai stt, grid size adjustment, room stack, and group chat functionalities.
+with 4 contributors merging 0 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 13 |
+| 👥 Contributors | 4 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 15 |
-| ⚠️ New Issues | 5 |
+| 🔄 Merged PRs | 0 |
+| ⚠️ New Issues | 2 |
 
 ## 🔄 Pull Request Summary
 - 🧹 **Chores**: 0
-- 🐛 **Fixes**: 7
-- ✨ **Features**: 6
+- 🐛 **Fixes**: 0
+- ✨ **Features**: 0
 
 ## 📁 File Changes
-- **packages**: 26 files (+973/-626 lines)
-- **root**: 1 files (+89/-46 lines)
+
 
 ## 🔥 Notable Changes
-- fix: cli agent command
-- fix: profile overflow issue
-- fix: openai stt
+
 
 ## 👥 Top Contributors
-- **tcm390**: tcm390 is primarily focused on fixing various issues and adding new features related to the CLI agent command, profile overflow, openai stt, grid size adjustment, room stack, and group chat functionalities
-- **wtfsayo**: wtfsayo is currently working on improving the memory viewer, enhancing the profile UI and layout, and making layout improvements to the home page
-- **Jordaniswatching**: Jordaniswatching is currently working on updating the README
+- **Quanta-Naut**: Quanta-Naut is currently addressing an issue related to enabling the client-twitter to allow Eliza to post images along with tweets
+- **ai16z-demirix**: ai16z-demirix is currently working on improving plugin browser test coverage and setup within the packages code area, as evidenced by a recent pull request
+- **0xbbjoker**: 0xbbjoker is currently working on a pull request to fix a negative ID issue in the "packages" code area
 
 ## ⚠️ Issues
-- **New Issues**: 5
-- **Labels**: `bug` (5), `V2` (1)
-- **Summary**: 5 bugs reported (including 'Ollama LLM Response Parsing Fails (TypeError: null is not an object) GH #3993', 'Version is 1 point behind in client GH #4009').
+- **New Issues**: 2
+- **Labels**: `bug` (1)
+- **Summary**: 1 bugs reported (including 'AI_LoadAPIKeyError: Anthropic API key is missing. Pass it using the 'apiKey' parameter or the ANTHROPIC_API_KEY').
 
 ## Top Contributors
-- **tcm390**: fix: cli agent command
-- **wtfsayo**: feat: better memory viewer
-- **Jordaniswatching**: Update README.md
