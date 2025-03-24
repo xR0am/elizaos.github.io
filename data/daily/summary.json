@@ -1,36 +1,59 @@
 {
-  "title": "elizaos Eliza (2025-03-23)",
+  "title": "elizaos Eliza (2025-03-24)",
   "version": "",
-  "overview": "with 4 contributors merging 0 PRs. Major work included various improvements.",
+  "overview": "Development focused on package improvements (show client on received messages memory), new features (show client on received messages memory). with 7 contributors merging 3 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 4,
-    "merged_prs": 0,
-    "new_issues": 2,
-    "lines_changed": 0
+    "contributors": 7,
+    "merged_prs": 3,
+    "new_issues": 1,
+    "lines_changed": 415
   },
   "changes": {
-    "features": [],
+    "features": [
+      "show client on received messages memory",
+      "salt agent secrets"
+    ],
     "fixes": [],
-    "chores": []
+    "chores": [
+      "encrypt character secrets from GUI"
+    ]
   },
-  "areas": [],
-  "issues_summary": "working on 1 bugs including 'AI_LoadAPIKeyError: Anthropic API key is missing. Pass it using the 'apiKey' parameter or the ANTHROPIC_API_KEY'",
+  "areas": [
+    {
+      "name": "packages",
+      "files": 7,
+      "additions": 307,
+      "deletions": 87
+    },
+    {
+      "name": "root",
+      "files": 1,
+      "additions": 19,
+      "deletions": 2
+    }
+  ],
+  "issues_summary": "working on 1 bugs including 'Twitter agent is not replying to some of the accounts mentioned in TWITTER_TARGET_USERS  in .env file'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "Quanta-Naut",
-      "summary": "Quanta-Naut is currently addressing an issue related to enabling the client-twitter to allow Eliza to post images along with tweets",
-      "areas": []
+      "name": "wtfsayo",
+      "summary": "wtfsayo is currently working on two significant pull requests related to showing client information on received messages and implementing salt agent secrets",
+      "areas": [
+        "bun.lock",
+        "packages"
+      ]
     },
     {
-      "name": "ai16z-demirix",
-      "summary": "ai16z-demirix is currently working on improving plugin browser test coverage and setup within the packages code area, as evidenced by a recent pull request",
+      "name": "ABC124elizabeth",
+      "summary": "ABC124elizabeth is currently working on a pull request titled \"Elizabeth_wechuli",
       "areas": []
     },
     {
       "name": "0xbbjoker",
-      "summary": "0xbbjoker is currently working on a pull request to fix a negative ID issue in the \"packages\" code area",
-      "areas": []
+      "summary": "0xbbjoker is currently working on encrypting character secrets from the GUI in the \"packages\" code area",
+      "areas": [
+        "packages"
+      ]
     }
   ]
 }
