@@ -1,4 +1,4 @@
-# elizaos Eliza (2025-03-24)
+# elizaos Eliza (2025-03-25)
     
 ## 📊 Overview
 Development focused on package improvements (show client on received messages memory), new features (show client on received messages memory). with 7 contributors merging 3 PRs. Major work included various improvements.
@@ -26,7 +26,7 @@ Development focused on package improvements (show client on received messages me
 - chore: encrypt character secrets from GUI
 
 ## 👥 Top Contributors
-- **wtfsayo**: wtfsayo is currently working on two significant pull requests related to showing client information on received messages and implementing salt agent secrets
+- **wtfsayo**: wtfsayo is currently working on two significant pull requests related to showing client information on received messages memory and implementing salt agent secrets
 - **ABC124elizabeth**: ABC124elizabeth is currently working on a pull request titled "Elizabeth_wechuli
 - **0xbbjoker**: 0xbbjoker is currently working on encrypting character secrets from the GUI in the "packages" code area
 
