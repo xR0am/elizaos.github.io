@@ -1,40 +1,40 @@
-# elizaos Eliza (2025-03-25)
+# elizaos Eliza (2025-03-26)
     
 ## 📊 Overview
-Development focused on package improvements (show client on received messages memory), new features (show client on received messages memory). with 7 contributors merging 3 PRs. Major work included various improvements.
+Development focused on new features (env settings gui), 4 bug fixes. with 6 contributors merging 7 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 7 |
+| 👥 Contributors | 6 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 3 |
-| ⚠️ New Issues | 1 |
+| 🔄 Merged PRs | 7 |
+| ⚠️ New Issues | 2 |
 
 ## 🔄 Pull Request Summary
 - 🧹 **Chores**: 1
-- 🐛 **Fixes**: 0
+- 🐛 **Fixes**: 4
 - ✨ **Features**: 2
 
 ## 📁 File Changes
-- **packages**: 7 files (+307/-87 lines)
-- **root**: 1 files (+19/-2 lines)
+- **packages**: 19 files (+701/-119 lines)
 
 ## 🔥 Notable Changes
-- feat: show client on received messages memory
-- feat: salt agent secrets
-- chore: encrypt character secrets from GUI
+- fix: null check
+- feat: env settings gui
+- feat: prevent message overlap
 
 ## 👥 Top Contributors
-- **wtfsayo**: wtfsayo is currently working on two significant pull requests related to showing client information on received messages memory and implementing salt agent secrets
-- **ABC124elizabeth**: ABC124elizabeth is currently working on a pull request titled "Elizabeth_wechuli
-- **0xbbjoker**: 0xbbjoker is currently working on encrypting character secrets from the GUI in the "packages" code area
+- **tcm390**: tcm390 is currently working on fixing settings actions, preventing message overlap, and improving room status in the packages codebase
+- **wtfsayo**: wtfsayo is currently working on fixing inline character loading and enabling the settings navigation button in the packages code area
+- **yungalgo**: yungalgo is currently working on a pull request that fixes the use of the PUT method for GitHub file operations to handle non-existent directories
 
 ## ⚠️ Issues
-- **New Issues**: 1
+- **New Issues**: 2
 - **Labels**: `bug` (1)
-- **Summary**: 1 bugs reported (including 'Twitter agent is not replying to some of the accounts mentioned in TWITTER_TARGET_USERS  in .env file').
+- **Summary**: 1 bugs reported (including 'Twitter: Authorization: Status is a duplicate.').
 
 ## Top Contributors
-- **wtfsayo**: feat: show client on received messages memory
-- **0xbbjoker**: chore: encrypt character secrets from GUI
+- **tcm390**: fix: null check
+- **wtfsayo**: fix: allow inline character(s) loading
+- **yungalgo**: fix: Use PUT method for GitHub file operations to handle non-existent directories

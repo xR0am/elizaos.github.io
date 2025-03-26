@@ -1,12 +1,27 @@
 [
   {
-    "id": "I_kwDOMT5cIs6vsQe5",
-    "number": 4074,
-    "title": "\"Authorization: Status is a duplicate. (187)\",",
-    "body": "```\n2025-03-25 19:50:37] INFO: No settings state found for server 1883025815090372608\n[2025-03-25 19:50:37] ERROR: Error sending tweet; Bad response:\n    errors: [\n      {\n        \"message\": \"Authorization: Status is a duplicate. (187)\",\n        \"locations\": [\n          {\n            \"line\": 18,\n            \"column\": 3\n          }\n        ],\n        \"path\": [\n          \"create_tweet\"\n        ],\n        \"extensions\": {\n          \"name\": \"AuthorizationError\",\n          \"source\": \"Client\",\n          \"code\": 187,\n          \"kind\": \"Permissions\",\n          \"tracing\": {\n            \"trace_id\": \"04b712740fc18d04\"\n          }\n        },\n        \"code\": 187,\n        \"kind\": \"Permissions\",\n        \"name\": \"AuthorizationError\",\n        \"source\": \"Client\",\n        \"tracing\": {\n          \"trace_id\": \"04b712740fc18d04\"\n        }\n      }\n    ]\n    data: {}\n[2025-03-25 19:50:37] ERROR: Error posting tweet:\n    message: \"(TypeError) Cannot read properties of null (reading 'rest_id')\"\n    stack: [\n      \"TypeError: Cannot read properties of null (reading 'rest_id')\",\n      \"at callback (file:///app/packages/plugin-twitter/dist/index.js:8649:34)\",\n      \"at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\",\n      \"at async postGeneratedHandler (file:///app/packages/cli/dist/chunk-ZQLMO6Y7.js:26597:5)\",\n      \"at async events (file:///app/packages/cli/dist/chunk-ZQLMO6Y7.js:26728:7)\",\n      \"at async Promise.all (index 0)\",\n      \"at async AgentRuntime.emitEvent (file:///app/packages/cli/dist/chunk-ZQLMO6Y7.js:27910:9)\"\n    ]\n```",
+    "id": "I_kwDOMT5cIs6v4ND4",
+    "number": 4087,
+    "title": "Groq crashing when it should retry",
+    "body": "> Its not a billing issue it is crashing\n> \n> ```node:internal/process/promises:288\n>             triggerUncaughtException(err, true /* fromPromise */);\n>             ^\n> \n> RetryError [AI_RetryError]: Failed after 3 attempts. Last error: Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01j5b4pz9jff492fq686vypsx6` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 3770, Requested 2374. Please try a\\\n> gain in 1.430999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\n>     at _retryWithExponentialBackoff (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/node_modules/ai/dist/index.mjs:283:13)\n>     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n>     at async fn (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/node_modules/ai/dist/index.mjs:4106:32)\n>     at async file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/node_modules/ai/dist/index.mjs:470:22\n>     at async TEXT_SMALL (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/plugin-groq/dist/index.js:95:40)\n>     at async AgentRuntime.useModel (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/cli/dist/chunk-RSA7S755.js:27926:22)\n>     at async file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/cli/dist/chunk-RSA7S755.js:26492:29\n>     at async messageReceivedHandler (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/cli/dist/chunk-RSA7S755.js:26561:5)\n>     at async events (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/cli/dist/chunk-RSA7S755.js:26745:7)\n>     at async Promise.all (index 0) {\n>   cause: undefined,\n>   reason: 'maxRetriesExceeded',\n>   errors: [\n>     APICallError [AI_APICallError]: Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01j5b4pz9jff492fq686vypsx6` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 4380, Requested 2374. Please try again in 7.537s. Need more tok\\\n> ens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\n> ``` \n\n _Originally posted by @jmikedupont2 in [#4040](https://github.com/elizaOS/eliza/issues/4040#issuecomment-2755697456)_",
     "state": "OPEN",
-    "createdAt": "2025-03-25T19:53:45Z",
-    "updatedAt": "2025-03-25T19:53:45Z",
+    "createdAt": "2025-03-26T20:41:14Z",
+    "updatedAt": "2025-03-26T20:41:14Z",
+    "author": {
+      "login": "jmikedupont2",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/16427113?u=2bdad12714de646188f98a07736a54f765ad5e3b&v=4"
+    },
+    "labels": [],
+    "comments": []
+  },
+  {
+    "id": "I_kwDOMT5cIs6v3wyP",
+    "number": 4086,
+    "title": "Twitter: Authorization: Status is a duplicate.",
+    "body": "It appears that eliza is producing duplicate tweets and getting bounced but the error message is confusing\nand it should not produce duplicates.\n\n```\n[2025-03-26 19:28:25] ERROR: Error sending tweet; Bad response:\n    errors: [\n      {\n        \"message\": \"Authorization: Status is a duplicate. (187)\",\n        \"locations\": [\n          {\n            \"line\": 18,\n            \"column\": 3\n          }\n        ],\n        \"path\": [\n          \"create_tweet\"\n        ],\n        \"extensions\": {\n          \"name\": \"AuthorizationError\",\n          \"source\": \"Client\",\n          \"code\": 187,\n          \"kind\": \"Permissions\",\n          \"tracing\": {\n            \"trace_id\": \"70abb4ef4d29f118\"\n          }\n        },\n        \"code\": 187,\n        \"kind\": \"Permissions\",\n        \"name\": \"AuthorizationError\",\n        \"source\": \"Client\",\n        \"tracing\": {\n          \"trace_id\": \"70abb4ef4d29f118\"\n        }\n      }\n    ]\n    data: {}\n[2025-03-26 19:28:25] ERROR: Error posting tweet:\n    message: \"(TypeError) Cannot read properties of null (reading 'rest_id')\"\n    stack: [\n      \"TypeError: Cannot read properties of null (reading 'rest_id')\",\n      \"at callback (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/plugin-twitter/dist/index.js:8646:34)\",\n      \"at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\",\n      \"at async postGeneratedHandler (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/cli/dist/chunk-RSA7S755.js:26649:5)\",\n      \"at async events (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/cli/dist/chunk-RSA7S755.js:26781:7)\",\n      \"at async Promise.all (index 0)\",\n      \"at async AgentRuntime.emitEvent (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/cli/dist/chunk-RSA7S755.js:27963:9)\"\n    ]\n\n```",
+    "state": "OPEN",
+    "createdAt": "2025-03-26T19:37:46Z",
+    "updatedAt": "2025-03-26T19:47:20Z",
     "author": {
       "login": "jmikedupont2",
       "avatarUrl": "https://avatars.githubusercontent.com/u/16427113?u=2bdad12714de646188f98a07736a54f765ad5e3b&v=4"
@@ -19,67 +34,16 @@
         "description": "Something isn't working"
       }
     ],
-    "comments": []
-  },
-  {
-    "id": "I_kwDOMT5cIs6vrCSB",
-    "number": 4070,
-    "title": "Cannot type spaces in GUI room name field during room creation",
-    "body": "",
-    "state": "OPEN",
-    "createdAt": "2025-03-25T17:37:34Z",
-    "updatedAt": "2025-03-25T18:02:04Z",
-    "author": {
-      "login": "tcm390",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      },
-      {
-        "id": "LA_kwDOMT5cIs8AAAAB1dE8Sw",
-        "name": "V2",
-        "color": "1670F6",
-        "description": "Eliza 0.2.0"
-      }
-    ],
-    "comments": []
-  },
-  {
-    "id": "I_kwDOMT5cIs6vrBsE",
-    "number": 4069,
-    "title": "Agent statuses are not updating in GUI room",
-    "body": "",
-    "state": "OPEN",
-    "createdAt": "2025-03-25T17:36:37Z",
-    "updatedAt": "2025-03-25T18:02:22Z",
-    "author": {
-      "login": "tcm390",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      },
-      {
-        "id": "LA_kwDOMT5cIs8AAAAB1dE8Sw",
-        "name": "V2",
-        "color": "1670F6",
-        "description": "Eliza 0.2.0"
-      }
-    ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6kCOBh",
-        "author": "github-actions",
-        "body": "Hello @tcm390! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+        "id": "IC_kwDOMT5cIs6kPtoU",
+        "author": "jmikedupont2",
+        "body": "When i restart after changing the name of the agent \n\n```2025-03-26 19:42:47] ERROR: Failed to ensure connection: User 3694f252-b1e1-0268-8d1a-361a5015872b not found\n    agentName: \"METZGER\"\n    agentId: \"3694f252-b1e1-0268-8d1a-361a5015872b\"\n[2025-03-26 19:42:47] ERROR: Failed to create Twitter client for 3694f252-b1e1-0268-8d1a-361a5015872b:\n    message: \"(Error) User 3694f252-b1e1-0268-8d1a-361a5015872b not found\"\n    stack: [\n      \"Error: User 3694f252-b1e1-0268-8d1a-361a5015872b not found\",\n      \"at AgentRuntime.ensureParticipantInRoom (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/cli/dist/chunk-RSA7S755.js:27706:13)\",\n      \"at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\",\n      \"at async AgentRuntime.ensureConnection (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/cli/dist/chunk-RSA7S755.js:27685:7)\",\n      \"at async _ClientBase.populateTimeline (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/plugin-twitter/dist/index.js:7702:7)\",\n      \"at async _ClientBase.init (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/plugin-twitter/dist/index.js:7529:5)\",\n      \"at async _TwitterService.createClient (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/plugin-twitter/dist/index.js:9042:7)\",\n      \"at async _TwitterService.start (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/plugin-twitter/dist/index.js:9169:9)\",\n      \"at async AgentRuntime.registerService (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/cli/dist/chunk-RSA7S755.js:27880:29)\",\n      \"at async Promise.all (index 0)\",\n      \"at async AgentRuntime.registerPlugin (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/cli/dist/chunk-RSA7S755.js:27144:7)\"\n    ]\n```"
+      },
+      {
+        "id": "IC_kwDOMT5cIs6kPvX9",
+        "author": "jmikedupont2",
+        "body": "\n![Image](https://github.com/user-attachments/assets/d4b948d2-2719-4ef7-810c-b73271c357c8)\n```\nVersion: 1.0.0-beta.7\nStartup successful!\nGo to the dashboard at http://localhost:3000\n[2025-03-26 19:44:32] INFO: Using default Eliza character with all plugins\n[2025-03-26 19:44:33] WARN: Invalid encrypted value format - expected 'iv:encrypted', returning original value\n[2025-03-26 19:44:33] INFO: Creating default Twitter client from character settings\n[2025-03-26 19:44:33] WARN: Invalid encrypted value format - expected 'iv:encrypted', returning original value\n[2025-03-26 19:44:33] WARN: Invalid encrypted value format - expected 'iv:encrypted', returning original value\n[2025-03-26 19:44:33] WARN: Invalid encrypted value format - expected 'iv:encrypted', returning original value\n[2025-03-26 19:44:33] WARN: Invalid encrypted value format - expected 'iv:encrypted', returning original value\n[2025-03-26 19:44:33] WARN: Invalid encrypted value format - expected 'iv:encrypted', returning original value\n[2025-03-26 19:44:33] WARN: Invalid encrypted value format - expected 'iv:encrypted', returning original value\n[2025-03-26 19:44:33] INFO: Using cached cookies\n[2025-03-26 19:44:33] INFO: Successfully logged in.\n[2025-03-26 19:44:34] WARN: Invalid encrypted value format - expected 'iv:encrypted', returning original value\n[2025-03-26 19:44:36] WARN: Invalid encrypted value format - expected 'iv:encrypted', returning original value\n[2025-03-26 19:44:36] INFO: Emitted WORLD_JOINED event for Twitter account TineIsNotEliza\n[2025-03-26 19:44:36] WARN: Invalid IV length (5) - expected 16 bytes\n[2025-03-26 19:44:36] WARN: Invalid IV length (5) - expected 16 bytes\n[2025-03-26 19:44:36] INFO: Created Twitter client for 3694f252-b1e1-0268-8d1a-361a5015872b\n[2025-03-26 19:45:36] INFO: Generating new tweet...\n[2025-03-26 19:45:36] INFO: No settings state found for server 1883025815090372608\n[2025-03-26 19:45:36] WARN: Invalid encrypted value format - expected 'iv:encrypted', returning original value\n[2025-03-26 19:45:36] WARN: Invalid encrypted value format - expected 'iv:encrypted', returning original value\n[2025-03-26 19:45:37] ERROR: Error sending tweet; Bad response:\n    errors: [\n      {\n        \"message\": \"Authorization: Status is a duplicate. (187)\",\n        \"locations\": [\n          {\n            \"line\": 18,\n            \"column\": 3\n          }\n        ],\n        \"path\": [\n          \"create_tweet\"\n        ],\n        \"extensions\": {\n          \"name\": \"AuthorizationError\",\n          \"source\": \"Client\",\n          \"code\": 187,\n          \"kind\": \"Permissions\",\n          \"tracing\": {\n            \"trace_id\": \"f3682cd2d08470a7\"\n          }\n        },\n        \"code\": 187,\n        \"kind\": \"Permissions\",\n        \"name\": \"AuthorizationError\",\n        \"source\": \"Client\",\n        \"tracing\": {\n          \"trace_id\": \"f3682cd2d08470a7\"\n        }\n      }\n    ]\n    data: {}\n[2025-03-26 19:45:37] ERROR: Error posting tweet:\n    message: \"(TypeError) Cannot read properties of null (reading 'rest_id')\"\n    stack: [\n      \"TypeError: Cannot read properties of null (reading 'rest_id')\",\n      \"at callback (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/plugin-twitter/dist/index.js:8646:34)\",\n      \"at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\",\n      \"at async postGeneratedHandler (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/cli/dist/chunk-RSA7S755.js:26649:5)\",\n      \"at async events (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/cli/dist/chunk-RSA7S755.js:26781:7)\",\n      \"at async Promise.all (index 0)\",\n      \"at async AgentRuntime.emitEvent (file:///mnt/data1/nix/time/2025/03/14/cloud-deployment-eliza/packages/cli/dist/chunk-RSA7S755.js:27963:9)\"\n    ]\n[2025-03-26 19:46:36] WARN: Invalid encrypted value format - expected 'iv:encrypted', returning original value\n\n```"
       }
     ]
   }
