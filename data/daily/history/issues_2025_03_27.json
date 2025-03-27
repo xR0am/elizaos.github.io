@@ -1,0 +1,30 @@
+[
+  {
+    "id": "I_kwDOMT5cIs6wE0yD",
+    "number": 4094,
+    "title": "not building on windows",
+    "body": "\n```\n@elizaos/client:build: $ bun run extract-version && vite build\n@elizaos/client:build: $ bash ./version.sh\n@elizaos/client:build: bun: command not found: bash\n@elizaos/client:build: error: script \"extract-version\" exited with code 1\n@elizaos/client:build: error: script \"build\" exited with code 1\n```",
+    "state": "OPEN",
+    "createdAt": "2025-03-27T18:22:08Z",
+    "updatedAt": "2025-03-27T18:27:25Z",
+    "author": {
+      "login": "jmikedupont2",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/16427113?u=2bdad12714de646188f98a07736a54f765ad5e3b&v=4"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOMT5cIs6kc8OV",
+        "author": "jmikedupont2",
+        "body": "The package.json uses bash and not the cmd file,\nthe cmd file does not work it looks in the wrong directory client moved to packages."
+      }
+    ]
+  }
+]
