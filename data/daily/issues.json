@@ -1,36 +1,15 @@
 [
   {
-    "id": "I_kwDOMT5cIs6wW8do",
-    "number": 4117,
-    "title": "HOW do we block and ban interactions with specific accounts???",
-    "body": "I added an account I thought would be good for my account to interact with on target accounts in .env and I was WRONG! The account constantly pulls OLD DATA and posts it as current! So even though my ai agent can pull up to date coin prices and volume flows from the coin gecko plug-in on request, she doesn’t verify before responding or sharing information from this twitter user. NOR can I get it to stop now!!! I have:\n\n-deleted every comment I can find!\n-blocked the account on our Twitter\n-removed account from .env\n-pushed updated .env to 24/7 server\n\nAND ITS STILL ONGOING!!!\n\nGood: please help me block bad influences!\nBest: please help me get her to KNOW on her own what information is true and false so she can debate or ignore improper data!",
+    "id": "I_kwDOMT5cIs6wY2k6",
+    "number": 4119,
+    "title": "router.post('/:agentId/rooms' feels haze",
+    "body": "\nThis api handles a variety of scenarios, and the lack of annotations gives a headache",
     "state": "OPEN",
-    "createdAt": "2025-03-30T11:01:28Z",
-    "updatedAt": "2025-03-30T11:01:52Z",
+    "createdAt": "2025-03-31T02:15:38Z",
+    "updatedAt": "2025-03-31T02:36:46Z",
     "author": {
-      "login": "coxnate87",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/194716222?v=4"
-    },
-    "labels": [],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6kxvjy",
-        "author": "github-actions",
-        "body": "Hello @coxnate87! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6wWdk_",
-    "number": 4115,
-    "title": "Twitter Plugin: Duplicate Memory Creation on Mentions & Null Post Interval Configuration",
-    "body": "# ElizaOS Twitter Plugin Bugs\n\n## Issue 1: Duplicate Key Error When Receiving Twitter Mentions\n\n**Describe the bug**\nWhen someone mentions the bot on Twitter, the system tries to create a memory record twice with the same ID, resulting in database errors:\n\n```\nerror: duplicate key value violates unique constraint \"memories_pkey\"\ndetail: \"Key (id)=(d79a6e52-7b78-0c8b-941d-fd9c0e353f7a) already exists.\"\n```\n\nLogs show the same memory ID being processed twice:\n```\n[2025-03-30 05:29:29] DEBUG: DrizzleAdapter createMemory:\n    memoryId: \"d79a6e52-7b78-0c8b-941d-fd9c0e353f7a\"\n    contentLength: 26\n[2025-03-30 05:29:29] LOG: Processing Tweet: 1906217138978697554\n[2025-03-30 05:29:29] DEBUG: DrizzleAdapter createMemory:\n    memoryId: \"d79a6e52-7b78-0c8b-941d-fd9c0e353f7a\"\n    contentLength: 26\n```\n\n**To Reproduce**\n1. Configure Twitter plugin with valid credentials\n2. Have someone mention your Twitter bot\n3. Check logs for duplicate key errors\n\n**Expected behavior**\nThe bot should create only one memory record per tweet mention and handle all interactions without database errors.\n\n**Root cause**\nThe issue occurs because `handleTwitterInteractions()` creates a memory record and then calls `handleTweet()` which tries to create the same memory again:\n1. First creation in `handleTwitterInteractions()` around line 227\n2. Second creation in `handleTweet()` around line 642\n\n## Issue 2: Null Post Interval Configuration\n\n**Describe the bug**\nThe Twitter post interval configuration is not being properly read, resulting in null values in the logs:\n\n```\n[2025-03-30 05:31:09] LOG: - Post Interval: null-null minutes\n```\n\n**To Reproduce**\n1. Configure Twitter plugin with a valid post interval setting\n2. Check logs to see that the interval is showing as null-null minutes\n\n**Expected behavior**\nThe logs should correctly show the configured post interval, such as \"Post Interval: 30-60 minutes\" if configured with those values.\n\n**Additional context**\nThe post interval configuration appears to be properly set in the config files, but the system is not reading or applying these values correctly. This may affect the bot's posting schedule.\n\nThese two bugs should be fixed separately as they affect different aspects of the Twitter plugin functionality:\n1. The duplicate key error prevents proper handling of mentions\n2. The null post interval may cause irregular posting behavior ",
-    "state": "OPEN",
-    "createdAt": "2025-03-30T05:39:58Z",
-    "updatedAt": "2025-03-30T05:40:22Z",
-    "author": {
-      "login": "AbdelrahmanZ08",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/181511225?u=537dca9beab1aba279d03a852649ef340241cfee&v=4"
+      "login": "tercel",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/4879512?u=9a2520224d9ae039a506c03dcf58406f52734361&v=4"
     },
     "labels": [
       {
@@ -42,32 +21,10 @@
     ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6kxVku",
-        "author": "github-actions",
-        "body": "Hello @AbdelrahmanZ08! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
+        "id": "IC_kwDOMT5cIs6kzeTp",
+        "author": "tercel",
+        "body": "no buy, just feel haze"
       }
     ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6wWHLr",
-    "number": 4113,
-    "title": "feat: Improving CLI tool instructions",
-    "body": "- [ ] Include a link to eliza.how for docs\n- [ ] Mention openrouter free models as an option: https://openrouter.ai/models?max_price=0\n- [ ] Change `npx elizaos start` while still in beta\n  - `npx @elizaos/cli@beta start` or `elizaos start` if CLI is installed",
-    "state": "OPEN",
-    "createdAt": "2025-03-30T00:50:59Z",
-    "updatedAt": "2025-03-30T00:50:59Z",
-    "author": {
-      "login": "madjin",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/32600939?u=cdcf89f44c7a50906c7a80d889efa85023af2049&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qYA",
-        "name": "enhancement",
-        "color": "a2eeef",
-        "description": "New feature or request"
-      }
-    ],
-    "comments": []
   }
 ]
