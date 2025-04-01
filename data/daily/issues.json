@@ -1,15 +1,15 @@
 [
   {
-    "id": "I_kwDOMT5cIs6wY2k6",
-    "number": 4119,
-    "title": "router.post('/:agentId/rooms' feels haze",
-    "body": "\nThis api handles a variety of scenarios, and the lack of annotations gives a headache",
+    "id": "I_kwDOMT5cIs6wkFlk",
+    "number": 4127,
+    "title": "Repeat checking on interaction, mentioned tweets",
+    "body": "# ElizaOS Twitter Plugin: Redundant Tweet Interaction Checks\n\n## Description\nThe Twitter plugin is repeatedly checking the same tweets and mentions in a loop, even after they've been processed. This creates unnecessary API calls and log spam.\n\n## Current Behavior\nThe system continuously checks the same tweets over and over, as shown in the logs:\n\n```log\n[2025-03-31 16:21:29] LOG: Checking Twitter interactions\n[2025-03-31 16:21:30] LOG: Completed checking mentioned tweets:\n[2025-03-31 16:21:30] LOG: Already responded to tweet 1906195114227020237, skipping\n[2025-03-31 16:21:30] LOG: Already responded to tweet 1906195395497091521, skipping\n[2025-03-31 16:21:30] LOG: Already responded to tweet 1906209067460137240, skipping\n...\n[2025-03-31 16:21:59] LOG: Checking Twitter interactions\n[2025-03-31 16:22:00] LOG: Already responded to tweet 1906195114227020237, skipping\n[2025-03-31 16:22:00] LOG: Already responded to tweet 1906195395497091521, skipping\n[2025-03-31 16:22:00] LOG: Already responded to tweet 1906209067460137240, skipping\n```\n\n## Expected Behavior\n- The system should only check new interactions since the last check\n- Previously processed tweets should be filtered out before logging\n- The interaction check should maintain a cursor or timestamp of the last checked tweet\n\n## Impact\n1. Unnecessary Twitter API calls that could lead to rate limiting\n2. Excessive log entries making it difficult to debug actual issues\n3. Increased system load from repeated processing of the same data\n\n## Possible Solutions\n1. Implement a cursor-based pagination system to only fetch new tweets\n2. Store the last checked tweet ID and only process tweets newer than that\n3. Add a proper caching mechanism for processed tweets with TTL\n\n## Environment\n- ElizaOS Version: 1.0.0-beta.7\n- Bun install && bun run build && bun start\n\n## Related Issues\n- Previous issue about duplicate key errors in Twitter mentions #4115 ",
     "state": "OPEN",
-    "createdAt": "2025-03-31T02:15:38Z",
-    "updatedAt": "2025-03-31T02:36:46Z",
+    "createdAt": "2025-04-01T05:06:27Z",
+    "updatedAt": "2025-04-01T17:24:21Z",
     "author": {
-      "login": "tercel",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/4879512?u=9a2520224d9ae039a506c03dcf58406f52734361&v=4"
+      "login": "AbdelrahmanZ08",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/181511225?u=537dca9beab1aba279d03a852649ef340241cfee&v=4"
     },
     "labels": [
       {
@@ -17,14 +17,14 @@
         "name": "bug",
         "color": "d73a4a",
         "description": "Something isn't working"
+      },
+      {
+        "id": "LA_kwDOMT5cIs8AAAAB1dE8Sw",
+        "name": "V2",
+        "color": "1670F6",
+        "description": "Eliza 0.2.0"
       }
     ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6kzeTp",
-        "author": "tercel",
-        "body": "no buy, just feel haze"
-      }
-    ]
+    "comments": []
   }
 ]

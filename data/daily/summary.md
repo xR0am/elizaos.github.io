@@ -1,40 +1,41 @@
-# elizaos Eliza (2025-03-31)
+# elizaos Eliza (2025-04-01)
     
 ## 📊 Overview
-Development focused on package improvements (add separate ollama plugin), new features (add separate ollama plugin), 1 bug fixes. with 5 contributors merging 3 PRs. Major work included various improvements.
+Development focused on package improvements (Cleanup browser plugin), new features (Enhance telegram), 2 bug fixes. with 10 contributors merging 11 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 5 |
+| 👥 Contributors | 10 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 3 |
+| 🔄 Merged PRs | 11 |
 | ⚠️ New Issues | 1 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 1
-- 🐛 **Fixes**: 1
-- ✨ **Features**: 1
+- 🧹 **Chores**: 3
+- 🐛 **Fixes**: 2
+- ✨ **Features**: 3
 
 ## 📁 File Changes
-- **packages**: 16 files (+617/-416 lines)
-- **root**: 4 files (+45/-34 lines)
+- **packages**: 41 files (+751/-1776 lines)
+- **root**: 3 files (+153/-159 lines)
 
 ## 🔥 Notable Changes
-- chore: remove ollama code from localai
-- feat: add separate ollama plugin
-- fix: reduce docker image size
+- fix: starter project and audio util imports
+- chore: remove unused packages
+- chore: audio utils move to core
 
 ## 👥 Top Contributors
-- **wtfsayo**: wtfsayo is currently working on removing ollama code from the localai and adding a separate ollama plugin in the packages area of the project
-- **HashWarlock**: HashWarlock is currently working on reducing the size of the Docker image through a pull request that has been merged
-- **0xbbjoker**: 0xbbjoker is currently working on a pull request to fix room and entity synchronization for Telegram in the "packages" code area
+- **wtfsayo**: wtfsayo is currently working on fixing import issues in the starter project and audio utilities, removing unused packages, and organizing audio utilities into the core
+- **0xbbjoker**: 0xbbjoker is currently working on enhancing the Telegram logic with middlewares and improving entity synchronization
+- **Samarthsinghal28**: Samarthsinghal28 is currently working on fixing Plugin evm tests in the packages code area
 
 ## ⚠️ Issues
 - **New Issues**: 1
-- **Labels**: `bug` (1)
-- **Summary**: 1 bugs reported (including 'router.post('/:agentId/rooms' feels haze').
+- **Labels**: `bug` (1), `V2` (1)
+- **Summary**: 1 bugs reported (including 'Repeat checking on interaction, mentioned tweets').
 
 ## Top Contributors
-- **wtfsayo**: chore: remove ollama code from localai
-- **HashWarlock**: fix: reduce docker image size
+- **wtfsayo**: fix: starter project and audio util imports
+- **0xbbjoker**: fix: payload sent to event handler
+- **Samarthsinghal28**: tests: Plugin evm tests fixed

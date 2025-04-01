@@ -1,61 +1,67 @@
 {
-  "title": "elizaos Eliza (2025-03-31)",
+  "title": "elizaos Eliza (2025-04-01)",
   "version": "",
-  "overview": "Development focused on package improvements (add separate ollama plugin), new features (add separate ollama plugin), 1 bug fixes. with 5 contributors merging 3 PRs. Major work included various improvements.",
+  "overview": "Development focused on package improvements (Cleanup browser plugin), new features (Enhance telegram), 2 bug fixes. with 10 contributors merging 11 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 5,
-    "merged_prs": 3,
+    "contributors": 10,
+    "merged_prs": 11,
     "new_issues": 1,
-    "lines_changed": 1112
+    "lines_changed": 2839
   },
   "changes": {
     "features": [
-      "add separate ollama plugin"
+      "Enhance telegram",
+      "enhance tg logic with middlewares",
+      "tg community manager"
     ],
     "fixes": [
-      "reduce docker image size"
+      "starter project and audio util imports",
+      "payload sent to event handler"
     ],
     "chores": [
-      "remove ollama code from localai"
+      "remove unused packages",
+      "audio utils move to core",
+      "Cleanup browser plugin"
     ]
   },
   "areas": [
     {
       "name": "packages",
-      "files": 16,
-      "additions": 617,
-      "deletions": 416
+      "files": 41,
+      "additions": 751,
+      "deletions": 1776
     },
     {
       "name": "root",
-      "files": 4,
-      "additions": 45,
-      "deletions": 34
+      "files": 3,
+      "additions": 153,
+      "deletions": 159
     }
   ],
-  "issues_summary": "working on 1 bugs including 'router.post('/:agentId/rooms' feels haze'",
+  "issues_summary": "working on 1 bugs including 'Repeat checking on interaction, mentioned tweets'",
   "questions": [],
   "top_contributors": [
     {
       "name": "wtfsayo",
-      "summary": "wtfsayo is currently working on removing ollama code from the localai and adding a separate ollama plugin in the packages area of the project",
+      "summary": "wtfsayo is currently working on fixing import issues in the starter project and audio utilities, removing unused packages, and organizing audio utilities into the core",
       "areas": [
-        "bun.lock",
-        ".env.example",
-        "packages"
-      ]
-    },
-    {
-      "name": "HashWarlock",
-      "summary": "HashWarlock is currently working on reducing the size of the Docker image through a pull request that has been merged",
-      "areas": [
-        "Dockerfile"
+        "packages",
+        "bun.lock"
       ]
     },
     {
       "name": "0xbbjoker",
-      "summary": "0xbbjoker is currently working on a pull request to fix room and entity synchronization for Telegram in the \"packages\" code area",
-      "areas": []
+      "summary": "0xbbjoker is currently working on enhancing the Telegram logic with middlewares and improving entity synchronization",
+      "areas": [
+        "packages"
+      ]
+    },
+    {
+      "name": "Samarthsinghal28",
+      "summary": "Samarthsinghal28 is currently working on fixing Plugin evm tests in the packages code area",
+      "areas": [
+        "packages"
+      ]
     }
   ]
 }
