@@ -5,8 +5,7 @@
  * This script manages the full lifecycle of GitHub contribution analysis:
  * 1. Fetching data from GitHub using GraphQL API
  * 2. Storing raw data in SQLite database
- * 3. Processing raw data for contributor metrics
- * 4. Generating analytics, scores, and expertise tracking
+ * 3. Processing raw data through modular processing steps
  */
 
 import { Command } from "commander";
@@ -17,8 +16,9 @@ import { DataIngestion } from "../src/lib/data/ingestion";
 import { ContributorPipeline } from "../src/lib/data/processing";
 import { PipelineConfig, PipelineConfigSchema } from "../src/lib/data/types";
 import chalk from "chalk";
-import { subDays, format, parseISO } from "date-fns";
+import { subDays, format } from "date-fns";
 import { join } from "path";
+import { LogLevel } from "../src/lib/data/processing/logger";
 
 const program = new Command();
 
@@ -65,7 +65,6 @@ program
 
       // Initialize services with config
       dataIngestion = new DataIngestion(pipelineConfig);
-      contributorPipeline = new ContributorPipeline(pipelineConfig);
 
       // Use command line days if specified, otherwise fallback to config
       const lookbackDays = parseInt(options.days);
@@ -102,6 +101,7 @@ program
   .description("Process and analyze data")
   .option("-r, --repository <owner/name>", "Process specific repository")
   .option("-d, --days <number>", "Number of days to look back", "14")
+  .option("-v, --verbose", "Enable verbose logging", false)
   .action(async (options) => {
     try {
       // Dynamically import the config
@@ -109,8 +109,8 @@ program
       const { pipelineConfig } = await import(configPath);
 
       // Initialize services with config
-      dataIngestion = new DataIngestion(pipelineConfig);
-      contributorPipeline = new ContributorPipeline(pipelineConfig);
+      const logLevel = options.verbose ? LogLevel.DEBUG : LogLevel.INFO;
+      contributorPipeline = new ContributorPipeline(pipelineConfig, logLevel);
 
       // Use command line days if specified, otherwise fallback to config
       const lookbackDays =
@@ -155,13 +155,6 @@ program
         ? repoRows.filter((repo) => `${repo.repoId}` === options.repository)
         : repoRows;
 
-      let totalContributors = 0;
-      let totalPRs = 0;
-      let totalIssues = 0;
-      let totalReviews = 0;
-      let totalComments = 0;
-      const allMetrics: Record<string, any[]> = {};
-
       // Process each repository
       for (const repo of reposToProcess) {
         const repository = `${repo.repoId}`;
@@ -170,55 +163,16 @@ program
         );
 
         // Process data for the repository
-        const result = await contributorPipeline.processTimeframe({
+        await contributorPipeline.processTimeframe({
           dateRange: {
             startDate: startDateStr,
             endDate: endDateStr,
           },
           repository,
         });
-
-        // Store metrics for this repository
-        allMetrics[repository] = result.metrics;
-
-        // Update totals
-        totalContributors += result.totals.contributors;
-        totalPRs += result.totals.pullRequests;
-        totalIssues += result.totals.issues;
-        totalReviews += result.totals.reviews;
-        totalComments += result.totals.comments;
-
-        // Print repository summary
-        console.log(chalk.cyan(`\nSummary for ${repository}:`));
-        console.log(`Contributors: ${result.totals.contributors}`);
-        console.log(`Pull requests: ${result.totals.pullRequests}`);
-        console.log(`Issues: ${result.totals.issues}`);
-        console.log(`Reviews: ${result.totals.reviews}`);
-        console.log(`Comments: ${result.totals.comments}`);
-
-        // Print top contributors for this repository
-        if (result.metrics.length > 0) {
-          console.log(chalk.cyan("\nTop contributors:"));
-          result.metrics.slice(0, 5).forEach((metric, index) => {
-            console.log(
-              `${index + 1}. ${chalk.bold(metric.username)} - Score: ${
-                metric.score
-              }`
-            );
-          });
-        }
       }
 
-      // Print overall summary if processing multiple repositories
-      if (reposToProcess.length > 1) {
-        console.log(chalk.cyan("\nOverall Summary:"));
-        console.log(`Total Repositories: ${reposToProcess.length}`);
-        console.log(`Total Contributors: ${totalContributors}`);
-        console.log(`Total Pull Requests: ${totalPRs}`);
-        console.log(`Total Issues: ${totalIssues}`);
-        console.log(`Total Reviews: ${totalReviews}`);
-        console.log(`Total Comments: ${totalComments}`);
-      }
+      console.log(chalk.green("\nProcessing completed successfully!"));
     } catch (error: unknown) {
       console.error(chalk.red("Error processing data:"), error);
       process.exit(1);
@@ -230,6 +184,7 @@ program
   .command("run")
   .description("Run complete pipeline (fetch and process)")
   .option("-d, --days <number>", "Number of days to look back", "7")
+  .option("-v, --verbose", "Enable verbose logging", false)
   .action(async (options) => {
     try {
       console.log(chalk.blue("Starting full analytics pipeline..."));
@@ -242,13 +197,12 @@ program
         options.days,
       ]);
 
-      // Run process command with days parameter
-      await program.parseAsync([
-        "analyze-pipeline",
-        "process",
-        "-d",
-        options.days,
-      ]);
+      // Run process command with days parameter and verbose flag
+      const processArgs = ["analyze-pipeline", "process", "-d", options.days];
+      if (options.verbose) {
+        processArgs.push("-v");
+      }
+      await program.parseAsync(processArgs);
 
       console.log(chalk.green("Pipeline completed successfully!"));
     } catch (error: unknown) {

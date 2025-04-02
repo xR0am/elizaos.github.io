@@ -255,7 +255,7 @@ export class DataIngestion {
                 set: {
                   state: review.state,
                   body: review.body ?? "",
-                  submittedAt: review.submittedAt || pr.updatedAt,
+                  createdAt: review.createdAt || pr.updatedAt,
                   lastUpdated: new Date().toISOString(),
                 },
               });

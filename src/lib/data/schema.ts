@@ -71,10 +71,6 @@ export const rawPullRequests = sqliteTable(
   })
 );
 
-export const pullRequestRelations = relations(rawPullRequests, ({ many }) => ({
-  files: many(rawPullRequestFiles),
-}));
-
 export const rawPullRequestFiles = sqliteTable(
   "raw_pr_files",
   {
@@ -272,16 +268,10 @@ export const userDailySummaries = sqliteTable(
     id: text("id").primaryKey(), // username_date
     username: text("username").references(() => users.username),
     date: text("date").notNull(),
-    score: real("score").notNull().default(0),
     summary: text("summary").default(""),
-    totalCommits: integer("total_commits").notNull().default(0),
-    totalPRs: integer("total_prs").notNull().default(0),
-    additions: integer("additions").notNull().default(0),
-    deletions: integer("deletions").notNull().default(0),
-    changedFiles: integer("changed_files").notNull().default(0),
-    commits: text("commits").notNull().default("[]"), // JSON array of commits
-    pullRequests: text("pull_requests").notNull().default("[]"), // JSON array of PRs
-    issues: text("issues").notNull().default("[]"), // JSON array of issues
+    lastUpdated: text("last_updated")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
   },
   (table) => ({
     usernameIdx: index("idx_user_daily_summaries_username").on(table.username),
@@ -290,32 +280,6 @@ export const userDailySummaries = sqliteTable(
       table.username,
       table.date
     ),
-    scoreIdx: index("idx_user_daily_summaries_score").on(table.score),
-  })
-);
-
-export const userStats = sqliteTable(
-  "user_stats",
-  {
-    username: text("username")
-      .references(() => users.username)
-      .primaryKey(),
-    totalPRs: integer("total_prs").notNull().default(0),
-    mergedPRs: integer("merged_prs").notNull().default(0),
-    closedPRs: integer("closed_prs").notNull().default(0),
-    totalFiles: integer("total_files").notNull().default(0),
-    totalAdditions: integer("total_additions").notNull().default(0),
-    totalDeletions: integer("total_deletions").notNull().default(0),
-    filesByType: text("files_by_type").notNull().default("{}"), // JSON string
-    prsByMonth: text("prs_by_month").notNull().default("{}"), // JSON string
-    focusAreas: text("focus_areas").notNull().default("[]"), // JSON array of [area, count] tuples
-    lastUpdated: text("last_updated")
-      .notNull()
-      .default(sql`CURRENT_TIMESTAMP`),
-  },
-  (table) => ({
-    totalPRsIdx: index("idx_user_stats_total_prs").on(table.totalPRs),
-    lastUpdatedIdx: index("idx_user_stats_last_updated").on(table.lastUpdated),
   })
 );
 
@@ -361,6 +325,120 @@ export const userTagScores = sqliteTable(
     ),
   })
 );
+
+// Now define all relations after all tables are defined
+export const usersRelations = relations(users, ({ many, one }) => ({
+  pullRequests: many(rawPullRequests),
+  issues: many(rawIssues),
+  commits: many(rawCommits),
+  tagScores: many(userTagScores),
+  dailySummaries: many(userDailySummaries),
+}));
+
+export const pullRequestRelations = relations(
+  rawPullRequests,
+  ({ one, many }) => ({
+    author: one(users, {
+      fields: [rawPullRequests.author],
+      references: [users.username],
+    }),
+    files: many(rawPullRequestFiles),
+    reviews: many(prReviews),
+    comments: many(prComments),
+    commits: many(rawCommits),
+  })
+);
+
+// export const pullRequestFilesRelations = relations(
+//   rawPullRequestFiles,
+//   ({ one }) => ({
+//     pullRequest: one(rawPullRequests, {
+//       fields: [rawPullRequestFiles.prId],
+//       references: [rawPullRequests.id],
+//     }),
+//   })
+// );
+
+export const issuesRelations = relations(rawIssues, ({ one, many }) => ({
+  author: one(users, {
+    fields: [rawIssues.author],
+    references: [users.username],
+  }),
+  comments: many(issueComments),
+}));
+
+export const commitsRelations = relations(rawCommits, ({ one, many }) => ({
+  author: one(users, {
+    fields: [rawCommits.author],
+    references: [users.username],
+  }),
+  files: many(rawCommitFiles),
+  pullRequest: one(rawPullRequests, {
+    fields: [rawCommits.pullRequestId],
+    references: [rawPullRequests.id],
+  }),
+}));
+
+export const commitFilesRelations = relations(rawCommitFiles, ({ one }) => ({
+  commit: one(rawCommits, {
+    fields: [rawCommitFiles.sha],
+    references: [rawCommits.oid],
+  }),
+}));
+
+export const prReviewsRelations = relations(prReviews, ({ one }) => ({
+  pullRequest: one(rawPullRequests, {
+    fields: [prReviews.prId],
+    references: [rawPullRequests.id],
+  }),
+  author: one(users, {
+    fields: [prReviews.author],
+    references: [users.username],
+  }),
+}));
+
+export const prCommentsRelations = relations(prComments, ({ one }) => ({
+  pullRequest: one(rawPullRequests, {
+    fields: [prComments.prId],
+    references: [rawPullRequests.id],
+  }),
+  author: one(users, {
+    fields: [prComments.author],
+    references: [users.username],
+  }),
+}));
+
+export const issueCommentsRelations = relations(issueComments, ({ one }) => ({
+  issue: one(rawIssues, {
+    fields: [issueComments.issueId],
+    references: [rawIssues.id],
+  }),
+  author: one(users, {
+    fields: [issueComments.author],
+    references: [users.username],
+  }),
+}));
+
+export const userDailySummariesRelations = relations(
+  userDailySummaries,
+  ({ one }) => ({
+    user: one(users, {
+      fields: [userDailySummaries.username],
+      references: [users.username],
+    }),
+  })
+);
+
+export const userTagScoresRelations = relations(userTagScores, ({ one }) => ({
+  user: one(users, {
+    fields: [userTagScores.username],
+    references: [users.username],
+  }),
+  tagRef: one(tags, {
+    fields: [userTagScores.tag],
+    references: [tags.name],
+  }),
+}));
 
 // Pipeline configuration table
 export const pipelineConfig = sqliteTable("pipeline_config", {

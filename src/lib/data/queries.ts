@@ -9,6 +9,7 @@ import {
   rawPullRequestFiles,
 } from "./schema";
 import { DateRange } from "./types";
+import path from "path";
 
 /**
  * Standard query parameters used across different queries
@@ -63,6 +64,101 @@ export async function getContributorPRs(
       files: true,
     },
   });
+}
+
+/**
+ * Calculate focus areas for a contributor based on their PR file paths
+ */
+export interface FocusArea {
+  area: string;
+  count: number;
+  percentage: number;
+}
+
+export async function getContributorFocusAreas(
+  username: string,
+  params: QueryParams = {}
+): Promise<FocusArea[]> {
+  // Fetch PRs with their files
+  const contributorPRs = await getContributorPRs(username, params);
+
+  // Extract file paths from PRs
+  const filePaths = contributorPRs.flatMap((pr) => {
+    if (pr.files) {
+      return pr.files.map((f: any) => f.path);
+    }
+    return [];
+  });
+
+  // Count occurrences of top-level directories
+  const dirCounts: Record<string, number> = {};
+  let totalFiles = 0;
+
+  for (const filePath of filePaths) {
+    const parts = filePath.split("/");
+    if (parts.length > 1) {
+      const topDir = parts[0];
+      dirCounts[topDir] = (dirCounts[topDir] || 0) + 1;
+      totalFiles++;
+    }
+  }
+
+  // Calculate percentages and sort by count
+  return Object.entries(dirCounts)
+    .map(([area, count]) => ({
+      area,
+      count,
+      percentage: totalFiles > 0 ? Math.round((count / totalFiles) * 100) : 0,
+    }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 5); // Top 5 focus areas
+}
+
+/**
+ * Calculate file types for a contributor based on PR file extensions
+ */
+export interface FileType {
+  extension: string;
+  count: number;
+  percentage: number;
+}
+
+export async function getContributorFileTypes(
+  username: string,
+  params: QueryParams = {}
+): Promise<FileType[]> {
+  // Fetch PRs with their files
+  const contributorPRs = await getContributorPRs(username, params);
+
+  // Extract file paths from PRs
+  const filePaths = contributorPRs.flatMap((pr) => {
+    if (pr.files) {
+      return pr.files.map((f: any) => f.path);
+    }
+    return [];
+  });
+
+  // Count occurrences of file extensions
+  const extensionCounts: Record<string, number> = {};
+  let totalFiles = 0;
+
+  for (const filePath of filePaths) {
+    const ext = path.extname(filePath);
+    if (ext) {
+      extensionCounts[ext] = (extensionCounts[ext] || 0) + 1;
+      totalFiles++;
+    }
+  }
+
+  // Calculate percentages and sort by count
+  return Object.entries(extensionCounts)
+    .map(([extension, count]) => ({
+      extension,
+      count,
+      percentage: totalFiles > 0 ? Math.round((count / totalFiles) * 100) : 0,
+    }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 5); // Top 5 file types
 }
 
 /**
