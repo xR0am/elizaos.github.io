@@ -1,41 +1,41 @@
-# elizaos Eliza (2025-04-01)
+# elizaos Eliza (2025-04-02)
     
 ## 📊 Overview
-Development focused on package improvements (Cleanup browser plugin), new features (Enhance telegram), 2 bug fixes. with 10 contributors merging 11 PRs. Major work included various improvements.
+Development focused on package improvements (project plugin loading first, related to starter project), new features (enhance avatar stack), 4 bug fixes. with 12 contributors merging 12 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 10 |
+| 👥 Contributors | 12 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 11 |
-| ⚠️ New Issues | 1 |
+| 🔄 Merged PRs | 12 |
+| ⚠️ New Issues | 6 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 3
-- 🐛 **Fixes**: 2
+- 🧹 **Chores**: 1
+- 🐛 **Fixes**: 4
 - ✨ **Features**: 3
 
 ## 📁 File Changes
-- **packages**: 41 files (+751/-1776 lines)
-- **root**: 3 files (+153/-159 lines)
+- **packages**: 20 files (+261/-574 lines)
+- **root**: 3 files (+149/-135 lines)
 
 ## 🔥 Notable Changes
-- fix: starter project and audio util imports
-- chore: remove unused packages
-- chore: audio utils move to core
+- feat: enhance avatar stack
+- fix: cache interaction cursor + duplicate memory creation
+- feat: clean api
 
 ## 👥 Top Contributors
-- **wtfsayo**: wtfsayo is currently working on fixing import issues in the starter project and audio utilities, removing unused packages, and organizing audio utilities into the core
-- **0xbbjoker**: 0xbbjoker is currently working on enhancing the Telegram logic with middlewares and improving entity synchronization
-- **Samarthsinghal28**: Samarthsinghal28 is currently working on fixing Plugin evm tests in the packages code area
+- **tcm390**: tcm390 is currently working on enhancing the avatar stack, fixing cache interaction cursor and duplicate memory creation, and cleaning the API in the packages code area
+- **wtfsayo**: wtfsayo is currently updating hardcoded v2 registry, fixing issues related to Twitter memory creation and project plugin loading, and implementing the use of Evt instead of eventEmitter3 in the packages code areas
+- **Samarthsinghal28**: Samarthsinghal28 is currently focusing on fixing the Pglite Migration issue through two pull requests, both of which have been merged
 
 ## ⚠️ Issues
-- **New Issues**: 1
-- **Labels**: `bug` (1), `V2` (1)
-- **Summary**: 1 bugs reported (including 'Repeat checking on interaction, mentioned tweets').
+- **New Issues**: 6
+- **Labels**: `bug` (4), `V2` (1), `enhancement` (1)
+- **Summary**: 4 bugs reported (including 'Failed to create Twitter client', 'ElizaOS always defaults to open AI') 1 feature requests (including 'How to run Eliza CLI?').
 
 ## Top Contributors
-- **wtfsayo**: fix: starter project and audio util imports
-- **0xbbjoker**: fix: payload sent to event handler
-- **Samarthsinghal28**: tests: Plugin evm tests fixed
+- **tcm390**: feat: enhance avatar stack
+- **wtfsayo**: chore: update temp. hardcoded v2 registry
+- **Samarthsinghal28**: fixed: Pglite Migration issue

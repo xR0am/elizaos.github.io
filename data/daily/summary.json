@@ -1,64 +1,63 @@
 {
-  "title": "elizaos Eliza (2025-04-01)",
+  "title": "elizaos Eliza (2025-04-02)",
   "version": "",
-  "overview": "Development focused on package improvements (Cleanup browser plugin), new features (Enhance telegram), 2 bug fixes. with 10 contributors merging 11 PRs. Major work included various improvements.",
+  "overview": "Development focused on package improvements (project plugin loading first, related to starter project), new features (enhance avatar stack), 4 bug fixes. with 12 contributors merging 12 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 10,
-    "merged_prs": 11,
-    "new_issues": 1,
-    "lines_changed": 2839
+    "contributors": 12,
+    "merged_prs": 12,
+    "new_issues": 6,
+    "lines_changed": 1119
   },
   "changes": {
     "features": [
-      "Enhance telegram",
-      "enhance tg logic with middlewares",
-      "tg community manager"
+      "enhance avatar stack",
+      "clean api",
+      "use Evt instead of eventEmitter3"
     ],
     "fixes": [
-      "starter project and audio util imports",
-      "payload sent to event handler"
+      "cache interaction cursor + duplicate memory creation",
+      "twitter, double memory creation attempt & server crash",
+      "project plugin loading first, related to starter project"
     ],
     "chores": [
-      "remove unused packages",
-      "audio utils move to core",
-      "Cleanup browser plugin"
+      "update temp. hardcoded v2 registry"
     ]
   },
   "areas": [
     {
       "name": "packages",
-      "files": 41,
-      "additions": 751,
-      "deletions": 1776
+      "files": 20,
+      "additions": 261,
+      "deletions": 574
     },
     {
       "name": "root",
       "files": 3,
-      "additions": 153,
-      "deletions": 159
+      "additions": 149,
+      "deletions": 135
     }
   ],
-  "issues_summary": "working on 1 bugs including 'Repeat checking on interaction, mentioned tweets'",
+  "issues_summary": "working on 4 bugs including 'Failed to create Twitter client', 'ElizaOS always defaults to open AI' and implementing 1 feature requests including 'How to run Eliza CLI?'",
   "questions": [],
   "top_contributors": [
     {
-      "name": "wtfsayo",
-      "summary": "wtfsayo is currently working on fixing import issues in the starter project and audio utilities, removing unused packages, and organizing audio utilities into the core",
-      "areas": [
-        "packages",
-        "bun.lock"
-      ]
-    },
-    {
-      "name": "0xbbjoker",
-      "summary": "0xbbjoker is currently working on enhancing the Telegram logic with middlewares and improving entity synchronization",
+      "name": "tcm390",
+      "summary": "tcm390 is currently working on enhancing the avatar stack, fixing cache interaction cursor and duplicate memory creation, and cleaning the API in the packages code area",
       "areas": [
         "packages"
       ]
     },
     {
+      "name": "wtfsayo",
+      "summary": "wtfsayo is currently updating hardcoded v2 registry, fixing issues related to Twitter memory creation and project plugin loading, and implementing the use of Evt instead of eventEmitter3 in the packages code areas",
+      "areas": [
+        "bun.lock",
+        "packages"
+      ]
+    },
+    {
       "name": "Samarthsinghal28",
-      "summary": "Samarthsinghal28 is currently working on fixing Plugin evm tests in the packages code area",
+      "summary": "Samarthsinghal28 is currently focusing on fixing the Pglite Migration issue through two pull requests, both of which have been merged",
       "areas": [
         "packages"
       ]
