@@ -80,10 +80,11 @@ export class GitHubClient {
     repository: RepositoryConfig,
     options: FetchOptions = {}
   ) {
-    const { owner, name } = repository;
+    const { repoId } = repository;
+    const [owner, name] = repoId.split("/");
     const { days, since, until } = options;
 
-    console.log(`${this.logPrefix} Fetching PRs for ${owner}/${name}`);
+    console.log(`${this.logPrefix} Fetching PRs for ${repoId}`);
 
     // Calculate filter dates for client-side filtering
     let startDate: Date | undefined;
@@ -174,6 +175,7 @@ export class GitHubClient {
                   state
                   body
                   submittedAt
+                  createdAt
                   author {
                     login
                     avatarUrl
@@ -280,7 +282,8 @@ export class GitHubClient {
    * Fetch issues with GraphQL
    */
   async fetchIssues(repository: RepositoryConfig, options: FetchOptions = {}) {
-    const { owner, name } = repository;
+    const { repoId } = repository;
+    const [owner, name] = repoId.split("/");
     const { days, since, until } = options;
 
     console.log(`${this.logPrefix} Fetching issues for ${owner}/${name}`);
@@ -425,7 +428,8 @@ export class GitHubClient {
    * Fetch commits with GraphQL
    */
   async fetchCommits(repository: RepositoryConfig, options: FetchOptions = {}) {
-    const { owner, name } = repository;
+    const { repoId } = repository;
+    const [owner, name] = repoId.split("/");
     const { days, since, until } = options;
 
     console.log(`${this.logPrefix} Fetching commits for ${owner}/${name}`);

@@ -10,6 +10,8 @@
     "check": "bun run lint & bunx tsc --noEmit",
     "serve": "bunx serve@latest out",
     "db:generate": "bunx drizzle-kit generate",
+    "db:studio": "bunx drizzle-kit studio",
+    "db:migrate": "bun run drizzle/migrate.ts",
     "pipeline": "bun run scripts/analyze-pipeline.ts"
   },
   "dependencies": {
@@ -44,7 +46,7 @@
     "@types/react": "^19.0.5",
     "@types/react-dom": "^19.0.3",
     "autoprefixer": "^10.4.20",
-    "drizzle-kit": "^0.30.2",
+    "drizzle-kit": "^0.30.6",
     "eslint": "^9",
     "eslint-config-next": "15.1.4",
     "postcss": "^8.4.49",

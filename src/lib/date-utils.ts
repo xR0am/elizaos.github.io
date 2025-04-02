@@ -54,3 +54,12 @@ export function extractDateFromFilename(filename: string): string | null {
   const dateMatch = filename.match(/\d{4}[-_]\d{2}[-_]\d{2}/);
   return dateMatch ? denormalizeDate(dateMatch[0]) : null;
 }
+
+/**
+ * Converts a date to YYYY-MM-DD format string
+ * @param date - Date object, timestamp, or date string that can be parsed by new Date()
+ * @returns string in YYYY-MM-DD format
+ */
+export function toDateString(date: string | number | Date): string {
+  return new Date(date).toISOString().split("T")[0];
+}

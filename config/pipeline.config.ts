@@ -1,4 +1,4 @@
-import { PipelineConfig, ScoringConfig } from "../src/lib/data/types";
+import { PipelineConfig } from "../src/lib/data/types";
 
 /**
  * Contributor Analytics Pipeline Configuration
@@ -8,18 +8,14 @@ import { PipelineConfig, ScoringConfig } from "../src/lib/data/types";
  * like merged PRs and substantive reviews, while applying multipliers based on
  * the affected areas of the codebase.
  */
-export const pipelineConfig: PipelineConfig = {
+export const pipelineConfig = {
   // Repositories to track
   repositories: [
     {
-      owner: "elizaos",
-      name: "eliza",
+      repoId: "elizaos/eliza",
       defaultBranch: "main",
     },
   ],
-
-  // Default lookback period in days
-  lookbackDays: 14,
 
   // List of bot usernames to ignore during processing
   botUsers: [
@@ -347,4 +343,4 @@ export const pipelineConfig: PipelineConfig = {
     model: "openai",
     // apiKey is optional, better to use environment variables
   },
-};
+} as const satisfies PipelineConfig;

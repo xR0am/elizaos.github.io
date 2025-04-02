@@ -15,73 +15,38 @@ import { db } from "../src/lib/data/db";
 import { repositories } from "../src/lib/data/schema";
 import { DataIngestion } from "../src/lib/data/ingestion";
 import { ContributorPipeline } from "../src/lib/data/processing";
-import { pipelineConfig } from "../config/pipeline.config";
-import { TagConfig } from "../src/lib/data/types";
+import { PipelineConfig, PipelineConfigSchema } from "../src/lib/data/types";
 import chalk from "chalk";
 import { subDays, format, parseISO } from "date-fns";
+import { join } from "path";
 
 const program = new Command();
 
 program
   .name("analyze-pipeline")
   .description("GitHub Contribution Analytics Pipeline")
-  .version("1.0.0");
+  .version("1.0.0")
+  .option(
+    "-c, --config <path>",
+    "Path to pipeline config file",
+    "../config/pipeline.config.ts"
+  );
 
-// Create instances with config
-const dataIngestion = new DataIngestion(pipelineConfig);
-const contributorPipeline = new ContributorPipeline(pipelineConfig);
+// Create instances with config - will be initialized in each command
+let dataIngestion: DataIngestion;
+let contributorPipeline: ContributorPipeline;
 
-// Initialize database
+// Initialize database schema
 program
-  .command("init")
-  .description("Initialize the database and load configuration")
+  .command("migrate")
+  .description("Initialize the database schema")
   .action(async () => {
     try {
-      console.log(chalk.blue("Initializing database..."));
-      await migrate(db, { migrationsFolder: "./drizzle" });
-
-      // Register repositories from config
-      for (const repo of pipelineConfig.repositories) {
-        await dataIngestion.registerRepository(repo);
-        console.log(
-          chalk.green(`Repository ${repo.owner}/${repo.name} registered`)
-        );
-      }
-
-      console.log(chalk.green("Database initialized successfully"));
+      console.log(chalk.blue("Initializing database schema..."));
+      migrate(db, { migrationsFolder: "./drizzle" });
+      console.log(chalk.green("Database schema initialized successfully"));
     } catch (error: unknown) {
-      console.error(chalk.red("Error initializing database:"), error);
-      process.exit(1);
-    }
-  });
-
-// List tracked repositories
-program
-  .command("list-repos")
-  .description("List tracked repositories")
-  .action(async () => {
-    try {
-      const repos = await db.select().from(repositories).all();
-
-      if (repos.length === 0) {
-        console.log(
-          chalk.yellow(
-            'No repositories are currently tracked. Run "init" to register repositories.'
-          )
-        );
-        return;
-      }
-
-      console.log(chalk.cyan("Tracked repositories:"));
-      repos.forEach((repo) => {
-        const lastFetched = repo.lastFetchedAt
-          ? format(parseISO(repo.lastFetchedAt), "yyyy-MM-dd HH:mm:ss")
-          : "Never";
-
-        console.log(`${chalk.bold(repo.id)} (Last fetched: ${lastFetched})`);
-      });
-    } catch (error: unknown) {
-      console.error(chalk.red("Error listing repositories:"), error);
+      console.error(chalk.red("Error initializing database schema:"), error);
       process.exit(1);
     }
   });
@@ -90,51 +55,38 @@ program
 program
   .command("fetch")
   .description("Fetch data from GitHub based on configuration")
-  .action(async () => {
+  .option("-d, --days <number>", "Number of days to look back", "14")
+  .action(async (options) => {
     try {
-      // Load repositories from database
-      const repoRows = await db.select().from(repositories).all();
+      // Dynamically import the config
+      const configPath = join(import.meta.dir, options.parent.config);
+      const configFile = await import(configPath);
+      const pipelineConfig = PipelineConfigSchema.parse(configFile);
 
-      if (repoRows.length === 0) {
-        console.error(
-          chalk.red(
-            'No repositories to fetch. Run "init" to register repositories.'
-          )
-        );
-        process.exit(1);
-      }
+      // Initialize services with config
+      dataIngestion = new DataIngestion(pipelineConfig);
+      contributorPipeline = new ContributorPipeline(pipelineConfig);
 
-      // Calculate date range based on config
-      const lookbackDays = pipelineConfig.lookbackDays || 7;
-      const endDate = new Date();
-      const startDate = subDays(endDate, lookbackDays);
-
+      // Use command line days if specified, otherwise fallback to config
+      const lookbackDays = parseInt(options.days);
       const fetchOptions = {
         days: lookbackDays,
       };
 
       console.log(
-        chalk.blue(`Fetching data for the last ${lookbackDays} days...`)
+        chalk.blue(
+          `Fetching data for the last ${lookbackDays} days using config from ${configPath}...`
+        )
       );
 
-      // Fetch data for each repository
-      for (const repo of repoRows) {
-        const repoConfig = {
-          owner: repo.owner,
-          name: repo.name,
-          defaultBranch: "main",
-        };
+      // Fetch data for all configured repositories
+      const results = await dataIngestion.fetchAllData(fetchOptions);
 
-        console.log(
-          chalk.blue(`Fetching data for ${repo.owner}/${repo.name}...`)
-        );
-        const result = await dataIngestion.fetchAllData(
-          repoConfig,
-          fetchOptions
-        );
+      // Log results
+      for (const result of results) {
         console.log(
           chalk.green(
-            `Fetched ${result.prs} PRs (with commits, reviews, files, and comments) and ${result.issues} issues`
+            `Repository ${result.repository}: Fetched ${result.prs} PRs and ${result.issues} issues`
           )
         );
       }
@@ -149,10 +101,20 @@ program
   .command("process")
   .description("Process and analyze data")
   .option("-r, --repository <owner/name>", "Process specific repository")
+  .option("-d, --days <number>", "Number of days to look back", "14")
   .action(async (options) => {
     try {
-      // Calculate date range based on config
-      const lookbackDays = pipelineConfig.lookbackDays || 30;
+      // Dynamically import the config
+      const configPath = join(import.meta.dir, options.parent.config);
+      const { pipelineConfig } = await import(configPath);
+
+      // Initialize services with config
+      dataIngestion = new DataIngestion(pipelineConfig);
+      contributorPipeline = new ContributorPipeline(pipelineConfig);
+
+      // Use command line days if specified, otherwise fallback to config
+      const lookbackDays =
+        parseInt(options.days) || pipelineConfig.lookbackDays;
       const endDate = new Date();
       const startDate = subDays(endDate, lookbackDays);
 
@@ -160,7 +122,9 @@ program
       const endDateStr = format(endDate, "yyyy-MM-dd");
 
       console.log(
-        chalk.blue(`Processing data from ${startDateStr} to ${endDateStr}...`)
+        chalk.blue(
+          `Processing data from ${startDateStr} to ${endDateStr} using config from ${configPath}...`
+        )
       );
 
       // Get the repositories from database
@@ -174,7 +138,7 @@ program
       // If repository is specified, validate it exists
       if (options.repository) {
         const targetRepo = repoRows.find(
-          (repo) => `${repo.owner}/${repo.name}` === options.repository
+          (repo) => `${repo.repoId}` === options.repository
         );
         if (!targetRepo) {
           console.error(
@@ -188,9 +152,7 @@ program
 
       // Process either the specified repository or all repositories
       const reposToProcess = options.repository
-        ? repoRows.filter(
-            (repo) => `${repo.owner}/${repo.name}` === options.repository
-          )
+        ? repoRows.filter((repo) => `${repo.repoId}` === options.repository)
         : repoRows;
 
       let totalContributors = 0;
@@ -202,19 +164,19 @@ program
 
       // Process each repository
       for (const repo of reposToProcess) {
-        const repository = `${repo.owner}/${repo.name}`;
+        const repository = `${repo.repoId}`;
         console.log(
           chalk.blue(`\nProcessing data for repository: ${repository}`)
         );
 
         // Process data for the repository
-        const result = await contributorPipeline.processTimeframe(
-          {
+        const result = await contributorPipeline.processTimeframe({
+          dateRange: {
             startDate: startDateStr,
             endDate: endDateStr,
           },
-          repository
-        );
+          repository,
+        });
 
         // Store metrics for this repository
         allMetrics[repository] = result.metrics;
@@ -267,15 +229,26 @@ program
 program
   .command("run")
   .description("Run complete pipeline (fetch and process)")
-  .action(async () => {
+  .option("-d, --days <number>", "Number of days to look back", "7")
+  .action(async (options) => {
     try {
       console.log(chalk.blue("Starting full analytics pipeline..."));
 
-      // Run fetch command
-      await program.parseAsync(["analyze-pipeline", "fetch"]);
+      // Run fetch command with days parameter
+      await program.parseAsync([
+        "analyze-pipeline",
+        "fetch",
+        "-d",
+        options.days,
+      ]);
 
-      // Run process command
-      await program.parseAsync(["analyze-pipeline", "process"]);
+      // Run process command with days parameter
+      await program.parseAsync([
+        "analyze-pipeline",
+        "process",
+        "-d",
+        options.days,
+      ]);
 
       console.log(chalk.green("Pipeline completed successfully!"));
     } catch (error: unknown) {

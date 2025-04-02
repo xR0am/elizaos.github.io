@@ -27,28 +27,25 @@ export class DataIngestion {
    */
   async registerRepository(
     repository: RepositoryConfig
-  ): Promise<{ id: string }> {
-    const { owner, name } = repository;
-    const id = `${owner}/${name}`;
+  ): Promise<{ repoId: string }> {
+    const { repoId } = repository;
 
-    console.log(`${this.logPrefix} Registering repository: ${id}`);
+    console.log(`${this.logPrefix} Registering repository: ${repoId}`);
 
     await db
       .insert(repositories)
       .values({
-        id,
-        owner,
-        name,
+        repoId,
         lastUpdated: new Date().toISOString(),
       })
       .onConflictDoUpdate({
-        target: repositories.id,
+        target: repositories.repoId,
         set: {
           lastUpdated: new Date().toISOString(),
         },
       });
 
-    return { id };
+    return { repoId };
   }
 
   /**
@@ -60,10 +57,10 @@ export class DataIngestion {
   ): Promise<void> {
     if (!username || username === "unknown") return;
 
-    // Skip if username is in the bot users list
-    if (this.config.botUsers?.includes(username)) {
-      console.log(`${this.logPrefix} Skipping bot user: ${username}`);
-      return;
+    // Check if user is a bot
+    const isBot = this.config.botUsers?.includes(username) ? 1 : 0;
+    if (isBot) {
+      console.log(`${this.logPrefix} Adding bot user: ${username}`);
     }
 
     await db
@@ -71,12 +68,14 @@ export class DataIngestion {
       .values({
         username,
         avatarUrl: avatarUrl || "",
+        isBot,
         lastUpdated: new Date().toISOString(),
       })
       .onConflictDoUpdate({
         target: users.username,
         set: {
           avatarUrl: avatarUrl || sql`COALESCE(${users.avatarUrl}, '')`,
+          isBot,
           lastUpdated: new Date().toISOString(),
         },
       });
@@ -89,7 +88,7 @@ export class DataIngestion {
     repository: RepositoryConfig,
     options: { days?: number; since?: string; until?: string } = {}
   ): Promise<number> {
-    const repoId = `${repository.owner}/${repository.name}`;
+    const { repoId } = repository;
     console.log(`${this.logPrefix} Fetching PRs for ${repoId}`);
 
     try {
@@ -248,7 +247,7 @@ export class DataIngestion {
                 prId: pr.id,
                 state: review.state,
                 body: review.body ?? "",
-                submittedAt: review.submittedAt || pr.updatedAt,
+                createdAt: review.createdAt || pr.updatedAt,
                 author: reviewAuthor,
               })
               .onConflictDoUpdate({
@@ -309,7 +308,7 @@ export class DataIngestion {
           lastFetchedAt: new Date().toISOString(),
           lastUpdated: new Date().toISOString(),
         })
-        .where(eq(repositories.id, repoId));
+        .where(eq(repositories.repoId, repoId));
 
       return prs.length;
     } catch (error: unknown) {
@@ -329,7 +328,7 @@ export class DataIngestion {
     repository: RepositoryConfig,
     options: { days?: number; since?: string; until?: string } = {}
   ): Promise<number> {
-    const repoId = `${repository.owner}/${repository.name}`;
+    const { repoId } = repository;
     console.log(`${this.logPrefix} Fetching issues for ${repoId}`);
 
     try {
@@ -424,7 +423,7 @@ export class DataIngestion {
           lastFetchedAt: new Date().toISOString(),
           lastUpdated: new Date().toISOString(),
         })
-        .where(eq(repositories.id, repoId));
+        .where(eq(repositories.repoId, repoId));
 
       return issues.length;
     } catch (error: unknown) {
@@ -438,17 +437,28 @@ export class DataIngestion {
   }
 
   /**
-   * Fetch all GitHub data for a repository
+   * Fetch all GitHub data for all configured repositories
    */
   async fetchAllData(
-    repository: RepositoryConfig,
     options: { days?: number; since?: string; until?: string } = {}
-  ): Promise<{ prs: number; issues: number }> {
-    await this.registerRepository(repository);
+  ): Promise<Array<{ repository: string; prs: number; issues: number }>> {
+    const results = [];
 
-    const prs = await this.fetchAndStorePullRequests(repository, options);
-    const issues = await this.fetchAndStoreIssues(repository, options);
+    // Process all repositories from config
+    for (const repository of this.config.repositories) {
+      const { repoId } = repository;
+      console.log(`${this.logPrefix} Processing repository: ${repoId}`);
 
-    return { prs, issues };
+      // Register/update repository in database
+      await this.registerRepository(repository);
+
+      // Fetch data for repository
+      const prs = await this.fetchAndStorePullRequests(repository, options);
+      const issues = await this.fetchAndStoreIssues(repository, options);
+
+      results.push({ repository: repoId, prs, issues });
+    }
+
+    return results;
   }
 }
