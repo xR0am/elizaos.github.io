@@ -1,64 +1,59 @@
 {
-  "title": "elizaos Eliza (2025-04-02)",
+  "title": "elizaos Eliza (2025-04-03)",
   "version": "",
-  "overview": "Development focused on package improvements (project plugin loading first, related to starter project), new features (enhance avatar stack), 4 bug fixes. with 12 contributors merging 12 PRs. Major work included various improvements.",
+  "overview": "Development focused on package improvements (Failed to create Twitter client), new features (add id to metadata source), 3 bug fixes. with 9 contributors merging 5 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 12,
-    "merged_prs": 12,
-    "new_issues": 6,
-    "lines_changed": 1119
+    "contributors": 9,
+    "merged_prs": 5,
+    "new_issues": 1,
+    "lines_changed": 382
   },
   "changes": {
     "features": [
-      "enhance avatar stack",
-      "clean api",
-      "use Evt instead of eventEmitter3"
+      "add id to metadata source",
+      "add update-cli command"
     ],
     "fixes": [
-      "cache interaction cursor + duplicate memory creation",
-      "twitter, double memory creation attempt & server crash",
-      "project plugin loading first, related to starter project"
+      "Failed to create Twitter client",
+      "tg get world",
+      "twitter interaction"
     ],
-    "chores": [
-      "update temp. hardcoded v2 registry"
-    ]
+    "chores": []
   },
   "areas": [
     {
       "name": "packages",
-      "files": 20,
-      "additions": 261,
-      "deletions": 574
+      "files": 10,
+      "additions": 193,
+      "deletions": 59
     },
     {
       "name": "root",
-      "files": 3,
-      "additions": 149,
-      "deletions": 135
+      "files": 1,
+      "additions": 64,
+      "deletions": 66
     }
   ],
-  "issues_summary": "working on 4 bugs including 'Failed to create Twitter client', 'ElizaOS always defaults to open AI' and implementing 1 feature requests including 'How to run Eliza CLI?'",
+  "issues_summary": "implementing 1 feature requests including 'Clearly Mark or Remove Plugins Not Yet Compatible with Eliza v2'",
   "questions": [],
   "top_contributors": [
     {
       "name": "tcm390",
-      "summary": "tcm390 is currently working on enhancing the avatar stack, fixing cache interaction cursor and duplicate memory creation, and cleaning the API in the packages code area",
+      "summary": "tcm390 is currently working on adding an ID to metadata source and fixing issues related to creating a Twitter client, getting world data, and Twitter interactions",
       "areas": [
         "packages"
       ]
+    },
+    {
+      "name": "HarshModi2005",
+      "summary": "HarshModi2005 is currently working on improving test coverage for the plugin-bootstrap by submitting a pull request",
+      "areas": []
     },
     {
       "name": "wtfsayo",
-      "summary": "wtfsayo is currently updating hardcoded v2 registry, fixing issues related to Twitter memory creation and project plugin loading, and implementing the use of Evt instead of eventEmitter3 in the packages code areas",
+      "summary": "wtfsayo is currently working on adding the update-cli command as a new feature in the packages code area",
       "areas": [
         "bun.lock",
-        "packages"
-      ]
-    },
-    {
-      "name": "Samarthsinghal28",
-      "summary": "Samarthsinghal28 is currently focusing on fixing the Pglite Migration issue through two pull requests, both of which have been merged",
-      "areas": [
         "packages"
       ]
     }

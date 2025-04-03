@@ -1,43 +1,15 @@
 [
   {
-    "id": "I_kwDOMT5cIs6w2lhs",
-    "number": 4160,
-    "title": "ElizaOS always defaults to open AI",
-    "body": "**Describe the bug**\n\nDespite changing \"modelProvider\" to \"anthropic\" on character json, I get error:\n\"msg\":\"API Response: {\\n    \\\"error\\\": {\\n        \\\"message\\\": \\\"You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from [https://platform.openai.com/account/api-keys.\\](https://platform.openai.com/account/api-keys./)\",\\n        \\\"type\\\": \\\"invalid_request_error\\\",\\n        \\\"param\\\": null,\\n        \\\"code\\\": null\\n    }\\n}\\n\"}\n\n**To Reproduce**\n\n- Create a simple AI Agent using ElizaOS using openAI API and Telegram bot\n- Create a new character with openAI API\n- Change API to anthropic\n- error above happens\n\n**Expected behavior**\n\nRemoving openAI API .env and adding anthropic API in .env, and changing character modelProvider from openai to anthropic should change the the LLM API to anthropic.\n",
-    "state": "CLOSED",
-    "createdAt": "2025-04-02T17:35:10Z",
-    "updatedAt": "2025-04-02T19:23:08Z",
-    "author": {
-      "login": "Valcyclovir",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/85747941?v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6lTLIV",
-        "author": "github-actions",
-        "body": "Hello @Valcyclovir! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6w2eyG",
-    "number": 4159,
-    "title": "How to run Eliza CLI?",
-    "body": "The early versions of Eliza would run a CLI interface to interact with the agents. I found that very convenient. Is this functionality still available? Thanks!",
+    "id": "I_kwDOMT5cIs6w47Dm",
+    "number": 4164,
+    "title": "Clearly Mark or Remove Plugins Not Yet Compatible with Eliza v2",
+    "body": "I began exploring the v2 version of Eliza and initially assumed that the plugins listed on the [[Showcase](https://eliza.how/packages)](https://eliza.how/packages) and [[Plugins](https://eliza.how/packages/plugins/0g)](https://eliza.how/packages/plugins/0g) pages of the beta docs site were already compatible with v2.\n\n<img width=\"1356\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/38d58b99-ca0e-4ea6-81da-01ad709ebf50\" />\n\nAfter discussing this with the team, I discovered that currently, only plugins in the `/packages` directory of the `v2-develop` branch are fully compatible with v2. The plugins shown on the documentation website are still v1 and may or may not function correctly.\n\nTo avoid confusion for developers, I suggest either temporarily removing plugins that aren't yet v2-compatible from these pages or clearly marking them as v1-only until they are fully updated.",
     "state": "OPEN",
-    "createdAt": "2025-04-02T17:20:34Z",
-    "updatedAt": "2025-04-02T17:20:34Z",
+    "createdAt": "2025-04-02T22:47:35Z",
+    "updatedAt": "2025-04-02T22:52:12Z",
     "author": {
-      "login": "LinuxIsCool",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/31582215?u=b8eb5d3849bf877a3a0b686cf1632aca92e744ae&v=4"
+      "login": "odysseus0",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/8635094?u=3233fed8f4e7d88f1b800672d2b7a31d2d42c5ea&v=4"
     },
     "labels": [
       {
@@ -47,110 +19,12 @@
         "description": "New feature or request"
       }
     ],
-    "comments": []
-  },
-  {
-    "id": "I_kwDOMT5cIs6wvhJW",
-    "number": 4147,
-    "title": "adjective error",
-    "body": "**Describe the bug**\n\nI am just running the AI agent and it is giving this error\n\n\n\n\nError logs\n\n\n\n> eliza@ start /Users/ambusiness/Documents/Agents/Eliza/lik/eliza\n> pnpm --filter \"@elizaos/agent\" start --isRoot \"--character=characters/rain.character.json\"\n\n\n> @elizaos/agent@0.25.9 start /Users/ambusiness/Documents/Agents/Eliza/lik/eliza/agent\n> node --loader ts-node/esm src/index.ts --isRoot --character\\=characters/rain.character.json\n\n(node:6420) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\n(node:6420) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n[2025-04-02 05:32:19] INFO: Loading embedding settings:\n    USE_OPENAI_EMBEDDING: \"\"\n    USE_OLLAMA_EMBEDDING: \"\"\n    OLLAMA_EMBEDDING_MODEL: \"mxbai-embed-large\"\nError parsing character from /Users/ambusiness/Documents/Agents/Eliza/lik/eliza/characters/rain.character.json:  Error: Character configuration validation failed. Check logs for details.\n    at validateCharacterConfig (file:///Users/ambusiness/Documents/Agents/Eliza/lik/eliza/packages/core/dist/index.js:5826:19)\n    at jsonToCharacter (file:///Users/ambusiness/Documents/Agents/Eliza/lik/eliza/agent/src/index.ts:159:5)\n    at loadCharacter (file:///Users/ambusiness/Documents/Agents/Eliza/lik/eliza/agent/src/index.ts:203:12)\n    at loadCharacterTryPath (file:///Users/ambusiness/Documents/Agents/Eliza/lik/eliza/agent/src/index.ts:236:33)\n    at loadCharacters (file:///Users/ambusiness/Documents/Agents/Eliza/lik/eliza/agent/src/index.ts:271:41)\n    at startAgents (file:///Users/ambusiness/Documents/Agents/Eliza/lik/eliza/agent/src/index.ts:627:28)\n    at file:///Users/ambusiness/Documents/Agents/Eliza/lik/eliza/agent/src/index.ts:667:1\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\n[2025-04-02 05:32:19] INFO: Parsed settings:\n    USE_OPENAI_EMBEDDING: \"\"\n    USE_OPENAI_EMBEDDING_TYPE: \"string\"\n    USE_OLLAMA_EMBEDDING: \"\"\n    USE_OLLAMA_EMBEDDING_TYPE: \"string\"\n    OLLAMA_EMBEDDING_MODEL: \"mxbai-embed-large\"\n[2025-04-02 05:32:19] ERROR: Validation errors in adjectives: Required\n/Users/ambusiness/Documents/Agents/Eliza/lik/eliza/agent:\n ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @elizaos/agent@0.25.9 start: `node --loader ts-node/esm src/index.ts --isRoot --character\\=characters/rain.character.json`\nExit status 1\n ELIFECYCLE  Command failed with exit code 1.\n\n\n",
-    "state": "CLOSED",
-    "createdAt": "2025-04-02T05:42:32Z",
-    "updatedAt": "2025-04-02T14:52:02Z",
-    "author": {
-      "login": "yasir23",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/46179498?u=89dcf261b397bb2930cbedce61e09b8df01998e6&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
-    "comments": []
-  },
-  {
-    "id": "I_kwDOMT5cIs6wvWc1",
-    "number": 4146,
-    "title": "Failed to create Twitter client",
-    "body": "<img width=\"812\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3aa6e12e-ec2a-41f4-b537-395cbba5699b\" />\n\nSteps to Reproduce:\n\n1. Purge the database\n\n2. Run the Twitter plugin",
-    "state": "OPEN",
-    "createdAt": "2025-04-02T05:12:54Z",
-    "updatedAt": "2025-04-02T12:47:51Z",
-    "author": {
-      "login": "tcm390",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      },
-      {
-        "id": "LA_kwDOMT5cIs8AAAAB1dE8Sw",
-        "name": "V2",
-        "color": "1670F6",
-        "description": "Eliza 0.2.0"
-      }
-    ],
     "comments": [
       {
-        "id": "IC_kwDOMT5cIs6lQFR9",
-        "author": "wtfsayo",
-        "body": "I think I fixed it in https://github.com/elizaOS/eliza/pull/4151"
-      }
-    ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6wvObY",
-    "number": 4145,
-    "title": "Documentation URL -> 404 Error",
-    "body": "",
-    "state": "CLOSED",
-    "createdAt": "2025-04-02T04:45:40Z",
-    "updatedAt": "2025-04-02T04:49:00Z",
-    "author": {
-      "login": "mrasmuson",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/29669568?u=212442ea116be66608c3458f17d0ac1872903ff3&v=4"
-    },
-    "labels": [],
-    "comments": [
-      {
-        "id": "IC_kwDOMT5cIs6lLyDo",
+        "id": "IC_kwDOMT5cIs6lVl49",
         "author": "github-actions",
-        "body": "Hello @mrasmuson! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
-      },
-      {
-        "id": "IC_kwDOMT5cIs6lLywE",
-        "author": "mrasmuson",
-        "body": "Documentation link in Readme file opens fine. "
+        "body": "Hello @odysseus0! Welcome to the elizaOS community. Thank you for opening your first issue; we appreciate your contribution. You are now an elizaOS contributor!"
       }
     ]
-  },
-  {
-    "id": "I_kwDOMT5cIs6wuTSy",
-    "number": 4143,
-    "title": "chore: Test every command in docs cli section",
-    "body": "Go through every page and test every command for accuracy in the eliza docs, report any issues\n\nhttps://eliza.how/docs/cli/overview",
-    "state": "OPEN",
-    "createdAt": "2025-04-02T01:52:19Z",
-    "updatedAt": "2025-04-02T16:16:08Z",
-    "author": {
-      "login": "madjin",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/32600939?u=cdcf89f44c7a50906c7a80d889efa85023af2049&v=4"
-    },
-    "labels": [
-      {
-        "id": "LA_kwDOMT5cIs8AAAABrA0qWA",
-        "name": "bug",
-        "color": "d73a4a",
-        "description": "Something isn't working"
-      }
-    ],
-    "comments": []
   }
 ]
