@@ -1,4 +1,4 @@
-import { PipelineConfig } from "../types";
+import { PipelineConfig } from "../pipelineConfig";
 import { BasePipelineContext, PipelineStep } from "./types";
 
 /**

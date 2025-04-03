@@ -1,7 +1,7 @@
 /**
  * Core pipeline types and utilities using functional programming principles
  */
-import { PipelineConfig } from "../types";
+import { PipelineConfig } from "../pipelineConfig";
 import { Logger } from "./logger";
 import pMap from "p-map";
 

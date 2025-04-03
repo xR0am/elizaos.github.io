@@ -1,7 +1,6 @@
 import { exec } from "child_process";
 import { promisify } from "util";
 import {
-  RepositoryConfig,
   RawPullRequestSchema,
   RawIssueSchema,
   RawCommitSchema,
@@ -9,6 +8,7 @@ import {
   RawCommentSchema,
   RawPRFileSchema,
 } from "./types";
+import { RepositoryConfig } from "./pipelineConfig";
 
 const execAsync = promisify(exec);
 

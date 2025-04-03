@@ -1,4 +1,4 @@
-import { ScoringConfig } from "./types";
+import { ScoringConfig } from "./pipelineConfig";
 import { groupBy } from "../arrayHelpers";
 import { toDateString } from "../date-utils";
 import {

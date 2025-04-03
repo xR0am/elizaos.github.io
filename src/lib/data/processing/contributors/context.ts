@@ -1,4 +1,4 @@
-import { PipelineConfig } from "../../types";
+import { PipelineConfig } from "../../pipelineConfig";
 import { Logger } from "../logger";
 import { RepoPipelineContext } from "../types";
 
@@ -15,9 +15,7 @@ export function createContributorPipelineContext(params: {
   const { repoId, dateRange, logger: parentLogger, config } = params;
 
   // Use parent logger if provided, creating a child logger for Contributors
-  const logger = parentLogger
-    ? parentLogger.child("Contributors")
-    : undefined;
+  const logger = parentLogger ? parentLogger.child("Contributors") : undefined;
 
   return {
     repoId,

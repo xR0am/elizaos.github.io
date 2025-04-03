@@ -11,7 +11,7 @@ import {
   users,
 } from "./schema";
 import { githubClient } from "./github";
-import { PipelineConfig, RepositoryConfig } from "./types";
+import { PipelineConfig, RepositoryConfig } from "./pipelineConfig";
 import { eq, sql } from "drizzle-orm";
 
 export class DataIngestion {

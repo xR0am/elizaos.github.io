@@ -13,7 +13,10 @@ import { migrate } from "drizzle-orm/bun-sqlite/migrator";
 import { db } from "../src/lib/data/db";
 import { repositories } from "../src/lib/data/schema";
 import { DataIngestion } from "../src/lib/data/ingestion";
-import { PipelineConfig, PipelineConfigSchema } from "../src/lib/data/types";
+import {
+  PipelineConfig,
+  PipelineConfigSchema,
+} from "@/lib/data/pipelineConfig";
 import chalk from "chalk";
 import { subDays, format } from "date-fns";
 import { join } from "path";
