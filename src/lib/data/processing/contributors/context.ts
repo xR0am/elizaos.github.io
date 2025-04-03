@@ -1,5 +1,5 @@
 import { PipelineConfig } from "../../types";
-import { LogLevel, createLogger } from "../logger";
+import { Logger } from "../logger";
 import { RepoPipelineContext } from "../types";
 
 export interface ContributorPipelineContext extends RepoPipelineContext {}
@@ -9,22 +9,15 @@ export interface ContributorPipelineContext extends RepoPipelineContext {}
 export function createContributorPipelineContext(params: {
   repoId?: string;
   dateRange?: ContributorPipelineContext["dateRange"];
-  logLevel?: LogLevel;
+  logger?: Logger;
   config: PipelineConfig;
 }): ContributorPipelineContext {
-  const { repoId, dateRange, logLevel = "info", config } = params;
+  const { repoId, dateRange, logger: parentLogger, config } = params;
 
-  // Create a logger for this pipeline
-  const logger = createLogger({
-    minLevel: logLevel,
-    name: "Contributors",
-    context: {
-      ...(repoId ? { repoId } : {}),
-      ...(dateRange
-        ? { dateRange: `${dateRange.startDate}_${dateRange.endDate}` }
-        : {}),
-    },
-  });
+  // Use parent logger if provided, creating a child logger for Contributors
+  const logger = parentLogger
+    ? parentLogger.child("Contributors")
+    : undefined;
 
   return {
     repoId,

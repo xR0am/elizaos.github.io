@@ -20,8 +20,8 @@ A new TypeScript-based pipeline has been implemented, leveraging SQLite and Driz
 # Initialize the database
 bun run pipeline init
 
-# Fetch GitHub data (default: last 7 days)
-bun run pipeline fetch
+# Ingest GitHub data (default: last 7 days)
+bun run pipeline ingest
 
 # Process and analyze (default: last 30 days)
 bun run pipeline process

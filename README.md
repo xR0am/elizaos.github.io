@@ -132,14 +132,11 @@ This launches Drizzle Studio, which provides a visual interface to browse tables
 The primary data processing system is now a TypeScript-based pipeline that leverages SQLite and Drizzle ORM for improved data management:
 
 ```bash
-# Fetch GitHub data
-bun run pipeline fetch
+# Ingest GitHub data
+bun run pipeline ingest
 
 # Process and analyze
 bun run pipeline process
-
-# Run the complete pipeline (fetch + process)
-bun run pipeline
 ```
 
 The pipeline is configurable through TypeScript config at `config/pipeline.config.ts`, where you can customize:
@@ -171,7 +168,7 @@ const myPipeline = pipe(
   createStep("fetchData", async (input, context) => {
     // Fetch and return data
   }),
-  
+
   // Step 2: Process each item in parallel
   mapStep(
     parallel(
@@ -180,7 +177,7 @@ const myPipeline = pipe(
       generateSummary
     )
   ),
-  
+
   // Step 3: Format results
   createStep("formatResults", (results, context) => {
     // Process and return final results

@@ -1,6 +1,7 @@
 /**
- * Simple functional logger for pipeline operations
+ * Enhanced styled logger for pipeline operations using chalk
  */
+import chalk from "chalk";
 
 /**
  * Log levels
@@ -25,7 +26,7 @@ export interface Logger {
 export interface LoggerConfig {
   minLevel: LogLevel;
   context?: Record<string, string>;
-  name?: string;
+  nameSegments?: string[]; // Changed from name to nameSegments
 }
 
 /**
@@ -40,18 +41,60 @@ const LEVEL_PRIORITY: Record<LogLevel, number> = {
 };
 
 /**
+ * Level colors for styling log output
+ */
+const LEVEL_STYLES: Record<LogLevel, (text: string) => string> = {
+  error: chalk.bgRed.bold,
+  warn: chalk.yellow,
+  info: chalk.blue,
+  debug: chalk.cyan,
+  trace: chalk.gray,
+};
+
+/**
+ * Available colors for name segments
+ */
+const NAME_COLORS = [
+  chalk.green,
+  chalk.magenta,
+  chalk.redBright,
+  chalk.cyan,
+  chalk.yellow,
+  chalk.blue,
+  chalk.greenBright,
+  chalk.yellowBright,
+  chalk.blueBright,
+  chalk.magentaBright,
+  chalk.cyanBright,
+  chalk.bgBlue,
+  chalk.bgBlueBright,
+];
+
+/**
  * Create a new logger
  */
 export function createLogger(config: LoggerConfig): Logger {
-  const { minLevel, context = {}, name = "pipeline" } = config;
+  const { minLevel, context = {}, nameSegments = [] } = config;
 
   // Format context for logging
-  // const contextStr = Object.entries(context)
-  //   .map(([key, value]) => `${key}=${value}`)
-  //   .join(" ");
-  const contextStr = null;
+  const contextStr =
+    Object.entries(context).length > 0
+      ? Object.entries(context)
+          .map(([key, value]) => `${key}=${value}`)
+          .join(" ")
+      : null;
 
-  const prefix = contextStr ? `[${name}:${contextStr}]` : `[${name}]`;
+  // Build the prefix with colored segments
+  const prefix =
+    nameSegments.length > 0
+      ? nameSegments
+          .map((segment, index) => {
+            const color = NAME_COLORS[index % NAME_COLORS.length];
+            return color(`[${segment}]`);
+          })
+          .join("") +
+        (contextStr && minLevel === "trace" ? chalk.dim(`[${contextStr}]`) : "")
+      : "";
 
   /**
    * Internal log function
@@ -63,12 +106,12 @@ export function createLogger(config: LoggerConfig): Logger {
   ): void {
     if (LEVEL_PRIORITY[level] > LEVEL_PRIORITY[minLevel]) return;
 
-    // const timestamp = new Date().toISOString();
-    let logMessage = `${level.toUpperCase()}: ${prefix} ${message}`;
+    const levelLabel = LEVEL_STYLES[level](`[${level.toUpperCase()}]`);
+    let logMessage = `${levelLabel}${prefix} ${message}`;
 
     if (data) {
       const limitedData = limitObjectDepth(data);
-      logMessage += ` ${JSON.stringify(limitedData)}`;
+      logMessage += ` ${chalk.dim(JSON.stringify(limitedData))}`;
     }
 
     switch (level) {
@@ -89,13 +132,13 @@ export function createLogger(config: LoggerConfig): Logger {
   }
 
   /**
-   * Create a child logger with additional context
+   * Create a child logger with additional name segment
    */
   function child(subName: string): Logger {
     return createLogger({
       minLevel,
       context,
-      name: `${name}:${subName}`,
+      nameSegments: [...nameSegments, subName],
     });
   }
 
@@ -133,7 +176,6 @@ function limitObjectDepth(
 
   if (Array.isArray(obj)) {
     if (obj.length > 10) {
-      // Truncate large arrays
       return [
         ...obj
           .slice(0, 5)

@@ -20,6 +20,7 @@ import { join } from "path";
 import { processAllRepositories } from "@/lib/data/processing/pipelines";
 import { createContributorPipelineContext } from "@/lib/data/processing/contributors/context";
 import { runPipeline } from "@/lib/data/processing/runPipeline";
+import { createLogger, LogLevel } from "@/lib/data/processing/logger";
 
 const DEFAULT_CONFIG_PATH = "../config/pipeline.config.ts";
 const program = new Command();
@@ -32,10 +33,10 @@ program
 // Create instances with config - will be initialized in each command
 let dataIngestion: DataIngestion;
 
-// Fetch data from GitHub
+// Ingest data from GitHub
 program
-  .command("fetch")
-  .description("Fetch data from GitHub based on configuration")
+  .command("ingest")
+  .description("Ingest data from GitHub API based on configuration")
   .option("-d, --days <number>", "Number of days to look back", "5")
   .option(
     "-c, --config <path>",
@@ -49,6 +50,12 @@ program
       const configFile = await import(configPath);
       const pipelineConfig = PipelineConfigSchema.parse(configFile.default);
 
+      // Create a root logger
+      const rootLogger = createLogger({
+        minLevel: "info",
+        nameSegments: ["Ingest"],
+      });
+
       // Initialize services with config
       dataIngestion = new DataIngestion(pipelineConfig);
 
@@ -58,10 +65,8 @@ program
         days: lookbackDays,
       };
 
-      console.log(
-        chalk.blue(
-          `Fetching data for the last ${lookbackDays} days using config from ${configPath}...`
-        )
+      rootLogger.info(
+        `Fetching data for the last ${lookbackDays} days using config from ${configPath}`
       );
 
       // Fetch data for all configured repositories
@@ -69,10 +74,8 @@ program
 
       // Log results
       for (const result of results) {
-        console.log(
-          chalk.green(
-            `Repository ${result.repository}: Fetched ${result.prs} PRs and ${result.issues} issues`
-          )
+        rootLogger.info(
+          `Repository ${result.repository}: Fetched ${result.prs} PRs and ${result.issues} issues`
         );
       }
     } catch (error: unknown) {
@@ -95,7 +98,6 @@ program
   )
   .action(async (options) => {
     try {
-      console.log(options);
       // Dynamically import the config
       const configPath = join(import.meta.dir, options.config);
       const configFile = await import(configPath);
@@ -109,20 +111,27 @@ program
       const startDateStr = format(startDate, "yyyy-MM-dd");
       const endDateStr = format(endDate, "yyyy-MM-dd");
 
-      console.log(
-        chalk.blue(
-          `Processing data from ${startDateStr} to ${endDateStr} using config from ${configPath}...`
-        )
+      // Create a root logger
+      const logLevel: LogLevel = options.verbose ? "debug" : "info";
+      const rootLogger = createLogger({
+        minLevel: logLevel,
+        context: {
+          command: "process",
+          config: options.config,
+        },
+      });
+      rootLogger.info(
+        `Processing data from ${startDateStr} to ${endDateStr} using config from ${configPath}`
       );
 
-      // Create pipeline context
+      // Create pipeline context with the root logger
       const context = createContributorPipelineContext({
         repoId: options.repository,
         dateRange: {
           startDate: startDateStr,
           endDate: endDateStr,
         },
-        logLevel: options.verbose ? "debug" : "info",
+        logger: rootLogger,
         config: pipelineConfig,
       });
 
@@ -140,9 +149,9 @@ program
         0
       );
 
-      console.log(chalk.green("\nProcessing completed successfully!"));
-      console.log(chalk.blue(`Processed ${repoCount} repositories`));
-      console.log(chalk.blue(`Processed ${contributorCount} contributors`));
+      rootLogger.info("\nProcessing completed successfully!");
+      rootLogger.info(`Processed ${repoCount} repositories`);
+      rootLogger.info(`Processed ${contributorCount} contributors`);
     } catch (error: unknown) {
       console.error(chalk.red("Error processing data:"), error);
       process.exit(1);

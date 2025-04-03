@@ -33,7 +33,7 @@ GitHub Contributor Analytics Generator for tracking, analyzing, and visualizing 
 - `bun run db:migrate` - Run database migrations
 - `bun run db:studio` - Launch Drizzle studio
 - `bun run pipeline` - Run data processing pipeline
-- `bun run pipeline fetch` - Fetch GitHub data
+- `bun run pipeline ingest` - Ingest GitHub data
 - `bun run pipeline process` - Process and analyze data
 
 ## Code Style

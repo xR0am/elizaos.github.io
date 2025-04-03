@@ -15,7 +15,6 @@ export const calculateTags = createStep(
     username: string,
     { config, dateRange, logger, repoId }: ContributorPipelineContext
   ) => {
-    const userLogger = logger?.child(username);
     // Fetch data
     const contributorPRs = await getContributorPRs(username, {
       repository: repoId,
@@ -27,8 +26,8 @@ export const calculateTags = createStep(
       pr.files ? pr.files.map((f) => f.path as string) : []
     );
     const prTitles = contributorPRs.map((pr) => pr.title || "").filter(Boolean);
-    userLogger?.debug(
-      `Processing ${filePaths.length} files and ${prTitles.length} PR titles`
+    logger?.info(
+      `${username}: Processing ${filePaths.length} files and ${prTitles.length} PR titles`
     );
 
     // Calculate tags based on config
@@ -75,8 +74,8 @@ export const calculateTags = createStep(
     }
 
     // Calculate levels and progress for each tag
-    const expertiseAreas = Object.entries(tagScores).map(
-      ([tag, { score, category }]) => {
+    const expertiseAreas = Object.entries(tagScores)
+      .map(([tag, { score, category }]) => {
         const level = Math.floor(Math.log(score + 1) / Math.log(2));
         const nextLevelThreshold = Math.pow(2, level + 1) - 1;
         const currentLevelThreshold = Math.pow(2, level) - 1;
@@ -101,19 +100,17 @@ export const calculateTags = createStep(
           level,
           progress: Math.min(1, progress),
         };
-      }
-    );
+      })
+      .sort((a, b) => b.score - a.score);
     // Log summary of expertise areas
     const topAreas = expertiseAreas
       .slice(0, 3)
       .map((area) => `${area.tag} (${area.score})`)
       .join(", ");
 
-    userLogger?.info(
-      `has ${expertiseAreas.length} expertise areas. Top areas: ${
-        topAreas || "none"
-      }`
-    );
+    logger?.info(`${username} has ${expertiseAreas.length} expertise areas.`, {
+      topAreas,
+    });
 
     const stats = {
       tagCount: expertiseAreas.length,

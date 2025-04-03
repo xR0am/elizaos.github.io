@@ -43,6 +43,12 @@ export const generateDailySummary = createStep(
       queryParams
     );
 
+    logger?.info(`generating summary for ${username}`, {
+      numPrs: prs.length,
+      issues: issueMetrics.total,
+      reviews: reviewMetrics.total,
+    });
+
     // Generate a simple summary (this would use AI in a real implementation)
     const summary =
       `${username} worked on ${prs.length} pull requests, ` +
@@ -50,6 +56,7 @@ export const generateDailySummary = createStep(
       `provided ${reviewMetrics.total} reviews, and ` +
       `wrote ${commentMetrics.pullRequests + commentMetrics.issues} comments.`;
 
+    logger?.debug(summary);
     // Store in database
     await storeDailySummary(username, dateStr, summary);
 
@@ -58,4 +65,4 @@ export const generateDailySummary = createStep(
       summary,
     };
   }
-); // --- Contributor processors ---
+);

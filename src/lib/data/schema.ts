@@ -6,6 +6,7 @@ import {
   real,
   index,
   unique,
+  primaryKey,
 } from "drizzle-orm/sqlite-core";
 
 // User table - stores basic user information
@@ -20,10 +21,19 @@ export const users = sqliteTable(
       .default(sql`CURRENT_TIMESTAMP`),
     score: real("score").notNull().default(0),
   },
-  (table) => ({
-    scoreIdx: index("idx_users_score").on(table.score), // For sorting by score
-  })
+  (table) => [
+    index("idx_users_score").on(table.score), // For sorting by score
+  ]
 );
+
+// Repositories being tracked
+export const repositories = sqliteTable("repositories", {
+  repoId: text("repo_id").primaryKey(),
+  lastFetchedAt: text("last_fetched_at").default(""),
+  lastUpdated: text("last_updated")
+    .notNull()
+    .default(sql`CURRENT_TIMESTAMP`),
+});
 
 // Raw GitHub data tables
 export const rawPullRequests = sqliteTable(
@@ -53,22 +63,19 @@ export const rawPullRequests = sqliteTable(
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
   },
-  (table) => ({
-    authorIdx: index("idx_raw_prs_author").on(table.author),
-    repoIdx: index("idx_raw_prs_repo").on(table.repository),
-    createdAtIdx: index("idx_raw_prs_created_at").on(table.createdAt),
-    repoNumberUnique: unique("unq_repo_number").on(
-      table.repository,
-      table.number
-    ),
-    repoAuthorDateIdx: index("idx_raw_prs_repo_author_date").on(
+  (table) => [
+    index("idx_raw_prs_author").on(table.author),
+    index("idx_raw_prs_repo").on(table.repository),
+    index("idx_raw_prs_created_at").on(table.createdAt),
+    unique("unq_repo_number").on(table.repository, table.number),
+    index("idx_raw_prs_repo_author_date").on(
       table.repository,
       table.author,
       table.createdAt
     ),
-    stateIdx: index("idx_raw_prs_state").on(table.state),
-    mergedIdx: index("idx_raw_prs_merged").on(table.merged),
-  })
+    index("idx_raw_prs_state").on(table.state),
+    index("idx_raw_prs_merged").on(table.merged),
+  ]
 );
 
 export const rawPullRequestFiles = sqliteTable(
@@ -86,10 +93,10 @@ export const rawPullRequestFiles = sqliteTable(
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
   },
-  (table) => ({
-    prIdIdx: index("idx_raw_pr_files_pr_id").on(table.prId),
-    prIdPathUnique: unique("unq_pr_id_path").on(table.prId, table.path),
-  })
+  (table) => [
+    index("idx_raw_pr_files_pr_id").on(table.prId),
+    unique("unq_pr_id_path").on(table.prId, table.path),
+  ]
 );
 
 export const rawIssues = sqliteTable(
@@ -113,21 +120,18 @@ export const rawIssues = sqliteTable(
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
   },
-  (table) => ({
-    authorIdx: index("idx_raw_issues_author").on(table.author),
-    repoIdx: index("idx_raw_issues_repo").on(table.repository),
-    createdAtIdx: index("idx_raw_issues_created_at").on(table.createdAt),
-    repoNumberUnique: unique("unq_issue_repo_number").on(
-      table.repository,
-      table.number
-    ),
-    repoAuthorDateIdx: index("idx_raw_issues_repo_author_date").on(
+  (table) => [
+    index("idx_raw_issues_author").on(table.author),
+    index("idx_raw_issues_repo").on(table.repository),
+    index("idx_raw_issues_created_at").on(table.createdAt),
+    unique("unq_issue_repo_number").on(table.repository, table.number),
+    index("idx_raw_issues_repo_author_date").on(
       table.repository,
       table.author,
       table.createdAt
     ),
-    stateIdx: index("idx_raw_issues_state").on(table.state),
-  })
+    index("idx_raw_issues_state").on(table.state),
+  ]
 );
 
 export const rawCommits = sqliteTable(
@@ -150,17 +154,17 @@ export const rawCommits = sqliteTable(
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
   },
-  (table) => ({
-    authorIdx: index("idx_raw_commits_author").on(table.author),
-    repoIdx: index("idx_raw_commits_repo").on(table.repository),
-    dateIdx: index("idx_raw_commits_date").on(table.committedDate),
-    prIdx: index("idx_raw_commits_pr_id").on(table.pullRequestId),
-    repoAuthorDateIdx: index("idx_raw_commits_repo_author_date").on(
+  (table) => [
+    index("idx_raw_commits_author").on(table.author),
+    index("idx_raw_commits_repo").on(table.repository),
+    index("idx_raw_commits_date").on(table.committedDate),
+    index("idx_raw_commits_pr_id").on(table.pullRequestId),
+    index("idx_raw_commits_repo_author_date").on(
       table.repository,
       table.author,
       table.committedDate
     ),
-  })
+  ]
 );
 
 export const rawCommitFiles = sqliteTable(
@@ -180,9 +184,7 @@ export const rawCommitFiles = sqliteTable(
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
   },
-  (table) => ({
-    shaIdx: index("idx_raw_commit_files_sha").on(table.sha),
-  })
+  (table) => [index("idx_raw_commit_files_sha").on(table.sha)]
 );
 
 export const prReviews = sqliteTable(
@@ -200,15 +202,12 @@ export const prReviews = sqliteTable(
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
   },
-  (table) => ({
-    prIdIdx: index("idx_pr_reviews_pr_id").on(table.prId),
-    authorIdx: index("idx_pr_reviews_author").on(table.author),
-    authorDateIdx: index("idx_pr_reviews_author_date").on(
-      table.author,
-      table.createdAt
-    ),
-    stateIdx: index("idx_pr_reviews_state").on(table.state),
-  })
+  (table) => [
+    index("idx_pr_reviews_pr_id").on(table.prId),
+    index("idx_pr_reviews_author").on(table.author),
+    index("idx_pr_reviews_author_date").on(table.author, table.createdAt),
+    index("idx_pr_reviews_state").on(table.state),
+  ]
 );
 
 export const prComments = sqliteTable(
@@ -226,14 +225,11 @@ export const prComments = sqliteTable(
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
   },
-  (table) => ({
-    prIdIdx: index("idx_pr_comments_pr_id").on(table.prId),
-    authorIdx: index("idx_pr_comments_author").on(table.author),
-    authorDateIdx: index("idx_pr_comments_author_date").on(
-      table.author,
-      table.createdAt
-    ),
-  })
+  (table) => [
+    index("idx_pr_comments_pr_id").on(table.prId),
+    index("idx_pr_comments_author").on(table.author),
+    index("idx_pr_comments_author_date").on(table.author, table.createdAt),
+  ]
 );
 
 export const issueComments = sqliteTable(
@@ -251,14 +247,11 @@ export const issueComments = sqliteTable(
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
   },
-  (table) => ({
-    issueIdIdx: index("idx_issue_comments_issue_id").on(table.issueId),
-    authorIdx: index("idx_issue_comments_author").on(table.author),
-    authorDateIdx: index("idx_issue_comments_author_date").on(
-      table.author,
-      table.createdAt
-    ),
-  })
+  (table) => [
+    index("idx_issue_comments_issue_id").on(table.issueId),
+    index("idx_issue_comments_author").on(table.author),
+    index("idx_issue_comments_author_date").on(table.author, table.createdAt),
+  ]
 );
 
 // Processed data tables
@@ -273,14 +266,14 @@ export const userDailySummaries = sqliteTable(
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
   },
-  (table) => ({
-    usernameIdx: index("idx_user_daily_summaries_username").on(table.username),
-    dateIdx: index("idx_user_daily_summaries_date").on(table.date),
-    usernameDateIdx: index("idx_user_daily_summaries_username_date").on(
+  (table) => [
+    index("idx_user_daily_summaries_username").on(table.username),
+    index("idx_user_daily_summaries_date").on(table.date),
+    index("idx_user_daily_summaries_username_date").on(
       table.username,
       table.date
     ),
-  })
+  ]
 );
 
 export const tags = sqliteTable("tags", {
@@ -315,15 +308,12 @@ export const userTagScores = sqliteTable(
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
   },
-  (table) => ({
-    usernameIdx: index("idx_user_tag_scores_username").on(table.username),
-    tagIdx: index("idx_user_tag_scores_tag").on(table.tag),
-    scoreIdx: index("idx_user_tag_scores_score").on(table.score),
-    usernameTagIdx: index("idx_user_tag_scores_username_tag").on(
-      table.username,
-      table.tag
-    ),
-  })
+  (table) => [
+    index("idx_user_tag_scores_username").on(table.username),
+    index("idx_user_tag_scores_tag").on(table.tag),
+    index("idx_user_tag_scores_score").on(table.score),
+    index("idx_user_tag_scores_username_tag").on(table.username, table.tag),
+  ]
 );
 
 // Now define all relations after all tables are defined
@@ -439,12 +429,3 @@ export const userTagScoresRelations = relations(userTagScores, ({ one }) => ({
     references: [tags.name],
   }),
 }));
-
-// Repositories being tracked
-export const repositories = sqliteTable("repositories", {
-  repoId: text("repo_id").primaryKey(),
-  lastFetchedAt: text("last_fetched_at").default(""),
-  lastUpdated: text("last_updated")
-    .notNull()
-    .default(sql`CURRENT_TIMESTAMP`),
-});
