@@ -8,7 +8,7 @@ import { PipelineConfig } from "../src/lib/data/types";
  * like merged PRs and substantive reviews, while applying multipliers based on
  * the affected areas of the codebase.
  */
-export const pipelineConfig = {
+export default {
   // Repositories to track
   repositories: [
     {

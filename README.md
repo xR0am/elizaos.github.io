@@ -150,11 +150,62 @@ The pipeline is configurable through TypeScript config at `config/pipeline.confi
 - Bot user exclusion list
 - AI summarization settings (optional)
 
+#### Pipeline Architecture
+
+The pipeline system uses a functional programming approach with composable operations:
+
+- **Pipeline Steps**: Type-safe, composable functions that transform data
+- **Pipeline Context**: Shared state and configuration passed between steps
+- **Core Utilities**:
+  - `pipe()`: Chain operations sequentially
+  - `parallel()`: Run operations concurrently
+  - `mapStep()`: Apply a pipeline to each item in an array
+  - `createStep()`: Create a typed pipeline step with proper logging
+
+Example of defining a pipeline:
+
+```typescript
+// Example pipeline definition
+const myPipeline = pipe(
+  // Step 1: Fetch data
+  createStep("fetchData", async (input, context) => {
+    // Fetch and return data
+  }),
+  
+  // Step 2: Process each item in parallel
+  mapStep(
+    parallel(
+      // Run these operations in parallel for each item
+      calculateMetrics,
+      generateSummary
+    )
+  ),
+  
+  // Step 3: Format results
+  createStep("formatResults", (results, context) => {
+    // Process and return final results
+  })
+);
+```
+
+#### Creating New Pipelines
+
+To create a new pipeline:
+
+1. Define your pipeline context by extending `BasePipelineContext` or `RepoPipelineContext`
+2. Create individual pipeline steps using `createStep()`
+3. Compose steps using `pipe()`, `parallel()`, and `mapStep()`
+4. Create a context factory function like `createContributorPipelineContext()`
+5. Use `runPipeline()` to execute your pipeline with the appropriate context
+
 Key pipeline components:
 
 - `src/lib/data/github.ts` - GitHub API integration
 - `src/lib/data/ingestion.ts` - Data ingestion into SQLite
-- `src/lib/data/processing/` - Analysis and processing modules
+- `src/lib/data/processing/pipelines.ts` - Predefined pipeline definitions
+- `src/lib/data/processing/runPipeline.ts` - Pipeline execution utilities
+- `src/lib/data/processing/types.ts` - Core pipeline type definitions and utilities
+- `src/lib/data/processing/contributors/` - Contributor-specific pipeline steps
 - `src/lib/data/scoring.ts` - Contributor scoring algorithms
 - `src/lib/data/schema.ts` - Database schema with relations
 
@@ -218,8 +269,17 @@ Or use npm...
 
 ## Customization
 
-- Modify scoring algorithms in `calculate_scores.py`
-- Adjust summary generation in `summarize.py`
+### Pipeline Customization
+
+- **Configuration**: Modify `config/pipeline.config.ts` to adjust scoring weights, repositories, and tags
+- **New Pipeline Steps**: Create custom steps in `src/lib/data/processing/` using the functional pipeline utilities
+- **Custom Processing**: Add domain-specific logic in separate modules following the pattern in `contributors/`
+- **Database Schema**: Extend the database schema in `src/lib/data/schema.ts` and run migrations
+
+### Legacy Customization
+
+- Modify scoring algorithms in `calculate_scores.py` (legacy)
+- Adjust summary generation in `summarize.py` (legacy)
 - Customize profile pages in `ContributorProfile.js`
 - Configure report schedules in `weekly-summaries.yml`
 - Customize thread format in `generate_history_summaries.sh`
@@ -241,6 +301,14 @@ Or use npm...
 │   │   └── ui/         # shadcn/ui components
 │   └── lib/
 │       └── data/       # Data processing and database code
+│           ├── processing/  # Modular pipeline system
+│           │   ├── contributors/  # Contributor-specific pipeline steps
+│           │   ├── pipelines.ts   # Predefined pipeline definitions
+│           │   ├── runPipeline.ts # Pipeline execution utilities
+│           │   └── types.ts       # Core pipeline type definitions
+│           ├── schema.ts     # Database schema definitions
+│           ├── db.ts         # Database connection and query builder
+│           └── ingestion.ts  # Data ingestion from GitHub API
 ├── profiles/           # Generated static profiles
 └── .github/workflows   # Automation workflows
 ```

@@ -349,15 +349,15 @@ export const pullRequestRelations = relations(
   })
 );
 
-// export const pullRequestFilesRelations = relations(
-//   rawPullRequestFiles,
-//   ({ one }) => ({
-//     pullRequest: one(rawPullRequests, {
-//       fields: [rawPullRequestFiles.prId],
-//       references: [rawPullRequests.id],
-//     }),
-//   })
-// );
+export const pullRequestFilesRelations = relations(
+  rawPullRequestFiles,
+  ({ one }) => ({
+    pullRequest: one(rawPullRequests, {
+      fields: [rawPullRequestFiles.prId],
+      references: [rawPullRequests.id],
+    }),
+  })
+);
 
 export const issuesRelations = relations(rawIssues, ({ one, many }) => ({
   author: one(users, {
@@ -439,15 +439,6 @@ export const userTagScoresRelations = relations(userTagScores, ({ one }) => ({
     references: [tags.name],
   }),
 }));
-
-// Pipeline configuration table
-export const pipelineConfig = sqliteTable("pipeline_config", {
-  id: text("id").primaryKey(), // e.g., "scoring", "tags", "general"
-  config: text("config").notNull(), // JSON configuration data
-  lastUpdated: text("last_updated")
-    .notNull()
-    .default(sql`CURRENT_TIMESTAMP`),
-});
 
 // Repositories being tracked
 export const repositories = sqliteTable("repositories", {

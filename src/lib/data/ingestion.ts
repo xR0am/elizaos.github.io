@@ -59,9 +59,9 @@ export class DataIngestion {
 
     // Check if user is a bot
     const isBot = this.config.botUsers?.includes(username) ? 1 : 0;
-    if (isBot) {
-      console.log(`${this.logPrefix} Adding bot user: ${username}`);
-    }
+    // if (isBot) {
+    //   console.log(`${this.logPrefix} Adding bot user: ${username}`);
+    // }
 
     await db
       .insert(users)

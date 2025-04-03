@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "2f6ee9cc-5565-4dee-a673-22472a461e9e",
+  "id": "018e6b8b-ca00-4b28-958b-fb076014fd56",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "issue_comments": {
@@ -73,6 +73,14 @@
             "author"
           ],
           "isUnique": false
+        },
+        "idx_issue_comments_author_date": {
+          "name": "idx_issue_comments_author_date",
+          "columns": [
+            "author",
+            "created_at"
+          ],
+          "isUnique": false
         }
       },
       "foreignKeys": {
@@ -103,38 +111,6 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "checkConstraints": {}
-    },
-    "pipeline_config": {
-      "name": "pipeline_config",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "text",
-          "primaryKey": true,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "config": {
-          "name": "config",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "last_updated": {
-          "name": "last_updated",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": "CURRENT_TIMESTAMP"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "checkConstraints": {}
@@ -208,6 +184,14 @@
             "author"
           ],
           "isUnique": false
+        },
+        "idx_pr_comments_author_date": {
+          "name": "idx_pr_comments_author_date",
+          "columns": [
+            "author",
+            "created_at"
+          ],
+          "isUnique": false
         }
       },
       "foreignKeys": {
@@ -274,8 +258,8 @@
           "autoincrement": false,
           "default": "''"
         },
-        "submitted_at": {
-          "name": "submitted_at",
+        "created_at": {
+          "name": "created_at",
           "type": "text",
           "primaryKey": false,
           "notNull": true,
@@ -309,6 +293,21 @@
           "name": "idx_pr_reviews_author",
           "columns": [
             "author"
+          ],
+          "isUnique": false
+        },
+        "idx_pr_reviews_author_date": {
+          "name": "idx_pr_reviews_author_date",
+          "columns": [
+            "author",
+            "created_at"
+          ],
+          "isUnique": false
+        },
+        "idx_pr_reviews_state": {
+          "name": "idx_pr_reviews_state",
+          "columns": [
+            "state"
           ],
           "isUnique": false
         }
@@ -578,6 +577,15 @@
             "pull_request_id"
           ],
           "isUnique": false
+        },
+        "idx_raw_commits_repo_author_date": {
+          "name": "idx_raw_commits_repo_author_date",
+          "columns": [
+            "repository",
+            "author",
+            "committed_date"
+          ],
+          "isUnique": false
         }
       },
       "foreignKeys": {
@@ -730,6 +738,22 @@
           "name": "idx_raw_issues_created_at",
           "columns": [
             "created_at"
+          ],
+          "isUnique": false
+        },
+        "idx_raw_issues_repo_author_date": {
+          "name": "idx_raw_issues_repo_author_date",
+          "columns": [
+            "repository",
+            "author",
+            "created_at"
+          ],
+          "isUnique": false
+        },
+        "idx_raw_issues_state": {
+          "name": "idx_raw_issues_state",
+          "columns": [
+            "state"
           ],
           "isUnique": false
         },
@@ -1019,6 +1043,29 @@
           ],
           "isUnique": false
         },
+        "idx_raw_prs_repo_author_date": {
+          "name": "idx_raw_prs_repo_author_date",
+          "columns": [
+            "repository",
+            "author",
+            "created_at"
+          ],
+          "isUnique": false
+        },
+        "idx_raw_prs_state": {
+          "name": "idx_raw_prs_state",
+          "columns": [
+            "state"
+          ],
+          "isUnique": false
+        },
+        "idx_raw_prs_merged": {
+          "name": "idx_raw_prs_merged",
+          "columns": [
+            "merged"
+          ],
+          "isUnique": false
+        },
         "unq_repo_number": {
           "name": "unq_repo_number",
           "columns": [
@@ -1050,24 +1097,10 @@
     "repositories": {
       "name": "repositories",
       "columns": {
-        "id": {
-          "name": "id",
+        "repo_id": {
+          "name": "repo_id",
           "type": "text",
           "primaryKey": true,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "owner": {
-          "name": "owner",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "name": {
-          "name": "name",
-          "type": "text",
-          "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
@@ -1182,14 +1215,6 @@
           "notNull": true,
           "autoincrement": false
         },
-        "score": {
-          "name": "score",
-          "type": "real",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": 0
-        },
         "summary": {
           "name": "summary",
           "type": "text",
@@ -1198,69 +1223,13 @@
           "autoincrement": false,
           "default": "''"
         },
-        "total_commits": {
-          "name": "total_commits",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": 0
-        },
-        "total_prs": {
-          "name": "total_prs",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": 0
-        },
-        "additions": {
-          "name": "additions",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": 0
-        },
-        "deletions": {
-          "name": "deletions",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": 0
-        },
-        "changed_files": {
-          "name": "changed_files",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": 0
-        },
-        "commits": {
-          "name": "commits",
+        "last_updated": {
+          "name": "last_updated",
           "type": "text",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "'[]'"
-        },
-        "pull_requests": {
-          "name": "pull_requests",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": "'[]'"
-        },
-        "issues": {
-          "name": "issues",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": "'[]'"
+          "default": "CURRENT_TIMESTAMP"
         }
       },
       "indexes": {
@@ -1277,123 +1246,20 @@
             "date"
           ],
           "isUnique": false
+        },
+        "idx_user_daily_summaries_username_date": {
+          "name": "idx_user_daily_summaries_username_date",
+          "columns": [
+            "username",
+            "date"
+          ],
+          "isUnique": false
         }
       },
       "foreignKeys": {
         "user_daily_summaries_username_users_username_fk": {
           "name": "user_daily_summaries_username_users_username_fk",
           "tableFrom": "user_daily_summaries",
-          "tableTo": "users",
-          "columnsFrom": [
-            "username"
-          ],
-          "columnsTo": [
-            "username"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "checkConstraints": {}
-    },
-    "user_stats": {
-      "name": "user_stats",
-      "columns": {
-        "username": {
-          "name": "username",
-          "type": "text",
-          "primaryKey": true,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "total_prs": {
-          "name": "total_prs",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": 0
-        },
-        "merged_prs": {
-          "name": "merged_prs",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": 0
-        },
-        "closed_prs": {
-          "name": "closed_prs",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": 0
-        },
-        "total_files": {
-          "name": "total_files",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": 0
-        },
-        "total_additions": {
-          "name": "total_additions",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": 0
-        },
-        "total_deletions": {
-          "name": "total_deletions",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": 0
-        },
-        "files_by_type": {
-          "name": "files_by_type",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": "'{}'"
-        },
-        "prs_by_month": {
-          "name": "prs_by_month",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": "'{}'"
-        },
-        "focus_areas": {
-          "name": "focus_areas",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": "'[]'"
-        },
-        "last_updated": {
-          "name": "last_updated",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": "CURRENT_TIMESTAMP"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "user_stats_username_users_username_fk": {
-          "name": "user_stats_username_users_username_fk",
-          "tableFrom": "user_stats",
           "tableTo": "users",
           "columnsFrom": [
             "username"
@@ -1481,6 +1347,28 @@
             "username"
           ],
           "isUnique": false
+        },
+        "idx_user_tag_scores_tag": {
+          "name": "idx_user_tag_scores_tag",
+          "columns": [
+            "tag"
+          ],
+          "isUnique": false
+        },
+        "idx_user_tag_scores_score": {
+          "name": "idx_user_tag_scores_score",
+          "columns": [
+            "score"
+          ],
+          "isUnique": false
+        },
+        "idx_user_tag_scores_username_tag": {
+          "name": "idx_user_tag_scores_username_tag",
+          "columns": [
+            "username",
+            "tag"
+          ],
+          "isUnique": false
         }
       },
       "foreignKeys": {
@@ -1533,6 +1421,14 @@
           "autoincrement": false,
           "default": "''"
         },
+        "is_bot": {
+          "name": "is_bot",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        },
         "last_updated": {
           "name": "last_updated",
           "type": "text",
@@ -1550,7 +1446,15 @@
           "default": 0
         }
       },
-      "indexes": {},
+      "indexes": {
+        "idx_users_score": {
+          "name": "idx_users_score",
+          "columns": [
+            "score"
+          ],
+          "isUnique": false
+        }
+      },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},

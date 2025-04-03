@@ -1,154 +1,159 @@
 /**
- * Log levels for processing steps
+ * Simple functional logger for pipeline operations
  */
-export enum LogLevel {
-  ERROR = 0,
-  WARN = 1,
-  INFO = 2,
-  DEBUG = 3,
-  TRACE = 4,
+
+/**
+ * Log levels
+ */
+export type LogLevel = "error" | "warn" | "info" | "debug" | "trace";
+
+/**
+ * Logger interface
+ */
+export interface Logger {
+  error: (message: string, data?: Record<string, any>) => void;
+  warn: (message: string, data?: Record<string, any>) => void;
+  info: (message: string, data?: Record<string, any>) => void;
+  debug: (message: string, data?: Record<string, any>) => void;
+  trace: (message: string, data?: Record<string, any>) => void;
+  child: (name: string) => Logger;
 }
 
 /**
- * Configuration for logger
+ * Logger configuration
  */
 export interface LoggerConfig {
   minLevel: LogLevel;
-  prefix?: string;
+  context?: Record<string, string>;
+  name?: string;
 }
 
 /**
- * Default configuration
+ * Level precedence (lower number = higher priority)
  */
-const defaultConfig: LoggerConfig = {
-  minLevel: LogLevel.INFO,
+const LEVEL_PRIORITY: Record<LogLevel, number> = {
+  error: 0,
+  warn: 1,
+  info: 2,
+  debug: 3,
+  trace: 4,
 };
 
 /**
- * A simple logger for processing steps
+ * Create a new logger
  */
-export class Logger {
-  private config: LoggerConfig;
+export function createLogger(config: LoggerConfig): Logger {
+  const { minLevel, context = {}, name = "pipeline" } = config;
 
-  constructor(config: Partial<LoggerConfig> = {}) {
-    this.config = { ...defaultConfig, ...config };
-  }
+  // Format context for logging
+  // const contextStr = Object.entries(context)
+  //   .map(([key, value]) => `${key}=${value}`)
+  //   .join(" ");
+  const contextStr = null;
+
+  const prefix = contextStr ? `[${name}:${contextStr}]` : `[${name}]`;
 
   /**
-   * Log a message at the specified level
+   * Internal log function
    */
-  log(level: LogLevel, message: string, data?: Record<string, any>): void {
-    if (level > this.config.minLevel) return;
+  function log(
+    level: LogLevel,
+    message: string,
+    data?: Record<string, any>
+  ): void {
+    if (LEVEL_PRIORITY[level] > LEVEL_PRIORITY[minLevel]) return;
 
-    const prefix = this.config.prefix ? `[${this.config.prefix}] ` : "";
-    const timestamp = new Date().toISOString();
-    const levelStr = LogLevel[level];
+    // const timestamp = new Date().toISOString();
+    let logMessage = `${level.toUpperCase()}: ${prefix} ${message}`;
 
-    // Format basic message
-    let logMessage = `${timestamp} ${levelStr}: ${prefix}${message}`;
-
-    // Add data as JSON if provided
     if (data) {
-      // Limit data to prevent excessive logging
-      const limitedData = this.limitObjectDepth(data);
+      const limitedData = limitObjectDepth(data);
       logMessage += ` ${JSON.stringify(limitedData)}`;
     }
 
-    // Log to console
     switch (level) {
-      case LogLevel.ERROR:
+      case "error":
         console.error(logMessage);
         break;
-      case LogLevel.WARN:
+      case "warn":
         console.warn(logMessage);
         break;
-      case LogLevel.INFO:
+      case "info":
         console.info(logMessage);
         break;
-      case LogLevel.DEBUG:
-      case LogLevel.TRACE:
+      case "debug":
+      case "trace":
       default:
         console.debug(logMessage);
-        break;
     }
   }
 
   /**
-   * Helper methods for each log level
+   * Create a child logger with additional context
    */
-  error(message: string, data?: Record<string, any>): void {
-    this.log(LogLevel.ERROR, message, data);
-  }
-
-  warn(message: string, data?: Record<string, any>): void {
-    this.log(LogLevel.WARN, message, data);
-  }
-
-  info(message: string, data?: Record<string, any>): void {
-    this.log(LogLevel.INFO, message, data);
-  }
-
-  debug(message: string, data?: Record<string, any>): void {
-    this.log(LogLevel.DEBUG, message, data);
-  }
-
-  trace(message: string, data?: Record<string, any>): void {
-    this.log(LogLevel.TRACE, message, data);
-  }
-
-  /**
-   * Create a child logger with a specific prefix
-   */
-  child(prefix: string): Logger {
-    return new Logger({
-      ...this.config,
-      prefix: this.config.prefix ? `${this.config.prefix}:${prefix}` : prefix,
+  function child(subName: string): Logger {
+    return createLogger({
+      minLevel,
+      context,
+      name: `${name}:${subName}`,
     });
   }
 
-  /**
-   * Limit object depth to prevent excessive logging
-   */
-  private limitObjectDepth(
-    obj: any,
-    depth: number = 0,
-    maxDepth: number = 2
-  ): any {
-    if (depth >= maxDepth) {
-      if (Array.isArray(obj)) {
-        return obj.length > 0 ? [`${obj.length} items`] : [];
-      }
-      if (typeof obj === "object" && obj !== null) {
-        return "[Object]";
-      }
-    }
+  return {
+    error: (message: string, data?: Record<string, any>) =>
+      log("error", message, data),
+    warn: (message: string, data?: Record<string, any>) =>
+      log("warn", message, data),
+    info: (message: string, data?: Record<string, any>) =>
+      log("info", message, data),
+    debug: (message: string, data?: Record<string, any>) =>
+      log("debug", message, data),
+    trace: (message: string, data?: Record<string, any>) =>
+      log("trace", message, data),
+    child,
+  };
+}
 
+/**
+ * Limit object depth for logging
+ */
+function limitObjectDepth(
+  obj: any,
+  depth: number = 0,
+  maxDepth: number = 2
+): any {
+  if (depth >= maxDepth) {
     if (Array.isArray(obj)) {
-      if (obj.length > 10) {
-        // Truncate large arrays
-        return [
-          ...obj
-            .slice(0, 5)
-            .map((item) => this.limitObjectDepth(item, depth + 1, maxDepth)),
-          `... ${obj.length - 10} more items ...`,
-          ...obj
-            .slice(-5)
-            .map((item) => this.limitObjectDepth(item, depth + 1, maxDepth)),
-        ];
-      }
-      return obj.map((item) =>
-        this.limitObjectDepth(item, depth + 1, maxDepth)
-      );
+      return obj.length > 0 ? [`${obj.length} items`] : [];
     }
-
     if (typeof obj === "object" && obj !== null) {
-      const result: Record<string, any> = {};
-      for (const [key, value] of Object.entries(obj)) {
-        result[key] = this.limitObjectDepth(value, depth + 1, maxDepth);
-      }
-      return result;
+      return "[Object]";
     }
-
-    return obj;
   }
+
+  if (Array.isArray(obj)) {
+    if (obj.length > 10) {
+      // Truncate large arrays
+      return [
+        ...obj
+          .slice(0, 5)
+          .map((item) => limitObjectDepth(item, depth + 1, maxDepth)),
+        `... ${obj.length - 10} more items ...`,
+        ...obj
+          .slice(-5)
+          .map((item) => limitObjectDepth(item, depth + 1, maxDepth)),
+      ];
+    }
+    return obj.map((item) => limitObjectDepth(item, depth + 1, maxDepth));
+  }
+
+  if (typeof obj === "object" && obj !== null) {
+    const result: Record<string, any> = {};
+    for (const [key, value] of Object.entries(obj)) {
+      result[key] = limitObjectDepth(value, depth + 1, maxDepth);
+    }
+    return result;
+  }
+
+  return obj;
 }
