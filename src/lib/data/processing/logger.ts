@@ -163,7 +163,7 @@ export function createLogger(config: LoggerConfig): Logger {
 function limitObjectDepth(
   obj: any,
   depth: number = 0,
-  maxDepth: number = 2
+  maxDepth: number = 3
 ): any {
   if (depth >= maxDepth) {
     if (Array.isArray(obj)) {

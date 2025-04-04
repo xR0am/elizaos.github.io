@@ -1,34 +1,56 @@
 /**
  * Predefined pipelines for common data processing flows
  */
-import { pipe, mapStep, createStep, RepoPipelineContext } from "./types";
-import { ContributorPipeline } from "./contributors";
+import {
+  pipe,
+  mapStep,
+  createStep,
+  RepoPipelineContext,
+  parallel,
+} from "./types";
+import { processContributorTags } from "./contributors";
+import {
+  generateDailyRepoSummaries,
+  generateWeeklyRepoSummaries,
+} from "./export/generateSummary";
 import { db } from "../db";
-
+import { repositories } from "../schema";
+import { eq } from "drizzle-orm";
 /**
- * Pipeline for processing all repositories (or filtered by repoId)
+ * Common pipeline step to fetch and filter repositories based on context
  */
-export const processAllRepositories = pipe(
-  createStep("fetchRepositories", async (_, { logger }) => {
-    const repos = await db.query.repositories.findMany();
-    const ids = repos.map(({ repoId }) => repoId);
-    logger?.info(`Found ${repos.length} repositories in DB`, { ids });
-    return ids;
-  }),
-  // Initialize with empty input
-  createStep(
-    "filterRepositories",
-    (repos: string[], { repoId, logger, config }: RepoPipelineContext) => {
-      if (repoId) return repos.filter((repo) => repo === repoId);
-      const configRepos = config.repositories.map((r) => r.repoId);
+export const getSelectedRepositories = createStep(
+  "getSelectedRepositories",
+  async (_, { repoId, logger, config }: RepoPipelineContext) => {
+    // Fetch all repositories
+    const repos = await db
+      .select({ repoId: repositories.repoId })
+      .from(repositories)
+      .where(repoId ? eq(repositories.repoId, repoId) : undefined);
+    logger?.info(`Found ${repos.length} repositories in DB`, {
+      repos: repos.map((r) => r.repoId),
+    });
 
-      const filteredRepos = repos.filter(
-        (repo) => configRepos.indexOf(repo) >= 0
-      );
-      logger?.info(`Restricting repos`, { filteredRepos });
-      return filteredRepos;
-    }
-  ),
-  // Map the processRepository pipeline over each repository
-  mapStep(ContributorPipeline)
+    // Filter repositories
+    const configRepos = config.repositories.map((r) => r.repoId);
+    logger?.info(`Found ${configRepos.length} configured repositories`, {
+      configRepos,
+    });
+    const selectedRepos = repos.filter(
+      (repo) => configRepos.indexOf(repo.repoId) >= 0
+    );
+    logger?.info(`Filtering for configured repositories`, { selectedRepos });
+
+    return selectedRepos;
+  }
+);
+
+export const contributorTagsPipeline = pipe(
+  getSelectedRepositories,
+  mapStep(processContributorTags)
+);
+
+export const generateRepositorySummaries = pipe(
+  getSelectedRepositories,
+  mapStep(parallel(generateDailyRepoSummaries, generateWeeklyRepoSummaries))
 );

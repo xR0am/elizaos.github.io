@@ -132,5 +132,5 @@ export type GithubUser = z.infer<typeof GithubUserSchema>;
 
 export interface DateRange {
   startDate: string;
-  endDate: string;
+  endDate?: string;
 }

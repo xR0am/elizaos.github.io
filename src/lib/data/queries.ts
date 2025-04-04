@@ -1,4 +1,4 @@
-import { desc, eq, sql, and, gte, lte, SQL } from "drizzle-orm";
+import { desc, eq, sql, and, or, SQL } from "drizzle-orm";
 import { db } from "./db";
 import {
   rawPullRequests,
@@ -23,17 +23,43 @@ export interface PaginatedQueryParams extends QueryParams {
   limit?: number;
   offset?: number;
 }
+
+/**
+ * Helper function to build date range conditions for different date fields
+ */
+function buildDateRangeConditions<T extends { [key: string]: unknown }>(
+  dateRange: DateRange,
+  table: T,
+  dateFields: (keyof T)[]
+): SQL[] {
+  if (!dateRange) return [];
+
+  const { startDate, endDate } = dateRange;
+  const conditions = dateFields.map(
+    (field) =>
+      sql`${table[field]} >= ${startDate} AND ${table[field]} <= ${endDate}`
+  );
+
+  // At least one date field should match the range
+  return [sql`(${or(...conditions)})`];
+}
+
 /**
  * Helper function to build common where conditions based on query params
  */
 function buildCommonWhereConditions<
-  T extends { createdAt: unknown; repository?: unknown }
->(params: QueryParams, table: T): SQL[] {
+  T extends { createdAt?: unknown; repository?: unknown }
+>(
+  params: QueryParams,
+  table: T,
+  dateFields: (keyof T)[] = ["createdAt"]
+): SQL[] {
   const conditions: SQL[] = [];
 
   if (params.dateRange) {
-    conditions.push(sql`${table.createdAt} >= ${params.dateRange.startDate}`);
-    conditions.push(sql`${table.createdAt} <= ${params.dateRange.endDate}`);
+    conditions.push(
+      ...buildDateRangeConditions(params.dateRange, table as any, dateFields)
+    );
   }
 
   if (params.repository) {
@@ -351,55 +377,327 @@ export async function getContributorCommentMetrics(
 export async function getActiveContributors(
   params: PaginatedQueryParams = {}
 ): Promise<string[]> {
-  const whereConditions: SQL[] = [];
+  // Simplified approach: Query each table separately and combine results
+  const contributorSets: Set<string> = new Set();
 
-  if (params.dateRange) {
-    const { startDate, endDate } = params.dateRange;
-    whereConditions.push(sql`(
-      (${rawPullRequests.createdAt} BETWEEN ${startDate} AND ${endDate} AND ${rawPullRequests.repository} = ${params.repository}) OR
-      (${rawIssues.createdAt} BETWEEN ${startDate} AND ${endDate} AND ${rawIssues.repository} = ${params.repository}) OR
-      (${prReviews.createdAt} BETWEEN ${startDate} AND ${endDate}) OR
-      (${prComments.createdAt} BETWEEN ${startDate} AND ${endDate}) OR
-      (${issueComments.createdAt} BETWEEN ${startDate} AND ${endDate})
-    )`);
+  // Helper function to fetch contributors from a table
+  async function fetchContributorsFromTable(
+    tableName: string,
+    table: any,
+    authorField: any,
+    repoField: any,
+    dateField: any
+  ) {
+    try {
+      const whereConditions: SQL[] = [];
+
+      if (params.repository) {
+        whereConditions.push(sql`${repoField} = ${params.repository}`);
+      }
+
+      if (params.dateRange) {
+        const { startDate, endDate } = params.dateRange;
+        whereConditions.push(
+          sql`${dateField} BETWEEN ${startDate} AND ${endDate}`
+        );
+      }
+
+      whereConditions.push(
+        sql`${authorField} NOT IN ('unknown', '[deleted]', '')`
+      );
+
+      const query = db
+        .select({
+          author: authorField,
+        })
+        .from(table)
+        .where(and(...whereConditions))
+        .groupBy(authorField);
+
+      if (params.limit) {
+        query.limit(params.limit);
+      }
+
+      const result = await query.all();
+      result.forEach((row) => {
+        if (row.author) {
+          contributorSets.add(row.author);
+        }
+      });
+    } catch (error) {
+      console.error(`Error fetching contributors from ${tableName}:`, error);
+    }
   }
 
-  whereConditions.push(sql`COALESCE(
-    ${rawPullRequests.author},
-    ${rawIssues.author},
-    ${prReviews.author},
-    ${prComments.author},
-    ${issueComments.author}
-  ) NOT IN ('unknown', '[deleted]', '')`);
+  // Fetch contributors from each table in sequence
+  await fetchContributorsFromTable(
+    "raw_pull_requests",
+    rawPullRequests,
+    rawPullRequests.author,
+    rawPullRequests.repository,
+    rawPullRequests.createdAt
+  );
 
-  const query = db
+  await fetchContributorsFromTable(
+    "raw_issues",
+    rawIssues,
+    rawIssues.author,
+    rawIssues.repository,
+    rawIssues.createdAt
+  );
+
+  return Array.from(contributorSets);
+}
+
+/**
+ * Get top pull requests for a repository in a time period
+ */
+export async function getTopPullRequests(params: QueryParams = {}, limit = 5) {
+  const whereConditions = buildCommonWhereConditions(params, rawPullRequests, [
+    "createdAt",
+    "mergedAt",
+    "closedAt",
+  ]);
+
+  const prs = await db
     .select({
-      username: sql`DISTINCT COALESCE(
-        ${rawPullRequests.author},
-        ${rawIssues.author},
-        ${prReviews.author},
-        ${prComments.author},
-        ${issueComments.author}
-      )`,
+      id: rawPullRequests.id,
+      title: rawPullRequests.title,
+      author: rawPullRequests.author,
+      number: rawPullRequests.number,
+      repository: rawPullRequests.repository,
+      createdAt: rawPullRequests.createdAt,
+      mergedAt: rawPullRequests.mergedAt,
+      additions: rawPullRequests.additions,
+      deletions: rawPullRequests.deletions,
     })
     .from(rawPullRequests)
-    .fullJoin(rawIssues, sql`1=1`)
-    .fullJoin(prReviews, sql`1=1`)
-    .fullJoin(prComments, sql`1=1`)
-    .fullJoin(issueComments, sql`1=1`)
-    .where(and(...whereConditions));
+    .where(and(...whereConditions))
+    .orderBy(desc(rawPullRequests.additions))
+    .limit(limit)
+    .all();
 
-  if (params.limit) {
-    query.limit(params.limit);
+  return prs;
+}
+
+/**
+ * Get top issues for a repository in a time period
+ */
+export async function getTopIssues(params: QueryParams = {}, limit = 5) {
+  const whereConditions = [
+    // Include issues that are either:
+    // 1. Currently open, or
+    // 2. Were closed after the end date (meaning they were open during the period)
+    params.dateRange
+      ? sql`(${rawIssues.state} = 'OPEN' OR ${rawIssues.closedAt} > ${params.dateRange.endDate})`
+      : sql`${rawIssues.state} = 'OPEN'`,
+    ...buildCommonWhereConditions(params, rawIssues, [
+      "createdAt",
+      "updatedAt",
+      "closedAt",
+    ]),
+  ];
+
+  // Create a comment count subquery
+  const commentCountQuery = db.$with("comment_counts").as(
+    db
+      .select({
+        issueId: issueComments.issueId,
+        count: sql<number>`COUNT(*)`.as("comment_count"),
+      })
+      .from(issueComments)
+      .where(
+        params.dateRange
+          ? sql`${issueComments.createdAt} >= ${params.dateRange.startDate} AND ${issueComments.createdAt} <= ${params.dateRange.endDate}`
+          : undefined
+      )
+      .groupBy(issueComments.issueId)
+  );
+
+  // Get all issues with their comment counts
+  const issuesWithComments = await db
+    .with(commentCountQuery)
+    .select({
+      id: rawIssues.id,
+      title: rawIssues.title,
+      author: rawIssues.author,
+      number: rawIssues.number,
+      repository: rawIssues.repository,
+      createdAt: rawIssues.createdAt,
+      closedAt: rawIssues.closedAt,
+      state: rawIssues.state,
+      commentCount: sql<number>`COALESCE(comment_counts.comment_count, 0)`,
+    })
+    .from(rawIssues)
+    .leftJoin(commentCountQuery, eq(commentCountQuery.issueId, rawIssues.id))
+    .where(and(...whereConditions))
+    .orderBy(desc(sql`COALESCE(comment_counts.comment_count, 0)`))
+    .limit(limit)
+    .all();
+
+  return issuesWithComments;
+}
+
+/**
+ * Get repository metrics for a time period
+ */
+export async function getRepositoryMetrics(params: QueryParams = {}) {
+  if (!params.repository) {
+    throw new Error(
+      "Repository parameter is required for getRepositoryMetrics"
+    );
   }
 
-  if (params.offset) {
-    query.offset(params.offset);
+  // Base conditions for repository filtering
+  const repoCondition = sql`${rawPullRequests.repository} = ${params.repository}`;
+
+  // Date range conditions
+  const dateRange = params.dateRange;
+  const dateCondition = dateRange
+    ? sql`AND ${rawPullRequests.createdAt} >= ${dateRange.startDate} AND ${rawPullRequests.createdAt} <= ${dateRange.endDate}`
+    : sql``;
+  const mergedDateCondition = dateRange
+    ? sql`AND ${rawPullRequests.mergedAt} >= ${dateRange.startDate} AND ${rawPullRequests.mergedAt} <= ${dateRange.endDate}`
+    : sql``;
+  const closedDateCondition = dateRange
+    ? sql`AND ${rawPullRequests.closedAt} >= ${dateRange.startDate} AND ${rawPullRequests.closedAt} <= ${dateRange.endDate}`
+    : sql``;
+
+  // Query new PRs
+  const newPRsQuery = db
+    .select({
+      id: rawPullRequests.id,
+      title: rawPullRequests.title,
+      author: rawPullRequests.author,
+      number: rawPullRequests.number,
+      additions: rawPullRequests.additions,
+      deletions: rawPullRequests.deletions,
+      repository: rawPullRequests.repository,
+    })
+    .from(rawPullRequests)
+    .where(sql`${repoCondition} ${dateCondition}`);
+
+  // Query merged PRs
+  const mergedPRsQuery = db
+    .select({
+      id: rawPullRequests.id,
+      title: rawPullRequests.title,
+      author: rawPullRequests.author,
+      number: rawPullRequests.number,
+      additions: rawPullRequests.additions,
+      deletions: rawPullRequests.deletions,
+      repository: rawPullRequests.repository,
+    })
+    .from(rawPullRequests)
+    .where(
+      sql`${repoCondition} ${mergedDateCondition} AND ${rawPullRequests.merged} = 1`
+    );
+
+  // Query new issues
+  const newIssuesQuery = db
+    .select({
+      id: rawIssues.id,
+      title: rawIssues.title,
+      author: rawIssues.author,
+      number: rawIssues.number,
+      repository: rawIssues.repository,
+    })
+    .from(rawIssues)
+    .where(
+      sql`${rawIssues.repository} = ${params.repository} ${
+        dateRange
+          ? sql`AND ${rawIssues.createdAt} >= ${dateRange.startDate} AND ${rawIssues.createdAt} <= ${dateRange.endDate}`
+          : sql``
+      }`
+    );
+
+  // Query closed issues
+  const closedIssuesQuery = db
+    .select({
+      id: rawIssues.id,
+      title: rawIssues.title,
+      author: rawIssues.author,
+      number: rawIssues.number,
+      repository: rawIssues.repository,
+    })
+    .from(rawIssues)
+    .where(
+      sql`${rawIssues.repository} = ${params.repository} ${
+        dateRange
+          ? sql`AND ${rawIssues.closedAt} >= ${dateRange.startDate} AND ${rawIssues.closedAt} <= ${dateRange.endDate}`
+          : sql``
+      } AND ${rawIssues.state} = 'closed'`
+    );
+
+  // Execute all queries in parallel
+  const [newPRs, mergedPRs, newIssues, closedIssues] = await Promise.all([
+    newPRsQuery.all(),
+    mergedPRsQuery.all(),
+    newIssuesQuery.all(),
+    closedIssuesQuery.all(),
+  ]);
+
+  // Get unique contributors count
+  const uniqueContributors = await getActiveContributors(params);
+
+  return {
+    num_contributors: uniqueContributors.length,
+    new_prs: {
+      count: newPRs.length,
+      items: newPRs,
+    },
+    merged_prs: {
+      count: mergedPRs.length,
+      items: mergedPRs,
+    },
+    new_issues: {
+      count: newIssues.length,
+      items: newIssues,
+    },
+    closed_issues: {
+      count: closedIssues.length,
+      items: closedIssues,
+    },
+  };
+}
+
+/**
+ * Get top contributors ranked by activity score
+ */
+export async function getTopContributors(params: QueryParams = {}, limit = 5) {
+  const prWhereConditions = buildCommonWhereConditions(
+    params,
+    rawPullRequests,
+    ["createdAt", "mergedAt"]
+  );
+
+  try {
+    // Define aliases properly for SQLite
+    const prCountAlias = "pr_count_alias";
+    const issueCountAlias = "issue_count_alias";
+    const reviewCountAlias = "review_count_alias";
+
+    const contributorScores = await db
+      .select({
+        username: rawPullRequests.author,
+        pr_count: sql`COUNT(DISTINCT ${rawPullRequests.id})`.as(prCountAlias),
+        issue_count: sql`COUNT(DISTINCT ${rawIssues.id})`.as(issueCountAlias),
+        review_count: sql`COUNT(DISTINCT ${prReviews.id})`.as(reviewCountAlias),
+      })
+      .from(rawPullRequests)
+      .leftJoin(rawIssues, eq(rawPullRequests.author, rawIssues.author))
+      .leftJoin(prReviews, eq(rawPullRequests.author, prReviews.author))
+      .where(and(...prWhereConditions))
+      .groupBy(rawPullRequests.author)
+      .orderBy(
+        desc(sql`${prCountAlias} + ${issueCountAlias} + ${reviewCountAlias}`)
+      )
+      .limit(limit)
+      .all();
+
+    return contributorScores;
+  } catch (error) {
+    console.error(`Error in getTopContributors:`, error);
+    return [];
   }
-
-  const contributors = await query.all();
-
-  return contributors
-    .map((c) => c.username)
-    .filter((username): username is string => !!username);
 }

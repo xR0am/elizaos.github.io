@@ -7,7 +7,7 @@ import {
 import { storeDailySummary } from "./mutations";
 import { createStep } from "../types";
 import { ContributorPipelineContext } from "./context";
-
+import { toDateString } from "@/lib/date-utils";
 /**
  * Generate and store daily summary for a contributor
  */
@@ -19,8 +19,7 @@ export const generateDailySummary = createStep(
     { dateRange, logger, repoId }: ContributorPipelineContext
   ) => {
     // Get date from context
-    const dateStr =
-      dateRange?.endDate || new Date().toISOString().split("T")[0];
+    const dateStr = dateRange?.endDate || toDateString(new Date());
 
     // Query parameters
     const queryParams = {

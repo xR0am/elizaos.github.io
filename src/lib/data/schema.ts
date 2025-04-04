@@ -58,7 +58,6 @@ export const rawPullRequests = sqliteTable(
     additions: integer("additions").default(0),
     deletions: integer("deletions").default(0),
     changedFiles: integer("changed_files").default(0),
-    labels: text("labels").default("[]"), // JSON array of labels
     lastUpdated: text("last_updated")
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
@@ -115,7 +114,6 @@ export const rawIssues = sqliteTable(
     updatedAt: text("updated_at").notNull(),
     closedAt: text("closed_at"),
     repository: text("repository").notNull(),
-    labels: text("labels").default("[]"), // JSON array of labels
     lastUpdated: text("last_updated")
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
@@ -316,6 +314,63 @@ export const userTagScores = sqliteTable(
   ]
 );
 
+// Labels table for storing unique labels
+export const labels = sqliteTable(
+  "labels",
+  {
+    id: text("id").primaryKey(),
+    name: text("name").notNull(),
+    color: text("color").notNull(),
+    description: text("description").default(""),
+    lastUpdated: text("last_updated")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+  },
+  (table) => [index("idx_labels_name").on(table.name)]
+);
+
+// Junction table for PR-Label relationships
+export const pullRequestLabels = sqliteTable(
+  "pull_request_labels",
+  {
+    prId: text("pr_id")
+      .notNull()
+      .references(() => rawPullRequests.id),
+    labelId: text("label_id")
+      .notNull()
+      .references(() => labels.id),
+    lastUpdated: text("last_updated")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+  },
+  (table) => [
+    primaryKey({ columns: [table.prId, table.labelId] }),
+    index("idx_pr_labels_pr_id").on(table.prId),
+    index("idx_pr_labels_label_id").on(table.labelId),
+  ]
+);
+
+// Junction table for Issue-Label relationships
+export const issueLabels = sqliteTable(
+  "issue_labels",
+  {
+    issueId: text("issue_id")
+      .notNull()
+      .references(() => rawIssues.id),
+    labelId: text("label_id")
+      .notNull()
+      .references(() => labels.id),
+    lastUpdated: text("last_updated")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+  },
+  (table) => [
+    primaryKey({ columns: [table.issueId, table.labelId] }),
+    index("idx_issue_labels_issue_id").on(table.issueId),
+    index("idx_issue_labels_label_id").on(table.labelId),
+  ]
+);
+
 // Now define all relations after all tables are defined
 export const usersRelations = relations(users, ({ many, one }) => ({
   pullRequests: many(rawPullRequests),
@@ -336,6 +391,7 @@ export const pullRequestRelations = relations(
     reviews: many(prReviews),
     comments: many(prComments),
     commits: many(rawCommits),
+    labels: many(pullRequestLabels),
   })
 );
 
@@ -355,6 +411,7 @@ export const issuesRelations = relations(rawIssues, ({ one, many }) => ({
     references: [users.username],
   }),
   comments: many(issueComments),
+  labels: many(issueLabels),
 }));
 
 export const commitsRelations = relations(rawCommits, ({ one, many }) => ({
@@ -427,5 +484,36 @@ export const userTagScoresRelations = relations(userTagScores, ({ one }) => ({
   tagRef: one(tags, {
     fields: [userTagScores.tag],
     references: [tags.name],
+  }),
+}));
+
+// Add relations for labels
+export const labelsRelations = relations(labels, ({ many }) => ({
+  pullRequests: many(pullRequestLabels),
+  issues: many(issueLabels),
+}));
+
+export const pullRequestLabelsRelations = relations(
+  pullRequestLabels,
+  ({ one }) => ({
+    pullRequest: one(rawPullRequests, {
+      fields: [pullRequestLabels.prId],
+      references: [rawPullRequests.id],
+    }),
+    label: one(labels, {
+      fields: [pullRequestLabels.labelId],
+      references: [labels.id],
+    }),
+  })
+);
+
+export const issueLabelsRelations = relations(issueLabels, ({ one }) => ({
+  issue: one(rawIssues, {
+    fields: [issueLabels.issueId],
+    references: [rawIssues.id],
+  }),
+  label: one(labels, {
+    fields: [issueLabels.labelId],
+    references: [labels.id],
   }),
 }));

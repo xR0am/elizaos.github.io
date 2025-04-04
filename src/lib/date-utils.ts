@@ -63,3 +63,33 @@ export function extractDateFromFilename(filename: string): string | null {
 export function toDateString(date: string | number | Date): string {
   return new Date(date).toISOString().split("T")[0];
 }
+
+export type IntervalType = "day" | "week" | "month";
+
+export interface TimeInterval {
+  intervalStart: Date;
+  intervalEnd: Date;
+  intervalType: IntervalType;
+}
+
+/**
+ * Generates a formatted name for a time interval
+ * @param interval - The time interval object
+ * @returns Formatted name for the interval
+ */
+export function generateIntervalName(interval: TimeInterval): string {
+  switch (interval.intervalType) {
+    case "day":
+      return toDateString(interval.intervalStart);
+    case "week":
+      return toDateString(interval.intervalStart);
+    case "month":
+      const date = interval.intervalStart;
+      return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(
+        2,
+        "0"
+      )}`;
+    default:
+      throw new Error(`Invalid interval type: ${interval.intervalType}`);
+  }
+}

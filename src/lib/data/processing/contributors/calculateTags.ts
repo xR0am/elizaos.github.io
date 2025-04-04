@@ -21,6 +21,12 @@ export const calculateTags = createStep(
       dateRange,
     });
 
+    // Skip if no PRs found
+    if (contributorPRs.length === 0) {
+      logger?.info(`${username}: No PRs found, skipping tag calculation`);
+      return null;
+    }
+
     // Extract file paths and titles
     const filePaths = contributorPRs.flatMap((pr) =>
       pr.files ? pr.files.map((f) => f.path as string) : []

@@ -31,7 +31,7 @@ export interface RepoPipelineContext extends BasePipelineContext {
   /** Repository ID to filter processing */
   repoId?: string;
   /** Date range for filtering data */
-  dateRange?: { startDate: string; endDate: string };
+  dateRange?: { startDate: string; endDate?: string };
 }
 
 /**
