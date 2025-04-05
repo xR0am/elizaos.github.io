@@ -1,21 +1,17 @@
 {
-  "title": "elizaos Eliza (2025-04-03)",
+  "title": "elizaos Eliza (2025-04-05)",
   "version": "",
-  "overview": "Development focused on package improvements (Failed to create Twitter client), new features (add id to metadata source), 3 bug fixes. with 9 contributors merging 5 PRs. Major work included various improvements.",
+  "overview": "Development focused on package improvements (bun installation issue for plugin-bootstrap), 1 bug fixes. with 5 contributors merging 2 PRs. Major work included various improvements.",
   "metrics": {
-    "contributors": 9,
-    "merged_prs": 5,
+    "contributors": 5,
+    "merged_prs": 2,
     "new_issues": 1,
-    "lines_changed": 382
+    "lines_changed": 691
   },
   "changes": {
-    "features": [
-      "add id to metadata source",
-      "add update-cli command"
-    ],
+    "features": [],
     "fixes": [
-      "Failed to create Twitter client",
-      "tg get world",
+      "bun installation issue for plugin-bootstrap",
       "twitter interaction"
     ],
     "chores": []
@@ -23,39 +19,32 @@
   "areas": [
     {
       "name": "packages",
-      "files": 10,
-      "additions": 193,
-      "deletions": 59
-    },
-    {
-      "name": "root",
-      "files": 1,
-      "additions": 64,
-      "deletions": 66
+      "files": 3,
+      "additions": 337,
+      "deletions": 354
     }
   ],
-  "issues_summary": "implementing 1 feature requests including 'Clearly Mark or Remove Plugins Not Yet Compatible with Eliza v2'",
+  "issues_summary": "",
   "questions": [],
   "top_contributors": [
     {
+      "name": "Samarthsinghal28",
+      "summary": "Samarthsinghal28 is currently working on fixing issues related to the test command in elizaos and resolving installation problems for the plugin-bootstrap in the packages code area on GitHub",
+      "areas": [
+        "packages"
+      ]
+    },
+    {
       "name": "tcm390",
-      "summary": "tcm390 is currently working on adding an ID to metadata source and fixing issues related to creating a Twitter client, getting world data, and Twitter interactions",
+      "summary": "tcm390 is currently working on a pull request to fix Twitter interaction within the packages code area",
       "areas": [
         "packages"
       ]
     },
     {
-      "name": "HarshModi2005",
-      "summary": "HarshModi2005 is currently working on improving test coverage for the plugin-bootstrap by submitting a pull request",
+      "name": "urgarcia",
+      "summary": "urgarcia is currently working on resolving an issue related to running elizaos start on Windows with Node/NVM v23",
       "areas": []
-    },
-    {
-      "name": "wtfsayo",
-      "summary": "wtfsayo is currently working on adding the update-cli command as a new feature in the packages code area",
-      "areas": [
-        "bun.lock",
-        "packages"
-      ]
     }
   ]
 }
