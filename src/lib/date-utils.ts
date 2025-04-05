@@ -93,3 +93,38 @@ export function generateIntervalName(interval: TimeInterval): string {
       throw new Error(`Invalid interval type: ${interval.intervalType}`);
   }
 }
+/**
+ * Get time period text based on interval type
+ */
+export function getTimePeriodText(intervalType: IntervalType): {
+  timeFrame: string;
+  timeFrameShort: string;
+  sentenceCount: number;
+} {
+  switch (intervalType) {
+    case "day":
+      return {
+        timeFrame: "today",
+        timeFrameShort: "today",
+        sentenceCount: 2,
+      };
+    case "week":
+      return {
+        timeFrame: "this week",
+        timeFrameShort: "this week",
+        sentenceCount: 3,
+      };
+    case "month":
+      return {
+        timeFrame: "this month",
+        timeFrameShort: "this month",
+        sentenceCount: 4,
+      };
+    default:
+      return {
+        timeFrame: "today",
+        timeFrameShort: "today",
+        sentenceCount: 2,
+      };
+  }
+}

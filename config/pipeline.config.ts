@@ -1,4 +1,9 @@
-import { PipelineConfig } from "../src/lib/data/types";
+import { PipelineConfig } from "../src/lib/data/pipelineConfig";
+
+const openrouterApiKey = process.env.OPENROUTER_API_KEY;
+if (!openrouterApiKey) {
+  throw new Error("OPENROUTER_API_KEY is not set");
+}
 
 /**
  * Contributor Analytics Pipeline Configuration
@@ -23,6 +28,7 @@ export default {
     "dependabot-preview",
     "renovate",
     "renovate-bot",
+    "renovate[bot]",
     "github-actions",
     "github-actions[bot]",
     "github-bot",
@@ -339,8 +345,11 @@ export default {
 
   // AI Summary generation (optional)
   aiSummary: {
-    enabled: false,
-    model: "openai",
-    // apiKey is optional, better to use environment variables
+    enabled: true,
+    model: "openai/gpt-4o-mini" as const,
+    temperature: 0.1,
+    max_tokens: 200,
+    endpoint: "https://openrouter.ai/api/v1/chat/completions",
+    apiKey: openrouterApiKey,
   },
 } as const satisfies PipelineConfig;

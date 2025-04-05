@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { AISummaryConfigSchema } from "./pipelines/summarize/config";
 
 // Pipeline configuration schemas
 
@@ -79,14 +80,7 @@ export const PipelineConfigSchema = z.object({
   }),
   // List of bot usernames to be ignored during processing
   botUsers: z.array(z.string()).optional(),
-  aiSummary: z
-    .object({
-      enabled: z.boolean().default(false),
-      model: z.enum(["openai", "ollama"]).default("openai"),
-      apiKey: z.string().optional(),
-      endpoint: z.string().optional(),
-    })
-    .optional(),
+  aiSummary: AISummaryConfigSchema,
 });
 // Type exports
 

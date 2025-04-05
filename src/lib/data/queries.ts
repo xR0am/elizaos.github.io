@@ -428,8 +428,14 @@ export async function getActiveContributors(
       console.error(`Error fetching contributors from ${tableName}:`, error);
     }
   }
-
   // Fetch contributors from each table in sequence
+  await fetchContributorsFromTable(
+    "raw_issues",
+    rawIssues,
+    rawIssues.author,
+    rawIssues.repository,
+    rawIssues.createdAt
+  );
   await fetchContributorsFromTable(
     "raw_pull_requests",
     rawPullRequests,
@@ -439,11 +445,19 @@ export async function getActiveContributors(
   );
 
   await fetchContributorsFromTable(
-    "raw_issues",
-    rawIssues,
-    rawIssues.author,
-    rawIssues.repository,
-    rawIssues.createdAt
+    "raw_pull_requests",
+    rawPullRequests,
+    rawPullRequests.author,
+    rawPullRequests.repository,
+    rawPullRequests.mergedAt
+  );
+
+  await fetchContributorsFromTable(
+    "raw_pull_requests",
+    rawPullRequests,
+    rawPullRequests.author,
+    rawPullRequests.repository,
+    rawPullRequests.updatedAt
   );
 
   return Array.from(contributorSets);

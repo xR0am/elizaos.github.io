@@ -16,7 +16,7 @@ import {
 import { GitHubClient } from "./github";
 import { PipelineConfig, RepositoryConfig } from "./pipelineConfig";
 import { eq, sql } from "drizzle-orm";
-import { Logger, createLogger } from "./processing/logger";
+import { Logger, createLogger } from "./pipelines/logger";
 
 export class DataIngestion {
   private logger: Logger;

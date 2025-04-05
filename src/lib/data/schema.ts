@@ -7,6 +7,7 @@ import {
   index,
   unique,
   primaryKey,
+  uniqueIndex,
 } from "drizzle-orm/sqlite-core";
 
 // User table - stores basic user information
@@ -253,11 +254,16 @@ export const issueComments = sqliteTable(
 );
 
 // Processed data tables
-export const userDailySummaries = sqliteTable(
-  "user_daily_summaries",
+export const userSummaries = sqliteTable(
+  "user_summaries",
   {
-    id: text("id").primaryKey(), // username_date
+    id: text("id").primaryKey(), // username_intervalType_date
     username: text("username").references(() => users.username),
+    intervalType: text("interval_type", {
+      enum: ["day", "week", "month"] as const,
+    })
+      .notNull()
+      .default("day"),
     date: text("date").notNull(),
     summary: text("summary").default(""),
     lastUpdated: text("last_updated")
@@ -267,8 +273,39 @@ export const userDailySummaries = sqliteTable(
   (table) => [
     index("idx_user_daily_summaries_username").on(table.username),
     index("idx_user_daily_summaries_date").on(table.date),
-    index("idx_user_daily_summaries_username_date").on(
+    // Unique constraint for username, interval type, and date combination
+    uniqueIndex("idx_user_daily_summaries_unique_combo").on(
       table.username,
+      table.intervalType,
+      table.date
+    ),
+  ]
+);
+
+// Repository summaries for storing monthly project analysis
+export const repoSummaries = sqliteTable(
+  "repo_summaries",
+  {
+    id: text("id").primaryKey(), // repo_id_intervalType_date
+    repoId: text("repo_id").notNull(),
+    intervalType: text("interval_type", {
+      enum: ["day", "week", "month"] as const,
+    })
+      .notNull()
+      .default("month"),
+    date: text("date").notNull(),
+    summary: text("summary").default(""),
+    lastUpdated: text("last_updated")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+  },
+  (table) => [
+    index("idx_repo_summaries_repo_id").on(table.repoId),
+    index("idx_repo_summaries_date").on(table.date),
+    // Unique constraint for repoId, interval type, and date combination
+    uniqueIndex("idx_repo_summaries_unique_combo").on(
+      table.repoId,
+      table.intervalType,
       table.date
     ),
   ]
@@ -377,7 +414,7 @@ export const usersRelations = relations(users, ({ many, one }) => ({
   issues: many(rawIssues),
   commits: many(rawCommits),
   tagScores: many(userTagScores),
-  dailySummaries: many(userDailySummaries),
+  dailySummaries: many(userSummaries),
 }));
 
 export const pullRequestRelations = relations(
@@ -467,10 +504,10 @@ export const issueCommentsRelations = relations(issueComments, ({ one }) => ({
 }));
 
 export const userDailySummariesRelations = relations(
-  userDailySummaries,
+  userSummaries,
   ({ one }) => ({
     user: one(users, {
-      fields: [userDailySummaries.username],
+      fields: [userSummaries.username],
       references: [users.username],
     }),
   })
@@ -515,5 +552,13 @@ export const issueLabelsRelations = relations(issueLabels, ({ one }) => ({
   label: one(labels, {
     fields: [issueLabels.labelId],
     references: [labels.id],
+  }),
+}));
+
+// Add relations for repoSummaries
+export const repoSummariesRelations = relations(repoSummaries, ({ one }) => ({
+  repository: one(repositories, {
+    fields: [repoSummaries.repoId],
+    references: [repositories.repoId],
   }),
 }));

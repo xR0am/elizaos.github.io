@@ -10,6 +10,8 @@ bun run pipeline ingest
 
 # Process and analyze
 bun run pipeline process
+
+# Pro
 ```
 
 ## Configuration

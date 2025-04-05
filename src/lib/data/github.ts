@@ -1,4 +1,4 @@
-import { Logger, createLogger } from "./processing/logger";
+import { Logger, createLogger } from "./pipelines/logger";
 import axios from "axios";
 import pRetry, { AbortError } from "p-retry";
 import {
