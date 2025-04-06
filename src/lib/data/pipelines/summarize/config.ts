@@ -1,0 +1,16 @@
+import { z } from "zod";
+
+/**
+ * Schema for AI summary configuration
+ */
+export const AISummaryConfigSchema = z.object({
+  enabled: z.boolean().default(false),
+  model: z.string(),
+  apiKey: z.string(),
+  endpoint: z.string().default("https://openrouter.ai/api/v1/chat/completions"),
+  temperature: z.number().default(0.1),
+  max_tokens: z.number().default(200),
+});
+
+// Inferred type from the schema
+export type AISummaryConfig = z.infer<typeof AISummaryConfigSchema>;
