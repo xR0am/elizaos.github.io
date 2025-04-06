@@ -1,38 +1,40 @@
-# elizaos Eliza (2025-04-05)
+# elizaos Eliza (2025-04-06)
     
 ## 📊 Overview
-Development focused on package improvements (bun installation issue for plugin-bootstrap), 1 bug fixes. with 5 contributors merging 2 PRs. Major work included various improvements.
+Development focused on package improvements (the docs issue with the add, remove and list plugin issue). with 5 contributors merging 5 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
 | 👥 Contributors | 5 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 2 |
-| ⚠️ New Issues | 1 |
+| 🔄 Merged PRs | 5 |
+| ⚠️ New Issues | 0 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 0
-- 🐛 **Fixes**: 1
+- 🧹 **Chores**: 3
+- 🐛 **Fixes**: 0
 - ✨ **Features**: 0
 
 ## 📁 File Changes
-- **packages**: 3 files (+337/-354 lines)
+- **root**: 2 files (+843/-96 lines)
+- **packages**: 13 files (+214/-334 lines)
 
 ## 🔥 Notable Changes
-- fixed: bun installation issue for plugin-bootstrap
-- fix: twitter interaction
+- fixed: the docs issue with the add, remove and list plugin issue
+- issue: elizaos port unavailable issue resolved
+- chore: externalise fastembed and node-llama-cpp in local-ai
 
 ## 👥 Top Contributors
-- **Samarthsinghal28**: Samarthsinghal28 is currently working on fixing issues related to the test command in elizaos and resolving installation problems for the plugin-bootstrap in the packages code area on GitHub
-- **tcm390**: tcm390 is currently working on a pull request to fix Twitter interaction within the packages code area
-- **urgarcia**: urgarcia is currently working on resolving an issue related to running elizaos start on Windows with Node/NVM v23
+- **Samarthsinghal28**: Samarthsinghal28 is currently working on fixing documentation issues related to the add, remove, and list plugins, as well as resolving an issue with the elizaos port being unavailable
+- **wtfsayo**: wtfsayo is currently working on enhancing the local-ai plugin by removing references to ollama, improving the plugin install strategy, and externalizing fastembed and node-llama-cpp
+- **HarshModi2005**: HarshModi2005 is currently working on a pull request to darken borders and focus states in UI components within the packages code area
 
 ## ⚠️ Issues
-- **New Issues**: 1
+- **New Issues**: 0
 - **Labels**: 
-- **Summary**: .
+- **Summary**: 
 
 ## Top Contributors
-- **Samarthsinghal28**: fixed: bun installation issue for plugin-bootstrap
-- **tcm390**: fix: twitter interaction
+- **Samarthsinghal28**: fixed: the docs issue with the add, remove and list plugin issue
+- **wtfsayo**: chore: externalise fastembed and node-llama-cpp in local-ai
