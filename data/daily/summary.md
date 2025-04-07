@@ -1,40 +1,37 @@
-# elizaos Eliza (2025-04-06)
+# elizaos Eliza (2025-04-07)
     
 ## 📊 Overview
-Development focused on package improvements (the docs issue with the add, remove and list plugin issue). with 5 contributors merging 5 PRs. Major work included various improvements.
+Development focused on 1 bug fixes. with 7 contributors merging 1 PRs. Major work included various improvements.
 
 ## 📈 Key Metrics
 | Metric | Count |
 |---------|--------|
-| 👥 Contributors | 5 |
+| 👥 Contributors | 7 |
 | 📝 Commits | 0 |
-| 🔄 Merged PRs | 5 |
-| ⚠️ New Issues | 0 |
+| 🔄 Merged PRs | 1 |
+| ⚠️ New Issues | 1 |
 
 ## 🔄 Pull Request Summary
-- 🧹 **Chores**: 3
-- 🐛 **Fixes**: 0
+- 🧹 **Chores**: 0
+- 🐛 **Fixes**: 1
 - ✨ **Features**: 0
 
 ## 📁 File Changes
-- **root**: 2 files (+843/-96 lines)
-- **packages**: 13 files (+214/-334 lines)
+- **root**: 2 files (+238/-195 lines)
+- **packages**: 5 files (+201/-89 lines)
 
 ## 🔥 Notable Changes
-- fixed: the docs issue with the add, remove and list plugin issue
-- issue: elizaos port unavailable issue resolved
-- chore: externalise fastembed and node-llama-cpp in local-ai
+- fix: replace fastembed with local embedding model
 
 ## 👥 Top Contributors
-- **Samarthsinghal28**: Samarthsinghal28 is currently working on fixing documentation issues related to the add, remove, and list plugins, as well as resolving an issue with the elizaos port being unavailable
-- **wtfsayo**: wtfsayo is currently working on enhancing the local-ai plugin by removing references to ollama, improving the plugin install strategy, and externalizing fastembed and node-llama-cpp
-- **HarshModi2005**: HarshModi2005 is currently working on a pull request to darken borders and focus states in UI components within the packages code area
+- **0xbbjoker**: 0xbbjoker is currently working on fixing issues related to responding in direct messages and replacing fastembed with a local embedding model in the "packages" code area
+- **HarshModi2005**: HarshModi2005 is currently working on a pull request titled "Starting Agent Fix" in the packages code area
+- **LongJeongS**: LongJeongS is currently addressing an issue related to the OpenAI Plugin using the `gpt-4-vision-preview` model, which is causing a 404 error
 
 ## ⚠️ Issues
-- **New Issues**: 0
-- **Labels**: 
-- **Summary**: 
+- **New Issues**: 1
+- **Labels**: `bug` (1)
+- **Summary**: 1 bugs reported (including 'OpenAI Plugin using `gpt-4-vision-preview` model leading to 404 error').
 
 ## Top Contributors
-- **Samarthsinghal28**: fixed: the docs issue with the add, remove and list plugin issue
-- **wtfsayo**: chore: externalise fastembed and node-llama-cpp in local-ai
+- **0xbbjoker**: fix: replace fastembed with local embedding model
