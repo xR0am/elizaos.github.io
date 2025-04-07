@@ -11,7 +11,11 @@ bun run pipeline ingest
 # Process and analyze
 bun run pipeline process
 
-# Pro
+# Generate AI summaries
+bun run pipeline summarize
+
+# Export JSON data
+bun run pipeline export
 ```
 
 ## Configuration
@@ -51,14 +55,14 @@ const myPipeline = pipe(
     parallel(
       // Run these operations in parallel for each item
       calculateMetrics,
-      generateSummary
-    )
+      generateSummary,
+    ),
   ),
 
   // Step 3: Format results
   createStep("formatResults", (results, context) => {
     // Process and return final results
-  })
+  }),
 );
 ```
 
@@ -78,11 +82,10 @@ The pipeline system consists of several key components:
 
 - `src/lib/data/github.ts` - GitHub API integration
 - `src/lib/data/ingestion.ts` - Data ingestion into SQLite
-- `src/lib/data/processing/pipelines.ts` - Predefined pipeline definitions
-- `src/lib/data/processing/runPipeline.ts` - Pipeline execution utilities
-- `src/lib/data/processing/types.ts` - Core pipeline type definitions and utilities
-- `src/lib/data/processing/contributors/` - Contributor-specific pipeline steps
-- `src/lib/data/scoring.ts` - Contributor scoring algorithms
+- `src/lib/data/pipelines/logger.ts` - Logging system for pipeline
+- `src/lib/data/pipelines/runPipeline.ts` - Pipeline execution utilities
+- `src/lib/data/pipelines/types.ts` - Core pipeline type definitions and utilities
+- `src/lib/data/pipelines/contributors/` - Contributor-specific pipeline steps
 - `src/lib/data/schema.ts` - Database schema with relations
 
 ## Customization
@@ -90,6 +93,6 @@ The pipeline system consists of several key components:
 You can customize the pipeline system in several ways:
 
 - **Configuration**: Modify `config/pipeline.config.ts` to adjust scoring weights, repositories, and tags
-- **New Pipeline Steps**: Create custom steps in `src/lib/data/processing/` using the functional pipeline utilities
+- **New Pipeline Steps**: Create custom steps in `src/lib/data/pipelines/` using the functional pipeline utilities
 - **Custom Processing**: Add domain-specific logic in separate modules following the pattern in `contributors/`
 - **Database Schema**: Extend the database schema in `src/lib/data/schema.ts` and run migrations

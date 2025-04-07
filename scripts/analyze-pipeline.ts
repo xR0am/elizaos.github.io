@@ -11,9 +11,8 @@
 import { config as loadEnv } from "dotenv";
 import { join } from "path";
 
-// Load environment variables from .envrc file
-const envPath = join(import.meta.dir, "../.envrc");
-loadEnv({ path: envPath });
+// Load environment variables from .env file
+loadEnv();
 
 // Validate required environment variables
 const requiredEnvVars = ["GITHUB_TOKEN"];
@@ -22,18 +21,15 @@ const missingEnvVars = requiredEnvVars.filter((envVar) => !process.env[envVar]);
 if (missingEnvVars.length > 0) {
   console.error(
     `Error: Missing required environment variables: ${missingEnvVars.join(
-      ", "
-    )}`
+      ", ",
+    )}`,
   );
   process.exit(1);
 }
 
 import { Command } from "@commander-js/extra-typings";
 import { DataIngestion } from "../src/lib/data/ingestion";
-import {
-  PipelineConfig,
-  PipelineConfigSchema,
-} from "@/lib/data/pipelineConfig";
+import { PipelineConfigSchema } from "@/lib/data/pipelineConfig";
 import chalk from "chalk";
 import { subDays, format } from "date-fns";
 import { generateRepositoryStats } from "@/lib/data/pipelines/export";
@@ -48,7 +44,6 @@ import { runPipeline } from "@/lib/data/pipelines/runPipeline";
 import { createLogger, LogLevel } from "@/lib/data/pipelines/logger";
 import { toDateString } from "@/lib/date-utils";
 import { createSummarizerContext } from "@/lib/data/pipelines/summarize/context";
-import { isNotNullOrUndefined } from "@/lib/typeHelpers";
 
 const DEFAULT_CONFIG_PATH = "../config/pipeline.config.ts";
 const program = new Command();
@@ -65,11 +60,16 @@ let dataIngestion: DataIngestion;
 program
   .command("ingest")
   .description("Ingest data from GitHub API based on configuration")
-  .option("-d, --days <number>", "Number of days to look back", "14")
+  .option("-a, --after <date>", "Start date in YYYY-MM-DD format")
+  .option(
+    "-b, --before <date>",
+    "End date in YYYY-MM-DD format (defaults to end of today)",
+  )
+  .option("-d, --days <number>", "Number of days to look back from before date")
   .option(
     "-c, --config <path>",
     "Path to pipeline config file",
-    DEFAULT_CONFIG_PATH
+    DEFAULT_CONFIG_PATH,
   )
   .option("-v, --verbose", "Enable verbose logging", false)
   .action(async (options) => {
@@ -88,18 +88,24 @@ program
       // Initialize services with config
       dataIngestion = new DataIngestion(pipelineConfig, rootLogger);
 
-      // Use command line days if specified, otherwise fallback to config
-      const lookbackDays = parseInt(options.days);
-      const endDate = new Date();
-      const startDate = subDays(endDate, lookbackDays);
+      // Handle date calculations
+      const endDate = options.before ? new Date(options.before) : new Date();
+
+      let startDate: Date | undefined;
+
+      if (options.after) {
+        startDate = new Date(options.after);
+      } else if (options.days) {
+        startDate = subDays(endDate, parseInt(options.days));
+      }
 
       const fetchOptions = {
-        startDate: toDateString(startDate),
+        startDate: startDate ? toDateString(startDate) : undefined,
         endDate: toDateString(endDate),
       };
 
       rootLogger.info(
-        `Fetching data from ${fetchOptions.startDate} to ${fetchOptions.endDate} using config from ${configPath}`
+        `Fetching data from ${fetchOptions.startDate || "last fetched time"} to ${fetchOptions.endDate} using config from ${configPath}`,
       );
 
       // Fetch data for all configured repositories
@@ -108,7 +114,7 @@ program
       // Log results
       for (const result of results) {
         rootLogger.info(
-          `Repository ${result.repository}: Fetched ${result.prs} PRs and ${result.issues} issues`
+          `Repository ${result.repository}: Fetched ${result.prs} PRs and ${result.issues} issues`,
         );
       }
     } catch (error: unknown) {
@@ -126,7 +132,7 @@ program
   .option(
     "-c, --config <path>",
     "Path to pipeline config file",
-    DEFAULT_CONFIG_PATH
+    DEFAULT_CONFIG_PATH,
   )
   .action(async (options) => {
     try {
@@ -134,14 +140,6 @@ program
       const configPath = join(import.meta.dir, options.config);
       const configFile = await import(configPath);
       const pipelineConfig = PipelineConfigSchema.parse(configFile.default);
-
-      // // Calculate date range based on lookback days
-      // const lookbackDays = parseInt(options.days);
-      // const endDate = new Date();
-      // const startDate = subDays(endDate, lookbackDays);
-
-      // const startDateStr = format(startDate, "yyyy-MM-dd");
-      // const endDateStr = format(endDate, "yyyy-MM-dd");
 
       // Create a root logger
       const logLevel: LogLevel = options.verbose ? "debug" : "info";
@@ -166,13 +164,13 @@ program
         contributorTagsPipeline,
         undefined, // No input for the root pipeline
         context,
-        pipelineConfig
+        pipelineConfig,
       );
 
       const repoCount = result.length;
       const contributorCount = result.reduce(
         (acc, curr) => acc + curr.length,
-        0
+        0,
       );
 
       rootLogger.info("\nProcessing completed successfully!");
@@ -193,7 +191,7 @@ program
   .option(
     "-c, --config <path>",
     "Path to pipeline config file",
-    DEFAULT_CONFIG_PATH
+    DEFAULT_CONFIG_PATH,
   )
   .option("-o, --output <dir>", "Output directory for stats", "./data/")
   .option("-d, --days <number>", "Number of days to look back", "30")
@@ -221,7 +219,7 @@ program
         },
       });
       rootLogger.info(
-        `Generating repository stats using config from ${configPath}`
+        `Generating repository stats using config from ${configPath}`,
       );
 
       // Create pipeline context
@@ -240,7 +238,7 @@ program
         generateRepositoryStats,
         undefined,
         context,
-        pipelineConfig
+        pipelineConfig,
       );
 
       rootLogger.info("\nExport completed successfully!");
@@ -260,14 +258,14 @@ program
   .option(
     "-c, --config <path>",
     "Path to pipeline config file",
-    DEFAULT_CONFIG_PATH
+    DEFAULT_CONFIG_PATH,
   )
-  .option("-d, --days <number>", "Number of days to look back", "60")
+  .option("-d, --days <number>", "Number of days to look back", "7")
   .option("-o, --overwrite", "Overwrite existing summaries", false)
   .option(
     "-t, --type <type>",
     "Type of summary to generate (contributors or project)",
-    "project"
+    "project",
   )
   .option("--output-dir <dir>", "Output directory for summaries", "./data2/")
   .action(async (options) => {
@@ -288,7 +286,6 @@ program
       const logLevel: LogLevel = options.verbose ? "debug" : "info";
       const rootLogger = createLogger({
         minLevel: logLevel,
-        nameSegments: [options.type],
         context: {
           command: "summarize",
           config: options.config,
@@ -299,7 +296,7 @@ program
       const summaryType = options.type.toLowerCase();
       if (summaryType !== "contributors" && summaryType !== "project") {
         rootLogger.error(
-          `Invalid summary type: ${options.type}. Must be either "contributors" or "project".`
+          `Invalid summary type: ${options.type}. Must be either "contributors" or "project".`,
         );
         process.exit(1);
       }
@@ -307,7 +304,7 @@ program
       // Set appropriate output directory based on summary type
 
       rootLogger.info(
-        `Generating ${summaryType} summaries using config from ${configPath}`
+        `Generating ${summaryType} summaries using config from ${configPath}`,
       );
 
       // Create summarizer context
@@ -325,29 +322,18 @@ program
 
       // Run the appropriate pipeline based on summary type
       if (summaryType === "contributors") {
-        const result = await runPipeline(
+        await runPipeline(
           generateContributorSummaries,
           undefined,
           context,
-          pipelineConfig
-        );
-
-        const repoCount = Array.isArray(result) ? result.length : 0;
-        const summaryCount = Array.isArray(result)
-          ? result.flat().filter((item) => item !== null && item !== undefined)
-              .length
-          : 0;
-
-        rootLogger.info("\nSummarize completed successfully!");
-        rootLogger.info(
-          `Created ${summaryCount} contributor summaries across ${repoCount} repositories`
+          pipelineConfig,
         );
       } else {
-        const result = await runPipeline(
+        await runPipeline(
           generateProjectSummaries,
           undefined,
           context,
-          pipelineConfig
+          pipelineConfig,
         );
       }
     } catch (error: unknown) {
