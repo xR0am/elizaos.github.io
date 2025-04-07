@@ -1,96 +1,111 @@
-# GitHub Contributor Analytics Generator
+# Eliza Leaderboard
 
-A comprehensive analytics and reporting system for tracking GitHub repository contributions, generating insights, and creating static contributor profile pages.
-
-[Website](https://elizaos.ai/) | [Discord](https://discord.gg/elizaOS) | [DAO](https://www.daos.fun/HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC) | [Docs](https://elizaos.github.io/eliza/)
-
-elizaos/eliza permalinks:
-
-- https://elizaos.github.io/data/daily/contributors.json
-  - https://elizaos.github.io/data/daily/summary.json
-  - https://elizaos.github.io/data/daily/summary.md
-- https://elizaos.github.io/data/weekly/contributors.json
-- https://elizaos.github.io/data/monthly/contributors.json
-
-older versions are backed up in `data/*/history` folders with timestamps
+A modern analytics pipeline for tracking and analyzing GitHub contributions. The system processes contributor data, generates AI-powered summaries, and maintains a leaderboard of developer activity.
 
 ## Features
 
-- **Daily, Weekly, and Monthly Reports**
-
-  - Automated data collection via GitHub Actions
-  - Detailed activity summaries with metrics and trends
-  - Smart contributor scoring system
-  - AI-powered activity summaries
-  - Thread-style weekly summaries for social sharing
-
-- **Contributor Profiles**
-
-  - Interactive profile pages for each contributor
-  - Activity visualization with charts and metrics
-  - Contribution history and engagement tracking
-  - Responsive design with dark mode support
-
-- **Activity Tracking**
-  - Pull request analysis with file-level changes
-  - Issue tracking with label analytics
-  - Commit history and impact measurement
-  - Engagement metrics (comments, reviews, etc.)
+- Tracks pull requests, issues, reviews, and comments
+- Calculates contributor scores based on activity and impact
+- Generates AI-powered summaries of contributions
+- Exports daily summaries to JSON files
+- Maintains contributor expertise levels and focus areas
 
 ## Setup
 
-1. Configure GitHub Authentication:
-
-```bash
-# Set your GitHub access token
-export GH_ACCESS_TOKEN="your_token"
-# OR (for TypeScript pipeline)
-export GH_TOKEN="your_token"
-
-# For AI-powered summaries (optional)
-export OPENAI_API_KEY="your_key"
-# OR (for TypeScript pipeline with OpenRouter)
-export OPENROUTER_API_KEY="your_key"
-export SITE_URL="your_site_url" # Optional for OpenRouter
-export SITE_NAME="your_site_name" # Optional for OpenRouter
-```
-
-2. Install Dependencies:
-
 [Bun is recommended for this project.](https://bun.sh/)
 
-```bash
-# Install Python dependencies
-pip install openai langchain-core langchain-ollama
+1. Install dependencies:
 
-# Install Node.js dependencies
+```bash
 bun install
-# OR if you are too lazy to install bun
-npm install
 ```
 
-3. Configure Repository Settings:
+2. Set up environment variables in `.envrc` or `.env`:
 
 ```bash
-# Update repository details in fetch_github.sh
-owner=\"your_org\"
-repo=\"your_repo\"
+# Required for Github Ingest
+GITHUB_TOKEN=your_github_personal_access_token_here
+# Required for AI summaries
+OPENROUTER_API_KEY=your_api_key_here
+
+# Optional site info
+SITE_URL=https://elizaos.github.io
+SITE_NAME="ElizaOS Leaderboard"
 ```
 
-### SQLite Database Setup
+3. Configure repositories in `config/pipeline.config.ts`:
 
-The SQLite database stores the GitHub data in a relational format for efficient querying and analysis. The database schema and related code is in `src/lib/data/`. Here's how to set it up:
+```typescript
+repositories: [
+  {
+    owner: "elizaos",
+    name: "eliza"
+  }
+],
+```
 
-1. Initialize the database:
+4. Initalize Database
+
+The SQLite database stores the GitHub data in a relational format for efficient querying and analysis. The database schema is in `src/lib/data/schema.ts`. Here's how to set it up:
 
 ```bash
-bun run db:generate
+bun run db:migrate
 ```
 
 This will:
 
 - Create a SQLite database in the `data/` directory
 - Set up the required tables and schema with relations
+
+## Usage
+
+```bash
+# Ingest latest Github data (default since last fetched, or 30 days)
+bun run pipeline ingest
+
+# Process and analyze
+bun run pipeline process
+
+# Generate AI summaries
+bun run pipeline summarize
+
+# Export JSON data
+bun run pipeline export
+```
+
+The ingest command supports flexible date filtering:
+
+- `--after` or `-a`: Start date in YYYY-MM-DD format
+- `--before` or `-b`: End date in YYYY-MM-DD format (defaults to end of today)
+- `--days` or `-d`: Number of days to look back from the before date
+
+Examples
+
+```bash
+# Fetch data between specific dates
+bun run pipeline ingest --after 2024-01-01 --before 2024-03-31
+
+# Fetch 30 days before March 31
+bun run pipeline ingest --days 30 --before 2024-03-31
+
+# Fetch from Jan 1st until now
+bun run pipeline ingest --after 2024-01-01
+
+# Fetch until March 31 (from last fetched time)
+bun run pipeline ingest --before 2024-03-31
+```
+
+## Development
+
+### TypeScript Pipeline
+
+The project uses a TypeScript-based pipeline for data processing. See [Pipeline Documentation](docs/pipelines.md) for detailed information about:
+
+- Basic usage and commands
+- Pipeline architecture and components
+- Configuration options
+- Creating custom pipelines
+- Available customization points
 
 ### Updating schema
 
@@ -125,17 +140,7 @@ bun run db:studio
 
 This launches Drizzle Studio, which provides a visual interface to browse tables, relationships, run queries, and export data.
 
-## Usage
-
-### TypeScript Pipeline
-
-The project uses a TypeScript-based pipeline for data processing. See [Pipeline Documentation](docs/pipelines.md) for detailed information about:
-
-- Basic usage and commands
-- Pipeline architecture and components
-- Configuration options
-- Creating custom pipelines
-- Available customization points
+Additional setup required if you use Safari or Brave: https://orm.drizzle.team/docs/drizzle-kit-studio#safari-and-brave-support
 
 ### Legacy Python Scripts (Deprecated)
 
@@ -222,9 +227,10 @@ Or use npm...
 │   │   └── ui/         # shadcn/ui components
 │   └── lib/
 │       └── data/       # Data processing and database code
-│           ├── processing/  # Modular pipeline system
+│           ├── pipelines/  # Modular pipeline system
 │           │   ├── contributors/  # Contributor-specific pipeline steps
-│           │   ├── pipelines.ts   # Predefined pipeline definitions
+│           │   ├── export/  # Pipelines to export JSON data
+│           │   ├── summarize/  # Pipelines to generate AI summaries
 │           │   ├── runPipeline.ts # Pipeline execution utilities
 │           │   └── types.ts       # Core pipeline type definitions
 │           ├── schema.ts     # Database schema definitions
