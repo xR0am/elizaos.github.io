@@ -51,7 +51,7 @@ export const exportRepoStatsForInterval = createStep(
       prsCount: topPRs.length,
     });
 
-    const overview = `From ${interval.intervalStart} to ${interval.intervalEnd}, ${repoId} had ${metrics.new_prs} new PRs (${metrics.merged_prs} merged), ${metrics.new_issues} new issues, and ${metrics.num_contributors} active contributors.`;
+    const overview = `From ${interval.intervalStart} to ${interval.intervalEnd}, ${repoId} had ${metrics.new_prs.count} new PRs (${metrics.merged_prs.count} merged), ${metrics.new_issues.count} new issues, and ${metrics.num_contributors} active contributors.`;
 
     const stats = {
       interval,
