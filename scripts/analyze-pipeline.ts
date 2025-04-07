@@ -195,7 +195,7 @@ program
     "Path to pipeline config file",
     DEFAULT_CONFIG_PATH
   )
-  .option("-o, --output <dir>", "Output directory for stats", "./data2/")
+  .option("-o, --output <dir>", "Output directory for stats", "./data/")
   .option("-d, --days <number>", "Number of days to look back", "30")
   .action(async (options) => {
     try {
