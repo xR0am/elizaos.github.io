@@ -45,28 +45,28 @@ The original system consists of several Python and shell scripts that work toget
 
 ### Data Collection
 
-- `scripts/fetch_github.sh`: Fetches raw GitHub data (PRs, issues, commits) using GitHub's GraphQL API
-- `scripts/combine_raw.py`: Combines raw GitHub data into a unified contributor activity format
+- `scripts/legacy/fetch_github.sh`: Fetches raw GitHub data (PRs, issues, commits) using GitHub's GraphQL API
+- `scripts/legacy/combine_raw.py`: Combines raw GitHub data into a unified contributor activity format
 
 ### Analysis & Processing
 
-- `scripts/calculate_scores.py`: Calculates contributor scores based on various metrics (PRs, commits, engagement)
-- `scripts/analyze_contributors.py`: Performs detailed analysis of contributor activity, generates tags and insights
-- `scripts/merge_contributors.py`: Merges contributor data across multiple time periods
-- `scripts/merge_contributors_xp.py`: Merges contributor experience/level data with main contributor data
+- `scripts/legacy/calculate_scores.py`: Calculates contributor scores based on various metrics (PRs, commits, engagement)
+- `scripts/legacy/analyze_contributors.py`: Performs detailed analysis of contributor activity, generates tags and insights
+- `scripts/legacy/merge_contributors.py`: Merges contributor data across multiple time periods
+- `scripts/legacy/merge_contributors_xp.py`: Merges contributor experience/level data with main contributor data
 
 ### Summary Generation
 
-- `scripts/summarize.py`: Generates human-readable summaries of contributor activity
-- `scripts/summarize_daily.py`: Creates daily activity summaries with metrics and insights
-- `scripts/aggregate_summaries.py`: Aggregates summaries across time periods
-- `scripts/aggregate_temporal.py`: Handles temporal aggregation of contributor data
+- `scripts/legacy/summarize.py`: Generates human-readable summaries of contributor activity
+- `scripts/legacy/summarize_daily.py`: Creates daily activity summaries with metrics and insights
+- `scripts/legacy/aggregate_summaries.py`: Aggregates summaries across time periods
+- `scripts/legacy/aggregate_temporal.py`: Handles temporal aggregation of contributor data
 
 ### History Management
 
-- `scripts/manage_thread_history.sh`: Manages versioning and backup of discussion threads
-- `scripts/update_historical_summaries.py`: Updates historical summary data
-- `scripts/generate_history_summaries.sh`: Generates historical summary reports
+- `scripts/legacy/manage_thread_history.sh`: Manages versioning and backup of discussion threads
+- `scripts/legacy/update_historical_summaries.py`: Updates historical summary data
+- `scripts/legacy/generate_history_summaries.sh`: Generates historical summary reports
 
 ### Site Generation
 
