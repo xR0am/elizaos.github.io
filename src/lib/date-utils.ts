@@ -1,3 +1,5 @@
+import { addDays } from "date-fns";
+
 /**
  * Extracts date from a title string in format "elizaos Eliza (2025-01-12)"
  * First tries to extract from parentheses, then falls back to direct date pattern matching
@@ -64,6 +66,24 @@ export function toDateString(date: string | number | Date): string {
   return new Date(date).toISOString().split("T")[0];
 }
 
+/**
+ * Converts a date to UTC midnight (00:00:00.000Z)
+ * @param date - Date object, timestamp, or date string that can be parsed by new Date()
+ * @returns Date object set to UTC midnight
+ */
+export function toUTCMidnight(date: string | number | Date): Date {
+  return new Date(
+    new Date(date).toISOString().split("T")[0] + "T00:00:00.000Z",
+  );
+}
+
+export function getDateRange(start: Date | undefined, end: Date | undefined) {
+  return {
+    startDate: start ? toDateString(start) : undefined,
+    endDate: end ? toDateString(addDays(toUTCMidnight(end), 1)) : undefined,
+  };
+}
+
 export type IntervalType = "day" | "week" | "month";
 
 export interface TimeInterval {
@@ -87,7 +107,7 @@ export function generateIntervalName(interval: TimeInterval): string {
       const date = interval.intervalStart;
       return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(
         2,
-        "0"
+        "0",
       )}`;
     default:
       throw new Error(`Invalid interval type: ${interval.intervalType}`);

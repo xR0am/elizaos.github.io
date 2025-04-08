@@ -1,12 +1,12 @@
-import { DateRange } from "../types";
 import { createStep, RepoPipelineContext } from "./types";
-import { IntervalType, TimeInterval } from "../../date-utils";
+import { IntervalType, TimeInterval, toUTCMidnight } from "../../date-utils";
+import { addDays, addMonths } from "date-fns";
 
 /**
  * Creates a pipeline step to generate time intervals for a repository with a specific interval type
  */
-export const generateTimeIntervals = <TInput extends Record<string, any>>(
-  intervalType: IntervalType
+export const generateTimeIntervals = <TInput extends Record<string, unknown>>(
+  intervalType: IntervalType,
 ) =>
   createStep<
     TInput,
@@ -18,13 +18,18 @@ export const generateTimeIntervals = <TInput extends Record<string, any>>(
       if (!dateRange) {
         throw new Error("dateRange is required for interval generation");
       }
+
       logger?.debug("Generating time intervals", {
         dateRange,
         intervalType,
       });
       const intervals: TimeInterval[] = [];
-      const start = new Date(dateRange.startDate);
-      const end = dateRange.endDate ? new Date(dateRange.endDate) : new Date();
+
+      // Convert dates to UTC midnight
+      const start = toUTCMidnight(dateRange.startDate);
+      const end = dateRange.endDate
+        ? toUTCMidnight(dateRange.endDate)
+        : toUTCMidnight(new Date());
 
       let currentStart = new Date(start);
 
@@ -45,25 +50,30 @@ export const generateTimeIntervals = <TInput extends Record<string, any>>(
       }
 
       while (currentStart < end) {
-        let intervalEnd = new Date(currentStart);
+        let intervalEnd: Date;
 
         switch (intervalType) {
           case "day":
-            intervalEnd.setDate(intervalEnd.getDate() + 1);
+            // Add a day using date-fns
+            intervalEnd = addDays(currentStart, 1);
             break;
 
           case "week":
-            // Set end to next Sunday (or 7 days if shorter than a week)
-            const daysToSunday = 7 - currentStart.getDay();
-            intervalEnd.setDate(intervalEnd.getDate() + daysToSunday);
+            // Add a week using date-fns
+            intervalEnd = addDays(currentStart, 7 - currentStart.getUTCDay());
             break;
 
           case "month":
-            // Set to first day of next month
-            intervalEnd = new Date(
-              currentStart.getFullYear(),
-              currentStart.getMonth() + 1,
-              1
+            // Set to first day of next month in UTC using date-fns
+            intervalEnd = addMonths(
+              new Date(
+                Date.UTC(
+                  currentStart.getUTCFullYear(),
+                  currentStart.getUTCMonth(),
+                  1,
+                ),
+              ),
+              1,
             );
             break;
         }
@@ -100,5 +110,5 @@ export const generateTimeIntervals = <TInput extends Record<string, any>>(
       const res = intervals.map((interval) => ({ ...input, interval }));
 
       return res;
-    }
+    },
   );

@@ -35,7 +35,7 @@ export class DataIngestion {
    * Register a repository for tracking
    */
   async registerRepository(
-    repository: RepositoryConfig
+    repository: RepositoryConfig,
   ): Promise<{ repoId: string }> {
     const { repoId } = repository;
 
@@ -61,7 +61,7 @@ export class DataIngestion {
    * Ensure multiple users exist in the users table
    */
   private async ensureUsersExist(
-    userData: Map<string, { avatarUrl?: string }>
+    userData: Map<string, { avatarUrl?: string }>,
   ) {
     // Filter out unknown or empty usernames
     const validUsers = Array.from(userData.entries())
@@ -99,7 +99,7 @@ export class DataIngestion {
       name: string;
       color: string;
       description?: string | null;
-    }>
+    }>,
   ): Promise<Map<string, string>> {
     if (labelData.length === 0) return new Map();
 
@@ -180,17 +180,40 @@ export class DataIngestion {
    */
   async fetchAndStorePullRequests(
     repository: RepositoryConfig,
-    options: { startDate?: string; endDate?: string } = {}
+    options: { startDate?: string; endDate?: string } = {},
   ): Promise<number> {
     const { repoId } = repository;
 
+    // Record the ingestion start time
+    const ingestionStartTime = new Date().toISOString();
+    this.logger.info(
+      `Starting PR ingestion for ${repoId} at ${ingestionStartTime}`,
+    );
+
     try {
+      // If startDate is not provided, use lastFetchedAt from the database
+      if (!options.startDate) {
+        const repoData = await db.query.repositories.findFirst({
+          where: eq(repositories.repoId, repoId),
+          columns: {
+            lastFetchedAt: true,
+          },
+        });
+
+        if (repoData?.lastFetchedAt) {
+          options.startDate = repoData.lastFetchedAt;
+          this.logger.info(
+            `Using lastFetchedAt (${options.startDate}) as start date for ${repoId}`,
+          );
+        }
+      }
+
       const prs = await this.github.fetchPullRequests(repository, options);
       this.logger.info(`Storing ${prs.length} PRs for ${repoId}`);
 
       // Filter out undefined values
       const validPRs = prs.filter(
-        (pr): pr is NonNullable<typeof pr> => pr !== undefined
+        (pr): pr is NonNullable<typeof pr> => pr !== undefined,
       );
 
       // Collect all users that need to be created/updated
@@ -402,14 +425,18 @@ export class DataIngestion {
         }
       }
 
-      // Update repository lastFetchedAt
+      // Update repository lastFetchedAt to the time we started ingestion
       await db
         .update(repositories)
         .set({
-          lastFetchedAt: new Date().toISOString(),
+          lastFetchedAt: ingestionStartTime,
           lastUpdated: new Date().toISOString(),
         })
         .where(eq(repositories.repoId, repoId));
+
+      this.logger.info(
+        `Updated lastFetchedAt to ingestion start time (${ingestionStartTime}) for ${repoId}`,
+      );
 
       return prs.length;
     } catch (error: unknown) {
@@ -419,7 +446,7 @@ export class DataIngestion {
       throw new Error(
         `Failed to fetch PRs: ${
           error instanceof Error ? error.message : String(error)
-        }`
+        }`,
       );
     }
   }
@@ -429,18 +456,38 @@ export class DataIngestion {
    */
   async fetchAndStoreIssues(
     repository: RepositoryConfig,
-    options: { startDate?: string; endDate?: string } = {}
+    options: { startDate?: string; endDate?: string } = {},
   ): Promise<number> {
     const { repoId } = repository;
+
+    // Record the ingestion start time
+    const ingestionStartTime = new Date().toISOString();
+    this.logger.info(
+      `Starting issue ingestion for ${repoId} at ${ingestionStartTime}`,
+    );
     this.logger.info(`Fetching issues for ${repoId}`, options);
 
     try {
+      // If startDate is not provided, use lastFetchedAt from the database
+      if (!options.startDate) {
+        const repoData = await db.query.repositories.findFirst({
+          where: eq(repositories.repoId, repoId),
+        });
+
+        if (repoData?.lastFetchedAt) {
+          options.startDate = repoData.lastFetchedAt;
+          this.logger.info(
+            `Using lastFetchedAt (${options.startDate}) as start date for ${repoId}`,
+          );
+        }
+      }
+
       const issues = await this.github.fetchIssues(repository, options);
       this.logger.info(`Storing ${issues.length} issues for ${repoId}`);
 
       // Filter out undefined values
       const validIssues = issues.filter(
-        (issue): issue is NonNullable<typeof issue> => issue !== undefined
+        (issue): issue is NonNullable<typeof issue> => issue !== undefined,
       );
 
       // Collect all users that need to be created/updated
@@ -468,7 +515,7 @@ export class DataIngestion {
 
       // Process all labels first
       const allLabels = validIssues.flatMap(
-        (issue) => issue.labels?.nodes || []
+        (issue) => issue.labels?.nodes || [],
       );
       await this.ensureLabelsExist(allLabels);
 
@@ -535,14 +582,18 @@ export class DataIngestion {
         }
       }
 
-      // Update repository lastFetchedAt
+      // Update repository lastFetchedAt to the time we started ingestion
       await db
         .update(repositories)
         .set({
-          lastFetchedAt: new Date().toISOString(),
+          lastFetchedAt: ingestionStartTime,
           lastUpdated: new Date().toISOString(),
         })
         .where(eq(repositories.repoId, repoId));
+
+      this.logger.info(
+        `Updated lastFetchedAt to ingestion start time (${ingestionStartTime}) for ${repoId}`,
+      );
 
       return issues.length;
     } catch (error: unknown) {
@@ -552,7 +603,7 @@ export class DataIngestion {
       throw new Error(
         `Failed to fetch issues: ${
           error instanceof Error ? error.message : String(error)
-        }`
+        }`,
       );
     }
   }
@@ -561,7 +612,7 @@ export class DataIngestion {
    * Fetch all GitHub data for all configured repositories
    */
   async fetchAllData(
-    options: { startDate?: string; endDate?: string } = {}
+    options: { startDate?: string; endDate?: string } = {},
   ): Promise<Array<{ repository: string; prs: number; issues: number }>> {
     const results = [];
 

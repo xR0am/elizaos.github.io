@@ -2,7 +2,7 @@ import { PipelineConfig } from "../../pipelineConfig";
 import { Logger } from "../logger";
 import { RepoPipelineContext } from "../types";
 
-export interface ContributorPipelineContext extends RepoPipelineContext {}
+export type ContributorPipelineContext = RepoPipelineContext;
 /**
  * Creates a repository pipeline context
  */

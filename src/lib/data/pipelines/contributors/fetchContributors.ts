@@ -1,16 +1,14 @@
-import { createStep, RepoPipelineContext } from "../types";
+import { createStep } from "../types";
 import { ContributorPipelineContext } from "./context";
 import {
   users,
   rawPullRequests,
   rawIssues,
-  rawCommits,
   prComments,
-  issueComments,
   prReviews,
 } from "../../schema";
 import { db } from "../../db";
-import { sql, eq, and, ne } from "drizzle-orm";
+import { sql, eq, and, gte, lte, or } from "drizzle-orm";
 import { isNotNullOrUndefined } from "@/lib/typeHelpers";
 
 /**
@@ -20,8 +18,46 @@ export const fetchContributors = createStep(
   "fetchContributors",
   async (
     { repoId }: { repoId: string },
-    { logger }: ContributorPipelineContext
+    { logger, dateRange }: ContributorPipelineContext,
   ) => {
+    // Filter for contributors active in the date range, if provided
+    const dateConditions = dateRange
+      ? {
+          pr: or(
+            and(
+              gte(rawPullRequests.createdAt, dateRange.startDate),
+              dateRange.endDate
+                ? lte(rawPullRequests.createdAt, dateRange.endDate)
+                : sql`1=1`,
+            ),
+            and(
+              gte(rawPullRequests.mergedAt, dateRange.startDate),
+              dateRange.endDate
+                ? lte(rawPullRequests.mergedAt, dateRange.endDate)
+                : sql`1=1`,
+            ),
+          ),
+          issue: and(
+            gte(rawIssues.createdAt, dateRange.startDate),
+            dateRange.endDate
+              ? lte(rawIssues.createdAt, dateRange.endDate)
+              : sql`1=1`,
+          ),
+          prComment: and(
+            gte(prComments.createdAt, dateRange.startDate),
+            dateRange.endDate
+              ? lte(prComments.createdAt, dateRange.endDate)
+              : sql`1=1`,
+          ),
+          prReview: and(
+            gte(prReviews.createdAt, dateRange.startDate),
+            dateRange.endDate
+              ? lte(prReviews.createdAt, dateRange.endDate)
+              : sql`1=1`,
+          ),
+        }
+      : null;
+
     // Fetch all contributors using separate optimized queries and run them in parallel
     const [prAuthors, issueAuthors, prCommentAuthors, prReviewAuthors] =
       await Promise.all([
@@ -31,7 +67,11 @@ export const fetchContributors = createStep(
           .from(rawPullRequests)
           .innerJoin(users, eq(rawPullRequests.author, users.username))
           .where(
-            and(eq(rawPullRequests.repository, repoId), eq(users.isBot, 0))
+            and(
+              eq(rawPullRequests.repository, repoId),
+              eq(users.isBot, 0),
+              ...(dateConditions ? [dateConditions.pr] : []),
+            ),
           )
           .all(),
 
@@ -40,7 +80,13 @@ export const fetchContributors = createStep(
           .select({ username: rawIssues.author })
           .from(rawIssues)
           .innerJoin(users, eq(rawIssues.author, users.username))
-          .where(and(eq(rawIssues.repository, repoId), eq(users.isBot, 0)))
+          .where(
+            and(
+              eq(rawIssues.repository, repoId),
+              eq(users.isBot, 0),
+              ...(dateConditions ? [dateConditions.issue] : []),
+            ),
+          )
           .all(),
 
         // PR comment authors, excluding bots
@@ -50,7 +96,11 @@ export const fetchContributors = createStep(
           .innerJoin(users, eq(prComments.author, users.username))
           .innerJoin(rawPullRequests, eq(prComments.prId, rawPullRequests.id))
           .where(
-            and(eq(rawPullRequests.repository, repoId), eq(users.isBot, 0))
+            and(
+              eq(rawPullRequests.repository, repoId),
+              eq(users.isBot, 0),
+              ...(dateConditions ? [dateConditions.prComment] : []),
+            ),
           )
           .all(),
 
@@ -61,7 +111,11 @@ export const fetchContributors = createStep(
           .innerJoin(users, eq(prReviews.author, users.username))
           .innerJoin(rawPullRequests, eq(prReviews.prId, rawPullRequests.id))
           .where(
-            and(eq(rawPullRequests.repository, repoId), eq(users.isBot, 0))
+            and(
+              eq(rawPullRequests.repository, repoId),
+              eq(users.isBot, 0),
+              ...(dateConditions ? [dateConditions.prReview] : []),
+            ),
           )
           .all(),
       ]);
@@ -80,12 +134,12 @@ export const fetchContributors = createStep(
 
     logger?.info(
       `Retrieved ${uniqueUsernames.length} contributors from the repository`,
-      { repoId }
+      { repoId, dateRange },
     );
 
     return uniqueUsernames.filter(isNotNullOrUndefined).map((username) => ({
       username,
       repoId,
     }));
-  }
+  },
 );

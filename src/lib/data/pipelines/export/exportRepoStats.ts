@@ -1,18 +1,15 @@
 import { createStep } from "../types";
 import { RepositoryStatsPipelineContext } from "./context";
-import {
-  getRepositoryMetrics,
-  getTopContributors,
-  getTopIssues,
-  getTopPullRequests,
-} from "../../queries";
-import * as path from "path";
+import { getTopContributors } from "./queries";
+import { getTopIssues } from "./queries";
+import { getTopPullRequests } from "./queries";
 import {
   generateIntervalName,
   TimeInterval,
   toDateString,
 } from "@/lib/date-utils";
 import { getRepoFilePath, writeToFile } from "@/lib/fsHelpers";
+import { getRepositoryMetrics } from "./queries";
 
 /**
  * Generate stats for a specific time interval
@@ -21,7 +18,7 @@ export const exportRepoStatsForInterval = createStep(
   "RepoStats",
   async (
     { interval, repoId }: { interval: TimeInterval; repoId: string },
-    { outputDir, logger }: RepositoryStatsPipelineContext
+    { outputDir, logger }: RepositoryStatsPipelineContext,
   ) => {
     const intervalLogger = logger
       ?.child(interval.intervalType)
@@ -51,7 +48,7 @@ export const exportRepoStatsForInterval = createStep(
       prsCount: topPRs.length,
     });
 
-    const overview = `From ${interval.intervalStart} to ${interval.intervalEnd}, ${repoId} had ${metrics.new_prs.count} new PRs (${metrics.merged_prs.count} merged), ${metrics.new_issues.count} new issues, and ${metrics.num_contributors} active contributors.`;
+    const overview = `From ${interval.intervalStart} to ${interval.intervalEnd}, ${repoId} had ${metrics.pullRequests.newPRs.length} new PRs (${metrics.pullRequests.mergedPRs.length} merged), ${metrics.issues.newIssues.length} new issues, and ${metrics.uniqueContributors} active contributors.`;
 
     const stats = {
       interval,
@@ -71,7 +68,7 @@ export const exportRepoStatsForInterval = createStep(
       repoId,
       "stats",
       interval.intervalType,
-      filename
+      filename,
     );
 
     // Write stats to file
@@ -82,9 +79,9 @@ export const exportRepoStatsForInterval = createStep(
       {
         outputPath,
         metrics: stats.metrics,
-      }
+      },
     );
 
     return stats;
-  }
+  },
 );

@@ -10,7 +10,7 @@ export async function callAIService(
   options?: {
     maxTokens?: number;
     temperature?: number;
-  }
+  },
 ): Promise<string> {
   try {
     const response = await fetch(
@@ -21,7 +21,7 @@ export async function callAIService(
           "Content-Type": "application/json",
           Authorization: `Bearer ${config.apiKey}`,
           "HTTP-Referer": process.env.SITE_URL || "https://elizaos.github.io",
-          "X-Title": process.env.SITE_NAME || "GitHub Contributor Analytics",
+          "X-Title": process.env.SITE_NAME || "ElizaOS Leaderboard",
         },
         body: JSON.stringify({
           model: config.model || "anthropic/claude-3-sonnet-20240229",
@@ -36,7 +36,7 @@ export async function callAIService(
           temperature: options?.temperature ?? config.temperature ?? 0.1,
           max_tokens: options?.maxTokens ?? config.max_tokens ?? 200,
         }),
-      }
+      },
     );
 
     if (!response.ok) {

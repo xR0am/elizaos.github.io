@@ -24,7 +24,7 @@ export const users = sqliteTable(
   },
   (table) => [
     index("idx_users_score").on(table.score), // For sorting by score
-  ]
+  ],
 );
 
 // Repositories being tracked
@@ -71,11 +71,11 @@ export const rawPullRequests = sqliteTable(
     index("idx_raw_prs_repo_author_date").on(
       table.repository,
       table.author,
-      table.createdAt
+      table.createdAt,
     ),
     index("idx_raw_prs_state").on(table.state),
     index("idx_raw_prs_merged").on(table.merged),
-  ]
+  ],
 );
 
 export const rawPullRequestFiles = sqliteTable(
@@ -96,7 +96,7 @@ export const rawPullRequestFiles = sqliteTable(
   (table) => [
     index("idx_raw_pr_files_pr_id").on(table.prId),
     unique("unq_pr_id_path").on(table.prId, table.path),
-  ]
+  ],
 );
 
 export const rawIssues = sqliteTable(
@@ -127,10 +127,10 @@ export const rawIssues = sqliteTable(
     index("idx_raw_issues_repo_author_date").on(
       table.repository,
       table.author,
-      table.createdAt
+      table.createdAt,
     ),
     index("idx_raw_issues_state").on(table.state),
-  ]
+  ],
 );
 
 export const rawCommits = sqliteTable(
@@ -161,9 +161,9 @@ export const rawCommits = sqliteTable(
     index("idx_raw_commits_repo_author_date").on(
       table.repository,
       table.author,
-      table.committedDate
+      table.committedDate,
     ),
-  ]
+  ],
 );
 
 export const rawCommitFiles = sqliteTable(
@@ -183,7 +183,7 @@ export const rawCommitFiles = sqliteTable(
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
   },
-  (table) => [index("idx_raw_commit_files_sha").on(table.sha)]
+  (table) => [index("idx_raw_commit_files_sha").on(table.sha)],
 );
 
 export const prReviews = sqliteTable(
@@ -206,7 +206,7 @@ export const prReviews = sqliteTable(
     index("idx_pr_reviews_author").on(table.author),
     index("idx_pr_reviews_author_date").on(table.author, table.createdAt),
     index("idx_pr_reviews_state").on(table.state),
-  ]
+  ],
 );
 
 export const prComments = sqliteTable(
@@ -228,7 +228,7 @@ export const prComments = sqliteTable(
     index("idx_pr_comments_pr_id").on(table.prId),
     index("idx_pr_comments_author").on(table.author),
     index("idx_pr_comments_author_date").on(table.author, table.createdAt),
-  ]
+  ],
 );
 
 export const issueComments = sqliteTable(
@@ -250,7 +250,7 @@ export const issueComments = sqliteTable(
     index("idx_issue_comments_issue_id").on(table.issueId),
     index("idx_issue_comments_author").on(table.author),
     index("idx_issue_comments_author_date").on(table.author, table.createdAt),
-  ]
+  ],
 );
 
 // Processed data tables
@@ -277,9 +277,9 @@ export const userSummaries = sqliteTable(
     uniqueIndex("idx_user_daily_summaries_unique_combo").on(
       table.username,
       table.intervalType,
-      table.date
+      table.date,
     ),
-  ]
+  ],
 );
 
 // Repository summaries for storing monthly project analysis
@@ -306,9 +306,9 @@ export const repoSummaries = sqliteTable(
     uniqueIndex("idx_repo_summaries_unique_combo").on(
       table.repoId,
       table.intervalType,
-      table.date
+      table.date,
     ),
-  ]
+  ],
 );
 
 export const tags = sqliteTable("tags", {
@@ -348,7 +348,7 @@ export const userTagScores = sqliteTable(
     index("idx_user_tag_scores_tag").on(table.tag),
     index("idx_user_tag_scores_score").on(table.score),
     index("idx_user_tag_scores_username_tag").on(table.username, table.tag),
-  ]
+  ],
 );
 
 // Labels table for storing unique labels
@@ -363,7 +363,7 @@ export const labels = sqliteTable(
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
   },
-  (table) => [index("idx_labels_name").on(table.name)]
+  (table) => [index("idx_labels_name").on(table.name)],
 );
 
 // Junction table for PR-Label relationships
@@ -384,7 +384,7 @@ export const pullRequestLabels = sqliteTable(
     primaryKey({ columns: [table.prId, table.labelId] }),
     index("idx_pr_labels_pr_id").on(table.prId),
     index("idx_pr_labels_label_id").on(table.labelId),
-  ]
+  ],
 );
 
 // Junction table for Issue-Label relationships
@@ -405,11 +405,11 @@ export const issueLabels = sqliteTable(
     primaryKey({ columns: [table.issueId, table.labelId] }),
     index("idx_issue_labels_issue_id").on(table.issueId),
     index("idx_issue_labels_label_id").on(table.labelId),
-  ]
+  ],
 );
 
 // Now define all relations after all tables are defined
-export const usersRelations = relations(users, ({ many, one }) => ({
+export const usersRelations = relations(users, ({ many }) => ({
   pullRequests: many(rawPullRequests),
   issues: many(rawIssues),
   commits: many(rawCommits),
@@ -429,7 +429,7 @@ export const pullRequestRelations = relations(
     comments: many(prComments),
     commits: many(rawCommits),
     labels: many(pullRequestLabels),
-  })
+  }),
 );
 
 export const pullRequestFilesRelations = relations(
@@ -439,7 +439,7 @@ export const pullRequestFilesRelations = relations(
       fields: [rawPullRequestFiles.prId],
       references: [rawPullRequests.id],
     }),
-  })
+  }),
 );
 
 export const issuesRelations = relations(rawIssues, ({ one, many }) => ({
@@ -510,7 +510,7 @@ export const userDailySummariesRelations = relations(
       fields: [userSummaries.username],
       references: [users.username],
     }),
-  })
+  }),
 );
 
 export const userTagScoresRelations = relations(userTagScores, ({ one }) => ({
@@ -541,7 +541,7 @@ export const pullRequestLabelsRelations = relations(
       fields: [pullRequestLabels.labelId],
       references: [labels.id],
     }),
-  })
+  }),
 );
 
 export const issueLabelsRelations = relations(issueLabels, ({ one }) => ({

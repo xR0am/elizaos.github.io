@@ -1,5 +1,5 @@
-import { getContributorPRs } from "../../queries";
-import { createStep, RepoPipelineContext } from "../types";
+import { getContributorPRs } from "./queries";
+import { createStep } from "../types";
 import { db } from "../../db";
 import { tags, userTagScores } from "../../schema";
 import { ContributorPipelineContext } from "./context";
@@ -13,7 +13,7 @@ export const calculateTags = createStep(
   "calculateTags",
   async (
     { username }: { username: string },
-    { config, dateRange, logger, repoId }: ContributorPipelineContext
+    { config, dateRange, logger, repoId }: ContributorPipelineContext,
   ) => {
     // Fetch data
     const contributorPRs = await getContributorPRs(username, {
@@ -23,17 +23,17 @@ export const calculateTags = createStep(
 
     // Skip if no PRs found
     if (contributorPRs.length === 0) {
-      logger?.info(`${username}: No PRs found, skipping tag calculation`);
+      logger?.debug(`${username}: No PRs found, skipping tag calculation`);
       return null;
     }
 
     // Extract file paths and titles
     const filePaths = contributorPRs.flatMap((pr) =>
-      pr.files ? pr.files.map((f) => f.path as string) : []
+      pr.files ? pr.files.map((f) => f.path as string) : [],
     );
     const prTitles = contributorPRs.map((pr) => pr.title || "").filter(Boolean);
     logger?.info(
-      `${username}: Processing ${filePaths.length} files and ${prTitles.length} PR titles`
+      `${username}: Processing ${filePaths.length} files and ${prTitles.length} PR titles`,
     );
 
     // Calculate tags based on config
@@ -96,7 +96,7 @@ export const calculateTags = createStep(
           category,
           score,
           level,
-          Math.min(1, progress)
+          Math.min(1, progress),
         );
 
         return {
@@ -124,7 +124,7 @@ export const calculateTags = createStep(
       topAreas,
     };
     return stats;
-  }
+  },
 );
 
 /**
@@ -136,7 +136,7 @@ export async function storeTagScore(
   category: string,
   score: number,
   level: number,
-  progress: number
+  progress: number,
 ): Promise<void> {
   // Ensure tag exists in database
   await db

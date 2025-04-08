@@ -1,21 +1,15 @@
-import { ScoringConfig } from "./pipelineConfig";
-import { groupBy } from "../arrayHelpers";
-import { toDateString } from "../date-utils";
-import {
-  prComments,
-  prReviews,
-  rawIssues,
-  rawPullRequests,
-  rawPullRequestFiles,
-} from "./schema";
+import { ScoringConfig } from "../../pipelineConfig";
+import { groupBy } from "../../../arrayHelpers";
+import { toDateString } from "../../../date-utils";
+import { rawPullRequests } from "../../schema";
 import {
   getContributorPRs,
   getContributorIssueMetrics,
   getContributorReviewMetrics,
   getContributorCommentMetrics,
-  QueryParams,
   getContributorPRMetrics,
 } from "./queries";
+import { QueryParams } from "../../queryHelpers";
 
 export interface ScoreResult {
   totalScore: number;
@@ -58,7 +52,7 @@ export interface ScoreResult {
  */
 export const calculatePRScore = (
   prs: (typeof rawPullRequests.$inferSelect)[],
-  scoringConfig: ScoringConfig
+  scoringConfig: ScoringConfig,
 ): number => {
   let score = 0;
   const { pullRequest } = scoringConfig;
@@ -84,7 +78,7 @@ export const calculatePRScore = (
       const descriptionLength = pr.body?.length || 0;
       const descriptionPoints = Math.min(
         descriptionLength * pullRequest.descriptionMultiplier,
-        10 // Cap description points
+        10, // Cap description points
       );
 
       // Calculate PR complexity (based on file count and changes)
@@ -123,7 +117,7 @@ export const calculateIssueScore = (
     closed: number;
     commentCount: number;
   },
-  scoringConfig: ScoringConfig
+  scoringConfig: ScoringConfig,
 ): number => {
   let score = 0;
   const { issue } = scoringConfig;
@@ -143,7 +137,7 @@ export const calculateIssueScore = (
   // Points for comments
   const effectiveComments = Math.min(
     commentCount,
-    scoringConfig.comment.maxPerThread || 3
+    scoringConfig.comment.maxPerThread || 3,
   );
   score += effectiveComments * issue.perComment;
 
@@ -160,7 +154,7 @@ export const calculateReviewScore = (
     changesRequested: number;
     commented: number;
   },
-  scoringConfig: ScoringConfig
+  scoringConfig: ScoringConfig,
 ): number => {
   let score = 0;
   const { review } = scoringConfig;
@@ -187,7 +181,7 @@ export const calculateCommentScore = (
     pullRequests: number;
     issues: number;
   },
-  scoringConfig: ScoringConfig
+  scoringConfig: ScoringConfig,
 ): number => {
   let score = 0;
   const { comment } = scoringConfig;
@@ -203,7 +197,7 @@ export const calculateCommentScore = (
   let factor = 1.0;
   const totalComments = Math.min(
     pullRequestsWithComments + issuesWithComments,
-    maxPerThread
+    maxPerThread,
   );
 
   for (let i = 0; i < totalComments; i++) {
@@ -220,14 +214,14 @@ export const calculateCommentScore = (
 export async function calculateContributorScore(
   username: string,
   queryParams: QueryParams,
-  scoringConfig: ScoringConfig
+  scoringConfig: ScoringConfig,
 ): Promise<ScoreResult> {
   // Get contributor PRs
   const contributorPRs = await getContributorPRs(username, queryParams);
 
   const contributorPRMetrics = await getContributorPRMetrics(
     username,
-    queryParams
+    queryParams,
   );
 
   // Get issue metrics
@@ -236,13 +230,13 @@ export async function calculateContributorScore(
   // Get review metrics
   const reviewMetrics = await getContributorReviewMetrics(
     username,
-    queryParams
+    queryParams,
   );
 
   // Get comment metrics
   const commentMetrics = await getContributorCommentMetrics(
     username,
-    queryParams
+    queryParams,
   );
 
   // Calculate individual scores

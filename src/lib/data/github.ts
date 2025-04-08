@@ -1,15 +1,10 @@
 import { Logger, createLogger } from "./pipelines/logger";
-import axios from "axios";
+import axios, { AxiosError, RawAxiosResponseHeaders } from "axios";
 import pRetry, { AbortError } from "p-retry";
-import {
-  RawPullRequestSchema,
-  RawIssueSchema,
-  RawCommitSchema,
-  RawPRReviewSchema,
-  RawCommentSchema,
-  RawPRFileSchema,
-} from "./types";
+import { RawPullRequestSchema, RawIssueSchema, RawCommitSchema } from "./types";
 import { RepositoryConfig } from "./pipelineConfig";
+import { isNotNullOrUndefined } from "../typeHelpers";
+import { z } from "zod";
 
 interface FetchOptions {
   startDate?: string;
@@ -19,19 +14,82 @@ interface FetchOptions {
 interface RateLimitInfo {
   limit: number;
   remaining: number;
-  used: number;
   resetAt: Date;
+  cost?: number;
+}
+
+interface RetryConfig {
+  maxRetries: number;
+  minTimeout: number;
+  maxTimeout: number;
+  factor: number;
+}
+
+// Define interfaces for the GraphQL response
+interface GitHubPageInfo {
+  hasNextPage: boolean;
+  endCursor: string | null;
+}
+
+interface GitHubSearchResponse<T> {
+  search: {
+    nodes: T[];
+    pageInfo: GitHubPageInfo;
+  };
+}
+
+interface GitHubRepositoryResponse<T> {
+  repository: {
+    defaultBranchRef: {
+      target: {
+        history: {
+          nodes: T[];
+          pageInfo: GitHubPageInfo;
+        };
+      };
+    };
+  };
+}
+
+type GitHubGraphQLResponse<T> = {
+  data: GitHubSearchResponse<T> | GitHubRepositoryResponse<T>;
+};
+
+class RateLimitExceededError extends Error {
+  constructor(
+    message: string,
+    public resetAt: Date,
+  ) {
+    super(message);
+    this.name = "RateLimitExceededError";
+  }
+}
+
+class SecondaryRateLimitError extends Error {
+  constructor(
+    message: string,
+    public waitTime: number,
+  ) {
+    super(message);
+    this.name = "SecondaryRateLimitError";
+  }
 }
 
 /**
- * GitHub API client using direct HTTP requests
+ * Enhanced GitHub API client with robust rate limiting and retry handling
  */
 export class GitHubClient {
   private logger: Logger;
   private token: string;
   private rateLimitInfo: RateLimitInfo | null = null;
-  private maxRetries = 5;
-  private exponentialBackoff = true;
+  private readonly retryConfig: RetryConfig = {
+    maxRetries: 5,
+    minTimeout: 1000,
+    maxTimeout: 120000,
+    factor: 2,
+  };
+  private concurrentRequests = 0;
+  private readonly maxConcurrentRequests = 10;
 
   constructor(logger?: Logger) {
     this.logger =
@@ -42,302 +100,224 @@ export class GitHubClient {
       throw new Error("GITHUB_TOKEN environment variable is required");
     }
     this.token = token;
+
+    // Set up axios defaults
+    axios.defaults.headers.common["Authorization"] = `Bearer ${this.token}`;
+    axios.defaults.headers.common["Content-Type"] = "application/json";
   }
 
-  /**
-   * Wait for the specified number of milliseconds
-   */
-  private async delay(ms: number): Promise<void> {
+  private async wait(ms: number): Promise<void> {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  /**
-   * Calculate backoff time with exponential strategy
-   */
-  private calculateBackoff(
-    attempt: number,
-    baseMs = 1000,
-    maxMs = 60000
-  ): number {
-    if (!this.exponentialBackoff) return baseMs;
-
-    // Exponential backoff: 2^attempt * baseMs with jitter
-    const exponentialTime = Math.min(
-      maxMs,
-      Math.pow(2, attempt) * baseMs * (0.8 + Math.random() * 0.4) // Add 20% jitter
-    );
-
-    return Math.floor(exponentialTime);
-  }
-
-  /**
-   * Parse rate limit information from response headers
-   */
   private parseRateLimitHeaders(
-    headers: Record<string, string>
-  ): RateLimitInfo | null {
-    if (!headers["x-ratelimit-limit"]) return null;
+    headers: RawAxiosResponseHeaders,
+  ): RateLimitInfo {
+    const resetAt = headers["x-ratelimit-reset"]
+      ? new Date(parseInt(headers["x-ratelimit-reset"] as string, 10) * 1000)
+      : new Date(Date.now() + 60000); // Default 1 minute fallback
 
     return {
-      limit: parseInt(headers["x-ratelimit-limit"] || "0", 10),
-      remaining: parseInt(headers["x-ratelimit-remaining"] || "0", 10),
-      used: parseInt(headers["x-ratelimit-used"] || "0", 10),
-      resetAt: new Date(
-        parseInt(headers["x-ratelimit-reset"] || "0", 10) * 1000
+      limit: parseInt((headers["x-ratelimit-limit"] as string) || "5000", 10),
+      remaining: parseInt(
+        (headers["x-ratelimit-remaining"] as string) || "5000",
+        10,
       ),
+      resetAt,
+      cost: headers["x-github-request-cost"]
+        ? parseInt(headers["x-github-request-cost"] as string, 10)
+        : undefined,
     };
   }
 
-  /**
-   * Execute a GraphQL query with retries
-   */
-  private async executeGraphQL(
-    query: string,
-    variables: Record<string, any> = {}
-  ) {
-    return pRetry(
-      async () => {
-        try {
-          const response = await axios.post(
-            "https://api.github.com/graphql",
-            { query, variables },
-            {
-              headers: {
-                Authorization: `Bearer ${this.token}`,
-                "Content-Type": "application/json",
-              },
-            }
-          );
+  private async checkRateLimit(): Promise<void> {
+    if (!this.rateLimitInfo || this.rateLimitInfo.remaining > 0) return;
 
-          // Update rate limit info from headers
-          const headerRateLimit = this.parseRateLimitHeaders(
-            response.headers as Record<string, string>
-          );
-          if (headerRateLimit) {
-            this.rateLimitInfo = headerRateLimit;
-            this.logger.info("Rate limit info", headerRateLimit);
-          }
+    const now = Date.now();
+    const resetTime = this.rateLimitInfo.resetAt.getTime();
+    const waitTime = Math.max(0, resetTime - now) + 1000; // Add 1s buffer
 
-          // Check for GraphQL errors
-          if (response.data?.errors?.length > 0) {
-            throw new Error(
-              `GitHub GraphQL Error: ${response.data.errors[0].message}`
-            );
-          }
-
-          return response.data;
-        } catch (error) {
-          if (axios.isAxiosError(error) && error.response) {
-            // Update rate limit info from error response if available
-            const headerRateLimit = this.parseRateLimitHeaders(
-              error.response.headers as Record<string, string>
-            );
-
-            if (headerRateLimit) {
-              this.logger.info("Rate limit info", headerRateLimit);
-              this.rateLimitInfo = headerRateLimit;
-            }
-
-            const status = error.response.status;
-            const retryAfter = error.response.headers?.["retry-after"];
-            const responseData = error.response.data;
-            const errorMessage = responseData?.message || "";
-
-            // Check for primary rate limit exceeded
-            if (this.rateLimitInfo?.remaining === 0) {
-              const message = `GitHub API rate limit exceeded. Reset at ${this.rateLimitInfo.resetAt.toISOString()}`;
-              this.logger.warn(message);
-
-              if (retryAfter) {
-                // Wait for retry-after before stopping
-                const waitTime = parseInt(retryAfter as string, 10) * 1000;
-                await this.delay(waitTime);
-              }
-
-              throw new AbortError(message);
-            }
-
-            // Check for secondary rate limit exceeded
-            if (
-              status === 403 &&
-              errorMessage.includes("secondary rate limit")
-            ) {
-              const message = `GitHub API secondary rate limit exceeded: ${errorMessage}`;
-              this.logger.warn(message);
-
-              const backoffTime = retryAfter
-                ? parseInt(retryAfter as string, 10) * 1000
-                : this.calculateBackoff(1, 5000, 120000); // Use a default attempt number of 1
-
-              this.logger.info(
-                `Waiting ${backoffTime / 1000} seconds before retrying...`
-              );
-              await this.delay(backoffTime);
-
-              // Allow p-retry to retry after the wait
-              throw new Error(message);
-            }
-
-            // Let p-retry handle normal errors
-            throw new Error(
-              `GitHub API Error (${status}): ${errorMessage || error.message}`
-            );
-          }
-
-          // Network errors, timeouts, etc.
-          throw new Error(
-            `GitHub API request failed: ${
-              error instanceof Error ? error.message : String(error)
-            }`
-          );
-        }
-      },
-      {
-        retries: this.maxRetries,
-        onFailedAttempt: (error) => {
-          this.logger.warn(
-            `GitHub API request attempt ${error.attemptNumber} failed. ${error.retriesLeft} retries left.`,
-            {
-              error: error.message,
-            }
-          );
-        },
-        minTimeout: 1000, // Start with 1 second delay between retries
-        maxTimeout: 60000, // Maximum 1 minute delay between retries
-      }
+    this.logger.warn(
+      `Primary rate limit exceeded. Waiting ${waitTime / 1000}s until ${this.rateLimitInfo.resetAt.toISOString()}`,
     );
+    await this.wait(waitTime);
+    this.rateLimitInfo.remaining = this.rateLimitInfo.limit; // Reset remaining count
   }
 
-  /**
-   * Fetch pull requests with GraphQL
-   */
+  private async executeGraphQL<T>(
+    query: string,
+    variables: Record<string, unknown> = {},
+  ): Promise<T> {
+    await this.checkRateLimit();
+
+    if (this.concurrentRequests >= this.maxConcurrentRequests) {
+      await this.wait(100); // Simple throttling
+    }
+
+    this.concurrentRequests++;
+
+    try {
+      return await pRetry(
+        async () => {
+          try {
+            const response = await axios.post(
+              "https://api.github.com/graphql",
+              { query, variables },
+            );
+
+            this.rateLimitInfo = this.parseRateLimitHeaders(response.headers);
+            this.logger.info("Rate limit status", {
+              remaining: this.rateLimitInfo.remaining,
+              resetAt: this.rateLimitInfo.resetAt,
+            });
+
+            const data = response.data;
+            if (data?.errors?.length > 0) {
+              const errorMsg = data.errors
+                .map((e: Error) => e.message)
+                .join(", ");
+              throw new Error(`GraphQL Errors: ${errorMsg}`);
+            }
+
+            return data;
+          } catch (error) {
+            const axiosError = error as AxiosError;
+            if (axiosError.response) {
+              this.rateLimitInfo = this.parseRateLimitHeaders(
+                axiosError.response.headers as Record<string, string>,
+              );
+              this.logger.warn(`Axios Error`, {
+                data: axiosError.response.data,
+              });
+              const status = axiosError.response.status;
+              const retryAfter = axiosError.response.headers["retry-after"];
+              const message =
+                (axiosError.response.data as Record<string, string>)?.message ||
+                "";
+
+              if (status === 403 && message.includes("secondary rate limit")) {
+                const waitTime = retryAfter
+                  ? parseInt(retryAfter, 10) * 1000
+                  : this.retryConfig.maxTimeout;
+                throw new SecondaryRateLimitError(
+                  `Secondary rate limit exceeded: ${message}`,
+                  waitTime,
+                );
+              }
+
+              if (
+                status === 403 ||
+                (this.rateLimitInfo?.remaining === 0 &&
+                  this.rateLimitInfo?.resetAt)
+              ) {
+                throw new RateLimitExceededError(
+                  `Primary rate limit exceeded: ${message}`,
+                  this.rateLimitInfo.resetAt,
+                );
+              }
+
+              throw new Error(
+                `GitHub API Error (${status}): ${message || axiosError.message}`,
+              );
+            }
+            throw error; // Rethrow non-Axios errors
+          }
+        },
+        {
+          retries: this.retryConfig.maxRetries,
+          minTimeout: this.retryConfig.minTimeout,
+          maxTimeout: this.retryConfig.maxTimeout,
+          factor: this.retryConfig.factor,
+          randomize: true,
+          onFailedAttempt: async (error) => {
+            this.logger.warn(
+              `Attempt ${error.attemptNumber} failed. ${error.retriesLeft} retries left`,
+              { error: error.message },
+            );
+
+            if (error instanceof RateLimitExceededError) {
+              await this.wait(error.resetAt.getTime() - Date.now() + 1000);
+              throw new AbortError(error.message);
+            }
+
+            if (error instanceof SecondaryRateLimitError) {
+              await this.wait(error.waitTime);
+            }
+          },
+        },
+      );
+    } finally {
+      this.concurrentRequests--;
+    }
+  }
+
+  private async paginateGraphQL<T>(
+    query: string,
+    variables: Record<string, unknown>,
+    extractNodes: (data: GitHubGraphQLResponse<T>) => {
+      nodes: T[];
+      pageInfo: { hasNextPage: boolean; endCursor: string | null };
+    },
+  ): Promise<T[]> {
+    let allNodes: T[] = [];
+    let hasNextPage = true;
+    let endCursor: string | null = null;
+
+    while (hasNextPage) {
+      const vars = { ...variables };
+      if (endCursor) vars.endCursor = endCursor;
+
+      const data = await this.executeGraphQL<GitHubGraphQLResponse<T>>(
+        query,
+        vars,
+      );
+      const { nodes, pageInfo } = extractNodes(data);
+
+      allNodes = allNodes.concat(nodes);
+      hasNextPage = pageInfo.hasNextPage;
+      endCursor = pageInfo.endCursor;
+
+      this.logger.info("Paginated fetch", {
+        pageCount: nodes.length,
+        totalSoFar: allNodes.length,
+        hasNextPage,
+      });
+    }
+
+    return allNodes;
+  }
+
   async fetchPullRequests(
     repository: RepositoryConfig,
-    options: FetchOptions = {}
+    options: FetchOptions = {},
   ) {
-    const { repoId } = repository;
-    const [owner, name] = repoId.split("/");
+    const [owner, name] = repository.repoId.split("/");
     const { startDate, endDate } = options;
-    const period = `${startDate || "*"}..${endDate || "*"}`;
-
-    this.logger.info(`Fetching PRs for ${repoId}`, { period });
-
-    // Build date filter for search query
-    let dateFilter = "";
-    if (startDate || endDate) {
-      dateFilter += ` updated:${period}`;
-    }
-    // Build search query - ensure date filter is applied
+    const dateFilter =
+      startDate || endDate
+        ? ` updated:${startDate || "*"}..${endDate || "*"}`
+        : "";
     const searchQuery = `repo:${owner}/${name} is:pr${dateFilter}`;
-    this.logger.info(`PR search query: ${searchQuery}`);
 
     const query = `
       query($searchQuery: String!, $endCursor: String) {
-        search(
-          type: ISSUE,
-          query: $searchQuery,
-          first: 50,
-          after: $endCursor
-        ) {
-          pageInfo {
-            hasNextPage
-            endCursor
-          }
+        search(type: ISSUE, query: $searchQuery, first: 25, after: $endCursor) {
+          pageInfo { hasNextPage endCursor }
           nodes {
             ... on PullRequest {
-              id
-              number
-              title
-              body
-              state
-              merged
-              createdAt
-              updatedAt
-              closedAt
-              mergedAt
-              headRefOid
-              baseRefOid
-              additions
-              deletions
-              changedFiles
-              author { 
-                login 
-                avatarUrl
-              }
-              labels(first: 6) { 
-                nodes { 
-                  id
-                  name 
-                  color
-                  description
-                } 
-              }
-              
-              # Get essential commit data
+              id number title body state merged createdAt updatedAt closedAt mergedAt
+              headRefOid baseRefOid additions deletions changedFiles
+              author { login avatarUrl }
+              labels(first: 6) { nodes { id name color description } }
               commits(first: 30) {
                 totalCount
-                nodes {
-                  commit {
-                    oid
-                    message
-                    messageHeadline
-                    committedDate
-                    author {
-                      name
-                      email
-                      date
-                      user {
-                        login
-                        avatarUrl
-                      }
-                    }
-                    additions
-                    deletions
-                    changedFiles
-                  }
-                }
+                nodes { commit { oid message messageHeadline committedDate
+                  author { name email date user { login avatarUrl } }
+                  additions deletions changedFiles } }
               }
-              
-              # Get essential review data
-              reviews(first: 15) {
-                nodes {
-                  id
-                  state
-                  body
-                  submittedAt
-                  createdAt
-                  author {
-                    login
-                    avatarUrl
-                  }
-                  url
-                }
-              }
-              
-              # Get essential comment data
-              comments(first: 30) {
-                nodes {
-                  id
-                  body
-                  createdAt
-                  updatedAt
-                  author {
-                    login
-                    avatarUrl
-                  }
-                  url
-                }
-              }
-              
-              # Get essential file data
-              files(first: 50) {
-                nodes {
-                  path
-                  additions
-                  deletions
-                  changeType
-                }
-              }
+              reviews(first: 15) { nodes { id state body submittedAt createdAt author { login avatarUrl } url } }
+              comments(first: 30) { nodes { id body createdAt updatedAt author { login avatarUrl } url } }
+              files(first: 50) { nodes { path additions deletions changeType } }
             }
           }
         }
@@ -345,126 +325,65 @@ export class GitHubClient {
     `;
 
     try {
-      let hasNextPage = true;
-      let endCursor: string | null = null;
-      let allPullRequests: any[] = [];
+      type PRSearchResult = z.infer<typeof RawPullRequestSchema>;
 
-      // Paginate through all results
-      while (hasNextPage) {
-        const variables: Record<string, string> = {
-          searchQuery,
-        };
-        if (endCursor) {
-          variables.endCursor = endCursor;
-        }
-
-        const response = await this.executeGraphQL(query, variables);
-
-        const searchResults = response.data.search;
-        const pageResults = searchResults.nodes;
-        allPullRequests = [...allPullRequests, ...pageResults];
-
-        hasNextPage = searchResults.pageInfo.hasNextPage;
-        endCursor = searchResults.pageInfo.endCursor;
-
-        this.logger.info("Fetched PR page", {
-          pageCount: pageResults.length,
-          totalSoFar: allPullRequests.length,
-          hasNextPage,
-          endCursor,
-        });
-      }
-
-      // Validate each PR with Zod schema
-      const validatedPRs = allPullRequests.map((pr) => {
-        try {
-          return RawPullRequestSchema.parse(pr);
-        } catch (error) {
-          this.logger.error(`Validation error for PR #${pr.number}`, { error });
-          return undefined;
-        }
-      });
-
-      const validPRs = validatedPRs.filter(
-        (pr): pr is NonNullable<typeof pr> => pr !== undefined
+      const prs = await this.paginateGraphQL<PRSearchResult>(
+        query,
+        { searchQuery },
+        (data) => {
+          const searchData = data.data as GitHubSearchResponse<PRSearchResult>;
+          return {
+            nodes: searchData.search.nodes,
+            pageInfo: searchData.search.pageInfo,
+          };
+        },
       );
-      this.logger.info(`Fetched ${validPRs.length} PRs for ${owner}/${name}`);
-      return validPRs;
+
+      const validatedPRs = prs
+        .map((pr) => {
+          try {
+            return RawPullRequestSchema.parse(pr);
+          } catch (error) {
+            this.logger.error(`Validation error for PR `, {
+              pr,
+              error,
+            });
+            return null;
+          }
+        })
+        .filter((pr): pr is NonNullable<typeof pr> => pr !== null);
+
+      this.logger.info(
+        `Fetched ${validatedPRs.length} PRs for ${owner}/${name}`,
+      );
+      return validatedPRs;
     } catch (error) {
-      this.logger.error("Error fetching PRs", { error: String(error), repoId });
-      return [];
+      this.logger.error("Failed to fetch pull requests", { error });
+      throw error;
     }
   }
 
-  /**
-   * Fetch issues with GraphQL
-   */
   async fetchIssues(repository: RepositoryConfig, options: FetchOptions = {}) {
-    const { repoId } = repository;
-    const [owner, name] = repoId.split("/");
+    const [owner, name] = repository.repoId.split("/");
     const { startDate, endDate } = options;
-    const period = `${startDate || "*"}..${endDate || "*"}`;
-    this.logger.info(`Fetching issues for ${repoId}`, { period });
-
-    // Build date filter for search query
-    let dateFilter = "";
-    if (startDate || endDate) {
-      dateFilter += ` updated:${period}`;
-    }
-    // Build search query - ensure date filter is applied
+    const dateFilter =
+      startDate || endDate
+        ? ` updated:${startDate || "*"}..${endDate || "*"}`
+        : "";
     const searchQuery = `repo:${owner}/${name} is:issue${dateFilter}`;
-    this.logger.info(`Issue search query: ${searchQuery}`);
 
     const query = `
       query($searchQuery: String!, $endCursor: String) {
-        search(
-          type: ISSUE,
-          query: $searchQuery,
-          first: 100,
-          after: $endCursor
-        ) {
-          pageInfo {
-            hasNextPage
-            endCursor
-          }
+        search(type: ISSUE, query: $searchQuery, first: 100, after: $endCursor) {
+          pageInfo { hasNextPage endCursor }
           nodes {
             ... on Issue {
-              id
-              number
-              title
-              body
-              state
-              locked
-              createdAt
-              updatedAt
-              closedAt
-              author {
-                login
-                avatarUrl
-              }
-              labels(first: 30) { 
-                nodes { 
-                  id
-                  name 
-                  color
-                  description
-                } 
-              }
-              
-              # Get issue comments
+              id number title body state locked createdAt updatedAt closedAt
+              author { login avatarUrl }
+              labels(first: 30) { nodes { id name color description } }
               comments(first: 30) {
                 totalCount
-                nodes {
-                  id
-                  body
-                  createdAt
-                  updatedAt
-                  author {
-                    login
-                    avatarUrl
-                  }
-                  url
-                }
+                nodes { id body createdAt updatedAt author { login avatarUrl } url }
               }
             }
           }
@@ -473,81 +392,48 @@ export class GitHubClient {
     `;
 
     try {
-      let hasNextPage = true;
-      let endCursor: string | null = null;
-      let allIssues: any[] = [];
+      type IssueSearchResult = z.infer<typeof RawIssueSchema>;
 
-      // Build search query
-      this.logger.info(`Fetching issues with search query: ${searchQuery}`);
-      // Paginate through all results
-      while (hasNextPage) {
-        const variables: Record<string, string> = {
-          searchQuery,
-        };
-        if (endCursor) {
-          variables.endCursor = endCursor;
-        }
-
-        this.logger.debug("Fetching issue page", {
-          endCursor,
-          searchQuery,
-          repository: `${owner}/${name}`,
-        });
-
-        const response = await this.executeGraphQL(query, variables);
-
-        const searchResults = response.data.search;
-        const pageResults = searchResults.nodes;
-        allIssues = [...allIssues, ...pageResults];
-
-        hasNextPage = searchResults.pageInfo.hasNextPage;
-        endCursor = searchResults.pageInfo.endCursor;
-
-        this.logger.debug("Fetched issue page", {
-          pageCount: pageResults.length,
-          totalSoFar: allIssues.length,
-          hasNextPage,
-          endCursor,
-        });
-      }
-
-      // Validate each issue with Zod schema
-      const validatedIssues = allIssues.map((issue) => {
-        try {
-          return RawIssueSchema.parse(issue);
-        } catch (error) {
-          this.logger.error(`Validation error for Issue #${issue.number}`, {
-            error,
-          });
-          return undefined;
-        }
-      });
-
-      const validIssues = validatedIssues.filter(
-        (issue): issue is NonNullable<typeof issue> => issue !== undefined
+      const issues = await this.paginateGraphQL<IssueSearchResult>(
+        query,
+        { searchQuery },
+        (data) => {
+          const searchData =
+            data.data as GitHubSearchResponse<IssueSearchResult>;
+          return {
+            nodes: searchData.search.nodes,
+            pageInfo: searchData.search.pageInfo,
+          };
+        },
       );
+
+      const validatedIssues = issues
+        .map((issue) => {
+          try {
+            return RawIssueSchema.parse(issue);
+          } catch (error) {
+            this.logger.error(`Validation error for Issue `, {
+              issue,
+              error,
+            });
+            return null;
+          }
+        })
+        .filter((issue): issue is NonNullable<typeof issue> => issue !== null);
+
       this.logger.info(
-        `Fetched ${validIssues.length} issues for ${owner}/${name}`
+        `Fetched ${validatedIssues.length} issues for ${owner}/${name}`,
       );
-      return validIssues;
+      return validatedIssues;
     } catch (error) {
-      this.logger.error("Error fetching issues", {
-        error: String(error),
-        repoId,
-      });
-      return [];
+      this.logger.error("Failed to fetch issues", { error });
+      throw error;
     }
   }
 
-  /**
-   * Fetch commits with GraphQL
-   */
   async fetchCommits(repository: RepositoryConfig, options: FetchOptions = {}) {
-    const { repoId } = repository;
-    const [owner, name] = repoId.split("/");
+    const [owner, name] = repository.repoId.split("/");
     const { startDate, endDate } = options;
-
-    this.logger.info(`Fetching commits for ${repoId}`, { startDate, endDate });
 
     const query = `
       query($endCursor: String, $since: GitTimestamp, $until: GitTimestamp) {
@@ -555,32 +441,12 @@ export class GitHubClient {
           defaultBranchRef {
             target {
               ... on Commit {
-                history(
-                  first: 100,
-                  after: $endCursor,
-                  since: $since,
-                  until: $until
-                ) {
-                  pageInfo {
-                    hasNextPage
-                    endCursor
-                  }
+                history(first: 100, after: $endCursor, since: $since, until: $until) {
+                  pageInfo { hasNextPage endCursor }
                   nodes {
-                    oid
-                    messageHeadline
-                    message
-                    committedDate
-                    author {
-                      name
-                      email
-                      user {
-                        login
-                        avatarUrl
-                      }
-                    }
-                    additions
-                    deletions
-                    changedFiles
+                    oid messageHeadline message committedDate
+                    author { name email user { login avatarUrl } }
+                    additions deletions changedFiles
                   }
                 }
               }
@@ -591,76 +457,45 @@ export class GitHubClient {
     `;
 
     try {
-      let hasNextPage = true;
-      let endCursor: string | null = null;
-      let allCommits: any[] = [];
+      type CommitSearchResult = z.infer<typeof RawCommitSchema>;
 
-      // Paginate through all results
-      while (hasNextPage) {
-        const variables: Record<string, any> = {};
-        if (startDate) {
-          variables.since = startDate;
-        }
-        if (endDate) {
-          variables.until = endDate;
-        }
-        if (endCursor) {
-          variables.endCursor = endCursor;
-        }
-
-        this.logger.debug("Fetching commit page", {
-          endCursor,
-          since: startDate,
-          until: endDate,
-          repository: `${owner}/${name}`,
-        });
-
-        const response = await this.executeGraphQL(query, variables);
-
-        const history =
-          response.data.repository.defaultBranchRef.target.history;
-        const pageResults = history.nodes;
-        allCommits = [...allCommits, ...pageResults];
-
-        hasNextPage = history.pageInfo.hasNextPage;
-        endCursor = history.pageInfo.endCursor;
-
-        this.logger.debug("Fetched commit page", {
-          pageCount: pageResults.length,
-          totalSoFar: allCommits.length,
-          hasNextPage,
-          endCursor,
-        });
-      }
-
-      // Validate each commit with Zod schema
-      const validatedCommits = allCommits.map((commit) => {
-        try {
-          return RawCommitSchema.parse(commit);
-        } catch (error) {
-          this.logger.error(`Validation error for commit ${commit.oid}`, {
-            error,
-          });
-          return undefined;
-        }
-      });
-
-      const validCommits = validatedCommits.filter(
-        (commit): commit is NonNullable<typeof commit> => commit !== undefined
+      const commits = await this.paginateGraphQL<CommitSearchResult>(
+        query,
+        { since: startDate, until: endDate },
+        (data) => {
+          const repoData =
+            data.data as GitHubRepositoryResponse<CommitSearchResult>;
+          return {
+            nodes: repoData.repository.defaultBranchRef.target.history.nodes,
+            pageInfo:
+              repoData.repository.defaultBranchRef.target.history.pageInfo,
+          };
+        },
       );
+
+      const validatedCommits = commits
+        .map((commit) => {
+          try {
+            return RawCommitSchema.parse(commit);
+          } catch (error) {
+            this.logger.error(`Validation error for commit`, {
+              error,
+              commit,
+            });
+            return null;
+          }
+        })
+        .filter(isNotNullOrUndefined);
+
       this.logger.info(
-        `Fetched ${validCommits.length} commits for ${owner}/${name}`
+        `Fetched ${validatedCommits.length} commits for ${owner}/${name}`,
       );
-      return validCommits;
+      return validatedCommits;
     } catch (error) {
-      this.logger.error("Error fetching commits", {
-        error: String(error),
-        repoId,
-      });
-      return [];
+      this.logger.error("Failed to fetch commits", { error });
+      throw error;
     }
   }
 }
 
-// Export a singleton instance with default logger
 export const githubClient = new GitHubClient();

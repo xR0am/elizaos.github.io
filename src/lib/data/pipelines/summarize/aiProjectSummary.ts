@@ -3,8 +3,8 @@
  */
 import { AISummaryConfig } from "./config";
 import { callAIService } from "./callAIService";
-import { IntervalType, toDateString } from "@/lib/date-utils";
-import { getProjectMetrics, WorkItemType, ProjectMetrics } from "./queries";
+import { WorkItemType } from "../codeAreaHelpers";
+import { RepositoryMetrics } from "../export/queries";
 
 export interface CompletedItem {
   title: string;
@@ -21,7 +21,7 @@ export interface PullRequestMetrics {
   total: number;
   merged: number;
   open: number;
-  items?: any[];
+  items?: unknown[];
   mergedThisPeriod?: number;
 }
 
@@ -29,8 +29,8 @@ export interface IssueMetrics {
   total: number;
   opened: number;
   closed: number;
-  items?: any[];
-  closedThisPeriod?: any[];
+  items?: unknown[];
+  closedThisPeriod?: unknown[];
 }
 
 export interface CodeChangeMetrics {
@@ -55,9 +55,9 @@ export interface ProjectMetricsForSummary {
 }
 
 export async function generateMonthlyProjectAnalysis(
-  metrics: ProjectMetrics,
+  metrics: RepositoryMetrics,
   config: AISummaryConfig,
-  dateInfo: { startDate: string }
+  dateInfo: { startDate: string },
 ): Promise<string | null> {
   const apiKey = config.apiKey;
   if (!apiKey) {
@@ -80,8 +80,8 @@ export async function generateMonthlyProjectAnalysis(
  * Format project metrics into a structured prompt for monthly analysis
  */
 function formatMonthlyAnalysisPrompt(
-  metrics: ProjectMetrics,
-  dateInfo: { startDate: string }
+  metrics: RepositoryMetrics,
+  dateInfo: { startDate: string },
 ): string {
   const date = new Date(dateInfo.startDate);
   const monthName = date.toLocaleString("default", { month: "long" });

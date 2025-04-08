@@ -1,5 +1,5 @@
 import { getSelectedRepositories } from "../getSelectedRepositories";
-import { pipe, mapStep, parallel, createStep } from "../types";
+import { pipe, mapStep, createStep } from "../types";
 import { calculateTags } from "./calculateTags";
 import { fetchContributors } from "./fetchContributors";
 
@@ -19,9 +19,9 @@ export const processContributorTags = pipe(
     const totalContribtors = results.filter(Boolean).length;
     context.logger?.info(`Processed tags for ${totalContribtors} contributors`);
     return results;
-  })
+  }),
 );
 export const contributorTagsPipeline = pipe(
   getSelectedRepositories,
-  mapStep(processContributorTags)
+  mapStep(processContributorTags),
 );

@@ -40,7 +40,7 @@ export interface RepoPipelineContext extends BasePipelineContext {
 export type PipelineStep<
   TInput,
   TOutput,
-  TContext extends BasePipelineContext = BasePipelineContext
+  TContext extends BasePipelineContext = BasePipelineContext,
 > = (input: TInput, context: TContext) => Promise<TOutput>;
 
 // --- Core utilities ---
@@ -49,30 +49,30 @@ export type PipelineStep<
  * Pipe operations together, feeding output of one step to input of the next
  */
 export function pipe<T1, T2, TContext extends BasePipelineContext>(
-  op1: PipelineStep<T1, T2, TContext>
+  op1: PipelineStep<T1, T2, TContext>,
 ): PipelineStep<T1, T2, TContext>;
 
 export function pipe<T1, T2, T3, TContext extends BasePipelineContext>(
   op1: PipelineStep<T1, T2, TContext>,
-  op2: PipelineStep<T2, T3, TContext>
+  op2: PipelineStep<T2, T3, TContext>,
 ): PipelineStep<T1, T3, TContext>;
 
 export function pipe<T1, T2, T3, T4, TContext extends BasePipelineContext>(
   op1: PipelineStep<T1, T2, TContext>,
   op2: PipelineStep<T2, T3, TContext>,
-  op3: PipelineStep<T3, T4, TContext>
+  op3: PipelineStep<T3, T4, TContext>,
 ): PipelineStep<T1, T4, TContext>;
 
 export function pipe<T1, T2, T3, T4, T5, TContext extends BasePipelineContext>(
   op1: PipelineStep<T1, T2, TContext>,
   op2: PipelineStep<T2, T3, TContext>,
   op3: PipelineStep<T3, T4, TContext>,
-  op4: PipelineStep<T4, T5, TContext>
+  op4: PipelineStep<T4, T5, TContext>,
 ): PipelineStep<T1, T5, TContext>;
 
 export function pipe<TContext extends BasePipelineContext>(
-  ...operations: PipelineStep<any, any, TContext>[]
-): PipelineStep<any, any, TContext> {
+  ...operations: Array<PipelineStep<unknown, unknown, TContext>>
+): PipelineStep<unknown, unknown, TContext> {
   return async (input, context) => {
     let lastResult = input;
 
@@ -89,7 +89,7 @@ export function pipe<TContext extends BasePipelineContext>(
  */
 export function parallel<TInput, T1, T2, TContext extends BasePipelineContext>(
   op1: PipelineStep<TInput, T1, TContext>,
-  op2: PipelineStep<TInput, T2, TContext>
+  op2: PipelineStep<TInput, T2, TContext>,
 ): PipelineStep<TInput, [T1, T2], TContext>;
 
 export function parallel<
@@ -97,19 +97,19 @@ export function parallel<
   T1,
   T2,
   T3,
-  TContext extends BasePipelineContext
+  TContext extends BasePipelineContext,
 >(
   op1: PipelineStep<TInput, T1, TContext>,
   op2: PipelineStep<TInput, T2, TContext>,
-  op3: PipelineStep<TInput, T3, TContext>
+  op3: PipelineStep<TInput, T3, TContext>,
 ): PipelineStep<TInput, [T1, T2, T3], TContext>;
 
 export function parallel<TContext extends BasePipelineContext>(
-  ...operations: PipelineStep<any, any, TContext>[]
-): PipelineStep<any, any[], TContext> {
+  ...operations: PipelineStep<unknown, unknown, TContext>[]
+): PipelineStep<unknown, unknown[], TContext> {
   return async (input, context) => {
     return await Promise.all(
-      operations.map((operation) => operation(input, context))
+      operations.map((operation) => operation(input, context)),
     );
   };
 }
@@ -118,7 +118,7 @@ export function parallel<TContext extends BasePipelineContext>(
  * Map a pipeline step over an array of inputs
  */
 export function mapStep<TInput, TOutput, TContext extends BasePipelineContext>(
-  operation: PipelineStep<TInput, TOutput, TContext>
+  operation: PipelineStep<TInput, TOutput, TContext>,
 ): PipelineStep<TInput[], TOutput[], TContext> {
   return async (inputs, context) => {
     if (!Array.isArray(inputs)) {
@@ -139,10 +139,10 @@ export function mapStep<TInput, TOutput, TContext extends BasePipelineContext>(
 export function createStep<
   TInput,
   TOutput,
-  TContext extends BasePipelineContext = BasePipelineContext
+  TContext extends BasePipelineContext = BasePipelineContext,
 >(
   name: string,
-  transform: (input: TInput, context: TContext) => Promise<TOutput> | TOutput
+  transform: (input: TInput, context: TContext) => Promise<TOutput> | TOutput,
 ): PipelineStep<TInput, TOutput, TContext> {
   return async (input, context) => {
     // Log if a logger is available
