@@ -94,13 +94,13 @@ function calculateMaxTokens(
 ): number {
   // Base tokens by interval type
   const baseTokensByInterval = {
-    month: 600,
-    week: 500,
-    day: 400,
+    month: 700,
+    week: 600,
+    day: 500,
   };
 
   // Get base token count for this interval type
-  const baseTokens = baseTokensByInterval[intervalType] || 500;
+  const baseTokens = baseTokensByInterval[intervalType] || 600;
 
   // Simple estimation: 1 token ≈ 4 characters in English
   const estimatedPromptTokens = prompt.length / 4;
@@ -225,7 +225,7 @@ Format the report with the following sections:
 ## KEY TECHNICAL DEVELOPMENTS
 
  Group/cluster the completed work thematically into ${intervalType === "month" ? "3-5" : "2-4"} different headlines,
- and describe the key changes and improvements in point form. Reference
+ and concisely describe the key changes and improvements in point form. Reference
  the PR numbers that are most relevant to each headline, formatted as a Markdown link (e.g. [#123](https://github.com/${metrics.repository}/pull/123)).
 
  ${
@@ -236,7 +236,6 @@ Close with a short summary of the months achievements
 `
      : ""
  }
-<end_report>
 
 GUIDELINES:
 - Be factual and precise; focus on concrete changes and verifiable data.
