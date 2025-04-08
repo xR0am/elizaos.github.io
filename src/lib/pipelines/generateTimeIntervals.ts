@@ -4,7 +4,7 @@ import {
   TimeInterval,
   toDateString,
   toUTCMidnight,
-} from "../../date-utils";
+} from "@/lib/date-utils";
 import { addDays, addMonths } from "date-fns";
 import { UTCDate } from "@date-fns/utc";
 

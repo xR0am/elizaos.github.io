@@ -1,6 +1,6 @@
 import { IntervalType } from "@/lib/date-utils";
-import { db } from "../../db";
-import { userSummaries, repoSummaries } from "../../schema";
+import { db } from "@/lib/data/db";
+import { userSummaries, repoSummaries } from "@/lib/data/schema";
 import { UTCDate } from "@date-fns/utc";
 
 /**

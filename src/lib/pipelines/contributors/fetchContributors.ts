@@ -6,8 +6,8 @@ import {
   rawIssues,
   prComments,
   prReviews,
-} from "../../schema";
-import { db } from "../../db";
+} from "@/lib/data/schema";
+import { db } from "@/lib/data/db";
 import { sql, eq, and, gte, lte, or } from "drizzle-orm";
 import { isNotNullOrUndefined } from "@/lib/typeHelpers";
 

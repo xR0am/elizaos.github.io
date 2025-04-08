@@ -1,17 +1,17 @@
 import { desc, eq, sql, and } from "drizzle-orm";
-import { db } from "../../db";
+import { db } from "@/lib/data/db";
 import {
   rawPullRequests,
   rawIssues,
   prReviews,
   prComments,
   issueComments,
-} from "../../schema";
+} from "@/lib/data/schema";
 import {
   buildCommonWhereConditions,
   PaginatedQueryParams,
   QueryParams,
-} from "../../queryHelpers";
+} from "@/lib/pipelines/queryHelpers";
 
 /**
  * Get PR data and file paths for a contributor

@@ -10,7 +10,10 @@ import {
   rawCommits,
   rawPullRequestFiles,
 } from "@/lib/data/schema";
-import { buildAreaMap, categorizeWorkItem } from "../codeAreaHelpers";
+import {
+  buildAreaMap,
+  categorizeWorkItem,
+} from "@/lib/pipelines/codeAreaHelpers";
 import { UTCDate } from "@date-fns/utc";
 
 /**

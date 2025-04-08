@@ -1,5 +1,5 @@
 import { SQL, sql, or } from "drizzle-orm";
-import { DateRange } from "./types";
+import { DateRange } from "../data/types";
 
 /**
  * Helper function to build date range conditions for different date fields
