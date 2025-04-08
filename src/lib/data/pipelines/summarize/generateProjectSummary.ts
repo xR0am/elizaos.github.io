@@ -4,12 +4,10 @@ import { generateProjectAnalysis } from "./aiProjectSummary";
 import { generateTimeIntervals } from "../generateTimeIntervals";
 import { IntervalType, TimeInterval, toDateString } from "@/lib/date-utils";
 import { storeRepoSummary } from "./mutations";
-import { db } from "../../db";
-import { repoSummaries } from "../../schema";
-import { eq, and } from "drizzle-orm";
 import { isNotNullOrUndefined } from "@/lib/typeHelpers";
 import { getRepositoryMetrics } from "../export/queries";
 import { getRepoFilePath, writeToFile } from "@/lib/fsHelpers";
+import { existsSync } from "node:fs";
 
 /**
  * Check if a summary already exists for a repository on a specific date and interval type
@@ -18,16 +16,20 @@ async function checkExistingSummary(
   repoId: string,
   date: string,
   intervalType: IntervalType,
+  outputDir?: string,
 ): Promise<boolean> {
-  const existingSummary = await db.query.repoSummaries.findFirst({
-    where: and(
-      eq(repoSummaries.repoId, repoId),
-      eq(repoSummaries.date, date),
-      eq(repoSummaries.intervalType, intervalType),
-    ),
-  });
+  if (!outputDir) return false;
 
-  return existingSummary !== undefined && existingSummary.summary !== "";
+  const filename = `${date}.md`;
+  const summaryPath = getRepoFilePath(
+    outputDir,
+    repoId,
+    "summaries",
+    intervalType,
+    filename,
+  );
+
+  return existsSync(summaryPath);
 }
 
 /**
@@ -65,6 +67,7 @@ export const generateProjectSummaryForInterval = createStep(
           repoId,
           dateRange.startDate,
           interval.intervalType,
+          context.outputDir,
         );
         if (summaryExists) {
           intervalLogger?.info(
@@ -104,31 +107,22 @@ export const generateProjectSummaryForInterval = createStep(
       );
 
       // Export summary as markdown file if outputDir is configured
-      if (context.outputDir) {
-        const filename = `${toDateString(interval.intervalStart)}.md`;
-        const outputPath = getRepoFilePath(
-          context.outputDir,
-          repoId,
-          "summaries",
-          interval.intervalType,
-          filename,
-        );
-        await writeToFile(outputPath, summary);
+      const filename = `${toDateString(interval.intervalStart)}.md`;
+      const outputPath = getRepoFilePath(
+        context.outputDir,
+        repoId,
+        "summaries",
+        interval.intervalType,
+        filename,
+      );
+      await writeToFile(outputPath, summary);
 
-        intervalLogger?.info(
-          `Generated and exported ${interval.intervalType} summary for repo ${repoId}`,
-          {
-            outputPath,
-          },
-        );
-      } else {
-        intervalLogger?.info(
-          `Generated ${interval.intervalType} summary for repo ${repoId}`,
-          {
-            summary,
-          },
-        );
-      }
+      intervalLogger?.info(
+        `Generated and exported ${interval.intervalType} summary for repo ${repoId}`,
+        {
+          outputPath,
+        },
+      );
 
       return summary;
     } catch (error) {

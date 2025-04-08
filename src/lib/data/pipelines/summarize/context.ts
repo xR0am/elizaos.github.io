@@ -8,7 +8,7 @@ import { AISummaryConfig } from "./config";
  */
 export interface SummarizerPipelineContext extends RepoPipelineContext {
   /** Output directory for summary files */
-  outputDir?: string;
+  outputDir: string;
   /** AI summary configuration */
   aiSummaryConfig: AISummaryConfig;
   /** Logger instance */
@@ -23,7 +23,7 @@ interface CreateContributorSummaryContextOptions {
   repoId?: string;
   config: PipelineConfig;
   logger?: Logger;
-  outputDir?: string;
+  outputDir: string;
   aiSummaryConfig: AISummaryConfig;
   overwrite?: boolean;
   dateRange: { startDate: string; endDate?: string };
@@ -33,7 +33,7 @@ interface CreateContributorSummaryContextOptions {
  * Create a context for contributor summary pipelines
  */
 export function createSummarizerContext(
-  options: CreateContributorSummaryContextOptions
+  options: CreateContributorSummaryContextOptions,
 ): SummarizerPipelineContext {
   return options;
 }
