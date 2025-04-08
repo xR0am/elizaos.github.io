@@ -1,11 +1,9 @@
-/**
- * Generate a monthly project analysis report
- */
 import { AISummaryConfig } from "./config";
 import { callAIService } from "./callAIService";
 import { WorkItemType } from "../codeAreaHelpers";
 import { RepositoryMetrics } from "../export/queries";
 import { UTCDate } from "@date-fns/utc";
+import { IntervalType } from "@/lib/date-utils";
 
 export interface CompletedItem {
   title: string;
@@ -55,10 +53,11 @@ export interface ProjectMetricsForSummary {
   completedItems: CompletedItem[];
 }
 
-export async function generateMonthlyProjectAnalysis(
+export async function generateProjectAnalysis(
   metrics: RepositoryMetrics,
   config: AISummaryConfig,
   dateInfo: { startDate: string },
+  intervalType: IntervalType,
 ): Promise<string | null> {
   const apiKey = config.apiKey;
   if (!apiKey) {
@@ -66,28 +65,96 @@ export async function generateMonthlyProjectAnalysis(
   }
 
   try {
-    // Format the data for the AI prompt
-    const prompt = formatMonthlyAnalysisPrompt(metrics, dateInfo);
+    // Format the data for the AI prompt based on interval type
+    const prompt = formatAnalysisPrompt(
+      metrics,
+      dateInfo,
+      intervalType,
+      config,
+    );
 
+    // Calculate token length based on prompt content and interval type
+    const maxTokens = calculateMaxTokens(prompt, intervalType);
+    console.log("maxTokens", maxTokens);
     // Get analysis from AI model
-    return await callAIService(prompt, config, { maxTokens: 600 });
+    return await callAIService(prompt, config, { maxTokens });
   } catch (error) {
-    console.error(`Error generating monthly project analysis:`, error);
+    console.error(`Error generating ${intervalType} project analysis:`, error);
     return null;
   }
 }
 
 /**
- * Format project metrics into a structured prompt for monthly analysis
+ * Calculate appropriate max tokens based on prompt length and interval type
+ * Returns a value using a basic scaling approach
  */
-function formatMonthlyAnalysisPrompt(
+function calculateMaxTokens(
+  prompt: string,
+  intervalType: IntervalType,
+): number {
+  // Base tokens by interval type
+  const baseTokensByInterval = {
+    month: 600,
+    week: 500,
+    day: 400,
+  };
+
+  // Get base token count for this interval type
+  const baseTokens = baseTokensByInterval[intervalType] || 500;
+
+  // Simple estimation: 1 token ≈ 4 characters in English
+  const estimatedPromptTokens = prompt.length / 4;
+  console.log("estimatedPromptTokens", estimatedPromptTokens);
+  // Add 20% more tokens for every 200 estimated tokens in the prompt
+  const scalingFactor = 1 + Math.floor(estimatedPromptTokens / 400) * 0.2;
+
+  // Calculate final token count
+  const calculatedTokens = Math.round(baseTokens * scalingFactor);
+
+  // Ensure result is within 200-1500 token range
+  return Math.max(200, Math.min(1500, calculatedTokens));
+}
+
+/**
+ * Format project metrics into a structured prompt for analysis based on interval type
+ */
+function formatAnalysisPrompt(
   metrics: RepositoryMetrics,
   dateInfo: { startDate: string },
+  intervalType: IntervalType,
+  config: AISummaryConfig,
 ): string {
   const date = new UTCDate(dateInfo.startDate);
-  const monthName = date.toLocaleString("default", { month: "long" });
-  const year = date.getFullYear();
 
+  // Format date information based on interval type
+  let timeframeTitle;
+  if (intervalType === "month") {
+    const monthName = date.toLocaleString("default", { month: "long" });
+    const year = date.getFullYear();
+    timeframeTitle = `${monthName} ${year}`;
+  } else if (intervalType === "week") {
+    // Format as Week of Month Day, Year
+    timeframeTitle = `week of ${date.toLocaleString("default", { month: "short", day: "numeric", year: "numeric" })}`;
+  } else {
+    // Daily format: Month Day, Year
+    timeframeTitle = date.toLocaleString("default", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+  }
+  const getIntervalTypeTitle = (intervalType: IntervalType) => {
+    switch (intervalType) {
+      case "month":
+        return "Monthly";
+      case "week":
+        return "Weekly";
+      case "day":
+        return "Daily";
+      default:
+        return intervalType;
+    }
+  };
   // Format top active areas
   const topActiveAreas = metrics.focusAreas
     .sort((a, b) => b.count - a.count)
@@ -99,6 +166,7 @@ function formatMonthlyAnalysisPrompt(
       .filter((item) => item.type === type)
       .map((item) => `${item.title} (PR #${item.prNumber})`)
       .join("\n- ") || "None";
+
   // Format completed items for better clarity
   const completedFeatures = formatCompletedItems("feature");
   const completedBugfixes = formatCompletedItems("bugfix");
@@ -106,24 +174,22 @@ function formatMonthlyAnalysisPrompt(
   const completedDocs = formatCompletedItems("docs");
   const completedTests = formatCompletedItems("tests");
   const completedOtherWork = formatCompletedItems("other");
+
   return `
- We are ElizaOS. Our mission is to develop an extensible, modular, open-source AI agent framework that thrives across both Web2 and Web3 ecosystems. We see AI agents as the key stepping stones toward AGI, enabling increasingly autonomous and capable systems.
+BACKGROUND CONTEXT:
+  ${config.projectContext}
 
-Core Philosophy
-  Autonomy & Adaptability: Agents should learn, reason, and adapt across diverse tasks without human intervention.
-  Modularity & Composability: AI architectures should be modular, allowing for iterative improvements and robust scalability.
-  Decentralization & Open Collaboration: AI systems should move beyond centralized control towards distributed intelligence and community-driven progress.
-
-Generate a detailed yet concise monthly report for elizaOS (open-source AI agent framework) for ${monthName} ${year}.
+INSTRUCTIONS:
+Generate a detailed yet concise ${intervalType}ly development report for the ${metrics.repository} repo during ${timeframeTitle}, based on the following github activity.
   
-  COMPLETED WORK FOR CONTEXT:
+COMPLETED WORK FOR CONTEXT:
   
 - **Features Added:** 
   - ${completedFeatures}
 - **Bug Fixes:** 
   - ${completedBugfixes}
 - **Code Refactoring:** 
-  - ${completedRefactors}
+  - ${completedRefactors}b
 - **Documentation Enhancements:** 
   - ${completedDocs}
 - **Tests Added:** 
@@ -133,10 +199,11 @@ Generate a detailed yet concise monthly report for elizaOS (open-source AI agent
   Most Active Development Areas:
   - ${topActiveAreas.join("\n- ")}
 
-  Format the report with the following sections:
+Format the report with the following sections:
 
+# <Project Name> ${getIntervalTypeTitle(intervalType)} Update (${timeframeTitle})
 ## OVERVIEW 
-  Provide a high-level summary (max 280 characters) highlighting the overall progress and major achievements of the month.
+  Provide a high-level summary (max 280 characters, min 40 characters) highlighting the overall progress and major achievements of the ${intervalType}.
 
 ## PROJECT METRICS
   Include the following quantitative details:
@@ -155,18 +222,20 @@ Generate a detailed yet concise monthly report for elizaOS (open-source AI agent
     .map((contributor) => contributor.username)
     .join(", ")}
 
-
-
 ## KEY TECHNICAL DEVELOPMENTS
 
- Group/cluster the completed work thematically into 3-5 different headlines,
- and describe the key changes and improvements in each headline. Reference
- the PR numbers that are most relevant to each headline.
- 
+ Group/cluster the completed work thematically into ${intervalType === "month" ? "3-5" : "2-4"} different headlines,
+ and describe the key changes and improvements in point form. Reference
+ the PR numbers that are most relevant to each headline, formatted as a Markdown link (e.g. [#123](https://github.com/${metrics.repository}/pull/123)).
 
+ ${
+   intervalType === "month"
+     ? `
 ## SUMMARY
-  Close with a short summary of the month's accomplishments.
-
+Close with a short summary of the months achievements
+`
+     : ""
+ }
 <end_report>
 
 GUIDELINES:

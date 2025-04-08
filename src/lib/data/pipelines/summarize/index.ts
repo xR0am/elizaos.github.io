@@ -8,7 +8,11 @@ import {
   generateMonthlyContributorSummaries,
 } from "./generateContributorSummary";
 import { SummarizerPipelineContext, createSummarizerContext } from "./context";
-import { generateMonthlyProjectSummaries } from "./generateProjectSummary";
+import {
+  generateDailyProjectSummaries,
+  generateMonthlyProjectSummaries,
+  generateWeeklyProjectSummaries,
+} from "./generateProjectSummary";
 import { isNotNullOrUndefined } from "@/lib/typeHelpers";
 import { fetchContributors } from "../contributors/fetchContributors";
 
@@ -35,7 +39,7 @@ export const generateContributorSummariesForRepo = pipe(
   }),
 );
 
-export { type SummarizerPipelineContext, createSummarizerContext }; // Pipeline for generating contributor summaries with AI
+export { type SummarizerPipelineContext, createSummarizerContext };
 
 export const generateContributorSummaries = pipe(
   getSelectedRepositories,
@@ -45,11 +49,19 @@ export const generateContributorSummaries = pipe(
 // Pipeline for generating monthly project summaries
 export const generateProjectSummaries = pipe(
   getSelectedRepositories,
-  mapStep(generateMonthlyProjectSummaries),
+  mapStep(
+    parallel(
+      generateDailyProjectSummaries,
+      generateWeeklyProjectSummaries,
+      generateMonthlyProjectSummaries,
+    ),
+  ),
   createStep("Log Project Summaries", (results, context) => {
-    const totalSummaries = results.filter(isNotNullOrUndefined).length;
-    context.logger?.info(
-      `Generated ${totalSummaries} monthly project summaries`,
-    );
+    for (const repo of results) {
+      const [daily, weekly, monthly] = repo;
+      context.logger?.info(`Generated ${daily.length} daily summaries`);
+      context.logger?.info(`Generated ${weekly.length} weekly summaries`);
+      context.logger?.info(`Generated ${monthly.length} monthly summaries`);
+    }
   }),
 );

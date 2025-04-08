@@ -292,6 +292,7 @@ export async function getRepositoryMetrics({
   }));
 
   return {
+    repository,
     pullRequests,
     issues,
     uniqueContributors,
