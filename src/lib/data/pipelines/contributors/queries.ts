@@ -96,25 +96,14 @@ export async function getContributorIssueMetrics(
     .where(and(...whereConditions))
     .get();
 
-  // Get issue IDs for comment count with optional limit
-  const query = db
-    .select({
-      id: rawIssues.id,
-    })
-    .from(rawIssues)
-    .where(and(...whereConditions));
-
-  const issues = await query.all();
-
-  const issueIds = issues.map((issue) => issue.id);
-
   // Get comment count
   const commentCount = await db
     .select({
-      count: sql`COUNT(*)`,
+      count: sql`COUNT(DISTINCT ${issueComments.id})`,
     })
     .from(issueComments)
-    .where(sql`${issueComments.issueId} IN ${issueIds}`)
+    .innerJoin(rawIssues, eq(issueComments.issueId, rawIssues.id))
+    .where(and(...whereConditions, eq(issueComments.author, username)))
     .get();
 
   return {
