@@ -3,8 +3,9 @@
  */
 import { AISummaryConfig } from "./config";
 import { callAIService } from "./callAIService";
-import { IntervalType, toDateString } from "@/lib/date-utils";
-import { getProjectMetrics, WorkItemType, ProjectMetrics } from "./queries";
+import { WorkItemType } from "../codeAreaHelpers";
+import { RepositoryMetrics } from "../export/queries";
+import { UTCDate } from "@date-fns/utc";
 
 export interface CompletedItem {
   title: string;
@@ -21,7 +22,7 @@ export interface PullRequestMetrics {
   total: number;
   merged: number;
   open: number;
-  items?: any[];
+  items?: unknown[];
   mergedThisPeriod?: number;
 }
 
@@ -29,8 +30,8 @@ export interface IssueMetrics {
   total: number;
   opened: number;
   closed: number;
-  items?: any[];
-  closedThisPeriod?: any[];
+  items?: unknown[];
+  closedThisPeriod?: unknown[];
 }
 
 export interface CodeChangeMetrics {
@@ -55,9 +56,9 @@ export interface ProjectMetricsForSummary {
 }
 
 export async function generateMonthlyProjectAnalysis(
-  metrics: ProjectMetrics,
+  metrics: RepositoryMetrics,
   config: AISummaryConfig,
-  dateInfo: { startDate: string }
+  dateInfo: { startDate: string },
 ): Promise<string | null> {
   const apiKey = config.apiKey;
   if (!apiKey) {
@@ -80,10 +81,10 @@ export async function generateMonthlyProjectAnalysis(
  * Format project metrics into a structured prompt for monthly analysis
  */
 function formatMonthlyAnalysisPrompt(
-  metrics: ProjectMetrics,
-  dateInfo: { startDate: string }
+  metrics: RepositoryMetrics,
+  dateInfo: { startDate: string },
 ): string {
-  const date = new Date(dateInfo.startDate);
+  const date = new UTCDate(dateInfo.startDate);
   const monthName = date.toLocaleString("default", { month: "long" });
   const year = date.getFullYear();
 
@@ -157,10 +158,11 @@ Generate a detailed yet concise monthly report for elizaOS (open-source AI agent
 
 
 ## KEY TECHNICAL DEVELOPMENTS
- Summarize the 3-5 most significant/impactful changes merged this month with specific PR references.
-    ### Describe new features and their functionality.
-    ### Explain how bug fixes have improved system stability.
-    ### Discuss refactoring efforts and documentation updates that enhance maintainability and developer experience.
+
+ Group/cluster the completed work thematically into 3-5 different headlines,
+ and describe the key changes and improvements in each headline. Reference
+ the PR numbers that are most relevant to each headline.
+ 
 
 ## SUMMARY
   Close with a short summary of the month's accomplishments.

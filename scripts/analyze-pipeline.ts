@@ -42,7 +42,7 @@ import { createContributorPipelineContext } from "@/lib/data/pipelines/contribut
 import { createRepositoryStatsPipelineContext } from "@/lib/data/pipelines/export/context";
 import { runPipeline } from "@/lib/data/pipelines/runPipeline";
 import { createLogger, LogLevel } from "@/lib/data/pipelines/logger";
-import { toDateString } from "@/lib/date-utils";
+import { getDateRange } from "@/lib/date-utils";
 import { createSummarizerContext } from "@/lib/data/pipelines/summarize/context";
 
 const DEFAULT_CONFIG_PATH = "../config/pipeline.config.ts";
@@ -99,10 +99,7 @@ program
         startDate = subDays(endDate, parseInt(options.days));
       }
 
-      const fetchOptions = {
-        startDate: startDate ? toDateString(startDate) : undefined,
-        endDate: toDateString(endDate),
-      };
+      const fetchOptions = getDateRange(startDate, endDate);
 
       rootLogger.info(
         `Fetching data from ${fetchOptions.startDate || "last fetched time"} to ${fetchOptions.endDate} using config from ${configPath}`,
@@ -164,7 +161,6 @@ program
         contributorTagsPipeline,
         undefined, // No input for the root pipeline
         context,
-        pipelineConfig,
       );
 
       const repoCount = result.length;
@@ -193,7 +189,8 @@ program
     "Path to pipeline config file",
     DEFAULT_CONFIG_PATH,
   )
-  .option("-o, --output <dir>", "Output directory for stats", "./data/")
+  .option("-o, --overwrite", "Overwrite existing stats", false)
+  .option("--output <dir>", "Output directory for stats", "./data/")
   .option("-d, --days <number>", "Number of days to look back", "30")
   .action(async (options) => {
     try {
@@ -228,21 +225,16 @@ program
         logger: rootLogger,
         config: pipelineConfig,
         outputDir: options.output,
+        overwrite: options.overwrite,
         dateRange: {
           startDate: startDateStr,
         },
       });
 
       // Run the repository summaries pipeline
-      const result = await runPipeline(
-        generateRepositoryStats,
-        undefined,
-        context,
-        pipelineConfig,
-      );
+      await runPipeline(generateRepositoryStats, undefined, context);
 
       rootLogger.info("\nExport completed successfully!");
-      rootLogger.info(`Generated stats for ${result.length} repositories`);
     } catch (error: unknown) {
       console.error(chalk.red("Error exporting repository stats:"), error);
       process.exit(1);
@@ -262,12 +254,11 @@ program
   )
   .option("-d, --days <number>", "Number of days to look back", "7")
   .option("-o, --overwrite", "Overwrite existing summaries", false)
-  .option(
+  .requiredOption(
     "-t, --type <type>",
     "Type of summary to generate (contributors or project)",
-    "project",
   )
-  .option("--output-dir <dir>", "Output directory for summaries", "./data2/")
+  .option("--output-dir <dir>", "Output directory for summaries", "./data/")
   .action(async (options) => {
     try {
       // Dynamically import the config
@@ -322,19 +313,9 @@ program
 
       // Run the appropriate pipeline based on summary type
       if (summaryType === "contributors") {
-        await runPipeline(
-          generateContributorSummaries,
-          undefined,
-          context,
-          pipelineConfig,
-        );
+        await runPipeline(generateContributorSummaries, undefined, context);
       } else {
-        await runPipeline(
-          generateProjectSummaries,
-          undefined,
-          context,
-          pipelineConfig,
-        );
+        await runPipeline(generateProjectSummaries, undefined, context);
       }
     } catch (error: unknown) {
       console.error(chalk.red("Error generating summaries:"), error);

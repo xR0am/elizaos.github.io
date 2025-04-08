@@ -2,6 +2,7 @@ import { RepoPipelineContext } from "../types";
 
 export interface RepositoryStatsPipelineContext extends RepoPipelineContext {
   outputDir: string;
+  overwrite: boolean;
 }
 
 /**
@@ -13,8 +14,16 @@ export function createRepositoryStatsPipelineContext(params: {
   outputDir: string;
   logger?: RepositoryStatsPipelineContext["logger"];
   config: RepositoryStatsPipelineContext["config"];
+  overwrite?: boolean;
 }): RepositoryStatsPipelineContext {
-  const { repoId, dateRange, outputDir, logger: parentLogger, config } = params;
+  const {
+    repoId,
+    dateRange,
+    outputDir,
+    logger: parentLogger,
+    config,
+    overwrite = false,
+  } = params;
 
   // Use parent logger if provided, creating a child logger for RepositoryStats
   const logger = parentLogger ? parentLogger.child("Export") : undefined;
@@ -25,5 +34,6 @@ export function createRepositoryStatsPipelineContext(params: {
     outputDir,
     logger,
     config,
+    overwrite,
   };
 }

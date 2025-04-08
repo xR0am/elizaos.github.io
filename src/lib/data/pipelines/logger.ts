@@ -12,11 +12,11 @@ export type LogLevel = "error" | "warn" | "info" | "debug" | "trace";
  * Logger interface
  */
 export interface Logger {
-  error: (message: string, data?: Record<string, any>) => void;
-  warn: (message: string, data?: Record<string, any>) => void;
-  info: (message: string, data?: Record<string, any>) => void;
-  debug: (message: string, data?: Record<string, any>) => void;
-  trace: (message: string, data?: Record<string, any>) => void;
+  error: (message: string, data?: Record<string, unknown>) => void;
+  warn: (message: string, data?: Record<string, unknown>) => void;
+  info: (message: string, data?: Record<string, unknown>) => void;
+  debug: (message: string, data?: Record<string, unknown>) => void;
+  trace: (message: string, data?: Record<string, unknown>) => void;
   child: (name: string) => Logger;
 }
 
@@ -71,6 +71,19 @@ const NAME_COLORS = [
 ];
 
 /**
+ * Hash string to number
+ */
+function hashString(str: string): number {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = (hash << 5) - hash + char;
+    hash = hash & hash; // Convert to 32-bit integer
+  }
+  return Math.abs(hash);
+}
+
+/**
  * Create a new logger
  */
 export function createLogger(config: LoggerConfig): Logger {
@@ -88,8 +101,9 @@ export function createLogger(config: LoggerConfig): Logger {
   const prefix =
     nameSegments.length > 0
       ? nameSegments
-          .map((segment, index) => {
-            const color = NAME_COLORS[index % NAME_COLORS.length];
+          .map((segment) => {
+            const colorIndex = hashString(segment) % NAME_COLORS.length;
+            const color = NAME_COLORS[colorIndex];
             return color(`[${segment}]`);
           })
           .join("") +
@@ -102,7 +116,7 @@ export function createLogger(config: LoggerConfig): Logger {
   function log(
     level: LogLevel,
     message: string,
-    data?: Record<string, any>
+    data?: Record<string, unknown>,
   ): void {
     if (LEVEL_PRIORITY[level] > LEVEL_PRIORITY[minLevel]) return;
 
@@ -143,15 +157,15 @@ export function createLogger(config: LoggerConfig): Logger {
   }
 
   return {
-    error: (message: string, data?: Record<string, any>) =>
+    error: (message: string, data?: Record<string, unknown>) =>
       log("error", message, data),
-    warn: (message: string, data?: Record<string, any>) =>
+    warn: (message: string, data?: Record<string, unknown>) =>
       log("warn", message, data),
-    info: (message: string, data?: Record<string, any>) =>
+    info: (message: string, data?: Record<string, unknown>) =>
       log("info", message, data),
-    debug: (message: string, data?: Record<string, any>) =>
+    debug: (message: string, data?: Record<string, unknown>) =>
       log("debug", message, data),
-    trace: (message: string, data?: Record<string, any>) =>
+    trace: (message: string, data?: Record<string, unknown>) =>
       log("trace", message, data),
     child,
   };
@@ -161,10 +175,10 @@ export function createLogger(config: LoggerConfig): Logger {
  * Limit object depth for logging
  */
 function limitObjectDepth(
-  obj: any,
+  obj: unknown,
   depth: number = 0,
-  maxDepth: number = 3
-): any {
+  maxDepth: number = 3,
+): unknown {
   if (depth >= maxDepth) {
     if (Array.isArray(obj)) {
       return obj.length > 0 ? [`${obj.length} items`] : [];
@@ -190,7 +204,7 @@ function limitObjectDepth(
   }
 
   if (typeof obj === "object" && obj !== null) {
-    const result: Record<string, any> = {};
+    const result: Record<string, unknown> = {};
     for (const [key, value] of Object.entries(obj)) {
       result[key] = limitObjectDepth(value, depth + 1, maxDepth);
     }

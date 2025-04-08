@@ -13,7 +13,7 @@ export type ContributorMetricsForSummary = Awaited<
 export async function generateContributorSummary(
   metrics: ContributorMetricsForSummary,
   config: AISummaryConfig,
-  intervalType: IntervalType
+  intervalType: IntervalType,
 ): Promise<string | null> {
   const apiKey = config.apiKey;
   if (!apiKey) {
@@ -50,7 +50,7 @@ export async function generateContributorSummary(
  */
 function formatContributorPrompt(
   metrics: ContributorMetricsForSummary,
-  intervalType: IntervalType
+  intervalType: IntervalType,
 ): string {
   // Helper to truncate long titles
   const truncateTitle = (title: string, maxLength = 64) => {
@@ -103,7 +103,7 @@ function formatContributorPrompt(
         pr.commits?.reduce((sum, c) => sum + (c.deletions || 0), 0) || 0;
 
       return `#${prNumber} "${truncateTitle(
-        pr.title
+        pr.title,
       )}" (+${additions}/-${deletions} lines)`;
     })
     .join(", ");
@@ -125,7 +125,7 @@ function formatContributorPrompt(
   const issueDetails = metrics.issues.items
     .map(
       (issue) =>
-        `#${issue.number} "${truncateTitle(issue.title)}" (${issue.state})`
+        `#${issue.number} "${truncateTitle(issue.title)}" (${issue.state})`,
     )
     .join(", ");
 
@@ -134,10 +134,10 @@ function formatContributorPrompt(
     metrics.activityPattern.frequency >= 0.7
       ? "very consistent work (active most days)"
       : metrics.activityPattern.frequency >= 0.4
-      ? "moderately consistent work (active several days per week)"
-      : metrics.activityPattern.frequency >= 0.2
-      ? "occasional activity (active a few days per week)"
-      : "sporadic activity (active a few days this period)";
+        ? "moderately consistent work (active several days per week)"
+        : metrics.activityPattern.frequency >= 0.2
+          ? "occasional activity (active a few days per week)"
+          : "sporadic activity (active a few days this period)";
 
   // Commit type analysis
   const commitTypes = metrics.codeChanges.commitTypes;
@@ -156,7 +156,7 @@ function formatContributorPrompt(
 
     const sortedTypes = Object.entries(typePercentages)
       .filter(([_, percentage]) => percentage > 10)
-      .sort(([_, a], [__, b]) => b - a);
+      .sort(([_, a], [_2, b]) => b - a);
 
     if (sortedTypes.length > 0) {
       workFocus = sortedTypes
@@ -169,7 +169,7 @@ function formatContributorPrompt(
   const fileTypes = metrics.pullRequests.fileTypes;
   const totalFiles = Object.values(fileTypes).reduce(
     (sum, count) => sum + count,
-    0
+    0,
   );
 
   let fileTypesFocus = "";

@@ -1,4 +1,3 @@
-import { PipelineConfig } from "../pipelineConfig";
 import { BasePipelineContext, PipelineStep } from "./types";
 
 /**
@@ -8,28 +7,24 @@ import { BasePipelineContext, PipelineStep } from "./types";
 export function runPipeline<
   TInput,
   TOutput,
-  TContext extends BasePipelineContext
+  TContext extends BasePipelineContext,
 >(
   pipeline: PipelineStep<TInput, TOutput, TContext>,
   input: TInput,
   context: TContext,
-  config: PipelineConfig
 ) {
   // Add the config to the context
-  const fullContext = { ...context, config } as TContext;
 
-  fullContext.logger?.info("Running pipeline", {
-    hasConfig: Boolean(config),
-  });
+  context.logger?.info("Running pipeline");
 
   const startTime = Date.now();
 
   // Run the pipeline
-  return pipeline(input, fullContext)
+  return pipeline(input, context)
     .then((result) => {
       const duration = Date.now() - startTime;
 
-      fullContext.logger?.info("Pipeline completed", {
+      context.logger?.info("Pipeline completed", {
         durationMs: duration,
       });
 
@@ -37,12 +32,12 @@ export function runPipeline<
     })
     .catch((error) => {
       if (error instanceof Error) {
-        fullContext.logger?.error("Pipeline failed", {
+        context.logger?.error("Pipeline failed", {
           error: error.message,
           stack: error.stack,
         });
       } else {
-        fullContext.logger?.error("Pipeline failed with unknown error");
+        context.logger?.error("Pipeline failed with unknown error");
       }
       throw error;
     });

@@ -1,4 +1,3 @@
-import * as path from "path";
 import { createStep, pipe, mapStep } from "../types";
 import { SummarizerPipelineContext } from "./context";
 import { generateMonthlyProjectAnalysis } from "./aiProjectSummary";
@@ -9,7 +8,7 @@ import { db } from "../../db";
 import { repoSummaries } from "../../schema";
 import { eq, and } from "drizzle-orm";
 import { isNotNullOrUndefined } from "@/lib/typeHelpers";
-import { getProjectMetrics } from "./queries";
+import { getRepositoryMetrics } from "../export/queries";
 import { getRepoFilePath, writeToFile } from "@/lib/fsHelpers";
 
 /**
@@ -18,13 +17,13 @@ import { getRepoFilePath, writeToFile } from "@/lib/fsHelpers";
 async function checkExistingSummary(
   repoId: string,
   date: string,
-  intervalType: IntervalType
+  intervalType: IntervalType,
 ): Promise<boolean> {
   const existingSummary = await db.query.repoSummaries.findFirst({
     where: and(
       eq(repoSummaries.repoId, repoId),
       eq(repoSummaries.date, date),
-      eq(repoSummaries.intervalType, intervalType)
+      eq(repoSummaries.intervalType, intervalType),
     ),
   });
 
@@ -35,19 +34,17 @@ async function checkExistingSummary(
  * Generate monthly project summary for a specific time interval
  */
 export const generateProjectSummaryForInterval = createStep(
-  "ProjectMonthlySummary",
+  "ProjectSummary",
   async (
     { interval, repoId }: { interval: TimeInterval; repoId: string },
-    context: SummarizerPipelineContext
+    context: SummarizerPipelineContext,
   ) => {
     const { logger, aiSummaryConfig, overwrite } = context;
 
     if (!aiSummaryConfig.enabled) {
-      return null;
-    }
-
-    // Only process monthly intervals
-    if (interval.intervalType !== "month") {
+      logger?.debug(
+        `AI summary generation is disabled, skipping ${interval.intervalType} summary for ${repoId}`,
+      );
       return null;
     }
 
@@ -67,19 +64,19 @@ export const generateProjectSummaryForInterval = createStep(
         const summaryExists = await checkExistingSummary(
           repoId,
           dateRange.startDate,
-          interval.intervalType
+          interval.intervalType,
         );
         if (summaryExists) {
           intervalLogger?.info(
-            `${interval.intervalType} summary already exists for ${repoId} on ${dateRange.startDate}, skipping generation`
+            `${interval.intervalType} summary already exists for ${repoId} on ${dateRange.startDate}, skipping generation`,
           );
           return;
         }
       }
 
       // Get metrics for this time period
-      const metrics = await getProjectMetrics({
-        repoId,
+      const metrics = await getRepositoryMetrics({
+        repository: repoId,
         dateRange,
       });
 
@@ -87,12 +84,12 @@ export const generateProjectSummaryForInterval = createStep(
       const summary = await generateMonthlyProjectAnalysis(
         metrics,
         aiSummaryConfig,
-        dateRange
+        dateRange,
       );
 
       if (!summary) {
         intervalLogger?.debug(
-          `No activity for repo ${repoId} on ${dateRange.startDate}, skipping summary generation`
+          `No activity for repo ${repoId} on ${dateRange.startDate}, skipping summary generation`,
         );
         return;
       }
@@ -102,7 +99,7 @@ export const generateProjectSummaryForInterval = createStep(
         repoId,
         toDateString(interval.intervalStart),
         summary,
-        interval.intervalType
+        interval.intervalType,
       );
 
       // Export summary as markdown file if outputDir is configured
@@ -113,23 +110,22 @@ export const generateProjectSummaryForInterval = createStep(
           repoId,
           "summaries",
           interval.intervalType,
-          filename
+          filename,
         );
         await writeToFile(outputPath, summary);
 
         intervalLogger?.info(
-          `Generated and stored ${interval.intervalType} summary for repo ${repoId}`,
+          `Generated and exported ${interval.intervalType} summary for repo ${repoId}`,
           {
-            summary,
             outputPath,
-          }
+          },
         );
       } else {
         intervalLogger?.info(
           `Generated ${interval.intervalType} summary for repo ${repoId}`,
           {
             summary,
-          }
+          },
         );
       }
 
@@ -139,7 +135,7 @@ export const generateProjectSummaryForInterval = createStep(
         error: (error as Error).message,
       });
     }
-  }
+  },
 );
 
 /**
@@ -148,7 +144,7 @@ export const generateProjectSummaryForInterval = createStep(
 export const generateMonthlyProjectSummaries = pipe(
   generateTimeIntervals<{ repoId: string }>("month"),
   mapStep(generateProjectSummaryForInterval),
-  createStep("Filter null results", (results, context) => {
+  createStep("Filter null results", (results) => {
     return results.filter(isNotNullOrUndefined);
-  })
+  }),
 );
