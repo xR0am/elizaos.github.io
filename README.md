@@ -44,7 +44,7 @@ repositories: [
 ],
 ```
 
-4. Initalize Database
+4. Initialize Database
 
 The SQLite database stores the GitHub data in a relational format for efficient querying and analysis. The database schema is in `src/lib/data/schema.ts`. Here's how to set it up:
 
@@ -57,42 +57,108 @@ This will:
 - Create a SQLite database in the `data/` directory
 - Set up the required tables and schema with relations
 
-## Usage
+## Commands and Capabilities
+
+### Data Ingestion
 
 ```bash
 # Ingest latest Github data (default since last fetched, or 30 days)
 bun run pipeline ingest
 
-# Process and analyze
-bun run pipeline process
-
-# Generate AI summaries
-bun run pipeline summarize
-
-# Export JSON data
-bun run pipeline export
-```
-
-The ingest command supports flexible date filtering:
-
-- `--after` or `-a`: Start date in YYYY-MM-DD format
-- `--before` or `-b`: End date in YYYY-MM-DD format (defaults to end of today)
-- `--days` or `-d`: Number of days to look back from the before date
-
-Examples
-
-```bash
-# Fetch data between specific dates
+# Ingest with specific date range
 bun run pipeline ingest --after 2024-01-01 --before 2024-03-31
 
-# Fetch 30 days before March 31
+# Ingest data for a specific number of days
 bun run pipeline ingest --days 30 --before 2024-03-31
 
-# Fetch from Jan 1st until now
-bun run pipeline ingest --after 2024-01-01
+# Ingest with verbose logging
+bun run pipeline ingest -v
 
-# Fetch until March 31 (from last fetched time)
-bun run pipeline ingest --before 2024-03-31
+# Ingest with custom config file
+bun run pipeline ingest --config custom-config.ts
+```
+
+### Data Processing and Analysis
+
+```bash
+# Process and analyze all repositories
+bun run pipeline process
+
+# Process specific repository
+bun run pipeline process --repository owner/repo
+
+# Process with verbose logging
+bun run pipeline process -v
+
+# Process with custom config
+bun run pipeline process --config custom-config.ts
+```
+
+### Generating Stats and Exports
+
+```bash
+# Export repository stats (defaults to last 30 days)
+bun run pipeline export
+
+# Export with custom lookback period
+bun run pipeline export --days 60
+
+# Export for specific repository
+bun run pipeline export --repository owner/repo
+
+# Export to custom directory
+bun run pipeline export --output ./custom-dir/
+
+# Export with verbose logging
+bun run pipeline export -v
+```
+
+### AI Summary Generation
+
+```bash
+# Generate project summaries (default)
+bun run pipeline summarize
+
+# Generate contributor summaries
+bun run pipeline summarize --type contributors
+
+# Generate summaries for specific time period
+bun run pipeline summarize --days 14
+
+# Generate summaries for specific repository
+bun run pipeline summarize --repository owner/repo
+
+# Force overwrite existing summaries
+bun run pipeline summarize --overwrite
+
+# Generate summaries with custom output directory
+bun run pipeline summarize --output-dir ./custom-summaries/
+
+# Generate summaries with verbose logging
+bun run pipeline summarize -v
+```
+
+### Database Management
+
+```bash
+# Generate database migration files
+bun run db:generate
+
+# Apply database migrations
+bun run db:migrate
+
+# Launch interactive database explorer
+bun run db:studio
+```
+
+### Website Generation
+
+```bash
+# Build and generate contributor profile pages
+bun run build
+
+# View the site
+bunx serve@latest out
 ```
 
 ## Development
@@ -142,39 +208,12 @@ This launches Drizzle Studio, which provides a visual interface to browse tables
 
 Additional setup required if you use Safari or Brave: https://orm.drizzle.team/docs/drizzle-kit-studio#safari-and-brave-support
 
-### Legacy Python Scripts (Deprecated)
-
-The project previously used Python scripts for data processing, but is now moving to the TypeScript pipeline. These scripts are kept for reference and backward compatibility:
-
-```bash
-# Fetch recent activity
-./scripts/fetch_github.sh owner repo --type prs --days 7
-./scripts/fetch_github.sh owner repo --type issues --days 7
-./scripts/fetch_github.sh owner repo --type commits --days 7
-
-# Process and combine data
-python scripts/combine_raw.py -p data/prs.json -i data/issues.json -c data/commits.json -o data/combined.json
-
-# Calculate contributor scores
-python scripts/calculate_scores.py data/combined.json data/scored.json
-
-# Generate summaries
-python scripts/summarize.py data/scored.json data/contributors.json --model openai
-
-# Generate weekly thread summary
-bash scripts/generate_history_summaries.sh
-```
-
-While these scripts still work, it's recommended to use the TypeScript pipeline for new development.
-
 ### Weekly Thread Generation
 
 The system can generate social media-friendly thread summaries of weekly activity:
 
 1. **Automatic Generation**: Part of weekly workflow, runs every Friday
-2. **Manual Generation**: Run `generate_history_summaries.sh`
-3. **Output Location**: `data/weekly/thread_[DATE].txt`
-4. **Content**:
+2. **Content**:
    - Comprehensive weekly summary in thread format
    - Key metrics and achievements
    - Notable PRs and improvements
@@ -188,34 +227,19 @@ The included GitHub Actions workflow (`weekly-summaries.yml`) automatically:
 - Generates weekly reports and threads on Fridays
 - Creates monthly summaries on the 4th of each month
 
-### Generate Static Site
-
-```bash
-# Build and generate contributor profile pages
-bun run build
-
-# View the site
-bunx serve@latest out
-```
-
-Or use npm...
-
 ## Customization
 
-### Legacy Customization
-
-- Modify scoring algorithms in `calculate_scores.py` (legacy)
-- Adjust summary generation in `summarize.py` (legacy)
-- Customize profile pages in `ContributorProfile.js`
-- Configure report schedules in `weekly-summaries.yml`
-- Customize thread format in `generate_history_summaries.sh`
+- Customize scoring algorithms in `src/lib/data/pipelines/contributors/score.ts`
+- Adjust summary generation in `src/lib/data/pipelines/summarize`
+- Customize profile pages in `src/components/ContributorProfile.tsx`
+- Configure report schedules in `.github/workflows/weekly-summaries.yml`
 
 ## Directory Structure
 
 ```
 .
 ├── data/               # Generated data and reports
-│   └── db.sqlite       # SQLite database (TypeScript pipeline)
+│   └── db.sqlite       # SQLite database
 ├── scripts/            # Core processing scripts
 │   └── analyze-pipeline.ts  # Run typescript pipeline
 ├── config/             # Configuration files
@@ -242,7 +266,6 @@ Or use npm...
 
 ## Requirements
 
-- Python 3.11+
 - Node.js 18+
 - GitHub Personal Access Token
 - OpenAI API Key (optional, for AI summaries)
