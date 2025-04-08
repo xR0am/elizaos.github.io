@@ -190,7 +190,7 @@ program
     DEFAULT_CONFIG_PATH,
   )
   .option("-o, --overwrite", "Overwrite existing stats", false)
-  .option("--output <dir>", "Output directory for stats", "./data/")
+  .option("--output-dir <dir>", "Output directory for stats", "./data/")
   .option("-d, --days <number>", "Number of days to look back", "30")
   .action(async (options) => {
     try {
@@ -224,7 +224,7 @@ program
         repoId: options.repository,
         logger: rootLogger,
         config: pipelineConfig,
-        outputDir: options.output,
+        outputDir: options.outputDir,
         overwrite: options.overwrite,
         dateRange: {
           startDate: startDateStr,

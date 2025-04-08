@@ -351,5 +351,13 @@ export default {
     max_tokens: 200,
     endpoint: "https://openrouter.ai/api/v1/chat/completions",
     apiKey: openrouterApiKey,
+    projectContext: `
+     We are ElizaOS. Our mission is to develop an extensible, modular, open-source AI agent framework that thrives across both Web2 and Web3 ecosystems. We see AI agents as the key stepping stones toward AGI, enabling increasingly autonomous and capable systems.
+
+  Core Philosophy
+    Autonomy & Adaptability: Agents should learn, reason, and adapt across diverse tasks without human intervention.
+    Modularity & Composability: AI architectures should be modular, allowing for iterative improvements and robust scalability.
+    Decentralization & Open Collaboration: AI systems should move beyond centralized control towards distributed intelligence and community-driven progress.
+    `,
   },
 } as const satisfies PipelineConfig;

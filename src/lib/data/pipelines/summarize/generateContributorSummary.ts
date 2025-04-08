@@ -116,9 +116,6 @@ export const generateContributorSummariesForInterval = createStep(
   },
 );
 
-/**
- * Pipeline for generating weekly contributor summaries
- */
 export const generateWeeklyContributorSummaries = pipe(
   generateTimeIntervals<{ repoId: string; username: string }>("week"),
   mapStep(generateContributorSummariesForInterval),
@@ -127,9 +124,6 @@ export const generateWeeklyContributorSummaries = pipe(
   }),
 );
 
-/**
- * Pipeline for generating monthly contributor summaries
- */
 export const generateMonthlyContributorSummaries = pipe(
   generateTimeIntervals<{ repoId: string; username: string }>("month"),
   mapStep(generateContributorSummariesForInterval),

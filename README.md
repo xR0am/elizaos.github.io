@@ -59,6 +59,15 @@ This will:
 
 ## Commands and Capabilities
 
+You can see the main pipelines and their usages with these commands below:
+
+```bash
+bun run pipeline ingest -h
+bun run pipeline process -h
+bun run pipeline export -h
+bun run pipeline summarize -h
+```
+
 ### Data Ingestion
 
 ```bash
@@ -97,45 +106,48 @@ bun run pipeline process --config custom-config.ts
 ### Generating Stats and Exports
 
 ```bash
-# Export repository stats (defaults to last 30 days)
+# Export repository stats (defaults to 30 days)
 bun run pipeline export
 
 # Export with custom lookback period
-bun run pipeline export --days 60
+bun run pipeline export -d 60
 
 # Export for specific repository
-bun run pipeline export --repository owner/repo
+bun run pipeline export -r owner/repo
 
 # Export to custom directory
-bun run pipeline export --output ./custom-dir/
+bun run pipeline export --output-dir ./custom-dir/
 
 # Export with verbose logging
 bun run pipeline export -v
+
+# Regenerate and overwrite existing files
+bun run pipeline export --overwrite
 ```
 
 ### AI Summary Generation
 
 ```bash
-# Generate project summaries (default)
-bun run pipeline summarize
+# Generate project summaries
+bun run pipeline summarize -t project
 
 # Generate contributor summaries
-bun run pipeline summarize --type contributors
+bun run pipeline summarize -t contributors
 
-# Generate summaries for specific time period
-bun run pipeline summarize --days 14
+# Generate summaries for specific time period (default 7 days)
+bun run pipeline summarize -t project -d 90
 
 # Generate summaries for specific repository
-bun run pipeline summarize --repository owner/repo
+bun run pipeline summarize -t project --repository owner/repo
 
 # Force overwrite existing summaries
-bun run pipeline summarize --overwrite
+bun run pipeline summarize -t project --overwrite
 
 # Generate summaries with custom output directory
-bun run pipeline summarize --output-dir ./custom-summaries/
+bun run pipeline summarize -t project --output-dir ./custom-summaries/
 
 # Generate summaries with verbose logging
-bun run pipeline summarize -v
+bun run pipeline summarize -t project -v
 ```
 
 ### Database Management
@@ -268,5 +280,8 @@ The included GitHub Actions workflow (`weekly-summaries.yml`) automatically:
 
 - Node.js 18+
 - GitHub Personal Access Token
+- OpenAI API Key (optional, for AI summaries)
+- Bun 1.0+ (recommended for TypeScript pipeline)
+
 - OpenAI API Key (optional, for AI summaries)
 - Bun 1.0+ (recommended for TypeScript pipeline)
