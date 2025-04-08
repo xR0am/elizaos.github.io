@@ -224,7 +224,7 @@ program
         repoId: options.repository,
         logger: rootLogger,
         config: pipelineConfig,
-        outputDir: options.output,
+        outputDir: options.outputDir,
         overwrite: options.overwrite,
         dateRange: {
           startDate: startDateStr,
