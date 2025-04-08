@@ -262,7 +262,7 @@ program
     "Type of summary to generate (contributors or project)",
     "project",
   )
-  .option("--output-dir <dir>", "Output directory for summaries", "./data2/")
+  .option("--output-dir <dir>", "Output directory for summaries", "./data/")
   .action(async (options) => {
     try {
       // Dynamically import the config
