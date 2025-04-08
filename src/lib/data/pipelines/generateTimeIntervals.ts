@@ -1,6 +1,12 @@
 import { createStep, RepoPipelineContext } from "./types";
-import { IntervalType, TimeInterval, toUTCMidnight } from "../../date-utils";
+import {
+  IntervalType,
+  TimeInterval,
+  toDateString,
+  toUTCMidnight,
+} from "../../date-utils";
 import { addDays, addMonths } from "date-fns";
+import { UTCDate } from "@date-fns/utc";
 
 /**
  * Creates a pipeline step to generate time intervals for a repository with a specific interval type
@@ -25,15 +31,60 @@ export const generateTimeIntervals = <TInput extends Record<string, unknown>>(
       });
       const intervals: TimeInterval[] = [];
 
-      // Convert dates to UTC midnight
-      const start = toUTCMidnight(dateRange.startDate);
-      const end = dateRange.endDate
-        ? toUTCMidnight(dateRange.endDate)
-        : toUTCMidnight(new Date());
+      // Convert dates to UTC midnight and adjust based on interval type
+      let start: UTCDate;
+      let end: UTCDate;
 
-      let currentStart = new Date(start);
+      switch (intervalType) {
+        case "day":
+          start = toUTCMidnight(new UTCDate(dateRange.startDate));
+          end = dateRange.endDate
+            ? addDays(toUTCMidnight(new UTCDate(dateRange.endDate)), 1)
+            : addDays(toUTCMidnight(new UTCDate()), 1);
+          break;
 
-      // If start and end are the same date, create a single interval
+        case "week": {
+          // Get start of week (Sunday) for the start date
+          const startDate = toUTCMidnight(new UTCDate(dateRange.startDate));
+          start = addDays(startDate, -startDate.getUTCDay());
+
+          // Get first day of next week after the end date
+          const rawEnd = dateRange.endDate
+            ? toUTCMidnight(new UTCDate(dateRange.endDate))
+            : toUTCMidnight(new UTCDate());
+          const daysUntilNextWeek = 7 - rawEnd.getUTCDay();
+          end = addDays(rawEnd, daysUntilNextWeek);
+          break;
+        }
+
+        case "month": {
+          // Start from first day of the start month
+          const startDate = new UTCDate(dateRange.startDate);
+          start = new UTCDate(
+            Date.UTC(startDate.getUTCFullYear(), startDate.getUTCMonth(), 1),
+          );
+
+          // End at the first day of the month after the end date
+          const rawEnd = dateRange.endDate
+            ? new UTCDate(dateRange.endDate)
+            : new UTCDate();
+          end = addMonths(
+            new UTCDate(
+              Date.UTC(rawEnd.getUTCFullYear(), rawEnd.getUTCMonth(), 1),
+            ),
+            1,
+          );
+
+          break;
+        }
+
+        default:
+          throw new Error(`Unsupported interval type: ${intervalType}`);
+      }
+
+      let currentStart = new UTCDate(start);
+
+      // Handle single-day case
       if (currentStart.getTime() === end.getTime()) {
         const interval: TimeInterval = {
           intervalStart: currentStart,
@@ -50,65 +101,43 @@ export const generateTimeIntervals = <TInput extends Record<string, unknown>>(
       }
 
       while (currentStart < end) {
-        let intervalEnd: Date;
+        let intervalEnd: UTCDate;
 
         switch (intervalType) {
           case "day":
-            // Add a day using date-fns
             intervalEnd = addDays(currentStart, 1);
             break;
 
           case "week":
-            // Add a week using date-fns
-            intervalEnd = addDays(currentStart, 7 - currentStart.getUTCDay());
+            intervalEnd = addDays(currentStart, 7);
             break;
 
           case "month":
-            // Set to first day of next month in UTC using date-fns
-            intervalEnd = addMonths(
-              new Date(
-                Date.UTC(
-                  currentStart.getUTCFullYear(),
-                  currentStart.getUTCMonth(),
-                  1,
-                ),
-              ),
-              1,
-            );
+            intervalEnd = addMonths(currentStart, 1);
             break;
-        }
 
-        // Don't exceed the overall end date
-        if (intervalEnd > end) {
-          intervalEnd = new Date(end);
+          default:
+            throw new Error(`Unsupported interval type: ${intervalType}`);
         }
 
         const interval: TimeInterval = {
           intervalStart: currentStart,
-          intervalEnd: intervalEnd,
+          intervalEnd,
           intervalType,
         };
-        logger?.trace("Generated interval", {
-          interval,
-        });
         intervals.push(interval);
 
         // Move to next interval start
-        currentStart = new Date(intervalEnd);
-
-        // Break if we've reached the end to prevent infinite loops
-        if (currentStart.getTime() >= end.getTime()) {
-          break;
-        }
+        currentStart = intervalEnd;
       }
 
       logger?.debug(`Generated ${intervals.length} intervals`, {
-        intervalType,
-        dateRange,
+        intervals: intervals.map((interval) => ({
+          intervalStart: toDateString(interval.intervalStart),
+          intervalEnd: toDateString(interval.intervalEnd),
+        })),
       });
 
-      const res = intervals.map((interval) => ({ ...input, interval }));
-
-      return res;
+      return intervals.map((interval) => ({ ...input, interval }));
     },
   );

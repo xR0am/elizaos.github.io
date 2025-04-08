@@ -247,20 +247,10 @@ export async function getRepositoryMetrics({
       ),
     );
 
-  // Get top contributors by commit count
-  const authorCommitCounts = new Map<string, number>();
-  commits.forEach((commit) => {
-    if (commit.author) {
-      const currentCount = authorCommitCounts.get(commit.author) || 0;
-      authorCommitCounts.set(commit.author, currentCount + 1);
-    }
+  const topContributors = await getTopContributors({
+    repository,
+    dateRange,
   });
-
-  const sortedContributors = Array.from(authorCommitCounts.entries())
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 7)
-    .map(([username]) => ({ username }));
-
   // Calculate code changes
   const additions = commits.reduce(
     (sum, commit) => sum + (commit.additions || 0),
@@ -305,7 +295,7 @@ export async function getRepositoryMetrics({
     pullRequests,
     issues,
     uniqueContributors,
-    topContributors: sortedContributors,
+    topContributors,
     codeChanges,
     focusAreas,
     completedItems,

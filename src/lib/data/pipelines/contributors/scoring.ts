@@ -10,6 +10,7 @@ import {
   getContributorPRMetrics,
 } from "./queries";
 import { QueryParams } from "../../queryHelpers";
+import { UTCDate } from "@date-fns/utc";
 
 export interface ScoreResult {
   totalScore: number;
@@ -59,7 +60,7 @@ export const calculatePRScore = (
 
   // Group PRs by date for applying daily caps
   const prsByDate = groupBy(prs, (pr) => {
-    const date = new Date(pr.createdAt);
+    const date = new UTCDate(pr.createdAt);
     return toDateString(date);
   });
 

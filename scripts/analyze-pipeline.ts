@@ -189,7 +189,8 @@ program
     "Path to pipeline config file",
     DEFAULT_CONFIG_PATH,
   )
-  .option("-o, --output <dir>", "Output directory for stats", "./data/")
+  .option("-o, --overwrite", "Overwrite existing stats", false)
+  .option("--output <dir>", "Output directory for stats", "./data/")
   .option("-d, --days <number>", "Number of days to look back", "30")
   .action(async (options) => {
     try {
@@ -224,20 +225,16 @@ program
         logger: rootLogger,
         config: pipelineConfig,
         outputDir: options.output,
+        overwrite: options.overwrite,
         dateRange: {
           startDate: startDateStr,
         },
       });
 
       // Run the repository summaries pipeline
-      const result = await runPipeline(
-        generateRepositoryStats,
-        undefined,
-        context,
-      );
+      await runPipeline(generateRepositoryStats, undefined, context);
 
       rootLogger.info("\nExport completed successfully!");
-      rootLogger.info(`Generated stats for ${result.length} repositories`);
     } catch (error: unknown) {
       console.error(chalk.red("Error exporting repository stats:"), error);
       process.exit(1);
@@ -257,10 +254,9 @@ program
   )
   .option("-d, --days <number>", "Number of days to look back", "7")
   .option("-o, --overwrite", "Overwrite existing summaries", false)
-  .option(
+  .requiredOption(
     "-t, --type <type>",
     "Type of summary to generate (contributors or project)",
-    "project",
   )
   .option("--output-dir <dir>", "Output directory for summaries", "./data/")
   .action(async (options) => {

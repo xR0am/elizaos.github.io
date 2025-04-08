@@ -3,7 +3,7 @@ import { createStep } from "../types";
 import { db } from "../../db";
 import { tags, userTagScores } from "../../schema";
 import { ContributorPipelineContext } from "./context";
-
+import { UTCDate } from "@date-fns/utc";
 // --- Tag processors ---
 /**
  * Calculate expertise areas for a contributor
@@ -145,13 +145,13 @@ export async function storeTagScore(
       name: tag,
       category,
       description: "",
-      createdAt: new Date().toISOString(),
-      lastUpdated: new Date().toISOString(),
+      createdAt: new UTCDate().toISOString(),
+      lastUpdated: new UTCDate().toISOString(),
     })
     .onConflictDoUpdate({
       target: tags.name,
       set: {
-        lastUpdated: new Date().toISOString(),
+        lastUpdated: new UTCDate().toISOString(),
       },
     });
 
@@ -166,7 +166,7 @@ export async function storeTagScore(
       level,
       progress,
       pointsToNext: Math.pow(2, level + 1) - 1,
-      lastUpdated: new Date().toISOString(),
+      lastUpdated: new UTCDate().toISOString(),
     })
     .onConflictDoUpdate({
       target: userTagScores.id,
@@ -175,7 +175,7 @@ export async function storeTagScore(
         level,
         progress,
         pointsToNext: Math.pow(2, level + 1) - 1,
-        lastUpdated: new Date().toISOString(),
+        lastUpdated: new UTCDate().toISOString(),
       },
     });
 }

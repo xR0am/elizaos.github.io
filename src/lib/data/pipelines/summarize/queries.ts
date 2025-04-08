@@ -11,6 +11,7 @@ import {
   rawPullRequestFiles,
 } from "@/lib/data/schema";
 import { buildAreaMap, categorizeWorkItem } from "../codeAreaHelpers";
+import { UTCDate } from "@date-fns/utc";
 
 /**
  * Get metrics for a contributor within a time range
@@ -79,8 +80,8 @@ export async function getContributorMetrics({
 
     for (const pr of mergedPRs) {
       if (pr.createdAt && pr.mergedAt) {
-        const created = new Date(pr.createdAt).getTime();
-        const merged = new Date(pr.mergedAt).getTime();
+        const created = new UTCDate(pr.createdAt).getTime();
+        const merged = new UTCDate(pr.mergedAt).getTime();
         const hoursToMerge = Math.round((merged - created) / (1000 * 60 * 60));
 
         totalTimeToMerge += hoursToMerge;
@@ -305,14 +306,14 @@ export async function getContributorMetrics({
 
   // Calculate work frequency patterns
   const commitDates = contributorCommits.map(
-    (c) => new Date(c.committedDate).toISOString().split("T")[0],
+    (c) => new UTCDate(c.committedDate).toISOString().split("T")[0],
   );
   const uniqueDaysWithCommits = new Set(commitDates).size;
   const totalDays = Math.max(
     1,
     Math.ceil(
-      (new Date(dateRange.endDate).getTime() -
-        new Date(dateRange.startDate).getTime()) /
+      (new UTCDate(dateRange.endDate).getTime() -
+        new UTCDate(dateRange.startDate).getTime()) /
         (1000 * 60 * 60 * 24),
     ),
   );

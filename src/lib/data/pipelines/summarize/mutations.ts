@@ -1,6 +1,7 @@
 import { IntervalType } from "@/lib/date-utils";
 import { db } from "../../db";
 import { userSummaries, repoSummaries } from "../../schema";
+import { UTCDate } from "@date-fns/utc";
 
 /**
  * Store daily summary in the database
@@ -9,7 +10,7 @@ export async function storeDailySummary(
   username: string,
   date: string,
   summary: string,
-  intervalType: IntervalType
+  intervalType: IntervalType,
 ): Promise<void> {
   const id = `${username}_${intervalType}_${date}`;
 
@@ -21,13 +22,13 @@ export async function storeDailySummary(
       date,
       summary,
       intervalType,
-      lastUpdated: new Date().toISOString(),
+      lastUpdated: new UTCDate().toISOString(),
     })
     .onConflictDoUpdate({
       target: userSummaries.id,
       set: {
         summary,
-        lastUpdated: new Date().toISOString(),
+        lastUpdated: new UTCDate().toISOString(),
       },
     });
 }
@@ -39,7 +40,7 @@ export async function storeRepoSummary(
   repoId: string,
   date: string,
   summary: string,
-  intervalType: IntervalType
+  intervalType: IntervalType,
 ): Promise<void> {
   const id = `${repoId}_${intervalType}_${date}`;
 
@@ -51,13 +52,13 @@ export async function storeRepoSummary(
       date,
       summary,
       intervalType,
-      lastUpdated: new Date().toISOString(),
+      lastUpdated: new UTCDate().toISOString(),
     })
     .onConflictDoUpdate({
       target: repoSummaries.id,
       set: {
         summary,
-        lastUpdated: new Date().toISOString(),
+        lastUpdated: new UTCDate().toISOString(),
       },
     });
 } // --- Helper functions ---

@@ -34,7 +34,7 @@ async function checkExistingSummary(
  * Generate monthly project summary for a specific time interval
  */
 export const generateProjectSummaryForInterval = createStep(
-  "ProjectMonthlySummary",
+  "ProjectSummary",
   async (
     { interval, repoId }: { interval: TimeInterval; repoId: string },
     context: SummarizerPipelineContext,
@@ -42,11 +42,9 @@ export const generateProjectSummaryForInterval = createStep(
     const { logger, aiSummaryConfig, overwrite } = context;
 
     if (!aiSummaryConfig.enabled) {
-      return null;
-    }
-
-    // Only process monthly intervals
-    if (interval.intervalType !== "month") {
+      logger?.debug(
+        `AI summary generation is disabled, skipping ${interval.intervalType} summary for ${repoId}`,
+      );
       return null;
     }
 
@@ -117,9 +115,8 @@ export const generateProjectSummaryForInterval = createStep(
         await writeToFile(outputPath, summary);
 
         intervalLogger?.info(
-          `Generated and stored ${interval.intervalType} summary for repo ${repoId}`,
+          `Generated and exported ${interval.intervalType} summary for repo ${repoId}`,
           {
-            summary,
             outputPath,
           },
         );

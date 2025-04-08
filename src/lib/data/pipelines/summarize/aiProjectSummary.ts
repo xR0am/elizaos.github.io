@@ -5,6 +5,7 @@ import { AISummaryConfig } from "./config";
 import { callAIService } from "./callAIService";
 import { WorkItemType } from "../codeAreaHelpers";
 import { RepositoryMetrics } from "../export/queries";
+import { UTCDate } from "@date-fns/utc";
 
 export interface CompletedItem {
   title: string;
@@ -83,7 +84,7 @@ function formatMonthlyAnalysisPrompt(
   metrics: RepositoryMetrics,
   dateInfo: { startDate: string },
 ): string {
-  const date = new Date(dateInfo.startDate);
+  const date = new UTCDate(dateInfo.startDate);
   const monthName = date.toLocaleString("default", { month: "long" });
   const year = date.getFullYear();
 
@@ -157,10 +158,11 @@ Generate a detailed yet concise monthly report for elizaOS (open-source AI agent
 
 
 ## KEY TECHNICAL DEVELOPMENTS
- Summarize the 3-5 most significant/impactful changes merged this month with specific PR references.
-    ### Describe new features and their functionality.
-    ### Explain how bug fixes have improved system stability.
-    ### Discuss refactoring efforts and documentation updates that enhance maintainability and developer experience.
+
+ Group/cluster the completed work thematically into 3-5 different headlines,
+ and describe the key changes and improvements in each headline. Reference
+ the PR numbers that are most relevant to each headline.
+ 
 
 ## SUMMARY
   Close with a short summary of the month's accomplishments.

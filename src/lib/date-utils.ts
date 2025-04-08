@@ -1,3 +1,4 @@
+import { UTCDate } from "@date-fns/utc";
 import { addDays } from "date-fns";
 
 /**
@@ -24,7 +25,7 @@ export function isValidDateString(dateStr: string): boolean {
   if (!datePattern.test(dateStr)) return false;
 
   const [year, month, day] = dateStr.split("-").map(Number);
-  const date = new Date(year, month - 1, day);
+  const date = new UTCDate(year, month - 1, day);
 
   return (
     date.getFullYear() === year &&
@@ -63,7 +64,7 @@ export function extractDateFromFilename(filename: string): string | null {
  * @returns string in YYYY-MM-DD format
  */
 export function toDateString(date: string | number | Date): string {
-  return new Date(date).toISOString().split("T")[0];
+  return new UTCDate(date).toISOString().split("T")[0];
 }
 
 /**
@@ -71,9 +72,9 @@ export function toDateString(date: string | number | Date): string {
  * @param date - Date object, timestamp, or date string that can be parsed by new Date()
  * @returns Date object set to UTC midnight
  */
-export function toUTCMidnight(date: string | number | Date): Date {
-  return new Date(
-    new Date(date).toISOString().split("T")[0] + "T00:00:00.000Z",
+export function toUTCMidnight(date: string | number | Date): UTCDate {
+  return new UTCDate(
+    new UTCDate(date).toISOString().split("T")[0] + "T00:00:00.000Z",
   );
 }
 
@@ -87,8 +88,8 @@ export function getDateRange(start: Date | undefined, end: Date | undefined) {
 export type IntervalType = "day" | "week" | "month";
 
 export interface TimeInterval {
-  intervalStart: Date;
-  intervalEnd: Date;
+  intervalStart: UTCDate;
+  intervalEnd: UTCDate;
   intervalType: IntervalType;
 }
 

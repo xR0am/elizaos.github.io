@@ -17,6 +17,7 @@ import { GitHubClient } from "./github";
 import { PipelineConfig, RepositoryConfig } from "./pipelineConfig";
 import { eq, sql } from "drizzle-orm";
 import { Logger, createLogger } from "./pipelines/logger";
+import { UTCDate } from "@date-fns/utc";
 
 export class DataIngestion {
   private logger: Logger;
@@ -45,12 +46,12 @@ export class DataIngestion {
       .insert(repositories)
       .values({
         repoId,
-        lastUpdated: new Date().toISOString(),
+        lastUpdated: new UTCDate().toISOString(),
       })
       .onConflictDoUpdate({
         target: repositories.repoId,
         set: {
-          lastUpdated: new Date().toISOString(),
+          lastUpdated: new UTCDate().toISOString(),
         },
       });
 
@@ -70,7 +71,7 @@ export class DataIngestion {
         username,
         avatarUrl: avatarUrl || "",
         isBot: this.config.botUsers?.includes(username) ? 1 : 0,
-        lastUpdated: new Date().toISOString(),
+        lastUpdated: new UTCDate().toISOString(),
       }));
 
     if (validUsers.length === 0) return;
@@ -110,7 +111,7 @@ export class DataIngestion {
       name: label.name,
       color: label.color,
       description: label.description || "",
-      lastUpdated: new Date().toISOString(),
+      lastUpdated: new UTCDate().toISOString(),
     }));
 
     await db
@@ -138,7 +139,7 @@ export class DataIngestion {
     const relationships = labelIds.map((labelId) => ({
       prId,
       labelId,
-      lastUpdated: new Date().toISOString(),
+      lastUpdated: new UTCDate().toISOString(),
     }));
 
     await db
@@ -161,7 +162,7 @@ export class DataIngestion {
     const relationships = labelIds.map((labelId) => ({
       issueId,
       labelId,
-      lastUpdated: new Date().toISOString(),
+      lastUpdated: new UTCDate().toISOString(),
     }));
 
     await db
@@ -185,7 +186,7 @@ export class DataIngestion {
     const { repoId } = repository;
 
     // Record the ingestion start time
-    const ingestionStartTime = new Date().toISOString();
+    const ingestionStartTime = new UTCDate().toISOString();
     this.logger.info(
       `Starting PR ingestion for ${repoId} at ${ingestionStartTime}`,
     );
@@ -430,7 +431,7 @@ export class DataIngestion {
         .update(repositories)
         .set({
           lastFetchedAt: ingestionStartTime,
-          lastUpdated: new Date().toISOString(),
+          lastUpdated: new UTCDate().toISOString(),
         })
         .where(eq(repositories.repoId, repoId));
 
@@ -461,7 +462,7 @@ export class DataIngestion {
     const { repoId } = repository;
 
     // Record the ingestion start time
-    const ingestionStartTime = new Date().toISOString();
+    const ingestionStartTime = new UTCDate().toISOString();
     this.logger.info(
       `Starting issue ingestion for ${repoId} at ${ingestionStartTime}`,
     );
@@ -587,7 +588,7 @@ export class DataIngestion {
         .update(repositories)
         .set({
           lastFetchedAt: ingestionStartTime,
-          lastUpdated: new Date().toISOString(),
+          lastUpdated: new UTCDate().toISOString(),
         })
         .where(eq(repositories.repoId, repoId));
 
