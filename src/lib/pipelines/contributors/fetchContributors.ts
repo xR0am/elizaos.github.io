@@ -21,7 +21,7 @@ export const fetchContributors = createStep(
     { logger, dateRange }: ContributorPipelineContext,
   ) => {
     // Filter for contributors active in the date range, if provided
-    const dateConditions = dateRange
+    const dateConditions = dateRange?.startDate
       ? {
           pr: or(
             and(

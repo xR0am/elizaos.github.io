@@ -25,6 +25,14 @@ interface RetryConfig {
   factor: number;
 }
 
+// Token bucket for rate limiting
+interface TokenBucket {
+  tokens: number;
+  lastRefill: number;
+  capacity: number;
+  refillRate: number;
+}
+
 // Define interfaces for the GraphQL response
 interface GitHubPageInfo {
   hasNextPage: boolean;
@@ -91,6 +99,22 @@ export class GitHubClient {
   private concurrentRequests = 0;
   private readonly maxConcurrentRequests = 10;
 
+  // Token bucket for points-based rate limiting (900 points per minute)
+  private pointsBucket: TokenBucket = {
+    tokens: 900,
+    lastRefill: Date.now(),
+    capacity: 900,
+    refillRate: 900 / 60000, // tokens per millisecond
+  };
+
+  // Token bucket for concurrent requests (max 100, but we'll be conservative with 50)
+  private concurrentBucket: TokenBucket = {
+    tokens: 50,
+    lastRefill: Date.now(),
+    capacity: 50,
+    refillRate: 50 / 60000, // tokens per millisecond
+  };
+
   constructor(logger?: Logger) {
     this.logger =
       logger || createLogger({ minLevel: "info", nameSegments: ["GitHub"] });
@@ -144,15 +168,45 @@ export class GitHubClient {
     this.rateLimitInfo.remaining = this.rateLimitInfo.limit; // Reset remaining count
   }
 
+  private refillTokenBucket(bucket: TokenBucket): void {
+    const now = Date.now();
+    const timePassed = now - bucket.lastRefill;
+    const newTokens = timePassed * bucket.refillRate;
+    bucket.tokens = Math.min(bucket.capacity, bucket.tokens + newTokens);
+    bucket.lastRefill = now;
+  }
+
+  private async consumeTokens(
+    bucket: TokenBucket,
+    tokens: number,
+  ): Promise<void> {
+    this.refillTokenBucket(bucket);
+
+    while (bucket.tokens < tokens) {
+      // Wait for enough tokens to be available
+      const tokensNeeded = tokens - bucket.tokens;
+      const waitTime = Math.ceil(tokensNeeded / bucket.refillRate);
+      await this.wait(Math.min(waitTime, 1000)); // Wait at most 1 second at a time
+      this.refillTokenBucket(bucket);
+    }
+
+    bucket.tokens -= tokens;
+  }
+
+  private async checkSecondaryRateLimits(cost: number = 1): Promise<void> {
+    // Handle points-based rate limiting
+    await this.consumeTokens(this.pointsBucket, cost);
+
+    // Handle concurrent requests rate limiting
+    await this.consumeTokens(this.concurrentBucket, 1);
+  }
+
   private async executeGraphQL<T>(
     query: string,
     variables: Record<string, unknown> = {},
   ): Promise<T> {
     await this.checkRateLimit();
-
-    if (this.concurrentRequests >= this.maxConcurrentRequests) {
-      await this.wait(100); // Simple throttling
-    }
+    await this.checkSecondaryRateLimits(5); // GraphQL queries cost 5 points
 
     this.concurrentRequests++;
 
@@ -169,6 +223,8 @@ export class GitHubClient {
             this.logger.info("Rate limit status", {
               remaining: this.rateLimitInfo.remaining,
               resetAt: this.rateLimitInfo.resetAt,
+              pointsRemaining: Math.floor(this.pointsBucket.tokens),
+              concurrentRemaining: Math.floor(this.concurrentBucket.tokens),
             });
 
             const data = response.data;
@@ -258,6 +314,7 @@ export class GitHubClient {
       nodes: T[];
       pageInfo: { hasNextPage: boolean; endCursor: string | null };
     },
+    nodeType: string,
   ): Promise<T[]> {
     let allNodes: T[] = [];
     let hasNextPage = true;
@@ -277,7 +334,7 @@ export class GitHubClient {
       hasNextPage = pageInfo.hasNextPage;
       endCursor = pageInfo.endCursor;
 
-      this.logger.info("Paginated fetch", {
+      this.logger.info(`Paginated ${nodeType} fetch `, {
         pageCount: nodes.length,
         totalSoFar: allNodes.length,
         hasNextPage,
@@ -337,6 +394,7 @@ export class GitHubClient {
             pageInfo: searchData.search.pageInfo,
           };
         },
+        "PullRequest",
       );
 
       const validatedPRs = prs
@@ -405,6 +463,7 @@ export class GitHubClient {
             pageInfo: searchData.search.pageInfo,
           };
         },
+        "Issue",
       );
 
       const validatedIssues = issues
@@ -471,6 +530,7 @@ export class GitHubClient {
               repoData.repository.defaultBranchRef.target.history.pageInfo,
           };
         },
+        "Commit",
       );
 
       const validatedCommits = commits
