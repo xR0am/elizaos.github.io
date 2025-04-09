@@ -1,0 +1,174 @@
+name: Run Pipelines
+
+on:
+  schedule:
+    # Run at 23:00 UTC daily
+    - cron: "0 23 * * *"
+  workflow_dispatch: # Allow manual trigger
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+
+jobs:
+  ingest-export:
+    name: Ingest/Export Pipeline
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write # Needed for pushing to branches
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      # Get the latest artifact run ID
+      - name: Get latest artifact run id
+        run: |
+          ARTIFACT_RUN_ID=$(curl -s "https://api.github.com/repos/${{ github.repository }}/actions/artifacts?per_page=1" | jq '.artifacts[0].workflow_run.id')
+          echo "artifact_run_id=$ARTIFACT_RUN_ID" >> $GITHUB_ENV
+
+      # Download SQLite database from previous run's artifacts
+      - name: Download database artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: database
+          path: ./data/
+          run-id: ${{ env.artifact_run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true # Allow first run to proceed without artifact
+
+      # Set up pipeline-data branch worktree
+      - name: Setup pipeline-data branch
+        uses: ./.github/actions/pipeline-data
+        with:
+          operation: setup
+
+      - name: Initialize database
+        run: bun run db:migrate
+
+      - name: Run ingest pipeline
+        run: bun run pipeline ingest -a 2024-10-01 # Ingest all missing data from beggining of time
+
+      - name: Run process pipeline
+        run: bun run pipeline process
+
+      - name: Run export pipeline # Export everything missing + overwrite last 2 days to ensure overlap
+        run: |
+          bun run pipeline export
+          bun run pipeline export --days 2 -o
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Dump SQLite database to diffable files
+        run: uv run uvx sqlite-diffable dump data/db.sqlite data/dump/ --all
+
+      # Upload SQLite database as artifact
+      - name: Upload database artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: database
+          path: data/db.sqlite
+          retention-days: 90 # Maximum retention for public repos
+
+      # Update pipeline-data branch with new data
+      - name: Update pipeline-data branch
+        uses: ./.github/actions/pipeline-data
+        with:
+          operation: update
+          commit_message: "Pipeline run: $(date -u +'%Y-%m-%d')"
+
+      # Cleanup worktree (always runs)
+      - name: Cleanup
+        if: always()
+        uses: ./.github/actions/pipeline-data
+        with:
+          operation: cleanup
+
+  generate-summaries:
+    name: Generate Summaries
+    needs: ingest-export
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write # Needed for pushing to branches
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      # Download the SQLite database artifact from the previous job
+      - name: Download database artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: database
+          path: ./data/
+
+      # Set up pipeline-data branch worktree
+      - name: Setup pipeline-data branch
+        uses: ./.github/actions/pipeline-data
+        with:
+          operation: setup
+
+      # Determine which summaries to run based on day of week
+      - name: Check day of week for contributor summaries
+        id: schedule-check
+        run: |
+          DAY_OF_WEEK=$(date +%u)
+
+          # Always run project summaries
+          echo "run_project=true" >> $GITHUB_OUTPUT
+
+          # Run contributor summaries on Sunday (day 7) or if manually triggered
+          if [ "$DAY_OF_WEEK" = "7" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "run_contributor=true" >> $GITHUB_OUTPUT
+          else
+            echo "run_contributor=false" >> $GITHUB_OUTPUT
+          fi
+
+      # Run project summaries (daily)
+      - name: Generate project summaries
+        if: ${{ steps.schedule-check.outputs.run_project == 'true' }}
+        run: |
+          # Full project summary
+          bun run pipeline summarize -t project
+          # Recent project summary with overwrite
+          bun run pipeline summarize -t project -o -d 1
+
+      # Run contributor summaries (weekly on Sunday)
+      - name: Generate contributor summaries
+        if: ${{ steps.schedule-check.outputs.run_contributor == 'true' }}
+        run: |
+          # Full contributor summary
+          bun run pipeline summarize -t contributors
+          # Recent contributor summary with overwrite
+          bun run pipeline summarize -t contributors -o -d 1
+
+      # Update pipeline-data branch with new summaries
+      - name: Update pipeline-data branch with summaries
+        uses: ./.github/actions/pipeline-data
+        with:
+          operation: update
+          commit_message: "Summary generation (${{ steps.schedule-check.outputs.run_contributor == 'true' && 'contributor and project' || 'project' }}): $(date -u +'%Y-%m-%d')"
+
+      # Cleanup worktree (always runs)
+      - name: Cleanup
+        if: always()
+        uses: ./.github/actions/pipeline-data
+        with:
+          operation: cleanup

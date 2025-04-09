@@ -75,7 +75,6 @@ export async function generateProjectAnalysis(
 
     // Calculate token length based on prompt content and interval type
     const maxTokens = calculateMaxTokens(prompt, intervalType);
-    console.log("maxTokens", maxTokens);
     // Get analysis from AI model
     return await callAIService(prompt, config, { maxTokens });
   } catch (error) {
@@ -104,7 +103,6 @@ function calculateMaxTokens(
 
   // Simple estimation: 1 token ≈ 4 characters in English
   const estimatedPromptTokens = prompt.length / 4;
-  console.log("estimatedPromptTokens", estimatedPromptTokens);
   // Add 20% more tokens for every 200 estimated tokens in the prompt
   const scalingFactor = 1 + Math.floor(estimatedPromptTokens / 400) * 0.2;
 

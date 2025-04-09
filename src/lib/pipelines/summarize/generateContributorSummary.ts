@@ -67,7 +67,7 @@ export const generateContributorSummariesForInterval = createStep(
           interval.intervalType,
         );
         if (summaryExists) {
-          intervalLogger?.info(
+          intervalLogger?.debug(
             `${interval.intervalType} summary already exists for ${username} on ${dateRange.startDate}, skipping generation`,
           );
           return;

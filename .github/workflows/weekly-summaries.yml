@@ -1,10 +1,6 @@
-name: Contributor Updates
+name: Contributor Updates (deprecated)
 
 on:
-  schedule:
-    - cron: "30 22 * * *" # Daily at 5:30 PM EST (22:30 UTC)
-    - cron: "0 23 * * 5" # Weekly on Friday at 6:00 PM EST (23:00 UTC)
-    - cron: "30 23 4 * *" # Monthly on 4th at 6:30 PM EST (23:30 UTC)
   workflow_dispatch:
 
 permissions:
@@ -44,14 +40,13 @@ jobs:
           days_since_start=$(( ( $(date -d "$current_date" +%s) - $(date -d "$DATE_START" +%s) ) / 86400 ))
           echo "DAYS_SINCE_START=$days_since_start" >> $GITHUB_ENV
 
-
       # Daily workflow
       - name: Process daily data
         env:
           GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          SITE_URL: 'https://elizaos.github.io'
-          SITE_NAME: 'ElizaOS Contributors'
+          SITE_URL: "https://elizaos.github.io"
+          SITE_NAME: "ElizaOS Contributors"
         run: |
           # Create directories
           mkdir -p data/daily data/daily/history
@@ -84,8 +79,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          SITE_URL: 'https://elizaos.github.io'
-          SITE_NAME: 'ElizaOS Contributors'
+          SITE_URL: "https://elizaos.github.io"
+          SITE_NAME: "ElizaOS Contributors"
         run: |
           # Create directories
           mkdir -p data/weekly/history data/weekly/threads/history
@@ -129,8 +124,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          SITE_URL: 'https://elizaos.github.io'
-          SITE_NAME: 'ElizaOS Contributors'
+          SITE_URL: "https://elizaos.github.io"
+          SITE_NAME: "ElizaOS Contributors"
         run: |
           # Create directories
           mkdir -p data/monthly/history
