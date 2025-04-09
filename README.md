@@ -112,8 +112,11 @@ bun run pipeline process --config custom-config.ts
 # Export repository stats (defaults to 30 days)
 bun run pipeline export
 
-# Export with custom lookback period
-bun run pipeline export -d 60
+# Export with specific date range
+bun run pipeline export --after 2025-01-01 --before 2025-02-20
+
+# Export for a specific number of days
+bun run pipeline export --days 60
 
 # Export for specific repository
 bun run pipeline export -r owner/repo
@@ -137,8 +140,11 @@ bun run pipeline summarize -t project
 # Generate contributor summaries
 bun run pipeline summarize -t contributors
 
-# Generate summaries for specific time period (default 7 days)
-bun run pipeline summarize -t project -d 90
+# Generate summaries with specific date range
+bun run pipeline summarize -t project --after 2025-01-01 --before 2025-02-20
+
+# Generate summaries for a specific number of days (default 7 days)
+bun run pipeline summarize -t project --days 90
 
 # Generate summaries for specific repository
 bun run pipeline summarize -t project --repository owner/repo

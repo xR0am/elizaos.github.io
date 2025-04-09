@@ -20,6 +20,32 @@ bun run pipeline export
 
 You can add the `-h` param to any of these commands to see a list of options and usage of the command.
 
+### Common Options
+
+All data-processing commands (ingest, export, summarize) support the same date range options:
+
+```bash
+# Specify a start date
+--after YYYY-MM-DD
+
+# Specify an end date (defaults to today)
+--before YYYY-MM-DD
+
+# Specify number of days to look back from the end date
+--days NUMBER
+
+# Examples:
+bun run pipeline ingest --after 2025-01-01 --before 2025-01-31
+bun run pipeline export --days 90
+bun run pipeline summarize -t project --after 2025-01-01
+```
+
+Default lookback periods:
+
+- `ingest`: 7 days
+- `export`: 30 days
+- `summarize`: 7 days
+
 ## Configuration
 
 The pipeline is configurable through TypeScript config at `config/pipeline.config.ts`, where you can customize:

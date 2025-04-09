@@ -1,5 +1,4 @@
 import { UTCDate } from "@date-fns/utc";
-import { addDays } from "date-fns";
 
 /**
  * Extracts date from a title string in format "elizaos Eliza (2025-01-12)"
@@ -77,14 +76,6 @@ export function toUTCMidnight(date: string | number | Date): UTCDate {
     new UTCDate(date).toISOString().split("T")[0] + "T00:00:00.000Z",
   );
 }
-
-export function getDateRange(start: Date | undefined, end: Date | undefined) {
-  return {
-    startDate: start ? toDateString(start) : undefined,
-    endDate: end ? toDateString(addDays(toUTCMidnight(end), 1)) : undefined,
-  };
-}
-
 export type IntervalType = "day" | "week" | "month";
 
 export interface TimeInterval {

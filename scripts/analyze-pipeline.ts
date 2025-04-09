@@ -10,6 +10,8 @@
 
 import { config as loadEnv } from "dotenv";
 import { join } from "path";
+import { UTCDate } from "@date-fns/utc";
+import { toDateString } from "@/lib/date-utils";
 
 // Load environment variables from .env file
 loadEnv();
@@ -30,7 +32,7 @@ if (missingEnvVars.length > 0) {
 import { Command } from "@commander-js/extra-typings";
 import { PipelineConfigSchema } from "@/lib/pipelines/pipelineConfig";
 import chalk from "chalk";
-import { subDays, format } from "date-fns";
+import { subDays } from "date-fns";
 import { generateRepositoryStats } from "@/lib/pipelines/export";
 import { contributorTagsPipeline } from "@/lib/pipelines/contributors";
 import {
@@ -69,6 +71,11 @@ program
   )
   .option("-v, --verbose", "Enable verbose logging", false)
   .option("-r, --repository <owner/name>", "Process specific repository")
+  .option(
+    "-f, --force",
+    "Force data ingestion regardless of last fetch time",
+    false,
+  )
   .action(async (options) => {
     try {
       // Dynamically import the config
@@ -87,22 +94,24 @@ program
       });
 
       // Handle date calculations
-      const endDate = options.before ? new Date(options.before) : new Date();
+      const endDate = options.before
+        ? new UTCDate(options.before)
+        : new UTCDate();
 
-      let startDate: Date | undefined;
+      let startDate: UTCDate | undefined;
 
       if (options.after) {
-        startDate = new Date(options.after);
+        startDate = new UTCDate(options.after);
       } else if (options.days) {
         startDate = subDays(endDate, parseInt(options.days));
+      } else {
+        // Default to 7 days lookback if no date options provided
+        startDate = subDays(endDate, 7);
       }
 
-      // Ensure we always have a startDate
       const dateRange = {
-        startDate: startDate
-          ? format(startDate, "yyyy-MM-dd")
-          : format(subDays(endDate, 7), "yyyy-MM-dd"),
-        endDate: format(endDate, "yyyy-MM-dd"),
+        startDate: toDateString(startDate),
+        endDate: toDateString(endDate),
       };
 
       rootLogger.info(
@@ -115,6 +124,7 @@ program
         logger: rootLogger,
         config: pipelineConfig,
         dateRange,
+        force: options.force,
       });
 
       // Run the ingestion pipeline - returns array of { repository, prs, issues }
@@ -198,20 +208,22 @@ program
   )
   .option("-o, --overwrite", "Overwrite existing stats", false)
   .option("--output-dir <dir>", "Output directory for stats", "./data/")
-  .option("-d, --days <number>", "Number of days to look back", "30")
+  .option("-a, --after <date>", "Start date in YYYY-MM-DD format")
+  .option(
+    "-b, --before <date>",
+    "End date in YYYY-MM-DD format (defaults to end of today)",
+  )
+  .option(
+    "-d, --days <number>",
+    "Number of days to look back from before date",
+    "30",
+  )
   .action(async (options) => {
     try {
       // Dynamically import the config
       const configPath = join(import.meta.dir, options.config);
       const configFile = await import(configPath);
       const pipelineConfig = PipelineConfigSchema.parse(configFile.default);
-
-      // Calculate date range based on lookback days
-      const lookbackDays = parseInt(options.days);
-      const endDate = new Date();
-      const startDate = subDays(endDate, lookbackDays);
-
-      const startDateStr = format(startDate, "yyyy-MM-dd");
 
       // Create a root logger
       const logLevel: LogLevel = options.verbose ? "debug" : "info";
@@ -226,6 +238,27 @@ program
         `Generating repository stats using config from ${configPath}`,
       );
 
+      // Handle date calculations
+      const endDate = options.before
+        ? new UTCDate(options.before)
+        : new UTCDate();
+
+      let startDate: UTCDate | undefined;
+
+      if (options.after) {
+        startDate = new UTCDate(options.after);
+      } else if (options.days) {
+        startDate = subDays(endDate, parseInt(options.days));
+      } else {
+        // Default to 30 days lookback if no date options provided
+        startDate = subDays(endDate, 30);
+      }
+
+      const dateRange = {
+        startDate: toDateString(startDate),
+        endDate: toDateString(endDate),
+      };
+
       // Create pipeline context
       const context = createRepositoryStatsPipelineContext({
         repoId: options.repository,
@@ -233,9 +266,7 @@ program
         config: pipelineConfig,
         outputDir: options.outputDir,
         overwrite: options.overwrite,
-        dateRange: {
-          startDate: startDateStr,
-        },
+        dateRange,
       });
 
       // Run the repository summaries pipeline
@@ -259,7 +290,16 @@ program
     "Path to pipeline config file",
     DEFAULT_CONFIG_PATH,
   )
-  .option("-d, --days <number>", "Number of days to look back", "7")
+  .option("-a, --after <date>", "Start date in YYYY-MM-DD format")
+  .option(
+    "-b, --before <date>",
+    "End date in YYYY-MM-DD format (defaults to end of today)",
+  )
+  .option(
+    "-d, --days <number>",
+    "Number of days to look back from before date",
+    "7",
+  )
   .option("-o, --overwrite", "Overwrite existing summaries", false)
   .requiredOption(
     "-t, --type <type>",
@@ -272,13 +312,6 @@ program
       const configPath = join(import.meta.dir, options.config);
       const configFile = await import(configPath);
       const pipelineConfig = PipelineConfigSchema.parse(configFile.default);
-
-      // Calculate date range based on lookback days
-      const lookbackDays = parseInt(options.days);
-      const endDate = new Date();
-      const startDate = subDays(endDate, lookbackDays);
-
-      const startDateStr = format(startDate, "yyyy-MM-dd");
 
       // Create a root logger
       const logLevel: LogLevel = options.verbose ? "debug" : "info";
@@ -299,7 +332,26 @@ program
         process.exit(1);
       }
 
-      // Set appropriate output directory based on summary type
+      // Handle date calculations
+      const endDate = options.before
+        ? new UTCDate(options.before)
+        : new UTCDate();
+
+      let startDate: UTCDate | undefined;
+
+      if (options.after) {
+        startDate = new UTCDate(options.after);
+      } else if (options.days) {
+        startDate = subDays(endDate, parseInt(options.days));
+      } else {
+        // Default to 7 days lookback if no date options provided
+        startDate = subDays(endDate, 7);
+      }
+
+      const dateRange = {
+        startDate: toDateString(startDate),
+        endDate: toDateString(endDate),
+      };
 
       rootLogger.info(
         `Generating ${summaryType} summaries using config from ${configPath}`,
@@ -313,9 +365,7 @@ program
         outputDir: options.outputDir,
         aiSummaryConfig: pipelineConfig.aiSummary,
         overwrite: options.overwrite,
-        dateRange: {
-          startDate: startDateStr,
-        },
+        dateRange,
       });
 
       // Run the appropriate pipeline based on summary type
