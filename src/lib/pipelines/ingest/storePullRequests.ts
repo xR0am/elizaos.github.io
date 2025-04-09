@@ -139,7 +139,6 @@ export const fetchAndStorePullRequests = createStep(
               additions: sql`excluded.additions`,
               deletions: sql`excluded.deletions`,
               changedFiles: sql`excluded.changed_files`,
-              lastUpdated: sql`CURRENT_TIMESTAMP`,
             },
           });
 
@@ -173,7 +172,6 @@ export const fetchAndStorePullRequests = createStep(
                 additions: sql`excluded.additions`,
                 deletions: sql`excluded.deletions`,
                 changeType: sql`excluded.changeType`,
-                lastUpdated: sql`CURRENT_TIMESTAMP`,
               },
             });
         }
@@ -213,7 +211,6 @@ export const fetchAndStorePullRequests = createStep(
                 additions: sql`excluded.additions`,
                 deletions: sql`excluded.deletions`,
                 changedFiles: sql`excluded.changed_files`,
-                lastUpdated: sql`CURRENT_TIMESTAMP`,
               },
             });
         }
@@ -243,7 +240,6 @@ export const fetchAndStorePullRequests = createStep(
                 state: sql`excluded.state`,
                 body: sql`excluded.body`,
                 createdAt: sql`excluded.created_at`,
-                lastUpdated: sql`CURRENT_TIMESTAMP`,
               },
             });
         }
@@ -272,7 +268,6 @@ export const fetchAndStorePullRequests = createStep(
               set: {
                 body: sql`excluded.body`,
                 updatedAt: sql`excluded.updated_at`,
-                lastUpdated: sql`CURRENT_TIMESTAMP`,
               },
             });
         }

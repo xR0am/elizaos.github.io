@@ -101,7 +101,6 @@ export const fetchAndStoreIssues = createStep(
               locked: sql`excluded.locked`,
               updatedAt: sql`excluded.updated_at`,
               closedAt: sql`excluded.closed_at`,
-              lastUpdated: sql`CURRENT_TIMESTAMP`,
             },
           });
 
@@ -132,7 +131,6 @@ export const fetchAndStoreIssues = createStep(
               set: {
                 body: sql`excluded.body`,
                 updatedAt: sql`excluded.updated_at`,
-                lastUpdated: sql`CURRENT_TIMESTAMP`,
               },
             });
         }
