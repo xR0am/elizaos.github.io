@@ -118,9 +118,14 @@ runs:
           git diff --shortstat origin/${{ inputs.branch_name }}..HEAD
           
           echo "Force pushing changes..."
-          if ! git push --force origin ${{ inputs.branch_name }} 2>&1; then
+          # Ensure we're on the correct branch and it exists
+          CURRENT_BRANCH=$(git branch --show-current)
+          echo "Current branch: $CURRENT_BRANCH"
+          
+          # Make sure we're pushing the current HEAD to the correct branch reference
+          if ! git push --force origin HEAD:${{ inputs.branch_name }} 2>&1; then
             echo "Error: Force push failed with the following error:"
-            echo "$?"
+            git push --force origin HEAD:${{ inputs.branch_name }} 2>&1 || echo "Exit code: $?"
             exit 1
           fi
         fi
