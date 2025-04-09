@@ -148,11 +148,8 @@ export async function storeTagScore(
       createdAt: new UTCDate().toISOString(),
       lastUpdated: new UTCDate().toISOString(),
     })
-    .onConflictDoUpdate({
+    .onConflictDoNothing({
       target: tags.name,
-      set: {
-        lastUpdated: new UTCDate().toISOString(),
-      },
     });
 
   // Store user tag score
@@ -166,7 +163,6 @@ export async function storeTagScore(
       level,
       progress,
       pointsToNext: Math.pow(2, level + 1) - 1,
-      lastUpdated: new UTCDate().toISOString(),
     })
     .onConflictDoUpdate({
       target: userTagScores.id,
@@ -175,7 +171,6 @@ export async function storeTagScore(
         level,
         progress,
         pointsToNext: Math.pow(2, level + 1) - 1,
-        lastUpdated: new UTCDate().toISOString(),
       },
     });
 }

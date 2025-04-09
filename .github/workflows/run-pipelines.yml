@@ -7,7 +7,7 @@ on:
   workflow_dispatch: # Allow manual trigger
     inputs:
       force:
-        description: "Reingest/export all data from the beginning of repository history"
+        description: "Force reingest of data + overwrite exports / summaries"
         type: boolean
         default: false
         required: false

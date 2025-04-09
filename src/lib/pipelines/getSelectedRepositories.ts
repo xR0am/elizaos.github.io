@@ -58,11 +58,8 @@ export async function registerRepository(repoId: string) {
       repoId,
       lastUpdated: new UTCDate().toISOString(),
     })
-    .onConflictDoUpdate({
+    .onConflictDoNothing({
       target: repositories.repoId,
-      set: {
-        lastUpdated: new UTCDate().toISOString(),
-      },
     });
 
   return { repoId };
