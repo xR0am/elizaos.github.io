@@ -71,6 +71,9 @@ runs:
           
           git add .gitignore README.md
           git commit -m "Initialize pipeline-data branch" || true
+          
+          # Push the new branch to the remote
+          git push -u origin ${{ inputs.branch_name }}
           cd ..
         fi
 
