@@ -73,7 +73,6 @@ export const exportRepoStatsForInterval = createStep(
       topIssues,
       topPRs,
       codeChanges: metrics.codeChanges,
-      focusAreas: metrics.focusAreas,
       completedItems: metrics.completedItems,
       topContributors: metrics.topContributors,
       newPRs: metrics.pullRequests.newPRs.length,

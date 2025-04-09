@@ -36,6 +36,7 @@ export default {
     "codecov-io",
     "stale[bot]",
     "semantic-release-bot",
+    "copilot-pull-request-reviewer",
     "imgbot",
     "coderabbitai",
     "codefactor-io",
