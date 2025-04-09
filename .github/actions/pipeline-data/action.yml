@@ -100,11 +100,19 @@ runs:
         git commit -m "${{ inputs.commit_message }}" || echo "No changes to commit"
 
         # Push with error handling
-        git push origin ${{ inputs.branch_name }} || {
-          echo "Failed to push to ${{ inputs.branch_name }} branch. This may indicate conflicts or network issues."
-          echo "Manual intervention may be required to resolve this issue."
-          exit 1
-        }
+        if ! git push origin ${{ inputs.branch_name }}; then
+          echo "Failed to push normally. Checking for conflicts..."
+          
+          # Fetch latest changes
+          git fetch origin ${{ inputs.branch_name }}
+          
+          # Show what changes would be overwritten
+          echo "The following changes would be overwritten:"
+          git diff origin/${{ inputs.branch_name }}..HEAD
+          
+          echo "Force pushing changes..."
+          git push --force origin ${{ inputs.branch_name }}
+        fi
         cd ..
 
     # Cleanup operation - removes the worktree
