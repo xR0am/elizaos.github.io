@@ -10,26 +10,6 @@ import { UTCDate } from "@date-fns/utc";
 import { eq, sql } from "drizzle-orm";
 
 /**
- * Register or update a repository in the database
- */
-export async function registerRepository(repoId: string) {
-  await db
-    .insert(repositories)
-    .values({
-      repoId,
-      lastUpdated: new UTCDate().toISOString(),
-    })
-    .onConflictDoUpdate({
-      target: repositories.repoId,
-      set: {
-        lastUpdated: new UTCDate().toISOString(),
-      },
-    });
-
-  return { repoId };
-}
-
-/**
  * Update a repository's last fetched timestamp
  */
 export async function updateRepositoryLastFetched(
