@@ -10,7 +10,6 @@
 
 import { config as loadEnv } from "dotenv";
 import { join } from "path";
-import { UTCDate } from "@date-fns/utc";
 
 // Load environment variables from .env file
 loadEnv();
@@ -44,7 +43,6 @@ import { runPipeline } from "@/lib/pipelines/runPipeline";
 import { createLogger, LogLevel } from "@/lib/logger";
 import { createSummarizerContext } from "@/lib/pipelines/summarize/context";
 import { ingestPipeline, createIngestionContext } from "@/lib/pipelines/ingest";
-import { toDateString } from "@/lib/date-utils";
 
 const DEFAULT_CONFIG_PATH = "../config/pipeline.config.ts";
 const program = new Command();
@@ -71,11 +69,6 @@ program
   )
   .option("-v, --verbose", "Enable verbose logging", false)
   .option("-r, --repository <owner/name>", "Process specific repository")
-  .option(
-    "-f, --force",
-    "Force fetch data regardless of lastFetched timestamp",
-    false,
-  )
   .action(async (options) => {
     try {
       // Dynamically import the config
@@ -94,26 +87,26 @@ program
       });
 
       // Handle date calculations
-      const endDate = options.before
-        ? new UTCDate(options.before)
-        : new UTCDate();
+      const endDate = options.before ? new Date(options.before) : new Date();
 
-      let startDate: UTCDate | undefined;
+      let startDate: Date | undefined;
 
       if (options.after) {
-        startDate = new UTCDate(options.after);
+        startDate = new Date(options.after);
       } else if (options.days) {
         startDate = subDays(endDate, parseInt(options.days));
       }
 
       // Ensure we always have a startDate
       const dateRange = {
-        startDate: startDate ? toDateString(startDate) : undefined,
-        endDate: toDateString(endDate),
+        startDate: startDate
+          ? format(startDate, "yyyy-MM-dd")
+          : format(subDays(endDate, 7), "yyyy-MM-dd"),
+        endDate: format(endDate, "yyyy-MM-dd"),
       };
 
       rootLogger.info(
-        `Fetching data from ${dateRange.startDate} to ${dateRange.endDate} using config from ${configPath}`,
+        `Fetching data from ${dateRange.startDate || "last fetch time"} to ${dateRange.endDate || "end of time"} using config from ${configPath}`,
       );
 
       // Create ingestion context with date range
@@ -122,7 +115,6 @@ program
         logger: rootLogger,
         config: pipelineConfig,
         dateRange,
-        force: options.force,
       });
 
       // Run the ingestion pipeline - returns array of { repository, prs, issues }
@@ -216,7 +208,7 @@ program
 
       // Calculate date range based on lookback days
       const lookbackDays = parseInt(options.days);
-      const endDate = new UTCDate();
+      const endDate = new Date();
       const startDate = subDays(endDate, lookbackDays);
 
       const startDateStr = format(startDate, "yyyy-MM-dd");
@@ -283,7 +275,7 @@ program
 
       // Calculate date range based on lookback days
       const lookbackDays = parseInt(options.days);
-      const endDate = new UTCDate();
+      const endDate = new Date();
       const startDate = subDays(endDate, lookbackDays);
 
       const startDateStr = format(startDate, "yyyy-MM-dd");
