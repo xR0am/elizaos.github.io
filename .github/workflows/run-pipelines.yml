@@ -113,7 +113,7 @@ jobs:
         uses: ./.github/actions/pipeline-data
         with:
           operation: update
-          commit_message: "Pipeline run: $(date -u +'%Y-%m-%d')"
+          commit_message: "Ingest/export run: $(date -u +'%Y-%m-%d %H:%M')"
           branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
 
       # Cleanup worktree (always runs)
@@ -210,7 +210,7 @@ jobs:
         uses: ./.github/actions/pipeline-data
         with:
           operation: update
-          commit_message: "Summary generation (${{ steps.schedule-check.outputs.run_contributor == 'true' && 'contributor and project' || 'project' }}): $(date -u +'%Y-%m-%d')"
+          commit_message: "Summary generation (${{ steps.schedule-check.outputs.run_contributor == 'true' && 'contributor and project' || 'project' }}): $(date -u +'%Y-%m-%d %H:%M')"
           branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
 
       # Cleanup worktree (always runs)

@@ -15,7 +15,7 @@ inputs:
   commit_message:
     description: "Commit message for updates"
     required: false
-    default: 'Pipeline run: $(date -u +"%Y-%m-%d")'
+    default: 'Pipeline run: $(date -u +"%Y-%m-%d %H:%M")'
   branch_name:
     description: "Name of the branch to store pipeline data"
     required: false
@@ -100,7 +100,7 @@ runs:
         git commit -m "${{ inputs.commit_message }}" || echo "No changes to commit"
 
         # Push with error handling
-        if ! git push origin ${{ inputs.branch_name }}; then
+        if ! git push origin HEAD:${{ inputs.branch_name }}; then
           echo "Failed to push normally. Checking for conflicts..."
           
           # Fetch latest changes
