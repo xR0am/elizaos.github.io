@@ -1,4 +1,4 @@
-import { ingestMonthlyGithubData } from "./pipeline";
+import { ingestWeeklyGithubData } from "./pipeline";
 import { createIngestionContext } from "./context";
 import { createStep, pipe } from "../types";
 import { mapStep } from "../types";
@@ -14,7 +14,7 @@ export const ingestPipeline = pipe(
       repository: { repoId, defaultBranch },
     }));
   }),
-  mapStep(ingestMonthlyGithubData),
+  mapStep(ingestWeeklyGithubData),
   createStep("Log Project Summaries", (results, context) => {
     for (const intervals of results) {
       const totalPrs = intervals.reduce((acc, interval) => {
