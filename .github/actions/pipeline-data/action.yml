@@ -38,13 +38,11 @@ runs:
         if git ls-remote --heads origin ${{ inputs.branch_name }} | grep ${{ inputs.branch_name }}; then
           echo "Pipeline data branch exists, retrieving data..."
           
-          # Create a worktree for pipeline-data branch
-          git worktree add --detach pipeline-data-worktree
-          cd pipeline-data-worktree
-          git checkout ${{ inputs.branch_name }}
+          # Create a worktree for pipeline-data branch and check out the branch directly
+          git fetch origin ${{ inputs.branch_name }}
+          git worktree add pipeline-data-worktree origin/${{ inputs.branch_name }}
           
           # Copy data files to main workspace
-          cd ..
           cp -r pipeline-data-worktree/data/. data/ 2>/dev/null || echo "No data files found in pipeline-data branch"
         else
           echo "Creating new pipeline-data branch..."
