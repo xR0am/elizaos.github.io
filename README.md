@@ -75,10 +75,10 @@ bun run pipeline summarize -h
 bun run pipeline ingest
 
 # Ingest from beginning
-bun run pipeline ingest --after 2024-08-01
+bun run pipeline ingest --after 2024-10-15
 
 # Ingest with specific date range
-bun run pipeline ingest --after 2024-10-01 --before 2024-12-31
+bun run pipeline ingest --after 2025-01-01 --before 2025-02-20
 
 # Ingest data for a specific number of days
 bun run pipeline ingest --days 30 --before 2024-03-31

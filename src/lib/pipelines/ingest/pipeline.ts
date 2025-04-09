@@ -116,7 +116,7 @@ const ingestRepoDataForInterval = createStep(
   },
 );
 
-export const ingestMonthlyGithubData = pipe(
+export const ingestWeeklyGithubData = pipe(
   generateTimeIntervals<{ repository: RepositoryConfig }>("week"),
   mapStep(ingestRepoDataForInterval),
   createStep("Filter null results", (results) => {

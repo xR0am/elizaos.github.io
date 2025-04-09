@@ -18,6 +18,8 @@ bun run pipeline summarize
 bun run pipeline export
 ```
 
+You can add the `-h` param to any of these commands to see a list of options and usage of the command.
+
 ## Configuration
 
 The pipeline is configurable through TypeScript config at `config/pipeline.config.ts`, where you can customize:
@@ -40,48 +42,23 @@ The pipeline system uses a functional programming approach with composable opera
   - `mapStep()`: Apply a pipeline to each item in an array
   - `createStep()`: Create a typed pipeline step with proper logging
 
-### Example Pipeline Definition
-
-```typescript
-// Example pipeline definition
-const myPipeline = pipe(
-  // Step 1: Fetch data
-  createStep("fetchData", async (input, context) => {
-    // Fetch and return data
-  }),
-
-  // Step 2: Process each item in parallel
-  mapStep(
-    parallel(
-      // Run these operations in parallel for each item
-      calculateMetrics,
-      generateSummary,
-    ),
-  ),
-
-  // Step 3: Format results
-  createStep("formatResults", (results, context) => {
-    // Process and return final results
-  }),
-);
-```
-
 ## Creating New Pipelines
 
 To create a new pipeline:
 
-1. Define your pipeline context by extending `BasePipelineContext` or `RepoPipelineContext`
-2. Create individual pipeline steps using `createStep()`
-3. Compose steps using `pipe()`, `parallel()`, and `mapStep()`
-4. Create a context factory function like `createContributorPipelineContext()`
-5. Use `runPipeline()` to execute your pipeline with the appropriate context
+1. Create a new directory under `src/lib/pipelines/` for your pipeline
+2. Define your pipeline context by extending `BasePipelineContext`
+3. Create individual pipeline steps using `createStep()`
+4. Compose steps using `pipe()`, `parallel()`, and `mapStep()`
+5. Export your pipeline from an `index.ts` file
+
+If your pipeline needs to operate on time intervals, you can compose the `src/lib/pipelines/generateTimeIntervals.ts` step. See implementation in existing pipelines for an example.
 
 ## Key Components
 
 The pipeline system consists of several key components:
 
 - `src/lib/data/github.ts` - GitHub API integration
-- `src/lib/data/ingestion.ts` - Data ingestion into SQLite
 - `src/lib/data/schema.ts` - Database schema with relations
 - `src/lib/data/db.ts` - Database connection and configuration
 - `src/lib/data/types.ts` - Core data type definitions
@@ -105,6 +82,6 @@ You can customize the pipeline system in several ways:
 
 - **Configuration**: Modify `src/lib/pipelines/pipelineConfig.ts` to adjust scoring weights, repositories, and tags
 - **New Pipeline Steps**: Create custom steps using the functional pipeline utilities in `types.ts`
-- **Custom Processing**: Add domain-specific logic in separate modules following the pattern in `contributors/`
+- **Custom Processing**: Add domain-specific logic in separate modules following the pattern in existing pipelines like `/contributors/` and `/summarize/`
 - **Database Schema**: Extend the database schema in `src/lib/data/schema.ts` and run migrations
 - **Query Helpers**: Use or extend the SQL query helpers in `queryHelpers.ts` for consistent database access
