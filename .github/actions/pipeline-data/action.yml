@@ -106,9 +106,16 @@ runs:
           # Fetch latest changes
           git fetch origin ${{ inputs.branch_name }}
           
-          # Show what changes would be overwritten
-          echo "The following changes would be overwritten:"
-          git diff origin/${{ inputs.branch_name }}..HEAD
+          # Show a concise summary of what would be overwritten
+          echo "Summary of changes that would be overwritten:"
+          echo "=== Files changed in remote that differ from local ==="
+          git diff --name-status origin/${{ inputs.branch_name }}..HEAD
+          
+          echo "=== Number of conflicting files ==="
+          git diff --name-only origin/${{ inputs.branch_name }}..HEAD | wc -l
+          
+          echo "=== Size of changes (lines added/removed) ==="
+          git diff --shortstat origin/${{ inputs.branch_name }}..HEAD
           
           echo "Force pushing changes..."
           if ! git push --force origin ${{ inputs.branch_name }} 2>&1; then
