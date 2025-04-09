@@ -1,9 +1,9 @@
-import { Logger, createLogger } from "./pipelines/logger";
+import { Logger, createLogger } from "@/lib/logger";
 import axios, { AxiosError, RawAxiosResponseHeaders } from "axios";
 import pRetry, { AbortError } from "p-retry";
 import { RawPullRequestSchema, RawIssueSchema, RawCommitSchema } from "./types";
-import { RepositoryConfig } from "./pipelineConfig";
-import { isNotNullOrUndefined } from "../typeHelpers";
+import { RepositoryConfig } from "@/lib/pipelines/pipelineConfig";
+import { isNotNullOrUndefined } from "@/lib/typeHelpers";
 import { z } from "zod";
 
 interface FetchOptions {

@@ -13,10 +13,13 @@ import {
   pullRequestLabels,
   issueLabels,
 } from "./schema";
-import { GitHubClient } from "./github";
-import { PipelineConfig, RepositoryConfig } from "./pipelineConfig";
+import { GitHubClient } from "@/lib/data/github";
+import {
+  PipelineConfig,
+  RepositoryConfig,
+} from "@/lib/pipelines/pipelineConfig";
 import { eq, sql } from "drizzle-orm";
-import { Logger, createLogger } from "./pipelines/logger";
+import { Logger, createLogger } from "@/lib/logger";
 import { UTCDate } from "@date-fns/utc";
 
 export class DataIngestion {

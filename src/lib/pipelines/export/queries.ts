@@ -1,6 +1,9 @@
 import { and, desc, eq, gte, inArray, lte, sql } from "drizzle-orm";
-import { db } from "../../db";
-import { QueryParams, buildCommonWhereConditions } from "../../queryHelpers";
+import { db } from "@/lib/data/db";
+import {
+  QueryParams,
+  buildCommonWhereConditions,
+} from "@/lib/pipelines/queryHelpers";
 import {
   issueComments,
   prReviews,
@@ -9,9 +12,9 @@ import {
   rawPullRequestFiles,
   rawPullRequests,
   users,
-} from "../../schema";
-import { buildAreaMap } from "../codeAreaHelpers";
-import { categorizeWorkItem } from "../codeAreaHelpers";
+} from "@/lib/data/schema";
+import { buildAreaMap } from "@/lib/pipelines/codeAreaHelpers";
+import { categorizeWorkItem } from "@/lib/pipelines/codeAreaHelpers";
 
 /**
  * Get top pull requests for a repository in a time period

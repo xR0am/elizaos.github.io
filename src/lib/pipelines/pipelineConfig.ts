@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { AISummaryConfigSchema } from "./pipelines/summarize/config";
+import { AISummaryConfigSchema } from "./summarize/config";
 
 // Pipeline configuration schemas
 
@@ -65,7 +65,7 @@ export const RepositoryConfigSchema = z.object({
     .string()
     .regex(
       /^[^\/]+\/[^\/]+$/,
-      "Repository ID must be in the format 'owner/name'"
+      "Repository ID must be in the format 'owner/name'",
     ),
   defaultBranch: z.string().default("main"),
 });

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
-import { db } from "../db";
-import { repositories } from "../schema";
+import { db } from "@/lib/data/db";
+import { repositories } from "@/lib/data/schema";
 import { createStep, RepoPipelineContext } from "./types";
 
 /**
@@ -24,10 +24,10 @@ export const getSelectedRepositories = createStep(
       configRepos,
     });
     const selectedRepos = repos.filter(
-      (repo) => configRepos.indexOf(repo.repoId) >= 0
+      (repo) => configRepos.indexOf(repo.repoId) >= 0,
     );
     logger?.info(`Filtering for configured repositories`, { selectedRepos });
 
     return selectedRepos;
-  }
+  },
 );

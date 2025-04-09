@@ -1,15 +1,15 @@
-import { ScoringConfig } from "../../pipelineConfig";
-import { groupBy } from "../../../arrayHelpers";
-import { toDateString } from "../../../date-utils";
-import { rawPullRequests } from "../../schema";
+import { ScoringConfig } from "@/lib/pipelines/pipelineConfig";
+import { groupBy } from "@/lib/arrayHelpers";
+import { toDateString } from "@/lib/date-utils";
+import { rawPullRequests } from "@/lib/data/schema";
 import {
   getContributorPRs,
   getContributorIssueMetrics,
   getContributorReviewMetrics,
   getContributorCommentMetrics,
   getContributorPRMetrics,
-} from "./queries";
-import { QueryParams } from "../../queryHelpers";
+} from "@/lib/pipelines/contributors/queries";
+import { QueryParams } from "@/lib/pipelines/queryHelpers";
 import { UTCDate } from "@date-fns/utc";
 
 export interface ScoreResult {

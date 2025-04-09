@@ -29,21 +29,21 @@ if (missingEnvVars.length > 0) {
 
 import { Command } from "@commander-js/extra-typings";
 import { DataIngestion } from "../src/lib/data/ingestion";
-import { PipelineConfigSchema } from "@/lib/data/pipelineConfig";
+import { PipelineConfigSchema } from "@/lib/pipelines/pipelineConfig";
 import chalk from "chalk";
 import { subDays, format } from "date-fns";
-import { generateRepositoryStats } from "@/lib/data/pipelines/export";
-import { contributorTagsPipeline } from "@/lib/data/pipelines/contributors";
+import { generateRepositoryStats } from "@/lib/pipelines/export";
+import { contributorTagsPipeline } from "@/lib/pipelines/contributors";
 import {
   generateContributorSummaries,
   generateProjectSummaries,
-} from "@/lib/data/pipelines/summarize";
-import { createContributorPipelineContext } from "@/lib/data/pipelines/contributors/context";
-import { createRepositoryStatsPipelineContext } from "@/lib/data/pipelines/export/context";
-import { runPipeline } from "@/lib/data/pipelines/runPipeline";
-import { createLogger, LogLevel } from "@/lib/data/pipelines/logger";
+} from "@/lib/pipelines/summarize";
+import { createContributorPipelineContext } from "@/lib/pipelines/contributors/context";
+import { createRepositoryStatsPipelineContext } from "@/lib/pipelines/export/context";
+import { runPipeline } from "@/lib/pipelines/runPipeline";
+import { createLogger, LogLevel } from "@/lib/logger";
 import { getDateRange } from "@/lib/date-utils";
-import { createSummarizerContext } from "@/lib/data/pipelines/summarize/context";
+import { createSummarizerContext } from "@/lib/pipelines/summarize/context";
 
 const DEFAULT_CONFIG_PATH = "../config/pipeline.config.ts";
 const program = new Command();

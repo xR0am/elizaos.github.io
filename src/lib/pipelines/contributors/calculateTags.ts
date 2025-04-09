@@ -1,7 +1,7 @@
 import { getContributorPRs } from "./queries";
 import { createStep } from "../types";
-import { db } from "../../db";
-import { tags, userTagScores } from "../../schema";
+import { db } from "@/lib/data/db";
+import { tags, userTagScores } from "@/lib/data/schema";
 import { ContributorPipelineContext } from "./context";
 import { UTCDate } from "@date-fns/utc";
 // --- Tag processors ---

@@ -5,8 +5,8 @@ import { getContributorMetrics } from "./queries";
 import { generateTimeIntervals } from "../generateTimeIntervals";
 import { IntervalType, TimeInterval, toDateString } from "@/lib/date-utils";
 import { storeDailySummary } from "./mutations";
-import { db } from "../../db";
-import { userSummaries } from "../../schema";
+import { db } from "@/lib/data/db";
+import { userSummaries } from "@/lib/data/schema";
 import { eq, and } from "drizzle-orm";
 import { isNotNullOrUndefined } from "@/lib/typeHelpers";
 

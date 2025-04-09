@@ -1,6 +1,6 @@
-import { PipelineConfig } from "../../pipelineConfig";
-import { Logger } from "../logger";
-import { RepoPipelineContext } from "../types";
+import { PipelineConfig } from "@/lib/pipelines/pipelineConfig";
+import { Logger } from "@/lib/logger";
+import { RepoPipelineContext } from "@/lib/pipelines/types";
 
 export type ContributorPipelineContext = RepoPipelineContext;
 /**
