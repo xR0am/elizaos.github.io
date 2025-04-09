@@ -28,7 +28,6 @@ if (missingEnvVars.length > 0) {
 }
 
 import { Command } from "@commander-js/extra-typings";
-import { DataIngestion } from "../src/lib/data/ingestion";
 import { PipelineConfigSchema } from "@/lib/pipelines/pipelineConfig";
 import chalk from "chalk";
 import { subDays, format } from "date-fns";
@@ -42,8 +41,8 @@ import { createContributorPipelineContext } from "@/lib/pipelines/contributors/c
 import { createRepositoryStatsPipelineContext } from "@/lib/pipelines/export/context";
 import { runPipeline } from "@/lib/pipelines/runPipeline";
 import { createLogger, LogLevel } from "@/lib/logger";
-import { getDateRange } from "@/lib/date-utils";
 import { createSummarizerContext } from "@/lib/pipelines/summarize/context";
+import { ingestPipeline, createIngestionContext } from "@/lib/pipelines/ingest";
 
 const DEFAULT_CONFIG_PATH = "../config/pipeline.config.ts";
 const program = new Command();
@@ -52,9 +51,6 @@ program
   .name("analyze-pipeline")
   .description("GitHub Contribution Analytics Pipeline")
   .version("1.0.0");
-
-// Create instances with config - will be initialized in each command
-let dataIngestion: DataIngestion;
 
 // Ingest data from GitHub
 program
@@ -72,6 +68,7 @@ program
     DEFAULT_CONFIG_PATH,
   )
   .option("-v, --verbose", "Enable verbose logging", false)
+  .option("-r, --repository <owner/name>", "Process specific repository")
   .action(async (options) => {
     try {
       // Dynamically import the config
@@ -83,10 +80,11 @@ program
       const logLevel: LogLevel = options.verbose ? "debug" : "info";
       const rootLogger = createLogger({
         minLevel: logLevel,
+        context: {
+          command: "ingest",
+          config: options.config,
+        },
       });
-
-      // Initialize services with config
-      dataIngestion = new DataIngestion(pipelineConfig, rootLogger);
 
       // Handle date calculations
       const endDate = options.before ? new Date(options.before) : new Date();
@@ -99,21 +97,30 @@ program
         startDate = subDays(endDate, parseInt(options.days));
       }
 
-      const fetchOptions = getDateRange(startDate, endDate);
+      // Ensure we always have a startDate
+      const dateRange = {
+        startDate: startDate
+          ? format(startDate, "yyyy-MM-dd")
+          : format(subDays(endDate, 7), "yyyy-MM-dd"),
+        endDate: format(endDate, "yyyy-MM-dd"),
+      };
 
       rootLogger.info(
-        `Fetching data from ${fetchOptions.startDate || "last fetched time"} to ${fetchOptions.endDate} using config from ${configPath}`,
+        `Fetching data from ${dateRange.startDate || "last fetch time"} to ${dateRange.endDate || "end of time"} using config from ${configPath}`,
       );
 
-      // Fetch data for all configured repositories
-      const results = await dataIngestion.fetchAllData(fetchOptions);
+      // Create ingestion context with date range
+      const context = createIngestionContext({
+        repoId: options.repository,
+        logger: rootLogger,
+        config: pipelineConfig,
+        dateRange,
+      });
 
-      // Log results
-      for (const result of results) {
-        rootLogger.info(
-          `Repository ${result.repository}: Fetched ${result.prs} PRs and ${result.issues} issues`,
-        );
-      }
+      // Run the ingestion pipeline - returns array of { repository, prs, issues }
+      await ingestPipeline(undefined, context);
+
+      rootLogger.info("Ingestion completed successfully!");
     } catch (error: unknown) {
       console.error(chalk.red("Error fetching data:"), error);
       process.exit(1);

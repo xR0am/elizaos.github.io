@@ -71,11 +71,14 @@ bun run pipeline summarize -h
 ### Data Ingestion
 
 ```bash
-# Ingest latest Github data (default since last fetched, or 30 days)
+# Ingest latest Github data (default since last fetched, or 7 days)
 bun run pipeline ingest
 
+# Ingest from beginning
+bun run pipeline ingest --after 2024-08-01
+
 # Ingest with specific date range
-bun run pipeline ingest --after 2024-01-01 --before 2024-03-31
+bun run pipeline ingest --after 2024-10-01 --before 2024-12-31
 
 # Ingest data for a specific number of days
 bun run pipeline ingest --days 30 --before 2024-03-31
@@ -241,24 +244,13 @@ Additional setup required if you use Safari or Brave: https://orm.drizzle.team/d
 │       │   ├── export/        # Pipelines to export JSON data
 │       │   ├── ingest/        # Data ingestion pipeline components
 │       │   ├── summarize/     # Pipelines to generate AI summaries
-│       │   ├── codeAreaHelpers.ts  # Utilities for code area categorization
-│       │   ├── generateTimeIntervals.ts  # Date range generation utilities
-│       │   ├── getSelectedRepositories.ts # Repository selection utilities
-│       │   ├── pipelineConfig.ts  # Configuration schemas and types
-│       │   ├── queryHelpers.ts    # SQL query builder helpers
-│       │   ├── runPipeline.ts     # Pipeline execution utilities
-│       │   └── types.ts           # Core pipeline type definitions
-│       ├── data/          # Data processing and database code
+│       ├── data/          # Data sources and storage
 │       │   ├── db.ts      # Database connection and configuration
 │       │   ├── github.ts  # GitHub API integration
 │       │   ├── ingestion.ts  # Data ingestion from GitHub API
 │       │   ├── schema.ts  # Database schema definitions
 │       │   └── types.ts   # Core data type definitions
 │       ├── logger.ts      # Logging system
-│       ├── date-utils.ts  # Date handling utilities
-│       ├── fsHelpers.ts   # File system utilities
-│       ├── get-monthly-analysis.ts # Monthly analysis utilities
-│       ├── get-users.ts   # User data fetching utilities
 │       └── typeHelpers.ts # TypeScript helper utilities
 ├── profiles/           # Generated static profiles
 └── .github/workflows   # Automation workflows

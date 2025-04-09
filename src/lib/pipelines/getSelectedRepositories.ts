@@ -2,6 +2,7 @@ import { eq } from "drizzle-orm";
 import { db } from "@/lib/data/db";
 import { repositories } from "@/lib/data/schema";
 import { createStep, RepoPipelineContext } from "./types";
+import { isNotNullOrUndefined } from "../typeHelpers";
 
 /**
  * Common pipeline step to fetch and filter repositories based on context
@@ -19,13 +20,25 @@ export const getSelectedRepositories = createStep(
     });
 
     // Filter repositories
-    const configRepos = config.repositories.map((r) => r.repoId);
+    const configRepos = config.repositories;
     logger?.info(`Found ${configRepos.length} configured repositories`, {
       configRepos,
     });
-    const selectedRepos = repos.filter(
-      (repo) => configRepos.indexOf(repo.repoId) >= 0,
-    );
+    const selectedRepos = repos
+      .map((repo) => {
+        const configRepo = configRepos.find((r) => r.repoId === repo.repoId);
+        if (!configRepo) {
+          logger?.warn(`Repository ${repo.repoId} not found in config`, {
+            repo,
+          });
+          return null;
+        }
+        return {
+          repoId: repo.repoId,
+          defaultBranch: configRepo.defaultBranch,
+        };
+      })
+      .filter(isNotNullOrUndefined);
     logger?.info(`Filtering for configured repositories`, { selectedRepos });
 
     return selectedRepos;

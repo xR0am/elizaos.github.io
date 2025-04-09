@@ -12,13 +12,24 @@ export function buildDateRangeConditions<T extends { [key: string]: unknown }>(
   if (!dateRange) return [];
 
   const { startDate, endDate } = dateRange;
-  const conditions = dateFields.map(
-    (field) =>
-      sql`${table[field]} >= ${startDate} AND ${table[field]} <= ${endDate}`,
-  );
+  let dateConditions: SQL[] = [];
+  if (startDate && endDate) {
+    dateConditions = dateFields.map(
+      (field) =>
+        sql`${table[field]} >= ${startDate} AND ${table[field]} <= ${endDate}`,
+    );
+  } else if (startDate) {
+    dateConditions = dateFields.map(
+      (field) => sql`${table[field]} >= ${startDate}`,
+    );
+  } else if (endDate) {
+    dateConditions = dateFields.map(
+      (field) => sql`${table[field]} <= ${endDate}`,
+    );
+  }
 
   // At least one date field should match the range
-  return [sql`(${or(...conditions)})`];
+  return [sql`(${or(...dateConditions)})`];
 } /**
  * Helper function to build common where conditions based on query params
  */

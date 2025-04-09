@@ -83,7 +83,7 @@ export const RawPullRequestSchema = z.object({
       nodes: z.array(
         z.object({
           commit: RawCommitSchema,
-        })
+        }),
       ),
     })
     .optional(),
@@ -131,6 +131,6 @@ export const RawIssueSchema = z.object({
 export type GithubUser = z.infer<typeof GithubUserSchema>;
 
 export interface DateRange {
-  startDate: string;
+  startDate?: string;
   endDate?: string;
 }
