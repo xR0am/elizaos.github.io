@@ -9,6 +9,7 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+  PIPELINE_DATA_BRANCH: "pipeline-data" # Define branch name as environment variable
 
 jobs:
   ingest-export:
@@ -50,6 +51,7 @@ jobs:
         uses: ./.github/actions/pipeline-data
         with:
           operation: setup
+          branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
 
       - name: Initialize database
         run: bun run db:migrate
@@ -85,6 +87,7 @@ jobs:
         with:
           operation: update
           commit_message: "Pipeline run: $(date -u +'%Y-%m-%d')"
+          branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
 
       # Cleanup worktree (always runs)
       - name: Cleanup
@@ -92,6 +95,7 @@ jobs:
         uses: ./.github/actions/pipeline-data
         with:
           operation: cleanup
+          branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
 
   generate-summaries:
     name: Generate Summaries
@@ -124,6 +128,7 @@ jobs:
         uses: ./.github/actions/pipeline-data
         with:
           operation: setup
+          branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
 
       # Determine which summaries to run based on day of week
       - name: Check day of week for contributor summaries
@@ -165,6 +170,7 @@ jobs:
         with:
           operation: update
           commit_message: "Summary generation (${{ steps.schedule-check.outputs.run_contributor == 'true' && 'contributor and project' || 'project' }}): $(date -u +'%Y-%m-%d')"
+          branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
 
       # Cleanup worktree (always runs)
       - name: Cleanup
@@ -172,3 +178,4 @@ jobs:
         uses: ./.github/actions/pipeline-data
         with:
           operation: cleanup
+          branch_name: ${{ env.PIPELINE_DATA_BRANCH }}

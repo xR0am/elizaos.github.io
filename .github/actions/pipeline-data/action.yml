@@ -16,6 +16,10 @@ inputs:
     description: "Commit message for updates"
     required: false
     default: 'Pipeline run: $(date -u +"%Y-%m-%d")'
+  branch_name:
+    description: "Name of the branch to store pipeline data"
+    required: false
+    default: "pipeline-data"
 
 runs:
   using: "composite"
@@ -31,13 +35,13 @@ runs:
         git config user.email "actions@github.com"
 
         # Check if pipeline-data branch exists
-        if git ls-remote --heads origin pipeline-data | grep pipeline-data; then
+        if git ls-remote --heads origin ${{ inputs.branch_name }} | grep ${{ inputs.branch_name }}; then
           echo "Pipeline data branch exists, retrieving data..."
           
           # Create a worktree for pipeline-data branch
           git worktree add --detach pipeline-data-worktree
           cd pipeline-data-worktree
-          git checkout pipeline-data
+          git checkout ${{ inputs.branch_name }}
           
           # Copy data files to main workspace
           cd ..
@@ -48,7 +52,7 @@ runs:
           # Create a worktree with new orphan branch
           git worktree add --detach pipeline-data-worktree
           cd pipeline-data-worktree
-          git checkout --orphan pipeline-data
+          git checkout --orphan ${{ inputs.branch_name }}
           git rm -rf . 2>/dev/null || true
           
           # Create .gitignore that only keeps data folder
@@ -95,8 +99,8 @@ runs:
         git commit -m "${{ inputs.commit_message }}" || echo "No changes to commit"
 
         # Push with error handling
-        git push origin pipeline-data || {
-          echo "Failed to push to pipeline-data branch. This may indicate conflicts or network issues."
+        git push origin ${{ inputs.branch_name }} || {
+          echo "Failed to push to ${{ inputs.branch_name }} branch. This may indicate conflicts or network issues."
           echo "Manual intervention may be required to resolve this issue."
           exit 1
         }
