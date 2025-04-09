@@ -108,37 +108,106 @@ export async function getTopIssues(params: QueryParams = {}, limit = 5) {
  */
 
 export async function getTopContributors(params: QueryParams = {}, limit = 5) {
-  const prWhereConditions = buildCommonWhereConditions(
-    params,
-    rawPullRequests,
-    ["createdAt", "mergedAt"],
-  );
+  const { repository } = params;
 
   try {
-    // Define aliases properly for SQLite
-    const prCountAlias = "pr_count_alias";
-    const issueCountAlias = "issue_count_alias";
-    const reviewCountAlias = "review_count_alias";
+    // Build conditions for each table
+    const prConditions = buildCommonWhereConditions(params, rawPullRequests, [
+      "createdAt",
+      "mergedAt",
+    ]);
+    const issueConditions = buildCommonWhereConditions(params, rawIssues, [
+      "createdAt",
+    ]);
+    const reviewConditions = buildCommonWhereConditions(
+      { ...params, repository: undefined }, // Handle repository separately for reviews
+      prReviews,
+      ["createdAt"],
+    );
 
-    const contributorScores = await db
+    // Additional repository condition for reviews (needs to join with PRs)
+    const reviewRepoCondition = repository
+      ? sql`EXISTS (
+          SELECT 1 FROM ${rawPullRequests} 
+          WHERE ${rawPullRequests.id} = ${prReviews.prId}
+          AND ${rawPullRequests.repository} = ${repository}
+        )`
+      : undefined;
+
+    // Get users with PR counts
+    const userPrCounts = await db
       .select({
-        username: rawPullRequests.author,
-        pr_count: sql`COUNT(DISTINCT ${rawPullRequests.id})`.as(prCountAlias),
-        issue_count: sql`COUNT(DISTINCT ${rawIssues.id})`.as(issueCountAlias),
-        review_count: sql`COUNT(DISTINCT ${prReviews.id})`.as(reviewCountAlias),
+        username: users.username,
+        count: sql<number>`count(*)`.as("count"),
       })
-      .from(rawPullRequests)
-      .leftJoin(rawIssues, eq(rawPullRequests.author, rawIssues.author))
-      .leftJoin(prReviews, eq(rawPullRequests.author, prReviews.author))
-      .where(and(...prWhereConditions))
-      .groupBy(rawPullRequests.author)
-      .orderBy(
-        desc(sql`${prCountAlias} + ${issueCountAlias} + ${reviewCountAlias}`),
-      )
-      .limit(limit)
-      .all();
+      .from(users)
+      .innerJoin(rawPullRequests, eq(users.username, rawPullRequests.author))
+      .where(and(eq(users.isBot, 0), ...prConditions))
+      .groupBy(users.username);
 
-    return contributorScores;
+    // Get users with issue counts
+    const userIssueCounts = await db
+      .select({
+        username: users.username,
+        count: sql<number>`count(*)`.as("count"),
+      })
+      .from(users)
+      .innerJoin(rawIssues, eq(users.username, rawIssues.author))
+      .where(and(eq(users.isBot, 0), ...issueConditions))
+      .groupBy(users.username);
+
+    // Get users with review counts
+    const userReviewCounts = await db
+      .select({
+        username: users.username,
+        count: sql<number>`count(*)`.as("count"),
+      })
+      .from(users)
+      .innerJoin(prReviews, eq(users.username, prReviews.author))
+      .where(
+        and(
+          eq(users.isBot, 0),
+          ...(reviewRepoCondition
+            ? [...reviewConditions, reviewRepoCondition]
+            : reviewConditions),
+        ),
+      )
+      .groupBy(users.username);
+
+    // Create maps for each activity type
+    const prCountMap = new Map(userPrCounts.map((u) => [u.username, u.count]));
+    const issueCountMap = new Map(
+      userIssueCounts.map((u) => [u.username, u.count]),
+    );
+    const reviewCountMap = new Map(
+      userReviewCounts.map((u) => [u.username, u.count]),
+    );
+
+    // Get all unique usernames with activity
+    const allUsernames = new Set([
+      ...userPrCounts.map((u) => u.username),
+      ...userIssueCounts.map((u) => u.username),
+      ...userReviewCounts.map((u) => u.username),
+    ]);
+
+    // Create combined scores
+    const contributorScores = Array.from(allUsernames).map((username) => ({
+      username,
+      pr_count: prCountMap.get(username) || 0,
+      issue_count: issueCountMap.get(username) || 0,
+      review_count: reviewCountMap.get(username) || 0,
+    }));
+
+    // Sort by total score and limit
+    return contributorScores
+      .sort(
+        (a, b) =>
+          b.pr_count +
+          b.issue_count +
+          b.review_count -
+          (a.pr_count + a.issue_count + a.review_count),
+      )
+      .slice(0, limit);
   } catch (error) {
     console.error(`Error in getTopContributors:`, error);
     return [];
