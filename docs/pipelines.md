@@ -82,17 +82,29 @@ The pipeline system consists of several key components:
 
 - `src/lib/data/github.ts` - GitHub API integration
 - `src/lib/data/ingestion.ts` - Data ingestion into SQLite
-- `src/lib/data/pipelines/logger.ts` - Logging system for pipeline
-- `src/lib/data/pipelines/runPipeline.ts` - Pipeline execution utilities
-- `src/lib/data/pipelines/types.ts` - Core pipeline type definitions and utilities
-- `src/lib/data/pipelines/contributors/` - Contributor-specific pipeline steps
 - `src/lib/data/schema.ts` - Database schema with relations
+- `src/lib/data/db.ts` - Database connection and configuration
+- `src/lib/data/types.ts` - Core data type definitions
+
+- `src/lib/pipelines/types.ts` - Pipeline type definitions and core utilities
+- `src/lib/pipelines/runPipeline.ts` - Pipeline execution utilities
+- `src/lib/pipelines/pipelineConfig.ts` - Configuration schemas and types
+- `src/lib/pipelines/queryHelpers.ts` - SQL query builder helpers
+- `src/lib/pipelines/codeAreaHelpers.ts` - Utilities for code area categorization
+- `src/lib/pipelines/getSelectedRepositories.ts` - Repository selection utilities
+- `src/lib/pipelines/generateTimeIntervals.ts` - Date range generation utilities
+
+- `src/lib/pipelines/ingest/` - Data ingestion pipeline components
+- `src/lib/pipelines/summarize/` - AI summarization pipeline components
+- `src/lib/pipelines/contributors/` - Contributor analysis pipeline components
+- `src/lib/pipelines/export/` - Data export pipeline components
 
 ## Customization
 
 You can customize the pipeline system in several ways:
 
-- **Configuration**: Modify `config/pipeline.config.ts` to adjust scoring weights, repositories, and tags
-- **New Pipeline Steps**: Create custom steps in `src/lib/data/pipelines/` using the functional pipeline utilities
+- **Configuration**: Modify `src/lib/pipelines/pipelineConfig.ts` to adjust scoring weights, repositories, and tags
+- **New Pipeline Steps**: Create custom steps using the functional pipeline utilities in `types.ts`
 - **Custom Processing**: Add domain-specific logic in separate modules following the pattern in `contributors/`
 - **Database Schema**: Extend the database schema in `src/lib/data/schema.ts` and run migrations
+- **Query Helpers**: Use or extend the SQL query helpers in `queryHelpers.ts` for consistent database access

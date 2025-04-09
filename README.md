@@ -220,32 +220,6 @@ This launches Drizzle Studio, which provides a visual interface to browse tables
 
 Additional setup required if you use Safari or Brave: https://orm.drizzle.team/docs/drizzle-kit-studio#safari-and-brave-support
 
-### Weekly Thread Generation
-
-The system can generate social media-friendly thread summaries of weekly activity:
-
-1. **Automatic Generation**: Part of weekly workflow, runs every Friday
-2. **Content**:
-   - Comprehensive weekly summary in thread format
-   - Key metrics and achievements
-   - Notable PRs and improvements
-   - Future priorities and goals
-
-### Automated Reports
-
-The included GitHub Actions workflow (`weekly-summaries.yml`) automatically:
-
-- Runs daily at 5:00 PM EST
-- Generates weekly reports and threads on Fridays
-- Creates monthly summaries on the 4th of each month
-
-## Customization
-
-- Customize scoring algorithms in `src/lib/data/pipelines/contributors/score.ts`
-- Adjust summary generation in `src/lib/data/pipelines/summarize`
-- Customize profile pages in `src/components/ContributorProfile.tsx`
-- Configure report schedules in `.github/workflows/weekly-summaries.yml`
-
 ## Directory Structure
 
 ```
@@ -262,16 +236,30 @@ The included GitHub Actions workflow (`weekly-summaries.yml`) automatically:
 │   ├── components/     # React components
 │   │   └── ui/         # shadcn/ui components
 │   └── lib/
-│       └── data/       # Data processing and database code
-│           ├── pipelines/  # Modular pipeline system
-│           │   ├── contributors/  # Contributor-specific pipeline steps
-│           │   ├── export/  # Pipelines to export JSON data
-│           │   ├── summarize/  # Pipelines to generate AI summaries
-│           │   ├── runPipeline.ts # Pipeline execution utilities
-│           │   └── types.ts       # Core pipeline type definitions
-│           ├── schema.ts     # Database schema definitions
-│           ├── db.ts         # Database connection and query builder
-│           └── ingestion.ts  # Data ingestion from GitHub API
+│       ├── pipelines/  # Modular pipeline system
+│       │   ├── contributors/  # Contributor-specific pipeline components
+│       │   ├── export/        # Pipelines to export JSON data
+│       │   ├── ingest/        # Data ingestion pipeline components
+│       │   ├── summarize/     # Pipelines to generate AI summaries
+│       │   ├── codeAreaHelpers.ts  # Utilities for code area categorization
+│       │   ├── generateTimeIntervals.ts  # Date range generation utilities
+│       │   ├── getSelectedRepositories.ts # Repository selection utilities
+│       │   ├── pipelineConfig.ts  # Configuration schemas and types
+│       │   ├── queryHelpers.ts    # SQL query builder helpers
+│       │   ├── runPipeline.ts     # Pipeline execution utilities
+│       │   └── types.ts           # Core pipeline type definitions
+│       ├── data/          # Data processing and database code
+│       │   ├── db.ts      # Database connection and configuration
+│       │   ├── github.ts  # GitHub API integration
+│       │   ├── ingestion.ts  # Data ingestion from GitHub API
+│       │   ├── schema.ts  # Database schema definitions
+│       │   └── types.ts   # Core data type definitions
+│       ├── logger.ts      # Logging system
+│       ├── date-utils.ts  # Date handling utilities
+│       ├── fsHelpers.ts   # File system utilities
+│       ├── get-monthly-analysis.ts # Monthly analysis utilities
+│       ├── get-users.ts   # User data fetching utilities
+│       └── typeHelpers.ts # TypeScript helper utilities
 ├── profiles/           # Generated static profiles
 └── .github/workflows   # Automation workflows
 ```

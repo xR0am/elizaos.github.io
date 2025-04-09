@@ -1,4 +1,4 @@
-import { PipelineConfig } from "../src/lib/data/pipelineConfig";
+import { PipelineConfig } from "../src/lib/pipelines/pipelineConfig";
 
 const openrouterApiKey = process.env.OPENROUTER_API_KEY;
 if (!openrouterApiKey) {
