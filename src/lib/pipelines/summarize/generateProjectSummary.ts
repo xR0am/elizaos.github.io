@@ -70,7 +70,7 @@ export const generateProjectSummaryForInterval = createStep(
           context.outputDir,
         );
         if (summaryExists) {
-          intervalLogger?.info(
+          intervalLogger?.debug(
             `${interval.intervalType} summary already exists for ${repoId} on ${dateRange.startDate}, skipping generation`,
           );
           return;

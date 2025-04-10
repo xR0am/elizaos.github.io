@@ -8,7 +8,7 @@ export interface IngestionPipelineContext extends RepoPipelineContext {
   /** GitHub client for API requests */
   github: GitHubClient;
   /** Flag to force fetch data regardless of lastFetched timestamp */
-  force?: boolean;
+  force: boolean;
 }
 
 /**

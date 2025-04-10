@@ -3,6 +3,7 @@ import { db } from "@/lib/data/db";
 import { repositories } from "@/lib/data/schema";
 import { createStep, RepoPipelineContext } from "./types";
 import { isNotNullOrUndefined } from "../typeHelpers";
+import { UTCDate } from "@date-fns/utc";
 
 /**
  * Common pipeline step to fetch and filter repositories based on context
@@ -10,6 +11,14 @@ import { isNotNullOrUndefined } from "../typeHelpers";
 export const getSelectedRepositories = createStep(
   "getSelectedRepositories",
   async (_, { repoId, logger, config }: RepoPipelineContext) => {
+    // Filter repositories
+    const configRepos = config.repositories;
+    logger?.info(`Found ${configRepos.length} configured repositories`, {
+      configRepos,
+    });
+    for (const repo of configRepos) {
+      await registerRepository(repo.repoId);
+    }
     // Fetch all repositories
     const repos = await db
       .select({ repoId: repositories.repoId })
@@ -19,11 +28,6 @@ export const getSelectedRepositories = createStep(
       repos: repos.map((r) => r.repoId),
     });
 
-    // Filter repositories
-    const configRepos = config.repositories;
-    logger?.info(`Found ${configRepos.length} configured repositories`, {
-      configRepos,
-    });
     const selectedRepos = repos
       .map((repo) => {
         const configRepo = configRepos.find((r) => r.repoId === repo.repoId);
@@ -43,4 +47,20 @@ export const getSelectedRepositories = createStep(
 
     return selectedRepos;
   },
-);
+); /**
+ * Register or update a repository in the database
+ */
+
+export async function registerRepository(repoId: string) {
+  await db
+    .insert(repositories)
+    .values({
+      repoId,
+      lastUpdated: new UTCDate().toISOString(),
+    })
+    .onConflictDoNothing({
+      target: repositories.repoId,
+    });
+
+  return { repoId };
+}

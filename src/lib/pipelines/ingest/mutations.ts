@@ -10,26 +10,6 @@ import { UTCDate } from "@date-fns/utc";
 import { eq, sql } from "drizzle-orm";
 
 /**
- * Register or update a repository in the database
- */
-export async function registerRepository(repoId: string) {
-  await db
-    .insert(repositories)
-    .values({
-      repoId,
-      lastUpdated: new UTCDate().toISOString(),
-    })
-    .onConflictDoUpdate({
-      target: repositories.repoId,
-      set: {
-        lastUpdated: new UTCDate().toISOString(),
-      },
-    });
-
-  return { repoId };
-}
-
-/**
  * Update a repository's last fetched timestamp
  */
 export async function updateRepositoryLastFetched(
@@ -72,7 +52,6 @@ export async function ensureUsersExist(
       set: {
         avatarUrl: sql`COALESCE(excluded.avatar_url, ${users.avatarUrl})`,
         isBot: sql`excluded.is_bot`,
-        lastUpdated: sql`CURRENT_TIMESTAMP`,
       },
     });
 }
@@ -107,7 +86,6 @@ export async function ensureLabelsExist(
         name: sql`excluded.name`,
         color: sql`excluded.color`,
         description: sql`excluded.description`,
-        lastUpdated: sql`CURRENT_TIMESTAMP`,
       },
     });
 
@@ -129,11 +107,8 @@ export async function storePRLabels(prId: string, labelIds: string[]) {
   await db
     .insert(pullRequestLabels)
     .values(relationships)
-    .onConflictDoUpdate({
+    .onConflictDoNothing({
       target: [pullRequestLabels.prId, pullRequestLabels.labelId],
-      set: {
-        lastUpdated: sql`CURRENT_TIMESTAMP`,
-      },
     });
 }
 
@@ -152,10 +127,7 @@ export async function storeIssueLabels(issueId: string, labelIds: string[]) {
   await db
     .insert(issueLabels)
     .values(relationships)
-    .onConflictDoUpdate({
+    .onConflictDoNothing({
       target: [issueLabels.issueId, issueLabels.labelId],
-      set: {
-        lastUpdated: sql`CURRENT_TIMESTAMP`,
-      },
     });
 }

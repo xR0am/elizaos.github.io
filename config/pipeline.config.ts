@@ -14,6 +14,7 @@ if (!openrouterApiKey) {
  * the affected areas of the codebase.
  */
 export default {
+  contributionStartDate: "2024-10-15",
   // Repositories to track
   repositories: [
     {

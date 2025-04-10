@@ -25,7 +25,9 @@ export const generateContributorSummariesForRepo = pipe(
     ),
   ),
   createStep("Log Summaries", (results, context) => {
-    const filteredResults = results.filter((r) => r.length > 0);
+    const filteredResults = results.filter(
+      (r) => r[0].length > 0 || r[1].length > 0,
+    );
     const contributors = filteredResults.length;
     const numWeeklySummaries = filteredResults.reduce((acc, result) => {
       return acc + result[0].filter(isNotNullOrUndefined).length;

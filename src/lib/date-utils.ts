@@ -1,5 +1,5 @@
 import { UTCDate } from "@date-fns/utc";
-import { addDays } from "date-fns";
+import { addDays, subDays } from "date-fns";
 
 /**
  * Extracts date from a title string in format "elizaos Eliza (2025-01-12)"
@@ -77,14 +77,6 @@ export function toUTCMidnight(date: string | number | Date): UTCDate {
     new UTCDate(date).toISOString().split("T")[0] + "T00:00:00.000Z",
   );
 }
-
-export function getDateRange(start: Date | undefined, end: Date | undefined) {
-  return {
-    startDate: start ? toDateString(start) : undefined,
-    endDate: end ? toDateString(addDays(toUTCMidnight(end), 1)) : undefined,
-  };
-}
-
 export type IntervalType = "day" | "week" | "month";
 
 export interface TimeInterval {
@@ -148,4 +140,49 @@ export function getTimePeriodText(intervalType: IntervalType): {
         sentenceCount: 2,
       };
   }
+}
+
+export interface DateRangeOptions {
+  after?: string;
+  before?: string;
+  days?: string | number;
+  defaultStartDate?: string;
+}
+
+export interface DateRange {
+  startDate: string;
+  endDate: string;
+}
+
+/**
+ * Calculates a date range based on command line options
+ * @param options - Object containing after, before, and days options
+ * @returns Object with startDate (optional) and endDate as strings in YYYY-MM-DD format
+ */
+export function calculateDateRange(options: DateRangeOptions): DateRange {
+  const { after, before, days, defaultStartDate } = options;
+
+  // Calculate end date (defaults to now)
+  let endDate = before ? new UTCDate(before) : new UTCDate();
+
+  const numDays = typeof days === "string" ? parseInt(days) : days;
+  // Calculate start date based on priority: after > days
+  let startDate: UTCDate | undefined;
+  if (after) {
+    startDate = new UTCDate(after);
+    if (numDays && !before) {
+      endDate = addDays(startDate, numDays);
+    }
+  } else if (numDays) {
+    startDate = subDays(endDate, numDays);
+  } else {
+    startDate = defaultStartDate
+      ? new UTCDate(defaultStartDate)
+      : subDays(endDate, 7);
+  }
+
+  return {
+    startDate: toDateString(startDate),
+    endDate: toDateString(endDate),
+  };
 }

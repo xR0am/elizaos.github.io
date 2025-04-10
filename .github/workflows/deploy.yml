@@ -1,10 +1,10 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches: ["main"]
+  # push:
+  #   branches: ["main"]
   workflow_run:
-    workflows: ["Contributor Updates"]
+    workflows: ["Generate Summaries"]
     branches: [main]
     types: [completed]
   workflow_dispatch:

@@ -2,7 +2,7 @@ import { pipe, parallel, mapStep, createStep } from "../types";
 import { generateTimeIntervals } from "../generateTimeIntervals";
 import { fetchAndStorePullRequests } from "./storePullRequests";
 import { fetchAndStoreIssues } from "./storeIssues";
-import { registerRepository, updateRepositoryLastFetched } from "./mutations";
+import { updateRepositoryLastFetched } from "./mutations";
 import { RepositoryConfig } from "@/lib/pipelines/pipelineConfig";
 import { IngestionPipelineContext } from "./context";
 import { TimeInterval, toDateString } from "@/lib/date-utils";
@@ -71,10 +71,6 @@ const ingestRepoDataForInterval = createStep(
       : context;
 
     try {
-      // Register repository in database
-      logger?.info(`Registering repository: ${repoId}`);
-      await registerRepository(repoId);
-
       // Record the ingestion timestamp
       const ingestionTimestamp = new UTCDate().toISOString();
       logger?.debug(
