@@ -231,7 +231,7 @@ bunx serve@latest out
 
 ### TypeScript Pipeline
 
-The project uses a TypeScript-based pipeline for data processing. See [Pipeline Documentation](docs/pipelines.md) for detailed information about:
+The project uses a TypeScript-based pipeline for data processing. See [Pipeline Documentation](cli/pipelines.md) for detailed information about:
 
 - Basic usage and commands
 - Pipeline architecture and components
@@ -317,7 +317,7 @@ bun run pipeline ingest -d 10 -v
 .
 ├── data/               # Generated data and reports
 │   └── db.sqlite       # SQLite database
-├── scripts/            # Core processing scripts
+├── cli/                # CLI program for pipeline
 │   └── analyze-pipeline.ts  # Run typescript pipeline
 ├── config/             # Configuration files
 │   └── pipeline.config.ts  # TypeScript pipeline configuration
