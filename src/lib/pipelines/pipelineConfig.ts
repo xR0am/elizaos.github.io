@@ -71,6 +71,10 @@ export const RepositoryConfigSchema = z.object({
 });
 
 export const PipelineConfigSchema = z.object({
+  contributionStartDate: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/)
+    .optional(),
   repositories: z.array(RepositoryConfigSchema),
   scoring: ScoringConfigSchema,
   tags: z.object({

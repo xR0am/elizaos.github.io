@@ -34,10 +34,14 @@ All data-processing commands (ingest, export, summarize) support the same date r
 # Specify number of days to look back from the end date
 --days NUMBER
 
+# Process all data since contributionStartDate (requires config setting)
+--all
+
 # Examples:
 bun run pipeline ingest --after 2025-01-01 --before 2025-01-31
 bun run pipeline export --days 90
-bun run pipeline summarize -t project --after 2025-01-01
+bun run pipeline summarize -t contributors --after 2025-01-01
+bun run pipeline summarize -t project --all -o # Regnerate and overwrite all summaries
 ```
 
 Default lookback periods:
@@ -45,6 +49,8 @@ Default lookback periods:
 - `ingest`: 7 days
 - `export`: 30 days
 - `summarize`: 7 days
+
+Note: The `--all` option requires `contributionStartDate` to be set in your pipeline config file. If not set, the commands will throw an error.
 
 ## Configuration
 

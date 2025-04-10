@@ -10,8 +10,7 @@
 
 import { config as loadEnv } from "dotenv";
 import { join } from "path";
-import { UTCDate } from "@date-fns/utc";
-import { toDateString } from "@/lib/date-utils";
+import { calculateDateRange } from "@/lib/date-utils";
 
 // Load environment variables from .env file
 loadEnv();
@@ -32,7 +31,6 @@ if (missingEnvVars.length > 0) {
 import { Command } from "@commander-js/extra-typings";
 import { PipelineConfigSchema } from "@/lib/pipelines/pipelineConfig";
 import chalk from "chalk";
-import { subDays } from "date-fns";
 import { generateRepositoryStats } from "@/lib/pipelines/export";
 import { contributorTagsPipeline } from "@/lib/pipelines/contributors";
 import {
@@ -93,26 +91,12 @@ program
         },
       });
 
-      // Handle date calculations
-      const endDate = options.before
-        ? new UTCDate(options.before)
-        : new UTCDate();
-
-      let startDate: UTCDate | undefined;
-
-      if (options.after) {
-        startDate = new UTCDate(options.after);
-      } else if (options.days) {
-        startDate = subDays(endDate, parseInt(options.days));
-      } else {
-        // Default to 7 days lookback if no date options provided
-        startDate = subDays(endDate, 7);
-      }
-
-      const dateRange = {
-        startDate: toDateString(startDate),
-        endDate: toDateString(endDate),
-      };
+      // Calculate date range using shared helper
+      const dateRange = calculateDateRange({
+        after: options.after,
+        before: options.before,
+        days: options.days || "7",
+      });
 
       rootLogger.info(
         `Fetching data from ${dateRange.startDate || "last fetch time"} to ${dateRange.endDate || "end of time"} using config from ${configPath}`,
@@ -213,11 +197,8 @@ program
     "-b, --before <date>",
     "End date in YYYY-MM-DD format (defaults to end of today)",
   )
-  .option(
-    "-d, --days <number>",
-    "Number of days to look back from before date",
-    "30",
-  )
+  .option("-d, --days <number>", "Number of days to look back from before date")
+  .option("--all", "Process all data since contributionStartDate", false)
   .action(async (options) => {
     try {
       // Dynamically import the config
@@ -238,26 +219,22 @@ program
         `Generating repository stats using config from ${configPath}`,
       );
 
-      // Handle date calculations
-      const endDate = options.before
-        ? new UTCDate(options.before)
-        : new UTCDate();
-
-      let startDate: UTCDate | undefined;
-
-      if (options.after) {
-        startDate = new UTCDate(options.after);
-      } else if (options.days) {
-        startDate = subDays(endDate, parseInt(options.days));
-      } else {
-        // Default to 30 days lookback if no date options provided
-        startDate = subDays(endDate, 30);
+      // If --all is passed, ensure contributionStartDate is set
+      if (options.all) {
+        if (!pipelineConfig.contributionStartDate) {
+          throw new Error(
+            "contributionStartDate must be set in pipeline config when using --all option",
+          );
+        }
+        options.after = pipelineConfig.contributionStartDate;
       }
 
-      const dateRange = {
-        startDate: toDateString(startDate),
-        endDate: toDateString(endDate),
-      };
+      // Calculate date range using shared helper
+      const dateRange = calculateDateRange({
+        after: options.after,
+        before: options.before,
+        days: options.days,
+      });
 
       // Create pipeline context
       const context = createRepositoryStatsPipelineContext({
@@ -301,6 +278,7 @@ program
     "7",
   )
   .option("-o, --overwrite", "Overwrite existing summaries", false)
+  .option("--all", "Process all data since contributionStartDate", false)
   .requiredOption(
     "-t, --type <type>",
     "Type of summary to generate (contributors or project)",
@@ -332,26 +310,22 @@ program
         process.exit(1);
       }
 
-      // Handle date calculations
-      const endDate = options.before
-        ? new UTCDate(options.before)
-        : new UTCDate();
-
-      let startDate: UTCDate | undefined;
-
-      if (options.after) {
-        startDate = new UTCDate(options.after);
-      } else if (options.days) {
-        startDate = subDays(endDate, parseInt(options.days));
-      } else {
-        // Default to 7 days lookback if no date options provided
-        startDate = subDays(endDate, 7);
+      // If --all is passed, ensure contributionStartDate is set
+      if (options.all) {
+        if (!pipelineConfig.contributionStartDate) {
+          throw new Error(
+            "contributionStartDate must be set in pipeline config when using --all option",
+          );
+        }
+        options.after = pipelineConfig.contributionStartDate;
       }
 
-      const dateRange = {
-        startDate: toDateString(startDate),
-        endDate: toDateString(endDate),
-      };
+      // Calculate date range using shared helper
+      const dateRange = calculateDateRange({
+        after: options.after,
+        before: options.before,
+        days: options.days || "7", // Default to 7 days if not specified
+      });
 
       rootLogger.info(
         `Generating ${summaryType} summaries using config from ${configPath}`,
