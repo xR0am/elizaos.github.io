@@ -15,6 +15,10 @@ on:
         description: "Start date for data processing (format: YYYY-MM-DD)"
         type: string
         required: false
+      endDate:
+        description: "End date for data processing (format: YYYY-MM-DD)"
+        type: string
+        required: false
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -46,13 +50,17 @@ jobs:
         run: |
           IS_FORCE="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force == 'true' }}"
           HAS_START_DATE="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.startDate != '' }}"
+          HAS_END_DATE="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.endDate != '' }}"
           START_DATE_ARG="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.startDate != '' && format(' -a {0}', github.event.inputs.startDate) || '' }}"
+          END_DATE_ARG="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.endDate != '' && format(' -b {0}', github.event.inputs.endDate) || '' }}"
           FORCE_ARG="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force == 'true' && ' --force' || '' }}"
           FORCE_OVERWRITE="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force == 'true' && ' -o' || '' }}"
 
           echo "is_force=$IS_FORCE" >> $GITHUB_ENV
           echo "has_start_date=$HAS_START_DATE" >> $GITHUB_ENV
+          echo "has_end_date=$HAS_END_DATE" >> $GITHUB_ENV
           echo "start_date_arg=$START_DATE_ARG" >> $GITHUB_ENV
+          echo "end_date_arg=$END_DATE_ARG" >> $GITHUB_ENV
           echo "force_arg=$FORCE_ARG" >> $GITHUB_ENV
           echo "force_overwrite=$FORCE_OVERWRITE" >> $GITHUB_ENV
 
@@ -83,14 +91,14 @@ jobs:
         run: bun run db:migrate
 
       - name: Run ingest pipeline
-        run: bun run pipeline ingest${{ env.force_arg }}${{ env.start_date_arg }}
+        run: bun run pipeline ingest${{ env.force_arg }}${{ env.start_date_arg }}${{ env.end_date_arg }}
 
       - name: Run process pipeline
         run: bun run pipeline process
 
       - name: Run export pipeline # Export everything missing + overwrite last 2 days to ensure overlap
         run: |
-          bun run pipeline export${{ env.start_date_arg }}${{ env.force_overwrite }}
+          bun run pipeline export${{ env.start_date_arg }}${{ env.end_date_arg }}${{ env.force_overwrite }}
           bun run pipeline export --days 2 -o
       - name: Install uv
         uses: astral-sh/setup-uv@v5
@@ -147,12 +155,16 @@ jobs:
         run: |
           IS_FORCE="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force == 'true' }}"
           HAS_START_DATE="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.startDate != '' }}"
+          HAS_END_DATE="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.endDate != '' }}"
           START_DATE_ARG="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.startDate != '' && format(' -a {0}', github.event.inputs.startDate) || '' }}"
+          END_DATE_ARG="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.endDate != '' && format(' -b {0}', github.event.inputs.endDate) || '' }}"
           FORCE_OVERWRITE="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force == 'true' && ' -o' || '' }}"
 
           echo "is_force=$IS_FORCE" >> $GITHUB_ENV
           echo "has_start_date=$HAS_START_DATE" >> $GITHUB_ENV
+          echo "has_end_date=$HAS_END_DATE" >> $GITHUB_ENV
           echo "start_date_arg=$START_DATE_ARG" >> $GITHUB_ENV
+          echo "end_date_arg=$END_DATE_ARG" >> $GITHUB_ENV
           echo "force_overwrite=$FORCE_OVERWRITE" >> $GITHUB_ENV
 
       # Download the SQLite database artifact from the previous job
@@ -190,7 +202,7 @@ jobs:
         if: ${{ steps.schedule-check.outputs.run_project == 'true' }}
         run: |
           # Full project summary
-          bun run pipeline summarize -t project${{ env.start_date_arg }}${{ env.force_overwrite }}
+          bun run pipeline summarize -t project${{ env.start_date_arg }}${{ env.end_date_arg }}${{ env.force_overwrite }}
           # Recent project summary with overwrite
           bun run pipeline summarize -t project -o -d 1
 
@@ -199,7 +211,7 @@ jobs:
         if: ${{ steps.schedule-check.outputs.run_contributor == 'true' }}
         run: |
           # Full contributor summary
-          bun run pipeline summarize -t contributors${{ env.start_date_arg }}${{ env.force_overwrite }}
+          bun run pipeline summarize -t contributors${{ env.start_date_arg }}${{ env.end_date_arg }}${{ env.force_overwrite }}
           # Recent contributor summary with overwrite
           bun run pipeline summarize -t contributors -o -d 1
 
