@@ -34,7 +34,7 @@ jobs:
 
       - name: Get today's date and copy stats
         run: |
-          cp data/stats/$(date +'%Y-%m-%d').json data/stats.json
+          cp data/elizaos_eliza/stats/day/stats/$(date +'%Y-%m-%d').json data/elizaos_eliza/stats/day/stats.json
 
       - name: Generate Directory Listings
         uses: jayanta525/github-pages-directory-listing@v4.0.0
