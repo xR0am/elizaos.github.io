@@ -2,6 +2,12 @@
 
 A modern analytics pipeline for tracking and analyzing GitHub contributions. The system processes contributor data, generates AI-powered summaries, and maintains a leaderboard of developer activity.
 
+## Prerequisites
+
+- [Bun](https://bun.sh/) (recommended) or Node.js 18+
+- GitHub Personal Access Token with repo scope
+- [OpenRouter API Key](https://openrouter.ai/) (optional, for AI summaries)
+
 ## Features
 
 - Tracks pull requests, issues, reviews, and comments
@@ -9,10 +15,12 @@ A modern analytics pipeline for tracking and analyzing GitHub contributions. The
 - Generates AI-powered summaries of contributions
 - Exports daily summaries to JSON files
 - Maintains contributor expertise levels and focus areas
+- Interactive contributor profile pages
+- Activity visualizations and metrics
+- Daily, weekly, and monthly reports
+- Smart contributor scoring system
 
 ## Setup
-
-[Bun is recommended for this project.](https://bun.sh/)
 
 1. Install dependencies:
 
@@ -33,15 +41,38 @@ SITE_URL=https://elizaos.github.io
 SITE_NAME="ElizaOS Leaderboard"
 ```
 
+Then load the environment variables:
+
+```bash
+source .envrc
+# Or if using direnv: direnv allow
+```
+
 3. Configure repositories in `config/pipeline.config.ts`:
 
 ```typescript
-repositories: [
-  {
-    owner: "elizaos",
-    name: "eliza"
-  }
-],
+export default {
+  // Repositories to track
+  repositories: [
+    {
+      owner: "elizaos",
+      name: "eliza",
+    },
+  ],
+
+  // Bot users to ignore
+  botUsers: ["dependabot", "renovate-bot"],
+
+  // Scoring and tag configuration...
+
+  // AI Summary configuration
+  aiSummary: {
+    enabled: true,
+    model: "openai/gpt-4o-mini",
+    apiKey: process.env.OPENROUTER_API_KEY,
+    // ...
+  },
+};
 ```
 
 4. Initialize Database
@@ -49,13 +80,17 @@ repositories: [
 The SQLite database stores the GitHub data in a relational format for efficient querying and analysis. The database schema is in `src/lib/data/schema.ts`. Here's how to set it up:
 
 ```bash
+# Generate the database schema
+bun run db:generate
+
+# Apply migrations
 bun run db:migrate
+
+# (Optional) Explore the database with Studio
+bun run db:studio
 ```
 
-This will:
-
-- Create a SQLite database in the `data/` directory
-- Set up the required tables and schema with relations
+If you encounter any issues with Drizzle Studio due to Node.js version mismatches, you can use a different SQLite browser tool like [SQLite Browser](https://sqlitebrowser.org/).
 
 ## Commands and Capabilities
 
@@ -160,7 +195,6 @@ bun run pipeline summarize -t project --all -o
 # Generate summaries for specific repository
 bun run pipeline summarize -t project --repository owner/repo
 
-
 # Generate summaries with custom output directory
 bun run pipeline summarize -t project --output-dir ./custom-summaries/
 
@@ -240,6 +274,43 @@ This launches Drizzle Studio, which provides a visual interface to browse tables
 
 Additional setup required if you use Safari or Brave: https://orm.drizzle.team/docs/drizzle-kit-studio#safari-and-brave-support
 
+## Troubleshooting
+
+### Common Issues
+
+1. **"GITHUB_TOKEN environment variable is required"**
+
+   - Ensure your GitHub token is set in `.envrc` and the environment is loaded
+   - You can also run commands with the token directly: `GITHUB_TOKEN=your_token bun run pipeline ingest -d 10`
+   - GitHub Personal Access Token permissions:
+     - Contents: Read and write
+     - Metadata: (auto-enabled)
+     - Actions: Read and write
+     - Pages: Read and write
+
+2. **"No such table: repositories"**
+
+   - Run `bun run db:generate` and `bun run db:migrate` to initialize the database
+   - Ensure the `data` directory exists: `mkdir -p data`
+
+3. **"Error with better-sqlite3 module"**
+
+   - This is usually due to Node.js version mismatch with Bun
+   - Use the direct Bun SQLite implementation or upgrade/reinstall the module
+
+4. **"Error fetching data from GitHub"**
+   - Check your GitHub token has proper permissions
+   - Verify repository names are correct in config
+   - Ensure your token has not expired
+
+### Debugging
+
+For more detailed logs, add the `-v` or `--verbose` flag to any command:
+
+```bash
+bun run pipeline ingest -d 10 -v
+```
+
 ## Directory Structure
 
 ```
@@ -255,6 +326,7 @@ Additional setup required if you use Safari or Brave: https://orm.drizzle.team/d
 │   ├── app/            # Next.js app router pages
 │   ├── components/     # React components
 │   │   └── ui/         # shadcn/ui components
+│   │
 │   └── lib/
 │       ├── pipelines/  # Modular pipeline system
 │       │   ├── contributors/  # Contributor-specific pipeline components
@@ -273,12 +345,6 @@ Additional setup required if you use Safari or Brave: https://orm.drizzle.team/d
 └── .github/workflows   # Automation workflows
 ```
 
-## Requirements
+## License
 
-- Node.js 18+
-- GitHub Personal Access Token
-- OpenAI API Key (optional, for AI summaries)
-- Bun 1.0+ (recommended for TypeScript pipeline)
-
-- OpenAI API Key (optional, for AI summaries)
-- Bun 1.0+ (recommended for TypeScript pipeline)
+This project is licensed under the MIT License - see the LICENSE file for details.
