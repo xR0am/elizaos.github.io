@@ -1,12 +1,8 @@
-name: Deploy to GitHub Pages
+name: Deploy Data to GitHub Pages
 
 on:
-  # push:
-  #   branches: ["main"]
-  workflow_run:
-    workflows: ["Generate Summaries"]
-    branches: [main]
-    types: [completed]
+  push:
+    branches: ["_data"]
   workflow_dispatch:
 
 permissions:
@@ -20,49 +16,26 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15 # Add timeout to prevent hung builds
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
-
-      - name: Build
-        run: bun run build
-        env:
-          NEXT_TELEMETRY_DISABLED: 1
-          CI: true
-
-      - name: Copy data directory to out directory
-        run: |
-          mkdir -p out/data
-          cp -r data/* out/data/
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./out
-
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
     timeout-minutes: 10
     steps:
+      - name: Checkout _data branch
+        uses: actions/checkout@v4
+        with:
+          ref: _data
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
