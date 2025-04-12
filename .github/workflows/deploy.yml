@@ -4,6 +4,10 @@ on:
   push:
     branches: ["_data"]
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Generate Summaries"]
+    branches: [main]
+    types: [completed]
 
 permissions:
   contents: read
@@ -27,6 +31,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: _data
+
+      - name: Generate Directory Listings
+        uses: jayanta525/github-pages-directory-listing@v4.0.0
+        with:
+          FOLDER: data
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
