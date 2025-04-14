@@ -5,7 +5,12 @@ import { z } from "zod";
  */
 export const AISummaryConfigSchema = z.object({
   enabled: z.boolean().default(false),
-  model: z.string(),
+  defaultModel: z.string(),
+  models: z.object({
+    day: z.string(),
+    week: z.string(),
+    month: z.string(),
+  }),
   apiKey: z.string(),
   endpoint: z.string().default("https://openrouter.ai/api/v1/chat/completions"),
   temperature: z.number().default(0.1),

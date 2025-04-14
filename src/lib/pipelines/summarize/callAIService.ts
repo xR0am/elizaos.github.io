@@ -10,6 +10,7 @@ export async function callAIService(
   options?: {
     maxTokens?: number;
     temperature?: number;
+    model?: string;
   },
 ): Promise<string> {
   try {
@@ -24,7 +25,10 @@ export async function callAIService(
           "X-Title": process.env.SITE_NAME || "ElizaOS Leaderboard",
         },
         body: JSON.stringify({
-          model: config.model || "anthropic/claude-3-sonnet-20240229",
+          model:
+            options?.model ||
+            config.defaultModel ||
+            "anthropic/claude-3-sonnet-20240229",
           messages: [
             {
               role: "system",

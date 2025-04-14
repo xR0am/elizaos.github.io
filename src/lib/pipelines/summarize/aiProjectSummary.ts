@@ -76,7 +76,10 @@ export async function generateProjectAnalysis(
     // Calculate token length based on prompt content and interval type
     const maxTokens = calculateMaxTokens(prompt, intervalType);
     // Get analysis from AI model
-    return await callAIService(prompt, config, { maxTokens });
+    return await callAIService(prompt, config, {
+      maxTokens,
+      model: config.models[intervalType],
+    });
   } catch (error) {
     console.error(`Error generating ${intervalType} project analysis:`, error);
     return null;
