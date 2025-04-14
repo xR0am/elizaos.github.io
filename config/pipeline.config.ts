@@ -352,10 +352,10 @@ export default {
     models: {
       day: "openai/gpt-4o-mini",
       week: "anthropic/claude-3.7-sonnet",
-      month: "google/gemini-2.5-pro-preview-03-25",
+      month: "anthropic/claude-3.7-sonnet",
     },
     temperature: 0.1,
-    max_tokens: 200,
+    max_tokens: 3000,
     endpoint: "https://openrouter.ai/api/v1/chat/completions",
     apiKey: openrouterApiKey,
     projectContext: `
