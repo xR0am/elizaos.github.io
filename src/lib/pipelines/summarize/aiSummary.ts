@@ -38,7 +38,9 @@ export async function generateContributorSummary(
     const prompt = formatContributorPrompt(metrics, intervalType);
 
     // Get summary from AI model
-    return await callAIService(prompt, config);
+    return await callAIService(prompt, config, {
+      model: config.models[intervalType],
+    });
   } catch (error) {
     console.error(`Error generating summary for ${metrics.username}:`, error);
     return null;

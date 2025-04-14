@@ -348,7 +348,12 @@ export default {
   // AI Summary generation (optional)
   aiSummary: {
     enabled: true,
-    model: "openai/gpt-4o-mini" as const,
+    defaultModel: "openai/gpt-4o-mini",
+    models: {
+      day: "openai/gpt-4o-mini",
+      week: "anthropic/claude-3.7-sonnet",
+      month: "google/gemini-2.5-pro-preview-03-25",
+    },
     temperature: 0.1,
     max_tokens: 200,
     endpoint: "https://openrouter.ai/api/v1/chat/completions",
