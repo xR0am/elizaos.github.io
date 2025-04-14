@@ -75,6 +75,7 @@ export async function generateProjectAnalysis(
 
     // Calculate token length based on prompt content and interval type
     const maxTokens = calculateMaxTokens(prompt, intervalType);
+    console.log(`Max tokens: ${maxTokens}, intervalType: ${intervalType}`);
     // Get analysis from AI model
     return await callAIService(prompt, config, {
       maxTokens,
@@ -96,9 +97,9 @@ function calculateMaxTokens(
 ): number {
   // Base tokens by interval type
   const baseTokensByInterval = {
-    month: 700,
-    week: 600,
-    day: 500,
+    month: 3000,
+    week: 1500,
+    day: 300,
   };
 
   // Get base token count for this interval type
@@ -113,7 +114,7 @@ function calculateMaxTokens(
   const calculatedTokens = Math.round(baseTokens * scalingFactor);
 
   // Ensure result is within 200-1500 token range
-  return Math.max(200, Math.min(1500, calculatedTokens));
+  return Math.max(300, Math.min(3000, calculatedTokens));
 }
 
 /**
@@ -223,11 +224,17 @@ Format the report with the following sections:
     .map((contributor) => contributor.username)
     .join(", ")}
 
+## TOP ISSUES
+
+  Group the top issues thematically into ${intervalType === "month" ? "8-12" : "2-4"} different headlines,
+  and concisely describe the key challenges and problems in point form. Reference
+  the issue numbers that are most relevant to each headline, formatted as a Markdown link (e.g. [#123](https://github.com/${metrics.repository}/issues/123)).
+
 ## KEY TECHNICAL DEVELOPMENTS
 
- Group/cluster the completed work thematically into ${intervalType === "month" ? "3-5" : "2-4"} different headlines,
+ Group/cluster the completed work thematically into ${intervalType === "month" ? "8-12" : "2-4"} different headlines,
  and concisely describe the key changes and improvements in point form. Reference
- the PR numbers that are most relevant to each headline, formatted as a Markdown link (e.g. [#123](https://github.com/${metrics.repository}/pull/123)).
+  the PR numbers that are most relevant to each headline, formatted as a Markdown link (e.g. [#123](https://github.com/${metrics.repository}/pull/123)).
 
  ${
    intervalType === "month"
