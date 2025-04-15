@@ -39,6 +39,9 @@ function buildDateRangeConditions<T extends AnySQLiteTable>(
     );
   }
 
+  if (dateConditions.length === 0) {
+    return [];
+  }
   // At least one date field should match the range
   return [sql`(${or(...dateConditions)})`];
 }

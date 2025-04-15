@@ -13,11 +13,11 @@ export function LeaderboardCard({
   onSkillClick: (skill: string) => void;
 }) {
   const totalXp = Math.round(
-    Object.values(user.tag_scores).reduce((a, b) => a + b, 0)
+    Object.values(user.tag_scores).reduce((a, b) => a + b, 0),
   );
   const totalLevel = Object.values(user.tag_levels).reduce(
     (sum, skill) => sum + skill.level,
-    0
+    0,
   );
   const topSkills = Object.entries(user.tag_levels)
     .sort(([, a], [, b]) => b.level - a.level)
@@ -30,14 +30,14 @@ export function LeaderboardCard({
 
   return (
     <Link href={`/profile/${user.username}`}>
-      <div className="hover:bg-accent/50 transition-colors h-[72px] px-3 sm:px-5">
-        <div className="flex items-center h-full">
-          <span className="hidden md:flex items-center text-xl text-muted-foreground font-semibold mr-4 w-8">
+      <div className="h-[72px] px-3 transition-colors hover:bg-accent/50 sm:px-5">
+        <div className="flex h-full items-center">
+          <span className="mr-4 hidden w-8 items-center text-xl font-semibold text-muted-foreground md:flex">
             {rank}
           </span>
-          <div className="flex flex-1 min-w-0 items-center">
-            <div className="flex items-center mr-3">
-              <span className="md:hidden text-sm font-medium mr-3 text-muted-foreground">
+          <div className="flex min-w-0 flex-1 items-center">
+            <div className="mr-3 flex items-center">
+              <span className="mr-3 text-sm font-medium text-muted-foreground md:hidden">
                 {rank}
               </span>
               <Avatar className="h-10 w-10">
@@ -50,12 +50,12 @@ export function LeaderboardCard({
                 </AvatarFallback>
               </Avatar>
             </div>
-            <div className="min-w-0 flex flex-col gap-1 flex-1">
-              <h3 className="font-medium truncate">{user.username}</h3>
+            <div className="flex min-w-0 flex-1 flex-col gap-1">
+              <h3 className="truncate font-medium">{user.username}</h3>
               <div className="flex gap-2">
                 <Badge
                   variant="outline"
-                  className="text-xs flex items-center px-2 gap-1"
+                  className="flex items-center gap-1 px-2 text-xs"
                 >
                   <span className="text-primary/80">XP</span>
                   <span className="text-muted-foreground">
@@ -64,23 +64,23 @@ export function LeaderboardCard({
                 </Badge>
                 <Badge
                   variant="outline"
-                  className="text-xs flex items-center px-2 gap-1"
+                  className="flex items-center gap-1 px-2 text-xs"
                 >
                   <span className="text-primary/80">LVL</span>
                   <span className="text-muted-foreground">{totalLevel}</span>
                 </Badge>
               </div>
             </div>
-            <div className="hidden md:flex gap-2 items-center">
+            <div className="hidden items-center gap-2 md:flex">
               {topSkills.map(([name, data]) => (
                 <Badge
                   key={name}
                   variant="outline"
-                  className="text-xs flex items-center gap-1 cursor-pointer hover:border-primary whitespace-nowrap"
+                  className="flex cursor-pointer items-center gap-1 whitespace-nowrap text-xs hover:border-primary"
                   onClick={(e) => handleSkillClick(name, e)}
                 >
                   <span>{name}</span>
-                  <span className="font-mono bg-secondary-foreground/10 -mr-2.5 -my-0.5 py-0.5 px-1.5 rounded-r-[inherit]">
+                  <span className="-my-0.5 -mr-2.5 rounded-r-[inherit] bg-secondary-foreground/10 px-1.5 py-0.5 font-mono">
                     {data.level}
                   </span>
                 </Badge>

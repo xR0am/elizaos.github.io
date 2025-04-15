@@ -405,7 +405,7 @@ export const issueLabels = sqliteTable(
 export const userDailyScores = sqliteTable(
   "user_daily_scores",
   {
-    id: text("id").primaryKey(), // username_date
+    id: text("id").primaryKey(), // username_date_category
     username: text("username")
       .notNull()
       .references(() => users.username, { onDelete: "cascade" }),

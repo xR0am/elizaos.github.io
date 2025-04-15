@@ -23,7 +23,6 @@ export const calculateUserScoreForInterval = createStep(
       username,
       toDateString(interval.intervalStart),
       toDateString(interval.intervalEnd),
-      interval.intervalType,
     );
     if (existingScores.length > 0 && !force) {
       logger?.debug(
@@ -56,12 +55,7 @@ export const calculateUserScoreForInterval = createStep(
       // Only save if there's actual score
       if (scoreResult.totalScore > 0) {
         // Save the calculated score to the database
-        await saveUserDailyScore(
-          username,
-          scoreResult,
-          dateString,
-          interval.intervalType,
-        );
+        await saveUserDailyScore(username, scoreResult, dateString);
 
         logger?.debug(
           `Saved ${interval.intervalType} score for ${username}: ${scoreResult.totalScore}`,

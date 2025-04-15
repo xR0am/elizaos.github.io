@@ -1,6 +1,6 @@
 import { db } from "@/lib/data/db";
 import { users, userTagScores, tags } from "@/lib/data/schema";
-import { eq, and, inArray, gte, lte } from "drizzle-orm";
+import { eq, and, inArray } from "drizzle-orm";
 import { UserFocusAreaData, TagLevel } from "@/types/user-profile";
 import { getDateRangeForPeriod } from "@/lib/pipelines/queryHelpers";
 import { getTopUsersByScore } from "@/lib/scoring/queries";
@@ -25,7 +25,7 @@ export async function getLeaderboard(
   const topUsers = await getTopUsersByScore(
     startDate,
     endDate,
-    50, // Get top 50 users
+    100, // Get top 100 users
   );
 
   // Get usernames from top users to fetch their complete data

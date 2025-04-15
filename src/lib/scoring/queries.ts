@@ -5,10 +5,46 @@ import {
   buildCommonWhereConditions,
   formatPeriodLabel,
 } from "@/lib/pipelines/queryHelpers";
-import { AggregationPeriod, UserScoreWithMetrics } from "./types";
+import { AggregationPeriod } from "./types";
 import { SQLiteColumn } from "drizzle-orm/sqlite-core";
 import { getUserDailyScores } from "./storage";
+import { generateDaysInRange } from "../date-utils";
 
+/**
+ * Generate SQL expressions for common score aggregation fields
+ *
+ * @param table - The table object containing score columns
+ * @returns Object with SQL expressions for each score type
+ *
+ * @example
+ * ```typescript
+ * const scoreFields = generateScoreSelectFields(userDailyScores);
+ * const results = await db
+ *   .select({
+ *     ...scoreFields,
+ *     username: userDailyScores.username,
+ *   })
+ *   .from(userDailyScores);
+ * ```
+ */
+
+export function generateScoreSelectFields<
+  T extends {
+    score: SQLiteColumn;
+    prScore: SQLiteColumn;
+    issueScore: SQLiteColumn;
+    reviewScore: SQLiteColumn;
+    commentScore: SQLiteColumn;
+  },
+>(table: T) {
+  return {
+    totalScore: sql<number>`COALESCE(SUM(${table.score}), 0)`,
+    prScore: sql<number>`COALESCE(SUM(${table.prScore}), 0)`,
+    issueScore: sql<number>`COALESCE(SUM(${table.issueScore}), 0)`,
+    reviewScore: sql<number>`COALESCE(SUM(${table.reviewScore}), 0)`,
+    commentScore: sql<number>`COALESCE(SUM(${table.commentScore}), 0)`,
+  };
+}
 /**
  * Get aggregated user score for a time period
  * @param username - User's username
@@ -20,7 +56,6 @@ export async function getUserAggregatedScore(
   username: string,
   startDate?: string,
   endDate?: string,
-  category = "day",
 ): Promise<{
   totalScore: number;
   prScore: number;
@@ -31,7 +66,7 @@ export async function getUserAggregatedScore(
   // Start with the basic conditions
   const conditions = [
     eq(userDailyScores.username, username),
-    eq(userDailyScores.category, category),
+    eq(userDailyScores.category, "day"),
     ...buildCommonWhereConditions(
       { dateRange: { startDate, endDate } },
       userDailyScores,
@@ -266,7 +301,9 @@ export async function compareUserScores(
 
   // Sort by total score, descending
   return results.sort((a, b) => b.totalScore - a.totalScore);
-} /**
+}
+
+/**
  * Get activity heatmap data for visualizing user activity patterns
  * @param username - User's username
  * @param startDate - Start date string (YYYY-MM-DD)
@@ -276,8 +313,8 @@ export async function compareUserScores(
 
 export async function getUserActivityHeatmap(
   username: string,
-  startDate?: string,
-  endDate?: string,
+  startDate: string,
+  endDate: string,
 ): Promise<
   {
     date: string;
@@ -290,76 +327,30 @@ export async function getUserActivityHeatmap(
     };
   }[]
 > {
+  const allDates = generateDaysInRange(startDate, endDate);
+
   // Get daily scores
   const dailyScores = await getUserDailyScores(username, startDate, endDate);
 
-  return dailyScores.map((score: UserScoreWithMetrics) => ({
-    date: score.date,
-    value: score.score,
+  const scoreMap = new Map(dailyScores.map((s) => [s.date, s]));
+
+  return allDates.map((date) => ({
+    date,
+    value: Number(scoreMap.get(date)?.score || 0),
     breakdown: {
-      prScore: Number(score.prScore || 0),
-      issueScore: Number(score.issueScore || 0),
-      reviewScore: Number(score.reviewScore || 0),
-      commentScore: Number(score.commentScore || 0),
+      prScore: Number(scoreMap.get(date)?.prScore || 0),
+      issueScore: Number(scoreMap.get(date)?.issueScore || 0),
+      reviewScore: Number(scoreMap.get(date)?.reviewScore || 0),
+      commentScore: Number(scoreMap.get(date)?.commentScore || 0),
     },
   }));
-} /**
- * Generate SQL expressions for common score aggregation fields
- *
- * @param table - The table object containing score columns
- * @returns Object with SQL expressions for each score type
- *
- * @example
- * ```typescript
- * const scoreFields = generateScoreSelectFields(userDailyScores);
- * const results = await db
- *   .select({
- *     ...scoreFields,
- *     username: userDailyScores.username,
- *   })
- *   .from(userDailyScores);
- * ```
- */
-
-export function generateScoreSelectFields<
-  T extends {
-    score: SQLiteColumn;
-    prScore?: SQLiteColumn;
-    issueScore?: SQLiteColumn;
-    reviewScore?: SQLiteColumn;
-    commentScore?: SQLiteColumn;
-  },
->(table: T) {
-  return {
-    totalScore: sql<number>`COALESCE(SUM(${table.score}), 0)`,
-    ...(table.prScore
-      ? { prScore: sql<number>`COALESCE(SUM(${table.prScore}), 0)` }
-      : {}),
-    ...(table.issueScore
-      ? { issueScore: sql<number>`COALESCE(SUM(${table.issueScore}), 0)` }
-      : {}),
-    ...(table.reviewScore
-      ? { reviewScore: sql<number>`COALESCE(SUM(${table.reviewScore}), 0)` }
-      : {}),
-    ...(table.commentScore
-      ? { commentScore: sql<number>`COALESCE(SUM(${table.commentScore}), 0)` }
-      : {}),
-  };
 }
+
 export async function getTopUsersByScore(
   startDate?: string,
   endDate?: string,
   limit = 10,
-): Promise<
-  {
-    username: string;
-    totalScore: number;
-    prScore: number;
-    issueScore: number;
-    reviewScore: number;
-    commentScore: number;
-  }[]
-> {
+) {
   // Start with base conditions
   const conditions = [
     eq(users.isBot, 0), // Exclude bots
@@ -370,37 +361,21 @@ export async function getTopUsersByScore(
     ),
   ];
 
+  // Generate score fields using our helper
+  const scoreFields = generateScoreSelectFields(userDailyScores);
+
   const results = await db
     .select({
       username: userDailyScores.username,
-      totalScore: sql`COALESCE(SUM(${userDailyScores.score}), 0)`.as(
-        "totalScore",
-      ),
-      prScore: sql`COALESCE(SUM(${userDailyScores.prScore}), 0)`.as("prScore"),
-      issueScore: sql`COALESCE(SUM(${userDailyScores.issueScore}), 0)`.as(
-        "issueScore",
-      ),
-      reviewScore: sql`COALESCE(SUM(${userDailyScores.reviewScore}), 0)`.as(
-        "reviewScore",
-      ),
-      commentScore: sql`COALESCE(SUM(${userDailyScores.commentScore}), 0)`.as(
-        "commentScore",
-      ),
+      ...scoreFields,
     })
     .from(userDailyScores)
     .leftJoin(users, eq(userDailyScores.username, users.username))
     .where(and(...conditions))
     .groupBy(userDailyScores.username)
-    .orderBy(desc(sql`totalScore`))
+    .orderBy(desc(scoreFields.totalScore))
     .limit(limit)
     .all();
 
-  return results.map((row) => ({
-    username: row.username,
-    totalScore: Number(row.totalScore || 0),
-    prScore: Number(row.prScore || 0),
-    issueScore: Number(row.issueScore || 0),
-    reviewScore: Number(row.reviewScore || 0),
-    commentScore: Number(row.commentScore || 0),
-  }));
+  return results;
 }

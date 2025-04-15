@@ -24,7 +24,7 @@ export interface UserFocusAreaData {
   stats: UserStats;
   focus_areas: [string, number][];
   summary: string;
-  score?: number;
+  score: number;
   avatarUrl?: string | null;
 }
 

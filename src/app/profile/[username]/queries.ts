@@ -10,6 +10,7 @@ import {
 import { UTCDate } from "@date-fns/utc";
 import { toDateString } from "@/lib/date-utils";
 import { UserFocusAreaData, UserStats } from "@/types/user-profile";
+import { getUserAggregatedScore } from "@/lib/scoring/queries";
 
 /**
  * Get comprehensive user profile data
@@ -175,8 +176,11 @@ export async function getUserProfile(
     prs_by_month: prsByMonth,
   };
 
+  const userScore = await getUserAggregatedScore(username);
+
   return {
     username,
+    score: userScore.totalScore,
     tag_scores: tagScores,
     tag_levels: tagLevels,
     tags: userTags,
