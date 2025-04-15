@@ -94,7 +94,7 @@ jobs:
         run: bun run pipeline ingest${{ env.force_arg }}${{ env.start_date_arg }}${{ env.end_date_arg }}
 
       - name: Run process pipeline
-        run: bun run pipeline process
+        run: bun run pipeline process${{ env.force_arg }}
 
       - name: Run export pipeline # Export everything missing + overwrite last 2 days to ensure overlap
         run: |

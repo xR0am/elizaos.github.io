@@ -1,4 +1,4 @@
-import { eq, and, gte, lte, inArray } from "drizzle-orm";
+import { eq, and, inArray } from "drizzle-orm";
 import { db } from "@/lib/data/db";
 import {
   users,
@@ -15,6 +15,7 @@ import {
   categorizeWorkItem,
 } from "@/lib/pipelines/codeAreaHelpers";
 import { UTCDate } from "@date-fns/utc";
+import { buildCommonWhereConditions } from "../queryHelpers";
 
 /**
  * Get metrics for a contributor within a time range
@@ -25,7 +26,7 @@ export async function getContributorMetrics({
   dateRange,
 }: {
   username: string;
-  repository: string;
+  repository: string | undefined;
   dateRange: {
     startDate: string;
     endDate: string;
@@ -44,9 +45,11 @@ export async function getContributorMetrics({
   const prs = await db.query.rawPullRequests.findMany({
     where: and(
       eq(rawPullRequests.author, username),
-      eq(rawPullRequests.repository, repository),
-      gte(rawPullRequests.createdAt, dateRange.startDate),
-      lte(rawPullRequests.createdAt, dateRange.endDate),
+      ...buildCommonWhereConditions(
+        { repository, dateRange },
+        rawPullRequests,
+        ["createdAt"],
+      ),
     ),
     with: {
       commits: true,
@@ -176,9 +179,14 @@ export async function getContributorMetrics({
   const contributorIssues = await db.query.rawIssues.findMany({
     where: and(
       eq(rawIssues.author, username),
-      eq(rawIssues.repository, repository),
-      gte(rawIssues.createdAt, dateRange.startDate),
-      lte(rawIssues.createdAt, dateRange.endDate),
+      ...buildCommonWhereConditions(
+        {
+          repository,
+          dateRange,
+        },
+        rawIssues,
+        ["createdAt", "closedAt"],
+      ),
     ),
   });
 
@@ -186,9 +194,9 @@ export async function getContributorMetrics({
   const closedIssues = await db.query.rawIssues.findMany({
     where: and(
       eq(rawIssues.author, username),
-      eq(rawIssues.repository, repository),
-      gte(rawIssues.closedAt, dateRange.startDate),
-      lte(rawIssues.closedAt, dateRange.endDate),
+      ...buildCommonWhereConditions({ repository, dateRange }, rawIssues, [
+        "closedAt",
+      ]),
       eq(rawIssues.state, "closed"),
     ),
   });
@@ -198,8 +206,11 @@ export async function getContributorMetrics({
     .findMany({
       where: and(
         eq(issueComments.author, username),
-        gte(issueComments.createdAt, dateRange.startDate),
-        lte(issueComments.createdAt, dateRange.endDate),
+        ...buildCommonWhereConditions(
+          { repository, dateRange },
+          issueComments,
+          ["createdAt"],
+        ),
       ),
       with: {
         issue: true,
@@ -214,8 +225,9 @@ export async function getContributorMetrics({
     .findMany({
       where: and(
         eq(prReviews.author, username),
-        gte(prReviews.createdAt, dateRange.startDate),
-        lte(prReviews.createdAt, dateRange.endDate),
+        ...buildCommonWhereConditions({ repository, dateRange }, prReviews, [
+          "createdAt",
+        ]),
       ),
       with: {
         pullRequest: true,
@@ -241,8 +253,9 @@ export async function getContributorMetrics({
     .findMany({
       where: and(
         eq(prComments.author, username),
-        gte(prComments.createdAt, dateRange.startDate),
-        lte(prComments.createdAt, dateRange.endDate),
+        ...buildCommonWhereConditions({ repository, dateRange }, prComments, [
+          "createdAt",
+        ]),
       ),
       with: {
         pullRequest: true,
@@ -256,9 +269,9 @@ export async function getContributorMetrics({
   const contributorCommits = await db.query.rawCommits.findMany({
     where: and(
       eq(rawCommits.author, username),
-      eq(rawCommits.repository, repository),
-      gte(rawCommits.committedDate, dateRange.startDate),
-      lte(rawCommits.committedDate, dateRange.endDate),
+      ...buildCommonWhereConditions({ repository, dateRange }, rawCommits, [
+        "committedDate",
+      ]),
     ),
     with: {
       files: true,

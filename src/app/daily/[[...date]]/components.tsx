@@ -5,24 +5,18 @@ import {
   ChevronRight,
   CircleDot,
   FileCode,
-  GitCommit,
   GitCommitVertical,
   GitPullRequest,
   MessageCircleWarning,
   Users,
   CheckCircle,
-  Code,
   GitMerge,
-  FileText,
   ArrowDown,
   ArrowUp,
-  ExternalLink,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { DailyMetrics } from "./queries";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 
 // Import our generic components
 import { StatCard } from "@/components/stat-card";
@@ -32,7 +26,7 @@ import { ContributorItem } from "@/components/contributor-item";
 import { BadgeList, type BadgeItem } from "@/components/badge-list";
 import { CounterWithIcon } from "@/components/counter-with-icon";
 import { SectionCard } from "@/components/section-card";
-
+import { formatReadableDate } from "@/lib/date-utils";
 interface NavigationButtonProps {
   href: string;
   direction: "prev" | "next";
@@ -98,7 +92,7 @@ export function DateNavigation({
       />
 
       <time dateTime={currentDate} className="text-md font-bold">
-        {currentDate}
+        {formatReadableDate(currentDate)}
       </time>
 
       <NavigationButton

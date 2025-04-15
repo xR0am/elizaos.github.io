@@ -10,7 +10,7 @@ export type ContributorMetricsForSummary = Awaited<
 /**
  * Generate an AI summary of a contributor's activity
  */
-export async function generateContributorSummary(
+export async function generateAISummaryForContributor(
   metrics: ContributorMetricsForSummary,
   config: AISummaryConfig,
   intervalType: IntervalType,

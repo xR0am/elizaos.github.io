@@ -1,4 +1,4 @@
-import { and, desc, eq, gte, inArray, lte, sql } from "drizzle-orm";
+import { and, desc, eq, inArray, sql } from "drizzle-orm";
 import { db } from "@/lib/data/db";
 import {
   QueryParams,
@@ -15,6 +15,7 @@ import {
 } from "@/lib/data/schema";
 import { buildAreaMap } from "@/lib/pipelines/codeAreaHelpers";
 import { categorizeWorkItem } from "@/lib/pipelines/codeAreaHelpers";
+import { getActiveContributors } from "../getActiveContributors";
 
 /**
  * Get top pull requests for a repository in a time period
@@ -346,80 +347,4 @@ export async function getProjectMetrics(params: QueryParams = {}) {
     completedItems,
   };
 }
-export type RepositoryMetrics = Awaited<
-  ReturnType<typeof getProjectMetrics>
->; /**
- * Get all active contributors in a repository within a time range
- */
-
-export async function getActiveContributors(params: QueryParams = {}) {
-  // Find contributors with any activity in the time range
-  const activeUsernames = new Set<string>();
-  // PRs
-  const prAuthorsConditions = buildCommonWhereConditions(
-    params,
-    rawPullRequests,
-    ["createdAt", "updatedAt"],
-  );
-
-  const prAuthors = await db
-    .select({ author: rawPullRequests.author })
-    .from(rawPullRequests)
-    .where(and(...prAuthorsConditions));
-
-  prAuthors.forEach((author) => {
-    if (author.author) activeUsernames.add(author.author);
-  });
-
-  // Issues
-  const issueAuthorsConditions = buildCommonWhereConditions(params, rawIssues, [
-    "createdAt",
-  ]);
-  const issueAuthors = await db
-    .select({ author: rawIssues.author })
-    .from(rawIssues)
-    .where(and(...issueAuthorsConditions));
-
-  issueAuthors.forEach((author) => {
-    if (author.author) activeUsernames.add(author.author);
-  });
-
-  const reviewConditions = buildCommonWhereConditions(params, prReviews, [
-    "createdAt",
-  ]);
-  // Reviews
-  const reviewers = await db
-    .select({ author: prReviews.author })
-    .from(prReviews)
-    .innerJoin(rawPullRequests, eq(prReviews.prId, rawPullRequests.id))
-    .where(and(...reviewConditions));
-
-  reviewers.forEach((reviewer) => {
-    if (reviewer.author) activeUsernames.add(reviewer.author);
-  });
-
-  const commitConditions = buildCommonWhereConditions(params, rawCommits, [
-    "committedDate",
-  ]);
-  // Commits
-  const committers = await db
-    .select({ author: rawCommits.author })
-    .from(rawCommits)
-    .where(and(...commitConditions));
-
-  committers.forEach((committer) => {
-    if (committer.author) activeUsernames.add(committer.author);
-  });
-
-  // Get contributor details
-  const activeContributors = await db
-    .select()
-    .from(users)
-    .where(
-      activeUsernames.size > 0
-        ? inArray(users.username, Array.from(activeUsernames))
-        : undefined,
-    );
-
-  return activeContributors;
-}
+export type RepositoryMetrics = Awaited<ReturnType<typeof getProjectMetrics>>;

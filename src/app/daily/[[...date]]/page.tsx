@@ -1,44 +1,41 @@
 import { DateNavigation, DailyMetricsDisplay } from "./components";
-import { getDailyMetrics } from "./queries";
+import { getDailyMetrics, getLatestAvailableDate } from "./queries";
 import { notFound } from "next/navigation";
 import pipelineConfig from "@/../config/pipeline.config";
-import {
-  generateDateRange,
-  findAdjacentDates,
-  getCurrentOrTargetDate,
-} from "@/lib/date-utils";
+import { generateDaysInRange, findAdjacentDates } from "@/lib/date-utils";
 
 interface PageProps {
   params: Promise<{
-    date?: string[];
+    date: string[] | undefined;
   }>;
 }
 
 export async function generateStaticParams() {
-  // Generate all dates starting from config date up to today
-  const allDates = generateDateRange(pipelineConfig.contributionStartDate);
-
+  const latestDate = await getLatestAvailableDate();
+  // Generate all dates starting from config date up to latest date in DB
+  const allDates = generateDaysInRange(
+    pipelineConfig.contributionStartDate,
+    latestDate,
+  );
   return [
-    { date: [] }, // For /daily
+    { date: [] },
     ...allDates.map((date) => ({
-      date: [date], // For /daily/[date]
+      date: [date],
     })),
   ];
 }
 
 export default async function DailySummaryPage({ params }: PageProps) {
   const { date } = await params;
-  const targetDate = date?.[0];
-
-  // Use latest date if no date is provided
-  const currentDate = getCurrentOrTargetDate(targetDate);
+  const latestDate = await getLatestAvailableDate();
+  const targetDate = date?.[0] || latestDate;
 
   try {
     // Fetch daily metrics for the current date
-    const dailyMetrics = await getDailyMetrics(currentDate);
+    const dailyMetrics = await getDailyMetrics(targetDate);
 
     // Find adjacent dates for navigation
-    const { prevDate, nextDate } = findAdjacentDates(currentDate);
+    const { prevDate, nextDate } = findAdjacentDates(targetDate, latestDate);
 
     // Create navigation props
     const navigation = {

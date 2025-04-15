@@ -19,9 +19,9 @@ export function runPipeline<
 
   const startTime = Date.now();
 
-  // Run the pipeline
-  return pipeline(input, context)
-    .then((result) => {
+  // Run the pipeline and ensure result is a Promise
+  return Promise.resolve(pipeline(input, context))
+    .then((result: TOutput) => {
       const duration = Date.now() - startTime;
 
       context.logger?.info("Pipeline completed", {
@@ -30,14 +30,16 @@ export function runPipeline<
 
       return result;
     })
-    .catch((error) => {
+    .catch((error: unknown) => {
       if (error instanceof Error) {
         context.logger?.error("Pipeline failed", {
           error: error.message,
           stack: error.stack,
         });
       } else {
-        context.logger?.error("Pipeline failed with unknown error");
+        context.logger?.error("Pipeline failed with unknown error", {
+          error,
+        });
       }
       throw error;
     });

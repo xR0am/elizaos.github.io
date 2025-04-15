@@ -1,5 +1,5 @@
 import { UTCDate } from "@date-fns/utc";
-import { addDays, subDays } from "date-fns";
+import { addDays, subDays, formatDate } from "date-fns";
 
 /**
  * Extracts date from a title string in format "elizaos Eliza (2025-01-12)"
@@ -194,7 +194,7 @@ export function calculateDateRange(options: DateRangeOptions): DateRange {
  * @param descending - Whether to sort dates in descending order (newest first)
  * @returns Array of date strings in YYYY-MM-DD format
  */
-export function generateDateRange(
+export function generateDaysInRange(
   startDate: UTCDate | string,
   endDate: UTCDate | string = new UTCDate(),
   descending: boolean = false,
@@ -227,7 +227,10 @@ export function generateDateRange(
  * @param currentDate - The target date to find adjacent dates for
  * @returns Object with prevDate and nextDate
  */
-export function findAdjacentDates(currentDate: string): {
+export function findAdjacentDates(
+  currentDate: string,
+  latestDate?: string,
+): {
   prevDate: string;
   nextDate: string | null;
 } {
@@ -236,19 +239,16 @@ export function findAdjacentDates(currentDate: string): {
   const nextDate = toDateString(addDays(date, 1));
 
   // Only include nextDate if it's not in the future
-  const today = toDateString(new UTCDate());
+  const lastDate = latestDate || toDateString(new UTCDate());
 
   return {
     prevDate,
-    nextDate: nextDate <= today ? nextDate : null,
+    nextDate: nextDate > lastDate ? null : nextDate,
   };
 }
 
-/**
- * Gets the current date in YYYY-MM-DD format or uses provided date
- * @param targetDate - Optional target date
- * @returns Date string in YYYY-MM-DD format
- */
-export function getCurrentOrTargetDate(targetDate?: string): string {
-  return targetDate || toDateString(new UTCDate());
+export function formatReadableDate(date: string | Date) {
+  const dateObj = new UTCDate(date);
+  const readableDate = formatDate(dateObj, "MMMM d, yyyy");
+  return readableDate;
 }

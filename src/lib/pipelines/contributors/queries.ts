@@ -22,7 +22,7 @@ export async function getContributorPRs(
 ) {
   const whereConditions = [
     eq(rawPullRequests.author, username),
-    ...buildCommonWhereConditions(params, rawPullRequests),
+    ...buildCommonWhereConditions(params, rawPullRequests, ["createdAt"]),
   ];
 
   return db.query.rawPullRequests.findMany({
@@ -45,7 +45,7 @@ export async function getContributorPRMetrics(
 ) {
   const whereConditions = [
     eq(rawPullRequests.author, username),
-    ...buildCommonWhereConditions(params, rawPullRequests),
+    ...buildCommonWhereConditions(params, rawPullRequests, ["createdAt"]),
   ];
 
   const metrics = await db
@@ -83,7 +83,7 @@ export async function getContributorIssueMetrics(
   // Build where conditions
   const whereConditions = [
     eq(rawIssues.author, username),
-    ...buildCommonWhereConditions(params, rawIssues),
+    ...buildCommonWhereConditions(params, rawIssues, ["createdAt"]),
   ];
 
   const issueMetrics = await db
@@ -124,7 +124,7 @@ export async function getContributorReviewMetrics(
   // Build where conditions for reviews
   const whereConditions = [
     eq(prReviews.author, username),
-    ...buildCommonWhereConditions(params, prReviews),
+    ...buildCommonWhereConditions(params, prReviews, ["createdAt"]),
   ];
   if (params.repository) {
     whereConditions.push(
@@ -160,13 +160,13 @@ export async function getContributorCommentMetrics(
   params: QueryParams = {},
 ) {
   // Build where conditions for reviews
-  const prWhereConditions = [
+  const prCommentsWhereConditions = [
     eq(prComments.author, username),
-    ...buildCommonWhereConditions(params, prComments),
+    ...buildCommonWhereConditions(params, prComments, ["createdAt"]),
   ];
 
   if (params.repository) {
-    prWhereConditions.push(
+    prCommentsWhereConditions.push(
       sql`${rawPullRequests.repository} = ${params.repository}`,
     );
   }
@@ -178,17 +178,17 @@ export async function getContributorCommentMetrics(
     })
     .from(prComments)
     .innerJoin(rawPullRequests, eq(prComments.prId, rawPullRequests.id))
-    .where(and(...prWhereConditions))
+    .where(and(...prCommentsWhereConditions))
     .get();
 
   // Build where conditions for issue comments
-  const issueWhereConditions = [
+  const issueCommentsWhereConditions = [
     eq(issueComments.author, username),
-    ...buildCommonWhereConditions(params, issueComments),
+    ...buildCommonWhereConditions(params, issueComments, ["createdAt"]),
   ];
 
   if (params.repository) {
-    issueWhereConditions.push(
+    issueCommentsWhereConditions.push(
       sql`${rawIssues.repository} = ${params.repository}`,
     );
   }
@@ -200,7 +200,7 @@ export async function getContributorCommentMetrics(
     })
     .from(issueComments)
     .innerJoin(rawIssues, eq(issueComments.issueId, rawIssues.id))
-    .where(and(...issueWhereConditions))
+    .where(and(...issueCommentsWhereConditions))
     .get();
 
   return {

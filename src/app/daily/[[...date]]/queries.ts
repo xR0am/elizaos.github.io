@@ -5,6 +5,21 @@ import {
 } from "@/lib/pipelines/export/queries";
 import { toDateString } from "@/lib/date-utils";
 import { addDays } from "date-fns";
+import { db } from "@/lib/data/db";
+import { desc } from "drizzle-orm";
+import { rawPullRequests } from "@/lib/data/schema";
+
+export async function getLatestAvailableDate() {
+  const date = await db
+    .select({
+      max: rawPullRequests.updatedAt,
+    })
+    .from(rawPullRequests)
+    .orderBy(desc(rawPullRequests.updatedAt))
+    .limit(1);
+
+  return toDateString(date[0].max);
+}
 
 /**
  * Get daily metrics for repositories for a specific date

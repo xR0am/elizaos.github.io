@@ -41,7 +41,7 @@ export type PipelineStep<
   TInput,
   TOutput,
   TContext extends BasePipelineContext = BasePipelineContext,
-> = (input: TInput, context: TContext) => Promise<TOutput>;
+> = (input: TInput, context: TContext) => Promise<TOutput> | TOutput;
 
 // --- Core utilities ---
 
@@ -115,6 +115,40 @@ export function parallel<TContext extends BasePipelineContext>(
 }
 
 /**
+ * Execute multiple pipeline steps sequentially with the same input and combine their results
+ */
+export function sequence<TInput, T1, T2, TContext extends BasePipelineContext>(
+  op1: PipelineStep<TInput, T1, TContext>,
+  op2: PipelineStep<TInput, T2, TContext>,
+): PipelineStep<TInput, [T1, T2], TContext>;
+
+export function sequence<
+  TInput,
+  T1,
+  T2,
+  T3,
+  TContext extends BasePipelineContext,
+>(
+  op1: PipelineStep<TInput, T1, TContext>,
+  op2: PipelineStep<TInput, T2, TContext>,
+  op3: PipelineStep<TInput, T3, TContext>,
+): PipelineStep<TInput, [T1, T2, T3], TContext>;
+
+export function sequence<TContext extends BasePipelineContext>(
+  ...operations: PipelineStep<unknown, unknown, TContext>[]
+): PipelineStep<unknown, unknown[], TContext> {
+  return async (input, context) => {
+    const results = [];
+
+    for (const operation of operations) {
+      results.push(await operation(input, context));
+    }
+
+    return results;
+  };
+}
+
+/**
  * Map a pipeline step over an array of inputs
  */
 export function mapStep<TInput, TOutput, TContext extends BasePipelineContext>(
@@ -146,12 +180,12 @@ export function createStep<
 ): PipelineStep<TInput, TOutput, TContext> {
   return async (input, context) => {
     // Log if a logger is available
-    context.logger?.debug(`Executing step: ${name}`);
+    context.logger?.trace(`Executing step: ${name}`);
     const stepLogger = context.logger?.child(name);
     // Transform the data
     const output = await transform(input, { ...context, logger: stepLogger });
 
-    context.logger?.debug(`Completed step: ${name}`);
+    context.logger?.trace(`Completed step: ${name}`);
 
     return output;
   };
