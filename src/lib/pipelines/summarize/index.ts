@@ -1,58 +1,56 @@
 /**
  * Pipeline for generating AI-powered summaries of contributor activity
  */
-import { parallel, pipe, mapStep, createStep } from "../types";
+import { pipe, mapStep, createStep, sequence } from "../types";
 import { getSelectedRepositories } from "../getSelectedRepositories";
-import {
-  generateWeeklyContributorSummaries,
-  generateMonthlyContributorSummaries,
-} from "./generateContributorSummary";
+import { generateContributorSummaries } from "./generateContributorSummary";
 import { SummarizerPipelineContext, createSummarizerContext } from "./context";
 import {
   generateDailyProjectSummaries,
   generateMonthlyProjectSummaries,
   generateWeeklyProjectSummaries,
 } from "./generateProjectSummary";
-import { isNotNullOrUndefined } from "@/lib/typeHelpers";
-import { fetchContributors } from "../contributors/fetchContributors";
+import { generateTimeIntervals } from "../generateTimeIntervals";
 
 export const generateContributorSummariesForRepo = pipe(
-  fetchContributors,
-  mapStep(
-    parallel(
-      generateWeeklyContributorSummaries,
-      generateMonthlyContributorSummaries,
+  sequence(
+    pipe(
+      generateTimeIntervals<{ repoId: string }>("week"),
+      mapStep(generateContributorSummaries),
+    ),
+    pipe(
+      generateTimeIntervals<{ repoId: string }>("month"),
+      mapStep(generateContributorSummaries),
     ),
   ),
-  createStep("Log Summaries", (results, context) => {
-    const filteredResults = results.filter(
-      (r) => r[0].length > 0 || r[1].length > 0,
-    );
-    const contributors = filteredResults.length;
-    const numWeeklySummaries = filteredResults.reduce((acc, result) => {
-      return acc + result[0].filter(isNotNullOrUndefined).length;
+  ([weeklyResults, monthlyResults], context) => {
+    const numWeeklySummaries = weeklyResults.reduce((acc, result) => {
+      return acc + result.length;
     }, 0);
-    const numMonthlySummaries = filteredResults.reduce((acc, result) => {
-      return acc + result[1].filter(isNotNullOrUndefined).length;
+    const numMonthlySummaries = monthlyResults.reduce((acc, result) => {
+      return acc + result.length;
     }, 0);
     context.logger?.info(
-      `Generated ${numWeeklySummaries} weekly summaries and ${numMonthlySummaries} monthly summaries for ${contributors} contributors`,
+      `Generated ${numWeeklySummaries} weekly summaries over ${weeklyResults.length} weeks`,
     );
-  }),
+    context.logger?.info(
+      `Generated ${numMonthlySummaries} monthly summaries over ${monthlyResults.length} months`,
+    );
+  },
 );
 
 export { type SummarizerPipelineContext, createSummarizerContext };
 
-export const generateContributorSummaries = pipe(
+export const contributorSummariesPipeline = pipe(
   getSelectedRepositories,
   mapStep(generateContributorSummariesForRepo),
 );
 
 // Pipeline for generating monthly project summaries
-export const generateProjectSummaries = pipe(
+export const projectSummariesPipeline = pipe(
   getSelectedRepositories,
   mapStep(
-    parallel(
+    sequence(
       generateDailyProjectSummaries,
       generateWeeklyProjectSummaries,
       generateMonthlyProjectSummaries,

@@ -131,6 +131,9 @@ bun run pipeline ingest --config custom-config.ts
 # Process and analyze all repositories
 bun run pipeline process
 
+# Force recalculation of scores even if they already exist
+bun run pipeline process --force
+
 # Process specific repository
 bun run pipeline process --repository owner/repo
 
@@ -139,6 +142,7 @@ bun run pipeline process -v
 
 # Process with custom config
 bun run pipeline process --config custom-config.ts
+
 ```
 
 ### Generating Stats and Exports
@@ -293,12 +297,7 @@ Additional setup required if you use Safari or Brave: https://orm.drizzle.team/d
    - Run `bun run db:generate` and `bun run db:migrate` to initialize the database
    - Ensure the `data` directory exists: `mkdir -p data`
 
-3. **"Error with better-sqlite3 module"**
-
-   - This is usually due to Node.js version mismatch with Bun
-   - Use the direct Bun SQLite implementation or upgrade/reinstall the module
-
-4. **"Error fetching data from GitHub"**
+3. **"Error fetching data from GitHub"**
    - Check your GitHub token has proper permissions
    - Verify repository names are correct in config
    - Ensure your token has not expired

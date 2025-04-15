@@ -5,7 +5,7 @@ import { generateTimeIntervals } from "../generateTimeIntervals";
 import { IntervalType, TimeInterval, toDateString } from "@/lib/date-utils";
 import { storeRepoSummary } from "./mutations";
 import { isNotNullOrUndefined } from "@/lib/typeHelpers";
-import { getRepositoryMetrics } from "../export/queries";
+import { getProjectMetrics } from "../export/queries";
 import { getRepoFilePath, writeToFile } from "@/lib/fsHelpers";
 import { existsSync } from "node:fs";
 
@@ -78,7 +78,7 @@ export const generateProjectSummaryForInterval = createStep(
       }
 
       // Get metrics for this time period
-      const metrics = await getRepositoryMetrics({
+      const metrics = await getProjectMetrics({
         repository: repoId,
         dateRange,
       });

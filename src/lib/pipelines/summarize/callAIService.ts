@@ -14,34 +14,28 @@ export async function callAIService(
   },
 ): Promise<string> {
   try {
-    const response = await fetch(
-      config.endpoint || "https://openrouter.ai/api/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${config.apiKey}`,
-          "HTTP-Referer": process.env.SITE_URL || "https://elizaos.github.io",
-          "X-Title": process.env.SITE_NAME || "ElizaOS Leaderboard",
-        },
-        body: JSON.stringify({
-          model:
-            options?.model ||
-            config.defaultModel ||
-            "anthropic/claude-3-sonnet-20240229",
-          messages: [
-            {
-              role: "system",
-              content:
-                "You are writing GitHub activity summaries. Use only the actual contribution data provided. Never add, modify or make up information.",
-            },
-            { role: "user", content: prompt },
-          ],
-          temperature: options?.temperature ?? config.temperature ?? 0.1,
-          max_tokens: options?.maxTokens ?? config.max_tokens ?? 200,
-        }),
+    const response = await fetch(config.endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${config.apiKey}`,
+        "HTTP-Referer": process.env.SITE_URL || "https://elizaos.github.io",
+        "X-Title": process.env.SITE_NAME || "ElizaOS Leaderboard",
       },
-    );
+      body: JSON.stringify({
+        model: options?.model || config.defaultModel || "openai/gpt-4o-mini",
+        messages: [
+          {
+            role: "system",
+            content:
+              "You are writing GitHub activity summaries. Use only the actual contribution data provided. Never add, modify or make up information.",
+          },
+          { role: "user", content: prompt },
+        ],
+        temperature: options?.temperature ?? config.temperature,
+        max_tokens: options?.maxTokens ?? config.max_tokens,
+      }),
+    });
 
     if (!response.ok) {
       const error = await response.text();

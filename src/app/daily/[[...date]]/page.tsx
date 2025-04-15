@@ -1,46 +1,64 @@
-import { DailySummaryContent } from "@/components/daily-summary-content";
 import { DateNavigation, DailyMetricsDisplay } from "./components";
-import { getDailySummaryData, fetchDateData } from "./utils";
-import { getDailyMetrics } from "./queries";
+import { getDailyMetrics, getLatestAvailableDate } from "./queries";
+import { notFound } from "next/navigation";
+import pipelineConfig from "@/../config/pipeline.config";
+import { generateDaysInRange, findAdjacentDates } from "@/lib/date-utils";
 
 interface PageProps {
   params: Promise<{
-    date?: string[];
+    date: string[] | undefined;
   }>;
 }
 
 export async function generateStaticParams() {
-  const { allDates } = await fetchDateData();
-
+  const latestDate = await getLatestAvailableDate();
+  // Generate all dates starting from config date up to latest date in DB
+  const allDates = generateDaysInRange(
+    pipelineConfig.contributionStartDate,
+    latestDate,
+  );
   return [
-    { date: [] }, // For /daily
+    { date: [] },
     ...allDates.map((date) => ({
-      date: [date], // For /daily/[date]
+      date: [date],
     })),
   ];
 }
 
 export default async function DailySummaryPage({ params }: PageProps) {
   const { date } = await params;
-  const targetDate = date?.[0];
-  const { summary, navigation } = await getDailySummaryData(targetDate);
+  const latestDate = await getLatestAvailableDate();
+  const targetDate = date?.[0] || latestDate;
 
-  // Fetch daily metrics for the current date
-  const dailyMetrics = await getDailyMetrics(navigation.currentDate);
+  try {
+    // Fetch daily metrics for the current date
+    const dailyMetrics = await getDailyMetrics(targetDate);
 
-  return (
-    <div className="container mx-auto px-6 py-8 md:px-8">
-      <div className="mx-auto max-w-4xl">
-        <DateNavigation {...navigation} />
+    // Find adjacent dates for navigation
+    const { prevDate, nextDate } = findAdjacentDates(targetDate, latestDate);
 
-        {/* Display the daily metrics */}
-        <div className="mb-8">
-          <DailyMetricsDisplay metrics={dailyMetrics} />
+    // Create navigation props
+    const navigation = {
+      prevDate,
+      nextDate,
+      currentDate: dailyMetrics.date,
+    };
+
+    return (
+      <div className="container mx-auto px-6 py-8 md:px-8">
+        <div className="mx-auto max-w-4xl">
+          <DateNavigation {...navigation} />
+          {/* Display the daily summary with proper DailySummary data */}
+          {/* <DailySummaryContent data={summaryData} /> */}
+          {/* Display the daily metrics */}
+          <div className="mb-8">
+            <DailyMetricsDisplay metrics={dailyMetrics} />
+          </div>
         </div>
-
-        {/* Display the daily summary */}
-        <DailySummaryContent data={summary} />
       </div>
-    </div>
-  );
+    );
+  } catch (error) {
+    console.error("Error fetching daily metrics:", error);
+    notFound();
+  }
 }

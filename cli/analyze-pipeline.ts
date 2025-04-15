@@ -16,7 +16,7 @@ import { calculateDateRange } from "@/lib/date-utils";
 loadEnv();
 
 // Validate required environment variables
-const requiredEnvVars = ["GITHUB_TOKEN"];
+const requiredEnvVars = ["GITHUB_TOKEN", "OPENROUTER_API_KEY"];
 const missingEnvVars = requiredEnvVars.filter((envVar) => !process.env[envVar]);
 
 if (missingEnvVars.length > 0) {
@@ -32,10 +32,10 @@ import { Command } from "@commander-js/extra-typings";
 import { PipelineConfigSchema } from "@/lib/pipelines/pipelineConfig";
 import chalk from "chalk";
 import { generateRepositoryStats } from "@/lib/pipelines/export";
-import { contributorTagsPipeline } from "@/lib/pipelines/contributors";
+import { contributorsPipeline } from "@/lib/pipelines/contributors";
 import {
-  generateContributorSummaries,
-  generateProjectSummaries,
+  projectSummariesPipeline,
+  contributorSummariesPipeline,
 } from "@/lib/pipelines/summarize";
 import { createContributorPipelineContext } from "@/lib/pipelines/contributors/context";
 import { createRepositoryStatsPipelineContext } from "@/lib/pipelines/export/context";
@@ -132,6 +132,11 @@ program
     "Path to pipeline config file",
     DEFAULT_CONFIG_PATH,
   )
+  .option(
+    "-f, --force",
+    "Force recalculation of scores even if they already exist",
+    false,
+  )
   .action(async (options) => {
     try {
       // Dynamically import the config
@@ -148,31 +153,24 @@ program
           config: options.config,
         },
       });
-      rootLogger.info(`Processing data  using config from ${configPath}`);
+      rootLogger.info(`Processing data using config from ${configPath}`);
 
-      // Create pipeline context with the root logger
+      // Create pipeline context with the root logger and force option
       const context = createContributorPipelineContext({
         repoId: options.repository,
         logger: rootLogger,
         config: pipelineConfig,
+        force: options.force, // Pass through the force option
       });
 
       // Run the pipeline directly - no need for the ContributorPipeline class
-      const result = await runPipeline(
-        contributorTagsPipeline,
-        undefined, // No input for the root pipeline
+      await runPipeline(
+        contributorsPipeline,
+        {}, // No input for the root pipeline
         context,
       );
 
-      const repoCount = result.length;
-      const contributorCount = result.reduce(
-        (acc, curr) => acc + curr.length,
-        0,
-      );
-
       rootLogger.info("\nProcessing completed successfully!");
-      rootLogger.info(`Processed ${repoCount} repositories`);
-      rootLogger.info(`Processed ${contributorCount} contributors`);
     } catch (error: unknown) {
       console.error(chalk.red("Error processing data:"), error);
       process.exit(1);
@@ -344,9 +342,9 @@ program
 
       // Run the appropriate pipeline based on summary type
       if (summaryType === "contributors") {
-        await runPipeline(generateContributorSummaries, undefined, context);
+        await runPipeline(contributorSummariesPipeline, undefined, context);
       } else {
-        await runPipeline(generateProjectSummaries, undefined, context);
+        await runPipeline(projectSummariesPipeline, undefined, context);
       }
     } catch (error: unknown) {
       console.error(chalk.red("Error generating summaries:"), error);

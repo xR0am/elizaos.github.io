@@ -8,7 +8,7 @@ import {
   toDateString,
 } from "@/lib/date-utils";
 import { getRepoFilePath, writeToFile } from "@/lib/fsHelpers";
-import { getRepositoryMetrics } from "./queries";
+import { getProjectMetrics } from "./queries";
 import { existsSync } from "fs";
 
 /**
@@ -53,7 +53,7 @@ export const exportRepoStatsForInterval = createStep(
     };
     intervalLogger?.debug("Querying repository metrics", queryParams);
     // Fetch metrics sequentially with logging
-    const metrics = await getRepositoryMetrics(queryParams);
+    const metrics = await getProjectMetrics(queryParams);
     intervalLogger?.debug("Repository metrics fetched");
     const topIssues = await getTopIssues(queryParams, 5);
     intervalLogger?.debug("Top issues fetched", {

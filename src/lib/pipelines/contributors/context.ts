@@ -1,26 +1,32 @@
-import { PipelineConfig } from "@/lib/pipelines/pipelineConfig";
+import { RepoPipelineContext } from "../types";
+import { PipelineConfig } from "../pipelineConfig";
 import { Logger } from "@/lib/logger";
-import { RepoPipelineContext } from "@/lib/pipelines/types";
 
-export type ContributorPipelineContext = RepoPipelineContext;
 /**
- * Creates a repository pipeline context
+ * Extended context for contributor pipelines
  */
-export function createContributorPipelineContext(params: {
+export interface ContributorPipelineContext extends RepoPipelineContext {
+  force?: boolean; // Whether to force recalculation of scores
+}
+
+/**
+ * Create a context for contributor pipelines
+ */
+export function createContributorPipelineContext({
+  repoId,
+  logger,
+  config,
+  force = false,
+}: {
   repoId?: string;
-  dateRange?: ContributorPipelineContext["dateRange"];
   logger?: Logger;
   config: PipelineConfig;
+  force?: boolean;
 }): ContributorPipelineContext {
-  const { repoId, dateRange, logger: parentLogger, config } = params;
-
-  // Use parent logger if provided, creating a child logger for Contributors
-  const logger = parentLogger ? parentLogger.child("Contributors") : undefined;
-
   return {
     repoId,
-    dateRange,
     logger,
     config,
+    force,
   };
 }

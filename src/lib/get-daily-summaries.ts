@@ -31,9 +31,10 @@ export interface DailySummary {
   issues_summary: string;
   questions: string[];
   top_contributors: Array<{
-    name: string;
-    summary: string;
-    areas: string[];
+    username: string;
+    pr_count: number;
+    issue_count: number;
+    review_count: number;
   }>;
 }
 
@@ -52,7 +53,7 @@ export async function getAllDailySummaryDates(): Promise<string[]> {
 export async function getLatestDailySummary(): Promise<DailySummary> {
   const summaryPath = path.join(process.cwd(), "data/daily/summary.json");
   const summaryData = JSON.parse(
-    await fs.promises.readFile(summaryPath, "utf8")
+    await fs.promises.readFile(summaryPath, "utf8"),
   );
   return summaryData;
 }
@@ -61,7 +62,7 @@ export async function getLatestDailySummary(): Promise<DailySummary> {
  * Get a daily summary for a specific date from the history folder
  */
 export async function getDailySummary(
-  date: string
+  date: string,
 ): Promise<DailySummary | null> {
   const normalizedDate = normalizeDate(date);
   const denormalizedDate = denormalizeDate(date);
@@ -71,12 +72,12 @@ export async function getDailySummary(
     path.join(
       process.cwd(),
       "data/daily/history",
-      `summary_${normalizedDate}.json`
+      `summary_${normalizedDate}.json`,
     ),
     path.join(
       process.cwd(),
       "data/daily/history",
-      `summary_${denormalizedDate}.json`
+      `summary_${denormalizedDate}.json`,
     ),
   ];
 

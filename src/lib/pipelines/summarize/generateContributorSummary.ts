@@ -1,14 +1,14 @@
 import { createStep, pipe, mapStep } from "../types";
 import { SummarizerPipelineContext } from "./context";
-import { generateContributorSummary } from "./aiSummary";
+import { generateAISummaryForContributor } from "./aiSummary";
 import { getContributorMetrics } from "./queries";
-import { generateTimeIntervals } from "../generateTimeIntervals";
 import { IntervalType, TimeInterval, toDateString } from "@/lib/date-utils";
 import { storeDailySummary } from "./mutations";
 import { db } from "@/lib/data/db";
 import { userSummaries } from "@/lib/data/schema";
 import { eq, and } from "drizzle-orm";
 import { isNotNullOrUndefined } from "@/lib/typeHelpers";
+import { getActiveContributorsInInterval } from "../getActiveContributors";
 
 /**
  * Check if a summary already exists for a user on a specific date and interval type
@@ -32,14 +32,14 @@ async function checkExistingSummary(
 /**
  * Generate summaries for all active contributors in a repository for a specific time interval
  */
-export const generateContributorSummariesForInterval = createStep(
+const generateContributorSummariesForInterval = createStep(
   "ContributorSummaries",
   async (
     {
       interval,
       repoId,
       username,
-    }: { interval: TimeInterval; repoId: string; username: string },
+    }: { interval: TimeInterval; repoId: string | undefined; username: string },
     context: SummarizerPipelineContext,
   ) => {
     const { logger, aiSummaryConfig, overwrite } = context;
@@ -47,11 +47,6 @@ export const generateContributorSummariesForInterval = createStep(
     if (!aiSummaryConfig.enabled) {
       return null;
     }
-
-    const intervalLogger = logger
-      ?.child(interval.intervalType)
-      .child(toDateString(interval.intervalStart));
-
     // Query parameters for this interval
     const dateRange = {
       startDate: toDateString(interval.intervalStart),
@@ -67,7 +62,7 @@ export const generateContributorSummariesForInterval = createStep(
           interval.intervalType,
         );
         if (summaryExists) {
-          intervalLogger?.debug(
+          logger?.debug(
             `${interval.intervalType} summary already exists for ${username} on ${dateRange.startDate}, skipping generation`,
           );
           return;
@@ -81,14 +76,14 @@ export const generateContributorSummariesForInterval = createStep(
         dateRange,
       });
 
-      const summary = await generateContributorSummary(
+      const summary = await generateAISummaryForContributor(
         metrics,
         aiSummaryConfig,
         interval.intervalType,
       );
 
       if (!summary) {
-        intervalLogger?.debug(
+        logger?.debug(
           `No activity for ${username} on ${dateRange.startDate}, skipping summary generation`,
         );
         return;
@@ -101,33 +96,34 @@ export const generateContributorSummariesForInterval = createStep(
         interval.intervalType,
       );
 
-      intervalLogger?.info(
+      logger?.info(
         `Generated and stored ${interval.intervalType} summary for ${username}`,
         {
           summary,
         },
       );
-      return summary;
+      return {
+        username,
+        summary,
+      };
     } catch (error) {
-      intervalLogger?.error(`Error processing contributor ${username}`, {
+      logger?.error(`Error processing contributor ${username}`, {
         error: (error as Error).message,
       });
     }
   },
 );
 
-export const generateWeeklyContributorSummaries = pipe(
-  generateTimeIntervals<{ repoId: string; username: string }>("week"),
+export const generateContributorSummaries = pipe(
+  getActiveContributorsInInterval,
+  ({ interval, repoId, contributors }) =>
+    contributors.map((contributor) => ({
+      interval,
+      repoId,
+      username: contributor.username,
+    })),
   mapStep(generateContributorSummariesForInterval),
-  createStep("Filter null results", (results) => {
+  (results) => {
     return results.filter(isNotNullOrUndefined);
-  }),
-);
-
-export const generateMonthlyContributorSummaries = pipe(
-  generateTimeIntervals<{ repoId: string; username: string }>("month"),
-  mapStep(generateContributorSummariesForInterval),
-  createStep("Filter null results", (results) => {
-    return results.filter(isNotNullOrUndefined);
-  }),
+  },
 );

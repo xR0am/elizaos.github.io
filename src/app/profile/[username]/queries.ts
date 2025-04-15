@@ -113,16 +113,6 @@ export async function getUserProfile(
     .where(eq(rawPullRequests.author, username))
     .get();
 
-  // Get recent PRs - sorted with open first, then merged, then closed
-  const recentPRs = await db.query.rawPullRequests.findMany({
-    where: eq(rawPullRequests.author, username),
-    orderBy: [
-      sql`CASE WHEN ${rawPullRequests.state} = 'OPEN' THEN 0 ELSE 1 END`,
-      desc(rawPullRequests.createdAt),
-    ],
-    limit: 10,
-  });
-
   // Get files by type metrics
   const filesByTypeRows = await db
     .select({

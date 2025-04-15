@@ -14,8 +14,8 @@ import { isNotNullOrUndefined } from "@/lib/typeHelpers";
 /**
  * Fetch all contributors for a repository
  */
-export const fetchContributors = createStep(
-  "fetchContributors",
+export const fetchAllContributors = createStep(
+  "fetchAllContributors",
   async (
     { repoId }: { repoId: string },
     { logger, dateRange }: ContributorPipelineContext,
