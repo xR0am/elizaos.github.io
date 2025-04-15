@@ -1,6 +1,6 @@
 import { db } from "@/lib/data/db";
 import { users, userDailyScores } from "@/lib/data/schema";
-import { eq, and, sql, asc } from "drizzle-orm";
+import { eq, and, sql, asc, desc } from "drizzle-orm";
 import {
   buildCommonWhereConditions,
   formatPeriodLabel,
@@ -14,14 +14,13 @@ import { getUserDailyScores } from "./storage";
  * @param username - User's username
  * @param startDate - Start date string (YYYY-MM-DD)
  * @param endDate - End date string (YYYY-MM-DD)
- * @param category - Optional category filter
  * @returns Total score and component scores
  */
 export async function getUserAggregatedScore(
   username: string,
   startDate?: string,
   endDate?: string,
-  category = "overall",
+  category = "day",
 ): Promise<{
   totalScore: number;
   prScore: number;
@@ -65,7 +64,6 @@ export async function getUserAggregatedScore(
  * @param period - Aggregation period (daily, weekly, monthly, quarterly, yearly)
  * @param startDate - Start date string (YYYY-MM-DD)
  * @param endDate - End date string (YYYY-MM-DD)
- * @param category - Optional category filter (default: "overall")
  * @param limit - Maximum number of results to return (default: 100)
  * @returns Array of scores grouped by the specified period
  */
@@ -74,7 +72,6 @@ export async function getScoresByTimePeriod(
   period: AggregationPeriod = "daily",
   startDate?: string,
   endDate?: string,
-  category = "overall",
   limit = 100,
 ): Promise<
   {
@@ -89,7 +86,7 @@ export async function getScoresByTimePeriod(
 > {
   // Start with base conditions
   const conditions = [
-    eq(userDailyScores.category, category),
+    eq(userDailyScores.category, "day"),
     ...buildCommonWhereConditions(
       { dateRange: { startDate, endDate } },
       userDailyScores,
@@ -149,7 +146,6 @@ export async function getScoresByTimePeriod(
  * @param period - Aggregation period (daily, weekly, monthly, quarterly, yearly)
  * @param startDate - Start date string (YYYY-MM-DD)
  * @param endDate - End date string (YYYY-MM-DD)
- * @param category - Optional category filter (default: "overall")
  * @param limit - Maximum number of results to return (default: 100)
  * @returns Array of scores over time with running totals
  */
@@ -158,7 +154,6 @@ export async function getUserScoreTrend(
   period: AggregationPeriod = "daily",
   startDate?: string,
   endDate?: string,
-  category = "overall",
   limit = 100,
 ): Promise<
   {
@@ -179,7 +174,6 @@ export async function getUserScoreTrend(
     period,
     startDate,
     endDate,
-    category,
     limit,
   );
 
@@ -207,7 +201,6 @@ export async function getUserScoreTrend(
  * @param period - Aggregation period (daily, weekly, monthly, quarterly, yearly)
  * @param startDate - Start date string (YYYY-MM-DD)
  * @param endDate - End date string (YYYY-MM-DD)
- * @param category - Optional category filter (default: "overall")
  * @returns Comparative data for each user
  */
 export async function compareUserScores(
@@ -215,7 +208,6 @@ export async function compareUserScores(
   period: AggregationPeriod = "monthly",
   startDate?: string,
   endDate?: string,
-  category = "overall",
 ): Promise<
   {
     username: string;
@@ -244,7 +236,6 @@ export async function compareUserScores(
       username,
       startDate,
       endDate,
-      category,
     );
 
     // Get period scores for trend data
@@ -253,7 +244,6 @@ export async function compareUserScores(
       period,
       startDate,
       endDate,
-      category,
     );
 
     return {
@@ -281,7 +271,6 @@ export async function compareUserScores(
  * @param username - User's username
  * @param startDate - Start date string (YYYY-MM-DD)
  * @param endDate - End date string (YYYY-MM-DD)
- * @param category - Optional category filter (default: "overall")
  * @returns Daily activity data suitable for heatmap visualization
  */
 
@@ -289,7 +278,6 @@ export async function getUserActivityHeatmap(
   username: string,
   startDate?: string,
   endDate?: string,
-  category = "overall",
 ): Promise<
   {
     date: string;
@@ -303,12 +291,7 @@ export async function getUserActivityHeatmap(
   }[]
 > {
   // Get daily scores
-  const dailyScores = await getUserDailyScores(
-    username,
-    startDate,
-    endDate,
-    category,
-  );
+  const dailyScores = await getUserDailyScores(username, startDate, endDate);
 
   return dailyScores.map((score: UserScoreWithMetrics) => ({
     date: score.date,
@@ -362,4 +345,62 @@ export function generateScoreSelectFields<
       ? { commentScore: sql<number>`COALESCE(SUM(${table.commentScore}), 0)` }
       : {}),
   };
+}
+export async function getTopUsersByScore(
+  startDate?: string,
+  endDate?: string,
+  limit = 10,
+): Promise<
+  {
+    username: string;
+    totalScore: number;
+    prScore: number;
+    issueScore: number;
+    reviewScore: number;
+    commentScore: number;
+  }[]
+> {
+  // Start with base conditions
+  const conditions = [
+    eq(users.isBot, 0), // Exclude bots
+    ...buildCommonWhereConditions(
+      { dateRange: { startDate, endDate } },
+      userDailyScores,
+      ["date"],
+    ),
+  ];
+
+  const results = await db
+    .select({
+      username: userDailyScores.username,
+      totalScore: sql`COALESCE(SUM(${userDailyScores.score}), 0)`.as(
+        "totalScore",
+      ),
+      prScore: sql`COALESCE(SUM(${userDailyScores.prScore}), 0)`.as("prScore"),
+      issueScore: sql`COALESCE(SUM(${userDailyScores.issueScore}), 0)`.as(
+        "issueScore",
+      ),
+      reviewScore: sql`COALESCE(SUM(${userDailyScores.reviewScore}), 0)`.as(
+        "reviewScore",
+      ),
+      commentScore: sql`COALESCE(SUM(${userDailyScores.commentScore}), 0)`.as(
+        "commentScore",
+      ),
+    })
+    .from(userDailyScores)
+    .leftJoin(users, eq(userDailyScores.username, users.username))
+    .where(and(...conditions))
+    .groupBy(userDailyScores.username)
+    .orderBy(desc(sql`totalScore`))
+    .limit(limit)
+    .all();
+
+  return results.map((row) => ({
+    username: row.username,
+    totalScore: Number(row.totalScore || 0),
+    prScore: Number(row.prScore || 0),
+    issueScore: Number(row.issueScore || 0),
+    reviewScore: Number(row.reviewScore || 0),
+    commentScore: Number(row.commentScore || 0),
+  }));
 }

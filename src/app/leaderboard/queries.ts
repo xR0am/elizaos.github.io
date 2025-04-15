@@ -1,8 +1,9 @@
 import { db } from "@/lib/data/db";
-import { users, userTagScores, tags, userDailyScores } from "@/lib/data/schema";
-import { eq, and, inArray, desc, gte, lte, sql } from "drizzle-orm";
+import { users, userTagScores, tags } from "@/lib/data/schema";
+import { eq, and, inArray, gte, lte } from "drizzle-orm";
 import { UserFocusAreaData, TagLevel } from "@/types/user-profile";
 import { getDateRangeForPeriod } from "@/lib/pipelines/queryHelpers";
+import { getTopUsersByScore } from "@/lib/scoring/queries";
 
 export type LeaderboardPeriod = "all" | "monthly" | "weekly";
 
@@ -25,7 +26,6 @@ export async function getLeaderboard(
     startDate,
     endDate,
     50, // Get top 50 users
-    "overall",
   );
 
   // Get usernames from top users to fetch their complete data
@@ -153,76 +153,4 @@ export async function getLeaderboard(
       };
     })
     .sort((a, b) => (b.score || 0) - (a.score || 0)); // Sort by the period-specific score
-} /**
- * Get top users by score for a time period
- * @param startDate - Start date string (YYYY-MM-DD)
- * @param endDate - End date string (YYYY-MM-DD)
- * @param limit - Maximum number of users to return (default: 10)
- * @param category - Optional category filter (default: "overall")
- * @returns Array of users with their scores, sorted by score
- */
-
-export async function getTopUsersByScore(
-  startDate?: string,
-  endDate?: string,
-  limit = 10,
-  category = "overall",
-): Promise<
-  {
-    username: string;
-    totalScore: number;
-    prScore: number;
-    issueScore: number;
-    reviewScore: number;
-    commentScore: number;
-  }[]
-> {
-  // Start with base conditions
-  const conditions = [
-    eq(userDailyScores.category, category),
-    eq(users.isBot, 0), // Exclude bots
-  ];
-
-  // Add date conditions if provided
-  if (startDate) {
-    conditions.push(gte(userDailyScores.date, startDate));
-  }
-
-  if (endDate) {
-    conditions.push(lte(userDailyScores.date, endDate));
-  }
-
-  const results = await db
-    .select({
-      username: userDailyScores.username,
-      totalScore: sql`COALESCE(SUM(${userDailyScores.score}), 0)`.as(
-        "totalScore",
-      ),
-      prScore: sql`COALESCE(SUM(${userDailyScores.prScore}), 0)`.as("prScore"),
-      issueScore: sql`COALESCE(SUM(${userDailyScores.issueScore}), 0)`.as(
-        "issueScore",
-      ),
-      reviewScore: sql`COALESCE(SUM(${userDailyScores.reviewScore}), 0)`.as(
-        "reviewScore",
-      ),
-      commentScore: sql`COALESCE(SUM(${userDailyScores.commentScore}), 0)`.as(
-        "commentScore",
-      ),
-    })
-    .from(userDailyScores)
-    .leftJoin(users, eq(userDailyScores.username, users.username))
-    .where(and(...conditions))
-    .groupBy(userDailyScores.username)
-    .orderBy(desc(sql`totalScore`))
-    .limit(limit)
-    .all();
-
-  return results.map((row) => ({
-    username: row.username,
-    totalScore: Number(row.totalScore || 0),
-    prScore: Number(row.prScore || 0),
-    issueScore: Number(row.issueScore || 0),
-    reviewScore: Number(row.reviewScore || 0),
-    commentScore: Number(row.commentScore || 0),
-  }));
 }
