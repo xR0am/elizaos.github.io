@@ -1,5 +1,5 @@
-import { db } from "./db";
-import { users, userDailyScores } from "./schema";
+import { db } from "@/lib/data/db";
+import { users, userDailyScores } from "@/lib/data/schema";
 import { desc, eq, and, gte, lte, sql, asc } from "drizzle-orm";
 import { UTCDate } from "@date-fns/utc";
 import { z } from "zod";

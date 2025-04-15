@@ -28,7 +28,7 @@ export async function generateStaticParams() {
   const dailyUsers = new Set(
     dailySummaries
       .flatMap((summary) => summary?.top_contributors ?? [])
-      .map((contributor) => contributor.name),
+      .map((contributor) => contributor.username),
   );
 
   // Combine with existing users

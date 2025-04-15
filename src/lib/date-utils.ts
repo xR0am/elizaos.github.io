@@ -186,3 +186,69 @@ export function calculateDateRange(options: DateRangeOptions): DateRange {
     endDate: toDateString(endDate),
   };
 }
+
+/**
+ * Generates a date range from a start date to end date (today by default)
+ * @param startDate - The start date for the range
+ * @param endDate - The end date for the range (defaults to current date)
+ * @param descending - Whether to sort dates in descending order (newest first)
+ * @returns Array of date strings in YYYY-MM-DD format
+ */
+export function generateDateRange(
+  startDate: UTCDate | string,
+  endDate: UTCDate | string = new UTCDate(),
+  descending: boolean = false,
+): string[] {
+  const start = new UTCDate(startDate);
+  const end = new UTCDate(endDate);
+  const dates: string[] = [];
+
+  // Create date objects for each day between start and end
+  const current = new Date(start);
+  while (current <= end) {
+    // Format date as YYYY-MM-DD
+    const formattedDate = toDateString(current);
+    dates.push(formattedDate);
+
+    // Move to next day
+    current.setDate(current.getDate() + 1);
+  }
+
+  // Sort dates if needed
+  if (descending) {
+    dates.sort((a, b) => b.localeCompare(a));
+  }
+
+  return dates;
+}
+
+/**
+ * Finds adjacent (previous and next) dates relative to a target date
+ * @param currentDate - The target date to find adjacent dates for
+ * @returns Object with prevDate and nextDate
+ */
+export function findAdjacentDates(currentDate: string): {
+  prevDate: string;
+  nextDate: string | null;
+} {
+  const date = new UTCDate(currentDate);
+  const prevDate = toDateString(subDays(date, 1));
+  const nextDate = toDateString(addDays(date, 1));
+
+  // Only include nextDate if it's not in the future
+  const today = toDateString(new UTCDate());
+
+  return {
+    prevDate,
+    nextDate: nextDate <= today ? nextDate : null,
+  };
+}
+
+/**
+ * Gets the current date in YYYY-MM-DD format or uses provided date
+ * @param targetDate - Optional target date
+ * @returns Date string in YYYY-MM-DD format
+ */
+export function getCurrentOrTargetDate(targetDate?: string): string {
+  return targetDate || toDateString(new UTCDate());
+}

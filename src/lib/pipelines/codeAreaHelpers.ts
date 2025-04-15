@@ -47,19 +47,53 @@ export function categorizeWorkItem(text: string): WorkItemType {
 
   // Default category
   return "other";
-} /**
+}
+
+/**
  * Utility to extract area from a file path
  */
-function extractAreaFromPath(path: string): string {
+function extractAreaFromPath(path: string): string | null {
   const parts = path.split("/");
+
+  // Skip files in the root directory or common root config files
+  if (parts.length <= 1 || isRootConfigFile(path)) {
+    return null;
+  }
+
   let area = parts[0];
 
-  // Handle packages directory specially
-  if (parts.length > 1 && area === "packages") {
-    area = `packages/${parts[1]}`;
+  if (area === "packages") {
+    area = `${parts[1]}`;
+  } else {
+    area = `${area}/${parts[1]}`;
   }
 
   return area;
+}
+
+/**
+ * Check if a file is a common root configuration file that should be ignored
+ */
+function isRootConfigFile(path: string): boolean {
+  const rootConfigPatterns = [
+    /^package\.json$/,
+    /^bun\.lock$/,
+    /^\.gitignore$/,
+    /^\.env(\.\w+)?$/,
+    /^tsconfig\.json$/,
+    /^README\.md$/,
+    /^LICENSE$/,
+    /^yarn\.lock$/,
+    /^pnpm-lock\.yaml$/,
+    /^\.eslintrc(\.\w+)?$/,
+    /^\.prettierrc(\.\w+)?$/,
+    /^vite\.config\.\w+$/,
+    /^next\.config\.\w+$/,
+    /^tailwind\.config\.\w+$/,
+  ];
+
+  const filename = path.split("/").pop() || "";
+  return rootConfigPatterns.some((pattern) => pattern.test(filename));
 }
 
 export type WorkItemType =
@@ -69,6 +103,7 @@ export type WorkItemType =
   | "docs"
   | "tests"
   | "other";
+
 /**
  * Utility to build a map of focus areas from files
  */
@@ -83,6 +118,9 @@ export function buildAreaMap(
     if (!filePath) return;
 
     const area = extractAreaFromPath(filePath);
+    // Skip null areas (root files or ignored config files)
+    if (!area) return;
+
     const currentCount = areaMap.get(area) || 0;
     areaMap.set(area, currentCount + 1);
   });

@@ -49,6 +49,7 @@ export async function callAIService(
     }
 
     const data = await response.json();
+    console.log(data);
     return data.choices[0].message.content.trim();
   } catch (error) {
     console.error("Error calling AI service:", error);

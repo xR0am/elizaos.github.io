@@ -216,40 +216,26 @@ export async function getTopContributors(params: QueryParams = {}, limit = 5) {
  * Get project metrics for a specific time interval
  */
 
-export async function getRepositoryMetrics({
-  repository,
-  dateRange,
-}: {
-  repository: string;
-  dateRange?: {
-    startDate: string;
-    endDate: string;
-  };
-}) {
+export async function getProjectMetrics(params: QueryParams = {}) {
+  const { repository, dateRange } = params;
+  const prCreatedConditions = buildCommonWhereConditions(
+    params,
+    rawPullRequests,
+    ["createdAt"],
+  );
+  const prMergedConditions = buildCommonWhereConditions(
+    params,
+    rawPullRequests,
+    ["mergedAt"],
+  );
   // Get PRs created in this period
   const createdPRs = await db.query.rawPullRequests.findMany({
-    where: and(
-      eq(rawPullRequests.repository, repository),
-      ...(dateRange
-        ? [
-            gte(rawPullRequests.createdAt, dateRange.startDate),
-            lte(rawPullRequests.createdAt, dateRange.endDate),
-          ]
-        : []),
-    ),
+    where: and(...prCreatedConditions),
   });
 
   // Get PRs merged in this period
   const mergedPRsThisPeriod = await db.query.rawPullRequests.findMany({
-    where: and(
-      eq(rawPullRequests.repository, repository),
-      ...(dateRange
-        ? [
-            gte(rawPullRequests.mergedAt, dateRange.startDate),
-            lte(rawPullRequests.mergedAt, dateRange.endDate),
-          ]
-        : []),
-    ),
+    where: and(...prMergedConditions),
   });
 
   const pullRequests = {
@@ -257,30 +243,20 @@ export async function getRepositoryMetrics({
     mergedPRs: mergedPRsThisPeriod,
   };
 
+  const issueCreatedConditions = buildCommonWhereConditions(params, rawIssues, [
+    "createdAt",
+  ]);
   // Get issues created in this period
   const newIssues = await db.query.rawIssues.findMany({
-    where: and(
-      eq(rawIssues.repository, repository),
-      ...(dateRange
-        ? [
-            gte(rawIssues.createdAt, dateRange.startDate),
-            lte(rawIssues.createdAt, dateRange.endDate),
-          ]
-        : []),
-    ),
+    where: and(...issueCreatedConditions),
   });
+  const issueClosedConditions = buildCommonWhereConditions(params, rawIssues, [
+    "closedAt",
+  ]);
 
   // Get issues closed in this period
   const closedIssues = await db.query.rawIssues.findMany({
-    where: and(
-      eq(rawIssues.repository, repository),
-      ...(dateRange
-        ? [
-            gte(rawIssues.closedAt, dateRange.startDate),
-            lte(rawIssues.closedAt, dateRange.endDate),
-          ]
-        : []),
-    ),
+    where: and(...issueClosedConditions),
   });
 
   const issues = {
@@ -296,17 +272,12 @@ export async function getRepositoryMetrics({
 
   const uniqueContributors = activeContributors.length;
 
+  const commitConditions = buildCommonWhereConditions(params, rawCommits, [
+    "committedDate",
+  ]);
   // Get all commits in the time period
   const commits = await db.query.rawCommits.findMany({
-    where: and(
-      eq(rawCommits.repository, repository),
-      ...(dateRange
-        ? [
-            gte(rawCommits.committedDate, dateRange.startDate),
-            lte(rawCommits.committedDate, dateRange.endDate),
-          ]
-        : []),
-    ),
+    where: and(...commitConditions),
   });
 
   const filesChangedThisPeriod = await db
@@ -323,13 +294,22 @@ export async function getRepositoryMetrics({
     repository,
     dateRange,
   });
+
+  // Get PR files for merged PRs in this period
+  const prFiles = await db.query.rawPullRequestFiles.findMany({
+    where: inArray(
+      rawPullRequestFiles.prId,
+      mergedPRsThisPeriod.map((pr) => pr.id),
+    ),
+  });
+
   // Calculate code changes
-  const additions = commits.reduce(
-    (sum, commit) => sum + (commit.additions || 0),
+  const additions = prFiles.reduce(
+    (sum, file) => sum + (file.additions || 0),
     0,
   );
-  const deletions = commits.reduce(
-    (sum, commit) => sum + (commit.deletions || 0),
+  const deletions = prFiles.reduce(
+    (sum, file) => sum + (file.deletions || 0),
     0,
   );
 
@@ -339,14 +319,6 @@ export async function getRepositoryMetrics({
     files: filesChangedThisPeriod.length,
     commitCount: commits.length,
   };
-
-  // Get PR files for merged PRs in this period
-  const prFiles = await db.query.rawPullRequestFiles.findMany({
-    where: inArray(
-      rawPullRequestFiles.prId,
-      mergedPRsThisPeriod.map((pr) => pr.id),
-    ),
-  });
 
   // Get focus areas from PR files
   const areaMap = buildAreaMap(prFiles);
@@ -375,84 +347,65 @@ export async function getRepositoryMetrics({
   };
 }
 export type RepositoryMetrics = Awaited<
-  ReturnType<typeof getRepositoryMetrics>
+  ReturnType<typeof getProjectMetrics>
 >; /**
  * Get all active contributors in a repository within a time range
  */
 
-export async function getActiveContributors({
-  repository,
-  dateRange,
-}: {
-  repository: string;
-  dateRange: {
-    startDate: string;
-    endDate: string;
-  };
-}) {
+export async function getActiveContributors(params: QueryParams = {}) {
   // Find contributors with any activity in the time range
   const activeUsernames = new Set<string>();
-
   // PRs
+  const prAuthorsConditions = buildCommonWhereConditions(
+    params,
+    rawPullRequests,
+    ["createdAt", "updatedAt"],
+  );
+
   const prAuthors = await db
     .select({ author: rawPullRequests.author })
     .from(rawPullRequests)
-    .where(
-      and(
-        eq(rawPullRequests.repository, repository),
-        gte(rawPullRequests.createdAt, dateRange.startDate),
-        lte(rawPullRequests.createdAt, dateRange.endDate),
-      ),
-    );
+    .where(and(...prAuthorsConditions));
 
   prAuthors.forEach((author) => {
     if (author.author) activeUsernames.add(author.author);
   });
 
   // Issues
+  const issueAuthorsConditions = buildCommonWhereConditions(params, rawIssues, [
+    "createdAt",
+  ]);
   const issueAuthors = await db
     .select({ author: rawIssues.author })
     .from(rawIssues)
-    .where(
-      and(
-        eq(rawIssues.repository, repository),
-        gte(rawIssues.createdAt, dateRange.startDate),
-        lte(rawIssues.createdAt, dateRange.endDate),
-      ),
-    );
+    .where(and(...issueAuthorsConditions));
 
   issueAuthors.forEach((author) => {
     if (author.author) activeUsernames.add(author.author);
   });
 
+  const reviewConditions = buildCommonWhereConditions(params, prReviews, [
+    "createdAt",
+  ]);
   // Reviews
   const reviewers = await db
     .select({ author: prReviews.author })
     .from(prReviews)
     .innerJoin(rawPullRequests, eq(prReviews.prId, rawPullRequests.id))
-    .where(
-      and(
-        eq(rawPullRequests.repository, repository),
-        gte(prReviews.createdAt, dateRange.startDate),
-        lte(prReviews.createdAt, dateRange.endDate),
-      ),
-    );
+    .where(and(...reviewConditions));
 
   reviewers.forEach((reviewer) => {
     if (reviewer.author) activeUsernames.add(reviewer.author);
   });
 
+  const commitConditions = buildCommonWhereConditions(params, rawCommits, [
+    "committedDate",
+  ]);
   // Commits
   const committers = await db
     .select({ author: rawCommits.author })
     .from(rawCommits)
-    .where(
-      and(
-        eq(rawCommits.repository, repository),
-        gte(rawCommits.committedDate, dateRange.startDate),
-        lte(rawCommits.committedDate, dateRange.endDate),
-      ),
-    );
+    .where(and(...commitConditions));
 
   committers.forEach((committer) => {
     if (committer.author) activeUsernames.add(committer.author);

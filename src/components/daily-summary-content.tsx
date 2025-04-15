@@ -18,57 +18,57 @@ export function DailySummaryContent({
   return (
     <div className={`space-y-6 ${className}`}>
       {/* Key Metrics */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         <Card className="bg-background/50">
-          <CardContent className="p-3 flex flex-col items-center">
-            <p className="text-xl font-bold leading-none mb-1.5">
+          <CardContent className="flex flex-col items-center p-3">
+            <p className="mb-1.5 text-xl font-bold leading-none">
               {data.metrics.contributors}
             </p>
             <div className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
-              <Users className="w-3.5 h-3.5" />
+              <Users className="h-3.5 w-3.5" />
               Contributors
             </div>
           </CardContent>
         </Card>
 
         <Card className="bg-background/50">
-          <CardContent className="p-3 flex flex-col items-center">
-            <p className="text-xl font-bold leading-none mb-1.5">
+          <CardContent className="flex flex-col items-center p-3">
+            <p className="mb-1.5 text-xl font-bold leading-none">
               {data.metrics.merged_prs}
             </p>
             <div className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
-              <GitPullRequest className="w-3.5 h-3.5" />
+              <GitPullRequest className="h-3.5 w-3.5" />
               Merged PRs
             </div>
           </CardContent>
         </Card>
 
         <Card className="bg-background/50">
-          <CardContent className="p-3 flex flex-col items-center">
-            <p className="text-xl font-bold leading-none mb-1.5">
+          <CardContent className="flex flex-col items-center p-3">
+            <p className="mb-1.5 text-xl font-bold leading-none">
               {data.metrics.new_issues}
             </p>
             <div className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
-              <CircleDot className="w-3.5 h-3.5" />
+              <CircleDot className="h-3.5 w-3.5" />
               New Issues
             </div>
           </CardContent>
         </Card>
 
         <Card className="bg-background/50">
-          <CardContent className="p-3 flex flex-col items-center">
-            <p className="text-xl font-bold leading-none mb-1.5">
+          <CardContent className="flex flex-col items-center p-3">
+            <p className="mb-1.5 text-xl font-bold leading-none">
               {data.metrics.lines_changed.toLocaleString()}
             </p>
             <div className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
-              <FileCode className="w-3.5 h-3.5" />
+              <FileCode className="h-3.5 w-3.5" />
               Lines Changed
             </div>
           </CardContent>
         </Card>
       </div>
       {/* Overview */}
-      <p className=" text-muted-foreground">{data.overview}</p>
+      <p className="text-muted-foreground">{data.overview}</p>
 
       {/* Changes */}
       <div className="space-y-4">
@@ -81,7 +81,7 @@ export function DailySummaryContent({
               {data.changes.features.map((feature, i) => (
                 <Badge
                   key={i}
-                  className="bg-emerald-500/15 text-emerald-600 dark:text-emerald-500 hover:bg-emerald-500/20 border-0"
+                  className="border-0 bg-emerald-500/15 text-emerald-600 hover:bg-emerald-500/20 dark:text-emerald-500"
                 >
                   {feature}
                 </Badge>
@@ -97,7 +97,7 @@ export function DailySummaryContent({
               {data.changes.fixes.map((fix, i) => (
                 <Badge
                   key={i}
-                  className="bg-yellow-500/15 text-yellow-600 dark:text-yellow-600 hover:bg-yellow-500/20 border-0"
+                  className="border-0 bg-yellow-500/15 text-yellow-600 hover:bg-yellow-500/20 dark:text-yellow-600"
                 >
                   {fix}
                 </Badge>
@@ -116,29 +116,30 @@ export function DailySummaryContent({
           <div className="grid gap-3 md:grid-cols-3">
             {data.top_contributors.map((contributor) => (
               <Link
-                key={contributor.name}
-                href={`/profile/${contributor.name}`}
+                key={contributor.username}
+                href={`/profile/${contributor.username}`}
                 className="block"
               >
-                <Card className="bg-background/50 hover:bg-accent/50 transition-colors">
+                <Card className="bg-background/50 transition-colors hover:bg-accent/50">
                   <CardContent className="p-3">
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
                         <Avatar className="h-5 w-5">
                           <AvatarImage
-                            src={`https://github.com/${contributor.name}.png`}
-                            alt={contributor.name}
+                            src={`https://github.com/${contributor.username}.png`}
+                            alt={contributor.username}
                           />
                           <AvatarFallback>
-                            {contributor.name[0].toUpperCase()}
+                            {contributor.username[0].toUpperCase()}
                           </AvatarFallback>
                         </Avatar>
-                        <h4 className="font-medium text-sm truncate">
-                          {contributor.name}
+                        <h4 className="truncate text-sm font-medium">
+                          {contributor.username}
                         </h4>
                       </div>
-                      <p className="text-xs text-muted-foreground line-clamp-5">
-                        {contributor.summary}
+                      <p className="line-clamp-5 text-xs text-muted-foreground">
+                        {contributor.pr_count} PRs, {contributor.issue_count}
+                        issues, {contributor.review_count} reviews
                       </p>
                     </div>
                   </CardContent>

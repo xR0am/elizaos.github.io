@@ -1,15 +1,37 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { cn } from "@/lib/utils";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+  ChevronLeft,
+  ChevronRight,
+  CircleDot,
+  FileCode,
+  GitCommit,
+  GitCommitVertical,
+  GitPullRequest,
+  MessageCircleWarning,
+  Users,
+  CheckCircle,
+  Code,
+  GitMerge,
+  FileText,
+  ArrowDown,
+  ArrowUp,
+  ExternalLink,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { DailyMetrics } from "./queries";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+
+// Import our generic components
+import { StatCard } from "@/components/stat-card";
+import { MetricItem } from "@/components/metric-item";
+import { ActivityItem } from "@/components/activity-item";
+import { ContributorItem } from "@/components/contributor-item";
+import { BadgeList, type BadgeItem } from "@/components/badge-list";
+import { CounterWithIcon } from "@/components/counter-with-icon";
+import { SectionCard } from "@/components/section-card";
 
 interface NavigationButtonProps {
   href: string;
@@ -92,142 +114,214 @@ export function DateNavigation({
  * Component to display the daily metrics in a structured layout
  */
 export function DailyMetricsDisplay({ metrics }: { metrics: DailyMetrics }) {
+  // Convert focus areas to badge items
+  const focusAreaBadges: BadgeItem[] = metrics.focusAreas.map(
+    (area, index) => ({
+      id: index,
+      label: area.area,
+    }),
+  );
+
   return (
     <div className="space-y-6">
-      <Card>
-        <CardHeader>
-          <CardTitle>Daily Activity Summary</CardTitle>
-          <CardDescription>Statistics for {metrics.date}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            {/* Pull Requests */}
-            <div className="rounded-lg border p-3">
-              <h3 className="text-sm font-medium">Pull Requests</h3>
-              <div className="mt-2 grid grid-cols-2 gap-2">
-                <div>
-                  <div className="text-2xl font-bold">
-                    {metrics.pullRequests.new}
-                  </div>
-                  <div className="text-xs text-muted-foreground">Created</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold">
-                    {metrics.pullRequests.merged}
-                  </div>
-                  <div className="text-xs text-muted-foreground">Merged</div>
-                </div>
-              </div>
+      {/* Main Stats Section */}
+      <div className="grid gap-6 md:grid-cols-3">
+        {/* Contributors Card */}
+        <StatCard title="Contributors" icon={Users}>
+          <div className="flex items-center justify-between">
+            <div className="text-3xl font-bold">
+              {metrics.activeContributors}
             </div>
-
-            {/* Issues */}
-            <div className="rounded-lg border p-3">
-              <h3 className="text-sm font-medium">Issues</h3>
-              <div className="mt-2 grid grid-cols-2 gap-2">
-                <div>
-                  <div className="text-2xl font-bold">{metrics.issues.new}</div>
-                  <div className="text-xs text-muted-foreground">Opened</div>
+            <div className="flex -space-x-2">
+              {metrics.topContributors.slice(0, 3).map((contributor) => (
+                <Avatar
+                  key={contributor.username}
+                  className="h-8 w-8 border-2 border-background"
+                >
+                  <AvatarImage
+                    src={`https://github.com/${contributor.username}.png`}
+                    alt={contributor.username}
+                  />
+                  <AvatarFallback>
+                    {contributor.username[0].toUpperCase()}
+                  </AvatarFallback>
+                </Avatar>
+              ))}
+              {metrics.topContributors.length > 3 && (
+                <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-background bg-muted text-xs font-medium">
+                  +{metrics.topContributors.length - 3}
                 </div>
-                <div>
-                  <div className="text-2xl font-bold">
-                    {metrics.issues.closed}
-                  </div>
-                  <div className="text-xs text-muted-foreground">Closed</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Contributors */}
-            <div className="rounded-lg border p-3">
-              <h3 className="text-sm font-medium">Contributors</h3>
-              <div className="mt-2">
-                <div className="text-2xl font-bold">
-                  {metrics.activeContributors}
-                </div>
-                <div className="text-xs text-muted-foreground">
-                  Active contributors
-                </div>
-              </div>
+              )}
             </div>
           </div>
-        </CardContent>
-      </Card>
+        </StatCard>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {/* Code Changes */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Code Changes</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <div className="text-2xl font-bold text-green-500">
-                  +{metrics.codeChanges.additions}
-                </div>
-                <div className="text-xs text-muted-foreground">Additions</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-red-500">
-                  -{metrics.codeChanges.deletions}
-                </div>
-                <div className="text-xs text-muted-foreground">Deletions</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold">
-                  {metrics.codeChanges.files}
-                </div>
-                <div className="text-xs text-muted-foreground">
-                  Files changed
-                </div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold">
-                  {metrics.codeChanges.commits}
-                </div>
-                <div className="text-xs text-muted-foreground">Commits</div>
-              </div>
+        {/* Pull Requests Card */}
+        <StatCard
+          title="Pull Requests"
+          icon={GitPullRequest}
+          bgColor="bg-blue-500/10"
+        >
+          <div className="flex items-center justify-between">
+            <div className="text-3xl font-bold">
+              {metrics.pullRequests.total}
             </div>
-          </CardContent>
-        </Card>
+            <div className="flex flex-col space-y-1">
+              <CounterWithIcon
+                icon={CircleDot}
+                label="New"
+                value={metrics.pullRequests.new}
+                iconClassName="text-green-500"
+              />
+              <CounterWithIcon
+                icon={GitMerge}
+                label="Merged"
+                value={metrics.pullRequests.merged}
+                iconClassName="text-purple-500"
+              />
+            </div>
+          </div>
+        </StatCard>
 
-        {/* Engagement */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Community Engagement</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-3 gap-4">
-              <div>
-                <div className="text-2xl font-bold">
-                  {metrics.comments.prComments}
-                </div>
-                <div className="text-xs text-muted-foreground">PR Comments</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold">
-                  {metrics.comments.issueComments}
-                </div>
-                <div className="text-xs text-muted-foreground">
-                  Issue Comments
-                </div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold">
-                  {metrics.comments.reviews}
-                </div>
-                <div className="text-xs text-muted-foreground">Reviews</div>
-              </div>
+        {/* Issues Card */}
+        <StatCard
+          title="Issues"
+          icon={MessageCircleWarning}
+          bgColor="bg-amber-500/10"
+        >
+          <div className="flex items-center justify-between">
+            <div className="text-3xl font-bold">{metrics.issues.total}</div>
+            <div className="flex flex-col space-y-1">
+              <CounterWithIcon
+                icon={CircleDot}
+                label="New"
+                value={metrics.issues.new}
+                iconClassName="text-amber-500"
+              />
+              <CounterWithIcon
+                icon={CheckCircle}
+                label="Closed"
+                value={metrics.issues.closed}
+                iconClassName="text-green-500"
+              />
             </div>
-            <div className="mt-4 border-t pt-4">
-              <div className="text-3xl font-bold">{metrics.totalActivity}</div>
-              <div className="text-sm text-muted-foreground">
-                Total Activity
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+          </div>
+        </StatCard>
       </div>
+
+      {/* Code Changes Section */}
+      <SectionCard title="Code Changes">
+        <div className="grid gap-4 md:grid-cols-4">
+          <MetricItem
+            icon={GitCommitVertical}
+            value={metrics.codeChanges.commitCount}
+            label="Commits"
+          />
+
+          <MetricItem
+            icon={FileCode}
+            value={metrics.codeChanges.files}
+            label="Files Changed"
+          />
+
+          <MetricItem
+            icon={ArrowUp}
+            value={`+${metrics.codeChanges.additions.toLocaleString()}`}
+            label="Lines Added"
+            valueClassName="text-green-500"
+            iconClassName="text-green-500"
+            iconBgClassName="bg-green-500/10"
+          />
+
+          <MetricItem
+            icon={ArrowDown}
+            value={`-${metrics.codeChanges.deletions.toLocaleString()}`}
+            label="Lines Deleted"
+            valueClassName="text-red-500"
+            iconClassName="text-red-500"
+            iconBgClassName="bg-red-500/10"
+          />
+        </div>
+      </SectionCard>
+
+      {/* Activity Feed Section */}
+      <div className="grid gap-6 md:grid-cols-2">
+        {/* Top Pull Requests */}
+        {metrics.topPullRequests && metrics.topPullRequests.length > 0 && (
+          <SectionCard
+            title="Top Pull Requests"
+            icon={GitPullRequest}
+            noPadding
+          >
+            <div className="divide-y">
+              {metrics.topPullRequests.map((pr) => (
+                <ActivityItem
+                  key={pr.id}
+                  id={pr.id}
+                  title={pr.title}
+                  author={pr.author}
+                  number={pr.number}
+                  href={`https://github.com/${pr.repository}/pull/${pr.number}`}
+                  icon={
+                    pr.mergedAt ? (
+                      <GitMerge className="h-4 w-4 text-purple-500" />
+                    ) : (
+                      <CircleDot className="h-4 w-4 text-green-500" />
+                    )
+                  }
+                />
+              ))}
+            </div>
+          </SectionCard>
+        )}
+
+        {/* Top Issues */}
+        {metrics.topIssues && metrics.topIssues.length > 0 && (
+          <SectionCard title="Top Issues" icon={MessageCircleWarning} noPadding>
+            <div className="divide-y">
+              {metrics.topIssues.map((issue) => (
+                <ActivityItem
+                  key={issue.id}
+                  id={issue.id}
+                  title={issue.title}
+                  author={issue.author}
+                  number={issue.number}
+                  href={`https://github.com/${issue.repository}/issues/${issue.number}`}
+                  icon={
+                    issue.state === "closed" || issue.closedAt ? (
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                    ) : (
+                      <CircleDot className="h-4 w-4 text-amber-500" />
+                    )
+                  }
+                  metadata={`${issue.commentCount} comments`}
+                />
+              ))}
+            </div>
+          </SectionCard>
+        )}
+      </div>
+
+      {/* Focus Areas */}
+      {metrics.focusAreas.length > 0 && (
+        <SectionCard title="Focus Areas">
+          <BadgeList items={focusAreaBadges} />
+        </SectionCard>
+      )}
+
+      {/* Top Contributors */}
+      <SectionCard title="Top Contributors">
+        <div className="grid gap-3 md:grid-cols-3">
+          {metrics.topContributors.map((contributor) => (
+            <ContributorItem
+              key={contributor.username}
+              username={contributor.username}
+              href={`/profile/${contributor.username}`}
+              stats={`${contributor.pr_count} PRs, ${contributor.issue_count} issues, ${contributor.review_count} reviews`}
+            />
+          ))}
+        </div>
+      </SectionCard>
     </div>
   );
 }

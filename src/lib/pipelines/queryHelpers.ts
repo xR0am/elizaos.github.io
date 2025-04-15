@@ -16,7 +16,7 @@ export function buildDateRangeConditions<T extends { [key: string]: unknown }>(
   if (startDate && endDate) {
     dateConditions = dateFields.map(
       (field) =>
-        sql`${table[field]} >= ${startDate} AND ${table[field]} <= ${endDate}`,
+        sql`${table[field]} >= ${startDate} AND ${table[field]} < ${endDate}`,
     );
   } else if (startDate) {
     dateConditions = dateFields.map(
@@ -24,7 +24,7 @@ export function buildDateRangeConditions<T extends { [key: string]: unknown }>(
     );
   } else if (endDate) {
     dateConditions = dateFields.map(
-      (field) => sql`${table[field]} <= ${endDate}`,
+      (field) => sql`${table[field]} < ${endDate}`,
     );
   }
 
