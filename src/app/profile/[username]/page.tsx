@@ -1,44 +1,23 @@
-import { getUsers } from "@/lib/get-users";
-import {
-  getAllDailySummaryDates,
-  getDailySummary,
-} from "@/lib/get-daily-summaries";
 import UserProfile from "@/components/user-profile";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getUserProfile } from "./queries";
+import { db } from "@/lib/data/db";
 
 type ProfilePageProps = {
   params: Promise<{ username: string }>;
 };
 
 export async function generateStaticParams() {
-  // Get users from both sources
-  const [users, allDates] = await Promise.all([
-    getUsers(),
-    getAllDailySummaryDates(),
-  ]);
+  // Get all users directly from the database
+  const allUsers = await db.query.users.findMany({
+    columns: {
+      username: true,
+    },
+  });
 
-  // Get all daily summaries
-  const dailySummaries = await Promise.all(
-    allDates.map((date) => getDailySummary(date)),
-  );
-
-  // Extract usernames from daily summaries
-  const dailyUsers = new Set(
-    dailySummaries
-      .flatMap((summary) => summary?.top_contributors ?? [])
-      .map((contributor) => contributor.username),
-  );
-
-  // Combine with existing users
-  const allUsernames = new Set([
-    ...users.map((user) => user.username),
-    ...dailyUsers,
-  ]);
-
-  return Array.from(allUsernames).map((username) => ({
-    username,
+  return allUsers.map((user) => ({
+    username: user.username,
   }));
 }
 

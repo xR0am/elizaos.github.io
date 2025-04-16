@@ -13,13 +13,13 @@ export function LeaderboardCard({
   onSkillClick: (skill: string) => void;
 }) {
   const totalXp = Math.round(
-    Object.values(user.tag_scores).reduce((a, b) => a + b, 0),
+    Object.values(user.tagScores).reduce((a, b) => a + b, 0),
   );
-  const totalLevel = Object.values(user.tag_levels).reduce(
+  const totalLevel = Object.values(user.tagLevels).reduce(
     (sum, skill) => sum + skill.level,
     0,
   );
-  const topSkills = Object.entries(user.tag_levels)
+  const topSkills = Object.entries(user.tagLevels)
     .sort(([, a], [, b]) => b.level - a.level)
     .slice(0, 3);
 

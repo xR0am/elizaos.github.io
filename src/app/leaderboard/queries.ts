@@ -143,11 +143,11 @@ export async function getLeaderboard(
       return {
         username: user.username,
         avatarUrl: user.avatarUrl,
-        tag_scores: tagScores,
-        tag_levels: tagLevels,
+        tagScores,
+        tagLevels,
         tags,
         stats: placeholderStats,
-        focus_areas: focusAreas,
+        focusAreas,
         score: userScore, // Add score directly to the object for easier sorting
         summary: `${user.username} has a total score of ${userScore.toFixed(0)}.`,
       };

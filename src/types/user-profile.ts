@@ -16,16 +16,28 @@ export interface UserStats {
   prs_by_month: Record<string, number>;
 }
 
+export interface ActivityData {
+  date: string;
+  value: number;
+  breakdown: {
+    prScore: number;
+    issueScore: number;
+    reviewScore: number;
+    commentScore: number;
+  };
+}
+
 export interface UserFocusAreaData {
   username: string;
-  tag_scores: Record<string, number>;
-  tag_levels: Record<string, TagLevel>;
+  tagScores: Record<string, number>;
+  tagLevels: Record<string, TagLevel>;
   tags: string[];
   stats: UserStats;
-  focus_areas: [string, number][];
+  focusAreas: [string, number][];
   summary: string;
   score: number;
   avatarUrl?: string | null;
+  dailyActivity?: ActivityData[];
 }
 
 export type LeaderboardPeriod = "all" | "weekly" | "monthly";

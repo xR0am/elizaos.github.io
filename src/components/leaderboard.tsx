@@ -66,7 +66,7 @@ export function Leaderboard({ tabs }: LeaderboardProps) {
 
   const allSkills = useMemo(() => {
     return Array.from(
-      new Set(currentTab.users.flatMap((user) => Object.keys(user.tag_levels))),
+      new Set(currentTab.users.flatMap((user) => Object.keys(user.tagLevels))),
     );
   }, [currentTab]);
 
@@ -104,22 +104,22 @@ export function Leaderboard({ tabs }: LeaderboardProps) {
         (user) =>
           user.username.toLowerCase().includes(searchTerm.toLowerCase()) &&
           (selectedSkill === "all" ||
-            selectedSkill.toLowerCase() in user.tag_levels),
+            selectedSkill.toLowerCase() in user.tagLevels),
       )
       .sort((a, b) => {
         if (selectedSkill === "all") {
-          const totalA = Object.values(a.tag_levels).reduce(
+          const totalA = Object.values(a.tagLevels).reduce(
             (sum, tag) => sum + tag.level,
             0,
           );
-          const totalB = Object.values(b.tag_levels).reduce(
+          const totalB = Object.values(b.tagLevels).reduce(
             (sum, tag) => sum + tag.level,
             0,
           );
           return totalB - totalA;
         } else {
-          const skillA = a.tag_levels[selectedSkill]?.level || 0;
-          const skillB = b.tag_levels[selectedSkill]?.level || 0;
+          const skillA = a.tagLevels[selectedSkill]?.level || 0;
+          const skillB = b.tagLevels[selectedSkill]?.level || 0;
           return skillB - skillA;
         }
       });
