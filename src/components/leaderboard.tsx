@@ -18,10 +18,10 @@ import { useWindowVirtualizer } from "@tanstack/react-virtual";
 export function LeaderboardFallback() {
   return (
     <div className="animate-pulse space-y-4">
-      <div className="h-8 bg-muted rounded w-48"></div>
+      <div className="h-8 w-48 rounded bg-muted"></div>
       <div className="space-y-3">
         {Array.from({ length: 5 }).map((_, i) => (
-          <div key={i} className="h-24 bg-muted rounded"></div>
+          <div key={i} className="h-24 rounded bg-muted"></div>
         ))}
       </div>
     </div>
@@ -43,15 +43,15 @@ export function Leaderboard({ tabs }: LeaderboardProps) {
   const searchParams = useSearchParams();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedSkill, setSelectedSkill] = useState(
-    searchParams.get("skill") || "all"
+    searchParams.get("skill") || "all",
   );
   const [currentPeriod, setCurrentPeriod] = useState<LeaderboardPeriod>(
-    (searchParams.get("period") as LeaderboardPeriod) || "all"
+    (searchParams.get("period") as LeaderboardPeriod) || "all",
   );
 
   const currentTab = useMemo(
     () => tabs.find((tab) => tab.id === currentPeriod) || tabs[0],
-    [tabs, currentPeriod]
+    [tabs, currentPeriod],
   );
 
   useEffect(() => {
@@ -60,13 +60,13 @@ export function Leaderboard({ tabs }: LeaderboardProps) {
 
   useEffect(() => {
     setCurrentPeriod(
-      (searchParams.get("period") as LeaderboardPeriod) || "all"
+      (searchParams.get("period") as LeaderboardPeriod) || "all",
     );
   }, [searchParams]);
 
   const allSkills = useMemo(() => {
     return Array.from(
-      new Set(currentTab.users.flatMap((user) => Object.keys(user.tag_levels)))
+      new Set(currentTab.users.flatMap((user) => Object.keys(user.tagLevels))),
     );
   }, [currentTab]);
 
@@ -81,7 +81,7 @@ export function Leaderboard({ tabs }: LeaderboardProps) {
       }
       router.replace(`?${params.toString()}`);
     },
-    [searchParams, router]
+    [searchParams, router],
   );
 
   const handlePeriodChange = useCallback(
@@ -95,7 +95,7 @@ export function Leaderboard({ tabs }: LeaderboardProps) {
       }
       router.replace(`?${params.toString()}`);
     },
-    [searchParams, router]
+    [searchParams, router],
   );
 
   const filteredUsers = useMemo(() => {
@@ -104,22 +104,22 @@ export function Leaderboard({ tabs }: LeaderboardProps) {
         (user) =>
           user.username.toLowerCase().includes(searchTerm.toLowerCase()) &&
           (selectedSkill === "all" ||
-            selectedSkill.toLowerCase() in user.tag_levels)
+            selectedSkill.toLowerCase() in user.tagLevels),
       )
       .sort((a, b) => {
         if (selectedSkill === "all") {
-          const totalA = Object.values(a.tag_levels).reduce(
+          const totalA = Object.values(a.tagLevels).reduce(
             (sum, tag) => sum + tag.level,
-            0
+            0,
           );
-          const totalB = Object.values(b.tag_levels).reduce(
+          const totalB = Object.values(b.tagLevels).reduce(
             (sum, tag) => sum + tag.level,
-            0
+            0,
           );
           return totalB - totalA;
         } else {
-          const skillA = a.tag_levels[selectedSkill]?.level || 0;
-          const skillB = b.tag_levels[selectedSkill]?.level || 0;
+          const skillA = a.tagLevels[selectedSkill]?.level || 0;
+          const skillB = b.tagLevels[selectedSkill]?.level || 0;
           return skillB - skillA;
         }
       });
@@ -143,7 +143,7 @@ export function Leaderboard({ tabs }: LeaderboardProps) {
         Leaderboard
       </h2>
 
-      <div className="flex flex-col sm:flex-row sm:justify-between gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row sm:justify-between">
         <Input
           placeholder="Search players..."
           value={searchTerm}
@@ -207,7 +207,7 @@ const VirtualizedLeaderboardList = ({
   });
 
   return (
-    <div ref={listRef} className="border rounded-lg divide-y">
+    <div ref={listRef} className="divide-y rounded-lg border">
       <div
         style={{
           height: `${virtualizer.getTotalSize()}px`,

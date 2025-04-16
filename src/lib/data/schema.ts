@@ -405,7 +405,7 @@ export const issueLabels = sqliteTable(
 export const userDailyScores = sqliteTable(
   "user_daily_scores",
   {
-    id: text("id").primaryKey(), // username_date
+    id: text("id").primaryKey(), // username_date_category
     username: text("username")
       .notNull()
       .references(() => users.username, { onDelete: "cascade" }),
@@ -419,7 +419,7 @@ export const userDailyScores = sqliteTable(
     reviewScore: real("review_score").default(0),
     commentScore: real("comment_score").default(0),
     metrics: text("metrics").notNull().default("{}"), // JSON string of all metrics
-    category: text("category").default("overall"),
+    category: text("category").default("day"),
     lastUpdated: text("last_updated")
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
@@ -427,9 +427,7 @@ export const userDailyScores = sqliteTable(
   (table) => [
     index("idx_user_daily_scores_username").on(table.username),
     index("idx_user_daily_scores_date").on(table.date),
-    index("idx_user_daily_scores_timestamp").on(table.timestamp),
     index("idx_user_daily_scores_category").on(table.category),
-    index("idx_user_daily_scores_score").on(table.score),
     uniqueIndex("idx_user_daily_scores_username_date_category").on(
       table.username,
       table.date,

@@ -8,8 +8,12 @@ import {
   userSummaries,
 } from "@/lib/data/schema";
 import { UTCDate } from "@date-fns/utc";
-import { toDateString } from "@/lib/date-utils";
+import { toDateString, calculateDateRange } from "@/lib/date-utils";
 import { UserFocusAreaData, UserStats } from "@/types/user-profile";
+import {
+  getUserAggregatedScore,
+  getUserActivityHeatmap,
+} from "@/lib/scoring/queries";
 
 /**
  * Get comprehensive user profile data
@@ -116,7 +120,7 @@ export async function getUserProfile(
   // Get files by type metrics
   const filesByTypeRows = await db
     .select({
-      fileType: sql<string>`SUBSTR(${rawPullRequests.title}, INSTR(${rawPullRequests.title}, '.') + 1)`,
+      fileType: sql<string>`SUBSTR(${rawPullRequests.title}, INSTR(${rawPullRequests.title}, '.') + 1) as file_type`,
       count: count(),
     })
     .from(rawPullRequests)
@@ -126,8 +130,8 @@ export async function getUserProfile(
         sql`INSTR(${rawPullRequests.title}, '.') > 0`,
       ),
     )
-    .groupBy(sql`fileType`)
-    .having(sql`fileType != '' AND length(fileType) < 10`)
+    .groupBy(sql`file_type`)
+    .having(sql`file_type != '' AND length(file_type) < 10`)
     .all();
 
   // Process files by type
@@ -144,7 +148,7 @@ export async function getUserProfile(
 
   const prsByMonthRows = await db
     .select({
-      month: sql<string>`SUBSTR(${rawPullRequests.createdAt}, 1, 7)`,
+      month: sql<string>`SUBSTR(${rawPullRequests.createdAt}, 1, 7) as pr_month`,
       count: count(),
     })
     .from(rawPullRequests)
@@ -154,7 +158,7 @@ export async function getUserProfile(
         sql`${rawPullRequests.createdAt} >= ${monthsAgoStr}`,
       ),
     )
-    .groupBy(sql`month`)
+    .groupBy(sql`pr_month`)
     .all();
 
   // Process PRs by month
@@ -175,13 +179,27 @@ export async function getUserProfile(
     prs_by_month: prsByMonth,
   };
 
+  // Get user's overall score
+  const userScore = await getUserAggregatedScore(username);
+
+  // Get daily activity metrics for the last 30 days
+  const { startDate, endDate } = calculateDateRange({ days: 30 });
+
+  const dailyActivity = await getUserActivityHeatmap(
+    username,
+    startDate,
+    endDate,
+  );
+  // console.log(dailyActivity);
   return {
     username,
-    tag_scores: tagScores,
-    tag_levels: tagLevels,
+    score: userScore.totalScore,
+    tagScores,
+    tagLevels,
     tags: userTags,
     stats,
-    focus_areas: focusAreas,
+    focusAreas,
     summary,
+    dailyActivity,
   };
 }

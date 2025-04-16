@@ -311,7 +311,7 @@ export function DailyMetricsDisplay({ metrics }: { metrics: DailyMetrics }) {
               key={contributor.username}
               username={contributor.username}
               href={`/profile/${contributor.username}`}
-              stats={`${contributor.pr_count} PRs, ${contributor.issue_count} issues, ${contributor.review_count} reviews`}
+              stats={`Daily XP: ${contributor.totalScore.toFixed(0)}`}
             />
           ))}
         </div>

@@ -13,17 +13,15 @@ import { sql } from "drizzle-orm";
  * @param username - User's username
  * @param scoreData - Score data from scoring.ts
  * @param date - Optional date string (YYYY-MM-DD) - defaults to today
- * @param category - Optional category for the score - defaults to "overall"
- * @returns Result of the insert operation
+d * @returns Result of the insert operation
  */
 export async function saveUserDailyScore(
   username: string,
   scoreData: ScoreResult,
   date?: string,
-  category = "overall",
 ): Promise<void> {
   const scoreDate = date || toDateString(new UTCDate());
-  const id = `${username}_${scoreDate}_${category}`;
+  const id = `${username}_${scoreDate}_day`;
 
   // Check if user exists
   const userExists = await db
@@ -51,11 +49,12 @@ export async function saveUserDailyScore(
       reviewScore: scoreData.reviewScore,
       commentScore: scoreData.commentScore,
       metrics: JSON.stringify(scoreData.metrics),
-      category,
+      category: "day",
     })
     .onConflictDoUpdate({
       target: userDailyScores.id,
       set: {
+        timestamp: new UTCDate().toISOString(),
         score: scoreData.totalScore,
         prScore: scoreData.prScore,
         issueScore: scoreData.issueScore,
@@ -80,22 +79,17 @@ export async function getUserDailyScores(
   username: string,
   startDate?: string,
   endDate?: string,
-  category?: string,
 ): Promise<UserScoreWithMetrics[]> {
   // Start with the basic query condition for username
   const conditions = [
     eq(userDailyScores.username, username),
+    eq(userDailyScores.category, "day"),
     ...buildCommonWhereConditions(
       { dateRange: { startDate, endDate } },
       userDailyScores,
       ["date"],
     ),
   ];
-  // Add category filter if provided
-  if (category) {
-    conditions.push(eq(userDailyScores.category, category));
-  }
-
   // Execute the query with all conditions
   const results = await db
     .select()
@@ -121,7 +115,7 @@ export async function getUserDailyScores(
       issueScore: Number(row.issueScore || 0),
       reviewScore: Number(row.reviewScore || 0),
       commentScore: Number(row.commentScore || 0),
-      category: row.category || "overall",
+      category: row.category,
       metrics: metrics.success ? metrics.data : data,
     };
   });

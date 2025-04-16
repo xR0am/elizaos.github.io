@@ -210,7 +210,7 @@ export const calculateCommentScore = (
 };
 
 /**
- * Calculate overall contributor score directly using query functions
+ * Calculate contributor score directly using query functions
  */
 export async function calculateContributorScore(
   username: string,
