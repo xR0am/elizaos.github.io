@@ -1,8 +1,8 @@
-name: Deploy Data to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["_data"]
+    branches: ["main"]
   workflow_dispatch:
   workflow_run:
     workflows: ["Generate Summaries"]
@@ -20,26 +20,56 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build-and-deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
-      - name: Checkout _data branch
+      - name: Checkout main branch
         uses: actions/checkout@v4
         with:
-          ref: _data
+          path: main-branch
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        working-directory: main-branch
+        run: bun install --frozen-lockfile
+
+      - name: Restore data and database
+        uses: ./main-branch/.github/actions/restore-db
+        with:
+          target_dir: main-branch
 
       - name: Get yesterday's date and copy stats
+        working-directory: main-branch
         run: |
           cp data/elizaos_eliza/stats/day/stats_$(date -d "yesterday" +'%Y-%m-%d').json data/elizaos_eliza/stats/day/stats.json
 
       - name: Generate Directory Listings
         uses: jayanta525/github-pages-directory-listing@v4.0.0
         with:
-          FOLDER: data
+          FOLDER: main-branch/data
+
+      - name: Run Migrations
+        working-directory: main-branch
+        run: bun run db:migrate
+
+      - name: Build Next.js app
+        working-directory: main-branch
+        run: bun run build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+          CI: true
+
+      - name: Move data directory into out folder
+        working-directory: main-branch
+        run: cp -r data out/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -47,7 +77,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: main-branch/out
 
       - name: Deploy to GitHub Pages
         id: deployment

@@ -34,7 +34,10 @@ jobs:
       contents: write # Needed for pushing to branches
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          path: main-branch
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -42,6 +45,7 @@ jobs:
           bun-version: latest
 
       - name: Install dependencies
+        working-directory: main-branch
         run: bun install
 
       # Set common conditional variables
@@ -64,59 +68,56 @@ jobs:
           echo "force_arg=$FORCE_ARG" >> $GITHUB_ENV
           echo "force_overwrite=$FORCE_OVERWRITE" >> $GITHUB_ENV
 
-      # Get the latest artifact run ID
-      - name: Get latest artifact run id
-        run: |
-          ARTIFACT_RUN_ID=$(curl -s "https://api.github.com/repos/${{ github.repository }}/actions/artifacts?per_page=1" | jq '.artifacts[0].workflow_run.id')
-          echo "artifact_run_id=$ARTIFACT_RUN_ID" >> $GITHUB_ENV
-
-      # Download SQLite database from previous run's artifacts
-      - name: Download database artifact
-        uses: actions/download-artifact@v4
+      # Restore data from data branch
+      - name: Restore data and database
+        uses: ./main-branch/.github/actions/restore-db
         with:
-          name: database
-          path: ./data/
-          run-id: ${{ env.artifact_run_id }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-        continue-on-error: true # Allow first run to proceed without artifact
+          data_branch: ${{ env.PIPELINE_DATA_BRANCH }}
+          target_dir: main-branch
+
+      - name: Initialize database
+        working-directory: main-branch
+        run: bun run db:migrate
 
       # Set up pipeline-data branch worktree
       - name: Setup pipeline-data branch
-        uses: ./.github/actions/pipeline-data
+        uses: ./main-branch/.github/actions/pipeline-data
         with:
           operation: setup
           branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
 
-      - name: Initialize database
-        run: bun run db:migrate
-
       - name: Run ingest pipeline
+        working-directory: main-branch
         run: bun run pipeline ingest${{ env.force_arg }}${{ env.start_date_arg }}${{ env.end_date_arg }}
 
       - name: Run process pipeline
+        working-directory: main-branch
         run: bun run pipeline process${{ env.force_arg }}
 
       - name: Run export pipeline # Export everything missing + overwrite last 2 days to ensure overlap
+        working-directory: main-branch
         run: |
           bun run pipeline export${{ env.start_date_arg }}${{ env.end_date_arg }}${{ env.force_overwrite }}
           bun run pipeline export --days 2 -o
+
       - name: Install uv
         uses: astral-sh/setup-uv@v5
 
       - name: Dump SQLite database to diffable files
+        working-directory: main-branch
         run: uv run uvx sqlite-diffable dump data/db.sqlite data/dump/ --all
 
-      # Upload SQLite database as artifact
+      # Upload SQLite database as artifact (keep this for backward compatibility)
       - name: Upload database artifact
         uses: actions/upload-artifact@v4
         with:
           name: database
-          path: data/db.sqlite
+          path: main-branch/data/db.sqlite
           retention-days: 90 # Maximum retention for public repos
 
       # Update pipeline-data branch with new data
       - name: Update pipeline-data branch
-        uses: ./.github/actions/pipeline-data
+        uses: ./main-branch/.github/actions/pipeline-data
         with:
           operation: update
           commit_message: "Ingest/export run: $(date -u +'%Y-%m-%d %H:%M')"
@@ -125,7 +126,7 @@ jobs:
       # Cleanup worktree (always runs)
       - name: Cleanup
         if: always()
-        uses: ./.github/actions/pipeline-data
+        uses: ./main-branch/.github/actions/pipeline-data
         with:
           operation: cleanup
           branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
@@ -139,7 +140,10 @@ jobs:
       contents: write # Needed for pushing to branches
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          path: main-branch
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -147,6 +151,7 @@ jobs:
           bun-version: latest
 
       - name: Install dependencies
+        working-directory: main-branch
         run: bun install --frozen-lockfile
 
       # Set common conditional variables
@@ -167,16 +172,16 @@ jobs:
           echo "end_date_arg=$END_DATE_ARG" >> $GITHUB_ENV
           echo "force_overwrite=$FORCE_OVERWRITE" >> $GITHUB_ENV
 
-      # Download the SQLite database artifact from the previous job
-      - name: Download database artifact
-        uses: actions/download-artifact@v4
+      # Restore data from data branch
+      - name: Restore data and database
+        uses: ./main-branch/.github/actions/restore-db
         with:
-          name: database
-          path: ./data/
+          data_branch: ${{ env.PIPELINE_DATA_BRANCH }}
+          target_dir: main-branch
 
       # Set up pipeline-data branch worktree
       - name: Setup pipeline-data branch
-        uses: ./.github/actions/pipeline-data
+        uses: ./main-branch/.github/actions/pipeline-data
         with:
           operation: setup
           branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
@@ -200,6 +205,7 @@ jobs:
       # Run project summaries (daily)
       - name: Generate project summaries
         if: ${{ steps.schedule-check.outputs.run_project == 'true' }}
+        working-directory: main-branch
         run: |
           # Full project summary
           bun run pipeline summarize -t project${{ env.start_date_arg }}${{ env.end_date_arg }}${{ env.force_overwrite }}
@@ -209,6 +215,7 @@ jobs:
       # Run contributor summaries (weekly on Sunday)
       - name: Generate contributor summaries
         if: ${{ steps.schedule-check.outputs.run_contributor == 'true' }}
+        working-directory: main-branch
         run: |
           # Full contributor summary
           bun run pipeline summarize -t contributors${{ env.start_date_arg }}${{ env.end_date_arg }}${{ env.force_overwrite }}
@@ -217,7 +224,7 @@ jobs:
 
       # Update pipeline-data branch with new summaries
       - name: Update pipeline-data branch with summaries
-        uses: ./.github/actions/pipeline-data
+        uses: ./main-branch/.github/actions/pipeline-data
         with:
           operation: update
           commit_message: "Summary generation (${{ steps.schedule-check.outputs.run_contributor == 'true' && 'contributor and project' || 'project' }}): $(date -u +'%Y-%m-%d %H:%M')"
@@ -226,7 +233,7 @@ jobs:
       # Cleanup worktree (always runs)
       - name: Cleanup
         if: always()
-        uses: ./.github/actions/pipeline-data
+        uses: ./main-branch/.github/actions/pipeline-data
         with:
           operation: cleanup
           branch_name: ${{ env.PIPELINE_DATA_BRANCH }}

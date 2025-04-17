@@ -32,6 +32,40 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code (PR Branch)
+        uses: actions/checkout@v4
+        with:
+          path: main-branch
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        working-directory: main-branch
+        run: bun install --frozen-lockfile
+
+      - name: Restore data and database
+        uses: ./main-branch/.github/actions/restore-db
+        with:
+          target_dir: main-branch
+
+      - name: Initialize DB
+        working-directory: main-branch
+        run: bun run db:migrate
+
+      - name: Run build
+        working-directory: main-branch
+        run: bun run build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+          CI: true
+
+  test-pipelines:
+    name: Test Pipelines
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -46,11 +80,14 @@ jobs:
       - name: Initialize DB
         run: bun run db:migrate
 
-      - name: Run build
-        run: bun run build
-        env:
-          NEXT_TELEMETRY_DISABLED: 1
-          CI: true
+      - name: Run Ingest Pipeline
+        run: bun run pipeline ingest -d 1
+
+      - name: Run Process Pipeline
+        run: bun run pipeline process
+
+      - name: Run Export Pipeline
+        run: bun run pipeline export -d 7
 
   check-migrations:
     name: Check Schema Migration
