@@ -23,9 +23,10 @@ runs:
       if: inputs.operation == 'restore'
       shell: bash
       run: |
+        set -euo pipefail
         # Check if dump directory exists
-        DUMP_DIR="${{ inputs.dump_dir }}"
-        TARGET_DB="${{ inputs.db_path }}"
+        DUMP_DIR='${{ inputs.dump_dir }}'
+        TARGET_DB='${{ inputs.db_path }}'
 
         if [ ! -d "$DUMP_DIR" ]; then
           echo "⚠️ Warning: Dump directory $DUMP_DIR does not exist or is empty"

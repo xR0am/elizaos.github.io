@@ -269,7 +269,9 @@ program
       logger.info(
         `Fetching ${options.branch} branch from ${options.remote} with depth=${options.depth}`,
       );
-      await execPromise(`git fetch ${options.remote} ${options.branch} `);
+      await execPromise(
+        `git fetch ${options.remote} ${options.branch} --depth=${options.depth}`,
+      );
 
       // Step 4: Create a worktree for the data branch
       logger.info(`Setting up worktree for ${options.branch}`);
