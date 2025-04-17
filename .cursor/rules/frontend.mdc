@@ -1,3 +1,8 @@
+---
+description: 
+globs: src/app/*,src/components/*
+alwaysApply: false
+---
 # Frontend Development Standards
 
 ## Component Organization
@@ -42,12 +47,12 @@
 
 - **One Component Per File:**
   - Each file should export exactly one main component
-  - Use default exports for main components
+  - Use names exports for components
   - Exception: compound components can be in the same file
   - Example:
     ```typescript
     // ✅ DO: One main component per file with default export
-    export default function StatCard({ title, value, icon }: StatCardProps) {
+    export function StatCard({ title, value, icon }: StatCardProps) {
       // Implementation
     }
     
@@ -64,56 +69,12 @@
     export { Tabs, TabsList, TabsContent, TabsTrigger }
     ```
 
-- **Component Props:**
-  - Define props as TypeScript interfaces or type aliases
-  - Place props definition at the top of the file or in a types directory
-  - Example:
-    ```typescript
-    // ✅ DO: Define props with TypeScript
-    interface UserProfileProps {
-      username: string;
-      stats: UserStats;
-      activity?: ActivityData[];
-    }
-    
-    export default function UserProfile({ username, stats, activity }: UserProfileProps) {
-      // Implementation
-    }
-    ```
-
 ## CSS and Styling
 
 - **Tailwind Classes:**
   - Use Tailwind's utility classes for styling
   - Group related classes together
-  - Use consistent ordering: layout → spacing → sizing → typography → visual
-  - Example:
-    ```tsx
-    // ✅ DO: Group related classes in a logical order
-    <div className="flex flex-col items-center gap-4 p-6 w-full max-w-md rounded-lg bg-card text-card-foreground shadow-sm">
-      {/* Component content */}
-    </div>
-    
-    // ❌ DON'T: Write unorganized class names
-    <div className="text-card-foreground p-6 shadow-sm flex rounded-lg w-full max-w-md bg-card flex-col items-center gap-4">
-      {/* Component content */}
-    </div>
-    ```
 
-- **Complex Class Management:**
-  - For conditional classes, use template literals or the clsx/cn utility
-  - Extract repeated class patterns into variables or utility functions
-  - Example:
-    ```tsx
-    // ✅ DO: Use cn utility for conditional classes
-    import { cn } from "@/lib/utils";
-    
-    const buttonClasses = cn(
-      "flex items-center gap-2 rounded-md px-4 py-2 font-medium",
-      variant === "primary" ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground",
-      disabled && "opacity-50 cursor-not-allowed"
-    );
-    ```
 
 ## Data Fetching and State Management
 
@@ -287,24 +248,6 @@
     }, [data]);
     ```
 
-- **Image Optimization:**
-  - Use Next.js Image component for all images
-  - Specify width, height and proper loading strategy
-  - Example:
-    ```tsx
-    // ✅ DO: Use optimized images
-    import Image from "next/image";
-    
-    <Image 
-      src={profilePic} 
-      alt="User avatar"
-      width={64}
-      height={64}
-      className="rounded-full"
-      priority={isHero}
-    />
-    ```
-
 ## Error Handling and Loading States
 
 - **React Suspense for Loading States:**
@@ -471,47 +414,3 @@
       Action Button
     </button>
     ```
-
-## Code Organization Within Components
-
-- **Logical Grouping:**
-  - Group related state and effects together
-  - Place event handlers after state declarations
-  - Example:
-    ```tsx
-    // ✅ DO: Organize code logically
-    export default function DataTable({ data }: DataTableProps) {
-      // State declarations
-      const [sortField, setSortField] = useState('name');
-      const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
-      const [currentPage, setCurrentPage] = useState(1);
-      
-      // Derived state and calculations
-      const sortedData = useMemo(() => {
-        // Sorting logic
-      }, [data, sortField, sortDirection]);
-      
-      const paginatedData = useMemo(() => {
-        // Pagination logic
-      }, [sortedData, currentPage]);
-      
-      // Event handlers
-      const handleSort = useCallback(() => {
-        // Sort handling logic
-      }, [sortField, sortDirection]);
-      
-      const handlePageChange = useCallback(() => {
-        // Page change logic
-      }, []);
-      
-      // Effects
-      useEffect(() => {
-        // Side effects
-      }, [sortField]);
-      
-      // Render
-      return (
-        // Component JSX
-      );
-    }
-    ``` 
