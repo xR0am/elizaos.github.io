@@ -208,6 +208,14 @@ jobs:
           # Recent contributor summary with overwrite
           bun run pipeline summarize -t contributors -o -d 1
 
+      # Dump SQLite database to diffable files
+      - name: Dump SQLite database
+        uses: ./.github/actions/restore-db
+        with:
+          operation: dump
+          db_path: ${{ env.DATA_DIR }}/db.sqlite
+          dump_dir: ${{ env.DATA_DIR }}/dump
+
       # Update pipeline-data branch with new summaries
       - name: Update pipeline-data branch with summaries
         uses: ./.github/actions/pipeline-data
