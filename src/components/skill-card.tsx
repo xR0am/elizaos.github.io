@@ -35,28 +35,26 @@ export const SkillCard = ({ data, rank }: { data: TagData; rank?: number }) => {
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Link href={`/?skill=${name}`}>
-            <Card
-              className={`group relative cursor-pointer overflow-hidden border-l-4 transition-all hover:bg-muted/30 ${getRankStyles()}`}
-            >
-              <CardContent className="flex items-center gap-2 p-2">
-                <Icon className="h-5 w-5 shrink-0 text-primary/80" />
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center justify-between">
-                    <p className="truncate text-xs font-medium capitalize">
-                      {name}
-                    </p>
-                    <div className="flex items-center gap-1">
-                      <span className="text-xs text-muted-foreground">LVL</span>
-                      <span className="font-mono font-bold tabular-nums">
-                        {data.level}
-                      </span>
-                    </div>
+          <Card
+            className={`group relative cursor-pointer overflow-hidden border-l-4 transition-all hover:bg-muted/30 ${getRankStyles()}`}
+          >
+            <CardContent className="flex items-center gap-2 p-2">
+              <Icon className="h-5 w-5 shrink-0 text-primary/80" />
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center justify-between">
+                  <p className="truncate text-xs font-medium capitalize">
+                    {name}
+                  </p>
+                  <div className="flex items-center gap-1">
+                    <span className="text-xs text-muted-foreground">LVL</span>
+                    <span className="font-mono font-bold tabular-nums">
+                      {data.level}
+                    </span>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-          </Link>
+              </div>
+            </CardContent>
+          </Card>
         </TooltipTrigger>
         <TooltipContent className="w-64">
           <div className="space-y-3">
