@@ -4,10 +4,10 @@ inputs:
   operation:
     description: "Operation to perform: setup, update, or cleanup"
     required: true
-  source_path:
-    description: "Source path to copy data from (for update operation), relative to the main workspace"
+  data_dir:
+    description: "Directory containing data files to sync (relative to the main workspace)"
     required: false
-    default: "./data/"
+    default: "./data"
   exclude_pattern:
     description: "Pattern to exclude when copying files"
     required: false
@@ -19,7 +19,7 @@ inputs:
   branch_name:
     description: "Name of the branch to store pipeline data"
     required: false
-    default: "pipeline-data"
+    default: "_data"
 
 runs:
   using: "composite"
@@ -29,7 +29,7 @@ runs:
       if: inputs.operation == 'setup'
       shell: bash
       run: |
-        mkdir -p data
+        mkdir -p ${{ inputs.data_dir }}
         # Configure git
         git config user.name "GitHub Actions Bot"
         git config user.email "actions@github.com"
@@ -43,7 +43,7 @@ runs:
           git worktree add .pipeline-data-worktree origin/${{ inputs.branch_name }}
           
           # Copy data files to main workspace
-          cp -r .pipeline-data-worktree/data/. data/ 2>/dev/null || echo "No data files found in pipeline-data branch"
+          cp -r .pipeline-data-worktree/data/. ${{ inputs.data_dir }}/ 2>/dev/null || echo "No data files found in pipeline-data branch"
         else
           echo "Creating new pipeline-data branch..."
           
@@ -88,10 +88,10 @@ runs:
         # Copy current data files from main workspace to pipeline-data branch
         # Use rsync if available for more efficient copying (only changed files)
         if command -v rsync &> /dev/null; then
-          rsync -av --delete ../${{ inputs.source_path }} data/ --exclude=${{ inputs.exclude_pattern }}
+          rsync -av --delete ../${{ inputs.data_dir }}/ data/ --exclude=${{ inputs.exclude_pattern }}
         else
           rm -rf data/dump/ data/summaries/ 2>/dev/null || true  # Clean old directories if they exist
-          cp -r ../${{ inputs.source_path }}. data/ 2>/dev/null || true
+          cp -r ../${{ inputs.data_dir }}/. data/ 2>/dev/null || true
         fi
 
         # Add and commit changes

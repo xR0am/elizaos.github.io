@@ -24,7 +24,7 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
   PIPELINE_DATA_BRANCH: "_data" # Define branch name as environment variable
-
+  DATA_DIR: "data"
 jobs:
   ingest-export:
     name: Ingest/Export Pipeline
@@ -65,21 +65,24 @@ jobs:
           echo "force_arg=$FORCE_ARG" >> $GITHUB_ENV
           echo "force_overwrite=$FORCE_OVERWRITE" >> $GITHUB_ENV
 
-      # Restore data from data branch
-      - name: Restore data and database
-        uses: ./.github/actions/restore-db
-        with:
-          data_branch: ${{ env.PIPELINE_DATA_BRANCH }}
-
-      - name: Initialize database
-        run: bun run db:migrate
-
       # Set up pipeline-data branch worktree
       - name: Setup pipeline-data branch
         uses: ./.github/actions/pipeline-data
         with:
           operation: setup
           branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
+          data_dir: ${{ env.DATA_DIR }}
+
+      # Restore database from pipeline-data branch
+      - name: Restore database
+        uses: ./.github/actions/restore-db
+        with:
+          operation: restore
+          dump_dir: ${{ env.DATA_DIR }}/dump
+          db_path: ${{ env.DATA_DIR }}/db.sqlite
+
+      - name: Initialize database
+        run: bun run db:migrate
 
       - name: Run ingest pipeline
         run: bun run pipeline ingest${{ env.force_arg }}${{ env.start_date_arg }}${{ env.end_date_arg }}
@@ -92,25 +95,20 @@ jobs:
           bun run pipeline export${{ env.start_date_arg }}${{ env.end_date_arg }}${{ env.force_overwrite }}
           bun run pipeline export --days 2 -o
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@v5
-
-      - name: Dump SQLite database to diffable files
-        run: uv run uvx sqlite-diffable dump data/db.sqlite data/dump/ --all
-
-      # Upload SQLite database as artifact (keep this for backward compatibility)
-      - name: Upload database artifact
-        uses: actions/upload-artifact@v4
+      # Dump SQLite database to diffable files before updating pipeline-data branch
+      - name: Dump SQLite database
+        uses: ./.github/actions/restore-db
         with:
-          name: database
-          path: data/db.sqlite
-          retention-days: 90 # Maximum retention for public repos
+          operation: dump
+          db_path: ${{ env.DATA_DIR }}/db.sqlite
+          dump_dir: ${{ env.DATA_DIR }}/dump
 
       # Update pipeline-data branch with new data
       - name: Update pipeline-data branch
         uses: ./.github/actions/pipeline-data
         with:
           operation: update
+          data_dir: ${{ env.DATA_DIR }}
           commit_message: "Ingest/export run: $(date -u +'%Y-%m-%d %H:%M')"
           branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
 
@@ -120,6 +118,7 @@ jobs:
         uses: ./.github/actions/pipeline-data
         with:
           operation: cleanup
+          data_dir: ${{ env.DATA_DIR }}
           branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
 
   generate-summaries:
@@ -160,18 +159,20 @@ jobs:
           echo "end_date_arg=$END_DATE_ARG" >> $GITHUB_ENV
           echo "force_overwrite=$FORCE_OVERWRITE" >> $GITHUB_ENV
 
-      # Restore data from data branch
-      - name: Restore data and database
-        uses: ./.github/actions/restore-db
-        with:
-          data_branch: ${{ env.PIPELINE_DATA_BRANCH }}
-
       # Set up pipeline-data branch worktree
       - name: Setup pipeline-data branch
         uses: ./.github/actions/pipeline-data
         with:
           operation: setup
           branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
+          data_dir: ${{ env.DATA_DIR }}
+      # Restore database from pipeline-data branch
+      - name: Restore database
+        uses: ./.github/actions/restore-db
+        with:
+          operation: restore
+          dump_dir: ${{ env.DATA_DIR }}/dump
+          db_path: ${{ env.DATA_DIR }}/db.sqlite
 
       # Determine which summaries to run based on day of week
       - name: Check day of week for contributor summaries
@@ -207,11 +208,20 @@ jobs:
           # Recent contributor summary with overwrite
           bun run pipeline summarize -t contributors -o -d 1
 
+      # Dump SQLite database to diffable files
+      - name: Dump SQLite database
+        uses: ./.github/actions/restore-db
+        with:
+          operation: dump
+          db_path: ${{ env.DATA_DIR }}/db.sqlite
+          dump_dir: ${{ env.DATA_DIR }}/dump
+
       # Update pipeline-data branch with new summaries
       - name: Update pipeline-data branch with summaries
         uses: ./.github/actions/pipeline-data
         with:
           operation: update
+          data_dir: ${{ env.DATA_DIR }}
           commit_message: "Summary generation (${{ steps.schedule-check.outputs.run_contributor == 'true' && 'contributor and project' || 'project' }}): $(date -u +'%Y-%m-%d %H:%M')"
           branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
 
@@ -221,4 +231,5 @@ jobs:
         uses: ./.github/actions/pipeline-data
         with:
           operation: cleanup
+          data_dir: ${{ env.DATA_DIR }}
           branch_name: ${{ env.PIPELINE_DATA_BRANCH }}

@@ -7,6 +7,7 @@ A modern analytics pipeline for tracking and analyzing GitHub contributions. The
 - [Bun](https://bun.sh/) (recommended) or Node.js 18+
 - GitHub Personal Access Token with repo scope
 - [OpenRouter API Key](https://openrouter.ai/) (optional, for AI summaries)
+- [uv](https://astral.sh/uv) (optional, for syncing from production DB)
 
 ## Features
 
@@ -77,16 +78,66 @@ export default {
 
 4. Initialize Database
 
-The SQLite database stores the GitHub data in a relational format for efficient querying and analysis. The database schema is in `src/lib/data/schema.ts`. Here's how to set it up:
+You can either initialize an empty database or sync the latest data from production:
+
+Option A - Initialize Empty Database:
 
 ```bash
-# Generate the database schema
-bun run db:generate
-
 # Apply migrations
 bun run db:migrate
+```
 
-# (Optional) Explore the database with Studio
+Option B - Sync Production Data:
+
+If you want to download all historical data from the production data branch instead of having to reingest / generate it on your own, you can use the data:sync command, which depends on [uv](https://astral.sh/uv).
+
+```bash
+# Install uv first if you don't have it (required for database restoration)
+
+pipx install uv  # Recommended method
+# OR
+brew install uv  # macOS with Homebrew
+
+# More installation options: https://docs.astral.sh/uv/getting-started/installation/
+```
+
+```bash
+
+# Download the latest data from production
+bun run data:sync
+# This will:
+# - Fetch the latest data from the _data branch
+# - Copy all data files (stats, summaries, etc.)
+# - Restore the SQLite database from the diffable dump
+
+# If you made local changes to the schema that don't exist in prod DB:
+bun run db:generate
+bun run db:migrate
+```
+
+The data sync utility supports several options:
+
+```bash
+# View all options
+bun run data:sync --help
+
+# Skip confirmation prompts (useful in scripts)
+bun run data:sync -y
+
+# Sync from a different remote (if you've added one)
+bun run data:sync --remote upstream
+
+# Skip database restoration (only sync generated JSON/MD files)
+bun run data:sync --skip-db
+
+# Delete all local data and force sync
+bun run data:sync --force
+```
+
+After syncing or initializing the database, you can explore it using Drizzle Studio:
+
+```bash
+# Launch the database explorer
 bun run db:studio
 ```
 
@@ -231,6 +282,59 @@ bun run build
 bunx serve@latest out
 ```
 
+## CI/CD and Data Management
+
+The project uses GitHub Actions for automated data processing, summary generation, and deployment. The system maintains separate branches for code and data to optimize Git history management.
+
+### GitHub Actions Workflows
+
+- **Run Pipelines (`run-pipelines.yml`)**: Runs daily at 23:00 UTC to fetch GitHub data, process it, and generate summaries
+
+  - Runs the full `ingest → process → export → summarize` pipeline chain
+  - Maintains data in a dedicated `_data` branch
+  - Can be manually triggered from Github Actions tab with custom date ranges or forced regeneration
+  - Runs project summaries daily, but only runs contributor summaries on Sundays
+
+- **Deploy to GitHub Pages (`deploy.yml`)**: Builds and deploys the site
+
+  - Triggered on push to main, manually, or after successful pipeline run
+  - Restores data from the `_data` branch before building
+  - Generates directory listings for the data folder
+  - Deploys to GitHub Pages
+
+- **PR Checks (`pr-checks.yml`)**: Quality checks for pull requests
+  - Runs linting, typechecking, and build verification
+  - Tests the pipeline on a small sample of data
+  - Verifies migrations are up to date when schema changes
+
+### Data Management Architecture
+
+The project uses a specialized data branch strategy to optimize both code and data storage:
+
+1. **Separate Data Branch**: All pipeline data is stored in a separate branch (default: `_data`)
+
+   - Keeps the main branch clean and focused on code
+   - Prevents data changes from cluttering code commits
+   - Enables efficient data restoration in CI/CD and deployment
+
+2. **Database Serialization**: Uses the [sqlite-diffable](https://github.com/simonw/sqlite-diffable) utility to store database content as version-controlled files
+
+   - Converts SQLite database to diffable text files in `data/dump/`
+   - Enables Git to track database changes efficiently
+   - Provides an audit trail
+   - Allows for database "time travel" via git history
+
+3. **Custom GitHub Actions**: Two custom actions are used in the workflows:
+   - `restore-db`: Restores data from the data branch using sparse checkout
+   - `pipeline-data`: Manages worktrees to retrieve and update data in the \_data branch
+
+This architecture ensures:
+
+- Efficient Git history management (code changes separate from data changes)
+- Reliable CI/CD workflows with consistent data access
+- Simplified deployment with automatic data restoration
+- Effective collaboration without data conflict issues
+
 ## Development
 
 ### TypeScript Pipeline
@@ -298,6 +402,7 @@ Additional setup required if you use Safari or Brave: https://orm.drizzle.team/d
    - Ensure the `data` directory exists: `mkdir -p data`
 
 3. **"Error fetching data from GitHub"**
+
    - Check your GitHub token has proper permissions
    - Verify repository names are correct in config
    - Ensure your token has not expired
