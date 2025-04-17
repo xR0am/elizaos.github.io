@@ -5,7 +5,7 @@ on:
     branches: ["main"]
   workflow_dispatch:
   workflow_run:
-    workflows: ["Generate Summaries"]
+    workflows: ["Run Pipelines"]
     branches: [main]
     types: [completed]
 
