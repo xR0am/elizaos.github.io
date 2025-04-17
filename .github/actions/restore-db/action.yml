@@ -5,23 +5,35 @@ inputs:
     description: "Name of the branch containing the data"
     required: false
     default: "_data"
-  skip_checkout:
-    description: "Skip checking out the data branch (if it's already checked out)"
-    required: false
-    default: "false"
   target_dir:
-    description: "Target directory where data should be restored"
-    required: true
+    description: "Target directory where data should be restored (use '.' for root)"
+    required: false
+    default: "."
 
 runs:
   using: "composite"
   steps:
-    - name: Checkout data branch
-      if: inputs.skip_checkout != 'true'
-      uses: actions/checkout@v4
-      with:
-        ref: ${{ inputs.data_branch }}
-        path: data-branch
+    - name: Checkout data branch with sparse checkout
+      shell: bash
+      run: |
+        # Create a temp directory for the data branch
+        mkdir -p .data-temp
+        cd .data-temp
+
+        # Initialize git repo and add remote
+        git init
+        git remote add origin ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git
+
+        # Configure sparse checkout to only get the data directory
+        git sparse-checkout init --cone
+        git sparse-checkout set data
+
+        # Fetch only the data branch with minimal depth
+        git fetch --depth=1 origin ${{ inputs.data_branch }}
+        git checkout FETCH_HEAD
+
+        echo "✅ Data branch sparse checkout complete"
+        cd ..
 
     - name: Copy data directory
       shell: bash
@@ -30,7 +42,8 @@ runs:
         mkdir -p ${{ inputs.target_dir }}/data
 
         # Copy the data directory from data branch to target directory
-        cp -r data-branch/data ${{ inputs.target_dir }}/
+        cp -r .data-temp/data/. ${{ inputs.target_dir }}/data/
+
         echo "✅ Data directory copied to ${{ inputs.target_dir }}/data"
 
     - name: Install uv
@@ -40,12 +53,12 @@ runs:
       shell: bash
       run: |
         # Check if dump directory exists
-        DUMP_DIR="data-branch/data/dump"
+        DUMP_DIR=".data-temp/data/dump"
         TARGET_DB="${{ inputs.target_dir }}/data/db.sqlite"
 
         if [ ! -d "$DUMP_DIR" ]; then
           echo "⚠️ Warning: Dump directory $DUMP_DIR does not exist or is empty"
-          ls -la data-branch/data/ || true
+          ls -la ${{ inputs.target_dir }}/data/ || true
           echo "⏭️ Skipping database restore"
           exit 0
         fi
@@ -67,3 +80,7 @@ runs:
           echo "📊 Database tables:"
           sqlite3 $TARGET_DB ".tables" || echo "Could not query tables (this is normal if the database is empty)"
         fi
+
+        # Clean up the temporary directory
+        rm -rf .data-temp
+        echo "🧹 Cleaned up temporary data checkout"

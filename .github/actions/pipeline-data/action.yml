@@ -40,16 +40,16 @@ runs:
           
           # Create a worktree for pipeline-data branch and check out the branch directly
           git fetch origin ${{ inputs.branch_name }}
-          git worktree add pipeline-data-worktree origin/${{ inputs.branch_name }}
+          git worktree add .pipeline-data-worktree origin/${{ inputs.branch_name }}
           
           # Copy data files to main workspace
-          cp -r pipeline-data-worktree/data/. data/ 2>/dev/null || echo "No data files found in pipeline-data branch"
+          cp -r .pipeline-data-worktree/data/. data/ 2>/dev/null || echo "No data files found in pipeline-data branch"
         else
           echo "Creating new pipeline-data branch..."
           
           # Create a worktree with new orphan branch
-          git worktree add --detach pipeline-data-worktree
-          cd pipeline-data-worktree
+          git worktree add --detach .pipeline-data-worktree
+          cd .pipeline-data-worktree
           git checkout --orphan ${{ inputs.branch_name }}
           git rm -rf . 2>/dev/null || true
           
@@ -80,7 +80,7 @@ runs:
       if: inputs.operation == 'update'
       shell: bash
       run: |
-        cd pipeline-data-worktree
+        cd .pipeline-data-worktree
 
         # Ensure data directory exists
         mkdir -p data
@@ -135,4 +135,4 @@ runs:
     - name: Cleanup worktree
       if: inputs.operation == 'cleanup'
       shell: bash
-      run: git worktree remove pipeline-data-worktree || true
+      run: git worktree remove .pipeline-data-worktree || true
