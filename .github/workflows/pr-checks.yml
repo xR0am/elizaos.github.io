@@ -34,8 +34,6 @@ jobs:
     steps:
       - name: Checkout code (PR Branch)
         uses: actions/checkout@v4
-        with:
-          path: main-branch
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -43,20 +41,15 @@ jobs:
           bun-version: latest
 
       - name: Install dependencies
-        working-directory: main-branch
         run: bun install --frozen-lockfile
 
       - name: Restore data and database
-        uses: ./main-branch/.github/actions/restore-db
-        with:
-          target_dir: main-branch
+        uses: ./.github/actions/restore-db
 
       - name: Initialize DB
-        working-directory: main-branch
         run: bun run db:migrate
 
       - name: Run build
-        working-directory: main-branch
         run: bun run build
         env:
           NEXT_TELEMETRY_DISABLED: 1
