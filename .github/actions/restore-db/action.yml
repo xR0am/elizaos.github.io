@@ -1,0 +1,69 @@
+name: "Restore SQLite Database"
+description: "Checks out data branch, copies data files, and restores database from diffable dump"
+inputs:
+  data_branch:
+    description: "Name of the branch containing the data"
+    required: false
+    default: "_data"
+  skip_checkout:
+    description: "Skip checking out the data branch (if it's already checked out)"
+    required: false
+    default: "false"
+  target_dir:
+    description: "Target directory where data should be restored"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout data branch
+      if: inputs.skip_checkout != 'true'
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.data_branch }}
+        path: data-branch
+
+    - name: Copy data directory
+      shell: bash
+      run: |
+        # Ensure the target directory exists
+        mkdir -p ${{ inputs.target_dir }}/data
+
+        # Copy the data directory from data branch to target directory
+        cp -r data-branch/data ${{ inputs.target_dir }}/
+        echo "✅ Data directory copied to ${{ inputs.target_dir }}/data"
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v5
+
+    - name: Restore SQLite database from diffable dump
+      shell: bash
+      run: |
+        # Check if dump directory exists
+        DUMP_DIR="data-branch/data/dump"
+        TARGET_DB="${{ inputs.target_dir }}/data/db.sqlite"
+
+        if [ ! -d "$DUMP_DIR" ]; then
+          echo "⚠️ Warning: Dump directory $DUMP_DIR does not exist or is empty"
+          ls -la data-branch/data/ || true
+          echo "⏭️ Skipping database restore"
+          exit 0
+        fi
+
+        # Create target directory if it doesn't exist
+        mkdir -p $(dirname $TARGET_DB)
+
+        # Load the database from the diffable dump
+        echo "🔄 Restoring database from diffable dump..."
+        uv run uvx sqlite-diffable load $TARGET_DB $DUMP_DIR --replace
+
+        # Verify the database was restored successfully
+        echo "✅ Database restored to $TARGET_DB"
+        echo "📋 Checking database..."
+        ls -la $(dirname $TARGET_DB)
+
+        # Only run if sqlite3 is available
+        if command -v sqlite3 &> /dev/null; then
+          echo "📊 Database tables:"
+          sqlite3 $TARGET_DB ".tables" || echo "Could not query tables (this is normal if the database is empty)"
+        fi
