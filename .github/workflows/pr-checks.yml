@@ -43,6 +43,9 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
+      - name: Initialize DB
+        run: bun run db:migrate
+
       - name: Run build
         run: bun run build
         env:
