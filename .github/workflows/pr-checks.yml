@@ -4,6 +4,10 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  DATA_DIR: "data"
+  PIPELINE_DATA_BRANCH: "_data"
+
 jobs:
   check:
     name: Lint & Typecheck
@@ -43,8 +47,21 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Restore data and database
+      # Set up pipeline-data branch and restore data
+      - name: Setup pipeline-data branch
+        uses: ./.github/actions/pipeline-data
+        with:
+          operation: setup
+          branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
+          data_dir: ${{ env.DATA_DIR }}
+
+      # Restore database from dump
+      - name: Restore database
         uses: ./.github/actions/restore-db
+        with:
+          operation: restore
+          dump_dir: ${{ env.DATA_DIR }}/dump
+          db_path: ${{ env.DATA_DIR }}/db.sqlite
 
       - name: Initialize DB
         run: bun run db:migrate
@@ -54,6 +71,15 @@ jobs:
         env:
           NEXT_TELEMETRY_DISABLED: 1
           CI: true
+
+      # Cleanup worktree (always runs)
+      - name: Cleanup
+        if: always()
+        uses: ./.github/actions/pipeline-data
+        with:
+          operation: cleanup
+          branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
+          data_dir: ${{ env.DATA_DIR }}
 
   test-pipelines:
     name: Test Pipelines
@@ -73,6 +99,22 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
+      # Set up pipeline-data branch and restore data
+      - name: Setup pipeline-data branch
+        uses: ./.github/actions/pipeline-data
+        with:
+          operation: setup
+          branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
+          data_dir: ${{ env.DATA_DIR }}
+
+      # Restore database from dump
+      - name: Restore database
+        uses: ./.github/actions/restore-db
+        with:
+          operation: restore
+          dump_dir: ${{ env.DATA_DIR }}/dump
+          db_path: ${{ env.DATA_DIR }}/db.sqlite
+
       - name: Initialize DB
         run: bun run db:migrate
 
@@ -84,6 +126,15 @@ jobs:
 
       - name: Run Export Pipeline
         run: bun run pipeline export -d 7
+
+      # Cleanup worktree (always runs)
+      - name: Cleanup
+        if: always()
+        uses: ./.github/actions/pipeline-data
+        with:
+          operation: cleanup
+          branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
+          data_dir: ${{ env.DATA_DIR }}
 
   check-migrations:
     name: Check Schema Migration

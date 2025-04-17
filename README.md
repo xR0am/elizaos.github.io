@@ -231,6 +231,59 @@ bun run build
 bunx serve@latest out
 ```
 
+## CI/CD and Data Management
+
+The project uses GitHub Actions for automated data processing, summary generation, and deployment. The system maintains separate branches for code and data to optimize Git history management.
+
+### GitHub Actions Workflows
+
+- **Run Pipelines (`run-pipelines.yml`)**: Runs daily at 23:00 UTC to fetch GitHub data, process it, and generate summaries
+
+  - Runs the full `ingest → process → export → summarize` pipeline chain
+  - Maintains data in a dedicated `_data` branch
+  - Can be manually triggered from Github Actions tab with custom date ranges or forced regeneration
+  - Runs project summaries daily, but only runs contributor summaries on Sundays
+
+- **Deploy to GitHub Pages (`deploy.yml`)**: Builds and deploys the site
+
+  - Triggered on push to main, manually, or after successful pipeline run
+  - Restores data from the `_data` branch before building
+  - Generates directory listings for the data folder
+  - Deploys to GitHub Pages
+
+- **PR Checks (`pr-checks.yml`)**: Quality checks for pull requests
+  - Runs linting, typechecking, and build verification
+  - Tests the pipeline on a small sample of data
+  - Verifies migrations are up to date when schema changes
+
+### Data Management Architecture
+
+The project uses a specialized data branch strategy to optimize both code and data storage:
+
+1. **Separate Data Branch**: All pipeline data is stored in a separate branch (default: `_data`)
+
+   - Keeps the main branch clean and focused on code
+   - Prevents data changes from cluttering code commits
+   - Enables efficient data restoration in CI/CD and deployment
+
+2. **Database Serialization**: Uses the [sqlite-diffable](https://github.com/simonw/sqlite-diffable) utility to store database content as version-controlled files
+
+   - Converts SQLite database to diffable text files in `data/dump/`
+   - Enables Git to track database changes efficiently
+   - Provides an audit trail
+   - Allows for database "time travel" via git history
+
+3. **Custom GitHub Actions**: Two custom actions are used in the workflows:
+   - `restore-db`: Restores data from the data branch using sparse checkout
+   - `pipeline-data`: Manages worktrees to retrieve and update data in the \_data branch
+
+This architecture ensures:
+
+- Efficient Git history management (code changes separate from data changes)
+- Reliable CI/CD workflows with consistent data access
+- Simplified deployment with automatic data restoration
+- Effective collaboration without data conflict issues
+
 ## Development
 
 ### TypeScript Pipeline
@@ -266,35 +319,6 @@ This process will:
 - Apply the changes to your SQLite database
 - Ensure data consistency with the updated schema
 
-## CI/CD and Data Management
-
-This project leverages GitHub Actions to automate testing, data processing, and deployment. Key workflows include:
-
-- **PR Checks:**  
-  The `.github/workflows/pr-checks.yml` workflow runs on pull requests against the main branch. It performs linting, type-checking, and build steps to ensure code quality.
-
-- **Run Pipelines:**  
-  The `.github/workflows/run-pipelines.yml` workflow is scheduled to run daily at 23:00 UTC and can also be triggered manually (with option to force overwrite and set start and end dates). It ingests GitHub data, processes contributions, exports repository stats, and generates AI-powered summaries.
-
-- **Deploy:**  
-  The `.github/workflows/deploy.yml` workflow builds the static Next.js app and deploys the site to GitHub Pages. It integrates data from the dedicated data branch (explained below) during the build process.
-
-### Data Management via the `_data` Branch
-
-Pipeline outputs—including JSON exports, summaries, and a diffable dump of the SQLite database—are stored in a dedicated branch named `_data`. This strategy offers several benefits:
-
-- **Versioned Data Storage:**  
-  By maintaining a specialized data branch, every change to exported files is tracked in Git history. This makes it easier to review data changes over time and to roll back if necessary.
-
-- **Diffable SQLite Dumps:**  
-  The pipeline uses `sqlite-diffable` (invoked via `uv run uvx sqlite-diffable dump ...`) to convert the SQLite database into a set of diffable SQL files. This approach provides a transparent, line-by-line view of database changes in Git diffs.
-
-- **Automated Data Synchronization:**  
-  Custom GitHub Actions (located in `.github/actions/pipeline-data` and `.github/actions/restore-db`) automatically handle the creation, update, and cleanup of the `_data` branch. These actions:
-  • Set up a worktree for the data branch  
-  • Synchronize new data from the main workspace  
-  • Restore data during deployments via sparse checkout
-
 ### Database Explorer
 
 To interactively explore the database and its contents:
@@ -327,6 +351,7 @@ Additional setup required if you use Safari or Brave: https://orm.drizzle.team/d
    - Ensure the `data` directory exists: `mkdir -p data`
 
 3. **"Error fetching data from GitHub"**
+
    - Check your GitHub token has proper permissions
    - Verify repository names are correct in config
    - Ensure your token has not expired
