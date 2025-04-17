@@ -266,6 +266,35 @@ This process will:
 - Apply the changes to your SQLite database
 - Ensure data consistency with the updated schema
 
+## CI/CD and Data Management
+
+This project leverages GitHub Actions to automate testing, data processing, and deployment. Key workflows include:
+
+- **PR Checks:**  
+  The `.github/workflows/pr-checks.yml` workflow runs on pull requests against the main branch. It performs linting, type-checking, and build steps to ensure code quality.
+
+- **Run Pipelines:**  
+  The `.github/workflows/run-pipelines.yml` workflow is scheduled to run daily at 23:00 UTC and can also be triggered manually (with option to force overwrite and set start and end dates). It ingests GitHub data, processes contributions, exports repository stats, and generates AI-powered summaries.
+
+- **Deploy:**  
+  The `.github/workflows/deploy.yml` workflow builds the static Next.js app and deploys the site to GitHub Pages. It integrates data from the dedicated data branch (explained below) during the build process.
+
+### Data Management via the `_data` Branch
+
+Pipeline outputs—including JSON exports, summaries, and a diffable dump of the SQLite database—are stored in a dedicated branch named `_data`. This strategy offers several benefits:
+
+- **Versioned Data Storage:**  
+  By maintaining a specialized data branch, every change to exported files is tracked in Git history. This makes it easier to review data changes over time and to roll back if necessary.
+
+- **Diffable SQLite Dumps:**  
+  The pipeline uses `sqlite-diffable` (invoked via `uv run uvx sqlite-diffable dump ...`) to convert the SQLite database into a set of diffable SQL files. This approach provides a transparent, line-by-line view of database changes in Git diffs.
+
+- **Automated Data Synchronization:**  
+  Custom GitHub Actions (located in `.github/actions/pipeline-data` and `.github/actions/restore-db`) automatically handle the creation, update, and cleanup of the `_data` branch. These actions:
+  • Set up a worktree for the data branch  
+  • Synchronize new data from the main workspace  
+  • Restore data during deployments via sparse checkout
+
 ### Database Explorer
 
 To interactively explore the database and its contents:
