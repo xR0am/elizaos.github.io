@@ -2,7 +2,7 @@ import { PipelineConfig } from "../src/lib/pipelines/pipelineConfig";
 
 const openrouterApiKey = process.env.OPENROUTER_API_KEY;
 if (!openrouterApiKey) {
-  throw new Error("OPENROUTER_API_KEY is not set");
+  console.warn("OPENROUTER_API_KEY is not set");
 }
 
 /**
@@ -357,7 +357,7 @@ export default {
     temperature: 0.1,
     max_tokens: 3000,
     endpoint: "https://openrouter.ai/api/v1/chat/completions",
-    apiKey: openrouterApiKey,
+    apiKey: openrouterApiKey || "",
     projectContext: `
      We are ElizaOS. Our mission is to develop an extensible, modular, open-source AI agent framework that thrives across both Web2 and Web3 ecosystems. We see AI agents as the key stepping stones toward AGI, enabling increasingly autonomous and capable systems.
 
