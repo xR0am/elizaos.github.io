@@ -7,6 +7,7 @@ A modern analytics pipeline for tracking and analyzing GitHub contributions. The
 - [Bun](https://bun.sh/) (recommended) or Node.js 18+
 - GitHub Personal Access Token with repo scope
 - [OpenRouter API Key](https://openrouter.ai/) (optional, for AI summaries)
+- [uv](https://astral.sh/uv) (optional, for syncing from production DB)
 
 ## Features
 
@@ -88,7 +89,20 @@ bun run db:migrate
 
 Option B - Sync Production Data:
 
+If you want to download all historical data from the production data branch instead of having to reingest / generate it on your own, you can use the data:sync command, which depends on [uv](https://astral.sh/uv).
+
 ```bash
+# Install uv first if you don't have it (required for database restoration)
+
+pipx install uv  # Recommended method
+# OR
+brew install uv  # macOS with Homebrew
+
+# More installation options: https://docs.astral.sh/uv/getting-started/installation/
+```
+
+```bash
+
 # Download the latest data from production
 bun run data:sync
 # This will:
@@ -96,8 +110,7 @@ bun run data:sync
 # - Copy all data files (stats, summaries, etc.)
 # - Restore the SQLite database from the diffable dump
 
-
-# If local changes to schema are made
+# If you made local changes to the schema that don't exist in prod DB:
 bun run db:generate
 bun run db:migrate
 ```
