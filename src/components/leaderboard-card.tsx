@@ -80,7 +80,7 @@ export function LeaderboardCard({
                 >
                   <span>{tag.tagName}</span>
                   <span className="-my-0.5 -mr-2.5 rounded-r-[inherit] bg-secondary-foreground/10 px-1.5 py-0.5">
-                    {tag.level}
+                  {tag.level}
                   </span>
                 </Badge>
               ))}

@@ -1,11 +1,10 @@
 import { db } from "@/lib/data/db";
 import { userTagScores, tags } from "@/lib/data/schema";
 import { eq, inArray } from "drizzle-orm";
-import { LeaderboardPeriod } from "@/types/user-profile";
 import { getDateRangeForPeriod } from "@/lib/pipelines/queryHelpers";
 import { getTopUsersByScore } from "@/lib/scoring/queries";
 import { groupBy } from "@/lib/arrayHelpers";
-import { LeaderboardUser } from "@/components/leaderboard";
+import { LeaderboardPeriod, LeaderboardUser } from "@/components/leaderboard";
 
 export async function getAllTags() {
   const allTags = await db

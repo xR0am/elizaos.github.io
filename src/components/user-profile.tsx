@@ -2,12 +2,21 @@ import * as React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { TagData, UserStats } from "@/types/user-profile";
+import { TagData } from "@/components/skill-card";
 import { Github } from "lucide-react";
 import { formatCompactNumber } from "@/lib/format-number";
 import { SkillCard } from "@/components/skill-card";
 import { DailyActivity } from "@/components/daily-activity";
 import { UserActivityHeatmap } from "@/lib/scoring/queries";
+
+export interface UserStats {
+  totalPrs: number;
+  mergedPrs: number;
+  closedPrs: number;
+  additions: number;
+  deletions: number;
+  changedFiles: number;
+}
 
 type UserProfileProps = {
   username: string;

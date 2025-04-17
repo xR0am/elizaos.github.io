@@ -6,10 +6,16 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { TagData } from "@/types/user-profile";
 import { skillIcons } from "@/lib/skill-icons";
 import { CircleSlash } from "lucide-react";
 import Link from "next/link";
+export interface TagData {
+  tagName: string;
+  score: number;
+  level: number;
+  progress: number;
+  pointsToNext: number;
+}
 
 export const SkillCard = ({ data, rank }: { data: TagData; rank?: number }) => {
   const name = data.tagName.toLowerCase();

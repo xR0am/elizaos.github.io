@@ -13,7 +13,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { LeaderboardCard } from "./leaderboard-card";
-import { LeaderboardPeriod } from "@/types/user-profile";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useWindowVirtualizer } from "@tanstack/react-virtual";
 import { groupBy } from "@/lib/arrayHelpers";
@@ -30,6 +29,8 @@ export function LeaderboardFallback() {
     </div>
   );
 }
+
+export type LeaderboardPeriod = "all" | "weekly" | "monthly";
 
 export interface LeaderboardUser {
   username: string;
