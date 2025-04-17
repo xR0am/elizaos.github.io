@@ -6,14 +6,17 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
 import { LeaderboardCard } from "./leaderboard-card";
-import { LeaderboardPeriod, UserFocusAreaData } from "@/types/user-profile";
+import { LeaderboardPeriod } from "@/types/user-profile";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useWindowVirtualizer } from "@tanstack/react-virtual";
+import { groupBy } from "@/lib/arrayHelpers";
 
 export function LeaderboardFallback() {
   return (
@@ -28,17 +31,29 @@ export function LeaderboardFallback() {
   );
 }
 
-export interface LeaderboardTab {
+export interface LeaderboardUser {
+  username: string;
+  points: number;
+  totalXp: number;
+  totalLevel: number;
+  avatarUrl?: string | null;
+  allTags: { tagName: string; category: string | null; score: number }[];
+}
+
+interface LeaderboardTab {
   id: LeaderboardPeriod;
   title: string;
-  users: UserFocusAreaData[];
+  startDate?: string;
+  endDate?: string;
+  users: LeaderboardUser[];
 }
 
 export interface LeaderboardProps {
   tabs: LeaderboardTab[];
+  tags: { name: string; category: string }[];
 }
 
-export function Leaderboard({ tabs }: LeaderboardProps) {
+export function Leaderboard({ tabs, tags }: LeaderboardProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [searchTerm, setSearchTerm] = useState("");
@@ -64,11 +79,10 @@ export function Leaderboard({ tabs }: LeaderboardProps) {
     );
   }, [searchParams]);
 
-  const allSkills = useMemo(() => {
-    return Array.from(
-      new Set(currentTab.users.flatMap((user) => Object.keys(user.tagLevels))),
-    );
-  }, [currentTab]);
+  // Group skills by category
+  const skillsByCategory = useMemo(() => {
+    return groupBy(tags, (t) => t.category);
+  }, [tags]);
 
   const handleSkillChange = useCallback(
     (value: string) => {
@@ -98,32 +112,41 @@ export function Leaderboard({ tabs }: LeaderboardProps) {
     [searchParams, router],
   );
 
+  // Helper function to find tag data by name (case insensitive)
+  const getTagData = useCallback((user: LeaderboardUser, tagName: string) => {
+    const lowerTagName = tagName.toLowerCase();
+
+    return user.allTags.find(
+      (tag) => tag.tagName.toLowerCase() === lowerTagName,
+    );
+  }, []);
+
   const filteredUsers = useMemo(() => {
     return currentTab.users
       .filter(
         (user) =>
           user.username.toLowerCase().includes(searchTerm.toLowerCase()) &&
-          (selectedSkill === "all" ||
-            selectedSkill.toLowerCase() in user.tagLevels),
+          (selectedSkill === "all" || getTagData(user, selectedSkill)),
       )
       .sort((a, b) => {
-        if (selectedSkill === "all") {
-          const totalA = Object.values(a.tagLevels).reduce(
-            (sum, tag) => sum + tag.level,
-            0,
-          );
-          const totalB = Object.values(b.tagLevels).reduce(
-            (sum, tag) => sum + tag.level,
-            0,
-          );
-          return totalB - totalA;
-        } else {
-          const skillA = a.tagLevels[selectedSkill]?.level || 0;
-          const skillB = b.tagLevels[selectedSkill]?.level || 0;
+        if (selectedSkill !== "all") {
+          // Sort by selected skill XP
+          let skillA = getTagData(a, selectedSkill)?.score || 0;
+          let skillB = getTagData(b, selectedSkill)?.score || 0;
+          if (currentPeriod !== "all") {
+            skillA += a.points / 2;
+            skillB += b.points / 2;
+          }
           return skillB - skillA;
         }
+
+        if (currentPeriod !== "all") {
+          return b.points - a.points;
+        }
+
+        return b.totalLevel - a.totalLevel;
       });
-  }, [currentTab.users, searchTerm, selectedSkill]);
+  }, [currentTab.users, searchTerm, selectedSkill, getTagData, currentPeriod]);
 
   return (
     <div className="space-y-4">
@@ -160,10 +183,18 @@ export function Leaderboard({ tabs }: LeaderboardProps) {
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All Skills</SelectItem>
-            {allSkills.map((skill) => (
-              <SelectItem key={skill} value={skill.toLowerCase()}>
-                {skill}
-              </SelectItem>
+            {Object.entries(skillsByCategory).map(([category, skills]) => (
+              <SelectGroup key={category}>
+                <SelectLabel className="text-primary">{category}</SelectLabel>
+                {skills.map((skill) => (
+                  <SelectItem
+                    key={`${category}-${skill.name}`}
+                    value={skill.name}
+                  >
+                    {skill.name}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
             ))}
           </SelectContent>
         </Select>
@@ -179,9 +210,10 @@ export function Leaderboard({ tabs }: LeaderboardProps) {
         </TabsList>
         {tabs.map((tab) => (
           <TabsContent key={tab.id} value={tab.id}>
-            <LeaderboardList
+            <VirtualizedLeaderboardList
               users={filteredUsers}
               onSkillClick={handleSkillChange}
+              showScore={currentPeriod !== "all"}
             />
           </TabsContent>
         ))}
@@ -193,9 +225,11 @@ export function Leaderboard({ tabs }: LeaderboardProps) {
 const VirtualizedLeaderboardList = ({
   users,
   onSkillClick,
+  showScore,
 }: {
-  users: UserFocusAreaData[];
+  users: LeaderboardUser[];
   onSkillClick: (skill: string) => void;
+  showScore: boolean;
 }) => {
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -233,22 +267,11 @@ const VirtualizedLeaderboardList = ({
               user={users[virtualRow.index]}
               rank={virtualRow.index + 1}
               onSkillClick={onSkillClick}
+              showScore={showScore}
             />
           </div>
         ))}
       </div>
     </div>
-  );
-};
-
-const LeaderboardList = ({
-  users,
-  onSkillClick,
-}: {
-  users: UserFocusAreaData[];
-  onSkillClick: (skill: string) => void;
-}) => {
-  return (
-    <VirtualizedLeaderboardList users={users} onSkillClick={onSkillClick} />
   );
 };

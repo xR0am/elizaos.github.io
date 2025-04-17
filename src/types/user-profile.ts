@@ -1,43 +1,35 @@
-export interface TagLevel {
+import { UserActivityHeatmap } from "@/lib/scoring/queries";
+
+export interface TagData {
+  tagName: string;
+  score: number;
   level: number;
   progress: number;
-  points: number;
-  points_next_level: number;
+  pointsToNext: number;
 }
 
 export interface UserStats {
-  total_prs: number;
-  merged_prs: number;
-  closed_prs: number;
-  total_files: number;
-  total_additions: number;
-  total_deletions: number;
-  files_by_type: Record<string, number>;
-  prs_by_month: Record<string, number>;
-}
-
-export interface ActivityData {
-  date: string;
-  value: number;
-  breakdown: {
-    prScore: number;
-    issueScore: number;
-    reviewScore: number;
-    commentScore: number;
-  };
+  totalPrs: number;
+  mergedPrs: number;
+  closedPrs: number;
+  additions: number;
+  deletions: number;
+  changedFiles: number;
 }
 
 export interface UserFocusAreaData {
   username: string;
-  tagScores: Record<string, number>;
-  tagLevels: Record<string, TagLevel>;
-  tags: string[];
-  stats: UserStats;
-  focusAreas: [string, number][];
-  summary: string;
+  roleTags: TagData[];
+  skillTags: TagData[];
+  focusAreaTags: TagData[];
   score: number;
+  stats: UserStats;
+  monthlySummary: string;
+  weeklySummary?: string;
+  totalXp: number;
+  totalLevel: number;
   avatarUrl?: string | null;
-  dailyActivity?: ActivityData[];
+  dailyActivity?: UserActivityHeatmap[];
 }
 
 export type LeaderboardPeriod = "all" | "weekly" | "monthly";

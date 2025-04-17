@@ -252,3 +252,50 @@ export function formatReadableDate(date: string | Date) {
   const readableDate = formatDate(dateObj, "MMMM d, yyyy");
   return readableDate;
 }
+
+/**
+ * Formats a date into a human-readable timeframe title based on interval type
+ * @param date - The date to format
+ * @param intervalType - The type of interval (day, week, month)
+ * @returns Formatted timeframe title
+ */
+export function formatTimeframeTitle(
+  date: UTCDate | Date | string,
+  intervalType: IntervalType,
+): string {
+  const utcDate = date instanceof UTCDate ? date : new UTCDate(date);
+
+  if (intervalType === "month") {
+    const monthName = utcDate.toLocaleString("default", { month: "long" });
+    const year = utcDate.getFullYear();
+    return `${monthName} ${year}`;
+  } else if (intervalType === "week") {
+    // Format as Week of Month Day, Year
+    return `week of ${utcDate.toLocaleString("default", { month: "short", day: "numeric", year: "numeric" })}`;
+  } else {
+    // Daily format: Month Day, Year
+    return utcDate.toLocaleString("default", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+  }
+}
+
+/**
+ * Converts interval type to a title form
+ * @param intervalType - The type of interval (day, week, month)
+ * @returns Title form of the interval type
+ */
+export function getIntervalTypeTitle(intervalType: IntervalType): string {
+  switch (intervalType) {
+    case "month":
+      return "Monthly";
+    case "week":
+      return "Weekly";
+    case "day":
+      return "Daily";
+    default:
+      return intervalType;
+  }
+}

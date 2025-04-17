@@ -29,6 +29,7 @@ export const skillIcons = {
   docs: FileText,
   infra: Server,
   test: TestTube2,
+  tests: TestTube2,
   security: Shield,
   ui: Layout,
 
@@ -37,6 +38,7 @@ export const skillIcons = {
   maintainer: Wrench,
   "feature-dev": Hammer,
   "bug-fix": Bug,
+  "bug-fixer": Bug,
   "docs-writer": BookOpen,
   reviewer: Eye,
   devops: Cog,
@@ -46,6 +48,7 @@ export const skillIcons = {
   blockchain: Blocks,
   ai: Brain,
   db: Database,
+  database: Database,
   api: Network,
 } as const;
 

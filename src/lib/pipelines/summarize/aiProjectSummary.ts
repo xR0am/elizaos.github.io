@@ -3,7 +3,11 @@ import { callAIService } from "./callAIService";
 import { WorkItemType } from "../codeAreaHelpers";
 import { RepositoryMetrics } from "../export/queries";
 import { UTCDate } from "@date-fns/utc";
-import { IntervalType } from "@/lib/date-utils";
+import {
+  IntervalType,
+  formatTimeframeTitle,
+  getIntervalTypeTitle,
+} from "@/lib/date-utils";
 
 export interface CompletedItem {
   title: string;
@@ -129,34 +133,8 @@ function formatAnalysisPrompt(
   const date = new UTCDate(dateInfo.startDate);
 
   // Format date information based on interval type
-  let timeframeTitle;
-  if (intervalType === "month") {
-    const monthName = date.toLocaleString("default", { month: "long" });
-    const year = date.getFullYear();
-    timeframeTitle = `${monthName} ${year}`;
-  } else if (intervalType === "week") {
-    // Format as Week of Month Day, Year
-    timeframeTitle = `week of ${date.toLocaleString("default", { month: "short", day: "numeric", year: "numeric" })}`;
-  } else {
-    // Daily format: Month Day, Year
-    timeframeTitle = date.toLocaleString("default", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    });
-  }
-  const getIntervalTypeTitle = (intervalType: IntervalType) => {
-    switch (intervalType) {
-      case "month":
-        return "Monthly";
-      case "week":
-        return "Weekly";
-      case "day":
-        return "Daily";
-      default:
-        return intervalType;
-    }
-  };
+  const timeframeTitle = formatTimeframeTitle(date, intervalType);
+
   // Format top active areas
   const topActiveAreas = metrics.focusAreas
     .sort((a, b) => b.count - a.count)
