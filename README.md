@@ -77,16 +77,54 @@ export default {
 
 4. Initialize Database
 
-The SQLite database stores the GitHub data in a relational format for efficient querying and analysis. The database schema is in `src/lib/data/schema.ts`. Here's how to set it up:
+You can either initialize an empty database or sync the latest data from production:
+
+Option A - Initialize Empty Database:
 
 ```bash
-# Generate the database schema
-bun run db:generate
-
 # Apply migrations
 bun run db:migrate
+```
 
-# (Optional) Explore the database with Studio
+Option B - Sync Production Data:
+
+```bash
+# Download the latest data from production
+bun run data:sync
+# This will:
+# - Fetch the latest data from the _data branch
+# - Copy all data files (stats, summaries, etc.)
+# - Restore the SQLite database from the diffable dump
+
+
+# If local changes to schema are made
+bun run db:generate
+bun run db:migrate
+```
+
+The data sync utility supports several options:
+
+```bash
+# View all options
+bun run data:sync --help
+
+# Skip confirmation prompts (useful in scripts)
+bun run data:sync -y
+
+# Sync from a different remote (if you've added one)
+bun run data:sync --remote upstream
+
+# Skip database restoration (only sync generated JSON/MD files)
+bun run data:sync --skip-db
+
+# Delete all local data and force sync
+bun run data:sync --force
+```
+
+After syncing or initializing the database, you can explore it using Drizzle Studio:
+
+```bash
+# Launch the database explorer
 bun run db:studio
 ```
 

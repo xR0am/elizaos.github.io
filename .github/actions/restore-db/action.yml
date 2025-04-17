@@ -72,3 +72,7 @@ runs:
         echo "✅ Database dumped to ${{ inputs.dump_dir }}"
         echo "📋 Checking dump directory..."
         ls -la ${{ inputs.dump_dir }}
+
+        # Remove Drizzle migration tables from dump
+        echo "🧹 Removing migration tables from dump..."
+        rm -f ${{ inputs.dump_dir }}/__drizzle_migrations*
