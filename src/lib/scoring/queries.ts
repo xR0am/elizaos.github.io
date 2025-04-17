@@ -56,13 +56,7 @@ export async function getUserAggregatedScore(
   username: string,
   startDate?: string,
   endDate?: string,
-): Promise<{
-  totalScore: number;
-  prScore: number;
-  issueScore: number;
-  reviewScore: number;
-  commentScore: number;
-}> {
+) {
   // Start with the basic conditions
   const conditions = [
     eq(userDailyScores.username, username),
@@ -103,7 +97,7 @@ export async function getUserAggregatedScore(
  * @returns Array of scores grouped by the specified period
  */
 export async function getScoresByTimePeriod(
-  username?: string,
+  username: string,
   period: AggregationPeriod = "daily",
   startDate?: string,
   endDate?: string,
@@ -121,6 +115,7 @@ export async function getScoresByTimePeriod(
 > {
   // Start with base conditions
   const conditions = [
+    eq(userDailyScores.username, username),
     eq(userDailyScores.category, "day"),
     ...buildCommonWhereConditions(
       { dateRange: { startDate, endDate } },
@@ -128,14 +123,6 @@ export async function getScoresByTimePeriod(
       ["date"],
     ),
   ];
-
-  // Add user filtering
-  if (username) {
-    conditions.push(eq(userDailyScores.username, username));
-  } else {
-    // Only include non-bot users
-    conditions.push(eq(users.isBot, 0));
-  }
 
   // Format period label using the helper
   const periodLabelExpr = formatPeriodLabel(userDailyScores.date, period);
@@ -170,7 +157,6 @@ export async function getScoresByTimePeriod(
       issueScore: Number(row.issueScore || 0),
       reviewScore: Number(row.reviewScore || 0),
       commentScore: Number(row.commentScore || 0),
-      ...(username ? {} : { userCount: Number(row.userCount || 0) }),
     };
   });
 }
@@ -190,19 +176,7 @@ export async function getUserScoreTrend(
   startDate?: string,
   endDate?: string,
   limit = 100,
-): Promise<
-  {
-    periodLabel: string;
-    periodScore: number;
-    cumulativeScore: number;
-    breakdown: {
-      prScore: number;
-      issueScore: number;
-      reviewScore: number;
-      commentScore: number;
-    };
-  }[]
-> {
+) {
   // Get scores by time period for this user
   const periodScores = await getScoresByTimePeriod(
     username,
@@ -243,22 +217,7 @@ export async function compareUserScores(
   period: AggregationPeriod = "monthly",
   startDate?: string,
   endDate?: string,
-): Promise<
-  {
-    username: string;
-    totalScore: number;
-    scoreBreakdown: {
-      prScore: number;
-      issueScore: number;
-      reviewScore: number;
-      commentScore: number;
-    };
-    periodScores: {
-      periodLabel: string;
-      score: number;
-    }[];
-  }[]
-> {
+) {
   // Ensure we have valid usernames
   if (!usernames.length) {
     return [];
@@ -311,22 +270,11 @@ export async function compareUserScores(
  * @returns Daily activity data suitable for heatmap visualization
  */
 
-export async function getUserActivityHeatmap(
+export async function getUserActivityHeatmaps(
   username: string,
   startDate: string,
   endDate: string,
-): Promise<
-  {
-    date: string;
-    value: number;
-    breakdown: {
-      prScore: number;
-      issueScore: number;
-      reviewScore: number;
-      commentScore: number;
-    };
-  }[]
-> {
+) {
   const allDates = generateDaysInRange(startDate, endDate);
 
   // Get daily scores
@@ -337,6 +285,7 @@ export async function getUserActivityHeatmap(
   return allDates.map((date) => ({
     date,
     value: Number(scoreMap.get(date)?.score || 0),
+    metrics: scoreMap.get(date)?.metrics,
     breakdown: {
       prScore: Number(scoreMap.get(date)?.prScore || 0),
       issueScore: Number(scoreMap.get(date)?.issueScore || 0),
@@ -345,6 +294,10 @@ export async function getUserActivityHeatmap(
     },
   }));
 }
+
+export type UserActivityHeatmap = Awaited<
+  ReturnType<typeof getUserActivityHeatmaps>
+>[number];
 
 export async function getTopUsersByScore(
   startDate?: string,
@@ -367,6 +320,7 @@ export async function getTopUsersByScore(
   const results = await db
     .select({
       username: userDailyScores.username,
+      avatarUrl: users.avatarUrl,
       ...scoreFields,
     })
     .from(userDailyScores)

@@ -1,32 +1,29 @@
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { UserFocusAreaData } from "@/types/user-profile";
+import { LeaderboardUser } from "./leaderboard";
 
 export function LeaderboardCard({
   user,
   rank,
-  onSkillClick,
+  // onSkillClick,
+  showScore,
 }: {
-  user: UserFocusAreaData;
+  user: LeaderboardUser;
   rank: number;
   onSkillClick: (skill: string) => void;
+  showScore: boolean;
 }) {
-  const totalXp = Math.round(
-    Object.values(user.tagScores).reduce((a, b) => a + b, 0),
-  );
-  const totalLevel = Object.values(user.tagLevels).reduce(
-    (sum, skill) => sum + skill.level,
-    0,
-  );
-  const topSkills = Object.entries(user.tagLevels)
-    .sort(([, a], [, b]) => b.level - a.level)
-    .slice(0, 3);
+  // // Combine all tags for display
+  // const allTags = [...user.roleTags, ...user.skillTags, ...user.focusAreaTags];
 
-  const handleSkillClick = (skill: string, e: React.MouseEvent) => {
-    e.preventDefault();
-    onSkillClick(skill.toLowerCase());
-  };
+  // // Get top 3 skills across all categories
+  // const topSkills = allTags.sort((a, b) => b.level - a.level).slice(0, 3);
+
+  // const handleSkillClick = (skill: string, e: React.MouseEvent) => {
+  //   e.preventDefault();
+  //   onSkillClick(skill.toLowerCase());
+  // };
 
   return (
     <Link href={`/profile/${user.username}`}>
@@ -59,7 +56,7 @@ export function LeaderboardCard({
                 >
                   <span className="text-primary/80">XP</span>
                   <span className="text-muted-foreground">
-                    {totalXp.toLocaleString()}
+                    {user.totalXp.toLocaleString()}
                   </span>
                 </Badge>
                 <Badge
@@ -67,25 +64,40 @@ export function LeaderboardCard({
                   className="flex items-center gap-1 px-2 text-xs"
                 >
                   <span className="text-primary/80">LVL</span>
-                  <span className="text-muted-foreground">{totalLevel}</span>
+                  <span className="text-muted-foreground">
+                    {user.totalLevel}
+                  </span>
                 </Badge>
               </div>
             </div>
-            <div className="hidden items-center gap-2 md:flex">
-              {topSkills.map(([name, data]) => (
+            {/* <div className="hidden items-center gap-2 md:flex">
+              {topSkills.map((tag) => (
                 <Badge
-                  key={name}
+                  key={tag.tagName}
                   variant="outline"
-                  className="flex cursor-pointer items-center gap-1 whitespace-nowrap text-xs hover:border-primary"
-                  onClick={(e) => handleSkillClick(name, e)}
+                  className="flex cursor-pointer items-center gap-1 whitespace-nowrap font-mono text-xs hover:border-primary"
+                  onClick={(e) => handleSkillClick(tag.tagName, e)}
                 >
-                  <span>{name}</span>
-                  <span className="-my-0.5 -mr-2.5 rounded-r-[inherit] bg-secondary-foreground/10 px-1.5 py-0.5 font-mono">
-                    {data.level}
+                  <span>{tag.tagName}</span>
+                  <span className="-my-0.5 -mr-2.5 rounded-r-[inherit] bg-secondary-foreground/10 px-1.5 py-0.5">
+                  {tag.level}
                   </span>
                 </Badge>
               ))}
-            </div>
+            </div> */}
+            {showScore ? (
+              <div className="flex items-center gap-2">
+                <Badge
+                  variant="secondary"
+                  className="flex items-center gap-1 font-mono"
+                >
+                  <span className="text-primary/80">
+                    {user.points.toFixed(0)}
+                  </span>
+                  <span className="text-muted-foreground">Points</span>
+                </Badge>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

@@ -28,10 +28,8 @@ export async function generateMetadata({
   const userData = await getUserProfile(username);
 
   return {
-    title: userData
-      ? `${userData.username}'s Eliza Contributer Profile`
-      : "Profile Not Found",
-    description: userData?.summary || "Eliza contributor profile",
+    title: userData ? `${userData.username}` : "Profile Not Found",
+    description: userData?.monthlySummary || "Eliza OS contributor profile",
   };
 }
 

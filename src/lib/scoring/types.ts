@@ -47,5 +47,11 @@ export type UserScoreMetrics = z.infer<typeof UserScoreMetricsSchema>;
  */
 
 export type UserScoreWithMetrics = InferSelectModel<typeof userDailyScores> & {
-  metrics: UserScoreMetrics | Record<string, unknown>;
+  metrics: UserScoreMetrics;
 };
+
+export enum TagType {
+  AREA = "AREA",
+  ROLE = "ROLE",
+  TECH = "TECH",
+}
