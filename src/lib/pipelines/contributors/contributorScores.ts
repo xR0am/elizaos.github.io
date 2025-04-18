@@ -91,7 +91,7 @@ export const calculateUserScoreForInterval = createStep(
  * Process contributors for a single interval
  */
 export const processContributorsForInterval = createStep(
-  "processContributors",
+  "contributorScores",
   async (
     data: {
       interval: TimeInterval;
@@ -123,7 +123,7 @@ export const processContributorsForInterval = createStep(
     // Summarize the results
     const validResults = results.filter(Boolean);
     context.logger?.info(
-      `Processed ${validResults.length}/${contributors.length} active contributors for ${interval.intervalType} ${toDateString(interval.intervalStart)}`,
+      `Saved scores for ${validResults.length}/${contributors.length} active contributors for ${interval.intervalType} ${toDateString(interval.intervalStart)}`,
     );
 
     return {

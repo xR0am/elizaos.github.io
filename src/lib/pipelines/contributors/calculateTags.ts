@@ -4,6 +4,7 @@ import { db } from "@/lib/data/db";
 import { tags, userTagScores } from "@/lib/data/schema";
 import { ContributorPipelineContext } from "./context";
 import { UTCDate } from "@date-fns/utc";
+import { calculateLevelStats } from "@/lib/skillsHelpers";
 // --- Tag processors ---
 /**
  * Calculate expertise areas for a contributor
@@ -82,12 +83,7 @@ export const calculateTags = createStep(
     // Calculate levels and progress for each tag
     const expertiseAreas = Object.entries(tagScores)
       .map(([tag, { score, category }]) => {
-        const level = Math.floor(Math.log(score + 1) / Math.log(2));
-        const nextLevelThreshold = Math.pow(2, level + 1) - 1;
-        const currentLevelThreshold = Math.pow(2, level) - 1;
-        const progress =
-          (score - currentLevelThreshold) /
-          (nextLevelThreshold - currentLevelThreshold);
+        const { level, progress, xpToNextLevel } = calculateLevelStats(score);
 
         // Store in database
         storeTagScore(
@@ -96,7 +92,8 @@ export const calculateTags = createStep(
           category,
           score,
           level,
-          Math.min(1, progress),
+          progress,
+          xpToNextLevel,
         );
 
         return {
@@ -104,7 +101,7 @@ export const calculateTags = createStep(
           category,
           score,
           level,
-          progress: Math.min(1, progress),
+          progress,
         };
       })
       .sort((a, b) => b.score - a.score);
@@ -137,6 +134,7 @@ export async function storeTagScore(
   score: number,
   level: number,
   progress: number,
+  pointsToNext: number,
 ): Promise<void> {
   // Ensure tag exists in database
   await db
@@ -162,7 +160,7 @@ export async function storeTagScore(
       score,
       level,
       progress,
-      pointsToNext: Math.pow(2, level + 1) - 1,
+      pointsToNext,
     })
     .onConflictDoUpdate({
       target: userTagScores.id,
@@ -170,7 +168,7 @@ export async function storeTagScore(
         score,
         level,
         progress,
-        pointsToNext: Math.pow(2, level + 1) - 1,
+        pointsToNext,
       },
     });
 }

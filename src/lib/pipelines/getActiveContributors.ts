@@ -106,7 +106,7 @@ export const getActiveContributorsInInterval = createStep(
     };
 
     const contributors = await getActiveContributors(queryParams);
-    logger?.info(
+    logger?.debug(
       `Found ${contributors.length} active contributors for ${interval.intervalType} ${toDateString(interval.intervalStart)}`,
     );
     // Return the interval with active contributors for this time period
