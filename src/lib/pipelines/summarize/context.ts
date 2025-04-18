@@ -2,6 +2,7 @@ import { PipelineConfig } from "@/lib/pipelines/pipelineConfig";
 import { Logger } from "@/lib/logger";
 import { RepoPipelineContext } from "@/lib/pipelines/types";
 import { AISummaryConfig } from "./config";
+import { IntervalType } from "@/lib/date-utils";
 
 /**
  * Pipeline context for contributor and project summaries
@@ -17,6 +18,8 @@ export interface SummarizerPipelineContext extends RepoPipelineContext {
   overwrite?: boolean;
   /** Date range for filtering data */
   dateRange: { startDate: string; endDate?: string };
+  /** Which interval types are enabled for summary generation */
+  enabledIntervals: Record<IntervalType, boolean>;
 }
 
 interface CreateContributorSummaryContextOptions {
@@ -27,6 +30,7 @@ interface CreateContributorSummaryContextOptions {
   aiSummaryConfig: AISummaryConfig;
   overwrite?: boolean;
   dateRange: { startDate: string; endDate?: string };
+  enabledIntervals: Record<IntervalType, boolean>;
 }
 
 /**
@@ -35,5 +39,7 @@ interface CreateContributorSummaryContextOptions {
 export function createSummarizerContext(
   options: CreateContributorSummaryContextOptions,
 ): SummarizerPipelineContext {
-  return options;
+  return {
+    ...options,
+  };
 }

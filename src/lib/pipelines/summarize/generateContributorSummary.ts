@@ -9,6 +9,7 @@ import { userSummaries } from "@/lib/data/schema";
 import { eq, and } from "drizzle-orm";
 import { isNotNullOrUndefined } from "@/lib/typeHelpers";
 import { getActiveContributorsInInterval } from "../getActiveContributors";
+import { generateTimeIntervals } from "../generateTimeIntervals";
 
 /**
  * Check if a summary already exists for a user on a specific date and interval type
@@ -43,10 +44,12 @@ const generateContributorSummariesForInterval = createStep(
     context: SummarizerPipelineContext,
   ) => {
     const { logger, aiSummaryConfig, overwrite } = context;
+    const intervalLogger = logger?.child(interval.intervalType);
 
     if (!aiSummaryConfig.enabled) {
       return null;
     }
+
     // Query parameters for this interval
     const dateRange = {
       startDate: toDateString(interval.intervalStart),
@@ -62,7 +65,7 @@ const generateContributorSummariesForInterval = createStep(
           interval.intervalType,
         );
         if (summaryExists) {
-          logger?.debug(
+          intervalLogger?.debug(
             `${interval.intervalType} summary already exists for ${username} on ${dateRange.startDate}, skipping generation`,
           );
           return;
@@ -83,7 +86,7 @@ const generateContributorSummariesForInterval = createStep(
       );
 
       if (!summary) {
-        logger?.debug(
+        intervalLogger?.debug(
           `No activity for ${username} on ${dateRange.startDate}, skipping summary generation`,
         );
         return;
@@ -96,8 +99,8 @@ const generateContributorSummariesForInterval = createStep(
         interval.intervalType,
       );
 
-      logger?.info(
-        `Generated and stored ${interval.intervalType} summary for ${username}`,
+      intervalLogger?.info(
+        `Generated and stored ${dateRange.startDate} summary for ${username}`,
         {
           summary,
         },
@@ -107,7 +110,7 @@ const generateContributorSummariesForInterval = createStep(
         summary,
       };
     } catch (error) {
-      logger?.error(`Error processing contributor ${username}`, {
+      intervalLogger?.error(`Error processing contributor ${username}`, {
         error: (error as Error).message,
       });
     }
@@ -126,4 +129,26 @@ export const generateContributorSummaries = pipe(
   (results) => {
     return results.filter(isNotNullOrUndefined);
   },
+);
+
+export const generateWeeklyContributorSummaries = pipe(
+  generateTimeIntervals<{ repoId: string }>("week"),
+  (input, context: SummarizerPipelineContext) => {
+    if (context.enabledIntervals.week) {
+      return input;
+    }
+    return [];
+  },
+  mapStep(generateContributorSummaries),
+);
+
+export const generateMonthlyContributorSummaries = pipe(
+  generateTimeIntervals<{ repoId: string }>("month"),
+  (input, context: SummarizerPipelineContext) => {
+    if (context.enabledIntervals.month) {
+      return input;
+    }
+    return [];
+  },
+  mapStep(generateContributorSummaries),
 );

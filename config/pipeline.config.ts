@@ -350,12 +350,12 @@ export default {
     enabled: true,
     defaultModel: "openai/gpt-4o-mini",
     models: {
-      day: "openai/gpt-4o-mini",
-      week: "anthropic/claude-3.7-sonnet",
-      month: "anthropic/claude-3.7-sonnet",
+      day: process.env.SMALL_MODEL || "openai/gpt-4o-mini",
+      week: process.env.LARGE_MODEL || "anthropic/claude-3.7-sonnet",
+      month: process.env.LARGE_MODEL || "anthropic/claude-3.7-sonnet",
     },
     temperature: 0.1,
-    max_tokens: 3000,
+    max_tokens: 2000,
     endpoint: "https://openrouter.ai/api/v1/chat/completions",
     apiKey: openrouterApiKey || "",
     projectContext: `

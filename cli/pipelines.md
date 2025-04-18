@@ -41,8 +41,8 @@ All data-processing commands (ingest, export, summarize) support the same date r
 bun run pipeline ingest --after 2025-01-01 --before 2025-01-31
 bun run pipeline process --force # Recalculate and overwrite all user tags/scores
 bun run pipeline export --days 90
-bun run pipeline summarize -t contributors --after 2025-01-01
-bun run pipeline summarize -t project --all -o # Regnerate and overwrite all summaries
+bun run pipeline summarize -t contributors --weekly --after 2025-01-01 # Generate only weekly contributor summaries after Jan 1 2025
+bun run pipeline summarize -t project --all --force # Regnerate and overwrite all summaries
 ```
 
 Default lookback periods:

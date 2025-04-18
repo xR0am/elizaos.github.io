@@ -3,25 +3,21 @@
  */
 import { pipe, mapStep, createStep, sequence } from "../types";
 import { getSelectedRepositories } from "../getSelectedRepositories";
-import { generateContributorSummaries } from "./generateContributorSummary";
+import {
+  generateMonthlyContributorSummaries,
+  generateWeeklyContributorSummaries,
+} from "./generateContributorSummary";
 import { SummarizerPipelineContext, createSummarizerContext } from "./context";
 import {
   generateDailyProjectSummaries,
   generateMonthlyProjectSummaries,
   generateWeeklyProjectSummaries,
 } from "./generateProjectSummary";
-import { generateTimeIntervals } from "../generateTimeIntervals";
 
 export const generateContributorSummariesForRepo = pipe(
   sequence(
-    pipe(
-      generateTimeIntervals<{ repoId: string }>("week"),
-      mapStep(generateContributorSummaries),
-    ),
-    pipe(
-      generateTimeIntervals<{ repoId: string }>("month"),
-      mapStep(generateContributorSummaries),
-    ),
+    generateMonthlyContributorSummaries,
+    generateWeeklyContributorSummaries,
   ),
   ([weeklyResults, monthlyResults], context) => {
     const numWeeklySummaries = weeklyResults.reduce((acc, result) => {

@@ -29,13 +29,15 @@ A modern analytics pipeline for tracking and analyzing GitHub contributions. The
 bun install
 ```
 
-2. Set up environment variables in `.envrc` or `.env`:
+2. Set up environment variables in `.env` using `.env.example` for reference:
 
 ```bash
 # Required for Github Ingest
 GITHUB_TOKEN=your_github_personal_access_token_here
 # Required for AI summaries
 OPENROUTER_API_KEY=your_api_key_here
+# configure local environment to use cheaper models
+LARGE_MODEL=openai/gpt-4o-mini
 
 # Optional site info
 SITE_URL=https://elizaos.github.io
@@ -69,7 +71,6 @@ export default {
   // AI Summary configuration
   aiSummary: {
     enabled: true,
-    model: "openai/gpt-4o-mini",
     apiKey: process.env.OPENROUTER_API_KEY,
     // ...
   },
@@ -221,7 +222,7 @@ bun run pipeline export --output-dir ./custom-dir/
 bun run pipeline export -v
 
 # Regenerate and overwrite existing files
-bun run pipeline export --overwrite
+bun run pipeline export --force
 ```
 
 ### AI Summary Generation
@@ -239,25 +240,25 @@ bun run pipeline summarize -t contributors
 bun run pipeline summarize -t project --after 2025-01-01 --before 2025-02-20
 
 # Force overwrite existing summaries
-bun run pipeline summarize -t project --overwrite
+bun run pipeline summarize -t project --force
 
 # Generate and overwrite summaries for a specific number of days (default 7 days)
-bun run pipeline summarize -t project --days 90 -o
+bun run pipeline summarize -t project --days 90 --force
 
-# Generate and overwrite summaries for all data since contributionStartDate
-bun run pipeline summarize -t project --all -o
+# Generate project summaries for all data since contributionStartDate
+bun run pipeline summarize -t project --all
 
 # Generate summaries for specific repository
 bun run pipeline summarize -t project --repository owner/repo
 
-# Generate summaries with custom output directory
-bun run pipeline summarize -t project --output-dir ./custom-summaries/
+# Generate only weekly contributor summaries
+bun run pipeline summarize -t contributors --weekly
 
 # Generate summaries with verbose logging
 bun run pipeline summarize -t project -v
 ```
 
-By default, the summarize command wont regenerate summaries that already exist for a given day. To regenerate summaries, you can pass in the -o/--overwrite flag.
+By default, the summarize command wont regenerate summaries that already exist for a given day. To regenerate summaries, you can pass in the -f/--force flag.
 
 ### Database Management
 
@@ -388,7 +389,7 @@ Additional setup required if you use Safari or Brave: https://orm.drizzle.team/d
 
 1. **"GITHUB_TOKEN environment variable is required"**
 
-   - Ensure your GitHub token is set in `.envrc` and the environment is loaded
+   - Ensure your GitHub token is set in `.env` and the environment is loaded
    - You can also run commands with the token directly: `GITHUB_TOKEN=your_token bun run pipeline ingest -d 10`
    - GitHub Personal Access Token permissions:
      - Contents: Read and write

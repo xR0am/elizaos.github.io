@@ -138,6 +138,12 @@ export const generateProjectSummaryForInterval = createStep(
  */
 export const generateMonthlyProjectSummaries = pipe(
   generateTimeIntervals<{ repoId: string }>("month"),
+  (input, context: SummarizerPipelineContext) => {
+    if (context.enabledIntervals.month) {
+      return input;
+    }
+    return [];
+  },
   mapStep(generateProjectSummaryForInterval),
   createStep("Filter null results", (results) => {
     return results.filter(isNotNullOrUndefined);
@@ -149,6 +155,12 @@ export const generateMonthlyProjectSummaries = pipe(
  */
 export const generateWeeklyProjectSummaries = pipe(
   generateTimeIntervals<{ repoId: string }>("week"),
+  (input, context: SummarizerPipelineContext) => {
+    if (context.enabledIntervals.week) {
+      return input;
+    }
+    return [];
+  },
   mapStep(generateProjectSummaryForInterval),
   createStep("Filter null results", (results) => {
     return results.filter(isNotNullOrUndefined);
@@ -160,6 +172,12 @@ export const generateWeeklyProjectSummaries = pipe(
  */
 export const generateDailyProjectSummaries = pipe(
   generateTimeIntervals<{ repoId: string }>("day"),
+  (input, context: SummarizerPipelineContext) => {
+    if (context.enabledIntervals.day) {
+      return input;
+    }
+    return [];
+  },
   mapStep(generateProjectSummaryForInterval),
   createStep("Filter null results", (results) => {
     return results.filter(isNotNullOrUndefined);

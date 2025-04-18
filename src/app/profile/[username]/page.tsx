@@ -27,9 +27,15 @@ export async function generateMetadata({
   const { username } = await params;
   const userData = await getUserProfile(username);
 
+  // Get the latest weekly summary for meta description if available
+  const description =
+    userData?.weeklySummaries && userData.weeklySummaries.length > 0
+      ? userData.weeklySummaries[0].summary || "Eliza OS contributor profile"
+      : "Eliza OS contributor profile";
+
   return {
     title: userData ? `${userData.username}` : "Profile Not Found",
-    description: userData?.monthlySummary || "Eliza OS contributor profile",
+    description,
   };
 }
 

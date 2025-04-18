@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/tooltip";
 import { skillIcons } from "@/lib/skill-icons";
 import { CircleSlash } from "lucide-react";
-import Link from "next/link";
+
 export interface TagData {
   tagName: string;
   score: number;
