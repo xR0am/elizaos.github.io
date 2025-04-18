@@ -163,16 +163,13 @@ export function calculateDateRange(options: DateRangeOptions): DateRange {
   const { after, before, days, defaultStartDate } = options;
 
   // Calculate end date (defaults to now)
-  let endDate = before ? new UTCDate(before) : new UTCDate();
+  const endDate = before ? new UTCDate(before) : new UTCDate();
 
   const numDays = typeof days === "string" ? parseInt(days) : days;
   // Calculate start date based on priority: after > days
   let startDate: UTCDate | undefined;
   if (after) {
     startDate = new UTCDate(after);
-    if (numDays && !before) {
-      endDate = addDays(startDate, numDays);
-    }
   } else if (numDays) {
     startDate = subDays(endDate, numDays);
   } else {
