@@ -222,7 +222,7 @@ bun run pipeline export --output-dir ./custom-dir/
 bun run pipeline export -v
 
 # Regenerate and overwrite existing files
-bun run pipeline export --overwrite
+bun run pipeline export --force
 ```
 
 ### AI Summary Generation
@@ -240,25 +240,25 @@ bun run pipeline summarize -t contributors
 bun run pipeline summarize -t project --after 2025-01-01 --before 2025-02-20
 
 # Force overwrite existing summaries
-bun run pipeline summarize -t project --overwrite
+bun run pipeline summarize -t project --force
 
 # Generate and overwrite summaries for a specific number of days (default 7 days)
-bun run pipeline summarize -t project --days 90 -o
+bun run pipeline summarize -t project --days 90 --force
 
-# Generate and overwrite summaries for all data since contributionStartDate
-bun run pipeline summarize -t project --all -o
+# Generate project summaries for all data since contributionStartDate
+bun run pipeline summarize -t project --all
 
 # Generate summaries for specific repository
 bun run pipeline summarize -t project --repository owner/repo
 
-# Generate summaries with custom output directory
-bun run pipeline summarize -t project --output-dir ./custom-summaries/
+# Generate only weekly contributor summaries
+bun run pipeline summarize -t contributors --weekly
 
 # Generate summaries with verbose logging
 bun run pipeline summarize -t project -v
 ```
 
-By default, the summarize command wont regenerate summaries that already exist for a given day. To regenerate summaries, you can pass in the -o/--overwrite flag.
+By default, the summarize command wont regenerate summaries that already exist for a given day. To regenerate summaries, you can pass in the -f/--force flag.
 
 ### Database Management
 

@@ -188,7 +188,7 @@ program
     "Path to pipeline config file",
     DEFAULT_CONFIG_PATH,
   )
-  .option("-o, --overwrite", "Overwrite existing stats", false)
+  .option("-f, --force", "Recalculate and overwrite existing stats", false)
   .option("--output-dir <dir>", "Output directory for stats", "./data/")
   .option("-a, --after <date>", "Start date in YYYY-MM-DD format")
   .option(
@@ -240,7 +240,7 @@ program
         logger: rootLogger,
         config: pipelineConfig,
         outputDir: options.outputDir,
-        overwrite: options.overwrite,
+        overwrite: options.force,
         dateRange,
       });
 
@@ -275,13 +275,16 @@ program
     "Number of days to look back from before date",
     "7",
   )
-  .option("-o, --overwrite", "Overwrite existing summaries", false)
+  .option("-f, --force", "Regenerate and overwrite existing summaries", false)
   .option("--all", "Process all data since contributionStartDate", false)
   .requiredOption(
     "-t, --type <type>",
     "Type of summary to generate (contributors or project)",
   )
   .option("--output-dir <dir>", "Output directory for summaries", "./data/")
+  .option("--daily", "Generate daily summaries")
+  .option("--weekly", "Generate weekly summaries")
+  .option("--monthly", "Generate monthly summaries")
   .action(async (options) => {
     try {
       // Dynamically import the config
@@ -316,18 +319,34 @@ program
           );
         }
         options.after = pipelineConfig.contributionStartDate;
+        options.days = "";
       }
 
       // Calculate date range using shared helper
       const dateRange = calculateDateRange({
         after: options.after,
         before: options.before,
-        days: options.days || "7", // Default to 7 days if not specified
+        days: options.days,
       });
 
       rootLogger.info(
         `Generating ${summaryType} summaries using config from ${configPath}`,
       );
+
+      // If no interval flags are set, enable all intervals
+      const hasIntervalFlags =
+        options.daily || options.weekly || options.monthly;
+      const enabledIntervals = hasIntervalFlags
+        ? {
+            day: !!options.daily,
+            week: !!options.weekly,
+            month: !!options.monthly,
+          }
+        : {
+            day: true,
+            week: true,
+            month: true,
+          };
 
       // Create summarizer context
       const context = createSummarizerContext({
@@ -336,8 +355,9 @@ program
         config: pipelineConfig,
         outputDir: options.outputDir,
         aiSummaryConfig: pipelineConfig.aiSummary,
-        overwrite: options.overwrite,
+        overwrite: options.force,
         dateRange,
+        enabledIntervals,
       });
 
       // Run the appropriate pipeline based on summary type
@@ -346,6 +366,8 @@ program
       } else {
         await runPipeline(projectSummariesPipeline, undefined, context);
       }
+
+      rootLogger.info("\nSummary generation completed successfully!");
     } catch (error: unknown) {
       console.error(chalk.red("Error generating summaries:"), error);
       process.exit(1);
