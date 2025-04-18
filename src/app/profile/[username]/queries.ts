@@ -7,7 +7,7 @@ import {
   tags,
   userSummaries,
 } from "@/lib/data/schema";
-import { calculateDateRange } from "@/lib/date-utils";
+import { calculateDateRange, IntervalType } from "@/lib/date-utils";
 import {
   getUserAggregatedScore,
   getUserActivityHeatmaps,
@@ -78,7 +78,31 @@ export async function getUserTags(username: string) {
     totalLevel,
   };
 }
-
+/**
+ * Get all summaries for a user based on the interval type.
+ * @param username - GitHub username of the user
+ * @param intervalType - 'month' or 'week'
+ * @returns Array of summaries ordered by date descending
+ */
+export async function getUserSummaries(
+  username: string,
+  intervalType: IntervalType,
+  limit?: number,
+) {
+  const summaries = await db.query.userSummaries.findMany({
+    where: and(
+      eq(userSummaries.username, username),
+      eq(userSummaries.intervalType, intervalType),
+    ),
+    orderBy: desc(userSummaries.date),
+    limit: limit,
+    columns: {
+      date: true,
+      summary: true,
+    },
+  });
+  return summaries.filter((summary) => !!summary.summary);
+}
 /**
  * Get comprehensive user profile data
  * @param username - GitHub username of the user
@@ -97,23 +121,9 @@ export async function getUserProfile(username: string) {
   // Get user tags data
   const tagsData = await getUserTags(username);
 
-  // Get most recent monthly and weekly summaries
-  const monthlySummary = await db.query.userSummaries.findFirst({
-    where: and(
-      eq(userSummaries.username, username),
-      eq(userSummaries.intervalType, "month"),
-    ),
-    orderBy: desc(userSummaries.date),
-  });
-
-  const weeklySummary = await db.query.userSummaries.findFirst({
-    where: and(
-      eq(userSummaries.username, username),
-      eq(userSummaries.intervalType, "week"),
-    ),
-    orderBy: desc(userSummaries.date),
-  });
-
+  // Get all monthly and 12 most recent weekly summaries
+  const monthlySummaries = await getUserSummaries(username, "month");
+  const weeklySummaries = await getUserSummaries(username, "week", 12);
   // Get PR metrics
   const prStats = await db
     .select({
@@ -142,8 +152,8 @@ export async function getUserProfile(username: string) {
   return {
     username,
     score: userScore.totalScore,
-    monthlySummary: monthlySummary?.summary || "",
-    weeklySummary: weeklySummary?.summary || "",
+    monthlySummaries,
+    weeklySummaries,
     roleTags: tagsData.roleTags,
     skillTags: tagsData.skillTags,
     focusAreaTags: tagsData.focusAreaTags,

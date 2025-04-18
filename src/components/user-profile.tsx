@@ -7,6 +7,7 @@ import { Github } from "lucide-react";
 import { formatCompactNumber } from "@/lib/format-number";
 import { DailyActivity } from "@/components/daily-activity";
 import { UserActivityHeatmap } from "@/lib/scoring/queries";
+import { SummaryCard, Summary } from "@/components/summary-card";
 
 export interface UserStats {
   totalPrs: number;
@@ -19,8 +20,8 @@ export interface UserStats {
 
 type UserProfileProps = {
   username: string;
-  monthlySummary?: string;
-  weeklySummary?: string;
+  monthlySummaries: Summary[];
+  weeklySummaries: Summary[];
   roleTags: TagData[];
   skillTags: TagData[];
   focusAreaTags: TagData[];
@@ -32,8 +33,8 @@ type UserProfileProps = {
 
 export default function UserProfile({
   username,
-  monthlySummary,
-  weeklySummary,
+  monthlySummaries,
+  weeklySummaries,
   roleTags,
   skillTags,
   focusAreaTags,
@@ -78,30 +79,20 @@ export default function UserProfile({
         </div>
       </div>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {monthlySummary && (
-          <Card className="md:col-span-2">
-            <CardHeader className="p-3">
-              <CardTitle className="text-lg font-medium">
-                Monthly Summary
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-3 pt-0">
-              <p className="text-sm text-muted-foreground">{monthlySummary}</p>
-            </CardContent>
-          </Card>
+        {monthlySummaries.length > 0 && (
+          <SummaryCard
+            summaries={monthlySummaries}
+            intervalType="month"
+            className="md:col-span-2"
+          />
         )}
 
-        {weeklySummary && (
-          <Card className="md:col-span-2">
-            <CardHeader className="p-3">
-              <CardTitle className="text-lg font-medium">
-                Weekly Summary
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-3 pt-0">
-              <p className="text-sm text-muted-foreground">{weeklySummary}</p>
-            </CardContent>
-          </Card>
+        {weeklySummaries.length > 0 && (
+          <SummaryCard
+            summaries={weeklySummaries}
+            intervalType="week"
+            className="md:col-span-2"
+          />
         )}
         {/* Daily Activity Section */}
         {dailyActivity && dailyActivity.length > 0 && (

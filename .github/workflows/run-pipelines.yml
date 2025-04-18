@@ -242,11 +242,9 @@ jobs:
           echo "run_project=$RUN_PROJECT" >> $GITHUB_OUTPUT
           echo "run_contributor=$RUN_CONTRIBUTOR" >> $GITHUB_OUTPUT
 
-      # Run project summaries
       - name: Generate project summaries
         if: ${{ steps.summary-check.outputs.run_project == 'true' }}
         run: |
-          # Full project summary
           bun run pipeline summarize -t project${{ env.start_date_arg }}${{ env.end_date_arg }}${{ env.force_summaries_arg }}${{ env.interval_args }}
 
       - name: Force regenerate recent project summaries

@@ -262,22 +262,31 @@ export function formatReadableDate(date: string | Date) {
 export function formatTimeframeTitle(
   date: UTCDate | Date | string,
   intervalType: IntervalType,
+  formatOptions?: {
+    compact?: boolean;
+  },
 ): string {
   const utcDate = date instanceof UTCDate ? date : new UTCDate(date);
 
   if (intervalType === "month") {
-    const monthName = utcDate.toLocaleString("default", { month: "long" });
+    const monthName = utcDate.toLocaleString("default", {
+      month: formatOptions?.compact ? "short" : "long",
+    });
     const year = utcDate.getFullYear();
     return `${monthName} ${year}`;
   } else if (intervalType === "week") {
     // Format as Week of Month Day, Year
-    return `week of ${utcDate.toLocaleString("default", { month: "short", day: "numeric", year: "numeric" })}`;
+    return `Week of ${utcDate.toLocaleString("default", {
+      month: "short",
+      day: "numeric",
+      ...(!formatOptions?.compact && { year: "numeric" }),
+    })}`;
   } else {
     // Daily format: Month Day, Year
     return utcDate.toLocaleString("default", {
       month: "short",
       day: "numeric",
-      year: "numeric",
+      ...(!formatOptions?.compact && { year: "numeric" }),
     });
   }
 }
