@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2025-04-10T23:33:05.179Z",
+    "generatedAt": "2025-04-18T23:19:32.808Z",
     "tasksAnalyzed": 10,
     "thresholdScore": 5,
     "projectName": "Your Project Name",
@@ -9,83 +9,83 @@
   "complexityAnalysis": [
     {
       "taskId": 1,
-      "taskTitle": "Create Leaderboard Queries",
-      "complexityScore": 6,
+      "taskTitle": "Create TypeScript interfaces and schema definitions",
+      "complexityScore": 5,
       "recommendedSubtasks": 3,
-      "expansionPrompt": "Break down the implementation of the getLeaderboard query function into specific subtasks covering schema analysis, query implementation for different time periods, and testing.",
-      "reasoning": "This task requires understanding the database schema, implementing SQL queries with Drizzle ORM, and handling different time period filters. The complexity is moderate as it involves joining tables and aggregating scores."
+      "expansionPrompt": "Break down the task of creating TypeScript interfaces and database schema definitions into logical subtasks covering interface definition, schema creation, and validation/testing",
+      "reasoning": "This task involves defining TypeScript interfaces and database schemas which has moderate complexity. It requires understanding of both TypeScript type system and database schema design, but is fairly self-contained. The interfaces and schemas are foundational for the system."
     },
     {
       "taskId": 2,
-      "taskTitle": "Create Daily Summary Queries",
+      "taskTitle": "Implement enhanced pattern matching system",
       "complexityScore": 7,
       "recommendedSubtasks": 4,
-      "expansionPrompt": "Divide the getDailyMetrics query implementation into subtasks covering schema analysis, metric calculation logic, date filtering implementation, and testing with sample data.",
-      "reasoning": "This task has higher complexity as it requires querying multiple tables, implementing date range filtering, and calculating various metrics. Reusing existing logic adds another layer of complexity in understanding the current implementation."
+      "expansionPrompt": "Divide the pattern matching system implementation into subtasks covering the different pattern types (regex, glob, string), optimization strategies, and integration with the TagPattern interface",
+      "reasoning": "Building a flexible pattern matching system with multiple matching strategies and optimization requirements is fairly complex. It requires handling different pattern types, implementing various matching options, and ensuring performance optimizations."
     },
     {
       "taskId": 3,
-      "taskTitle": "Create User Profile Queries",
+      "taskTitle": "Develop multi-source data extraction utilities",
       "complexityScore": 8,
       "recommendedSubtasks": 5,
-      "expansionPrompt": "Break down the getUserProfile implementation into subtasks for each data section (basic user details, summaries, tag scores, recent PRs, overall stats), plus integration and testing.",
-      "reasoning": "This is the most complex query task as it requires fetching and structuring data from multiple tables to create a comprehensive user profile. It involves sorting, filtering, and potentially complex joins across different entity types."
+      "expansionPrompt": "Break down the multi-source data extraction utilities into subtasks for each data source type (PRs, issues, comments, etc.), with additional subtasks for standardization, pagination handling, and rate limiting",
+      "reasoning": "This task involves interacting with multiple external APIs, handling different data formats, pagination, and rate limiting. The complexity comes from the breadth of sources to extract from and the need to normalize diverse data structures."
     },
     {
       "taskId": 4,
-      "taskTitle": "Extract Common Query Helpers",
-      "complexityScore": 5,
+      "taskTitle": "Create database migrations for new schema",
+      "complexityScore": 4,
       "recommendedSubtasks": 3,
-      "expansionPrompt": "Define subtasks for identifying common patterns across queries, implementing the buildDateRangeCondition helper, and creating additional helper functions with proper documentation.",
-      "reasoning": "This task requires analyzing the other query implementations first to identify common patterns. The complexity is moderate as it involves creating reusable, type-safe helpers that must work across different contexts."
+      "expansionPrompt": "Divide the database migration task into subtasks covering forward migrations, rollback capabilities, and testing/validation of the schema changes",
+      "reasoning": "Database migrations are relatively straightforward, especially since the schema is already defined in Task 1. The complexity is moderate due to the need for both upgrade and downgrade paths and ensuring data integrity."
     },
     {
       "taskId": 5,
-      "taskTitle": "Update Leaderboard Page",
-      "complexityScore": 4,
-      "recommendedSubtasks": 3,
-      "expansionPrompt": "Break down the leaderboard page update into subtasks covering the integration of getLeaderboard query, updating the UI components to use new data structure, and ensuring static generation works correctly.",
-      "reasoning": "This task is relatively straightforward as it involves replacing existing data fetching with the new query. The complexity comes from ensuring the new data structure works with existing UI components and static generation."
+      "taskTitle": "Implement tag rule configuration parser",
+      "complexityScore": 6,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Break down the tag rule configuration parser implementation into subtasks covering schema validation, parsing logic, backward compatibility, and helper functions",
+      "reasoning": "Building a configuration parser with validation and backward compatibility has moderate complexity. It requires careful handling of different formats and robust error checking, but is primarily focused on a single responsibility."
     },
     {
       "taskId": 6,
-      "taskTitle": "Update Daily Summary Page",
-      "complexityScore": 5,
-      "recommendedSubtasks": 3,
-      "expansionPrompt": "Divide the daily summary page update into subtasks for implementing the new data fetching, updating generateStaticParams to work with database queries, and adjusting the navigation logic.",
-      "reasoning": "This task involves more complex static generation with dynamic routes. The need to derive navigation dates and ensure proper static parameter generation increases complexity."
+      "taskTitle": "Develop core scoring algorithm with multi-source matching",
+      "complexityScore": 9,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Divide the core scoring algorithm development into subtasks covering rule application logic, weighting mechanisms, multi-source integration, performance optimization, and testing with complex rule sets",
+      "reasoning": "This is one of the most complex tasks as it integrates multiple components (pattern matching, data sources) and implements sophisticated scoring logic with weights, caps, and diminishing returns. It's the central algorithm of the system with many edge cases to handle."
     },
     {
       "taskId": 7,
-      "taskTitle": "Update User Profile Page",
-      "complexityScore": 5,
-      "recommendedSubtasks": 3,
-      "expansionPrompt": "Split the user profile page update into subtasks for integrating the getUserProfile query, updating the metadata generation, and ensuring the component properly renders the new data structure.",
-      "reasoning": "Similar to the daily summary page update, this task involves dynamic routes with static generation. The complexity comes from handling the comprehensive user data structure returned by the query."
+      "taskTitle": "Implement historical tag score tracking",
+      "complexityScore": 6,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Break down the historical tag score tracking implementation into subtasks covering storage mechanisms, retrieval functions, aggregation utilities, and data retention policies",
+      "reasoning": "This task involves database operations and time-series data management. The complexity comes from implementing proper aggregation and retention policies while ensuring efficient storage and retrieval."
     },
     {
       "taskId": 8,
-      "taskTitle": "Update Component Props Types",
-      "complexityScore": 4,
+      "taskTitle": "Create label-based scoring integration",
+      "complexityScore": 5,
       "recommendedSubtasks": 3,
-      "expansionPrompt": "Break down the component props update into subtasks for each major component (leaderboard, daily summary, user profile), focusing on type safety and compatibility with new data structures.",
-      "reasoning": "This task requires careful analysis of component hierarchies and ensuring type safety throughout. The complexity is moderate as it involves understanding both the new query return types and the existing component structures."
+      "expansionPrompt": "Divide the label-based scoring integration into subtasks covering label extraction enhancements, scoring algorithm updates for labels, and special handling for label matching options",
+      "reasoning": "This task extends existing functionality rather than creating entirely new systems. It has moderate complexity due to the need to integrate with both the data extraction and scoring components."
     },
     {
       "taskId": 9,
-      "taskTitle": "Remove Obsolete JSON Fetching Code",
-      "complexityScore": 2,
-      "recommendedSubtasks": 3,
-      "expansionPrompt": "Define subtasks for identifying all JSON fetching code, safely removing it with verification steps, and ensuring no references remain in the codebase.",
-      "reasoning": "This is a relatively simple cleanup task, but requires attention to detail to ensure all obsolete code is removed without breaking functionality. The verification step is crucial."
+      "taskTitle": "Develop time-series visualizations for tag progression",
+      "complexityScore": 7,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Break down the time-series visualization development into subtasks covering chart component creation, trend analysis implementation, filtering capabilities, and responsive design",
+      "reasoning": "Creating effective data visualizations with trend analysis and interactive filtering has significant complexity. It requires both data processing skills and frontend development expertise to create responsive, interactive charts."
     },
     {
       "taskId": 10,
-      "taskTitle": "End-to-End Testing and Performance Optimization",
-      "complexityScore": 7,
-      "recommendedSubtasks": 4,
-      "expansionPrompt": "Divide the testing and optimization task into subtasks covering end-to-end testing methodology, query performance profiling, database optimization (indexes), and documentation of improvements.",
-      "reasoning": "This task requires comprehensive testing of the entire application with the new data fetching approach. The performance profiling and optimization aspects add significant complexity, especially for the more complex queries."
+      "taskTitle": "Integrate new scoring system into existing pipelines",
+      "complexityScore": 8,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Divide the integration task into subtasks covering refactoring existing pipelines, implementing backward compatibility, adding configuration options, updating API endpoints, and performance optimization",
+      "reasoning": "Integration with existing systems is complex due to the need to maintain backward compatibility while introducing significant architectural changes. This task touches multiple components and requires careful coordination to avoid breaking existing functionality."
     }
   ]
 }

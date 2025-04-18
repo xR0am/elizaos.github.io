@@ -52,10 +52,8 @@ The script can be configured through environment variables in a `.env` file at t
 
    ```bash
    # If installed globally
-   task-master [command] [options]
+   bunx task-master [command] [options]
 
-   # If using locally within the project
-   node scripts/dev.js [command] [options]
    ```
 
    Available commands:
@@ -78,7 +76,7 @@ The script can be configured through environment variables in a `.env` file at t
    - `fix-dependencies`: Fix invalid dependencies automatically
    - `add-task`: Add a new task using AI
 
-   Run `task-master --help` or `node scripts/dev.js --help` to see detailed usage information.
+   Run `bunx task-master --help` to see detailed usage information.
 
 ## Listing Tasks
 

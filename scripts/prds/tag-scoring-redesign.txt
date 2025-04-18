@@ -1,0 +1,291 @@
+<context>
+# Overview  
+The current tag scoring system for GitHub contributions has several limitations that affect its accuracy and flexibility. This PRD outlines a redesign of the system to make it more configurable, maintainable, and comprehensive. The redesign aims to ensure that the resulting leaderboard and user skill XP/levels accurately represent contributors' work and impact.
+
+# Core Features  
+1. **Enhanced Pattern Matching**: Improved pattern matching capabilities to reduce false positives and capture more relevant contributions.
+2. **Multi-source Data Analysis**: Analysis of contributions across multiple data sources including files, PRs, issues, labels, and comments.
+3. **Configurable Rule System**: Flexible configuration system for defining scoring rules with logical operators and context-specific conditions.
+4. **Temporal Tag Scoring**: Track tag scores over time to visualize progression and trends in contributor expertise.
+5. **Label-based Scoring**: Incorporate PR and issue labels into the scoring algorithm to better capture the nature of contributions.
+
+# User Experience  
+**Primary Users:**
+- Project maintainers who configure the scoring system
+- Contributors who can view their expertise profile
+- Project managers who analyze team skills and growth
+
+**Key Flows:**
+- Configuring tag rules through a structured configuration file
+- Running the pipeline to calculate and update tag scores
+- Viewing contributor expertise profiles with historical progression
+- Analyzing team skills distribution through dashboards
+</context>
+<PRD>
+# Technical Architecture  
+
+## Simplified Pattern Configuration
+
+```typescript
+interface TagPattern {
+  // What to match against
+  target: 'filePath' | 'prTitle' | 'prDescription' | 'commitMessage' | 
+          'reviewComment' | 'issueComment' | 'codeContent' | 'label' | 'all';
+  
+  // Pattern configuration
+  value: string;
+  type: 'string' | 'regex' | 'glob';
+  caseSensitive?: boolean;
+  wordBoundary?: boolean;
+  negative?: boolean; // Match when pattern is NOT present
+  
+  // Scoring mechanics
+  weight: number;
+  maxOccurrences?: number; // Cap matches per target
+  diminishingFactor?: number; // Reduce subsequent matches
+}
+
+interface TagRule {
+  name: string;
+  category: string;
+  description: string;
+  patterns: TagPattern[];
+  requireAll?: boolean; // All patterns must match
+  maxScore?: number; // Cap total score for this tag
+}
+```
+
+## Data Model Updates
+
+1. **Add Historical Tag Scores Table**:
+```typescript
+export const userTagScoreHistory = sqliteTable(
+  "user_tag_score_history",
+  {
+    id: text("id").primaryKey(), // username_tag_date
+    username: text("username")
+      .notNull()
+      .references(() => users.username),
+    tag: text("tag")
+      .notNull()
+      .references(() => tags.name),
+    date: text("date").notNull(), // YYYY-MM-DD format
+    score: real("score").notNull().default(0),
+    lastUpdated: text("last_updated")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+  },
+  (table) => [
+    index("idx_user_tag_score_history_username").on(table.username),
+    index("idx_user_tag_score_history_tag").on(table.tag),
+    index("idx_user_tag_score_history_date").on(table.date),
+    uniqueIndex("idx_user_tag_score_history_unique").on(
+      table.username, 
+      table.tag, 
+      table.date
+    ),
+  ],
+);
+```
+
+2. **Enhanced Tag Rule Storage**:
+```typescript
+export const tagRules = sqliteTable(
+  "tag_rules",
+  {
+    id: text("id").primaryKey(),
+    name: text("name").notNull(),
+    category: text("category").notNull(),
+    description: text("description").default(""),
+    patterns: text("patterns").notNull(), // JSON array of patterns
+    requireAll: integer("require_all").default(0),
+    maxScore: real("max_score"),
+    createdAt: text("created_at")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+    lastUpdated: text("last_updated")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+  }
+);
+```
+
+## Scoring Algorithm Enhancement
+
+The enhanced scoring algorithm will:
+
+1. Fetch contributions from multiple sources (PRs, issues, comments, reviews)
+2. Extract labels from PRs and issues
+3. Apply rule patterns to all relevant data sources
+4. Calculate scores with proper weighting and caps
+5. Store both current scores and historical snapshots
+
+```typescript
+// Pseudocode for the main algorithm
+function calculateTagScores(
+  username: string, 
+  dateRange: { startDate: string, endDate: string },
+) {
+  // Fetch all relevant contribution data
+  const prs = await fetchUserPRs(username, dateRange);
+  const issues = await fetchUserIssues(username, dateRange);
+  const reviews = await fetchUserReviews(username, dateRange);
+  
+  // Extract all data points
+  const dataPoints = extractDataPoints(prs, issues, reviews);
+  
+  // Get tag rules
+  const rules = await fetchTagRules();
+  
+  // Calculate scores for each rule
+  const scores = {};
+  for (const rule of rules) {
+    let ruleScore = applyRuleToDataPoints(rule, dataPoints);
+    scores[rule.name] = {
+      score: ruleScore,
+      category: rule.category,
+    };
+  }
+  
+  // Store current scores
+  await storeCurrentTagScores(username, scores);
+  
+  // Store historical snapshot
+  await storeHistoricalTagScores(username, scores, dateRange.endDate);
+  
+  return scores;
+}
+```
+
+# Development Roadmap  
+
+## Phase 1: Core Pattern Matching Enhancement
+- Implement improved pattern matching system with regex and glob support
+- Add word boundary matching to reduce false positives
+- Support for negative patterns (exclusions)
+- Update the configuration parser to handle the new pattern syntax
+
+## Phase 2: Data Source Expansion
+- Extend data collection to include PR descriptions and commit messages
+- Add support for analyzing PR and issue labels
+- Create utilities to extract comment content from PRs and issues
+- Implement more contextual data extraction from code changes
+
+## Phase 3: Schema Updates & Historical Tracking
+- Create migration for new userTagScoreHistory table
+- Add migration for enhanced tag rule storage
+- Implement historical score snapshot functionality
+- Update all related database access functions
+
+## Phase 4: Scoring Algorithm Redesign
+- Implement the new scoring algorithm with multi-source pattern matching
+- Add support for requireAll and maxScore rule properties
+- Update the calculateTags pipeline step
+- Add functions for scoring aggregation across different contribution types
+
+## Phase 5: Visualization & Reporting
+- Create time-series visualizations for tag score progression
+- Add skill radar charts showing expertise distribution
+- Implement contributor comparison views
+- Create exportable reports for periodic skill development
+
+# Logical Dependency Chain
+
+1. **Foundation Layer**
+   - Enhanced pattern matching system
+   - Schema migrations for new tables
+   - Basic data collection functions
+
+2. **Core Functionality**
+   - Multi-source data extraction
+   - Label analysis integration
+   - Basic scoring algorithm with improved pattern matching
+
+3. **Advanced Features**
+   - Historical score tracking
+   - Time-series data storage
+   - Complex rule application logic
+
+4. **Integration & Visualization**
+   - Update pipelines to use new scoring system
+   - Connect historical data to visualization components
+   - Implement skill progression charts
+
+# Risks and Mitigations  
+
+## Technical Risks
+
+1. **Performance Impact**
+   - **Risk**: More complex pattern matching could slow down processing significantly.
+   - **Mitigation**: Implement efficient matching algorithms and add caching mechanisms for intermediate results.
+
+2. **Data Migration**
+   - **Risk**: Existing tag scores might be inconsistent with the new calculation method.
+   - **Mitigation**: Provide a recalculation tool and clear versioning of score calculation methods.
+
+3. **Configuration Complexity**
+   - **Risk**: More flexible configuration could be harder for users to understand and maintain.
+   - **Mitigation**: Create documentation with examples and a validation system to prevent configuration errors.
+
+## Implementation Risks
+
+1. **Backward Compatibility**
+   - **Risk**: Changes might break existing integrations or visualizations.
+   - **Mitigation**: Phase implementation with compatibility layers and provide migration guides.
+
+2. **Score Inflation**
+   - **Risk**: New scoring methods might artificially inflate scores compared to the old system.
+   - **Mitigation**: Implement calibration factors and normalization options in the configuration.
+
+3. **Storage Growth**
+   - **Risk**: Storing historical tag scores could lead to rapid database growth.
+   - **Mitigation**: Implement data retention policies and consider aggregation for older data points.
+
+# Appendix  
+
+## Example Configuration
+
+```typescript
+// Example tag rule configuration
+const tagRules = [
+  {
+    name: "react",
+    category: "TECH",
+    description: "React framework expertise",
+    patterns: [
+      {
+        target: "filePath",
+        value: "\\.(jsx|tsx)$",
+        type: "regex",
+        wordBoundary: true,
+        weight: 1.0
+      },
+      {
+        target: "codeContent",
+        value: "React\\.(Component|createContext|useState|useEffect)",
+        type: "regex",
+        wordBoundary: true,
+        weight: 1.5,
+        maxOccurrences: 5,
+        diminishingFactor: 0.8
+      },
+      {
+        target: "label",
+        value: "react",
+        type: "string",
+        caseSensitive: false,
+        weight: 2.0
+      }
+    ],
+    maxScore: 10.0 // Per contribution
+  }
+];
+```
+
+## Performance Considerations
+
+- Use efficient text indexing for large repositories
+- Consider batch processing for historical data analysis
+- Implement cursor-based pagination for large datasets
+- Use worker threads for CPU-intensive pattern matching operations
+</PRD> 

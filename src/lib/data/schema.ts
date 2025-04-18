@@ -318,6 +318,32 @@ export const tags = sqliteTable("tags", {
     .default(sql`CURRENT_TIMESTAMP`),
 });
 
+// Tag rules for advanced pattern matching and scoring configurations
+export const tagRules = sqliteTable(
+  "tag_rules",
+  {
+    id: text("id").primaryKey(),
+    name: text("name").notNull().unique(),
+    category: text("category").notNull(), // AREA, ROLE, TECH from TagCategory enum
+    description: text("description").default(""),
+    patterns: text("patterns").notNull().default("[]"), // JSON array of TagPattern objects
+    weight: real("weight").notNull().default(1.0),
+    dependencies: text("dependencies").default("[]"), // JSON array of tag dependencies
+    enabled: integer("enabled").notNull().default(1),
+    createdAt: text("created_at")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+    lastUpdated: text("last_updated")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+  },
+  (table) => [
+    index("idx_tag_rules_name").on(table.name),
+    index("idx_tag_rules_category").on(table.category),
+    index("idx_tag_rules_enabled").on(table.enabled),
+  ],
+);
+
 export const userTagScores = sqliteTable(
   "user_tag_scores",
   {
@@ -332,6 +358,13 @@ export const userTagScores = sqliteTable(
     level: integer("level").notNull().default(0),
     progress: real("progress").notNull().default(0),
     pointsToNext: real("points_to_next").notNull().default(0),
+    // Additional fields for history tracking and on-demand generation
+    scoreSnapshots: text("score_snapshots").default("[]"), // JSON array of {date, score, level} for key milestones
+    activityLog: text("activity_log").default("[]"), // JSON array of recent scoring activities
+    lastActivityDate: text("last_activity_date"), // Date of most recent scoring activity
+    firstActivityDate: text("first_activity_date"), // Date when this tag was first scored
+    streakDays: integer("streak_days").default(0), // Current activity streak in days
+    totalActions: integer("total_actions").default(0), // Total number of scoring actions
     lastUpdated: text("last_updated")
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
@@ -341,6 +374,8 @@ export const userTagScores = sqliteTable(
     index("idx_user_tag_scores_tag").on(table.tag),
     index("idx_user_tag_scores_score").on(table.score),
     index("idx_user_tag_scores_username_tag").on(table.username, table.tag),
+    index("idx_user_tag_scores_last_activity").on(table.lastActivityDate),
+    index("idx_user_tag_scores_first_activity").on(table.firstActivityDate),
   ],
 );
 
@@ -603,3 +638,8 @@ export const userDailyScoresRelations = relations(
     }),
   }),
 );
+
+// Add relations for tags
+export const tagsRelations = relations(tags, ({ many }) => ({
+  userScores: many(userTagScores),
+}));

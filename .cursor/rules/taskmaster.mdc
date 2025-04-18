@@ -1,18 +1,18 @@
 ---
-description: Whenever user mentions working on tasks or tasks master
+description: Taskmaster Workflow
 globs: 
-alwaysApply: true
+alwaysApply: false
 ---
 
 - **Global CLI Commands**
   - Task Master now provides a global CLI through the `bunx task-master` command
   - All functionality from `scripts/dev.js` is available through this interface
   - Use locally via `bunx`
-  - Use `task-master <command>` instead of `bun scripts/dev.js <command>`
+  - Use `bunx task-master <command>` instead of `bun scripts/dev.js <command>`
   - Examples:
-    - `task-master list` instead of `bun scripts/dev.js list`
-    - `task-master next` instead of `bun scripts/dev.js next`
-    - `task-master expand --id=3` instead of `bun scripts/dev.js expand --id=3`
+    - `bunx task-master list` instead of `bun scripts/dev.js list`
+    - `bunx task-master next` instead of `bun scripts/dev.js next`
+    - `bunx task-master expand --id=3` instead of `bun scripts/dev.js expand --id=3`
   - All commands accept the same options as their script equivalents
   - The CLI provides additional commands like `task-master init` for project setup
 
