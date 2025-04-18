@@ -37,6 +37,14 @@ runs:
         # Create target directory if it doesn't exist
         mkdir -p $(dirname $TARGET_DB)
 
+        # Run db:migrate before restoring the database to ensure schema is up to date
+        echo "🔄 Running db:migrate to instantiate local database..."
+        bun run db:migrate || {
+          echo "❌ Failed to run migrations"
+          exit 1
+        }
+        echo "✅ Database migrations applied successfully"
+
         # Load the database from the diffable dump
         echo "🔄 Restoring database from diffable dump..."
         uv run uvx sqlite-diffable load $TARGET_DB $DUMP_DIR --replace
