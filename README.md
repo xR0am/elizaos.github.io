@@ -29,13 +29,15 @@ A modern analytics pipeline for tracking and analyzing GitHub contributions. The
 bun install
 ```
 
-2. Set up environment variables in `.envrc` or `.env`:
+2. Set up environment variables in `.env` using `.env.example` for reference:
 
 ```bash
 # Required for Github Ingest
 GITHUB_TOKEN=your_github_personal_access_token_here
 # Required for AI summaries
 OPENROUTER_API_KEY=your_api_key_here
+# configure local environment to use cheaper models
+LARGE_MODEL=openai/gpt-4o-mini
 
 # Optional site info
 SITE_URL=https://elizaos.github.io
@@ -69,7 +71,6 @@ export default {
   // AI Summary configuration
   aiSummary: {
     enabled: true,
-    model: "openai/gpt-4o-mini",
     apiKey: process.env.OPENROUTER_API_KEY,
     // ...
   },
@@ -388,7 +389,7 @@ Additional setup required if you use Safari or Brave: https://orm.drizzle.team/d
 
 1. **"GITHUB_TOKEN environment variable is required"**
 
-   - Ensure your GitHub token is set in `.envrc` and the environment is loaded
+   - Ensure your GitHub token is set in `.env` and the environment is loaded
    - You can also run commands with the token directly: `GITHUB_TOKEN=your_token bun run pipeline ingest -d 10`
    - GitHub Personal Access Token permissions:
      - Contents: Read and write
