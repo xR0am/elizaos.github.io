@@ -99,7 +99,6 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      # Set up pipeline-data branch and restore data
       - name: Setup pipeline-data branch
         uses: ./.github/actions/pipeline-data
         with:
@@ -107,7 +106,6 @@ jobs:
           branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
           data_dir: ${{ env.DATA_DIR }}
 
-      # Restore database from dump
       - name: Restore database
         uses: ./.github/actions/restore-db
         with:
