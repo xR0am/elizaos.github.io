@@ -14,12 +14,12 @@ It's primarily for developers, team leads, and project managers involved in or o
   - _How it works:_ The `ingest` pipeline command connects to the GitHub API using a provided token, queries for relevant events within a specified date range (or since the last fetch), and stores the raw data in a local SQLite database. Configurable to ignore specified bot users.
 - **Configurable Contributor Scoring:**
   - _What it does:_ Calculates scores for contributors based on their activity (PRs created/merged, issues opened/closed, reviews performed, comments made) and impact (code changes, complexity, review feedback).
-  - _Why it's important:_ Provides a quantitative measure of contribution, allowing for ranking and trend analysis. Encourages high-value activities.
-  - _How it works:_ The `process` pipeline command uses detailed rules defined in `config/pipeline.config.ts`. Rules assign base points, multipliers (e.g., for description length, complexity, labels), and bonuses (e.g., for optimal PR size, test coverage) for different event types. It also applies diminishing returns and daily maximums to prevent gaming. Scores are stored in the database.
+  - _Why it's important:_ Provides a quantitative measure of contribution (XP/score), allowing for ranking, skill tracking, and trend analysis. Encourages high-value activities.
+  - _How it works:_ A dedicated scoring pipeline (or stage within `process`) uses `TagRule` definitions stored either in `config/pipeline.config.ts` or the `tagRules` database table. Each `TagRule` contains `TagPattern`s that specify matching criteria (e.g., file paths, commit messages, event types) and the corresponding points (XP) awarded upon matching. The system calculates cumulative scores per user per tag rule, applying logic like multipliers, decay, or caps if configured. Scores are stored/updated in the `userTagScores` database table.
 - **Activity Tagging and Expertise Analysis:**
   - _What it does:_ Tags contributions based on affected code areas (e.g., `core`, `ui`, `docs`, `infra`, `tests`) and infers contributor roles (e.g., `architect`, `maintainer`, `feature-dev`) and technical expertise (e.g., `typescript`, `react`, `database`) using pattern matching defined in the configuration.
-  - _Why it's important:_ Helps identify domain experts and understand where development effort is focused.
-  - _How it works:_ During the `process` step, file paths and commit messages associated with contributions are matched against configured patterns (`config/pipeline.config.ts`). These tags are stored and can influence expertise weighting (though not direct point scores).
+  - _Why it's important:_ Helps identify domain experts, understand where development effort is focused, and drives the scoring system.
+  - _How it works:_ During the scoring pipeline step, various content types (file paths, commit messages, PR titles, issue bodies, comments, labels, reactions) associated with contributions are matched against patterns defined within `TagRule`s (`config/pipeline.config.ts` or `tagRules` table). Matching a pattern contributes points towards the user's score for that specific `TagRule` (representing a skill, area, or technology) and helps categorize the contribution.
 - **Data Export:**
   - _What it does:_ Exports processed statistics and scores into structured JSON files for different time intervals (daily, weekly, monthly).
   - _Why it's important:_ Makes the processed data available for external use, archival, or integration with other systems. Provides the data source for the frontend.
@@ -64,25 +64,27 @@ It's primarily for developers, team leads, and project managers involved in or o
   </context>
 
 <PRD>
-# Technical Architecture
+- **Technical Architecture**
 - **System Components:**
-    - *CLI Pipeline:* TypeScript application run with Bun (`cli/analyze-pipeline.ts`). Handles data ingestion, processing, scoring, export, and summarization.
+    - *CLI Pipeline:* TypeScript application run with Bun (`cli/analyze-pipeline.ts`). Includes distinct pipeline steps/commands for data ingestion (`ingest`), scoring calculation (`score` or integrated into `process`), data export (`export`), and AI summarization (`summarize`).
     - *Web Frontend:* Next.js 14+ application (`src/app`) using App Router for displaying data. Statically exported for deployment (`out/`).
     - *Database:* SQLite (`data/db.sqlite`).
     - *ORM:* Drizzle ORM for database interaction and migrations (`src/lib/data/db.ts`, `src/lib/data/schema.ts`, `drizzle/`).
     - *CI/CD:* GitHub Actions (`.github/workflows/`).
-    - *Configuration:* TypeScript-based configuration file (`config/pipeline.config.ts`).
+    - *Configuration:* TypeScript-based configuration file (`config/pipeline.config.ts`). Defines repositories, bot users, AI settings, and importantly, the `TagRule` definitions (including patterns with embedded scoring logic), not stored dynamically in the database.
     - *Data Storage Branch:* Dedicated Git branch (`_data`) for storing exported JSON/MD data and SQLite database dump.
 - **Data Models (High-Level based on Schema/Processing):**
     - *Repositories:* Information about tracked repositories.
     - *Contributors:* GitHub user information, calculated scores, expertise tags, linked wallet addresses .
-    - *PullRequests:* Details fetched from GitHub (author, status, dates, files changed, associated reviews/comments), potentially linked to Raids (future).
-    - *Issues:* Details fetched from GitHub (author, status, dates, labels, associated comments), potentially linked to Raids (future).
+    - *PullRequests:* Details fetched from GitHub (author, status, dates, files changed, associated reviews/comments/reactions/closing issues), potentially linked to Raids (future).
+    - *Issues:* Details fetched from GitHub (author, status, dates, labels, associated comments/reactions), potentially linked to Raids (future).
     - *Reviews:* Details fetched from GitHub (reviewer, state, submission date).
-    - *Comments:* Details fetched from GitHub (author, creation date, associated PR/Issue).
-    - *Scores:* Calculated scores per contributor per time interval.
+    - *Comments:* Details fetched from GitHub (author, creation date, associated PR/Issue, reactions).
+    - *Reactions:* Details fetched from GitHub (user, content, creation date, associated item).
+    - *TagRules:* Definitions of skills/areas/tech, including patterns and scoring logic (points, multipliers, etc.). Stored in DB or config.
+    - *UserTagScores:* Stores the cumulative XP/score per user per `TagRule`. Includes fields like `cumulativeScore`, `lastScoredEventTimestamp`, potentially level/progress info derived from score.
     - *Summaries:* AI-generated text summaries per project/contributor per time interval.
-    - *Stats:* Aggregated statistics per repository per time interval.
+    - *Stats:* Aggregated statistics per repository per time interval (potentially deprecated or refocused if scoring covers main metrics).
 - **APIs and Integrations:**
     - *GitHub GraphQL API:* Primary source for contribution data ingestion. Requires `GITHUB_TOKEN`.
     - *OpenRouter API:* Used for generating AI summaries. Requires `OPENROUTER_API_KEY`. Endpoint and models are configurable.
@@ -113,10 +115,11 @@ It's primarily for developers, team leads, and project managers involved in or o
   - _Custom Reporting:_ Allow users to generate reports with custom date ranges or filters directly from the UI.
   - _Real-time Updates:_ Investigate options for more frequent or near real-time data updates (potentially using webhooks, though this increases complexity significantly).
   - _Enhanced Filtering/Sorting:_ Add more options for filtering and sorting the leaderboard and activity views.
-  - _Scoring Algorithm Refinements:_ Allow easier tuning and experimentation with scoring parameters, possibly via UI.
-  - _Generating videos with Remotion:_ Explore generating summaries and visualizations and programatic videos with remotion
-  - **Web3 Integration:**
-    - _Wallet Linking:_ Allow contributors to link Solana and Ethereum wallets to their profiles.
+- _Scoring Algorithm Refinements:_ Allow easier tuning and experimentation with scoring parameters, possibly via UI.
+- _Detailed Score Logging:_ Add an optional database table to log individual scoring events (which event triggered which rule for how many points) for auditability and debugging.
+- _Generating videos with Remotion:_ Explore generating summaries and visualizations and programatic videos with remotion
+- **Web3 Integration:**
+  - _Wallet Linking:_ Allow contributors to link Solana and Ethereum wallets to their profiles.
     - _On-Chain Rewards:_ Implement systems for awarding NFT badges and/or token airdrops based on contribution scores, specific achievements, or participation in raids.
     - _Community Funding:_ Develop smart contracts enabling community members/funders to allocate funds towards specific features, code areas, or bounties.
     - _Analytics-Driven Distribution:_ Use the existing contribution analytics (scores, tagged areas, file contributions) to automatically determine and distribute funded rewards to the relevant contributors for completed work.
