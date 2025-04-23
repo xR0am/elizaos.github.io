@@ -33,7 +33,6 @@ export const TagScoringSchema = z.object({
   points: z.number(), // Base points awarded for matching this pattern
   multiplier: z.number().optional(), // Optional multiplier for specific patterns
   decay: z.number().min(0).max(1).optional(), // Optional decay rate for recurring matches (0-1)
-  cooldown: z.number().optional(), // Optional cooldown period in seconds
   maxDaily: z.number().optional(), // Optional cap on daily points from this pattern
 });
 
