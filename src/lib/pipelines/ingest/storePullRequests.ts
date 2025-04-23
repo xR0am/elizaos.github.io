@@ -5,6 +5,9 @@ import {
   rawCommits,
   prReviews,
   prComments,
+  prReactions,
+  prCommentReactions,
+  prClosingIssueReferences,
 } from "@/lib/data/schema";
 import { sql } from "drizzle-orm";
 import {
@@ -256,7 +259,7 @@ export const fetchAndStorePullRequests = createStep(
             prId: pr.id,
             body: comment.body ?? "",
             createdAt: comment.createdAt || pr.updatedAt,
-            updatedAt: comment.updatedAt,
+            updatedAt: comment.updatedAt || pr.updatedAt,
             author: comment.author?.login || "unknown",
           }));
 
@@ -270,20 +273,104 @@ export const fetchAndStorePullRequests = createStep(
                 updatedAt: sql`excluded.updated_at`,
               },
             });
+
+          // Process reactions on comments
+          for (const comment of pr.comments.nodes) {
+            if (comment.reactions?.nodes?.length) {
+              const commentReactionsToInsert = comment.reactions.nodes.map(
+                (reaction) => ({
+                  id: reaction.id,
+                  commentId: comment.id,
+                  content: reaction.content,
+                  createdAt: reaction.createdAt,
+                  user: reaction.user?.login || "unknown",
+                }),
+              );
+
+              await db
+                .insert(prCommentReactions)
+                .values(commentReactionsToInsert)
+                .onConflictDoUpdate({
+                  target: [prCommentReactions.id],
+                  set: {
+                    user: sql`excluded.user`,
+                  },
+                });
+            }
+          }
         }
       }
       logger?.debug(`Processed ${totalComments} comments`);
-      logger?.info(`Successfully stored ${validPRs.length} PRs for ${repoId}`);
-      return { repository, count: validPRs.length };
-    } catch (error) {
-      logger?.error(`Error fetching PRs for ${repoId}`, {
-        error: String(error),
-      });
-      throw new Error(
-        `Failed to fetch PRs: ${
-          error instanceof Error ? error.message : String(error)
-        }`,
+
+      // Process PR reactions
+      let totalReactions = 0;
+      for (const pr of validPRs) {
+        if (pr.reactions?.nodes?.length) {
+          totalReactions += pr.reactions.nodes.length;
+          const reactionsToInsert = pr.reactions.nodes.map((reaction) => ({
+            id: reaction.id,
+            prId: pr.id,
+            content: reaction.content,
+            createdAt: reaction.createdAt,
+            user: reaction.user?.login || "unknown",
+          }));
+
+          await db
+            .insert(prReactions)
+            .values(reactionsToInsert)
+            .onConflictDoUpdate({
+              target: [prReactions.id],
+              set: {
+                user: sql`excluded.user`,
+              },
+            });
+        }
+      }
+      logger?.debug(`Processed ${totalReactions} PR reactions`);
+
+      // Process PR closing issue references
+      let totalClosingIssueRefs = 0;
+      for (const pr of validPRs) {
+        if (pr.closingIssuesReferences?.nodes?.length) {
+          totalClosingIssueRefs += pr.closingIssuesReferences.nodes.length;
+          const closingIssueRefsToInsert = pr.closingIssuesReferences.nodes.map(
+            (issueRef) => ({
+              id: `${pr.id}_${issueRef.id}`,
+              prId: pr.id,
+              issueId: issueRef.id,
+              issueNumber: issueRef.number,
+              issueTitle: issueRef.title,
+              issueState: issueRef.state,
+            }),
+          );
+
+          await db
+            .insert(prClosingIssueReferences)
+            .values(closingIssueRefsToInsert)
+            .onConflictDoUpdate({
+              target: [prClosingIssueReferences.id],
+              set: {
+                issueState: sql`excluded.issue_state`,
+                issueTitle: sql`excluded.issue_title`,
+              },
+            });
+        }
+      }
+      logger?.debug(
+        `Processed ${totalClosingIssueRefs} closing issue references`,
       );
+
+      logger?.info(
+        `Successfully stored ${validPRs.length} PRs, ${totalFiles} files, ${totalCommits} commits, ${totalReviews} reviews, ${totalComments} comments, ${totalReactions} reactions, and ${totalClosingIssueRefs} closing issue references for ${repoId}`,
+      );
+
+      return {
+        repository,
+        count: validPRs.length,
+      };
+    } catch (error) {
+      logger?.error(`Error fetching pull requests for ${repoId}`, { error });
+      throw error;
     }
   },
 );

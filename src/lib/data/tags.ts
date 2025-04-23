@@ -9,10 +9,12 @@ export enum TagPatternType {
   CODE_CONTENT = "CODE_CONTENT", // Match actual code content
   PR_TITLE = "PR_TITLE", // Match PR titles
   PR_DESCRIPTION = "PR_DESCRIPTION", // Match PR descriptions
+  PR_CLOSES_ISSUE = "PR_CLOSES_ISSUE", // Match PRs that close issues
   ISSUE_TITLE = "ISSUE_TITLE", // Match issue titles
   ISSUE_BODY = "ISSUE_BODY", // Match issue content
   COMMENT = "COMMENT", // Match comment content
   LABEL = "LABEL", // Match labels
+  REACTION = "REACTION", // Match reactions (content, user, and count)
 }
 
 /**

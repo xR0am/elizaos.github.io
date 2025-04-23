@@ -198,7 +198,6 @@ export const prReviews = sqliteTable(
     index("idx_pr_reviews_pr_id").on(table.prId),
     index("idx_pr_reviews_author").on(table.author),
     index("idx_pr_reviews_author_date").on(table.author, table.createdAt),
-    index("idx_pr_reviews_state").on(table.state),
   ],
 );
 
@@ -643,3 +642,138 @@ export const userDailyScoresRelations = relations(
 export const tagsRelations = relations(tags, ({ many }) => ({
   userScores: many(userTagScores),
 }));
+
+// New tables for reactions and closing issue references
+
+// Reactions on PRs
+export const prReactions = sqliteTable(
+  "pr_reactions",
+  {
+    id: text("id").primaryKey(),
+    prId: text("pr_id")
+      .notNull()
+      .references(() => rawPullRequests.id),
+    content: text("content").notNull(), // thumbs_up, thumbs_down, laugh, hooray, confused, heart, rocket, eyes
+    createdAt: text("created_at").notNull(),
+    user: text("user").references(() => users.username),
+    lastUpdated: text("last_updated")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+  },
+  (table) => [
+    index("idx_pr_reactions_pr_id").on(table.prId),
+    index("idx_pr_reactions_user").on(table.user),
+    index("idx_pr_reactions_content").on(table.content),
+    unique("unq_pr_reaction_user_content").on(
+      table.prId,
+      table.user,
+      table.content,
+    ),
+  ],
+);
+
+// Reactions on PR comments
+export const prCommentReactions = sqliteTable(
+  "pr_comment_reactions",
+  {
+    id: text("id").primaryKey(),
+    commentId: text("comment_id")
+      .notNull()
+      .references(() => prComments.id),
+    content: text("content").notNull(),
+    createdAt: text("created_at").notNull(),
+    user: text("user").references(() => users.username),
+    lastUpdated: text("last_updated")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+  },
+  (table) => [
+    index("idx_pr_comment_reactions_comment_id").on(table.commentId),
+    index("idx_pr_comment_reactions_user").on(table.user),
+    index("idx_pr_comment_reactions_content").on(table.content),
+    unique("unq_pr_comment_reaction_user_content").on(
+      table.commentId,
+      table.user,
+      table.content,
+    ),
+  ],
+);
+
+// Reactions on issues
+export const issueReactions = sqliteTable(
+  "issue_reactions",
+  {
+    id: text("id").primaryKey(),
+    issueId: text("issue_id")
+      .notNull()
+      .references(() => rawIssues.id),
+    content: text("content").notNull(),
+    createdAt: text("created_at").notNull(),
+    user: text("user").references(() => users.username),
+    lastUpdated: text("last_updated")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+  },
+  (table) => [
+    index("idx_issue_reactions_issue_id").on(table.issueId),
+    index("idx_issue_reactions_user").on(table.user),
+    index("idx_issue_reactions_content").on(table.content),
+    unique("unq_issue_reaction_user_content").on(
+      table.issueId,
+      table.user,
+      table.content,
+    ),
+  ],
+);
+
+// Reactions on issue comments
+export const issueCommentReactions = sqliteTable(
+  "issue_comment_reactions",
+  {
+    id: text("id").primaryKey(),
+    commentId: text("comment_id")
+      .notNull()
+      .references(() => issueComments.id),
+    content: text("content").notNull(),
+    createdAt: text("created_at").notNull(),
+    user: text("user").references(() => users.username),
+    lastUpdated: text("last_updated")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+  },
+  (table) => [
+    index("idx_issue_comment_reactions_comment_id").on(table.commentId),
+    index("idx_issue_comment_reactions_user").on(table.user),
+    index("idx_issue_comment_reactions_content").on(table.content),
+    unique("unq_issue_comment_reaction_user_content").on(
+      table.commentId,
+      table.user,
+      table.content,
+    ),
+  ],
+);
+
+// Closing issue references for PRs
+export const prClosingIssueReferences = sqliteTable(
+  "pr_closing_issue_references",
+  {
+    id: text("id").primaryKey(), // prId_issueId
+    prId: text("pr_id")
+      .notNull()
+      .references(() => rawPullRequests.id),
+    issueId: text("issue_id")
+      .notNull()
+      .references(() => rawIssues.id),
+    issueNumber: integer("issue_number").notNull(),
+    issueTitle: text("issue_title").notNull(),
+    issueState: text("issue_state").notNull(),
+    lastUpdated: text("last_updated")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+  },
+  (table) => [
+    index("idx_pr_closing_issue_refs_pr_id").on(table.prId),
+    index("idx_pr_closing_issue_refs_issue_id").on(table.issueId),
+    unique("unq_pr_closing_issue_ref").on(table.prId, table.issueId),
+  ],
+);

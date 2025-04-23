@@ -372,8 +372,23 @@ export class GitHubClient {
                   author { name email date user { login avatarUrl } }
                   additions deletions changedFiles } }
               }
+              closingIssuesReferences(first: 10) {
+                nodes { id number title state }
+              }
+              reactions(first: 20) {
+                totalCount
+                nodes { id content createdAt user { login avatarUrl } }
+              }
               reviews(first: 15) { nodes { id state body submittedAt createdAt author { login avatarUrl } url } }
-              comments(first: 30) { nodes { id body createdAt updatedAt author { login avatarUrl } url } }
+              comments(first: 30) { 
+                nodes { 
+                  id body createdAt updatedAt author { login avatarUrl } url 
+                  reactions(first: 20) {
+                    totalCount
+                    nodes { id content createdAt user { login avatarUrl } }
+                  }
+                } 
+              }
               files(first: 50) { nodes { path additions deletions changeType } }
             }
           }
@@ -439,9 +454,19 @@ export class GitHubClient {
               id number title body state locked createdAt updatedAt closedAt
               author { login avatarUrl }
               labels(first: 30) { nodes { id name color description } }
+              reactions(first: 20) {
+                totalCount
+                nodes { id content createdAt user { login avatarUrl } }
+              }
               comments(first: 30) {
                 totalCount
-                nodes { id body createdAt updatedAt author { login avatarUrl } url }
+                nodes { 
+                  id body createdAt updatedAt author { login avatarUrl } url 
+                  reactions(first: 20) {
+                    totalCount
+                    nodes { id content createdAt user { login avatarUrl } }
+                  }
+                }
               }
             }
           }

@@ -6,6 +6,14 @@ export const GithubUserSchema = z.object({
   avatarUrl: z.string().nullable().optional(),
 });
 
+// Reaction schema for GitHub reactions
+export const RawReactionSchema = z.object({
+  id: z.string(),
+  content: z.string(),
+  createdAt: z.string(),
+  user: GithubUserSchema.nullable().optional(),
+});
+
 // GitHub Raw Data Schemas
 export const RawCommitSchema = z.object({
   oid: z.string(),
@@ -46,6 +54,12 @@ export const RawCommentSchema = z.object({
   updatedAt: z.string().optional(),
   author: GithubUserSchema.nullable().optional(),
   url: z.string().optional(),
+  reactions: z
+    .object({
+      totalCount: z.number(),
+      nodes: z.array(RawReactionSchema),
+    })
+    .optional(),
 });
 
 export const RawLabelSchema = z.object({
@@ -53,6 +67,13 @@ export const RawLabelSchema = z.object({
   name: z.string(),
   color: z.string(),
   description: z.string().nullable().optional(),
+});
+
+export const RawClosingIssueReferenceSchema = z.object({
+  id: z.string(),
+  number: z.number(),
+  title: z.string(),
+  state: z.string(),
 });
 
 export const RawPullRequestSchema = z.object({
@@ -102,6 +123,17 @@ export const RawPullRequestSchema = z.object({
       nodes: z.array(RawPRFileSchema),
     })
     .optional(),
+  reactions: z
+    .object({
+      totalCount: z.number(),
+      nodes: z.array(RawReactionSchema),
+    })
+    .optional(),
+  closingIssuesReferences: z
+    .object({
+      nodes: z.array(RawClosingIssueReferenceSchema),
+    })
+    .optional(),
 });
 
 export const RawIssueSchema = z.object({
@@ -124,6 +156,12 @@ export const RawIssueSchema = z.object({
     .object({
       totalCount: z.number(),
       nodes: z.array(RawCommentSchema),
+    })
+    .optional(),
+  reactions: z
+    .object({
+      totalCount: z.number(),
+      nodes: z.array(RawReactionSchema),
     })
     .optional(),
 });

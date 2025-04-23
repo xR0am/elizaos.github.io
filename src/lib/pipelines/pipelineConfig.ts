@@ -14,6 +14,7 @@ export const ScoringConfigSchema = z.object({
     complexityMultiplier: z.number().default(0.5),
     optimalSizeBonus: z.number().default(5),
     maxPerDay: z.number().default(20),
+    closingIssueBonus: z.number().default(4),
   }),
   issue: z.object({
     base: z.number().default(5),
@@ -40,6 +41,22 @@ export const ScoringConfigSchema = z.object({
     substantiveMultiplier: z.number().default(0.006),
     diminishingReturns: z.number().default(0.8),
     maxPerThread: z.number().default(5),
+  }),
+  reaction: z.object({
+    base: z.number().default(0.2),
+    received: z.number().default(0.1),
+    types: z.record(z.string(), z.number()).default({
+      thumbs_up: 1.0,
+      thumbs_down: 0.5,
+      laugh: 1.0,
+      hooray: 1.5,
+      confused: 0.5,
+      heart: 1.5,
+      rocket: 1.2,
+      eyes: 1.0,
+    }),
+    maxPerDay: z.number().default(20),
+    diminishingReturns: z.number().default(0.8),
   }),
   codeChange: z.object({
     perLineAddition: z.number().default(0.01),
