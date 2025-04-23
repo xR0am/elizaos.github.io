@@ -15,7 +15,7 @@ It's primarily for developers, team leads, and project managers involved in or o
 - **Configurable Contributor Scoring:**
   - _What it does:_ Calculates scores for contributors based on their activity (PRs created/merged, issues opened/closed, reviews performed, comments made) and impact (code changes, complexity, review feedback).
   - _Why it's important:_ Provides a quantitative measure of contribution (XP/score), allowing for ranking, skill tracking, and trend analysis. Encourages high-value activities.
-  - _How it works:_ A dedicated scoring pipeline (or stage within `process`) uses `TagRule` definitions stored either in `config/pipeline.config.ts` or the `tagRules` database table. Each `TagRule` contains `TagPattern`s that specify matching criteria (e.g., file paths, commit messages, event types) and the corresponding points (XP) awarded upon matching. The system calculates cumulative scores per user per tag rule, applying logic like multipliers, decay, or caps if configured. Scores are stored/updated in the `userTagScores` database table.
+  - _How it works:_ A dedicated scoring pipeline (or stage within `process`) uses `TagRule` definitions stored in `config/pipeline.config.ts` . Each `TagRule` contains `TagPattern`s that specify matching criteria (e.g., file paths, commit messages, event types) and the corresponding points (XP) awarded upon matching. The system calculates cumulative scores per user per tag rule, applying logic like multipliers, decay, or caps if configured. Scores are stored/updated in the `userTagScores` database table.
 - **Activity Tagging and Expertise Analysis:**
   - _What it does:_ Tags contributions based on affected code areas (e.g., `core`, `ui`, `docs`, `infra`, `tests`) and infers contributor roles (e.g., `architect`, `maintainer`, `feature-dev`) and technical expertise (e.g., `typescript`, `react`, `database`) using pattern matching defined in the configuration.
   - _Why it's important:_ Helps identify domain experts, understand where development effort is focused, and drives the scoring system.
@@ -81,7 +81,7 @@ It's primarily for developers, team leads, and project managers involved in or o
     - *Reviews:* Details fetched from GitHub (reviewer, state, submission date).
     - *Comments:* Details fetched from GitHub (author, creation date, associated PR/Issue, reactions).
     - *Reactions:* Details fetched from GitHub (user, content, creation date, associated item).
-    - *TagRules:* Definitions of skills/areas/tech, including patterns and scoring logic (points, multipliers, etc.). Stored in DB or config.
+    - *TagRules:* Definitions of skills/areas/tech, including patterns and scoring logic (points, multipliers, etc.). Stored in config
     - *UserTagScores:* Stores the cumulative XP/score per user per `TagRule`. Includes fields like `cumulativeScore`, `lastScoredEventTimestamp`, potentially level/progress info derived from score.
     - *Summaries:* AI-generated text summaries per project/contributor per time interval.
     - *Stats:* Aggregated statistics per repository per time interval (potentially deprecated or refocused if scoring covers main metrics).

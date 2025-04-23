@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "6381cbef-4190-4c71-a9a2-a090187e2c37",
+  "id": "b61f2ddb-c109-4b2b-9459-2b238864f7fd",
   "prevId": "87c9b94f-9001-4a52-a900-2d64e82b614b",
   "tables": {
     "issue_comment_reactions": {
@@ -1956,122 +1956,6 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "tag_rules": {
-      "name": "tag_rules",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "text",
-          "primaryKey": true,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "name": {
-          "name": "name",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "category": {
-          "name": "category",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "description": {
-          "name": "description",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false,
-          "default": "''"
-        },
-        "patterns": {
-          "name": "patterns",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": "'[]'"
-        },
-        "weight": {
-          "name": "weight",
-          "type": "real",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": 1
-        },
-        "dependencies": {
-          "name": "dependencies",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false,
-          "default": "'[]'"
-        },
-        "enabled": {
-          "name": "enabled",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": 1
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": "CURRENT_TIMESTAMP"
-        },
-        "last_updated": {
-          "name": "last_updated",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "default": "CURRENT_TIMESTAMP"
-        }
-      },
-      "indexes": {
-        "tag_rules_name_unique": {
-          "name": "tag_rules_name_unique",
-          "columns": [
-            "name"
-          ],
-          "isUnique": true
-        },
-        "idx_tag_rules_name": {
-          "name": "idx_tag_rules_name",
-          "columns": [
-            "name"
-          ],
-          "isUnique": false
-        },
-        "idx_tag_rules_category": {
-          "name": "idx_tag_rules_category",
-          "columns": [
-            "category"
-          ],
-          "isUnique": false
-        },
-        "idx_tag_rules_enabled": {
-          "name": "idx_tag_rules_enabled",
-          "columns": [
-            "enabled"
-          ],
-          "isUnique": false
-        }
-      },
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "checkConstraints": {}
-    },
     "tags": {
       "name": "tags",
       "columns": {
@@ -2441,52 +2325,6 @@
           "autoincrement": false,
           "default": 0
         },
-        "score_snapshots": {
-          "name": "score_snapshots",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false,
-          "default": "'[]'"
-        },
-        "activity_log": {
-          "name": "activity_log",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false,
-          "default": "'[]'"
-        },
-        "last_activity_date": {
-          "name": "last_activity_date",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "first_activity_date": {
-          "name": "first_activity_date",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "streak_days": {
-          "name": "streak_days",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false,
-          "default": 0
-        },
-        "total_actions": {
-          "name": "total_actions",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false,
-          "default": 0
-        },
         "last_updated": {
           "name": "last_updated",
           "type": "text",
@@ -2523,20 +2361,6 @@
           "columns": [
             "username",
             "tag"
-          ],
-          "isUnique": false
-        },
-        "idx_user_tag_scores_last_activity": {
-          "name": "idx_user_tag_scores_last_activity",
-          "columns": [
-            "last_activity_date"
-          ],
-          "isUnique": false
-        },
-        "idx_user_tag_scores_first_activity": {
-          "name": "idx_user_tag_scores_first_activity",
-          "columns": [
-            "first_activity_date"
           ],
           "isUnique": false
         }
