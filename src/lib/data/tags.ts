@@ -43,7 +43,7 @@ export const TagScoringSchema = z.object({
  */
 export const TagPatternSchema = z.object({
   target: z.nativeEnum(TagPatternType), // What type of content to match against
-  value: z.string(), // The regex pattern or exact value to match
+  pattern: z.string(), // The regex pattern or exact value to match
   caseSensitive: z.boolean().optional().default(false), // Whether the match is case sensitive
   scoring: TagScoringSchema, // Scoring mechanics for this pattern
   description: z.string().optional(), // Optional human-readable description

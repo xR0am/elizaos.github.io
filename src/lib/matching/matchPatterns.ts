@@ -87,6 +87,15 @@ export function matchAnyPattern(
   if (patterns.length === 0 || !content.content) {
     return false;
   }
+  // Filter patterns that are applicable to this content type
+  const applicablePatterns = patterns.filter(
+    (pattern) => pattern.target === content.contentType,
+  );
+
+  // If no patterns match this content type, return empty
+  if (applicablePatterns.length === 0) {
+    return false;
+  }
 
   for (const pattern of patterns) {
     try {
