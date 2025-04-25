@@ -83,6 +83,23 @@ export default {
       // Maximum PRs per day that count for scoring
       // Prevents gaming via many small PRs
       maxPerDay: 10,
+      closingIssueBonus: 5,
+    },
+    reaction: {
+      diminishingReturns: 0.7,
+      base: 0.5,
+      received: 0.1,
+      maxPerDay: 10,
+      types: {
+        thumbs_up: 1.2,
+        thumbs_down: 0.5,
+        laugh: 1.0,
+        hooray: 1.5,
+        confused: 0.5,
+        heart: 1.5,
+        rocket: 1.5,
+        eyes: 1.2,
+      },
     },
 
     // Issue scoring (medium weight category)

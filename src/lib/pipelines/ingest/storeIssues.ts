@@ -1,5 +1,10 @@
 import { db } from "@/lib/data/db";
-import { rawIssues, issueComments } from "@/lib/data/schema";
+import {
+  rawIssues,
+  issueComments,
+  issueReactions,
+  issueCommentReactions,
+} from "@/lib/data/schema";
 import { sql } from "drizzle-orm";
 import {
   ensureUsersExist,
@@ -64,6 +69,26 @@ export const fetchAndStoreIssues = createStep(
             });
           }
         });
+
+        // Reaction users
+        issue.reactions?.nodes?.forEach((reaction) => {
+          if (reaction.user?.login) {
+            userData.set(reaction.user.login, {
+              avatarUrl: reaction.user.avatarUrl || undefined,
+            });
+          }
+        });
+
+        // Comment reaction users
+        issue.comments?.nodes?.forEach((comment) => {
+          comment.reactions?.nodes?.forEach((reaction) => {
+            if (reaction.user?.login) {
+              userData.set(reaction.user.login, {
+                avatarUrl: reaction.user.avatarUrl || undefined,
+              });
+            }
+          });
+        });
       }
 
       // Ensure all users exist in a single batch operation
@@ -111,15 +136,44 @@ export const fetchAndStoreIssues = createStep(
         }
       }
 
-      // Batch insert issue comments
+      // Batch insert issue reactions
+      let totalReactions = 0;
+      for (const issue of validIssues) {
+        if (issue.reactions?.nodes?.length) {
+          totalReactions += issue.reactions.nodes.length;
+          const reactionsToInsert = issue.reactions.nodes.map((reaction) => ({
+            id: reaction.id,
+            issueId: issue.id,
+            content: reaction.content,
+            createdAt: reaction.createdAt,
+            user: reaction.user?.login || "unknown",
+          }));
+
+          await db
+            .insert(issueReactions)
+            .values(reactionsToInsert)
+            .onConflictDoUpdate({
+              target: [issueReactions.id],
+              set: {
+                user: sql`excluded.user`,
+              },
+            });
+        }
+      }
+      logger?.debug(`Processed ${totalReactions} issue reactions`);
+
+      // Batch insert issue comments and their reactions
+      let totalComments = 0;
+      let totalCommentReactions = 0;
       for (const issue of validIssues) {
         if (issue.comments?.nodes?.length) {
+          totalComments += issue.comments.nodes.length;
           const commentsToInsert = issue.comments.nodes.map((comment) => ({
             id: comment.id,
             issueId: issue.id,
             body: comment.body ?? "",
             createdAt: comment.createdAt || issue.updatedAt,
-            updatedAt: comment.updatedAt,
+            updatedAt: comment.updatedAt || issue.updatedAt,
             author: comment.author?.login || "unknown",
           }));
 
@@ -133,11 +187,40 @@ export const fetchAndStoreIssues = createStep(
                 updatedAt: sql`excluded.updated_at`,
               },
             });
+
+          // Process reactions on comments
+          for (const comment of issue.comments.nodes) {
+            if (comment.reactions?.nodes?.length) {
+              totalCommentReactions += comment.reactions.nodes.length;
+              const commentReactionsToInsert = comment.reactions.nodes.map(
+                (reaction) => ({
+                  id: reaction.id,
+                  commentId: comment.id,
+                  content: reaction.content,
+                  createdAt: reaction.createdAt,
+                  user: reaction.user?.login || "unknown",
+                }),
+              );
+
+              await db
+                .insert(issueCommentReactions)
+                .values(commentReactionsToInsert)
+                .onConflictDoUpdate({
+                  target: [issueCommentReactions.id],
+                  set: {
+                    user: sql`excluded.user`,
+                  },
+                });
+            }
+          }
         }
       }
+      logger?.debug(
+        `Processed ${totalComments} issue comments with ${totalCommentReactions} reactions`,
+      );
 
       logger?.info(
-        `Successfully stored ${validIssues.length} issues for ${repoId}`,
+        `Successfully stored ${validIssues.length} issues, ${totalReactions} reactions, ${totalComments} comments, and ${totalCommentReactions} comment reactions for ${repoId}`,
       );
       return { repository, count: validIssues.length };
     } catch (error) {

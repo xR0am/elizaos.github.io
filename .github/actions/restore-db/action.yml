@@ -37,6 +37,10 @@ runs:
         # Create target directory if it doesn't exist
         mkdir -p $(dirname $TARGET_DB)
 
+        # Remove Drizzle migration tables from dump
+        echo "🧹 Removing migration tables from dump..."
+        rm -f ${{ inputs.dump_dir }}/__drizzle_migrations*
+
         # Run db:migrate before restoring the database to ensure schema is up to date
         echo "🔄 Running db:migrate to instantiate local database..."
         bun run db:migrate || {
