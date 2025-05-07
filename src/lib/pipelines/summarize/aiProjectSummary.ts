@@ -78,7 +78,7 @@ export async function generateProjectAnalysis(
     );
 
     // Calculate token length based on prompt content and interval type
-    const maxTokens = calculateMaxTokens(prompt, intervalType);
+    const maxTokens = calculateMaxTokens(prompt, intervalType, config);
     console.log(`Max tokens: ${maxTokens}, intervalType: ${intervalType}`);
     // Get analysis from AI model
     return await callAIService(prompt, config, {
@@ -98,12 +98,13 @@ export async function generateProjectAnalysis(
 function calculateMaxTokens(
   prompt: string,
   intervalType: IntervalType,
+  config: AISummaryConfig,
 ): number {
   // Base tokens by interval type
   const baseTokensByInterval = {
     month: 3000,
     week: 1500,
-    day: 300,
+    day: 1000,
   };
 
   // Get base token count for this interval type
@@ -111,14 +112,14 @@ function calculateMaxTokens(
 
   // Simple estimation: 1 token ≈ 4 characters in English
   const estimatedPromptTokens = prompt.length / 4;
-  // Add 20% more tokens for every 200 estimated tokens in the prompt
+  // Add 20% more tokens for every 400 estimated tokens in the prompt
   const scalingFactor = 1 + Math.floor(estimatedPromptTokens / 400) * 0.2;
 
   // Calculate final token count
   const calculatedTokens = Math.round(baseTokens * scalingFactor);
 
-  // Ensure result is within 200-1500 token range
-  return Math.max(300, Math.min(3000, calculatedTokens));
+  // Ensure result is within a reasonable range, respecting config.max_tokens
+  return Math.max(300, Math.min(config.max_tokens, calculatedTokens));
 }
 
 /**
