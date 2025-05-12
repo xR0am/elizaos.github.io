@@ -57,7 +57,7 @@ export interface ProjectMetricsForSummary {
   completedItems: CompletedItem[];
 }
 
-export async function generateProjectAnalysis(
+export async function generateProjectSummary(
   metrics: RepositoryMetrics,
   config: AISummaryConfig,
   dateInfo: { startDate: string },
@@ -145,7 +145,9 @@ function formatAnalysisPrompt(
   const formatCompletedItems = (type: WorkItemType) =>
     metrics.completedItems
       .filter((item) => item.type === type)
-      .map((item) => `${item.title} (PR #${item.prNumber})`)
+      .map(
+        (item) => ` (PR #${item.prNumber}) ${item.title}. BODY: ${item.body}`,
+      )
       .join("\n- ") || "None";
 
   // Format completed items for better clarity
@@ -155,6 +157,8 @@ function formatAnalysisPrompt(
   const completedDocs = formatCompletedItems("docs");
   const completedTests = formatCompletedItems("tests");
   const completedOtherWork = formatCompletedItems("other");
+  const newIssues = metrics.issues.newIssues;
+  const closedIssues = metrics.issues.closedIssues;
 
   return `
 BACKGROUND CONTEXT:
@@ -163,14 +167,14 @@ BACKGROUND CONTEXT:
 INSTRUCTIONS:
 Generate a detailed yet concise ${intervalType}ly development report for the ${metrics.repository} repo during ${timeframeTitle}, based on the following github activity.
   
-COMPLETED WORK FOR CONTEXT:
+COMPLETED WORK:
   
 - **Features Added:** 
   - ${completedFeatures}
 - **Bug Fixes:** 
   - ${completedBugfixes}
 - **Code Refactoring:** 
-  - ${completedRefactors}b
+  - ${completedRefactors}
 - **Documentation Enhancements:** 
   - ${completedDocs}
 - **Tests Added:** 
@@ -180,40 +184,34 @@ COMPLETED WORK FOR CONTEXT:
   Most Active Development Areas:
   - ${topActiveAreas.join("\n- ")}
 
+NEW ISSUES:
+  - ${newIssues.map((issue) => `[#${issue.number}] ${issue.title}. BODY: ${issue.body?.slice(0, 240)}`).join("\n- ")}
+
+CLOSED ISSUES:
+  - ${closedIssues.map((issue) => `[#${issue.number}] ${issue.title}. BODY: ${issue.body?.slice(0, 240)}`).join("\n- ")}
+
 Format the report with the following sections:
 
 # <Project Name> ${getIntervalTypeTitle(intervalType)} Update (${timeframeTitle})
 ## OVERVIEW 
   Provide a high-level summary (max 280 characters, min 40 characters) highlighting the overall progress and major achievements of the ${intervalType}.
 
-## PROJECT METRICS
-  Include the following quantitative details:
-  - PRs: ${metrics.pullRequests.mergedPRs.length} merged PR's, ${
-    metrics.pullRequests.newPRs.length
-  } new PRs
-  - Issues: ${metrics.issues.newIssues.length} new issues, ${
-    metrics.issues.closedIssues.length
-  } closed issues
-  - Unique Contributors: ${metrics.uniqueContributors}
-  - Code Changes: +${metrics.codeChanges.additions}/-${
-    metrics.codeChanges.deletions
-  } lines across ${metrics.codeChanges.files} files
-  - Total Commits: ${metrics.codeChanges.commitCount || 0}
-  - Most Active Contributors: ${metrics.topContributors
-    .map((contributor) => contributor.username)
-    .join(", ")}
-
-## TOP ISSUES
-
-  Group the top issues thematically into ${intervalType === "month" ? "8-12" : "2-4"} different headlines,
-  and concisely describe the key challenges and problems in point form. Reference
-  the issue numbers that are most relevant to each headline, formatted as a Markdown link (e.g. [#123](https://github.com/${metrics.repository}/issues/123)).
-
 ## KEY TECHNICAL DEVELOPMENTS
 
- Group/cluster the completed work thematically into ${intervalType === "month" ? "8-12" : "2-4"} different headlines,
- and concisely describe the key changes and improvements in point form. Reference
-  the PR numbers that are most relevant to each headline, formatted as a Markdown link (e.g. [#123](https://github.com/${metrics.repository}/pull/123)).
+  Group/cluster the completed work thematically into ${intervalType === "month" ? "8-12" : "2-4"} different headlines,
+  and concisely describe the key changes and improvements in point form. Reference
+   the PR numbers that are most relevant to each headline, formatted as a Markdown link (e.g. [#123](https://github.com/${metrics.repository}/pull/123)).
+ 
+## CLOSED ISSUES
+
+  Group related closed issues into  ${intervalType === "month" ? "6-9" : "2-4"} different headlines and concisely summarize them.
+   Reference the issue numbers that are most relevant to each headline, formatted as a Markdown link (e.g. [#123](https://github.com/${metrics.repository}/issues/123)).
+
+## NEW ISSUES
+
+  Group the new issues thematically into ${intervalType === "month" ? "6-9" : "2-4"} different headlines,
+  and concisely describe the key challenges and problems in point form. Reference
+  the issue numbers that are most relevant to each headline, formatted as a Markdown link (e.g. [#123](https://github.com/${metrics.repository}/issues/123)).
 
  ${
    intervalType === "month"
@@ -228,5 +226,6 @@ GUIDELINES:
 - Be factual and precise; focus on concrete changes and verifiable data.
 - Use clear, accessible language for both technical and non-technical audiences.
 - Ensure all information is organized into the specified sections for clarity.
+- Use markdown formatting for the report.
 `;
 }

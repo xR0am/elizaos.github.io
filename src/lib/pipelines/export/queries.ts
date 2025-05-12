@@ -245,6 +245,7 @@ export async function getProjectMetrics(params: QueryParams = {}) {
     title: pr.title,
     prNumber: pr.number,
     type: categorizeWorkItem(pr.title),
+    body: pr.body?.slice(0, 240),
   }));
 
   return {

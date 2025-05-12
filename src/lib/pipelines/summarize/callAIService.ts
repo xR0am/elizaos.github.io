@@ -13,6 +13,8 @@ export async function callAIService(
     model?: string;
   },
 ): Promise<string> {
+  const model = options?.model || config.defaultModel || "openai/gpt-4o-mini";
+  console.log("Using model:", model);
   try {
     const response = await fetch(config.endpoint, {
       method: "POST",
@@ -23,7 +25,7 @@ export async function callAIService(
         "X-Title": process.env.SITE_NAME || "ElizaOS Leaderboard",
       },
       body: JSON.stringify({
-        model: options?.model || config.defaultModel || "openai/gpt-4o-mini",
+        model,
         messages: [
           {
             role: "system",
