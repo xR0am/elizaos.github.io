@@ -1,6 +1,6 @@
 import { createStep, pipe, mapStep } from "../types";
 import { SummarizerPipelineContext } from "./context";
-import { generateAISummaryForContributor } from "./aiSummary";
+import { generateAISummaryForContributor } from "./aiContributorSummary";
 import { getContributorMetrics } from "./queries";
 import { IntervalType, TimeInterval, toDateString } from "@/lib/date-utils";
 import { storeDailySummary } from "./mutations";
