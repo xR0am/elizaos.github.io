@@ -5,16 +5,12 @@ import {
   ChevronRight,
   Clock,
   Calendar,
-  CalendarDays,
   CalendarRange,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { IntervalMetrics } from "./queries";
 
 // Import our generic components
-import { ContributorItem } from "@/components/contributor-item";
-import { BadgeList, type BadgeItem } from "@/components/badge-list";
-import { SectionCard } from "@/components/section-card";
 import {
   formatTimeframeTitle,
   getIntervalTypeTitle,
@@ -163,12 +159,12 @@ export function DateNavigation({
  */
 export function MetricsDisplay({ metrics }: { metrics: IntervalMetrics }) {
   // Convert focus areas to badge items
-  const focusAreaBadges: BadgeItem[] = metrics.focusAreas.map(
-    (area, index) => ({
-      id: index,
-      label: area.area,
-    }),
-  );
+  // const focusAreaBadges: BadgeItem[] = metrics.focusAreas.map(
+  //   (area, index) => ({
+  //     id: index,
+  //     label: area.area,
+  //   }),
+  // );
 
   return (
     <div className="space-y-6">
