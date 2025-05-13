@@ -5,8 +5,19 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-05-01 to 2025-06-01, elizaos/eliza had 136 new PRs (97 merged), 9 new issues, and 53 active contributors.",
+  "overview": "From 2025-05-01 to 2025-06-01, elizaos/eliza had 152 new PRs (107 merged), 12 new issues, and 58 active contributors.",
   "topIssues": [
+    {
+      "id": "I_kwDOMT5cIs62Hsv6",
+      "title": "Cannot find module '@elizaos/core' or its corresponding type declarations.\",",
+      "author": "BinaryBluePeach",
+      "number": 4536,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-12T02:42:08Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 5
+    },
     {
       "id": "I_kwDOMT5cIs600DmL",
       "title": "Error: No handler found for delegate type: TEXT_EMBEDDING with OpenAI",
@@ -47,17 +58,6 @@
       "number": 4408,
       "repository": "elizaos/eliza",
       "createdAt": "2025-04-30T19:53:01Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 2
-    },
-    {
-      "id": "I_kwDOMT5cIs61qUx2",
-      "title": "Agent Hangs After Core Init / REST API Bind (Anthropic + Twitter Config)",
-      "author": "kunleulysses",
-      "number": 4486,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-05-08T04:30:57Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 2
@@ -121,10 +121,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 23523,
-    "deletions": 29745,
-    "files": 479,
-    "commitCount": 504
+    "additions": 24738,
+    "deletions": 30326,
+    "files": 500,
+    "commitCount": 564
   },
   "completedItems": [
     {
@@ -578,6 +578,16 @@
       "type": "refactor"
     },
     {
+      "title": "fix: build for plugin discord & service mess after merge conf",
+      "prNumber": 4552,
+      "type": "bugfix"
+    },
+    {
+      "title": "Remove REST /ping for websocket status checks in client.",
+      "prNumber": 4551,
+      "type": "other"
+    },
+    {
       "title": "chore: consistent env naming for project manager agent",
       "prNumber": 4549,
       "type": "other"
@@ -611,58 +621,98 @@
       "title": "fix: error associated with issue #4336, where TEXT_EMBEDDING was not…",
       "prNumber": 4537,
       "type": "bugfix"
+    },
+    {
+      "title": "fix: TEE update for CI",
+      "prNumber": 4572,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: add commit sha to CLI cache action",
+      "prNumber": 4571,
+      "type": "feature"
+    },
+    {
+      "title": "fix: update telegram messageManager tests to expect MarkdownV2",
+      "prNumber": 4570,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: support third-party plugin install + added test",
+      "prNumber": 4568,
+      "type": "feature"
+    },
+    {
+      "title": "chore: back to regular dev command",
+      "prNumber": 4566,
+      "type": "other"
+    },
+    {
+      "title": "chore: use latest v2 plugin list",
+      "prNumber": 4564,
+      "type": "tests"
+    },
+    {
+      "title": "feat: upgrades to cli agent command",
+      "prNumber": 4560,
+      "type": "feature"
+    },
+    {
+      "title": "chore: enable strict types and adjust guards for plugin-telegram",
+      "prNumber": 4559,
+      "type": "other"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 1078.652261638196,
-      "prScore": 1011.248261638196,
+      "totalScore": 1170.6322079438366,
+      "prScore": 1102.7902079438368,
       "issueScore": 0,
       "reviewScore": 63.5,
-      "commentScore": 3.9039999999999995
+      "commentScore": 4.342
     },
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 743.8431745745811,
-      "prScore": 706.2711745745811,
+      "totalScore": 812.311066590013,
+      "prScore": 774.3990665900129,
       "issueScore": 0,
       "reviewScore": 34,
-      "commentScore": 3.5719999999999996
+      "commentScore": 3.912
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 388.57018793227854,
-      "prScore": 330.7541879322785,
+      "totalScore": 471.8540760286565,
+      "prScore": 377.6980760286565,
       "issueScore": 0,
-      "reviewScore": 56,
-      "commentScore": 1.8159999999999998
+      "reviewScore": 92,
+      "commentScore": 2.1559999999999997
     },
     {
       "username": "yungalgo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 379.0718757889873,
-      "prScore": 379.0718757889873,
+      "totalScore": 414.67413933414576,
+      "prScore": 414.67413933414576,
       "issueScore": 0,
       "reviewScore": 0,
       "commentScore": 0
     },
     {
       "username": "K1mc4n",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/156217571?v=4",
-      "totalScore": 196.73787878783105,
+      "avatarUrl": "https://avatars.githubusercontent.com/u/156217571?u=cc94e7743c591f36eaf958d88befa855348bba9d&v=4",
+      "totalScore": 200.73787878783105,
       "prScore": 196.53787878783103,
-      "issueScore": 0,
+      "issueScore": 4,
       "reviewScore": 0,
       "commentScore": 0.2
     }
   ],
-  "newPRs": 136,
-  "mergedPRs": 97,
-  "newIssues": 9,
+  "newPRs": 152,
+  "mergedPRs": 107,
+  "newIssues": 12,
   "closedIssues": 18,
-  "activeContributors": 53
+  "activeContributors": 58
 }
