@@ -11,24 +11,25 @@ export function Navigation() {
 
   return (
     <div className="flex items-center gap-6">
-      <Link href="/" className="transition-opacity hover:opacity-80">
-        <h1 className="text-xl font-bold">ElizaOS</h1>
-      </Link>
+      <Button variant="none" size={"none"} asChild>
+        <Link href="/" className="transition-opacity hover:opacity-80">
+          <h1 className="text-xl font-bold">ElizaOS</h1>
+        </Link>
+      </Button>
 
-      <Link href="/leaderboard">
-        <Button
-          variant="ghost"
-          size={"sm"}
-          className={cn(
-            "rounded-full px-4 text-sm font-medium",
-            isLeaderboardActive
-              ? "bg-muted hover:bg-muted/80"
-              : "text-muted-foreground hover:bg-transparent",
-          )}
-        >
-          Leaderboard
-        </Button>
-      </Link>
+      <Button
+        variant="ghost"
+        size={"sm"}
+        className={cn(
+          "rounded-full px-4 text-sm font-medium",
+          isLeaderboardActive
+            ? "bg-muted hover:bg-muted/80"
+            : "text-muted-foreground hover:bg-transparent",
+        )}
+        asChild
+      >
+        <Link href="/leaderboard">Leaderboard</Link>
+      </Button>
     </div>
   );
 }

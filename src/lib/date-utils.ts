@@ -436,4 +436,50 @@ export function formatIntervalForPath(interval: TimeInterval): string[] {
     default:
       throw new Error(`Invalid interval type: ${interval.intervalType}`);
   }
+} /**
+ * Find adjacent intervals using the same logic as generateTimeIntervalsForDateRange
+ */
+export function findAdjacentIntervals(
+  currentInterval: TimeInterval,
+  latestDate: string,
+): {
+  prevDate: string | null;
+  nextDate: string | null;
+} {
+  const { intervalType, intervalStart } = currentInterval;
+
+  // Generate a range of intervals spanning before and after the current date
+  // We'll use a wider date range around the current interval
+  const lookbackPeriod = 60; // Look back 60 days to ensure we capture previous intervals
+  const startDate = toDateString(subDays(intervalStart, lookbackPeriod));
+
+  const intervals = generateTimeIntervalsForDateRange(intervalType, {
+    startDate,
+    endDate: latestDate,
+  });
+
+  // Find the current interval's index
+  const currentIntervalStartStr = toDateString(intervalStart);
+  const currentIndex = intervals.findIndex(
+    (interval) =>
+      toDateString(interval.intervalStart) === currentIntervalStartStr,
+  );
+
+  if (currentIndex === -1) {
+    // Should never happen but handle the case anyway
+    return { prevDate: null, nextDate: null };
+  }
+
+  // Determine previous interval (if any)
+  const prevInterval = currentIndex > 0 ? intervals[currentIndex - 1] : null;
+
+  // Determine next interval (if any)
+  const nextInterval =
+    currentIndex < intervals.length - 1 ? intervals[currentIndex + 1] : null;
+
+  // Format interval dates for the URL
+  const prevDate = prevInterval ? formatIntervalForPath(prevInterval)[0] : null;
+  const nextDate = nextInterval ? formatIntervalForPath(nextInterval)[0] : null;
+
+  return { prevDate, nextDate };
 }
