@@ -202,10 +202,13 @@ export async function getProjectMetrics(params: QueryParams = {}) {
       ),
     );
 
-  const topContributors = await getTopContributors({
-    repository,
-    dateRange,
-  });
+  const topContributors = await getTopContributors(
+    {
+      repository,
+      dateRange,
+    },
+    20,
+  );
 
   // Get PR files for merged PRs in this period
   const prFiles = await db.query.rawPullRequestFiles.findMany({

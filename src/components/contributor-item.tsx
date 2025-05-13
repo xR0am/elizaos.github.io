@@ -20,7 +20,7 @@ export function ContributorItem({
     <Link href={href} className="block">
       <div
         className={cn(
-          "flex items-center gap-3 rounded-lg border p-3 transition-colors hover:bg-accent/50",
+          "flex items-center gap-3 rounded-lg border p-4 transition-colors hover:bg-accent/50",
           className,
         )}
       >

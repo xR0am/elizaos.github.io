@@ -194,7 +194,7 @@ Format the report with the following sections:
 
 # <Project Name> ${getIntervalTypeTitle(intervalType)} Update (${timeframeTitle})
 ## OVERVIEW 
-  Provide a high-level summary (max 280 characters, min 40 characters) highlighting the overall progress and major achievements of the ${intervalType}.
+  Provide a high-level summary (max 500 characters, min 40 characters) highlighting the overall progress and major achievements of the ${intervalType}.
 
 ## KEY TECHNICAL DEVELOPMENTS
 
