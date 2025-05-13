@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardFooter,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -29,7 +23,7 @@ interface StatCardProps {
 export function StatCard({
   title,
   icon: Icon,
-  bgColor = "bg-primary/10",
+  bgColor = "bg-primary/10 group-hover:bg-primary/20",
   children,
   className,
   modalContent,
@@ -46,37 +40,29 @@ export function StatCard({
     </div>
   );
 
-  const CardItself = (
-    <Card className={cn("flex flex-col overflow-hidden", className)}>
-      {modalContent ? (
-        <DialogTrigger asChild>
-          <button className="w-full text-left">
-            <CardHeader
-              className={cn(
-                bgColor,
-                "py-4",
-                "cursor-pointer transition-colors hover:bg-muted/50",
-              )}
-            >
-              <CardTitle className="text-sm font-medium">
-                {HeaderContent}
-              </CardTitle>
-            </CardHeader>
-          </button>
-        </DialogTrigger>
-      ) : (
-        <CardHeader className={cn(bgColor, "py-4")}>
-          <CardTitle className="text-sm font-medium">{HeaderContent}</CardTitle>
-        </CardHeader>
-      )}
+  const cardInnerContent = (
+    <>
+      <CardHeader className={cn(bgColor, "py-4 transition-colors")}>
+        <CardTitle className="text-sm font-medium">{HeaderContent}</CardTitle>
+      </CardHeader>
       <CardContent className="flex-grow p-4">{children}</CardContent>
-    </Card>
+    </>
   );
 
   if (modalContent) {
     return (
       <Dialog>
-        {CardItself}
+        <DialogTrigger asChild>
+          <button
+            className={cn(
+              "group flex flex-col rounded-md border bg-card text-card-foreground shadow-sm",
+              "ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+              className,
+            )}
+          >
+            {cardInnerContent}
+          </button>
+        </DialogTrigger>
         <DialogContent className="gap-0 p-0 sm:max-w-[525px]">
           <DialogHeader className="border-b border-border p-6">
             <DialogTitle>{modalTitle || title}</DialogTitle>
@@ -87,5 +73,9 @@ export function StatCard({
     );
   }
 
-  return CardItself;
+  return (
+    <Card className={cn("flex flex-col overflow-hidden", className)}>
+      {cardInnerContent}
+    </Card>
+  );
 }
