@@ -4,10 +4,13 @@ import type { IntervalMetrics } from "@/app/[interval]/[[...date]]/queries";
 import { GitCommitVertical, FileCode, ArrowUp, ArrowDown } from "lucide-react";
 
 interface CodeChangesDisplayProps {
-  metrics: IntervalMetrics;
+  metricsPromise: Promise<IntervalMetrics>;
 }
 
-export function CodeChangesDisplay({ metrics }: CodeChangesDisplayProps) {
+export async function CodeChangesDisplay({
+  metricsPromise,
+}: CodeChangesDisplayProps) {
+  const metrics = await metricsPromise;
   return (
     <SectionCard title="Code Changes">
       <div className="grid gap-4 md:grid-cols-4">

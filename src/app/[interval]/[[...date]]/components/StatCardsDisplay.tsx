@@ -16,7 +16,7 @@ import { ActivityItem } from "@/components/activity-item";
 import { ContributorItem } from "@/components/contributor-item";
 
 interface StatCardsDisplayProps {
-  metrics: IntervalMetrics;
+  metricsPromise: Promise<IntervalMetrics>;
 }
 
 interface Contributor {
@@ -125,7 +125,10 @@ function IssuesListModalContent({
   );
 }
 
-export function StatCardsDisplay({ metrics }: StatCardsDisplayProps) {
+export async function StatCardsDisplay({
+  metricsPromise,
+}: StatCardsDisplayProps) {
+  const metrics = await metricsPromise;
   const intervalTypeTitle = getIntervalTypeTitle(metrics.interval.intervalType);
 
   return (
@@ -171,7 +174,7 @@ export function StatCardsDisplay({ metrics }: StatCardsDisplayProps) {
       <StatCard
         title="Pull Requests"
         icon={GitPullRequest}
-        bgColor="bg-blue-500/10"
+        bgColor="bg-blue-500/10 group-hover:bg-blue-500/20"
         modalTitle={`Top Pull Requests (${intervalTypeTitle})`}
         modalContent={
           <PullRequestsListModalContent
@@ -200,7 +203,7 @@ export function StatCardsDisplay({ metrics }: StatCardsDisplayProps) {
       <StatCard
         title="Issues"
         icon={MessageCircleWarning}
-        bgColor="bg-amber-500/10"
+        bgColor="bg-amber-500/10 group-hover:bg-amber-500/20"
         modalTitle={`Top Issues (${intervalTypeTitle})`}
         modalContent={<IssuesListModalContent issues={metrics.topIssues} />}
       >
