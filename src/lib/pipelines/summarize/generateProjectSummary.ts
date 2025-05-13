@@ -1,6 +1,6 @@
 import { createStep, pipe, mapStep } from "../types";
 import { SummarizerPipelineContext } from "./context";
-import { generateProjectAnalysis } from "./aiProjectSummary";
+import { generateProjectSummary } from "./aiProjectSummary";
 import { generateTimeIntervals } from "../generateTimeIntervals";
 import { IntervalType, TimeInterval, toDateString } from "@/lib/date-utils";
 import { storeRepoSummary } from "./mutations";
@@ -84,7 +84,7 @@ export const generateProjectSummaryForInterval = createStep(
       });
 
       // Generate the summary based on interval type
-      const summary = await generateProjectAnalysis(
+      const summary = await generateProjectSummary(
         metrics,
         aiSummaryConfig,
         dateRange,

@@ -1,6 +1,8 @@
 import type { Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
 import animate from "tailwindcss-animate";
+import typography from "@tailwindcss/typography";
+
 const config = {
   darkMode: ["class"],
   content: [
@@ -61,6 +63,22 @@ const config = {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            h2: {
+              color: theme("colors.primary.DEFAULT"),
+            },
+          },
+        },
+        invert: {
+          css: {
+            h2: {
+              color: theme("colors.primary.DEFAULT"), // Or a specific primary color variant for dark mode if you have one
+            },
+          },
+        },
+      }),
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -77,7 +95,7 @@ const config = {
       },
     },
   },
-  plugins: [animate],
+  plugins: [animate, typography],
 } satisfies Config;
 
 export default config;

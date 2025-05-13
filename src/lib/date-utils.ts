@@ -1,5 +1,5 @@
 import { UTCDate } from "@date-fns/utc";
-import { addDays, subDays, formatDate } from "date-fns";
+import { addDays, subDays, formatDate, addMonths } from "date-fns";
 
 /**
  * Extracts date from a title string in format "elizaos Eliza (2025-01-12)"
@@ -219,31 +219,6 @@ export function generateDaysInRange(
   return dates;
 }
 
-/**
- * Finds adjacent (previous and next) dates relative to a target date
- * @param currentDate - The target date to find adjacent dates for
- * @returns Object with prevDate and nextDate
- */
-export function findAdjacentDates(
-  currentDate: string,
-  latestDate?: string,
-): {
-  prevDate: string;
-  nextDate: string | null;
-} {
-  const date = new UTCDate(currentDate);
-  const prevDate = toDateString(subDays(date, 1));
-  const nextDate = toDateString(addDays(date, 1));
-
-  // Only include nextDate if it's not in the future
-  const lastDate = latestDate || toDateString(new UTCDate());
-
-  return {
-    prevDate,
-    nextDate: nextDate > lastDate ? null : nextDate,
-  };
-}
-
 export function formatReadableDate(date: string | Date) {
   const dateObj = new UTCDate(date);
   const readableDate = formatDate(dateObj, "MMMM d, yyyy");
@@ -272,12 +247,14 @@ export function formatTimeframeTitle(
     const year = utcDate.getFullYear();
     return `${monthName} ${year}`;
   } else if (intervalType === "week") {
+    const endOfWeek = addDays(utcDate, 6);
     // Format as Week of Month Day, Year
-    return `Week of ${utcDate.toLocaleString("default", {
+    return `${utcDate.toLocaleString("default", {
       month: "short",
       day: "numeric",
-      ...(!formatOptions?.compact && { year: "numeric" }),
-    })}`;
+    })} - ${endOfWeek.toLocaleString("default", {
+      day: "numeric",
+    })}, ${utcDate.toLocaleString("default", { year: "numeric" })}`;
   } else {
     // Daily format: Month Day, Year
     return utcDate.toLocaleString("default", {
@@ -303,5 +280,160 @@ export function getIntervalTypeTitle(intervalType: IntervalType): string {
       return "Daily";
     default:
       return intervalType;
+  }
+}
+
+/**
+ * Calculates the precise start and end boundaries for a given interval type and date.
+ * This ensures consistent interval definitions across the application.
+ *
+ * @param date - The reference date for the interval.
+ * @param intervalType - The type of interval (day, week, month).
+ * @returns An object containing the intervalStart and intervalEnd as UTCDate objects.
+ */
+export function calculateIntervalBoundaries(
+  date: UTCDate,
+  intervalType: IntervalType,
+): { intervalStart: UTCDate; intervalEnd: UTCDate } {
+  let intervalStart: UTCDate;
+  let intervalEnd: UTCDate;
+
+  switch (intervalType) {
+    case "day":
+      intervalStart = toUTCMidnight(date);
+      intervalEnd = addDays(intervalStart, 1);
+      break;
+
+    case "week":
+      // Ensure we start from the Sunday of the week containing the date
+      const startOfWeek = toUTCMidnight(date);
+      intervalStart = addDays(startOfWeek, -startOfWeek.getUTCDay());
+      intervalEnd = addDays(intervalStart, 7);
+      break;
+
+    case "month":
+      // Ensure we start from the first day of the month
+      const firstOfMonth = new UTCDate(
+        Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), 1),
+      );
+      intervalStart = firstOfMonth;
+      intervalEnd = addMonths(intervalStart, 1);
+      break;
+
+    default:
+      // Exhaustive check
+      throw new Error(`Unsupported interval type: ${intervalType}`);
+  }
+
+  return { intervalStart, intervalEnd };
+}
+
+/**
+ * Generates time intervals for a given date range and interval type
+ * Can be used for both pipeline steps and generating static params for routes
+ */
+export function generateTimeIntervalsForDateRange(
+  intervalType: IntervalType,
+  dateRange: { startDate: string; endDate?: string },
+  now = new UTCDate(),
+): TimeInterval[] {
+  const intervals: TimeInterval[] = [];
+
+  // Convert dates to UTC midnight and adjust based on interval type
+  let start: UTCDate;
+  let end: UTCDate;
+
+  switch (intervalType) {
+    case "day":
+      start = toUTCMidnight(dateRange.startDate || subDays(now, 7));
+      end = dateRange.endDate
+        ? addDays(toUTCMidnight(new UTCDate(dateRange.endDate)), 1)
+        : addDays(toUTCMidnight(now), 1);
+      break;
+
+    case "week": {
+      // Get start of week (Sunday) for the start date
+      const startDate = toUTCMidnight(dateRange.startDate || subDays(now, 7));
+      start = addDays(startDate, -startDate.getUTCDay());
+
+      // Get first day of next week after the end date
+      const rawEnd = dateRange.endDate
+        ? toUTCMidnight(new UTCDate(dateRange.endDate))
+        : toUTCMidnight(now);
+      const daysUntilNextWeek = 7 - rawEnd.getUTCDay();
+      end = addDays(rawEnd, daysUntilNextWeek);
+      break;
+    }
+
+    case "month": {
+      // Start from first day of the start month
+      const startDate = new UTCDate(dateRange.startDate || subDays(now, 30));
+      start = new UTCDate(
+        Date.UTC(startDate.getUTCFullYear(), startDate.getUTCMonth(), 1),
+      );
+
+      // End at the first day of the month after the end date
+      const rawEnd = dateRange.endDate ? new UTCDate(dateRange.endDate) : now;
+      end = addMonths(
+        new UTCDate(Date.UTC(rawEnd.getUTCFullYear(), rawEnd.getUTCMonth(), 1)),
+        1,
+      );
+      break;
+    }
+
+    default:
+      throw new Error(`Unsupported interval type: ${intervalType}`);
+  }
+
+  let currentStart = new UTCDate(start);
+
+  // Handle single-day case
+  if (currentStart.getTime() === end.getTime()) {
+    const interval: TimeInterval = {
+      intervalStart: currentStart,
+      intervalEnd: end,
+      intervalType,
+    };
+    intervals.push(interval);
+    return intervals;
+  }
+
+  while (currentStart < end) {
+    // Use the helper function to determine the precise boundaries for the current interval start
+    const { intervalStart: preciseStart, intervalEnd: preciseEnd } =
+      calculateIntervalBoundaries(currentStart, intervalType);
+
+    const interval: TimeInterval = {
+      intervalStart: preciseStart,
+      intervalEnd: preciseEnd,
+      intervalType,
+    };
+    intervals.push(interval);
+
+    // Move to next interval start using the calculated end
+    currentStart = preciseEnd;
+  }
+
+  return intervals;
+}
+
+/**
+ * Formats interval date for URL path segments
+ * @param interval - The time interval
+ * @returns Formatted date string or array based on interval type
+ */
+export function formatIntervalForPath(interval: TimeInterval): string[] {
+  switch (interval.intervalType) {
+    case "day":
+      return [toDateString(interval.intervalStart)];
+    case "week":
+      return [toDateString(interval.intervalStart)];
+    case "month":
+      const date = interval.intervalStart;
+      return [
+        `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`,
+      ];
+    default:
+      throw new Error(`Invalid interval type: ${interval.intervalType}`);
   }
 }
