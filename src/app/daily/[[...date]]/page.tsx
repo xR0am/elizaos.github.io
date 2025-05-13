@@ -1,13 +1,13 @@
 import { redirect } from "next/navigation";
 
 interface DailyPageProps {
-  params: {
+  params: Promise<{
     date?: string[];
-  };
+  }>;
 }
 
-export default function DailyRedirectPage({ params }: DailyPageProps) {
-  const { date } = params;
+export default async function DailyRedirectPage({ params }: DailyPageProps) {
+  const { date } = await params;
 
   // Redirect to the new URL structure
   if (date && date.length > 0) {

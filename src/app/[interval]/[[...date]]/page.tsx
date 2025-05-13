@@ -1,9 +1,7 @@
 import { DateNavigation, MetricsDisplay } from "./components";
 import {
   getMetricsForInterval,
-  getDailyMetrics,
   getLatestAvailableDate,
-  parseIntervalDate,
   getIntervalSummaryContent,
 } from "./queries";
 import { notFound } from "next/navigation";
