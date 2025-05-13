@@ -50,17 +50,19 @@ export function StatCard({
     <Card className={cn("flex flex-col overflow-hidden", className)}>
       {modalContent ? (
         <DialogTrigger asChild>
-          <CardHeader
-            className={cn(
-              bgColor,
-              "py-4",
-              "cursor-pointer transition-colors hover:bg-muted/50",
-            )}
-          >
-            <CardTitle className="text-sm font-medium">
-              {HeaderContent}
-            </CardTitle>
-          </CardHeader>
+          <button className="w-full text-left">
+            <CardHeader
+              className={cn(
+                bgColor,
+                "py-4",
+                "cursor-pointer transition-colors hover:bg-muted/50",
+              )}
+            >
+              <CardTitle className="text-sm font-medium">
+                {HeaderContent}
+              </CardTitle>
+            </CardHeader>
+          </button>
         </DialogTrigger>
       ) : (
         <CardHeader className={cn(bgColor, "py-4")}>
