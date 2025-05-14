@@ -8,6 +8,9 @@ import { formatCompactNumber } from "@/lib/format-number";
 import { DailyActivity } from "@/components/daily-activity";
 import { UserActivityHeatmap } from "@/lib/scoring/queries";
 import { SummaryCard, Summary } from "@/components/summary-card";
+import EthereumIcon from "@/components/icons/EthereumIcon";
+import SolanaIcon from "@/components/icons/SolanaIcon";
+import { WalletAddressBadge } from "@/components/ui/WalletAddressBadge";
 
 export interface UserStats {
   totalPrs: number;
@@ -29,6 +32,8 @@ type UserProfileProps = {
   totalLevel: number;
   stats: UserStats;
   dailyActivity: UserActivityHeatmap[];
+  ethAddress?: string;
+  solAddress?: string;
 };
 
 export default function UserProfile({
@@ -42,6 +47,8 @@ export default function UserProfile({
   totalLevel,
   stats,
   dailyActivity,
+  ethAddress,
+  solAddress,
 }: UserProfileProps) {
   return (
     <div className="mx-auto w-full max-w-4xl space-y-6 sm:p-4">
@@ -59,7 +66,12 @@ export default function UserProfile({
               {username}{" "}
               <span className="text-primary">(level-{totalLevel})</span>
             </h1>
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="flex items-center">
+                <span className="font-mono text-sm font-medium">
+                  {Math.round(totalXp).toLocaleString()} XP
+                </span>
+              </div>
               <a
                 href={`https://github.com/${username}`}
                 target="_blank"
@@ -69,11 +81,23 @@ export default function UserProfile({
                 <Github className="h-4 w-4" />
                 <span className="sr-only">View GitHub Profile</span>
               </a>
-              <div className="flex items-center">
-                <span className="font-mono text-sm font-medium">
-                  {Math.round(totalXp).toLocaleString()} XP
-                </span>
-              </div>
+
+              {ethAddress && (
+                <WalletAddressBadge
+                  address={ethAddress}
+                  icon={
+                    <EthereumIcon className="h-4 w-4 fill-muted-foreground" />
+                  }
+                  label="ETH"
+                />
+              )}
+              {solAddress && (
+                <WalletAddressBadge
+                  address={solAddress}
+                  icon={<SolanaIcon className="h-4 w-4" />}
+                  label="SOL"
+                />
+              )}
             </div>
           </div>
         </div>

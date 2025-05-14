@@ -13,6 +13,7 @@ import {
   getUserActivityHeatmaps,
 } from "@/lib/scoring/queries";
 import { TagType } from "@/lib/scoring/types";
+import { fetchUserWalletAddressesAndReadme } from "@/lib/walletLinking/getUserWalletAddresses";
 
 export async function getUserTags(username: string) {
   const tagSelectFields = {
@@ -103,11 +104,13 @@ export async function getUserSummaries(
   });
   return summaries.filter((summary) => !!summary.summary);
 }
-/**
- * Get comprehensive user profile data
- * @param username - GitHub username of the user
- * @returns UserFocusAreaData object containing all profile information
- */
+
+// Define an extended type for the profile page data
+// This combines your existing return type with new wallet fields
+export type UserProfileData = NonNullable<
+  Awaited<ReturnType<typeof getUserProfile>>
+>;
+
 export async function getUserProfile(username: string) {
   // Get basic user details
   const user = await db.query.users.findFirst({
@@ -149,8 +152,40 @@ export async function getUserProfile(username: string) {
     startDate,
     endDate,
   );
+
+  let ethAddress: string | undefined;
+  let solAddress: string | undefined;
+
+  const githubToken = process.env.GITHUB_TOKEN;
+  if (githubToken) {
+    try {
+      const walletData = await fetchUserWalletAddressesAndReadme(
+        githubToken,
+        username,
+      );
+      if (walletData.ethAddress) {
+        ethAddress = walletData.ethAddress;
+      }
+      if (walletData.solAddress) {
+        solAddress = walletData.solAddress;
+      }
+    } catch (error) {
+      console.warn(
+        `Failed to fetch GitHub wallet data for ${username}:`,
+        error,
+      );
+      // Decide if you want to surface this error or just proceed without wallet addresses
+    }
+  } else {
+    console.warn(
+      "GITHUB_SERVER_TOKEN not configured. Cannot fetch wallet addresses for profiles.",
+    );
+  }
+
   return {
     username,
+    ethAddress,
+    solAddress,
     score: userScore.totalScore,
     monthlySummaries,
     weeklySummaries,

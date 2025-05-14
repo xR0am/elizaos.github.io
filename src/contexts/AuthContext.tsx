@@ -132,7 +132,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       );
       authUrl.searchParams.append(
         "redirect_uri",
-        process.env.NEXT_PUBLIC_REDIRECT_URI || "",
+        `${window.location.origin}/auth/callback`,
       );
       authUrl.searchParams.append("scope", "read:user public_repo");
       authUrl.searchParams.append("state", state);
@@ -195,7 +195,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       await fetchUserData(accessToken);
       console.log("Fetching user data complete", { accessToken });
       // Redirect to the home page or another appropriate page
-      window.location.href = process.env.NEXT_PUBLIC_APP_URL || "/";
+      window.location.href = "/";
     } catch (error) {
       console.error("Error in auth callback:", error);
       setError(

@@ -126,7 +126,7 @@ async function makeGitHubApiRequest<T>(
     const errorBody = await response
       .json()
       .catch(() => ({ message: response.statusText }));
-    console.error("GitHub API Error:", response.status, errorBody);
+    console.warn("GitHub API Error:", response.status, errorBody);
     throw new Error(
       `GitHub API request failed: ${response.status} ${response.statusText}. ${errorBody.message || ""}`,
     );
@@ -146,8 +146,33 @@ export async function getRepo(
   token: string,
   owner: string,
   repoName: string,
-): Promise<GitHubRepo> {
-  return makeGitHubApiRequest<GitHubRepo>(`/repos/${owner}/${repoName}`, token);
+): Promise<GitHubRepo | null> {
+  try {
+    return await makeGitHubApiRequest<GitHubRepo>(
+      `/repos/${owner}/${repoName}`,
+      token,
+    );
+  } catch (error: unknown) {
+    // Check if the error message or status indicates a 404 Not Found
+    // This is a simplified check; a more robust solution might inspect a status code if available on the error object
+    if (
+      error instanceof Error &&
+      error.message &&
+      error.message.includes("404")
+    ) {
+      return null; // Repository not found
+    }
+    if (
+      typeof error === "object" &&
+      error !== null &&
+      "message" in error &&
+      typeof (error as { message: unknown }).message === "string" &&
+      (error as { message: string }).message.includes("404")
+    ) {
+      return null; // Repository not found
+    }
+    throw error; // Re-throw other errors
+  }
 }
 
 export async function createRepo(
