@@ -73,8 +73,6 @@ This phase involves setting up the Next.js frontend to handle the user-facing pa
 2.  **Variables**:
     - `NEXT_PUBLIC_GITHUB_CLIENT_ID`: Your GitHub OAuth App's Client ID.
     - `NEXT_PUBLIC_AUTH_WORKER_URL`: The full URL of your deployed Cloudflare Worker.
-    - `NEXT_PUBLIC_APP_URL`: The base URL of your Next.js application (e.g., `http://localhost:3000` for dev, `https://elizaos.github.io` for prod).
-    - `NEXT_PUBLIC_REDIRECT_URI`: The callback URL _within your Next.js app_ where GitHub will redirect the user after authorization (e.g., `${NEXT_PUBLIC_APP_URL}/auth/callback`).
 
 ### Task 2.2: Create Authentication Context (`src/contexts/AuthContext.tsx`) - DONE
 
