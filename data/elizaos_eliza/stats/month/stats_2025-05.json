@@ -5,7 +5,7 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-05-01 to 2025-06-01, elizaos/eliza had 152 new PRs (107 merged), 12 new issues, and 58 active contributors.",
+  "overview": "From 2025-05-01 to 2025-06-01, elizaos/eliza had 161 new PRs (115 merged), 12 new issues, and 58 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs62Hsv6",
@@ -16,7 +16,7 @@
       "createdAt": "2025-05-12T02:42:08Z",
       "closedAt": null,
       "state": "OPEN",
-      "commentCount": 5
+      "commentCount": 6
     },
     {
       "id": "I_kwDOMT5cIs600DmL",
@@ -25,6 +25,17 @@
       "number": 4418,
       "repository": "elizaos/eliza",
       "createdAt": "2025-05-01T09:48:19Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 5
+    },
+    {
+      "id": "I_kwDOMT5cIs60vfHb",
+      "title": "RAG document Knowledge error (getCachedEmbeddings)",
+      "author": "retdude",
+      "number": 4408,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-04-30T19:53:01Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 3
@@ -47,17 +58,6 @@
       "number": 4336,
       "repository": "elizaos/eliza",
       "createdAt": "2025-04-22T23:13:59Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 2
-    },
-    {
-      "id": "I_kwDOMT5cIs60vfHb",
-      "title": "RAG document Knowledge error (getCachedEmbeddings)",
-      "author": "retdude",
-      "number": 4408,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-04-30T19:53:01Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 2
@@ -121,10 +121,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 24738,
-    "deletions": 30326,
-    "files": 500,
-    "commitCount": 564
+    "additions": 32322,
+    "deletions": 31385,
+    "files": 520,
+    "commitCount": 597
   },
   "completedItems": [
     {
@@ -146,6 +146,11 @@
       "title": "feat: Prepare 0.x for sharing plugins with 1.x",
       "prNumber": 4384,
       "type": "feature"
+    },
+    {
+      "title": "add: Autofun Buy, and Sell through contract",
+      "prNumber": 4397,
+      "type": "other"
     },
     {
       "title": "chore: remove plugin-browser from monorepo",
@@ -578,6 +583,11 @@
       "type": "refactor"
     },
     {
+      "title": "feat: plugin-specification submodule",
+      "prNumber": 4553,
+      "type": "feature"
+    },
+    {
       "title": "fix: build for plugin discord & service mess after merge conf",
       "prNumber": 4552,
       "type": "bugfix"
@@ -661,41 +671,71 @@
       "title": "chore: enable strict types and adjust guards for plugin-telegram",
       "prNumber": 4559,
       "type": "other"
+    },
+    {
+      "title": "fix: community manager set to use plugin-local-ai, out of box",
+      "prNumber": 4557,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: remove log spam during client build",
+      "prNumber": 4584,
+      "type": "other"
+    },
+    {
+      "title": "feat: add tests for create-eliza command",
+      "prNumber": 4582,
+      "type": "feature"
+    },
+    {
+      "title": "fix: scope worldId and entityId",
+      "prNumber": 4581,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: LLM response parsing to support custom fields and clean up empty message headers",
+      "prNumber": 4580,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: better git repo plugin install support",
+      "prNumber": 4577,
+      "type": "feature"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 1170.6322079438366,
-      "prScore": 1102.7902079438368,
+      "totalScore": 1285.7694629640978,
+      "prScore": 1217.4894629640978,
       "issueScore": 0,
       "reviewScore": 63.5,
-      "commentScore": 4.342
+      "commentScore": 4.779999999999999
     },
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 812.311066590013,
-      "prScore": 774.3990665900129,
+      "totalScore": 834.903091690564,
+      "prScore": 796.791091690564,
       "issueScore": 0,
       "reviewScore": 34,
-      "commentScore": 3.912
+      "commentScore": 4.112
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 471.8540760286565,
+      "totalScore": 491.8540760286565,
       "prScore": 377.6980760286565,
       "issueScore": 0,
-      "reviewScore": 92,
+      "reviewScore": 112,
       "commentScore": 2.1559999999999997
     },
     {
       "username": "yungalgo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 414.67413933414576,
-      "prScore": 414.67413933414576,
+      "totalScore": 436.38961980491206,
+      "prScore": 436.38961980491206,
       "issueScore": 0,
       "reviewScore": 0,
       "commentScore": 0
@@ -710,8 +750,8 @@
       "commentScore": 0.2
     }
   ],
-  "newPRs": 152,
-  "mergedPRs": 107,
+  "newPRs": 161,
+  "mergedPRs": 115,
   "newIssues": 12,
   "closedIssues": 18,
   "activeContributors": 58
