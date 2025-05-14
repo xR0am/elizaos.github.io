@@ -28,8 +28,8 @@ function CallbackContent() {
 
       if (code && state) {
         try {
-          await handleAuthCallback(code, state);
           setProcessed(true);
+          await handleAuthCallback(code, state);
         } catch (error) {
           console.error("Failed to handle auth callback:", error);
         }
