@@ -8,22 +8,21 @@ interface Contributor {
 
 interface ContributorsListModalContentProps {
   contributors: Contributor[];
-  intervalType: string;
 }
 
 export default function ContributorsListModalContent({
   contributors,
-  intervalType,
 }: ContributorsListModalContentProps) {
   return (
-    <ScrollArea className="max-h-[80vh]">
-      <div className="space-y-3 px-4">
+    <ScrollArea className="max-h-[80svh]">
+      <div className="divide-y px-0">
         {contributors.map((contributor) => (
           <ContributorItem
+            className="border-none px-4"
             key={contributor.username}
             username={contributor.username}
             href={`/profile/${contributor.username}`}
-            stats={`${intervalType} XP: ${contributor.totalScore.toFixed(0)}`}
+            stats={`XP: ${contributor.totalScore.toFixed(0)}`}
           />
         ))}
         {contributors.length === 0 && (

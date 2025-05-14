@@ -11,7 +11,7 @@ export default function IssuesListModalContent({
   issues,
 }: IssuesListModalContentProps) {
   return (
-    <ScrollArea className="max-h-[80vh]">
+    <ScrollArea className="max-h-[80svh]">
       <div className="divide-y px-0">
         {issues.map((issue) => (
           <ActivityItem
