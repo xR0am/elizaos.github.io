@@ -30,16 +30,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AuthProvider>
-            <div className="min-h-screen bg-background">
-              <header className="container mx-auto flex items-center justify-between p-4">
-                <Navigation />
-                <div className="flex items-center gap-4">
-                  <AuthControls />
-                  <ThemeToggle />
-                </div>
-              </header>
-              {children}
-            </div>
+            <Navigation />
+            <div className="min-h-screen">{children}</div>
           </AuthProvider>
           <Toaster />
         </ThemeProvider>

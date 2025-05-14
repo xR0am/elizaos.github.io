@@ -21,8 +21,8 @@ export function AuthControls() {
   if (isLoading) {
     return (
       <div className="flex items-center space-x-2">
-        <Skeleton className="h-8 w-8 rounded-full" />
-        <Skeleton className="h-4 w-20" />
+        <Skeleton className="h-8 w-16 rounded-full" />
+        {/* <Skeleton className="h-4 w-20" /> */}
       </div>
     );
   }
