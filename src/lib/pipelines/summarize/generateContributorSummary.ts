@@ -130,7 +130,16 @@ export const generateContributorSummaries = pipe(
     return results.filter(isNotNullOrUndefined);
   },
 );
-
+export const generateDailyContributorSummaries = pipe(
+  generateTimeIntervals<{ repoId: string }>("day"),
+  (input, context: SummarizerPipelineContext) => {
+    if (context.enabledIntervals.day) {
+      return input;
+    }
+    return [];
+  },
+  mapStep(generateContributorSummaries),
+);
 export const generateWeeklyContributorSummaries = pipe(
   generateTimeIntervals<{ repoId: string }>("week"),
   (input, context: SummarizerPipelineContext) => {

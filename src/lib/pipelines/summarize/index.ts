@@ -4,6 +4,7 @@
 import { pipe, mapStep, createStep, sequence } from "../types";
 import { getSelectedRepositories } from "../getSelectedRepositories";
 import {
+  generateDailyContributorSummaries,
   generateMonthlyContributorSummaries,
   generateWeeklyContributorSummaries,
 } from "./generateContributorSummary";
@@ -18,12 +19,16 @@ export const generateContributorSummariesForRepo = pipe(
   sequence(
     generateMonthlyContributorSummaries,
     generateWeeklyContributorSummaries,
+    generateDailyContributorSummaries,
   ),
-  ([weeklyResults, monthlyResults], context) => {
+  ([weeklyResults, monthlyResults, dailyResults], context) => {
     const numWeeklySummaries = weeklyResults.reduce((acc, result) => {
       return acc + result.length;
     }, 0);
     const numMonthlySummaries = monthlyResults.reduce((acc, result) => {
+      return acc + result.length;
+    }, 0);
+    const numDailySummaries = dailyResults.reduce((acc, result) => {
       return acc + result.length;
     }, 0);
     context.logger?.info(
@@ -31,6 +36,9 @@ export const generateContributorSummariesForRepo = pipe(
     );
     context.logger?.info(
       `Generated ${numMonthlySummaries} monthly summaries over ${monthlyResults.length} months`,
+    );
+    context.logger?.info(
+      `Generated ${numDailySummaries} daily summaries over ${dailyResults.length} days`,
     );
   },
 );

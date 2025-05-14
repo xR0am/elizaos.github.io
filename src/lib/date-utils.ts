@@ -1,5 +1,11 @@
 import { UTCDate } from "@date-fns/utc";
-import { addDays, subDays, formatDate, addMonths } from "date-fns";
+import {
+  addDays,
+  subDays,
+  formatDate,
+  addMonths,
+  differenceInDays,
+} from "date-fns";
 
 /**
  * Extracts date from a title string in format "elizaos Eliza (2025-01-12)"
@@ -482,4 +488,22 @@ export function findAdjacentIntervals(
   const nextDate = nextInterval ? formatIntervalForPath(nextInterval)[0] : null;
 
   return { prevDate, nextDate };
+}
+
+export function getIntervalTypeFromDateRange(dateRange: {
+  startDate: string;
+  endDate: string;
+}): IntervalType {
+  const startDate = new UTCDate(dateRange.startDate);
+  const endDate = new UTCDate(dateRange.endDate);
+
+  const diffInDays = differenceInDays(endDate, startDate);
+
+  if (diffInDays <= 2) {
+    return "day";
+  } else if (diffInDays <= 8) {
+    return "week";
+  } else {
+    return "month";
+  }
 }

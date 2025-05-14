@@ -7,18 +7,14 @@ import {
   IntervalType,
   TimeInterval,
   toDateString,
-  generateTimeIntervalsForDateRange,
   isValidDateString,
-  toUTCMidnight,
   calculateIntervalBoundaries,
 } from "@/lib/date-utils";
-import { addDays, addMonths, addWeeks } from "date-fns";
 import { db } from "@/lib/data/db";
 import { desc } from "drizzle-orm";
 import { rawPullRequests } from "@/lib/data/schema";
 import { UTCDate } from "@date-fns/utc";
 import fs from "fs/promises";
-import path from "path";
 import { getRepoFilePath } from "@/lib/fsHelpers";
 
 export async function getLatestAvailableDate() {

@@ -15,10 +15,8 @@ import {
 } from "@/lib/date-utils";
 import { UTCDate } from "@date-fns/utc";
 import { addDays } from "date-fns";
-import { Suspense } from "react";
 import { DateNavigation } from "./components/DateNavigation";
 import { SummaryContent } from "./components/SummaryContent";
-import { SummaryContentSkeleton } from "./components/SummaryContent.skeleton";
 import { StatCardsDisplay } from "./components/StatCardsDisplay";
 import { CodeChangesDisplay } from "./components/CodeChangesDisplay";
 import { LlmCopyButton } from "@/components/ui/llm-copy-button";
