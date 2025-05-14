@@ -10,11 +10,14 @@ import {
   rawIssues,
   rawPullRequestFiles,
   rawPullRequests,
+  userSummaries,
 } from "@/lib/data/schema";
 import { buildAreaMap } from "@/lib/pipelines/codeAreaHelpers";
 import { categorizeWorkItem } from "@/lib/pipelines/codeAreaHelpers";
 import { getActiveContributors } from "../getActiveContributors";
 import { getTopUsersByScore } from "@/lib/scoring/queries";
+import { getIntervalTypeFromDateRange } from "@/lib/date-utils";
+import type { InferSelectModel } from "drizzle-orm";
 
 /**
  * Get top pull requests for a repository in a time period
@@ -113,15 +116,50 @@ export async function getTopContributors(params: QueryParams = {}, limit = 5) {
   const { dateRange } = params;
 
   try {
-    // Use the existing getTopUsersByScore function to get top users
     const topUsers = await getTopUsersByScore(
       dateRange?.startDate,
       dateRange?.endDate,
       limit,
     );
 
-    // Map to the expected format
-    return topUsers;
+    if (!topUsers || topUsers.length === 0) {
+      return [];
+    }
+
+    // If no dateRange or its properties are not defined, return users without summaries
+    if (!dateRange || !dateRange.startDate || !dateRange.endDate) {
+      return topUsers.map((user) => ({ ...user, summary: null }));
+    }
+
+    // Now we know dateRange, dateRange.startDate and dateRange.endDate are defined
+    const intervalType = getIntervalTypeFromDateRange({
+      startDate: dateRange.startDate,
+      endDate: dateRange.endDate,
+    });
+    const summaryDate = dateRange.startDate;
+
+    const resultsWithSummaries = await Promise.all(
+      topUsers.map(async (user) => {
+        const summaryRecord = await db
+          .select({ summary: userSummaries.summary })
+          .from(userSummaries)
+          .where(
+            and(
+              eq(userSummaries.username, user.username),
+              eq(userSummaries.intervalType, intervalType),
+              eq(userSummaries.date, summaryDate),
+            ),
+          )
+          .limit(1);
+
+        return {
+          ...user,
+          summary: summaryRecord.length > 0 ? summaryRecord[0].summary : null,
+        };
+      }),
+    );
+
+    return resultsWithSummaries;
   } catch (error) {
     console.error(`Error in getTopContributors:`, error);
     return [];

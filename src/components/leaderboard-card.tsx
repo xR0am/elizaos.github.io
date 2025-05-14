@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { LeaderboardUser } from "./leaderboard";
+import { StatBadge } from "./stat-badge";
 
 export function LeaderboardCard({
   user,
@@ -50,24 +51,16 @@ export function LeaderboardCard({
             <div className="flex min-w-0 flex-1 flex-col gap-1">
               <h3 className="truncate font-medium">{user.username}</h3>
               <div className="flex gap-2">
-                <Badge
-                  variant="outline"
-                  className="flex items-center gap-1 px-2 text-xs"
-                >
-                  <span className="text-primary/80">XP</span>
-                  <span className="text-muted-foreground">
-                    {user.totalXp.toLocaleString()}
-                  </span>
-                </Badge>
-                <Badge
-                  variant="outline"
-                  className="flex items-center gap-1 px-2 text-xs"
-                >
-                  <span className="text-primary/80">LVL</span>
-                  <span className="text-muted-foreground">
-                    {user.totalLevel}
-                  </span>
-                </Badge>
+                <StatBadge
+                  labelEnd="XP"
+                  value={user.totalXp.toLocaleString()}
+                  className="px-2 text-xs"
+                />
+                <StatBadge
+                  labelStart="LVL"
+                  value={user.totalLevel}
+                  className="px-2 text-xs"
+                />
               </div>
             </div>
             {/* <div className="hidden items-center gap-2 md:flex">
