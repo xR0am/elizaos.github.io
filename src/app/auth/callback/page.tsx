@@ -20,6 +20,7 @@ function CallbackContent() {
 
   useEffect(() => {
     const processAuth = async () => {
+      console.log({ processed });
       if (processed) return;
 
       const code = searchParams.get("code");

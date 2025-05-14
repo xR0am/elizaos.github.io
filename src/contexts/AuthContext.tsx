@@ -35,13 +35,14 @@ interface AuthProviderProps {
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<GitHubUser | null>(null);
   const [token, setToken] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   // Load user data from localStorage on initial load
   useEffect(() => {
     const storedToken = localStorage.getItem("github_token");
     const storedUser = localStorage.getItem("github_user");
+    let userRestoredSynchronously = false;
 
     if (storedToken) {
       setToken(storedToken);
@@ -49,21 +50,35 @@ export function AuthProvider({ children }: AuthProviderProps) {
       if (storedUser) {
         try {
           setUser(JSON.parse(storedUser));
+          userRestoredSynchronously = true;
         } catch (e) {
           console.error("Failed to parse stored user data:", e);
-          // If parsing fails, fetch the user data again
-          fetchUserData(storedToken).catch((e) => {
-            console.error("Failed to fetch user data on init:", e);
-          });
+          // Will proceed to fetchUserData below
         }
-      } else {
-        // If we have a token but no user data, fetch the user data
-        fetchUserData(storedToken).catch((e) => {
-          console.error("Failed to fetch user data on init:", e);
-        });
+      }
+
+      if (!userRestoredSynchronously) {
+        // Fetch user data if not restored synchronously or if parsing failed
+        fetchUserData(storedToken)
+          .catch((err) => {
+            // Error already set in fetchUserData or logout called
+            console.error(
+              "Failed to fetch user data on init (after possible parse fail or no stored user):",
+              err,
+            );
+          })
+          .finally(() => {
+            // setIsLoading(false) is already called in fetchUserData's finally block
+            // However, if fetchUserData itself is not even called because storedToken is null,
+            // isLoading needs to be set to false.
+            // If fetchUserData *is* called, its finally block handles setIsLoading.
+          });
+        return; //isLoading is handled by fetchUserData's finally block.
       }
     }
-  }, []);
+    // If no storedToken, or if user was restored synchronously:
+    setIsLoading(false);
+  }, []); // Removed fetchUserData from dependency array
 
   // Fetch user data from GitHub API
   const fetchUserData = async (accessToken: string) => {
@@ -119,7 +134,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         "redirect_uri",
         process.env.NEXT_PUBLIC_REDIRECT_URI || "",
       );
-      authUrl.searchParams.append("scope", "user repo");
+      authUrl.searchParams.append("scope", "read:user public_repo");
       authUrl.searchParams.append("state", state);
 
       // Redirect the user to the GitHub authorization page
@@ -164,9 +179,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
       }
 
       const data = await response.json();
-
+      console.log("Token data:", data);
       // Check if the token has the required scope
-      if (!data.scope || !data.scope.includes("repo")) {
+      if (!data.scope || !data.scope.includes("public_repo")) {
         throw new Error(
           "Insufficient permissions. Please authorize the application with the 'repo' scope.",
         );
@@ -178,7 +193,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       localStorage.setItem("github_token", accessToken);
 
       await fetchUserData(accessToken);
-
+      console.log("Fetching user data complete", { accessToken });
       // Redirect to the home page or another appropriate page
       window.location.href = process.env.NEXT_PUBLIC_APP_URL || "/";
     } catch (error) {

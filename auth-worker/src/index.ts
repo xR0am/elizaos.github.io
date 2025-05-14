@@ -103,10 +103,11 @@ async function handleCallback(request: Request, env: Env): Promise<Response> {
     }
 
     // Check if the token has the required scope
-    if (!tokenData.scope?.includes("repo")) {
+    if (!tokenData.scope?.includes("public_repo")) {
       return new Response(
         JSON.stringify({
-          error: "Insufficient permissions. The 'repo' scope is required.",
+          error:
+            "Insufficient permissions. The 'public_repo' scope is required.",
         }),
         {
           status: 403,
