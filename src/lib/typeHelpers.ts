@@ -2,7 +2,7 @@ export const isNotNullOrUndefined = <T>(value: T): value is NonNullable<T> =>
   value !== null && value !== undefined;
 
 export const isNotNullOrUndefinedArray = <T>(
-  value: T[]
+  value: T[],
 ): value is NonNullable<T>[] => value.every((v) => isNotNullOrUndefined(v));
 
 export const isNotNullOrUndefinedField =

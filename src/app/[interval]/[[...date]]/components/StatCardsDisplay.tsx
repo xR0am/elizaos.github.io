@@ -16,7 +16,7 @@ import { ActivityItem } from "@/components/activity-item";
 import { ContributorItem } from "@/components/contributor-item";
 
 interface StatCardsDisplayProps {
-  metricsPromise: Promise<IntervalMetrics>;
+  metrics: IntervalMetrics;
 }
 
 interface Contributor {
@@ -125,10 +125,7 @@ function IssuesListModalContent({
   );
 }
 
-export async function StatCardsDisplay({
-  metricsPromise,
-}: StatCardsDisplayProps) {
-  const metrics = await metricsPromise;
+export async function StatCardsDisplay({ metrics }: StatCardsDisplayProps) {
   const intervalTypeTitle = getIntervalTypeTitle(metrics.interval.intervalType);
 
   return (

@@ -111,7 +111,7 @@ export async function getMetricsForInterval(
         endDate,
       },
     },
-    50,
+    100,
   );
 
   const topPullRequests = await getTopPullRequests(
@@ -121,7 +121,7 @@ export async function getMetricsForInterval(
         endDate,
       },
     },
-    50,
+    100,
   );
 
   // deduplicate PRs that are both merged and new

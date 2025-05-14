@@ -33,16 +33,14 @@ const CustomH2 = (props: HTMLProps<HTMLHeadingElement>) => {
 };
 
 interface SummaryContentProps {
-  summaryContentPromise: Promise<string | null>;
+  summaryContent: string | null;
   className?: string;
 }
 
-export async function SummaryContent({
-  summaryContentPromise,
+export function SummaryContent({
+  summaryContent,
   className,
 }: SummaryContentProps) {
-  const summaryContent = await summaryContentPromise;
-
   if (!summaryContent) {
     return null;
   }

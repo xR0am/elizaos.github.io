@@ -21,6 +21,8 @@ import { SummaryContent } from "./components/SummaryContent";
 import { SummaryContentSkeleton } from "./components/SummaryContent.skeleton";
 import { StatCardsDisplay } from "./components/StatCardsDisplay";
 import { CodeChangesDisplay } from "./components/CodeChangesDisplay";
+import { LlmCopyButton } from "@/components/ui/llm-copy-button";
+import { IntervalSelector } from "./components/IntervalSelector";
 
 interface PageProps {
   params: Promise<{
@@ -96,11 +98,6 @@ export default async function IntervalSummaryPage({ params }: PageProps) {
       targetDate = date[0];
     }
 
-    const metricsPromise = getMetricsForInterval(targetDate, intervalType);
-    const summaryContentPromise = getIntervalSummaryContent(
-      targetDate,
-      intervalType,
-    );
     const parsedInterval = parseIntervalDate(targetDate, intervalType);
     if (!parsedInterval) {
       throw new Error(
@@ -121,15 +118,31 @@ export default async function IntervalSummaryPage({ params }: PageProps) {
       intervalType,
     };
 
+    const metrics = await getMetricsForInterval(targetDate, intervalType);
+
+    const summaryContent = await getIntervalSummaryContent(
+      targetDate,
+      intervalType,
+    );
+
     return (
       <div className="container mx-auto px-6 py-8 md:px-8">
         <div className="mx-auto max-w-4xl">
-          <DateNavigation {...navigation} />
-          <div className="mb-8 space-y-6">
-            <StatCardsDisplay metricsPromise={metricsPromise} />
-            <CodeChangesDisplay metricsPromise={metricsPromise} />
+          <div className="mb-4 flex justify-between">
+            <IntervalSelector
+              currentInterval={intervalType}
+              currentDate={targetDate}
+            />
+
+            <LlmCopyButton metrics={metrics} summaryContent={summaryContent} />
           </div>
-          <SummaryContent summaryContentPromise={summaryContentPromise} />
+          <DateNavigation {...navigation} />
+
+          <div className="mb-8 space-y-6">
+            <StatCardsDisplay metrics={metrics} />
+            <CodeChangesDisplay metrics={metrics} />
+          </div>
+          <SummaryContent summaryContent={summaryContent} />
         </div>
       </div>
     );
