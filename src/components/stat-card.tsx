@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -18,6 +19,7 @@ interface StatCardProps {
   className?: string;
   modalContent?: React.ReactNode;
   modalTitle?: string;
+  modalDescription?: string;
 }
 
 export function StatCard({
@@ -28,6 +30,7 @@ export function StatCard({
   className,
   modalContent,
   modalTitle,
+  modalDescription,
 }: StatCardProps) {
   const HeaderContent = (
     <div className="flex w-full items-center justify-between">
@@ -64,8 +67,11 @@ export function StatCard({
           </button>
         </DialogTrigger>
         <DialogContent className="gap-0 p-0 sm:max-w-[525px]">
-          <DialogHeader className="border-b border-border p-6">
+          <DialogHeader className="flex justify-center border-b border-border px-6 py-4 text-start">
             <DialogTitle>{modalTitle || title}</DialogTitle>
+            {modalDescription && (
+              <DialogDescription>{modalDescription}</DialogDescription>
+            )}
           </DialogHeader>
           {modalContent}
         </DialogContent>

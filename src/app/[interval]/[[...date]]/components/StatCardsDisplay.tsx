@@ -10,7 +10,7 @@ import {
   GitMerge,
   CheckCircle,
 } from "lucide-react";
-import { getIntervalTypeTitle } from "@/lib/date-utils";
+import { formatTimeframeTitle } from "@/lib/date-utils";
 import React from "react";
 import ContributorsListModalContent from "./ContributorsListModalContent";
 import PullRequestsListModalContent from "./PullRequestsListModalContent";
@@ -26,18 +26,21 @@ interface Contributor {
 }
 
 export async function StatCardsDisplay({ metrics }: StatCardsDisplayProps) {
-  const intervalTypeTitle = getIntervalTypeTitle(metrics.interval.intervalType);
+  const timeframeTitle = formatTimeframeTitle(
+    metrics.interval.intervalStart,
+    metrics.interval.intervalType,
+  );
 
   return (
     <div className="grid gap-6 md:grid-cols-3">
       <StatCard
         title="Contributors"
         icon={Users}
-        modalTitle={`Top Contributors (${intervalTypeTitle})`}
+        modalTitle="Contributors"
+        modalDescription={timeframeTitle}
         modalContent={
           <ContributorsListModalContent
             contributors={metrics.topContributors}
-            intervalType={intervalTypeTitle}
           />
         }
       >
@@ -72,7 +75,8 @@ export async function StatCardsDisplay({ metrics }: StatCardsDisplayProps) {
         title="Pull Requests"
         icon={GitPullRequest}
         bgColor="bg-blue-500/10 group-hover:bg-blue-500/20"
-        modalTitle={`Top Pull Requests (${intervalTypeTitle})`}
+        modalTitle="Pull Requests"
+        modalDescription={timeframeTitle}
         modalContent={
           <PullRequestsListModalContent
             pullRequests={metrics.topPullRequests}
@@ -101,7 +105,8 @@ export async function StatCardsDisplay({ metrics }: StatCardsDisplayProps) {
         title="Issues"
         icon={MessageCircleWarning}
         bgColor="bg-amber-500/10 group-hover:bg-amber-500/20"
-        modalTitle={`Top Issues (${intervalTypeTitle})`}
+        modalTitle="Issues"
+        modalDescription={timeframeTitle}
         modalContent={<IssuesListModalContent issues={metrics.topIssues} />}
       >
         <div className="flex items-center justify-between">

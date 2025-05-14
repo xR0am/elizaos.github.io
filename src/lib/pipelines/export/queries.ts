@@ -56,12 +56,12 @@ export async function getTopIssues(params: QueryParams = {}, limit = 5) {
     // Include issues that are either:
     // 1. Currently open, or
     // 2. Were closed after the end date (meaning they were open during the period)
-    params.dateRange
-      ? sql`(${rawIssues.state} = 'OPEN' OR ${rawIssues.closedAt} > ${params.dateRange.endDate})`
-      : sql`${rawIssues.state} = 'OPEN'`,
+    // params.dateRange
+    //   ? sql`(${rawIssues.state} = 'OPEN' OR ${rawIssues.closedAt} > ${params.dateRange.endDate})`
+    //   : sql`${rawIssues.state} = 'OPEN'`,
     ...buildCommonWhereConditions(params, rawIssues, [
       "createdAt",
-      "updatedAt",
+      // "updatedAt",
       "closedAt",
     ]),
   ];

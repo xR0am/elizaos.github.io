@@ -11,7 +11,7 @@ export default function PullRequestsListModalContent({
   pullRequests,
 }: PullRequestsListModalContentProps) {
   return (
-    <ScrollArea className="max-h-[80vh]">
+    <ScrollArea className="max-h-[80svh]">
       <div className="divide-y">
         {pullRequests.map((pr) => (
           <ActivityItem
