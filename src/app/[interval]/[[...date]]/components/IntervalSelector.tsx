@@ -39,7 +39,11 @@ export function IntervalSelector({
         {intervals.map((interval) => {
           const Icon = interval.icon;
           return (
-            <TabsTrigger key={interval.type} value={interval.type}>
+            <TabsTrigger
+              key={interval.type}
+              value={interval.type}
+              className="rounded-md data-[state=active]:text-primary"
+            >
               <Icon className="mr-1 h-4 w-4" />
               {interval.label}
             </TabsTrigger>
