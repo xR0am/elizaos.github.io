@@ -128,13 +128,17 @@ export default async function IntervalSummaryPage({ params }: PageProps) {
     return (
       <div className="container mx-auto px-6 py-8 md:px-8">
         <div className="mx-auto max-w-4xl">
-          <div className="mb-4 flex justify-between">
+          <div className="mb-4 flex flex-col justify-between sm:flex-row">
             <IntervalSelector
               currentInterval={intervalType}
               currentDate={targetDate}
             />
 
-            <LlmCopyButton metrics={metrics} summaryContent={summaryContent} />
+            <LlmCopyButton
+              metrics={metrics}
+              summaryContent={summaryContent}
+              className="self-end sm:self-start"
+            />
           </div>
           <DateNavigation {...navigation} />
 

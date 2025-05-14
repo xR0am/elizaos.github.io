@@ -13,13 +13,19 @@ import { Copy, Check, ChevronDown } from "lucide-react";
 import { formatDataForLLM } from "@/lib/llm-formatter";
 import type { IntervalMetrics } from "@/app/[interval]/[[...date]]/queries";
 import { toast } from "sonner";
+import { cn } from "@/lib/utils";
 
 interface LlmCopyButtonProps {
   metrics: IntervalMetrics;
   summaryContent: string | null;
+  className?: string;
 }
 
-export function LlmCopyButton({ metrics, summaryContent }: LlmCopyButtonProps) {
+export function LlmCopyButton({
+  metrics,
+  summaryContent,
+  className,
+}: LlmCopyButtonProps) {
   const [includeStats, setIncludeStats] = useState(true);
   const [includeSummary, setIncludeSummary] = useState(true);
   const [includePrData, setIncludePrData] = useState(true);
@@ -54,7 +60,7 @@ export function LlmCopyButton({ metrics, summaryContent }: LlmCopyButtonProps) {
   };
 
   return (
-    <div className="flex">
+    <div className={cn("flex", className)}>
       <Button
         variant="outline"
         className="flex items-center gap-2 rounded-r-none border-r-0"

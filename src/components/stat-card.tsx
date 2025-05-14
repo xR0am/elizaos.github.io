@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Dialog,
@@ -42,10 +42,10 @@ export function StatCard({
 
   const cardInnerContent = (
     <>
-      <CardHeader className={cn(bgColor, "py-4 transition-colors")}>
+      <CardHeader className={cn(bgColor, "w-full py-4 transition-colors")}>
         <CardTitle className="text-sm font-medium">{HeaderContent}</CardTitle>
       </CardHeader>
-      <CardContent className="flex-grow p-4">{children}</CardContent>
+      <CardContent className="w-full flex-grow p-4">{children}</CardContent>
     </>
   );
 

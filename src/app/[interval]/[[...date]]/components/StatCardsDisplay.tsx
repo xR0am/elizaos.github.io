@@ -11,9 +11,10 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { getIntervalTypeTitle } from "@/lib/date-utils";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { ActivityItem } from "@/components/activity-item";
-import { ContributorItem } from "@/components/contributor-item";
+import React from "react";
+import ContributorsListModalContent from "./ContributorsListModalContent";
+import PullRequestsListModalContent from "./PullRequestsListModalContent";
+import IssuesListModalContent from "./IssuesListModalContent";
 
 interface StatCardsDisplayProps {
   metrics: IntervalMetrics;
@@ -22,107 +23,6 @@ interface StatCardsDisplayProps {
 interface Contributor {
   username: string;
   totalScore: number;
-}
-
-function ContributorsListModalContent({
-  contributors,
-  intervalType,
-}: {
-  contributors: Contributor[];
-  intervalType: string;
-}) {
-  return (
-    <ScrollArea className="max-h-[80vh]">
-      <div className="space-y-3 px-4">
-        {contributors.map((contributor) => (
-          <ContributorItem
-            key={contributor.username}
-            username={contributor.username}
-            href={`/profile/${contributor.username}`}
-            stats={`${intervalType} XP: ${contributor.totalScore.toFixed(0)}`}
-          />
-        ))}
-        {contributors.length === 0 && (
-          <p className="p-4 text-center text-sm text-muted-foreground">
-            No contributors to display.
-          </p>
-        )}
-      </div>
-    </ScrollArea>
-  );
-}
-
-function PullRequestsListModalContent({
-  pullRequests,
-}: {
-  pullRequests: IntervalMetrics["topPullRequests"];
-}) {
-  return (
-    <ScrollArea className="max-h-[80vh]">
-      <div className="divide-y">
-        {pullRequests.map((pr) => (
-          <ActivityItem
-            key={pr.id}
-            id={pr.id}
-            title={pr.title}
-            author={pr.author}
-            className="px-4"
-            number={pr.number}
-            href={`https://github.com/${pr.repository}/pull/${pr.number}`}
-            icon={
-              pr.mergedAt ? (
-                <GitMerge className="h-4 w-4 text-purple-500" />
-              ) : (
-                <CircleDot className="h-4 w-4 text-green-500" />
-              )
-            }
-          />
-        ))}
-        {pullRequests.length === 0 && (
-          <p className="p-4 text-center text-sm text-muted-foreground">
-            No pull requests to display.
-          </p>
-        )}
-      </div>
-    </ScrollArea>
-  );
-}
-
-function IssuesListModalContent({
-  issues,
-}: {
-  issues: IntervalMetrics["topIssues"];
-}) {
-  return (
-    <ScrollArea className="max-h-[80vh]">
-      <div className="divide-y px-0">
-        {issues.map((issue) => (
-          <ActivityItem
-            key={issue.id}
-            id={issue.id}
-            title={issue.title}
-            className="px-4"
-            author={issue.author}
-            number={issue.number}
-            href={`https://github.com/${issue.repository}/issues/${issue.number}`}
-            icon={
-              issue.state === "closed" || issue.closedAt ? (
-                <CheckCircle className="h-4 w-4 text-green-500" />
-              ) : (
-                <CircleDot className="h-4 w-4 text-amber-500" />
-              )
-            }
-            metadata={`${issue.commentCount} comments`}
-          />
-        ))}
-        {issues.length === 0 && (
-          <p className="p-4 text-center text-sm text-muted-foreground">
-            No issues to display.
-          </p>
-        )}
-      </div>
-    </ScrollArea>
-  );
 }
 
 export async function StatCardsDisplay({ metrics }: StatCardsDisplayProps) {
@@ -141,7 +41,7 @@ export async function StatCardsDisplay({ metrics }: StatCardsDisplayProps) {
           />
         }
       >
-        <div className="flex items-center justify-between">
+        <div className="flex w-full items-center justify-between">
           <div className="text-3xl font-bold">{metrics.activeContributors}</div>
           <div className="flex -space-x-2">
             {metrics.topContributors
