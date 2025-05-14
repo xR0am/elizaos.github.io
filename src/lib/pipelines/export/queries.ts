@@ -33,6 +33,7 @@ export async function getTopPullRequests(params: QueryParams = {}, limit = 5) {
       title: rawPullRequests.title,
       author: rawPullRequests.author,
       number: rawPullRequests.number,
+      body: rawPullRequests.body,
       repository: rawPullRequests.repository,
       createdAt: rawPullRequests.createdAt,
       mergedAt: rawPullRequests.mergedAt,
@@ -90,6 +91,7 @@ export async function getTopIssues(params: QueryParams = {}, limit = 5) {
       author: rawIssues.author,
       number: rawIssues.number,
       repository: rawIssues.repository,
+      body: rawIssues.body,
       createdAt: rawIssues.createdAt,
       closedAt: rawIssues.closedAt,
       state: rawIssues.state,
@@ -207,7 +209,7 @@ export async function getProjectMetrics(params: QueryParams = {}) {
       repository,
       dateRange,
     },
-    20,
+    100,
   );
 
   // Get PR files for merged PRs in this period

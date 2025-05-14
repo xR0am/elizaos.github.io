@@ -21,11 +21,6 @@ export function DateNavigation({
 }: DateNavigationProps) {
   return (
     <div className="mb-6">
-      <IntervalSelector
-        currentInterval={intervalType}
-        currentDate={currentDate}
-      />
-
       <div className="flex items-center justify-between">
         <NavigationButton
           href={prevDate ? `/${intervalType}/${prevDate}` : "#"}

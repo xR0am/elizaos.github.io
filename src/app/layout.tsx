@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Navigation } from "@/components/navigation";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,12 +28,13 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="min-h-screen bg-background">
-            <header className="container mx-auto p-4 flex justify-between items-center">
+            <header className="container mx-auto flex items-center justify-between p-4">
               <Navigation />
               <ThemeToggle />
             </header>
             {children}
           </div>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
