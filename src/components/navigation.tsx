@@ -102,9 +102,11 @@ export function Navigation() {
             </Avatar>
             {user.login}
           </DropdownMenuLabel>
-          <DropdownMenuItem className="py-3 text-base">
-            <LinkIcon className="mr-2 h-4 w-4" />
-            <span>Link Wallets</span>
+          <DropdownMenuItem asChild className="py-3 text-base">
+            <Link href="/profile/edit" className="flex items-center gap-2">
+              <LinkIcon className="h-4 w-4" />
+              <span>Link Wallets</span>
+            </Link>
           </DropdownMenuItem>
         </>
       ) : (

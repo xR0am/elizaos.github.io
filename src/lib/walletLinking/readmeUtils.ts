@@ -1,97 +1,128 @@
-export interface WalletAddresses {
-  ethAddress: string;
-  solAddress: string;
-}
+import { z } from "zod";
 
-const ETH_REGEX = /Ethereum:.*?<code>(.*?)<\/code>/s;
-const SOL_REGEX = /Solana:.*?<code>(.*?)<\/code>/s;
-const NOT_SET_PLACEHOLDER = "Not set";
+export const LinkedWalletSchema = z.object({
+  chain: z.string().min(1).toLowerCase(),
+  address: z.string().min(1),
+  signature: z.string().min(1).optional(),
+});
 
-const WALLET_SECTION_BEGIN_MARKER = "<!-- BEGIN ELIZAOS_PROFILE_WALLETS -->";
-const WALLET_SECTION_END_MARKER = "<!-- END ELIZAOS_PROFILE_WALLETS -->";
+export const WalletLinkingDataSchema = z.object({
+  lastUpdated: z.string().datetime(),
+  wallets: z.array(LinkedWalletSchema),
+});
+
+export type LinkedWallet = z.infer<typeof LinkedWalletSchema>;
+export type WalletLinkingData = z.infer<typeof WalletLinkingDataSchema>;
+
+const WALLET_SECTION_BEGIN_MARKER = "<!-- WALLET-LINKING-BEGIN";
+const WALLET_SECTION_END_MARKER = "WALLET-LINKING-END -->";
 
 /**
- * Parses Ethereum and Solana wallet addresses from a given README content string.
- * Addresses are expected to be within specific HTML structures.
+ * Parses wallet linking data from a given README content string.
+ * Data is expected to be in JSON format within specific comment markers.
  * @param readmeContent The string content of the README file.
- * @returns An object containing the extracted ethAddress and solAddress.
- *          Returns empty strings if addresses are not found or match the "Not set" placeholder.
+ * @returns The parsed and validated wallet linking data, or null if no valid data found.
  */
-export function parseWalletAddressesFromReadme(
+export function parseWalletLinkingDataFromReadme(
   readmeContent: string,
-): WalletAddresses {
+): WalletLinkingData | null {
   const startIndex = readmeContent.indexOf(WALLET_SECTION_BEGIN_MARKER);
   const endIndex = readmeContent.indexOf(WALLET_SECTION_END_MARKER);
 
-  let walletSectionContent = "";
-  if (startIndex !== -1 && endIndex !== -1 && endIndex > startIndex) {
-    walletSectionContent = readmeContent.substring(
-      startIndex + WALLET_SECTION_BEGIN_MARKER.length,
-      endIndex,
-    );
+  if (startIndex === -1 || endIndex === -1 || endIndex <= startIndex) {
+    return null;
   }
 
-  if (!walletSectionContent) {
-    return { ethAddress: "", solAddress: "" };
+  const walletSectionContent = readmeContent
+    .substring(startIndex + WALLET_SECTION_BEGIN_MARKER.length, endIndex)
+    .trim();
+
+  try {
+    // Parse the JSON directly from the comment content
+    const rawData = JSON.parse(walletSectionContent);
+
+    // Validate the data structure using Zod
+    const result = WalletLinkingDataSchema.safeParse(rawData);
+
+    if (!result.success) {
+      console.error("Invalid wallet linking data:", result.error);
+      return null;
+    }
+
+    return result.data;
+  } catch (error) {
+    console.error("Error parsing wallet linking data:", error);
+    return null;
   }
-
-  const ethMatch = walletSectionContent.match(ETH_REGEX);
-  const solMatch = walletSectionContent.match(SOL_REGEX);
-
-  const ethAddress =
-    ethMatch && ethMatch[1] && ethMatch[1].trim() !== NOT_SET_PLACEHOLDER
-      ? ethMatch[1].trim()
-      : "";
-  const solAddress =
-    solMatch && solMatch[1] && solMatch[1].trim() !== NOT_SET_PLACEHOLDER
-      ? solMatch[1].trim()
-      : "";
-
-  return { ethAddress, solAddress };
 }
 
 /**
- * Generates an updated README content string with the provided wallet addresses.
+ * Generates an updated README content string with the provided wallet linking data.
  * It will replace an existing wallet section if found, or append a new one.
+ * The wallet information is stored as JSON in a hidden HTML comment.
  * @param currentReadme The current content of the README file.
- * @param ethAddress The Ethereum address to include (can be empty).
- * @param solAddress The Solana address to include (can be empty).
+ * @param wallets Array of wallet information to store.
  * @returns The updated README content string.
  */
 export function generateUpdatedReadmeWithWalletInfo(
   currentReadme: string,
-  ethAddress: string,
-  solAddress: string,
-): string {
-  const newEthAddress = ethAddress.trim();
-  const newSolAddress = solAddress.trim();
+  wallets: LinkedWallet[],
+): { updatedReadme: string; walletData: WalletLinkingData } {
+  // Validate wallets array using Zod before generating content
+  const validatedWallets = z.array(LinkedWalletSchema).parse(wallets);
 
-  const walletSection = `
-${WALLET_SECTION_BEGIN_MARKER}
-<div id="elizaos-linked-wallets" style="margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px;">
-  <h3>My Wallet Addresses</h3>
-  <p><strong>Ethereum:</strong> <code>${newEthAddress || NOT_SET_PLACEHOLDER}</code></p>
-  <p><strong>Solana:</strong> <code>${newSolAddress || NOT_SET_PLACEHOLDER}</code></p>
-</div>
-${WALLET_SECTION_END_MARKER}
-`;
+  const walletData: WalletLinkingData = {
+    lastUpdated: new Date().toISOString(),
+    wallets: validatedWallets.map((wallet) => ({
+      chain: wallet.chain.toLowerCase().trim(),
+      address: wallet.address.trim(),
+      ...(wallet.signature ? { signature: wallet.signature.trim() } : {}),
+    })),
+  };
+
+  // Validate the complete data structure
+  const validatedData = WalletLinkingDataSchema.parse(walletData);
+
+  const walletSection = `${WALLET_SECTION_BEGIN_MARKER}
+${JSON.stringify(validatedData, null, 2)}
+${WALLET_SECTION_END_MARKER}`;
 
   const startIndex = currentReadme.indexOf(WALLET_SECTION_BEGIN_MARKER);
   const endIndex = currentReadme.indexOf(WALLET_SECTION_END_MARKER);
 
   if (startIndex !== -1 && endIndex !== -1 && endIndex > startIndex) {
-    return (
+    const updatedReadme =
       currentReadme.substring(0, startIndex) +
-      walletSection.trim() + // Use trim to avoid double newlines if walletSection has leading/trailing ones
-      currentReadme.substring(endIndex + WALLET_SECTION_END_MARKER.length)
-    );
+      walletSection +
+      currentReadme.substring(endIndex + WALLET_SECTION_END_MARKER.length);
+    return { updatedReadme, walletData };
   } else {
     const separator =
       currentReadme.trim() && !currentReadme.endsWith("\n")
-        ? "\n\n" // Add two newlines if content exists and doesn't end with one
+        ? "\n\n"
         : currentReadme.trim()
-          ? "\n" // Add one newline if content exists and ends with one (or for consistency)
-          : ""; // No separator if readme is empty
-    return currentReadme.trim() + separator + walletSection.trim();
+          ? "\n"
+          : "";
+    return {
+      updatedReadme: currentReadme.trim() + separator + walletSection,
+      walletData,
+    };
   }
+}
+
+/**
+ * Helper function to get a wallet address for a specific chain
+ * @param data The wallet linking data
+ * @param chain The chain to look for (case insensitive)
+ * @returns The wallet address or empty string if not found
+ */
+export function getWalletAddressForChain(
+  data: WalletLinkingData | null,
+  chain: string,
+): string {
+  if (!data) return "";
+  const wallet = data.wallets.find(
+    (w) => w.chain.toLowerCase() === chain.toLowerCase(),
+  );
+  return wallet?.address || "";
 }

@@ -5,10 +5,14 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import * as githubService from "@/lib/walletLinking/githubService";
 import {
-  parseWalletAddressesFromReadme,
   generateUpdatedReadmeWithWalletInfo,
+  LinkedWallet,
+  WalletLinkingData,
+  getWalletAddressForChain,
+  LinkedWalletSchema,
 } from "@/lib/walletLinking/readmeUtils";
 import { fetchUserWalletAddressesAndReadme } from "@/lib/walletLinking/getUserWalletAddresses";
+import { z } from "zod";
 
 export function useProfileEditor() {
   const { user, token, isLoading: authLoading } = useAuth();
@@ -19,23 +23,11 @@ export function useProfileEditor() {
   const [profileRepoExists, setProfileRepoExists] = useState<boolean | null>(
     null,
   );
-  const [initialEthAddress, setInitialEthAddress] = useState("");
-  const [initialSolAddress, setInitialSolAddress] = useState("");
-  const [isProcessing, setIsProcessing] = useState(false); // For form submissions, repo creation
-  const [pageLoading, setPageLoading] = useState(true); // For initial data load
+  const [walletData, setWalletData] = useState<WalletLinkingData | null>(null);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
-
-  const updateLocalWalletAddresses = useCallback((content: string) => {
-    const { ethAddress, solAddress } = parseWalletAddressesFromReadme(content);
-    console.log("updateLocalWalletAddresses", {
-      content,
-      ethAddress,
-      solAddress,
-    });
-    setInitialEthAddress(ethAddress);
-    setInitialSolAddress(solAddress);
-  }, []);
 
   const fetchProfileData = useCallback(
     async (currentLogin: string, currentToken: string) => {
@@ -50,8 +42,7 @@ export function useProfileEditor() {
         setProfileRepoExists(data.profileRepoExists);
         setReadmeContent(data.readmeContent === null ? "" : data.readmeContent);
         setReadmeSha(data.readmeSha);
-        setInitialEthAddress(data.ethAddress);
-        setInitialSolAddress(data.solAddress);
+        setWalletData(data.walletData);
       } catch (err: unknown) {
         console.error("Error in fetchProfileData:", err);
         setError(
@@ -62,8 +53,7 @@ export function useProfileEditor() {
         setProfileRepoExists(false);
         setReadmeContent("");
         setReadmeSha(undefined);
-        setInitialEthAddress("");
-        setInitialSolAddress("");
+        setWalletData(null);
       }
       setPageLoading(false);
     },
@@ -111,7 +101,7 @@ export function useProfileEditor() {
   }, [user, token, fetchProfileData]);
 
   const handleLinkWallets = useCallback(
-    async (ethAddress: string, solAddress: string) => {
+    async (wallets: LinkedWallet[]) => {
       if (!user || !user.login || !token) {
         setError("User not authenticated.");
         return;
@@ -120,14 +110,14 @@ export function useProfileEditor() {
       setError(null);
       setSuccessMessage(null);
 
-      const currentReadme = readmeContent || "";
-      const updatedReadmeContent = generateUpdatedReadmeWithWalletInfo(
-        currentReadme,
-        ethAddress,
-        solAddress,
-      );
-
       try {
+        // Validate wallets before proceeding
+        const validatedWallets = z.array(LinkedWalletSchema).parse(wallets);
+
+        const currentReadme = readmeContent || "";
+        const { updatedReadme, walletData } =
+          generateUpdatedReadmeWithWalletInfo(currentReadme, validatedWallets);
+        setWalletData(walletData);
         if (!profileRepoExists) {
           await handleCreateProfileRepo();
         }
@@ -140,20 +130,30 @@ export function useProfileEditor() {
           user.login,
           "README.md",
           "Update linked wallet addresses via ElizaOS Profile",
-          updatedReadmeContent,
+          updatedReadme,
           readmeSha,
         );
         setReadmeSha(response.content.sha);
-        setReadmeContent(updatedReadmeContent);
-        updateLocalWalletAddresses(updatedReadmeContent);
+        setReadmeContent(updatedReadme);
         setSuccessMessage("Wallet addresses updated successfully!");
       } catch (err: unknown) {
-        console.error("Error updating README:", err);
-        setError(
-          err instanceof Error
-            ? err.message || "Failed to update wallets."
-            : "Unknown error updating wallets.",
-        );
+        console.error("Error updating wallets:", err);
+        if (err instanceof z.ZodError) {
+          // Format Zod validation errors in a user-friendly way
+          const errors = err.errors
+            .map((e) => {
+              const path = e.path.join(".");
+              return `${path ? path + ": " : ""}${e.message}`;
+            })
+            .join("; ");
+          setError(`Invalid wallet data: ${errors}`);
+        } else {
+          setError(
+            err instanceof Error
+              ? err.message || "Failed to update wallets."
+              : "Unknown error updating wallets.",
+          );
+        }
       }
       setIsProcessing(false);
     },
@@ -163,9 +163,16 @@ export function useProfileEditor() {
       readmeContent,
       readmeSha,
       profileRepoExists,
-      updateLocalWalletAddresses,
       handleCreateProfileRepo,
     ],
+  );
+
+  // Helper function to get a wallet address for a specific chain
+  const getWalletAddress = useCallback(
+    (chain: string): string => {
+      return getWalletAddressForChain(walletData, chain);
+    },
+    [walletData],
   );
 
   return {
@@ -175,8 +182,7 @@ export function useProfileEditor() {
     readmeContent,
     readmeSha,
     profileRepoExists,
-    initialEthAddress,
-    initialSolAddress,
+    walletData,
     isProcessing,
     pageLoading,
     error,
@@ -185,5 +191,6 @@ export function useProfileEditor() {
     setSuccessMessage,
     handleCreateProfileRepo,
     handleLinkWallets,
+    getWalletAddress,
   };
 }

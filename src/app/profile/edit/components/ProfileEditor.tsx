@@ -1,7 +1,7 @@
 "use client";
 
 // Imports moved from page.tsx that are specific to this client component
-import { useProfileEditor } from "../hooks/useProfileEditor"; // Adjusted path
+import { useProfileEditor } from "@/lib/walletLinking/useProfileEditor"; // Adjusted path
 import {
   Card,
   CardContent,
@@ -19,8 +19,7 @@ export default function ProfileEditor() {
   const {
     user,
     profileRepoExists,
-    initialEthAddress,
-    initialSolAddress,
+    walletData,
     isProcessing,
     pageLoading,
     error,
@@ -55,7 +54,7 @@ export default function ProfileEditor() {
           <CardTitle>Link Your Wallet Addresses</CardTitle>
           <CardDescription>
             Add or update your Ethereum and Solana wallet addresses. This
-            information will be stored in a special section of your GitHub
+            information will be stored in a hidden section of your GitHub
             profile README.md.
           </CardDescription>
         </CardHeader>
@@ -96,10 +95,9 @@ export default function ProfileEditor() {
               {profileRepoExists && (
                 <>
                   <WalletLinkForm
-                    initialEthAddress={initialEthAddress}
-                    initialSolAddress={initialSolAddress}
+                    wallets={walletData?.wallets || []}
                     onSubmit={handleLinkWallets}
-                    isProcessing={isProcessing || pageLoading} // Disable form while page is loading too
+                    isProcessing={isProcessing || pageLoading}
                   />
                   <p className="mt-4 text-xs text-muted-foreground">
                     Note: This will create or update the README.md file in your

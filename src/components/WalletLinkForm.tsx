@@ -6,11 +6,11 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { isAddress } from "viem"; // For ETH address validation
+import { LinkedWallet } from "@/lib/walletLinking/readmeUtils";
 
 interface WalletLinkFormProps {
-  initialEthAddress?: string;
-  initialSolAddress?: string;
-  onSubmit: (ethAddress: string, solAddress: string) => Promise<void>;
+  wallets: LinkedWallet[];
+  onSubmit: (wallets: LinkedWallet[]) => Promise<void>;
   isProcessing: boolean;
 }
 
@@ -19,13 +19,12 @@ interface WalletLinkFormProps {
 const SOL_ADDRESS_REGEX = /^[1-9A-HJ-NP-Za-km-z]{32,44}$/;
 
 export function WalletLinkForm({
-  initialEthAddress = "",
-  initialSolAddress = "",
+  wallets = [],
   onSubmit,
   isProcessing,
 }: WalletLinkFormProps) {
-  const [ethAddress, setEthAddress] = useState(initialEthAddress);
-  const [solAddress, setSolAddress] = useState(initialSolAddress);
+  const [ethAddress, setEthAddress] = useState("");
+  const [solAddress, setSolAddress] = useState("");
 
   const [ethAddressError, setEthAddressError] = useState("");
   const [solAddressError, setSolAddressError] = useState("");
@@ -33,30 +32,28 @@ export function WalletLinkForm({
   const [isEthValid, setIsEthValid] = useState(true);
   const [isSolValid, setIsSolValid] = useState(true);
 
-  // Determine if this is an update operation based on initial props
-  const isUpdateOperation = !!(initialEthAddress || initialSolAddress);
-
+  // Initialize form with existing wallet addresses
   useEffect(() => {
-    setEthAddress(initialEthAddress);
-    if (initialEthAddress === "" || isAddress(initialEthAddress)) {
+    const ethWallet = wallets.find((w) => w.chain === "ethereum");
+    const solWallet = wallets.find((w) => w.chain === "solana");
+
+    setEthAddress(ethWallet?.address || "");
+    setSolAddress(solWallet?.address || "");
+
+    if (!ethWallet?.address || isAddress(ethWallet.address)) {
       setIsEthValid(true);
       setEthAddressError("");
     } else {
       setIsEthValid(false);
-      // Error will be set on change by the other effect if user types
     }
-  }, [initialEthAddress]);
 
-  useEffect(() => {
-    setSolAddress(initialSolAddress);
-    if (initialSolAddress === "" || SOL_ADDRESS_REGEX.test(initialSolAddress)) {
+    if (!solWallet?.address || SOL_ADDRESS_REGEX.test(solWallet.address)) {
       setIsSolValid(true);
       setSolAddressError("");
     } else {
       setIsSolValid(false);
-      // Error will be set on change by the other effect if user types
     }
-  }, [initialSolAddress]);
+  }, [wallets]);
 
   useEffect(() => {
     if (ethAddress === "") {
@@ -82,18 +79,38 @@ export function WalletLinkForm({
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Double check validity before submitting, though button should be disabled
+    // Double check validity before submitting
     if (!isEthValid || !isSolValid) {
       return;
     }
-    await onSubmit(ethAddress, solAddress);
+
+    const updatedWallets: LinkedWallet[] = [];
+
+    if (ethAddress) {
+      updatedWallets.push({
+        chain: "ethereum",
+        address: ethAddress,
+      });
+    }
+
+    if (solAddress) {
+      updatedWallets.push({
+        chain: "solana",
+        address: solAddress,
+      });
+    }
+
+    await onSubmit(updatedWallets);
   };
 
   const hasValuesChanged =
-    ethAddress !== initialEthAddress || solAddress !== initialSolAddress;
+    ethAddress !==
+      (wallets.find((w) => w.chain === "ethereum")?.address || "") ||
+    solAddress !== (wallets.find((w) => w.chain === "solana")?.address || "");
   const canSubmit =
     isEthValid && isSolValid && !isProcessing && hasValuesChanged;
 
+  const isUpdateOperation = wallets.length > 0;
   const buttonTextBase = isUpdateOperation ? "Update" : "Save";
   const buttonText = isProcessing
     ? `${buttonTextBase === "Update" ? "Updating" : "Saving"}...`
