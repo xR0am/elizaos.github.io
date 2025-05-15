@@ -1,4 +1,4 @@
-import UserProfile from "@/components/user-profile";
+import UserProfile from "@/app/profile/[username]/components/UserProfile";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getUserProfile } from "./queries";

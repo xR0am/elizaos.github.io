@@ -4,7 +4,9 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Navigation } from "@/components/navigation";
+import { AuthControls } from "@/components/AuthControls";
 import { Toaster } from "@/components/ui/sonner";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,13 +29,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="min-h-screen bg-background">
-            <header className="container mx-auto flex items-center justify-between p-4">
-              <Navigation />
-              <ThemeToggle />
-            </header>
-            {children}
-          </div>
+          <AuthProvider>
+            <Navigation />
+            <div className="min-h-screen">{children}</div>
+          </AuthProvider>
           <Toaster />
         </ThemeProvider>
       </body>

@@ -1,7 +1,7 @@
 ---
 description: 
-globs: *.ts,*.tsx
-alwaysApply: false
+globs: 
+alwaysApply: true
 ---
 
 # Typescript Rules
@@ -11,3 +11,7 @@ alwaysApply: false
 - Before declaring new Interfaces, search the codebase and types files to see if there's existing type definitions / zod schemas you can use
 - avoid adding comments to code that is self explanatory
 - For testing, use bun.sh test runner, and import from bun:test  (https://bun.sh/docs/cli/test)
+
+# UI components
+
+- The project is using tailwind, shadcn/ui for ui components. When needing a new shadcn component that isnt installed, dont add it manually, instead use the shadcn cli with `bunx shadcn@latest`.

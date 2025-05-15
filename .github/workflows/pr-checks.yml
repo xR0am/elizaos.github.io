@@ -71,7 +71,8 @@ jobs:
         env:
           NEXT_TELEMETRY_DISABLED: 1
           CI: true
-
+          NEXT_PUBLIC_GITHUB_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_GITHUB_CLIENT_ID }}
+          NEXT_PUBLIC_AUTH_WORKER_URL: ${{ secrets.NEXT_PUBLIC_AUTH_WORKER_URL }}
       # Cleanup worktree (always runs)
       - name: Cleanup
         if: always()
