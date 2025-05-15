@@ -159,15 +159,17 @@ export async function getUserProfile(username: string) {
   const githubToken = process.env.GITHUB_TOKEN;
   if (githubToken) {
     try {
-      const walletData = await fetchUserWalletAddressesAndReadme(
+      const { walletData } = await fetchUserWalletAddressesAndReadme(
         githubToken,
         username,
       );
-      if (walletData.ethAddress) {
-        ethAddress = walletData.ethAddress;
-      }
-      if (walletData.solAddress) {
-        solAddress = walletData.solAddress;
+      if (walletData) {
+        ethAddress = walletData.wallets.find(
+          (wallet) => wallet.chain === "ethereum",
+        )?.address;
+        solAddress = walletData.wallets.find(
+          (wallet) => wallet.chain === "solana",
+        )?.address;
       }
     } catch (error) {
       console.warn(
