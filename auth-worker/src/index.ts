@@ -120,11 +120,15 @@ async function handleCallback(request: Request, env: Env): Promise<Response> {
     }
 
     // Return the token data to the client
+    const expiresInMilliseconds = 3 * 60 * 60 * 1000; // 3 hours
+    const expiresAt = Date.now() + expiresInMilliseconds;
+
     return new Response(
       JSON.stringify({
         access_token: tokenData.access_token,
         token_type: tokenData.token_type,
         scope: tokenData.scope,
+        expires_at: expiresAt,
       }),
       {
         status: 200,

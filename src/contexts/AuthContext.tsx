@@ -42,9 +42,18 @@ export function AuthProvider({ children }: AuthProviderProps) {
   useEffect(() => {
     const storedToken = localStorage.getItem("github_token");
     const storedUser = localStorage.getItem("github_user");
+    const storedExpiresAt = localStorage.getItem("github_token_expires_at");
     let userRestoredSynchronously = false;
 
-    if (storedToken) {
+    if (storedToken && storedExpiresAt) {
+      const expiresAt = parseInt(storedExpiresAt, 10);
+      if (Date.now() > expiresAt) {
+        // Token has expired
+        logout(); // This will clear token, user, and expires_at
+        setIsLoading(false);
+        return;
+      }
+
       setToken(storedToken);
 
       if (storedUser) {
@@ -179,11 +188,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
       }
 
       const data = await response.json();
-      console.log("Token data:", data);
       // Check if the token has the required scope
       if (!data.scope || !data.scope.includes("public_repo")) {
         throw new Error(
-          "Insufficient permissions. Please authorize the application with the 'repo' scope.",
+          "Insufficient permissions. Please authorize the application with the 'public_repo' scope.",
         );
       }
 
@@ -191,9 +199,15 @@ export function AuthProvider({ children }: AuthProviderProps) {
       const accessToken = data.access_token;
       setToken(accessToken);
       localStorage.setItem("github_token", accessToken);
+      if (data.expires_at) {
+        localStorage.setItem(
+          "github_token_expires_at",
+          data.expires_at.toString(),
+        );
+      }
 
       await fetchUserData(accessToken);
-      console.log("Fetching user data complete", { accessToken });
+      console.log("Fetching user data somplete", { accessToken });
       // Redirect to the home page or another appropriate page
       window.location.href = "/";
     } catch (error) {
@@ -214,6 +228,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     localStorage.removeItem("github_token");
     localStorage.removeItem("github_user");
     localStorage.removeItem("oauth_state");
+    localStorage.removeItem("github_token_expires_at"); // Ensure this is cleared
   };
 
   const value = {
