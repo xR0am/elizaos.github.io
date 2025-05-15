@@ -73,6 +73,8 @@ This phase involves setting up the Next.js frontend to handle the user-facing pa
 2.  **Variables**:
     - `NEXT_PUBLIC_GITHUB_CLIENT_ID`: Your GitHub OAuth App's Client ID.
     - `NEXT_PUBLIC_AUTH_WORKER_URL`: The full URL of your deployed Cloudflare Worker.
+    - `NEXT_PUBLIC_APP_URL`: The base URL of your Next.js application (e.g., `http://localhost:3000` for dev, `https://elizaos.github.io` for prod).
+    - `NEXT_PUBLIC_REDIRECT_URI`: The callback URL _within your Next.js app_ where GitHub will redirect the user after authorization (e.g., `${NEXT_PUBLIC_APP_URL}/auth/callback`).
 
 ### Task 2.2: Create Authentication Context (`src/contexts/AuthContext.tsx`) - DONE
 
@@ -170,4 +172,101 @@ This phase covers creating a service to interact with the GitHub API and buildin
       - Store the full README content and its SHA in local state to preserve other content.
       - Set loading and error states appropriately.
 4.  **Submit Handler (`handleLinkWallets`)**:
-    - Takes new `ethAddress` and `
+    - Takes new `ethAddress` and `solAddress` as input from `WalletLinkForm.tsx`.
+    - Retrieves the current full README content (and SHA) from state.
+    - **Construct Wallet Section**:
+      - Define a clear, machine-parsable, and human-readable format for the wallet addresses within HTML comments to act as markers. This allows for easy identification and updates.
+      ```markdown
+      <!-- BEGIN ELIZAOS_PROFILE_WALLETS -->
+      <div id="elizaos-linked-wallets" style="margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px;">
+        <h3>My Linked Wallet Addresses</h3>
+        <p><strong>Ethereum (ETH):</strong> <code>${ethAddress || 'Not set'}</code></p>
+        <p><strong>Solana (SOL):</strong> <code>${solAddress || 'Not set'}</code></p>
+        <p><small>Managed by ElizaOS Profile</small></p>
+      </div>
+      <!-- END ELIZAOS_PROFILE_WALLETS -->
+      ```
+    - **Update README Content**:
+      - If the wallet section (identified by `<!-- BEGIN ELIZAOS_PROFILE_WALLETS -->` and `<!-- END ELIZAOS_PROFILE_WALLETS -->`) already exists in the fetched README content, replace the entire section between these markers with the newly constructed wallet section.
+      - If the markers are not found, append the new wallet section to the end of the existing README content. Ensure there's a newline before appending if the existing content doesn't end with one.
+    - If the profile repository doesn't exist, call `githubService.createRepo` first. The initial README created by `auto_init: true` in `createRepo` will then be updated, or if `auto_init` is false, this `handleLinkWallets` function will be creating the first `README.md`. It's simpler if `createRepo` initializes with a basic README.
+    - Call `githubService.updateFile` to create/update `README.md` with the _new complete README content_. Provide a commit message like "Update linked wallet addresses".
+    - Handle success and error responses, updating UI messages.
+5.  **UI**:
+    - Use shadcn `Card` for structure. Card title: "Link Your Wallet Addresses".
+    - Description: Explain that this will add/update a section in their GitHub profile README.
+    - Display appropriate messages for loading states, errors, and success.
+    - Integrate the `WalletLinkForm.tsx` component.
+
+### Task 3.3: Create Wallet Link Form Component (`src/components/WalletLinkForm.tsx`) - DONE
+
+1.  **Props**:
+    - `initialEthAddress: string`
+    - `initialSolAddress: string`
+    - `onSubmit: (ethAddress: string, solAddress: string) => Promise<void>`
+    - `isProcessing: boolean`
+2.  **State**: Local state for `ethAddress` and `solAddress`, initialized with props.
+3.  **UI**:
+    - Use shadcn `Input` fields for Ethereum and Solana addresses, with appropriate `Label`s.
+    - Include placeholders like `0x...` for ETH and `your solana address` or similar for SOL.
+    - Use shadcn `Button` for submission, showing a loading state (`Loader2` icon) when `isProcessing` is true.
+    - Consider adding brief validation hints or icons for address formats (optional, can be a later enhancement).
+
+## Phase 4: Styling, Refinements, and Security Review
+
+Final touches, ensuring the feature is robust, user-friendly, and secure.
+
+### Task 4.1: Apply Styling
+
+1.  **Method**: Primarily use Tailwind CSS utility classes for layout and specific styling needs.
+2.  **Consistency**: Ensure the new components and pages align with the existing application's design language, leveraging shadcn/ui's theming.
+3.  **Responsiveness**: Verify that all new UI elements are responsive across different screen sizes.
+
+### Task 4.2: Review and Refine Error Handling
+
+1.  **User Experience**: Ensure all potential errors (network issues, API errors from GitHub or the worker, invalid token, insufficient scope, issues parsing/updating README) are caught and presented to the user in a clear, non-technical way.
+2.  **Logging**: Implement client-side logging.
+3.  **States**: Thoroughly test loading states.
+
+### Task 4.3: Security Review
+
+1.  **CSRF**: Confirm the `state` parameter mechanism is correctly implemented and verified in `AuthContext.handleAuthCallback` before calling the worker.
+2.  **Token Handling**:
+    - Re-evaluate `localStorage` for token storage. While common, be aware of XSS risks. Ensure other parts of the application are secure against XSS.
+    - Ensure tokens are not leaked (e.g., in URLs unnecessarily, or in error messages).
+3.  **Cloudflare Worker**:
+    - Double-check that `ALLOWED_ORIGIN` in the worker is strictly set to the production Next.js app's domain.
+    - Ensure production secrets are used, not hardcoded values.
+4.  **OAuth Scopes**:
+    - Confirm only necessary scopes (`read:user`, `public_repo`) are requested.
+    - Clearly communicate to the user why these permissions are needed.
+    - Verify the Cloudflare Worker and Next.js client correctly check for the `public_repo` scope in the token response.
+5.  **HTTPS**: Ensure all communications (Next.js app, Cloudflare Worker, GitHub API) occur over HTTPS.
+
+### Task 4.4: Testing
+
+1.  **End-to-End Flow**:
+    - Login successfully.
+    - Logout.
+    - Attempt to access `/profile/edit` without login (should redirect).
+    - **Link Wallets (New User/No README section)**:
+      - User has no existing profile README or no wallet section.
+      - Action: User enters ETH and/or SOL addresses and saves.
+      - Expected: Profile repo created (if needed), README.md created/updated with the new wallet section appended.
+    - **Link Wallets (Existing README section)**:
+      - User has an existing wallet section from this app.
+      - Action: User updates one or both addresses and saves.
+      - Expected: Wallet section in README.md is updated; other README content remains untouched.
+    - **Link Wallets (Existing README, no wallet section)**:
+      - User has an existing README.md with other content.
+      - Action: User enters ETH and/or SOL addresses and saves.
+      - Expected: New wallet section is appended to README.md; existing content is preserved.
+    - Clearing an address should update the README to reflect "Not set" or remove the line.
+2.  **Edge Cases**:
+    - GitHub token revocation/expiry.
+    - GitHub API rate limits.
+    - Network interruptions.
+    - Incorrect `state` parameter.
+    - Token missing `public_repo` scope.
+    - README content that might conflict with parsing logic (e.g., user manually creating similar HTML comments).
+3.  **Browser Compatibility**: Test on major browsers.
