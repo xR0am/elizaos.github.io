@@ -5,7 +5,7 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-05-11 to 2025-05-18, elizaos/eliza had 76 new PRs (51 merged), 6 new issues, and 36 active contributors.",
+  "overview": "From 2025-05-11 to 2025-05-18, elizaos/eliza had 82 new PRs (56 merged), 7 new issues, and 37 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs62Hsv6",
@@ -87,6 +87,17 @@
       "deletions": 28103
     },
     {
+      "id": "PR_kwDOMT5cIs6Wawfd",
+      "title": "Merge Spartan changes",
+      "author": "lalalune",
+      "number": 4609,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-16T04:59:24Z",
+      "mergedAt": null,
+      "additions": 21881,
+      "deletions": 5467
+    },
+    {
       "id": "PR_kwDOMT5cIs6WCKh_",
       "title": "Added : Polygon Plugin",
       "author": "Samarthsinghal28",
@@ -94,19 +105,8 @@
       "repository": "elizaos/eliza",
       "createdAt": "2025-05-13T16:43:08Z",
       "mergedAt": null,
-      "additions": 11852,
+      "additions": 14247,
       "deletions": 10
-    },
-    {
-      "id": "PR_kwDOMT5cIs6WDP_w",
-      "title": "Issue 451",
-      "author": "HarshModi2005",
-      "number": 4575,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-05-13T19:08:31Z",
-      "mergedAt": null,
-      "additions": 11012,
-      "deletions": 1308
     },
     {
       "id": "PR_kwDOMT5cIs6VpA5f",
@@ -121,10 +121,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 26669,
-    "deletions": 8527,
-    "files": 219,
-    "commitCount": 249
+    "additions": 27385,
+    "deletions": 8926,
+    "files": 228,
+    "commitCount": 284
   },
   "completedItems": [
     {
@@ -343,6 +343,11 @@
       "type": "feature"
     },
     {
+      "title": "fix: hallucination in reply",
+      "prNumber": 4603,
+      "type": "bugfix"
+    },
+    {
       "title": "fix: additional fix for topics project starter & def character",
       "prNumber": 4602,
       "type": "bugfix"
@@ -358,6 +363,11 @@
       "type": "bugfix"
     },
     {
+      "title": "docs: fix broken link to ELIZA demo (ai16z → elizaos)",
+      "prNumber": 4597,
+      "type": "bugfix"
+    },
+    {
       "title": "fix: add missing topics as X post templates expects topics",
       "prNumber": 4595,
       "type": "feature"
@@ -366,6 +376,11 @@
       "title": "fix: send-message-api",
       "prNumber": 4594,
       "type": "bugfix"
+    },
+    {
+      "title": "Eliza290/cli merge update cli into update command",
+      "prNumber": 4592,
+      "type": "other"
     },
     {
       "title": "Eliza290/cli update command",
@@ -381,14 +396,24 @@
       "title": "fix: Guarantee onComplete is always called in messageReceivedHandler",
       "prNumber": 4589,
       "type": "bugfix"
+    },
+    {
+      "title": "Eliza290/cli command env",
+      "prNumber": 4610,
+      "type": "other"
+    },
+    {
+      "title": "fix: reply action to skip LLM call if existing REPLY response is found",
+      "prNumber": 4608,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 489.2498883193617,
-      "prScore": 487.49788831936166,
+      "totalScore": 508.796388618591,
+      "prScore": 507.04438861859103,
       "issueScore": 0,
       "reviewScore": 0,
       "commentScore": 1.7519999999999998
@@ -396,11 +421,20 @@
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 347.4186935057161,
-      "prScore": 340.90069350571605,
+      "totalScore": 383.3998879146598,
+      "prScore": 376.4438879146598,
       "issueScore": 0,
       "reviewScore": 5,
-      "commentScore": 1.5179999999999998
+      "commentScore": 1.956
+    },
+    {
+      "username": "yungalgo",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
+      "totalScore": 361.82120326301833,
+      "prScore": 361.2812032630183,
+      "issueScore": 0,
+      "reviewScore": 0,
+      "commentScore": 0.54
     },
     {
       "username": "ChristopherTrimboli",
@@ -412,27 +446,18 @@
       "commentScore": 1.22
     },
     {
-      "username": "yungalgo",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 325.280165857431,
-      "prScore": 324.940165857431,
+      "username": "tcm390",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4",
+      "totalScore": 79.00863509731958,
+      "prScore": 73.66863509731958,
       "issueScore": 0,
-      "reviewScore": 0,
+      "reviewScore": 5,
       "commentScore": 0.33999999999999997
-    },
-    {
-      "username": "odilitime",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/16395496?u=c9bac48e632aae594a0d85aaf9e9c9c69b674d8b&v=4",
-      "totalScore": 66.50599948537663,
-      "prScore": 66.30599948537663,
-      "issueScore": 0,
-      "reviewScore": 0,
-      "commentScore": 0.2
     }
   ],
-  "newPRs": 76,
-  "mergedPRs": 51,
-  "newIssues": 6,
-  "closedIssues": 7,
-  "activeContributors": 36
+  "newPRs": 82,
+  "mergedPRs": 56,
+  "newIssues": 7,
+  "closedIssues": 9,
+  "activeContributors": 37
 }
