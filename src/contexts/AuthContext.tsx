@@ -21,8 +21,8 @@ interface AuthContextType {
   token: string | null;
   isLoading: boolean;
   error: string | null;
-  login: () => void;
-  logout: () => void;
+  signin: () => void;
+  signout: () => void;
   handleAuthCallback: (code: string, state: string) => Promise<void>;
 }
 
@@ -49,7 +49,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       const expiresAt = parseInt(storedExpiresAt, 10);
       if (Date.now() > expiresAt) {
         // Token has expired
-        logout(); // This will clear token, user, and expires_at
+        signout(); // This will clear token, user, and expires_at
         setIsLoading(false);
         return;
       }
@@ -104,7 +104,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       if (!response.ok) {
         if (response.status === 401) {
           // Token is invalid or expired
-          logout();
+          signout();
           throw new Error("Authentication token is invalid or expired");
         }
         throw new Error(`GitHub API error: ${response.status}`);
@@ -124,7 +124,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   };
 
   // Start the GitHub OAuth flow
-  const login = () => {
+  const signin = () => {
     setIsLoading(true);
     setError(null);
 
@@ -221,7 +221,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   };
 
   // Log the user out
-  const logout = () => {
+  const signout = () => {
     setUser(null);
     setToken(null);
     setError(null);
@@ -236,8 +236,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
     token,
     isLoading,
     error,
-    login,
-    logout,
+    signin,
+    signout,
     handleAuthCallback,
   };
 

@@ -20,7 +20,6 @@ import {
   LogOutIcon,
   SunIcon,
   MoonIcon,
-  UserCircle2,
   ChevronDownIcon,
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
@@ -29,7 +28,7 @@ import { useTheme } from "next-themes";
 
 export function Navigation() {
   const pathname = usePathname();
-  const { user, login, logout, isLoading } = useAuth();
+  const { user, signout, isLoading } = useAuth();
   const { theme, setTheme } = useTheme();
 
   const isLeaderboardActive = pathname === "/leaderboard";
@@ -90,31 +89,34 @@ export function Navigation() {
         <DropdownMenuSeparator className="sm:hidden" />
       </div>
 
-      {user ? (
-        <>
-          <DropdownMenuLabel className="flex items-center gap-2">
-            <Avatar className="h-7 w-7">
-              <AvatarImage
-                src={user.avatar_url ?? undefined}
-                alt={user.login ?? "User avatar"}
-              />
-              <AvatarFallback>{user.login?.[0]?.toUpperCase()}</AvatarFallback>
-            </Avatar>
-            {user.login}
-          </DropdownMenuLabel>
-          <DropdownMenuItem asChild className="py-3 text-base">
-            <Link href="/profile/edit" className="flex items-center gap-2">
-              <LinkIcon className="h-4 w-4" />
-              <span>Link Wallets</span>
-            </Link>
-          </DropdownMenuItem>
-        </>
-      ) : (
-        <DropdownMenuItem onClick={() => login()} className="py-3 text-base">
-          <UserCircle2 className="mr-2 h-4 w-4" />
-          <span>Sign in with GitHub</span>
-        </DropdownMenuItem>
-      )}
+      {
+        user ? (
+          <>
+            <DropdownMenuLabel className="flex items-center gap-2">
+              <Avatar className="h-7 w-7">
+                <AvatarImage
+                  src={user.avatar_url ?? undefined}
+                  alt={user.login ?? "User avatar"}
+                />
+                <AvatarFallback>
+                  {user.login?.[0]?.toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
+              {user.login}
+            </DropdownMenuLabel>
+            <DropdownMenuItem asChild className="py-3 text-base">
+              <Link href="/profile/edit" className="flex items-center gap-2">
+                <LinkIcon className="h-4 w-4" />
+                <span>Link Wallets</span>
+              </Link>
+            </DropdownMenuItem>
+          </>
+        ) : null
+        // <DropdownMenuItem onClick={() => signin()} className="py-3 text-base">
+        //   <UserCircle2 className="mr-2 h-4 w-4" />
+        //   <span>Sign in with GitHub</span>
+        // </DropdownMenuItem>
+      }
       <DropdownMenuItem
         onClick={() =>
           setTheme(theme === "dark" || isSystemDarkTheme ? "light" : "dark")
@@ -136,7 +138,7 @@ export function Navigation() {
 
           <DropdownMenuItem
             className="py-3 text-base text-red-500 hover:text-red-500"
-            onClick={() => logout()}
+            onClick={() => signout()}
           >
             <LogOutIcon className="mr-2 h-4 w-4" />
             <span>Log out</span>
@@ -163,7 +165,7 @@ export function Navigation() {
         <div className="hidden items-center gap-4 sm:flex">
           {!user ? (
             <>
-              <AuthControls />
+              {/* <AuthControls /> */}
               {!isLoading && <ThemeToggle />}
             </>
           ) : (

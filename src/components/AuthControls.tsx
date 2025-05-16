@@ -16,7 +16,7 @@ import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export function AuthControls() {
-  const { user, token, isLoading, login, logout } = useAuth();
+  const { user, token, isLoading, signin, signout } = useAuth();
 
   if (isLoading) {
     return (
@@ -29,7 +29,7 @@ export function AuthControls() {
 
   if (!token || !user) {
     return (
-      <Button variant="outline" onClick={login}>
+      <Button variant="outline" onClick={signin}>
         <Github className="mr-2 h-4 w-4" /> Login with GitHub
       </Button>
     );
@@ -63,7 +63,7 @@ export function AuthControls() {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={logout}>
+        <DropdownMenuItem onClick={signout}>
           <LogOut className="mr-2 h-4 w-4" />
           <span>Log out</span>
         </DropdownMenuItem>
