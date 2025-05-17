@@ -5,7 +5,7 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-05-11 to 2025-05-18, elizaos/eliza had 82 new PRs (56 merged), 7 new issues, and 37 active contributors.",
+  "overview": "From 2025-05-11 to 2025-05-18, elizaos/eliza had 102 new PRs (62 merged), 8 new issues, and 40 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs62Hsv6",
@@ -94,8 +94,19 @@
       "repository": "elizaos/eliza",
       "createdAt": "2025-05-16T04:59:24Z",
       "mergedAt": null,
-      "additions": 21881,
-      "deletions": 5467
+      "additions": 24857,
+      "deletions": 5685
+    },
+    {
+      "id": "PR_kwDOMT5cIs6Wk-z3",
+      "title": "V2 Spartan",
+      "author": "lalalune",
+      "number": 4630,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-17T19:07:00Z",
+      "mergedAt": null,
+      "additions": 23639,
+      "deletions": 5547
     },
     {
       "id": "PR_kwDOMT5cIs6WCKh_",
@@ -107,24 +118,13 @@
       "mergedAt": null,
       "additions": 14247,
       "deletions": 10
-    },
-    {
-      "id": "PR_kwDOMT5cIs6VpA5f",
-      "title": "cleanup org agent / env loading code",
-      "author": "ChristopherTrimboli",
-      "number": 4512,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-05-09T21:06:21Z",
-      "mergedAt": null,
-      "additions": 9356,
-      "deletions": 785
     }
   ],
   "codeChanges": {
-    "additions": 27385,
-    "deletions": 8926,
-    "files": 228,
-    "commitCount": 284
+    "additions": 27781,
+    "deletions": 9279,
+    "files": 232,
+    "commitCount": 347
   },
   "completedItems": [
     {
@@ -398,6 +398,11 @@
       "type": "bugfix"
     },
     {
+      "title": "fix: resolve linter errors for type mismatches in DB adapter",
+      "prNumber": 4612,
+      "type": "bugfix"
+    },
+    {
       "title": "Eliza290/cli command env",
       "prNumber": 4610,
       "type": "other"
@@ -406,58 +411,83 @@
       "title": "fix: reply action to skip LLM call if existing REPLY response is found",
       "prNumber": 4608,
       "type": "bugfix"
+    },
+    {
+      "title": "chore: Remove unused wait helper",
+      "prNumber": 4625,
+      "type": "other"
+    },
+    {
+      "title": "fix: client auth issue",
+      "prNumber": 4624,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: log time taken in tests",
+      "prNumber": 4621,
+      "type": "feature"
+    },
+    {
+      "title": "chore: add local ai tests",
+      "prNumber": 4619,
+      "type": "feature"
+    },
+    {
+      "title": "fix: senderName is \"Unknown\" in recentMessages provider",
+      "prNumber": 4616,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 508.796388618591,
-      "prScore": 507.04438861859103,
+      "totalScore": 691.5826428337537,
+      "prScore": 689.3926428337536,
       "issueScore": 0,
       "reviewScore": 0,
-      "commentScore": 1.7519999999999998
+      "commentScore": 2.1899999999999995
     },
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 383.3998879146598,
-      "prScore": 376.4438879146598,
+      "totalScore": 417.0735310408998,
+      "prScore": 409.7775310408998,
       "issueScore": 0,
       "reviewScore": 5,
-      "commentScore": 1.956
+      "commentScore": 2.296
     },
     {
       "username": "yungalgo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 361.82120326301833,
-      "prScore": 361.2812032630183,
+      "totalScore": 387.7705407611991,
+      "prScore": 387.03054076119906,
       "issueScore": 0,
       "reviewScore": 0,
-      "commentScore": 0.54
+      "commentScore": 0.74
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 346.82617348375294,
-      "prScore": 249.60617348375294,
+      "totalScore": 372.62259520051157,
+      "prScore": 270.40259520051154,
       "issueScore": 0,
-      "reviewScore": 96,
+      "reviewScore": 101,
       "commentScore": 1.22
     },
     {
       "username": "tcm390",
       "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4",
-      "totalScore": 79.00863509731958,
-      "prScore": 73.66863509731958,
+      "totalScore": 101.07451483193361,
+      "prScore": 95.73451483193361,
       "issueScore": 0,
       "reviewScore": 5,
       "commentScore": 0.33999999999999997
     }
   ],
-  "newPRs": 82,
-  "mergedPRs": 56,
-  "newIssues": 7,
-  "closedIssues": 9,
-  "activeContributors": 37
+  "newPRs": 102,
+  "mergedPRs": 62,
+  "newIssues": 8,
+  "closedIssues": 10,
+  "activeContributors": 40
 }
