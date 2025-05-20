@@ -5,8 +5,19 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-05-18 to 2025-05-25, elizaos/eliza had 14 new PRs (18 merged), 0 new issues, and 16 active contributors.",
+  "overview": "From 2025-05-18 to 2025-05-25, elizaos/eliza had 43 new PRs (40 merged), 0 new issues, and 24 active contributors.",
   "topIssues": [
+    {
+      "id": "I_kwDOMT5cIs6yy4Mz",
+      "title": "Ensure USE_LOCAL_AI is always true",
+      "author": "jmikedupont2",
+      "number": 4303,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-04-16T13:34:31Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 1
+    },
     {
       "id": "I_kwDOMT5cIs6zEVIk",
       "title": "V2 - Group chat not working",
@@ -14,6 +25,28 @@
       "number": 4315,
       "repository": "elizaos/eliza",
       "createdAt": "2025-04-18T07:26:14Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 1
+    },
+    {
+      "id": "I_kwDOMT5cIs60vfHb",
+      "title": "RAG document Knowledge error (getCachedEmbeddings)",
+      "author": "retdude",
+      "number": 4408,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-04-30T19:53:01Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 1
+    },
+    {
+      "id": "I_kwDOMT5cIs622zWA",
+      "title": "Multiple issues - Not responding to mentions, not analyzing images, npx elizaos plugins commands not working",
+      "author": "AlteredCode",
+      "number": 4607,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-16T03:11:48Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 1
@@ -77,10 +110,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 53170,
-    "deletions": 11590,
-    "files": 279,
-    "commitCount": 84
+    "additions": 58663,
+    "deletions": 29605,
+    "files": 386,
+    "commitCount": 187
   },
   "completedItems": [
     {
@@ -169,29 +202,157 @@
       "type": "other"
     },
     {
+      "title": "feat: API endpoint for creating new rooms",
+      "prNumber": 4647,
+      "type": "feature"
+    },
+    {
+      "title": "Eliza290/update docs readme and tests for all cli commands",
+      "prNumber": 4646,
+      "type": "tests"
+    },
+    {
       "title": "remove pr title CI",
       "prNumber": 4644,
       "type": "other"
+    },
+    {
+      "title": "add 30s timeout to registry parsing",
+      "prNumber": 4678,
+      "type": "feature"
+    },
+    {
+      "title": "bring back local ai test",
+      "prNumber": 4676,
+      "type": "tests"
+    },
+    {
+      "title": "remove mock tests for cli",
+      "prNumber": 4674,
+      "type": "tests"
+    },
+    {
+      "title": "chore: update project starter character & fix path for core pckg",
+      "prNumber": 4671,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: shortcut reply only if no dynamic provider is present",
+      "prNumber": 4670,
+      "type": "bugfix"
+    },
+    {
+      "title": "remove plugin twitter",
+      "prNumber": 4669,
+      "type": "other"
+    },
+    {
+      "title": "feat: Create world api endpoints",
+      "prNumber": 4667,
+      "type": "feature"
+    },
+    {
+      "title": "Remove global env support",
+      "prNumber": 4666,
+      "type": "other"
+    },
+    {
+      "title": "add CHANNEL_IDS to discord_plugin",
+      "prNumber": 4665,
+      "type": "feature"
+    },
+    {
+      "title": "attempt dev command tear down",
+      "prNumber": 4664,
+      "type": "other"
+    },
+    {
+      "title": "Fix bats test flakiness",
+      "prNumber": 4663,
+      "type": "bugfix"
+    },
+    {
+      "title": "fixed agent tests",
+      "prNumber": 4661,
+      "type": "bugfix"
+    },
+    {
+      "title": "cleaner readable test files",
+      "prNumber": 4660,
+      "type": "refactor"
+    },
+    {
+      "title": "attempt: change pglite default dir",
+      "prNumber": 4656,
+      "type": "other"
+    },
+    {
+      "title": "default sentry better",
+      "prNumber": 4655,
+      "type": "other"
+    },
+    {
+      "title": "fix sharp install in CI, integration tests failing",
+      "prNumber": 4654,
+      "type": "bugfix"
+    },
+    {
+      "title": "generalized eliza agent character",
+      "prNumber": 4653,
+      "type": "other"
+    },
+    {
+      "title": "flyio docker deploy action for dev agent",
+      "prNumber": 4652,
+      "type": "other"
+    },
+    {
+      "title": "fix: reply action skipping dynamic providers",
+      "prNumber": 4651,
+      "type": "bugfix"
+    },
+    {
+      "title": "Add sentry logging to core logger errors.",
+      "prNumber": 4650,
+      "type": "feature"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 145.846490372788,
-      "prScore": 140.568490372788,
+      "totalScore": 493.30554374155844,
+      "prScore": 482.5895437415585,
       "issueScore": 0,
-      "reviewScore": 4.5,
-      "commentScore": 0.7779999999999999
+      "reviewScore": 9.5,
+      "commentScore": 1.2159999999999997
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 70.2956560920129,
-      "prScore": 50.79565609201289,
+      "totalScore": 351.763567626325,
+      "prScore": 302.063567626325,
       "issueScore": 0,
-      "reviewScore": 19.5,
+      "reviewScore": 49.5,
+      "commentScore": 0.2
+    },
+    {
+      "username": "lalalune",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
+      "totalScore": 79.91572767414081,
+      "prScore": 79.91572767414081,
+      "issueScore": 0,
+      "reviewScore": 0,
       "commentScore": 0
+    },
+    {
+      "username": "0xbbjoker",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
+      "totalScore": 74.61888210570757,
+      "prScore": 69.18088210570757,
+      "issueScore": 0,
+      "reviewScore": 5,
+      "commentScore": 0.43799999999999994
     },
     {
       "username": "Samarthsinghal28",
@@ -201,29 +362,11 @@
       "issueScore": 0,
       "reviewScore": 0,
       "commentScore": 0
-    },
-    {
-      "username": "HarshModi2005",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/142230924?u=64e337bbdb6b3aded5943b7e297759e7a3cfc0f0&v=4",
-      "totalScore": 56.4317738965761,
-      "prScore": 56.4317738965761,
-      "issueScore": 0,
-      "reviewScore": 0,
-      "commentScore": 0
-    },
-    {
-      "username": "odilitime",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/16395496?u=c9bac48e632aae594a0d85aaf9e9c9c69b674d8b&v=4",
-      "totalScore": 49.7437738965761,
-      "prScore": 49.5437738965761,
-      "issueScore": 0,
-      "reviewScore": 0,
-      "commentScore": 0.2
     }
   ],
-  "newPRs": 14,
-  "mergedPRs": 18,
+  "newPRs": 43,
+  "mergedPRs": 40,
   "newIssues": 0,
-  "closedIssues": 2,
-  "activeContributors": 16
+  "closedIssues": 4,
+  "activeContributors": 24
 }
