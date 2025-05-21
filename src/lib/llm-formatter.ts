@@ -5,6 +5,7 @@ interface FormatOptions {
   includeSummary: boolean;
   includePrData: boolean;
   includeIssueData: boolean;
+  includeDetailedContributorSummaries?: boolean;
 }
 
 // Helper to sanitize body content: remove HTML comments, make it single-line and escape newlines
@@ -100,6 +101,27 @@ export function formatDataForLLM(
     parts.push("]");
     parts.push("```");
     parts.push("");
+  }
+
+  // Detailed Contributor Summaries Section
+  if (
+    options.includeDetailedContributorSummaries &&
+    metrics.detailedContributorSummaries &&
+    Object.keys(metrics.detailedContributorSummaries).length > 0
+  ) {
+    parts.push("## Detailed Contributor Summaries");
+    parts.push(""); // Add a blank line after the main heading
+
+    for (const [username, summary] of Object.entries(
+      metrics.detailedContributorSummaries,
+    )) {
+      if (summary && summary.trim() !== "") {
+        parts.push(`### ${username}`);
+        parts.push(summary);
+        parts.push(""); // Add a blank line after each summary for spacing
+      }
+    }
+    // The last blank line ensures separation from the next section, or adds padding at the end if it's the last one.
   }
 
   // Pull Requests Section

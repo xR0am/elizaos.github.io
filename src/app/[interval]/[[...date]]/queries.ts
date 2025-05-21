@@ -3,6 +3,7 @@ import {
   getTopIssues,
   getTopPullRequests,
 } from "@/lib/pipelines/export/queries";
+import { getContributorSummariesForInterval } from "@/lib/pipelines/summarize/queries";
 import {
   IntervalType,
   TimeInterval,
@@ -132,6 +133,21 @@ export async function getMetricsForInterval(
   ];
   const uniqueIssues = [...new Set(totalIssues.map((issue) => issue.id))];
 
+  // Initialize detailed contributor summaries
+  let detailedContributorSummaries: Record<string, string | null> = {};
+
+  // Fetch contributor summaries if top contributors exist
+  if (repoMetrics.topContributors && repoMetrics.topContributors.length > 0) {
+    const usernames = repoMetrics.topContributors.map((c) => c.username);
+    if (usernames.length > 0) {
+      const summariesMap = await getContributorSummariesForInterval(
+        usernames,
+        interval,
+      );
+      detailedContributorSummaries = Object.fromEntries(summariesMap);
+    }
+  }
+
   // Return all collected metrics
   return {
     date,
@@ -152,6 +168,7 @@ export async function getMetricsForInterval(
     focusAreas: repoMetrics.focusAreas,
     topIssues,
     topPullRequests,
+    detailedContributorSummaries, // Add the new field here
   };
 }
 
