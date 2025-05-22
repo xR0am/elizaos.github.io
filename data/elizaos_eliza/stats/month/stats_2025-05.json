@@ -5,8 +5,19 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-05-01 to 2025-06-01, elizaos/eliza had 269 new PRs (204 merged), 16 new issues, and 68 active contributors.",
+  "overview": "From 2025-05-01 to 2025-06-01, elizaos/eliza had 288 new PRs (218 merged), 16 new issues, and 69 active contributors.",
   "topIssues": [
+    {
+      "id": "I_kwDOMT5cIs600DmL",
+      "title": "Error: No handler found for delegate type: TEXT_EMBEDDING with OpenAI",
+      "author": "Kirstygoodary",
+      "number": 4418,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-01T09:48:19Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 6
+    },
     {
       "id": "I_kwDOMT5cIs62Hsv6",
       "title": "Cannot find module '@elizaos/core' or its corresponding type declarations.\",",
@@ -17,17 +28,6 @@
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 6
-    },
-    {
-      "id": "I_kwDOMT5cIs600DmL",
-      "title": "Error: No handler found for delegate type: TEXT_EMBEDDING with OpenAI",
-      "author": "Kirstygoodary",
-      "number": 4418,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-05-01T09:48:19Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 5
     },
     {
       "id": "I_kwDOMT5cIs60vfHb",
@@ -41,23 +41,23 @@
       "commentCount": 4
     },
     {
+      "id": "I_kwDOMT5cIs622zWA",
+      "title": "Multiple issues - Not responding to mentions, not analyzing images, npx elizaos plugins commands not working",
+      "author": "AlteredCode",
+      "number": 4607,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-16T03:11:48Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 3
+    },
+    {
       "id": "I_kwDOMT5cIs6sPClh",
       "title": "RAG processFile attempts to embed entire files causing errors for large documents",
       "author": "omikolaj",
       "number": 3745,
       "repository": "elizaos/eliza",
       "createdAt": "2025-03-02T15:42:28Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 2
-    },
-    {
-      "id": "I_kwDOMT5cIs6yy4Mz",
-      "title": "Ensure USE_LOCAL_AI is always true",
-      "author": "jmikedupont2",
-      "number": 4303,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-04-16T13:34:31Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 2
@@ -121,10 +121,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 103295,
-    "deletions": 79527,
-    "files": 974,
-    "commitCount": 1080
+    "additions": 104239,
+    "deletions": 80611,
+    "files": 983,
+    "commitCount": 1146
   },
   "completedItems": [
     {
@@ -1068,6 +1068,11 @@
       "type": "feature"
     },
     {
+      "title": "chore: make runtime logger public",
+      "prNumber": 4696,
+      "type": "other"
+    },
+    {
       "title": "fix: use pglite in target dir with create command or inline env",
       "prNumber": 4695,
       "type": "bugfix"
@@ -1146,41 +1151,106 @@
       "title": "fix: handle TRANSCRIPTION params & ensure proper agent log type compa…",
       "prNumber": 4679,
       "type": "bugfix"
+    },
+    {
+      "title": "fix: resolve character env loading, make the default character more c…",
+      "prNumber": 4716,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix docker voice",
+      "prNumber": 4715,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: cmd update to look for latest version spec by tag",
+      "prNumber": 4714,
+      "type": "bugfix"
+    },
+    {
+      "title": "ops: deploy CLI action",
+      "prNumber": 4712,
+      "type": "other"
+    },
+    {
+      "title": "fix: CLI update, use beta versions if exact is not found",
+      "prNumber": 4711,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: CLI update, use beta versions if exact is not found",
+      "prNumber": 4710,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: filter for :user in client chat ignores",
+      "prNumber": 4709,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: issue with create cmd and creating setup dirs",
+      "prNumber": 4708,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: updated text from eliza -> elizaos",
+      "prNumber": 4707,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: improve tweet text formatting with double newlines between sentence",
+      "prNumber": 4706,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: centralise env resolution further",
+      "prNumber": 4705,
+      "type": "other"
+    },
+    {
+      "title": "add .env to plugin-starter's .gitignore file (publishing was failing due to key presence)",
+      "prNumber": 4703,
+      "type": "feature"
+    },
+    {
+      "title": "feat: Configure Tauri for multi-platform CI/CD and mobile support",
+      "prNumber": 4699,
+      "type": "feature"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 2239.441170335373,
-      "prScore": 2154.569170335373,
+      "totalScore": 2302.9088481145714,
+      "prScore": 2212.5988481145714,
       "issueScore": 0,
-      "reviewScore": 78,
-      "commentScore": 6.871999999999999
+      "reviewScore": 83,
+      "commentScore": 7.309999999999999
     },
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 1191.3068089000974,
-      "prScore": 1128.2008089000974,
+      "totalScore": 1284.5123629020138,
+      "prScore": 1221.206362902014,
       "issueScore": 0,
       "reviewScore": 57,
-      "commentScore": 6.106
+      "commentScore": 6.305999999999999
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 1064.8057335907051,
-      "prScore": 855.6097335907052,
+      "totalScore": 1177.2808922066035,
+      "prScore": 943.0848922066035,
       "issueScore": 0,
-      "reviewScore": 206.5,
+      "reviewScore": 231.5,
       "commentScore": 2.6959999999999997
     },
     {
       "username": "yungalgo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 666.7657174818842,
-      "prScore": 660.4857174818841,
+      "totalScore": 701.409601868424,
+      "prScore": 695.1296018684241,
       "issueScore": 0,
       "reviewScore": 5,
       "commentScore": 1.28
@@ -1188,16 +1258,16 @@
     {
       "username": "odilitime",
       "avatarUrl": "https://avatars.githubusercontent.com/u/16395496?u=c9bac48e632aae594a0d85aaf9e9c9c69b674d8b&v=4",
-      "totalScore": 385.53329358348645,
-      "prScore": 330.3932935834864,
+      "totalScore": 419.0770674800625,
+      "prScore": 363.9370674800625,
       "issueScore": 0,
       "reviewScore": 54,
       "commentScore": 1.1400000000000001
     }
   ],
-  "newPRs": 269,
-  "mergedPRs": 204,
+  "newPRs": 288,
+  "mergedPRs": 218,
   "newIssues": 16,
   "closedIssues": 29,
-  "activeContributors": 68
+  "activeContributors": 69
 }
