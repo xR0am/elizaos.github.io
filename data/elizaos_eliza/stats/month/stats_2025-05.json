@@ -5,7 +5,7 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-05-01 to 2025-06-01, elizaos/eliza had 288 new PRs (218 merged), 16 new issues, and 69 active contributors.",
+  "overview": "From 2025-05-01 to 2025-06-01, elizaos/eliza had 320 new PRs (246 merged), 18 new issues, and 70 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs600DmL",
@@ -30,12 +30,12 @@
       "commentCount": 6
     },
     {
-      "id": "I_kwDOMT5cIs60vfHb",
-      "title": "RAG document Knowledge error (getCachedEmbeddings)",
-      "author": "retdude",
-      "number": 4408,
+      "id": "I_kwDOMT5cIs63qFiZ",
+      "title": "switch agent from sqlite to postgres",
+      "author": "Icarus-Community",
+      "number": 4697,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-04-30T19:53:01Z",
+      "createdAt": "2025-05-21T19:50:54Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 4
@@ -52,12 +52,12 @@
       "commentCount": 3
     },
     {
-      "id": "I_kwDOMT5cIs6sPClh",
-      "title": "RAG processFile attempts to embed entire files causing errors for large documents",
-      "author": "omikolaj",
-      "number": 3745,
+      "id": "I_kwDOMT5cIs6zjFcA",
+      "title": "Quickstart doc issues",
+      "author": "eduardoPauloPanstein",
+      "number": 4336,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-03-02T15:42:28Z",
+      "createdAt": "2025-04-22T23:13:59Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 2
@@ -121,10 +121,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 104239,
-    "deletions": 80611,
-    "files": 983,
-    "commitCount": 1146
+    "additions": 121093,
+    "deletions": 86473,
+    "files": 1041,
+    "commitCount": 1233
   },
   "completedItems": [
     {
@@ -588,6 +588,11 @@
       "type": "refactor"
     },
     {
+      "title": "feat: improve db api",
+      "prNumber": 4556,
+      "type": "feature"
+    },
+    {
       "title": "Fix broken Quickstart link",
       "prNumber": 4555,
       "type": "bugfix"
@@ -773,6 +778,11 @@
       "type": "bugfix"
     },
     {
+      "title": "chore(deps): bump undici from 7.4.0 to 7.5.0 in the npm_and_yarn group across 1 directory",
+      "prNumber": 4598,
+      "type": "other"
+    },
+    {
       "title": "docs: fix broken link to ELIZA demo (ai16z → elizaos)",
       "prNumber": 4597,
       "type": "bugfix"
@@ -821,6 +831,11 @@
       "title": "fix: resolve linter errors for type mismatches in DB adapter",
       "prNumber": 4612,
       "type": "bugfix"
+    },
+    {
+      "title": "feat: add support for PDF rag",
+      "prNumber": 4611,
+      "type": "feature"
     },
     {
       "title": "Eliza290/cli command env",
@@ -886,6 +901,11 @@
       "title": "chore: fix some typos in comment",
       "prNumber": 4615,
       "type": "bugfix"
+    },
+    {
+      "title": "feat: add plugin-rag",
+      "prNumber": 4614,
+      "type": "feature"
     },
     {
       "title": "chore: Add missing plugin failure test",
@@ -1208,13 +1228,133 @@
       "type": "other"
     },
     {
+      "title": "Add file TRANSLATION",
+      "prNumber": 4704,
+      "type": "feature"
+    },
+    {
       "title": "add .env to plugin-starter's .gitignore file (publishing was failing due to key presence)",
       "prNumber": 4703,
       "type": "feature"
     },
     {
+      "title": "Delete README_IDN.md",
+      "prNumber": 4702,
+      "type": "other"
+    },
+    {
+      "title": "feat: Knowledge Plugin",
+      "prNumber": 4701,
+      "type": "feature"
+    },
+    {
+      "title": "fix: use findNearestEnvFile(), etc to lookup github creds, before was…",
+      "prNumber": 4700,
+      "type": "bugfix"
+    },
+    {
       "title": "feat: Configure Tauri for multi-platform CI/CD and mobile support",
       "prNumber": 4699,
+      "type": "feature"
+    },
+    {
+      "title": "fix: env files, .73 release",
+      "prNumber": 4751,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: improve message handler template",
+      "prNumber": 4748,
+      "type": "other"
+    },
+    {
+      "title": "unpeg CLI plugin / core deps, version .71 deploy CLI",
+      "prNumber": 4747,
+      "type": "other"
+    },
+    {
+      "title": "fix: make starter low prior",
+      "prNumber": 4743,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: update twitter setup blog",
+      "prNumber": 4742,
+      "type": "other"
+    },
+    {
+      "title": "fix: postgres bypass + double init of server",
+      "prNumber": 4741,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: remove unused PDF.js imports causing CLI DOMMatrix runtime error",
+      "prNumber": 4740,
+      "type": "bugfix"
+    },
+    {
+      "title": "Add supplemental unit tests for core utilities",
+      "prNumber": 4739,
+      "type": "feature"
+    },
+    {
+      "title": "Fix Build Error: Missing findNearestEnvFile Import",
+      "prNumber": 4732,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: enhance plugin publishing with NPM authentication and validation",
+      "prNumber": 4731,
+      "type": "feature"
+    },
+    {
+      "title": "refactor: simplify template path resolution in copy-template.ts",
+      "prNumber": 4730,
+      "type": "refactor"
+    },
+    {
+      "title": "update name handling in publisher.ts so it doesnt expect \"elizaos\" anymore",
+      "prNumber": 4729,
+      "type": "other"
+    },
+    {
+      "title": "fix: Fix response handling",
+      "prNumber": 4728,
+      "type": "bugfix"
+    },
+    {
+      "title": "update plugin prefix check/add function to also validate \"plugin-alpanumeric\" naming conv",
+      "prNumber": 4727,
+      "type": "feature"
+    },
+    {
+      "title": "chore: Update opentelemetry version and API usage",
+      "prNumber": 4726,
+      "type": "other"
+    },
+    {
+      "title": "Fix/linter issues and tests",
+      "prNumber": 4725,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: revert project starter character",
+      "prNumber": 4724,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: add libvips-dev to integration test CI",
+      "prNumber": 4723,
+      "type": "feature"
+    },
+    {
+      "title": "feat: write .env example, cleanup get-config functions",
+      "prNumber": 4721,
+      "type": "feature"
+    },
+    {
+      "title": "Factor Knowledge Out to Plugin and Add Service Registry Types",
+      "prNumber": 4719,
       "type": "feature"
     }
   ],
@@ -1222,52 +1362,52 @@
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 2302.9088481145714,
-      "prScore": 2212.5988481145714,
+      "totalScore": 2381.0561660884964,
+      "prScore": 2290.3081660884964,
       "issueScore": 0,
       "reviewScore": 83,
-      "commentScore": 7.309999999999999
+      "commentScore": 7.747999999999999
     },
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 1284.5123629020138,
-      "prScore": 1221.206362902014,
+      "totalScore": 1417.4807405584413,
+      "prScore": 1353.8347405584411,
       "issueScore": 0,
       "reviewScore": 57,
-      "commentScore": 6.305999999999999
+      "commentScore": 6.645999999999999
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 1177.2808922066035,
-      "prScore": 943.0848922066035,
+      "totalScore": 1327.5093590389406,
+      "prScore": 1088.3133590389405,
       "issueScore": 0,
-      "reviewScore": 231.5,
+      "reviewScore": 236.5,
       "commentScore": 2.6959999999999997
     },
     {
       "username": "yungalgo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 701.409601868424,
-      "prScore": 695.1296018684241,
+      "totalScore": 886.8753078888258,
+      "prScore": 880.5953078888258,
       "issueScore": 0,
       "reviewScore": 5,
       "commentScore": 1.28
     },
     {
-      "username": "odilitime",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/16395496?u=c9bac48e632aae594a0d85aaf9e9c9c69b674d8b&v=4",
-      "totalScore": 419.0770674800625,
-      "prScore": 363.9370674800625,
-      "issueScore": 0,
-      "reviewScore": 54,
-      "commentScore": 1.1400000000000001
+      "username": "lalalune",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
+      "totalScore": 586.3134095735664,
+      "prScore": 572.6974095735665,
+      "issueScore": 2,
+      "reviewScore": 10,
+      "commentScore": 1.6159999999999999
     }
   ],
-  "newPRs": 288,
-  "mergedPRs": 218,
-  "newIssues": 16,
-  "closedIssues": 29,
-  "activeContributors": 69
+  "newPRs": 320,
+  "mergedPRs": 246,
+  "newIssues": 18,
+  "closedIssues": 38,
+  "activeContributors": 70
 }
