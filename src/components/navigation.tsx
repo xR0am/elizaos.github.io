@@ -32,6 +32,7 @@ export function Navigation() {
   const { theme, setTheme } = useTheme();
 
   const isLeaderboardActive = pathname === "/leaderboard";
+  const isAboutActive = pathname === "/about";
 
   const navLinksForMenuJsx = (
     <>
@@ -43,6 +44,16 @@ export function Navigation() {
           )}
         >
           Home
+        </Link>
+      </DropdownMenuItem>
+      <DropdownMenuItem asChild className="py-3 text-base">
+        <Link
+          href="/about"
+          className={cn(
+            "w-full justify-start rounded-md px-2 text-base text-muted-foreground",
+          )}
+        >
+          About
         </Link>
       </DropdownMenuItem>
       <DropdownMenuItem asChild className="py-3 text-base">
@@ -60,6 +71,19 @@ export function Navigation() {
 
   const desktopNavLinksJsx = (
     <>
+      <Button
+        variant="ghost"
+        size={"sm"}
+        className={cn(
+          "rounded-full px-4 text-sm font-medium",
+          isAboutActive
+            ? "bg-muted hover:bg-muted/80"
+            : "text-muted-foreground hover:bg-transparent",
+        )}
+        asChild
+      >
+        <Link href="/about">About</Link>
+      </Button>
       <Button
         variant="ghost"
         size={"sm"}
