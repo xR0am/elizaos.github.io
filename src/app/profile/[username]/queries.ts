@@ -157,7 +157,11 @@ export async function getUserProfile(username: string) {
   let solAddress: string | undefined;
 
   const githubToken = process.env.GITHUB_TOKEN;
-  if (githubToken) {
+  // Skip GitHub API calls during static generation to avoid rate limiting
+  const isStaticGeneration =
+    process.env.NODE_ENV === "production" && typeof window === "undefined";
+
+  if (githubToken && !isStaticGeneration) {
     try {
       const { walletData } = await fetchUserWalletAddressesAndReadme(
         githubToken,
@@ -178,6 +182,10 @@ export async function getUserProfile(username: string) {
       );
       // Decide if you want to surface this error or just proceed without wallet addresses
     }
+  } else if (isStaticGeneration) {
+    console.log(
+      `Skipping GitHub API call for ${username} during static generation`,
+    );
   } else {
     console.warn(
       "GITHUB_SERVER_TOKEN not configured. Cannot fetch wallet addresses for profiles.",

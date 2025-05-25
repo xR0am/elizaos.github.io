@@ -412,8 +412,11 @@ export async function getContributorSummariesForInterval(
 
   const summariesMap = new Map<string, string | null>();
   for (const s of summaries) {
-    // Ensure summary is not undefined, default to null if it is.
-    summariesMap.set(s.username, s.summary ?? null);
+    // Skip entries where username is null
+    if (s.username != null) {
+      // Ensure summary is not undefined, default to null if it is.
+      summariesMap.set(s.username, s.summary ?? null);
+    }
   }
 
   return summariesMap;
