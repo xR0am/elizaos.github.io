@@ -29,8 +29,9 @@ const AboutPage: NextPage = () => {
               Harvard research shows $1 invested in OSS generates $2,000 of
               value
             </a>{" "}
-            for companies, totaling $8.8 trillion. Yet contributors remain
-            invisible:
+            for companies, totaling $8.8 trillion. Contributors generate
+            thousands of dollars in value for every dollar invested, yet receive
+            almost nothing in return:
           </p>
           <ul>
             <li>
@@ -51,6 +52,12 @@ const AboutPage: NextPage = () => {
               track long-term impact
             </li>
           </ul>
+          <p>
+            We&apos;re changing that by creating digital status symbols that
+            can&apos;t be bought, only earned. Your profile becomes your
+            developer resume, your reputation proof, and your achievement
+            showcase - all generated from actual contributions.
+          </p>
         </section>
 
         <section>
@@ -176,120 +183,138 @@ const AboutPage: NextPage = () => {
           </p>
         </section>
 
-        <section>
+        <section className="mb-12">
           <h2>Roadmap to the Meritverse</h2>
-          <div className="space-y-6">
-            <div className="rounded-lg border border-green-200 bg-green-50 p-6 dark:border-green-800 dark:bg-green-950">
-              <div className="mb-3 flex items-center">
-                <span className="mr-3 text-2xl">✅</span>
-                <h3 className="text-xl font-semibold text-green-800 dark:text-green-200">
-                  Phase 1: Foundation
-                </h3>
+          <div className="space-y-4">
+            <div className="rounded-lg border bg-card p-6">
+              <div className="mb-3 flex items-center justify-between">
+                <div className="flex items-center">
+                  <span className="mr-3 text-2xl">🎯</span>
+                  <h3 className="text-xl font-semibold">Phase 1: Foundation</h3>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="h-2 w-24 rounded-full bg-muted">
+                    <div className="h-2 w-20 rounded-full bg-primary"></div>
+                  </div>
+                  <span className="text-sm font-medium text-muted-foreground">
+                    85%
+                  </span>
+                </div>
               </div>
-              <ul className="space-y-2 text-green-700 dark:text-green-300">
-                <li>• GitHub data processing with skill progression</li>
-                <li>• AI-powered daily/weekly/monthly summaries</li>
-                <li>• Contributor profiles showing expertise levels</li>
+              <ul className="space-y-1 text-muted-foreground">
+                <li>✅ GitHub data processing with skill progression</li>
+                <li>✅ AI-powered daily/weekly/monthly summaries</li>
+                <li>🔄 Contributor profiles showing expertise levels</li>
               </ul>
             </div>
 
-            <div className="rounded-lg border border-blue-200 bg-blue-50 p-6 dark:border-blue-800 dark:bg-blue-950">
-              <div className="mb-3 flex items-center">
-                <span className="mr-3 text-2xl">🔄</span>
-                <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-200">
-                  Phase 2: Identity
-                </h3>
+            <div className="rounded-lg border bg-card p-6">
+              <div className="mb-3 flex items-center justify-between">
+                <div className="flex items-center">
+                  <span className="mr-3 text-2xl">🔐</span>
+                  <h3 className="text-xl font-semibold">Phase 2: Identity</h3>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="h-2 w-24 rounded-full bg-muted">
+                    <div className="h-2 w-3 rounded-full bg-primary"></div>
+                  </div>
+                  <span className="text-sm font-medium text-muted-foreground">
+                    15%
+                  </span>
+                </div>
               </div>
-              <ul className="space-y-2 text-blue-700 dark:text-blue-300">
-                <li>• GitHub OAuth for user authentication</li>
-                <li>• Wallet linking (ETH/SOL) bridging Web2/Web3</li>
-                <li>• Public API for reputation queries</li>
+              <ul className="space-y-1 text-muted-foreground">
+                <li>🔄 GitHub OAuth for user authentication</li>
+                <li>📋 Wallet linking (ETH/SOL) bridging Web2/Web3</li>
+                <li>📋 Public API for reputation queries</li>
               </ul>
             </div>
 
-            <div className="rounded-lg border border-orange-200 bg-orange-50 p-6 dark:border-orange-800 dark:bg-orange-950">
-              <div className="mb-3 flex items-center">
-                <span className="mr-3 text-2xl">📋</span>
-                <h3 className="text-xl font-semibold text-orange-800 dark:text-orange-200">
-                  Phase 3: Achievements
-                </h3>
+            <div className="rounded-lg border bg-card p-6">
+              <div className="mb-3 flex items-center justify-between">
+                <div className="flex items-center">
+                  <span className="mr-3 text-2xl">🏆</span>
+                  <h3 className="text-xl font-semibold">
+                    Phase 3: Achievements
+                  </h3>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="h-2 w-24 rounded-full bg-muted"></div>
+                  <span className="text-sm font-medium text-muted-foreground">
+                    0%
+                  </span>
+                </div>
               </div>
-              <ul className="space-y-2 text-orange-700 dark:text-orange-300">
+              <ul className="space-y-1 text-muted-foreground">
                 <li>
-                  • Character Studio integration - unlock 3D wearables based on
+                  📋 Character Studio integration - unlock 3D wearables based on
                   your skill levels
                 </li>
                 <li>
-                  • Achievement NFTs for reaching milestones (Level 99
+                  📋 Achievement NFTs for reaching milestones (Level 99
                   TypeScript!)
                 </li>
-                <li>• Cross-platform reputation portability</li>
+                <li>📋 Cross-platform reputation portability</li>
               </ul>
             </div>
 
-            <div className="rounded-lg border border-purple-200 bg-purple-50 p-6 dark:border-purple-800 dark:bg-purple-950">
-              <div className="mb-3 flex items-center">
-                <span className="mr-3 text-2xl">🚀</span>
-                <h3 className="text-xl font-semibold text-purple-800 dark:text-purple-200">
-                  Phase 4: The Great Online Game
-                </h3>
+            <div className="rounded-lg border bg-card p-6">
+              <div className="mb-3 flex items-center justify-between">
+                <div className="flex items-center">
+                  <span className="mr-3 text-2xl">🌍</span>
+                  <h3 className="text-xl font-semibold">
+                    Phase 4: The Great Online Game
+                  </h3>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="h-2 w-24 rounded-full bg-muted"></div>
+                  <span className="text-sm font-medium text-muted-foreground">
+                    0%
+                  </span>
+                </div>
               </div>
-              <ul className="space-y-2 text-purple-700 dark:text-purple-300">
-                <li>• Quest systems for coordinated development</li>
-                <li>• Guild formation around shared expertise</li>
-                <li>• Internet-scale achievement system</li>
+              <ul className="space-y-1 text-muted-foreground">
+                <li>📋 Quest systems for coordinated development</li>
+                <li>📋 Guild formation around shared expertise</li>
+                <li>📋 Internet-scale achievement system</li>
               </ul>
             </div>
           </div>
         </section>
 
-        <section>
-          <h2>Why This Matters</h2>
-          <p>
-            Open source contributors generate thousands of dollars in value for
-            every dollar invested, yet receive almost nothing in return.
-            We&apos;re changing that by creating digital status symbols that
-            can&apos;t be bought, only earned. Your profile becomes your
-            developer resume, your reputation proof, and your achievement
-            showcase - all generated from actual contributions.
+        <div className="rounded-lg border border-primary/20 bg-primary/5 p-8 text-center">
+          <h3 className="mb-4 text-2xl font-bold text-primary">
+            Ready to see your true level?
+          </h3>
+          <div className="space-y-3">
+            <div>
+              <span className="font-semibold text-foreground">Explore:</span>{" "}
+              <a
+                href="https://elizaos.github.io"
+                className="font-mono text-primary hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                elizaos.github.io
+              </a>
+            </div>
+            <div>
+              <span className="font-semibold text-foreground">Contribute:</span>{" "}
+              <a
+                href="https://github.com/elizaos/eliza"
+                className="font-mono text-primary hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                github.com/elizaos/eliza
+              </a>
+            </div>
+          </div>
+          <p className="mt-6 text-lg font-medium italic text-foreground">
+            The game has already begun. Time to claim your place on the
+            leaderboard.
           </p>
-
-          <div className="rounded-lg border border-primary/20 bg-primary/5 p-8 text-center">
-            <h3 className="mb-4 text-2xl font-bold text-primary">
-              Ready to see your true level?
-            </h3>
-            <div className="space-y-3">
-              <div>
-                <span className="font-semibold text-foreground">Explore:</span>{" "}
-                <a
-                  href="https://elizaos.github.io"
-                  className="font-mono text-primary hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  elizaos.github.io
-                </a>
-              </div>
-              <div>
-                <span className="font-semibold text-foreground">
-                  Contribute:
-                </span>{" "}
-                <a
-                  href="https://github.com/elizaos/eliza"
-                  className="font-mono text-primary hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  github.com/elizaos/eliza
-                </a>
-              </div>
-            </div>
-            <p className="mt-6 text-lg font-medium italic text-foreground">
-              The game has already begun. Time to claim your place on the
-              leaderboard.
-            </p>
-          </div>
-        </section>
+        </div>
       </article>
     </div>
   );
