@@ -184,7 +184,7 @@ const AboutPage: NextPage = () => {
         </section>
 
         <section className="mb-12">
-          <h2>Roadmap to the Meritverse</h2>
+          <h2>Progress Bar</h2>
           <div className="space-y-4">
             <div className="rounded-lg border bg-card p-6">
               <div className="mb-3 flex items-center justify-between">
