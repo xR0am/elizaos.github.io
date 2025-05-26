@@ -5,7 +5,7 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-05-25 to 2025-06-01, elizaos/eliza had 7 new PRs (1 merged), 3 new issues, and 10 active contributors.",
+  "overview": "From 2025-05-25 to 2025-06-01, elizaos/eliza had 14 new PRs (6 merged), 5 new issues, and 15 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs64F6-0",
@@ -14,17 +14,6 @@
       "number": 4763,
       "repository": "elizaos/eliza",
       "createdAt": "2025-05-24T15:39:04Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 2
-    },
-    {
-      "id": "I_kwDOMT5cIs64JzeU",
-      "title": "LOG_LEVEL not working",
-      "author": "standujar",
-      "number": 4772,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-05-25T21:14:04Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 2
@@ -50,6 +39,17 @@
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 0
+    },
+    {
+      "id": "I_kwDOMT5cIs64NLEa",
+      "title": "API endpoint /api/agents/:agentId/rooms returns empty list despite agent being active in rooms",
+      "author": "standujar",
+      "number": 4779,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-26T08:42:47Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 0
     }
   ],
   "topPRs": [
@@ -61,7 +61,7 @@
       "repository": "elizaos/eliza",
       "createdAt": "2025-05-25T21:42:34Z",
       "mergedAt": null,
-      "additions": 4155,
+      "additions": 4168,
       "deletions": 0
     },
     {
@@ -71,9 +71,9 @@
       "number": 4766,
       "repository": "elizaos/eliza",
       "createdAt": "2025-05-25T06:57:28Z",
-      "mergedAt": null,
-      "additions": 3136,
-      "deletions": 1629
+      "mergedAt": "2025-05-26T08:29:38Z",
+      "additions": 1135,
+      "deletions": 1236
     },
     {
       "id": "PR_kwDOMT5cIs6XjL5N",
@@ -94,35 +94,69 @@
       "repository": "elizaos/eliza",
       "createdAt": "2025-05-25T21:31:21Z",
       "mergedAt": null,
-      "additions": 308,
-      "deletions": 37
+      "additions": 377,
+      "deletions": 333
     },
     {
-      "id": "PR_kwDOMT5cIs6XV4vc",
-      "title": "feat: Add graph view for memories and knowledge",
-      "author": "lalalune",
-      "number": 4737,
+      "id": "PR_kwDOMT5cIs6XkZpJ",
+      "title": "feat: thinking UX in client chat",
+      "author": "ChristopherTrimboli",
+      "number": 4778,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-05-23T07:43:24Z",
-      "mergedAt": null,
-      "additions": 184,
-      "deletions": 20
+      "createdAt": "2025-05-26T03:20:40Z",
+      "mergedAt": "2025-05-26T06:18:15Z",
+      "additions": 315,
+      "deletions": 256
     }
   ],
   "codeChanges": {
-    "additions": 568,
-    "deletions": 1046,
-    "files": 13,
-    "commitCount": 12
+    "additions": 2023,
+    "deletions": 2597,
+    "files": 47,
+    "commitCount": 38
   },
   "completedItems": [
+    {
+      "title": "corrected path for defaultCharacter.ts",
+      "prNumber": 4775,
+      "type": "other"
+    },
     {
       "title": "fixed: Undelegate Action",
       "prNumber": 4771,
       "type": "bugfix"
+    },
+    {
+      "title": "Delete README_MY.md",
+      "prNumber": 4768,
+      "type": "other"
+    },
+    {
+      "title": "Update README.md",
+      "prNumber": 4767,
+      "type": "other"
+    },
+    {
+      "title": "feat: Migrate knowledge tab to plugin-knowledge, add graph view to memories",
+      "prNumber": 4766,
+      "type": "feature"
+    },
+    {
+      "title": "feat: thinking UX in client chat",
+      "prNumber": 4778,
+      "type": "feature"
     }
   ],
   "topContributors": [
+    {
+      "username": "0xbbjoker",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
+      "totalScore": 89.33175852972198,
+      "prScore": 89.33175852972198,
+      "issueScore": 0,
+      "reviewScore": 0,
+      "commentScore": 0
+    },
     {
       "username": "Samarthsinghal28",
       "avatarUrl": "https://avatars.githubusercontent.com/u/120447590?v=4",
@@ -142,6 +176,15 @@
       "commentScore": 0
     },
     {
+      "username": "imholders",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/202005793?v=4",
+      "totalScore": 36.04827888128435,
+      "prScore": 36.04827888128435,
+      "issueScore": 0,
+      "reviewScore": 0,
+      "commentScore": 0
+    },
+    {
       "username": "lalalune",
       "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
       "totalScore": 34.7227738965761,
@@ -149,29 +192,11 @@
       "issueScore": 0,
       "reviewScore": 0,
       "commentScore": 0
-    },
-    {
-      "username": "imholders",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/202005793?v=4",
-      "totalScore": 24.61097273695029,
-      "prScore": 24.61097273695029,
-      "issueScore": 0,
-      "reviewScore": 0,
-      "commentScore": 0
-    },
-    {
-      "username": "0xbbjoker",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 18.55265816258659,
-      "prScore": 18.55265816258659,
-      "issueScore": 0,
-      "reviewScore": 0,
-      "commentScore": 0
     }
   ],
-  "newPRs": 7,
-  "mergedPRs": 1,
-  "newIssues": 3,
-  "closedIssues": 0,
-  "activeContributors": 10
+  "newPRs": 14,
+  "mergedPRs": 6,
+  "newIssues": 5,
+  "closedIssues": 3,
+  "activeContributors": 15
 }
