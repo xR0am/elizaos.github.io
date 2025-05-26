@@ -111,7 +111,10 @@ export type UserProfileData = NonNullable<
   Awaited<ReturnType<typeof getUserProfile>>
 >;
 
-export async function getUserProfile(username: string) {
+export async function getUserProfile(
+  username: string,
+  shouldFetchWallets: boolean = false,
+) {
   // Get basic user details
   const user = await db.query.users.findFirst({
     where: eq(users.username, username),
@@ -156,40 +159,35 @@ export async function getUserProfile(username: string) {
   let ethAddress: string | undefined;
   let solAddress: string | undefined;
 
-  const githubToken = process.env.GITHUB_TOKEN;
-  // Skip GitHub API calls during static generation to avoid rate limiting
-  const isStaticGeneration =
-    process.env.NODE_ENV === "production" && typeof window === "undefined";
+  if (shouldFetchWallets) {
+    const githubToken = process.env.GITHUB_TOKEN;
 
-  if (githubToken && !isStaticGeneration) {
-    try {
-      const { walletData } = await fetchUserWalletAddressesAndReadme(
-        githubToken,
-        username,
-      );
-      if (walletData) {
-        ethAddress = walletData.wallets.find(
-          (wallet) => wallet.chain === "ethereum",
-        )?.address;
-        solAddress = walletData.wallets.find(
-          (wallet) => wallet.chain === "solana",
-        )?.address;
+    if (githubToken) {
+      try {
+        const { walletData } = await fetchUserWalletAddressesAndReadme(
+          githubToken,
+          username,
+        );
+        if (walletData) {
+          ethAddress = walletData.wallets.find(
+            (wallet) => wallet.chain === "ethereum",
+          )?.address;
+          solAddress = walletData.wallets.find(
+            (wallet) => wallet.chain === "solana",
+          )?.address;
+        }
+      } catch (error) {
+        console.warn(
+          `Failed to fetch GitHub wallet data for ${username}:`,
+          error,
+        );
+        // Decide if you want to surface this error or just proceed without wallet addresses
       }
-    } catch (error) {
+    } else {
       console.warn(
-        `Failed to fetch GitHub wallet data for ${username}:`,
-        error,
+        "GITHUB_TOKEN not configured. Cannot fetch wallet addresses for profiles.",
       );
-      // Decide if you want to surface this error or just proceed without wallet addresses
     }
-  } else if (isStaticGeneration) {
-    console.log(
-      `Skipping GitHub API call for ${username} during static generation`,
-    );
-  } else {
-    console.warn(
-      "GITHUB_SERVER_TOKEN not configured. Cannot fetch wallet addresses for profiles.",
-    );
   }
 
   return {
