@@ -5,7 +5,7 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-05-25 to 2025-06-01, elizaos/eliza had 14 new PRs (6 merged), 5 new issues, and 15 active contributors.",
+  "overview": "From 2025-05-25 to 2025-06-01, elizaos/eliza had 32 new PRs (23 merged), 5 new issues, and 17 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs64F6-0",
@@ -19,6 +19,28 @@
       "commentCount": 2
     },
     {
+      "id": "I_kwDOMT5cIs62qth1",
+      "title": "I can't get my bot to detect my twitter activity",
+      "author": "FancyFishok",
+      "number": 4588,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-15T01:45:22Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 1
+    },
+    {
+      "id": "I_kwDOMT5cIs622zWA",
+      "title": "Multiple issues - Not responding to mentions, not analyzing images, npx elizaos plugins commands not working",
+      "author": "AlteredCode",
+      "number": 4607,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-16T03:11:48Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 1
+    },
+    {
       "id": "I_kwDOMT5cIs64JPkJ",
       "title": "Temporary messages not removed after failed send messages stay in UI even on error",
       "author": "0x-Tek",
@@ -30,17 +52,6 @@
       "commentCount": 1
     },
     {
-      "id": "I_kwDOMT5cIs64JQK6",
-      "title": "Failed Fetch-News",
-      "author": "K1mc4n",
-      "number": 4770,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-05-25T16:57:08Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 0
-    },
-    {
       "id": "I_kwDOMT5cIs64NLEa",
       "title": "API endpoint /api/agents/:agentId/rooms returns empty list despite agent being active in rooms",
       "author": "standujar",
@@ -49,10 +60,21 @@
       "createdAt": "2025-05-26T08:42:47Z",
       "closedAt": null,
       "state": "OPEN",
-      "commentCount": 0
+      "commentCount": 1
     }
   ],
   "topPRs": [
+    {
+      "id": "PR_kwDOMT5cIs6X1xwp",
+      "title": "feat: Complete Polygon zkEVM plugin implementation and test cleanup -…",
+      "author": "HarshModi2005",
+      "number": 4801,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-27T19:44:43Z",
+      "mergedAt": null,
+      "additions": 4718,
+      "deletions": 62
+    },
     {
       "id": "PR_kwDOMT5cIs6Xjeuj",
       "title": "feat: Add Project TEE Starter Template",
@@ -60,9 +82,20 @@
       "number": 4774,
       "repository": "elizaos/eliza",
       "createdAt": "2025-05-25T21:42:34Z",
-      "mergedAt": null,
+      "mergedAt": "2025-05-27T07:53:37Z",
       "additions": 4168,
       "deletions": 0
+    },
+    {
+      "id": "PR_kwDOMT5cIs6Xurmd",
+      "title": "feat: Add CLI tests, add plugin dependencies, overhaul plugin registration",
+      "author": "lalalune",
+      "number": 4789,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-27T07:31:40Z",
+      "mergedAt": "2025-05-27T08:16:28Z",
+      "additions": 3403,
+      "deletions": 585
     },
     {
       "id": "PR_kwDOMT5cIs6Xh8oU",
@@ -76,50 +109,38 @@
       "deletions": 1236
     },
     {
-      "id": "PR_kwDOMT5cIs6XjL5N",
-      "title": "fixed: Undelegate Action",
-      "author": "Samarthsinghal28",
-      "number": 4771,
+      "id": "PR_kwDOMT5cIs6XvMio",
+      "title": "feat(update): Eliza290/cli-publish-command",
+      "author": "yungalgo",
+      "number": 4795,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-05-25T18:46:25Z",
-      "mergedAt": "2025-05-25T18:58:47Z",
-      "additions": 568,
-      "deletions": 1046
-    },
-    {
-      "id": "PR_kwDOMT5cIs6Xjdku",
-      "title": "feat: describe images WIP",
-      "author": "0xbbjoker",
-      "number": 4773,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-05-25T21:31:21Z",
-      "mergedAt": null,
-      "additions": 377,
-      "deletions": 333
-    },
-    {
-      "id": "PR_kwDOMT5cIs6XkZpJ",
-      "title": "feat: thinking UX in client chat",
-      "author": "ChristopherTrimboli",
-      "number": 4778,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-05-26T03:20:40Z",
-      "mergedAt": "2025-05-26T06:18:15Z",
-      "additions": 315,
-      "deletions": 256
+      "createdAt": "2025-05-27T08:21:09Z",
+      "mergedAt": "2025-05-27T11:49:01Z",
+      "additions": 1003,
+      "deletions": 416
     }
   ],
   "codeChanges": {
-    "additions": 2023,
-    "deletions": 2597,
-    "files": 47,
-    "commitCount": 38
+    "additions": 12919,
+    "deletions": 5035,
+    "files": 139,
+    "commitCount": 117
   },
   "completedItems": [
+    {
+      "title": "fix: cleanup package.json monorepo",
+      "prNumber": 4733,
+      "type": "bugfix"
+    },
     {
       "title": "corrected path for defaultCharacter.ts",
       "prNumber": 4775,
       "type": "other"
+    },
+    {
+      "title": "feat: Add Project TEE Starter Template",
+      "prNumber": 4774,
+      "type": "feature"
     },
     {
       "title": "fixed: Undelegate Action",
@@ -142,61 +163,136 @@
       "type": "feature"
     },
     {
+      "title": "feat: improve logging",
+      "prNumber": 4784,
+      "type": "feature"
+    },
+    {
+      "title": "chore: remove unused method from db adapter",
+      "prNumber": 4781,
+      "type": "other"
+    },
+    {
+      "title": "Update README_IND.md",
+      "prNumber": 4780,
+      "type": "other"
+    },
+    {
       "title": "feat: thinking UX in client chat",
       "prNumber": 4778,
+      "type": "feature"
+    },
+    {
+      "title": "feat: prod test cli with cron workflows",
+      "prNumber": 4797,
+      "type": "feature"
+    },
+    {
+      "title": "fix: add missing agentId to create room",
+      "prNumber": 4796,
+      "type": "feature"
+    },
+    {
+      "title": "feat(update): Eliza290/cli-publish-command",
+      "prNumber": 4795,
+      "type": "feature"
+    },
+    {
+      "title": "docs: update publish workflow documentation for npm integration",
+      "prNumber": 4794,
+      "type": "docs"
+    },
+    {
+      "title": "feat: add npm publishing to default elizaos publish workflow",
+      "prNumber": 4793,
+      "type": "feature"
+    },
+    {
+      "title": "fix: update and improve registry publishing logic and package naming",
+      "prNumber": 4792,
+      "type": "bugfix"
+    },
+    {
+      "title": "Eliza290/consolidate and update registry urls to elizaos plugins",
+      "prNumber": 4791,
+      "type": "other"
+    },
+    {
+      "title": "fix: remove unneeded parenthesis in CLI publish command",
+      "prNumber": 4790,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: Add CLI tests, add plugin dependencies, overhaul plugin registration",
+      "prNumber": 4789,
+      "type": "feature"
+    },
+    {
+      "title": "fix: bootstrap plugin default",
+      "prNumber": 4788,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: improving typing",
+      "prNumber": 4787,
+      "type": "feature"
+    },
+    {
+      "title": "fix: CLI tests add openai api-key",
+      "prNumber": 4786,
       "type": "feature"
     }
   ],
   "topContributors": [
     {
+      "username": "yungalgo",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
+      "totalScore": 218.476286093218,
+      "prScore": 218.476286093218,
+      "issueScore": 0,
+      "reviewScore": 0,
+      "commentScore": 0
+    },
+    {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 89.33175852972198,
-      "prScore": 89.33175852972198,
+      "totalScore": 204.1318979596898,
+      "prScore": 198.69389795968982,
       "issueScore": 0,
-      "reviewScore": 0,
+      "reviewScore": 5,
+      "commentScore": 0.43799999999999994
+    },
+    {
+      "username": "odilitime",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/16395496?u=c9bac48e632aae594a0d85aaf9e9c9c69b674d8b&v=4",
+      "totalScore": 103.33765747536475,
+      "prScore": 98.33765747536475,
+      "issueScore": 0,
+      "reviewScore": 5,
       "commentScore": 0
     },
     {
-      "username": "Samarthsinghal28",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/120447590?v=4",
-      "totalScore": 56.4317738965761,
-      "prScore": 56.4317738965761,
+      "username": "ChristopherTrimboli",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
+      "totalScore": 92.91136590951105,
+      "prScore": 82.91136590951105,
       "issueScore": 0,
-      "reviewScore": 0,
-      "commentScore": 0
-    },
-    {
-      "username": "HashWarlock",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/64296537?u=1d8228a93c06c603e08d438677b3f736d6b1ab22&v=4",
-      "totalScore": 43.5437738965761,
-      "prScore": 43.5437738965761,
-      "issueScore": 0,
-      "reviewScore": 0,
-      "commentScore": 0
-    },
-    {
-      "username": "imholders",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/202005793?v=4",
-      "totalScore": 36.04827888128435,
-      "prScore": 36.04827888128435,
-      "issueScore": 0,
-      "reviewScore": 0,
+      "reviewScore": 10,
       "commentScore": 0
     },
     {
       "username": "lalalune",
       "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
-      "totalScore": 34.7227738965761,
-      "prScore": 34.7227738965761,
+      "totalScore": 84.87554779315221,
+      "prScore": 84.87554779315221,
       "issueScore": 0,
       "reviewScore": 0,
       "commentScore": 0
     }
   ],
-  "newPRs": 14,
-  "mergedPRs": 6,
+  "newPRs": 32,
+  "mergedPRs": 23,
   "newIssues": 5,
   "closedIssues": 3,
-  "activeContributors": 15
+  "activeContributors": 17
 }
