@@ -9,6 +9,7 @@ import {
   issueComments,
   rawCommits,
   rawPullRequestFiles,
+  userSummaries,
 } from "@/lib/data/schema";
 import {
   buildAreaMap,
@@ -16,6 +17,7 @@ import {
 } from "@/lib/pipelines/codeAreaHelpers";
 import { UTCDate } from "@date-fns/utc";
 import { buildCommonWhereConditions } from "../queryHelpers";
+import { TimeInterval, toDateString } from "@/lib/date-utils";
 
 /**
  * Get metrics for a contributor within a time range
@@ -379,4 +381,43 @@ export async function getContributorMetrics({
       frequency: commitFrequency,
     },
   };
+}
+
+/**
+ * Get summaries for a list of contributors for a specific interval.
+ */
+export async function getContributorSummariesForInterval(
+  usernames: string[],
+  interval: TimeInterval,
+): Promise<Map<string, string | null>> {
+  if (usernames.length === 0) {
+    return new Map<string, string | null>();
+  }
+
+  const intervalStartDateString = toDateString(interval.intervalStart);
+
+  const summaries = await db
+    .select({
+      username: userSummaries.username,
+      summary: userSummaries.summary,
+    })
+    .from(userSummaries)
+    .where(
+      and(
+        inArray(userSummaries.username, usernames),
+        eq(userSummaries.intervalType, interval.intervalType),
+        eq(userSummaries.date, intervalStartDateString),
+      ),
+    );
+
+  const summariesMap = new Map<string, string | null>();
+  for (const s of summaries) {
+    // Skip entries where username is null
+    if (s.username != null) {
+      // Ensure summary is not undefined, default to null if it is.
+      summariesMap.set(s.username, s.summary ?? null);
+    }
+  }
+
+  return summariesMap;
 }

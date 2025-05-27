@@ -30,6 +30,10 @@ export function LlmCopyButton({
   const [includeSummary, setIncludeSummary] = useState(true);
   const [includePrData, setIncludePrData] = useState(true);
   const [includeIssueData, setIncludeIssueData] = useState(true);
+  const [
+    includeDetailedContributorSummaries,
+    setIncludeDetailedContributorSummaries,
+  ] = useState(true);
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -39,6 +43,7 @@ export function LlmCopyButton({
         includeSummary,
         includePrData,
         includeIssueData,
+        includeDetailedContributorSummaries,
       });
 
       await navigator.clipboard.writeText(formattedData);
@@ -115,6 +120,18 @@ export function LlmCopyButton({
                 }
               />
               <Label htmlFor="includeIssueData">Include Issue Data</Label>
+            </div>
+            <div className="flex items-center space-x-4">
+              <Checkbox
+                id="includeDetailedContributorSummaries"
+                checked={includeDetailedContributorSummaries}
+                onCheckedChange={(checked) =>
+                  setIncludeDetailedContributorSummaries(Boolean(checked))
+                }
+              />
+              <Label htmlFor="includeDetailedContributorSummaries">
+                Include Contributor Summaries
+              </Label>
             </div>
           </div>
         </PopoverContent>
