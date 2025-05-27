@@ -189,7 +189,7 @@ export function Navigation() {
         <div className="hidden items-center gap-4 sm:flex">
           {!user ? (
             <>
-              {/* <AuthControls /> */}
+              <AuthControls />
               {!isLoading && <ThemeToggle />}
             </>
           ) : (
