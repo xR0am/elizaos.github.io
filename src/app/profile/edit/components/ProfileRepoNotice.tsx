@@ -5,14 +5,12 @@ import { Loader2 } from "lucide-react";
 
 interface ProfileRepoNoticeProps {
   userLogin: string | undefined; // User login name for display
-  isProcessing: boolean; // True if an operation (like repo creation) is in progress
   pageLoading: boolean; // True if the page is initially loading data
   onCreateRepo: () => void; // Function to call when the create button is clicked
 }
 
 export function ProfileRepoNotice({
   userLogin,
-  isProcessing,
   pageLoading,
   onCreateRepo,
 }: ProfileRepoNoticeProps) {
@@ -23,14 +21,13 @@ export function ProfileRepoNotice({
       <p className="font-semibold">Profile Repository Not Found</p>
       <p className="mb-2 text-sm">
         To link your wallets, you need a public repository named &apos;
-        {userLogin}&apos; on GitHub. We can create this for you with a basic
-        README.md.
+        {userLogin}&apos; on GitHub. Click the button below to go to
+        GitHub&apos;s repository creation page where you can create this
+        repository manually.
       </p>
-      <Button onClick={onCreateRepo} disabled={isProcessing || pageLoading}>
-        {isProcessing || pageLoading ? (
-          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-        ) : null}
-        Create Profile Repository
+      <Button onClick={onCreateRepo} disabled={pageLoading}>
+        {pageLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+        Go to GitHub to Create Repository
       </Button>
     </div>
   );
