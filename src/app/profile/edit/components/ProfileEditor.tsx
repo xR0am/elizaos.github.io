@@ -27,7 +27,7 @@ export default function ProfileEditor() {
     walletSection,
     readmeContent,
     handleCreateProfileRepo,
-    handleLinkWallets,
+    handleGenerateWalletSection,
   } = useProfileWallets();
 
   if (pageLoading && !user) {
@@ -55,9 +55,9 @@ export default function ProfileEditor() {
         <CardHeader>
           <CardTitle>Link Your Wallet Addresses</CardTitle>
           <CardDescription>
-            Add or update your Ethereum and Solana wallet addresses through your
-            Github profile. This information will be stored in a hidden section
-            of your GitHub profile README.md.
+            Link addresses by embedding them as a hidden comment within your
+            Github Profile README.md file. Follow the instructions to get
+            started.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -97,22 +97,9 @@ export default function ProfileEditor() {
                 <>
                   <WalletLinkForm
                     wallets={walletData?.wallets || []}
-                    onSubmit={handleLinkWallets}
+                    onSubmit={handleGenerateWalletSection}
                     isProcessing={pageLoading}
                   />
-                  <p className="mt-4 text-xs text-muted-foreground">
-                    Note: This will create or update the README.md file in your
-                    public{" "}
-                    <a
-                      href={`https://github.com/${userLogin}/${userLogin}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:underline"
-                    >
-                      {userLogin}/{userLogin}
-                    </a>{" "}
-                    GitHub repository.
-                  </p>
                 </>
               )}
 

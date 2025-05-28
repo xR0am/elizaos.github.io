@@ -115,7 +115,7 @@ export function useProfileWallets() {
     }
   }, [user]);
 
-  const handleLinkWallets = useCallback(
+  const handleGenerateWalletSection = useCallback(
     async (wallets: LinkedWallet[]) => {
       if (!user || !user.login) {
         return;
@@ -168,6 +168,6 @@ export function useProfileWallets() {
     setSuccessMessage,
     getWalletAddress,
     handleCreateProfileRepo,
-    handleLinkWallets,
+    handleGenerateWalletSection,
   };
 }
