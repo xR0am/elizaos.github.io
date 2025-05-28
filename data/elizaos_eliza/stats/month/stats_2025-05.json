@@ -5,19 +5,8 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-05-01 to 2025-06-01, elizaos/eliza had 364 new PRs (283 merged), 25 new issues, and 73 active contributors.",
+  "overview": "From 2025-05-01 to 2025-06-01, elizaos/eliza had 376 new PRs (288 merged), 29 new issues, and 76 active contributors.",
   "topIssues": [
-    {
-      "id": "I_kwDOMT5cIs600DmL",
-      "title": "Error: No handler found for delegate type: TEXT_EMBEDDING with OpenAI",
-      "author": "Kirstygoodary",
-      "number": 4418,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-05-01T09:48:19Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 6
-    },
     {
       "id": "I_kwDOMT5cIs62Hsv6",
       "title": "Cannot find module '@elizaos/core' or its corresponding type declarations.\",",
@@ -25,6 +14,17 @@
       "number": 4536,
       "repository": "elizaos/eliza",
       "createdAt": "2025-05-12T02:42:08Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 12
+    },
+    {
+      "id": "I_kwDOMT5cIs600DmL",
+      "title": "Error: No handler found for delegate type: TEXT_EMBEDDING with OpenAI",
+      "author": "Kirstygoodary",
+      "number": 4418,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-01T09:48:19Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 6
@@ -121,10 +121,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 142590,
-    "deletions": 96107,
+    "additions": 143520,
+    "deletions": 96705,
     "files": 1138,
-    "commitCount": 1395
+    "commitCount": 1444
   },
   "completedItems": [
     {
@@ -1541,14 +1541,39 @@
       "title": "fix: CLI tests add openai api-key",
       "prNumber": 4786,
       "type": "feature"
+    },
+    {
+      "title": "fix typos",
+      "prNumber": 4816,
+      "type": "bugfix"
+    },
+    {
+      "title": "make agent sidebar use same height props",
+      "prNumber": 4811,
+      "type": "other"
+    },
+    {
+      "title": "feat: Manually write .env file to flyio",
+      "prNumber": 4808,
+      "type": "feature"
+    },
+    {
+      "title": "fix: TEE Tests",
+      "prNumber": 4807,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: Merge process.env variables into .env file",
+      "prNumber": 4806,
+      "type": "feature"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 2735.431052092304,
-      "prScore": 2619.283052092304,
+      "totalScore": 2761.8077790402026,
+      "prScore": 2645.6597790402025,
       "issueScore": 0,
       "reviewScore": 108,
       "commentScore": 8.148
@@ -1556,43 +1581,43 @@
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 1690.7359307488696,
-      "prScore": 1621.3119307488696,
+      "totalScore": 1729.923189414266,
+      "prScore": 1655.299189414266,
       "issueScore": 0,
-      "reviewScore": 62,
-      "commentScore": 7.4239999999999995
+      "reviewScore": 67,
+      "commentScore": 7.624
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 1498.663202226498,
-      "prScore": 1249.4672022264979,
+      "totalScore": 1584.3418554953957,
+      "prScore": 1329.8058554953957,
       "issueScore": 0,
-      "reviewScore": 246.5,
-      "commentScore": 2.6959999999999997
+      "reviewScore": 251.5,
+      "commentScore": 3.0359999999999996
     },
     {
       "username": "yungalgo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 1105.3515939820438,
-      "prScore": 1099.0715939820439,
+      "totalScore": 1176.3801719506953,
+      "prScore": 1165.1621719506952,
       "issueScore": 0,
-      "reviewScore": 5,
-      "commentScore": 1.28
+      "reviewScore": 9.5,
+      "commentScore": 1.718
     },
     {
       "username": "lalalune",
       "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
-      "totalScore": 671.3889573667186,
-      "prScore": 657.5729573667186,
+      "totalScore": 705.3937312632947,
+      "prScore": 691.3777312632948,
       "issueScore": 2,
       "reviewScore": 10,
-      "commentScore": 1.8159999999999998
+      "commentScore": 2.016
     }
   ],
-  "newPRs": 364,
-  "mergedPRs": 283,
-  "newIssues": 25,
-  "closedIssues": 41,
-  "activeContributors": 73
+  "newPRs": 376,
+  "mergedPRs": 288,
+  "newIssues": 29,
+  "closedIssues": 42,
+  "activeContributors": 76
 }

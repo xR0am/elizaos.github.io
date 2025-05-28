@@ -5,8 +5,19 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-05-25 to 2025-06-01, elizaos/eliza had 32 new PRs (23 merged), 5 new issues, and 17 active contributors.",
+  "overview": "From 2025-05-25 to 2025-06-01, elizaos/eliza had 44 new PRs (28 merged), 9 new issues, and 22 active contributors.",
   "topIssues": [
+    {
+      "id": "I_kwDOMT5cIs62Hsv6",
+      "title": "Cannot find module '@elizaos/core' or its corresponding type declarations.\",",
+      "author": "BinaryBluePeach",
+      "number": 4536,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-12T02:42:08Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 6
+    },
     {
       "id": "I_kwDOMT5cIs64F6-0",
       "title": "API /:agentId/rooms/:roomId is not working",
@@ -14,6 +25,17 @@
       "number": 4763,
       "repository": "elizaos/eliza",
       "createdAt": "2025-05-24T15:39:04Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDOMT5cIs64htk6",
+      "title": "can't find definition file for node or jest",
+      "author": "BinaryBluePeach",
+      "number": 4805,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-28T03:12:19Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 2
@@ -39,31 +61,20 @@
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 1
-    },
-    {
-      "id": "I_kwDOMT5cIs64JPkJ",
-      "title": "Temporary messages not removed after failed send messages stay in UI even on error",
-      "author": "0x-Tek",
-      "number": 4769,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-05-25T16:53:00Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 1
-    },
-    {
-      "id": "I_kwDOMT5cIs64NLEa",
-      "title": "API endpoint /api/agents/:agentId/rooms returns empty list despite agent being active in rooms",
-      "author": "standujar",
-      "number": 4779,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-05-26T08:42:47Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 1
     }
   ],
   "topPRs": [
+    {
+      "id": "PR_kwDOMT5cIs6YBu-Z",
+      "title": "Move message server to self DB, add specs to core",
+      "author": "lalalune",
+      "number": 4818,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-28T20:54:55Z",
+      "mergedAt": null,
+      "additions": 17954,
+      "deletions": 3725
+    },
     {
       "id": "PR_kwDOMT5cIs6X1xwp",
       "title": "feat: Complete Polygon zkEVM plugin implementation and test cleanup -…",
@@ -72,8 +83,8 @@
       "repository": "elizaos/eliza",
       "createdAt": "2025-05-27T19:44:43Z",
       "mergedAt": null,
-      "additions": 4718,
-      "deletions": 62
+      "additions": 9214,
+      "deletions": 98
     },
     {
       "id": "PR_kwDOMT5cIs6Xjeuj",
@@ -107,24 +118,13 @@
       "mergedAt": "2025-05-26T08:29:38Z",
       "additions": 1135,
       "deletions": 1236
-    },
-    {
-      "id": "PR_kwDOMT5cIs6XvMio",
-      "title": "feat(update): Eliza290/cli-publish-command",
-      "author": "yungalgo",
-      "number": 4795,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-05-27T08:21:09Z",
-      "mergedAt": "2025-05-27T11:49:01Z",
-      "additions": 1003,
-      "deletions": 416
     }
   ],
   "codeChanges": {
-    "additions": 12919,
-    "deletions": 5035,
-    "files": 139,
-    "commitCount": 117
+    "additions": 13849,
+    "deletions": 5633,
+    "files": 145,
+    "commitCount": 164
   },
   "completedItems": [
     {
@@ -241,58 +241,83 @@
       "title": "fix: CLI tests add openai api-key",
       "prNumber": 4786,
       "type": "feature"
+    },
+    {
+      "title": "fix typos",
+      "prNumber": 4816,
+      "type": "bugfix"
+    },
+    {
+      "title": "make agent sidebar use same height props",
+      "prNumber": 4811,
+      "type": "other"
+    },
+    {
+      "title": "feat: Manually write .env file to flyio",
+      "prNumber": 4808,
+      "type": "feature"
+    },
+    {
+      "title": "fix: TEE Tests",
+      "prNumber": 4807,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: Merge process.env variables into .env file",
+      "prNumber": 4806,
+      "type": "feature"
     }
   ],
   "topContributors": [
     {
       "username": "yungalgo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 218.476286093218,
-      "prScore": 218.476286093218,
+      "totalScore": 289.50486406186945,
+      "prScore": 284.56686406186947,
       "issueScore": 0,
-      "reviewScore": 0,
-      "commentScore": 0
+      "reviewScore": 4.5,
+      "commentScore": 0.43799999999999994
     },
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 204.1318979596898,
-      "prScore": 198.69389795968982,
+      "totalScore": 243.31915662508624,
+      "prScore": 232.6811566250862,
       "issueScore": 0,
-      "reviewScore": 5,
-      "commentScore": 0.43799999999999994
-    },
-    {
-      "username": "odilitime",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/16395496?u=c9bac48e632aae594a0d85aaf9e9c9c69b674d8b&v=4",
-      "totalScore": 103.33765747536475,
-      "prScore": 98.33765747536475,
-      "issueScore": 0,
-      "reviewScore": 5,
-      "commentScore": 0
+      "reviewScore": 10,
+      "commentScore": 0.6379999999999999
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 92.91136590951105,
-      "prScore": 82.91136590951105,
+      "totalScore": 178.5900191784088,
+      "prScore": 163.25001917840882,
       "issueScore": 0,
-      "reviewScore": 10,
+      "reviewScore": 15,
+      "commentScore": 0.33999999999999997
+    },
+    {
+      "username": "HashWarlock",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/64296537?u=1d8228a93c06c603e08d438677b3f736d6b1ab22&v=4",
+      "totalScore": 124.83611024710491,
+      "prScore": 106.8361102471049,
+      "issueScore": 0,
+      "reviewScore": 18,
       "commentScore": 0
     },
     {
       "username": "lalalune",
       "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
-      "totalScore": 84.87554779315221,
-      "prScore": 84.87554779315221,
+      "totalScore": 118.8803216897283,
+      "prScore": 118.6803216897283,
       "issueScore": 0,
       "reviewScore": 0,
-      "commentScore": 0
+      "commentScore": 0.2
     }
   ],
-  "newPRs": 32,
-  "mergedPRs": 23,
-  "newIssues": 5,
-  "closedIssues": 3,
-  "activeContributors": 17
+  "newPRs": 44,
+  "mergedPRs": 28,
+  "newIssues": 9,
+  "closedIssues": 4,
+  "activeContributors": 22
 }
