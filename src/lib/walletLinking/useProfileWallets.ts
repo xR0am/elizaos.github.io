@@ -12,6 +12,7 @@ import {
   generateReadmeWalletSection,
 } from "@/lib/walletLinking/readmeUtils";
 import { z } from "zod";
+import { decodeBase64 } from "@/lib/decode";
 
 export function useProfileWallets() {
   const router = useRouter();
@@ -42,16 +43,17 @@ export function useProfileWallets() {
       setProfileRepoExists(true);
 
       // check if the Readme exists
-      const readmeUrl = `https://raw.githubusercontent.com/${currentLogin}/${currentLogin}/main/README.md?cache_bust=banana123`;
+      const readmeUrl = `https://api.github.com/repos/${currentLogin}/${currentLogin}/contents/README.md`;
       const readmeResponse = await fetch(readmeUrl);
       if (!readmeResponse.ok) {
         return;
       }
-      const readmeText = await readmeResponse.text();
-      setReadmeContent(readmeText);
+      const readmeData = await readmeResponse.json();
+      const decodedReadmeText = decodeBase64(readmeData.content);
+      setReadmeContent(decodedReadmeText);
 
       // parse Readme content for Wallet data
-      const walletData = parseWalletLinkingDataFromReadme(readmeText);
+      const walletData = parseWalletLinkingDataFromReadme(decodedReadmeText);
       console.log("Wallet data:", JSON.stringify(walletData, null, 2));
       setWalletData(walletData);
     } catch (err: unknown) {
