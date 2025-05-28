@@ -143,7 +143,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         "redirect_uri",
         `${window.location.origin}/auth/callback`,
       );
-      authUrl.searchParams.append("scope", "read:user public_repo");
+      authUrl.searchParams.append("scope", "read:user");
       authUrl.searchParams.append("state", state);
 
       // Redirect the user to the GitHub authorization page
@@ -189,9 +189,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
       const data = await response.json();
       // Check if the token has the required scope
-      if (!data.scope || !data.scope.includes("public_repo")) {
+      if (!data.scope || !data.scope.includes("read:user")) {
         throw new Error(
-          "Insufficient permissions. Please authorize the application with the 'public_repo' scope.",
+          "Insufficient permissions. Please authorize the application with the 'read:user' scope.",
         );
       }
 
