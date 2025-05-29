@@ -34,13 +34,23 @@ export function WalletLinkBoard({
     }
   }, [walletSection]);
 
-  const handleOpenGitHub = useCallback(() => {
+  const handleCopyAndOpenGitHub = useCallback(async () => {
+    // Always open GitHub regardless of copy success
     const githubUrl =
       readmeContent === null
         ? `https://github.com/${userLogin}/${userLogin}/new/main?filename=README.md`
         : `https://github.com/${userLogin}/${userLogin}/edit/main/README.md`;
+
+    // Attempt to copy, but don't block GitHub opening
+    try {
+      await navigator.clipboard.writeText(walletSection);
+    } catch (err) {
+      console.error("Failed to copy text: ", err);
+      // Silently fail - user can use the copy button if needed
+    }
+
     window.open(githubUrl, "_blank");
-  }, [userLogin, readmeContent]);
+  }, [walletSection, userLogin, readmeContent]);
 
   return (
     <div className="space-y-4">
@@ -48,7 +58,7 @@ export function WalletLinkBoard({
         <div className="rounded-md border bg-muted p-4">
           <div className="mb-2 flex items-center justify-between">
             <h3 className="text-sm font-medium text-muted-foreground">
-              Generated Wallet Section. Copy and paste this into your README.md
+              Generated Wallet Comment. Copy and paste this into your README.md
             </h3>
             <Button
               variant="ghost"
@@ -69,9 +79,9 @@ export function WalletLinkBoard({
         </div>
       </div>
 
-      <Button onClick={handleOpenGitHub} className="w-full">
+      <Button onClick={handleCopyAndOpenGitHub} className="w-full">
         <ExternalLink className="mr-2 h-4 w-4" />
-        Open GitHub README Editor
+        Copy and Open GitHub Editor
       </Button>
 
       <div className="rounded-lg border border-primary/30 bg-primary/10 p-3">
@@ -79,12 +89,14 @@ export function WalletLinkBoard({
           <Github className="mt-0.5 h-4 w-4 text-primary" />
           <div className="space-y-1 text-xs">
             <p className="text-foreground">
-              <span className="font-medium">Next steps:</span> Copy the content
-              above, then use the button to open GitHub.
+              <span className="font-medium">Next step:</span> Use the button
+              above to copy the wallet comment and open GitHub editor.
             </p>
             <div className="flex items-center space-x-1 text-muted-foreground">
               <ArrowRight className="h-3 w-3" />
-              <span>The button above will open the correct GitHub editor</span>
+              <span>
+                Copy the wallet comment to clipboard and open GitHub editor
+              </span>
             </div>
             <div className="flex items-center space-x-1 text-muted-foreground">
               <FileText className="h-3 w-3" />

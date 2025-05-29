@@ -169,7 +169,7 @@ export function WalletLinkForm({
             </div>
             <div className="flex items-center space-x-1 text-muted-foreground">
               <ArrowRight className="h-3 w-3" />
-              <span>Submit to generate README content for copying</span>
+              <span>Submit to generate README comment for copying</span>
             </div>
           </div>
         </div>

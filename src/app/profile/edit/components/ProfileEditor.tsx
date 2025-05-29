@@ -55,8 +55,8 @@ export default function ProfileEditor() {
         <CardHeader>
           <CardTitle>Link Your Wallet Addresses</CardTitle>
           <CardDescription>
-            Link addresses by embedding them as a hidden comment within your
-            Github Profile README.md file. Follow the instructions to get
+            Link wallet addresses by embedding them as a hidden comment within
+            your Github Profile README.md file. Follow the instructions to get
             started.
           </CardDescription>
         </CardHeader>
