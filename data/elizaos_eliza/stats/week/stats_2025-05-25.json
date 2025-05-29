@@ -5,7 +5,7 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-05-25 to 2025-06-01, elizaos/eliza had 44 new PRs (28 merged), 9 new issues, and 22 active contributors.",
+  "overview": "From 2025-05-25 to 2025-06-01, elizaos/eliza had 54 new PRs (32 merged), 10 new issues, and 26 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs62Hsv6",
@@ -16,7 +16,18 @@
       "createdAt": "2025-05-12T02:42:08Z",
       "closedAt": null,
       "state": "OPEN",
-      "commentCount": 6
+      "commentCount": 7
+    },
+    {
+      "id": "I_kwDOMT5cIs6z1G6x",
+      "title": "Doesn't work this evm plugin -> @elizaos/plugin-evm",
+      "author": "0xopsdev",
+      "number": 4357,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-04-24T12:06:52Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 2
     },
     {
       "id": "I_kwDOMT5cIs64F6-0",
@@ -50,17 +61,6 @@
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 1
-    },
-    {
-      "id": "I_kwDOMT5cIs622zWA",
-      "title": "Multiple issues - Not responding to mentions, not analyzing images, npx elizaos plugins commands not working",
-      "author": "AlteredCode",
-      "number": 4607,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-05-16T03:11:48Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 1
     }
   ],
   "topPRs": [
@@ -82,9 +82,9 @@
       "number": 4801,
       "repository": "elizaos/eliza",
       "createdAt": "2025-05-27T19:44:43Z",
-      "mergedAt": null,
-      "additions": 9214,
-      "deletions": 98
+      "mergedAt": "2025-05-29T18:15:36Z",
+      "additions": 10176,
+      "deletions": 109
     },
     {
       "id": "PR_kwDOMT5cIs6Xjeuj",
@@ -109,22 +109,22 @@
       "deletions": 585
     },
     {
-      "id": "PR_kwDOMT5cIs6Xh8oU",
-      "title": "feat: Migrate knowledge tab to plugin-knowledge, add graph view to memories",
-      "author": "lalalune",
-      "number": 4766,
+      "id": "PR_kwDOMT5cIs6YD0tq",
+      "title": "Add Cardano plugin",
+      "author": "tuanvm-relipa",
+      "number": 4822,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-05-25T06:57:28Z",
-      "mergedAt": "2025-05-26T08:29:38Z",
-      "additions": 1135,
-      "deletions": 1236
+      "createdAt": "2025-05-29T04:42:50Z",
+      "mergedAt": null,
+      "additions": 2470,
+      "deletions": 72
     }
   ],
   "codeChanges": {
-    "additions": 13849,
-    "deletions": 5633,
-    "files": 145,
-    "commitCount": 164
+    "additions": 24678,
+    "deletions": 6202,
+    "files": 194,
+    "commitCount": 206
   },
   "completedItems": [
     {
@@ -180,6 +180,11 @@
     {
       "title": "feat: thinking UX in client chat",
       "prNumber": 4778,
+      "type": "feature"
+    },
+    {
+      "title": "feat: Complete Polygon zkEVM plugin implementation and test cleanup -…",
+      "prNumber": 4801,
       "type": "feature"
     },
     {
@@ -243,6 +248,11 @@
       "type": "feature"
     },
     {
+      "title": "Fix: support parameterized routes in plugins",
+      "prNumber": 4817,
+      "type": "bugfix"
+    },
+    {
       "title": "fix typos",
       "prNumber": 4816,
       "type": "bugfix"
@@ -266,23 +276,33 @@
       "title": "feat: Merge process.env variables into .env file",
       "prNumber": 4806,
       "type": "feature"
+    },
+    {
+      "title": "docs: replace dead link awesome-eliza.md",
+      "prNumber": 4829,
+      "type": "docs"
+    },
+    {
+      "title": "feat: Added AI/ML API model provider",
+      "prNumber": 4828,
+      "type": "feature"
     }
   ],
   "topContributors": [
     {
       "username": "yungalgo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 289.50486406186945,
-      "prScore": 284.56686406186947,
+      "totalScore": 349.9653978488237,
+      "prScore": 344.82739784882375,
       "issueScore": 0,
       "reviewScore": 4.5,
-      "commentScore": 0.43799999999999994
+      "commentScore": 0.6379999999999999
     },
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 243.31915662508624,
-      "prScore": 232.6811566250862,
+      "totalScore": 254.75646276942027,
+      "prScore": 244.11846276942026,
       "issueScore": 0,
       "reviewScore": 10,
       "commentScore": 0.6379999999999999
@@ -290,8 +310,8 @@
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 178.5900191784088,
-      "prScore": 163.25001917840882,
+      "totalScore": 216.00832128616207,
+      "prScore": 200.66832128616204,
       "issueScore": 0,
       "reviewScore": 15,
       "commentScore": 0.33999999999999997
@@ -308,16 +328,16 @@
     {
       "username": "lalalune",
       "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
-      "totalScore": 118.8803216897283,
+      "totalScore": 119.08032168972831,
       "prScore": 118.6803216897283,
       "issueScore": 0,
       "reviewScore": 0,
-      "commentScore": 0.2
+      "commentScore": 0.4
     }
   ],
-  "newPRs": 44,
-  "mergedPRs": 28,
-  "newIssues": 9,
+  "newPRs": 54,
+  "mergedPRs": 32,
+  "newIssues": 10,
   "closedIssues": 4,
-  "activeContributors": 22
+  "activeContributors": 26
 }
