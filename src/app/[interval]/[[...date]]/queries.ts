@@ -139,13 +139,27 @@ export async function getMetricsForInterval(
   // Fetch contributor summaries if top contributors exist
   if (repoMetrics.topContributors && repoMetrics.topContributors.length > 0) {
     const usernames = repoMetrics.topContributors.map((c) => c.username);
+    console.log(
+      `[getMetricsForInterval] Attempting to fetch contributor summaries for ${usernames.length} users: ${usernames.join(", ")}`,
+    );
     if (usernames.length > 0) {
       const summariesMap = await getContributorSummariesForInterval(
         usernames,
         interval,
       );
       detailedContributorSummaries = Object.fromEntries(summariesMap);
+      console.log(
+        `[getMetricsForInterval] Successfully fetched and processed ${summariesMap.size} contributor summaries.`,
+      );
+    } else {
+      console.log(
+        "[getMetricsForInterval] No usernames to fetch summaries for after mapping top contributors.",
+      );
     }
+  } else {
+    console.log(
+      "[getMetricsForInterval] No top contributors found, skipping fetch for detailed contributor summaries.",
+    );
   }
 
   // Return all collected metrics

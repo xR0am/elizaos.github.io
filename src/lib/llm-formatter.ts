@@ -111,6 +111,9 @@ export function formatDataForLLM(
   ) {
     parts.push("## Detailed Contributor Summaries");
     parts.push(""); // Add a blank line after the main heading
+    console.log(
+      `[formatDataForLLM] Including detailed contributor summaries. Found ${Object.keys(metrics.detailedContributorSummaries).length} summaries.`,
+    );
 
     for (const [username, summary] of Object.entries(
       metrics.detailedContributorSummaries,
@@ -122,6 +125,16 @@ export function formatDataForLLM(
       }
     }
     // The last blank line ensures separation from the next section, or adds padding at the end if it's the last one.
+  } else {
+    if (options.includeDetailedContributorSummaries) {
+      console.log(
+        "[formatDataForLLM] Option to include detailed contributor summaries was true, but no summaries were found or metrics.detailedContributorSummaries was empty.",
+      );
+    } else {
+      console.log(
+        "[formatDataForLLM] Option to include detailed contributor summaries was false.",
+      );
+    }
   }
 
   // Pull Requests Section
