@@ -39,14 +39,14 @@ function CallbackContent() {
     processAuth();
   }, [searchParams, handleAuthCallback, processed]);
 
-  if (error) {
+  if (error || searchParams.get("error")) {
     return (
       <Card className="mx-auto w-full max-w-md">
         <CardHeader>
           <CardTitle className="text-red-500">Authentication Error</CardTitle>
         </CardHeader>
         <CardContent>
-          <p>{error}</p>
+          <p>{error || searchParams.get("error")}</p>
         </CardContent>
         <CardFooter>
           <Button onClick={() => (window.location.href = "/")}>

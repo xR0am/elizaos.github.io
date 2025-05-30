@@ -4,7 +4,7 @@ import { useState, useEffect, FormEvent } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
+import { Loader2, Info, Shield, ArrowRight } from "lucide-react";
 import { isAddress } from "viem"; // For ETH address validation
 import { LinkedWallet } from "@/lib/walletLinking/readmeUtils";
 
@@ -154,6 +154,26 @@ export function WalletLinkForm({
         ) : null}
         {buttonText}
       </Button>
+
+      <div className="mt-4 rounded-lg border border-primary/20 bg-primary/5 p-3">
+        <div className="flex items-start space-x-2">
+          <Info className="mt-0.5 h-4 w-4 text-primary" />
+          <div className="space-y-1 text-xs">
+            <p className="text-foreground">
+              <span className="font-medium">Public addresses only:</span> Enter
+              your wallet addresses to link them to your GitHub profile.
+            </p>
+            <div className="flex items-center space-x-1 text-muted-foreground">
+              <Shield className="h-3 w-3" />
+              <span>Never share private keys or seed phrases</span>
+            </div>
+            <div className="flex items-center space-x-1 text-muted-foreground">
+              <ArrowRight className="h-3 w-3" />
+              <span>Submit to generate README comment for copying</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </form>
   );
 }

@@ -3,6 +3,7 @@ import {
   parseWalletLinkingDataFromReadme,
   WalletLinkingData,
 } from "./readmeUtils";
+import { decodeBase64 } from "../decode";
 
 export interface WalletLinkingResponse {
   walletData: WalletLinkingData | null;
@@ -43,12 +44,7 @@ export async function fetchUserWalletAddressesAndReadme(
     );
 
     if (fileData && fileData.content) {
-      const binaryString = atob(fileData.content);
-      const bytes = new Uint8Array(binaryString.length);
-      for (let i = 0; i < binaryString.length; i++) {
-        bytes[i] = binaryString.charCodeAt(i);
-      }
-      const decodedContent = new TextDecoder().decode(bytes);
+      const decodedContent = decodeBase64(fileData.content);
       const walletData = parseWalletLinkingDataFromReadme(decodedContent);
 
       return {
@@ -73,5 +69,32 @@ export async function fetchUserWalletAddressesAndReadme(
       readmeSha: undefined,
       profileRepoExists: false,
     };
+  }
+}
+
+/**
+ * Fetches a user's profile README from GitHub and extracts wallet linking data.
+ * This is a simplified version that doesn't require authentication and only returns wallet data.
+ *
+ * @param username The GitHub username whose profile README is to be fetched
+ * @returns A promise resolving to wallet linking data or null if not found/error
+ */
+export async function getUserWalletData(
+  username: string,
+): Promise<WalletLinkingData | null> {
+  try {
+    const readmeUrl = `https://api.github.com/repos/${username}/${username}/contents/README.md`;
+    const readmeResponse = await fetch(readmeUrl);
+    if (!readmeResponse.ok) {
+      throw new Error("Failed to fetch README.md");
+    }
+    const readmeData = await readmeResponse.json();
+    const decodedReadmeText = decodeBase64(readmeData.content);
+
+    const walletData = parseWalletLinkingDataFromReadme(decodedReadmeText);
+    return walletData;
+  } catch (err: unknown) {
+    console.error(`Error fetching README data for user ${username}:`, err);
+    return null;
   }
 }

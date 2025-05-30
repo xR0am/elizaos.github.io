@@ -13,7 +13,7 @@ import {
   getUserActivityHeatmaps,
 } from "@/lib/scoring/queries";
 import { TagType } from "@/lib/scoring/types";
-import { fetchUserWalletAddressesAndReadme } from "@/lib/walletLinking/getUserWalletAddresses";
+import { getUserWalletData } from "@/lib/walletLinking/getUserWalletAddresses";
 
 export async function getUserTags(username: string) {
   const tagSelectFields = {
@@ -160,34 +160,27 @@ export async function getUserProfile(
   let solAddress: string | undefined;
 
   if (shouldFetchWallets) {
-    const githubToken = process.env.GITHUB_TOKEN;
-
-    if (githubToken) {
-      try {
-        const { walletData } = await fetchUserWalletAddressesAndReadme(
-          githubToken,
-          username,
-        );
-        if (walletData) {
-          ethAddress = walletData.wallets.find(
-            (wallet) => wallet.chain === "ethereum",
-          )?.address;
-          solAddress = walletData.wallets.find(
-            (wallet) => wallet.chain === "solana",
-          )?.address;
-        }
-      } catch (error) {
-        console.warn(
-          `Failed to fetch GitHub wallet data for ${username}:`,
-          error,
-        );
-        // Decide if you want to surface this error or just proceed without wallet addresses
+    try {
+      const walletData = await getUserWalletData(username);
+      if (walletData) {
+        ethAddress = walletData.wallets.find(
+          (wallet) => wallet.chain === "ethereum",
+        )?.address;
+        solAddress = walletData.wallets.find(
+          (wallet) => wallet.chain === "solana",
+        )?.address;
       }
-    } else {
+    } catch (error) {
       console.warn(
-        "GITHUB_TOKEN not configured. Cannot fetch wallet addresses for profiles.",
+        `Failed to fetch GitHub wallet data for ${username}:`,
+        error,
       );
+      // Decide if you want to surface this error or just proceed without wallet addresses
     }
+  } else {
+    console.warn(
+      "GITHUB_TOKEN not configured. Cannot fetch wallet addresses for profiles.",
+    );
   }
 
   return {

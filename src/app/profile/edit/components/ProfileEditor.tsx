@@ -1,7 +1,7 @@
 "use client";
 
 // Imports moved from page.tsx that are specific to this client component
-import { useProfileEditor } from "@/lib/walletLinking/useProfileEditor"; // Adjusted path
+import { useProfileWallets } from "@/lib/walletLinking/useProfileWallets";
 import {
   Card,
   CardContent,
@@ -12,7 +12,8 @@ import {
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Loader2 } from "lucide-react";
 import { ProfileRepoNotice } from "./ProfileRepoNotice"; // Path relative to this new location
-import { WalletLinkForm } from "@/components/WalletLinkForm";
+import { WalletLinkForm } from "@/app/profile/edit/components/WalletLinkForm";
+import { WalletLinkBoard } from "@/app/profile/edit/components/WalletLinkBoard";
 
 // This is the ProfileEditPageContent function, renamed and exported
 export default function ProfileEditor() {
@@ -20,13 +21,14 @@ export default function ProfileEditor() {
     user,
     profileRepoExists,
     walletData,
-    isProcessing,
     pageLoading,
     error,
     successMessage,
+    walletSection,
+    readmeContent,
     handleCreateProfileRepo,
-    handleLinkWallets,
-  } = useProfileEditor();
+    handleGenerateWalletSection,
+  } = useProfileWallets();
 
   if (pageLoading && !user) {
     return (
@@ -53,9 +55,9 @@ export default function ProfileEditor() {
         <CardHeader>
           <CardTitle>Link Your Wallet Addresses</CardTitle>
           <CardDescription>
-            Add or update your Ethereum and Solana wallet addresses. This
-            information will be stored in a hidden section of your GitHub
-            profile README.md.
+            Link wallet addresses by embedding them as a hidden comment within
+            your Github Profile README.md file. Follow the instructions to get
+            started.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -83,36 +85,30 @@ export default function ProfileEditor() {
 
           {!pageLoading && userLogin && (
             <>
-              {!profileRepoExists && profileRepoExists !== null && (
+              {profileRepoExists === false && (
                 <ProfileRepoNotice
                   userLogin={userLogin}
-                  isProcessing={isProcessing}
                   pageLoading={pageLoading}
                   onCreateRepo={handleCreateProfileRepo}
                 />
               )}
 
-              {profileRepoExists && (
+              {profileRepoExists && walletSection === null && (
                 <>
                   <WalletLinkForm
                     wallets={walletData?.wallets || []}
-                    onSubmit={handleLinkWallets}
-                    isProcessing={isProcessing || pageLoading}
+                    onSubmit={handleGenerateWalletSection}
+                    isProcessing={pageLoading}
                   />
-                  <p className="mt-4 text-xs text-muted-foreground">
-                    Note: This will create or update the README.md file in your
-                    public{" "}
-                    <a
-                      href={`https://github.com/${userLogin}/${userLogin}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:underline"
-                    >
-                      {userLogin}/{userLogin}
-                    </a>{" "}
-                    GitHub repository.
-                  </p>
                 </>
+              )}
+
+              {profileRepoExists && walletSection && (
+                <WalletLinkBoard
+                  userLogin={userLogin}
+                  walletSection={walletSection}
+                  readmeContent={readmeContent}
+                />
               )}
             </>
           )}

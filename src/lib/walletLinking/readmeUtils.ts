@@ -111,6 +111,32 @@ ${WALLET_SECTION_END_MARKER}`;
 }
 
 /**
+ * Generates the wallet section content for a README file
+ * @param wallets Array of wallet information to store
+ * @returns The formatted wallet section string with markers
+ */
+export function generateReadmeWalletSection(wallets: LinkedWallet[]): string {
+  // Validate wallets array using Zod before generating content
+  const validatedWallets = z.array(LinkedWalletSchema).parse(wallets);
+
+  const walletData: WalletLinkingData = {
+    lastUpdated: new Date().toISOString(),
+    wallets: validatedWallets.map((wallet) => ({
+      chain: wallet.chain.toLowerCase().trim(),
+      address: wallet.address.trim(),
+      ...(wallet.signature ? { signature: wallet.signature.trim() } : {}),
+    })),
+  };
+
+  // Validate the complete data structure
+  const validatedData = WalletLinkingDataSchema.parse(walletData);
+
+  return `${WALLET_SECTION_BEGIN_MARKER}
+${JSON.stringify(validatedData, null, 2)}
+${WALLET_SECTION_END_MARKER}`;
+}
+
+/**
  * Helper function to get a wallet address for a specific chain
  * @param data The wallet linking data
  * @param chain The chain to look for (case insensitive)
