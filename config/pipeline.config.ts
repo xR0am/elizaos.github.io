@@ -20,12 +20,8 @@ export default {
     {
       owner: "elizaos",
       name: "eliza",
-      defaultBranch: "develop",
-    },
-    {
-      owner: "elizaos-plugins",
-      name: "plugin-twitter",
-      defaultBranch: "1.x",
+      defaultBranch: "main",
+      repoId: "elizaos/eliza",
     },
   ],
 
@@ -390,4 +386,4 @@ export default {
     Decentralization & Open Collaboration: AI systems should move beyond centralized control towards distributed intelligence and community-driven progress.
     `,
   },
-} as const;
+} as const satisfies PipelineConfig;
