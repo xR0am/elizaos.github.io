@@ -5,7 +5,7 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-05-25 to 2025-06-01, elizaos/eliza had 54 new PRs (32 merged), 10 new issues, and 26 active contributors.",
+  "overview": "From 2025-05-25 to 2025-06-01, elizaos/eliza had 79 new PRs (62 merged), 10 new issues, and 31 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs62Hsv6",
@@ -27,7 +27,7 @@
       "createdAt": "2025-04-24T12:06:52Z",
       "closedAt": null,
       "state": "OPEN",
-      "commentCount": 2
+      "commentCount": 4
     },
     {
       "id": "I_kwDOMT5cIs64F6-0",
@@ -36,6 +36,17 @@
       "number": 4763,
       "repository": "elizaos/eliza",
       "createdAt": "2025-05-24T15:39:04Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDOMT5cIs64rAbd",
+      "title": "New sample project fails e2e tests",
+      "author": "scottrepreneur",
+      "number": 4814,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-28T18:55:08Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 2
@@ -50,17 +61,6 @@
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 2
-    },
-    {
-      "id": "I_kwDOMT5cIs62qth1",
-      "title": "I can't get my bot to detect my twitter activity",
-      "author": "FancyFishok",
-      "number": 4588,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-05-15T01:45:22Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 1
     }
   ],
   "topPRs": [
@@ -74,6 +74,28 @@
       "mergedAt": null,
       "additions": 17954,
       "deletions": 3725
+    },
+    {
+      "id": "PR_kwDOMT5cIs6YVJyL",
+      "title": "Add plugin specifications to core",
+      "author": "lalalune",
+      "number": 4851,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-30T20:57:49Z",
+      "mergedAt": null,
+      "additions": 13209,
+      "deletions": 531
+    },
+    {
+      "id": "PR_kwDOMT5cIs6YSntX",
+      "title": "Add enhanced Polymarket plugin with comprehensive trading actions and…",
+      "author": "HarshModi2005",
+      "number": 4842,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-30T15:14:23Z",
+      "mergedAt": null,
+      "additions": 12859,
+      "deletions": 277
     },
     {
       "id": "PR_kwDOMT5cIs6X1xwp",
@@ -96,41 +118,24 @@
       "mergedAt": "2025-05-27T07:53:37Z",
       "additions": 4168,
       "deletions": 0
-    },
-    {
-      "id": "PR_kwDOMT5cIs6Xurmd",
-      "title": "feat: Add CLI tests, add plugin dependencies, overhaul plugin registration",
-      "author": "lalalune",
-      "number": 4789,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-05-27T07:31:40Z",
-      "mergedAt": "2025-05-27T08:16:28Z",
-      "additions": 3403,
-      "deletions": 585
-    },
-    {
-      "id": "PR_kwDOMT5cIs6YD0tq",
-      "title": "Add Cardano plugin",
-      "author": "tuanvm-relipa",
-      "number": 4822,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-05-29T04:42:50Z",
-      "mergedAt": null,
-      "additions": 2470,
-      "deletions": 72
     }
   ],
   "codeChanges": {
-    "additions": 24678,
-    "deletions": 6202,
-    "files": 194,
-    "commitCount": 206
+    "additions": 30252,
+    "deletions": 15228,
+    "files": 297,
+    "commitCount": 314
   },
   "completedItems": [
     {
       "title": "fix: cleanup package.json monorepo",
       "prNumber": 4733,
       "type": "bugfix"
+    },
+    {
+      "title": "feat: update agent configuration on restart and move ensureAgentExist…",
+      "prNumber": 4755,
+      "type": "feature"
     },
     {
       "title": "corrected path for defaultCharacter.ts",
@@ -140,6 +145,11 @@
     {
       "title": "feat: Add Project TEE Starter Template",
       "prNumber": 4774,
+      "type": "feature"
+    },
+    {
+      "title": "feat: describe images WIP",
+      "prNumber": 4773,
       "type": "feature"
     },
     {
@@ -186,6 +196,11 @@
       "title": "feat: Complete Polygon zkEVM plugin implementation and test cleanup -…",
       "prNumber": 4801,
       "type": "feature"
+    },
+    {
+      "title": "Update README_MY.md",
+      "prNumber": 4800,
+      "type": "other"
     },
     {
       "title": "feat: prod test cli with cron workflows",
@@ -258,6 +273,16 @@
       "type": "bugfix"
     },
     {
+      "title": "fix: resolve E2E test compilation failures",
+      "prNumber": 4813,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: Prevent elizaos update from running in non-project directories",
+      "prNumber": 4812,
+      "type": "bugfix"
+    },
+    {
       "title": "make agent sidebar use same height props",
       "prNumber": 4811,
       "type": "other"
@@ -278,6 +303,11 @@
       "type": "feature"
     },
     {
+      "title": "chore: v1 release, unbeta CLI, docs, core.",
+      "prNumber": 4804,
+      "type": "other"
+    },
+    {
       "title": "docs: replace dead link awesome-eliza.md",
       "prNumber": 4829,
       "type": "docs"
@@ -286,58 +316,178 @@
       "title": "feat: Added AI/ML API model provider",
       "prNumber": 4828,
       "type": "feature"
+    },
+    {
+      "title": "docs: comprehensive CLI docs standardization, updates, and accuracy fixes",
+      "prNumber": 4827,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: added ai model prompts while creating a new agent via CLI",
+      "prNumber": 4826,
+      "type": "feature"
+    },
+    {
+      "title": "fix: Improves PGLite setup and .env handling",
+      "prNumber": 4825,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: Fetches plugin registry from Vercel API",
+      "prNumber": 4824,
+      "type": "feature"
+    },
+    {
+      "title": "Fix: Return success (exit code 0) when no tests are found",
+      "prNumber": 4821,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: update pckg manager version",
+      "prNumber": 4820,
+      "type": "other"
+    },
+    {
+      "title": "fix: action examples bug",
+      "prNumber": 4852,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: cli for TEE and update doc",
+      "prNumber": 4850,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: refactor misc cli commands to reuse directory detection util",
+      "prNumber": 4849,
+      "type": "bugfix"
+    },
+    {
+      "title": "Removes API key existence check during create",
+      "prNumber": 4848,
+      "type": "other"
+    },
+    {
+      "title": "fix: resolve plugin publishing failures with registry references and gitignore template",
+      "prNumber": 4847,
+      "type": "bugfix"
+    },
+    {
+      "title": "more remove beta",
+      "prNumber": 4846,
+      "type": "other"
+    },
+    {
+      "title": "feat: enhance CLI update notifications and reduce command logspam",
+      "prNumber": 4845,
+      "type": "feature"
+    },
+    {
+      "title": "feat: allow configurable shouldRespond bypass types and sources via env",
+      "prNumber": 4844,
+      "type": "feature"
+    },
+    {
+      "title": "fix tab bg thing",
+      "prNumber": 4843,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: compact Tab style",
+      "prNumber": 4841,
+      "type": "other"
+    },
+    {
+      "title": "fix: swap out Vercel for rawgit registry.",
+      "prNumber": 4839,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: simplify provider logging and fix frontend memory viewer",
+      "prNumber": 4838,
+      "type": "feature"
+    },
+    {
+      "title": "fix: tee cli subcommand",
+      "prNumber": 4837,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: plugin knowledge requires openai key",
+      "prNumber": 4836,
+      "type": "other"
+    },
+    {
+      "title": "chore: update plugins test",
+      "prNumber": 4835,
+      "type": "tests"
+    },
+    {
+      "title": "📝 Add docstrings to `feat/cli-ai-prompt-additions`",
+      "prNumber": 4834,
+      "type": "feature"
+    },
+    {
+      "title": "chore: fix typos across codebase",
+      "prNumber": 4833,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: bootstrap improvements",
+      "prNumber": 4831,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "yungalgo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 349.9653978488237,
-      "prScore": 344.82739784882375,
+      "totalScore": 496.733356486684,
+      "prScore": 486.65735648668397,
       "issueScore": 0,
-      "reviewScore": 4.5,
-      "commentScore": 0.6379999999999999
+      "reviewScore": 9,
+      "commentScore": 1.0759999999999998
+    },
+    {
+      "username": "wtfsayo",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
+      "totalScore": 326.45040163765754,
+      "prScore": 265.85040163765757,
+      "issueScore": 0,
+      "reviewScore": 60,
+      "commentScore": 0.6000000000000001
+    },
+    {
+      "username": "ChristopherTrimboli",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
+      "totalScore": 325.46895305874125,
+      "prScore": 244.78895305874127,
+      "issueScore": 0,
+      "reviewScore": 80,
+      "commentScore": 0.6799999999999999
     },
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 254.75646276942027,
-      "prScore": 244.11846276942026,
+      "totalScore": 279.2664878699714,
+      "prScore": 268.62848786997137,
       "issueScore": 0,
       "reviewScore": 10,
       "commentScore": 0.6379999999999999
     },
     {
-      "username": "ChristopherTrimboli",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 216.00832128616207,
-      "prScore": 200.66832128616204,
-      "issueScore": 0,
-      "reviewScore": 15,
-      "commentScore": 0.33999999999999997
-    },
-    {
       "username": "HashWarlock",
       "avatarUrl": "https://avatars.githubusercontent.com/u/64296537?u=1d8228a93c06c603e08d438677b3f736d6b1ab22&v=4",
-      "totalScore": 124.83611024710491,
-      "prScore": 106.8361102471049,
+      "totalScore": 250.73548309655388,
+      "prScore": 232.5354830965539,
       "issueScore": 0,
       "reviewScore": 18,
-      "commentScore": 0
-    },
-    {
-      "username": "lalalune",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
-      "totalScore": 119.08032168972831,
-      "prScore": 118.6803216897283,
-      "issueScore": 0,
-      "reviewScore": 0,
-      "commentScore": 0.4
+      "commentScore": 0.2
     }
   ],
-  "newPRs": 54,
-  "mergedPRs": 32,
+  "newPRs": 79,
+  "mergedPRs": 62,
   "newIssues": 10,
   "closedIssues": 4,
-  "activeContributors": 26
+  "activeContributors": 31
 }

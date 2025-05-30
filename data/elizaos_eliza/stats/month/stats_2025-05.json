@@ -5,7 +5,7 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-05-01 to 2025-06-01, elizaos/eliza had 386 new PRs (292 merged), 30 new issues, and 79 active contributors.",
+  "overview": "From 2025-05-01 to 2025-06-01, elizaos/eliza had 411 new PRs (322 merged), 30 new issues, and 80 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs62Hsv6",
@@ -41,6 +41,17 @@
       "commentCount": 5
     },
     {
+      "id": "I_kwDOMT5cIs6z1G6x",
+      "title": "Doesn't work this evm plugin -> @elizaos/plugin-evm",
+      "author": "0xopsdev",
+      "number": 4357,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-04-24T12:06:52Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 4
+    },
+    {
       "id": "I_kwDOMT5cIs622zWA",
       "title": "Multiple issues - Not responding to mentions, not analyzing images, npx elizaos plugins commands not working",
       "author": "AlteredCode",
@@ -50,17 +61,6 @@
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 4
-    },
-    {
-      "id": "I_kwDOMT5cIs6zjFcA",
-      "title": "Quickstart doc issues",
-      "author": "eduardoPauloPanstein",
-      "number": 4336,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-04-22T23:13:59Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 2
     }
   ],
   "topPRs": [
@@ -121,10 +121,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 154349,
-    "deletions": 97274,
-    "files": 1182,
-    "commitCount": 1486
+    "additions": 159923,
+    "deletions": 106300,
+    "files": 1227,
+    "commitCount": 1594
   },
   "completedItems": [
     {
@@ -1418,6 +1418,11 @@
       "type": "other"
     },
     {
+      "title": "feat: update agent configuration on restart and move ensureAgentExist…",
+      "prNumber": 4755,
+      "type": "feature"
+    },
+    {
       "title": "chore: move logic for image description to bootstrap",
       "prNumber": 4754,
       "type": "other"
@@ -1440,6 +1445,11 @@
     {
       "title": "feat: Add Project TEE Starter Template",
       "prNumber": 4774,
+      "type": "feature"
+    },
+    {
+      "title": "feat: describe images WIP",
+      "prNumber": 4773,
       "type": "feature"
     },
     {
@@ -1486,6 +1496,11 @@
       "title": "feat: Complete Polygon zkEVM plugin implementation and test cleanup -…",
       "prNumber": 4801,
       "type": "feature"
+    },
+    {
+      "title": "Update README_MY.md",
+      "prNumber": 4800,
+      "type": "other"
     },
     {
       "title": "feat: prod test cli with cron workflows",
@@ -1558,6 +1573,16 @@
       "type": "bugfix"
     },
     {
+      "title": "fix: resolve E2E test compilation failures",
+      "prNumber": 4813,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: Prevent elizaos update from running in non-project directories",
+      "prNumber": 4812,
+      "type": "bugfix"
+    },
+    {
       "title": "make agent sidebar use same height props",
       "prNumber": 4811,
       "type": "other"
@@ -1578,6 +1603,11 @@
       "type": "feature"
     },
     {
+      "title": "chore: v1 release, unbeta CLI, docs, core.",
+      "prNumber": 4804,
+      "type": "other"
+    },
+    {
       "title": "docs: replace dead link awesome-eliza.md",
       "prNumber": 4829,
       "type": "docs"
@@ -1586,23 +1616,143 @@
       "title": "feat: Added AI/ML API model provider",
       "prNumber": 4828,
       "type": "feature"
+    },
+    {
+      "title": "docs: comprehensive CLI docs standardization, updates, and accuracy fixes",
+      "prNumber": 4827,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: added ai model prompts while creating a new agent via CLI",
+      "prNumber": 4826,
+      "type": "feature"
+    },
+    {
+      "title": "fix: Improves PGLite setup and .env handling",
+      "prNumber": 4825,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: Fetches plugin registry from Vercel API",
+      "prNumber": 4824,
+      "type": "feature"
+    },
+    {
+      "title": "Fix: Return success (exit code 0) when no tests are found",
+      "prNumber": 4821,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: update pckg manager version",
+      "prNumber": 4820,
+      "type": "other"
+    },
+    {
+      "title": "fix: action examples bug",
+      "prNumber": 4852,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: cli for TEE and update doc",
+      "prNumber": 4850,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: refactor misc cli commands to reuse directory detection util",
+      "prNumber": 4849,
+      "type": "bugfix"
+    },
+    {
+      "title": "Removes API key existence check during create",
+      "prNumber": 4848,
+      "type": "other"
+    },
+    {
+      "title": "fix: resolve plugin publishing failures with registry references and gitignore template",
+      "prNumber": 4847,
+      "type": "bugfix"
+    },
+    {
+      "title": "more remove beta",
+      "prNumber": 4846,
+      "type": "other"
+    },
+    {
+      "title": "feat: enhance CLI update notifications and reduce command logspam",
+      "prNumber": 4845,
+      "type": "feature"
+    },
+    {
+      "title": "feat: allow configurable shouldRespond bypass types and sources via env",
+      "prNumber": 4844,
+      "type": "feature"
+    },
+    {
+      "title": "fix tab bg thing",
+      "prNumber": 4843,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: compact Tab style",
+      "prNumber": 4841,
+      "type": "other"
+    },
+    {
+      "title": "fix: swap out Vercel for rawgit registry.",
+      "prNumber": 4839,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: simplify provider logging and fix frontend memory viewer",
+      "prNumber": 4838,
+      "type": "feature"
+    },
+    {
+      "title": "fix: tee cli subcommand",
+      "prNumber": 4837,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: plugin knowledge requires openai key",
+      "prNumber": 4836,
+      "type": "other"
+    },
+    {
+      "title": "chore: update plugins test",
+      "prNumber": 4835,
+      "type": "tests"
+    },
+    {
+      "title": "📝 Add docstrings to `feat/cli-ai-prompt-additions`",
+      "prNumber": 4834,
+      "type": "feature"
+    },
+    {
+      "title": "chore: fix typos across codebase",
+      "prNumber": 4833,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: bootstrap improvements",
+      "prNumber": 4831,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 2771.8077790402026,
-      "prScore": 2645.6597790402025,
+      "totalScore": 2984.015135947448,
+      "prScore": 2832.667135947448,
       "issueScore": 0,
-      "reviewScore": 118,
-      "commentScore": 8.148
+      "reviewScore": 143,
+      "commentScore": 8.347999999999999
     },
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 1741.3604955586,
-      "prScore": 1666.7364955586,
+      "totalScore": 1765.8705206591512,
+      "prScore": 1691.2465206591512,
       "issueScore": 0,
       "reviewScore": 67,
       "commentScore": 7.624
@@ -1610,34 +1760,34 @@
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 1621.760157603149,
-      "prScore": 1367.224157603149,
+      "totalScore": 1731.2207893757281,
+      "prScore": 1411.3447893757282,
       "issueScore": 0,
-      "reviewScore": 251.5,
-      "commentScore": 3.0359999999999996
+      "reviewScore": 316.5,
+      "commentScore": 3.376
     },
     {
       "username": "yungalgo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 1236.8407057376496,
-      "prScore": 1225.4227057376495,
+      "totalScore": 1383.6086643755098,
+      "prScore": 1367.2526643755098,
       "issueScore": 0,
-      "reviewScore": 9.5,
-      "commentScore": 1.918
+      "reviewScore": 14,
+      "commentScore": 2.356
     },
     {
       "username": "lalalune",
       "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
-      "totalScore": 705.5937312632947,
-      "prScore": 691.3777312632948,
+      "totalScore": 740.2025051598708,
+      "prScore": 725.9865051598708,
       "issueScore": 2,
       "reviewScore": 10,
       "commentScore": 2.2159999999999997
     }
   ],
-  "newPRs": 386,
-  "mergedPRs": 292,
+  "newPRs": 411,
+  "mergedPRs": 322,
   "newIssues": 30,
   "closedIssues": 42,
-  "activeContributors": 79
+  "activeContributors": 80
 }
