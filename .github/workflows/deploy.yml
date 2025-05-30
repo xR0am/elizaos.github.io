@@ -10,7 +10,7 @@ on:
     types: [completed]
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -45,6 +45,8 @@ jobs:
       # Set up pipeline-data branch and restore data
       - name: Setup pipeline-data branch
         uses: ./.github/actions/pipeline-data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           operation: setup
           branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
@@ -73,6 +75,7 @@ jobs:
       - name: Build Next.js app
         run: bun run build
         env:
+          GH_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NEXT_TELEMETRY_DISABLED: 1
           CI: true
           NEXT_PUBLIC_GITHUB_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_GITHUB_CLIENT_ID }}
@@ -97,6 +100,8 @@ jobs:
       - name: Cleanup
         if: always()
         uses: ./.github/actions/pipeline-data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           operation: cleanup
           branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
