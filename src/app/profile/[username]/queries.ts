@@ -175,12 +175,7 @@ export async function getUserProfile(
         `Failed to fetch GitHub wallet data for ${username}:`,
         error,
       );
-      // Decide if you want to surface this error or just proceed without wallet addresses
     }
-  } else {
-    console.warn(
-      "GITHUB_TOKEN not configured. Cannot fetch wallet addresses for profiles.",
-    );
   }
 
   return {
