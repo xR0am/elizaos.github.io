@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Copy,
@@ -10,6 +10,7 @@ import {
   FileText,
   ArrowRight,
 } from "lucide-react";
+import { useCopyToClipboard } from "@/hooks/useCopyToClipboard";
 
 interface WalletLinkBoardProps {
   userLogin: string;
@@ -22,17 +23,11 @@ export function WalletLinkBoard({
   walletSection,
   readmeContent,
 }: WalletLinkBoardProps) {
-  const [copied, setCopied] = useState(false);
+  const [copied, copyToClipboard] = useCopyToClipboard();
 
   const handleCopy = useCallback(async () => {
-    try {
-      await navigator.clipboard.writeText(walletSection);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error("Failed to copy text: ", err);
-    }
-  }, [walletSection]);
+    await copyToClipboard(walletSection);
+  }, [copyToClipboard, walletSection]);
 
   const handleCopyAndOpenGitHub = useCallback(async () => {
     // Always open GitHub regardless of copy success
@@ -42,15 +37,10 @@ export function WalletLinkBoard({
         : `https://github.com/${userLogin}/${userLogin}/edit/main/README.md`;
 
     // Attempt to copy, but don't block GitHub opening
-    try {
-      await navigator.clipboard.writeText(walletSection);
-    } catch (err) {
-      console.error("Failed to copy text: ", err);
-      // Silently fail - user can use the copy button if needed
-    }
+    await copyToClipboard(walletSection);
 
     window.open(githubUrl, "_blank");
-  }, [walletSection, userLogin, readmeContent]);
+  }, [copyToClipboard, walletSection, userLogin, readmeContent]);
 
   return (
     <div className="space-y-4">

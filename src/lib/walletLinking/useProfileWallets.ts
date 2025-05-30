@@ -44,7 +44,9 @@ export function useProfileWallets() {
 
       // check if the Readme exists
       const readmeUrl = `https://api.github.com/repos/${currentLogin}/${currentLogin}/contents/README.md`;
-      const readmeResponse = await fetch(readmeUrl);
+      const readmeResponse = await fetch(readmeUrl, {
+        cache: "no-store",
+      });
       if (!readmeResponse.ok) {
         return;
       }
