@@ -13,7 +13,6 @@ import {
   getUserActivityHeatmaps,
 } from "@/lib/scoring/queries";
 import { TagType } from "@/lib/scoring/types";
-import { getUserWalletData } from "@/lib/walletLinking/getUserWalletAddresses";
 
 export async function getUserTags(username: string) {
   const tagSelectFields = {
@@ -111,10 +110,7 @@ export type UserProfileData = NonNullable<
   Awaited<ReturnType<typeof getUserProfile>>
 >;
 
-export async function getUserProfile(
-  username: string,
-  shouldFetchWallets: boolean = false,
-) {
+export async function getUserProfile(username: string) {
   // Get basic user details
   const user = await db.query.users.findFirst({
     where: eq(users.username, username),
@@ -156,32 +152,8 @@ export async function getUserProfile(
     endDate,
   );
 
-  let ethAddress: string | undefined;
-  let solAddress: string | undefined;
-
-  if (shouldFetchWallets) {
-    try {
-      const walletData = await getUserWalletData(username);
-      if (walletData) {
-        ethAddress = walletData.wallets.find(
-          (wallet) => wallet.chain === "ethereum",
-        )?.address;
-        solAddress = walletData.wallets.find(
-          (wallet) => wallet.chain === "solana",
-        )?.address;
-      }
-    } catch (error) {
-      console.warn(
-        `Failed to fetch GitHub wallet data for ${username}:`,
-        error,
-      );
-    }
-  }
-
   return {
     username,
-    ethAddress,
-    solAddress,
     score: userScore.totalScore,
     monthlySummaries,
     weeklySummaries,
