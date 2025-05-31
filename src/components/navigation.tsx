@@ -116,16 +116,26 @@ export function Navigation() {
 
       {user ? (
         <>
-          <DropdownMenuLabel className="flex items-center gap-2">
-            <Avatar className="h-7 w-7">
-              <AvatarImage
-                src={user.avatar_url ?? undefined}
-                alt={user.login ?? "User avatar"}
-              />
-              <AvatarFallback>{user.login?.[0]?.toUpperCase()}</AvatarFallback>
-            </Avatar>
-            {user.login}
-          </DropdownMenuLabel>
+          <DropdownMenuItem
+            asChild
+            className="py-3 text-base focus:bg-accent focus:text-accent-foreground"
+          >
+            <Link
+              href={`/profile/${user.login}`}
+              className="flex items-center gap-2"
+            >
+              <Avatar className="h-7 w-7">
+                <AvatarImage
+                  src={user.avatar_url ?? undefined}
+                  alt={user.login ?? "User avatar"}
+                />
+                <AvatarFallback>
+                  {user.login?.[0]?.toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
+              <span>{user.login}</span>
+            </Link>
+          </DropdownMenuItem>
           <DropdownMenuItem asChild className="py-3 text-base">
             <Link href="/profile/edit" className="flex items-center gap-2">
               <LinkIcon className="h-4 w-4" />
