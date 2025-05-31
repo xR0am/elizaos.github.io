@@ -41,7 +41,7 @@ export async function generateMetadata({
 
 export default async function ProfilePage({ params }: ProfilePageProps) {
   const { username } = await params;
-  const userData = await getUserProfile(username, true);
+  const userData = await getUserProfile(username);
 
   if (!userData) {
     notFound();
