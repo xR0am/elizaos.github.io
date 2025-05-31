@@ -13,7 +13,6 @@ import {
   getUserActivityHeatmaps,
 } from "@/lib/scoring/queries";
 import { TagType } from "@/lib/scoring/types";
-import { getUserWalletData } from "@/lib/walletLinking/getUserWalletAddresses";
 
 export async function getUserTags(username: string) {
   const tagSelectFields = {
