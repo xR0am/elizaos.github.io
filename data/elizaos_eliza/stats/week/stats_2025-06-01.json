@@ -5,7 +5,7 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-01 to 2025-06-08, elizaos/eliza had 15 new PRs (19 merged), 3 new issues, and 22 active contributors.",
+  "overview": "From 2025-06-01 to 2025-06-08, elizaos/eliza had 28 new PRs (29 merged), 6 new issues, and 24 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs6z1G6x",
@@ -16,7 +16,7 @@
       "createdAt": "2025-04-24T12:06:52Z",
       "closedAt": null,
       "state": "OPEN",
-      "commentCount": 1
+      "commentCount": 6
     },
     {
       "id": "I_kwDOMT5cIs65Jvsk",
@@ -30,23 +30,34 @@
       "commentCount": 1
     },
     {
-      "id": "I_kwDOMT5cIs65PN0t",
-      "title": "fallback to pnpm/npm when bun install fails (macOS compatibility issues)",
-      "author": "ceeriil",
-      "number": 4876,
+      "id": "I_kwDOMT5cIs65cJo8",
+      "title": "Twitter Client fails to start with the new release 1.0.2",
+      "author": "affanmustafa",
+      "number": 4894,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-01T20:04:02Z",
+      "createdAt": "2025-06-02T18:17:37Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 1
+    },
+    {
+      "id": "I_kwDOMT5cIs65b-64",
+      "title": "Add automated AI code reviews with Claude to enhance PR feedback",
+      "author": "naevern",
+      "number": 4893,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-02T18:02:37Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 0
     },
     {
-      "id": "I_kwDOMT5cIs65OXBZ",
-      "title": "New plugin created from elizaos create -t plugin: remove requirements for Telegram, Discord configs",
-      "author": "techcomthanh",
-      "number": 4872,
+      "id": "I_kwDOMT5cIs65Y6DK",
+      "title": "Client hot reloads in dev",
+      "author": "lalalune",
+      "number": 4889,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-01T17:05:21Z",
+      "createdAt": "2025-06-02T13:56:56Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 0
@@ -76,6 +87,17 @@
       "deletions": 342
     },
     {
+      "id": "PR_kwDOMT5cIs6YdMJf",
+      "title": "feat: refactor message server to be completely separate and standalone from agents",
+      "author": "lalalune",
+      "number": 4864,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-01T07:31:01Z",
+      "mergedAt": "2025-06-02T09:25:10Z",
+      "additions": 15058,
+      "deletions": 6318
+    },
+    {
       "id": "PR_kwDOMT5cIs6Ya5Bk",
       "title": "fix: add missing GET /agents/:agentId/rooms/:roomId API endpoint",
       "author": "geooner",
@@ -87,33 +109,22 @@
       "deletions": 385
     },
     {
-      "id": "PR_kwDOMT5cIs6YdMJf",
-      "title": "feat: refactor message server to be completely separate and standalone from agents",
-      "author": "lalalune",
-      "number": 4864,
+      "id": "PR_kwDOMT5cIs6Yphhk",
+      "title": "attempts to fix messaging stuff + ui changes",
+      "author": "wtfsayo",
+      "number": 4890,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-01T07:31:01Z",
+      "createdAt": "2025-06-02T15:09:22Z",
       "mergedAt": null,
-      "additions": 10414,
-      "deletions": 7309
-    },
-    {
-      "id": "PR_kwDOMT5cIs6Ye2hN",
-      "title": "feat: replace PGLite message bus with fast in-memory implementation",
-      "author": "0xbbjoker",
-      "number": 4869,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-01T14:24:57Z",
-      "mergedAt": null,
-      "additions": 1138,
-      "deletions": 674
+      "additions": 1568,
+      "deletions": 667
     }
   ],
   "codeChanges": {
-    "additions": 20831,
-    "deletions": 1323,
-    "files": 96,
-    "commitCount": 45
+    "additions": 31938,
+    "deletions": 4707,
+    "files": 180,
+    "commitCount": 91
   },
   "completedItems": [
     {
@@ -197,9 +208,19 @@
       "type": "other"
     },
     {
+      "title": "feat: handle sidebar on mobile + tailwind upgrade",
+      "prNumber": 4866,
+      "type": "feature"
+    },
+    {
       "title": "Bump the npm_and_yarn group across 3 directories with 1 update",
       "prNumber": 4865,
       "type": "other"
+    },
+    {
+      "title": "feat: refactor message server to be completely separate and standalone from agents",
+      "prNumber": 4864,
+      "type": "feature"
     },
     {
       "title": "Create .cursorrules",
@@ -210,32 +231,81 @@
       "title": "Add example of prompt injection for future LLM trainings",
       "prNumber": 4862,
       "type": "feature"
+    },
+    {
+      "title": "docs: update README with accurate repository structure and package de…",
+      "prNumber": 4891,
+      "type": "docs"
+    },
+    {
+      "title": "fix(cli): resolve workspace dependencies in plugin loading",
+      "prNumber": 4888,
+      "type": "bugfix"
+    },
+    {
+      "title": "merge main to develop",
+      "prNumber": 4886,
+      "type": "other"
+    },
+    {
+      "title": "sync main <> dev",
+      "prNumber": 4885,
+      "type": "other"
+    },
+    {
+      "title": "attempt: improve update command",
+      "prNumber": 4884,
+      "type": "other"
+    },
+    {
+      "title": "chore: update twitter envs",
+      "prNumber": 4883,
+      "type": "other"
+    },
+    {
+      "title": "Update README_IND.md",
+      "prNumber": 4882,
+      "type": "other"
+    },
+    {
+      "title": "Update README_MY.md",
+      "prNumber": 4880,
+      "type": "other"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 138.58468610932545,
-      "prScore": 138.14668610932546,
+      "totalScore": 364.11240483316107,
+      "prScore": 363.2364048331611,
       "issueScore": 0,
       "reviewScore": 0,
-      "commentScore": 0.43799999999999994
+      "commentScore": 0.8759999999999999
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 109.58214554679375,
-      "prScore": 99.58214554679375,
+      "totalScore": 205.03886761296116,
+      "prScore": 194.83886761296117,
       "issueScore": 0,
       "reviewScore": 10,
-      "commentScore": 0
+      "commentScore": 0.2
     },
     {
       "username": "lalalune",
       "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
-      "totalScore": 87.20235566919314,
+      "totalScore": 99.64035566919314,
       "prScore": 87.20235566919314,
+      "issueScore": 2,
+      "reviewScore": 10,
+      "commentScore": 0.43799999999999994
+    },
+    {
+      "username": "imholders",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/202005793?v=4",
+      "totalScore": 69.43524017767298,
+      "prScore": 69.43524017767298,
       "issueScore": 0,
       "reviewScore": 0,
       "commentScore": 0
@@ -243,25 +313,16 @@
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 43.7437738965761,
-      "prScore": 33.5437738965761,
+      "totalScore": 50.203299530493375,
+      "prScore": 39.56529953049338,
       "issueScore": 0,
       "reviewScore": 10,
-      "commentScore": 0.2
-    },
-    {
-      "username": "K1mc4n",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/156217571?u=cc94e7743c591f36eaf958d88befa855348bba9d&v=4",
-      "totalScore": 28.404261218861713,
-      "prScore": 28.404261218861713,
-      "issueScore": 0,
-      "reviewScore": 0,
-      "commentScore": 0
+      "commentScore": 0.6379999999999999
     }
   ],
-  "newPRs": 15,
-  "mergedPRs": 19,
-  "newIssues": 3,
-  "closedIssues": 3,
-  "activeContributors": 22
+  "newPRs": 28,
+  "mergedPRs": 29,
+  "newIssues": 6,
+  "closedIssues": 17,
+  "activeContributors": 24
 }
