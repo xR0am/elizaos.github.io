@@ -15,6 +15,13 @@ import EthereumIcon from "@/components/icons/EthereumIcon";
 import SolanaIcon from "@/components/icons/SolanaIcon";
 import { WalletAddressBadge } from "@/components/ui/WalletAddressBadge";
 import { getUserWalletData } from "@/lib/walletLinking/getUserWalletAddresses";
+import { GoldCheckmarkIcon } from "@/components/icons";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export interface UserStats {
   totalPrs: number;
@@ -101,7 +108,21 @@ export default function UserProfile({
         <div className="flex-grow">
           <div className="flex flex-col gap-2">
             <h1 className="max-w-full text-lg font-bold sm:text-2xl">
-              {username}{" "}
+              {username}
+              {(ethAddress || solAddress) && (
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <span className="inline-block ml-1 align-middle">
+                        <GoldCheckmarkIcon className="inline-block" />
+                      </span>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Wallet linked</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              )}
               <span className="text-primary">(level-{totalLevel})</span>
             </h1>
             <div className="flex flex-wrap items-center gap-3">
