@@ -5,8 +5,19 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 57 new PRs (52 merged), 19 new issues, and 31 active contributors.",
+  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 77 new PRs (68 merged), 22 new issues, and 38 active contributors.",
   "topIssues": [
+    {
+      "id": "I_kwDOMT5cIs653_FI",
+      "title": "agentId and roomId are required",
+      "author": "omariosman",
+      "number": 4933,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-04T16:47:07Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 5
+    },
     {
       "id": "I_kwDOMT5cIs652Dw9",
       "title": "Web client thinks it is on a different version",
@@ -50,17 +61,6 @@
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 1
-    },
-    {
-      "id": "I_kwDOMT5cIs65uMCa",
-      "title": "Dependency Loop in local ai plugin",
-      "author": "omariosman",
-      "number": 4912,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-04T01:00:29Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 1
     }
   ],
   "topPRs": [
@@ -74,6 +74,17 @@
       "mergedAt": null,
       "additions": 17954,
       "deletions": 3725
+    },
+    {
+      "id": "PR_kwDOMT5cIs6ZHABe",
+      "title": "Puga/community agent2",
+      "author": "alpuga",
+      "number": 4938,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-05T00:05:22Z",
+      "mergedAt": null,
+      "additions": 16801,
+      "deletions": 80002
     },
     {
       "id": "PR_kwDOMT5cIs6YVJyL",
@@ -107,24 +118,13 @@
       "mergedAt": "2025-06-01T08:13:11Z",
       "additions": 12952,
       "deletions": 385
-    },
-    {
-      "id": "PR_kwDOMT5cIs6YupRU",
-      "title": "feat: handleServerSync in an efficient way",
-      "author": "odilitime",
-      "number": 4896,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-03T02:17:27Z",
-      "mergedAt": null,
-      "additions": 7942,
-      "deletions": 14300
     }
   ],
   "codeChanges": {
-    "additions": 34460,
-    "deletions": 5164,
-    "files": 207,
-    "commitCount": 181
+    "additions": 39169,
+    "deletions": 7973,
+    "files": 243,
+    "commitCount": 249
   },
   "completedItems": [
     {
@@ -333,6 +333,21 @@
       "type": "bugfix"
     },
     {
+      "title": "chore: force bun in cli, add install docs",
+      "prNumber": 4937,
+      "type": "feature"
+    },
+    {
+      "title": "fix: ensureConnections order of op",
+      "prNumber": 4936,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: agent cross interference loop",
+      "prNumber": 4935,
+      "type": "bugfix"
+    },
+    {
       "title": "fix: agent self-response infinite loop in message service",
       "prNumber": 4934,
       "type": "bugfix"
@@ -346,6 +361,11 @@
       "title": "feat: chat ui improvements",
       "prNumber": 4930,
       "type": "feature"
+    },
+    {
+      "title": "1.0.5 develop merge",
+      "prNumber": 4928,
+      "type": "other"
     },
     {
       "title": "chore: update bun.lockb",
@@ -386,32 +406,92 @@
       "title": "windows compatibility",
       "prNumber": 4913,
       "type": "other"
+    },
+    {
+      "title": "fix: release ci versioning",
+      "prNumber": 4960,
+      "type": "bugfix"
+    },
+    {
+      "title": "Merge dev into main",
+      "prNumber": 4958,
+      "type": "other"
+    },
+    {
+      "title": "remove faulty tests for now",
+      "prNumber": 4957,
+      "type": "tests"
+    },
+    {
+      "title": "fix: right skip flag for plugins bats test",
+      "prNumber": 4956,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix(bootstrap): ensure action callbacks reach users and improve shouldRespond logic",
+      "prNumber": 4954,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: release versioning in client",
+      "prNumber": 4952,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: optimize plugin loading strategies and resolve core dependency conflicts",
+      "prNumber": 4949,
+      "type": "bugfix"
+    },
+    {
+      "title": "Fix agent memory viewer not displaying memories",
+      "prNumber": 4948,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: make group creation work",
+      "prNumber": 4946,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: plugins add env var prompting",
+      "prNumber": 4945,
+      "type": "feature"
+    },
+    {
+      "title": "fix: avoid infinite effect loop by guarding currentDmChannelId reset",
+      "prNumber": 4944,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: auto install bun in CLI",
+      "prNumber": 4943,
+      "type": "other"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 688.4037095422431,
-      "prScore": 685.0897095422431,
+      "totalScore": 835.6451863144059,
+      "prScore": 831.893186314406,
       "issueScore": 2,
       "reviewScore": 0,
-      "commentScore": 1.3139999999999998
+      "commentScore": 1.7519999999999998
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 431.61734151904903,
-      "prScore": 386.21734151904906,
+      "totalScore": 585.5676707252193,
+      "prScore": 514.9676707252193,
       "issueScore": 0,
-      "reviewScore": 45,
-      "commentScore": 0.4
+      "reviewScore": 70,
+      "commentScore": 0.6000000000000001
     },
     {
       "username": "lalalune",
       "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
-      "totalScore": 136.83605143365142,
-      "prScore": 121.85805143365143,
+      "totalScore": 207.64225060825672,
+      "prScore": 192.66425060825674,
       "issueScore": 4,
       "reviewScore": 10,
       "commentScore": 0.978
@@ -419,25 +499,25 @@
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 130.7040678484077,
+      "totalScore": 135.7040678484077,
       "prScore": 94.8660678484077,
       "issueScore": 0,
-      "reviewScore": 35,
+      "reviewScore": 40,
       "commentScore": 0.838
     },
     {
       "username": "yungalgo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 95.46722256036878,
-      "prScore": 85.78722256036878,
+      "totalScore": 133.68698860106088,
+      "prScore": 123.80698860106088,
       "issueScore": 0,
       "reviewScore": 9,
-      "commentScore": 0.6799999999999999
+      "commentScore": 0.8799999999999999
     }
   ],
-  "newPRs": 57,
-  "mergedPRs": 52,
-  "newIssues": 19,
+  "newPRs": 77,
+  "mergedPRs": 68,
+  "newIssues": 22,
   "closedIssues": 22,
-  "activeContributors": 31
+  "activeContributors": 38
 }
