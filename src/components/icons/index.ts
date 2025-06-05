@@ -1,1 +1,1 @@
-export { default as GoldCheckmarkIcon } from './GoldCheckmarkIcon';
+export { default as GoldCheckmarkIcon } from "./GoldCheckmarkIcon";

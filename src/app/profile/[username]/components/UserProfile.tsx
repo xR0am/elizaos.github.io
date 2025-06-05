@@ -14,7 +14,7 @@ import { SummaryCard, Summary } from "@/components/summary-card";
 import EthereumIcon from "@/components/icons/EthereumIcon";
 import SolanaIcon from "@/components/icons/SolanaIcon";
 import { WalletAddressBadge } from "@/components/ui/WalletAddressBadge";
-import { getUserWalletData } from "@/lib/walletLinking/getUserWalletAddresses";
+import { getCachedUserWalletData } from "@/lib/walletLinking/getUserWalletAddresses";
 import { GoldCheckmarkIcon } from "@/components/icons";
 import {
   Tooltip,
@@ -67,7 +67,7 @@ export default function UserProfile({
 
     const fetchWalletData = async () => {
       try {
-        const walletData = await getUserWalletData(username);
+        const walletData = await getCachedUserWalletData(username);
         if (walletData && !isCancelled) {
           setEthAddress(
             walletData.wallets.find((wallet) => wallet.chain === "ethereum")
@@ -77,6 +77,10 @@ export default function UserProfile({
             walletData.wallets.find((wallet) => wallet.chain === "solana")
               ?.address,
           );
+        } else if (!isCancelled) {
+          // Explicitly set to undefined if no walletData
+          setEthAddress(undefined);
+          setSolAddress(undefined);
         }
       } catch (error) {
         if (!isCancelled) {
@@ -84,6 +88,8 @@ export default function UserProfile({
             `Failed to fetch GitHub wallet data for ${username}:`,
             error,
           );
+          setEthAddress(undefined); // Clear on error
+          setSolAddress(undefined);
         }
       }
     };
@@ -113,8 +119,8 @@ export default function UserProfile({
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <span className="inline-block ml-1 align-middle">
-                        <GoldCheckmarkIcon className="inline-block" />
+                      <span className="ml-1 inline-block align-middle">
+                        <GoldCheckmarkIcon className="inline-block h-5 w-5" />
                       </span>
                     </TooltipTrigger>
                     <TooltipContent>

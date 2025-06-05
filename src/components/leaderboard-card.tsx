@@ -62,7 +62,7 @@ export function LeaderboardCard({
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <span className="inline-block ml-1 align-middle">
+                        <span className="ml-1 inline-block align-middle">
                           <GoldCheckmarkIcon className="h-4 w-4" />
                         </span>
                       </TooltipTrigger>
