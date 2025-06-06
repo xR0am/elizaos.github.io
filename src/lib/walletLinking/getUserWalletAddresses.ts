@@ -111,7 +111,10 @@ export async function getCachedUserWalletData(
           });
         }
         if (wallets.length > 0) {
-          return { wallets };
+          return {
+            wallets,
+            lastUpdated: userRecord.walletDataUpdatedAt.toString(),
+          };
         }
       }
       // Fresh cache, and we know there are no addresses, or only null addresses were stored.
