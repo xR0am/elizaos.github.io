@@ -5,18 +5,29 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-01 to 2025-06-08, elizaos/eliza had 77 new PRs (68 merged), 22 new issues, and 38 active contributors.",
+  "overview": "From 2025-06-01 to 2025-06-08, elizaos/eliza had 94 new PRs (83 merged), 23 new issues, and 38 active contributors.",
   "topIssues": [
     {
-      "id": "I_kwDOMT5cIs653_FI",
-      "title": "agentId and roomId are required",
-      "author": "omariosman",
-      "number": 4933,
+      "id": "I_kwDOMT5cIs66Hl5D",
+      "title": "Creating room via REST API first works but then returns empty rooms array",
+      "author": "exitsimulation",
+      "number": 4955,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-04T16:47:07Z",
+      "createdAt": "2025-06-05T20:24:03Z",
       "closedAt": null,
       "state": "OPEN",
-      "commentCount": 5
+      "commentCount": 9
+    },
+    {
+      "id": "I_kwDOMT5cIs653Uth",
+      "title": "Refreshing on an agent chat shows error",
+      "author": "scottrepreneur",
+      "number": 4927,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-04T15:42:29Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 6
     },
     {
       "id": "I_kwDOMT5cIs652Dw9",
@@ -30,34 +41,23 @@
       "commentCount": 3
     },
     {
-      "id": "I_kwDOMT5cIs65Jvsk",
-      "title": "plugin install problems (v0 plugin: giphy)",
-      "author": "BinaryBluePeach",
-      "number": 4861,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-01T01:03:20Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 1
-    },
-    {
-      "id": "I_kwDOMT5cIs65cJo8",
-      "title": "Twitter Client fails to start with the new release 1.0.2",
-      "author": "affanmustafa",
-      "number": 4894,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-02T18:17:37Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 1
-    },
-    {
       "id": "I_kwDOMT5cIs650izy",
       "title": "Agent won't respond to twitter mentions",
       "author": "CurralesDragon",
       "number": 4921,
       "repository": "elizaos/eliza",
       "createdAt": "2025-06-04T11:50:36Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDOMT5cIs65Jvsk",
+      "title": "plugin install problems (v0 plugin: giphy)",
+      "author": "BinaryBluePeach",
+      "number": 4861,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-01T01:03:20Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 1
@@ -121,10 +121,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 39169,
-    "deletions": 7973,
-    "files": 243,
-    "commitCount": 249
+    "additions": 45572,
+    "deletions": 11206,
+    "files": 300,
+    "commitCount": 332
   },
   "completedItems": [
     {
@@ -466,58 +466,133 @@
       "title": "chore: auto install bun in CLI",
       "prNumber": 4943,
       "type": "other"
+    },
+    {
+      "title": "fix errors cosmos.md",
+      "prNumber": 4941,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: Migrate CLI tests from Bats to Bun TypeScript",
+      "prNumber": 4978,
+      "type": "tests"
+    },
+    {
+      "title": "fix: sidebar scroll behavior + add groups to sidebar",
+      "prNumber": 4977,
+      "type": "feature"
+    },
+    {
+      "title": "chore: update messages api docs",
+      "prNumber": 4976,
+      "type": "other"
+    },
+    {
+      "title": "chore: nuke duplicate & update docs for api",
+      "prNumber": 4975,
+      "type": "other"
+    },
+    {
+      "title": "feat: 🎨 UI/UX Improvements: Responsive Character Form + Chat Interface Enhancements",
+      "prNumber": 4974,
+      "type": "feature"
+    },
+    {
+      "title": "feat: Add retry button for user messages in chat",
+      "prNumber": 4973,
+      "type": "feature"
+    },
+    {
+      "title": "feat: enhance UI/UX with responsive buttons, universal export system, and quick profile access",
+      "prNumber": 4971,
+      "type": "feature"
+    },
+    {
+      "title": "feat: update agent configuration on restart and move ensureAgentExist…",
+      "prNumber": 4970,
+      "type": "feature"
+    },
+    {
+      "title": "fix: Plugin Starter Template TypeScript Declarations, Standardize Git Ignores, Update READMEs",
+      "prNumber": 4966,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: clean command",
+      "prNumber": 4965,
+      "type": "bugfix"
+    },
+    {
+      "title": "refactor: Enhance create command with TEE support and improved logic",
+      "prNumber": 4964,
+      "type": "refactor"
+    },
+    {
+      "title": "Fix/agent cli json and error handling",
+      "prNumber": 4963,
+      "type": "bugfix"
+    },
+    {
+      "title": "dependencies cleanup",
+      "prNumber": 4962,
+      "type": "refactor"
+    },
+    {
+      "title": "fix: remove logs",
+      "prNumber": 4961,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 835.6451863144059,
-      "prScore": 831.893186314406,
+      "totalScore": 1060.256124515222,
+      "prScore": 1046.066124515222,
       "issueScore": 2,
-      "reviewScore": 0,
-      "commentScore": 1.7519999999999998
+      "reviewScore": 10,
+      "commentScore": 2.1899999999999995
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 585.5676707252193,
-      "prScore": 514.9676707252193,
+      "totalScore": 643.4385445893926,
+      "prScore": 541.4005445893926,
       "issueScore": 0,
-      "reviewScore": 70,
-      "commentScore": 0.6000000000000001
-    },
-    {
-      "username": "lalalune",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
-      "totalScore": 207.64225060825672,
-      "prScore": 192.66425060825674,
-      "issueScore": 4,
-      "reviewScore": 10,
-      "commentScore": 0.978
+      "reviewScore": 101,
+      "commentScore": 1.038
     },
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 135.7040678484077,
-      "prScore": 94.8660678484077,
+      "totalScore": 357.6094685293054,
+      "prScore": 296.57146852930543,
       "issueScore": 0,
-      "reviewScore": 40,
-      "commentScore": 0.838
+      "reviewScore": 60,
+      "commentScore": 1.038
     },
     {
       "username": "yungalgo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 133.68698860106088,
-      "prScore": 123.80698860106088,
+      "totalScore": 265.58892261324297,
+      "prScore": 255.36892261324294,
       "issueScore": 0,
       "reviewScore": 9,
-      "commentScore": 0.8799999999999999
+      "commentScore": 1.22
+    },
+    {
+      "username": "standujar",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/16385918?u=718bdcd1585be8447bdfffb8c11ce249baa7532d&v=4",
+      "totalScore": 212.50304008649948,
+      "prScore": 196.42704008649946,
+      "issueScore": 0,
+      "reviewScore": 15,
+      "commentScore": 1.0759999999999998
     }
   ],
-  "newPRs": 77,
-  "mergedPRs": 68,
-  "newIssues": 22,
-  "closedIssues": 22,
+  "newPRs": 94,
+  "mergedPRs": 83,
+  "newIssues": 23,
+  "closedIssues": 25,
   "activeContributors": 38
 }
