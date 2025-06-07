@@ -5,7 +5,7 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 94 new PRs (83 merged), 23 new issues, and 38 active contributors.",
+  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 115 new PRs (99 merged), 25 new issues, and 38 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs66Hl5D",
@@ -30,6 +30,17 @@
       "commentCount": 6
     },
     {
+      "id": "I_kwDOMT5cIs66PtlW",
+      "title": "MessageBusService: Agent not a participant in channel {channelId}, ignoring message",
+      "author": "exitsimulation",
+      "number": 4972,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-06T12:44:57Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 4
+    },
+    {
       "id": "I_kwDOMT5cIs652Dw9",
       "title": "Web client thinks it is on a different version",
       "author": "scottrepreneur",
@@ -50,17 +61,6 @@
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 2
-    },
-    {
-      "id": "I_kwDOMT5cIs65Jvsk",
-      "title": "plugin install problems (v0 plugin: giphy)",
-      "author": "BinaryBluePeach",
-      "number": 4861,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-01T01:03:20Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 1
     }
   ],
   "topPRs": [
@@ -109,22 +109,22 @@
       "deletions": 6318
     },
     {
-      "id": "PR_kwDOMT5cIs6Ya5Bk",
-      "title": "fix: add missing GET /agents/:agentId/rooms/:roomId API endpoint",
-      "author": "geooner",
-      "number": 4860,
+      "id": "PR_kwDOMT5cIs6ZfHqb",
+      "title": "feat: add cursor rules",
+      "author": "lalalune",
+      "number": 4982,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-05-31T21:03:41Z",
-      "mergedAt": "2025-06-01T08:13:11Z",
-      "additions": 12952,
-      "deletions": 385
+      "createdAt": "2025-06-07T06:03:29Z",
+      "mergedAt": "2025-06-07T16:48:52Z",
+      "additions": 13696,
+      "deletions": 0
     }
   ],
   "codeChanges": {
-    "additions": 45572,
-    "deletions": 11206,
-    "files": 300,
-    "commitCount": 332
+    "additions": 63466,
+    "deletions": 21949,
+    "files": 339,
+    "commitCount": 406
   },
   "completedItems": [
     {
@@ -541,58 +541,138 @@
       "title": "fix: remove logs",
       "prNumber": 4961,
       "type": "bugfix"
+    },
+    {
+      "title": "New types 2",
+      "prNumber": 5001,
+      "type": "other"
+    },
+    {
+      "title": "feat(client): Add split button component and improve character form UI",
+      "prNumber": 5000,
+      "type": "feature"
+    },
+    {
+      "title": "feat: Add scenario test to bootstrap to check for \"hello world\"",
+      "prNumber": 4998,
+      "type": "feature"
+    },
+    {
+      "title": "minor docstring fixups",
+      "prNumber": 4995,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: matrix run on all three platforms",
+      "prNumber": 4993,
+      "type": "other"
+    },
+    {
+      "title": "chore: remove obsolete step from integration test CI",
+      "prNumber": 4992,
+      "type": "tests"
+    },
+    {
+      "title": "chore: remove cache from cli-test that causes flaky tests",
+      "prNumber": 4990,
+      "type": "tests"
+    },
+    {
+      "title": "feat(client): add responsive horizontal scrolling for character form …",
+      "prNumber": 4988,
+      "type": "feature"
+    },
+    {
+      "title": "fix: resolve env command interactive mode and flag inconsistencies",
+      "prNumber": 4987,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: Port Validation, Character File Handling Fix",
+      "prNumber": 4985,
+      "type": "bugfix"
+    },
+    {
+      "title": "Fix/plugins command empty string validation and help clarity",
+      "prNumber": 4984,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat:  push version back to main and make a pr to develop on release",
+      "prNumber": 4983,
+      "type": "feature"
+    },
+    {
+      "title": "feat: add cursor rules",
+      "prNumber": 4982,
+      "type": "feature"
+    },
+    {
+      "title": "feat: simplify monorepo command and update documentation/tests",
+      "prNumber": 4981,
+      "type": "feature"
+    },
+    {
+      "title": "fix: incorrect API URL used for message server when SERVER_PORT is not 3000",
+      "prNumber": 4980,
+      "type": "bugfix"
+    },
+    {
+      "title": "Fix CLI update from npm 1.0.5 to bun 1.0.6 by auto-migrating installations",
+      "prNumber": 4979,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 1060.256124515222,
-      "prScore": 1046.066124515222,
+      "totalScore": 1188.9946226514367,
+      "prScore": 1169.4646226514367,
       "issueScore": 2,
-      "reviewScore": 10,
-      "commentScore": 2.1899999999999995
+      "reviewScore": 15,
+      "commentScore": 2.53
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 643.4385445893926,
-      "prScore": 541.4005445893926,
+      "totalScore": 734.1826096807307,
+      "prScore": 577.6446096807308,
       "issueScore": 0,
-      "reviewScore": 101,
-      "commentScore": 1.038
-    },
-    {
-      "username": "0xbbjoker",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 357.6094685293054,
-      "prScore": 296.57146852930543,
-      "issueScore": 0,
-      "reviewScore": 60,
+      "reviewScore": 155.5,
       "commentScore": 1.038
     },
     {
       "username": "yungalgo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 265.58892261324297,
-      "prScore": 255.36892261324294,
+      "totalScore": 488.5301060043348,
+      "prScore": 477.8721060043348,
       "issueScore": 0,
       "reviewScore": 9,
-      "commentScore": 1.22
+      "commentScore": 1.658
     },
     {
-      "username": "standujar",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/16385918?u=718bdcd1585be8447bdfffb8c11ce249baa7532d&v=4",
-      "totalScore": 212.50304008649948,
-      "prScore": 196.42704008649946,
+      "username": "lalalune",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
+      "totalScore": 429.8287684368082,
+      "prScore": 410.31076843680825,
+      "issueScore": 8,
+      "reviewScore": 10,
+      "commentScore": 1.5179999999999998
+    },
+    {
+      "username": "0xbbjoker",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
+      "totalScore": 398.3076094827812,
+      "prScore": 332.26960948278116,
       "issueScore": 0,
-      "reviewScore": 15,
-      "commentScore": 1.0759999999999998
+      "reviewScore": 65,
+      "commentScore": 1.038
     }
   ],
-  "newPRs": 94,
-  "mergedPRs": 83,
-  "newIssues": 23,
+  "newPRs": 115,
+  "mergedPRs": 99,
+  "newIssues": 25,
   "closedIssues": 25,
   "activeContributors": 38
 }
