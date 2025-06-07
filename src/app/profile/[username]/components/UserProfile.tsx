@@ -14,7 +14,8 @@ import { SummaryCard, Summary } from "@/components/summary-card";
 import EthereumIcon from "@/components/icons/EthereumIcon";
 import SolanaIcon from "@/components/icons/SolanaIcon";
 import { WalletAddressBadge } from "@/components/ui/WalletAddressBadge";
-import { getCachedUserWalletData } from "@/lib/walletLinking/getUserWalletAddresses";
+import { parseWalletLinkingDataFromReadme } from "@/lib/walletLinking/readmeUtils";
+import { decodeBase64 } from "@/lib/decode";
 import { GoldCheckmarkIcon } from "@/components/icons";
 import {
   Tooltip,
@@ -43,8 +44,6 @@ type UserProfileProps = {
   totalLevel: number;
   stats: UserStats;
   dailyActivity: UserActivityHeatmap[];
-  ethAddress?: string;
-  solAddress?: string;
 };
 
 export default function UserProfile({
@@ -65,36 +64,55 @@ export default function UserProfile({
   useEffect(() => {
     let isCancelled = false;
 
-    const fetchWalletData = async () => {
+    const fetchAndSetWalletData = async () => {
       try {
-        const walletData = await getCachedUserWalletData(username);
-        if (walletData && !isCancelled) {
-          setEthAddress(
-            walletData.wallets.find((wallet) => wallet.chain === "ethereum")
-              ?.address,
-          );
-          setSolAddress(
-            walletData.wallets.find((wallet) => wallet.chain === "solana")
-              ?.address,
-          );
-        } else if (!isCancelled) {
-          // Explicitly set to undefined if no walletData
+        const readmeUrl = `https://api.github.com/repos/${username}/${username}/contents/README.md`;
+        const response = await fetch(readmeUrl, {
+          headers: {
+            Accept: "application/vnd.github.v3+json",
+            "User-Agent": "Eliza-Leaderboard-App",
+          },
+        });
+
+        if (!response.ok) {
+          return;
+        }
+
+        const readmeData = await response.json();
+        if (!readmeData.content) {
+          return;
+        }
+
+        const decodedReadmeText = decodeBase64(readmeData.content);
+        const walletData = parseWalletLinkingDataFromReadme(decodedReadmeText);
+
+        if (isCancelled || !walletData) {
           setEthAddress(undefined);
           setSolAddress(undefined);
+          return;
         }
+
+        setEthAddress(
+          walletData.wallets.find((wallet) => wallet.chain === "ethereum")
+            ?.address,
+        );
+        setSolAddress(
+          walletData.wallets.find((wallet) => wallet.chain === "solana")
+            ?.address,
+        );
       } catch (error) {
         if (!isCancelled) {
           console.warn(
             `Failed to fetch GitHub wallet data for ${username}:`,
             error,
           );
-          setEthAddress(undefined); // Clear on error
+          setEthAddress(undefined);
           setSolAddress(undefined);
         }
       }
     };
 
-    fetchWalletData();
+    fetchAndSetWalletData();
 
     return () => {
       isCancelled = true;
