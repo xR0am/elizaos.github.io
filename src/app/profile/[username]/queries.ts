@@ -13,6 +13,7 @@ import {
   getUserActivityHeatmaps,
 } from "@/lib/scoring/queries";
 import { TagType } from "@/lib/scoring/types";
+import { getUserWalletData } from "@/lib/walletLinking/getUserWalletAddresses";
 
 export async function getUserTags(username: string) {
   const tagSelectFields = {
@@ -110,7 +111,10 @@ export type UserProfileData = NonNullable<
   Awaited<ReturnType<typeof getUserProfile>>
 >;
 
-export async function getUserProfile(username: string) {
+export async function getUserProfile(
+  username: string,
+  shouldFetchWallets: boolean = false,
+) {
   // Get basic user details
   const user = await db.query.users.findFirst({
     where: eq(users.username, username),
@@ -176,6 +180,8 @@ export async function getUserProfile(username: string) {
 
   return {
     username,
+    ethAddress,
+    solAddress,
     score: userScore.totalScore,
     monthlySummaries,
     weeklySummaries,
