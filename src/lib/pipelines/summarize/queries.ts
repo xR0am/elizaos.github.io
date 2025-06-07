@@ -390,7 +390,13 @@ export async function getContributorSummariesForInterval(
   usernames: string[],
   interval: TimeInterval,
 ): Promise<Map<string, string | null>> {
+  console.log(
+    `[getContributorSummariesForInterval] Fetching for usernames: ${usernames.join(", ")}, intervalType: ${interval.intervalType}, intervalStart: ${toDateString(interval.intervalStart)}`,
+  );
   if (usernames.length === 0) {
+    console.log(
+      "[getContributorSummariesForInterval] No usernames provided, returning empty map.",
+    );
     return new Map<string, string | null>();
   }
 
@@ -412,12 +418,12 @@ export async function getContributorSummariesForInterval(
 
   const summariesMap = new Map<string, string | null>();
   for (const s of summaries) {
-    // Skip entries where username is null
     if (s.username != null) {
-      // Ensure summary is not undefined, default to null if it is.
       summariesMap.set(s.username, s.summary ?? null);
     }
   }
-
+  console.log(
+    `[getContributorSummariesForInterval] Found ${summariesMap.size} summaries for ${usernames.length} requested users.`,
+  );
   return summariesMap;
 }

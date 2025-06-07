@@ -19,7 +19,7 @@ export default {
   repositories: [
     {
       repoId: "elizaos/eliza",
-      defaultBranch: "main",
+      defaultBranch: "develop",
     },
   ],
 
