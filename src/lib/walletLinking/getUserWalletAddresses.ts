@@ -7,6 +7,7 @@ import { decodeBase64 } from "../decode";
 import { db } from "@/lib/data/db";
 import { users, walletAddresses } from "@/lib/data/schema";
 import { eq, and } from "drizzle-orm";
+import { getChainId, getChainByChainId } from "@/lib/walletLinking/chainUtils";
 
 export interface WalletLinkingResponse {
   walletData: WalletLinkingData | null;
@@ -94,7 +95,7 @@ export async function getCachedUserWalletData(
 
       if (cachedWallets.length > 0) {
         const wallets = cachedWallets.map((wallet) => ({
-          chain: wallet.chainId,
+          chain: getChainByChainId(wallet.chainId),
           address: wallet.accountAddress,
           source: "cache",
         }));
@@ -140,7 +141,7 @@ export async function getCachedUserWalletData(
       const existingWallet = await db.query.walletAddresses.findFirst({
         where: and(
           eq(walletAddresses.userId, username),
-          eq(walletAddresses.chainId, wallet.chain),
+          eq(walletAddresses.chainId, getChainId(wallet.chain)),
           eq(walletAddresses.accountAddress, wallet.address),
         ),
       });
@@ -158,10 +159,9 @@ export async function getCachedUserWalletData(
         // Insert new wallet address
         await db.insert(walletAddresses).values({
           userId: username,
-          chainId: wallet.chain,
+          chainId: getChainId(wallet.chain),
           accountAddress: wallet.address,
           isActive: true,
-          isPrimary: true, // Set as primary for now, could be enhanced later
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
         });
