@@ -29,30 +29,15 @@ async function fetchWalletDataFromGithub(
   username: string,
 ): Promise<WalletLinkingData | null> {
   try {
-    const readmeUrl = `https://api.github.com/repos/${username}/${username}/contents/README.md`;
-    // Add Accept header for better API interaction & User-Agent as good practice
-    const response = await fetch(readmeUrl, {
-      headers: {
-        Accept: "application/vnd.github.v3+json",
-        "User-Agent": "Eliza-Leaderboard-App",
-      },
-    });
+    const readmeData = await githubService.getFileContent(
+      process.env.GITHUB_TOKEN!,
+      username,
+      username,
+      "README.md",
+    );
+    console.log("FETCHED README DATA", readmeData?.content);
 
-    if (!response.ok) {
-      if (response.status === 404) {
-        // README not found, common case, not necessarily an error for wallet linking.
-        // console.log(`README.md not found for user ${username}. No wallet data to parse.`);
-        return null;
-      }
-      // Log other errors (rate limiting, server errors, etc.)
-      console.error(
-        `Error fetching README.md for ${username}. Status: ${response.status} ${response.statusText}`,
-      );
-      return null;
-    }
-
-    const readmeData = await response.json();
-    if (!readmeData.content) {
+    if (!readmeData?.content) {
       // console.log(`No content in README.md for user ${username}.`);
       return null;
     }
@@ -90,6 +75,7 @@ export async function getCachedUserWalletData(
 
     if (
       userRecord?.walletDataUpdatedAt &&
+      (userRecord.ethAddress || userRecord.solAddress) &&
       Date.now() / 1000 - userRecord.walletDataUpdatedAt <
         CACHE_DURATION_SECONDS
     ) {
@@ -130,6 +116,11 @@ export async function getCachedUserWalletData(
     const solWallet = freshWalletData?.wallets.find(
       (w) => w.chain === "solana",
     );
+
+    // If no wallet addresses are found, return null
+    if (!ethWallet?.address && !solWallet?.address) {
+      return null;
+    }
 
     // Attempt to update. If the user doesn't exist, this will do nothing.
     // For a more robust solution, one might consider an upsert or ensuring user exists.

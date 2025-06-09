@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { useState, useEffect } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -14,8 +13,6 @@ import { SummaryCard, Summary } from "@/components/summary-card";
 import EthereumIcon from "@/components/icons/EthereumIcon";
 import SolanaIcon from "@/components/icons/SolanaIcon";
 import { WalletAddressBadge } from "@/components/ui/WalletAddressBadge";
-import { parseWalletLinkingDataFromReadme } from "@/lib/walletLinking/readmeUtils";
-import { decodeBase64 } from "@/lib/decode";
 import { GoldCheckmarkIcon } from "@/components/icons";
 import {
   Tooltip,
@@ -44,6 +41,8 @@ type UserProfileProps = {
   totalLevel: number;
   stats: UserStats;
   dailyActivity: UserActivityHeatmap[];
+  ethAddress?: string;
+  solAddress?: string;
 };
 
 export default function UserProfile({
@@ -57,68 +56,9 @@ export default function UserProfile({
   totalLevel,
   stats,
   dailyActivity,
+  ethAddress,
+  solAddress,
 }: UserProfileProps) {
-  const [ethAddress, setEthAddress] = useState<string | undefined>(undefined);
-  const [solAddress, setSolAddress] = useState<string | undefined>(undefined);
-
-  useEffect(() => {
-    let isCancelled = false;
-
-    const fetchAndSetWalletData = async () => {
-      try {
-        const readmeUrl = `https://api.github.com/repos/${username}/${username}/contents/README.md`;
-        const response = await fetch(readmeUrl, {
-          headers: {
-            Accept: "application/vnd.github.v3+json",
-            "User-Agent": "Eliza-Leaderboard-App",
-          },
-        });
-
-        if (!response.ok) {
-          return;
-        }
-
-        const readmeData = await response.json();
-        if (!readmeData.content) {
-          return;
-        }
-
-        const decodedReadmeText = decodeBase64(readmeData.content);
-        const walletData = parseWalletLinkingDataFromReadme(decodedReadmeText);
-
-        if (isCancelled || !walletData) {
-          setEthAddress(undefined);
-          setSolAddress(undefined);
-          return;
-        }
-
-        setEthAddress(
-          walletData.wallets.find((wallet) => wallet.chain === "ethereum")
-            ?.address,
-        );
-        setSolAddress(
-          walletData.wallets.find((wallet) => wallet.chain === "solana")
-            ?.address,
-        );
-      } catch (error) {
-        if (!isCancelled) {
-          console.warn(
-            `Failed to fetch GitHub wallet data for ${username}:`,
-            error,
-          );
-          setEthAddress(undefined);
-          setSolAddress(undefined);
-        }
-      }
-    };
-
-    fetchAndSetWalletData();
-
-    return () => {
-      isCancelled = true;
-    };
-  }, [username]);
-
   return (
     <div className="mx-auto w-full max-w-4xl space-y-6 sm:p-4">
       <div className="items-star flex flex-row gap-4">
