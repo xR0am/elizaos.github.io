@@ -5,7 +5,7 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 134 new PRs (117 merged), 29 new issues, and 40 active contributors.",
+  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 156 new PRs (137 merged), 30 new issues, and 42 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs66Hl5D",
@@ -30,6 +30,17 @@
       "commentCount": 8
     },
     {
+      "id": "I_kwDOMT5cIs66yPsU",
+      "title": "Unable to load custom characters after upgrading to 1.0.7",
+      "author": "jonathanprozzi",
+      "number": 5039,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-10T14:02:57Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 5
+    },
+    {
       "id": "I_kwDOMT5cIs652Dw9",
       "title": "Web client thinks it is on a different version",
       "author": "scottrepreneur",
@@ -41,17 +52,6 @@
       "commentCount": 3
     },
     {
-      "id": "I_kwDOMT5cIs650izy",
-      "title": "Agent won't respond to twitter mentions",
-      "author": "CurralesDragon",
-      "number": 4921,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-04T11:50:36Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 2
-    },
-    {
       "id": "I_kwDOMT5cIs66o8ku",
       "title": "Callback from plugin action not making it to end user response in chat",
       "author": "jonathanprozzi",
@@ -60,7 +60,7 @@
       "createdAt": "2025-06-09T19:45:43Z",
       "closedAt": null,
       "state": "OPEN",
-      "commentCount": 2
+      "commentCount": 3
     }
   ],
   "topPRs": [
@@ -83,8 +83,8 @@
       "repository": "elizaos/eliza",
       "createdAt": "2025-06-05T00:05:22Z",
       "mergedAt": null,
-      "additions": 16801,
-      "deletions": 80002
+      "additions": 16820,
+      "deletions": 80042
     },
     {
       "id": "PR_kwDOMT5cIs6YVJyL",
@@ -121,10 +121,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 73683,
-    "deletions": 47055,
-    "files": 372,
-    "commitCount": 507
+    "additions": 95571,
+    "deletions": 68501,
+    "files": 502,
+    "commitCount": 579
   },
   "completedItems": [
     {
@@ -513,6 +513,11 @@
       "type": "feature"
     },
     {
+      "title": "fix: implement real-time message deletion via SocketIO",
+      "prNumber": 4968,
+      "type": "bugfix"
+    },
+    {
       "title": "fix: Plugin Starter Template TypeScript Declarations, Standardize Git Ignores, Update READMEs",
       "prNumber": 4966,
       "type": "bugfix"
@@ -683,9 +688,24 @@
       "type": "feature"
     },
     {
+      "title": "feat: refactor / split core types",
+      "prNumber": 5020,
+      "type": "feature"
+    },
+    {
       "title": "chore: 1.0.7",
       "prNumber": 5019,
       "type": "other"
+    },
+    {
+      "title": "feat: Dynamic loading of database tables, rebuild plugin-sql, ",
+      "prNumber": 5018,
+      "type": "feature"
+    },
+    {
+      "title": "feat: migrate CLI prompts from prompts library to @clack/prompts",
+      "prNumber": 5016,
+      "type": "feature"
     },
     {
       "title": "chore: Parallelize CI actions.",
@@ -711,58 +731,138 @@
       "title": "refactor: centralize directory detection with monorepo support",
       "prNumber": 5011,
       "type": "refactor"
+    },
+    {
+      "title": "feat: Reorganize API routes into logical domain-based structure",
+      "prNumber": 5010,
+      "type": "feature"
+    },
+    {
+      "title": "fix: load the env config before agent project is loaded",
+      "prNumber": 5048,
+      "type": "bugfix"
+    },
+    {
+      "title": "Fix: Enable loading project agents when no character files specified",
+      "prNumber": 5044,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: OpenTelemetry instrumentation while preserving Sentry",
+      "prNumber": 5042,
+      "type": "other"
+    },
+    {
+      "title": "fix: (cli) resolve double update messaging and improve elizaos update instructions",
+      "prNumber": 5041,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: remove model caching since its slower",
+      "prNumber": 5038,
+      "type": "other"
+    },
+    {
+      "title": "refactor: reorganize cli commands into modular structure",
+      "prNumber": 5036,
+      "type": "refactor"
+    },
+    {
+      "title": "fix: remove message from chat UI on delete",
+      "prNumber": 5035,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: chat history selector reloads",
+      "prNumber": 5034,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: onboarding user settings error",
+      "prNumber": 5033,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: convert dates, fix agent create",
+      "prNumber": 5032,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: fix typos",
+      "prNumber": 5031,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: add dummy services",
+      "prNumber": 5030,
+      "type": "feature"
+    },
+    {
+      "title": "fix: remove truncate",
+      "prNumber": 5028,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: Ensure waitForServer uses SERVER_PORT env if provided",
+      "prNumber": 5027,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: Add target to Content",
+      "prNumber": 5026,
+      "type": "feature"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 1373.8011925350386,
-      "prScore": 1353.8331925350385,
+      "totalScore": 1539.2702674504221,
+      "prScore": 1518.8642674504222,
       "issueScore": 2,
       "reviewScore": 15,
-      "commentScore": 2.9679999999999995
+      "commentScore": 3.4059999999999997
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 1007.6584456632162,
-      "prScore": 815.4204456632161,
+      "totalScore": 1223.6986997626625,
+      "prScore": 996.1206997626624,
       "issueScore": 0,
-      "reviewScore": 191,
-      "commentScore": 1.238
+      "reviewScore": 226,
+      "commentScore": 1.5779999999999998
     },
     {
       "username": "lalalune",
       "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
-      "totalScore": 555.6024055011176,
-      "prScore": 536.0844055011175,
+      "totalScore": 644.9354463430835,
+      "prScore": 602.7174463430835,
       "issueScore": 8,
-      "reviewScore": 10,
-      "commentScore": 1.5179999999999998
+      "reviewScore": 32.5,
+      "commentScore": 1.718
     },
     {
       "username": "yungalgo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 551.9127383920024,
-      "prScore": 540.8167383920024,
+      "totalScore": 628.6520325680386,
+      "prScore": 617.1180325680386,
       "issueScore": 0,
       "reviewScore": 9,
-      "commentScore": 2.0959999999999996
+      "commentScore": 2.534
     },
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 430.79865487866056,
-      "prScore": 364.7606548786606,
+      "totalScore": 457.7612615506887,
+      "prScore": 386.7232615506887,
       "issueScore": 0,
-      "reviewScore": 65,
+      "reviewScore": 70,
       "commentScore": 1.038
     }
   ],
-  "newPRs": 134,
-  "mergedPRs": 117,
-  "newIssues": 29,
+  "newPRs": 156,
+  "mergedPRs": 137,
+  "newIssues": 30,
   "closedIssues": 29,
-  "activeContributors": 40
+  "activeContributors": 42
 }

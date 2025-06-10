@@ -5,7 +5,7 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-08 to 2025-06-15, elizaos/eliza had 18 new PRs (18 merged), 4 new issues, and 14 active contributors.",
+  "overview": "From 2025-06-08 to 2025-06-15, elizaos/eliza had 40 new PRs (38 merged), 5 new issues, and 17 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs66bOWK",
@@ -19,6 +19,17 @@
       "commentCount": 8
     },
     {
+      "id": "I_kwDOMT5cIs66yPsU",
+      "title": "Unable to load custom characters after upgrading to 1.0.7",
+      "author": "jonathanprozzi",
+      "number": 5039,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-10T14:02:57Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 5
+    },
+    {
       "id": "I_kwDOMT5cIs66o8ku",
       "title": "Callback from plugin action not making it to end user response in chat",
       "author": "jonathanprozzi",
@@ -27,7 +38,7 @@
       "createdAt": "2025-06-09T19:45:43Z",
       "closedAt": null,
       "state": "OPEN",
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "I_kwDOMT5cIs66aIKS",
@@ -50,20 +61,20 @@
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 0
-    },
-    {
-      "id": "I_kwDOMT5cIs66p5jZ",
-      "title": "GPT-4o access error with OpenAI API key",
-      "author": "ceeriil",
-      "number": 5023,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-09T21:35:00Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 0
     }
   ],
   "topPRs": [
+    {
+      "id": "PR_kwDOMT5cIs6ZvyIq",
+      "title": "feat: Dynamic loading of database tables, rebuild plugin-sql, ",
+      "author": "lalalune",
+      "number": 5018,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-09T20:43:10Z",
+      "mergedAt": "2025-06-10T07:14:13Z",
+      "additions": 12195,
+      "deletions": 10105
+    },
     {
       "id": "PR_kwDOMT5cIs6Zv1Bc",
       "title": "chore: 1.0.7",
@@ -87,15 +98,15 @@
       "deletions": 6216
     },
     {
-      "id": "PR_kwDOMT5cIs6ZvyIq",
-      "title": "feat: Dynamic loading of database tables, rebuild plugin-sql, ",
-      "author": "lalalune",
-      "number": 5018,
+      "id": "PR_kwDOMT5cIs6Z2CDP",
+      "title": "refactor: reorganize cli commands into modular structure",
+      "author": "wtfsayo",
+      "number": 5036,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-09T20:43:10Z",
-      "mergedAt": null,
-      "additions": 11471,
-      "deletions": 9388
+      "createdAt": "2025-06-10T11:48:28Z",
+      "mergedAt": "2025-06-10T18:02:22Z",
+      "additions": 6749,
+      "deletions": 5221
     },
     {
       "id": "PR_kwDOMT5cIs6ZiFGc",
@@ -107,26 +118,20 @@
       "mergedAt": "2025-06-08T10:14:45Z",
       "additions": 5075,
       "deletions": 12729
-    },
-    {
-      "id": "PR_kwDOMT5cIs6Zmx7d",
-      "title": "feat: Reorganize API routes into logical domain-based structure",
-      "author": "wtfsayo",
-      "number": 5010,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-09T00:36:47Z",
-      "mergedAt": null,
-      "additions": 4895,
-      "deletions": 3816
     }
   ],
   "codeChanges": {
-    "additions": 10217,
-    "deletions": 25106,
-    "files": 122,
-    "commitCount": 95
+    "additions": 32105,
+    "deletions": 46552,
+    "files": 280,
+    "commitCount": 167
   },
   "completedItems": [
+    {
+      "title": "fix: implement real-time message deletion via SocketIO",
+      "prNumber": 4968,
+      "type": "bugfix"
+    },
     {
       "title": "feat: Split types.ts into granular files",
       "prNumber": 4999,
@@ -188,9 +193,24 @@
       "type": "feature"
     },
     {
+      "title": "feat: refactor / split core types",
+      "prNumber": 5020,
+      "type": "feature"
+    },
+    {
       "title": "chore: 1.0.7",
       "prNumber": 5019,
       "type": "other"
+    },
+    {
+      "title": "feat: Dynamic loading of database tables, rebuild plugin-sql, ",
+      "prNumber": 5018,
+      "type": "feature"
+    },
+    {
+      "title": "feat: migrate CLI prompts from prompts library to @clack/prompts",
+      "prNumber": 5016,
+      "type": "feature"
     },
     {
       "title": "chore: Parallelize CI actions.",
@@ -216,58 +236,138 @@
       "title": "refactor: centralize directory detection with monorepo support",
       "prNumber": 5011,
       "type": "refactor"
+    },
+    {
+      "title": "feat: Reorganize API routes into logical domain-based structure",
+      "prNumber": 5010,
+      "type": "feature"
+    },
+    {
+      "title": "fix: load the env config before agent project is loaded",
+      "prNumber": 5048,
+      "type": "bugfix"
+    },
+    {
+      "title": "Fix: Enable loading project agents when no character files specified",
+      "prNumber": 5044,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: OpenTelemetry instrumentation while preserving Sentry",
+      "prNumber": 5042,
+      "type": "other"
+    },
+    {
+      "title": "fix: (cli) resolve double update messaging and improve elizaos update instructions",
+      "prNumber": 5041,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: remove model caching since its slower",
+      "prNumber": 5038,
+      "type": "other"
+    },
+    {
+      "title": "refactor: reorganize cli commands into modular structure",
+      "prNumber": 5036,
+      "type": "refactor"
+    },
+    {
+      "title": "fix: remove message from chat UI on delete",
+      "prNumber": 5035,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: chat history selector reloads",
+      "prNumber": 5034,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: onboarding user settings error",
+      "prNumber": 5033,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: convert dates, fix agent create",
+      "prNumber": 5032,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: fix typos",
+      "prNumber": 5031,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: add dummy services",
+      "prNumber": 5030,
+      "type": "feature"
+    },
+    {
+      "title": "fix: remove truncate",
+      "prNumber": 5028,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: Ensure waitForServer uses SERVER_PORT env if provided",
+      "prNumber": 5027,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: Add target to Content",
+      "prNumber": 5026,
+      "type": "feature"
     }
   ],
   "topContributors": [
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 273.4758359824854,
-      "prScore": 237.7758359824854,
+      "totalScore": 489.5160900819317,
+      "prScore": 418.4760900819317,
       "issueScore": 0,
-      "reviewScore": 35.5,
-      "commentScore": 0.2
+      "reviewScore": 70.5,
+      "commentScore": 0.54
     },
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 184.80656988360187,
-      "prScore": 184.36856988360188,
+      "totalScore": 350.27564479898547,
+      "prScore": 349.3996447989855,
       "issueScore": 0,
       "reviewScore": 0,
-      "commentScore": 0.43799999999999994
+      "commentScore": 0.8759999999999999
     },
     {
       "username": "lalalune",
       "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
-      "totalScore": 125.7736370643093,
-      "prScore": 125.7736370643093,
+      "totalScore": 215.10667790627525,
+      "prScore": 192.40667790627526,
       "issueScore": 0,
-      "reviewScore": 0,
-      "commentScore": 0
+      "reviewScore": 22.5,
+      "commentScore": 0.2
     },
     {
       "username": "yungalgo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 63.3826323876676,
-      "prScore": 62.944632387667596,
+      "totalScore": 140.12192656370388,
+      "prScore": 139.24592656370385,
       "issueScore": 0,
       "reviewScore": 0,
-      "commentScore": 0.43799999999999994
+      "commentScore": 0.8759999999999999
     },
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 32.491045395879425,
-      "prScore": 32.491045395879425,
+      "totalScore": 59.453652067907534,
+      "prScore": 54.453652067907534,
       "issueScore": 0,
-      "reviewScore": 0,
+      "reviewScore": 5,
       "commentScore": 0
     }
   ],
-  "newPRs": 18,
-  "mergedPRs": 18,
-  "newIssues": 4,
+  "newPRs": 40,
+  "mergedPRs": 38,
+  "newIssues": 5,
   "closedIssues": 4,
-  "activeContributors": 14
+  "activeContributors": 17
 }
