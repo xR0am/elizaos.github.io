@@ -1,12 +1,40 @@
+import EthereumIcon from "@/components/icons/EthereumIcon";
+import SolanaIcon from "@/components/icons/SolanaIcon";
+
+interface ChainConfig {
+  chainId: string;
+  regex: RegExp;
+  icon: React.ElementType;
+}
+
 /**
- * Chain ID mapping for currently supported chains based on CAIP-2 blockchain identifier
- * Mainnet chain IDs are used for the wallet linking process
+ * Configuration for currently supported blockchain chains
+ *
+ * Each chain entry contains:
+ * - chainId: CAIP-2 blockchain identifier (mainnet chain IDs used)
+ * - regex: Pattern to validate wallet addresses for this chain
+ * - icon: React component for displaying the chain's icon
+ *
  * @see https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-2.md
  */
-export const CHAIN_IDS = {
-  ethereum: "eip155:1",
-  solana: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
+export const SUPPORTED_CHAINS: Record<string, ChainConfig> = {
+  ethereum: {
+    chainId: "eip155:1",
+    regex: /^0x[a-fA-F0-9]{40}$/,
+    icon: EthereumIcon,
+  },
+  solana: {
+    chainId: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
+    regex: /^[1-9A-HJ-NP-Za-km-z]{32,44}$/,
+    icon: SolanaIcon,
+  },
 };
+
+/**
+ * List of supported chain names
+ * @see SUPPORTED_CHAINS
+ */
+export const SUPPORTED_CHAINS_NAMES = Object.keys(SUPPORTED_CHAINS);
 
 /**
  * Look up the CAIP-2 chain identifier for a given chain name
@@ -14,7 +42,9 @@ export const CHAIN_IDS = {
  * @returns The CAIP-2 chain identifier if found, empty string otherwise
  */
 export function getChainId(chain: string): string {
-  return CHAIN_IDS[chain.toLowerCase() as keyof typeof CHAIN_IDS] || "";
+  const chainConfig =
+    SUPPORTED_CHAINS[chain.toLowerCase() as keyof typeof SUPPORTED_CHAINS];
+  return chainConfig?.chainId || "";
 }
 
 /**
@@ -23,8 +53,8 @@ export function getChainId(chain: string): string {
  * @returns The chain if found, empty string otherwise
  */
 export function getChainByChainId(chainId: string): string {
-  const entries = Object.entries(CHAIN_IDS);
-  const found = entries.find(([, id]) => id === chainId);
+  const entries = Object.entries(SUPPORTED_CHAINS);
+  const found = entries.find(([, config]) => config.chainId === chainId);
   return found ? found[0] : "";
 }
 
@@ -39,4 +69,19 @@ export function getChainByChainId(chainId: string): string {
  */
 export function createAccountId(chainId: string, address: string): string {
   return `${chainId}:${address}`;
+}
+
+/**
+ * Validates a wallet address based on a given chain's regex pattern
+ * @param address The wallet address to validate
+ * @param chain The blockchain name (e.g., "ethereum", "solana")
+ * @returns True if the address is valid for the chain, false otherwise
+ */
+export function validateAddress(address: string, chain: string): boolean {
+  const chainConfig =
+    SUPPORTED_CHAINS[chain.toLowerCase() as keyof typeof SUPPORTED_CHAINS];
+  if (!chainConfig) {
+    return false;
+  }
+  return chainConfig.regex.test(address);
 }

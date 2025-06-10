@@ -10,8 +10,6 @@ import { formatCompactNumber } from "@/lib/format-number";
 import { DailyActivity } from "@/components/daily-activity";
 import { UserActivityHeatmap } from "@/lib/scoring/queries";
 import { SummaryCard, Summary } from "@/components/summary-card";
-import EthereumIcon from "@/components/icons/EthereumIcon";
-import SolanaIcon from "@/components/icons/SolanaIcon";
 import { WalletAddressBadge } from "@/components/ui/WalletAddressBadge";
 import { GoldCheckmarkIcon } from "@/components/icons";
 import {
@@ -20,6 +18,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import type { LinkedWallet } from "@/lib/walletLinking/readmeUtils";
+import { SUPPORTED_CHAINS } from "@/lib/walletLinking/chainUtils";
 
 export interface UserStats {
   totalPrs: number;
@@ -41,8 +41,7 @@ type UserProfileProps = {
   totalLevel: number;
   stats: UserStats;
   dailyActivity: UserActivityHeatmap[];
-  ethAddress?: string;
-  solAddress?: string;
+  linkedWallets: LinkedWallet[];
 };
 
 export default function UserProfile({
@@ -56,8 +55,7 @@ export default function UserProfile({
   totalLevel,
   stats,
   dailyActivity,
-  ethAddress,
-  solAddress,
+  linkedWallets,
 }: UserProfileProps) {
   return (
     <div className="mx-auto w-full max-w-4xl space-y-6 sm:p-4">
@@ -73,7 +71,7 @@ export default function UserProfile({
           <div className="flex flex-col gap-2">
             <h1 className="max-w-full text-lg font-bold sm:text-2xl">
               {username}
-              {(ethAddress || solAddress) && (
+              {linkedWallets.length > 0 && (
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
@@ -105,22 +103,21 @@ export default function UserProfile({
                 <span className="sr-only">View GitHub Profile</span>
               </a>
 
-              {ethAddress && (
-                <WalletAddressBadge
-                  address={ethAddress}
-                  icon={
-                    <EthereumIcon className="h-4 w-4 fill-muted-foreground" />
-                  }
-                  label="ETH"
-                />
-              )}
-              {solAddress && (
-                <WalletAddressBadge
-                  address={solAddress}
-                  icon={<SolanaIcon className="h-4 w-4" />}
-                  label="SOL"
-                />
-              )}
+              {linkedWallets.map((wallet, index) => {
+                const IconComponent = SUPPORTED_CHAINS[wallet.chain]?.icon;
+                return (
+                  <WalletAddressBadge
+                    key={index}
+                    address={wallet.address}
+                    icon={
+                      IconComponent ? (
+                        <IconComponent className="h-4 w-4" />
+                      ) : null
+                    }
+                    label={wallet.chain}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>

@@ -7,7 +7,12 @@ import { decodeBase64 } from "../decode";
 import { db } from "@/lib/data/db";
 import { users, walletAddresses } from "@/lib/data/schema";
 import { eq, and } from "drizzle-orm";
-import { getChainId, getChainByChainId } from "@/lib/walletLinking/chainUtils";
+import {
+  getChainId,
+  getChainByChainId,
+  validateAddress,
+  SUPPORTED_CHAINS_NAMES,
+} from "@/lib/walletLinking/chainUtils";
 
 export interface WalletLinkingResponse {
   walletData: WalletLinkingData | null;
@@ -137,6 +142,14 @@ export async function getCachedUserWalletData(
 
     // Insert or reactivate wallet addresses
     for (const wallet of freshWalletData.wallets) {
+      // Validate chain is supported and address is valid before DB operations
+      if (
+        !SUPPORTED_CHAINS_NAMES.includes(wallet.chain.toLowerCase()) ||
+        !validateAddress(wallet.address, wallet.chain)
+      ) {
+        continue;
+      }
+
       // Check if this wallet already exists
       const existingWallet = await db.query.walletAddresses.findFirst({
         where: and(

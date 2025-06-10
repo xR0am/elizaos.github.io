@@ -155,12 +155,6 @@ export async function getUserProfile(username: string) {
 
   // Get wallet addresses
   const walletData = await getCachedUserWalletData(user.username);
-  const ethAddress = walletData?.wallets.find(
-    (w) => w.chain === "ethereum",
-  )?.address;
-  const solAddress = walletData?.wallets.find(
-    (w) => w.chain === "solana",
-  )?.address;
 
   return {
     username,
@@ -181,7 +175,6 @@ export async function getUserProfile(username: string) {
     totalXp: tagsData.totalXp,
     totalLevel: tagsData.totalLevel,
     dailyActivity,
-    ethAddress,
-    solAddress,
+    linkedWallets: walletData?.wallets || [],
   };
 }
