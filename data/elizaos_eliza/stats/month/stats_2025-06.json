@@ -5,7 +5,7 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 156 new PRs (137 merged), 30 new issues, and 42 active contributors.",
+  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 178 new PRs (148 merged), 31 new issues, and 44 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs66Hl5D",
@@ -30,12 +30,12 @@
       "commentCount": 8
     },
     {
-      "id": "I_kwDOMT5cIs66yPsU",
-      "title": "Unable to load custom characters after upgrading to 1.0.7",
+      "id": "I_kwDOMT5cIs66o8ku",
+      "title": "Callback from plugin action not making it to end user response in chat",
       "author": "jonathanprozzi",
-      "number": 5039,
+      "number": 5017,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-10T14:02:57Z",
+      "createdAt": "2025-06-09T19:45:43Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 5
@@ -52,18 +52,29 @@
       "commentCount": 3
     },
     {
-      "id": "I_kwDOMT5cIs66o8ku",
-      "title": "Callback from plugin action not making it to end user response in chat",
-      "author": "jonathanprozzi",
-      "number": 5017,
+      "id": "I_kwDOMT5cIs650izy",
+      "title": "Agent won't respond to twitter mentions",
+      "author": "CurralesDragon",
+      "number": 4921,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-09T19:45:43Z",
+      "createdAt": "2025-06-04T11:50:36Z",
       "closedAt": null,
       "state": "OPEN",
-      "commentCount": 3
+      "commentCount": 2
     }
   ],
   "topPRs": [
+    {
+      "id": "PR_kwDOMT5cIs6Z8Ksx",
+      "title": "chore: v1.0.8",
+      "author": "ChristopherTrimboli",
+      "number": 5051,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-10T23:34:04Z",
+      "mergedAt": "2025-06-11T01:04:51Z",
+      "additions": 24253,
+      "deletions": 20227
+    },
     {
       "id": "PR_kwDOMT5cIs6YBu-Z",
       "title": "Move message server to self DB, add specs to core",
@@ -107,24 +118,13 @@
       "mergedAt": "2025-06-02T09:25:10Z",
       "additions": 15058,
       "deletions": 6318
-    },
-    {
-      "id": "PR_kwDOMT5cIs6ZfHqb",
-      "title": "feat: add cursor rules",
-      "author": "lalalune",
-      "number": 4982,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-07T06:03:29Z",
-      "mergedAt": "2025-06-07T16:48:52Z",
-      "additions": 13696,
-      "deletions": 0
     }
   ],
   "codeChanges": {
-    "additions": 95571,
-    "deletions": 68501,
-    "files": 502,
-    "commitCount": 579
+    "additions": 103500,
+    "deletions": 75734,
+    "files": 531,
+    "commitCount": 638
   },
   "completedItems": [
     {
@@ -743,9 +743,24 @@
       "type": "bugfix"
     },
     {
+      "title": "chore: add comprehensive Postman collection for elizaOS APIs",
+      "prNumber": 5047,
+      "type": "feature"
+    },
+    {
+      "title": "fix(plugin-sql): use correct agentId from memory in database operations",
+      "prNumber": 5045,
+      "type": "bugfix"
+    },
+    {
       "title": "Fix: Enable loading project agents when no character files specified",
       "prNumber": 5044,
       "type": "bugfix"
+    },
+    {
+      "title": "chore: migrate all generated files into .eliza",
+      "prNumber": 5043,
+      "type": "other"
     },
     {
       "title": "chore: OpenTelemetry instrumentation while preserving Sentry",
@@ -811,25 +826,65 @@
       "title": "feat: Add target to Content",
       "prNumber": 5026,
       "type": "feature"
+    },
+    {
+      "title": "Revert \"feat: update prompt, change actions logic, adjust for respons…",
+      "prNumber": 5068,
+      "type": "other"
+    },
+    {
+      "title": "chore: remove mock test from cli package",
+      "prNumber": 5065,
+      "type": "tests"
+    },
+    {
+      "title": "fix: api routes",
+      "prNumber": 5062,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: Update README with comprehensive CLI documentation",
+      "prNumber": 5059,
+      "type": "docs"
+    },
+    {
+      "title": "fix: fix `bun run dev`",
+      "prNumber": 5054,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: v1.0.8",
+      "prNumber": 5051,
+      "type": "other"
+    },
+    {
+      "title": "fix: update prompt, change actions logic, adjust for responses inste…",
+      "prNumber": 5050,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: dup chats",
+      "prNumber": 5049,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 1539.2702674504221,
-      "prScore": 1518.8642674504222,
+      "totalScore": 1721.1572263535797,
+      "prScore": 1695.55122635358,
       "issueScore": 2,
-      "reviewScore": 15,
-      "commentScore": 3.4059999999999997
+      "reviewScore": 20,
+      "commentScore": 3.6059999999999994
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 1223.6986997626625,
-      "prScore": 996.1206997626624,
+      "totalScore": 1318.5699881423598,
+      "prScore": 1085.9919881423598,
       "issueScore": 0,
-      "reviewScore": 226,
+      "reviewScore": 231,
       "commentScore": 1.5779999999999998
     },
     {
@@ -853,16 +908,16 @@
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 457.7612615506887,
-      "prScore": 386.7232615506887,
+      "totalScore": 549.283833614881,
+      "prScore": 472.80783361488096,
       "issueScore": 0,
-      "reviewScore": 70,
-      "commentScore": 1.038
+      "reviewScore": 75,
+      "commentScore": 1.476
     }
   ],
-  "newPRs": 156,
-  "mergedPRs": 137,
-  "newIssues": 30,
-  "closedIssues": 29,
-  "activeContributors": 42
+  "newPRs": 178,
+  "mergedPRs": 148,
+  "newIssues": 31,
+  "closedIssues": 32,
+  "activeContributors": 44
 }

@@ -5,7 +5,7 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-08 to 2025-06-15, elizaos/eliza had 40 new PRs (38 merged), 5 new issues, and 17 active contributors.",
+  "overview": "From 2025-06-08 to 2025-06-15, elizaos/eliza had 62 new PRs (49 merged), 6 new issues, and 19 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs66bOWK",
@@ -19,17 +19,6 @@
       "commentCount": 8
     },
     {
-      "id": "I_kwDOMT5cIs66yPsU",
-      "title": "Unable to load custom characters after upgrading to 1.0.7",
-      "author": "jonathanprozzi",
-      "number": 5039,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-10T14:02:57Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 5
-    },
-    {
       "id": "I_kwDOMT5cIs66o8ku",
       "title": "Callback from plugin action not making it to end user response in chat",
       "author": "jonathanprozzi",
@@ -38,7 +27,18 @@
       "createdAt": "2025-06-09T19:45:43Z",
       "closedAt": null,
       "state": "OPEN",
-      "commentCount": 3
+      "commentCount": 5
+    },
+    {
+      "id": "I_kwDOMT5cIs633y-j",
+      "title": "V3 Goals",
+      "author": "lalalune",
+      "number": 4720,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-23T00:48:31Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 1
     },
     {
       "id": "I_kwDOMT5cIs66aIKS",
@@ -52,18 +52,29 @@
       "commentCount": 1
     },
     {
-      "id": "I_kwDOMT5cIs633y-j",
-      "title": "V3 Goals",
-      "author": "lalalune",
-      "number": 4720,
+      "id": "I_kwDOMT5cIs668nEA",
+      "title": "Add optional Stream responses to handle streaming",
+      "author": "SyedMuqeetAqib",
+      "number": 5060,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-05-23T00:48:31Z",
+      "createdAt": "2025-06-11T11:17:26Z",
       "closedAt": null,
       "state": "OPEN",
-      "commentCount": 0
+      "commentCount": 1
     }
   ],
   "topPRs": [
+    {
+      "id": "PR_kwDOMT5cIs6Z8Ksx",
+      "title": "chore: v1.0.8",
+      "author": "ChristopherTrimboli",
+      "number": 5051,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-10T23:34:04Z",
+      "mergedAt": "2025-06-11T01:04:51Z",
+      "additions": 24253,
+      "deletions": 20227
+    },
     {
       "id": "PR_kwDOMT5cIs6ZvyIq",
       "title": "feat: Dynamic loading of database tables, rebuild plugin-sql, ",
@@ -98,33 +109,22 @@
       "deletions": 6216
     },
     {
-      "id": "PR_kwDOMT5cIs6Z2CDP",
-      "title": "refactor: reorganize cli commands into modular structure",
-      "author": "wtfsayo",
-      "number": 5036,
+      "id": "PR_kwDOMT5cIs6aFGnn",
+      "title": "feat: updated plugin migrator",
+      "author": "samarth30",
+      "number": 5066,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-10T11:48:28Z",
-      "mergedAt": "2025-06-10T18:02:22Z",
-      "additions": 6749,
-      "deletions": 5221
-    },
-    {
-      "id": "PR_kwDOMT5cIs6ZiFGc",
-      "title": "feat: Split types.ts into granular files",
-      "author": "lalalune",
-      "number": 4999,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-07T19:31:43Z",
-      "mergedAt": "2025-06-08T10:14:45Z",
-      "additions": 5075,
-      "deletions": 12729
+      "createdAt": "2025-06-11T18:02:27Z",
+      "mergedAt": null,
+      "additions": 11280,
+      "deletions": 1246
     }
   ],
   "codeChanges": {
-    "additions": 32105,
-    "deletions": 46552,
-    "files": 280,
-    "commitCount": 167
+    "additions": 40034,
+    "deletions": 53785,
+    "files": 321,
+    "commitCount": 225
   },
   "completedItems": [
     {
@@ -248,9 +248,24 @@
       "type": "bugfix"
     },
     {
+      "title": "chore: add comprehensive Postman collection for elizaOS APIs",
+      "prNumber": 5047,
+      "type": "feature"
+    },
+    {
+      "title": "fix(plugin-sql): use correct agentId from memory in database operations",
+      "prNumber": 5045,
+      "type": "bugfix"
+    },
+    {
       "title": "Fix: Enable loading project agents when no character files specified",
       "prNumber": 5044,
       "type": "bugfix"
+    },
+    {
+      "title": "chore: migrate all generated files into .eliza",
+      "prNumber": 5043,
+      "type": "other"
     },
     {
       "title": "chore: OpenTelemetry instrumentation while preserving Sentry",
@@ -316,26 +331,66 @@
       "title": "feat: Add target to Content",
       "prNumber": 5026,
       "type": "feature"
+    },
+    {
+      "title": "Revert \"feat: update prompt, change actions logic, adjust for respons…",
+      "prNumber": 5068,
+      "type": "other"
+    },
+    {
+      "title": "chore: remove mock test from cli package",
+      "prNumber": 5065,
+      "type": "tests"
+    },
+    {
+      "title": "fix: api routes",
+      "prNumber": 5062,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: Update README with comprehensive CLI documentation",
+      "prNumber": 5059,
+      "type": "docs"
+    },
+    {
+      "title": "fix: fix `bun run dev`",
+      "prNumber": 5054,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: v1.0.8",
+      "prNumber": 5051,
+      "type": "other"
+    },
+    {
+      "title": "fix: update prompt, change actions logic, adjust for responses inste…",
+      "prNumber": 5050,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: dup chats",
+      "prNumber": 5049,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 489.5160900819317,
-      "prScore": 418.4760900819317,
+      "totalScore": 584.3873784616289,
+      "prScore": 508.347378461629,
       "issueScore": 0,
-      "reviewScore": 70.5,
+      "reviewScore": 75.5,
       "commentScore": 0.54
     },
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 350.27564479898547,
-      "prScore": 349.3996447989855,
+      "totalScore": 532.1626037021432,
+      "prScore": 526.0866037021432,
       "issueScore": 0,
-      "reviewScore": 0,
-      "commentScore": 0.8759999999999999
+      "reviewScore": 5,
+      "commentScore": 1.0759999999999998
     },
     {
       "username": "lalalune",
@@ -347,6 +402,15 @@
       "commentScore": 0.2
     },
     {
+      "username": "0xbbjoker",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
+      "totalScore": 150.97622413209982,
+      "prScore": 140.53822413209983,
+      "issueScore": 0,
+      "reviewScore": 10,
+      "commentScore": 0.43799999999999994
+    },
+    {
       "username": "yungalgo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
       "totalScore": 140.12192656370388,
@@ -354,20 +418,11 @@
       "issueScore": 0,
       "reviewScore": 0,
       "commentScore": 0.8759999999999999
-    },
-    {
-      "username": "0xbbjoker",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 59.453652067907534,
-      "prScore": 54.453652067907534,
-      "issueScore": 0,
-      "reviewScore": 5,
-      "commentScore": 0
     }
   ],
-  "newPRs": 40,
-  "mergedPRs": 38,
-  "newIssues": 5,
-  "closedIssues": 4,
-  "activeContributors": 17
+  "newPRs": 62,
+  "mergedPRs": 49,
+  "newIssues": 6,
+  "closedIssues": 7,
+  "activeContributors": 19
 }
