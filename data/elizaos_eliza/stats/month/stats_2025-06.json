@@ -5,7 +5,7 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 178 new PRs (148 merged), 31 new issues, and 44 active contributors.",
+  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 200 new PRs (169 merged), 35 new issues, and 48 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs66Hl5D",
@@ -109,22 +109,22 @@
       "deletions": 342
     },
     {
-      "id": "PR_kwDOMT5cIs6YdMJf",
-      "title": "feat: refactor message server to be completely separate and standalone from agents",
-      "author": "lalalune",
-      "number": 4864,
+      "id": "PR_kwDOMT5cIs6Z7fmU",
+      "title": "chore: Update docs",
+      "author": "madjin",
+      "number": 5046,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-01T07:31:01Z",
-      "mergedAt": "2025-06-02T09:25:10Z",
-      "additions": 15058,
-      "deletions": 6318
+      "createdAt": "2025-06-10T21:19:56Z",
+      "mergedAt": "2025-06-12T20:41:55Z",
+      "additions": 15515,
+      "deletions": 17614
     }
   ],
   "codeChanges": {
-    "additions": 103500,
-    "deletions": 75734,
-    "files": 531,
-    "commitCount": 638
+    "additions": 119975,
+    "deletions": 94360,
+    "files": 563,
+    "commitCount": 758
   },
   "completedItems": [
     {
@@ -748,6 +748,11 @@
       "type": "feature"
     },
     {
+      "title": "chore: Update docs",
+      "prNumber": 5046,
+      "type": "other"
+    },
+    {
       "title": "fix(plugin-sql): use correct agentId from memory in database operations",
       "prNumber": 5045,
       "type": "bugfix"
@@ -828,6 +833,11 @@
       "type": "feature"
     },
     {
+      "title": "fix: normalize plugin name",
+      "prNumber": 5071,
+      "type": "bugfix"
+    },
+    {
       "title": "Revert \"feat: update prompt, change actions logic, adjust for respons…",
       "prNumber": 5068,
       "type": "other"
@@ -848,6 +858,21 @@
       "type": "docs"
     },
     {
+      "title": "fix: update Content Security Policy and error handling in API routes",
+      "prNumber": 5058,
+      "type": "bugfix"
+    },
+    {
+      "title": "Revert removal of callback and isPlan logic",
+      "prNumber": 5056,
+      "type": "other"
+    },
+    {
+      "title": "chore: update twitter envs",
+      "prNumber": 5055,
+      "type": "other"
+    },
+    {
       "title": "fix: fix `bun run dev`",
       "prNumber": 5054,
       "type": "bugfix"
@@ -866,26 +891,115 @@
       "title": "fix: dup chats",
       "prNumber": 5049,
       "type": "bugfix"
+    },
+    {
+      "title": "fix: linting + dev command in plugins",
+      "prNumber": 5096,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: prompt to order actions and action description",
+      "prNumber": 5094,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: remove reply action shortcut",
+      "prNumber": 5093,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: duplicate plugins",
+      "prNumber": 5091,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: envs loading on default eliza",
+      "prNumber": 5090,
+      "type": "bugfix"
+    },
+    {
+      "title": "Add agentId to MessageBusService log output",
+      "prNumber": 5088,
+      "type": "feature"
+    },
+    {
+      "title": "feat: optimize CLI project creation with Bun offline mode",
+      "prNumber": 5087,
+      "type": "feature"
+    },
+    {
+      "title": "Fixes CSP (Content Security Policy) ",
+      "prNumber": 5085,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: remove default bot",
+      "prNumber": 5083,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: TypeScript version inconsistencies and test timeouts",
+      "prNumber": 5082,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: remove test mode guard for installing dep",
+      "prNumber": 5081,
+      "type": "tests"
+    },
+    {
+      "title": "chore: optimize CLI performance for create and plugins commands",
+      "prNumber": 5080,
+      "type": "other"
+    },
+    {
+      "title": "docs(agent): replace -t with --type in CLI examples",
+      "prNumber": 5078,
+      "type": "docs"
+    },
+    {
+      "title": "fix: clean bun lock + use local bootstrap (should fix slow tests)",
+      "prNumber": 5075,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: disable CSP in development to resolve Safari localhost SSL errors",
+      "prNumber": 5073,
+      "type": "bugfix"
+    },
+    {
+      "title": "Fix: Postgres migration schema selection",
+      "prNumber": 5072,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 1721.1572263535797,
-      "prScore": 1695.55122635358,
+      "totalScore": 2027.466983896494,
+      "prScore": 2001.422983896494,
       "issueScore": 2,
       "reviewScore": 20,
-      "commentScore": 3.6059999999999994
+      "commentScore": 4.044
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 1318.5699881423598,
-      "prScore": 1085.9919881423598,
+      "totalScore": 1360.2386760725358,
+      "prScore": 1127.4606760725358,
       "issueScore": 0,
       "reviewScore": 231,
-      "commentScore": 1.5779999999999998
+      "commentScore": 1.778
+    },
+    {
+      "username": "yungalgo",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
+      "totalScore": 762.4986312445011,
+      "prScore": 750.5266312445011,
+      "issueScore": 0,
+      "reviewScore": 9,
+      "commentScore": 2.9719999999999995
     },
     {
       "username": "lalalune",
@@ -897,27 +1011,18 @@
       "commentScore": 1.718
     },
     {
-      "username": "yungalgo",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 628.6520325680386,
-      "prScore": 617.1180325680386,
-      "issueScore": 0,
-      "reviewScore": 9,
-      "commentScore": 2.534
-    },
-    {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 549.283833614881,
-      "prScore": 472.80783361488096,
+      "totalScore": 604.4444878207045,
+      "prScore": 517.9684878207045,
       "issueScore": 0,
-      "reviewScore": 75,
+      "reviewScore": 85,
       "commentScore": 1.476
     }
   ],
-  "newPRs": 178,
-  "mergedPRs": 148,
-  "newIssues": 31,
-  "closedIssues": 32,
-  "activeContributors": 44
+  "newPRs": 200,
+  "mergedPRs": 169,
+  "newIssues": 35,
+  "closedIssues": 33,
+  "activeContributors": 48
 }
