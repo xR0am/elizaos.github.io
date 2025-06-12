@@ -1,9 +1,10 @@
 import EthereumIcon from "@/components/icons/EthereumIcon";
 import SolanaIcon from "@/components/icons/SolanaIcon";
+import { isAddress } from "viem";
 
 interface ChainConfig {
   chainId: string;
-  regex: RegExp;
+  validator: (address: string) => boolean;
   icon: React.ElementType;
 }
 
@@ -12,7 +13,7 @@ interface ChainConfig {
  *
  * Each chain entry contains:
  * - chainId: CAIP-2 blockchain identifier (mainnet chain IDs used)
- * - regex: Pattern to validate wallet addresses for this chain
+ * - validator: Function to validate wallet addresses for this chain
  * - icon: React component for displaying the chain's icon
  *
  * @see https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-2.md
@@ -20,12 +21,13 @@ interface ChainConfig {
 export const SUPPORTED_CHAINS: Record<string, ChainConfig> = {
   ethereum: {
     chainId: "eip155:1",
-    regex: /^0x[a-fA-F0-9]{40}$/,
+    validator: (address: string) => isAddress(address),
     icon: EthereumIcon,
   },
   solana: {
     chainId: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
-    regex: /^[1-9A-HJ-NP-Za-km-z]{32,44}$/,
+    validator: (address: string) =>
+      /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(address),
     icon: SolanaIcon,
   },
 };
@@ -72,7 +74,7 @@ export function createAccountId(chainId: string, address: string): string {
 }
 
 /**
- * Validates a wallet address based on a given chain's regex pattern
+ * Validates a wallet address based on a given chain's validator function
  * @param address The wallet address to validate
  * @param chain The blockchain name (e.g., "ethereum", "solana")
  * @returns True if the address is valid for the chain, false otherwise
@@ -83,5 +85,5 @@ export function validateAddress(address: string, chain: string): boolean {
   if (!chainConfig) {
     return false;
   }
-  return chainConfig.regex.test(address);
+  return chainConfig.validator(address);
 }
