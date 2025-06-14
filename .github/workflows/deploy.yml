@@ -37,15 +37,10 @@ jobs:
         with:
           bun-version: latest
 
-      - name: Get Bun cache directory
-        id: bun-cache
-        run: |
-          echo "dir=$(bun config get cache)" >> $GITHUB_OUTPUT
-
       - name: Cache Bun dependencies
         uses: actions/cache@v4
         with:
-          path: ${{ steps.bun-cache.outputs.dir }}
+          path: ~/.bun/install/cache
           key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
           restore-keys: |
             ${{ runner.os }}-bun-
