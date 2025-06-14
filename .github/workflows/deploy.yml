@@ -7,7 +7,7 @@ on:
   workflow_run:
     workflows: ["Run Pipelines"]
     branches: [main]
-    types: [completed]
+    types: [success]
 
 permissions:
   contents: write
