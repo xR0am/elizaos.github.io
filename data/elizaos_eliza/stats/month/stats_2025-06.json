@@ -5,7 +5,7 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 234 new PRs (195 merged), 39 new issues, and 55 active contributors.",
+  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 246 new PRs (205 merged), 40 new issues, and 57 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs66bOWK",
@@ -14,6 +14,17 @@
       "number": 5004,
       "repository": "elizaos/eliza",
       "createdAt": "2025-06-08T00:06:14Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 10
+    },
+    {
+      "id": "I_kwDOMT5cIs66o8ku",
+      "title": "Callback from plugin action not making it to end user response in chat",
+      "author": "jonathanprozzi",
+      "number": 5017,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-09T19:45:43Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 10
@@ -30,17 +41,6 @@
       "commentCount": 9
     },
     {
-      "id": "I_kwDOMT5cIs66o8ku",
-      "title": "Callback from plugin action not making it to end user response in chat",
-      "author": "jonathanprozzi",
-      "number": 5017,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-09T19:45:43Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 6
-    },
-    {
       "id": "I_kwDOMT5cIs652Dw9",
       "title": "Web client thinks it is on a different version",
       "author": "scottrepreneur",
@@ -52,15 +52,15 @@
       "commentCount": 3
     },
     {
-      "id": "I_kwDOMT5cIs650izy",
-      "title": "Agent won't respond to twitter mentions",
-      "author": "CurralesDragon",
-      "number": 4921,
+      "id": "I_kwDOMT5cIs67ev9-",
+      "title": "bedrock",
+      "author": "furkannabisumji",
+      "number": 5117,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-04T11:50:36Z",
+      "createdAt": "2025-06-14T04:22:22Z",
       "closedAt": null,
       "state": "OPEN",
-      "commentCount": 2
+      "commentCount": 3
     }
   ],
   "topPRs": [
@@ -121,10 +121,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 173014,
-    "deletions": 100390,
-    "files": 686,
-    "commitCount": 867
+    "additions": 176798,
+    "deletions": 101172,
+    "files": 710,
+    "commitCount": 912
   },
   "completedItems": [
     {
@@ -1073,6 +1073,11 @@
       "type": "bugfix"
     },
     {
+      "title": "docs: comprehensive documentation accuracy and consistency updates",
+      "prNumber": 5134,
+      "type": "docs"
+    },
+    {
       "title": "Fix Typo in Unfollow Room Action and Variable Name in Plugin-Bootstrap",
       "prNumber": 5130,
       "type": "bugfix"
@@ -1101,26 +1106,80 @@
       "title": "Add server, add tests",
       "prNumber": 5125,
       "type": "feature"
+    },
+    {
+      "title": "fix(autodoc): improve TypeScript parser robustness and exclude client package",
+      "prNumber": 5147,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix(ci): remove frozen-lockfile flag from autodoc workflow bun install",
+      "prNumber": 5146,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix(ci): remove npm cache from autodoc workflow Node.js setup",
+      "prNumber": 5145,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix(ci): resolve git authentication issues in autodoc workflow",
+      "prNumber": 5144,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix(ci): resolve autodoc workflow dependency installation failures",
+      "prNumber": 5143,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: gui resend",
+      "prNumber": 5141,
+      "type": "bugfix"
+    },
+    {
+      "title": "Move getContentTypeFromMimeType to core utils for reusability",
+      "prNumber": 5138,
+      "type": "other"
+    },
+    {
+      "title": "fix: support all media type",
+      "prNumber": 5137,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: Add CLI tests, server tests, plugin-sql tests",
+      "prNumber": 5136,
+      "type": "feature"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 2505.611221727906,
-      "prScore": 2462.589221727906,
+      "totalScore": 2682.4488525308684,
+      "prScore": 2638.9888525308684,
       "issueScore": 4,
       "reviewScore": 34,
-      "commentScore": 5.021999999999999
+      "commentScore": 5.459999999999999
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 1613.4218289000494,
+      "totalScore": 1618.4218289000494,
       "prScore": 1350.6438289000494,
       "issueScore": 0,
-      "reviewScore": 261,
+      "reviewScore": 266,
       "commentScore": 1.778
+    },
+    {
+      "username": "lalalune",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
+      "totalScore": 779.1537680328117,
+      "prScore": 736.9357680328118,
+      "issueScore": 8,
+      "reviewScore": 32.5,
+      "commentScore": 1.718
     },
     {
       "username": "yungalgo",
@@ -1132,27 +1191,18 @@
       "commentScore": 2.9719999999999995
     },
     {
-      "username": "lalalune",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
-      "totalScore": 729.3669941362357,
-      "prScore": 687.1489941362357,
-      "issueScore": 8,
-      "reviewScore": 32.5,
-      "commentScore": 1.718
-    },
-    {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 659.3648691492232,
-      "prScore": 567.6888691492233,
+      "totalScore": 684.9236934845385,
+      "prScore": 592.9076934845385,
       "issueScore": 0,
       "reviewScore": 90,
-      "commentScore": 1.676
+      "commentScore": 2.016
     }
   ],
-  "newPRs": 234,
-  "mergedPRs": 195,
-  "newIssues": 39,
-  "closedIssues": 37,
-  "activeContributors": 55
+  "newPRs": 246,
+  "mergedPRs": 205,
+  "newIssues": 40,
+  "closedIssues": 40,
+  "activeContributors": 57
 }

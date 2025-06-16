@@ -5,8 +5,19 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-15 to 2025-06-22, elizaos/eliza had 12 new PRs (9 merged), 1 new issues, and 10 active contributors.",
+  "overview": "From 2025-06-15 to 2025-06-22, elizaos/eliza had 24 new PRs (19 merged), 2 new issues, and 16 active contributors.",
   "topIssues": [
+    {
+      "id": "I_kwDOMT5cIs66o8ku",
+      "title": "Callback from plugin action not making it to end user response in chat",
+      "author": "jonathanprozzi",
+      "number": 5017,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-09T19:45:43Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 4
+    },
     {
       "id": "I_kwDOMT5cIs67ev9-",
       "title": "bedrock",
@@ -16,18 +27,29 @@
       "createdAt": "2025-06-14T04:22:22Z",
       "closedAt": null,
       "state": "OPEN",
-      "commentCount": 2
+      "commentCount": 3
     },
     {
-      "id": "I_kwDOMT5cIs67k8Ft",
-      "title": "Update eliza.postman.json file",
-      "author": "wtfsayo",
-      "number": 5124,
+      "id": "I_kwDOMT5cIs65xeti",
+      "title": "Service Types and Test Services",
+      "author": "lalalune",
+      "number": 4914,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-15T03:01:27Z",
+      "createdAt": "2025-06-04T07:10:30Z",
       "closedAt": null,
       "state": "OPEN",
-      "commentCount": 0
+      "commentCount": 1
+    },
+    {
+      "id": "I_kwDOMT5cIs67xrH_",
+      "title": "@elizaos/cli test command incorrectly requires monorepo root for standalone projects",
+      "author": "sicco-moonbeam",
+      "number": 5142,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-16T15:05:03Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 1
     }
   ],
   "topPRs": [
@@ -65,33 +87,33 @@
       "deletions": 75
     },
     {
-      "id": "PR_kwDOMT5cIs6alIJa",
-      "title": "chore: strict cli, fix types",
-      "author": "ChristopherTrimboli",
-      "number": 5126,
+      "id": "PR_kwDOMT5cIs6ZHABe",
+      "title": "Puga/community agent2",
+      "author": "alpuga",
+      "number": 4938,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-15T10:59:30Z",
-      "mergedAt": "2025-06-15T17:36:40Z",
-      "additions": 1432,
-      "deletions": 1000
+      "createdAt": "2025-06-05T00:05:22Z",
+      "mergedAt": null,
+      "additions": 16820,
+      "deletions": 80042
     },
     {
-      "id": "PR_kwDOMT5cIs6adS0E",
-      "title": "ui: apply design system to agent creator forms",
-      "author": "wtfsayo",
-      "number": 5112,
+      "id": "PR_kwDOMT5cIs6ap6eO",
+      "title": "feat: Add CLI tests, server tests, plugin-sql tests",
+      "author": "lalalune",
+      "number": 5136,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-13T21:15:54Z",
-      "mergedAt": null,
-      "additions": 754,
-      "deletions": 367
+      "createdAt": "2025-06-16T07:09:53Z",
+      "mergedAt": "2025-06-16T17:17:03Z",
+      "additions": 12985,
+      "deletions": 7835
     }
   ],
   "codeChanges": {
-    "additions": 48709,
-    "deletions": 1067,
-    "files": 177,
-    "commitCount": 45
+    "additions": 52493,
+    "deletions": 1849,
+    "files": 225,
+    "commitCount": 90
   },
   "completedItems": [
     {
@@ -108,6 +130,11 @@
       "title": "fix: resolve CLI test failures with circular dependency and missing runtime methods",
       "prNumber": 5135,
       "type": "bugfix"
+    },
+    {
+      "title": "docs: comprehensive documentation accuracy and consistency updates",
+      "prNumber": 5134,
+      "type": "docs"
     },
     {
       "title": "Fix Typo in Unfollow Room Action and Variable Name in Plugin-Bootstrap",
@@ -138,25 +165,79 @@
       "title": "Add server, add tests",
       "prNumber": 5125,
       "type": "feature"
+    },
+    {
+      "title": "fix(autodoc): improve TypeScript parser robustness and exclude client package",
+      "prNumber": 5147,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix(ci): remove frozen-lockfile flag from autodoc workflow bun install",
+      "prNumber": 5146,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix(ci): remove npm cache from autodoc workflow Node.js setup",
+      "prNumber": 5145,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix(ci): resolve git authentication issues in autodoc workflow",
+      "prNumber": 5144,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix(ci): resolve autodoc workflow dependency installation failures",
+      "prNumber": 5143,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: gui resend",
+      "prNumber": 5141,
+      "type": "bugfix"
+    },
+    {
+      "title": "Move getContentTypeFromMimeType to core utils for reusability",
+      "prNumber": 5138,
+      "type": "other"
+    },
+    {
+      "title": "fix: support all media type",
+      "prNumber": 5137,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: Add CLI tests, server tests, plugin-sql tests",
+      "prNumber": 5136,
+      "type": "feature"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 160.38981894921596,
-      "prScore": 152.95181894921598,
+      "totalScore": 337.2274497521782,
+      "prScore": 329.3514497521782,
       "issueScore": 2,
       "reviewScore": 5,
-      "commentScore": 0.43799999999999994
+      "commentScore": 0.8759999999999999
+    },
+    {
+      "username": "lalalune",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
+      "totalScore": 99.97554779315219,
+      "prScore": 99.97554779315219,
+      "issueScore": 0,
+      "reviewScore": 0,
+      "commentScore": 0
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 94.72814565447226,
+      "totalScore": 99.72814565447226,
       "prScore": 84.72814565447226,
       "issueScore": 0,
-      "reviewScore": 10,
+      "reviewScore": 15,
       "commentScore": 0
     },
     {
@@ -169,27 +250,18 @@
       "commentScore": 0
     },
     {
-      "username": "lalalune",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
-      "totalScore": 50.188773896576095,
-      "prScore": 50.188773896576095,
-      "issueScore": 0,
-      "reviewScore": 0,
-      "commentScore": 0
-    },
-    {
-      "username": "maximevtush",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/154841002?u=0ea972744f29fe4504db6fbc4151b9226ba19157&v=4",
-      "totalScore": 23.25691014905531,
-      "prScore": 23.25691014905531,
+      "username": "tcm390",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4",
+      "totalScore": 71.38345838949215,
+      "prScore": 71.38345838949215,
       "issueScore": 0,
       "reviewScore": 0,
       "commentScore": 0
     }
   ],
-  "newPRs": 12,
-  "mergedPRs": 9,
-  "newIssues": 1,
-  "closedIssues": 2,
-  "activeContributors": 10
+  "newPRs": 24,
+  "mergedPRs": 19,
+  "newIssues": 2,
+  "closedIssues": 5,
+  "activeContributors": 16
 }
