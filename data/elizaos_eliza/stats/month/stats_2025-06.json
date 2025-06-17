@@ -5,19 +5,8 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 246 new PRs (205 merged), 40 new issues, and 57 active contributors.",
+  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 258 new PRs (212 merged), 43 new issues, and 62 active contributors.",
   "topIssues": [
-    {
-      "id": "I_kwDOMT5cIs66bOWK",
-      "title": "Knowledge management (RAG) not working (implemented) in 1.0.6",
-      "author": "harperaa",
-      "number": 5004,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-08T00:06:14Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 10
-    },
     {
       "id": "I_kwDOMT5cIs66o8ku",
       "title": "Callback from plugin action not making it to end user response in chat",
@@ -27,7 +16,7 @@
       "createdAt": "2025-06-09T19:45:43Z",
       "closedAt": null,
       "state": "OPEN",
-      "commentCount": 10
+      "commentCount": 11
     },
     {
       "id": "I_kwDOMT5cIs66Hl5D",
@@ -61,9 +50,31 @@
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 3
+    },
+    {
+      "id": "I_kwDOMT5cIs650izy",
+      "title": "Agent won't respond to twitter mentions",
+      "author": "CurralesDragon",
+      "number": 4921,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-04T11:50:36Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 2
     }
   ],
   "topPRs": [
+    {
+      "id": "PR_kwDOMT5cIs6azVR3",
+      "title": "chore: v1.0.10",
+      "author": "ChristopherTrimboli",
+      "number": 5150,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-16T23:22:29Z",
+      "mergedAt": null,
+      "additions": 76856,
+      "deletions": 5822
+    },
     {
       "id": "PR_kwDOMT5cIs6aiHxq",
       "title": "feat: Split server package from CLI (continued shaw's PR)",
@@ -107,24 +118,13 @@
       "mergedAt": "2025-06-11T01:04:51Z",
       "additions": 24253,
       "deletions": 20227
-    },
-    {
-      "id": "PR_kwDOMT5cIs6ad_Tt",
-      "title": "chore: v1.0.9",
-      "author": "ChristopherTrimboli",
-      "number": 5114,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-13T22:50:16Z",
-      "mergedAt": "2025-06-13T23:01:12Z",
-      "additions": 19548,
-      "deletions": 23445
     }
   ],
   "codeChanges": {
-    "additions": 176798,
-    "deletions": 101172,
-    "files": 710,
-    "commitCount": 912
+    "additions": 177496,
+    "deletions": 102548,
+    "files": 712,
+    "commitCount": 965
   },
   "completedItems": [
     {
@@ -1108,6 +1108,16 @@
       "type": "feature"
     },
     {
+      "title": "fix: filter messages by current chat (channelId) & remove unnecessary…",
+      "prNumber": 5149,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: remove evaluators from messageHandler prompt",
+      "prNumber": 5148,
+      "type": "bugfix"
+    },
+    {
       "title": "fix(autodoc): improve TypeScript parser robustness and exclude client package",
       "prNumber": 5147,
       "type": "bugfix"
@@ -1151,25 +1161,50 @@
       "title": "feat: Add CLI tests, server tests, plugin-sql tests",
       "prNumber": 5136,
       "type": "feature"
+    },
+    {
+      "title": "docs: add CLAUDE.md for AI assistant guidance",
+      "prNumber": 5158,
+      "type": "feature"
+    },
+    {
+      "title": "fix project loading on windows machines",
+      "prNumber": 5156,
+      "type": "bugfix"
+    },
+    {
+      "title": "refactor: remove OpenTelemetry instrumentation from socket message processing",
+      "prNumber": 5153,
+      "type": "refactor"
+    },
+    {
+      "title": "fix: prevent infinite recursion in JSON sanitizer by detecting circular re…",
+      "prNumber": 5152,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: gui stuck issue",
+      "prNumber": 5151,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 2682.4488525308684,
-      "prScore": 2638.9888525308684,
-      "issueScore": 4,
-      "reviewScore": 34,
+      "totalScore": 2808.2089294749594,
+      "prScore": 2753.74892947496,
+      "issueScore": 6,
+      "reviewScore": 43,
       "commentScore": 5.459999999999999
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 1618.4218289000494,
-      "prScore": 1350.6438289000494,
+      "totalScore": 1666.8850371059098,
+      "prScore": 1389.1070371059097,
       "issueScore": 0,
-      "reviewScore": 266,
+      "reviewScore": 276,
       "commentScore": 1.778
     },
     {
@@ -1193,16 +1228,16 @@
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 684.9236934845385,
-      "prScore": 592.9076934845385,
+      "totalScore": 725.5824673811146,
+      "prScore": 628.1284673811147,
       "issueScore": 0,
-      "reviewScore": 90,
-      "commentScore": 2.016
+      "reviewScore": 95,
+      "commentScore": 2.4539999999999997
     }
   ],
-  "newPRs": 246,
-  "mergedPRs": 205,
-  "newIssues": 40,
-  "closedIssues": 40,
-  "activeContributors": 57
+  "newPRs": 258,
+  "mergedPRs": 212,
+  "newIssues": 43,
+  "closedIssues": 41,
+  "activeContributors": 62
 }
