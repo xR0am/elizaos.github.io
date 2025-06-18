@@ -5,7 +5,7 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 258 new PRs (212 merged), 43 new issues, and 62 active contributors.",
+  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 277 new PRs (224 merged), 49 new issues, and 65 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs66o8ku",
@@ -16,18 +16,7 @@
       "createdAt": "2025-06-09T19:45:43Z",
       "closedAt": null,
       "state": "OPEN",
-      "commentCount": 11
-    },
-    {
-      "id": "I_kwDOMT5cIs66Hl5D",
-      "title": "Creating room via REST API first works but then returns empty rooms array",
-      "author": "exitsimulation",
-      "number": 4955,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-05T20:24:03Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 9
+      "commentCount": 12
     },
     {
       "id": "I_kwDOMT5cIs652Dw9",
@@ -36,17 +25,6 @@
       "number": 4924,
       "repository": "elizaos/eliza",
       "createdAt": "2025-06-04T13:59:53Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 3
-    },
-    {
-      "id": "I_kwDOMT5cIs67ev9-",
-      "title": "bedrock",
-      "author": "furkannabisumji",
-      "number": 5117,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-14T04:22:22Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 3
@@ -61,6 +39,28 @@
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 2
+    },
+    {
+      "id": "I_kwDOMT5cIs633y-j",
+      "title": "V3 Goals",
+      "author": "lalalune",
+      "number": 4720,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-05-23T00:48:31Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 1
+    },
+    {
+      "id": "I_kwDOMT5cIs65Jvsk",
+      "title": "plugin install problems (v0 plugin: giphy)",
+      "author": "BinaryBluePeach",
+      "number": 4861,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-01T01:03:20Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 1
     }
   ],
   "topPRs": [
@@ -72,8 +72,8 @@
       "repository": "elizaos/eliza",
       "createdAt": "2025-06-16T23:22:29Z",
       "mergedAt": null,
-      "additions": 76856,
-      "deletions": 5822
+      "additions": 81168,
+      "deletions": 7182
     },
     {
       "id": "PR_kwDOMT5cIs6aiHxq",
@@ -121,10 +121,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 177496,
-    "deletions": 102548,
-    "files": 712,
-    "commitCount": 965
+    "additions": 181846,
+    "deletions": 104239,
+    "files": 733,
+    "commitCount": 1026
   },
   "completedItems": [
     {
@@ -1163,6 +1163,21 @@
       "type": "feature"
     },
     {
+      "title": "chore: update faq, quickstart, core docs",
+      "prNumber": 5164,
+      "type": "other"
+    },
+    {
+      "title": "fix(docs): update ElizaOS documentation link to new official URL",
+      "prNumber": 5162,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: Add Ollama as AI provider option in create command",
+      "prNumber": 5160,
+      "type": "feature"
+    },
+    {
       "title": "docs: add CLAUDE.md for AI assistant guidance",
       "prNumber": 5158,
       "type": "feature"
@@ -1171,6 +1186,11 @@
       "title": "fix project loading on windows machines",
       "prNumber": 5156,
       "type": "bugfix"
+    },
+    {
+      "title": "Minor Text Corrections and Consistency Improvements in Community Docs",
+      "prNumber": 5154,
+      "type": "other"
     },
     {
       "title": "refactor: remove OpenTelemetry instrumentation from socket message processing",
@@ -1186,26 +1206,84 @@
       "title": "fix: gui stuck issue",
       "prNumber": 5151,
       "type": "bugfix"
+    },
+    {
+      "title": "feat: gui chat title",
+      "prNumber": 5179,
+      "type": "feature"
+    },
+    {
+      "title": "feat: (cli) consolidate stop command into agent stop --all",
+      "prNumber": 5175,
+      "type": "feature"
+    },
+    {
+      "title": "fix: global env load",
+      "prNumber": 5174,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: (cli) resolve plugin template dependencies and publish command issues",
+      "prNumber": 5173,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: cascade delete agent",
+      "prNumber": 5171,
+      "type": "feature"
+    },
+    {
+      "title": "refactor(into-5167): consolidate character loading logic and eliminate duplication (Phase 1)",
+      "prNumber": 5169,
+      "type": "refactor"
+    },
+    {
+      "title": "feat(after-5169): implement Zod-based character validation with safe JSON parsing",
+      "prNumber": 5167,
+      "type": "feature"
+    },
+    {
+      "title": "fix: tweak media content",
+      "prNumber": 5165,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 2808.2089294749594,
-      "prScore": 2753.74892947496,
-      "issueScore": 6,
-      "reviewScore": 43,
-      "commentScore": 5.459999999999999
+      "totalScore": 2997.9948811308545,
+      "prScore": 2928.694881130855,
+      "issueScore": 16,
+      "reviewScore": 47.5,
+      "commentScore": 5.799999999999999
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 1666.8850371059098,
-      "prScore": 1389.1070371059097,
+      "totalScore": 1805.455584899062,
+      "prScore": 1456.2395848990618,
       "issueScore": 0,
-      "reviewScore": 276,
-      "commentScore": 1.778
+      "reviewScore": 347,
+      "commentScore": 2.2159999999999997
+    },
+    {
+      "username": "yungalgo",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
+      "totalScore": 893.4355956871035,
+      "prScore": 881.1235956871035,
+      "issueScore": 0,
+      "reviewScore": 9,
+      "commentScore": 3.312
+    },
+    {
+      "username": "0xbbjoker",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
+      "totalScore": 890.0046878120257,
+      "prScore": 783.2106878120258,
+      "issueScore": 0,
+      "reviewScore": 104,
+      "commentScore": 2.7939999999999996
     },
     {
       "username": "lalalune",
@@ -1215,29 +1293,11 @@
       "issueScore": 8,
       "reviewScore": 32.5,
       "commentScore": 1.718
-    },
-    {
-      "username": "yungalgo",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 762.4986312445011,
-      "prScore": 750.5266312445011,
-      "issueScore": 0,
-      "reviewScore": 9,
-      "commentScore": 2.9719999999999995
-    },
-    {
-      "username": "0xbbjoker",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 725.5824673811146,
-      "prScore": 628.1284673811147,
-      "issueScore": 0,
-      "reviewScore": 95,
-      "commentScore": 2.4539999999999997
     }
   ],
-  "newPRs": 258,
-  "mergedPRs": 212,
-  "newIssues": 43,
-  "closedIssues": 41,
-  "activeContributors": 62
+  "newPRs": 277,
+  "mergedPRs": 224,
+  "newIssues": 49,
+  "closedIssues": 47,
+  "activeContributors": 65
 }
