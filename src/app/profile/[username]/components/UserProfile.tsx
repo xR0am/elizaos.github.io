@@ -11,6 +11,7 @@ import { DailyActivity } from "@/components/daily-activity";
 import { UserActivityHeatmap } from "@/lib/scoring/queries";
 import { SummaryCard, Summary } from "@/components/summary-card";
 import { WalletAddressBadge } from "@/components/ui/WalletAddressBadge";
+
 import { GoldCheckmarkIcon } from "@/components/icons";
 import {
   Tooltip,
@@ -20,6 +21,8 @@ import {
 } from "@/components/ui/tooltip";
 import type { LinkedWallet } from "@/lib/walletLinking/readmeUtils";
 import { SUPPORTED_CHAINS } from "@/lib/walletLinking/chainUtils";
+
+
 
 export interface UserStats {
   totalPrs: number;

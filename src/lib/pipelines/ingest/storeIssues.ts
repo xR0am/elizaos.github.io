@@ -25,7 +25,8 @@ export const fetchAndStoreIssues = createStep(
     context: IngestionPipelineContext,
   ) => {
     const { github, logger, dateRange } = context;
-    const { repoId } = repository;
+    const { owner, name } = repository;
+    const repoId = `${owner}/${name}`;
 
     logger?.info(`Starting issue ingestion for ${repoId}`);
 

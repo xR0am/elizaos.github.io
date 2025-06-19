@@ -1,16 +1,14 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches: ["main"]
   workflow_dispatch:
   workflow_run:
     workflows: ["Run Pipelines"]
     branches: [main]
-    types: [completed]
+    types: [success]
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -29,7 +27,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - name: Checkout main branch
         uses: actions/checkout@v4
@@ -39,12 +37,30 @@ jobs:
         with:
           bun-version: latest
 
+      - name: Cache Bun dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+
+      - name: Cache Next.js
+        uses: actions/cache@v4
+        with:
+          path: ./.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/bun.lockb') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/bun.lockb') }}-
+
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
       # Set up pipeline-data branch and restore data
       - name: Setup pipeline-data branch
         uses: ./.github/actions/pipeline-data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           operation: setup
           branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
@@ -75,6 +91,7 @@ jobs:
         env:
           NEXT_TELEMETRY_DISABLED: 1
           CI: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NEXT_PUBLIC_GITHUB_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_GITHUB_CLIENT_ID }}
           NEXT_PUBLIC_AUTH_WORKER_URL: ${{ secrets.NEXT_PUBLIC_AUTH_WORKER_URL }}
 
@@ -97,6 +114,8 @@ jobs:
       - name: Cleanup
         if: always()
         uses: ./.github/actions/pipeline-data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           operation: cleanup
           branch_name: ${{ env.PIPELINE_DATA_BRANCH }}

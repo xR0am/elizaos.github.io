@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "32721e33-fe41-4bfb-8db5-6ad343092aae",
+  "id": "5575231f-d94c-4df6-9429-91bd24fd02b1",
   "prevId": "b61f2ddb-c109-4b2b-9459-2b238864f7fd",
   "tables": {
     "issue_comment_reactions": {
@@ -1933,6 +1933,20 @@
           "notNull": true,
           "autoincrement": false
         },
+        "owner": {
+          "name": "owner",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
         "last_fetched_at": {
           "name": "last_fetched_at",
           "type": "text",
@@ -1950,7 +1964,16 @@
           "default": "CURRENT_TIMESTAMP"
         }
       },
-      "indexes": {},
+      "indexes": {
+        "unq_repo_owner_name": {
+          "name": "unq_repo_owner_name",
+          "columns": [
+            "owner",
+            "name"
+          ],
+          "isUnique": true
+        }
+      },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
