@@ -16,5 +16,4 @@ CREATE INDEX `idx_wallet_addresses_chain_id` ON `wallet_addresses` (`chain_id`);
 CREATE INDEX `idx_wallet_addresses_address` ON `wallet_addresses` (`account_address`);--> statement-breakpoint
 CREATE UNIQUE INDEX `unq_user_chain_primary` ON `wallet_addresses` (`user_id`,`chain_id`) WHERE "wallet_addresses"."is_primary" = 1;--> statement-breakpoint
 CREATE UNIQUE INDEX `unq_user_chain_address` ON `wallet_addresses` (`user_id`,`chain_id`,`account_address`);--> statement-breakpoint
-ALTER TABLE `users` DROP COLUMN `eth_address`;--> statement-breakpoint
-ALTER TABLE `users` DROP COLUMN `sol_address`;
+ALTER TABLE `users` ADD `wallet_data_updated_at` integer;
