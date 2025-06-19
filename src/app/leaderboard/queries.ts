@@ -5,7 +5,7 @@ import { getDateRangeForPeriod } from "@/lib/pipelines/queryHelpers";
 import { getTopUsersByScore } from "@/lib/scoring/queries";
 import { groupBy } from "@/lib/arrayHelpers";
 import { LeaderboardPeriod, LeaderboardUser } from "@/components/leaderboard";
-import { getCachedUserWalletData } from "@/lib/walletLinking/getUserWalletAddresses";
+import { getCachedUserWalletData } from "@/lib/walletLinking/ingestUserWalletData";
 
 export async function getAllTags() {
   const allTags = await db

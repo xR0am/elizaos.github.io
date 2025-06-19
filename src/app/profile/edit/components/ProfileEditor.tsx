@@ -1,7 +1,6 @@
 "use client";
 
 // Imports moved from page.tsx that are specific to this client component
-import { useProfileWallets } from "@/lib/walletLinking/useProfileWallets";
 import {
   Card,
   CardContent,
@@ -12,8 +11,9 @@ import {
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Loader2 } from "lucide-react";
 import { ProfileRepoNotice } from "./ProfileRepoNotice"; // Path relative to this new location
-import { WalletLinkForm } from "@/app/profile/edit/components/WalletLinkForm";
-import { WalletLinkBoard } from "@/app/profile/edit/components/WalletLinkBoard";
+import { WalletLinkForm } from "./WalletLinkForm";
+import { WalletLinkBoard } from "./WalletLinkBoard";
+import { useProfileWallets } from "../hooks/useProfileWallets";
 
 // This is the ProfileEditPageContent function, renamed and exported
 export default function ProfileEditor() {
