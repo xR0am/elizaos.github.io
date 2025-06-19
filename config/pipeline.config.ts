@@ -18,8 +18,9 @@ export default {
   // Repositories to track
   repositories: [
     {
-      repoId: "elizaos/eliza",
-      defaultBranch: "develop",
+      owner: "elizaos",
+      name: "eliza",
+      defaultBranch: "main",
     },
   ],
 

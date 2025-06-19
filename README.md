@@ -106,6 +106,8 @@ brew install uv  # macOS with Homebrew
 
 # Download the latest data from production
 bun run data:sync
+# Or, if you are on a fork:
+bun run data:sync --remote upstream
 # This will:
 # - Fetch the latest data from the _data branch
 # - Copy all data files (stats, summaries, etc.)
@@ -352,24 +354,67 @@ The project uses a TypeScript-based pipeline for data processing. See [Pipeline 
 
 If you need to modify the database schema (in `src/lib/data/schema.ts`), follow these steps:
 
-1. Make your changes to the schema file
-2. Generate migration files:
+1.  Make your changes to the schema file
+2.  Generate migration files:
 
 ```bash
 bun run db:generate
 ```
 
-3. Apply the migrations:
+This will create new migration files in the `drizzle` directory.
+
+3. Apply migrations
 
 ```bash
 bun run db:migrate
 ```
 
-This process will:
+This updates your local database with the new schema changes
 
-- Create new migration files in the `drizzle` directory
-- Apply the changes to your SQLite database
-- Ensure data consistency with the updated schema
+### Working with Migrations
+
+During development, you might create several migration files as you iterate on your schema. Before submitting a pull request, it's best practice to squash these into a single, clean migration.
+
+**Squashing Migrations for a Pull Request**
+
+1.  **Identify Your New Migrations**: Take note of the new migration files you've added in your branch. These are the files you will consolidate.
+
+2.  **Delete Your New Migration Files**: Remove the migration files (`drizzle/*.sql`) and the corresponding snnapshots (`drizzle/meta/####_snapshot.json`) and entries in `drizzle/meta/_journal.json` that were created from running `db:generate`.
+
+3.  **Generate a Single, Consolidated Migration**: Run the `db:generate` command again. This will create one new migration file that contains all of your schema changes.
+
+    ```bash
+    bun run db:generate
+    ```
+
+4.  **Apply the New Migration**: Run the `migrate` command to apply the squashed migration to your local database.
+
+    ```bash
+    bun run db:migrate
+    ```
+
+5.  **Re-ingest Data (If Necessary)**: If your schema changes impact how data is structured, you may need to re-ingest data to reflect those changes correctly.
+    ```bash
+    # Example: Force re-ingestion for the last 7 days
+    bun run pipeline ingest --days 7 --force
+    ```
+
+**Handling Migration Errors**
+
+If you encounter errors during the migration process (e.g., "table already exists" or "no such column"), your local database may be out of sync. The most reliable way to fix this is to start fresh by resetting your local data and applying all migrations in order.
+
+1.  **Reset your local database**:
+    ```bash
+    rm data/db.sqlite
+    ```
+2.  **Sync with production data**: This gives you a clean, production-like state.
+    ```bash
+    bun run data:sync -y --remote upstream
+    ```
+3.  **Apply your new migration**:
+    ```bash
+    bun run db:migrate
+    ```
 
 ### Database Explorer
 

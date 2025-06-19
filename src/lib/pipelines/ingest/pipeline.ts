@@ -25,7 +25,8 @@ const ingestRepoDataForInterval = createStep(
     context: IngestionPipelineContext,
   ) => {
     const { logger, force } = context;
-    const { repoId } = repository;
+    const { owner, name } = repository;
+    const repoId = `${owner}/${name}`;
 
     const intervalLogger = logger?.child(
       `${interval.intervalType} - ${toDateString(interval.intervalStart)}`,

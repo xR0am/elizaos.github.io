@@ -78,12 +78,8 @@ export const TagConfigSchema = z.object({
 });
 
 export const RepositoryConfigSchema = z.object({
-  repoId: z
-    .string()
-    .regex(
-      /^[^\/]+\/[^\/]+$/,
-      "Repository ID must be in the format 'owner/name'",
-    ),
+  owner: z.string(),
+  name: z.string(),
   defaultBranch: z.string().default("main"),
 });
 
