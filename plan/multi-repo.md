@@ -112,9 +112,9 @@ This document outlines the considerations and challenges for extending the Eliza
   - Example:
     ```typescript
     repositories: [
-      { owner: "elizaos", name: "eliza", repoId: "elizaos/eliza" },
-      { owner: "elizaos", name: "another-repo", repoId: "elizaos/another-repo" },
-      { owner: "elizaos-plugins", name: "plugin-alpha", repoId: "elizaos-plugins/plugin-alpha" },
+      { owner: "elizaos", name: "eliza", defaultBranch: "develop" },
+      { owner: "elizaos", name: "another-repo" },
+      { owner: "elizaos-plugins", name: "plugin-alpha" },
     ],
     ```
 - **Pipeline Adjustments:**
