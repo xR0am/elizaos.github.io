@@ -111,10 +111,7 @@ export type UserProfileData = NonNullable<
   Awaited<ReturnType<typeof getUserProfile>>
 >;
 
-export async function getUserProfile(
-  username: string,
-  shouldFetchWallets: boolean = false,
-) {
+export async function getUserProfile(username: string) {
   // Get basic user details
   const user = await db.query.users.findFirst({
     where: eq(users.username, username),
@@ -160,8 +157,6 @@ export async function getUserProfile(
   const walletData = await getCachedUserWalletData(user.username);
   return {
     username,
-    ethAddress,
-    solAddress,
     score: userScore.totalScore,
     monthlySummaries,
     weeklySummaries,

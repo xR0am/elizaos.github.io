@@ -3,13 +3,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { LeaderboardUser } from "./leaderboard";
 import { StatBadge } from "./stat-badge";
-import { GoldCheckmarkIcon } from "@/components/icons";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { BadgeCheck } from "lucide-react";
 
 export function LeaderboardCard({
   user,
@@ -63,7 +63,7 @@ export function LeaderboardCard({
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <span className="ml-1 inline-block align-middle">
-                          <GoldCheckmarkIcon className="h-4 w-4" />
+                          <BadgeCheck className="h-4 w-4 text-yellow-500" />
                         </span>
                       </TooltipTrigger>
                       <TooltipContent>

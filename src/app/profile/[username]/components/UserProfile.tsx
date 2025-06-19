@@ -5,14 +5,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { TagData, SkillCard } from "@/components/skill-card";
-import { Github } from "lucide-react";
+import { BadgeCheck, Github } from "lucide-react";
 import { formatCompactNumber } from "@/lib/format-number";
 import { DailyActivity } from "@/components/daily-activity";
 import { UserActivityHeatmap } from "@/lib/scoring/queries";
 import { SummaryCard, Summary } from "@/components/summary-card";
 import { WalletAddressBadge } from "@/components/ui/WalletAddressBadge";
 
-import { GoldCheckmarkIcon } from "@/components/icons";
 import {
   Tooltip,
   TooltipContent,
@@ -21,8 +20,6 @@ import {
 } from "@/components/ui/tooltip";
 import type { LinkedWallet } from "@/lib/walletLinking/readmeUtils";
 import { SUPPORTED_CHAINS } from "@/lib/walletLinking/chainUtils";
-
-
 
 export interface UserStats {
   totalPrs: number;
@@ -62,7 +59,7 @@ export default function UserProfile({
 }: UserProfileProps) {
   return (
     <div className="mx-auto w-full max-w-4xl space-y-6 sm:p-4">
-      <div className="items-star flex flex-row gap-4">
+      <div className="items-star flex flex-col gap-4 sm:flex-row">
         <Avatar className="h-20 w-20">
           <AvatarImage
             src={`https://github.com/${username}.png`}
@@ -72,15 +69,19 @@ export default function UserProfile({
         </Avatar>
         <div className="flex-grow">
           <div className="flex flex-col gap-2">
-            <h1 className="max-w-full text-lg font-bold sm:text-2xl">
-              {username}
+            <div className="flex flex-row items-center gap-1">
+              <h1 className="max-w-full text-lg font-bold sm:text-2xl">
+                {username}
+              </h1>
+              <span className="font-bold text-primary">
+                (level-{totalLevel})
+              </span>
+
               {linkedWallets.length > 0 && (
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <span className="ml-1 inline-block align-middle">
-                        <GoldCheckmarkIcon className="inline-block h-5 w-5" />
-                      </span>
+                      <BadgeCheck className="ml-1 inline-flex h-5 w-5 text-yellow-500" />
                     </TooltipTrigger>
                     <TooltipContent>
                       <p>Wallet linked</p>
@@ -88,8 +89,7 @@ export default function UserProfile({
                   </Tooltip>
                 </TooltipProvider>
               )}
-              <span className="text-primary">(level-{totalLevel})</span>
-            </h1>
+            </div>
             <div className="flex flex-wrap items-center gap-3">
               <div className="flex items-center">
                 <span className="font-mono text-sm font-medium">
