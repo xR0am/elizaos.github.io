@@ -21,15 +21,19 @@ export const users = sqliteTable("users", {
 });
 
 // Repositories being tracked
-export const repositories = sqliteTable("repositories", {
-  repoId: text("repo_id").primaryKey(),
-  owner: text("owner"),
-  name: text("name"),
-  lastFetchedAt: text("last_fetched_at").default(""),
-  lastUpdated: text("last_updated")
-    .notNull()
-    .default(sql`CURRENT_TIMESTAMP`),
-});
+export const repositories = sqliteTable(
+  "repositories",
+  {
+    repoId: text("repo_id").primaryKey(),
+    owner: text("owner").notNull(),
+    name: text("name").notNull(),
+    lastFetchedAt: text("last_fetched_at").default(""),
+    lastUpdated: text("last_updated")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+  },
+  (table) => [unique("unq_repo_owner_name").on(table.owner, table.name)],
+);
 
 // Raw GitHub data tables
 export const rawPullRequests = sqliteTable(

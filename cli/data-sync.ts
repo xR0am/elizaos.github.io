@@ -213,6 +213,11 @@ program
   )
   .option("--main-branch <n>", "Name of the main branch", "main")
   .option("--skip-db", "Skip restoring the database from dump", false)
+  .option(
+    "--skip-local-migrations",
+    "Skip running db:migrate for new local migrations",
+    false,
+  )
   .option("--depth <number>", "Fetch with specified depth", "1")
   .option("-y, --yes", "Skip confirmation prompts", false)
   .option(
@@ -672,7 +677,7 @@ To update the database manually, run:
       }
 
       // Run migrations one last time to apply any new local migrations
-      if (!options.skipDb) {
+      if (!options.skipDb && !options.skipLocalMigrations) {
         logger.info(
           `Running db:migrate one last time to apply any new local migrations`,
         );
