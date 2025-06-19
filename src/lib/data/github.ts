@@ -348,7 +348,7 @@ export class GitHubClient {
     repository: RepositoryConfig,
     options: FetchOptions = {},
   ) {
-    const [owner, name] = repository.repoId.split("/");
+    const { owner, name } = repository;
     const { startDate, endDate } = options;
     const dateFilter =
       startDate || endDate
@@ -437,7 +437,7 @@ export class GitHubClient {
   }
 
   async fetchIssues(repository: RepositoryConfig, options: FetchOptions = {}) {
-    const [owner, name] = repository.repoId.split("/");
+    const { owner, name } = repository;
     const { startDate, endDate } = options;
     const dateFilter =
       startDate || endDate
@@ -516,7 +516,7 @@ export class GitHubClient {
   }
 
   async fetchCommits(repository: RepositoryConfig, options: FetchOptions = {}) {
-    const [owner, name] = repository.repoId.split("/");
+    const { owner, name } = repository;
     const { startDate, endDate } = options;
 
     const query = `

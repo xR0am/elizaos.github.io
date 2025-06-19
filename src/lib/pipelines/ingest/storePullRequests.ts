@@ -29,7 +29,8 @@ export const fetchAndStorePullRequests = createStep(
     context: IngestionPipelineContext,
   ) => {
     const { github, logger, dateRange } = context;
-    const { repoId } = repository;
+    const { owner, name } = repository;
+    const repoId = `${owner}/${name}`;
 
     // Record the ingestion start time
     logger?.info(

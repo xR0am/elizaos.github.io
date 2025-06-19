@@ -21,7 +21,6 @@ export default {
       owner: "elizaos",
       name: "eliza",
       defaultBranch: "main",
-      repoId: "elizaos/eliza",
     },
   ],
 

@@ -77,16 +77,11 @@ export const TagConfigSchema = z.object({
   description: z.string().optional(),
 });
 
-export const RepositoryConfigSchema = z
-  .object({
-    owner: z.string(),
-    name: z.string(),
-    defaultBranch: z.string().default("main"),
-  })
-  .transform((data) => ({
-    ...data,
-    repoId: `${data.owner}/${data.name}`,
-  }));
+export const RepositoryConfigSchema = z.object({
+  owner: z.string(),
+  name: z.string(),
+  defaultBranch: z.string().default("main"),
+});
 
 export const PipelineConfigSchema = z.object({
   contributionStartDate: z
