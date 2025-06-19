@@ -5,19 +5,8 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 277 new PRs (224 merged), 49 new issues, and 65 active contributors.",
+  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 288 new PRs (233 merged), 51 new issues, and 65 active contributors.",
   "topIssues": [
-    {
-      "id": "I_kwDOMT5cIs66o8ku",
-      "title": "Callback from plugin action not making it to end user response in chat",
-      "author": "jonathanprozzi",
-      "number": 5017,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-09T19:45:43Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 12
-    },
     {
       "id": "I_kwDOMT5cIs652Dw9",
       "title": "Web client thinks it is on a different version",
@@ -61,19 +50,30 @@
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 1
+    },
+    {
+      "id": "I_kwDOMT5cIs65xeti",
+      "title": "Service Types and Test Services",
+      "author": "lalalune",
+      "number": 4914,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-04T07:10:30Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 1
     }
   ],
   "topPRs": [
     {
-      "id": "PR_kwDOMT5cIs6azVR3",
-      "title": "chore: v1.0.10",
-      "author": "ChristopherTrimboli",
-      "number": 5150,
+      "id": "PR_kwDOMT5cIs6bNbeZ",
+      "title": "Eliza (AGI)",
+      "author": "lalalune",
+      "number": 5194,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-16T23:22:29Z",
+      "createdAt": "2025-06-19T08:07:07Z",
       "mergedAt": null,
-      "additions": 81168,
-      "deletions": 7182
+      "additions": 77038,
+      "deletions": 18495
     },
     {
       "id": "PR_kwDOMT5cIs6aiHxq",
@@ -109,22 +109,22 @@
       "deletions": 75
     },
     {
-      "id": "PR_kwDOMT5cIs6Z8Ksx",
-      "title": "chore: v1.0.8",
+      "id": "PR_kwDOMT5cIs6azVR3",
+      "title": "chore: v1.0.10",
       "author": "ChristopherTrimboli",
-      "number": 5051,
+      "number": 5150,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-10T23:34:04Z",
-      "mergedAt": "2025-06-11T01:04:51Z",
-      "additions": 24253,
-      "deletions": 20227
+      "createdAt": "2025-06-16T23:22:29Z",
+      "mergedAt": null,
+      "additions": 47796,
+      "deletions": 10435
     }
   ],
   "codeChanges": {
-    "additions": 181846,
-    "deletions": 104239,
-    "files": 733,
-    "commitCount": 1026
+    "additions": 185426,
+    "deletions": 108181,
+    "files": 768,
+    "commitCount": 1109
   },
   "completedItems": [
     {
@@ -1208,6 +1208,26 @@
       "type": "bugfix"
     },
     {
+      "title": "fix: ids should be uuid not text",
+      "prNumber": 5189,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: core bun tests",
+      "prNumber": 5188,
+      "type": "tests"
+    },
+    {
+      "title": "feat: add option to clear memories",
+      "prNumber": 5187,
+      "type": "feature"
+    },
+    {
+      "title": "chore: Documentation Refinement and Consolidation",
+      "prNumber": 5182,
+      "type": "docs"
+    },
+    {
       "title": "feat: gui chat title",
       "prNumber": 5179,
       "type": "feature"
@@ -1246,26 +1266,60 @@
       "title": "fix: tweak media content",
       "prNumber": 5165,
       "type": "bugfix"
+    },
+    {
+      "title": "fix: dont skip (single) installation test",
+      "prNumber": 5201,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: Add direct source path resolution for CLI templates in test environment",
+      "prNumber": 5200,
+      "type": "feature"
+    },
+    {
+      "title": "fix: cli test + bun-test migration",
+      "prNumber": 5199,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: scroll behavior on env panel",
+      "prNumber": 5193,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: scroll behavior on agent settings",
+      "prNumber": 5192,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 2997.9948811308545,
-      "prScore": 2928.694881130855,
-      "issueScore": 16,
+      "totalScore": 3115.5163825026125,
+      "prScore": 3041.7783825026127,
+      "issueScore": 20,
       "reviewScore": 47.5,
-      "commentScore": 5.799999999999999
+      "commentScore": 6.2379999999999995
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 1805.455584899062,
+      "totalScore": 1820.455584899062,
       "prScore": 1456.2395848990618,
       "issueScore": 0,
-      "reviewScore": 347,
+      "reviewScore": 362,
       "commentScore": 2.2159999999999997
+    },
+    {
+      "username": "0xbbjoker",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
+      "totalScore": 936.1504556633456,
+      "prScore": 823.1564556633456,
+      "issueScore": 0,
+      "reviewScore": 110,
+      "commentScore": 2.9939999999999998
     },
     {
       "username": "yungalgo",
@@ -1277,27 +1331,18 @@
       "commentScore": 3.312
     },
     {
-      "username": "0xbbjoker",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 890.0046878120257,
-      "prScore": 783.2106878120258,
-      "issueScore": 0,
-      "reviewScore": 104,
-      "commentScore": 2.7939999999999996
-    },
-    {
       "username": "lalalune",
       "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
-      "totalScore": 779.1537680328117,
-      "prScore": 736.9357680328118,
+      "totalScore": 847.8673158259639,
+      "prScore": 805.649315825964,
       "issueScore": 8,
       "reviewScore": 32.5,
       "commentScore": 1.718
     }
   ],
-  "newPRs": 277,
-  "mergedPRs": 224,
-  "newIssues": 49,
-  "closedIssues": 47,
+  "newPRs": 288,
+  "mergedPRs": 233,
+  "newIssues": 51,
+  "closedIssues": 49,
   "activeContributors": 65
 }
