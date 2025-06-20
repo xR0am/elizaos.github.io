@@ -17,7 +17,7 @@ import { createLogger, LogLevel } from "@/lib/logger";
 import chalk from "chalk";
 import { exec, execSync } from "child_process";
 import { promisify } from "util";
-import { existsSync, mkdirSync, statSync, readdirSync } from "fs";
+import { existsSync, mkdirSync, statSync, readdirSync, readFileSync } from "fs";
 import { rmSync, cpSync, copyFileSync } from "fs";
 import { join, dirname } from "path";
 import { createInterface } from "readline/promises";
@@ -158,6 +158,37 @@ function formatFilesAndSize(files: number, size: number): string {
   return `${files} (${formatBytes(size)})`;
 }
 
+// Helper to get latest migration number from data branch journal
+function getLatestMigrationNumber(
+  worktreeDir: string,
+  logger: ReturnType<typeof createLogger>,
+): number | undefined {
+  const journalPath = join(worktreeDir, "data", "dump", "_journal.json");
+  if (!existsSync(journalPath)) {
+    logger.warn(
+      `Journal file not found at ${journalPath}, cannot determine migration version of dump.`,
+    );
+    return undefined;
+  }
+  try {
+    const journalRaw = readFileSync(journalPath, "utf-8");
+    const journal = JSON.parse(journalRaw);
+    if (journal.entries && journal.entries.length > 0) {
+      const lastEntry = journal.entries[journal.entries.length - 1];
+      if (lastEntry && typeof lastEntry.idx === "number") {
+        logger.info(
+          `Latest migration number from data branch is ${lastEntry.idx}`,
+        );
+        return lastEntry.idx;
+      }
+    }
+  } catch (e) {
+    const message = e instanceof Error ? e.message : String(e);
+    logger.error(`Failed to read or parse journal file: ${message}`);
+  }
+  return undefined;
+}
+
 // Helper to delete files in a directory while preserving .gitkeep files
 function deleteDataFiles(
   directory: string,
@@ -206,18 +237,7 @@ program
     "Directory for temporary worktree",
     "./.data-worktree",
   )
-  .option(
-    "--main-worktree-dir <path>",
-    "Directory for temporary main branch worktree",
-    "./.main-worktree",
-  )
-  .option("--main-branch <n>", "Name of the main branch", "main")
   .option("--skip-db", "Skip restoring the database from dump", false)
-  .option(
-    "--skip-local-migrations",
-    "Skip running db:migrate for new local migrations",
-    false,
-  )
   .option("--depth <number>", "Fetch with specified depth", "1")
   .option("-y, --yes", "Skip confirmation prompts", false)
   .option(
@@ -260,19 +280,6 @@ program
           rmSync(options.worktreeDir, { recursive: true, force: true });
         }
       }
-      if (existsSync(options.mainWorktreeDir)) {
-        logger.info(
-          `Removing existing worktree directory: ${options.mainWorktreeDir}`,
-        );
-        try {
-          execSync(`git worktree remove ${options.mainWorktreeDir} --force`);
-        } catch (error) {
-          logger.debug(
-            `Failed to remove worktree via git, falling back to rmSync: ${error}`,
-          );
-          rmSync(options.mainWorktreeDir, { recursive: true, force: true });
-        }
-      }
 
       // Step 2: Check if the remote branch exists
       logger.debug(
@@ -289,22 +296,6 @@ program
         process.exit(1);
       }
 
-      if (!options.skipDb) {
-        logger.debug(
-          `Checking if branch ${options.mainBranch} exists on ${options.remote}`,
-        );
-        const { stdout: mainBranchCheck } = await execPromise(
-          `git ls-remote --heads ${options.remote} ${options.mainBranch}`,
-        );
-
-        if (!mainBranchCheck.trim()) {
-          logger.error(
-            `Branch '${options.mainBranch}' does not exist on remote '${options.remote}'.`,
-          );
-          process.exit(1);
-        }
-      }
-
       // Step 3: Fetch the data branch from remote with depth limit for speed
       logger.info(
         `Fetching ${options.branch} branch from ${options.remote} with depth=${options.depth}`,
@@ -313,147 +304,55 @@ program
         `git fetch ${options.remote} ${options.branch} --depth=${options.depth}`,
       );
 
-      if (!options.skipDb) {
-        logger.info(
-          `Fetching ${options.mainBranch} branch from ${options.remote} with depth=1`,
-        );
-        await execPromise(
-          `git fetch ${options.remote} ${options.mainBranch} --depth=1`,
-        );
-      }
-
       // Step 4: Create a worktree for the data branch
       logger.info(`Setting up worktree for ${options.branch}`);
       await execPromise(
         `git worktree add ${options.worktreeDir} ${options.remote}/${options.branch}`,
       );
 
-      if (!options.skipDb) {
-        logger.info(`Setting up worktree for ${options.mainBranch}`);
-        await execPromise(
-          `git worktree add ${options.mainWorktreeDir} ${options.remote}/${options.mainBranch}`,
-        );
-      }
+      const latestMigrationNumber = !options.skipDb
+        ? getLatestMigrationNumber(options.worktreeDir, logger)
+        : undefined;
 
-      // Step 5: Create database in worktree first if needed
-      const worktreeDumpDir = join(options.worktreeDir, "data/dump");
+      // Pre-restore database in worktree for accurate size comparison
       const worktreeDbFile = join(options.worktreeDir, options.dbFile);
+      const worktreeDumpDir = join(options.worktreeDir, "data/dump");
+      const dumpExists = existsSync(worktreeDumpDir);
 
-      if (!options.skipDb) {
-        if (existsSync(worktreeDumpDir)) {
+      if (!options.skipDb && dumpExists) {
+        try {
           logger.info(
-            `Creating database in worktree from remote dump at ${worktreeDumpDir}`,
+            "Temporarily restoring remote database in worktree for size comparison...",
           );
 
-          try {
-            // Delete __drizzle_migrations* files from dump directory to avoid migration errors
-            logger.info(
-              `Removing __drizzle_migrations* files from dump directory`,
-            );
-            const migrationFiles = glob.sync(
-              join(worktreeDumpDir, "__drizzle_migrations*"),
-            );
-            for (const file of migrationFiles) {
-              logger.debug(`Deleting migration file: ${file}`);
-              unlinkSync(file);
-            }
-            logger.info(
-              `✅ Removed ${migrationFiles.length} migration files from dump directory`,
-            );
-
-            // Ensure worktree database directory exists
-            const worktreeDbDir = dirname(worktreeDbFile);
-            if (!existsSync(worktreeDbDir)) {
-              mkdirSync(worktreeDbDir, { recursive: true });
-            }
-
-            // Force delete existing data files if requested
-            if (options.force) {
-              logger.info(
-                `Force option detected - removing existing data files`,
-              );
-              const deletedCount = deleteDataFiles(options.dataDir, logger);
-              logger.info(
-                `✅ Removed ${deletedCount} data files from ${options.dataDir}`,
-              );
-
-              // Also remove the database file if it exists
-              if (existsSync(options.dbFile)) {
-                logger.info(
-                  `Removing existing database file: ${options.dbFile}`,
-                );
-                unlinkSync(options.dbFile);
-                logger.info(`✅ Removed existing database file`);
-              }
-            }
-
-            // Instantiate database with migrations from the main branch worktree
-            const { mainWorktreeDir, mainBranch } = options;
-            const mainWorktreeDbFile = join(mainWorktreeDir, options.dbFile);
-            logger.info(
-              `Instantiating database from '${mainBranch}' branch migrations...`,
-            );
-
-            const mainWtExecOpts = {
-              cwd: mainWorktreeDir,
-              encoding: "utf8" as const,
-            };
-
-            logger.info(`Installing dependencies in ${mainWorktreeDir}...`);
-            execSync("bun install", mainWtExecOpts);
-            logger.info(`✅ Dependencies installed.`);
-
-            logger.info(
-              `Running db:migrate in ${mainWorktreeDir} to instantiate database...`,
-            );
-            const migrateOutput = execSync(
-              "bun run db:migrate",
-              mainWtExecOpts,
-            );
-            logger.debug(`Migration output: ${migrateOutput}`);
-            logger.info(
-              `✅ Database instantiated with migrations from '${mainBranch}'.`,
-            );
-
-            if (!existsSync(mainWorktreeDbFile)) {
-              throw new Error(
-                `Database file not found in main worktree at ${mainWorktreeDbFile} after migrations.`,
-              );
-            }
-
-            logger.info(
-              `Copying new database from main worktree to data worktree...`,
-            );
-            copyFileSync(mainWorktreeDbFile, worktreeDbFile);
-            logger.info(`✅ Database copied to ${worktreeDbFile}.`);
-
-            // Run sqlite-diffable within worktree to load data into the copied database
-            const cmd = `uv run uvx sqlite-diffable load ${worktreeDbFile} ${worktreeDumpDir} --replace`;
-            logger.debug(`Running: ${cmd}`);
-            const { stdout, stderr } = await execPromise(cmd);
-
-            if (options.verbose) {
-              logger.debug(`Command output: ${stdout}`);
-              if (stderr) logger.debug(`Command errors: ${stderr}`);
-            }
-
-            logger.info(`✅ Database in worktree updated with remote data`);
-          } catch (error) {
-            logger.error(`Failed to update database in worktree: ${error}`);
-            logger.info(`
-To update the database manually, run:
- uvx sqlite-diffable load ${worktreeDbFile} ${worktreeDumpDir} ${existsSync(options.dbFile) ? "" : "--replace"}
-            `);
-            process.exit(1);
+          if (existsSync(worktreeDbFile)) {
+            unlinkSync(worktreeDbFile);
           }
-        } else {
-          logger.warn(
-            `No valid dump found in remote data branch, skipping database creation`,
-          );
+
+          logger.info("Instantiating database with initial migrations...");
+          const migrateCmd =
+            latestMigrationNumber !== undefined
+              ? `bun run db:migrate ${latestMigrationNumber}`
+              : "bun run db:migrate";
+          logger.debug(`Running: DB_PATH=${worktreeDbFile} ${migrateCmd}`);
+          execSync(migrateCmd, {
+            stdio: "inherit",
+            env: { ...process.env, DB_PATH: worktreeDbFile },
+          });
+          logger.info("✅ Database instantiated in worktree.");
+
+          logger.info("Loading data from dump into worktree database...");
+          const loadCmd = `uv run uvx sqlite-diffable load ${worktreeDbFile} ${worktreeDumpDir} --replace`;
+          logger.debug(`Running: ${loadCmd}`);
+          execSync(loadCmd, { stdio: "inherit" });
+          logger.info("✅ Data loaded into worktree database.");
+        } catch (error) {
+          logger.error(`Failed to pre-restore database in worktree: ${error}`);
+          logger.warn("Will continue without accurate remote DB size.");
         }
       }
 
-      // Check for existing data and get stats
+      // Step 5: Check for existing data and get stats for confirmation prompt
       const hasExistingData = existsSync(options.dataDir);
       const hasExistingDb = existsSync(options.dbFile);
 
@@ -606,22 +505,6 @@ To update the database manually, run:
             rmSync(options.worktreeDir, { recursive: true, force: true });
           }
 
-          if (!options.skipDb) {
-            logger.info(
-              `Cleaning up worktree directory: ${options.mainWorktreeDir}`,
-            );
-            try {
-              await execPromise(
-                `git worktree remove ${options.mainWorktreeDir} --force`,
-              );
-            } catch (error) {
-              rmSync(options.mainWorktreeDir, {
-                recursive: true,
-                force: true,
-              });
-            }
-          }
-
           process.exit(0);
         }
       }
@@ -632,11 +515,20 @@ To update the database manually, run:
         mkdirSync(options.dataDir, { recursive: true });
       }
 
-      // Ensure database directory exists
-      const dbDir = dirname(options.dbFile);
-      if (!existsSync(dbDir)) {
-        logger.debug(`Creating database directory: ${dbDir}`);
-        mkdirSync(dbDir, { recursive: true });
+      // Force delete existing data files if requested
+      if (options.force) {
+        logger.info(`Force option detected - removing existing data files`);
+        const deletedCount = deleteDataFiles(options.dataDir, logger);
+        logger.info(
+          `✅ Removed ${deletedCount} data files from ${options.dataDir}`,
+        );
+
+        // Also remove the database file if it exists
+        if (existsSync(options.dbFile)) {
+          logger.info(`Removing existing database file: ${options.dbFile}`);
+          unlinkSync(options.dbFile);
+          logger.info(`✅ Removed existing database file`);
+        }
       }
 
       // Step 6: Copy data from worktree to data directory
@@ -659,39 +551,37 @@ To update the database manually, run:
         logger.warn(`No data directory found in ${options.branch} branch`);
       }
 
-      // Step 7: Copy database file directly instead of rebuilding it
-      if (!options.skipDb && existsSync(worktreeDbFile)) {
-        logger.info(`Copying database from worktree to ${options.dbFile}`);
-        try {
-          copyFileSync(worktreeDbFile, options.dbFile);
-          logger.info(`✅ Database copied to ${options.dbFile}`);
-        } catch (error) {
-          logger.error(`Failed to copy database: ${error}`);
+      // Step 7: Copy database file and apply final migrations
+      if (!options.skipDb) {
+        if (existsSync(worktreeDbFile)) {
+          logger.info(`Copying database from worktree to ${options.dbFile}`);
+          try {
+            if (existsSync(options.dbFile)) {
+              unlinkSync(options.dbFile);
+            }
+            copyFileSync(worktreeDbFile, options.dbFile);
+            logger.info(`✅ Database copied to ${options.dbFile}`);
+
+            logger.info(
+              `Running db:migrate one last time to apply any new local migrations`,
+            );
+            execSync("bun run db:migrate", { stdio: "inherit" });
+            logger.info(`✅ Final migrations applied successfully`);
+          } catch (error) {
+            logger.error(
+              `Failed to copy database or run final migrations: ${error}`,
+            );
+          }
+        } else {
+          logger.warn(
+            `No pre-restored database file found in worktree, skipping database copy. A dump may not exist in the remote branch.`,
+          );
         }
-      } else if (!options.skipDb) {
-        logger.warn(
-          `No database file found in worktree, skipping database copy`,
-        );
       } else {
-        logger.info(`Skipping database restore (--skip-db option used)`);
+        logger.info(`Skipping database restore (--skip-db option used).`);
       }
 
-      // Run migrations one last time to apply any new local migrations
-      if (!options.skipDb && !options.skipLocalMigrations) {
-        logger.info(
-          `Running db:migrate one last time to apply any new local migrations`,
-        );
-        try {
-          const migrateOutput = execSync("bun run db:migrate", {
-            encoding: "utf8",
-          });
-          logger.debug(`Final migration output: ${migrateOutput}`);
-          logger.info(`✅ Final migrations applied successfully`);
-        } catch (error) {
-          logger.warn(`Failed to run final migrations: ${error}`);
-        }
-      }
-
+      // Final cleanup
       logger.info(`Cleaning up worktree directory: ${options.worktreeDir}`);
       try {
         await execPromise(`git worktree remove ${options.worktreeDir} --force`);
@@ -701,26 +591,6 @@ To update the database manually, run:
           `Failed to remove worktree via git, it may need manual cleanup: ${error}`,
         );
         rmSync(options.worktreeDir, { recursive: true, force: true });
-      }
-
-      if (!options.skipDb) {
-        logger.info(
-          `Cleaning up worktree directory: ${options.mainWorktreeDir}`,
-        );
-        try {
-          await execPromise(
-            `git worktree remove ${options.mainWorktreeDir} --force`,
-          );
-          logger.debug(`Worktree removed successfully`);
-        } catch (error) {
-          logger.warn(
-            `Failed to remove worktree via git, it may need manual cleanup: ${error}`,
-          );
-          rmSync(options.mainWorktreeDir, {
-            recursive: true,
-            force: true,
-          });
-        }
       }
 
       logger.info(`✅ Data sync completed successfully!`);

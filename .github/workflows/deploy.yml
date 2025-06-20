@@ -5,7 +5,7 @@ on:
   workflow_run:
     workflows: ["Run Pipelines"]
     branches: [main]
-    types: [success]
+    types: [completed]
 
 permissions:
   contents: write
@@ -23,6 +23,7 @@ env:
 
 jobs:
   build-and-deploy:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
