@@ -58,7 +58,10 @@ runs:
             MIGRATE_CMD="$MIGRATE_CMD $LATEST_MIGRATION_NUM"
         fi
 
-        DB_PATH=$TARGET_DB $MIGRATE_CMD
+        if ! DB_PATH=$TARGET_DB $MIGRATE_CMD; then
+          echo "❌ Initial migration failed."
+          exit 1
+        fi
 
         if [ ! -f "$TARGET_DB" ]; then
             echo "❌ Database file not found at $TARGET_DB after initial migration."
@@ -98,8 +101,12 @@ runs:
         uv run uvx sqlite-diffable dump ${{ inputs.db_path }} ${{ inputs.dump_dir }} --all
 
         # Copy the migration journal to the dump directory so it's versioned with the data
-        echo "🔄 Copying migration journal to dump directory..."
-        cp drizzle/meta/_journal.json ${{ inputs.dump_dir }}/_journal.json
+        if [ -f "drizzle/meta/_journal.json" ]; then
+          echo "🔄 Copying migration journal to dump directory..."
+          cp drizzle/meta/_journal.json ${{ inputs.dump_dir }}/_journal.json
+        else
+          echo "⚠️ Migration journal not found at drizzle/meta/_journal.json, skipping copy."
+        fi
 
         # Verify the dump was created successfully
         echo "✅ Database dumped to ${{ inputs.dump_dir }}"

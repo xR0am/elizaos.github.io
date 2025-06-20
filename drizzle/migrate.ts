@@ -84,13 +84,17 @@ const sqlite = new Database(dbPath, { create: true });
 const db = drizzle(sqlite);
 
 const maxMigrationArg = process.argv[2];
-let maxMigration;
+let maxMigration: number | undefined;
 
 if (maxMigrationArg) {
   const parsed = parseInt(maxMigrationArg, 10);
-  if (!isNaN(parsed)) {
-    maxMigration = parsed;
+  if (isNaN(parsed)) {
+    console.error(
+      `Error: Invalid migration number provided: "${maxMigrationArg}". Must be an integer.`,
+    );
+    process.exit(1);
   }
+  maxMigration = parsed;
 }
 
 try {
