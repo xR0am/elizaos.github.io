@@ -5,8 +5,30 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-15 to 2025-06-22, elizaos/eliza had 66 new PRs (47 merged), 13 new issues, and 30 active contributors.",
+  "overview": "From 2025-06-15 to 2025-06-22, elizaos/eliza had 88 new PRs (68 merged), 15 new issues, and 33 active contributors.",
   "topIssues": [
+    {
+      "id": "I_kwDOMT5cIs653q_k",
+      "title": "How to check currently loaded plugins in the agent",
+      "author": "omariosman",
+      "number": 4931,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-04T16:14:19Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 1
+    },
+    {
+      "id": "I_kwDOMT5cIs652Dw9",
+      "title": "Web client thinks it is on a different version",
+      "author": "scottrepreneur",
+      "number": 4924,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-04T13:59:53Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 1
+    },
     {
       "id": "I_kwDOMT5cIs65xeti",
       "title": "Service Types and Test Services",
@@ -39,28 +61,6 @@
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 1
-    },
-    {
-      "id": "I_kwDOMT5cIs68Alkb",
-      "title": "elizaos start crashes after accessing localhost:3000 on windows",
-      "author": "paulmerz",
-      "number": 5161,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-17T17:41:09Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 0
-    },
-    {
-      "id": "I_kwDOMT5cIs678523",
-      "title": "import projects on windows dev machine not working",
-      "author": "piffie",
-      "number": 5155,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-17T12:21:50Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 0
     }
   ],
   "topPRs": [
@@ -115,16 +115,16 @@
       "number": 5150,
       "repository": "elizaos/eliza",
       "createdAt": "2025-06-16T23:22:29Z",
-      "mergedAt": null,
-      "additions": 47796,
-      "deletions": 10435
+      "mergedAt": "2025-06-20T03:23:56Z",
+      "additions": 48113,
+      "deletions": 11390
     }
   ],
   "codeChanges": {
-    "additions": 61121,
-    "deletions": 8858,
-    "files": 336,
-    "commitCount": 284
+    "additions": 67484,
+    "deletions": 13957,
+    "files": 429,
+    "commitCount": 338
   },
   "completedItems": [
     {
@@ -278,6 +278,11 @@
       "type": "bugfix"
     },
     {
+      "title": "chore: v1.0.10",
+      "prNumber": 5150,
+      "type": "other"
+    },
+    {
       "title": "fix: ids should be uuid not text",
       "prNumber": 5189,
       "type": "bugfix"
@@ -338,6 +343,11 @@
       "type": "bugfix"
     },
     {
+      "title": "feat: add agent settings",
+      "prNumber": 5202,
+      "type": "feature"
+    },
+    {
       "title": "fix: dont skip (single) installation test",
       "prNumber": 5201,
       "type": "bugfix"
@@ -361,41 +371,136 @@
       "title": "fix: scroll behavior on agent settings",
       "prNumber": 5192,
       "type": "bugfix"
+    },
+    {
+      "title": "chore: remove CLI tests from integration tests",
+      "prNumber": 5226,
+      "type": "tests"
+    },
+    {
+      "title": "fix: remove all CI caching",
+      "prNumber": 5225,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: clean core",
+      "prNumber": 5224,
+      "type": "refactor"
+    },
+    {
+      "title": "fix: env settings saving",
+      "prNumber": 5223,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: cleanup plugin-sql",
+      "prNumber": 5222,
+      "type": "refactor"
+    },
+    {
+      "title": "fix: incorrecly scoped plugin name",
+      "prNumber": 5220,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: create option test",
+      "prNumber": 5219,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: add Google Generative AI support and refactor CLI prompts",
+      "prNumber": 5217,
+      "type": "feature"
+    },
+    {
+      "title": "feat: lazy load test dependencies and Discord plugin in starter templates",
+      "prNumber": 5215,
+      "type": "feature"
+    },
+    {
+      "title": "refactor: improve CLI config template formatting and organization",
+      "prNumber": 5214,
+      "type": "refactor"
+    },
+    {
+      "title": "feat: open documentation links in new tab",
+      "prNumber": 5213,
+      "type": "feature"
+    },
+    {
+      "title": "fix: agent card responsive issue",
+      "prNumber": 5212,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: add bootstrap plugin to agent templates",
+      "prNumber": 5211,
+      "type": "feature"
+    },
+    {
+      "title": "fix(secret-panel): allow editing and adding new secrets",
+      "prNumber": 5210,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: secrets undefined issue",
+      "prNumber": 5209,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: lint files",
+      "prNumber": 5208,
+      "type": "other"
+    },
+    {
+      "title": "chore: release 1.0.11",
+      "prNumber": 5207,
+      "type": "other"
+    },
+    {
+      "title": "fix: add __dirname for ES modules in copy-template utility",
+      "prNumber": 5206,
+      "type": "feature"
+    },
+    {
+      "title": "chore: cleanup server code",
+      "prNumber": 5204,
+      "type": "refactor"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 770.2949797239223,
-      "prScore": 732.1409797239224,
-      "issueScore": 18,
+      "totalScore": 1117.099462633791,
+      "prScore": 1076.9454626337913,
+      "issueScore": 20,
       "reviewScore": 18.5,
       "commentScore": 1.654
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 301.76190165348487,
-      "prScore": 190.3239016534849,
+      "totalScore": 488.93430918834764,
+      "prScore": 377.29630918834766,
       "issueScore": 0,
       "reviewScore": 111,
-      "commentScore": 0.43799999999999994
+      "commentScore": 0.6379999999999999
     },
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 276.7855865141224,
-      "prScore": 255.46758651412233,
+      "totalScore": 334.0921165667617,
+      "prScore": 297.77411656676173,
       "issueScore": 0,
-      "reviewScore": 20,
+      "reviewScore": 35,
       "commentScore": 1.3179999999999998
     },
     {
       "username": "tcm390",
       "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4",
-      "totalScore": 233.49323109074567,
-      "prScore": 228.29323109074568,
+      "totalScore": 321.7702245831614,
+      "prScore": 316.57022458316135,
       "issueScore": 0,
       "reviewScore": 5,
       "commentScore": 0.2
@@ -410,9 +515,9 @@
       "commentScore": 0
     }
   ],
-  "newPRs": 66,
-  "mergedPRs": 47,
-  "newIssues": 13,
-  "closedIssues": 14,
-  "activeContributors": 30
+  "newPRs": 88,
+  "mergedPRs": 68,
+  "newIssues": 15,
+  "closedIssues": 15,
+  "activeContributors": 33
 }
