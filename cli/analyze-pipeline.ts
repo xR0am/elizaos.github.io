@@ -109,7 +109,7 @@ program
         config: pipelineConfig,
         dateRange,
         force: options.force,
-        githubToken: process.env.GITHUB_TOKEN,
+        githubToken: process.env.GITHUB_TOKEN!,
       });
 
       // Run the ingestion pipeline - returns array of { repository, prs, issues }

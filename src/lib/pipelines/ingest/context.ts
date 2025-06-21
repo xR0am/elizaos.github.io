@@ -20,7 +20,7 @@ interface CreateIngestionContextOptions {
   config: PipelineConfig;
   dateRange: DateRange;
   force: boolean;
-  githubToken?: string;
+  githubToken: string;
 }
 
 /**
