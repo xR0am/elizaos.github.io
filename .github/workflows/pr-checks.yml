@@ -63,9 +63,6 @@ jobs:
           dump_dir: ${{ env.DATA_DIR }}/dump
           db_path: ${{ env.DATA_DIR }}/db.sqlite
 
-      - name: Initialize DB
-        run: bun run db:migrate
-
       - name: Run build
         run: bun run build
         env:
@@ -115,9 +112,6 @@ jobs:
           operation: restore
           dump_dir: ${{ env.DATA_DIR }}/dump
           db_path: ${{ env.DATA_DIR }}/db.sqlite
-
-      - name: Initialize DB
-        run: bun run db:migrate
 
       - name: Run Ingest Pipeline
         run: bun run pipeline ingest -d 1

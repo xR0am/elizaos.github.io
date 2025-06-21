@@ -2,7 +2,7 @@ import React from "react";
 
 const EthereumIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
-    fill="#3C3C3D" // Adjusted fill for better visibility on typical backgrounds
+    fill="#8dadf2" // Adjusted fill for better visibility on typical backgrounds
     width="24px" // Default size, can be overridden by props
     height="24px" // Default size, can be overridden by props
     viewBox="0 0 32 32"

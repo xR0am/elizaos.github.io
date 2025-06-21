@@ -12,10 +12,6 @@ inputs:
     description: "Directory where diffable dump should be stored (for dump operation)"
     required: true
     default: "data/dump"
-  main_branch:
-    description: "The branch with the most up-to-date migrations"
-    required: false
-    default: "main"
 
 runs:
   using: "composite"
@@ -28,68 +24,63 @@ runs:
       shell: bash
       run: |
         set -euo pipefail
-        # Check if dump directory exists
         DUMP_DIR='${{ inputs.dump_dir }}'
         TARGET_DB='${{ inputs.db_path }}'
-        MAIN_BRANCH='${{ inputs.main_branch }}'
-        MAIN_WORKTREE_DIR="./.main-worktree"
+        JOURNAL_FILE="$DUMP_DIR/_journal.json"
 
-        if [ ! -d "$DUMP_DIR" ]; then
-          echo "⚠️ Warning: Dump directory $DUMP_DIR does not exist or is empty"
-          echo "⏭️ Skipping database restore"
+        if [ ! -d "$DUMP_DIR" ] || [ -z "$(ls -A $DUMP_DIR)" ]; then
+          echo "⚠️ Dump directory $DUMP_DIR does not exist or is empty. Skipping restore."
           exit 0
         fi
 
-        # Remove Drizzle migration tables from dump
         echo "🧹 Removing migration tables from dump..."
         rm -f $DUMP_DIR/__drizzle_migrations*
 
-        # Setup worktree for main branch to get latest migrations
-        echo "🌳 Setting up worktree for $MAIN_BRANCH branch..."
-        git fetch origin $MAIN_BRANCH --depth=1
-        if [ -d "$MAIN_WORKTREE_DIR" ]; then
-          git worktree remove $MAIN_WORKTREE_DIR --force || rm -rf $MAIN_WORKTREE_DIR
+        LATEST_MIGRATION_NUM=""
+        if [ -f "$JOURNAL_FILE" ]; then
+            echo "📖 Reading latest migration number from $JOURNAL_FILE"
+            LATEST_MIGRATION_NUM=$(jq '.entries[-1].idx' "$JOURNAL_FILE")
+            if [ -n "$LATEST_MIGRATION_NUM" ] && [ "$LATEST_MIGRATION_NUM" != "null" ]; then
+              echo "Found latest migration number: $LATEST_MIGRATION_NUM"
+            else
+              LATEST_MIGRATION_NUM=""
+              echo "Could not determine migration number from journal. Running all migrations."
+            fi
+        else
+            echo "⚠️ Journal file not found at $JOURNAL_FILE. Running all migrations."
         fi
-        git worktree add $MAIN_WORKTREE_DIR origin/$MAIN_BRANCH
 
-        # Instantiate database from main branch migrations
-        echo "🔄 Instantiating database from '$MAIN_BRANCH' migrations..."
-        (
-          cd $MAIN_WORKTREE_DIR
-          echo "📦 Installing dependencies in worktree..."
-          bun install --frozen-lockfile
-          echo "🚀 Running db:migrate in worktree..."
-          bun run db:migrate
-        )
+        echo "🔄 Instantiating database and running migrations up to dump version..."
+        rm -f "$TARGET_DB"
 
-        MAIN_WORKTREE_DB="$MAIN_WORKTREE_DIR/$TARGET_DB"
-        if [ ! -f "$MAIN_WORKTREE_DB" ]; then
-            echo "❌ Database file not found in main worktree at $MAIN_WORKTREE_DB after migrations."
+        MIGRATE_CMD="bun run db:migrate"
+        if [ -n "$LATEST_MIGRATION_NUM" ]; then
+            MIGRATE_CMD="$MIGRATE_CMD $LATEST_MIGRATION_NUM"
+        fi
+
+        if ! DB_PATH=$TARGET_DB $MIGRATE_CMD; then
+          echo "❌ Initial migration failed."
+          exit 1
+        fi
+
+        if [ ! -f "$TARGET_DB" ]; then
+            echo "❌ Database file not found at $TARGET_DB after initial migration."
             exit 1
         fi
-        echo "✅ Database instantiated from '$MAIN_BRANCH' migrations."
+        echo "✅ Database instantiated."
 
-        # Load the database from the diffable dump
         echo "🔄 Restoring database from diffable dump..."
-        uv run uvx sqlite-diffable load $MAIN_WORKTREE_DB $DUMP_DIR --replace
+        uv run uvx sqlite-diffable load $TARGET_DB $DUMP_DIR --replace
 
-        # Copy the restored database to the final destination
-        echo "📋 Copying restored database to $TARGET_DB..."
-        mkdir -p $(dirname $TARGET_DB)
-        cp $MAIN_WORKTREE_DB $TARGET_DB
+        echo "🚀 Running remaining migrations on restored database..."
+        DB_PATH=$TARGET_DB bun run db:migrate
 
-        # Verify the database was restored successfully
         echo "✅ Database restored to $TARGET_DB"
         ls -la $(dirname $TARGET_DB)
 
-        # Cleanup worktree
-        echo "🧹 Cleaning up worktree..."
-        git worktree remove $MAIN_WORKTREE_DIR --force
-
-        # Only run if sqlite3 is available
         if command -v sqlite3 &> /dev/null; then
           echo "📊 Database tables:"
-          sqlite3 $TARGET_DB ".tables" || echo "Could not query tables (this is normal if the database is empty)"
+          sqlite3 $TARGET_DB ".tables" || echo "Could not query tables."
         fi
 
     - name: Dump SQLite database to diffable format
@@ -108,6 +99,14 @@ runs:
         # Dump the database to diffable format
         echo "🔄 Dumping database to diffable format..."
         uv run uvx sqlite-diffable dump ${{ inputs.db_path }} ${{ inputs.dump_dir }} --all
+
+        # Copy the migration journal to the dump directory so it's versioned with the data
+        if [ -f "drizzle/meta/_journal.json" ]; then
+          echo "🔄 Copying migration journal to dump directory..."
+          cp drizzle/meta/_journal.json ${{ inputs.dump_dir }}/_journal.json
+        else
+          echo "⚠️ Migration journal not found at drizzle/meta/_journal.json, skipping copy."
+        fi
 
         # Verify the dump was created successfully
         echo "✅ Database dumped to ${{ inputs.dump_dir }}"

@@ -5,6 +5,7 @@ import { getDateRangeForPeriod } from "@/lib/pipelines/queryHelpers";
 import { getTopUsersByScore } from "@/lib/scoring/queries";
 import { groupBy } from "@/lib/arrayHelpers";
 import { LeaderboardPeriod, LeaderboardUser } from "@/components/leaderboard";
+import { getCachedUserWalletData } from "@/lib/walletLinking/ingestUserWalletData";
 
 export async function getAllTags() {
   const allTags = await db
@@ -57,7 +58,7 @@ export async function getLeaderboard(period: LeaderboardPeriod) {
   );
 
   // Transform the results to match the UserFocusAreaData interface
-  const userList: LeaderboardUser[] = topUsers
+  const usersFromDb = topUsers
     .map((user) => {
       const userTags = userTagScoresMap[user.username] || [];
       const userScore = userScoreMap.get(user.username) || 0;
@@ -77,8 +78,30 @@ export async function getLeaderboard(period: LeaderboardPeriod) {
     })
     .sort((a, b) => (b.totalXp || 0) - (a.totalXp || 0));
 
+  const usersWithWalletData: LeaderboardUser[] = await Promise.all(
+    usersFromDb.map(async (user) => {
+      try {
+        const walletData = await getCachedUserWalletData(user.username);
+        const linkedWallets = walletData?.wallets || [];
+        return {
+          ...user,
+          linkedWallets,
+        };
+      } catch (error) {
+        console.warn(
+          `Failed to fetch wallet data for user ${user.username} in leaderboard:`,
+          error,
+        );
+        return {
+          ...user,
+          linkedWallets: [],
+        };
+      }
+    }),
+  );
+
   return {
-    users: userList,
+    users: usersWithWalletData,
     startDate,
     endDate,
   };

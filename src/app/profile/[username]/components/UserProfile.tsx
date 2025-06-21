@@ -5,14 +5,21 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { TagData, SkillCard } from "@/components/skill-card";
-import { Github } from "lucide-react";
+import { BadgeCheck, Github } from "lucide-react";
 import { formatCompactNumber } from "@/lib/format-number";
 import { DailyActivity } from "@/components/daily-activity";
 import { UserActivityHeatmap } from "@/lib/scoring/queries";
 import { SummaryCard, Summary } from "@/components/summary-card";
-import EthereumIcon from "@/components/icons/EthereumIcon";
-import SolanaIcon from "@/components/icons/SolanaIcon";
 import { WalletAddressBadge } from "@/components/ui/WalletAddressBadge";
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import type { LinkedWallet } from "@/lib/walletLinking/readmeUtils";
+import { SUPPORTED_CHAINS } from "@/lib/walletLinking/chainUtils";
 
 export interface UserStats {
   totalPrs: number;
@@ -34,8 +41,7 @@ type UserProfileProps = {
   totalLevel: number;
   stats: UserStats;
   dailyActivity: UserActivityHeatmap[];
-  ethAddress?: string;
-  solAddress?: string;
+  linkedWallets: LinkedWallet[];
 };
 
 export default function UserProfile({
@@ -49,12 +55,11 @@ export default function UserProfile({
   totalLevel,
   stats,
   dailyActivity,
-  ethAddress,
-  solAddress,
+  linkedWallets,
 }: UserProfileProps) {
   return (
     <div className="mx-auto w-full max-w-4xl space-y-6 sm:p-4">
-      <div className="items-star flex flex-row gap-4">
+      <div className="items-star flex flex-col gap-4 sm:flex-row">
         <Avatar className="h-20 w-20">
           <AvatarImage
             src={`https://github.com/${username}.png`}
@@ -64,10 +69,27 @@ export default function UserProfile({
         </Avatar>
         <div className="flex-grow">
           <div className="flex flex-col gap-2">
-            <h1 className="max-w-full text-lg font-bold sm:text-2xl">
-              {username}{" "}
-              <span className="text-primary">(level-{totalLevel})</span>
-            </h1>
+            <div className="flex flex-row items-center gap-1">
+              <h1 className="max-w-full text-lg font-bold sm:text-2xl">
+                {username}
+              </h1>
+              <span className="font-bold text-primary">
+                (level-{totalLevel})
+              </span>
+
+              {linkedWallets.length > 0 && (
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <BadgeCheck className="ml-1 inline-flex h-5 w-5 text-yellow-500" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Wallet linked</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              )}
+            </div>
             <div className="flex flex-wrap items-center gap-3">
               <div className="flex items-center">
                 <span className="font-mono text-sm font-medium">
@@ -84,22 +106,21 @@ export default function UserProfile({
                 <span className="sr-only">View GitHub Profile</span>
               </a>
 
-              {ethAddress && (
-                <WalletAddressBadge
-                  address={ethAddress}
-                  icon={
-                    <EthereumIcon className="h-4 w-4 fill-muted-foreground" />
-                  }
-                  label="ETH"
-                />
-              )}
-              {solAddress && (
-                <WalletAddressBadge
-                  address={solAddress}
-                  icon={<SolanaIcon className="h-4 w-4" />}
-                  label="SOL"
-                />
-              )}
+              {linkedWallets.map((wallet, index) => {
+                const IconComponent = SUPPORTED_CHAINS[wallet.chain]?.icon;
+                return (
+                  <WalletAddressBadge
+                    key={index}
+                    address={wallet.address}
+                    icon={
+                      IconComponent ? (
+                        <IconComponent className="h-4 w-4" />
+                      ) : null
+                    }
+                    label={wallet.chain}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>

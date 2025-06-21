@@ -3,6 +3,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { LeaderboardUser } from "./leaderboard";
 import { StatBadge } from "./stat-badge";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { BadgeCheck } from "lucide-react";
 
 export function LeaderboardCard({
   user,
@@ -49,7 +56,23 @@ export function LeaderboardCard({
               </Avatar>
             </div>
             <div className="flex min-w-0 flex-1 flex-col gap-1">
-              <h3 className="truncate font-medium">{user.username}</h3>
+              <h3 className="truncate font-medium">
+                {user.username}
+                {user.linkedWallets.length > 0 && (
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <span className="ml-1 inline-block align-middle">
+                          <BadgeCheck className="h-4 w-4 text-yellow-500" />
+                        </span>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Wallet linked</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                )}
+              </h3>
               <div className="flex gap-2">
                 <StatBadge
                   labelEnd="XP"
