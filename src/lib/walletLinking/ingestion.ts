@@ -10,17 +10,11 @@ import { users, walletAddresses } from "@/lib/data/schema";
 import { eq, and } from "drizzle-orm";
 import {
   getChainId,
-  getChainByChainId,
   validateAddress,
   SUPPORTED_CHAINS_NAMES,
 } from "@/lib/walletLinking/chainUtils";
 
-const CACHE_DURATION_SECONDS = 12 * 60 * 60; // 12 hours
-
-if (!process.env.GITHUB_TOKEN) {
-  throw new Error("GITHUB_TOKEN is not set");
-}
-const githubClient = new GitHubClient(process.env.GITHUB_TOKEN);
+const CACHE_TTL_SECONDS = 24 * 60 * 60; // 24 hours
 
 /**
  * Fetches a user's profile README from GitHub and parses the wallet linking data.
@@ -32,6 +26,7 @@ const githubClient = new GitHubClient(process.env.GITHUB_TOKEN);
  */
 async function fetchWalletDataFromGithub(
   username: string,
+  githubClient: GitHubClient,
 ): Promise<WalletLinkingData | null> {
   try {
     const readmeData = await githubClient.fetchFileContent(
@@ -62,8 +57,9 @@ async function fetchWalletDataFromGithub(
  * @param username The GitHub username
  * @returns A promise resolving to wallet linking data or null
  */
-export async function getCachedUserWalletData(
+export async function ingestWalletDataForUser(
   username: string,
+  githubClient: GitHubClient,
 ): Promise<WalletLinkingData | null> {
   try {
     // Get user record to check wallet data update timestamp
@@ -74,47 +70,26 @@ export async function getCachedUserWalletData(
       },
     });
 
-    if (!userRecord) {
-      return null;
-    }
-
-    // Check if we have cached wallet data that's still fresh
     if (
-      userRecord.walletDataUpdatedAt &&
-      Date.now() / 1000 - userRecord.walletDataUpdatedAt <
-        CACHE_DURATION_SECONDS
+      userRecord?.walletDataUpdatedAt &&
+      Date.now() / 1000 - userRecord.walletDataUpdatedAt < CACHE_TTL_SECONDS
     ) {
-      // Cache is fresh, get wallet addresses from walletAddresses table
-      const cachedWallets = await db.query.walletAddresses.findMany({
-        where: and(
-          eq(walletAddresses.userId, username),
-          eq(walletAddresses.isActive, true),
-        ),
-        columns: {
-          chainId: true,
-          accountAddress: true,
-        },
-      });
-
-      if (cachedWallets.length > 0) {
-        const wallets = cachedWallets.map((wallet) => ({
-          chain: getChainByChainId(wallet.chainId),
-          address: wallet.accountAddress,
-          source: "cache",
-        }));
-
-        return {
-          wallets,
-          lastUpdated: userRecord.walletDataUpdatedAt.toString(),
-        };
-      }
-
-      // Fresh cache, but no wallet addresses found
+      console.log(
+        `Wallet data for ${username} is fresh. Skipping GitHub fetch.`,
+      );
       return null;
     }
 
     // Cache is stale or doesn't exist, fetch from GitHub
-    const freshWalletData = await fetchWalletDataFromGithub(username);
+    const freshWalletData = await fetchWalletDataFromGithub(
+      username,
+      githubClient,
+    );
+
+    // Ensure user exists before any wallet data operations
+    if (!userRecord) {
+      await db.insert(users).values({ username }).onConflictDoNothing();
+    }
 
     if (!freshWalletData?.wallets || freshWalletData.wallets.length === 0) {
       // Update timestamp even if no wallets found to avoid repeated GitHub API calls
@@ -189,7 +164,7 @@ export async function getCachedUserWalletData(
 
     return freshWalletData;
   } catch (error) {
-    console.error(`Error in getCachedUserWalletData for ${username}:`, error);
+    console.error(`Error in ingestWalletDataForUser for ${username}:`, error);
     return null;
   }
 }
