@@ -5,7 +5,7 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 328 new PRs (265 merged), 58 new issues, and 73 active contributors.",
+  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 342 new PRs (277 merged), 61 new issues, and 76 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs652Dw9",
@@ -25,6 +25,17 @@
       "number": 4921,
       "repository": "elizaos/eliza",
       "createdAt": "2025-06-04T11:50:36Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDOMT5cIs66FJn6",
+      "title": "Custom Plugin - callback from action is getting replaced by `ATTACHMENTS` provider.",
+      "author": "HuzarO",
+      "number": 4947,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-05T16:51:08Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 2
@@ -50,17 +61,6 @@
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 1
-    },
-    {
-      "id": "I_kwDOMT5cIs65Jvsk",
-      "title": "plugin install problems (v0 plugin: giphy)",
-      "author": "BinaryBluePeach",
-      "number": 4861,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-01T01:03:20Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 1
     }
   ],
   "topPRs": [
@@ -72,8 +72,8 @@
       "repository": "elizaos/eliza",
       "createdAt": "2025-06-22T16:11:08Z",
       "mergedAt": null,
-      "additions": 1398923,
-      "deletions": 42080
+      "additions": 845044,
+      "deletions": 51511
     },
     {
       "id": "PR_kwDOMT5cIs6bNbeZ",
@@ -121,10 +121,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 202440,
-    "deletions": 120187,
-    "files": 942,
-    "commitCount": 1255
+    "additions": 230172,
+    "deletions": 125139,
+    "files": 1063,
+    "commitCount": 1330
   },
   "completedItems": [
     {
@@ -1228,6 +1228,11 @@
       "type": "feature"
     },
     {
+      "title": "fix: character form - secrets panel",
+      "prNumber": 5186,
+      "type": "bugfix"
+    },
+    {
       "title": "chore: Documentation Refinement and Consolidation",
       "prNumber": 5182,
       "type": "docs"
@@ -1403,6 +1408,11 @@
       "type": "bugfix"
     },
     {
+      "title": "refactor(polygon): remove conflicts",
+      "prNumber": 5232,
+      "type": "refactor"
+    },
+    {
       "title": "fix: add server tests back fully fixed",
       "prNumber": 5231,
       "type": "feature"
@@ -1443,13 +1453,63 @@
       "type": "tests"
     },
     {
+      "title": "fix: Fix macOS CLI test failures by centralizing platform options",
+      "prNumber": 5250,
+      "type": "bugfix"
+    },
+    {
       "title": "chore: Add background color to dialog content",
       "prNumber": 5248,
       "type": "feature"
     },
     {
+      "title": "Added: Actions and ABIs for Alethea Plugin",
+      "prNumber": 5247,
+      "type": "other"
+    },
+    {
+      "title": "refactor/centralize-directory-detection-logic",
+      "prNumber": 5246,
+      "type": "refactor"
+    },
+    {
       "title": "fix: (tests) restore working test assertions after directory detection centralization",
       "prNumber": 5245,
+      "type": "bugfix"
+    },
+    {
+      "title": "Feature/phase4 admin api migration",
+      "prNumber": 5266,
+      "type": "feature"
+    },
+    {
+      "title": "fix: rename for clarity",
+      "prNumber": 5265,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: adds support for user-uploaded plain text (.txt) files in the GUI.",
+      "prNumber": 5262,
+      "type": "feature"
+    },
+    {
+      "title": "polishing docs: error fixes for clarity",
+      "prNumber": 5258,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: processAttachments to Support Local Image URLs and Include Attachment Descriptions in Prompts",
+      "prNumber": 5257,
+      "type": "bugfix"
+    },
+    {
+      "title": "refactor: starter packages to separate character and plugin files",
+      "prNumber": 5256,
+      "type": "refactor"
+    },
+    {
+      "title": "fix: complete multer migration and resolve upload functionality",
+      "prNumber": 5252,
       "type": "bugfix"
     }
   ],
@@ -1457,29 +1517,29 @@
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 3612.832348535715,
-      "prScore": 3520.9563485357153,
-      "issueScore": 24,
+      "totalScore": 3845.099460143765,
+      "prScore": 3746.7854601437652,
+      "issueScore": 30,
       "reviewScore": 61,
-      "commentScore": 6.8759999999999994
+      "commentScore": 7.313999999999999
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 2291.618297615712,
+      "totalScore": 2296.618297615712,
       "prScore": 1906.6622976157119,
       "issueScore": 0,
-      "reviewScore": 382,
+      "reviewScore": 387,
       "commentScore": 2.956
     },
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 993.656985715985,
-      "prScore": 865.4629857159849,
+      "totalScore": 1094.8340306963005,
+      "prScore": 956.9400306963006,
       "issueScore": 0,
-      "reviewScore": 125,
-      "commentScore": 3.194
+      "reviewScore": 134.5,
+      "commentScore": 3.3939999999999997
     },
     {
       "username": "yungalgo",
@@ -1500,9 +1560,9 @@
       "commentScore": 1.718
     }
   ],
-  "newPRs": 328,
-  "mergedPRs": 265,
-  "newIssues": 58,
-  "closedIssues": 51,
-  "activeContributors": 73
+  "newPRs": 342,
+  "mergedPRs": 277,
+  "newIssues": 61,
+  "closedIssues": 52,
+  "activeContributors": 76
 }
