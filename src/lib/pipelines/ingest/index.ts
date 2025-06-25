@@ -29,5 +29,5 @@ export const ingestPipeline = pipe(
       );
     }
   }),
-  fetchWalletAddresses,
+  createStep("WalletAddress", fetchWalletAddresses),
 );

@@ -14,40 +14,35 @@ import { WalletLinkingData } from "./readmeUtils";
 export async function getUserWalletData(
   username: string,
 ): Promise<WalletLinkingData | null> {
-  try {
-    const userWallets = await db.query.walletAddresses.findMany({
-      where: and(
-        eq(walletAddresses.userId, username),
-        eq(walletAddresses.isActive, true),
-      ),
-      columns: {
-        chainId: true,
-        accountAddress: true,
-        updatedAt: true,
-      },
-    });
+  const userWallets = await db.query.walletAddresses.findMany({
+    where: and(
+      eq(walletAddresses.userId, username),
+      eq(walletAddresses.isActive, true),
+    ),
+    columns: {
+      chainId: true,
+      accountAddress: true,
+      updatedAt: true,
+    },
+  });
 
-    if (userWallets.length > 0) {
-      const wallets = userWallets.map((wallet) => ({
-        chain: getChainByChainId(wallet.chainId),
-        address: wallet.accountAddress,
-        source: "cache",
-      }));
+  if (userWallets.length > 0) {
+    const wallets = userWallets.map((wallet) => ({
+      chain: getChainByChainId(wallet.chainId),
+      address: wallet.accountAddress,
+      source: "cache",
+    }));
 
-      const lastUpdated = userWallets.reduce((latest, wallet) => {
-        const walletDate = new Date(wallet.updatedAt);
-        return walletDate > latest ? walletDate : latest;
-      }, new Date(0));
+    const lastUpdated = userWallets.reduce((latest, wallet) => {
+      const walletDate = new Date(wallet.updatedAt);
+      return walletDate > latest ? walletDate : latest;
+    }, new Date(0));
 
-      return {
-        wallets,
-        lastUpdated: lastUpdated.toISOString(),
-      };
-    }
-
-    return null;
-  } catch (error) {
-    console.error(`Error in getUserWalletData for ${username}:`, error);
-    return null;
+    return {
+      wallets,
+      lastUpdated: lastUpdated.toISOString(),
+    };
   }
+
+  return null;
 }

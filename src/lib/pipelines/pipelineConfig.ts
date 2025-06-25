@@ -98,6 +98,10 @@ export const PipelineConfigSchema = z.object({
   // List of bot usernames to be ignored during processing
   botUsers: z.array(z.string()).optional(),
   aiSummary: AISummaryConfigSchema,
+  walletAddresses: z.object({
+    enabled: z.boolean().default(true),
+    cacheTTL: z.number().default(12 * 60 * 60), // 12 hours
+  }),
 });
 // Type exports
 
