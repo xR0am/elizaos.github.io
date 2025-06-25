@@ -30,7 +30,6 @@ export async function getUserWalletData(
     const wallets = userWallets.map((wallet) => ({
       chain: getChainByChainId(wallet.chainId),
       address: wallet.accountAddress,
-      source: "cache",
     }));
 
     const lastUpdated = userWallets.reduce((latest, wallet) => {
