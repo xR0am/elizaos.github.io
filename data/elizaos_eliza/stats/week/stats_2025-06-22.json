@@ -5,7 +5,7 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-22 to 2025-06-29, elizaos/eliza had 27 new PRs (20 merged), 5 new issues, and 23 active contributors.",
+  "overview": "From 2025-06-22 to 2025-06-29, elizaos/eliza had 38 new PRs (27 merged), 7 new issues, and 27 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs68vzQD",
@@ -14,6 +14,17 @@
       "number": 5244,
       "repository": "elizaos/eliza",
       "createdAt": "2025-06-23T03:39:00Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDOMT5cIs69Gbj2",
+      "title": "Create custom plugin for onchain AI agent",
+      "author": "yehia67",
+      "number": 5260,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-24T16:19:58Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 2
@@ -47,17 +58,6 @@
       "number": 5234,
       "repository": "elizaos/eliza",
       "createdAt": "2025-06-21T15:32:34Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 1
-    },
-    {
-      "id": "I_kwDOMT5cIs68o4X0",
-      "title": "server",
-      "author": "furkannabisumji",
-      "number": 5230,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-21T06:56:44Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 1
@@ -121,10 +121,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 37037,
-    "deletions": 10879,
-    "files": 299,
-    "commitCount": 152
+    "additions": 42724,
+    "deletions": 14779,
+    "files": 340,
+    "commitCount": 212
   },
   "completedItems": [
     {
@@ -203,6 +203,11 @@
       "type": "bugfix"
     },
     {
+      "title": "feat: Complete migration of packages/client to @elizaos/api-client",
+      "prNumber": 5263,
+      "type": "feature"
+    },
+    {
       "title": "feat: adds support for user-uploaded plain text (.txt) files in the GUI.",
       "prNumber": 5262,
       "type": "feature"
@@ -226,58 +231,88 @@
       "title": "fix: complete multer migration and resolve upload functionality",
       "prNumber": 5252,
       "type": "bugfix"
+    },
+    {
+      "title": "Fix: Update API documentation accuracy",
+      "prNumber": 5280,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: Restore GUI Chat Title Generation",
+      "prNumber": 5275,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: chat stuck issue",
+      "prNumber": 5274,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: update attachment formatting to use comma-separated list",
+      "prNumber": 5273,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: change plugins from project-scoped to agent-scoped architecture",
+      "prNumber": 5270,
+      "type": "feature"
+    },
+    {
+      "title": "Add Claude Code GitHub Workflow",
+      "prNumber": 5269,
+      "type": "feature"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 380.77859473128404,
-      "prScore": 360.2025947312841,
+      "totalScore": 545.2132325421561,
+      "prScore": 524.1992325421561,
       "issueScore": 6,
       "reviewScore": 13.5,
-      "commentScore": 1.0759999999999998
+      "commentScore": 1.5139999999999998
     },
     {
       "username": "cursor",
       "avatarUrl": "https://avatars.githubusercontent.com/in/1210556?v=4",
-      "totalScore": 175.938,
+      "totalScore": 265.938,
       "prScore": 0,
       "issueScore": 0,
-      "reviewScore": 175.5,
+      "reviewScore": 265.5,
       "commentScore": 0.43799999999999994
-    },
-    {
-      "username": "ChristopherTrimboli",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 119.1325477931522,
-      "prScore": 93.9325477931522,
-      "issueScore": 0,
-      "reviewScore": 25,
-      "commentScore": 0.2
-    },
-    {
-      "username": "0xbbjoker",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 101.37704498031563,
-      "prScore": 91.47704498031563,
-      "issueScore": 0,
-      "reviewScore": 9.5,
-      "commentScore": 0.4
     },
     {
       "username": "tcm390",
       "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4",
-      "totalScore": 97.48297828634561,
-      "prScore": 97.48297828634561,
+      "totalScore": 142.47436746442463,
+      "prScore": 142.47436746442463,
       "issueScore": 0,
       "reviewScore": 0,
       "commentScore": 0
+    },
+    {
+      "username": "yungalgo",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
+      "totalScore": 133.45528271627398,
+      "prScore": 132.57928271627395,
+      "issueScore": 0,
+      "reviewScore": 0,
+      "commentScore": 0.8759999999999999
+    },
+    {
+      "username": "ChristopherTrimboli",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
+      "totalScore": 124.1325477931522,
+      "prScore": 93.9325477931522,
+      "issueScore": 0,
+      "reviewScore": 30,
+      "commentScore": 0.2
     }
   ],
-  "newPRs": 27,
-  "mergedPRs": 20,
-  "newIssues": 5,
-  "closedIssues": 1,
-  "activeContributors": 23
+  "newPRs": 38,
+  "mergedPRs": 27,
+  "newIssues": 7,
+  "closedIssues": 2,
+  "activeContributors": 27
 }
