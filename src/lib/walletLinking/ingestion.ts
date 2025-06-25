@@ -1,4 +1,3 @@
-import "server-only";
 import { GitHubClient } from "@/lib/data/github";
 import {
   parseWalletLinkingDataFromReadme,
@@ -14,7 +13,12 @@ import {
   SUPPORTED_CHAINS_NAMES,
 } from "@/lib/walletLinking/chainUtils";
 
-const CACHE_TTL_SECONDS = 24 * 60 * 60; // 24 hours
+const CACHE_TTL_SECONDS = 12 * 60 * 60; // 12 hours
+
+interface WalletDataResponse {
+  walletData: WalletLinkingData | null;
+  profileRepoExists: boolean;
+}
 
 /**
  * Fetches a user's profile README from GitHub and parses the wallet linking data.
@@ -27,8 +31,13 @@ const CACHE_TTL_SECONDS = 24 * 60 * 60; // 24 hours
 async function fetchWalletDataFromGithub(
   username: string,
   githubClient: GitHubClient,
-): Promise<WalletLinkingData | null> {
+): Promise<WalletDataResponse> {
   try {
+    const repo = await githubClient.getRepo(username, username);
+    if (!repo) {
+      return { walletData: null, profileRepoExists: false };
+    }
+
     const readmeData = await githubClient.fetchFileContent(
       username,
       username,
@@ -36,17 +45,17 @@ async function fetchWalletDataFromGithub(
     );
 
     if (!readmeData?.content) {
-      return null;
+      return { walletData: null, profileRepoExists: true };
     }
     const decodedReadmeText = decodeBase64(readmeData.content);
     const walletData = parseWalletLinkingDataFromReadme(decodedReadmeText);
-    return walletData;
+    return { walletData: walletData, profileRepoExists: true };
   } catch (err) {
     console.error(
       `Exception fetching or parsing README for user ${username}:`,
       err,
     );
-    return null;
+    return { walletData: null, profileRepoExists: false };
   }
 }
 
@@ -81,10 +90,8 @@ export async function ingestWalletDataForUser(
     }
 
     // Cache is stale or doesn't exist, fetch from GitHub
-    const freshWalletData = await fetchWalletDataFromGithub(
-      username,
-      githubClient,
-    );
+    const { walletData: freshWalletData, profileRepoExists } =
+      await fetchWalletDataFromGithub(username, githubClient);
 
     // Ensure user exists before any wallet data operations
     if (!userRecord) {

@@ -3,14 +3,24 @@ import { IngestionPipelineContext } from "./context";
 import { db } from "@/lib/data/db";
 import { users } from "@/lib/data/schema";
 import { ingestWalletDataForUser } from "@/lib/walletLinking/ingestion";
+import { gte } from "drizzle-orm";
 
 export const fetchWalletAddresses = createStep(
   "FetchWalletAddresses",
   async (_, context: IngestionPipelineContext) => {
-    const { logger, github } = context;
-    logger?.info("Starting wallet address ingestion for all users.");
+    const { logger, github, dateRange, force } = context;
+    logger?.info(
+      `Starting wallet address ingestion for users updated since ${dateRange?.startDate}`,
+    );
 
-    const allUsers = await db.select({ username: users.username }).from(users);
+    const allUsers = await db
+      .select({ username: users.username })
+      .from(users)
+      .where(
+        !force && dateRange?.startDate
+          ? gte(users.lastUpdated, dateRange.startDate)
+          : undefined,
+      );
     logger?.info(`Found ${allUsers.length} users to process.`);
 
     let successCount = 0;
