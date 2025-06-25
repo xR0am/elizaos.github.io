@@ -25,7 +25,7 @@ export default {
   ],
   walletAddresses: {
     enabled: true,
-    cacheTTL: 2 * 60, // 2 min
+    cacheTTL: 60 * 60, // 1 Hour
   },
   // List of bot usernames to ignore during processing
   botUsers: [
