@@ -114,7 +114,7 @@ jobs:
           db_path: ${{ env.DATA_DIR }}/db.sqlite
 
       - name: Run Ingest Pipeline
-        run: bun run pipeline ingest -d 1
+        run: bun run pipeline ingest -d 1 -f
 
       - name: Run Process Pipeline
         run: bun run pipeline process
