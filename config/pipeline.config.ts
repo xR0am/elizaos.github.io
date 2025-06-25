@@ -23,7 +23,10 @@ export default {
       defaultBranch: "main",
     },
   ],
-
+  walletAddresses: {
+    enabled: true,
+    cacheTTL: 12 * 60 * 60, // 12 hours
+  },
   // List of bot usernames to ignore during processing
   botUsers: [
     "dependabot",
@@ -43,6 +46,8 @@ export default {
     "coderabbitai",
     "codefactor-io",
     "graphite-app",
+    "google-labs-jules[bot]",
+    "cursor",
   ],
 
   // Scoring rules - controls how different contribution types are valued

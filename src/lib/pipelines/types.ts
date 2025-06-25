@@ -70,6 +70,22 @@ export function pipe<T1, T2, T3, T4, T5, TContext extends BasePipelineContext>(
   op4: PipelineStep<T4, T5, TContext>,
 ): PipelineStep<T1, T5, TContext>;
 
+export function pipe<
+  T1,
+  T2,
+  T3,
+  T4,
+  T5,
+  T6,
+  TContext extends BasePipelineContext,
+>(
+  op1: PipelineStep<T1, T2, TContext>,
+  op2: PipelineStep<T2, T3, TContext>,
+  op3: PipelineStep<T3, T4, TContext>,
+  op4: PipelineStep<T4, T5, TContext>,
+  op5: PipelineStep<T5, T6, TContext>,
+): PipelineStep<T1, T6, TContext>;
+
 export function pipe<TContext extends BasePipelineContext>(
   ...operations: Array<PipelineStep<unknown, unknown, TContext>>
 ): PipelineStep<unknown, unknown, TContext> {

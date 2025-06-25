@@ -3,6 +3,7 @@ import { createIngestionContext } from "./context";
 import { createStep, pipe } from "../types";
 import { mapStep } from "../types";
 import { getSelectedRepositories } from "../getSelectedRepositories";
+import { fetchWalletAddresses } from "./fetchWalletAddresses";
 
 export { createIngestionContext };
 
@@ -28,4 +29,5 @@ export const ingestPipeline = pipe(
       );
     }
   }),
+  createStep("WalletAddress", fetchWalletAddresses),
 );
