@@ -110,6 +110,12 @@ const UpdateFileResponseSchema = z.object({
 });
 export type UpdateFileResponse = z.infer<typeof UpdateFileResponseSchema>;
 
+export interface BatchFileContentResult {
+  content: string | null;
+  repoExists: boolean;
+  fileExists: boolean;
+}
+
 interface FetchOptions {
   startDate?: string;
   endDate?: string;
@@ -333,10 +339,37 @@ export class GitHubClient {
 
             const data = response.data;
             if (data?.errors?.length > 0) {
-              const errorMsg = data.errors
-                .map((e: Error) => e.message)
-                .join(", ");
-              throw new Error(`GraphQL Errors: ${errorMsg}`);
+              const ignorableErrorMessages = [
+                "Could not resolve to a Repository",
+                "Could not resolve to a User",
+              ];
+
+              const errorsToLog = data.errors.filter(
+                (e: { type: string; message: string }) =>
+                  ignorableErrorMessages.some((msg) => e.message.includes(msg)),
+              );
+
+              if (errorsToLog.length > 0) {
+                this.logger.warn("GraphQL query contained ignorable errors", {
+                  errors: errorsToLog.map(
+                    (e: { message: string }) => e.message,
+                  ),
+                });
+              }
+
+              const criticalErrors = data.errors.filter(
+                (e: { type: string; message: string }) =>
+                  !ignorableErrorMessages.some((msg) =>
+                    e.message.includes(msg),
+                  ),
+              );
+
+              if (criticalErrors.length > 0) {
+                const errorMsg = criticalErrors
+                  .map((e: Error) => e.message)
+                  .join(", ");
+                throw new Error(`GraphQL Errors: ${errorMsg}`);
+              }
             }
 
             return data;
@@ -740,6 +773,85 @@ export class GitHubClient {
     } catch (error) {
       this.logger.error("Failed to fetch commits", { error });
       throw error;
+    }
+  }
+
+  async batchFetchFileContents(
+    requests: { owner: string; repo: string; path: string }[],
+  ): Promise<BatchFileContentResult[]> {
+    if (requests.length === 0) {
+      return [];
+    }
+    if (requests.length > 100) {
+      this.logger.warn(
+        "Batch size is large, consider splitting into smaller chunks if queries fail.",
+      );
+    }
+
+    const queryParts = requests.map((req, i) => {
+      const alias = `repo${i}`;
+      return `
+        ${alias}: repository(owner: "${req.owner}", name: "${req.repo}") {
+          file: object(expression: "HEAD:${req.path}") {
+            ... on Blob {
+              text
+            }
+          }
+        }
+      `;
+    });
+
+    const query = `query { ${queryParts.join("\n")} }`;
+
+    type GraphQLBatchResponse = {
+      data: {
+        [key: string]: {
+          file: {
+            text: string;
+          } | null;
+        } | null;
+      } | null;
+      errors?: { message: string }[];
+    };
+
+    try {
+      const result = await this.executeGraphQL<GraphQLBatchResponse>(query);
+
+      const contents: BatchFileContentResult[] = [];
+      for (let i = 0; i < requests.length; i++) {
+        const alias = `repo${i}`;
+        const repoData = result.data ? result.data[alias] : null;
+
+        if (repoData) {
+          if (repoData.file && "text" in repoData.file) {
+            contents.push({
+              content: repoData.file.text,
+              repoExists: true,
+              fileExists: true,
+            });
+          } else {
+            contents.push({
+              content: null,
+              repoExists: true,
+              fileExists: false,
+            });
+          }
+        } else {
+          contents.push({
+            content: null,
+            repoExists: false,
+            fileExists: false,
+          });
+        }
+      }
+      return contents;
+    } catch (error) {
+      this.logger.error("Failed to batch fetch file contents", { error });
+      return requests.map(() => ({
+        content: null,
+        repoExists: false,
+        fileExists: false,
+      }));
     }
   }
 

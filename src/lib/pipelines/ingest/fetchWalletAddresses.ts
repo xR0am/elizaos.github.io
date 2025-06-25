@@ -1,4 +1,4 @@
-import { createStep, mapStep, pipe } from "../types";
+import { createStep, pipe } from "../types";
 import { IngestionPipelineContext } from "./context";
 import { db } from "@/lib/data/db";
 import { users, walletAddresses } from "@/lib/data/schema";
@@ -9,172 +9,182 @@ import {
   SUPPORTED_CHAINS_NAMES,
   validateAddress,
 } from "@/lib/walletLinking/chainUtils";
-import { fetchWalletDataFromGithub } from "../../walletLinking/fetchWalletDataFromGithub";
+import { batchFetchWalletDataFromGithub } from "../../walletLinking/fetchWalletDataFromGithub";
+import { chunk } from "@/lib/arrayHelpers";
 
 interface WalletAddressIngestResult {
   username: string;
   status: "cached" | "updated" | "no-wallets" | "failed";
 }
 
-const fetchWalletAddressForContributor = createStep(
-  "fetchWalletAddress",
+const ingestWalletAddresses = createStep(
+  "ingestContributorWalletAddresses",
   async (
-    contributor: typeof users.$inferSelect,
+    contributors: (typeof users.$inferSelect)[],
     context: IngestionPipelineContext,
-  ): Promise<WalletAddressIngestResult> => {
+  ) => {
     const { github, force, config, logger } = context;
-    const { username } = contributor;
-    try {
-      const userRecord = await db.query.users.findFirst({
-        where: eq(users.username, username),
-        columns: {
-          walletDataUpdatedAt: true,
-        },
-      });
+    const results: WalletAddressIngestResult[] = [];
 
-      if (
-        !force &&
-        userRecord?.walletDataUpdatedAt &&
-        Date.now() / 1000 - userRecord.walletDataUpdatedAt <
-          config.walletAddresses.cacheTTL
-      ) {
-        logger?.info(
-          `Wallet data for ${username} is fresh. Skipping GitHub fetch.`,
-        );
-        return { username, status: "cached" as const };
-      }
-
+    const contributorsToFetch = [];
+    if (force) {
+      contributorsToFetch.push(...contributors);
       logger?.info(
-        force
-          ? `Forcing wallet data refresh for ${username} from GitHub.`
-          : `Wallet data for ${username} is stale or missing. Fetching from GitHub.`,
+        `Forcing wallet data refresh for all ${contributors.length} contributors.`,
       );
-      // Cache is stale or doesn't exist, fetch from GitHub
-      const { walletData: freshWalletData } = await fetchWalletDataFromGithub(
-        username,
-        github,
-      );
-
-      // Ensure user exists before any wallet data operations
-      if (!userRecord) {
-        logger?.info(`User ${username} not in DB, creating.`);
-        await db.insert(users).values({ username }).onConflictDoNothing();
-      }
-
-      if (!freshWalletData?.wallets || freshWalletData.wallets.length === 0) {
-        logger?.info(`No wallets found for ${username} on GitHub.`);
-        // Update timestamp even if no wallets found to avoid repeated GitHub API calls
-        await db
-          .update(users)
-          .set({
-            walletDataUpdatedAt: Math.floor(Date.now() / 1000),
-          })
-          .where(eq(users.username, username));
-
-        return { username, status: "no-wallets" as const };
-      }
-
-      logger?.info(
-        `Found ${freshWalletData.wallets.length} wallets for ${username}. Processing...`,
-      );
-
-      // Update the walletAddresses table with fresh data
-      // First, deactivate all existing wallet addresses for this user
-      await db
-        .update(walletAddresses)
-        .set({
-          isActive: false,
-          updatedAt: new Date().toISOString(),
-        })
-        .where(eq(walletAddresses.userId, username));
-
-      let insertedCount = 0;
-      let reactivatedCount = 0;
-      let skippedCount = 0;
-
-      // Insert or reactivate wallet addresses
-      for (const wallet of freshWalletData.wallets) {
-        // Validate chain is supported and address is valid before DB operations
+    } else {
+      for (const contributor of contributors) {
         if (
-          !SUPPORTED_CHAINS_NAMES.includes(wallet.chain.toLowerCase()) ||
-          !validateAddress(wallet.address, wallet.chain)
+          contributor.walletDataUpdatedAt &&
+          Date.now() / 1000 - contributor.walletDataUpdatedAt <
+            config.walletAddresses.cacheTTL
         ) {
-          logger?.warn(
-            `Skipping invalid or unsupported wallet for ${username}: ${wallet.address} on chain ${wallet.chain}`,
+          logger?.info(
+            `Wallet data for ${contributor.username} is fresh. Skipping.`,
           );
-          skippedCount++;
-          continue;
+          results.push({
+            username: contributor.username,
+            status: "cached" as const,
+          });
+        } else {
+          contributorsToFetch.push(contributor);
         }
+      }
+      logger?.info(
+        `Found ${contributorsToFetch.length} contributors with stale or missing wallet data.`,
+      );
+    }
 
-        // Check if this wallet already exists
-        const existingWallet = await db.query.walletAddresses.findFirst({
-          where: and(
-            eq(walletAddresses.userId, username),
-            eq(walletAddresses.chainId, getChainId(wallet.chain)),
-            eq(walletAddresses.accountAddress, wallet.address),
-          ),
-        });
+    if (contributorsToFetch.length === 0) {
+      return results;
+    }
 
-        if (existingWallet) {
-          // Reactivate existing wallet
+    const contributorBatches = chunk(contributorsToFetch, 50);
+
+    for (const batch of contributorBatches) {
+      const usernames = batch.map((c) => c.username);
+      logger?.info(
+        `Processing batch of ${batch.length} contributors for wallet data.`,
+      );
+      try {
+        const walletDataMap = await batchFetchWalletDataFromGithub(
+          usernames,
+          github,
+        );
+
+        const usersWithNoWallets: string[] = [];
+        for (const contributor of batch) {
+          const { username } = contributor;
+          const freshWalletData = walletDataMap[username]?.walletData;
+
+          if (
+            !freshWalletData?.wallets ||
+            freshWalletData.wallets.length === 0
+          ) {
+            usersWithNoWallets.push(username);
+            await db
+              .update(users)
+              .set({
+                walletDataUpdatedAt: Math.floor(Date.now() / 1000),
+              })
+              .where(eq(users.username, username));
+            results.push({ username, status: "no-wallets" as const });
+            continue;
+          }
+
           logger?.debug(
-            `Reactivating wallet for ${username}: ${wallet.address}`,
+            `Found ${freshWalletData.wallets.length} wallets for ${username}. Processing...`,
           );
+
           await db
             .update(walletAddresses)
             .set({
-              isActive: true,
+              isActive: false,
               updatedAt: new Date().toISOString(),
             })
-            .where(eq(walletAddresses.id, existingWallet.id));
-          reactivatedCount++;
-        } else {
-          // Insert new wallet address
-          logger?.debug(
-            `Inserting new wallet for ${username}: ${wallet.address}`,
-          );
-          await db.insert(walletAddresses).values({
-            userId: username,
-            chainId: getChainId(wallet.chain),
-            accountAddress: wallet.address,
-            isActive: true,
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
+            .where(eq(walletAddresses.userId, username));
+
+          let insertedCount = 0;
+          let reactivatedCount = 0;
+          let skippedCount = 0;
+
+          for (const wallet of freshWalletData.wallets) {
+            if (
+              !SUPPORTED_CHAINS_NAMES.includes(wallet.chain.toLowerCase()) ||
+              !validateAddress(wallet.address, wallet.chain)
+            ) {
+              logger?.warn(
+                `Skipping invalid wallet for ${username}: ${wallet.address} on chain ${wallet.chain}`,
+              );
+              skippedCount++;
+              continue;
+            }
+
+            const existingWallet = await db.query.walletAddresses.findFirst({
+              where: and(
+                eq(walletAddresses.userId, username),
+                eq(walletAddresses.chainId, getChainId(wallet.chain)),
+                eq(walletAddresses.accountAddress, wallet.address),
+              ),
+            });
+
+            if (existingWallet) {
+              await db
+                .update(walletAddresses)
+                .set({
+                  isActive: true,
+                  updatedAt: new Date().toISOString(),
+                })
+                .where(eq(walletAddresses.id, existingWallet.id));
+              reactivatedCount++;
+            } else {
+              await db.insert(walletAddresses).values({
+                userId: username,
+                chainId: getChainId(wallet.chain),
+                accountAddress: wallet.address,
+                isActive: true,
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString(),
+              });
+              insertedCount++;
+            }
+          }
+
+          await db
+            .update(users)
+            .set({
+              walletDataUpdatedAt: Math.floor(Date.now() / 1000),
+            })
+            .where(eq(users.username, username));
+          logger?.info(`Successfully processed wallet data for ${username}.`, {
+            insertedCount,
+            reactivatedCount,
+            skippedCount,
           });
-          insertedCount++;
+          results.push({
+            username: contributor.username,
+            status: "updated" as const,
+          });
+        }
+        if (usersWithNoWallets.length > 0) {
+          logger?.info(
+            `No wallets found for ${usersWithNoWallets.length} users on GitHub`,
+            { users: usersWithNoWallets },
+          );
+        }
+      } catch (error) {
+        logger?.error(`Failed to process wallet data batch`, {
+          error: String(error),
+        });
+        for (const contributor of batch) {
+          results.push({
+            username: contributor.username,
+            status: "failed" as const,
+          });
         }
       }
-
-      logger?.debug(
-        `For ${username} - Inserted: ${insertedCount}, Reactivated: ${reactivatedCount}, Skipped: ${skippedCount}.`,
-      );
-
-      // Update user's wallet data timestamp
-      await db
-        .update(users)
-        .set({
-          walletDataUpdatedAt: Math.floor(Date.now() / 1000),
-        })
-        .where(eq(users.username, username));
-      logger?.info(`Successfully processed wallet data for ${username}.`, {
-        insertedCount,
-        reactivatedCount,
-        skippedCount,
-      });
-      return {
-        username: contributor.username,
-        status: "updated" as const,
-      };
-    } catch (error) {
-      logger?.error(
-        `Failed to ingest wallet data for user ${contributor.username}`,
-        { error: String(error) },
-      );
-      return {
-        username: contributor.username,
-        status: "failed" as const,
-      };
     }
+    return results;
   },
 );
 
@@ -208,7 +218,7 @@ const getContributorsForWalletIngestion = createStep(
 
 export const fetchWalletAddresses = pipe(
   getContributorsForWalletIngestion,
-  mapStep(fetchWalletAddressForContributor),
+  ingestWalletAddresses,
   createStep("summarizeResults", (results, context) => {
     const summary = results.reduce(
       (acc, result: WalletAddressIngestResult) => {
