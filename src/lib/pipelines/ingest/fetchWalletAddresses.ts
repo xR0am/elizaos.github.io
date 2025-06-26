@@ -14,7 +14,7 @@ import { chunk } from "@/lib/arrayHelpers";
 
 interface WalletAddressIngestResult {
   username: string;
-  status: "cached" | "updated" | "no-wallets" | "failed";
+  status: "updated" | "no-wallets" | "failed";
 }
 
 const ingestWalletAddresses = createStep(
@@ -23,43 +23,17 @@ const ingestWalletAddresses = createStep(
     contributors: (typeof users.$inferSelect)[],
     context: IngestionPipelineContext,
   ) => {
-    const { github, force, config, logger } = context;
+    const { github, config, logger } = context;
     const results: WalletAddressIngestResult[] = [];
 
-    const contributorsToFetch = [];
-    if (force) {
-      contributorsToFetch.push(...contributors);
-      logger?.info(
-        `Forcing wallet data refresh for all ${contributors.length} contributors.`,
-      );
-    } else {
-      for (const contributor of contributors) {
-        if (
-          contributor.walletDataUpdatedAt &&
-          Date.now() / 1000 - contributor.walletDataUpdatedAt <
-            config.walletAddresses.cacheTTL
-        ) {
-          logger?.info(
-            `Wallet data for ${contributor.username} is fresh. Skipping.`,
-          );
-          results.push({
-            username: contributor.username,
-            status: "cached" as const,
-          });
-        } else {
-          contributorsToFetch.push(contributor);
-        }
-      }
-      logger?.info(
-        `Found ${contributorsToFetch.length} contributors with stale or missing wallet data.`,
-      );
-    }
-
-    if (contributorsToFetch.length === 0) {
+    if (contributors.length === 0) {
       return results;
     }
+    logger?.info(
+      `Fetching wallet data for  ${contributors.length} contributors.`,
+    );
 
-    const contributorBatches = chunk(contributorsToFetch, 50);
+    const contributorBatches = chunk(contributors, 50);
 
     for (const batch of contributorBatches) {
       const usernames = batch.map((c) => c.username);
@@ -228,21 +202,18 @@ export const fetchWalletAddresses = pipe(
         return acc;
       },
       {
-        cached: 0,
         updated: 0,
         "no-wallets": 0,
         failed: 0,
       },
     );
 
-    const successCount =
-      summary.cached + summary.updated + summary["no-wallets"];
+    const successCount = summary.updated + summary["no-wallets"];
     const errorCount = summary.failed;
 
     context.logger?.info(
       `Wallet address ingestion complete. Success: ${successCount}, Failed: ${errorCount}.`,
       {
-        cached: summary.cached,
         updated: summary.updated,
         noWallets: summary["no-wallets"],
       },

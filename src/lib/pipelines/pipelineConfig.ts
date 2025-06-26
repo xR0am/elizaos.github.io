@@ -100,7 +100,6 @@ export const PipelineConfigSchema = z.object({
   aiSummary: AISummaryConfigSchema,
   walletAddresses: z.object({
     enabled: z.boolean().default(true),
-    cacheTTL: z.number().default(12 * 60 * 60), // 12 hours
   }),
 });
 // Type exports

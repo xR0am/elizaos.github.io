@@ -339,19 +339,16 @@ export class GitHubClient {
 
             const data = response.data;
             if (data?.errors?.length > 0) {
-              const ignorableErrorMessages = [
-                "Could not resolve to a Repository",
-                "Could not resolve to a User",
-              ];
+              const ignorableErrorTypes = ["NOT_FOUND"];
 
-              const errorsToLog = data.errors.filter(
+              const ignorableErrors = data.errors.filter(
                 (e: { type: string; message: string }) =>
-                  ignorableErrorMessages.some((msg) => e.message.includes(msg)),
+                  ignorableErrorTypes.includes(e.type),
               );
 
-              if (errorsToLog.length > 0) {
-                this.logger.warn("GraphQL query contained ignorable errors", {
-                  errors: errorsToLog.map(
+              if (ignorableErrors.length > 0) {
+                this.logger.debug("GraphQL query contained ignorable errors", {
+                  errors: ignorableErrors.map(
                     (e: { message: string }) => e.message,
                   ),
                 });
@@ -359,14 +356,12 @@ export class GitHubClient {
 
               const criticalErrors = data.errors.filter(
                 (e: { type: string; message: string }) =>
-                  !ignorableErrorMessages.some((msg) =>
-                    e.message.includes(msg),
-                  ),
+                  !ignorableErrorTypes.includes(e.type),
               );
 
               if (criticalErrors.length > 0) {
                 const errorMsg = criticalErrors
-                  .map((e: Error) => e.message)
+                  .map((e: { message: string }) => e.message)
                   .join(", ");
                 throw new Error(`GraphQL Errors: ${errorMsg}`);
               }
@@ -816,7 +811,6 @@ export class GitHubClient {
 
     try {
       const result = await this.executeGraphQL<GraphQLBatchResponse>(query);
-
       const contents: BatchFileContentResult[] = [];
       for (let i = 0; i < requests.length; i++) {
         const alias = `repo${i}`;
