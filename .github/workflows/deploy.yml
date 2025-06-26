@@ -3,10 +3,6 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: ["main"]
-    paths:
-      - "src/**"
-      - ".github/workflows/deploy.yml"
-      - "package.json"
   workflow_dispatch:
   workflow_run:
     workflows: ["Run Pipelines"]
