@@ -5,7 +5,7 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-22 to 2025-06-29, elizaos/eliza had 38 new PRs (27 merged), 7 new issues, and 27 active contributors.",
+  "overview": "From 2025-06-22 to 2025-06-29, elizaos/eliza had 55 new PRs (42 merged), 9 new issues, and 29 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs68vzQD",
@@ -72,8 +72,8 @@
       "repository": "elizaos/eliza",
       "createdAt": "2025-06-22T16:11:08Z",
       "mergedAt": null,
-      "additions": 845044,
-      "deletions": 51511
+      "additions": 1061352,
+      "deletions": 59800
     },
     {
       "id": "PR_kwDOMT5cIs6bNbeZ",
@@ -105,7 +105,7 @@
       "repository": "elizaos/eliza",
       "createdAt": "2025-06-24T10:58:54Z",
       "mergedAt": null,
-      "additions": 13514,
+      "additions": 13813,
       "deletions": 17780
     },
     {
@@ -121,10 +121,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 42724,
-    "deletions": 14779,
-    "files": 340,
-    "commitCount": 212
+    "additions": 43670,
+    "deletions": 15021,
+    "files": 356,
+    "commitCount": 257
   },
   "completedItems": [
     {
@@ -203,6 +203,11 @@
       "type": "bugfix"
     },
     {
+      "title": "feat: add openrouter to model selection & selection for embedding models",
+      "prNumber": 5264,
+      "type": "feature"
+    },
+    {
       "title": "feat: Complete migration of packages/client to @elizaos/api-client",
       "prNumber": 5263,
       "type": "feature"
@@ -253,6 +258,11 @@
       "type": "bugfix"
     },
     {
+      "title": "chore: Correct some comments",
+      "prNumber": 5271,
+      "type": "other"
+    },
+    {
       "title": "feat: change plugins from project-scoped to agent-scoped architecture",
       "prNumber": 5270,
       "type": "feature"
@@ -261,58 +271,123 @@
       "title": "Add Claude Code GitHub Workflow",
       "prNumber": 5269,
       "type": "feature"
+    },
+    {
+      "title": "fix: hello world plugin not returning response",
+      "prNumber": 5296,
+      "type": "bugfix"
+    },
+    {
+      "title": "Set package name in package.json to match target directory",
+      "prNumber": 5294,
+      "type": "other"
+    },
+    {
+      "title": "fix: group creation success handler to access response directly",
+      "prNumber": 5293,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: nicer env prompt experience",
+      "prNumber": 5291,
+      "type": "feature"
+    },
+    {
+      "title": "fix: only allow plugin removal via X icon",
+      "prNumber": 5290,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix(docker): skip post-install hook during bun install",
+      "prNumber": 5289,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix(plugin-sql): Convert message_servers.id from TEXT to UUID to fix broken foreign key constraints",
+      "prNumber": 5287,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: get agents panel test",
+      "prNumber": 5286,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: add ollama embedding selection & fix project load",
+      "prNumber": 5285,
+      "type": "feature"
+    },
+    {
+      "title": "fix(core): fix bun import error by pointing to dist files",
+      "prNumber": 5284,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: improve AI provider tests to avoid brittle patterns",
+      "prNumber": 5283,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: agent panels load",
+      "prNumber": 5282,
+      "type": "bugfix"
+    },
+    {
+      "title": "Make unmute_room not match mute_room",
+      "prNumber": 5281,
+      "type": "other"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 545.2132325421561,
-      "prScore": 524.1992325421561,
-      "issueScore": 6,
-      "reviewScore": 13.5,
-      "commentScore": 1.5139999999999998
+      "totalScore": 649.7387298319364,
+      "prScore": 621.8847298319365,
+      "issueScore": 8,
+      "reviewScore": 18,
+      "commentScore": 1.8539999999999999
     },
     {
       "username": "cursor",
       "avatarUrl": "https://avatars.githubusercontent.com/in/1210556?v=4",
-      "totalScore": 265.938,
+      "totalScore": 329.278,
       "prScore": 0,
       "issueScore": 0,
-      "reviewScore": 265.5,
-      "commentScore": 0.43799999999999994
+      "reviewScore": 328.5,
+      "commentScore": 0.7779999999999999
     },
     {
-      "username": "tcm390",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4",
-      "totalScore": 142.47436746442463,
-      "prScore": 142.47436746442463,
+      "username": "0xbbjoker",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
+      "totalScore": 238.18087770267599,
+      "prScore": 217.84287770267602,
       "issueScore": 0,
-      "reviewScore": 0,
-      "commentScore": 0
-    },
-    {
-      "username": "yungalgo",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 133.45528271627398,
-      "prScore": 132.57928271627395,
-      "issueScore": 0,
-      "reviewScore": 0,
-      "commentScore": 0.8759999999999999
+      "reviewScore": 19.5,
+      "commentScore": 0.838
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 124.1325477931522,
-      "prScore": 93.9325477931522,
+      "totalScore": 217.37529624130144,
+      "prScore": 165.17529624130145,
       "issueScore": 0,
-      "reviewScore": 30,
+      "reviewScore": 52,
       "commentScore": 0.2
+    },
+    {
+      "username": "tcm390",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4",
+      "totalScore": 185.80908002288425,
+      "prScore": 185.80908002288425,
+      "issueScore": 0,
+      "reviewScore": 0,
+      "commentScore": 0
     }
   ],
-  "newPRs": 38,
-  "mergedPRs": 27,
-  "newIssues": 7,
-  "closedIssues": 2,
-  "activeContributors": 27
+  "newPRs": 55,
+  "mergedPRs": 42,
+  "newIssues": 9,
+  "closedIssues": 3,
+  "activeContributors": 29
 }

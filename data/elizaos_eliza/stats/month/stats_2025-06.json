@@ -5,7 +5,7 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 353 new PRs (284 merged), 63 new issues, and 79 active contributors.",
+  "overview": "From 2025-06-01 to 2025-07-01, elizaos/eliza had 370 new PRs (299 merged), 65 new issues, and 79 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs652Dw9",
@@ -72,8 +72,8 @@
       "repository": "elizaos/eliza",
       "createdAt": "2025-06-22T16:11:08Z",
       "mergedAt": null,
-      "additions": 845044,
-      "deletions": 51511
+      "additions": 1061352,
+      "deletions": 59800
     },
     {
       "id": "PR_kwDOMT5cIs6bNbeZ",
@@ -121,10 +121,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 235859,
-    "deletions": 129039,
-    "files": 1084,
-    "commitCount": 1390
+    "additions": 236805,
+    "deletions": 129281,
+    "files": 1088,
+    "commitCount": 1435
   },
   "completedItems": [
     {
@@ -1488,6 +1488,11 @@
       "type": "bugfix"
     },
     {
+      "title": "feat: add openrouter to model selection & selection for embedding models",
+      "prNumber": 5264,
+      "type": "feature"
+    },
+    {
       "title": "feat: Complete migration of packages/client to @elizaos/api-client",
       "prNumber": 5263,
       "type": "feature"
@@ -1538,6 +1543,11 @@
       "type": "bugfix"
     },
     {
+      "title": "chore: Correct some comments",
+      "prNumber": 5271,
+      "type": "other"
+    },
+    {
       "title": "feat: change plugins from project-scoped to agent-scoped architecture",
       "prNumber": 5270,
       "type": "feature"
@@ -1546,58 +1556,123 @@
       "title": "Add Claude Code GitHub Workflow",
       "prNumber": 5269,
       "type": "feature"
+    },
+    {
+      "title": "fix: hello world plugin not returning response",
+      "prNumber": 5296,
+      "type": "bugfix"
+    },
+    {
+      "title": "Set package name in package.json to match target directory",
+      "prNumber": 5294,
+      "type": "other"
+    },
+    {
+      "title": "fix: group creation success handler to access response directly",
+      "prNumber": 5293,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: nicer env prompt experience",
+      "prNumber": 5291,
+      "type": "feature"
+    },
+    {
+      "title": "fix: only allow plugin removal via X icon",
+      "prNumber": 5290,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix(docker): skip post-install hook during bun install",
+      "prNumber": 5289,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix(plugin-sql): Convert message_servers.id from TEXT to UUID to fix broken foreign key constraints",
+      "prNumber": 5287,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: get agents panel test",
+      "prNumber": 5286,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: add ollama embedding selection & fix project load",
+      "prNumber": 5285,
+      "type": "feature"
+    },
+    {
+      "title": "fix(core): fix bun import error by pointing to dist files",
+      "prNumber": 5284,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: improve AI provider tests to avoid brittle patterns",
+      "prNumber": 5283,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: agent panels load",
+      "prNumber": 5282,
+      "type": "bugfix"
+    },
+    {
+      "title": "Make unmute_room not match mute_room",
+      "prNumber": 5281,
+      "type": "other"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 4009.534097954637,
-      "prScore": 3910.7820979546373,
-      "issueScore": 30,
-      "reviewScore": 61,
-      "commentScore": 7.751999999999999
+      "totalScore": 4114.059595244417,
+      "prScore": 4008.4675952444177,
+      "issueScore": 32,
+      "reviewScore": 65.5,
+      "commentScore": 8.091999999999999
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 2301.618297615712,
-      "prScore": 1906.6622976157119,
+      "totalScore": 2394.861046063861,
+      "prScore": 1977.9050460638612,
       "issueScore": 0,
-      "reviewScore": 392,
+      "reviewScore": 414,
       "commentScore": 2.956
     },
     {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 1094.8340306963005,
-      "prScore": 956.9400306963006,
+      "totalScore": 1231.637863418661,
+      "prScore": 1083.305863418661,
       "issueScore": 0,
-      "reviewScore": 134.5,
-      "commentScore": 3.3939999999999997
+      "reviewScore": 144.5,
+      "commentScore": 3.832
     },
     {
       "username": "yungalgo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 1026.8908784033774,
-      "prScore": 1013.7028784033776,
+      "totalScore": 1069.1416522999536,
+      "prScore": 1051.1136522999536,
       "issueScore": 0,
-      "reviewScore": 9,
-      "commentScore": 4.188
+      "reviewScore": 13.5,
+      "commentScore": 4.528
     },
     {
       "username": "lalalune",
       "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
-      "totalScore": 881.5490897225401,
+      "totalScore": 881.7490897225401,
       "prScore": 839.3310897225401,
       "issueScore": 8,
       "reviewScore": 32.5,
-      "commentScore": 1.718
+      "commentScore": 1.918
     }
   ],
-  "newPRs": 353,
-  "mergedPRs": 284,
-  "newIssues": 63,
-  "closedIssues": 53,
+  "newPRs": 370,
+  "mergedPRs": 299,
+  "newIssues": 65,
+  "closedIssues": 54,
   "activeContributors": 79
 }
