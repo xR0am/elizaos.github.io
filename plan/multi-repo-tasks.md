@@ -15,11 +15,24 @@ This document breaks down the implementation tasks for adding multi-repository s
     - [x] Pass the correct `repoId` (and owner/name if needed) to GitHub API calls and data processing functions.
   - [x] Modify the `process` pipeline in `cli/analyze-pipeline.ts` (and `src/lib/pipelines/process/`) to operate on data from all configured repositories, ensuring `repoId` is used for correct association.
   - [x] Modify the `export` pipeline in `cli/analyze-pipeline.ts` (and `src/lib/pipelines/export/`) to generate outputs for each repository, likely maintaining the `data/<owner_repo>/` structure.
-- [ ] **Task 1.3: Ensure Data Segregation**
-  - [ ] **Database:** Confirm that all database interactions (inserts, updates, queries) in Drizzle ORM correctly use the `repoId` (or equivalent `repository` field) to associate data with the correct repository (ref: `src/lib/data/schema.ts`).
-    - [ ] Verify `repositories` table is populated correctly for each new repo.
-    - [ ] Verify raw data tables (`rawPullRequests`, `rawIssues`, etc.) correctly link to `repositories.repoId`.
-  - [x] **File System:** Confirm that file-based outputs (JSON summaries, logs if any) are correctly placed in per-repository directories (e.g., `data/elizaos_eliza/`, `data/elizaos-plugins_myplugin/`).
+- [ ] **Task 1.3: Refactor User-Centric Pipelines for Aggregation**
+  - **Goal:** Modify the user score, tag, and summary pipelines to aggregate data across all configured repositories, rather than calculating them on a per-repo basis.
+  - [ ] **1.3.1: Restructure Core Contributor Pipelines**
+    - [ ] In `src/lib/pipelines/contributors/index.ts`, change the main pipeline flow. Instead of iterating over repositories (`mapStep(processContributorTags)`), fetch all unique contributors from all configured repos first.
+    - [ ] Create a new `fetchAllContributorsFromAllRepos` step or modify `fetchAllContributors` to query users across all repos specified in the config.
+    - [ ] The `contributorsPipeline` should then iterate over the global list of unique users (`mapStep(processUser)`).
+  - [ ] **1.3.2: Update Scoring Logic for Aggregation**
+    - [ ] In `src/lib/pipelines/contributors/contributorScores.ts`, ensure `calculateUserScoreForInterval` is called once per user for each time interval.
+    - [ ] Modify the `queryParams` passed to `calculateContributorScore` to **omit** the `repository` field. This will cause it to query and aggregate a user's activities across all repositories.
+    - [ ] Confirm the `userDailyScores` table does **not** have a `repoId`, as scores are now global.
+  - [ ] **1.3.3: Update Tagging Logic for Aggregation**
+    - [ ] In `src/lib/pipelines/contributors/calculateTags.ts`, the `calculateTags` step must query a user's PRs from all repositories.
+    - [ ] Update the call to `getContributorPRs` to fetch data without a `repository` filter.
+    - [ ] Confirm the `userTagScores` table does **not** have a `repoId`.
+  - [ ] **1.3.4: Update Summarization Logic for Multi-Repo Context**
+    - [ ] In `src/lib/pipelines/summarize/queries.ts`, modify `getContributorMetrics` to aggregate data across all repositories when the `repository` parameter is not provided. The returned data structure should ideally group activities by repository to provide context to the next step.
+    - [ ] In `src/lib/pipelines/summarize/aiContributorSummary.ts`, update `formatContributorPrompt` to handle metrics from multiple repositories. The prompt must be updated to attribute each PR, issue, and activity to its source repository (e.g., `elizaos/eliza#123`, `elizaos-plugins/plugin-A#45`).
+    - [ ] Confirm the `userSummaries` table does **not** have a `repoId`.
 - [ ] **Task 1.4: Verify Commit Deduplication**
   - [ ] Test the ingestion process with repositories that have shared commit history (if identifiable examples exist).
   - [ ] Confirm that commits with identical hashes are stored only once in `rawCommits` or are handled appropriately to avoid duplicate processing and scoring.
