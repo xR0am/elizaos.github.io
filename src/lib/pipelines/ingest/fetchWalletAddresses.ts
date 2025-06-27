@@ -23,7 +23,7 @@ const ingestWalletAddresses = createStep(
     contributors: (typeof users.$inferSelect)[],
     context: IngestionPipelineContext,
   ) => {
-    const { github, config, logger } = context;
+    const { github, logger } = context;
     const results: WalletAddressIngestResult[] = [];
 
     if (contributors.length === 0) {

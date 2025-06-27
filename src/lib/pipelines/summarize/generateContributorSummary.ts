@@ -75,7 +75,6 @@ const generateContributorSummariesForInterval = createStep(
       // Get metrics for this contributor
       const metrics = await getContributorMetrics({
         username,
-        repository: repoId,
         dateRange,
       });
 
