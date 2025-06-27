@@ -8,7 +8,7 @@ import {
   prReviews,
 } from "@/lib/data/schema";
 import { db } from "@/lib/data/db";
-import { sql, eq, and, gte, lte, or } from "drizzle-orm";
+import { sql, eq, and, gte, lte, or, inArray } from "drizzle-orm";
 import { isNotNullOrUndefined } from "@/lib/typeHelpers";
 
 /**
@@ -17,9 +17,11 @@ import { isNotNullOrUndefined } from "@/lib/typeHelpers";
 export const fetchAllContributors = createStep(
   "fetchAllContributors",
   async (
-    { repoId }: { repoId: string },
-    { logger, dateRange }: ContributorPipelineContext,
+    _: unknown,
+    { logger, dateRange, config }: ContributorPipelineContext,
   ) => {
+    const repoIds = config.repositories.map((r) => `${r.owner}/${r.name}`);
+
     // Filter for contributors active in the date range, if provided
     const dateConditions = dateRange?.startDate
       ? {
@@ -68,7 +70,7 @@ export const fetchAllContributors = createStep(
           .innerJoin(users, eq(rawPullRequests.author, users.username))
           .where(
             and(
-              eq(rawPullRequests.repository, repoId),
+              inArray(rawPullRequests.repository, repoIds),
               eq(users.isBot, 0),
               ...(dateConditions ? [dateConditions.pr] : []),
             ),
@@ -82,7 +84,7 @@ export const fetchAllContributors = createStep(
           .innerJoin(users, eq(rawIssues.author, users.username))
           .where(
             and(
-              eq(rawIssues.repository, repoId),
+              inArray(rawIssues.repository, repoIds),
               eq(users.isBot, 0),
               ...(dateConditions ? [dateConditions.issue] : []),
             ),
@@ -97,7 +99,7 @@ export const fetchAllContributors = createStep(
           .innerJoin(rawPullRequests, eq(prComments.prId, rawPullRequests.id))
           .where(
             and(
-              eq(rawPullRequests.repository, repoId),
+              inArray(rawPullRequests.repository, repoIds),
               eq(users.isBot, 0),
               ...(dateConditions ? [dateConditions.prComment] : []),
             ),
@@ -112,7 +114,7 @@ export const fetchAllContributors = createStep(
           .innerJoin(rawPullRequests, eq(prReviews.prId, rawPullRequests.id))
           .where(
             and(
-              eq(rawPullRequests.repository, repoId),
+              inArray(rawPullRequests.repository, repoIds),
               eq(users.isBot, 0),
               ...(dateConditions ? [dateConditions.prReview] : []),
             ),
@@ -133,13 +135,12 @@ export const fetchAllContributors = createStep(
     ];
 
     logger?.info(
-      `Retrieved ${uniqueUsernames.length} contributors from the repository`,
-      { repoId, dateRange },
+      `Retrieved ${uniqueUsernames.length} contributors from all repositories`,
+      { dateRange },
     );
 
     return uniqueUsernames.filter(isNotNullOrUndefined).map((username) => ({
       username,
-      repoId,
     }));
   },
 );

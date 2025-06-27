@@ -24,11 +24,9 @@ import { TimeInterval, toDateString } from "@/lib/date-utils";
  */
 export async function getContributorMetrics({
   username,
-  repository,
   dateRange,
 }: {
   username: string;
-  repository: string | undefined;
   dateRange: {
     startDate: string;
     endDate: string;
@@ -47,11 +45,9 @@ export async function getContributorMetrics({
   const prs = await db.query.rawPullRequests.findMany({
     where: and(
       eq(rawPullRequests.author, username),
-      ...buildCommonWhereConditions(
-        { repository, dateRange },
-        rawPullRequests,
-        ["createdAt"],
-      ),
+      ...buildCommonWhereConditions({ dateRange }, rawPullRequests, [
+        "createdAt",
+      ]),
     ),
     with: {
       commits: true,
@@ -67,7 +63,13 @@ export async function getContributorMetrics({
     avgAdditions: 0,
     avgDeletions: 0,
     avgTimeToMerge: 0,
-    largestPR: { number: 0, title: "", additions: 0, deletions: 0 },
+    largestPR: {
+      number: 0,
+      title: "",
+      additions: 0,
+      deletions: 0,
+      repository: "",
+    },
   };
 
   if (mergedPRs.length > 0) {
@@ -114,6 +116,7 @@ export async function getContributorMetrics({
           title: pr.title,
           additions: pr.additions || 0,
           deletions: pr.deletions || 0,
+          repository: pr.repository,
         };
       }
     }
@@ -181,14 +184,10 @@ export async function getContributorMetrics({
   const contributorIssues = await db.query.rawIssues.findMany({
     where: and(
       eq(rawIssues.author, username),
-      ...buildCommonWhereConditions(
-        {
-          repository,
-          dateRange,
-        },
-        rawIssues,
-        ["createdAt", "closedAt"],
-      ),
+      ...buildCommonWhereConditions({ dateRange }, rawIssues, [
+        "createdAt",
+        "closedAt",
+      ]),
     ),
   });
 
@@ -196,48 +195,34 @@ export async function getContributorMetrics({
   const closedIssues = await db.query.rawIssues.findMany({
     where: and(
       eq(rawIssues.author, username),
-      ...buildCommonWhereConditions({ repository, dateRange }, rawIssues, [
-        "closedAt",
-      ]),
+      ...buildCommonWhereConditions({ dateRange }, rawIssues, ["closedAt"]),
       eq(rawIssues.state, "closed"),
     ),
   });
 
   // Get issue comments
-  const issueInteractions = await db.query.issueComments
-    .findMany({
-      where: and(
-        eq(issueComments.author, username),
-        ...buildCommonWhereConditions(
-          { repository, dateRange },
-          issueComments,
-          ["createdAt"],
-        ),
-      ),
-      with: {
-        issue: true,
-      },
-    })
-    .then((comments) =>
-      comments.filter((c) => c.issue?.repository === repository),
-    );
+  const issueInteractions = await db.query.issueComments.findMany({
+    where: and(
+      eq(issueComments.author, username),
+      ...buildCommonWhereConditions({ dateRange }, issueComments, [
+        "createdAt",
+      ]),
+    ),
+    with: {
+      issue: true,
+    },
+  });
 
   // Get reviews
-  const contributorReviews = await db.query.prReviews
-    .findMany({
-      where: and(
-        eq(prReviews.author, username),
-        ...buildCommonWhereConditions({ repository, dateRange }, prReviews, [
-          "createdAt",
-        ]),
-      ),
-      with: {
-        pullRequest: true,
-      },
-    })
-    .then((reviews) =>
-      reviews.filter((r) => r.pullRequest?.repository === repository),
-    );
+  const contributorReviews = await db.query.prReviews.findMany({
+    where: and(
+      eq(prReviews.author, username),
+      ...buildCommonWhereConditions({ dateRange }, prReviews, ["createdAt"]),
+    ),
+    with: {
+      pullRequest: true,
+    },
+  });
 
   // Count review types
   const approved = contributorReviews.filter(
@@ -251,27 +236,21 @@ export async function getContributorMetrics({
   ).length;
 
   // Get PR comments
-  const prCommentData = await db.query.prComments
-    .findMany({
-      where: and(
-        eq(prComments.author, username),
-        ...buildCommonWhereConditions({ repository, dateRange }, prComments, [
-          "createdAt",
-        ]),
-      ),
-      with: {
-        pullRequest: true,
-      },
-    })
-    .then((comments) =>
-      comments.filter((c) => c.pullRequest?.repository === repository),
-    );
+  const prCommentData = await db.query.prComments.findMany({
+    where: and(
+      eq(prComments.author, username),
+      ...buildCommonWhereConditions({ dateRange }, prComments, ["createdAt"]),
+    ),
+    with: {
+      pullRequest: true,
+    },
+  });
 
   // Get code changes from commits
   const contributorCommits = await db.query.rawCommits.findMany({
     where: and(
       eq(rawCommits.author, username),
-      ...buildCommonWhereConditions({ repository, dateRange }, rawCommits, [
+      ...buildCommonWhereConditions({ dateRange }, rawCommits, [
         "committedDate",
       ]),
     ),
@@ -339,7 +318,6 @@ export async function getContributorMetrics({
 
   return {
     username,
-    repository,
     pullRequests: {
       total: prs.length,
       merged: mergedPRs.length,
