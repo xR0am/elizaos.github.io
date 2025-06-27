@@ -22,6 +22,16 @@ export default {
       name: "eliza",
       defaultBranch: "main",
     },
+    {
+      owner: "elizaos-plugins",
+      name: "plugin-solana",
+      defaultBranch: "1.x",
+    },
+    {
+      owner: "elizaos",
+      name: "auto.fun",
+      defaultBranch: "develop",
+    },
   ],
   walletAddresses: {
     enabled: true,
@@ -370,11 +380,11 @@ export default {
   // AI Summary generation (optional)
   aiSummary: {
     enabled: true,
-    defaultModel: "openai/gpt-4o-mini",
+    defaultModel: "google/gemini-2.0-flash-001",
     models: {
-      day: process.env.SMALL_MODEL || "openai/gpt-4o-mini",
-      week: process.env.LARGE_MODEL || "anthropic/claude-3.7-sonnet",
-      month: process.env.LARGE_MODEL || "anthropic/claude-3.7-sonnet",
+      day: process.env.SMALL_MODEL || "google/gemini-2.0-flash-001",
+      week: process.env.LARGE_MODEL || "google/gemini-2.5-pro",
+      month: process.env.LARGE_MODEL || "google/gemini-2.5-pro",
     },
     temperature: 0.1,
     max_tokens: 2000,
