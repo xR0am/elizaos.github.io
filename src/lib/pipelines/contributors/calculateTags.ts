@@ -14,11 +14,10 @@ export const calculateTags = createStep(
   "calculateTags",
   async (
     { username }: { username: string },
-    { config, dateRange, logger, repoId }: ContributorPipelineContext,
+    { config, dateRange, logger }: ContributorPipelineContext,
   ) => {
     // Fetch data
     const contributorPRs = await getContributorPRs(username, {
-      repository: repoId,
       dateRange,
     });
 

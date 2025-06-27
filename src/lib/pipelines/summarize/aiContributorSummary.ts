@@ -94,17 +94,12 @@ function formatContributorPrompt(
   const mergedPRDetails = metrics.pullRequests.items
     .filter((pr) => pr.merged === 1)
     .map((pr) => {
-      let prNumber = "";
-      if (pr.number) {
-        prNumber =
-          typeof pr.number === "number" ? String(pr.number) : pr.number;
-      }
       const additions =
         pr.commits?.reduce((sum, c) => sum + (c.additions || 0), 0) || 0;
       const deletions =
         pr.commits?.reduce((sum, c) => sum + (c.deletions || 0), 0) || 0;
 
-      return `#${prNumber} "${truncateTitle(
+      return `${pr.repository}#${pr.number} "${truncateTitle(
         pr.title,
       )}" (+${additions}/-${deletions} lines)`;
     })
@@ -113,21 +108,16 @@ function formatContributorPrompt(
   // Format open PRs
   const openPRDetails = metrics.pullRequests.items
     .filter((pr) => pr.merged !== 1)
-    .map((pr) => {
-      let prNumber = "";
-      if (pr.number) {
-        prNumber =
-          typeof pr.number === "number" ? String(pr.number) : pr.number;
-      }
-      return `#${prNumber} "${truncateTitle(pr.title)}"`;
-    })
+    .map((pr) => `${pr.repository}#${pr.number} "${truncateTitle(pr.title)}"`)
     .join(", ");
 
   // Format issues
   const issueDetails = metrics.issues.items
     .map(
       (issue) =>
-        `#${issue.number} "${truncateTitle(issue.title)}" (${issue.state})`,
+        `${issue.repository}#${issue.number} "${truncateTitle(issue.title)}" (${
+          issue.state
+        })`,
     )
     .join(", ");
 
@@ -199,7 +189,7 @@ function formatContributorPrompt(
   const prComplexityInsights =
     metrics.pullRequests.merged > 0
       ? `Average PR: +${prMetrics.avgAdditions}/-${prMetrics.avgDeletions} lines, ${prMetrics.avgTimeToMerge} hours to merge
-Largest PR: #${prMetrics.largestPR.number} with +${prMetrics.largestPR.additions}/-${prMetrics.largestPR.deletions} lines`
+Largest PR: ${prMetrics.largestPR.repository}#${prMetrics.largestPR.number} with +${prMetrics.largestPR.additions}/-${prMetrics.largestPR.deletions} lines`
       : "No merged PRs";
 
   // Build the summary prompt
@@ -264,16 +254,16 @@ Write a natural, factual summary that:
 1. Starts with "${metrics.username}: "
 2. Highlights the most significant contributions based on the data
 3. Emphasizes meaningful patterns (e.g., "focused on bug fixes in the UI", "major refactoring effort")
-4. Uses exact PR/issue numbers when referring to specific contributions
-5. Includes line counts for significant code changes
-6. Groups similar activities together (e.g., "merged 3 PRs in backend")
+4. Includes line counts for significant code changes
+5. Groups similar activities in the same repository together (e.g., "merged 3 PRs improving the frontend in elizaos/eliza")
+6. Uses repository names + PR/issue numbers when referring to specific contributions (e.g., "elizaos/eliza#123", "elizaos-plugins/plugin-A#45")
 7. Omits any activity type that shows "None" above
 8. Uses at most ${timePeriod.sentenceCount} sentences
 9. Varies sentence structure based on the actual work done
 
 Example good summaries:
-"username: No activity ${timePeriod.timeFrameShort}."
-"username: Focused on UI improvements with 3 merged PRs (+2k/-500 lines), consistently active with daily commits."
-"username: Fixed 4 critical bugs in the authentication system (PRs #123, #124) and reviewed 7 PRs, primarily working on backend code."
-"username: Led documentation efforts with substantial contributions to the API docs (+1.2k lines), opened 3 issues for missing features, and provided 5 detailed code reviews."`;
+"No activity ${timePeriod.timeFrameShort}."
+"Focused on UI improvements with 3 merged PRs (+2k/-500 lines), consistently active with daily commits."
+"Fixed 4 critical bugs in the authentication system (PRs #123, #124) and reviewed 7 PRs, primarily working on backend code."
+"Led documentation efforts with substantial contributions to the API docs (+1.2k lines), opened 3 issues for missing features, and provided 5 detailed code reviews."`;
 }

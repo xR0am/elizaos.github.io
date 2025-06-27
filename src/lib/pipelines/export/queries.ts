@@ -17,7 +17,6 @@ import { categorizeWorkItem } from "@/lib/pipelines/codeAreaHelpers";
 import { getActiveContributors } from "../getActiveContributors";
 import { getTopUsersByScore } from "@/lib/scoring/queries";
 import { getIntervalTypeFromDateRange } from "@/lib/date-utils";
-import type { InferSelectModel } from "drizzle-orm";
 
 /**
  * Get top pull requests for a repository in a time period

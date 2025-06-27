@@ -1,4 +1,3 @@
-import { getSelectedRepositories } from "../getSelectedRepositories";
 import { pipe, mapStep, createStep, sequence } from "../types";
 import { calculateTags } from "./calculateTags";
 import { fetchAllContributors } from "./fetchAllContributors";
@@ -11,16 +10,16 @@ import { isNotNullOrUndefined } from "@/lib/typeHelpers";
  * Process a single repository for tags
  */
 export const processContributorTags = pipe(
-  // Fetch contributors for the repository
+  // Fetch all unique contributors from all repos
   fetchAllContributors,
-
   // Process each contributor in parallel
   mapStep(calculateTags),
   // Format the combined results
   createStep("logResults", (results, context) => {
-    // The first element is tags, the second is summary
-    const totalContribtors = results.filter(Boolean).length;
-    context.logger?.info(`Processed tags for ${totalContribtors} contributors`);
+    const totalContributors = results.filter(isNotNullOrUndefined).length;
+    context.logger?.info(
+      `Processed tags for ${totalContributors} contributors`,
+    );
     return results;
   }),
 );
@@ -52,6 +51,6 @@ export const processContributorScores = pipe(
  * Pipeline for calculating all contributor data across repositories
  */
 export const contributorsPipeline = sequence(
-  pipe(getSelectedRepositories, mapStep(processContributorTags)),
+  processContributorTags,
   processContributorScores,
 );

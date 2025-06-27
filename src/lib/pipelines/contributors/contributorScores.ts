@@ -14,7 +14,7 @@ export const calculateUserScoreForInterval = createStep(
     { username, interval }: { username: string; interval: TimeInterval },
     context: ContributorPipelineContext,
   ) => {
-    const { logger, config, repoId, force } = context;
+    const { logger, config, force } = context;
 
     const dateString = toDateString(interval.intervalStart);
 
@@ -33,7 +33,6 @@ export const calculateUserScoreForInterval = createStep(
 
     // Create query params for the interval
     const queryParams: QueryParams = {
-      repository: repoId,
       dateRange: {
         startDate: dateString,
         endDate: toDateString(interval.intervalEnd),
