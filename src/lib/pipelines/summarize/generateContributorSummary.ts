@@ -36,11 +36,7 @@ async function checkExistingSummary(
 const generateContributorSummariesForInterval = createStep(
   "ContributorSummaries",
   async (
-    {
-      interval,
-      repoId,
-      username,
-    }: { interval: TimeInterval; repoId: string | undefined; username: string },
+    { interval, username }: { interval: TimeInterval; username: string },
     context: SummarizerPipelineContext,
   ) => {
     const { logger, aiSummaryConfig, overwrite } = context;
@@ -118,10 +114,9 @@ const generateContributorSummariesForInterval = createStep(
 
 export const generateContributorSummaries = pipe(
   getActiveContributorsInInterval,
-  ({ interval, repoId, contributors }) =>
+  ({ interval, contributors }) =>
     contributors.map((contributor) => ({
       interval,
-      repoId,
       username: contributor.username,
     })),
   mapStep(generateContributorSummariesForInterval),
