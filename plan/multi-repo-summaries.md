@@ -91,11 +91,11 @@ To achieve high-quality summaries, we will use tailored prompts and enforce spec
 
 **Goal:** Build the pipelines for generating summaries for each individual repository.
 
-- [ ] **Task 2.1: Implement Daily Repo Summary Pipeline.**
+- [x] **Task 2.1: Implement Daily Repo Summary Pipeline.**
   - Create the `generateDailyRepoSummaries` pipeline as described in the architecture.
   - Create new query functions to fetch the required detailed data (PR files, issue comments).
   - Implement the prompt and Markdown output format as specified.
-- [ ] **Task 2.2: Implement Weekly/Monthly Repo Summary Pipelines.**
+- [x] **Task 2.2: Implement Weekly/Monthly Repo Summary Pipelines.**
   - Create the `generateWeeklyRepoSummaries` and `generateMonthlyRepoSummaries` pipelines.
   - Implement the logic to fetch the required daily repo summaries from the database to use as input for the prompts.
   - Implement the prompt and Markdown output format as specified.

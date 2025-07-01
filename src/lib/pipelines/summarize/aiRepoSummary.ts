@@ -37,6 +37,8 @@ export interface CompletedItem {
   title: string;
   prNumber: number;
   type: WorkItemType;
+  body?: string | null;
+  files?: string[];
 }
 
 export interface FocusArea {
@@ -264,4 +266,104 @@ GUIDELINES:
 - Ensure all information is organized into the specified sections for clarity.
 - Use markdown formatting for the report.
 `;
+}
+
+function formatAggregatedRepoSummaryPrompt(
+  repoId: string,
+  dailySummaries: { date: string; summary: string }[],
+  intervalType: IntervalType,
+  timeframeTitle: string,
+  config: AISummaryConfig,
+): string {
+  const summariesText = dailySummaries
+    .map((d) => `### Daily Report for ${d.date}\n${d.summary}`)
+    .join("\n\n---\n\n");
+
+  return `
+BACKGROUND CONTEXT:
+  Project: "${repoId}" - ${config.projectContext}
+  Your audience consists of contributors, maintainers, and users of this open-source project. They are technically savvy and interested in both high-level progress and specific technical details.
+
+TASK:
+Synthesize the following daily development reports from the timeframe "${timeframeTitle}" into a single, cohesive ${intervalType}ly summary. Your goal is to identify trends, group related work, and create a narrative of the project's progress. Do not simply list the daily entries.
+
+DAILY REPORTS (Input):
+---
+${summariesText}
+---
+
+REQUIRED OUTPUT FORMAT:
+
+# ${repoId} ${getIntervalTypeTitle(intervalType)} Report (${timeframeTitle})
+
+## 🚀 Highlights
+A concise, information-dense paragraph (3-5 sentences) summarizing the most significant achievements, challenges, and overall theme of the work done this ${intervalType}. This should be the "executive summary" that gives a full overview.
+
+## 🛠️ Key Developments
+This section should detail the concrete work completed. Analyze the "KEY TECHNICAL DEVELOPMENTS" and "Completed Work" sections from the daily reports.
+- Group related pull requests thematically under descriptive subheadings (e.g., "Authentication Service Refactor", "New Dashboard Widgets").
+- For each theme, provide a brief explanation of the goal and the outcome.
+- Mention the most impactful PRs by their number (e.g., [#123](https://github.com/${repoId}/pull/123)).
+- Distinguish between new features, bug fixes, performance improvements, and refactoring efforts.
+
+## 🐛 Issues & Triage
+Summarize the state of issues in the project. Review the "NEW ISSUES", "CLOSED ISSUES", and "ACTIVE ISSUES" sections from the daily reports.
+- **Closed Issues:** Group closed issues thematically. What key problems were resolved this ${intervalType}?
+- **New & Active Issues:** What are the most important new issues that were opened? Are there any ongoing discussions on active issues that are particularly noteworthy, controversial, or represent significant future work? Highlight potential blockers.
+
+## 💬 Community & Collaboration
+Based on the daily reports, describe the collaboration dynamics.
+- Were there any PRs or issues with a high degree of discussion or many reviews?
+- Is there evidence of new contributors, or significant collaboration between team members? (You may need to infer this if specific names appear frequently in the reports).
+- This section is for qualitative observations about the health and activity of the contributor community.
+
+GUIDELINES:
+- Synthesize, don't just aggregate. Find the story in the data.
+- Be factual and anchor your summary in the data from the daily reports.
+- Use clear, professional language appropriate for a technical audience.
+- Use Markdown for all formatting.
+`;
+}
+
+export async function generateAggregatedRepoSummary(
+  repoId: string,
+  dailySummaries: { date: string; summary: string }[],
+  config: AISummaryConfig,
+  dateInfo: { startDate: string },
+  intervalType: IntervalType,
+): Promise<string | null> {
+  const apiKey = config.apiKey;
+  if (!apiKey) {
+    throw new Error("No API key for AI summary generation");
+  }
+
+  if (dailySummaries.length === 0) {
+    return null;
+  }
+
+  try {
+    const date = new UTCDate(dateInfo.startDate);
+    const timeframeTitle = formatTimeframeTitle(date, intervalType);
+    const prompt = formatAggregatedRepoSummaryPrompt(
+      repoId,
+      dailySummaries,
+      intervalType,
+      timeframeTitle,
+      config,
+    );
+
+    const model =
+      config.models[intervalType === "month" ? "week" : intervalType];
+
+    return await callAIService(prompt, config, {
+      model: model,
+      maxTokens: config.max_tokens * 2, // allow more tokens for aggregation
+    });
+  } catch (error) {
+    console.error(
+      `Error generating aggregated ${intervalType} repository analysis:`,
+      error,
+    );
+    return null;
+  }
 }
