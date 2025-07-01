@@ -9,6 +9,30 @@ import {
   getIntervalTypeTitle,
 } from "@/lib/date-utils";
 
+type IssueWithComments = RepositoryMetrics["issues"]["newIssues"][number];
+
+function formatIssueForPrompt(issue: IssueWithComments): string {
+  const comments =
+    issue.comments
+      ?.map(
+        (c) =>
+          `  - ${c.author || "unknown"} at ${c.createdAt}: ${c.body?.trim()}`,
+      )
+      .join("\n") || "";
+
+  let issueStr = `[#${issue.number}] ${issue.title} (created: ${
+    issue.createdAt
+  }${
+    issue.closedAt ? `, closed: ${issue.closedAt}` : ""
+  }). BODY: ${issue.body?.slice(0, 240)}`;
+
+  if (comments.length > 0) {
+    issueStr += `\nCOMMENTS (newest to oldest):\n${comments}`;
+  }
+
+  return issueStr;
+}
+
 export interface CompletedItem {
   title: string;
   prNumber: number;
@@ -149,7 +173,8 @@ function formatAnalysisPrompt(
     metrics.completedItems
       .filter((item) => item.type === type)
       .map(
-        (item) => ` (PR #${item.prNumber}) ${item.title}. BODY: ${item.body}`,
+        (item) =>
+          ` (PR #${item.prNumber}) ${item.title}. BODY: ${item.body}. FILES: ${item.files?.join(", ")}`,
       )
       .join("\n- ") || "None";
 
@@ -162,6 +187,7 @@ function formatAnalysisPrompt(
   const completedOtherWork = formatCompletedItems("other");
   const newIssues = metrics.issues.newIssues || [];
   const closedIssues = metrics.issues.closedIssues || [];
+  const updatedIssues = metrics.issues.updatedIssues || [];
 
   return `
 BACKGROUND CONTEXT:
@@ -188,10 +214,13 @@ COMPLETED WORK:
   - ${topActiveAreas.join("\n- ")}
 
 NEW ISSUES:
-  - ${newIssues.map((issue) => `[#${issue.number}] ${issue.title}. BODY: ${issue.body?.slice(0, 240)}`).join("\n- ")}
+  - ${newIssues.map(formatIssueForPrompt).join("\n- ")}
 
 CLOSED ISSUES:
-  - ${closedIssues.map((issue) => `[#${issue.number}] ${issue.title}. BODY: ${issue.body?.slice(0, 240)}`).join("\n- ")}
+  - ${closedIssues.map(formatIssueForPrompt).join("\n- ")}
+
+ACTIVE ISSUES:
+  - ${updatedIssues.map(formatIssueForPrompt).join("\n- ")}
 
 Format the report with the following sections:
 
@@ -215,6 +244,10 @@ Format the report with the following sections:
   Group the new issues thematically into ${intervalType === "month" ? "6-9" : "2-4"} different headlines,
   and concisely describe the key challenges and problems in point form. Reference
   the issue numbers that are most relevant to each headline, formatted as a Markdown link (e.g. [#123](https://github.com/${metrics.repository}/issues/123)).
+
+## ACTIVE ISSUES
+
+   Analyze the discussions on the active issues and summarize the key points, challenges, and progress, focusing on the latest comments. Only include issues that have more than 3 comments.
 
  ${
    intervalType === "month"

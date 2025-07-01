@@ -10,6 +10,7 @@ import {
   rawCommits,
   rawPullRequestFiles,
   userSummaries,
+  repoSummaries,
 } from "@/lib/data/schema";
 import {
   buildAreaMap,
@@ -404,4 +405,53 @@ export async function getContributorSummariesForInterval(
     `[getContributorSummariesForInterval] Found ${summariesMap.size} summaries for ${usernames.length} requested users.`,
   );
   return summariesMap;
+}
+
+/**
+ * Get repository summaries for a given interval (e.g., all daily summaries for a week/month).
+ */
+export async function getRepoSummariesForInterval(
+  repoId: string,
+  interval: TimeInterval,
+): Promise<{ date: string; summary: string }[]> {
+  console.log(
+    `[getRepoSummariesForInterval] Fetching for repoId: ${repoId}, intervalType: day, from ${toDateString(interval.intervalStart)} to ${toDateString(interval.intervalEnd)}`,
+  );
+
+  const summaries = await db
+    .select({
+      date: repoSummaries.date,
+      summary: repoSummaries.summary,
+    })
+    .from(repoSummaries)
+    .where(
+      and(
+        eq(repoSummaries.repoId, repoId),
+        eq(repoSummaries.intervalType, "day"), // We fetch daily summaries for aggregation
+        // Date range for the weekly/monthly interval
+        ...buildCommonWhereConditions(
+          {
+            dateRange: {
+              startDate: toDateString(interval.intervalStart),
+              endDate: toDateString(interval.intervalEnd),
+            },
+          },
+          repoSummaries,
+          ["date"],
+        ),
+      ),
+    )
+    .orderBy(repoSummaries.date);
+
+  console.log(
+    `[getRepoSummariesForInterval] Found ${summaries.length} daily summaries for interval.`,
+  );
+
+  // Filter out any null summaries and ensure all summaries are strings
+  return summaries
+    .filter((s) => s.summary !== null && s.summary !== "")
+    .map((s) => ({
+      date: s.date,
+      summary: s.summary ?? "", // This is redundant due to filter but TypeScript needs it
+    }));
 }
