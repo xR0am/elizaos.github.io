@@ -157,8 +157,8 @@ function formatAnalysisPrompt(
   const completedDocs = formatCompletedItems("docs");
   const completedTests = formatCompletedItems("tests");
   const completedOtherWork = formatCompletedItems("other");
-  const newIssues = metrics.issues.newIssues;
-  const closedIssues = metrics.issues.closedIssues;
+  const newIssues = metrics.issues.newIssues || [];
+  const closedIssues = metrics.issues.closedIssues || [];
 
   return `
 BACKGROUND CONTEXT:

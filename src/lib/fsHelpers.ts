@@ -24,8 +24,19 @@ export function getRepoFilePath(
   repoId: string,
   dataType: string,
   intervalType: string,
-  fileName: string
+  fileName: string,
 ) {
   const safeRepoId = repoId.replace("/", "_");
   return path.join(outputDir, safeRepoId, dataType, intervalType, fileName);
+}
+
+/**
+ * Generates a file path for overall summary data
+ */
+export function getOverallSummaryFilePath(
+  outputDir: string,
+  intervalType: string,
+  fileName: string,
+) {
+  return path.join(outputDir, "summaries", intervalType, fileName);
 }

@@ -78,13 +78,13 @@ To achieve high-quality summaries, we will use tailored prompts and enforce spec
 
 **Goal:** Reorganize existing code and database schemas to support the new architecture.
 
-- [ ] **Task 1.1: Reorganize Pipeline Modules.**
+- [x] **Task 1.1: Reorganize Pipeline Modules.**
   - Consolidate existing summary logic into a clear structure. Create `aiRepoSummary.ts`, `generateRepoSummary.ts`, `aiOverallSummary.ts`, and `generateOverallSummary.ts` to house the respective logic.
-- [ ] **Task 1.2: Update Database Schema.**
+- [x] **Task 1.2: Update Database Schema.**
   - Create a new `overallSummaries` table (`id`, `date`, `intervalType`, `summary`).
   - Generate and apply the database migration.
   - Create mutation functions in `mutations.ts` for storing overall summaries.
-- [ ] **Task 1.3: Update Filesystem Storage.**
+- [x] **Task 1.3: Update Filesystem Storage.**
   - Ensure overall summaries can be stored at a root level (e.g., `data/summaries/<intervalType>/<date>.md`). Update `fsHelpers.ts` if needed.
 
 ### Phase 2: Implement Per-Repository Summary Pipelines

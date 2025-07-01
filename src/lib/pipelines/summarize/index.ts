@@ -13,7 +13,7 @@ import {
   generateDailyProjectSummaries,
   generateMonthlyProjectSummaries,
   generateWeeklyProjectSummaries,
-} from "./generateProjectSummary";
+} from "./generateRepoSummary";
 
 export const generateContributorSummariesForRepo = pipe(
   sequence(
