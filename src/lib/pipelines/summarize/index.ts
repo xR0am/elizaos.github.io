@@ -10,9 +10,9 @@ import {
 } from "./generateContributorSummary";
 import { SummarizerPipelineContext, createSummarizerContext } from "./context";
 import {
-  generateDailyProjectSummaries,
-  generateMonthlyProjectSummaries,
-  generateWeeklyProjectSummaries,
+  generateDailyRepoSummaries,
+  generateMonthlyRepoSummaries,
+  generateWeeklyRepoSummaries,
 } from "./generateRepoSummary";
 
 export const generateContributorSummariesForRepo = pipe(
@@ -50,17 +50,17 @@ export const contributorSummariesPipeline = pipe(
   mapStep(generateContributorSummariesForRepo),
 );
 
-// Pipeline for generating monthly project summaries
-export const projectSummariesPipeline = pipe(
+// Pipeline for generating repository summaries
+export const repoSummariesPipeline = pipe(
   getSelectedRepositories,
   mapStep(
     sequence(
-      generateDailyProjectSummaries,
-      generateWeeklyProjectSummaries,
-      generateMonthlyProjectSummaries,
+      generateDailyRepoSummaries,
+      generateWeeklyRepoSummaries,
+      generateMonthlyRepoSummaries,
     ),
   ),
-  createStep("Log Project Summaries", (results, context) => {
+  createStep("Log Repository Summaries", (results, context) => {
     for (const repo of results) {
       const [daily, weekly, monthly] = repo;
       context.logger?.info(`Generated ${daily.length} daily summaries`);

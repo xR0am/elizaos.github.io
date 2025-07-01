@@ -4,7 +4,7 @@ import { generateOverallSummary } from "./aiOverallSummary";
 import { generateTimeIntervals } from "../generateTimeIntervals";
 import { IntervalType, TimeInterval, toDateString } from "@/lib/date-utils";
 import { isNotNullOrUndefined } from "@/lib/typeHelpers";
-import { getProjectMetrics } from "../export/queries";
+import { getRepoMetrics } from "../export/queries";
 import { getRepoFilePath, writeToFile } from "@/lib/fsHelpers";
 import { existsSync } from "node:fs";
 

@@ -167,7 +167,7 @@ export async function getTopContributors(params: QueryParams = {}, limit = 5) {
  * Get project metrics for a specific time interval
  */
 
-export async function getProjectMetrics(params: QueryParams = {}) {
+export async function getRepoMetrics(params: QueryParams = {}) {
   const { repository, dateRange } = params;
   const prCreatedConditions = buildCommonWhereConditions(
     params,
@@ -301,4 +301,4 @@ export async function getProjectMetrics(params: QueryParams = {}) {
     completedItems,
   };
 }
-export type RepositoryMetrics = Awaited<ReturnType<typeof getProjectMetrics>>;
+export type RepositoryMetrics = Awaited<ReturnType<typeof getRepoMetrics>>;

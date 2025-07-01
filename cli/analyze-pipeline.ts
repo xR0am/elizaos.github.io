@@ -34,7 +34,7 @@ import chalk from "chalk";
 import { generateRepositoryStats } from "@/lib/pipelines/export";
 import { contributorsPipeline } from "@/lib/pipelines/contributors";
 import {
-  projectSummariesPipeline,
+  repoSummariesPipeline,
   contributorSummariesPipeline,
 } from "@/lib/pipelines/summarize";
 import { createContributorPipelineContext } from "@/lib/pipelines/contributors/context";
@@ -365,7 +365,7 @@ program
       if (summaryType === "contributors") {
         await runPipeline(contributorSummariesPipeline, undefined, context);
       } else {
-        await runPipeline(projectSummariesPipeline, undefined, context);
+        await runPipeline(repoSummariesPipeline, undefined, context);
       }
 
       rootLogger.info("\nSummary generation completed successfully!");

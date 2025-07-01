@@ -1,11 +1,11 @@
 import { createStep, pipe, mapStep } from "../types";
 import { SummarizerPipelineContext } from "./context";
-import { generateProjectSummary } from "./aiRepoSummary";
+import { generateRepoSummary } from "./aiRepoSummary";
 import { generateTimeIntervals } from "../generateTimeIntervals";
 import { IntervalType, TimeInterval, toDateString } from "@/lib/date-utils";
 import { storeRepoSummary } from "./mutations";
 import { isNotNullOrUndefined } from "@/lib/typeHelpers";
-import { getProjectMetrics } from "../export/queries";
+import { getRepoMetrics } from "../export/queries";
 import { getRepoFilePath, writeToFile } from "@/lib/fsHelpers";
 import { existsSync } from "node:fs";
 
@@ -33,10 +33,10 @@ async function checkExistingSummary(
 }
 
 /**
- * Generate monthly project summary for a specific time interval
+ * Generate repository summary for a specific time interval
  */
-export const generateProjectSummaryForInterval = createStep(
-  "ProjectSummary",
+export const generateRepoSummaryForInterval = createStep(
+  "RepoSummary",
   async (
     { interval, repoId }: { interval: TimeInterval; repoId: string },
     context: SummarizerPipelineContext,
@@ -78,13 +78,13 @@ export const generateProjectSummaryForInterval = createStep(
       }
 
       // Get metrics for this time period
-      const metrics = await getProjectMetrics({
+      const metrics = await getRepoMetrics({
         repository: repoId,
         dateRange,
       });
 
       // Generate the summary based on interval type
-      const summary = await generateProjectSummary(
+      const summary = await generateRepoSummary(
         metrics,
         aiSummaryConfig,
         dateRange,
@@ -134,9 +134,9 @@ export const generateProjectSummaryForInterval = createStep(
 );
 
 /**
- * Pipeline for generating monthly project summaries
+ * Pipeline for generating monthly repository summaries
  */
-export const generateMonthlyProjectSummaries = pipe(
+export const generateMonthlyRepoSummaries = pipe(
   generateTimeIntervals<{ repoId: string }>("month"),
   (input, context: SummarizerPipelineContext) => {
     if (context.enabledIntervals.month) {
@@ -144,16 +144,16 @@ export const generateMonthlyProjectSummaries = pipe(
     }
     return [];
   },
-  mapStep(generateProjectSummaryForInterval),
+  mapStep(generateRepoSummaryForInterval),
   createStep("Filter null results", (results) => {
     return results.filter(isNotNullOrUndefined);
   }),
 );
 
 /**
- * Pipeline for generating weekly project summaries
+ * Pipeline for generating weekly repository summaries
  */
-export const generateWeeklyProjectSummaries = pipe(
+export const generateWeeklyRepoSummaries = pipe(
   generateTimeIntervals<{ repoId: string }>("week"),
   (input, context: SummarizerPipelineContext) => {
     if (context.enabledIntervals.week) {
@@ -161,16 +161,16 @@ export const generateWeeklyProjectSummaries = pipe(
     }
     return [];
   },
-  mapStep(generateProjectSummaryForInterval),
+  mapStep(generateRepoSummaryForInterval),
   createStep("Filter null results", (results) => {
     return results.filter(isNotNullOrUndefined);
   }),
 );
 
 /**
- * Pipeline for generating daily project summaries
+ * Pipeline for generating daily repository summaries
  */
-export const generateDailyProjectSummaries = pipe(
+export const generateDailyRepoSummaries = pipe(
   generateTimeIntervals<{ repoId: string }>("day"),
   (input, context: SummarizerPipelineContext) => {
     if (context.enabledIntervals.day) {
@@ -178,7 +178,7 @@ export const generateDailyProjectSummaries = pipe(
     }
     return [];
   },
-  mapStep(generateProjectSummaryForInterval),
+  mapStep(generateRepoSummaryForInterval),
   createStep("Filter null results", (results) => {
     return results.filter(isNotNullOrUndefined);
   }),

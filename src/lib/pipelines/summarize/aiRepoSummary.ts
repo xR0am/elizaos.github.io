@@ -47,7 +47,7 @@ export interface ContributorInfo {
   username: string;
 }
 
-export interface ProjectMetricsForSummary {
+export interface RepoMetricsForSummary {
   pullRequests: PullRequestMetrics;
   issues: IssueMetrics;
   uniqueContributors: number;
@@ -57,7 +57,7 @@ export interface ProjectMetricsForSummary {
   completedItems: CompletedItem[];
 }
 
-export async function generateProjectSummary(
+export async function generateRepoSummary(
   metrics: RepositoryMetrics,
   config: AISummaryConfig,
   dateInfo: { startDate: string },
@@ -86,7 +86,10 @@ export async function generateProjectSummary(
       model: config.models[intervalType],
     });
   } catch (error) {
-    console.error(`Error generating ${intervalType} project analysis:`, error);
+    console.error(
+      `Error generating ${intervalType} repository analysis:`,
+      error,
+    );
     return null;
   }
 }
@@ -123,7 +126,7 @@ function calculateMaxTokens(
 }
 
 /**
- * Format project metrics into a structured prompt for analysis based on interval type
+ * Format repository metrics into a structured prompt for analysis based on interval type
  */
 function formatAnalysisPrompt(
   metrics: RepositoryMetrics,
@@ -192,7 +195,7 @@ CLOSED ISSUES:
 
 Format the report with the following sections:
 
-# <Project Name> ${getIntervalTypeTitle(intervalType)} Update (${timeframeTitle})
+# ${metrics.repository} ${getIntervalTypeTitle(intervalType)} Update (${timeframeTitle})
 ## OVERVIEW 
   Provide a high-level summary (max 500 characters, min 40 characters) highlighting the overall progress and major achievements of the ${intervalType}.
 
