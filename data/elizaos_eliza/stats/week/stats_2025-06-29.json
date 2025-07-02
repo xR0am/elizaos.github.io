@@ -5,7 +5,7 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-06-29 to 2025-07-06, elizaos/eliza had 28 new PRs (24 merged), 5 new issues, and 17 active contributors.",
+  "overview": "From 2025-06-29 to 2025-07-06, elizaos/eliza had 36 new PRs (30 merged), 5 new issues, and 17 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs68vzQD",
@@ -19,6 +19,28 @@
       "commentCount": 2
     },
     {
+      "id": "I_kwDOMT5cIs69hVkJ",
+      "title": "Migrate remaining CLI input methods to use @clack/prompts for consistency",
+      "author": "wtfsayo",
+      "number": 5295,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-26T16:14:01Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 2
+    },
+    {
+      "id": "I_kwDOMT5cIs67xrH_",
+      "title": "@elizaos/cli test command incorrectly requires monorepo root for standalone projects",
+      "author": "sicco-moonbeam",
+      "number": 5142,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-16T15:05:03Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 1
+    },
+    {
       "id": "I_kwDOMT5cIs68Alkb",
       "title": "elizaos start crashes after accessing localhost:3000 on windows",
       "author": "paulmerz",
@@ -30,34 +52,12 @@
       "commentCount": 1
     },
     {
-      "id": "I_kwDOMT5cIs68jIbD",
-      "title": "fix: ensure `bun run test` works consistently across all packages",
-      "author": "wtfsayo",
-      "number": 5218,
+      "id": "I_kwDOMT5cIs68iWIi",
+      "title": "EVENT MESSAGE SENT not working",
+      "author": "Srenonno",
+      "number": 5216,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-20T13:18:54Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 1
-    },
-    {
-      "id": "I_kwDOMT5cIs68qLqY",
-      "title": "Documentation Overhaul: Create Separate Tracks for Simple Users and Developers",
-      "author": "wtfsayo",
-      "number": 5234,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-21T15:32:34Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 1
-    },
-    {
-      "id": "I_kwDOMT5cIs69hVkJ",
-      "title": "Migrate remaining CLI input methods to use @clack/prompts for consistency",
-      "author": "wtfsayo",
-      "number": 5295,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-26T16:14:01Z",
+      "createdAt": "2025-06-20T12:13:56Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 1
@@ -121,10 +121,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 11374,
-    "deletions": 2537,
-    "files": 118,
-    "commitCount": 129
+    "additions": 11994,
+    "deletions": 3048,
+    "files": 142,
+    "commitCount": 173
   },
   "completedItems": [
     {
@@ -246,44 +246,74 @@
       "title": "fix: auto-install AI model plugins on project creation",
       "prNumber": 5335,
       "type": "bugfix"
+    },
+    {
+      "title": "feat: tweak agent card",
+      "prNumber": 5351,
+      "type": "feature"
+    },
+    {
+      "title": "fix: update eliza avatar",
+      "prNumber": 5350,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: chat refactor",
+      "prNumber": 5349,
+      "type": "feature"
+    },
+    {
+      "title": "fix(client): resolve all type issues in home.tsx for complete type safety",
+      "prNumber": 5346,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: update agent settings UI to match design specifications",
+      "prNumber": 5345,
+      "type": "feature"
+    },
+    {
+      "title": "feat: redesign Agent Cards Homepage Layout",
+      "prNumber": 5344,
+      "type": "feature"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 446.0269712151653,
-      "prScore": 427.1509712151653,
+      "totalScore": 588.0261589823284,
+      "prScore": 568.7121589823284,
       "issueScore": 0,
       "reviewScore": 18,
-      "commentScore": 0.8759999999999999
-    },
-    {
-      "username": "cursor",
-      "avatarUrl": "https://avatars.githubusercontent.com/in/1210556?v=4",
-      "totalScore": 148.938,
-      "prScore": 0,
-      "issueScore": 0,
-      "reviewScore": 148.5,
-      "commentScore": 0.43799999999999994
+      "commentScore": 1.3139999999999998
     },
     {
       "username": "tcm390",
       "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4",
-      "totalScore": 119.45166533154648,
-      "prScore": 114.45166533154648,
+      "totalScore": 235.72350970455275,
+      "prScore": 230.72350970455275,
       "issueScore": 0,
       "reviewScore": 5,
       "commentScore": 0
     },
     {
+      "username": "cursor",
+      "avatarUrl": "https://avatars.githubusercontent.com/in/1210556?v=4",
+      "totalScore": 202.938,
+      "prScore": 0,
+      "issueScore": 0,
+      "reviewScore": 202.5,
+      "commentScore": 0.43799999999999994
+    },
+    {
       "username": "0xbbjoker",
       "avatarUrl": "https://avatars.githubusercontent.com/u/54844437?u=90fe1762420de6ad493a1c1582f1f70c0d87d8e2&v=4",
-      "totalScore": 91.93160117201327,
-      "prScore": 71.39160117201327,
+      "totalScore": 106.55935267483241,
+      "prScore": 85.6793526748324,
       "issueScore": 0,
       "reviewScore": 20,
-      "commentScore": 0.54
+      "commentScore": 0.8799999999999999
     },
     {
       "username": "yungalgo",
@@ -295,9 +325,9 @@
       "commentScore": 0.6379999999999999
     }
   ],
-  "newPRs": 28,
-  "mergedPRs": 24,
+  "newPRs": 36,
+  "mergedPRs": 30,
   "newIssues": 5,
-  "closedIssues": 6,
+  "closedIssues": 8,
   "activeContributors": 17
 }
