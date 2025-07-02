@@ -340,6 +340,36 @@ This architecture ensures:
 
 ## Development
 
+### Taskmaster for AI-Assisted Development
+
+The project is set up to work with [Taskmaster](https://github.com/eyaltoledano/claude-task-master), an AI-powered task management tool. You can use it directly via the `task-master` command-line interface (CLI) or through its MCP server for integration with development environments like Cursor.
+
+#### MCP Setup (for IDE Integration)
+
+To use Taskmaster's AI capabilities within an integrated development environment, you'll need to configure the MCP server. Add the following to your IDE's MCP settings file (e.g., `.cursor/mcp.json` in your project or a global user setting):
+
+```json
+{
+  "mcpServers": {
+    "task-master-ai": {
+      "command": "npx",
+      "args": ["-y", "--package=task-master-ai", "task-master-ai"],
+      "env": {
+        "PERPLEXITY_API_KEY": "YOUR-KEY-HERE",
+        "OPENROUTER_API_KEY": "YOUR-KEY-HERE"
+      }
+    }
+  }
+}
+```
+
+You can add other API keys for providers like Anthropic (`ANTHROPIC_API_KEY`) or Google (`GOOGLE_API_KEY`) to the `env` object. To use different models, you can configure them via the `task-master models` command after setup.
+
+For more detailed guides, refer to the official Taskmaster documentation:
+
+- [Tutorial](https://github.com/eyaltoledano/claude-task-master/blob/main/docs/tutorial.md)
+- [Configuration Guide](https://github.com/eyaltoledano/claude-task-master/blob/main/docs/configuration.md)
+
 ### TypeScript Pipeline
 
 The project uses a TypeScript-based pipeline for data processing. See [Pipeline Documentation](cli/pipelines.md) for detailed information about:
