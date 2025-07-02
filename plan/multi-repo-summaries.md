@@ -117,7 +117,7 @@ To achieve high-quality summaries, we will use tailored prompts and enforce spec
 
 **Goal:** Connect the new pipelines and ensure they work correctly.
 
-- [ ] **Task 4.1: Update Main Summarize Pipeline.**
+- [x] **Task 4.1: Update Main Summarize Pipeline.**
   - In `src/lib/pipelines/summarize/index.ts`, replace the old logic with a new orchestration that correctly sequences the Tier 1 (per-repo) and Tier 2 (overall) summary generations.
 - [ ] **Task 4.2: Add Comprehensive Tests.**
   - Write unit tests for the new query functions and prompt generation logic.
@@ -128,3 +128,26 @@ To achieve high-quality summaries, we will use tailored prompts and enforce spec
 - **Token Limit Management**: The prompts for weekly/monthly and overall summaries might exceed model context windows. We must implement strategies to handle this, such as truncation, iterative summarization, or using models with larger context windows. This will be a key part of prompt engineering.
 - **Error Handling & Dependencies**: The generation of Tier 2 summaries is dependent on the successful completion of Tier 1. The pipeline orchestration must be resilient to failures in individual repo summary generation, deciding whether to proceed with partial data or halt.
 - **Cost & Performance**: This new architecture will significantly increase the number of LLM calls. We should monitor costs and performance, and consider optimizations such as caching, parallelization, and using cheaper/faster models for certain tasks where appropriate.
+
+### Phase 5: Refactor Contributor Summaries for Multi-Repository Context
+
+**Goal:** Transition the contributor summary pipeline from a per-repository model to a unified, multi-repository model. This will generate a single summary for each contributor per interval, reflecting all their activity across all tracked repositories.
+
+- [x] **Task 5.1: Verify Contributor Metrics Query.**
+
+  - Review `getContributorMetrics` in `src/lib/pipelines/summarize/queries.ts` to confirm it aggregates a contributor's activity across all repositories. Ensure the data returned includes repository context for each activity item (e.g., PRs, issues).
+
+- [x] **Task 5.2: Enhance Contributor Summary Prompt.**
+
+  - Update `formatContributorPrompt` in `src/lib/pipelines/summarize/aiContributorSummary.ts` to better synthesize and present activities from multiple repositories. Ensure the prompt clearly instructs the AI to group work by repository where it makes sense and provide a holistic view of the contributor's work.
+
+- [x] **Task 5.3: Rework Contributor Summary Generation Pipeline.**
+
+  - In `src/lib/pipelines/summarize/generateContributorSummary.ts`, modify the pipeline logic.
+  - The pipeline should no longer be repo-specific. It should get a list of all active contributors across _all_ repositories for a given interval.
+  - The `mapStep` should then iterate over the list of unique contributors, not repositories.
+
+- [x] **Task 5.4: Update Top-Level Contributor Pipeline.**
+  - In `src/lib/pipelines/summarize/index.ts`, refactor `contributorSummariesPipeline`.
+  - Remove the `mapStep` that iterates over selected repositories. The pipeline should be a single flow that generates summaries for all active contributors.
+  - This pipeline will now be completely independent of the per-repository logic.

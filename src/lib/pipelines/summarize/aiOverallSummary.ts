@@ -39,7 +39,7 @@ REQUIRED OUTPUT FORMAT:
 
 # Overall Project Update (${timeframeTitle})
 
-## Daily Executive Summary
+## Overview
 A concise, high-level paragraph summarizing the day's most important activities, achievements, and any emerging challenges across the entire project. This should answer "what's the one thing I need to know about today?".
 
 ## Key Technical Developments

@@ -458,6 +458,52 @@ export async function getRepoSummariesForInterval(
 }
 
 /**
+ * Get repositories with activity in a specific time interval
+ */
+export async function getActiveReposInInterval(
+  interval: TimeInterval,
+): Promise<string[]> {
+  const dateRange = {
+    startDate: toDateString(interval.intervalStart),
+    endDate: toDateString(interval.intervalEnd),
+  };
+
+  // Get repo IDs from PRs created, merged, or closed in the interval
+  const prRepoIds = await db
+    .selectDistinct({ repoId: rawPullRequests.repository })
+    .from(rawPullRequests)
+    .where(
+      and(
+        ...buildCommonWhereConditions({ dateRange }, rawPullRequests, [
+          "createdAt",
+          "mergedAt",
+          "closedAt",
+        ]),
+      ),
+    );
+
+  // Get repo IDs from issues created or closed in the interval
+  const issueRepoIds = await db
+    .selectDistinct({ repoId: rawIssues.repository })
+    .from(rawIssues)
+    .where(
+      and(
+        ...buildCommonWhereConditions({ dateRange }, rawIssues, [
+          "createdAt",
+          "closedAt",
+        ]),
+      ),
+    );
+
+  const activeRepoIds = new Set([
+    ...prRepoIds.map((r) => r.repoId),
+    ...issueRepoIds.map((r) => r.repoId),
+  ]);
+
+  return Array.from(activeRepoIds);
+}
+
+/**
  * Get all repository summaries for a specific time interval
  */
 export async function getAllRepoSummariesForInterval(

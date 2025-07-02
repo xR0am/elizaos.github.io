@@ -10,11 +10,11 @@ import { storeRepoSummary } from "./mutations";
 import { isNotNullOrUndefined } from "@/lib/typeHelpers";
 import { getRepoMetrics } from "../export/queries";
 import { getRepoFilePath, writeToFile } from "@/lib/fsHelpers";
-import { existsSync } from "node:fs";
 import { getRepoSummariesForInterval } from "./queries";
-import { db } from "@/lib/data/db-nextjs";
+import { db } from "@/lib/data/db";
 import { repoSummaries } from "@/lib/data/schema";
 import { and, eq } from "drizzle-orm";
+import { getActiveReposForInterval } from "./getActiveRepos";
 
 /**
  * Check if a summary already exists for a repository on a specific date and interval type
@@ -165,7 +165,6 @@ export const generateAggregatedRepoSummaryForInterval = createStep(
           repoId,
           startDate,
           intervalType,
-          outputDir,
         );
         if (summaryExists) {
           intervalLogger?.debug(
@@ -239,49 +238,61 @@ export const generateAggregatedRepoSummaryForInterval = createStep(
  * Pipeline for generating monthly repository summaries
  */
 export const generateMonthlyRepoSummaries = pipe(
-  generateTimeIntervals<{ repoId: string }>("month"),
+  generateTimeIntervals("month"),
   (input, context: SummarizerPipelineContext) => {
     if (context.enabledIntervals.month) {
       return input;
     }
     return [];
   },
-  mapStep(generateAggregatedRepoSummaryForInterval),
-  createStep("Filter null results", (results) => {
-    return results.filter(isNotNullOrUndefined);
-  }),
+  mapStep(getActiveReposForInterval),
+  (results: { interval: TimeInterval; repoId: string }[][]) => results.flat(),
+  pipe(
+    mapStep(generateAggregatedRepoSummaryForInterval),
+    createStep("Filter null results", (results) =>
+      results.filter(isNotNullOrUndefined),
+    ),
+  ),
 );
 
 /**
  * Pipeline for generating weekly repository summaries
  */
 export const generateWeeklyRepoSummaries = pipe(
-  generateTimeIntervals<{ repoId: string }>("week"),
+  generateTimeIntervals("week"),
   (input, context: SummarizerPipelineContext) => {
     if (context.enabledIntervals.week) {
       return input;
     }
     return [];
   },
-  mapStep(generateAggregatedRepoSummaryForInterval),
-  createStep("Filter null results", (results) => {
-    return results.filter(isNotNullOrUndefined);
-  }),
+  mapStep(getActiveReposForInterval),
+  (results: { interval: TimeInterval; repoId: string }[][]) => results.flat(),
+  pipe(
+    mapStep(generateAggregatedRepoSummaryForInterval),
+    createStep("Filter null results", (results) =>
+      results.filter(isNotNullOrUndefined),
+    ),
+  ),
 );
 
 /**
  * Pipeline for generating daily repository summaries
  */
 export const generateDailyRepoSummaries = pipe(
-  generateTimeIntervals<{ repoId: string }>("day"),
+  generateTimeIntervals("day"),
   (input, context: SummarizerPipelineContext) => {
     if (context.enabledIntervals.day) {
       return input;
     }
     return [];
   },
-  mapStep(generateDailyRepoSummaryForInterval),
-  createStep("Filter null results", (results) => {
-    return results.filter(isNotNullOrUndefined);
-  }),
+  mapStep(getActiveReposForInterval),
+  (results: { interval: TimeInterval; repoId: string }[][]) => results.flat(),
+  pipe(
+    mapStep(generateDailyRepoSummaryForInterval),
+    createStep("Filter null results", (results) =>
+      results.filter(isNotNullOrUndefined),
+    ),
+  ),
 );

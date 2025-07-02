@@ -3,7 +3,6 @@ import { SummarizerPipelineContext } from "./context";
 import { generateOverallSummary } from "./aiOverallSummary";
 import { generateTimeIntervals } from "../generateTimeIntervals";
 import { IntervalType, TimeInterval, toDateString } from "@/lib/date-utils";
-import { isNotNullOrUndefined } from "@/lib/typeHelpers";
 import { getAllRepoSummariesForInterval } from "./queries";
 import { getOverallSummaryFilePath, writeToFile } from "@/lib/fsHelpers";
 import { storeOverallSummary } from "./mutations";
