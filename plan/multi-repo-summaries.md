@@ -104,11 +104,11 @@ To achieve high-quality summaries, we will use tailored prompts and enforce spec
 
 **Goal:** Build the pipelines for synthesizing per-repo summaries into project-wide summaries.
 
-- [ ] **Task 3.1: Implement Daily Overall Summary Pipeline.**
+- [x] **Task 3.1: Implement Daily Overall Summary Pipeline.**
   - Create the `generateDailyOverallSummary` pipeline.
   - Implement the logic to fetch all daily repo summaries for a given day.
   - Implement the prompt and Markdown output format as specified.
-- [ ] **Task 3.2: Implement Weekly/Monthly Overall Summary Pipelines.**
+- [x] **Task 3.2: Implement Weekly/Monthly Overall Summary Pipelines.**
   - Create the `generateWeeklyOverallSummary` and `generateMonthlyOverallSummary` pipelines.
   - Implement the logic to fetch all weekly/monthly repo summaries for a given period.
   - Implement the prompt and Markdown output format as specified.

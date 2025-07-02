@@ -12,28 +12,27 @@ import { getRepoMetrics } from "../export/queries";
 import { getRepoFilePath, writeToFile } from "@/lib/fsHelpers";
 import { existsSync } from "node:fs";
 import { getRepoSummariesForInterval } from "./queries";
+import { db } from "@/lib/data/db-nextjs";
+import { repoSummaries } from "@/lib/data/schema";
+import { and, eq } from "drizzle-orm";
 
 /**
  * Check if a summary already exists for a repository on a specific date and interval type
  */
 async function checkExistingSummary(
   repoId: string,
-  date: string,
+  date: string | Date,
   intervalType: IntervalType,
-  outputDir?: string,
 ): Promise<boolean> {
-  if (!outputDir) return false;
+  const summary = await db.query.repoSummaries.findFirst({
+    where: and(
+      eq(repoSummaries.repoId, repoId),
+      eq(repoSummaries.date, toDateString(date)),
+      eq(repoSummaries.intervalType, intervalType),
+    ),
+  });
 
-  const filename = `${date}.md`;
-  const summaryPath = getRepoFilePath(
-    outputDir,
-    repoId,
-    "summaries",
-    intervalType,
-    filename,
-  );
-
-  return existsSync(summaryPath);
+  return summary !== undefined && summary.summary !== "";
 }
 
 /**
@@ -71,7 +70,6 @@ export const generateDailyRepoSummaryForInterval = createStep(
           repoId,
           dateRange.startDate,
           interval.intervalType,
-          context.outputDir,
         );
         if (summaryExists) {
           intervalLogger?.debug(

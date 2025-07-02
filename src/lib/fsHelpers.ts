@@ -1,5 +1,7 @@
 import * as fs from "fs/promises";
 import * as path from "path";
+import { join } from "path";
+import { IntervalType } from "@/lib/date-utils";
 
 /**
  * Ensures a directory exists, creating it and all parent directories if needed
@@ -34,9 +36,10 @@ export function getRepoFilePath(
  * Generates a file path for overall summary data
  */
 export function getOverallSummaryFilePath(
-  outputDir: string,
-  intervalType: string,
-  fileName: string,
+  baseDir: string,
+  interval: IntervalType,
+  filename: string,
 ) {
-  return path.join(outputDir, "summaries", intervalType, fileName);
+  const path = join(baseDir, "summaries", interval, filename);
+  return path;
 }

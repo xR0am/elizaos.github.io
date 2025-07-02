@@ -190,6 +190,7 @@ function formatAnalysisPrompt(
   const newIssues = metrics.issues.newIssues || [];
   const closedIssues = metrics.issues.closedIssues || [];
   const updatedIssues = metrics.issues.updatedIssues || [];
+  const openPrs = metrics.pullRequests.newPRs?.filter((p) => !p.mergedAt) || [];
 
   return `
 BACKGROUND CONTEXT:
@@ -215,6 +216,13 @@ COMPLETED WORK:
   Most Active Development Areas:
   - ${topActiveAreas.join("\n- ")}
 
+NEWLY OPENED PULL REQUESTS:
+ - ${openPrs
+   .map(
+     (pr: { number: number; title: string }) => `[#${pr.number}] ${pr.title}`,
+   )
+   .join("\n- ")}
+
 NEW ISSUES:
   - ${newIssues.map(formatIssueForPrompt).join("\n- ")}
 
@@ -236,6 +244,9 @@ Format the report with the following sections:
   and concisely describe the key changes and improvements in point form. Reference
    the PR numbers that are most relevant to each headline, formatted as a Markdown link (e.g. [#123](https://github.com/${metrics.repository}/pull/123)).
  
+## NEWLY OPENED PULL REQUESTS
+  Summarize the newly opened pull requests and their status / progress.
+
 ## CLOSED ISSUES
 
   Group related closed issues into  ${intervalType === "month" ? "6-9" : "2-4"} different headlines and concisely summarize them.

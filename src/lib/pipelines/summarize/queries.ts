@@ -1,4 +1,4 @@
-import { eq, and, inArray } from "drizzle-orm";
+import { eq, and, inArray, isNotNull } from "drizzle-orm";
 import { db } from "@/lib/data/db";
 import {
   users,
@@ -19,6 +19,7 @@ import {
 import { UTCDate } from "@date-fns/utc";
 import { buildCommonWhereConditions } from "../queryHelpers";
 import { TimeInterval, toDateString } from "@/lib/date-utils";
+import { asc, lte } from "drizzle-orm";
 
 /**
  * Get metrics for a contributor within a time range
@@ -454,4 +455,27 @@ export async function getRepoSummariesForInterval(
       date: s.date,
       summary: s.summary ?? "", // This is redundant due to filter but TypeScript needs it
     }));
+}
+
+/**
+ * Get all repository summaries for a specific time interval
+ */
+export async function getAllRepoSummariesForInterval(
+  interval: TimeInterval,
+): Promise<{ repoId: string; summary: string }[]> {
+  const summaries = await db.query.repoSummaries.findMany({
+    where: and(
+      eq(repoSummaries.intervalType, interval.intervalType),
+      eq(repoSummaries.date, toDateString(interval.intervalStart)),
+      isNotNull(repoSummaries.summary),
+    ),
+    columns: {
+      repoId: true,
+      summary: true,
+    },
+  });
+
+  return summaries.filter((s): s is { repoId: string; summary: string } =>
+    Boolean(s.summary),
+  );
 }
