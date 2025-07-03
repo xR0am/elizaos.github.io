@@ -5,19 +5,8 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-07-01 to 2025-08-01, elizaos/eliza had 15 new PRs (16 merged), 2 new issues, and 13 active contributors.",
+  "overview": "From 2025-07-01 to 2025-08-01, elizaos/eliza had 43 new PRs (39 merged), 9 new issues, and 17 active contributors.",
   "topIssues": [
-    {
-      "id": "I_kwDOMT5cIs68vzQD",
-      "title": "Deploy Eliza agents",
-      "author": "kamalbuilds",
-      "number": 5244,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-23T03:39:00Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 2
-    },
     {
       "id": "I_kwDOMT5cIs69hVkJ",
       "title": "Migrate remaining CLI input methods to use @clack/prompts for consistency",
@@ -25,6 +14,17 @@
       "number": 5295,
       "repository": "elizaos/eliza",
       "createdAt": "2025-06-26T16:14:01Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 3
+    },
+    {
+      "id": "I_kwDOMT5cIs68vzQD",
+      "title": "Deploy Eliza agents",
+      "author": "kamalbuilds",
+      "number": 5244,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-23T03:39:00Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 2
@@ -87,6 +87,17 @@
       "deletions": 1089
     },
     {
+      "id": "PR_kwDOMT5cIs6dPK9c",
+      "title": "feat: Add comprehensive CLI testing infrastructure",
+      "author": "SYMBaiEX",
+      "number": 5364,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-07-03T09:51:41Z",
+      "mergedAt": null,
+      "additions": 1763,
+      "deletions": 61
+    },
+    {
       "id": "PR_kwDOMT5cIs6c1Ksr",
       "title": "feat: Add @elizaos/plugin-grok for xAI Grok models",
       "author": "0xtc23",
@@ -98,33 +109,22 @@
       "deletions": 2143
     },
     {
-      "id": "PR_kwDOMT5cIs6cbDtx",
-      "title": "Feature: Add ELIZA_UI_ENABLE environment variable to toggle Web UI availability",
-      "author": "bealers",
-      "number": 5304,
+      "id": "PR_kwDOMT5cIs6dMk7q",
+      "title": "fix: implement plugin dependency resolution for CLI (Issue #4997)",
+      "author": "SYMBaiEX",
+      "number": 5356,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-27T12:57:03Z",
-      "mergedAt": "2025-07-01T16:03:02Z",
-      "additions": 1148,
-      "deletions": 217
-    },
-    {
-      "id": "PR_kwDOMT5cIs6cw3Tz",
-      "title": "🔧 Fix Windows CI Issues - Comprehensive Solution",
-      "author": "wtfsayo",
-      "number": 5332,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-30T20:29:42Z",
+      "createdAt": "2025-07-03T04:49:45Z",
       "mergedAt": null,
-      "additions": 1009,
-      "deletions": 32
+      "additions": 1441,
+      "deletions": 0
     }
   ],
   "codeChanges": {
-    "additions": 11298,
-    "deletions": 2957,
-    "files": 118,
-    "commitCount": 84
+    "additions": 13121,
+    "deletions": 5588,
+    "files": 126,
+    "commitCount": 180
   },
   "completedItems": [
     {
@@ -193,6 +193,11 @@
       "type": "feature"
     },
     {
+      "title": "chore: improve logs",
+      "prNumber": 5348,
+      "type": "other"
+    },
+    {
       "title": "fix(client): resolve all type issues in home.tsx for complete type safety",
       "prNumber": 5346,
       "type": "bugfix"
@@ -206,58 +211,168 @@
       "title": "feat: redesign Agent Cards Homepage Layout",
       "prNumber": 5344,
       "type": "feature"
+    },
+    {
+      "title": "chore: v1.0.17",
+      "prNumber": 5385,
+      "type": "other"
+    },
+    {
+      "title": "fix: remove duplicate express.json middleware in API router",
+      "prNumber": 5384,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: bump version to 1.0.16",
+      "prNumber": 5383,
+      "type": "other"
+    },
+    {
+      "title": "fix: cypress test",
+      "prNumber": 5382,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: correct REST API documentation to match actual implementation",
+      "prNumber": 5380,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: tweak padding",
+      "prNumber": 5379,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: correct import/export icon",
+      "prNumber": 5378,
+      "type": "bugfix"
+    },
+    {
+      "title": "Fix import/export button order and icons in character form",
+      "prNumber": 5374,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: side bar",
+      "prNumber": 5373,
+      "type": "feature"
+    },
+    {
+      "title": "refactor: reorganize .env.example for better clarity",
+      "prNumber": 5372,
+      "type": "refactor"
+    },
+    {
+      "title": "feat: tweak ui",
+      "prNumber": 5371,
+      "type": "feature"
+    },
+    {
+      "title": "feat: Show correct create button label based on active tab",
+      "prNumber": 5369,
+      "type": "feature"
+    },
+    {
+      "title": "fix: adding missing dependency Test issues #5366",
+      "prNumber": 5366,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: small UI fix",
+      "prNumber": 5363,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: Align '+' button on the same line as Agents/Groups tabs",
+      "prNumber": 5362,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: update group card",
+      "prNumber": 5361,
+      "type": "feature"
+    },
+    {
+      "title": "fix: tweak ui and fix agent card padding issue",
+      "prNumber": 5360,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: update tabs",
+      "prNumber": 5357,
+      "type": "feature"
+    },
+    {
+      "title": "feat: update agent card",
+      "prNumber": 5355,
+      "type": "feature"
+    },
+    {
+      "title": "fix: remove chat bubble extra padding",
+      "prNumber": 5354,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: chat bubble padding",
+      "prNumber": 5353,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: gui",
+      "prNumber": 5352,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 272.0861320829416,
-      "prScore": 271.21013208294164,
+      "totalScore": 486.49101194354864,
+      "prScore": 485.1770119435487,
       "issueScore": 0,
       "reviewScore": 0,
-      "commentScore": 0.8759999999999999
-    },
-    {
-      "username": "cursor",
-      "avatarUrl": "https://avatars.githubusercontent.com/in/1210556?v=4",
-      "totalScore": 130.938,
-      "prScore": 0,
-      "issueScore": 0,
-      "reviewScore": 130.5,
-      "commentScore": 0.43799999999999994
+      "commentScore": 1.3139999999999998
     },
     {
       "username": "tcm390",
       "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4",
-      "totalScore": 116.27184437300627,
-      "prScore": 116.27184437300627,
+      "totalScore": 355.9521637744046,
+      "prScore": 355.9521637744046,
       "issueScore": 0,
       "reviewScore": 0,
       "commentScore": 0
     },
     {
-      "username": "yungalgo",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 52.06035254341913,
-      "prScore": 51.622352543419126,
+      "username": "cursor",
+      "avatarUrl": "https://avatars.githubusercontent.com/in/1210556?v=4",
+      "totalScore": 252.638,
+      "prScore": 0,
       "issueScore": 0,
-      "reviewScore": 0,
+      "reviewScore": 252,
+      "commentScore": 0.6379999999999999
+    },
+    {
+      "username": "SYMBaiEX",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/192078165?u=a6e562521cc94448799ea50ebc1faeda3c3cef26&v=4",
+      "totalScore": 131.93911172629515,
+      "prScore": 122.50111172629518,
+      "issueScore": 0,
+      "reviewScore": 9,
       "commentScore": 0.43799999999999994
     },
     {
-      "username": "0xtc23",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/129641996?v=4",
-      "totalScore": 43.5437738965761,
-      "prScore": 43.5437738965761,
-      "issueScore": 0,
-      "reviewScore": 0,
-      "commentScore": 0
+      "username": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4",
+      "totalScore": 68.05522770548251,
+      "prScore": 55.2152277054825,
+      "issueScore": 8,
+      "reviewScore": 4.5,
+      "commentScore": 0.33999999999999997
     }
   ],
-  "newPRs": 15,
-  "mergedPRs": 16,
-  "newIssues": 2,
-  "closedIssues": 3,
-  "activeContributors": 13
+  "newPRs": 43,
+  "mergedPRs": 39,
+  "newIssues": 9,
+  "closedIssues": 8,
+  "activeContributors": 17
 }
