@@ -5,8 +5,19 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-07-01 to 2025-08-01, elizaos/eliza had 70 new PRs (61 merged), 11 new issues, and 20 active contributors.",
+  "overview": "From 2025-07-01 to 2025-08-01, elizaos/eliza had 80 new PRs (70 merged), 12 new issues, and 22 active contributors.",
   "topIssues": [
+    {
+      "id": "I_kwDOMT5cIs68qLqY",
+      "title": "Documentation Overhaul: Create Separate Tracks for Simple Users and Developers",
+      "author": "wtfsayo",
+      "number": 5234,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-21T15:32:34Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 2
+    },
     {
       "id": "I_kwDOMT5cIs68vzQD",
       "title": "Deploy Eliza agents",
@@ -14,17 +25,6 @@
       "number": 5244,
       "repository": "elizaos/eliza",
       "createdAt": "2025-06-23T03:39:00Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 2
-    },
-    {
-      "id": "I_kwDOMT5cIs6-uqs2",
-      "title": "Review actions tab in GUI",
-      "author": "borisudovicic",
-      "number": 5377,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-07-03T16:09:48Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 2
@@ -52,12 +52,12 @@
       "commentCount": 1
     },
     {
-      "id": "I_kwDOMT5cIs68qLqY",
-      "title": "Documentation Overhaul: Create Separate Tracks for Simple Users and Developers",
-      "author": "wtfsayo",
-      "number": 5234,
+      "id": "I_kwDOMT5cIs68o4X0",
+      "title": "server",
+      "author": "furkannabisumji",
+      "number": 5230,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-21T15:32:34Z",
+      "createdAt": "2025-06-21T06:56:44Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 1
@@ -76,55 +76,55 @@
       "deletions": 1326
     },
     {
+      "id": "PR_kwDOMT5cIs6doDDm",
+      "title": "chore: 1.0.18",
+      "author": "wtfsayo",
+      "number": 5419,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-07-06T11:19:58Z",
+      "mergedAt": null,
+      "additions": 28073,
+      "deletions": 1530
+    },
+    {
+      "id": "PR_kwDOMT5cIs6dn_9z",
+      "title": "chore: 1.0.18",
+      "author": "wtfsayo",
+      "number": 5417,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-07-06T11:06:53Z",
+      "mergedAt": null,
+      "additions": 27799,
+      "deletions": 1420
+    },
+    {
       "id": "PR_kwDOMT5cIs6ddQIv",
       "title": "feat: implement comprehensive documentation overhaul with two-track system",
       "author": "SYMBaiEX",
       "number": 5401,
       "repository": "elizaos/eliza",
       "createdAt": "2025-07-04T14:30:08Z",
-      "mergedAt": null,
-      "additions": 23852,
-      "deletions": 577
+      "mergedAt": "2025-07-06T08:15:11Z",
+      "additions": 26647,
+      "deletions": 579
     },
     {
-      "id": "PR_kwDOMT5cIs6clTBC",
-      "title": "feat: plugins upgrade with claude code",
-      "author": "0xbbjoker",
-      "number": 5311,
+      "id": "PR_kwDOMT5cIs6dlDSZ",
+      "title": "fix: issue 5407 windows plugin loading",
+      "author": "ai16z-demirix",
+      "number": 5415,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-29T15:07:06Z",
-      "mergedAt": "2025-07-01T12:49:28Z",
-      "additions": 6050,
-      "deletions": 1089
-    },
-    {
-      "id": "PR_kwDOMT5cIs6dPK9c",
-      "title": "feat: Add comprehensive CLI testing infrastructure",
-      "author": "SYMBaiEX",
-      "number": 5364,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-07-03T09:51:41Z",
+      "createdAt": "2025-07-05T19:23:39Z",
       "mergedAt": null,
-      "additions": 1763,
-      "deletions": 61
-    },
-    {
-      "id": "PR_kwDOMT5cIs6c1Ksr",
-      "title": "feat: Add @elizaos/plugin-grok for xAI Grok models",
-      "author": "0xtc23",
-      "number": 5338,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-07-01T07:08:57Z",
-      "mergedAt": null,
-      "additions": 1731,
-      "deletions": 2143
+      "additions": 8965,
+      "deletions": 3131
     }
   ],
   "codeChanges": {
-    "additions": 14133,
-    "deletions": 6433,
-    "files": 145,
-    "commitCount": 291
+    "additions": 48783,
+    "deletions": 8038,
+    "files": 244,
+    "commitCount": 316
   },
   "completedItems": [
     {
@@ -150,6 +150,11 @@
     {
       "title": "fix: cli create command directory display and cleanup on interruption",
       "prNumber": 5321,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: handle unwrapped server responses in BaseApiClient",
+      "prNumber": 5343,
       "type": "bugfix"
     },
     {
@@ -363,6 +368,11 @@
       "type": "bugfix"
     },
     {
+      "title": "feat: implement comprehensive documentation overhaul with two-track system",
+      "prNumber": 5401,
+      "type": "feature"
+    },
+    {
       "title": "fix: prevent duplicate new chat creation",
       "prNumber": 5400,
       "type": "bugfix"
@@ -428,8 +438,43 @@
       "type": "bugfix"
     },
     {
+      "title": "feat: issue-5410 fixing JSDoc comments",
+      "prNumber": 5414,
+      "type": "feature"
+    },
+    {
+      "title": "ci: update GitHub Actions upload-artifact to v4",
+      "prNumber": 5412,
+      "type": "other"
+    },
+    {
       "title": "fix: Refactor DM channel creation logic to fetch live message count inste…",
       "prNumber": 5411,
+      "type": "bugfix"
+    },
+    {
+      "title": "test: extra windows ci install time",
+      "prNumber": 5423,
+      "type": "tests"
+    },
+    {
+      "title": "chore: run linting on codebase",
+      "prNumber": 5422,
+      "type": "other"
+    },
+    {
+      "title": "chore: linting updates across multiple packages",
+      "prNumber": 5420,
+      "type": "other"
+    },
+    {
+      "title": "fix(docs): replace 'any' types with proper TypeScript interfaces",
+      "prNumber": 5418,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: issue-5407, plugin loading bun on windows",
+      "prNumber": 5416,
       "type": "bugfix"
     }
   ],
@@ -437,11 +482,11 @@
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 697.7538372065732,
-      "prScore": 691.5018372065732,
+      "totalScore": 934.7300165406273,
+      "prScore": 923.0400165406273,
       "issueScore": 0,
-      "reviewScore": 4.5,
-      "commentScore": 1.7519999999999998
+      "reviewScore": 9.5,
+      "commentScore": 2.1899999999999995
     },
     {
       "username": "tcm390",
@@ -455,34 +500,34 @@
     {
       "username": "cursor",
       "avatarUrl": "https://avatars.githubusercontent.com/in/1210556?v=4",
-      "totalScore": 352.514,
+      "totalScore": 415.514,
       "prScore": 0,
       "issueScore": 0,
-      "reviewScore": 351,
+      "reviewScore": 414,
       "commentScore": 1.5139999999999998
     },
     {
       "username": "SYMBaiEX",
       "avatarUrl": "https://avatars.githubusercontent.com/u/192078165?u=a6e562521cc94448799ea50ebc1faeda3c3cef26&v=4",
-      "totalScore": 177.68288562287125,
+      "totalScore": 177.88288562287124,
       "prScore": 166.04488562287128,
       "issueScore": 2,
       "reviewScore": 9,
-      "commentScore": 0.6379999999999999
+      "commentScore": 0.838
     },
     {
-      "username": "yungalgo",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 124.7375171990781,
-      "prScore": 114.75951719907809,
-      "issueScore": 0,
-      "reviewScore": 9,
-      "commentScore": 0.978
+      "username": "ai16z-demirix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4",
+      "totalScore": 158.1252929365306,
+      "prScore": 144.6052929365306,
+      "issueScore": 8,
+      "reviewScore": 4.5,
+      "commentScore": 1.02
     }
   ],
-  "newPRs": 70,
-  "mergedPRs": 61,
-  "newIssues": 11,
-  "closedIssues": 9,
-  "activeContributors": 20
+  "newPRs": 80,
+  "mergedPRs": 70,
+  "newIssues": 12,
+  "closedIssues": 11,
+  "activeContributors": 22
 }
