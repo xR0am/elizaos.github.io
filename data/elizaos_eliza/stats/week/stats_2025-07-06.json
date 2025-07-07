@@ -5,8 +5,19 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-07-06 to 2025-07-13, elizaos/eliza had 10 new PRs (9 merged), 1 new issues, and 10 active contributors.",
+  "overview": "From 2025-07-06 to 2025-07-13, elizaos/eliza had 17 new PRs (17 merged), 3 new issues, and 13 active contributors.",
   "topIssues": [
+    {
+      "id": "I_kwDOMT5cIs6-8v4Z",
+      "title": "Fails to load @elizaos/plugin-openai and @elizaos/plugin-bootstrap on Windows",
+      "author": "gcbsumid",
+      "number": 5407,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-07-04T19:49:49Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 3
+    },
     {
       "id": "I_kwDOMT5cIs68qLqY",
       "title": "Documentation Overhaul: Create Separate Tracks for Simple Users and Developers",
@@ -19,12 +30,12 @@
       "commentCount": 1
     },
     {
-      "id": "I_kwDOMT5cIs6_Jkl1",
-      "title": "If you include \"DM\" in your user name and chat over an AgentServer socket, then agents will never ignore",
-      "author": "0xFlicker",
-      "number": 5425,
+      "id": "I_kwDOMT5cIs6_TFCo",
+      "title": "Don't crash server start (if telegram token not found)",
+      "author": "linear",
+      "number": 5432,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-07-06T20:10:02Z",
+      "createdAt": "2025-07-07T15:30:12Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 0
@@ -32,15 +43,26 @@
   ],
   "topPRs": [
     {
+      "id": "PR_kwDOMT5cIs6dzp_i",
+      "title": "Feat/migrate docs to fumadocs",
+      "author": "SYMBaiEX",
+      "number": 5435,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-07-07T18:23:11Z",
+      "mergedAt": null,
+      "additions": 54767,
+      "deletions": 1
+    },
+    {
       "id": "PR_kwDOMT5cIs6doDDm",
       "title": "chore: 1.0.18",
       "author": "wtfsayo",
       "number": 5419,
       "repository": "elizaos/eliza",
       "createdAt": "2025-07-06T11:19:58Z",
-      "mergedAt": null,
-      "additions": 28073,
-      "deletions": 1530
+      "mergedAt": "2025-07-07T04:35:03Z",
+      "additions": 28125,
+      "deletions": 1569
     },
     {
       "id": "PR_kwDOMT5cIs6dn_9z",
@@ -74,24 +96,13 @@
       "mergedAt": null,
       "additions": 8965,
       "deletions": 3131
-    },
-    {
-      "id": "PR_kwDOMT5cIs6doG87",
-      "title": "chore: run linting on codebase",
-      "author": "wtfsayo",
-      "number": 5422,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-07-06T11:46:56Z",
-      "mergedAt": "2025-07-06T11:47:12Z",
-      "additions": 1244,
-      "deletions": 1084
     }
   ],
   "codeChanges": {
-    "additions": 34650,
-    "deletions": 1605,
-    "files": 117,
-    "commitCount": 23
+    "additions": 36659,
+    "deletions": 2841,
+    "files": 157,
+    "commitCount": 59
   },
   "completedItems": [
     {
@@ -115,6 +126,16 @@
       "type": "other"
     },
     {
+      "title": "fix: issue 5425 - removing check if sender name includes DM",
+      "prNumber": 5426,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: downgrade vite-plugin-node-polyfills to resolve client build issues",
+      "prNumber": 5424,
+      "type": "bugfix"
+    },
+    {
       "title": "test: extra windows ci install time",
       "prNumber": 5423,
       "type": "tests"
@@ -130,6 +151,11 @@
       "type": "other"
     },
     {
+      "title": "chore: 1.0.18",
+      "prNumber": 5419,
+      "type": "other"
+    },
+    {
       "title": "fix(docs): replace 'any' types with proper TypeScript interfaces",
       "prNumber": 5418,
       "type": "bugfix"
@@ -138,26 +164,51 @@
       "title": "fix: issue-5407, plugin loading bun on windows",
       "prNumber": 5416,
       "type": "bugfix"
+    },
+    {
+      "title": "feat(cli): improve user experience with clean spinner flow and proper task sequencing",
+      "prNumber": 5431,
+      "type": "feature"
+    },
+    {
+      "title": "feat: add LOG_TIMESTAMPS environment variable to control log timestamps",
+      "prNumber": 5430,
+      "type": "feature"
+    },
+    {
+      "title": "chore: 1.0.19",
+      "prNumber": 5429,
+      "type": "other"
+    },
+    {
+      "title": "fix: improve browser compatibility and update dependencies",
+      "prNumber": 5428,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: prevent CLI update from creating files in non-project directories",
+      "prNumber": 5427,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 236.9761793340541,
-      "prScore": 231.53817933405412,
+      "totalScore": 441.18541140136205,
+      "prScore": 435.30941140136207,
       "issueScore": 0,
       "reviewScore": 5,
-      "commentScore": 0.43799999999999994
+      "commentScore": 0.8759999999999999
     },
     {
       "username": "cursor",
       "avatarUrl": "https://avatars.githubusercontent.com/in/1210556?v=4",
-      "totalScore": 63,
+      "totalScore": 90.2,
       "prScore": 0,
       "issueScore": 0,
-      "reviewScore": 63,
-      "commentScore": 0
+      "reviewScore": 90,
+      "commentScore": 0.2
     },
     {
       "username": "ai16z-demirix",
@@ -169,27 +220,27 @@
       "commentScore": 0.33999999999999997
     },
     {
-      "username": "shuhaib112",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/211030292?v=4",
-      "totalScore": 11.428573590279973,
-      "prScore": 11.228573590279973,
+      "username": "SYMBaiEX",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/192078165?u=a6e562521cc94448799ea50ebc1faeda3c3cef26&v=4",
+      "totalScore": 40.82577389657611,
+      "prScore": 40.4257738965761,
       "issueScore": 0,
       "reviewScore": 0,
-      "commentScore": 0.2
+      "commentScore": 0.4
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 5,
+      "totalScore": 15,
       "prScore": 0,
       "issueScore": 0,
-      "reviewScore": 5,
+      "reviewScore": 15,
       "commentScore": 0
     }
   ],
-  "newPRs": 10,
-  "mergedPRs": 9,
-  "newIssues": 1,
-  "closedIssues": 2,
-  "activeContributors": 10
+  "newPRs": 17,
+  "mergedPRs": 17,
+  "newIssues": 3,
+  "closedIssues": 4,
+  "activeContributors": 13
 }
