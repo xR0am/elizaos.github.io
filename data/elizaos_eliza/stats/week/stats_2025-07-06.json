@@ -5,19 +5,8 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-07-06 to 2025-07-13, elizaos/eliza had 17 new PRs (17 merged), 3 new issues, and 13 active contributors.",
+  "overview": "From 2025-07-06 to 2025-07-13, elizaos/eliza had 59 new PRs (52 merged), 6 new issues, and 18 active contributors.",
   "topIssues": [
-    {
-      "id": "I_kwDOMT5cIs6-8v4Z",
-      "title": "Fails to load @elizaos/plugin-openai and @elizaos/plugin-bootstrap on Windows",
-      "author": "gcbsumid",
-      "number": 5407,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-07-04T19:49:49Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 3
-    },
     {
       "id": "I_kwDOMT5cIs68qLqY",
       "title": "Documentation Overhaul: Create Separate Tracks for Simple Users and Developers",
@@ -30,12 +19,34 @@
       "commentCount": 1
     },
     {
-      "id": "I_kwDOMT5cIs6_TFCo",
-      "title": "Don't crash server start (if telegram token not found)",
-      "author": "linear",
-      "number": 5432,
+      "id": "I_kwDOMT5cIs6_fwQX",
+      "title": "v1 to v2 character migrator",
+      "author": "borisudovicic",
+      "number": 5452,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-07-07T15:30:12Z",
+      "createdAt": "2025-07-08T14:27:37Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 0
+    },
+    {
+      "id": "I_kwDOMT5cIs6_eTqV",
+      "title": "should not show update availble during update command",
+      "author": "linear",
+      "number": 5447,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-07-08T12:38:21Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 0
+    },
+    {
+      "id": "I_kwDOMT5cIs6_cOOU",
+      "title": "Set up rate limited Eliza hosted LLM and embedding endpoint",
+      "author": "borisudovicic",
+      "number": 5438,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-07-08T09:54:52Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 0
@@ -99,10 +110,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 36659,
-    "deletions": 2841,
-    "files": 157,
-    "commitCount": 59
+    "additions": 41231,
+    "deletions": 5100,
+    "files": 197,
+    "commitCount": 184
   },
   "completedItems": [
     {
@@ -166,6 +177,11 @@
       "type": "bugfix"
     },
     {
+      "title": "fix textual inconsistencies in files",
+      "prNumber": 5433,
+      "type": "bugfix"
+    },
+    {
       "title": "feat(cli): improve user experience with clean spinner flow and proper task sequencing",
       "prNumber": 5431,
       "type": "feature"
@@ -189,58 +205,228 @@
       "title": "fix: prevent CLI update from creating files in non-project directories",
       "prNumber": 5427,
       "type": "bugfix"
+    },
+    {
+      "title": "chore: merge develop to main",
+      "prNumber": 5480,
+      "type": "other"
+    },
+    {
+      "title": "fix: improve SPA routing for globally installed CLI",
+      "prNumber": 5479,
+      "type": "bugfix"
+    },
+    {
+      "title": "Merge develop into main",
+      "prNumber": 5478,
+      "type": "other"
+    },
+    {
+      "title": "fix: resolve SPA routing for globally installed CLI",
+      "prNumber": 5477,
+      "type": "bugfix"
+    },
+    {
+      "title": "Release v1.1.4: Merge develop to main",
+      "prNumber": 5476,
+      "type": "other"
+    },
+    {
+      "title": "fix: SPA routing fallback and nested button hydration error",
+      "prNumber": 5475,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore 1.1.3",
+      "prNumber": 5474,
+      "type": "other"
+    },
+    {
+      "title": "chore: 1.1.3",
+      "prNumber": 5473,
+      "type": "other"
+    },
+    {
+      "title": "fix: improve client path resolution for global CLI installations",
+      "prNumber": 5472,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: add bun.lock to .gitignore",
+      "prNumber": 5471,
+      "type": "feature"
+    },
+    {
+      "title": "chore: 1.1.2",
+      "prNumber": 5470,
+      "type": "other"
+    },
+    {
+      "title": "fix: handle SPA routing on refresh without NotFoundError",
+      "prNumber": 5469,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: merge main to develop",
+      "prNumber": 5468,
+      "type": "other"
+    },
+    {
+      "title": "fix(ci): resolve release workflow failures and simplify post-publish steps",
+      "prNumber": 5467,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix(ci): resolve Lerna publish failure in release workflow",
+      "prNumber": 5466,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: commit lerna changes",
+      "prNumber": 5463,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: bump versions in lerna before build",
+      "prNumber": 5461,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: remove skip-verification flag from plugin test commands",
+      "prNumber": 5460,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: add explicit boolean conversion for environment variable checks",
+      "prNumber": 5459,
+      "type": "feature"
+    },
+    {
+      "title": "fix: remove dup body parser, \"stream is not readable\"",
+      "prNumber": 5458,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: refine chat opening toasts for clarity",
+      "prNumber": 5457,
+      "type": "other"
+    },
+    {
+      "title": "fix: repeated DM creation on refresh by clearing forceNew state",
+      "prNumber": 5455,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: update create command helper text + warning msg",
+      "prNumber": 5454,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: merge duplicate model logging into a single adapter.log call",
+      "prNumber": 5453,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: prevent global plugin installations",
+      "prNumber": 5450,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat(cli): update dev instructions to include elizaos command option",
+      "prNumber": 5448,
+      "type": "feature"
+    },
+    {
+      "title": "feat: image gen action",
+      "prNumber": 5446,
+      "type": "feature"
+    },
+    {
+      "title": "fix: improve code formatting in client components",
+      "prNumber": 5445,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: replace all window.confirm usages with useConfirmation across GUI",
+      "prNumber": 5444,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat(cli): remove --dir flag from create command",
+      "prNumber": 5443,
+      "type": "feature"
+    },
+    {
+      "title": "fix: starter avatar",
+      "prNumber": 5442,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: bump version to 1.0.19",
+      "prNumber": 5441,
+      "type": "other"
+    },
+    {
+      "title": "chore: 1.0.20",
+      "prNumber": 5440,
+      "type": "other"
+    },
+    {
+      "title": "fix: Windows plugin loading and dev command failures (#5407)",
+      "prNumber": 5437,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 441.18541140136205,
-      "prScore": 435.30941140136207,
+      "totalScore": 770.4397321883771,
+      "prScore": 759.2237321883771,
       "issueScore": 0,
-      "reviewScore": 5,
-      "commentScore": 0.8759999999999999
+      "reviewScore": 10,
+      "commentScore": 1.2159999999999997
+    },
+    {
+      "username": "tcm390",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4",
+      "totalScore": 184.95571206271165,
+      "prScore": 184.95571206271165,
+      "issueScore": 0,
+      "reviewScore": 0,
+      "commentScore": 0
     },
     {
       "username": "cursor",
       "avatarUrl": "https://avatars.githubusercontent.com/in/1210556?v=4",
-      "totalScore": 90.2,
+      "totalScore": 175.7,
       "prScore": 0,
       "issueScore": 0,
-      "reviewScore": 90,
+      "reviewScore": 175.5,
       "commentScore": 0.2
-    },
-    {
-      "username": "ai16z-demirix",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/188117230?u=424cd5b834584b3799da288712b3c4158c8032a1&v=4",
-      "totalScore": 52.71840358068272,
-      "prScore": 52.378403580682715,
-      "issueScore": 0,
-      "reviewScore": 0,
-      "commentScore": 0.33999999999999997
-    },
-    {
-      "username": "SYMBaiEX",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/192078165?u=a6e562521cc94448799ea50ebc1faeda3c3cef26&v=4",
-      "totalScore": 40.82577389657611,
-      "prScore": 40.4257738965761,
-      "issueScore": 0,
-      "reviewScore": 0,
-      "commentScore": 0.4
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 15,
-      "prScore": 0,
+      "totalScore": 106.52492245119188,
+      "prScore": 80.52492245119188,
       "issueScore": 0,
-      "reviewScore": 15,
+      "reviewScore": 26,
       "commentScore": 0
+    },
+    {
+      "username": "SYMBaiEX",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/192078165?u=a6e562521cc94448799ea50ebc1faeda3c3cef26&v=4",
+      "totalScore": 93.09267084922094,
+      "prScore": 92.69267084922093,
+      "issueScore": 0,
+      "reviewScore": 0,
+      "commentScore": 0.4
     }
   ],
-  "newPRs": 17,
-  "mergedPRs": 17,
-  "newIssues": 3,
-  "closedIssues": 4,
-  "activeContributors": 13
+  "newPRs": 59,
+  "mergedPRs": 52,
+  "newIssues": 6,
+  "closedIssues": 6,
+  "activeContributors": 18
 }
