@@ -5,8 +5,19 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-07-01 to 2025-08-01, elizaos/eliza had 129 new PRs (113 merged), 17 new issues, and 25 active contributors.",
+  "overview": "From 2025-07-01 to 2025-08-01, elizaos/eliza had 145 new PRs (124 merged), 25 new issues, and 28 active contributors.",
   "topIssues": [
+    {
+      "id": "I_kwDOMT5cIs6_lbUB",
+      "title": "Dependency installation failed with exit code 1",
+      "author": "XiongUp123",
+      "number": 5482,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-07-09T02:13:50Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 3
+    },
     {
       "id": "I_kwDOMT5cIs68qLqY",
       "title": "Documentation Overhaul: Create Separate Tracks for Simple Users and Developers",
@@ -47,17 +58,6 @@
       "number": 5216,
       "repository": "elizaos/eliza",
       "createdAt": "2025-06-20T12:13:56Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 1
-    },
-    {
-      "id": "I_kwDOMT5cIs68o4X0",
-      "title": "server",
-      "author": "furkannabisumji",
-      "number": 5230,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-21T06:56:44Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 1
@@ -121,10 +121,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 55364,
-    "deletions": 11533,
-    "files": 278,
-    "commitCount": 477
+    "additions": 61898,
+    "deletions": 13019,
+    "files": 316,
+    "commitCount": 550
   },
   "completedItems": [
     {
@@ -691,23 +691,78 @@
       "title": "fix: Windows plugin loading and dev command failures (#5407)",
       "prNumber": 5437,
       "type": "bugfix"
+    },
+    {
+      "title": "fix: correct Google Generative AI plugin installation",
+      "prNumber": 5503,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: Smooth progressive reveal with cap, remove AIWriter swap causing hiccups",
+      "prNumber": 5495,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: add embedded \"Add\" button inside input for better UX",
+      "prNumber": 5493,
+      "type": "feature"
+    },
+    {
+      "title": "fix: critical issues in action chaining implementation",
+      "prNumber": 5490,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: add comprehensive test coverage for forms plugin",
+      "prNumber": 5489,
+      "type": "feature"
+    },
+    {
+      "title": "fix: address critical issues in forms plugin",
+      "prNumber": 5488,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: Form plugin",
+      "prNumber": 5487,
+      "type": "feature"
+    },
+    {
+      "title": "fix: prevent PGLITE database hoisting to parent .eliza directory",
+      "prNumber": 5485,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: merge develop to main",
+      "prNumber": 5484,
+      "type": "other"
+    },
+    {
+      "title": "feat: move client distribution from CLI to server package",
+      "prNumber": 5483,
+      "type": "feature"
+    },
+    {
+      "title": "fix: enhance SPA routing debugging and reliability",
+      "prNumber": 5481,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 1468.1935693949501,
-      "prScore": 1450.7255693949503,
+      "totalScore": 1786.8022030434488,
+      "prScore": 1764.3962030434488,
       "issueScore": 0,
-      "reviewScore": 14.5,
-      "commentScore": 2.9679999999999995
+      "reviewScore": 19,
+      "commentScore": 3.4059999999999997
     },
     {
       "username": "tcm390",
       "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4",
-      "totalScore": 831.0608998342864,
-      "prScore": 831.0608998342864,
+      "totalScore": 881.2334361929254,
+      "prScore": 881.2334361929254,
       "issueScore": 0,
       "reviewScore": 0,
       "commentScore": 0
@@ -715,34 +770,34 @@
     {
       "username": "cursor",
       "avatarUrl": "https://avatars.githubusercontent.com/in/1210556?v=4",
-      "totalScore": 528.214,
+      "totalScore": 600.414,
       "prScore": 0,
       "issueScore": 0,
-      "reviewScore": 526.5,
-      "commentScore": 1.714
+      "reviewScore": 598.5,
+      "commentScore": 1.914
     },
     {
       "username": "SYMBaiEX",
       "avatarUrl": "https://avatars.githubusercontent.com/u/192078165?u=a6e562521cc94448799ea50ebc1faeda3c3cef26&v=4",
-      "totalScore": 270.7755564720922,
+      "totalScore": 276.7755564720922,
       "prScore": 258.7375564720922,
-      "issueScore": 2,
+      "issueScore": 8,
       "reviewScore": 9,
       "commentScore": 1.038
     },
     {
-      "username": "yungalgo",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/113615973?u=92e0f29f7e2fbb8ce46ed13c51f692ca803de02d&v=4",
-      "totalScore": 158.47998975408248,
-      "prScore": 148.16198975408247,
+      "username": "ChristopherTrimboli",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
+      "totalScore": 164.11278729264083,
+      "prScore": 118.11278729264082,
       "issueScore": 0,
-      "reviewScore": 9,
-      "commentScore": 1.3179999999999998
+      "reviewScore": 46,
+      "commentScore": 0
     }
   ],
-  "newPRs": 129,
-  "mergedPRs": 113,
-  "newIssues": 17,
-  "closedIssues": 15,
-  "activeContributors": 25
+  "newPRs": 145,
+  "mergedPRs": 124,
+  "newIssues": 25,
+  "closedIssues": 17,
+  "activeContributors": 28
 }

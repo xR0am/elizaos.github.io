@@ -5,8 +5,19 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-07-06 to 2025-07-13, elizaos/eliza had 59 new PRs (52 merged), 6 new issues, and 18 active contributors.",
+  "overview": "From 2025-07-06 to 2025-07-13, elizaos/eliza had 75 new PRs (63 merged), 14 new issues, and 21 active contributors.",
   "topIssues": [
+    {
+      "id": "I_kwDOMT5cIs6_lbUB",
+      "title": "Dependency installation failed with exit code 1",
+      "author": "XiongUp123",
+      "number": 5482,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-07-09T02:13:50Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 3
+    },
     {
       "id": "I_kwDOMT5cIs68qLqY",
       "title": "Documentation Overhaul: Create Separate Tracks for Simple Users and Developers",
@@ -110,10 +121,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 41231,
-    "deletions": 5100,
-    "files": 197,
-    "commitCount": 184
+    "additions": 47765,
+    "deletions": 6586,
+    "files": 237,
+    "commitCount": 252
   },
   "completedItems": [
     {
@@ -375,58 +386,113 @@
       "title": "fix: Windows plugin loading and dev command failures (#5407)",
       "prNumber": 5437,
       "type": "bugfix"
+    },
+    {
+      "title": "fix: correct Google Generative AI plugin installation",
+      "prNumber": 5503,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: Smooth progressive reveal with cap, remove AIWriter swap causing hiccups",
+      "prNumber": 5495,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: add embedded \"Add\" button inside input for better UX",
+      "prNumber": 5493,
+      "type": "feature"
+    },
+    {
+      "title": "fix: critical issues in action chaining implementation",
+      "prNumber": 5490,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: add comprehensive test coverage for forms plugin",
+      "prNumber": 5489,
+      "type": "feature"
+    },
+    {
+      "title": "fix: address critical issues in forms plugin",
+      "prNumber": 5488,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: Form plugin",
+      "prNumber": 5487,
+      "type": "feature"
+    },
+    {
+      "title": "fix: prevent PGLITE database hoisting to parent .eliza directory",
+      "prNumber": 5485,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: merge develop to main",
+      "prNumber": 5484,
+      "type": "other"
+    },
+    {
+      "title": "feat: move client distribution from CLI to server package",
+      "prNumber": 5483,
+      "type": "feature"
+    },
+    {
+      "title": "fix: enhance SPA routing debugging and reliability",
+      "prNumber": 5481,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 770.4397321883771,
-      "prScore": 759.2237321883771,
+      "totalScore": 1089.0483658368755,
+      "prScore": 1072.8943658368757,
       "issueScore": 0,
-      "reviewScore": 10,
-      "commentScore": 1.2159999999999997
+      "reviewScore": 14.5,
+      "commentScore": 1.654
+    },
+    {
+      "username": "cursor",
+      "avatarUrl": "https://avatars.githubusercontent.com/in/1210556?v=4",
+      "totalScore": 247.9,
+      "prScore": 0,
+      "issueScore": 0,
+      "reviewScore": 247.5,
+      "commentScore": 0.4
     },
     {
       "username": "tcm390",
       "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4",
-      "totalScore": 184.95571206271165,
-      "prScore": 184.95571206271165,
+      "totalScore": 235.12824842135063,
+      "prScore": 235.12824842135063,
       "issueScore": 0,
       "reviewScore": 0,
       "commentScore": 0
     },
     {
-      "username": "cursor",
-      "avatarUrl": "https://avatars.githubusercontent.com/in/1210556?v=4",
-      "totalScore": 175.7,
-      "prScore": 0,
-      "issueScore": 0,
-      "reviewScore": 175.5,
-      "commentScore": 0.2
-    },
-    {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 106.52492245119188,
-      "prScore": 80.52492245119188,
+      "totalScore": 126.23491618584737,
+      "prScore": 90.23491618584737,
       "issueScore": 0,
-      "reviewScore": 26,
+      "reviewScore": 36,
       "commentScore": 0
     },
     {
       "username": "SYMBaiEX",
       "avatarUrl": "https://avatars.githubusercontent.com/u/192078165?u=a6e562521cc94448799ea50ebc1faeda3c3cef26&v=4",
-      "totalScore": 93.09267084922094,
+      "totalScore": 99.09267084922094,
       "prScore": 92.69267084922093,
-      "issueScore": 0,
+      "issueScore": 6,
       "reviewScore": 0,
       "commentScore": 0.4
     }
   ],
-  "newPRs": 59,
-  "mergedPRs": 52,
-  "newIssues": 6,
-  "closedIssues": 6,
-  "activeContributors": 18
+  "newPRs": 75,
+  "mergedPRs": 63,
+  "newIssues": 14,
+  "closedIssues": 8,
+  "activeContributors": 21
 }
