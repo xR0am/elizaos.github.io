@@ -5,7 +5,7 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-07-06 to 2025-07-13, elizaos/eliza had 75 new PRs (63 merged), 14 new issues, and 21 active contributors.",
+  "overview": "From 2025-07-06 to 2025-07-13, elizaos/eliza had 89 new PRs (72 merged), 15 new issues, and 22 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs6_lbUB",
@@ -30,6 +30,17 @@
       "commentCount": 1
     },
     {
+      "id": "I_kwDOMT5cIs6_wA-H",
+      "title": "Plugin-local-ai failing to load on Windows",
+      "author": "SYMBaiEX",
+      "number": 5499,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-07-09T20:17:29Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 1
+    },
+    {
       "id": "I_kwDOMT5cIs6_fwQX",
       "title": "v1 to v2 character migrator",
       "author": "borisudovicic",
@@ -47,17 +58,6 @@
       "number": 5447,
       "repository": "elizaos/eliza",
       "createdAt": "2025-07-08T12:38:21Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 0
-    },
-    {
-      "id": "I_kwDOMT5cIs6_cOOU",
-      "title": "Set up rate limited Eliza hosted LLM and embedding endpoint",
-      "author": "borisudovicic",
-      "number": 5438,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-07-08T09:54:52Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 0
@@ -109,22 +109,22 @@
       "deletions": 579
     },
     {
-      "id": "PR_kwDOMT5cIs6dlDSZ",
-      "title": "fix: issue 5407 windows plugin loading",
-      "author": "ai16z-demirix",
-      "number": 5415,
+      "id": "PR_kwDOMT5cIs6eONyH",
+      "title": "Add planning plugin",
+      "author": "lalalune",
+      "number": 5506,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-07-05T19:23:39Z",
+      "createdAt": "2025-07-10T03:38:15Z",
       "mergedAt": null,
-      "additions": 8965,
-      "deletions": 3131
+      "additions": 20201,
+      "deletions": 127
     }
   ],
   "codeChanges": {
-    "additions": 47765,
-    "deletions": 6586,
-    "files": 237,
-    "commitCount": 252
+    "additions": 54017,
+    "deletions": 32929,
+    "files": 310,
+    "commitCount": 289
   },
   "completedItems": [
     {
@@ -388,8 +388,18 @@
       "type": "bugfix"
     },
     {
+      "title": "feat: add action chaining",
+      "prNumber": 5436,
+      "type": "feature"
+    },
+    {
       "title": "fix: correct Google Generative AI plugin installation",
       "prNumber": 5503,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: improve secret panel UX for global environment variables",
+      "prNumber": 5501,
       "type": "bugfix"
     },
     {
@@ -441,58 +451,93 @@
       "title": "fix: enhance SPA routing debugging and reliability",
       "prNumber": 5481,
       "type": "bugfix"
+    },
+    {
+      "title": "feat: enhance Claude code review workflow with ElizaOS-specific guidelines",
+      "prNumber": 5519,
+      "type": "feature"
+    },
+    {
+      "title": "fix typo in prompts.ts",
+      "prNumber": 5516,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: CLI tests failing due to version mismatch and ActionResult import",
+      "prNumber": 5515,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: update plugin-starter dependencies to use workspace version",
+      "prNumber": 5514,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: remove deleted directories from docs build config",
+      "prNumber": 5513,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: update TypeScript return types for strict compliance",
+      "prNumber": 5512,
+      "type": "bugfix"
+    },
+    {
+      "title": "Remove AGENTS.md file",
+      "prNumber": 5511,
+      "type": "other"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 1089.0483658368755,
-      "prScore": 1072.8943658368757,
+      "totalScore": 1264.7695360945088,
+      "prScore": 1248.177536094509,
       "issueScore": 0,
       "reviewScore": 14.5,
-      "commentScore": 1.654
+      "commentScore": 2.0919999999999996
+    },
+    {
+      "username": "lalalune",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
+      "totalScore": 307.04352458966355,
+      "prScore": 306.84352458966356,
+      "issueScore": 0,
+      "reviewScore": 0,
+      "commentScore": 0.2
     },
     {
       "username": "cursor",
       "avatarUrl": "https://avatars.githubusercontent.com/in/1210556?v=4",
-      "totalScore": 247.9,
+      "totalScore": 288.4,
       "prScore": 0,
       "issueScore": 0,
-      "reviewScore": 247.5,
+      "reviewScore": 288,
       "commentScore": 0.4
     },
     {
       "username": "tcm390",
       "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4",
-      "totalScore": 235.12824842135063,
+      "totalScore": 240.12824842135063,
       "prScore": 235.12824842135063,
       "issueScore": 0,
-      "reviewScore": 0,
+      "reviewScore": 5,
       "commentScore": 0
     },
     {
       "username": "ChristopherTrimboli",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 126.23491618584737,
+      "totalScore": 149.23491618584737,
       "prScore": 90.23491618584737,
       "issueScore": 0,
-      "reviewScore": 36,
+      "reviewScore": 59,
       "commentScore": 0
-    },
-    {
-      "username": "SYMBaiEX",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/192078165?u=a6e562521cc94448799ea50ebc1faeda3c3cef26&v=4",
-      "totalScore": 99.09267084922094,
-      "prScore": 92.69267084922093,
-      "issueScore": 6,
-      "reviewScore": 0,
-      "commentScore": 0.4
     }
   ],
-  "newPRs": 75,
-  "mergedPRs": 63,
-  "newIssues": 14,
+  "newPRs": 89,
+  "mergedPRs": 72,
+  "newIssues": 15,
   "closedIssues": 8,
-  "activeContributors": 21
+  "activeContributors": 22
 }
