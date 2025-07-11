@@ -5,8 +5,19 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-07-01 to 2025-08-01, elizaos/eliza had 159 new PRs (133 merged), 26 new issues, and 29 active contributors.",
+  "overview": "From 2025-07-01 to 2025-08-01, elizaos/eliza had 188 new PRs (158 merged), 33 new issues, and 31 active contributors.",
   "topIssues": [
+    {
+      "id": "I_kwDOMT5cIs6_wA-H",
+      "title": "Plugin-local-ai failing to load on Windows",
+      "author": "SYMBaiEX",
+      "number": 5499,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-07-09T20:17:29Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 3
+    },
     {
       "id": "I_kwDOMT5cIs6_lbUB",
       "title": "Dependency installation failed with exit code 1",
@@ -50,17 +61,6 @@
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 1
-    },
-    {
-      "id": "I_kwDOMT5cIs68iWIi",
-      "title": "EVENT MESSAGE SENT not working",
-      "author": "Srenonno",
-      "number": 5216,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-20T12:13:56Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 1
     }
   ],
   "topPRs": [
@@ -87,6 +87,17 @@
       "deletions": 1326
     },
     {
+      "id": "PR_kwDOMT5cIs6eZi5-",
+      "title": "Feat: Autocoder + e2b sandboxes",
+      "author": "lalalune",
+      "number": 5520,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-07-11T00:32:15Z",
+      "mergedAt": null,
+      "additions": 44135,
+      "deletions": 0
+    },
+    {
       "id": "PR_kwDOMT5cIs6doDDm",
       "title": "chore: 1.0.18",
       "author": "wtfsayo",
@@ -107,24 +118,13 @@
       "mergedAt": null,
       "additions": 27799,
       "deletions": 1420
-    },
-    {
-      "id": "PR_kwDOMT5cIs6ddQIv",
-      "title": "feat: implement comprehensive documentation overhaul with two-track system",
-      "author": "SYMBaiEX",
-      "number": 5401,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-07-04T14:30:08Z",
-      "mergedAt": "2025-07-06T08:15:11Z",
-      "additions": 26647,
-      "deletions": 579
     }
   ],
   "codeChanges": {
-    "additions": 68150,
-    "deletions": 39362,
-    "files": 387,
-    "commitCount": 587
+    "additions": 74746,
+    "deletions": 45939,
+    "files": 439,
+    "commitCount": 675
   },
   "completedItems": [
     {
@@ -791,23 +791,148 @@
       "title": "Remove AGENTS.md file",
       "prNumber": 5511,
       "type": "other"
+    },
+    {
+      "title": "Add configs package",
+      "prNumber": 5508,
+      "type": "feature"
+    },
+    {
+      "title": "fix: grant Claude workflow write permissions for issues",
+      "prNumber": 5553,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: grant Claude workflow permissions for bun and GitHub CLI commands",
+      "prNumber": 5550,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: Keep user on agent settings page after saving changes instead of redirecting to dashboard",
+      "prNumber": 5548,
+      "type": "other"
+    },
+    {
+      "title": "feat: Auto-resize ChatInput textarea with max height for improved UX",
+      "prNumber": 5546,
+      "type": "feature"
+    },
+    {
+      "title": "fix: critical fixes for code quality workflow",
+      "prNumber": 5544,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: enhance code quality workflow with Claude automation",
+      "prNumber": 5543,
+      "type": "feature"
+    },
+    {
+      "title": "fix: handle GitHub issue body character limit in code quality workflow",
+      "prNumber": 5541,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: workaround Claude action limitations with issue-based approach",
+      "prNumber": 5540,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: parallelize code quality workflow and fix Claude action for scheduled runs",
+      "prNumber": 5539,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: resolve daily code quality workflow failures",
+      "prNumber": 5538,
+      "type": "bugfix"
+    },
+    {
+      "title": "Fix plugin inclusion in character configuration",
+      "prNumber": 5537,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: add V1 to V2 character conversion on import with plugin matching",
+      "prNumber": 5536,
+      "type": "feature"
+    },
+    {
+      "title": "fix: awk script for accurate function detection",
+      "prNumber": 5535,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: knip.json generation bug",
+      "prNumber": 5534,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: undefined MAX_RESULTS variable bug",
+      "prNumber": 5533,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: add code quality analysis and documentation consistency tools",
+      "prNumber": 5532,
+      "type": "feature"
+    },
+    {
+      "title": "feat: remove execa for bun.Spawn and add more logging",
+      "prNumber": 5531,
+      "type": "feature"
+    },
+    {
+      "title": "Fix LLM ambiguity handling bugs",
+      "prNumber": 5529,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: clarifying prompt exclusivity for IGNORE",
+      "prNumber": 5528,
+      "type": "bugfix"
+    },
+    {
+      "title": "chore: remove plugin-forms",
+      "prNumber": 5527,
+      "type": "other"
+    },
+    {
+      "title": "fix: Refine LLM provider selection prompt to reduce unnecessary provider use and improve reply speed",
+      "prNumber": 5526,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: Improve prompt to enforce correct fenced code block formatting in LLM replies",
+      "prNumber": 5525,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: cleanup and fix configs package",
+      "prNumber": 5524,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: duplicate # Available Actions sections by unifying action formatting using formatActions",
+      "prNumber": 5523,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 1962.5233733010818,
-      "prScore": 1939.679373301082,
-      "issueScore": 0,
+      "totalScore": 2292.2263826922344,
+      "prScore": 2248.9443826922347,
+      "issueScore": 20,
       "reviewScore": 19,
-      "commentScore": 3.8439999999999994
+      "commentScore": 4.281999999999999
     },
     {
       "username": "tcm390",
       "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4",
-      "totalScore": 886.2334361929254,
-      "prScore": 881.2334361929254,
+      "totalScore": 1177.2270596961694,
+      "prScore": 1172.2270596961694,
       "issueScore": 0,
       "reviewScore": 5,
       "commentScore": 0
@@ -815,34 +940,34 @@
     {
       "username": "cursor",
       "avatarUrl": "https://avatars.githubusercontent.com/in/1210556?v=4",
-      "totalScore": 640.914,
+      "totalScore": 758.114,
       "prScore": 0,
       "issueScore": 0,
-      "reviewScore": 639,
-      "commentScore": 1.914
+      "reviewScore": 756,
+      "commentScore": 2.114
     },
     {
       "username": "lalalune",
       "avatarUrl": "https://avatars.githubusercontent.com/u/18633264?u=e2e906c3712c2506ebfa98df01c2cfdc50050b30&v=4",
-      "totalScore": 307.04352458966355,
-      "prScore": 306.84352458966356,
+      "totalScore": 408.90784627939183,
+      "prScore": 408.70784627939184,
       "issueScore": 0,
       "reviewScore": 0,
       "commentScore": 0.2
     },
     {
-      "username": "SYMBaiEX",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/192078165?u=a6e562521cc94448799ea50ebc1faeda3c3cef26&v=4",
-      "totalScore": 276.7755564720922,
-      "prScore": 258.7375564720922,
-      "issueScore": 8,
-      "reviewScore": 9,
-      "commentScore": 1.038
+      "username": "ChristopherTrimboli",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
+      "totalScore": 358.1335132221946,
+      "prScore": 282.6955132221946,
+      "issueScore": 0,
+      "reviewScore": 75,
+      "commentScore": 0.43799999999999994
     }
   ],
-  "newPRs": 159,
-  "mergedPRs": 133,
-  "newIssues": 26,
-  "closedIssues": 17,
-  "activeContributors": 29
+  "newPRs": 188,
+  "mergedPRs": 158,
+  "newIssues": 33,
+  "closedIssues": 27,
+  "activeContributors": 31
 }
