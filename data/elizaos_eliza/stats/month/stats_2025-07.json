@@ -5,18 +5,29 @@
     "intervalType": "month"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-07-01 to 2025-08-01, elizaos/eliza had 188 new PRs (159 merged), 33 new issues, and 31 active contributors.",
+  "overview": "From 2025-07-01 to 2025-08-01, elizaos/eliza had 203 new PRs (166 merged), 42 new issues, and 33 active contributors.",
   "topIssues": [
     {
-      "id": "I_kwDOMT5cIs6_wA-H",
-      "title": "Plugin-local-ai failing to load on Windows",
-      "author": "SYMBaiEX",
-      "number": 5499,
+      "id": "I_kwDOMT5cIs66FJn6",
+      "title": "Custom Plugin - callback from action is getting replaced by `ATTACHMENTS` provider.",
+      "author": "HuzarO",
+      "number": 4947,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-07-09T20:17:29Z",
+      "createdAt": "2025-06-05T16:51:08Z",
       "closedAt": null,
       "state": "OPEN",
-      "commentCount": 3
+      "commentCount": 4
+    },
+    {
+      "id": "I_kwDOMT5cIs68vzQD",
+      "title": "Deploy Eliza agents",
+      "author": "kamalbuilds",
+      "number": 5244,
+      "repository": "elizaos/eliza",
+      "createdAt": "2025-06-23T03:39:00Z",
+      "closedAt": null,
+      "state": "OPEN",
+      "commentCount": 4
     },
     {
       "id": "I_kwDOMT5cIs6_lbUB",
@@ -30,37 +41,26 @@
       "commentCount": 3
     },
     {
-      "id": "I_kwDOMT5cIs68qLqY",
-      "title": "Documentation Overhaul: Create Separate Tracks for Simple Users and Developers",
-      "author": "wtfsayo",
-      "number": 5234,
+      "id": "I_kwDOMT5cIs633y-j",
+      "title": "V3 Goals",
+      "author": "lalalune",
+      "number": 4720,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-21T15:32:34Z",
+      "createdAt": "2025-05-23T00:48:31Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 2
     },
     {
-      "id": "I_kwDOMT5cIs68vzQD",
-      "title": "Deploy Eliza agents",
-      "author": "kamalbuilds",
-      "number": 5244,
+      "id": "I_kwDOMT5cIs65F0gL",
+      "title": "The Chinese document has been deleted.",
+      "author": "debugzhao",
+      "number": 4855,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-06-23T03:39:00Z",
+      "createdAt": "2025-05-31T10:49:38Z",
       "closedAt": null,
       "state": "OPEN",
       "commentCount": 2
-    },
-    {
-      "id": "I_kwDOMT5cIs67xrH_",
-      "title": "@elizaos/cli test command incorrectly requires monorepo root for standalone projects",
-      "author": "sicco-moonbeam",
-      "number": 5142,
-      "repository": "elizaos/eliza",
-      "createdAt": "2025-06-16T15:05:03Z",
-      "closedAt": null,
-      "state": "OPEN",
-      "commentCount": 1
     }
   ],
   "topPRs": [
@@ -121,10 +121,10 @@
     }
   ],
   "codeChanges": {
-    "additions": 80455,
-    "deletions": 45992,
-    "files": 478,
-    "commitCount": 680
+    "additions": 81445,
+    "deletions": 46768,
+    "files": 501,
+    "commitCount": 751
   },
   "completedItems": [
     {
@@ -803,6 +803,11 @@
       "type": "feature"
     },
     {
+      "title": "Fix: tsup build wipes vite build",
+      "prNumber": 5555,
+      "type": "bugfix"
+    },
+    {
       "title": "fix: grant Claude workflow write permissions for issues",
       "prNumber": 5553,
       "type": "bugfix"
@@ -921,17 +926,47 @@
       "title": "fix: duplicate # Available Actions sections by unifying action formatting using formatActions",
       "prNumber": 5523,
       "type": "bugfix"
+    },
+    {
+      "title": "Fix advisory lock acquisition bug",
+      "prNumber": 5572,
+      "type": "bugfix"
+    },
+    {
+      "title": "feat: enhance Claude workflows with full command access and PR commit triggers",
+      "prNumber": 5570,
+      "type": "feature"
+    },
+    {
+      "title": "fix: suppress update notification during update command execution",
+      "prNumber": 5567,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: update CLI test expectations for version 1.2.1",
+      "prNumber": 5561,
+      "type": "bugfix"
+    },
+    {
+      "title": "📝 CodeRabbit Chat: Add verification script and refactor plugin ordering tests for clarity and robustness",
+      "prNumber": 5557,
+      "type": "feature"
+    },
+    {
+      "title": "fix: core tests + replace execa + use bun runtime + replace local-ai + more",
+      "prNumber": 5556,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 2292.2263826922344,
-      "prScore": 2248.9443826922347,
-      "issueScore": 20,
-      "reviewScore": 19,
-      "commentScore": 4.281999999999999
+      "totalScore": 2561.564541351213,
+      "prScore": 2509.244541351213,
+      "issueScore": 24.1,
+      "reviewScore": 23.5,
+      "commentScore": 4.72
     },
     {
       "username": "tcm390",
@@ -945,11 +980,20 @@
     {
       "username": "cursor",
       "avatarUrl": "https://avatars.githubusercontent.com/in/1210556?v=4",
-      "totalScore": 762.614,
+      "totalScore": 879.614,
       "prScore": 0,
       "issueScore": 0,
-      "reviewScore": 760.5,
+      "reviewScore": 877.5,
       "commentScore": 2.114
+    },
+    {
+      "username": "ChristopherTrimboli",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
+      "totalScore": 415.46228711877075,
+      "prScore": 340.02428711877076,
+      "issueScore": 0,
+      "reviewScore": 75,
+      "commentScore": 0.43799999999999994
     },
     {
       "username": "lalalune",
@@ -959,20 +1003,11 @@
       "issueScore": 0,
       "reviewScore": 0,
       "commentScore": 0.2
-    },
-    {
-      "username": "ChristopherTrimboli",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/27584221?u=0d816ce1dcdea8f925aba18bb710153d4a87a719&v=4",
-      "totalScore": 358.1335132221946,
-      "prScore": 282.6955132221946,
-      "issueScore": 0,
-      "reviewScore": 75,
-      "commentScore": 0.43799999999999994
     }
   ],
-  "newPRs": 188,
-  "mergedPRs": 159,
-  "newIssues": 33,
-  "closedIssues": 27,
-  "activeContributors": 31
+  "newPRs": 203,
+  "mergedPRs": 166,
+  "newIssues": 42,
+  "closedIssues": 43,
+  "activeContributors": 33
 }
