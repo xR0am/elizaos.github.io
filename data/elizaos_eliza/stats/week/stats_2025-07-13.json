@@ -5,7 +5,7 @@
     "intervalType": "week"
   },
   "repository": "elizaos/eliza",
-  "overview": "From 2025-07-13 to 2025-07-20, elizaos/eliza had 15 new PRs (7 merged), 9 new issues, and 13 active contributors.",
+  "overview": "From 2025-07-13 to 2025-07-20, elizaos/eliza had 20 new PRs (12 merged), 10 new issues, and 17 active contributors.",
   "topIssues": [
     {
       "id": "I_kwDOMT5cIs66FJn6",
@@ -16,7 +16,7 @@
       "createdAt": "2025-06-05T16:51:08Z",
       "closedAt": null,
       "state": "OPEN",
-      "commentCount": 4
+      "commentCount": 5
     },
     {
       "id": "I_kwDOMT5cIs633y-j",
@@ -83,8 +83,8 @@
       "repository": "elizaos/eliza",
       "createdAt": "2025-07-13T16:41:12Z",
       "mergedAt": null,
-      "additions": 2837,
-      "deletions": 20
+      "additions": 3967,
+      "deletions": 730
     },
     {
       "id": "PR_kwDOMT5cIs6esQvQ",
@@ -109,24 +109,29 @@
       "deletions": 2
     },
     {
-      "id": "PR_kwDOMT5cIs6esO9k",
-      "title": "feat: implement customizable logger configuration for downstream projects",
+      "id": "PR_kwDOMT5cIs6evMAO",
+      "title": "fix: address type safety and testing issues from PR #5505",
       "author": "wtfsayo",
-      "number": 5563,
+      "number": 5580,
       "repository": "elizaos/eliza",
-      "createdAt": "2025-07-13T16:29:46Z",
-      "mergedAt": null,
-      "additions": 601,
-      "deletions": 1
+      "createdAt": "2025-07-14T06:32:00Z",
+      "mergedAt": "2025-07-14T06:33:19Z",
+      "additions": 1366,
+      "deletions": 51
     }
   ],
   "codeChanges": {
-    "additions": 990,
-    "deletions": 776,
-    "files": 48,
-    "commitCount": 71
+    "additions": 3265,
+    "deletions": 904,
+    "files": 65,
+    "commitCount": 108
   },
   "completedItems": [
+    {
+      "title": "fix: auto-build project on 'elizaos start' command",
+      "prNumber": 5504,
+      "type": "bugfix"
+    },
     {
       "title": "Fix: tsup build wipes vite build",
       "prNumber": 5555,
@@ -148,6 +153,11 @@
       "type": "bugfix"
     },
     {
+      "title": "fix: graceful shutdown for dev server on Cmd+C (SIGINT/SIGTERM)",
+      "prNumber": 5562,
+      "type": "bugfix"
+    },
+    {
       "title": "fix: update CLI test expectations for version 1.2.1",
       "prNumber": 5561,
       "type": "bugfix"
@@ -161,26 +171,41 @@
       "title": "fix: core tests + replace execa + use bun runtime + replace local-ai + more",
       "prNumber": 5556,
       "type": "bugfix"
+    },
+    {
+      "title": "chore: provider mapping",
+      "prNumber": 5582,
+      "type": "other"
+    },
+    {
+      "title": "Fix auto-build test flag usage",
+      "prNumber": 5581,
+      "type": "bugfix"
+    },
+    {
+      "title": "fix: address type safety and testing issues from PR #5505",
+      "prNumber": 5580,
+      "type": "bugfix"
     }
   ],
   "topContributors": [
     {
       "username": "wtfsayo",
       "avatarUrl": "https://avatars.githubusercontent.com/u/82053242?u=98209a1f10456f42d4d2fa71db4d5bf4a672cbc3&v=4",
-      "totalScore": 269.3381586589782,
-      "prScore": 260.3001586589782,
-      "issueScore": 4.1,
+      "totalScore": 365.44856166082667,
+      "prScore": 354.41056166082666,
+      "issueScore": 6.1,
       "reviewScore": 4.5,
       "commentScore": 0.43799999999999994
     },
     {
       "username": "cursor",
       "avatarUrl": "https://avatars.githubusercontent.com/in/1210556?v=4",
-      "totalScore": 117,
+      "totalScore": 180.2,
       "prScore": 0,
       "issueScore": 0,
-      "reviewScore": 117,
-      "commentScore": 0
+      "reviewScore": 180,
+      "commentScore": 0.2
     },
     {
       "username": "ChristopherTrimboli",
@@ -192,27 +217,27 @@
       "commentScore": 0
     },
     {
-      "username": "linear",
-      "avatarUrl": "https://avatars.githubusercontent.com/in/20150?v=4",
-      "totalScore": 16,
-      "prScore": 0,
-      "issueScore": 16,
+      "username": "QuasiPlanets",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/196568543?u=e9348d1ce7224da005aa0cfd8cbc407cdfbe82ed&v=4",
+      "totalScore": 27.539891235220416,
+      "prScore": 27.539891235220416,
+      "issueScore": 0,
       "reviewScore": 0,
       "commentScore": 0
     },
     {
-      "username": "github-advanced-security",
-      "avatarUrl": "https://avatars.githubusercontent.com/in/57789?v=4",
-      "totalScore": 4.5,
-      "prScore": 0,
+      "username": "tcm390",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/60634884?u=c6c41679b8322eaa0c81f72e0b4ed95e80f0ac16&v=4",
+      "totalScore": 20.756573590279974,
+      "prScore": 20.556573590279974,
       "issueScore": 0,
-      "reviewScore": 4.5,
-      "commentScore": 0
+      "reviewScore": 0,
+      "commentScore": 0.2
     }
   ],
-  "newPRs": 15,
-  "mergedPRs": 7,
-  "newIssues": 9,
-  "closedIssues": 16,
-  "activeContributors": 13
+  "newPRs": 20,
+  "mergedPRs": 12,
+  "newIssues": 10,
+  "closedIssues": 17,
+  "activeContributors": 17
 }
