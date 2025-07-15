@@ -16,7 +16,7 @@ import { desc } from "drizzle-orm";
 import { rawPullRequests } from "@/lib/data/schema";
 import { UTCDate } from "@date-fns/utc";
 import fs from "fs/promises";
-import { getRepoFilePath } from "@/lib/fsHelpers";
+import { getOverallSummaryFilePath } from "@/lib/fsHelpers";
 
 export async function getLatestAvailableDate() {
   const date = await db
@@ -226,19 +226,14 @@ export async function getIntervalSummaryContent(
     }
 
     const fileName = `${actualDateForFileName}.md`;
-    const repoId = "elizaos_eliza"; // As per existing hardcoded path
     const outputDir = "data"; // Root directory for summaries relative to project
 
-    const filePath = getRepoFilePath(
+    const filePath = getOverallSummaryFilePath(
       outputDir,
-      repoId,
-      "summaries",
       intervalType,
       fileName,
     );
 
-    // getRepoFilePath returns a path like 'data/elizaos_eliza/summaries/month/2023-01-01.md'
-    // which fs.readFile can use relative to process.cwd()
     const content = await fs.readFile(filePath, "utf-8");
     return content;
   } catch (error) {
