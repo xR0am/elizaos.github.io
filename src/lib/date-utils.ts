@@ -6,6 +6,7 @@ import {
   addMonths,
   differenceInDays,
 } from "date-fns";
+import { IntervalType, TimeInterval } from "./date-utils";
 
 /**
  * Extracts date from a title string in format "elizaos Eliza (2025-01-12)"
@@ -506,4 +507,47 @@ export function getIntervalTypeFromDateRange(dateRange: {
   } else {
     return "month";
   }
+} /**
+ * Parse date string based on interval type format
+ * @param dateStr - Date string to parse
+ * @param intervalType - Interval type (day, week, month)
+ * @returns TimeInterval object or null if invalid
+ */
+
+export function parseIntervalDate(
+  dateStr: string,
+  intervalType: IntervalType,
+): TimeInterval | null {
+  let referenceDate: UTCDate;
+
+  if (intervalType === "day") {
+    if (!isValidDateString(dateStr)) return null;
+    referenceDate = new UTCDate(dateStr);
+  } else if (intervalType === "week") {
+    if (!isValidDateString(dateStr)) return null;
+    referenceDate = new UTCDate(dateStr);
+  } else if (intervalType === "month") {
+    const monthPattern = /^\d{4}-\d{2}(-\d{2})?$/;
+    if (!monthPattern.test(dateStr)) return null;
+    const [yearStr, monthStr] = dateStr.split("-");
+    const year = parseInt(yearStr);
+    const month = parseInt(monthStr) - 1; // Month is 0-indexed for UTCDate constructor
+
+    // For month, we use the 1st day of the month as the reference to align with calculateIntervalBoundaries
+    referenceDate = new UTCDate(Date.UTC(year, month, 1));
+  } else {
+    return null; // Should not happen with IntervalType
+  }
+
+  // Use the centralized helper function to get interval boundaries
+  const { intervalStart, intervalEnd } = calculateIntervalBoundaries(
+    referenceDate,
+    intervalType,
+  );
+
+  return {
+    intervalStart,
+    intervalEnd,
+    intervalType,
+  };
 }
