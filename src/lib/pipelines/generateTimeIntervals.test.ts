@@ -3,23 +3,10 @@ import { generateTimeIntervals } from "./generateTimeIntervals";
 import { toDateString } from "../date-utils";
 import { UTCDate } from "@date-fns/utc";
 import { RepoPipelineContext } from "./types";
-import { PipelineConfigSchema } from "./pipelineConfig";
+import pipelineConfig from "../../../config/pipeline.config";
 import { Logger } from "../logger";
 
 describe("generateTimeIntervals", () => {
-  const mockConfig = PipelineConfigSchema.safeParse({
-    repositories: [{ owner: "test", name: "test-repo", defaultBranch: "main" }],
-    scoring: {},
-    tags: { area: [], role: [], tech: [] },
-    aiSummary: {
-      enabled: false,
-      model: "gpt-3.5-turbo",
-      contributorSummary: {},
-      repoSummary: {},
-      overallSummary: {},
-    },
-  });
-
   const mockLogger = {
     debug: () => {},
     info: () => {},
@@ -32,7 +19,7 @@ describe("generateTimeIntervals", () => {
 
   const mockContext: RepoPipelineContext = {
     logger: mockLogger,
-    config: mockConfig,
+    config: pipelineConfig,
   };
 
   it("should generate daily intervals correctly", async () => {
@@ -71,7 +58,7 @@ describe("generateTimeIntervals", () => {
       {
         ...mockContext,
         config: {
-          ...mockConfig,
+          ...pipelineConfig,
           contributionStartDate: toDateString(new UTCDate("2024-01-01")),
         },
         dateRange: { endDate: toDateString(new UTCDate("2024-01-08")) },
