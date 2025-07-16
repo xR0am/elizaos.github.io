@@ -4,9 +4,9 @@ import {
   clearMatcherCache,
   getMatcherCacheSize,
   createMatcher, // Import createMatcher to test error caching
-} from "../getMatcherFunction";
-import { PatternType, TagPattern } from "../types";
-import { TagPatternType } from "../../data/tags";
+} from "./getMatcherFunction";
+import { PatternType, TagPattern } from "./types";
+import { TagPatternType } from "../data/tags";
 
 // Mock createMatcher to track calls and simulate errors
 let createMatcherCallCount = 0;

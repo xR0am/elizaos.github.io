@@ -1,8 +1,8 @@
 import { describe, expect, it, beforeEach } from "bun:test";
-import { matchPatterns, matchAnyPattern } from "../matchPatterns";
-import { clearMatcherCache, getMatcherFunction } from "../getMatcherFunction";
-import { TagPatternType } from "../../data/tags";
-import { PatternType, TagPattern } from "../types";
+import { matchPatterns, matchAnyPattern } from "./matchPatterns";
+import { clearMatcherCache, getMatcherFunction } from "./getMatcherFunction";
+import { TagPatternType } from "../data/tags";
+import { PatternType, TagPattern } from "./types";
 
 describe("Pattern Matching Functions", () => {
   beforeEach(() => {
