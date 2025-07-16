@@ -6,7 +6,6 @@ import {
   addMonths,
   differenceInDays,
 } from "date-fns";
-import { IntervalType, TimeInterval } from "./date-utils";
 
 /**
  * Extracts date from a title string in format "elizaos Eliza (2025-01-12)"
