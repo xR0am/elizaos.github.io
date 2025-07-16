@@ -1,5 +1,5 @@
 import { describe, expect, it, mock, beforeEach } from "bun:test";
-import { setupTestDb } from "../../../tests/helpers/db";
+import { setupTestDb } from "@/__testing__/helpers/db";
 import {
   getScoresByTimePeriod,
   getUserAggregatedScore,
@@ -11,8 +11,8 @@ import * as schema from "../data/schema";
 import {
   generateMockUsers,
   generateMockUserDailyScores,
-} from "../../../tests/helpers/mock-data";
-import { toDateString } from "../date-utils";
+} from "@/__testing__/helpers/mock-data";
+import { toDateString } from "@/lib/date-utils";
 import { UTCDate } from "@date-fns/utc";
 
 describe("Scoring queries", () => {

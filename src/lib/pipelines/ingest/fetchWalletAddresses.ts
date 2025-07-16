@@ -9,7 +9,7 @@ import {
   SUPPORTED_CHAINS_NAMES,
   validateAddress,
 } from "@/lib/walletLinking/chainUtils";
-import { batchFetchWalletDataFromGithub } from "../../walletLinking/fetchWalletDataFromGithub";
+import { batchFetchWalletDataFromGithub } from "@/lib/walletLinking/fetchWalletDataFromGithub";
 import { chunk } from "@/lib/arrayHelpers";
 
 interface WalletAddressIngestResult {

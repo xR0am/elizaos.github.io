@@ -1,5 +1,5 @@
 import { describe, expect, it, beforeEach, mock } from "bun:test";
-import { setupTestDb } from "../../../tests/helpers/db";
+import { setupTestDb } from "@/__testing__/helpers/db";
 import { getActiveContributors } from "./getActiveContributors";
 import * as schema from "../data/schema";
 import {
@@ -7,7 +7,7 @@ import {
   generateMockPullRequests,
   generateMockIssues,
   generateMockIssueComments,
-} from "../../../tests/helpers/mock-data";
+} from "@/__testing__/helpers/mock-data";
 
 describe("getActiveContributors", () => {
   let db: ReturnType<typeof setupTestDb>;

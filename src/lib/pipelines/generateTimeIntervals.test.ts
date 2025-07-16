@@ -3,7 +3,7 @@ import { generateTimeIntervals } from "./generateTimeIntervals";
 import { toDateString } from "../date-utils";
 import { UTCDate } from "@date-fns/utc";
 import { RepoPipelineContext } from "./types";
-import pipelineConfig from "../../../config/pipeline.config";
+import pipelineConfig from "@/../config/pipeline.config";
 import { Logger } from "../logger";
 
 describe("generateTimeIntervals", () => {

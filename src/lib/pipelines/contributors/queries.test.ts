@@ -1,11 +1,11 @@
 import { describe, expect, it, beforeEach, mock } from "bun:test";
-import { setupTestDb } from "../../../../tests/helpers/db";
-import * as schema from "../../data/schema";
+import { setupTestDb } from "@/__testing__/helpers/db";
+import * as schema from "@/lib/data/schema";
 import {
   generateMockUsers,
   generateMockPullRequests,
   generateMockIssues,
-} from "../../../../tests/helpers/mock-data";
+} from "@/__testing__/helpers/mock-data";
 import {
   getContributorPRs,
   getContributorPRMetrics,
@@ -21,7 +21,7 @@ describe("Contributor Queries", () => {
 
   beforeEach(async () => {
     db = setupTestDb();
-    mock.module("../../data/db", () => ({ db }));
+    mock.module("@/lib/data/db", () => ({ db }));
     await db.insert(schema.users).values(generateMockUsers([testUser]));
   });
 

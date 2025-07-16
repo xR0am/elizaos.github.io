@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import type { InferInsertModel } from "drizzle-orm";
-import * as schema from "../../src/lib/data/schema";
+import * as schema from "@/lib/data/schema";
 import type {
   users,
   userDailyScores,
@@ -8,8 +8,8 @@ import type {
   rawIssues,
   issueComments,
   rawPullRequestFiles,
-} from "../../src/lib/data/schema";
-import { toDateString } from "../../src/lib/date-utils";
+} from "@/lib/data/schema";
+import { toDateString } from "@/lib/date-utils";
 import { UTCDate } from "@date-fns/utc";
 
 type User = InferInsertModel<typeof users>;

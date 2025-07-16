@@ -1,6 +1,6 @@
 import { describe, expect, it, beforeEach, mock } from "bun:test";
-import { setupTestDb } from "../../../../tests/helpers/db";
-import * as schema from "../../data/schema";
+import { setupTestDb } from "@/__testing__/helpers/db";
+import * as schema from "@/lib/data/schema";
 import {
   generateMockUsers,
   generateMockPullRequests,
@@ -12,7 +12,7 @@ import {
   generateMockPullRequestFiles,
   generateMockUserSummaries,
   generateMockRepoSummaries,
-} from "../../../../tests/helpers/mock-data";
+} from "@/__testing__/helpers/mock-data";
 import {
   getContributorMetrics,
   getContributorSummariesForInterval,
@@ -20,7 +20,7 @@ import {
   getActiveReposInInterval,
   getAllRepoSummariesForInterval,
 } from "./queries";
-import { toDateString } from "../../date-utils";
+import { toDateString } from "@/lib/date-utils";
 import { UTCDate } from "@date-fns/utc";
 
 describe("Summarize Queries", () => {
@@ -36,7 +36,7 @@ describe("Summarize Queries", () => {
 
   beforeEach(async () => {
     db = setupTestDb();
-    mock.module("../../data/db", () => ({ db }));
+    mock.module("@/lib/data/db", () => ({ db }));
     await db.insert(schema.users).values(generateMockUsers([testUser]));
   });
 

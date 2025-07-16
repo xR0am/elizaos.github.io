@@ -1,5 +1,5 @@
 import { describe, expect, it, mock, beforeEach } from "bun:test";
-import { setupTestDb } from "../../../../tests/helpers/db";
+import { setupTestDb } from "@/__testing__/helpers/db";
 import {
   generateMockPullRequests,
   generateMockIssues,
@@ -7,7 +7,7 @@ import {
   generateMockUsers,
   generateMockUserDailyScores,
   generateMockPullRequestFiles,
-} from "../../../../tests/helpers/mock-data";
+} from "@/__testing__/helpers/mock-data";
 import {
   getTopPullRequests,
   getTopIssues,

@@ -1,15 +1,14 @@
 import { describe, expect, it, mock, beforeEach } from "bun:test";
-import { setupTestDb } from "../../../../tests/helpers/db";
+import { setupTestDb } from "@/__testing__/helpers/db";
 import { getMetricsForInterval } from "./queries";
-import { IntervalType } from "../../../lib/date-utils";
-import * as schema from "../../../lib/data/schema";
+import { IntervalType } from "@/lib/date-utils";
+import * as schema from "@/lib/data/schema";
 import {
   generateMockUsers,
   generateMockPullRequests,
   generateMockIssues,
-  generateMockPullRequestFiles,
-} from "../../../../tests/helpers/mock-data";
-import { toDateString } from "../../../lib/date-utils";
+} from "@/__testing__/helpers/mock-data";
+import { toDateString } from "@/lib/date-utils";
 
 describe.each([
   {
