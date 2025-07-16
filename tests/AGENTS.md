@@ -17,6 +17,10 @@ Bun's test runner automatically finds and executes tests in files that match the
 - `*.spec.{js|jsx|ts|tsx}`
 - `*_spec.{js|jsx|ts|tsx}`
 
+### Test file locations
+
+This codebase colocates test files with the code files, so dont put tests in separate **test** directories.
+
 ### Running Tests
 
 Execute tests using the `bun test` command.

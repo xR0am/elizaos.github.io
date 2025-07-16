@@ -231,13 +231,15 @@ describe("Scoring queries", () => {
     it("should return a value for every day in the range, even days with no activity", async () => {
       const user = generateMockUsers([{}])[0];
       await db.insert(schema.users).values([user]);
-      await db
-        .insert(schema.userDailyScores)
-        .values(
-          generateMockUserDailyScores([
-            { username: user.username, score: 100, date: "2024-07-15" },
-          ]),
-        );
+      await db.insert(schema.userDailyScores).values(
+        generateMockUserDailyScores([
+          {
+            username: user.username,
+            score: 100,
+            date: "2024-07-15",
+          },
+        ]),
+      );
 
       const result = await getUserActivityHeatmaps(
         user.username,

@@ -1,5 +1,6 @@
 import { faker } from "@faker-js/faker";
 import type { InferInsertModel } from "drizzle-orm";
+import * as schema from "../../src/lib/data/schema";
 import type {
   users,
   userDailyScores,
@@ -36,6 +37,34 @@ export function generateMockUserDailyScores(
     date: toDateString(baseDate),
     score: faker.number.int({ min: 10, max: 1000 }),
     category: "day",
+    metrics: JSON.stringify({
+      pullRequests: {
+        total: 1,
+        merged: 2,
+        open: 3,
+        closed: 4,
+      },
+      issues: {
+        total: 2,
+        closed: 3,
+        open: 4,
+      },
+      reviews: {
+        total: 3,
+        approved: 4,
+        changesRequested: 5,
+        commented: 6,
+      },
+      comments: {
+        pullRequests: 4,
+        issues: 5,
+      },
+      codeChanges: {
+        additions: 100,
+        deletions: 50,
+        files: 2,
+      },
+    }),
     ...overrides,
   }));
 }
@@ -124,4 +153,30 @@ export function generateMockPullRequestFiles(
       ...overrides,
     };
   });
+}
+
+export function generateMockUserSummaries(
+  items: Partial<InferInsertModel<typeof schema.userSummaries>>[],
+): InferInsertModel<typeof schema.userSummaries>[] {
+  return items.map((overrides) => ({
+    id: faker.string.uuid(),
+    username: faker.internet.username(),
+    date: toDateString(new UTCDate()),
+    summary: faker.lorem.paragraph(),
+    intervalType: "day",
+    ...overrides,
+  }));
+}
+
+export function generateMockRepoSummaries(
+  items: Partial<InferInsertModel<typeof schema.repoSummaries>>[],
+): InferInsertModel<typeof schema.repoSummaries>[] {
+  return items.map((overrides) => ({
+    id: faker.string.uuid(),
+    repoId: faker.string.uuid(),
+    date: toDateString(new UTCDate()),
+    summary: faker.lorem.paragraph(),
+    intervalType: "day",
+    ...overrides,
+  }));
 }
