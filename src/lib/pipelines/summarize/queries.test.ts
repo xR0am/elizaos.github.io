@@ -5,6 +5,11 @@ import {
   generateMockUsers,
   generateMockPullRequests,
   generateMockIssues,
+  generateMockReviews,
+  generateMockPRComments,
+  generateMockIssueComments,
+  generateMockCommits,
+  generateMockPullRequestFiles,
   generateMockUserSummaries,
   generateMockRepoSummaries,
 } from "../../../../tests/helpers/mock-data";
@@ -37,21 +42,124 @@ describe("Summarize Queries", () => {
 
   describe("getContributorMetrics", () => {
     it("should calculate correct metrics for a contributor", async () => {
-      await db.insert(schema.rawPullRequests).values(
-        generateMockPullRequests(
+      const prs = generateMockPullRequests(
+        [
+          {
+            id: "pr1",
+            author: testUser.username,
+            state: "MERGED",
+            additions: 100,
+            deletions: 20,
+            mergedAt: "2024-07-15T12:00:00Z",
+            createdAt: "2024-07-15T10:00:00Z",
+          },
+          { author: testUser.username, state: "OPEN", additions: 50 },
+        ],
+        baseDate,
+      );
+      await db.insert(schema.rawPullRequests).values(prs);
+
+      await db.insert(schema.rawIssues).values(
+        generateMockIssues(
           [
-            { author: testUser.username, state: "MERGED", additions: 100 },
-            { author: testUser.username, state: "OPEN", additions: 50 },
+            { author: testUser.username, state: "OPEN" },
+            { author: testUser.username, state: "CLOSED" },
           ],
           baseDate,
         ),
       );
+
+      await db.insert(schema.prReviews).values(
+        generateMockReviews(
+          [
+            { author: testUser.username, state: "APPROVED" },
+            { author: testUser.username, state: "CHANGES_REQUESTED" },
+            { author: testUser.username, state: "COMMENTED" },
+          ],
+          baseDate,
+        ),
+      );
+
+      await db
+        .insert(schema.prComments)
+        .values(
+          generateMockPRComments([{ author: testUser.username }], baseDate),
+        );
+
+      await db
+        .insert(schema.issueComments)
+        .values(
+          generateMockIssueComments([{ author: testUser.username }], baseDate),
+        );
+
+      await db.insert(schema.rawCommits).values(
+        generateMockCommits(
+          [
+            {
+              author: testUser.username,
+              additions: 10,
+              deletions: 5,
+              changedFiles: 1,
+              message: "feat: new feature",
+            },
+          ],
+          baseDate,
+        ),
+      );
+
+      await db.insert(schema.rawPullRequestFiles).values(
+        generateMockPullRequestFiles([
+          { prId: "pr1", path: "src/index.ts" },
+          { prId: "pr1", path: "src/index.test.ts" },
+          { prId: "pr1", path: "README.md" },
+          { prId: "pr1", path: "package.json" },
+        ]),
+      );
+
       const metrics = await getContributorMetrics({
         username: testUser.username,
         dateRange: { startDate: baseDate, endDate: "2024-07-16" },
       });
+
+      // Pull Request Metrics
       expect(metrics.pullRequests.total).toBe(2);
       expect(metrics.pullRequests.merged).toBe(1);
+      expect(metrics.pullRequests.open).toBe(1);
+      expect(metrics.pullRequests.metrics.avgAdditions).toBe(100);
+      expect(metrics.pullRequests.metrics.avgDeletions).toBe(20);
+      expect(metrics.pullRequests.metrics.avgTimeToMerge).toBe(2);
+
+      // Issue Metrics
+      expect(metrics.issues.total).toBe(2);
+      expect(metrics.issues.opened).toBe(2);
+      expect(metrics.issues.closed).toBe(1);
+
+      // Review Metrics
+      expect(metrics.reviews.total).toBe(3);
+      expect(metrics.reviews.approved).toBe(1);
+      expect(metrics.reviews.changesRequested).toBe(1);
+      expect(metrics.reviews.commented).toBe(1);
+
+      // Comment Metrics
+      expect(metrics.comments.prComments).toBe(1);
+      expect(metrics.comments.issueComments).toBe(1);
+      expect(metrics.comments.total).toBe(2);
+
+      // Code Change Metrics
+      expect(metrics.codeChanges.additions).toBe(10);
+      expect(metrics.codeChanges.deletions).toBe(5);
+      expect(metrics.codeChanges.files).toBe(1);
+      expect(metrics.codeChanges.commitCount).toBe(1);
+      expect(metrics.codeChanges.commitTypes.feature).toBe(1);
+
+      // File Type Analysis
+      expect(metrics.pullRequests.fileTypes.code).toBe(1);
+      expect(metrics.pullRequests.fileTypes.tests).toBe(1);
+      expect(metrics.pullRequests.fileTypes.docs).toBe(1);
+      expect(metrics.pullRequests.fileTypes.config).toBe(1);
+
+      // Activity Pattern
+      expect(metrics.activityPattern.daysActive).toBe(1);
     });
   });
 

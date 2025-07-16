@@ -17,6 +17,9 @@ type UserDailyScore = InferInsertModel<typeof userDailyScores>;
 type RawPullRequest = InferInsertModel<typeof rawPullRequests>;
 type RawIssue = InferInsertModel<typeof rawIssues>;
 type IssueComment = InferInsertModel<typeof issueComments>;
+type PRReview = InferInsertModel<typeof schema.prReviews>;
+type PRComment = InferInsertModel<typeof schema.prComments>;
+type RawCommit = InferInsertModel<typeof schema.rawCommits>;
 
 export function generateMockUsers(items: Partial<User>[]): User[] {
   return items.map((overrides) => ({
@@ -82,7 +85,7 @@ export function generateMockPullRequests(
 
     return {
       id: faker.string.uuid(),
-      number: faker.number.int({ min: 1, max: 1000 }),
+      number: faker.number.int({ min: 1, max: 10000 }),
       title: faker.lorem.sentence(),
       author: faker.internet.username(),
       createdAt: today,
@@ -97,6 +100,57 @@ export function generateMockPullRequests(
       ...overrides,
     };
   });
+}
+
+export function generateMockReviews(
+  items: Partial<PRReview>[],
+  baseDate: Date | string = new UTCDate(),
+): PRReview[] {
+  const today = toDateString(baseDate);
+  return items.map((overrides) => ({
+    id: faker.string.uuid(),
+    prId: faker.string.uuid(),
+    author: faker.internet.username(),
+    createdAt: today,
+    state: "COMMENTED",
+    ...overrides,
+  }));
+}
+
+export function generateMockPRComments(
+  items: Partial<PRComment>[],
+  baseDate: Date | string = new UTCDate(),
+): PRComment[] {
+  const today = toDateString(baseDate);
+  return items.map((overrides) => ({
+    id: faker.string.uuid(),
+    prId: faker.string.uuid(),
+    author: faker.internet.username(),
+    createdAt: today,
+    ...overrides,
+  }));
+}
+
+export function generateMockCommits(
+  items: Partial<RawCommit>[],
+  baseDate: Date | string = new UTCDate(),
+): RawCommit[] {
+  const today = toDateString(baseDate);
+  return items.map((overrides) => ({
+    sha: faker.git.commitSha(),
+    oid: faker.git.commitSha(),
+    author: faker.internet.username(),
+    authorName: faker.person.fullName(),
+    authorEmail: faker.internet.email(),
+    authorDate: toDateString(baseDate),
+    message: faker.git.commitMessage(),
+    committedDate: today,
+    additions: faker.number.int({ min: 0, max: 100 }),
+    deletions: faker.number.int({ min: 0, max: 100 }),
+    changedFiles: faker.number.int({ min: 1, max: 5 }),
+    repository: "test-repo",
+    ...overrides,
+  }));
 }
 
 export function generateMockIssues(
@@ -144,7 +198,7 @@ export function generateMockPullRequestFiles(
     const prId = overrides.prId ?? faker.string.uuid();
     const path = overrides.path ?? faker.system.filePath();
     return {
-      id: `${prId}_${path}`,
+      id: `${prId}_${Buffer.from(path).toString("base64")}`,
       prId,
       path,
       additions: faker.number.int({ min: 0, max: 200 }),
