@@ -1,8 +1,8 @@
 import { describe, expect, it } from "bun:test";
-import { preprocessContent } from "../preprocessContent";
-import { validatePatternForTarget } from "../getMatcherFunction"; // validatePatternForTarget moved here
-import { TagPatternType } from "../../data/tags";
-import { PatternType } from "../types";
+import { preprocessContent } from "./preprocessContent";
+import { validatePatternForTarget } from "./getMatcherFunction"; // validatePatternForTarget moved here
+import { TagPatternType } from "../data/tags";
+import { PatternType } from "./types";
 
 describe("Content Preprocessing & Validation", () => {
   describe("preprocessContent", () => {

@@ -6,17 +6,14 @@ import {
 import { getContributorSummariesForInterval } from "@/lib/pipelines/summarize/queries";
 import {
   IntervalType,
-  TimeInterval,
+  parseIntervalDate,
   toDateString,
-  isValidDateString,
-  calculateIntervalBoundaries,
 } from "@/lib/date-utils";
 import { db } from "@/lib/data/db";
 import { desc } from "drizzle-orm";
 import { rawPullRequests } from "@/lib/data/schema";
-import { UTCDate } from "@date-fns/utc";
-import fs from "fs/promises";
-import { getOverallSummaryFilePath } from "@/lib/fsHelpers";
+import { and, eq } from "drizzle-orm";
+import { overallSummaries } from "@/lib/data/schema";
 
 export async function getLatestAvailableDate() {
   const date = await db
@@ -28,49 +25,6 @@ export async function getLatestAvailableDate() {
     .limit(1);
 
   return toDateString(date[0].max);
-}
-
-/**
- * Parse date string based on interval type format
- * @param dateStr - Date string to parse
- * @param intervalType - Interval type (day, week, month)
- * @returns TimeInterval object or null if invalid
- */
-export function parseIntervalDate(
-  dateStr: string,
-  intervalType: IntervalType,
-): TimeInterval | null {
-  let referenceDate: UTCDate;
-
-  if (intervalType === "day") {
-    if (!isValidDateString(dateStr)) return null;
-    referenceDate = new UTCDate(dateStr);
-  } else if (intervalType === "week") {
-    if (!isValidDateString(dateStr)) return null;
-    referenceDate = new UTCDate(dateStr);
-  } else if (intervalType === "month") {
-    const monthPattern = /^\d{4}-\d{2}$/;
-    if (!monthPattern.test(dateStr)) return null;
-    const [yearStr, monthStr] = dateStr.split("-");
-    const year = parseInt(yearStr);
-    const month = parseInt(monthStr) - 1; // Month is 0-indexed for UTCDate constructor
-    // For month, we use the 1st day of the month as the reference to align with calculateIntervalBoundaries
-    referenceDate = new UTCDate(Date.UTC(year, month, 1));
-  } else {
-    return null; // Should not happen with IntervalType
-  }
-
-  // Use the centralized helper function to get interval boundaries
-  const { intervalStart, intervalEnd } = calculateIntervalBoundaries(
-    referenceDate,
-    intervalType,
-  );
-
-  return {
-    intervalStart,
-    intervalEnd,
-    intervalType,
-  };
 }
 
 /**
@@ -215,44 +169,29 @@ export async function getIntervalSummaryContent(
   intervalType: IntervalType,
 ): Promise<string | null> {
   try {
-    let actualDateForFileName: string;
+    let queryDate: string;
 
     if (intervalType === "month") {
-      // dateStr is YYYY-MM, summaries are saved as YYYY-MM-01.md
-      actualDateForFileName = `${dateStr}-01`;
+      // dateStr is YYYY-MM, summaries are saved with the first day of the month
+      queryDate = `${dateStr}-01`;
     } else {
       // For day and week, dateStr is already YYYY-MM-DD
-      actualDateForFileName = dateStr;
+      queryDate = dateStr;
     }
 
-    const fileName = `${actualDateForFileName}.md`;
-    const outputDir = "data"; // Root directory for summaries relative to project
+    const result = await db.query.overallSummaries.findFirst({
+      where: and(
+        eq(overallSummaries.date, queryDate),
+        eq(overallSummaries.intervalType, intervalType),
+      ),
+    });
 
-    const filePath = getOverallSummaryFilePath(
-      outputDir,
-      intervalType,
-      fileName,
-    );
-
-    const content = await fs.readFile(filePath, "utf-8");
-    return content;
+    return result?.summary ?? null;
   } catch (error) {
-    // Check if error is an object and has a code property before accessing it
-    if (error && typeof error === "object" && "code" in error) {
-      if (error.code !== "ENOENT") {
-        // File not found is expected, don't log error
-        console.warn(
-          `Error reading summary file for ${intervalType} ${dateStr}:`,
-          error,
-        );
-      }
-    } else {
-      // Log unexpected error types
-      console.warn(
-        `Unexpected error reading summary file for ${intervalType} ${dateStr}:`,
-        error,
-      );
-    }
+    console.warn(
+      `Error reading summary from DB for ${intervalType} ${dateStr}:`,
+      error,
+    );
     return null;
   }
 }

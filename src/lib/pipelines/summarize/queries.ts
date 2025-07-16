@@ -198,7 +198,7 @@ export async function getContributorMetrics({
     where: and(
       eq(rawIssues.author, username),
       ...buildCommonWhereConditions({ dateRange }, rawIssues, ["closedAt"]),
-      eq(rawIssues.state, "closed"),
+      eq(rawIssues.state, "CLOSED"),
     ),
   });
 

@@ -2,8 +2,8 @@ import {
   getMetricsForInterval,
   getLatestAvailableDate,
   getIntervalSummaryContent,
-  parseIntervalDate,
 } from "./queries";
+import { parseIntervalDate } from "@/lib/date-utils";
 import { notFound } from "next/navigation";
 import pipelineConfig from "@/../config/pipeline.config";
 import {

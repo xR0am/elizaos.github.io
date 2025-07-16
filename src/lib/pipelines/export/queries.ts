@@ -248,11 +248,17 @@ export async function getRepoMetrics(params: QueryParams = {}) {
   const updatedIssues: typeof allIssues = [];
 
   for (const issue of allIssues) {
-    if (newIdsSet.has(issue.id)) {
+    const isNew = newIdsSet.has(issue.id);
+    const isClosed = closedIdsSet.has(issue.id);
+    const isUpdated = updatedIdsSet.has(issue.id);
+
+    if (isNew) {
       newIssues.push(issue);
-    } else if (closedIdsSet.has(issue.id)) {
+    }
+    if (isClosed) {
       closedIssues.push(issue);
-    } else {
+    }
+    if (isUpdated && !isNew && !isClosed) {
       updatedIssues.push(issue);
     }
   }

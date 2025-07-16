@@ -8,11 +8,7 @@ export function categorizeWorkItem(text: string): WorkItemType {
   const lowercaseText = text.toLowerCase();
 
   // Feature detection
-  if (
-    lowercaseText.startsWith("feat") ||
-    lowercaseText.includes("feature") ||
-    lowercaseText.includes("add ")
-  ) {
+  if (lowercaseText.startsWith("feat") || lowercaseText.includes("feature")) {
     return "feature";
   }
 
@@ -64,8 +60,10 @@ function extractAreaFromPath(path: string): string | null {
 
   if (area === "packages") {
     area = `${parts[1]}`;
-  } else {
+  } else if (parts.length > 2) {
     area = `${area}/${parts[1]}`;
+  } else {
+    area = parts[0];
   }
 
   return area;
