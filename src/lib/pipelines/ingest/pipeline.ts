@@ -1,4 +1,4 @@
-import { pipe, parallel, mapStep, createStep } from "../types";
+import { pipe, parallel, mapStep, createStep, sequence } from "../types";
 import { generateTimeIntervals } from "../generateTimeIntervals";
 import { fetchAndStorePullRequests } from "./storePullRequests";
 import { fetchAndStoreIssues } from "./storeIssues";
@@ -83,7 +83,7 @@ const ingestRepoDataForInterval = createStep(
       );
 
       // Process PRs and issues in parallel
-      const [prResult, issueResult, commitResult] = await parallel(
+      const [prResult, issueResult, commitResult] = await sequence(
         () => fetchAndStorePullRequests({ repository }, processingContext),
         () => fetchAndStoreIssues({ repository }, processingContext),
         () => fetchAndStoreCommits({ repository }, processingContext),
