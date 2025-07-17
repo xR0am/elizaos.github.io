@@ -427,7 +427,7 @@ export default {
     enabled: true,
     defaultModel: "google/gemini-2.0-flash-001",
     models: {
-      day: process.env.SMALL_MODEL || "google/gemini-2.5-flash-preview-05-20",
+      day: process.env.SMALL_MODEL || "google/gemini-2.5-flash",
       week: process.env.LARGE_MODEL || "google/gemini-2.5-pro",
       month: process.env.LARGE_MODEL || "google/gemini-2.5-pro",
     },

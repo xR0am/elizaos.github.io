@@ -109,6 +109,77 @@ test.each(additionCases)("add(%i, %i) should equal %i", (a, b, expected) => {
 
 ---
 
+## 🧪 Test Database & Mock Data
+
+For integration tests that involve database queries, the project provides helper functions to ensure a consistent and isolated testing environment.
+
+### Test Database Setup
+
+Use the `setupTestDb` function from `src/__testing__/helpers/db.ts` to create a fresh, in-memory SQLite database for your test suites. This function handles schema migrations automatically.
+
+**Pattern:** Instantiate the database at the beginning of your `describe` block.
+
+```typescript
+import { describe, test, expect } from "bun:test";
+import { setupTestDb } from "@/src/__testing__/helpers/db";
+
+describe("Database-Related Feature", () => {
+  const db = setupTestDb();
+  // ... tests that use db instance
+});
+```
+
+### Mock Data Generation
+
+Use the mock data generators from `src/__testing__/helpers/mock-data.ts` (e.g., `generateMockUsers`, `generateMockPullRequests`) to populate your test database. These functions use `@faker-js/faker` to produce realistic data and allow you to override any fields for specific test cases.
+
+### Complete Test Example
+
+Follow this pattern for writing tests that interact with the database. This ensures that tests are self-contained, repeatable, and easy to understand.
+
+```typescript
+import { describe, test, expect } from "bun:test";
+import { setupTestDb } from "@/src/__testing__/helpers/db";
+import {
+  generateMockUsers,
+  generateMockPullRequests,
+} from "@/src/__testing__/helpers/mock-data";
+import * as schema from "@/lib/data/schema";
+import { getRepositoryContributors } from "./queries"; // The function being tested
+
+describe("Repository Queries", () => {
+  const db = setupTestDb();
+
+  test("should return unique contributors for a given repository", async () => {
+    // 1. Arrange: Insert mock data
+    const users = generateMockUsers([
+      { username: "user-a" },
+      { username: "user-b" },
+    ]);
+    await db.insert(schema.users).values(users);
+
+    const pullRequests = generateMockPullRequests([
+      { author: "user-a", repository: "test-repo" },
+      { author: "user-b", repository: "test-repo" },
+      { author: "user-a", repository: "another-repo" }, // Should be filtered out
+    ]);
+    await db.insert(schema.rawPullRequests).values(pullRequests);
+
+    // 2. Act: Call the function
+    const contributors = await getRepositoryContributors(db, "test-repo");
+
+    // 3. Assert: Verify the result
+    expect(contributors).toHaveLength(2);
+    expect(contributors.map((c) => c.username).sort()).toEqual([
+      "user-a",
+      "user-b",
+    ]);
+  });
+});
+```
+
+---
+
 ## 🔬 Advanced Testing Techniques
 
 ### Mocking

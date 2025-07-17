@@ -25,7 +25,7 @@ export function IntervalSelector({
 
   const handleIntervalChange = (newInterval: string) => {
     router.push(
-      `/${newInterval}${currentDate && currentInterval === newInterval ? `/${currentDate}` : ""}`,
+      `/summary/${newInterval}${currentDate && currentInterval === newInterval ? `/${currentDate}` : ""}`,
     );
   };
 

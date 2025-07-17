@@ -74,6 +74,9 @@ const GitHubRepoSchema = z.object({
   fork: z.boolean(),
   url: z.string(),
   default_branch: z.string(),
+  stargazers_count: z.number(),
+  forks_count: z.number(),
+  language: z.string().nullable(),
 });
 export type GitHubRepo = z.infer<typeof GitHubRepoSchema>;
 

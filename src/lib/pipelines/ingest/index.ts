@@ -17,15 +17,23 @@ export const ingestPipeline = pipe(
   }),
   mapStep(ingestWeeklyGithubData),
   createStep("Log Project Summaries", (results, context) => {
-    for (const intervals of results) {
-      const totalPrs = intervals.reduce((acc, interval) => {
-        return acc + interval.prs;
-      }, 0);
-      const totalIssues = intervals.reduce((acc, interval) => {
-        return acc + interval.issues;
-      }, 0);
+    for (const result of results) {
+      const intervals = result.intervals;
+      const metadata = result.metadata;
+      const totalPrs = intervals.reduce(
+        (acc: number, interval: { prs: number }) => {
+          return acc + interval.prs;
+        },
+        0,
+      );
+      const totalIssues = intervals.reduce(
+        (acc: number, interval: { issues: number }) => {
+          return acc + interval.issues;
+        },
+        0,
+      );
       context.logger?.info(
-        `Ingested ${totalPrs} total PRs and ${totalIssues} total issues across ${intervals.length} weeks`,
+        `Ingested ${totalPrs} total PRs and ${totalIssues} total issues across ${intervals.length} weeks for ${metadata.repository} (${metadata.stars} stars, ${metadata.forks} forks)`,
       );
     }
   }),

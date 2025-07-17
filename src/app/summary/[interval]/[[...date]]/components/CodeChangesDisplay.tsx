@@ -1,6 +1,6 @@
 import { SectionCard } from "@/components/section-card";
 import { MetricItem } from "@/components/metric-item";
-import type { IntervalMetrics } from "@/app/[interval]/[[...date]]/queries";
+import type { IntervalMetrics } from "@/app/summary/[interval]/[[...date]]/queries";
 import { GitCommitVertical, FileCode, ArrowUp, ArrowDown } from "lucide-react";
 
 interface CodeChangesDisplayProps {

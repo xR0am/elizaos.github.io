@@ -1,4 +1,4 @@
-import type { IntervalMetrics } from "@/app/[interval]/[[...date]]/queries";
+import type { IntervalMetrics } from "@/app/summary/[interval]/[[...date]]/queries";
 
 interface FormatOptions {
   includeStats: boolean;

@@ -1,7 +1,7 @@
 import { StatCard } from "@/components/stat-card";
 import { CounterWithIcon } from "@/components/counter-with-icon";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import type { IntervalMetrics } from "@/app/[interval]/[[...date]]/queries";
+import type { IntervalMetrics } from "@/app/summary/[interval]/[[...date]]/queries";
 import {
   Users,
   GitPullRequest,

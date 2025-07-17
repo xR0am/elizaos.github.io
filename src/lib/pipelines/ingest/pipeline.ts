@@ -2,7 +2,10 @@ import { pipe, parallel, mapStep, createStep } from "../types";
 import { generateTimeIntervals } from "../generateTimeIntervals";
 import { fetchAndStorePullRequests } from "./storePullRequests";
 import { fetchAndStoreIssues } from "./storeIssues";
-import { updateRepositoryLastFetched } from "./mutations";
+import {
+  updateRepositoryLastFetched,
+  updateRepositoryMetadata,
+} from "./mutations";
 import { RepositoryConfig } from "@/lib/pipelines/pipelineConfig";
 import { IngestionPipelineContext } from "./context";
 import { TimeInterval, toDateString } from "@/lib/date-utils";
@@ -113,10 +116,78 @@ const ingestRepoDataForInterval = createStep(
   },
 );
 
+/**
+ * Ingest repository metadata (stars, forks, description) - runs once per repository
+ */
+const ingestRepoMetadata = createStep(
+  "ingestRepoMetadata",
+  async (
+    { repository }: { repository: RepositoryConfig },
+    context: IngestionPipelineContext,
+  ) => {
+    const { logger, github } = context;
+    const { owner, name } = repository;
+    const repoId = `${owner}/${name}`;
+
+    try {
+      const repoMetadata = await github.getRepo(owner, name);
+      if (repoMetadata) {
+        await updateRepositoryMetadata(repoId, {
+          description: repoMetadata.description,
+          stars: repoMetadata.stargazers_count,
+          forks: repoMetadata.forks_count,
+        });
+
+        logger?.info(
+          `Updated metadata for ${repoId}: ${repoMetadata.stargazers_count} stars, ${repoMetadata.forks_count} forks`,
+        );
+
+        return {
+          repository: repoId,
+          stars: repoMetadata.stargazers_count,
+          forks: repoMetadata.forks_count,
+          description: repoMetadata.description,
+        };
+      }
+
+      return {
+        repository: repoId,
+        stars: 0,
+        forks: 0,
+        description: null,
+      };
+    } catch (error) {
+      logger?.error(`Failed to fetch metadata for ${repoId}`, {
+        error: String(error),
+      });
+      return {
+        repository: repoId,
+        stars: 0,
+        forks: 0,
+        description: null,
+        error: String(error),
+      };
+    }
+  },
+);
+
 export const ingestWeeklyGithubData = pipe(
-  generateTimeIntervals<{ repository: RepositoryConfig }>("week"),
-  mapStep(ingestRepoDataForInterval),
-  createStep("Filter null results", (results) => {
-    return results.filter(isNotNullOrUndefined);
+  parallel(
+    // Ingest repository metadata (once per repository)
+    ingestRepoMetadata,
+    // Ingest time-based data (PRs, issues, commits)
+    pipe(
+      generateTimeIntervals<{ repository: RepositoryConfig }>("week"),
+      mapStep(ingestRepoDataForInterval),
+      createStep("Filter null results", (results) => {
+        return results.filter(isNotNullOrUndefined);
+      }),
+    ),
+  ),
+  createStep("Combine results", ([metadataResult, intervalResults]) => {
+    return {
+      metadata: metadataResult,
+      intervals: intervalResults,
+    };
   }),
 );

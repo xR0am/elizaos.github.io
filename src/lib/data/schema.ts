@@ -63,6 +63,9 @@ export const repositories = sqliteTable(
     repoId: text("repo_id").primaryKey(),
     owner: text("owner").notNull(),
     name: text("name").notNull(),
+    description: text("description"),
+    stars: integer("stars").default(0),
+    forks: integer("forks").default(0),
     lastFetchedAt: text("last_fetched_at").default(""),
     lastUpdated: text("last_updated")
       .notNull()

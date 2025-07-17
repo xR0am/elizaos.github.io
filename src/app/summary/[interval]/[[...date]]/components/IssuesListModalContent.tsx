@@ -1,7 +1,7 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ActivityItem } from "@/components/activity-item";
 import { CheckCircle, CircleDot } from "lucide-react";
-import type { IntervalMetrics } from "@/app/[interval]/[[...date]]/queries";
+import type { IntervalMetrics } from "@/app/summary/[interval]/[[...date]]/queries";
 
 interface IssuesListModalContentProps {
   issues: IntervalMetrics["topIssues"];

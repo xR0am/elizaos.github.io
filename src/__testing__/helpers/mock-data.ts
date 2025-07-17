@@ -8,6 +8,7 @@ import type {
   rawIssues,
   issueComments,
   rawPullRequestFiles,
+  repositories,
 } from "@/lib/data/schema";
 import { toDateString } from "@/lib/date-utils";
 import { UTCDate } from "@date-fns/utc";
@@ -204,6 +205,21 @@ export function generateMockPullRequestFiles(
       additions: faker.number.int({ min: 0, max: 200 }),
       deletions: faker.number.int({ min: 0, max: 100 }),
       changeType: "ADDED",
+      ...overrides,
+    };
+  });
+}
+
+export function generateMockRepositories(
+  items: Partial<InferInsertModel<typeof repositories>>[],
+): InferInsertModel<typeof repositories>[] {
+  return items.map((overrides) => {
+    const owner = overrides.owner ?? faker.company.name();
+    const name = overrides.name ?? faker.lorem.word();
+    return {
+      repoId: `${owner}/${name}`,
+      owner,
+      name,
       ...overrides,
     };
   });

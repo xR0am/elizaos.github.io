@@ -26,6 +26,28 @@ export async function updateRepositoryLastFetched(
 }
 
 /**
+ * Update repository metadata (description, stars, forks)
+ */
+export async function updateRepositoryMetadata(
+  repoId: string,
+  metadata: {
+    description?: string | null;
+    stars: number;
+    forks: number;
+  },
+) {
+  await db
+    .update(repositories)
+    .set({
+      description: metadata.description,
+      stars: metadata.stars,
+      forks: metadata.forks,
+      lastUpdated: new UTCDate().toISOString(),
+    })
+    .where(eq(repositories.repoId, repoId));
+}
+
+/**
  * Ensure users exist in the database
  */
 export async function ensureUsersExist(

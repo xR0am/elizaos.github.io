@@ -23,7 +23,7 @@ export function DateNavigation({
     <div className="mb-6">
       <div className="flex items-center justify-between">
         <NavigationButton
-          href={prevDate ? `/${intervalType}/${prevDate}` : "#"}
+          href={prevDate ? `/summary/${intervalType}/${prevDate}` : "#"}
           direction="prev"
           isVisible={!!prevDate}
         />
@@ -38,7 +38,7 @@ export function DateNavigation({
         </div>
 
         <NavigationButton
-          href={nextDate ? `/${intervalType}/${nextDate}` : "#"}
+          href={nextDate ? `/summary/${intervalType}/${nextDate}` : "#"}
           direction="next"
           isVisible={!!nextDate}
         />
