@@ -134,7 +134,7 @@ export async function getRepositories(): Promise<Repository[]> {
         .where(
           and(
             eq(rawPullRequests.repository, repo.repoId),
-            eq(rawPullRequests.state, "open"),
+            eq(rawPullRequests.state, "OPEN"),
           ),
         );
 

@@ -18,12 +18,12 @@ import {
   Star,
   GitMerge,
 } from "lucide-react";
-import { formatDistanceToNow } from "date-fns";
+import { formatDistanceToNow, parseISO } from "date-fns";
 import { formatCompactNumber } from "@/lib/format-number";
 
 const chartConfig = {
   commitCount: {
-    label: "Activity",
+    label: "Commits",
     color: "hsl(142, 76%, 36%)", // GitHub green
   },
 } satisfies ChartConfig;
@@ -69,7 +69,25 @@ export function RepositoryCard({ repository }: { repository: Repository }) {
                   />
                   <ChartTooltip
                     cursor={false}
-                    content={<ChartTooltipContent />}
+                    content={
+                      <ChartTooltipContent
+                        labelFormatter={(value, payload) => {
+                          const firstPayload = payload?.[0]?.payload;
+                          if (firstPayload) {
+                            const [year, week] = firstPayload.week.split("-");
+                            const date = parseISO(
+                              `${year}-W${week.padStart(2, "0")}`,
+                            );
+                            return `Week of ${date.toLocaleDateString("en-US", {
+                              month: "short",
+                              day: "numeric",
+                              year: "numeric",
+                            })}`;
+                          }
+                          return value;
+                        }}
+                      />
+                    }
                   />
                   <Line
                     type="monotone"
