@@ -5,7 +5,7 @@ export async function RepositoryList() {
   const repositories = await getRepositories();
 
   return (
-    <div className="space-y-4">
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
       {repositories.map((repo) => (
         <RepositoryCard key={repo.id} repository={repo} />
       ))}
@@ -15,11 +15,11 @@ export async function RepositoryList() {
 
 export function RepositoryListFallback() {
   return (
-    <div className="space-y-4">
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
       {Array.from({ length: 6 }).map((_, i) => (
         <div
           key={i}
-          className="h-40 animate-pulse rounded-lg border bg-muted"
+          className="h-52 animate-pulse rounded-lg border bg-muted"
         />
       ))}
     </div>
