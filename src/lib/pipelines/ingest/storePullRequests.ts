@@ -215,6 +215,7 @@ export const fetchAndStorePullRequests = createStep(
                 additions: sql`excluded.additions`,
                 deletions: sql`excluded.deletions`,
                 changedFiles: sql`excluded.changed_files`,
+                pullRequestId: sql`excluded.pull_request_id`,
               },
             });
         }

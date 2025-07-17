@@ -20,12 +20,15 @@ export const RawCommitSchema = z.object({
   message: z.string(),
   messageHeadline: z.string().optional(),
   committedDate: z.string(),
-  author: z.object({
-    name: z.string(),
-    email: z.string(),
-    date: z.string(),
-    user: GithubUserSchema.nullable().optional(),
-  }),
+  author: z
+    .object({
+      name: z.string(),
+      email: z.string(),
+      date: z.string(),
+      user: GithubUserSchema.nullable().optional(),
+    })
+    .nullable()
+    .optional(),
   additions: z.number().default(0),
   deletions: z.number().default(0),
   changedFiles: z.number().default(0),

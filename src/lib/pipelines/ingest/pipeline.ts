@@ -14,6 +14,7 @@ import { isNotNullOrUndefined } from "@/lib/typeHelpers";
 import { eq } from "drizzle-orm";
 import { db } from "@/lib/data/db";
 import { repositories } from "@/lib/data/schema";
+import { fetchAndStoreCommits } from "./storeCommits";
 
 /**
  * Process repository data for a specific time interval
@@ -82,16 +83,17 @@ const ingestRepoDataForInterval = createStep(
       );
 
       // Process PRs and issues in parallel
-      const [prResult, issueResult] = await parallel(
+      const [prResult, issueResult, commitResult] = await parallel(
         () => fetchAndStorePullRequests({ repository }, processingContext),
         () => fetchAndStoreIssues({ repository }, processingContext),
+        () => fetchAndStoreCommits({ repository }, processingContext),
       )(null, processingContext);
 
       // Update repository last fetched timestamp
       await updateRepositoryLastFetched(repoId, ingestionTimestamp);
 
       logger?.info(
-        `Completed ingestion for ${interval.intervalType} ${repoId}: ${prResult.count} PRs, ${issueResult.count} issues`,
+        `Completed ingestion for ${interval.intervalType} ${repoId}: ${prResult.count} PRs, ${issueResult.count} issues, ${commitResult.count} commits`,
         processingContext.dateRange,
       );
 
@@ -99,6 +101,7 @@ const ingestRepoDataForInterval = createStep(
         repository: repoId,
         prs: prResult.count,
         issues: issueResult.count,
+        commits: commitResult.count,
         skipped: false,
       };
     } catch (error) {
@@ -110,6 +113,7 @@ const ingestRepoDataForInterval = createStep(
         repository: repoId,
         prs: 0,
         issues: 0,
+        commits: 0,
         skipped: false,
       };
     }
