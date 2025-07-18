@@ -300,25 +300,14 @@
         "subtasks": []
       },
       {
-        "id": 3,
-        "title": "Backend: Generate and Store AI Repository Descriptions",
-        "description": "Implement a new step in the `summarize` data pipeline to generate and store a static, AI-generated description for each repository. This description will be displayed on the repository detail page.",
-        "details": "1. **Modify `summarize` Pipeline:** Add a new step to the existing data processing pipeline.\n2. **Generate Description:** This step should use an AI model to generate a concise description for each repository based on its metadata or README file.\n3. **Update Database Schema:** Add a new `ai_description` text column to the `repositories` table to store the generated content.\n4. **Store Description:** The pipeline step should populate this new column for each repository.",
-        "testStrategy": "1. Execute the modified `summarize` pipeline.\n2. Query the `repositories` table in the database.\n3. Verify that the `ai_description` column is successfully populated with a relevant, non-empty string for each repository.",
-        "priority": "medium",
-        "dependencies": [],
-        "status": "pending",
-        "subtasks": []
-      },
-      {
         "id": 4,
         "title": "Implement Repository Detail Page",
-        "description": "Create a new dynamic page at `/repos/{owner}/{name}` to display detailed analytics for a single repository. The page will feature a two-column layout similar to the user profile page.",
-        "details": "1. **Create Dynamic Page:** Implement a new dynamic page at `src/app/repos/[owner]/[name]/page.tsx`.\n2. **Develop `getRepoProfile` Query:** Create a new query that accepts `owner` and `name` to fetch all necessary data for the specific repository: the AI-generated description, monthly summaries, stats (PRs, Issues, contributors), daily commit activity for the last year, top 10 all-time contributors, and a list of active PRs.\n3. **Build UI:** Assemble the page using existing and new components. The header will show the repo name, GitHub link, and AI description. The left column will contain a `SummaryCard` and a daily activity heatmap. The right column will show stat cards, a list of the top 10 contributors (linking to their profiles), and a list of active PRs.",
-        "testStrategy": "1. Navigate to a repository detail page, e.g., `/repos/elizaos/eliza`.\n2. Verify that the header displays the correct repository name and the AI-generated description.\n3. Check that all data displayed on the page (summaries, stats, heatmap, contributors, PRs) is specific to that repository.\n4. Confirm that links to contributor profiles are working correctly.",
-        "priority": "high",
-        "dependencies": [2, 3],
+        "description": "Create a new dynamic page at `/repos/{owner}/{name}` to display detailed analytics for a single repository. The page will be composed of multiple independently-loading server components, each fetching its own data to allow for streaming with Suspense. The page will feature a two-column layout.",
         "status": "pending",
+        "dependencies": [2],
+        "priority": "high",
+        "details": "1. **Layout Shell:** The main page at `src/app/repos/[owner]/[name]/page.tsx` will serve as a layout shell, defining the two-column structure.\n2. **Component-Scoped Data Fetching:** Instead of a single monolithic query, each section of the page (Header, Summaries, Heatmap, Stats, Contributors, PRs) will be implemented as a separate `async` server component. Each component will be responsible for fetching only the data it needs.\n3. **UI Assembly with Suspense:** The main page will assemble the UI by importing these async components and wrapping them in `<Suspense>` boundaries. This will enable parts of the page to render and stream to the client as their data becomes available.\n4. **Refactor Existing Components:** The previously created `RepoDetailHeader` will be refactored into an async component that fetches its own data, and the monolithic `getRepoProfile` query will be broken apart.",
+        "testStrategy": "1. Navigate to a repository detail page, e.g., `/repos/elizaos/eliza`.\n2. Verify that all sections (header, summaries, heatmap, etc.) load and display the correct data specific to that repository.\n3. Confirm that links to contributor profiles and GitHub PRs are working correctly.\n4. Use browser developer tools to simulate a slow network and verify that page sections stream in independently, with Suspense fallbacks (e.g., skeletons or loaders) being displayed while data is loading.",
         "subtasks": []
       },
       {
@@ -335,7 +324,7 @@
     ],
     "metadata": {
       "created": "2025-07-02T23:49:26.014Z",
-      "updated": "2025-07-16T23:32:09.313Z",
+      "updated": "2025-07-18T22:39:54.323Z",
       "description": "Tasks for multi-repo-frontend context"
     }
   }
