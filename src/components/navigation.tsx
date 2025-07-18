@@ -32,7 +32,7 @@ export function Navigation() {
 
   const isLeaderboardActive = pathname === "/leaderboard";
   const isAboutActive = pathname === "/about";
-  const isReposActive = pathname === "/repos";
+  const isReposActive = pathname.startsWith("/repos");
 
   const navLinksForMenuJsx = (
     <>

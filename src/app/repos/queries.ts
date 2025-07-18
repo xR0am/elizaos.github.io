@@ -9,7 +9,8 @@ import {
 } from "@/lib/data/schema";
 import { and, eq, gte, sql, desc, inArray } from "drizzle-orm";
 import { UTCDate } from "@date-fns/utc";
-import { subDays, format } from "date-fns";
+import { subDays } from "date-fns";
+import { toDateString } from "@/lib/date-utils";
 
 export type Repository = {
   id: string;
@@ -100,18 +101,16 @@ export async function getRepositories(): Promise<Repository[]> {
       // Get weekly commit counts
       const weeklyCommits = await db
         .select({
-          week: sql<string>`strftime('%Y-%W', ${rawPullRequests.createdAt})`.as(
+          week: sql<string>`strftime('%Y-%W', ${rawCommits.committedDate})`.as(
             "week",
           ),
-          commitCount: sql<number>`count(${rawPullRequests.id})`.as(
-            "commitCount",
-          ),
+          commitCount: sql<number>`count(${rawCommits.oid})`.as("commitCount"),
         })
-        .from(rawPullRequests)
+        .from(rawCommits)
         .where(
           and(
-            eq(rawPullRequests.repository, repo.repoId),
-            gte(rawPullRequests.createdAt, ninetyDaysAgo),
+            eq(rawCommits.repository, repo.repoId),
+            gte(rawCommits.committedDate, ninetyDaysAgo),
           ),
         )
         .groupBy(sql`week`)
@@ -205,8 +204,4 @@ export async function getRepositories(): Promise<Repository[]> {
   return reposWithData.sort(
     (a, b) => b.totalContributors - a.totalContributors,
   );
-}
-
-function toDateString(date: Date) {
-  return format(date, "yyyy-MM-dd");
 }

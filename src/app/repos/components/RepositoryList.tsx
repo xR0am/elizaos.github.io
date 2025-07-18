@@ -1,4 +1,4 @@
-import { getRepositories, Repository } from "../queries";
+import { getRepositories } from "../queries";
 import { RepositoryCard } from "./RepositoryCard";
 
 export async function RepositoryList() {

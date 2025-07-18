@@ -19,7 +19,6 @@ import {
 import { UTCDate } from "@date-fns/utc";
 import { buildCommonWhereConditions } from "../queryHelpers";
 import { TimeInterval, toDateString } from "@/lib/date-utils";
-import { asc, lte } from "drizzle-orm";
 
 /**
  * Get metrics for a contributor within a time range

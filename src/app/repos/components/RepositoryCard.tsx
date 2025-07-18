@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { formatDistanceToNow, parseISO } from "date-fns";
 import { formatCompactNumber } from "@/lib/format-number";
+import Link from "next/link";
 
 const chartConfig = {
   commitCount: {
@@ -38,9 +39,15 @@ export function RepositoryCard({ repository }: { repository: Repository }) {
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <div className="flex items-center gap-2">
-              <CardTitle className="cursor-pointer text-lg font-semibold text-primary hover:underline">
-                {repository.owner}/{repository.name}
-              </CardTitle>
+              <Link
+                href={`https://github.com/${repository.owner}/${repository.name}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <CardTitle className="text-lg font-semibold text-primary hover:underline">
+                  {repository.owner}/{repository.name}
+                </CardTitle>
+              </Link>
               <div className="flex items-center gap-1 text-sm text-muted-foreground">
                 <Star className="h-4 w-4" />
                 <span>{formatCompactNumber(repository.stars)}</span>

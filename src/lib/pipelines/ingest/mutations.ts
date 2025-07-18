@@ -32,16 +32,16 @@ export async function updateRepositoryMetadata(
   repoId: string,
   metadata: {
     description?: string | null;
-    stars: number;
-    forks: number;
+    stars?: number;
+    forks?: number;
   },
 ) {
   await db
     .update(repositories)
     .set({
-      description: metadata.description,
-      stars: metadata.stars,
-      forks: metadata.forks,
+      description: sql`COALESCE(${metadata.description}, ${repositories.description})`,
+      stars: metadata.stars ?? sql`${repositories.stars}`,
+      forks: metadata.forks ?? sql`${repositories.forks}`,
       lastUpdated: new UTCDate().toISOString(),
     })
     .where(eq(repositories.repoId, repoId));
