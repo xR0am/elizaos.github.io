@@ -74,6 +74,9 @@ const GitHubRepoSchema = z.object({
   fork: z.boolean(),
   url: z.string(),
   default_branch: z.string(),
+  stargazers_count: z.number(),
+  forks_count: z.number(),
+  language: z.string().nullable(),
 });
 export type GitHubRepo = z.infer<typeof GitHubRepoSchema>;
 
@@ -708,6 +711,9 @@ export class GitHubClient {
     const { owner, name } = repository;
     const { startDate, endDate } = options;
 
+    const since = startDate ? new Date(startDate).toISOString() : undefined;
+    const until = endDate ? new Date(endDate).toISOString() : undefined;
+
     const query = `
       query($endCursor: String, $since: GitTimestamp, $until: GitTimestamp) {
         repository(owner: "${owner}", name: "${name}") {
@@ -718,7 +724,7 @@ export class GitHubClient {
                   pageInfo { hasNextPage endCursor }
                   nodes {
                     oid messageHeadline message committedDate
-                    author { name email user { login avatarUrl } }
+                    author { name email date user { login avatarUrl } }
                     additions deletions changedFiles
                   }
                 }
@@ -734,7 +740,7 @@ export class GitHubClient {
 
       const commits = await this.paginateGraphQL<CommitSearchResult>(
         query,
-        { since: startDate, until: endDate },
+        { since, until },
         (data) => {
           const repoData =
             data.data as GitHubRepositoryResponse<CommitSearchResult>;

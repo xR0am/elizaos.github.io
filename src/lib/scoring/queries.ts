@@ -325,7 +325,7 @@ export async function getTopUsersByScore(
       ...scoreFields,
     })
     .from(userDailyScores)
-    .leftJoin(users, eq(userDailyScores.username, users.username))
+    .innerJoin(users, eq(userDailyScores.username, users.username))
     .where(and(...conditions))
     .groupBy(userDailyScores.username)
     .orderBy(desc(scoreFields.totalScore));

@@ -192,10 +192,10 @@ export const fetchAndStorePullRequests = createStep(
             message: node.commit.message,
             messageHeadline: node.commit.messageHeadline,
             committedDate: node.commit.committedDate,
-            authorName: node.commit.author.name,
-            authorEmail: node.commit.author.email,
-            authorDate: node.commit.author.date,
-            author: node.commit.author.user?.login,
+            authorName: node.commit.author?.name,
+            authorEmail: node.commit.author?.email,
+            authorDate: node.commit.author?.date,
+            author: node.commit.author?.user?.login,
             repository: repoId,
             additions: node.commit.additions,
             deletions: node.commit.deletions,
@@ -215,6 +215,7 @@ export const fetchAndStorePullRequests = createStep(
                 additions: sql`excluded.additions`,
                 deletions: sql`excluded.deletions`,
                 changedFiles: sql`excluded.changed_files`,
+                pullRequestId: sql`excluded.pull_request_id`,
               },
             });
         }

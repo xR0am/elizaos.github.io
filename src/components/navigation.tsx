@@ -10,12 +10,10 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
-  MenuIcon,
   LinkIcon,
   LogOutIcon,
   SunIcon,
@@ -34,6 +32,7 @@ export function Navigation() {
 
   const isLeaderboardActive = pathname === "/leaderboard";
   const isAboutActive = pathname === "/about";
+  const isReposActive = pathname.startsWith("/repos");
 
   const navLinksForMenuJsx = (
     <>
@@ -55,6 +54,16 @@ export function Navigation() {
           )}
         >
           About
+        </Link>
+      </DropdownMenuItem>
+      <DropdownMenuItem asChild className="py-3 text-base">
+        <Link
+          href="/repos"
+          className={cn(
+            "w-full justify-start rounded-md px-2 text-base text-muted-foreground",
+          )}
+        >
+          Repos
         </Link>
       </DropdownMenuItem>
       <DropdownMenuItem asChild className="py-3 text-base">
@@ -84,6 +93,19 @@ export function Navigation() {
         asChild
       >
         <Link href="/about">About</Link>
+      </Button>
+      <Button
+        variant="ghost"
+        size={"sm"}
+        className={cn(
+          "rounded-full px-4 text-sm font-medium",
+          isReposActive
+            ? "bg-muted hover:bg-muted/80"
+            : "text-muted-foreground hover:bg-transparent",
+        )}
+        asChild
+      >
+        <Link href="/repos">Repos</Link>
       </Button>
       <Button
         variant="ghost"

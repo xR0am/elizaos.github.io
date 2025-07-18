@@ -11,7 +11,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Copy, Check, ChevronDown } from "lucide-react";
 import { formatDataForLLM } from "@/lib/llm-formatter";
-import type { IntervalMetrics } from "@/app/[interval]/[[...date]]/queries";
+import type { IntervalMetrics } from "@/app/summary/[interval]/[[...date]]/queries";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 

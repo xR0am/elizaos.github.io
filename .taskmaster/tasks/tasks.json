@@ -274,5 +274,69 @@
       "updated": "2025-07-02T20:09:42.597Z",
       "description": "Activity-centric scoring system v2 implementation"
     }
+  },
+  "multi-repo-frontend": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Refactor Overall Project Summary Page for Aggregated View",
+        "description": "Refactor the existing summary pages at `/day`, `/week`, and `/month` to display aggregated data from all tracked repositories. This involves updating data queries to sum metrics project-wide and fetch a global summary instead of a repository-specific one.",
+        "details": "1. **Modify `getIntervalSummaryContent` Query:** In `src/app/[interval]/[[...date]]/queries.ts`, update the `getIntervalSummaryContent` function to remove the repository ID parameter and fetch content from the `overallSummaries` table.\n2. **Aggregate `getMetricsForInterval`:** Ensure the `getMetricsForInterval` query correctly aggregates statistics (contributor counts, PR/issue totals, lines of code) across all repositories for the selected time interval.\n3. **Update Modal Content:** Modify the modals for Stat Cards (Contributors, Pull Requests, Issues) to display aggregated lists from all repositories.",
+        "testStrategy": "1. Load the `/day`, `/week`, and `/month` pages and verify that the displayed statistics are the sum of all repositories.\n2. Click on the 'Contributors', 'Pull Requests', and 'Issues' stat cards to open their respective modals.\n3. Confirm that the modal content is an aggregated list of items from across the entire project ecosystem for the selected time frame.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "done",
+        "subtasks": []
+      },
+      {
+        "id": 2,
+        "title": "Implement Repository List Page",
+        "description": "Create a new page at `/repos` to display a list of all tracked repositories, sorted by the number of unique contributors over the last three months. Each repository will be represented by a card showing key information.",
+        "details": "1. **Create Page Component:** Create a new Next.js page at `src/app/repos/page.tsx`.\n2. **Develop New Query:** Implement a new query that fetches a list of all repositories, sorted by unique contributor count in the last 90 days (descending). For each repository, the query must also return its name, owner, top 3 all-time contributors, and a time-series of weekly commit counts for the last 90 days.\n3. **Build `RepositoryCard` Component:** Create a reusable React component for the repository card. It should display: `{owner}/{name}`, avatars of the top 3 contributors, and a simple line graph for weekly commits using shadcn/ui and Tailwind CSS.",
+        "testStrategy": "1. Navigate to the `/repos` URL.\n2. Verify that the page displays a list of repository cards.\n3. Check that the list is sorted correctly, with the repositories having the most contributors in the last 3 months appearing first.\n4. For each card, confirm the repository name, contributor avatars, and activity graph are displayed correctly.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "done",
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Backend: Generate and Store AI Repository Descriptions",
+        "description": "Implement a new step in the `summarize` data pipeline to generate and store a static, AI-generated description for each repository. This description will be displayed on the repository detail page.",
+        "details": "1. **Modify `summarize` Pipeline:** Add a new step to the existing data processing pipeline.\n2. **Generate Description:** This step should use an AI model to generate a concise description for each repository based on its metadata or README file.\n3. **Update Database Schema:** Add a new `ai_description` text column to the `repositories` table to store the generated content.\n4. **Store Description:** The pipeline step should populate this new column for each repository.",
+        "testStrategy": "1. Execute the modified `summarize` pipeline.\n2. Query the `repositories` table in the database.\n3. Verify that the `ai_description` column is successfully populated with a relevant, non-empty string for each repository.",
+        "priority": "medium",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Implement Repository Detail Page",
+        "description": "Create a new dynamic page at `/repos/{owner}/{name}` to display detailed analytics for a single repository. The page will feature a two-column layout similar to the user profile page.",
+        "details": "1. **Create Dynamic Page:** Implement a new dynamic page at `src/app/repos/[owner]/[name]/page.tsx`.\n2. **Develop `getRepoProfile` Query:** Create a new query that accepts `owner` and `name` to fetch all necessary data for the specific repository: the AI-generated description, monthly summaries, stats (PRs, Issues, contributors), daily commit activity for the last year, top 10 all-time contributors, and a list of active PRs.\n3. **Build UI:** Assemble the page using existing and new components. The header will show the repo name, GitHub link, and AI description. The left column will contain a `SummaryCard` and a daily activity heatmap. The right column will show stat cards, a list of the top 10 contributors (linking to their profiles), and a list of active PRs.",
+        "testStrategy": "1. Navigate to a repository detail page, e.g., `/repos/elizaos/eliza`.\n2. Verify that the header displays the correct repository name and the AI-generated description.\n3. Check that all data displayed on the page (summaries, stats, heatmap, contributors, PRs) is specific to that repository.\n4. Confirm that links to contributor profiles are working correctly.",
+        "priority": "high",
+        "dependencies": [2, 3],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "Finalize Navigation and Perform End-to-End Testing",
+        "description": "Integrate the new repository pages into the main site navigation and conduct end-to-end testing of the new user flow, ensuring all links between pages work as expected.",
+        "details": "1. **Add Navigation Link:** In the main site navigation component, add a new link to the Repository List page (`/repos`).\n2. **Link List to Detail:** Ensure that clicking on a `RepositoryCard` on the `/repos` page correctly navigates to its corresponding `/repos/{owner}/{name}` detail page.\n3. **Verify All Links:** Perform a full review of the new pages to ensure all internal and external links (e.g., to GitHub, to user profiles) are functional.",
+        "testStrategy": "1. Start at the main summary page and click the new 'Repositories' navigation link.\n2. From the `/repos` list page, click on a repository to navigate to its detail page.\n3. From the repository detail page, click on a contributor's name to navigate to their user profile page.\n4. Verify that the entire flow is smooth, all pages load correctly, and all data is consistent.",
+        "priority": "medium",
+        "dependencies": [1, 4],
+        "status": "pending",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2025-07-02T23:49:26.014Z",
+      "updated": "2025-07-16T23:32:09.313Z",
+      "description": "Tasks for multi-repo-frontend context"
+    }
   }
 }

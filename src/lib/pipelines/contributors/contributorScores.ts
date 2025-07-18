@@ -1,6 +1,6 @@
 import { createStep } from "../types";
 import { ContributorPipelineContext } from "./context";
-import { calculateContributorScore } from "../../scoring/scoreCalculator";
+import { calculateContributorScore } from "@/lib/scoring/scoreCalculator";
 import { TimeInterval, toDateString } from "@/lib/date-utils";
 import { QueryParams } from "../queryHelpers";
 import { getUserDailyScores, saveUserDailyScore } from "@/lib/scoring/storage";
