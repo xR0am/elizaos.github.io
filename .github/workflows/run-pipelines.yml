@@ -21,36 +21,14 @@ on:
         type: boolean
         default: false
         required: false
-      enable_repository_summaries:
-        description: "Generate repository summaries"
-        type: boolean
-        default: true
-        required: false
-      enable_overall_summaries:
-        description: "Generate overall summaries"
-        type: boolean
-        default: true
-        required: false
-      enable_contributor_summaries:
-        description: "Generate contributor summaries"
-        type: boolean
-        default: true
-        required: false
-      daily_summaries:
-        description: "Enable daily summaries"
-        type: boolean
-        default: true
-        required: false
-      weekly_summaries:
-        description: "Enable weekly summaries"
-        type: boolean
-        default: true
-        required: false
-      monthly_summaries:
-        description: "Enable monthly summaries"
-        type: boolean
-        default: true
-        required: false
+      summary_types_to_run:
+        description: "Comma-separated list of summary types to run (repository,overall,contributors)"
+        type: string
+        default: "repository,overall,contributors"
+      summary_intervals_to_run:
+        description: "Comma-separated list of intervals to run (daily,weekly,monthly)"
+        type: string
+        default: "daily,weekly,monthly"
       startDate:
         description: "Start date for data processing (format: YYYY-MM-DD)"
         type: string
@@ -162,7 +140,7 @@ jobs:
     permissions:
       contents: write # Needed for pushing to branches
     # Skip summary generation if all summary types are disabled in a manual run
-    if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.enable_repository_summaries == 'true' || github.event.inputs.enable_overall_summaries == 'true' || github.event.inputs.enable_contributor_summaries == 'true' }}
+    if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.summary_types_to_run != '' }}
 
     steps:
       - name: Checkout repository
@@ -213,12 +191,15 @@ jobs:
 
           # Manual runs
           else
-            echo "RUN_DAILY=${{ github.event.inputs.daily_summaries }}" >> $GITHUB_OUTPUT
-            echo "RUN_WEEKLY=${{ github.event.inputs.weekly_summaries }}" >> $GITHUB_OUTPUT
-            echo "RUN_MONTHLY=${{ github.event.inputs.monthly_summaries }}" >> $GITHUB_OUTPUT
-            echo "RUN_CONTRIBUTORS=${{ github.event.inputs.enable_contributor_summaries }}" >> $GITHUB_OUTPUT
-            echo "RUN_REPOSITORIES=${{ github.event.inputs.enable_repository_summaries }}" >> $GITHUB_OUTPUT
-            echo "RUN_OVERALL=${{ github.event.inputs.enable_overall_summaries }}" >> $GITHUB_OUTPUT
+            SUMMARY_TYPES="${{ github.event.inputs.summary_types_to_run }}"
+            SUMMARY_INTERVALS="${{ github.event.inputs.summary_intervals_to_run }}"
+
+            if [[ "$SUMMARY_INTERVALS" == *'daily'* ]]; then echo "RUN_DAILY=true"; else echo "RUN_DAILY=false"; fi >> $GITHUB_OUTPUT
+            if [[ "$SUMMARY_INTERVALS" == *'weekly'* ]]; then echo "RUN_WEEKLY=true"; else echo "RUN_WEEKLY=false"; fi >> $GITHUB_OUTPUT
+            if [[ "$SUMMARY_INTERVALS" == *'monthly'* ]]; then echo "RUN_MONTHLY=true"; else echo "RUN_MONTHLY=false"; fi >> $GITHUB_OUTPUT
+            if [[ "$SUMMARY_TYPES" == *'contributors'* ]]; then echo "RUN_CONTRIBUTORS=true"; else echo "RUN_CONTRIBUTORS=false"; fi >> $GITHUB_OUTPUT
+            if [[ "$SUMMARY_TYPES" == *'repository'* ]]; then echo "RUN_REPOSITORIES=true"; else echo "RUN_REPOSITORIES=false"; fi >> $GITHUB_OUTPUT
+            if [[ "$SUMMARY_TYPES" == *'overall'* ]]; then echo "RUN_OVERALL=true"; else echo "RUN_OVERALL=false"; fi >> $GITHUB_OUTPUT
           fi
 
       - name: Run Overall Summaries
