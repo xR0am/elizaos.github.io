@@ -36,7 +36,6 @@ export const generateOverallSummaryForInterval = createStep(
   ) => {
     const { logger, aiSummaryConfig, overwrite, outputDir } = context;
     const intervalType = interval.intervalType;
-    console.log({ intervalType, aiSummaryConfig, overwrite });
     if (!aiSummaryConfig.enabled) {
       return null;
     }
@@ -61,7 +60,6 @@ export const generateOverallSummaryForInterval = createStep(
       }
 
       const repoSummaries = await getAllRepoSummariesForInterval(interval);
-      console.log({ repoSummaries });
       if (repoSummaries.length === 0) {
         intervalLogger?.debug(
           `No repository summaries found for ${intervalType} of ${startDate}, skipping overall summary generation.`,

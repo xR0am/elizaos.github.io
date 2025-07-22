@@ -364,7 +364,6 @@ program
         dateRange,
         enabledIntervals,
       });
-      console.log(context);
       // Run the appropriate pipeline based on summary type
       if (summaryType === "contributors") {
         await runPipeline(contributorSummariesPipeline, {}, context);
