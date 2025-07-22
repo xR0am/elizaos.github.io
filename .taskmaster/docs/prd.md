@@ -27,7 +27,7 @@ It's primarily for developers, team leads, and project managers involved in or o
 - **AI-Powered Summaries:**
   - _What it does:_ Generates natural language summaries of project activity and individual contributor efforts for daily, weekly, and monthly periods.
   - _Why it's important:_ Provides concise, human-readable overviews of progress and contributions, saving time compared to reviewing raw data.
-  - _How it works:_ The `summarize` pipeline command (with `-t project` or `-t contributors` flags) sends relevant processed data (PR titles, issue summaries, key stats) to an AI model (configurable via OpenRouter) using prompts tailored for project or contributor summaries. The generated summaries are saved as JSON files (e.g., `data/elizaos_eliza/week/summaries/summary_2024-W01.json`). Specific models can be configured per interval.
+  - _How it works:_ The `summarize` pipeline command (with `-t repository`, `-t overall`, or `-t contributors` flags) sends relevant processed data (PR titles, issue summaries, key stats) to an AI model (configurable via OpenRouter) using prompts tailored for repository, overall, or contributor summaries. The generated summaries are saved as JSON files (e.g., `data/elizaos_eliza/week/summaries/summary_2024-W01.json`). Specific models can be configured per interval.
 - **Web Interface (Leaderboard & Profiles):**
   - _What it does:_ Provides an interactive web frontend built with Next.js to display the leaderboard, contributor profiles, daily/weekly/monthly reports, and activity visualizations.
   - _Why it's important:_ Makes the analytics accessible and engaging for users.
@@ -101,7 +101,7 @@ It's primarily for developers, team leads, and project managers involved in or o
 # Development Roadmap
 
 - **MVP (Current State):**
-  - Core pipeline functionality: Ingest, Process, Export, Summarize (Project & Contributor).
+  - Core pipeline functionality: Ingest, Process, Export, Summarize (Repository, Overall, & Contributor).
   - Configurable scoring rules and repository tracking.
   - SQLite database with Drizzle ORM and migrations.
   - Basic Next.js frontend displaying leaderboard and rudimentary profile/daily views based on exported JSONs.

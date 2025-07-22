@@ -174,6 +174,9 @@ export function mapStep<TInput, TOutput, TContext extends BasePipelineContext>(
     if (!Array.isArray(inputs)) {
       throw new Error("mapStep requires an array input");
     }
+    if (!inputs.length) {
+      return [];
+    }
 
     const results = await pMap(inputs, (item) => operation(item, context), {
       concurrency: 5,

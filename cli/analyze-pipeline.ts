@@ -34,7 +34,8 @@ import chalk from "chalk";
 import { generateRepositoryStats } from "@/lib/pipelines/export";
 import { contributorsPipeline } from "@/lib/pipelines/contributors";
 import {
-  summarizationPipeline,
+  repositorySummariesPipeline,
+  overallSummariesPipeline,
   contributorSummariesPipeline,
 } from "@/lib/pipelines/summarize";
 import { createContributorPipelineContext } from "@/lib/pipelines/contributors/context";
@@ -280,7 +281,7 @@ program
   .option("--all", "Process all data since contributionStartDate", false)
   .requiredOption(
     "-t, --type <type>",
-    "Type of summary to generate (contributors or project)",
+    "Type of summary to generate (contributors, repository, or overall)",
   )
   .option("--output-dir <dir>", "Output directory for summaries", "./data/")
   .option("--daily", "Generate daily summaries")
@@ -305,9 +306,13 @@ program
 
       // Validate summary type
       const summaryType = options.type.toLowerCase();
-      if (summaryType !== "contributors" && summaryType !== "project") {
+      if (
+        summaryType !== "contributors" &&
+        summaryType !== "repository" &&
+        summaryType !== "overall"
+      ) {
         rootLogger.error(
-          `Invalid summary type: ${options.type}. Must be either "contributors" or "project".`,
+          `Invalid summary type: ${options.type}. Must be either "contributors", "repository", or "overall".`,
         );
         process.exit(1);
       }
@@ -348,7 +353,6 @@ program
             week: true,
             month: true,
           };
-
       // Create summarizer context
       const context = createSummarizerContext({
         repoId: options.repository,
@@ -360,13 +364,18 @@ program
         dateRange,
         enabledIntervals,
       });
-
       // Run the appropriate pipeline based on summary type
       if (summaryType === "contributors") {
         await runPipeline(contributorSummariesPipeline, {}, context);
-      } else {
+      } else if (summaryType === "repository") {
         await runPipeline(
-          summarizationPipeline,
+          repositorySummariesPipeline,
+          { repoId: options.repository },
+          context,
+        );
+      } else if (summaryType === "overall") {
+        await runPipeline(
+          overallSummariesPipeline,
           { repoId: options.repository },
           context,
         );

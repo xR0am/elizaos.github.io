@@ -55,8 +55,9 @@ GitHub Contributor Analytics Generator for tracking, analyzing, and visualizing 
 
 - `bun run pipeline export` - Export repository stats (30 days default)
 - `bun run pipeline export --all` - Export all data since start date
-- `bun run pipeline summarize -t project` - Generate project summaries
+- `bun run pipeline summarize -t repository` - Generate repo summaries
 - `bun run pipeline summarize -t contributors` - Generate contributor summaries
+- `bun run pipeline summarize -t overall` - Generate overall summaries
 
 ## Code Style
 

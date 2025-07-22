@@ -1,75 +1,83 @@
 ---
-description: 
+description:
 globs: src/app/**/*,src/components/**/*
 alwaysApply: false
 ---
+
 # Frontend Development Standards
 
 ## Component Organization
 
 - **Page-Specific Components:**
+
   - Place in `src/app/<page>` directory related to the feature
   - These components should contain business logic
   - Example locations:
+
     ```typescript
     // ✅ DO: Place page-specific components in the related page directory
-    src/app/profile/[username]/user-stats.tsx
-    src/app/leaderboard/leaderboard-filters.tsx
-    
+    src / app / profile / [username] / user - stats.tsx;
+    src / app / leaderboard / leaderboard - filters.tsx;
+
     // ❌ DON'T: Mix business logic components with pure UI components
-    src/components/profile-stats.tsx  // Should be in src/app/profile/
+    src / components / profile - stats.tsx; // Should be in src/app/profile/
     ```
 
 - **Shared UI Components:**
+
   - Place in `src/components` directory
   - These should be pure UI/layout components without business logic
   - Example locations:
+
     ```typescript
     // ✅ DO: Place reusable UI components in src/components
-    src/components/stat-card.tsx
-    src/components/activity-item.tsx
-    
+    src / components / stat - card.tsx;
+    src / components / activity - item.tsx;
+
     // ❌ DON'T: Place page-specific components here
-    src/components/leaderboard-page-filters.tsx  // Should be in src/app/leaderboard/
+    src / components / leaderboard - page - filters.tsx; // Should be in src/app/leaderboard/
     ```
 
 - **Shadcn Components:**
   - All shadcn/ui base components should be placed in `src/components/ui`
   - Do not modify these files unless extending the component API
-  - Example: 
+  - Example:
     ```typescript
     // ✅ DO: Keep shadcn components in the ui directory
-    src/components/ui/button.tsx
-    src/components/ui/card.tsx
+    src / components / ui / button.tsx;
+    src / components / ui / card.tsx;
     ```
 
 ## Component Structure
 
 - **One Component Per File:**
+
   - Each file should export exactly one main component
   - Use names exports for components
   - Exception: compound components can be in the same file
   - Example:
+
     ```typescript
     // ✅ DO: One main component per file with default export
     export function StatCard({ title, value, icon }: StatCardProps) {
       // Implementation
     }
-    
+
     // ✅ DO: Compound components can share a file
     function Tabs({ children, ...props }: TabsProps) {
       // Implementation
     }
-    
+
     function TabsList({ children }: TabsListProps) {
       // Implementation
     }
-    
+
     // Export as a namespace
-    export { Tabs, TabsList, TabsContent, TabsTrigger }
+    export { Tabs, TabsList, TabsContent, TabsTrigger };
     ```
 
 - **File Naming Conventions:**
+
   - Use `kebab-case` for all new component filenames.
   - ✅ **DO**: `user-profile-card.tsx`
   - ❌ **DON'T**: `UserProfileCard.tsx`
@@ -82,13 +90,16 @@ alwaysApply: false
 ## CSS and Styling
 
 - **Tailwind Classes:**
+
   - Use Tailwind's utility classes for styling
   - Group related classes together
 
 - **Responsiveness is Mandatory:**
+
   - All components and layouts MUST be responsive and work well on all screen sizes. Use Tailwind's responsive prefixes (`sm:`, `md:`, `lg:`, etc.).
 
 - **Color Palette:**
+
   - Avoid using `indigo` or `blue` color palettes unless explicitly requested.
   - When configuring `tailwind.config.js`, hardcode color values directly in the config file rather than using CSS variables in `globals.css`.
 
@@ -105,6 +116,7 @@ alwaysApply: false
 ## Images & Media
 
 - **Placeholder Images:**
+
   - Use the `/placeholder.svg` utility for placeholders and hardcode the `query` parameter in the URL.
   - ✅ **DO**: `<img src="/placeholder.svg?width=400&height=300&query=abstract-hero-image" />`
 
@@ -113,57 +125,97 @@ alwaysApply: false
   - ✅ **DO**:
     ```javascript
     const image = new Image();
-    image.crossOrigin = 'anonymous';
-    image.src = '/path/to/image.png';
+    image.crossOrigin = "anonymous";
+    image.src = "/path/to/image.png";
     ```
 
 ## Data Fetching and State Management
 
-- **Data Fetching:**
-  - Use React Server Components where possible
-  - Place data fetching logic in dedicated files (e.g., `queries.ts`)
+- **Data Fetching Strategy:**
+
+  - **Component-Level Data Fetching:** Instead of fetching all data for a page in a single top-level component and passing it down through props, each major section of a page should be its own Server Component that fetches only the data relevant to that section.
+  - **Granular Queries:** Aim for one specific database query per component/section. This improves modularity and enables more granular loading states using React Suspense. See the section on [React Suspense for Loading States](mdc:.cursor/rules/frontend.mdc#react-suspense-for-loading-states) for examples.
+  - **Co-locate Queries:** Place data fetching logic in dedicated files (e.g., `queries.ts`) that are co-located with the components that use them.
+  - **Server Components First:** Default to using Server Components. Only opt into Client Components (by adding `"use client"`) when client-side interactivity is absolutely necessary (e.g., using hooks like `useState` or `useEffect`, or integrating with a client-only library).
+
   - Example:
+
     ```typescript
-    // ✅ DO: Separate data fetching logic in queries.ts
-    // src/app/profile/[username]/queries.ts
-    export async function getUserProfile(username: string) {
-      // Implementation
-    }
-    
+    // ❌ DON'T: Fetch all data in the page component and pass it down.
     // src/app/profile/[username]/page.tsx
-    import { getUserProfile } from "./queries";
-    
-    export default async function ProfilePage({ params }: { params: { username: string } }) {
-      const userData = await getUserProfile(params.username);
-      // Render component with data
+    export default async function ProfilePage({ params }) {
+      // This monolithic fetch blocks rendering and prevents streaming.
+      const user = await getUser(params.username);
+      const posts = await getPosts(params.username);
+      const stats = await getStats(params.username);
+      return (
+        <div>
+          <UserProfile user={user} />
+          <UserPosts posts={posts} />
+          <UserStats stats={stats} />
+        </div>
+      );
+    }
+    ```
+
+    ```typescript
+    // ✅ DO: Fetch data within the specific server component for each section.
+    // This allows each component to load independently, wrapped in Suspense.
+    // src/app/profile/[username]/page.tsx
+    import { Suspense } from "react";
+    import { UserProfile, UserProfileSkeleton } from "./components/user-profile";
+    import { UserPosts, UserPostsSkeleton } from "./components/user-posts";
+
+    export default function ProfilePage({ params }) {
+      return (
+        <div>
+          <Suspense fallback={<UserProfileSkeleton />}>
+            <UserProfile username={params.username} />
+          </Suspense>
+          <Suspense fallback={<UserPostsSkeleton />}>
+            <UserPosts username={params.username} />
+          </Suspense>
+        </div>
+      );
+    }
+
+    // src/app/profile/[username]/components/user-profile.tsx
+    import { getUser } from "../queries";
+
+    export async function UserProfile({ username }: { username: string }) {
+      const user = await getUser(username);
+      // ... render user profile
     }
     ```
 
 - **State Management:**
+
   - **Prefer URL Query Parameters Over useState:**
+
     - Store UI state in URL when possible using Next.js router and searchParams
     - Makes state shareable, bookmarkable, and persists through refreshes
     - Example:
+
     ```typescript
     // ✅ DO: Use URL query params for UI state
     // src/app/leaderboard/page.tsx
-    export default function LeaderboardPage({ 
-      searchParams 
-    }: { 
-      searchParams: { period?: string; category?: string } 
+    export default function LeaderboardPage({
+      searchParams
+    }: {
+      searchParams: { period?: string; category?: string }
     }) {
       const period = searchParams.period || 'week';
       const category = searchParams.category || 'all';
 
       return (
         <div>
-          <LeaderboardFilters 
-            period={period} 
-            category={category} 
+          <LeaderboardFilters
+            period={period}
+            category={category}
           />
-          <LeaderboardResults 
-            period={period} 
-            category={category} 
+          <LeaderboardResults
+            period={period}
+            category={category}
           />
         </div>
       );
@@ -199,11 +251,11 @@ alwaysApply: false
       // This state is lost on page refresh and can't be shared via URL
       return (
         <div>
-          <FilterControls 
-            period={period} 
-            category={category} 
-            setPeriod={setPeriod} 
-            setCategory={setCategory} 
+          <FilterControls
+            period={period}
+            category={category}
+            setPeriod={setPeriod}
+            setCategory={setCategory}
           />
           <LeaderboardResults period={period} category={category} />
         </div>
@@ -212,6 +264,7 @@ alwaysApply: false
     ```
 
   - **When to Use React useState:**
+
     - For ephemeral UI state that doesn't need to persist (tooltips, dropdowns)
     - For form input values before submission
     - When leveraging external libraries that require local state
@@ -219,6 +272,7 @@ alwaysApply: false
 
   - Extract complex state logic into custom hooks
   - Example:
+
     ```typescript
     // ✅ DO: Create custom hooks for complex state logic
     // src/app/leaderboard/use-leaderboard-filters.ts
@@ -226,18 +280,21 @@ alwaysApply: false
       const router = useRouter();
       const pathname = usePathname();
       const searchParams = useSearchParams();
-      
+
       const filters = {
-        period: searchParams.get('period') || 'week',
-        category: searchParams.get('category') || 'all'
+        period: searchParams.get("period") || "week",
+        category: searchParams.get("category") || "all",
       };
-      
-      const setFilter = useCallback((key: string, value: string) => {
-        const params = new URLSearchParams(searchParams);
-        params.set(key, value);
-        router.push(`${pathname}?${params.toString()}`);
-      }, [searchParams, router, pathname]);
-      
+
+      const setFilter = useCallback(
+        (key: string, value: string) => {
+          const params = new URLSearchParams(searchParams);
+          params.set(key, value);
+          router.push(`${pathname}?${params.toString()}`);
+        },
+        [searchParams, router, pathname],
+      );
+
       return { filters, setFilter };
     }
     ```
@@ -245,9 +302,11 @@ alwaysApply: false
 ## Component Composition
 
 - **Composition Over Props:**
+
   - Prefer component composition over complex prop configurations
   - Use children and render props patterns for flexibility
   - Example:
+
     ```tsx
     // ✅ DO: Use composition for flexible components
     <Card>
@@ -262,9 +321,9 @@ alwaysApply: false
         <Button>View Details</Button>
       </CardFooter>
     </Card>
-    
+
     // ❌ DON'T: Create inflexible components with too many props
-    <StatisticsCard 
+    <StatisticsCard
       title="User Statistics"
       description="Performance metrics for the current period"
       metrics={userMetrics}
@@ -276,13 +335,15 @@ alwaysApply: false
 ## Performance Optimization
 
 - **Component Memoization:**
+
   - Memoize expensive components with React.memo
   - Use useMemo/useCallback for expensive calculations or callbacks
   - Example:
+
     ```tsx
     // ✅ DO: Memoize expensive components
     const MemoizedDataTable = React.memo(DataTable);
-    
+
     // ✅ DO: Use useMemo for expensive calculations
     const sortedData = useMemo(() => {
       return [...data].sort((a, b) => b.score - a.score);
@@ -292,24 +353,30 @@ alwaysApply: false
 ## Error Handling and Loading States
 
 - **React Suspense for Loading States:**
+
   - Use React Suspense for handling loading states
   - Implement suspense boundaries at the appropriate level of your component tree
   - Create well-designed loading components that match the structure of the content they replace
   - Example:
+
     ```tsx
     // ✅ DO: Use Suspense for loading states
     // src/app/profile/[username]/page.tsx
-    import { Suspense } from 'react';
-    import { UserStats, UserStatsLoading } from './user-stats';
-    import { UserActivity, UserActivityLoading } from './user-activity';
+    import { Suspense } from "react";
+    import { UserStats, UserStatsLoading } from "./user-stats";
+    import { UserActivity, UserActivityLoading } from "./user-activity";
 
-    export default function ProfilePage({ params }: { params: { username: string } }) {
+    export default function ProfilePage({
+      params,
+    }: {
+      params: { username: string };
+    }) {
       return (
         <div className="space-y-6">
           <Suspense fallback={<UserStatsLoading />}>
             <UserStats username={params.username} />
           </Suspense>
-          
+
           <Suspense fallback={<UserActivityLoading />}>
             <UserActivity username={params.username} />
           </Suspense>
@@ -323,10 +390,10 @@ alwaysApply: false
     export function UserStatsLoading() {
       return (
         <div className="space-y-3">
-          <div className="h-8 w-1/3 rounded-md bg-muted animate-pulse" />
+          <div className="bg-muted h-8 w-1/3 animate-pulse rounded-md" />
           <div className="grid grid-cols-3 gap-4">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="h-24 rounded-lg bg-muted animate-pulse" />
+              <div key={i} className="bg-muted h-24 animate-pulse rounded-lg" />
             ))}
           </div>
         </div>
@@ -335,26 +402,28 @@ alwaysApply: false
     ```
 
 - **Asynchronous Components:**
+
   - Leverage async/await in Server Components for data fetching
   - Manage loading state through Suspense rather than manual loading flags
   - Example:
+
     ```tsx
     // ✅ DO: Use async/await with Suspense
     // src/app/profile/[username]/user-stats.tsx
-    import { getStats } from './queries';
+    import { getStats } from "./queries";
 
     export async function UserStats({ username }: { username: string }) {
       // This will automatically trigger Suspense while resolving
       const stats = await getStats(username);
-      
+
       return (
         <div className="grid grid-cols-3 gap-4">
-          {stats.map(stat => (
-            <StatCard 
-              key={stat.id} 
-              title={stat.name} 
-              value={stat.value} 
-              icon={stat.icon} 
+          {stats.map((stat) => (
+            <StatCard
+              key={stat.id}
+              title={stat.name}
+              value={stat.value}
+              icon={stat.icon}
             />
           ))}
         </div>
@@ -368,7 +437,7 @@ alwaysApply: false
       const [loading, setLoading] = useState(true);
       const [stats, setStats] = useState<Stats[]>([]);
       const [error, setError] = useState<Error | null>(null);
-      
+
       useEffect(() => {
         async function fetchStats() {
           try {
@@ -383,10 +452,10 @@ alwaysApply: false
         }
         fetchStats();
       }, [username]);
-      
+
       if (loading) return <UserStatsLoading />;
       if (error) return <ErrorComponent error={error} />;
-      
+
       return (
         // Render stats
       );
@@ -394,15 +463,17 @@ alwaysApply: false
     ```
 
 - **Error Boundaries:**
+
   - Implement error boundaries for critical components
   - Use the `error.tsx` file in Next.js App Router for route-level error handling
   - Example:
+
     ```tsx
     // src/app/profile/[username]/error.tsx
-    'use client';
-    
-    import { Button } from '@/components/ui/button';
-    
+    "use client";
+
+    import { Button } from "@/components/ui/button";
+
     export default function ProfileError({
       error,
       reset,
@@ -411,8 +482,10 @@ alwaysApply: false
       reset: () => void;
     }) {
       return (
-        <div className="rounded-lg border border-destructive/50 bg-destructive/10 p-6 text-destructive">
-          <h2 className="text-lg font-medium">Something went wrong loading this profile</h2>
+        <div className="border-destructive/50 bg-destructive/10 text-destructive rounded-lg border p-6">
+          <h2 className="text-lg font-medium">
+            Something went wrong loading this profile
+          </h2>
           <p className="mt-2 text-sm">{error.message}</p>
           <Button variant="outline" className="mt-4" onClick={reset}>
             Try again
@@ -425,15 +498,18 @@ alwaysApply: false
 ## Accessibility
 
 - **Semantic HTML:**
+
   - Use appropriate semantic HTML elements
   - Implement proper heading hierarchy (h1, h2, h3)
   - Example:
     ```tsx
     // ✅ DO: Use semantic HTML
     <section aria-labelledby="profile-heading">
-      <h2 id="profile-heading" className="text-2xl font-bold">User Profile</h2>
+      <h2 id="profile-heading" className="text-2xl font-bold">
+        User Profile
+      </h2>
       <div role="list" className="mt-4 space-y-3">
-        {stats.map(stat => (
+        {stats.map((stat) => (
           <div role="listitem" key={stat.id}>
             {/* Stat content */}
           </div>
@@ -443,10 +519,12 @@ alwaysApply: false
     ```
 
 - **Screen Reader Text:**
+
   - Use the `"sr-only"` Tailwind CSS class to provide context for screen readers without visually displaying the text.
   - ✅ **DO**: `<span className="sr-only">Open main menu</span>`
 
 - **Image Alt Text:**
+
   - Provide descriptive `alt` text for all images. If an image is purely decorative, you can leave the `alt` text empty (`alt=""`).
 
 - **Focus Management:**
@@ -456,7 +534,7 @@ alwaysApply: false
     ```tsx
     // ✅ DO: Ensure proper focus management
     <button
-      className="rounded-md bg-primary px-4 py-2 text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+      className="bg-primary text-primary-foreground focus-visible:ring-primary rounded-md px-4 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
       onClick={handleAction}
     >
       Action Button
@@ -464,6 +542,12 @@ alwaysApply: false
     ```
 
 ## Code Formatting
+
+- **JSX Special Characters:**
+
+  - When displaying text content in JSX that contains special characters like `<`, `>`, `{`, or `}`, wrap it in a string literal within an expression to ensure it's escaped correctly.
+  - ✅ **DO**: `<div>{'Rendered text with < and > symbols'}</div>`
+  - ❌ **DON'T**: `<div>Rendered text with < and > symbols</div>`
 
 - **JSX Special Characters:**
   - When displaying text content in JSX that contains special characters like `<`, `>`, `{`, or `}`, wrap it in a string literal within an expression to ensure it's escaped correctly.
