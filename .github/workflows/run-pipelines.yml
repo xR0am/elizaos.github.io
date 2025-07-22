@@ -21,8 +21,13 @@ on:
         type: boolean
         default: false
         required: false
-      enable_project_summaries:
-        description: "Generate project summaries"
+      enable_repository_summaries:
+        description: "Generate repository summaries"
+        type: boolean
+        default: true
+        required: false
+      enable_overall_summaries:
+        description: "Generate overall summaries"
         type: boolean
         default: true
         required: false
@@ -156,8 +161,8 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: write # Needed for pushing to branches
-    # Skip summary generation if both project and contributor summaries are disabled in a manual run
-    if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.enable_project_summaries == 'true' || github.event.inputs.enable_contributor_summaries == 'true' }}
+    # Skip summary generation if all summary types are disabled in a manual run
+    if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.enable_repository_summaries == 'true' || github.event.inputs.enable_overall_summaries == 'true' || github.event.inputs.enable_contributor_summaries == 'true' }}
 
     steps:
       - name: Checkout repository
@@ -171,35 +176,6 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      # Set common conditional variables
-      - name: Set conditional variables
-        id: set-vars
-        run: |
-          START_DATE_ARG="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.startDate != '' && format(' -a {0}', github.event.inputs.startDate) || '' }}"
-          END_DATE_ARG="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.endDate != '' && format(' -b {0}', github.event.inputs.endDate) || '' }}"
-
-          # Forced summary generation flag
-          FORCE_SUMMARIES_ARG="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_summaries == 'true' && ' -f' || '' }}"
-
-          # Summary interval flags
-          DAILY_ARG="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.daily_summaries == 'true' && ' --daily' || '' }}"
-          WEEKLY_ARG="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.weekly_summaries == 'true' && ' --weekly' || '' }}"
-          MONTHLY_ARG="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.monthly_summaries == 'true' && ' --monthly' || '' }}"
-
-          # For scheduled runs, enable all intervals
-          if [ "${{ github.event_name }}" != "workflow_dispatch" ]; then
-            DAILY_ARG=""
-            WEEKLY_ARG=""
-            MONTHLY_ARG=""
-          fi
-
-          INTERVAL_ARGS="$DAILY_ARG$WEEKLY_ARG$MONTHLY_ARG"
-
-          echo "start_date_arg=$START_DATE_ARG" >> $GITHUB_ENV
-          echo "end_date_arg=$END_DATE_ARG" >> $GITHUB_ENV
-          echo "force_summaries_arg=$FORCE_SUMMARIES_ARG" >> $GITHUB_ENV
-          echo "interval_args=$INTERVAL_ARGS" >> $GITHUB_ENV
-
       # Set up pipeline-data branch worktree
       - name: Setup pipeline-data branch
         uses: ./.github/actions/pipeline-data
@@ -207,6 +183,7 @@ jobs:
           operation: setup
           branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
           data_dir: ${{ env.DATA_DIR }}
+
       # Restore database from pipeline-data branch
       - name: Restore database
         uses: ./.github/actions/restore-db
@@ -215,49 +192,97 @@ jobs:
           dump_dir: ${{ env.DATA_DIR }}/dump
           db_path: ${{ env.DATA_DIR }}/db.sqlite
 
-      # Determine which summaries to run based on day of week or manual inputs
-      - name: Check for summary generation
-        id: summary-check
+      # Determine which intervals and types to run
+      - name: Set run conditions
+        id: conditions
         run: |
-          # By default, always run project summaries on scheduled runs
-          RUN_PROJECT=true
+          DAY_OF_WEEK=$(date +%u) # 1=Mon, 7=Sun
 
-          # For scheduled runs, only run contributor summaries on Sunday (day 7)
-          if [ "${{ github.event_name }}" != "workflow_dispatch" ]; then
-            DAY_OF_WEEK=$(date +%u)
-            if [ "$DAY_OF_WEEK" = "7" ]; then
-              RUN_CONTRIBUTOR=true
-            else
-              RUN_CONTRIBUTOR=false
+          # Scheduled runs
+          if [ "${{ github.event_name }}" == "schedule" ]; then
+            echo "RUN_DAILY=true" >> $GITHUB_OUTPUT
+            if [ "$DAY_OF_WEEK" = "3" ] || [ "$DAY_OF_WEEK" = "6" ]; then
+              echo "RUN_WEEKLY=true" >> $GITHUB_OUTPUT
             fi
+            if [ "$DAY_OF_WEEK" = "7" ]; then
+              echo "RUN_MONTHLY=true" >> $GITHUB_OUTPUT
+              echo "RUN_CONTRIBUTORS=true" >> $GITHUB_OUTPUT
+            fi
+            echo "RUN_REPOSITORIES=true" >> $GITHUB_OUTPUT
+            echo "RUN_OVERALL=true" >> $GITHUB_OUTPUT
+
+          # Manual runs
           else
-            # For manual runs, use input flags
-            RUN_PROJECT="${{ github.event.inputs.enable_project_summaries == 'true' }}"
-            RUN_CONTRIBUTOR="${{ github.event.inputs.enable_contributor_summaries == 'true' }}"
+            echo "RUN_DAILY=${{ github.event.inputs.daily_summaries }}" >> $GITHUB_OUTPUT
+            echo "RUN_WEEKLY=${{ github.event.inputs.weekly_summaries }}" >> $GITHUB_OUTPUT
+            echo "RUN_MONTHLY=${{ github.event.inputs.monthly_summaries }}" >> $GITHUB_OUTPUT
+            echo "RUN_CONTRIBUTORS=${{ github.event.inputs.enable_contributor_summaries }}" >> $GITHUB_OUTPUT
+            echo "RUN_REPOSITORIES=${{ github.event.inputs.enable_repository_summaries }}" >> $GITHUB_OUTPUT
+            echo "RUN_OVERALL=${{ github.event.inputs.enable_overall_summaries }}" >> $GITHUB_OUTPUT
           fi
 
-          echo "run_project=$RUN_PROJECT" >> $GITHUB_OUTPUT
-          echo "run_contributor=$RUN_CONTRIBUTOR" >> $GITHUB_OUTPUT
+      - name: Run Overall Summaries
+        if: steps.conditions.outputs.RUN_OVERALL == 'true'
+        uses: ./.github/actions/run-summary
+        with:
+          summary-type: "overall"
+          daily: ${{ steps.conditions.outputs.RUN_DAILY }}
+          weekly: ${{ steps.conditions.outputs.RUN_WEEKLY }}
+          monthly: ${{ steps.conditions.outputs.RUN_MONTHLY }}
+          force: ${{ github.event.inputs.force_summaries }}
+          start-date: ${{ github.event.inputs.startDate }}
+          end-date: ${{ github.event.inputs.endDate }}
 
-      - name: Generate project summaries
-        if: ${{ steps.summary-check.outputs.run_project == 'true' }}
-        run: |
-          bun run pipeline summarize -t project${{ env.start_date_arg }}${{ env.end_date_arg }}${{ env.force_summaries_arg }}${{ env.interval_args }}
+      - name: Run Repository Summaries
+        if: steps.conditions.outputs.RUN_REPOSITORIES == 'true'
+        uses: ./.github/actions/run-summary
+        with:
+          summary-type: "repository"
+          daily: ${{ steps.conditions.outputs.RUN_DAILY }}
+          weekly: ${{ steps.conditions.outputs.RUN_WEEKLY }}
+          monthly: ${{ steps.conditions.outputs.RUN_MONTHLY }}
+          force: ${{ github.event.inputs.force_summaries }}
+          start-date: ${{ github.event.inputs.startDate }}
+          end-date: ${{ github.event.inputs.endDate }}
 
-      - name: Force regenerate recent project summaries
-        if: ${{ github.event_name != 'workflow_dispatch' && steps.summary-check.outputs.run_project == 'true' }}
-        run: |
-          bun run pipeline summarize -t project -f -d 1
+      - name: Run Contributor Summaries
+        if: steps.conditions.outputs.RUN_CONTRIBUTORS == 'true'
+        uses: ./.github/actions/run-summary
+        with:
+          summary-type: "contributors"
+          daily: ${{ steps.conditions.outputs.RUN_DAILY }}
+          weekly: ${{ steps.conditions.outputs.RUN_WEEKLY }}
+          monthly: ${{ steps.conditions.outputs.RUN_MONTHLY }}
+          force: ${{ github.event.inputs.force_summaries }}
+          start-date: ${{ github.event.inputs.startDate }}
+          end-date: ${{ github.event.inputs.endDate }}
 
-      - name: Generate contributor summaries
-        if: ${{ steps.summary-check.outputs.run_contributor == 'true' }}
-        run: |
-          bun run pipeline summarize -t contributors${{ env.start_date_arg }}${{ env.end_date_arg }}${{ env.force_summaries_arg }}${{ env.interval_args }}
+      - name: Force regenerate recent summaries
+        if: github.event_name == 'schedule'
+        uses: ./.github/actions/run-summary
+        with:
+          summary-type: "overall"
+          daily: "true"
+          force: "true"
+          days: 1
+
+      - name: Force regenerate recent repository summaries
+        if: github.event_name == 'schedule' && steps.conditions.outputs.RUN_REPOSITORIES == 'true'
+        uses: ./.github/actions/run-summary
+        with:
+          summary-type: "repository"
+          daily: "true"
+          force: "true"
+          days: 1
 
       - name: Force regenerate recent contributor summaries
-        if: ${{ github.event_name != 'workflow_dispatch' && steps.summary-check.outputs.run_contributor == 'true' }}
-        run: |
-          bun run pipeline summarize -t contributors -f -d 1
+        if: github.event_name == 'schedule' && steps.conditions.outputs.RUN_CONTRIBUTORS == 'true'
+        uses: ./.github/actions/run-summary
+        with:
+          summary-type: "contributors"
+          daily: "true"
+          force: "true"
+          days: 1
 
       # Dump SQLite database to diffable files
       - name: Dump SQLite database
@@ -273,7 +298,7 @@ jobs:
         with:
           operation: update
           data_dir: ${{ env.DATA_DIR }}
-          commit_message: "Summary generation (${{ steps.summary-check.outputs.run_contributor == 'true' && 'contributor ' || '' }} ${{ steps.summary-check.outputs.run_project == 'true' && 'project ' || '' }}): $(date -u +'%Y-%m-%d %H:%M')"
+          commit_message: "Summary generation run: $(date -u +'%Y-%m-%d %H:%M')"
           branch_name: ${{ env.PIPELINE_DATA_BRANCH }}
 
       # Cleanup worktree (always runs)

@@ -22,33 +22,17 @@ import {
 export { type SummarizerPipelineContext, createSummarizerContext };
 
 // Tier 1: Per-repository summaries
-const generateAllRepoSummaries = sequence(
+export const repositorySummariesPipeline = sequence(
   generateDailyRepoSummaries,
   generateWeeklyRepoSummaries,
   generateMonthlyRepoSummaries,
 );
 
 // Tier 2: Overall summaries (synthesizing per-repo summaries)
-const generateAllOverallSummaries = sequence(
+export const overallSummariesPipeline = sequence(
   generateDailyOverallSummaries,
   generateWeeklyOverallSummaries,
   generateMonthlyOverallSummaries,
-);
-
-// Final Summarization Pipeline
-export const summarizationPipeline = createStep(
-  "Summarize",
-  async (input: { repoId?: string }, context: SummarizerPipelineContext) => {
-    context.logger?.info("Starting Tier 1: Per-Repository Summaries");
-    await generateAllRepoSummaries(input, context);
-
-    context.logger?.info(
-      "Finished Tier 1. Starting Tier 2: Overall Project Summaries.",
-    );
-    await generateAllOverallSummaries(input, context);
-
-    context.logger?.info("Finished Tier 2. All summaries generated.");
-  },
 );
 
 // Existing Contributor Summaries Pipeline (can be run independently)

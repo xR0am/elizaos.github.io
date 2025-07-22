@@ -232,32 +232,35 @@ bun run pipeline export --force
 Generated project summaries are stored in `data/<owner_repo>/<interval>/summaries/summary_<date>.json`.
 
 ```bash
-# Generate project summaries
-bun run pipeline summarize -t project
+# Generate repository-level summaries
+bun run pipeline summarize -t repository
+
+# Generate overall summaries (after repository summaries are generated)
+bun run pipeline summarize -t overall
 
 # Generate contributor summaries
 bun run pipeline summarize -t contributors
 
 # Generate summaries with specific date range
-bun run pipeline summarize -t project --after 2025-01-01 --before 2025-02-20
+bun run pipeline summarize -t repository --after 2025-01-01 --before 2025-02-20
 
 # Force overwrite existing summaries
-bun run pipeline summarize -t project --force
+bun run pipeline summarize -t repository --force
 
 # Generate and overwrite summaries for a specific number of days (default 7 days)
-bun run pipeline summarize -t project --days 90 --force
+bun run pipeline summarize -t repository --days 90 --force
 
-# Generate project summaries for all data since contributionStartDate
-bun run pipeline summarize -t project --all
+# Generate repository summaries for all data since contributionStartDate
+bun run pipeline summarize -t repository --all
 
-# Generate summaries for specific repository
-bun run pipeline summarize -t project --repository owner/repo
+# Generate summaries for a specific repository
+bun run pipeline summarize -t repository --repository owner/repo
 
-# Generate only weekly contributor summaries
-bun run pipeline summarize -t contributors --weekly
+# Generate only daily and weekly contributor summaries
+bun run pipeline summarize -t contributors --daily --weekly
 
 # Generate summaries with verbose logging
-bun run pipeline summarize -t project -v
+bun run pipeline summarize -t repository -v
 ```
 
 By default, the summarize command wont regenerate summaries that already exist for a given day. To regenerate summaries, you can pass in the -f/--force flag.
@@ -296,7 +299,7 @@ The project uses GitHub Actions for automated data processing, summary generatio
   - Runs the full `ingest → process → export → summarize` pipeline chain
   - Maintains data in a dedicated `_data` branch
   - Can be manually triggered from Github Actions tab with custom date ranges or forced regeneration
-  - Runs project summaries daily, but only runs contributor summaries on Sundays
+  - Runs repository and overall summaries daily, but only runs contributor summaries on Sundays
 
 - **Deploy to GitHub Pages (`deploy.yml`)**: Builds and deploys the site
 

@@ -42,7 +42,7 @@ The `pipelines` directory is organized into sub-modules, each representing a dis
 - **/ingest**: Fetches raw data from external sources (e.g., GitHub API) and stores it in the database. It handles pagination, rate limiting, and data normalization.
 - **/contributors**: Analyzes the raw data to calculate contributor-specific metrics. This includes calculating activity scores (`contributorScores.ts`) and assigning expertise tags (`calculateTags.ts`).
 - **/export**: Generates aggregated repository-level statistics (e.g., for daily, weekly, monthly intervals) and saves them to files.
-- **/summarize**: Uses an AI service to generate human-readable summaries of project and contributor activity based on the processed metrics.
+- **/summarize**: Uses an AI service to generate human-readable summaries of repository, overall, and contributor activity based on the processed metrics.
 
 ### Common File Conventions
 
