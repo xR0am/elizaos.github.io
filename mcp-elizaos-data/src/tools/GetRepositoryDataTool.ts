@@ -1,6 +1,6 @@
 import { MCPTool, MCPInput } from "mcp-framework";
 import { z } from "zod";
-import { fetchData } from "../utils/http-client.js";
+import { httpClient } from "../utils/http-client.js";
 
 const GetRepositoryDataSchema = z.object({
   repository_name: z.string().optional().describe("Specific repository name to get data for"),
@@ -15,168 +15,145 @@ class GetRepositoryDataTool extends MCPTool {
 
   async execute(input: MCPInput<this>) {
     try {
-      // Try multiple potential endpoints for repository data
-      const endpoints = [
-        "/elizaos_elizaos.github.io/repository-data.json",
-        "/elizaos_eliza/metadata.json",
-        "/summaries/repository-summary.json",
-        "/dump/repositories.json",
-      ];
-
-      let result = null;
-      let endpoint_used = "";
-
-      for (const endpoint of endpoints) {
-        const response = await fetchData<any>(endpoint);
-        if (response.success && response.data) {
-          result = response.data;
-          endpoint_used = endpoint;
-          break;
+      // Check the main data directory for repository-related directories
+      const mainResponse = await httpClient.get("/");
+      const mainHtml = mainResponse.data;
+      
+      // Extract any repository-related directory names
+      const repoDirRegex = /href="(elizaos[^"]*?)\/"/g;
+      const repoDirs: string[] = [];
+      let match;
+      
+      while ((match = repoDirRegex.exec(mainHtml)) !== null) {
+        if (!match[1].includes('plugin')) { // Exclude plugin directories
+          repoDirs.push(match[1]);
         }
       }
 
-      if (!result) {
-        // Create mock data structure if no real endpoint is available
-        const mockData = {
-          total_repositories: 4,
-          repositories: [
-            {
-              name: "eliza",
-              full_name: "elizaos/eliza",
-              description: "AI agent framework for autonomous AI agents",
-              stars: 2847,
-              forks: 612,
-              open_issues: 89,
-              language: "TypeScript",
-              created_at: "2024-01-01T00:00:00Z",
-              updated_at: "2024-01-16T12:00:00Z",
-              contributors: input.include_contributors ? [
-                { login: "shawmakesmagic", contributions: 245, avatar_url: "https://github.com/shawmakesmagic.png" },
-                { login: "elizaos-contributor", contributions: 156, avatar_url: "https://github.com/elizaos-contributor.png" },
-                { login: "ai-developer", contributions: 89, avatar_url: "https://github.com/ai-developer.png" }
-              ] : undefined,
-              topics: ["ai", "agent", "autonomous", "typescript", "eliza"]
-            },
-            {
-              name: "elizaos.github.io",
-              full_name: "elizaos/elizaos.github.io",
-              description: "Official ElizaOS website and documentation",
-              stars: 124,
-              forks: 34,
-              open_issues: 12,
-              language: "JavaScript",
-              created_at: "2024-01-15T00:00:00Z",
-              updated_at: "2024-01-16T10:30:00Z",
-              contributors: input.include_contributors ? [
-                { login: "docs-maintainer", contributions: 67, avatar_url: "https://github.com/docs-maintainer.png" },
-                { login: "web-developer", contributions: 43, avatar_url: "https://github.com/web-developer.png" }
-              ] : undefined,
-              topics: ["documentation", "website", "nextjs", "elizaos"]
-            },
-            {
-              name: "plugins",
-              full_name: "elizaos/plugins",
-              description: "Official plugin repository for ElizaOS",
-              stars: 456,
-              forks: 123,
-              open_issues: 23,
-              language: "TypeScript",
-              created_at: "2024-01-10T00:00:00Z",
-              updated_at: "2024-01-16T14:20:00Z",
-              contributors: input.include_contributors ? [
-                { login: "plugin-dev", contributions: 134, avatar_url: "https://github.com/plugin-dev.png" },
-                { login: "extension-author", contributions: 98, avatar_url: "https://github.com/extension-author.png" }
-              ] : undefined,
-              topics: ["plugins", "extensions", "elizaos", "typescript"]
-            },
-            {
-              name: "auto.fun",
-              full_name: "elizaos/auto.fun",
-              description: "Autonomous agent platform powered by ElizaOS",
-              stars: 789,
-              forks: 201,
-              open_issues: 34,
-              language: "TypeScript",
-              created_at: "2024-01-05T00:00:00Z",
-              updated_at: "2024-01-16T16:45:00Z",
-              contributors: input.include_contributors ? [
-                { login: "platform-dev", contributions: 178, avatar_url: "https://github.com/platform-dev.png" },
-                { login: "auto-engineer", contributions: 145, avatar_url: "https://github.com/auto-engineer.png" }
-              ] : undefined,
-              topics: ["autonomous", "platform", "ai", "elizaos"]
-            }
-          ],
-          updated_at: new Date().toISOString(),
-          source: "Generated from available repository directories"
+      if (repoDirs.length === 0) {
+        return {
+          error: "No repository directories found",
+          message: "Unable to find any repository directories in the ElizaOS data repository",
+          endpoint: "https://elizaos.github.io/data/",
+          expected_pattern: "elizaos*",
+          note: "Repository data may not be available in the current data structure",
+          timestamp: new Date().toISOString()
+        };
+      }
+
+      // If specific repository requested, filter
+      let targetRepoDirs = repoDirs;
+      if (input.repository_name) {
+        const searchName = input.repository_name.toLowerCase();
+        targetRepoDirs = repoDirs.filter(dir => 
+          dir.toLowerCase().includes(searchName)
+        );
+        
+        if (targetRepoDirs.length === 0) {
+          return {
+            error: "Repository not found",
+            requested_repository: input.repository_name,
+            available_repositories: repoDirs,
+            message: "Please check the repository name and try again",
+            timestamp: new Date().toISOString()
+          };
+        }
+      }
+
+      // Collect repository information
+      const repositories = [];
+      
+      for (const dirName of targetRepoDirs) {
+        let repoInfo: any = {
+          name: dirName,
+          directory: dirName,
+          data_available: false
         };
 
-        // Filter by repository name if specified
-        if (input.repository_name) {
-          const filteredRepos = mockData.repositories.filter(r => 
-            r.name.toLowerCase().includes(input.repository_name!.toLowerCase()) ||
-            r.full_name.toLowerCase().includes(input.repository_name!.toLowerCase())
-          );
-          mockData.repositories = filteredRepos;
-          mockData.total_repositories = filteredRepos.length;
+        // Try to get repository stats if available
+        if (input.include_stats) {
+          try {
+            // Try different potential stats locations
+            const statsPaths = [
+              `/${dirName}/stats/`,
+              `/${dirName}/repository-stats.json`,
+              `/${dirName}/metadata.json`
+            ];
+
+            for (const statsPath of statsPaths) {
+              try {
+                const statsResponse = await httpClient.get(statsPath);
+                
+                if (statsPath.endsWith('.json')) {
+                  // Direct JSON file
+                  repoInfo = {
+                    ...repoInfo,
+                    ...statsResponse.data,
+                    data_available: true,
+                    data_source: statsPath
+                  };
+                  break;
+                } else {
+                  // Directory listing - look for JSON files
+                  const statsHtml = statsResponse.data;
+                  const jsonFileRegex = /href="([^"]*\.json)"/g;
+                  const jsonFiles: string[] = [];
+                  let jsonMatch;
+                  
+                  while ((jsonMatch = jsonFileRegex.exec(statsHtml)) !== null) {
+                    jsonFiles.push(jsonMatch[1]);
+                  }
+                  
+                  if (jsonFiles.length > 0) {
+                    // Get the first JSON file found
+                    const jsonFile = jsonFiles[0];
+                    const jsonResponse = await httpClient.get(`${statsPath}${jsonFile}`);
+                    
+                    repoInfo = {
+                      ...repoInfo,
+                      ...jsonResponse.data,
+                      data_available: true,
+                      data_source: `${statsPath}${jsonFile}`
+                    };
+                    break;
+                  }
+                }
+              } catch (error) {
+                // Continue to next path
+              }
+            }
+          } catch (error) {
+            // No stats available
+          }
         }
 
-        // Remove stats if not requested
-        if (!input.include_stats) {
-          mockData.repositories = mockData.repositories.map(r => ({
-            name: r.name,
-            full_name: r.full_name,
-            description: r.description,
-            language: r.language,
-            topics: r.topics,
-          })) as any;
-        }
-
-        return JSON.stringify(mockData, null, 2);
+        repositories.push(repoInfo);
       }
 
-      // Process the actual data if available
-      let processedData = result;
-      
-      if (input.repository_name) {
-        // Filter by repository name if specified
-        if (processedData.repositories && Array.isArray(processedData.repositories)) {
-          processedData.repositories = processedData.repositories.filter((r: any) =>
-            r.name?.toLowerCase().includes(input.repository_name!.toLowerCase()) ||
-            r.full_name?.toLowerCase().includes(input.repository_name!.toLowerCase())
-          );
-          processedData.total_repositories = processedData.repositories.length;
-        }
-      }
+      return {
+        total_repositories: repositories.length,
+        repositories: repositories,
+        filter_applied: input.repository_name || null,
+        include_stats: input.include_stats,
+        include_contributors: input.include_contributors,
+        updated_at: new Date().toISOString(),
+        source: "Real data from ElizaOS GitHub Pages",
+        endpoint: "https://elizaos.github.io/data/",
+        note: "Repository data structure may vary depending on available data sources"
+      };
 
-      if (!input.include_stats && processedData.repositories) {
-        // Remove stats fields if not requested
-        processedData.repositories = processedData.repositories.map((r: any) => ({
-          name: r.name,
-          full_name: r.full_name,
-          description: r.description,
-          language: r.language,
-          topics: r.topics,
-        }));
-      }
-
-      if (!input.include_contributors && processedData.repositories) {
-        // Remove contributors if not requested
-        processedData.repositories = processedData.repositories.map((r: any) => {
-          const { contributors, ...rest } = r;
-          return rest;
-        });
-      }
-
-      return JSON.stringify({
-        ...processedData,
-        source_endpoint: endpoint_used,
-      }, null, 2);
     } catch (error: any) {
-      return JSON.stringify({
+      return {
         error: "Failed to fetch repository data",
         message: error.message,
         timestamp: new Date().toISOString(),
-      }, null, 2);
+        endpoint: "https://elizaos.github.io/data/",
+        possible_causes: [
+          "ElizaOS data repository is unavailable",
+          "Network connectivity issues",
+          "Repository data structure has changed"
+        ]
+      };
     }
   }
 }

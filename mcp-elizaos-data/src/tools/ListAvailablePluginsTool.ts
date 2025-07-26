@@ -29,14 +29,13 @@ class ListAvailablePluginsTool extends MCPTool {
       }
 
       if (pluginDirs.length === 0) {
-        return `❌ **No plugin directories found**
-
-Unable to find any plugin directories in the ElizaOS data repository.
-
-**Checked endpoint:** https://elizaos.github.io/data/
-**Expected pattern:** elizaos-plugins_plugin-*
-
-Please verify the data repository structure.`;
+        return {
+          error: "No plugin directories found",
+          message: "Unable to find any plugin directories in the ElizaOS data repository",
+          endpoint: "https://elizaos.github.io/data/",
+          expected_pattern: "elizaos-plugins_plugin-*",
+          timestamp: new Date().toISOString()
+        };
       }
 
       // Extract plugin information from directory names and get details
@@ -140,79 +139,31 @@ Please verify the data repository structure.`;
       // Build categories list
       const categories = ['blockchain', 'social', 'ai', 'automation', 'integration', 'data'];
 
-      // Format output
-      let output = `🔍 **Available ElizaOS Plugins** ${input.category ? `(Category: ${input.category})` : ''}
-
-**Total Plugins:** ${filteredPlugins.length}
-
-`;
-
-      filteredPlugins.forEach(plugin => {
-        output += `**${plugin.name}** ✅
-📁 Directory: ${plugin.directory}
-`;
-        
-        if (input.include_details) {
-          if (plugin.repository) {
-            output += `📚 Repository: ${plugin.repository}
-`;
-          }
-          if (plugin.last_updated) {
-            output += `🕒 Last Updated: ${new Date(plugin.last_updated).toLocaleDateString()}
-`;
-          }
-          if (plugin.recent_activity) {
-            output += `📊 Recent Activity: ${plugin.recent_activity.prs} PRs, ${plugin.recent_activity.issues} issues
-`;
-            if (plugin.recent_activity.overview) {
-              output += `📝 Overview: ${plugin.recent_activity.overview}
-`;
-            }
-          }
-        }
-        
-        output += '\n';
-      });
-
-      output += `
-**Available Categories:** ${categories.join(', ')}
-
-**Raw Data:**
-\`\`\`json
-${JSON.stringify({
-  total_plugins: filteredPlugins.length,
-  plugins: filteredPlugins,
-  categories,
-  updated_at: new Date().toISOString(),
-  source: "Real data from ElizaOS GitHub Pages"
-}, null, 2)}
-\`\`\`
-
-*Source: Real data from https://elizaos.github.io/data/*
-*Updated: ${new Date().toLocaleString()}*`;
-
-      return output;
+      // Return the actual JSON object
+      return {
+        total_plugins: filteredPlugins.length,
+        plugins: filteredPlugins,
+        categories,
+        filter_applied: input.category || null,
+        sort_by: input.sort_by,
+        include_details: input.include_details,
+        updated_at: new Date().toISOString(),
+        source: "Real data from ElizaOS GitHub Pages",
+        endpoint: "https://elizaos.github.io/data/"
+      };
 
     } catch (error: any) {
-      return `❌ **Error: Failed to fetch plugin list**
-
-**Error Message:** ${error.message}
-**Timestamp:** ${new Date().toLocaleString()}
-
-**Possible causes:**
-- ElizaOS data repository is unavailable
-- Network connectivity issues
-- Data repository structure has changed
-
-**Raw Error Data:**
-\`\`\`json
-${JSON.stringify({
-  error: "Failed to fetch plugin list",
-  message: error.message,
-  timestamp: new Date().toISOString(),
-  endpoint: "https://elizaos.github.io/data/",
-}, null, 2)}
-\`\`\``;
+      return {
+        error: "Failed to fetch plugin list",
+        message: error.message,
+        timestamp: new Date().toISOString(),
+        endpoint: "https://elizaos.github.io/data/",
+        possible_causes: [
+          "ElizaOS data repository is unavailable",
+          "Network connectivity issues", 
+          "Data repository structure has changed"
+        ]
+      };
     }
   }
 }

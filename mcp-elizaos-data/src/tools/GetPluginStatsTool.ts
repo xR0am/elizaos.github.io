@@ -28,14 +28,13 @@ class GetPluginStatsTool extends MCPTool {
       }
 
       if (pluginDirs.length === 0) {
-        return `❌ **No plugin directories found**
-
-Unable to find any plugin directories in the ElizaOS data repository.
-
-**Checked endpoint:** https://elizaos.github.io/data/
-**Expected pattern:** elizaos-plugins_plugin-*
-
-Please verify the data repository structure.`;
+        return {
+          error: "No plugin directories found",
+          message: "Unable to find any plugin directories in the ElizaOS data repository",
+          endpoint: "https://elizaos.github.io/data/",
+          expected_pattern: "elizaos-plugins_plugin-*",
+          timestamp: new Date().toISOString()
+        };
       }
 
       // Filter plugins if a specific name is requested
@@ -47,12 +46,13 @@ Please verify the data repository structure.`;
         );
         
         if (targetPluginDirs.length === 0) {
-          return `❌ **Plugin not found: ${input.plugin_name}**
-
-**Available plugins:**
-${pluginDirs.map(dir => `• ${dir.replace('elizaos-plugins_plugin-', 'plugin-')}`).join('\n')}
-
-Please check the plugin name and try again.`;
+          return {
+            error: "Plugin not found",
+            requested_plugin: input.plugin_name,
+            available_plugins: pluginDirs.map(dir => dir.replace('elizaos-plugins_plugin-', 'plugin-')),
+            message: "Please check the plugin name and try again",
+            timestamp: new Date().toISOString()
+          };
         }
       }
 
@@ -96,6 +96,7 @@ Please check the plugin name and try again.`;
                 last_updated: statsData.interval?.intervalEnd || statsData.interval?.intervalStart,
                 interval_type: statsData.interval?.intervalType,
                 overview: statsData.overview,
+                stats_file: latestStatsFile,
                 prs: {
                   total: statsData.topPRs?.length || 0,
                   merged: statsData.topPRs?.filter((pr: any) => pr.mergedAt).length || 0,
@@ -177,103 +178,29 @@ Please check the plugin name and try again.`;
         pluginStats.push(stats);
       }
 
-      // Format output
-      let output = `📊 **Plugin Statistics**
-
-**Total Plugins:** ${pluginStats.length}
-
-`;
-
-      pluginStats.forEach(stats => {
-        output += `**${stats.name}**
-`;
-        
-        if (stats.repository) {
-          output += `📚 Repository: ${stats.repository}
-`;
-        }
-        
-        if (stats.last_updated) {
-          output += `🕒 Last Updated: ${new Date(stats.last_updated).toLocaleDateString()}
-`;
-        }
-        
-        if (stats.overview) {
-          output += `📝 Overview: ${stats.overview}
-`;
-        }
-        
-        if (stats.prs) {
-          output += `🔀 PRs: ${stats.prs.total} total (${stats.prs.merged} merged, ${stats.prs.open} open)
-`;
-        }
-        
-        if (stats.issues) {
-          output += `🐛 Issues: ${stats.issues.total} recent
-`;
-        }
-
-        if (input.include_details && stats.recent_prs && stats.recent_prs.length > 0) {
-          output += `📋 Recent PRs:
-`;
-          stats.recent_prs.forEach((pr: any) => {
-            output += `  • #${pr.number}: ${pr.title} by ${pr.author}
-`;
-          });
-        }
-
-        if (input.include_details && stats.recent_issues && stats.recent_issues.length > 0) {
-          output += `🐛 Recent Issues:
-`;
-          stats.recent_issues.forEach((issue: any) => {
-            output += `  • #${issue.number}: ${issue.title} by ${issue.author}
-`;
-          });
-        }
-        
-        if (stats.error) {
-          output += `⚠️ Warning: ${stats.error}
-`;
-        }
-        
-        output += '\n';
-      });
-
-      output += `**Raw Data:**
-\`\`\`json
-${JSON.stringify({
-  total_plugins: pluginStats.length,
-  plugins: pluginStats,
-  updated_at: new Date().toISOString(),
-  source: "Real data from ElizaOS GitHub Pages"
-}, null, 2)}
-\`\`\`
-
-*Source: Real data from https://elizaos.github.io/data/*
-*Updated: ${new Date().toLocaleString()}*`;
-
-      return output;
+      // Return the actual JSON object
+      return {
+        total_plugins: pluginStats.length,
+        plugins: pluginStats,
+        filter_applied: input.plugin_name || null,
+        include_details: input.include_details,
+        updated_at: new Date().toISOString(),
+        source: "Real data from ElizaOS GitHub Pages",
+        endpoint: "https://elizaos.github.io/data/"
+      };
 
     } catch (error: any) {
-      return `❌ **Error: Failed to fetch plugin stats**
-
-**Error Message:** ${error.message}
-**Timestamp:** ${new Date().toLocaleString()}
-
-**Possible causes:**
-- ElizaOS data repository is unavailable
-- Network connectivity issues
-- Data repository structure has changed
-
-**Raw Error Data:**
-\`\`\`json
-${JSON.stringify({
-  error: "Failed to fetch plugin stats",
-  message: error.message,
-  timestamp: new Date().toISOString(),
-  endpoint: "https://elizaos.github.io/data/",
-}, null, 2)}
-\`\`\``;
+      return {
+        error: "Failed to fetch plugin stats",
+        message: error.message,
+        timestamp: new Date().toISOString(),
+        endpoint: "https://elizaos.github.io/data/",
+        possible_causes: [
+          "ElizaOS data repository is unavailable",
+          "Network connectivity issues",
+          "Data repository structure has changed"
+        ]
+      };
     }
   }
 }
