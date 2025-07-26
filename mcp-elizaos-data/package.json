@@ -1,0 +1,53 @@
+{
+  "name": "mcp-elizaos-data",
+  "version": "1.0.0",
+  "description": "MCP server that exposes ElizaOS data endpoints for real-time ecosystem information",
+  "main": "build/index.js",
+  "type": "module",
+  "bin": {
+    "mcp-elizaos-data": "build/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "tsx src/index.ts",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "elizaos",
+    "ai",
+    "agent",
+    "data",
+    "api",
+    "server"
+  ],
+  "author": "ElizaOS Community",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xR0am/elizaos.github.io.git",
+    "directory": "mcp-elizaos-data"
+  },
+  "homepage": "https://elizaos.github.io",
+  "files": [
+    "build/**/*",
+    "README.md",
+    "package.json"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "axios": "^1.6.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}
