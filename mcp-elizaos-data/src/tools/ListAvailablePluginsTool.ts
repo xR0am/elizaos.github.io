@@ -192,10 +192,7 @@ class ListAvailablePluginsTool extends MCPTool {
           source: "Generated from available plugin directories"
         };
 
-        return [
-          {
-            type: "text",
-            text: `🔍 **Available ElizaOS Plugins** ${input.category ? `(Category: ${input.category})` : ''}
+        return `🔍 **Available ElizaOS Plugins** ${input.category ? `(Category: ${input.category})` : ''}
 
 **Total Plugins:** ${mockData.total_plugins}
 
@@ -213,14 +210,13 @@ ${input.include_details ? `👨‍💻 Author: ${plugin.author}
 
 **Available Categories:** ${mockData.categories.join(', ')}
 
+**Raw Data:**
+\`\`\`json
+${JSON.stringify(mockData, null, 2)}
+\`\`\`
+
 *Source: ${mockData.source}*
-*Updated: ${new Date(mockData.updated_at).toLocaleString()}*`
-          },
-          {
-            type: "text",
-            text: JSON.stringify(mockData, null, 2)
-          }
-        ];
+*Updated: ${new Date(mockData.updated_at).toLocaleString()}*`;
       }
 
       // Process the actual data if available
@@ -262,16 +258,49 @@ ${input.include_details ? `👨‍💻 Author: ${plugin.author}
         });
       }
 
-      return JSON.stringify({
+      const finalData = {
         ...processedData,
         source_endpoint: endpoint_used,
-      }, null, 2);
+      };
+
+      return `🔍 **Available ElizaOS Plugins** ${input.category ? `(Category: ${input.category})` : ''}
+
+**Total Plugins:** ${finalData.total_plugins || 'N/A'}
+
+${finalData.plugins ? finalData.plugins.map((plugin: any) => `**${plugin.name}** ${plugin.status === 'experimental' ? '🧪' : '✅'}
+📂 Category: ${plugin.category || 'N/A'}
+📝 ${plugin.description || 'No description'}
+🏷️ Version: ${plugin.version || 'N/A'}
+${input.include_details && plugin.author ? `👨‍💻 Author: ${plugin.author}` : ''}
+${input.include_details && plugin.repository ? `📚 Repository: ${plugin.repository}` : ''}
+${input.include_details && plugin.last_updated ? `🕒 Last Updated: ${new Date(plugin.last_updated).toLocaleDateString()}` : ''}
+`).join('\n') : 'No plugins found'}
+
+**Available Categories:** ${finalData.categories ? finalData.categories.join(', ') : 'N/A'}
+
+**Raw Data:**
+\`\`\`json
+${JSON.stringify(finalData, null, 2)}
+\`\`\`
+
+*Source: Real data from ${endpoint_used}*
+*Updated: ${new Date().toLocaleString()}*`;
     } catch (error: any) {
-      return JSON.stringify({
-        error: "Failed to fetch plugin list",
-        message: error.message,
-        timestamp: new Date().toISOString(),
-      }, null, 2);
+      return `❌ **Error: Failed to fetch plugin list**
+
+**Error Message:** ${error.message}
+**Timestamp:** ${new Date().toLocaleString()}
+
+Please try again or check the ElizaOS data endpoints.
+
+**Raw Error Data:**
+\`\`\`json
+${JSON.stringify({
+  error: "Failed to fetch plugin list",
+  message: error.message,
+  timestamp: new Date().toISOString(),
+}, null, 2)}
+\`\`\``;
     }
   }
 }

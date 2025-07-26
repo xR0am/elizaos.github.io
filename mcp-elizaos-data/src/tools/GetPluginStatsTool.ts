@@ -79,10 +79,7 @@ class GetPluginStatsTool extends MCPTool {
           mockData.total_plugins = filteredPlugins.length;
         }
 
-        return [
-          {
-            type: "text",
-            text: `📊 **Plugin Statistics**
+        return `📊 **Plugin Statistics**
 
 **Total Plugins:** ${mockData.total_plugins}
 
@@ -95,14 +92,13 @@ ${mockData.plugins.map(plugin => `**${plugin.name}**
 • Last Updated: ${new Date(plugin.last_updated).toLocaleDateString()}
 `).join('\n')}
 
+**Raw Data:**
+\`\`\`json
+${JSON.stringify(mockData, null, 2)}
+\`\`\`
+
 *Source: ${mockData.source}*
-*Updated: ${new Date(mockData.updated_at).toLocaleString()}*`
-          },
-          {
-            type: "text", 
-            text: JSON.stringify(mockData, null, 2)
-          }
-        ];
+*Updated: ${new Date(mockData.updated_at).toLocaleString()}*`;
       }
 
       // Process the actual data if available
@@ -133,10 +129,7 @@ ${mockData.plugins.map(plugin => `**${plugin.name}**
         source_endpoint: endpoint_used,
       };
 
-      return [
-        {
-          type: "text",
-          text: `📊 **Plugin Statistics**
+      return `📊 **Plugin Statistics**
 
 **Total Plugins:** ${finalData.total_plugins || 'N/A'}
 
@@ -147,36 +140,29 @@ ${finalData.plugins ? finalData.plugins.map((plugin: any) => `**${plugin.name}**
 • Last Updated: ${plugin.last_updated ? new Date(plugin.last_updated).toLocaleDateString() : 'N/A'}
 `).join('\n') : 'No plugins found'}
 
-*Source: Real data from ${endpoint_used}*
-*Updated: ${new Date().toLocaleString()}*`
-        },
-        {
-          type: "text", 
-          text: JSON.stringify(finalData, null, 2)
-        }
-      ];
-    } catch (error: any) {
-      const errorData = {
-        error: "Failed to fetch plugin stats",
-        message: error.message,
-        timestamp: new Date().toISOString(),
-      };
+**Raw Data:**
+\`\`\`json
+${JSON.stringify(finalData, null, 2)}
+\`\`\`
 
-      return [
-        {
-          type: "text",
-          text: `❌ **Error: Failed to fetch plugin stats**
+*Source: Real data from ${endpoint_used}*
+*Updated: ${new Date().toLocaleString()}*`;
+    } catch (error: any) {
+      return `❌ **Error: Failed to fetch plugin stats**
 
 **Error Message:** ${error.message}
 **Timestamp:** ${new Date().toLocaleString()}
 
-Please try again or check the ElizaOS data endpoints.`
-        },
-        {
-          type: "text",
-          text: JSON.stringify(errorData, null, 2)
-        }
-      ];
+Please try again or check the ElizaOS data endpoints.
+
+**Raw Error Data:**
+\`\`\`json
+${JSON.stringify({
+  error: "Failed to fetch plugin stats",
+  message: error.message,
+  timestamp: new Date().toISOString(),
+}, null, 2)}
+\`\`\``;
     }
   }
 }
