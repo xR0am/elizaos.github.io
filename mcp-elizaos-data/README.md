@@ -1,6 +1,6 @@
 # MCP ElizaOS Data Server
 
-A minimal MCP (Model Context Protocol) server that exposes ElizaOS ecosystem data endpoints for real-time information about plugins, repositories, statistics, and community activity.
+A minimal MCP (Model Context Protocol) server built with [MCP Framework](https://mcp-framework.com) that exposes ElizaOS ecosystem data endpoints for real-time information about plugins, repositories, statistics, and community activity.
 
 ## Overview
 
@@ -9,6 +9,8 @@ This MCP server provides access to ElizaOS ecosystem data through four core tool
 - **get_repository_data** - Get repository metadata and contribution data  
 - **list_available_plugins** - List all available plugins with filtering
 - **get_summary_data** - Fetch comprehensive ecosystem summaries
+
+Built using MCP Framework for elegant TypeScript development with automatic tool discovery and validation.
 
 ## Installation
 
@@ -55,6 +57,9 @@ Add to your Cursor MCP configuration:
 ### Claude Desktop Configuration
 
 Add to your `claude_desktop_config.json`:
+
+**MacOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+**Windows**: `%APPDATA%/Claude/claude_desktop_config.json`
 
 ```json
 {
@@ -150,12 +155,47 @@ The server attempts to fetch real data from ElizaOS endpoints at `https://elizao
 
 ## Features
 
-- **Real Data Integration**: Fetches actual data from ElizaOS endpoints
-- **Graceful Fallbacks**: Provides realistic mock data when endpoints are unavailable
-- **Comprehensive Schemas**: Full Zod validation for all inputs and outputs
-- **Error Handling**: Robust error handling with informative messages
-- **Filtering & Sorting**: Advanced filtering and sorting capabilities
-- **npx Distribution**: Easy installation and usage via npx
+- **🛠️ MCP Framework**: Built with elegant TypeScript framework
+- **📊 Real Data Integration**: Fetches actual data from ElizaOS endpoints
+- **🔄 Graceful Fallbacks**: Provides realistic mock data when endpoints are unavailable
+- **✅ Schema Validation**: Full Zod validation with required descriptions
+- **🚀 Auto Discovery**: Automatic tool discovery and loading
+- **🔍 Advanced Filtering**: Comprehensive filtering and sorting capabilities
+- **📦 NPX Distribution**: Easy installation and usage via npx
+- **⚡ Type Safety**: Full TypeScript support with automatic type inference
+
+## Development
+
+### Building
+
+```bash
+npm run build
+```
+
+### Development Mode
+
+```bash
+npm run watch  # TypeScript watch mode
+```
+
+### Validation
+
+```bash
+npm run validate  # Validate tool schemas
+```
+
+### Testing with MCP Inspector
+
+```bash
+npx @modelcontextprotocol/inspector mcp-elizaos-data
+```
+
+## MCP Framework Features Used
+
+- **Automatic Discovery**: Tools are auto-discovered from `src/tools/` directory
+- **Type Safety**: `McpInput<this>` provides automatic type inference
+- **Schema Validation**: All fields require `.describe()` for documentation
+- **Build Validation**: Automatic schema validation during build process
 
 ## Error Handling
 
@@ -169,33 +209,14 @@ The server handles network errors gracefully and provides detailed error informa
 }
 ```
 
-## Development
-
-### Building
-
-```bash
-npm run build
-```
-
-### Development Mode
-
-```bash
-npm run dev
-```
-
-### Testing with MCP Inspector
-
-```bash
-npx @modelcontextprotocol/inspector mcp-elizaos-data
-```
-
 ## Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+4. Run `npm run validate` to ensure schemas are valid
+5. Run `npm run build` to compile
+6. Submit a pull request
 
 ## License
 
@@ -205,5 +226,5 @@ MIT License - see LICENSE file for details.
 
 - [ElizaOS GitHub](https://github.com/elizaos/eliza)
 - [ElizaOS Website](https://elizaos.github.io)
+- [MCP Framework](https://mcp-framework.com)
 - [Model Context Protocol](https://modelcontextprotocol.io)
-- [MCP SDK Documentation](https://github.com/modelcontextprotocol/typescript-sdk)
