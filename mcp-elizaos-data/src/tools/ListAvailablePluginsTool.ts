@@ -12,6 +12,7 @@ class ListAvailablePluginsTool extends MCPTool {
   name = "list_available_plugins";
   description = "List all available plugins from ElizaOS with optional filtering and sorting capabilities";
   schema = ListAvailablePluginsSchema;
+  useStringify = true; // Use JSON stringification for proper formatting
 
   async execute(input: MCPInput<this>) {
     try {
@@ -139,7 +140,7 @@ class ListAvailablePluginsTool extends MCPTool {
       // Build categories list
       const categories = ['blockchain', 'social', 'ai', 'automation', 'integration', 'data'];
 
-      // Return the actual JSON object
+      // Return the JSON object - framework will stringify it properly
       return {
         total_plugins: filteredPlugins.length,
         plugins: filteredPlugins,

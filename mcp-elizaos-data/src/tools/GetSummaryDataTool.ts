@@ -12,6 +12,7 @@ class GetSummaryDataTool extends MCPTool {
   name = "get_summary_data";
   description = "Fetch comprehensive summary data about the ElizaOS ecosystem including statistics, activity, and trends";
   schema = GetSummaryDataSchema;
+  useStringify = true; // Use JSON stringification for proper formatting
 
   async execute(input: MCPInput<this>) {
     try {

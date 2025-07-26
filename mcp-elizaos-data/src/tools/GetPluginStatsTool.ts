@@ -11,6 +11,7 @@ class GetPluginStatsTool extends MCPTool {
   name = "get_plugin_stats";
   description = "Fetch plugin statistics from ElizaOS data including downloads, stars, and other metrics";
   schema = GetPluginStatsSchema;
+  useStringify = true; // Use JSON stringification for proper formatting
 
   async execute(input: MCPInput<this>) {
     try {

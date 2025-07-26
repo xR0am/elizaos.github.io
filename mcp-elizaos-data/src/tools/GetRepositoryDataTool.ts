@@ -12,6 +12,7 @@ class GetRepositoryDataTool extends MCPTool {
   name = "get_repository_data";
   description = "Fetch repository metadata and statistics from ElizaOS data including stars, forks, and contributors";
   schema = GetRepositoryDataSchema;
+  useStringify = true; // Use JSON stringification for proper formatting
 
   async execute(input: MCPInput<this>) {
     try {
