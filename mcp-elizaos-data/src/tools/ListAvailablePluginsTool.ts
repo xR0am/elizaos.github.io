@@ -1,6 +1,6 @@
 import { MCPTool, MCPInput } from "mcp-framework";
 import { z } from "zod";
-import { fetchData } from "../utils/http-client.js";
+import { httpClient } from "../utils/http-client.js";
 
 const ListAvailablePluginsSchema = z.object({
   category: z.string().optional().describe("Filter plugins by category (e.g., 'blockchain', 'social', 'ai')"),
@@ -15,283 +15,194 @@ class ListAvailablePluginsTool extends MCPTool {
 
   async execute(input: MCPInput<this>) {
     try {
-      // Try multiple potential endpoints for plugin listings
-      const endpoints = [
-        "/elizaos-plugins_registry/plugins.json",
-        "/elizaos-plugins_registry/index.json",
-        "/summaries/plugin-list.json",
-        "/dump/available-plugins.json",
-      ];
-
-      let result = null;
-      let endpoint_used = "";
-
-      for (const endpoint of endpoints) {
-        const response = await fetchData<any>(endpoint);
-        if (response.success && response.data) {
-          result = response.data;
-          endpoint_used = endpoint;
-          break;
-        }
+      // Get the main data directory listing
+      const mainResponse = await httpClient.get("/");
+      const mainHtml = mainResponse.data;
+      
+      // Extract plugin directory names
+      const pluginDirRegex = /href="(elizaos-plugins_plugin-[^"]+)\/"/g;
+      const pluginDirs: string[] = [];
+      let match;
+      
+      while ((match = pluginDirRegex.exec(mainHtml)) !== null) {
+        pluginDirs.push(match[1]);
       }
 
-      if (!result) {
-        // Create mock data structure if no real endpoint is available
-        const mockPlugins = [
-          {
-            name: "plugin-evm",
-            category: "blockchain",
-            description: "Ethereum Virtual Machine integration for ElizaOS agents",
-            version: "1.2.0",
-            author: "ElizaOS Team",
-            repository: "https://github.com/elizaos/elizaos-plugins/tree/main/plugin-evm",
-            documentation: "https://elizaos.github.io/docs/plugins/evm",
-            dependencies: ["ethers", "web3"],
-            keywords: ["ethereum", "blockchain", "web3", "smart-contracts"],
-            last_updated: "2024-01-15T10:30:00Z",
-            status: "active" as const
-          },
-          {
-            name: "plugin-solana",
-            category: "blockchain", 
-            description: "Solana blockchain integration for trading and NFT operations",
-            version: "1.1.5",
-            author: "ElizaOS Team",
-            repository: "https://github.com/elizaos/elizaos-plugins/tree/main/plugin-solana",
-            documentation: "https://elizaos.github.io/docs/plugins/solana",
-            dependencies: ["@solana/web3.js", "@solana/spl-token"],
-            keywords: ["solana", "blockchain", "nft", "trading"],
-            last_updated: "2024-01-14T15:45:00Z",
-            status: "active" as const
-          },
-          {
-            name: "plugin-twitter",
-            category: "social",
-            description: "Twitter/X integration for social media automation",
-            version: "2.0.1",
-            author: "ElizaOS Team",
-            repository: "https://github.com/elizaos/elizaos-plugins/tree/main/plugin-twitter",
-            documentation: "https://elizaos.github.io/docs/plugins/twitter",
-            dependencies: ["twitter-api-v2"],
-            keywords: ["twitter", "social", "automation", "posting"],
-            last_updated: "2024-01-16T09:20:00Z",
-            status: "active" as const
-          },
-          {
-            name: "plugin-farcaster",
-            category: "social",
-            description: "Farcaster protocol integration for decentralized social",
-            version: "0.9.2",
-            author: "Community",
-            repository: "https://github.com/elizaos/elizaos-plugins/tree/main/plugin-farcaster",
-            documentation: "https://elizaos.github.io/docs/plugins/farcaster",
-            dependencies: ["@farcaster/js"],
-            keywords: ["farcaster", "decentralized", "social", "protocol"],
-            last_updated: "2024-01-12T14:10:00Z",
-            status: "experimental" as const
-          },
-          {
-            name: "plugin-coingecko",
-            category: "data",
-            description: "CoinGecko API integration for cryptocurrency price data",
-            version: "1.0.3",
-            author: "ElizaOS Team",
-            repository: "https://github.com/elizaos/elizaos-plugins/tree/main/plugin-coingecko",
-            documentation: "https://elizaos.github.io/docs/plugins/coingecko",
-            dependencies: ["axios"],
-            keywords: ["cryptocurrency", "prices", "data", "coingecko"],
-            last_updated: "2024-01-13T11:25:00Z",
-            status: "active" as const
-          },
-          {
-            name: "plugin-knowledge",
-            category: "ai",
-            description: "Knowledge base and RAG capabilities for enhanced AI responses",
-            version: "1.3.0",
-            author: "ElizaOS Team",
-            repository: "https://github.com/elizaos/elizaos-plugins/tree/main/plugin-knowledge",
-            documentation: "https://elizaos.github.io/docs/plugins/knowledge",
-            dependencies: ["vector-db", "embeddings"],
-            keywords: ["rag", "knowledge", "ai", "embeddings"],
-            last_updated: "2024-01-15T16:40:00Z",
-            status: "active" as const
-          },
-          {
-            name: "plugin-mcp",
-            category: "integration",
-            description: "Model Context Protocol integration for external tool access",
-            version: "1.0.0",
-            author: "ElizaOS Team",
-            repository: "https://github.com/elizaos/elizaos-plugins/tree/main/plugin-mcp",
-            documentation: "https://elizaos.github.io/docs/plugins/mcp",
-            dependencies: ["@modelcontextprotocol/sdk"],
-            keywords: ["mcp", "tools", "integration", "protocol"],
-            last_updated: "2024-01-16T08:15:00Z",
-            status: "active" as const
-          },
-          {
-            name: "plugin-auton8n",
-            category: "automation",
-            description: "Advanced automation workflows and task orchestration",
-            version: "0.8.1",
-            author: "Community",
-            repository: "https://github.com/elizaos/elizaos-plugins/tree/main/plugin-auton8n",
-            documentation: "https://elizaos.github.io/docs/plugins/auton8n",
-            dependencies: ["workflow-engine"],
-            keywords: ["automation", "workflows", "orchestration", "tasks"],
-            last_updated: "2024-01-11T13:30:00Z",
-            status: "experimental" as const
-          }
-        ];
+      if (pluginDirs.length === 0) {
+        return `❌ **No plugin directories found**
 
-        // Filter by category if specified
-        let filteredPlugins = mockPlugins;
-        if (input.category) {
-          filteredPlugins = mockPlugins.filter(p => 
-            p.category?.toLowerCase() === input.category!.toLowerCase()
-          );
-        }
+Unable to find any plugin directories in the ElizaOS data repository.
 
-        // Sort plugins
-        const sortField = input.sort_by;
-        filteredPlugins.sort((a, b) => {
-          switch (sortField) {
-            case "name":
-              return a.name.localeCompare(b.name);
-            case "category":
-              return (a.category || "").localeCompare(b.category || "");
-            case "updated":
-              return new Date(b.last_updated || 0).getTime() - new Date(a.last_updated || 0).getTime();
-            case "popularity":
-              // Mock popularity based on name (just for demo)
-              const popularityOrder = ["plugin-twitter", "plugin-evm", "plugin-solana", "plugin-knowledge"];
-              return popularityOrder.indexOf(a.name) - popularityOrder.indexOf(b.name);
-            default:
-              return 0;
-          }
-        });
+**Checked endpoint:** https://elizaos.github.io/data/
+**Expected pattern:** elizaos-plugins_plugin-*
 
-        // Remove detailed fields if not requested
-        if (!input.include_details) {
-          filteredPlugins = filteredPlugins.map(p => ({
-            name: p.name,
-            category: p.category,
-            description: p.description,
-            version: p.version,
-            status: p.status,
-          })) as any;
-        }
+Please verify the data repository structure.`;
+      }
 
-        const categories = [...new Set(mockPlugins.map(p => p.category).filter(Boolean))];
-
-        const mockData = {
-          total_plugins: filteredPlugins.length,
-          plugins: filteredPlugins,
-          categories,
-          updated_at: new Date().toISOString(),
-          source: "Generated from available plugin directories"
+      // Extract plugin information from directory names and get details
+      const plugins = [];
+      
+      for (const dirName of pluginDirs) {
+        const pluginName = dirName.replace('elizaos-plugins_plugin-', '');
+        
+        let pluginInfo: any = {
+          name: `plugin-${pluginName}`,
+          directory: dirName,
+          status: "active"
         };
 
-        return `🔍 **Available ElizaOS Plugins** ${input.category ? `(Category: ${input.category})` : ''}
-
-**Total Plugins:** ${mockData.total_plugins}
-
-${filteredPlugins.map(plugin => `**${plugin.name}** ${plugin.status === 'experimental' ? '🧪' : '✅'}
-📂 Category: ${plugin.category}
-📝 ${plugin.description}
-🏷️ Version: ${plugin.version}
-${input.include_details ? `👨‍💻 Author: ${plugin.author}
-📚 Repository: ${plugin.repository}
-📖 Documentation: ${plugin.documentation}
-🔗 Dependencies: ${plugin.dependencies.join(', ')}
-🏷️ Keywords: ${plugin.keywords.join(', ')}
-🕒 Last Updated: ${new Date(plugin.last_updated).toLocaleDateString()}
-` : ''}`).join('\n')}
-
-**Available Categories:** ${mockData.categories.join(', ')}
-
-**Raw Data:**
-\`\`\`json
-${JSON.stringify(mockData, null, 2)}
-\`\`\`
-
-*Source: ${mockData.source}*
-*Updated: ${new Date(mockData.updated_at).toLocaleString()}*`;
-      }
-
-      // Process the actual data if available
-      let processedData = result;
-      
-      if (input.category && processedData.plugins) {
-        // Filter by category if specified
-        processedData.plugins = processedData.plugins.filter((p: any) =>
-          p.category?.toLowerCase() === input.category!.toLowerCase()
-        );
-        processedData.total_plugins = processedData.plugins.length;
-      }
-
-      if (!input.include_details && processedData.plugins) {
-        // Remove detailed fields if not requested
-        processedData.plugins = processedData.plugins.map((p: any) => ({
-          name: p.name,
-          category: p.category,
-          description: p.description,
-          version: p.version,
-          status: p.status,
-        }));
-      }
-
-      // Sort plugins if data exists
-      if (processedData.plugins && input.sort_by) {
-        const sortField = input.sort_by;
-        processedData.plugins.sort((a: any, b: any) => {
-          switch (sortField) {
-            case "name":
-              return (a.name || "").localeCompare(b.name || "");
-            case "category":
-              return (a.category || "").localeCompare(b.category || "");
-            case "updated":
-              return new Date(b.last_updated || 0).getTime() - new Date(a.last_updated || 0).getTime();
-            default:
-              return 0;
+        // If detailed info requested, get latest stats
+        if (input.include_details) {
+          try {
+            // Try to get the most recent stats
+            const statsResponse = await httpClient.get(`/${dirName}/stats/day/`);
+            const statsHtml = statsResponse.data;
+            
+            // Get the latest stats file
+            const statsFileRegex = /href="(stats_\d{4}-\d{2}-\d{2}\.json)"/g;
+            const statsFiles: string[] = [];
+            let statsMatch;
+            
+            while ((statsMatch = statsFileRegex.exec(statsHtml)) !== null) {
+              statsFiles.push(statsMatch[1]);
+            }
+            
+            if (statsFiles.length > 0) {
+              // Get the latest stats file (they're in chronological order)
+              const latestStatsFile = statsFiles[statsFiles.length - 1];
+              
+              try {
+                const statsDataResponse = await httpClient.get(`/${dirName}/stats/day/${latestStatsFile}`);
+                const statsData = statsDataResponse.data;
+                
+                pluginInfo = {
+                  ...pluginInfo,
+                  repository: statsData.repository || `elizaos-plugins/${pluginName}`,
+                  last_updated: statsData.interval?.intervalEnd || statsData.interval?.intervalStart,
+                  recent_activity: {
+                    prs: statsData.topPRs?.length || 0,
+                    issues: statsData.topIssues?.length || 0,
+                    overview: statsData.overview
+                  }
+                };
+              } catch (error) {
+                // Stats file exists but couldn't parse - continue with basic info
+              }
+            }
+          } catch (error) {
+            // No stats directory or access issue - continue with basic info
           }
+        }
+
+        plugins.push(pluginInfo);
+      }
+
+      // Apply filtering
+      let filteredPlugins = plugins;
+      if (input.category) {
+        // Basic category inference from plugin names
+        filteredPlugins = plugins.filter(plugin => {
+          const name = plugin.name.toLowerCase();
+          const category = input.category!.toLowerCase();
+          
+          if (category === 'blockchain' || category === 'crypto') {
+            return name.includes('evm') || name.includes('solana') || name.includes('crypto') || name.includes('web3');
+          } else if (category === 'social') {
+            return name.includes('twitter') || name.includes('discord') || name.includes('telegram') || name.includes('farcaster');
+          } else if (category === 'ai') {
+            return name.includes('knowledge') || name.includes('ai') || name.includes('llm') || name.includes('openai');
+          } else if (category === 'automation') {
+            return name.includes('auton8n') || name.includes('automation') || name.includes('workflow');
+          } else if (category === 'integration') {
+            return name.includes('mcp') || name.includes('api') || name.includes('integration');
+          } else if (category === 'data') {
+            return name.includes('coingecko') || name.includes('data') || name.includes('fetch') || name.includes('market');
+          }
+          
+          return true;
         });
       }
 
-      const finalData = {
-        ...processedData,
-        source_endpoint: endpoint_used,
-      };
+      // Apply sorting
+      filteredPlugins.sort((a, b) => {
+        switch (input.sort_by) {
+          case "name":
+            return a.name.localeCompare(b.name);
+          case "updated":
+            const aDate = new Date(a.last_updated || 0).getTime();
+            const bDate = new Date(b.last_updated || 0).getTime();
+            return bDate - aDate; // Most recent first
+          default:
+            return a.name.localeCompare(b.name);
+        }
+      });
 
-      return `🔍 **Available ElizaOS Plugins** ${input.category ? `(Category: ${input.category})` : ''}
+      // Build categories list
+      const categories = ['blockchain', 'social', 'ai', 'automation', 'integration', 'data'];
 
-**Total Plugins:** ${finalData.total_plugins || 'N/A'}
+      // Format output
+      let output = `🔍 **Available ElizaOS Plugins** ${input.category ? `(Category: ${input.category})` : ''}
 
-${finalData.plugins ? finalData.plugins.map((plugin: any) => `**${plugin.name}** ${plugin.status === 'experimental' ? '🧪' : '✅'}
-📂 Category: ${plugin.category || 'N/A'}
-📝 ${plugin.description || 'No description'}
-🏷️ Version: ${plugin.version || 'N/A'}
-${input.include_details && plugin.author ? `👨‍💻 Author: ${plugin.author}` : ''}
-${input.include_details && plugin.repository ? `📚 Repository: ${plugin.repository}` : ''}
-${input.include_details && plugin.last_updated ? `🕒 Last Updated: ${new Date(plugin.last_updated).toLocaleDateString()}` : ''}
-`).join('\n') : 'No plugins found'}
+**Total Plugins:** ${filteredPlugins.length}
 
-**Available Categories:** ${finalData.categories ? finalData.categories.join(', ') : 'N/A'}
+`;
+
+      filteredPlugins.forEach(plugin => {
+        output += `**${plugin.name}** ✅
+📁 Directory: ${plugin.directory}
+`;
+        
+        if (input.include_details) {
+          if (plugin.repository) {
+            output += `📚 Repository: ${plugin.repository}
+`;
+          }
+          if (plugin.last_updated) {
+            output += `🕒 Last Updated: ${new Date(plugin.last_updated).toLocaleDateString()}
+`;
+          }
+          if (plugin.recent_activity) {
+            output += `📊 Recent Activity: ${plugin.recent_activity.prs} PRs, ${plugin.recent_activity.issues} issues
+`;
+            if (plugin.recent_activity.overview) {
+              output += `📝 Overview: ${plugin.recent_activity.overview}
+`;
+            }
+          }
+        }
+        
+        output += '\n';
+      });
+
+      output += `
+**Available Categories:** ${categories.join(', ')}
 
 **Raw Data:**
 \`\`\`json
-${JSON.stringify(finalData, null, 2)}
+${JSON.stringify({
+  total_plugins: filteredPlugins.length,
+  plugins: filteredPlugins,
+  categories,
+  updated_at: new Date().toISOString(),
+  source: "Real data from ElizaOS GitHub Pages"
+}, null, 2)}
 \`\`\`
 
-*Source: Real data from ${endpoint_used}*
+*Source: Real data from https://elizaos.github.io/data/*
 *Updated: ${new Date().toLocaleString()}*`;
+
+      return output;
+
     } catch (error: any) {
       return `❌ **Error: Failed to fetch plugin list**
 
 **Error Message:** ${error.message}
 **Timestamp:** ${new Date().toLocaleString()}
 
-Please try again or check the ElizaOS data endpoints.
+**Possible causes:**
+- ElizaOS data repository is unavailable
+- Network connectivity issues
+- Data repository structure has changed
 
 **Raw Error Data:**
 \`\`\`json
@@ -299,6 +210,7 @@ ${JSON.stringify({
   error: "Failed to fetch plugin list",
   message: error.message,
   timestamp: new Date().toISOString(),
+  endpoint: "https://elizaos.github.io/data/",
 }, null, 2)}
 \`\`\``;
     }
