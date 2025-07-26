@@ -192,7 +192,35 @@ class ListAvailablePluginsTool extends MCPTool {
           source: "Generated from available plugin directories"
         };
 
-        return JSON.stringify(mockData, null, 2);
+        return [
+          {
+            type: "text",
+            text: `🔍 **Available ElizaOS Plugins** ${input.category ? `(Category: ${input.category})` : ''}
+
+**Total Plugins:** ${mockData.total_plugins}
+
+${filteredPlugins.map(plugin => `**${plugin.name}** ${plugin.status === 'experimental' ? '🧪' : '✅'}
+📂 Category: ${plugin.category}
+📝 ${plugin.description}
+🏷️ Version: ${plugin.version}
+${input.include_details ? `👨‍💻 Author: ${plugin.author}
+📚 Repository: ${plugin.repository}
+📖 Documentation: ${plugin.documentation}
+🔗 Dependencies: ${plugin.dependencies.join(', ')}
+🏷️ Keywords: ${plugin.keywords.join(', ')}
+🕒 Last Updated: ${new Date(plugin.last_updated).toLocaleDateString()}
+` : ''}`).join('\n')}
+
+**Available Categories:** ${mockData.categories.join(', ')}
+
+*Source: ${mockData.source}*
+*Updated: ${new Date(mockData.updated_at).toLocaleString()}*`
+          },
+          {
+            type: "text",
+            text: JSON.stringify(mockData, null, 2)
+          }
+        ];
       }
 
       // Process the actual data if available
